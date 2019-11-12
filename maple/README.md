@@ -356,69 +356,21 @@ mathml("x^(1/3)")
 * Both of the ```evalb(e)``` and ```is(e)``` functions can be used to evaluate the student response.
 * "$RESPONSE" converts the expression to string, and it can be placed in the answer input field to check the actual response interpreted by symbolic entry.
 * StringTools are helpful when certain coefficient in required in the response string. Here are some examples.
- 1. ```
+ ```
  evalb(($ans)=($RESPONSE) and not StringTools:-Search("$coefX","$RESPONSE")=0 and not StringTools:-Search("$coefY","$RESPONSE")=0);
  ```
  ```"$coefX"``` and ```"$coefY"``` must be in the ``` "$RESPONSE" ``` string.
- 2. ```
+ ```
  evalb(($ans)=($RESPONSE) and not StringTools:-Search(["$coefX","$coefY"],"$RESPONSE")=[0,0]);
  ```
  Either ```"$coefX"``` or ```"$coefY"``` must be in the ``` "$RESPONSE" ``` string.
- 3. ```
+ ```
  evalb(($ans)=($RESPONSE) and StringTools:-CountCharacterOccurrences("$RESPONSE","^")=3 );
  ```
  There must be ```3``` ```"^"``` in the ```"$RESPONSE"``` string.
 
 
-
-<!--
-Getting read of squareroots in the denominator try:
-radnormal($q)
-combine(simplify($q)) assuming a>0, b>0 if an and b are inside the squareroot
-evala($q)
-evala(Normal($q))
-
-to enter Radicals use:
-root(expr,root)  =  root(8,3)=2
-surd(expr,root)  =  surd(8,3)=2
-
-solve gives rational answers
-fsolve gives decimal answers
-
-Ratical/Fractional Exponents:
-In your case you can set $ans to return the answer in its appropriate form, such as
-
-$ans='2*sqrt(3)';
-
-This would mean that sqrt(12) is graded incorrect, would that be okay? Are you are asking the student to convert to the simplest radical form?
-
-Then use the Grading Code as follows:
-
-ia := InertForm[Parse]("$ans");
-ir := InertForm[Parse]("$RESPONSE");
-is( value(ia) = value(ir) and op(0,ia) = op(0,ir) and map(value,{op(ia)}) = map(value,{op(ir)}) );
--->
-
-
-
-### Symbolic Entry
-It can be used to construct complex math expressions for display or get student responses.
-* Variables can be put inside the symbolic expressions, always add a space after the variable names or the following values will be treated as a part of variable names.
-* When getting response with symbolic entry, currently, * need to be placed between variable with exponents.
-
-
-
-<!--
-chained / from left to right
-
-```
-#This will be used for all st nd rd cases in the future. for any given number $A, generate st nd rd for it as $tha
-$st="st";
-$nd="nd";
-$rd="rd";
-$th="th";
-$tha=maple("if (modp($A,10)=1) then $st elif (modp($A,10)=2) then $nd elif (modp($A,10)=3) then $rd else $th end if");
-$thb=maple("if (modp($B,10)=1) then $st elif (modp($B,10)=2) then $nd elif (modp($B,10)=3) then $rd else $th end if");
-```
-is and evalb are similar, but more lenient.
--->
+ ### Symbolic Entry
+ It can be used to construct complex math expressions for display or get student responses.
+ * Variables can be put inside the symbolic expressions, always add a space after the variable names or the following values will be treated as a part of variable names.
+ * When getting response with symbolic entry, currently, * need to be placed between variable with exponents.
