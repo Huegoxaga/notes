@@ -1,7 +1,33 @@
-# Maple
-This document collects information on products from Maplesoft and DigitalED.
+#### This document collects information on products from Maplesoft and DigitalED.
 
-## Maple
+[Maple](#maple)
+* [Introduction](#introduction)
+* [Maple Code Syntax](#maple-code-syntax)
+* [Operators](#operators)
+* [Types](#types)
+* [Flow Control](#flow-control)
+* [Functions](#functions)
+* [Packages](#packages)
+
+[Möbius](#mobius)
+* [Introduction](#introduction-1)
+* [Using the Algorithm Editor](#using-the-algorithm-editor)
+  * [Assignment](#assignment)
+  * [Comments](#comments)
+  * [Built-in Functions](#built-in-functions)
+  * [Code Examples](#code-examples)
+* [Getting Response](#getting-response)
+  * [Mutiple Chioces](#multiple-chioces)
+  * [Maple Graded Questions](#maple-graded-questions)
+* [Symbolic Entry](#symbolic-entry)
+
+
+
+
+
+# Maple
+
+### Introduction
 * It is the flagship product of Maplesoft.
 * It is a software that make use of a powerful mathematics engine.
 * It can be used to solve mathematical problems.
@@ -15,7 +41,7 @@ This document collects information on products from Maplesoft and DigitalED.
 ### Operators
 
 
-#### Assignment
+##### Assignment
 ```
 r := x^3;
 ```
@@ -24,21 +50,21 @@ r := x^3;
 
 ### Types
 * Name
- * Maple has a type name denoted by a pair of left single quotes, ``` `x` ```. Variable names are of type Name.
+  * Maple has a type name denoted by a pair of left single quotes, ``` `x` ```. Variable names are of type Name.
 * String
- * String are enclosed by double quotes.
+  * String are enclosed by double quotes.
 * Rational
 * Fraction
 
 [Click here](https://www.maplesoft.com/support/help/Maple/view.aspx?path=type&term=type#bkmrk2) to see a complete lists of defined type in Maple.
 
-#### Convert to String
+##### Convert to String
 ```
 "$x"
 ```
-* Expression $x is converted to plain text string.
+* Expression ```$x``` is converted to plain text string.
 
-#### Type Conversion
+##### Type Conversion
 ```
 convert(expression, type)
 ```
@@ -54,7 +80,7 @@ parse(s);
 * Parse function convert the string s into an expression or a statement.
 * If statement is specified as the second argument, ```parse(s, statement);```, the statement in the first argument will be evaluated.
 
-#### Type checking
+##### Type checking
 ```
 type(x,'float');
 ```
@@ -68,7 +94,7 @@ whattype(x);
 
 
 ### Flow Control
-#### If condition
+##### If condition
 ```
 if (a > b) then a else b end if;
 ```
@@ -94,7 +120,7 @@ s := String(a, if a = 1 then "st"
 
 ### Functions
 
-#### String Concatenation
+##### String Concatenation
 ```
 String(a,b,c,....);
 ```
@@ -107,32 +133,59 @@ cat(a,b,c,....);
 
 
 
-#### Root
+##### Root
 ```
 root(x,n);
 ```
 * Returns the nth root of x.
 
-#### Simplify
+##### Simplify
 ```
 simplify(x);
 ```
 * x can be any expression.
 * Returns a simplified expression for x.
 
-#### Evaluation
+##### Evaluation
 ```
-evalb(x)
+evalb(x);
 ```
 * Evaluates a comparison expression and returns a boolean value of either true, false, and FAIL.
 * If evaluation is not possible, an unevaluated expression is returned.
 
-#### Factorize
 ```
-“factor($q)");
+evala(x);
+```
+* Evaluate an algebraic field.
+* ```x``` can be placed inside functions like Factor(), Normal(), Expand(), Simplify() to get the result in certain form. Ex, ```evala(Normal(x))```.
+
+```
+solve(x4−x3+1,x);
+```
+```
+solve({x+y+z=2,2x+y=3,z=1},{x,y,z});
+```
+* solve one or more equations.
+
+
+```
+fsolve(tan(sin(x))=1);
+```
+* Returns result as floating-point.
+
+
+
+##### Factorize
+```
+factor($q);
 ```
 * Factorize the expression q.
 
+##### Normalization
+```
+radnormal(r);
+```
+* Normalize an expression containing radical numbers.
 
 
 ### Packages
@@ -143,11 +196,11 @@ evalb(x)
  * Module Members: Use function directly with ```PackageName:-commandName(arguments)``` syntax.
 
 
-#### StringTools
+##### StringTools
 The StringTools package is a collection of optimized string manipulation utilities.
 * [Click here](https://www.maplesoft.com/support/help/Maple/view.aspx?path=StringTools&term=stringtools#bkmrk0) to see a list of StringTools Package Commands.
 
-#### InertForm
+##### InertForm
 
 The InertForm package provides a collection of commands for obtaining and working with inert-form expressions.
 * The inert form of an expression is a representation that avoids evaluation and automatic simplification by changing operators and function names to unassigned symbols prefixed with a % character.  For general information on inert functions, see value.
@@ -155,7 +208,9 @@ The InertForm package provides a collection of commands for obtaining and workin
 
 
 
-## Möbius
+# Möbius
+
+### Introduction
 * It is formerly known as Maple T.A.
 * It is a web-based, e-learning platform provided by DigitalED, a spin-off of Maplesoft.
 * It can be used to present course content and provide online testing and assessment.
@@ -237,7 +292,7 @@ rint(x, y, n)
 * ```rint(x,y)``` is equivalent to ```rint(x,y,1)```
 * ```rint(x)``` is equivalent to ```rint(0,x,1)```
 
-#### rand(x, y, k)
+##### Random Real Number
 ```
 rand(x, y, k)
 ```
@@ -337,9 +392,21 @@ mathml("x^(1/3)")
 * The expression will be displayed as cubic root of x.
 * ```mathml(expresion, "nosimplify")``` will displayed the expression without simplification.
 
-### Get Response
+#### Code Examples
+```
+$st="st";
+$nd="nd";
+$rd="rd";
+$th="th";
+$tha=maple("if (modp($A,10)=1) then $st elif (modp($A,10)=2) then $nd elif (modp($A,10)=3) then $rd else $th end if");
+$thb=maple("if (modp($B,10)=1) then $st elif (modp($B,10)=2) then $nd elif (modp($B,10)=3) then $rd else $th end if");
+```
+This code appends st, nd, rd to any given number ```$A``` as ```$tha```.
+
+
+### Getting Response
 * Response can be received for different question types.
-* Click the Response button to select the question types.
+* Click the Response Area button to select the question types.
 
 #### Mutiple Chioces
 * The correct answer for the question can be set to a certain choice using the checkbox.
@@ -347,27 +414,34 @@ mathml("x^(1/3)")
 * For multiple choice that has two or more answers use ```$AnsA, $AnsB``` as the algorithmic value in Answers field.
 * Set the correct answer with checkbox still works if algorithmic value is set.
 
-#### Maple Graded questions
+#### Maple Graded Questions
 * The grading code for maple-graded questions uses Maple codes.
 * When the expression for correct answer is placed in the answer input field, the auto-generated code check if the response equals the answer value.
-* Change the ```ANSWER``` variable to any other expression for maple-graded question to compare student response with.
-* To display symbolic expressions as answer for graded questions. go to the MathML tab, copy and paste the markup syntax inside ```print(``)``` function, and place the function in the answer input field.
-* $RESPONSE stores the expression received from student response.
+* Change the ```$ANSWER``` variable to any other expression for maple-graded question to compare student response with.
+* To display symbolic expressions as answer, generate the answer using Symbolic Entry, go to the MathML tab, copy the markup syntax, paste everything inside ```print(``)``` function, and place the function in the Answer input field.
+* ```$RESPONSE``` stores the expression received from student response.
 * Both of the ```evalb(e)``` and ```is(e)``` functions can be used to evaluate the student response.
-* "$RESPONSE" converts the expression to string, and it can be placed in the answer input field to check the actual response interpreted by symbolic entry.
-* StringTools are helpful when certain coefficient in required in the response string. Here are some examples.
- ```
- evalb(($ans)=($RESPONSE) and not StringTools:-Search("$coefX","$RESPONSE")=0 and not StringTools:-Search("$coefY","$RESPONSE")=0);
- ```
- ```"$coefX"``` and ```"$coefY"``` must be in the ``` "$RESPONSE" ``` string.
- ```
- evalb(($ans)=($RESPONSE) and not StringTools:-Search(["$coefX","$coefY"],"$RESPONSE")=[0,0]);
- ```
- Either ```"$coefX"``` or ```"$coefY"``` must be in the ``` "$RESPONSE" ``` string.
- ```
- evalb(($ans)=($RESPONSE) and StringTools:-CountCharacterOccurrences("$RESPONSE","^")=3 );
- ```
- There must be ```3``` ```"^"``` in the ```"$RESPONSE"``` string.
+* ```"$RESPONSE"``` converts the expression to string, and it can be placed in the Answer input field to check the actual response interpreted by symbolic entry.
+* StringTools package is helpful when certain coefficient in required in the response string. Here are some examples.
+  1. ```
+  evalb(($ans)=($RESPONSE) and not StringTools:-Search("$coefX","$RESPONSE")=0 and not StringTools:-Search("$coefY","$RESPONSE")=0);
+  ```
+  ```"$coefX"``` and ```"$coefY"``` must be in the ``` "$RESPONSE" ``` string.
+  2. ```
+  evalb(($ans)=($RESPONSE) and not StringTools:-Search(["$coefX","$coefY"],"$RESPONSE")=[0,0]);
+  ```
+  Either ```"$coefX"``` or ```"$coefY"``` must be in the ``` "$RESPONSE" ``` string.
+  3. ```
+  evalb(($ans)=($RESPONSE) and StringTools:-CountCharacterOccurrences("$RESPONSE","^")=3 );
+  ```
+  There must be ```3``` ```"^"``` in the ```"$RESPONSE"``` string.
+
+* InertForm package can also be used for grading.
+  ```
+  ia := InertForm[Parse]("$ans");
+  ir := InertForm[Parse]("$RESPONSE");
+  is( value(ia) = value(ir) and op(0,ia) = op(0,ir) and map(value,{op(ia)}) = map(value,{op(ir)}) );
+  ```
 
 
  ### Symbolic Entry
