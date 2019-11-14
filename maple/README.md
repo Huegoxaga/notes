@@ -22,9 +22,6 @@
 * [Symbolic Entry](#symbolic-entry)
 
 
-
-
-
 # Maple
 
 ### Introduction
@@ -428,15 +425,15 @@ It can be used to construct complex math expressions for display or get student 
 * Both of the ```evalb(e)``` and ```is(e)``` functions can be used to evaluate the student response.
 * ```"$RESPONSE"``` converts the expression to string, and it can be placed in the Answer input field to check the actual response interpreted by symbolic entry.
 * StringTools package is helpful when certain coefficient in required in the response string. Here are some examples.
-  1. ```
+  ```
   evalb(($ans)=($RESPONSE) and not StringTools:-Search("$coefX","$RESPONSE")=0 and not StringTools:-Search("$coefY","$RESPONSE")=0);
   ```
   ```"$coefX"``` and ```"$coefY"``` must be in the ``` "$RESPONSE" ``` string.
-  2. ```
+  ```
   evalb(($ans)=($RESPONSE) and not StringTools:-Search(["$coefX","$coefY"],"$RESPONSE")=[0,0]);
   ```
   Either ```"$coefX"``` or ```"$coefY"``` must be in the ``` "$RESPONSE" ``` string.
-  3. ```
+  ```
   evalb(($ans)=($RESPONSE) and StringTools:-CountCharacterOccurrences("$RESPONSE","^")=3 );
   ```
   There must be ```3``` ```"^"``` in the ```"$RESPONSE"``` string.
