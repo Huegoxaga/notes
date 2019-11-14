@@ -9,10 +9,10 @@
 * [Functions](#functions)
 * [Packages](#packages)
 
-[Möbius](#mobius)
+[Möbius](#möbius)
 * [Introduction](#introduction-1)
 * [Using the Algorithm Editor](#using-the-algorithm-editor)
-  * [Assignment](#assignment)
+  * [Assignment](#assignment-1)
   * [Comments](#comments)
   * [Built-in Functions](#built-in-functions)
   * [Code Examples](#code-examples)
@@ -403,12 +403,17 @@ $thb=maple("if (modp($B,10)=1) then $st elif (modp($B,10)=2) then $nd elif (modp
 ```
 This code appends st, nd, rd to any given number ```$A``` as ```$tha```.
 
+### Symbolic Entry
+It can be used to construct complex math expressions for display or get student responses.
+* Variables can be put inside the symbolic expressions, always add a space after the variable names or the following values will be treated as a part of variable names.
+* When getting response with symbolic entry, currently, * need to be placed between variable with exponents.
+
 
 ### Getting Response
 * Response can be received for different question types.
 * Click the Response Area button to select the question types.
 
-#### Mutiple Chioces
+#### Multiple Chioces
 * The correct answer for the question can be set to a certain choice using the checkbox.
 * The correct answer can be represented by a variable, when variable equals 1, the first choice is correct. When variables 2, the second choice is correct and so on.
 * For multiple choice that has two or more answers use ```$AnsA, $AnsB``` as the algorithmic value in Answers field.
@@ -442,9 +447,3 @@ This code appends st, nd, rd to any given number ```$A``` as ```$tha```.
   ir := InertForm[Parse]("$RESPONSE");
   is( value(ia) = value(ir) and op(0,ia) = op(0,ir) and map(value,{op(ia)}) = map(value,{op(ir)}) );
   ```
-
-
- ### Symbolic Entry
- It can be used to construct complex math expressions for display or get student responses.
- * Variables can be put inside the symbolic expressions, always add a space after the variable names or the following values will be treated as a part of variable names.
- * When getting response with symbolic entry, currently, * need to be placed between variable with exponents.
