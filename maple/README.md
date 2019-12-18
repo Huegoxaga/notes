@@ -34,6 +34,7 @@
 
 ### Maple Code Syntax
 * Each line of code should end with a ```;```.
+* Single line comments start with # sign.
 
 ### Operators
 
@@ -143,6 +144,13 @@ simplify(x);
 * x can be any expression.
 * Returns a simplified expression for x.
 
+##### Expand
+```
+expand(x);
+```
+* x can be any expression.
+* Returns an expanded expression for x.
+
 ##### Evaluation
 ```
 evalb(x);
@@ -220,7 +228,7 @@ Codes can be written in the editor, in order to add random variables for the que
 * Each line of code should end with a ```;```.
 * Strings are enclosed by double quotes.
 * expressions which are enclosed by single quotes will not be evaluated.
-* Click ```Button``` to run the code once, and see the outputs for all the variables.
+* Click _Refresh algorithm preview_ to run the code once, and see the outputs for all the variables.
 
 The following syntax should be adopted for the algorithm editor.
 
@@ -388,6 +396,7 @@ mathml("x^(1/3)")
 ```
 * The expression will be displayed as cubic root of x.
 * ```mathml(expresion, "nosimplify")``` will displayed the expression without simplification.
+* variable which represents a rendered expression can be placed in the question editor.
 
 #### Code Examples
 ```
@@ -404,6 +413,7 @@ This code appends st, nd, rd to any given number ```$A``` as ```$tha```.
 It can be used to construct complex math expressions for display or get student responses.
 * Variables can be put inside the symbolic expressions, always add a space after the variable names or the following values will be treated as a part of variable names.
 * When getting response with symbolic entry, currently, * need to be placed between variable with exponents.
+* LaTeX code can be placed in the \\(...\\) block for inline math expressions, \\[...\\] for block math expressions in the MathML/LaTeX input page.
 
 
 ### Getting Response
