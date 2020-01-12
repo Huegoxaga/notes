@@ -17,7 +17,7 @@
   * [Built-in Functions](#built-in-functions)
   * [Code Examples](#code-examples)
 * [Getting Response](#getting-response)
-  * [Mutiple Chioces](#multiple-chioces)
+  * [Multiple Choices](#multiple-choices)
   * [Maple Graded Questions](#maple-graded-questions)
 * [Symbolic Entry](#symbolic-entry)
 
@@ -420,7 +420,7 @@ It can be used to construct complex math expressions for display or get student 
 * Response can be received for different question types.
 * Click the Response Area button to select the question types.
 
-#### Multiple Chioces
+#### Multiple Choices
 * The correct answer for the question can be set to a certain choice using the checkbox.
 * The correct answer can be represented by a variable, when variable equals 1, the first choice is correct. When variables 2, the second choice is correct and so on.
 * For multiple choice that has two or more answers use ```$AnsA, $AnsB``` as the algorithmic value in Answers field.
