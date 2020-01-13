@@ -1,169 +1,171 @@
-Linux
+# Linux
 
-Background
+## Background
+### Unix
+* UNIX is an operating system since the 1960’s
+* Unix is a [trademarked](www.unix.org) name.
+* UNIX operating system is one that
+  * conforms to a set of standards
+  * is registered with the governing body of the trademark.
+  * If any those two requirement is not met, it can only be called Unix 'like' OS.
+* Active Unix OS:
+  * Hewlett Packard(HP-UX)
+  * IBM AIX
+  * IBM z/OS
+  * Oracle Solaris
+  * Apple macOS
 
-Unix is a trademarked name
-Unix is Unix”like” after they conforms some standards.
-Unix:
-Hewlett Packard(HP-UX)
-IBM AIX
-IBM z/OS
-Oracle Solaris
-macOS
-Linux is a trademarked name.  Ex, Google Android
-Red Hat
-Oracle
-CenOS CentOS is based on RedHat Enterprise Linux
-Ubuntu
-Debian
-Fedora
-
-
-Basic Concepts
-
-1Kernel
-Used for
-- Multi-tasking
-- File reads and writes
-- Connectivity to networks and devices
-- Resource allocation
-
-
-2Shell
-
-Provides a command-line interface where the
-user can execute
-commands
--
-Interprets
- the user commands
--
-Passes
- the interpreted commands to the kernel
-- Bourne Shell
-(sh)
--
-Bourne-Again Shell
-(
-bash
-)
-- C Shell
-(csh)
-- Korn Shell
-(ksh)
+### Linux
+* Linux is Unix "like" OS.
+* Linux was created around 1990's
+* Linux is a [trademarked](www.linuxmark.org) name.
+* Linux is the name of the OS kernel, means Linux "based" OS.
+* Active Linux OS:
+  * Google Android
+  * Oracle Linux
+    * Red Hat Enterprise Linux
+    * CentOS - It is based on Red Hat Enterprise Linux
+    * Fedora
+  * Ubuntu Linux
+  * Debian Linux
 
 
-3Filesystem
-Unix/Linux every thing is a file
-- xfs : Default filesystem for many newer Linux distributions
-- ext4 : 4
-th
- extended filesystem (still used with many Linux distributions)
-- exFAT : Provides support for Microsoft’s exFAT (read + write)
-NTFS : Provides support for Microsoft’s NTFS (read-only)
-The filesystem start at root
-does not has volume letter
-the directories are files
-home directory ~ are for users
+## Basic Concepts
 
-system implicit treat dir and files as in the current folder
-or ./abc is used for explicit method.
-for file contain space use “” surround the whole path.
+1. Kernel
+* The kernel is the core of Unix or Unix "like" OS, used to communicate to the hardware.
+* It has the following functions.
+  - Multi-tasking
+  - File reads and writes
+  - Connectivity to networks and devices
+  - Resource allocation
+
+2. Shell
+* Provides a command-line interface where the user can execute commands.
+* It has the following functions.
+  - Interprets the user commands
+  - Passes the interpreted commands to the kernel
+* famous shells
+  - Bourne Shell(sh)
+  - Bourne-Again Shell(bash), most used shell.
+  - C Shell(csh)
+  - Korn Shell(ksh)
+
+3. Filesystem
+* For Unix/Linux OS every thing is a file
+* Types of file systems:
+  - xfs : Default filesystem for many newer Linux distributions
+  - ext4 : 4th extended filesystem (still used with many Linux distributions)
+  - exFAT : Provides support for Microsoft’s exFAT (read + write)
+  - NTFS : Provides support for Microsoft’s NTFS (read-only)
+* The filesystem start at root does not has volume letter
+* the directories/foldrs are files
+* home directory ``~`` are for users
+* the current folder shown before shell symbol, all its contain can be accessed without specify path. In short, ``./`` is ignored for file path.
+* For file contain space use """ surround the whole path.
+* Its important to remember that all Linux Operating systems are case sensitive
+* linux system use forward slash ``/`` and the following sign for relative path.
+  * ``.`` is the current directory
+  * ``..`` is the previous directory
+  * ``~`` is the home directory
+  * ``*`` means all
+* absolute path starts with ``/`` from root folder.
+* In Linux, files that start with a dot ( . ) are considered hidden files
+* Linux System has the following files structure.
+  * / - the root of the file system
+  * /var – variable files or files that vary frequently
+  * /root/Downloads – downloads directory for the root user
+  * /etc – contains system wide configuration files
+  * /etc/sysconfig/iptables – the path to the iptables configuration file
+  * /home – contains all other user home directories
+  * /home/username – the username user home directory
+  * /usr – the ‘user file system’  contains non-system critical files and binary (executable) files
+  * /bin and /sbin – contain system binary files
+* drag file into the terminal to get its directory.
+* files permission can be represented by ``-`` or ``d`` followed by three groups of three letter.s
+  * ``-`` means file, ``d`` means directories.
+  * First group is permission for users, second is for Groups, third is for others.
+  * In each group ``r`` is read permission, ``w`` is write permission, ``x`` is execute permission, ``-`` is no permission.
+  * A permission code can be calculated, using ``r``=4, ``w``=2, ``x``=1, ``-``=0, and and them together.
+  * For example, ``400`` means only user has read permission, so the file is private.
+
+## Commands
+Command options are after ``-``, can use the first letter, can combine the letter after one common ``-``.
+* ``startx`` start GUI.
+* ``shutdown –h now``  shutdown immediately.
+* ``appname —version``   check the current version for any app.
+* Both the ``more`` and the ``less`` command provide paging functionality in a command line environment.
+* ``man <command name>`` the man pages for Linux commands.  
+* ``help <command name>`` To get help with built-in shell commands use the help command
+* ``clear``   clear screen
+* ``who am i`` check current user name
+* ``ls   -al`` ``-l`` for detail ``-a`` for include hidden files.
+  * ``ls`` If no directory name is followed, it will list all of the files in the current working directory.
+* ``cd`` Change directory to the directory followed,
+* ``pwd`` display the absolute path to the current working directory.
+* ``touch`` create new file
+* ``mkdir <directory path(s)>`` make new dir
+  * create multiple new folderName separate by space.
+* ``cp <source> <destination> -R``, copy files for folders,  ``-R`` include directories.
+* ``mv <source> <destination>`` The mv command is used to move or rename files
+* ``rm <PathToFile> -r`` remove files for folders, ``-r`` includes folders.
+* ``rmdir`` remove empty directories
+* ``find <fromFolderPath> -type f -iname "*.txt" 2> /dev/null``
+  * ``-type  f`` is used to locates only files
+  * ``-type  d`` is used to locates only directories
+  * ``-iname`` for any case of the file or directory name (case insensitive)
+  * ``2>  /dev/null`` Do not display any access error message   
+* ``route -n`` for checking jumps info.
+* ``su`` change to root user.
+* ``su username`` change to certain user.
+* ``su -`` change user and redirect to default home directory after changed.
+* ``ifconfig eth0`` will display networking information about the device named ``eth0``.
+  * ``eth0`` the number is the order in which the card has been detected, starting with a zero
+* ``ifconfig`` will display networking information about all device.
+* ``ip addr`` will display the IP address for all active network interfaces.
+* ``ip route`` 	will display the system default gateway information
+* ``uname -a`` Print operating system info
+* ``cat <file.txt>`` create or read a txt file.
+* ``sudo`` add this before command to get execute as admin
+* ``who`` see current who logged in
+* ``chmod <modeCode> fildPath`` change the file mode.
+* ``passwd xxxx``modify a user's password
+* ``useradd xxx`` add new user
+* ``echo``
 
 
-its important to remember that all Linux Operating systems are case sensitive
+## Tools
+### YUM
+* It is a package manager
+* ``/etc/yum.conf`` allows you to configure which software repositories to use globally (i.e., RedHat, Fedora, CentOS, etc…)
+* ``/etc/yum.repos.d/`` is the configuration file for the current repositories, that will override ``/etc/yum.conf`` configuration.
+* ``cdrom.repo`` configuring this file allows installation from cd-rom
+* ``yum list available``, see a list of available software
+* ``yum install package_name``, install a specific package.
+* ``yum groupinstall ‘groupname’ ‘groupname2’`` install package groups.
 
-linux system use forward slash ``/``
-or use the following sign.
-  ``.`` is the current directory
-  ``..`` is the previous directory
-  ``~`` is the home directory
-  ``*`` means all
-In Linux, files that start with a dot ( . ) are considered hidden files
-  / - the root of the file system
-/var – variable files or files that vary frequently
-/root/Downloads – downloads directory for the root user
-/etc – contains system wide configuration files
-/etc/sysconfig/iptables – the path to the iptables configuration file
-/home – contains all other user home directories
-/home/hagerd – the hagerd user home directory
-/usr – the ‘user file system’  contains non-system critical files and binary (executable) files
-/bin and /sbin – contain system binary files
-
-
-
-Command
-
-# startx
-# shutdown –h now
-
-appname —version   check the current version
-Both the more and the less command provide paging functionality in a command line environment.
-
-man <command name> the man pages for Linux commands.  
-help <command name> To get help with built-in shell commands use the help command
+##Vi
+* ``vi``, open vi.
+* ``vi filename.txt``, open a file with vi.
+* Vi has insert mode, press i to enter insert mode, press Esc to exit.
+* When out of insert mode, the following command works.
+  * ``:w filename.txt`` save as ``filename.txt`` in the current folder.
+  * ``:wq`` or ``ZZ``, save and quit.
+  * ``:q!`` quit without save.
+  * ``:r <file>`` insert file after current line.
 
 
+### SCP
+* It is used to transfer files between local machine and remote server.
+* scp ``username@serverAddress:<remote file path> <local file path> -r``, ``-r``means including folders
+* Ex, ``scp -r 000123456@exampleserver.com:/foldername/public_html/ /users/username/Downloads``
 
-clear   clear screen
-who am i
-ls   -l(detail) -a(include didden)
-``cd`` Change directory to the directory followed,
-* ``ls`` If no directory name is followed, it will list all of the files in the current working directory.
-``pwd`` display the absolute path to the current working directory.
-touch create new file
-mkdir <directory path(s)> make new dir create multiple new folder separate by space.
-cp <source> <destination> -R(include directories The cp command is used to make copies of files and folders
+### SSH
+* It is used to log in remote servers.
+* Ex, ``ssh -i ~/.ssh/"WordPress Key.pem" ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com``
 
-mv <source> <destination> The mv command is used to move or rename files
+### NPM
+* ``npm install -g package-name`` -g means install globally.
 
-
-rm <PathToFile> or rm <PathToFolder> -r  remove file or folder.
-
-rmdir remove empty directories
-find / -type f -iname “abcd” 2> /dev/null(no error messages)                   /(find under root) f(files) or d(dir)
-route -n for jumps
-su change to root user.
-su username change to certain user.
-su - change user and refirect to default home directory for that user.
-
-ifconfig eth0  will display networking information 			about the device named eth0
-ifconfig   will display networking information about 		all devices
-ip addr 	will display the IP address (inet) for all active network interfaces
-
-ip route 	will display the system default gateway information
-eth0 the number is the order in which the card has been detected, starting with a zero
-
-cat
-uname -a
-ifconfig    or    ip addr
-
-startx
-
-
-yum package manager
-/etc/yum.conf allows you to configure which software repositories to use globally (i.e., RedHat, Fedora, CentOS, etc…)
-/etc/yum.repos.d/ is the configuration file for the current repositories, that will override /etc/yum.conf configuration.
-cdrom.repo configuring this file allows installation from cd-rom
-To see a list of available software:
-yum list available
-To install a specific package or package groups, you type:
-yum install package_name
-yum groupinstall ‘groupname’ ‘groupname2’
-
-
-sudo add this before command to get execute as admin
-
-whoami
-who
-cd ~
-passwd xxxx
-useradd xxx
-echo "xxxxxx"|passwd --stdin oldboy
-su - Huegoxaga
-su - (to root password required)
-
-chmod 400 fildPath    //make it private
-
-drag file into the terminal to get its directory.
-Command + +  to have bigger font
+### SQL Server
+* ``mssql -u userName -p password`` connect to SQL Server.

@@ -1,5 +1,5 @@
-C
-It is a low-level language that relates closely to the way machines work
+# C
+* It is a low-level language that relates closely to the way machines work
 
 #include <stdio.h>
 The header file package defines function related to input and output

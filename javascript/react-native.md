@@ -131,6 +131,7 @@ touchable and change background color when touched.
 ### FlatList
 It is useful for long list
 
+
 #### properties:
 ``data``     an array of object for the list, the object must have a key or id property.
 ``renderItem``   a function a process the data and return components for each element of the array object.

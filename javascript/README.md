@@ -73,7 +73,7 @@ JavaScript code can be added inside the script tag.
 </script>
 ```
 
-* The script tag can be placed in the HTML’s ``<head>`` and ``<body>`` tags. It can be mostly found in the ``<head>`` tag, or at the bottom of the ``<body>`` tag.
+* The script tag can be placed in the HTML's ``<head>`` and ``<body>`` tags. It can be mostly found in the ``<head>`` tag, or at the bottom of the ``<body>`` tag.
 * ``<script>`` can have attribute type, <script type="text/javascript"></script>, not required.
 * JavaScript code can be placed in a separate js file and link the file using script tag.
 
@@ -514,7 +514,7 @@ let person = {
 };
 ```
 
-* Add Object’s properties after object declaration:
+* Add Object's properties after object declaration:
 ```js
 let circle = {};  
 circle.radius = 5.3;
@@ -579,7 +579,7 @@ function Person(name, age) {
 function bornYear() {
   return 2016 - this.age;
 }
-//it’s not necessary to write the function’s parentheses when assigning it to an object.
+//it's not necessary to write the function's parentheses when assigning it to an object.
 ```
 
 * The this keyword refers to the current object that take control of the current scope(the object in front of the curly brackets).
@@ -646,7 +646,7 @@ console.log(person["age"]);
 ...array = (array[0], array[1], array[2], ...)
 ```
 
-* It can be used to insert elements of an array into another array’s elements.
+* It can be used to insert elements of an array into another array's elements.
 ```js
 array1 = [4,5];
 array2 = [1,2,3, ...array1, 6, 7];
@@ -741,250 +741,207 @@ Math.tan
 ## APIs
 
 ### DOM
-Document Object Model
-The browser builds the Document Object Model for HTML actively at runtime. document objects is organized in a hierarchical tree of elements(nodes).
+* Document Object Model
+* The browser builds the Document Object Model for HTML actively at runtime. document objects is organized in a hierarchical tree of elements(nodes).
+* The root node is document, it can be used to select elements with the following methods.
 
-The root node is document, it can be used to select elements with the following methods.
+#### Document Object
+* ``document`` is the root object of the entire HTML file.
+* has body as its property, ``document.body``.
+* work with following methods, to get a node object or nodelist.
+  * finds element by id, ``document.getElementById("id")``.
+  * finds elements by class name, ``document.getElementsByClassName("className");``.
+  * finds elements by tag name, ``document.getElementsByTagName("tagName");``.
+  * select element using CSS selector rules, returns an array of elements.
+``document.querySelectorAll("cssSelector");``
+* has an array of ``forms`` as its property
+  * returns all forms in an array, ``document.forms``.
+  * return specific input element in a form, ``document.forms.formID.inputName``.
+  * returns the first input element of the first form in a document, ``object.document.forms[0][0]``.
 
-//find the entire html tag.
-document
+#### Node Object
+* Any node object works with the following methods to find related node(s).
+  * ``node.childNodes`` returns an array of an element's child nodes.
+  * ``node.firstChild`` returns the first child node of an element.
+  * ``node.lastChild`` returns the last child node of an element.
+  * ``node.hasChildNodes`` returns true if an element has any child nodes, otherwise false.
+  * ``node.nextSibling`` returns the next node at the same tree level.
+  * ``node.previousSibling`` returns the previous node at the same tree level.
+  * ``node.parentNode`` returns the parent node of an element.
 
-//find the body tag.
-document.body
+#### NodeList Object
+* If more than one node is found. Elements will be put in an nodeList
+* NodeList is not an Array, it is possible to iterate over it with forEach().
+  ```js
+  nodeListName.forEach(function(nodeName) {   
+    //do something for each node inside nodeList
+  });
+  ```
+* It can also be converted to a real Array using Array.from().
+* nodeList can be accessed using index(starting at 0). ``document.getElementsByTagName("p")[0];`` If none is found, returns null.
 
-//finds element by id
-document.getElementById(id)
-
-//finds elements by class name
-document.getElementsByClassName(name)
-
-//finds elements by tag name
-document.getElementsByTagName(name)
-
-//select element using CSS selector rules, returns an array of elements.
-document.querySelectorAll("cssSelector");
-
-to select form elements
-document.forms	//returns all forms in an array
-document.forms.formID.inputName	//return specific input element in a form.
-document.forms[0][0]	//returns the first input element of the first form in a document object.
-
-Any node object works with the following methods:
-node.childNodes returns an array of an element's child nodes.
-node.firstChild returns the first child node of an element.
-node.lastChild returns the last child node of an element.
-node.hasChildNodes returns true if an element has any child nodes, otherwise false.
-node.nextSibling returns the next node at the same tree level.
-node.previousSibling returns the previous node at the same tree level.
-node.parentNode returns the parent node of an element.
-
-If more than one is found. Elements will be put in an nodeList
-NodeList is not an Array, it is possible to iterate over it with forEach().
-nodeListName.forEach(function(nodeName) {   //do something for each node inside nodeList});
-
-It can also be converted to a real Array using Array.from().
-nodeList can be accessed using index(starting at 0).
-document.getElementsByTagName("p")[0];
-
-If none is found, returns null.
-
-
+#### Node Methods
 After the node is found, following method can be used.
-node.innerHTML  //access all string inside node’s tag
+* ``node.innerHTML``, access all string inside node's tag.
+  * elements' content can be modified, ``node.innerHTML = "Hello World!";``.
+  * set innerHTML to "" can hide the tag.
+* if the node is an input tag.
+  * ``inputNode.value;``, returns the value of the field, can be assigned with new value.
+  * ``inputNode.checked;``, return true if it is checked.
+* change attribute
+  * To access attributes of the style object, The dot format can be used, the associative array format can be used.
+  * dashes (-) in the property names: these are replaced with camelCase versions. For example, ``background-color`` property should be referred to as ``backgroundColor``.
+  * ``node.src = "apple.png";``
+  * ``node.href = "http://www.google.com";``
+  * ``node.style.color = "6600FF";``
+  * ``node.style.width = "100px";``
+  * ``node.style = "visibility:visible";``
+  * ``node.style["background-color"] = "lightBlue";``
+  * ``node.style.backgroundColor = "lightBlue";``
+  * ``node.className``, change its class name, it can be used to change a group of styles. with predefined CSS for a new classname.
+  * ``node.attributes.length``, find the number of attributes the node's tag has.
+  * ``node.attributes[0].name``, find the name of the tag's first attribute.
+  * ``node.id``, set tag id.
+  * ``checkboxNode.checked``, set get the bool value for checked status.
 
-//elements’ content can be modified
-node.innerHTML = "Hello World!";
-
-//if the node is an input tag.
-inputNode.value; 		//returns the value of the field, can be assigned with new value.
-inputNode.checked;	//return true if it is checked.
-
-//change attribute
-node.src = "apple.png";
-node.href = "http://www.google.com";
-node.style.color = "6600FF";
-node.style.width = "100px";
-node.style = "visibility:visible";
-node.style["background-color"] = "lightBlue";
-node.style.backgroundColor = "lightBlue";
-node.className	//change its class name, it can be used to change a group of styles. with
-				predefined CSS for a new classname.
-node.attributes.length//find the number of attributes the node’s tag has.
-node.attributes[0].name//find the name of the tag’s first attribute.
-node.id set tag id.
-checkboxNode.checked   //set get the bool value for checked status.
-To access attributes of the style object, The dot format can be used, the associative array format can be used.
-dashes (-) in the property names: these are replaced with camelCase versions,
-background-color property should be referred to as backgroundColor.
-
-to hide one tag content set innerHTML to "".
-
-Create new nodes:
-element.cloneNode() clones an element and returns the resulting node.
-document.createElement("tagName") creates a new element node.
-document.createTextNode("text") creates texts that can be added to the element node.
-
-To add the new node into the document
-element.appendChild(newNode) adds a new child node to an element as the last child node.
-element.insertBefore(node1, node2) inserts node1 as a child before node2.
-
-To remove a node
-parent.removeChild(node);
-or
-child.parentNode.removeChild(node);
-
-To replace elements
-element.replaceChild(newNode, oldNode) method is used.
-element.replaceWith(newNode)
+#### Create New Nodes
+* Create nodes
+  * ``element.cloneNode()`` clones an element and returns the resulting node.
+  * ``document.createElement("tagName")`` creates a new element node.
+  * ``document.createTextNode("text")`` creates texts that can be added to the element node.
+* Add the new node into the document
+  * ``element.appendChild(newNode)`` adds a new child node to an element as the last child node.
+  * ``element.insertBefore(node1, node2)`` inserts node1 as a child before node2.
+* remove a node
+  * ``parent.removeChild(node);``
+  * ``child.parentNode.removeChild(node);``
+* replace elements
+* ``element.replaceChild(newNode, oldNode)``
+* ``element.replaceWith(newNode)``
 
 #### Event handling
 
-1. Use Event handlers
-Event handlers can be added as an attribute.
-Adding event handlers
-<p onclick="someFunc()">some text</p>
-
-The form tag has an onsubmit attribute that can be assigned to validation checking function. If the function return false the form will not be submitted.
-In HTML for example:
-<form onsubmit="returnvalidate()" method="get"></form>
-
-
-Event handlers can be assigned to elements.
-var x = document.getElementById("demo");
-x.onclick = function () {
-  document.body.innerHTML = Date();
-}
-
-window.onload event can be used to run code after the whole page is loaded.
-window.onload = function() {
-   //some code
-}
-
-
-#### Events
-onclick
-onload
-onunload
-onchange	//any change for inside a form
-onmouseover
-onmouseout	//mouse move out
-onmousedown	//click mouse
-onmouseup	//release mouse
-onblur
-onfocus
+##### Event handlers
+* Event handlers can be added as an attribute.
+* Adding event handlers, ``<p onclick="someFunc()">some text</p>``
+* The form tag has an onsubmit attribute that can be assigned to validation checking function. If the function return false the form will not be submitted. In HTML for example: ``<form onsubmit="returnvalidate()" method="get"></form>``
+* Event handlers can be assigned to elements.
+  ```js
+  var x = document.getElementById("demo");
+  x.onclick = function () {
+    document.body.innerHTML = Date();
+  }
+  ```
+* ``window.onload`` event can be used to run code after the whole page is loaded.
+  ```js
+  window.onload = function() {
+     //some code
+  }
+  ```
+* List of events
+    * onclick
+    * onload
+    * onunload
+    * onchange	//any change for inside a form
+    * onmouseover
+    * onmouseout	//mouse move out
+    * onmousedown	//click mouse
+    * onmouseup	//release mouse
+    * onblur
+    * onfocus
 
 
-2. Use EventListener(recommended)
-EventListener can be added for event handling
-The addEventListener() method attaches multiple handlers to an element without overwriting existing event handlers
-
-element.addEventListener(event, function, useCapture);
-The last parameter is optional:
-There are two ways of event propagation in the HTML DOM: bubbling and capturing.
-In bubbling, the innermost element's event is handled first and then the outer element's event is handled.
-In capturing, the outermost element's event is handled first and then the inner.
-In addEvent method the third parameter is optional it the useCapture default false mean using bubble
-
-element.addEventListener("click", myFunction);
-element.addEventListener("mouseover", myFunction);
-
-use the document.attachEvent() method in Internet Explorer before IE8.
-
-
-To remove an event listener:
-element.removeEventListener("mouseover", myFunction);
-
-
-Event Listener uses a different strings to represent events.
-click
-mouseover
-mouseout
-dbclick //double click
-mousemove
-mouseup
-mousedown
-mouse
-submit
-input	//monitor any user input.
-keyup
-change	//monitor input value change.
-focus	//monitor if an input element gain focus.
-blur	//monitor if an input element lose focus.
-load
-
-event listeners always take an event object as its argument. It is always available inside the scope of the function that the event listener calls.
-in function(event){}:
-event.target 	//element that triggered event
-event.target.value //the trigger element’s value
-event.which	//mouse button number
-event.clientX	//X location
-event.clientY	//Y location
-event.preventDefault() //can be used to stop URL redirects after user click submit.
-event.pageX, pageY the mouse position (X & Y coordinates) at the time the event occurred, relative to the top left of the page.
-event.type the type of the event (e.g. "click").
-event.which the button or key that was pressed.
-event.data any data that was passed in when the event was bound.
-event.stopPropagation() Stop the event from bubbling up to other elements.
-
-
-
-load event can be used for window.load function with act like the main method for the entire script.
-window.addEventListener("load", function () {});
-
-
-
-
+#### EventListener
+* EventListener can be added for event handling, it is the recommended way.
+* The ``addEventListener()`` method attaches multiple handlers to an element without overwriting existing event handlers
+* ``element.addEventListener(event, function, useCapture);``
+  * The last parameter is optional:
+  * There are two ways of event propagation in the HTML DOM: bubbling and capturing.
+  * In bubbling, the innermost element's event is handled first and then the outer element's event is handled.
+  * In capturing, the outermost element's event is handled first and then the inner.
+  * In addEvent method the third parameter is optional it the useCapture default false mean using bubble
+* ``element.addEventListener("click", myFunction);``
+* ``use the document.attachEvent()`` method in Internet Explorer before IE8.
+* To remove an event listener use, ``element.removeEventListener("mouseover", myFunction);``
+* List of Events:
+  * click
+  * ouseover
+  * mouseout
+  * dbclick //double click
+  * mousemove
+  * mouseup
+  * mousedown
+  * mouse
+  * submit
+  * input	//monitor any user input.
+  * keyup
+  * change	//monitor input value change.
+  * focus	//monitor if an input element gain focus.
+  * blur	//monitor if an input element lose focus.
+  * load
+    * load event can be used for window.load function with act like the main method for the entire script. ``window.addEventListener("load", function () {});``
+* Event Object
+  * event listeners always take an event object as its argument. It is always available inside the scope of the function that the event listener calls.
+  * in ``function(event){}``
+    * ``event.target`` 	element that triggered event
+    * ``event.target.value`` the trigger element's value
+    * ``event.which``	mouse button number
+    * ``event.clientX``	X location
+    * ``event.clientY``	Y location
+    * ``event.preventDefault()`` can be used to stop URL redirects after user click submit.
+    * ``event.pageX``, or pageY the mouse position (X & Y coordinates) at the time the event occurred, relative to the top left of the page.
+    * ``event.type`` the type of the event (e.g. "click").
+    * ``event.which`` the button or key that was pressed.
+    * ``event.data`` any data that was passed in when the event was bound.
+    * ``event.stopPropagation()`` Stop the event from bubbling up to other elements.
 
 ### Ajax
-It is used to send HTTP Requests and receive the HTTP Responses programatically at runtime, without a page load.
-Ajax stands for Asynchronous JavaScript and XML, it is handled asynchronously, all other code runs normally, while Ajax is waiting or processing HTTP Responses.
-In Chrome, the Network tab of the Developer Tools shows the HTTP Request and Response details.
+* It is used to send HTTP Requests and receive the HTTP Responses programmatically at runtime, without a page load.
+* Ajax stands for Asynchronous JavaScript and XML, it is handled asynchronously, all other code runs normally, while Ajax is waiting or processing HTTP Responses.
+* In Chrome, the Network tab of the Developer Tools shows the HTTP Request and Response details.
+* XMLHttpRequest and fetch APIs are used to initiate HTTP Requests. Fetch is recommended.
+* An external library polypill can be added to provide fetch APIs supports.(unnecessary in the future)
+* To send and process HTTP request, ``fetch(URL, {credentials:'include'}).then(response=>response.text()).then(success);``
 
-XMLHttpRequest and fetch APIs are used to initiate HTTP Requests. Fetch is recommended.
-An external library polypill can be added to provide fetch APIs supports.(unnecessary in the future)
-To send and process HTTP request
-fetch(URL, {credentials:’include’}).then(response=>response.text()).then(success);
+#### GET request
+* URL could be an txt file url relative to current path.
+* URL could be an URL with encoded parameter.
+* ``url="text.php?nameParam="+name;`` usually this PHP echo simple text according the input.
 
-When use GET request
-URL could be an txt file url relative to current path.
-URL could be an URL with encoded parameter.
-url="text.php?nameParam="+name;  //usually this PHP echo simple text according the input.
-
-When use POST request
+#### POST request
+```js
 let param = "min=" + min + "&max=" + max
-fetch("target.php",{method: ‘POST’, credentials: ‘include’, headers: { "Content_Type": "application/x-www-form-urlencoded"}, body: param}).then(response=>response.text()).then(success);
-
-Content_Type specifies the format that used to pass the parameters.
-urlencoded style encodes parameter in url like GET url.
-
-
-
-Second parameter is an object contains request infomation. It can also be like:
+fetch("target.php",{
+  method: 'POST',
+  credentials: 'include',
+  headers: { "Content_Type": "application/x-www-form-urlencoded"},
+  body: param
+}).then(response=>response.text()).then(success);
+```
+* Content_Type specifies the format that used to pass the parameters.
+* urlencoded style encodes parameter in url like GET url.
+* Second parameter is an object contains request infomation. It can also be like:
+```js
 let options = {};
-options.credentials = ‘include’;
+options.credentials = 'include';
 fetch(URL, options).then(response=>response.text()).then(success);
-
-credentials:’include’ means authorization headers and cookies are included in the request.
-
-success is the function that process the response.
-can chain more function in then after then.  asynchronously.
-
+```
+* credentials:'include' means authorization headers and cookies are included in the request.
+* success is the function that process the response.
+* can chain more function in then after then.  asynchronously.
+```js
 function success(text) {
 	let span = document.getElementById("target");
 	span.innerHTML = text;
 }
+```
 
-
-Receive JSON data
-HTTP can only transmit strings. Data transfer formats are used to translate data structures like an array or an object into strings.
-Ajax uses two data transfer format: XML(eXtensible Markup Language) and JSON(JavaScript Object Notation). JSON is the most used one.
-In code change response.text() to response.json() to receive JSON data.
-
-
-converts a JavaScript object or value to a JSON string
-JSON.stringify(data)
-Decode from JSON
-JSON.parse(string)
+#### Receive JSON data
+* HTTP can only transmit strings. Data transfer formats are used to translate data structures like an array or an object into strings.
+* Ajax uses two data transfer format: XML(eXtensible Markup Language) and JSON(JavaScript Object Notation). JSON is the most used one.
+* In code change response.text() to response.json() to receive JSON data.
+* JavaScript Object to JSON String, ``JSON.stringify(data)``
+* Decode from JSON, ``JSON.parse(string)``
 
 ### GeoLocation
 * The HTML Geolocation API is used to locate a user's position.
@@ -1025,7 +982,8 @@ Stops the watchPosition() method
 * Provide map to the webpage.
 * [Click](https://www.microsoft.com/en-us/maps/documentation) to see full documents
 * [Click](https://www.bing.com/api/maps/sdk/mapcontrol/isdk/Overview#HTML) to see sample codes.
-* all of its object has ``getVisible()``, ``getLocation()`` methods.
+* all of the map object has ``getVisible()``, ``getLocation()`` methods.
+* infobox properties can contain html tags like ``<br>`` or ``description: "<a href='#' onclick='return directions(" + variableName + ");" + "'>directions</a>"``.
 
 #### Set up
 API key is required to use the map.
@@ -1036,42 +994,33 @@ API key is required to use the map.
 
 
 ## Import/Export
-Export
-In a separate javascript file for certain modules, any variable, function, class can be started with a export keyword so other js file can import it and use it. Anything without the export keyword will not be available for other js files.
-
-export const myNumbers = [1, 2, 3, 4];
-const animals = ['Panda', 'Bear', 'Eagle']; // Not available directly outside the module
-
-export function myLogger() {
-  console.log(myNumbers, animals);
+### Export
+* In a separate javascript file for certain modules, any variable, function, class can be started with an export keyword so other js file can import it and use it.
+* Anything without the export keyword will not be available for other js files.
+```js
+//export an array
+export const myArray = [1, 2, 3, 4];
+//export a function
+const strings = ['AA', 'BB', 'CC']; // Not available directly outside the module
+export function myFunction() {
+  console.log(strings);
 }
-
-export class Alligator {
+//export a class
+export class ClassName {
    constructor() {
      // ...
    }
 }
+```
+* ``export`` keyword can be placed at the end and use curly brackets to enclosed everything needed to export.
+* ``as`` keyword is used for alias.
+  * ``export { myArray, myFunction as NewName, ClassName };``
 
-export keyword can be placed at the end and use curly brackets to enclosed everything needed  to export.
-as keyword is used for alias.
-
-export { myNumbers, myLogger as NewName, Alligator };
-
-Import
-import keyword, members to be imported in curly brackets and then the location of the module relative to the current file:
-import { myLogger, Alligator } from ‘app.js';
-
-
-use as for alias without curly brackets.
-import myLogger as Logger from 'app.js';
-
-You can import everything that’s imported by a module like this:
-
-import * as Utils from 'app.js';
-This allows you access to members with the dot notation:
-
-Utils.myLogger();
-
-append default keyword for default export. default export will allow is to be imported by default.
-import with a random name will assign and import default export item as this random name. Then followed by any other non-default items in the curly brackets.
-import Logger, { Alligator, myNumbers } from 'app.js';
+### Import
+* ``import`` keyword, members to be imported in curly brackets and then the location of the module relative to the current file, ``import { myFunction, ClassName } from 'file.js';``
+* use ``as`` for alias without curly brackets. ``import myFunction as newName from 'file.js';``
+* You can import everything that's imported by a module like this: ``import * as Utils from 'app.js';``
+  * This allows you access to members with the dot notation: ``Utils.myLogger();``
+* append ``default`` keyword for default export. Default export will allow is to be imported by default.
+    * import with a random name will assign and import default export item as this random name. Then followed by any other non-default items in the curly brackets.
+    * If myArray is the default export, When import ``import newDefaultArrayName, { ClassName, myFunction } from 'file.js';``
