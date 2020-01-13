@@ -1,248 +1,157 @@
-Java Introduction:
+# Java
 
-Inventor & Ownership:
-Java is a high level, modern programming language designed in 1990s by Sun Microsystems, and currently owned by Oracle.
+## Introduction:
 
-Complier & extension:
-javac is the complier executable that is used compile .java(source code) file into .class(byte code) file.
-
-Executable & functionality:
-java executable is used to run complied byte code.
-It creates an instance of a Java Virtual Machine(JVM) with an area in the node’s memory
-
-
-Java Runtime Environment (JRE) contains java executable.
-Java Development Kit (JDK) contains java and javac.
-
-
-Standard Edition(SE) is the regular JDK for developing applications.
-Enterprise Edition(EE) contains SE plus the application server and more.
-
-
-A redistributable package is used to deploy applications.
+* Java is a high level, modern programming language designed in 1990s by Sun Microsystems, and currently owned by Oracle.
+* javac is the complier executable that is used compile .java(source code) file into .class(byte code) file.
+* java executable is used to run complied byte code. It creates an instance of a Java Virtual Machine(JVM) with an area in the node’s memory
+* Java Runtime Environment (JRE) contains java executable.
+* Java Development Kit (JDK) contains java and javac.
+* Standard Edition(SE) is the regular JDK for developing applications.
+* Enterprise Edition(EE) contains SE plus the application server and more.
+* A redistributable package is used to deploy applications.
 * ``*.jar`` is for Java Application.
 * ``*.war`` is for Java Web Application.
+* Java guarantees "Write Once, Run Anywhere."
 
-Java guarantees "Write Once, Run Anywhere."
-
-
-
-
-
-
+## Basic Syntax:
+* Every statement ends with ``;``.
+* Every block is surrounded by braces.
+* All programs in Java is object-oriented.
 
 
-_____________________________________________________________________
-Basic Syntax:
-Every statement ends with ;
-Every block is surrounded by braces.
-All programs in Java is object-orinatiated.
+### Packages
+* API are packages that is written and ready to be used. see Oracle website for references.
+* packages are often used as a folder for classes and sub-packages.
+* packages folders are under the src folders.
+* java files for classes will have a first line indicates which package it belongs.
+* in order for other package to use a class which is outside the package: ``import packageName.classNAME``;  or ``import packageName.*;`` is needed.
 
-Every code in Java must be inside a class. class name usually start with capital letter.
-class name capitalized, and must match file name.
-
-
-
-API are packages that is wirten for u to use. see Oracle website for references.
-packages are often used as a folder for classes and sub-packages.
-packages folders are under the src folders.
-java files for classes will have a first line indicates which package it belongs.
-in order for other package to use a class which is outside the package:
-``import packageName.classNAME``;  or ``import packageName.*``;   is needed
-
-In Java, all statements (except variable declarations) must be inside a
+### Classes
+* Every code in Java must be inside a class. class name usually start with capital letter.
+* class name capitalized, and must match file name.
+* In Java, all statements (except variable declarations) must be inside a
 method, and all methods must be inside a class.
-One class per file.
+* One class per file.
+* Class is a blueprint for creating a type of object.
+* Each class is used to define attributes and behavior.
+* Class Access Modifier is used to set the level of access
+  * ``public``: The class is accessible by any other class.
+  * default(empty): The class is accessible only by classes in the same package.
+* The "." operator "dereferences" the variable to get to the current object, with format objectName.instanceVariableorMethod
+* As a reference type, for object ``c``, ``System.out.println(c);`` will show the memory address.
+* Objects with no active reference are automatically disposed of by Java’s "Garbage Collection" mechanism.
+* Usually all instances variables private and most instance methods public.
+* Accessor(get) method are a standard way to access a private instance variable
+* Mutator(set) method are a standard way to set a private instance variable
+* In other words, an object is an instance of a class.
 
-class is a blueprint for creating a type of object.
-Each class is used to define attributes and behaviour.
-
-
-
-
-
-_____________________________________________________________________
-Class & object:
-class access modifier
-it is used to set the level of access
-public: The class is accessible by any other class.
-default(empty): The class is accessible only by classes in the same package.
-
-The "." operator "dereferences" the variable to get to the current object, with format objectName.instanceVariableorMethod
-
-As a reference type, System.out.println(c)will show the memory address
-
-Objects with no active reference are automatically disposed of by Java’s "Garbage Collection" mechanism.
-
-
-in object oriented programming, each object has three dimensions: identity, attributes, and behaviour.
-For java object instance variables are the attributes and instance methods are the behaviours.
-
-Interface is what can be seen by the user. = public instance variables + public method headers+JavaDoc comments (also called the API)
-Implementation is the solution for the function that is done and hidden from the user. = private stuff+method bodies+comments inside methods
-
-
-encapsulate means to make some instance variables and methods inaccessible from outside a class
-Usually all instances variables private and most instance methods public.
-Accessor(get) method are a standard way to access a private instance variable
-Mutator(set) method are a standard way to set a private instance variable
-
-
-In UML diagrams
-Class name in the first row.
- - is private + is public.
-Data types are placed after : (same after methods if return ex: method(name:int))
-Parameters are placed in () for method as usual
-add return type void if the method has no return.
-add name into the diagrams only when it is necessary.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-In other words, an object is an instance of a class.
-
-
-Inheritance
-Properties:
-Inheritance is the process that one class can acquire the properties of another by being its subclass(derived class, or child class)(all public and protected methods and variables.). The class that are inherited is the superclass(base class, or parent class)
-Java class can only inherit one class.
-The extends keyword is used to create a subclass.
-Hollowed triangle head is used to represent inheritance relationship read as "is a".
-all class is inherited from object class by default.
-
-
-
-Code
-
+#### Inheritance
+* Inheritance is the process that one class can acquire the properties of another by being its subclass(derived class, or child class)(all public and protected methods and variables.).
+* The class that are inherited is the superclass(base class, or parent class)
+* Java class can only inherit one class.
+* The extends keyword is used to create a subclass.
+* all class is inherited from object class by default.
+```java
 class Subclass extends Superclass {
 }
+```
+* subclass has all superclass’s non-private variables and methods.
+* Constructors won’t inherit from parent class. However, all parent class default
+* constructors(if no super method to ask a specific constructor of its parent.) will be call upon subclass instantiation at first from grandparent to parent.
+* By rules, constructor only handles its class’s own variables.
+* ``super.methodorvariable`` is used to access contents from superclass.(refer to the closet applicable class’s method)
+* equals method in object class is the same as ==, by default. to auto create an equals method override for semantical comparison right click on the class file Go to source -> Generate hashCode() and equals()
+* super() can be used in constructor in the first line.(refers exactly its parent’s constructor)
 
-Details
-subclass has all superclass’s non-private variables and methods.
-Constructors won’t inherit from parent class. However, all parent class default constructors(if no super method to ask a specific constructor of its parent.) will be call upon subclass instantiation at first from grandparent to parent.
-By rules, constructor only handles its class’s own variables.
-super.methodorvariable is used to access contents from superclass.(refer to the closet applicable class’s method)
-equals method in object class is the same as ==, by default. to auto create an equals method override for semantical comparison right click on the class file Go to source -> Generate hashCode() and equals()
-super() can be used in constructor in the first line.(refers exactly its parent’s constructor)
+#### Override
+* subclass can redefine a specific method that its parent class has, this is called overriding(runtime polymorphism).
+* ``@override`` tag is optional for readability.
+* has same name return type and arguments
+* overriding method can not have less access control(public->private).
+* methods with static and final can not be overridden.
+* constructor can not be overridden.
+* if a method can not be inherited, it cannot be overridden.
+
+#### Method Overloading
+* also called compile-time polymorphism
+* methods with same functionality, but take different(must) types of variable.
+* auto casting always happens right away form int to double during overloading in parameter.
+* one method, with different implementations.
+* polymorphism(method executed differently, based on the type of objects that calls it)
 
 
-Overide and Overload
-subclass can redefine a specific method that its parent class has, this is called overriding(runtime polymorphism).
-@override tag is optional for readability.
-
-
-Rules:
-same name return type and arguments
-overriding method can not have less access control(public->private).
-methods with static and final can not be overridden.
-constructor can not be overridden.
-if a method can not be inherited, it cannot be overridden.
-
-method overloading(compile-time polymorphism)
-methods with same functionality, but take different(must) types of variable.
-auto casting always happens right away form int to double during overloading in parameter.
-
-
-polymorphism
-
-Properties
-polymorphism(method executed differently, based on the type of objects that calls it)
-one method, with different implementations.
-when initialize new object, the type declare earlier is the declare type. the type follow new keyword is the actual type. actual type could be a subclass of the declare type.
-the new class has all direct access of class methods and field in declared type.
-to get actual type property access use (type) casting.
-Some times a parent class type is used to represent all the subclass object type, casting is made case be case, making the program or manageable.
+#### Object Polymorphism
+* when initialize new object, the type declare earlier is the declare type. the type follow ``new`` keyword is the actual type. actual type could be a subclass of the declare type.
+* the new class has all direct access of class methods and field in declared type.
+* to get actual type property access use (type) casting.
+* Some times a parent class type is used to represent all the subclass object type, casting is made case be case, making the program or manageable.
 
 Code
 ```java
-class Animal {
-  public void makeSound() {
-    System.out.println("Grr...");
+class Shape {
+  public void whatShape() {
+    System.out.println("AnyShape");
   }
 }
-class Cat extends Animal {
-  public void makeSound() {
-    System.out.println("Meow");
+class Circle extends Shape {
+  public void whatShape() {
+    System.out.println("Circle");
   }
 }
-class Dog extends Animal {
-  public void makeSound() {
-    System.out.println("Woof");
+class Square extends Shape {
+  public void whatShape() {
+    System.out.println("Square");
   }
 }
 public static void main(String[ ] args) {
-  Animal a = new Dog();
-  Animal b = new Cat();  
-/***create reference type Animal using subclass’s objects.***important here***/
-//declared type is animal, actual type is cat or dog
+  Shape a = new Circle();
+  Shape b = new Square();  
+/***create reference type Shape using subclass’s objects.***important here***/
+//declared type is Shape, actual type is Circle or Square
 }
-a.makeSound();
-//Outputs "Woof"
+a.whatShape();
+//Outputs "Circle"
 
-b.makeSound();
-//Outputs "Meow"
+b.whatShape();
+//Outputs "Square"
 ```
-Details
-When both actual type and the declared type have a same method. the method in belongs to actual type is called.
-boolean operator instanceof works with polymorphism.
-For unknowns object type parameters, instanceof is used to check type and new object need to be created and casted with target type for further manipulation.
+* When both actual type and the declared type have a same method. the method in belongs to actual type is called.
+* boolean operator ``instanceof`` works with polymorphism.
+* For unknowns object type parameters, ``instanceof`` is used to check type and new object need to be created and casted with target type for further manipulation.
 
-
-
-abstraction
-abstraction is a way of focusing on the essential qualities rather than specific characteristics.
-It is done by abstract class and interfaces.
-
-abstract class:
-It is a superclass that summarize common features of its subclasses.
-using keyword abstract at the beginning.
-cannot be used to create objects.
-must have subclasses to use it.
-abstract class and methods are denoted in UML in italics font.
-method can also be abstract with only headline end with ;
-abstract method use keyword abstract and also shown in italics font.
-It it mandatory for subclass to implement abstract method.
-Any class with abstract method should be defined as abstract classes.
-An abstract method use abstract keyword and has no {}, it ended with ;
-
+#### Abstraction
+* Abstraction is a way of focusing on the essential qualities rather than specific characteristics.
+* It is done by abstract class and interfaces.
+* It is a superclass that summarize common features of its subclasses.
+* using keyword abstract at the beginning.
+* cannot be used to create objects.
+* must have subclasses to use it.
+* abstract class and methods are denoted in UML in italics font.
+* method can also be abstract with only headline end with ;
+* abstract method use keyword abstract and also shown in italics font.
+* It it mandatory for subclass to implement abstract method.
+* Any class with abstract method should be defined as abstract classes.
+* An abstract method use abstract keyword and has no {}, it ended with ;
+```java
 public abstract class ClassName{
 	public abstract void methodName();
 }
+```
 
-
-
-An interface is a completely abstract class that contains only abstract methods.
-Some specifications for interfaces:
-- Defined using the interface keyword instead of class.
-- May contain only static public final variables with a given value.
-- Cannot contain a constructor because interfaces cannot be instantiated.
-- Interfaces can extend many other interfaces.
-- A class can implement any number of interfaces(seperated by comma). But only inherited one superclass.
-- Methods in an interface are implicitly public and abstract, so no abstract keyword is needed.
-Keyword implements is used to implement interfaces.
-public class ABC extends A inplements B,C,D{…} //extends goes before implements
-inheritance relationship for interface is shown in dotted hollow triangle arrow in UML and name in italics after a <<interface>> tag. also read as "is a"
-When you implement an interface, you need to override all of its methods.
-
+#### Interface
+* An interface is a completely abstract class that contains only abstract methods.
+* Some specifications for interfaces:
+  - Defined using the interface keyword instead of class.
+  - May contain only static public final variables with a given value.
+  - Cannot contain a constructor because interfaces cannot be instantiated.
+  - Interfaces can extend many other interfaces.
+  - A class can implement any number of interfaces(seperated by comma). But only inherited one superclass.
+  - Methods in an interface are implicitly public and abstract, so no abstract keyword is needed.
+* Keyword ``implements`` is used to implement interfaces.
+* public class ABC extends A inplements B,C,D{…} //extends goes before implements.
+* When you implement an interface, you need to override all of its methods.
+```java
 interface Animal {
   public void eat();
   public void makeSound();
@@ -256,11 +165,11 @@ class Cat implements Animal {
     System.out.println("omnomnom");
   }
 }
+```
 
-
-Anonymous classes
-Anonymous classes are used to override other class method in the main method in braces follow the constructor.
-This modification is done on the object but not the classes.
+#### Anonymous classes
+* Anonymous classes are used to override other class method in the main method in braces follow the constructor.
+* This modification is done on the object but not the classes.
 ```java
 class Machine {
   public void start() {
@@ -277,11 +186,11 @@ public static void main(String[ ] args) {
 }
 //Outputs "Wooooo";
 ```
-Inner class
-a class that is within a class.
-inner class can be private, outside classes won’t be able to access private inner class.
 
-code:
+#### Inner class
+* a class that is within a class.
+* inner class can be private, outside classes won’t be able to access private inner class.
+```java
 public class Example {
 	public Example(){
 		Inner x = new Inner();
@@ -290,39 +199,31 @@ public class Example {
 		//some code
 	}
 }
+```
 
+### Methods
+* Methods define behaviour
+* it can be nested and it is very useful, when u call a nested method u can run also run method inside of it.
+* access modifier for attributes and methods:
+  * default: It is available to any other class in the same package.
+  * public: Accessible from any other class.
+  * protected: Within the same package plus subclasses access.
+  * private: Accessible only within the declared class itself.
 
-Methods(function)
-Methods define behaviour
-it can be nested and it is very useful, when u call a nested method u can run also run method inside of it.
-
-access modifier
-for attributes and methods:
-default: It is available to any other class in the same package.
-public: Accessible from any other class.
-protected: Within the same package plus subclasses access.
-private: Accessible only within the declared class itself.
-
-Static
-static variables, static methods, instance variables, instance methods.
-Properties
-Both variables and methods can be static.
-static keyword is used for static variables and methods, otherwise, they are called instance variables and instance methods.
-it states the attributes and methods belong to the class and share by all objects under the class. Instance variables belong to the object. no object, no instance variables.
-static method and variables are created at compile time.
-In a UML diagram, underlining indicates static variables and methods.
-When outside the class, always access static variables and methods using the class name, not an object variable.
-static method has access on only static variables. Unless initialize new variables inside static methods.
-
-
-
+#### Static Methods
+* ``static`` keyword is used for static variables and methods, otherwise, they are called instance variables and instance methods.
+* it states the attributes and methods belong to the class and share by all objects under the class.
+* Instance variables belong to the object. no object, no instance variables.
+* static method and variables are created at compile time.
+* When outside the class, always access static variables and methods using the class name, not an object variable.
+* static method has access on only static variables. Unless initialize new variables inside static methods.
+```java
 public static void main(String[] args) {
 }
-
-the main method takes an array of Strings as its parameters, and does not return a value.
-
-The currentObject.toString() get call every time the object get to print or concatenated. By default, toString print the memory’s hashcode values. However, it is often define specifically to print its formatted variable values.(overriding)
-
+```
+* the main method takes an array of Strings as its parameters, and does not return a value.
+* ``The currentObject.toString()`` get call every time the object get to print or concatenated. By default, toString print the memory’s hashcode values. However, it is often define specifically to print its formatted variable values.(overriding)
+```java
 class MyClass {
 
   // declared Method sayHello
@@ -334,7 +235,6 @@ class MyClass {
     sayHello();
   }
 }
-
 
 class MyClass {
 
@@ -349,7 +249,6 @@ class MyClass {
 
 }
 // Method with a parameter
-
 class MyClass {
 
 static int sum(int val1, int val2) {
@@ -378,16 +277,12 @@ class MyClass {
 }
 // This create object, assign attributes and call its method
 //when methods are declared with no static keywords, new instance of the object must be declared, in order to use this method.
-
-
-
-
-
-For each variable, the get method returns its value, while the set method sets the value.
-
-Getters start with get, followed by the variable name, with the first letter of the variable name capitalized.
-Setters start with set, followed by the variable name, with the first letter of the variable name capitalized. (a boolean type return is recommended for a better implementation.)
-
+```
+#### Getter and Setter
+* For each variable, the get method returns its value, while the set method sets the value.
+* Getters start with get, followed by the variable name, with the first letter of the variable name capitalized.
+* Setters start with set, followed by the variable name, with the first letter of the variable name capitalized. (a boolean type return is recommended for a better implementation.)
+```java
 public class Vehicle {
   private String color;
 
@@ -402,30 +297,29 @@ public class Vehicle {
     //data validation can be done here.
   }
 }
-
-The getter method returns the value of the attribute.
-The setter method takes a parameter and assigns it to the attribute.
-
-The keyword this is used to refer to the current object. Basically, this.color is the color attribute of the current object.
-Sometimes methodName(class other) -> other.variable refers to the object’s variable that input from the parameters, different from this.variables
-other can be replaced by other words like that
-
-Then it can be used in main to manipulate private variables.
-
+```
+* The getter method returns the value of the attribute.
+* The setter method takes a parameter and assigns it to the attribute.
+* The keyword this is used to refer to the current object. Basically, this.color is the color attribute of the current object.
+* Sometimes methodName(class other) -> other.variable refers to the object’s variable that input from the parameters, different from this.variables
+* other can be replaced by other words like that
+* Then it can be used in main to manipulate private variables.
+```java
 public static void main(String[ ] args) {
   Vehicle v1 = new Vehicle();
   v1.setColor("Red");
   System.out.println(v1.getColor());
 }
+```
 
-Constructor
-Constructor is used to set a default value for instance variable when creating new objects. It is called when new object is initialized using new keyword, it can have parameters, entered after new in the brackets. It can also be used with setter.
-A constructor name must be same as its class name.(same capital letter)
-A constructor must have no explicit return type
-A constructor is not responsible to create variable, it only assign value for created variable under the class declaration line.
-There is also a default constructor in all java classes, it is empty inside bracket. It only initialize the instant variable initialization part(the first few lines for variables before the first method.)
-a private constructor can be created and called using a static create() method, this create method is also called static factory methods.
-
+#### Constructor
+* Constructor is used to set a default value for instance variable when creating new objects. It is called when new object is initialized using new keyword, it can have parameters, entered after new in the brackets. It can also be used with setter.
+* A constructor name must be same as its class name.(same capital letter)
+* A constructor must have no explicit return type
+* A constructor is not responsible to create variable, it only assign value for created variable under the class declaration line.
+* There is also a default constructor in all java classes, it is empty inside bracket. It only initialize the instant variable initialization part(the first few lines for variables before the first method.)
+* a private constructor can be created and called using a static create() method, this create method is also called static factory methods.
+```java
 public class Vehicle {
   private String color;
   Vehicle() {
@@ -448,11 +342,9 @@ Vehicle v1 = new Vehicle();
 
 //color will be "Green"
 Vehicle v2 = new Vehicle("Green");
-
-
-
-this() can be used in the first line inside a constructor to save codes. It must be the first line of the constructor.
-
+```
+* this() can be used in the first line inside a constructor to save codes. It must be the first line of the constructor.
+```java
 public Circle6() {
 this(10.0, 100.0, 100.0);
 }
@@ -468,47 +360,38 @@ this.radius = radius;
 this.x = x;
 this.y = y;
 }
+```
+
+#### Association
+* Directed association(one-way association): It is basically object from other class is inside this class. The class has reference to the object.
+* class.object.method() is used for object access.
+* Privacy leak happens when a private variable or method’s value in the memory is accessed from a public place.
+* It happens mostly when assign a reference type to a new name.
+* duplicate the referenced value is a good way to avoid it.
 
 
 
-
-Association
-Properties:
-Directed association(one-way association):
-It is basically object from other class is inside this class. The class has reference to the object.
-class.object.method() is used for object access.
-
-Details:
-Privacy leak happens when a private variable or method’s value in the memory is accessed from a public place.
-It happens mostly when assign a reference type to a new name.
-duplicate the referenced value is a good way to avoid it.
-
-
-
-Lambda
+#### Lambda
+```java
 name = (parameter) -> statement or {} block;       //-> read as become
+```
 
 
 
+#### Main Method
+* Every Java program starts from the main method.
+* Main method is identical in each program.
+* It is the view for the user(interface) and class is the model(implementation that never get input or output for the users).
+* In the main method declarations:
+  * public or private: the accessibility of the code block.
+  * static: method cane run without creating an instance of the class containing the main method.
+  * void: method doesn't return any value.
+  * main: the name of the method.
+  * String[] args is the parameter for the main method.
+  * void test()   // it is a test method with no returning value and no parameters.
 
-
-Every Java program starts from the main method.
-Main method is identical in each program.
-It is the view for the user(interface) and class is the model(implementation that never get input or output for the users).
-
-
-In the main method declarations:
-public or private: the accessibility of the code block.
-static: method cane run without creating an instance of the class containing the main method.
-void: method doesn't return any value.
-main: the name of the method.
-String[] args is the parameter for the main method.
-void test()   // it is a test method with no returning value and no parameters.
-
-System.out.println("");
-println is the method
-System is the class and out is the stream to access the println method.
-the method creates a new line at the end, print() does not.
+### String Functions
+System.out.println(""); println is the method. System is the class and out is the stream to access the println method. the method creates a new line at the end, print() does not.
 
 printf() //This is the formatting output method.
 System.out.printf("%s"(this is the formatting string)   %f , aString, aDouble);

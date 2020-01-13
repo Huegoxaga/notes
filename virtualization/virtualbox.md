@@ -16,10 +16,7 @@
   * On AMD’s look for AMD-V.
 * Virtual machines can easily be imported and exported using the industry-standard Open Virtualization Format (OVF) with ``.ova`` extension.
 * Alternative Front Ends, it has both GUI and Command line control.
-* Guest Additions that can be installed within the supported guest systems, it provides additional functionality, such as:
-  * Shared Folders
-  * 3D graphics accelerators
-  * Automatic video resolution (window resizing)
+
 
 ## Files
 * Once VMs created, its configuration will be stored in the default VM folder, it can be found in preference panel with an extension of ``.vbox``.
@@ -33,7 +30,25 @@
 * Each VM icon has a change view button on the right, click it to see snapshots or logs.
 
 
-## Extension Pack
+## Add-ons
+### Guest Additions
+* Guest Additions that can be installed within the supported guest systems, it provides additional functionality, such as:
+  * Shared Folders
+  * 3D graphics accelerators
+  * Automatic video resolution (window resizing)
+  * It enables auto capture of mouse pointer when its inside virtual machine window.
+* Installation
+  1. Select the Devices menu option and 'Install Guest Additions...'
+  2. This will result in the VBoxAdditions image (iso) being mounted in the CD-ROM drive.
+  3. Run the drive.
+* enables shared folders.
+  1. select Devices/Shared Folders/Shared folder settings.. from the VirtualBox menu.   This should open the Shared Folders window.
+  2. select add a folder as the share folder from the host machine in the setting.
+  3. Select the ‘Make Permanent’ and Auto-mount options.  This will ensure this folder is always available as a shared folder for this Virtual Machine.
+  4. In guest OS,  open a terminal window.
+  5. Create a directory that will become the mount point
+  6. run ``mount –t vboxsf foldername <folderpath>``
+
 
 ## Configuration file
 * One virtual machine is associated with one hard disk UUID.

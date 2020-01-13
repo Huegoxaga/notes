@@ -90,25 +90,32 @@
   * For example, ``400`` means only user has read permission, so the file is private.
 
 ## Commands
-Command options are after ``-``, can use the first letter, can combine the letter after one common ``-``.
-* ``startx`` start GUI.
+* Command options full name are after ``--``. can use the first letter, can combine the letter after one common ``-``.
+* Large command output press ``Q`` to quit. enter ``/searchContent`` to search.
+* Both the ``| more`` and the ``| less`` command provide paging functionality in a command line environment. For example ``help | less``. shows output that can be control using up and down arrow.
+* ``| grep <filterString>`` Grep will return only those lines in the file that contain the supplied string. For Example ``cat /etc/man.config | grep MANPATH``
+* ``startx`` start X Windows System GUI.
 * ``shutdown –h now``  shutdown immediately.
+* ``shutdown –r now`` restart immediately.
 * ``appname —version``   check the current version for any app.
-* Both the ``more`` and the ``less`` command provide paging functionality in a command line environment.
 * ``man <command name>`` the man pages for Linux commands.  
 * ``help <command name>`` To get help with built-in shell commands use the help command
+* ``help`` get list of built in command.
 * ``clear``   clear screen
 * ``who am i`` check current user name
 * ``ls   -al`` ``-l`` for detail ``-a`` for include hidden files.
   * ``ls`` If no directory name is followed, it will list all of the files in the current working directory.
-* ``cd`` Change directory to the directory followed,
+  * add ``\`` before ls to see not colored outputs.
+* ``cd`` Change directory to the directory followed, if nothing followed cd to home dir.
 * ``pwd`` display the absolute path to the current working directory.
 * ``touch`` create new file
 * ``mkdir <directory path(s)>`` make new dir
   * create multiple new folderName separate by space.
 * ``cp <source> <destination> -R``, copy files for folders,  ``-R`` include directories.
+  * ``cp ~/a* ~/Documents/a`` copy anything begins with a to ``a`` folder.
 * ``mv <source> <destination>`` The mv command is used to move or rename files
 * ``rm <PathToFile> -r`` remove files for folders, ``-r`` includes folders.
+  * a folder must be empty in order to execute ``rm`` command.
 * ``rmdir`` remove empty directories
 * ``find <fromFolderPath> -type f -iname "*.txt" 2> /dev/null``
   * ``-type  f`` is used to locates only files
@@ -122,8 +129,9 @@ Command options are after ``-``, can use the first letter, can combine the lette
 * ``ifconfig eth0`` will display networking information about the device named ``eth0``.
   * ``eth0`` the number is the order in which the card has been detected, starting with a zero
 * ``ifconfig`` will display networking information about all device.
+* ``ifup eth0`` set ``eth0`` interface up.
 * ``ip addr`` will display the IP address for all active network interfaces.
-* ``ip route`` 	will display the system default gateway information
+* ``route`` 	will display the system default gateway information
 * ``uname -a`` Print operating system info
 * ``cat <file.txt>`` create or read a txt file.
 * ``sudo`` add this before command to get execute as admin
@@ -132,6 +140,7 @@ Command options are after ``-``, can use the first letter, can combine the lette
 * ``passwd xxxx``modify a user's password
 * ``useradd xxx`` add new user
 * ``echo``
+* ``diff <file1> <file2>`` The diff command can be used to compare the contents of two files.
 
 
 ## Tools
@@ -142,10 +151,13 @@ Command options are after ``-``, can use the first letter, can combine the lette
 * ``cdrom.repo`` configuring this file allows installation from cd-rom
 * ``yum list available``, see a list of available software
 * ``yum install package_name``, install a specific package.
-* ``yum groupinstall ‘groupname’ ‘groupname2’`` install package groups.
+* ``yum groupinstall 'groupname' 'groupname2'`` install package groups.
+* ``yum groupinstall -y 'X Window System' 'Desktop' 'Fonts'`` install X window GUI
+* ``yum install gcc –y`` Install the C compiler.
+* ``yum install kernel -y`` and ``yum install kernel-devel –y`` install kernel development source.
 
-##Vi
-* ``vi``, open vi.
+##Vim
+* ``vi``, open vim.
 * ``vi filename.txt``, open a file with vi.
 * Vi has insert mode, press i to enter insert mode, press Esc to exit.
 * When out of insert mode, the following command works.
