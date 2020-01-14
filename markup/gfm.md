@@ -177,17 +177,18 @@ Text can be hidden in <!- -Text- -> or <Text>
 ### Math Formula
 LaTeX and MathML are used to created math formula.
 
-
 # Gitbook
 * a CLI tool that auto convert ``.md`` file into webpages.
 ## Setup
 * Installation ``npm i gitbook-cli -g ``
 * Create Project, in project folder``gitbook init``
+* in project file ``SUMMARY.md`` is the menu
 * Preview, ``gitbook serve``
+* At the end of the line, the URL can be used to view the content.
 
 ## Build Website
+* Run ``gitbook init`` everytime when change it made.
+* if ``SUMMARY.md`` is updated, init will add new files in the project folder.
 * Run ``gitbook build``
-* if summary is updated init will add new files in the project folder.
-* in project file summary.md is the menu
 ## Publish
 * github pages host static webpages from repo, it is free.
