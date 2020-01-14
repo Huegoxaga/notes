@@ -8,7 +8,6 @@
 * Source files have an extension of .py. The code is executed all at once, from top to bottom. Interpreted language doesn’t have machine code file which is created by the compiler.
 * It is a case sensitive language.
 
-
 ## Basic Syntax
 It is generally consisted of comments, statements, methods, functions and modules.
 
@@ -169,7 +168,7 @@ list(x)   #To   list
 ```
 
 ### String Formatting
-"formatedStringUsing{}".format(x,y,z)  
+``"formatedStringUsing{}".format(x,y,z)``
 * String is formatted in a set of double quotation marks.
 * The location, order, and content of data is indicated by {}.
 * The argument of .format is the value of data in the {}.

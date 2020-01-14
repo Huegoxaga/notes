@@ -151,21 +151,21 @@ public abstract class ClassName{
 * Keyword ``implements`` is used to implement interfaces.
 * public class ABC extends A inplements B,C,D{…} //extends goes before implements.
 * When you implement an interface, you need to override all of its methods.
-```java
-interface Animal {
-  public void eat();
-  public void makeSound();
-}
+  ```java
+  interface Animal {
+    public void eat();
+    public void makeSound();
+  }
 
-class Cat implements Animal {
-  public void makeSound() {
-    System.out.println("Meow");
+  class Cat implements Animal {
+    public void makeSound() {
+      System.out.println("Meow");
+    }
+    public void eat() {
+      System.out.println("omnomnom");
+    }
   }
-  public void eat() {
-    System.out.println("omnomnom");
-  }
-}
-```
+  ```
 
 #### Anonymous classes
 * Anonymous classes are used to override other class method in the main method in braces follow the constructor.
