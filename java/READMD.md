@@ -391,16 +391,19 @@ name = (parameter) -> statement or {} block;       //-> read as become
   * void test()   // it is a test method with no returning value and no parameters.
 
 ### String Functions
-System.out.println(""); println is the method. System is the class and out is the stream to access the println method. the method creates a new line at the end, print() does not.
+* ``System.out.println("");`` println is the method. System is the class and out is the stream to access the println method. the method creates a new line at the end, print() does not.
 
-printf() //This is the formatting output method.
-System.out.printf("%s"(this is the formatting string)   %f , aString, aDouble);
+* ``printf()`` //This is the formatting output method.
+* ``System.out.printf("%s"(this is the formatting string)   %f , aString, aDouble);``
+* ``String.format()`` can also be used to generate formatted string and save it into a variable.
+* ``printf()`` is only good with System.out
+
+* String is an object, a reference type.
+* ``+`` concatenation (auto casting)
+* no ``*`` operation for strings in Java
 
 
-String.format() can also be used to generate formatted string and save it into a variable.
-printf() is only good with System.out
-
-formatting string:
+#### Formatting String:
  %
 -(left alignment)  %-6s,"good"  ->good_ _  (default right justified)
 + or a space (add the + sign, ignores the - sign)
@@ -408,7 +411,7 @@ formatting string:
 0(put 0 at the leading part as many as possible)
 width.decimal(default 6 decimal place, precision can be used for %s %b %h as well)(decimal point is 1 space)
 flag:
-Comments
+### Comments
 ```java
 // single-line comment to the end of the line.
 /* Thie is a multi-line comment or
@@ -417,7 +420,7 @@ Comments
 /** This is a java doc style comment.
 */
 ```
-Documentation comments can become external documentation in HTML format suing Javadoc
+* Documentation comments can become external documentation in HTML format suing Javadoc
 for doc comments any asterisks beyond two will be ignored.
 Requirement:
 Every class has descriptions with ``@author`` tag
@@ -426,79 +429,67 @@ Main method uses ``@param args`` unused
 Every variable need an ``/** **/`` block of explanation.
 Section of codes should be marked with//comments on empty lines
 // explaining local variables
-Auto indentation with ALT SHIFT F
-JavaDoc HTML page that contains formatted comments will be made by tools inside IDE
+* Auto indentation with ALT SHIFT F
+* JavaDoc HTML page that contains formatted comments will be made by tools inside IDE
 
 
-Variables
-date types in Java are 8 primitive types and reference types(object)
-primitive types represent single values with no attributes and methods.
-primitive type table for memory sizes.
+## Variables
+* Date types in Java are 8 primitive types and reference types(object)
+* primitive types represent single values with no attributes and methods.
+* primitive type table for memory sizes.
+* ``_`` can be added to int for readability.
+* boolean has values ``true`` or ``false``.
+  * default value that initialized without value is false.
+* auto type casting from int to double only.
+* final is the keyword used for assign constant, and the name is always all_caps, all_caps is also shown in UML.
+* final can also be used on method(final method cant be overridden) and class(final classes don’t have subclasses)
+* other are referred as reference type.
+* They use function to make conversion.  (Interger.toString(intx))
+* They use function to test equality(no == sign) (a.equals(b) for Strings)
+* null? relation to reference type with no memory reference. 0 for some float initialization default when they are not assigned with any number.
 
-_ can be added to int for readability.
-
-boolean: true/false
-default value that initialized without value is false.
-auto type casting from int to double only.
-final is the keyword used for assign constant, and the name is always all_caps, all_caps is also shown in UML.
-final can also be used on method(final method cant be overridden) and class(final classes don’t have subclasses)
-
-other are referred as reference type.
-They use function to make conversion.  (Interger.toString(intx))
-They use function to test equality(no == sign) (a.equals(b) for Strings)
-null? relation to reference type with no memory reference. 0 for some float initialization default when they are not assigned with any number.
-
-type casting(conversion) put type name in front of the expression within a bracket.
+### Type casting
+* type casting(conversion) put type name in front of the expression within a bracket.
 (int)x;
+* int / int is int
+* Java supports automatic type casting of integers to floating points,
+* For class upcasting is to instantiate a subclass object as a superclass object. It is done automatically. ``Animal a = new Cat();``
+* The other way around is called down-casting. It is done manually.
+  ```java
+  Animal a = new Animal();
+  ((Cat)a).makeSound();
+  ```
+* reference types stores a reference(their value is just a reference) to the memory location. It includes arrays, strings and all objects.
 
-Type casting
-int / int is int
-Java supports automatic type casting of integers to floating points,
-For class upcasting is to instantiate a subclass object as a superclass object. It is done automatically.
-Animal a = new Cat();
-The other way around is called downcasting. It is done manually.
-Animal a = new Animal();
-((Cat)a).makeSound();
-
-reference types stores a reference(their value is just a reference) to the memory location. It includes arrays, strings and all objects.
-
-
-Java has block level scope:
-All variables are local to the block in which they are declared, and even for blocks inside that block.
-
-If the variables need to be used outside the block, They are required to be initialized outside of the block with an assigned value.
-If the variables need to be used inside another block, the value should be initialized and assign an actual value.
-
-
-
-
-String(an object)
-+concatenation (auto casting)
-no * operation for strings in Java
+### Scope of Variables
+* Java has block level scope:
+* All variables are local to the block in which they are declared, and even for blocks inside that block.
+* If the variables need to be used outside the block, They are required to be initialized outside of the block with an assigned value.
+* If the variables need to be used inside another block, the value should be initialized and assign an actual value.
 
 
 
 
 
-condition
-<,>,!=,==,<=,>=
+## Operators
+### Condition
+* ``<,>,!=,==,<=,>=``
 
-x instanceof ClassName      
-this gives true if x is a instance of ClassName
+### Membership
+* ``x instanceof ClassName``   
+* this gives true if x is a instance of ClassName
 
-logical operators
-&& and
-|| or
-! not
-the operands must be compatible.
+### logical operators
+* && and
+* || or
+* ! not
+* the operands must be compatible.
 
-ternary operators
-result = testCondition ? value1 : value2
-If testCondition is true, assign the value of value1 to result; otherwise, assign the value of value2 to result."
+### Ternary operators
+* result = testCondition ? value1 : value2
+* If testCondition is true, assign the value of value1 to result; otherwise, assign the value of value2 to result."
 
-
-
-assignment:
+### Assignment:
 int y;
 String name = "";
 int a = 42, b = 11;
@@ -506,19 +497,18 @@ in Java the variable name is associate with one type.
 Variable names start with lower case letter.
 x +=y -> x = x +y
 
-Operators
-+, -, *
-/ division
-(long division happens between integer operand
-operand need to  be in the same type.
-% modulo(remainder)
+### Math Operators
+``+, -, *, /``
+* long division happens between integer operand
+* operand need to  be in the same type.
+* ``%`` modulo(remainder)
 
-x=x+1 -> ++x
-x=x-1 -> —x
-
-++x vs x++
-for both prefix and postfix form x=x+1.
-for the whole expression, ++x use the value x+1, x++ uses the value x.
+### Short Forms
+* ``x=x+1 -> ++x``
+* ``x=x-1 -> —x``
+* ``++x`` vs ``x++``
+  * for both prefix and postfix form x=x+1.
+  * for the whole expression, ++x use the value x+1, x++ uses the value x.
 
 
 ### Scanner Class
@@ -544,30 +534,33 @@ System.out.println(myVar.nextLine());  //get user input
 ```
 * sometimes scanner can cause error if the lines is mismatched.
 
+## Conditional Structures
 
-if statement
-if(condition) {
-}
-either a {…} block or a single statement line can be used after the (…) part. However, {…} is always recommended.
+### if Condition
+* if
+  ```java
+  if(condition) {
+  }
+  ```
+* either a {…} block or a single statement line can be used after the (…) part. However, {…} is always recommended.
+* if…else
+  ```java
+  if(condition){
+  } else{
+  }
+  ```
+* It can be nested.
 
-
-
-if…else
-if(condition){
-} else{
-}
-
-It can be nested.
-
-else if statement
-
+* else if statement
+```java
 if(condition) {
 } else if(condition) {
 } else if(condition) {
 } else {
 }
-
-switch statement
+```
+* switch statement
+```java
 switch (expression) {
    case value1 :  //test if the value equals to the expression
    //statements
@@ -578,27 +571,27 @@ switch (expression) {
    default: //Optional run if no case matches.
    //Statements
 }
+```
 
-Loop
-
-control statements
-break; stop the loop.
-continue; skip to the next loop.
-
-
-while loop
+### Loop
+* control statements
+  * break; stop the loop.
+  * continue; skip to the next loop.
+* while loop
+```java
 while(condition) {
 	//statements;
 }
-
-do…while loops
+```
+* do…while loops
+```java
 do {
 } while(condition);
-
-This makes sure the loop run at least once, inside the do block.
-Be careful about the different scope for codes after while and after do
-
-for loop
+```
+* This makes sure the loop run at least once, inside the do block.
+* Be careful about the different scope for codes after while and after do
+* for loop
+```java
 for (initialization; condition; increment/decrement) {
   statements;
 }
@@ -606,73 +599,82 @@ for (initialization; condition; increment/decrement) {
 for(int x = 1; x<=5; x++){
 }
 
-for(int a = 1 , int b = 4; a<b ; a++, a—){(not recommend not detail enough)
+for(int a = 1 , int b = 4; a<b ; a++, a—){
+  //not recommend not detail enough
 }
+```
+* enhanced for loop
+* the loop declares new temperate variable i and assign the values of the newArray to i on each iteration.
+```java
+for(int i: newArray){  
+}
+//or
+for(int x=0; x<arrayInt.length; x++){
+    int i;
+    i=arrayInt[x];
+    // ……….  
+  }
+```
+* Because i is an independent temperate value.the value of a primitive type(and Strings  because it’s immutable(the object cannot be changed after initialization))array can’t be change using i variable in the for loop, only the methods(setter) for an array of an objects can be used to change the object values. and assignment for public variable of an object array will work.(the assignment trace the memory location of the object through i, and change the actual value inside the object.)
+* For loops, variables should all have a value before it goes in the loop block, or it may have not to get the chance to contain any value.
 
+## Thread
+* Java is a multi-threaded programming language.
+* The life-cycle of a thread is shown below:
+  * First way to run code in a new Thread, create a subclass of Thread class as your own class, override your own code in the run() method, then create an instant of your class object and run the start() method of the new object.
+  * All thread has priorities range from 1 to 10, can be set with the set Priority() method.
 
-enhanced for loop
-the loop declares new temperate variable i and assign the values of the newArray to i on each iteration.
-for(int i: newArray){  }
-equals
-for(int x=0; x<arrayInt.length; x++){  int i; i=arrayInt[x]; ……….  }
+  * Second way to create a Thread(preferred way, make extends available for use), implements the Runnable interface for your own class, and write your own run() method in your class. Later create a new Thread object with(new youClass()) as argument for its constructor. Lastly, run the thread object start() method.
 
-
-Because i is an independent temperate value.the value of a primitive type(and Strings because it’s immutable(the object cannot be changed after initialization))array can’t be change using i variable in the for loop, only the methods(setter) for an array of an objects can be used to change the object values. and assignment for public variable of an object array will work.(the assignment trace the memory location of the object through i, and change the actual value inside the object.)
-
-For loops, variables should all have a value before it goes in the loop block, or it may have not to get the chance to contain any value.
-Thread
-Java is a multi-threaded programming language.
-The life-cycle of a thread is shown below:
-First way to run code in a new Thread, create a subclass of Thread class as your own class, override your own code in the run() method, then create an instant of your class object and run the start() method of the new object.
-
-All thread has priorities range from 1 to 10, can be set with the set Priority() method.
-
-Second way to create a Thread(preferred way, make extends available for use), implements the Runnable interface for your own class, and write your own run() method in your class. Later create a new Thread object with(new youClass()) as argument for its constructor. Lastly, run the thread object start() method.
-
-code:
-pause a thread
+### pause a thread
+* Method
+```java
 Tread.sleep(int numberofMS); //it throws InterruptedException
-
-
-
-new thread can be made by using:
-Thread name = new Thread();
-Or new thread that runs a method.
-Thread t = new Thread(() -> animate(gc));
-
-Pause statement
+```
+* Example
+```java
 public static void main(String[] args) throws InterruptedException {  //exception handling for it
 Thread.sleep(500);} //make it stops for 500ms
-or us the following pause method instead of Thread.sleep
-    public static void pause(int duration) {
-        try {
-            Thread.sleep(duration);
-        } catch (InterruptedException ex) {
-        }
+//or use the following pause method instead of Thread.sleep
+public static void pause(int duration) {
+    try {
+        Thread.sleep(duration);
+    } catch (InterruptedException ex) {
     }
+}
+```
+
+### Create a Thread
+```java
+Thread name = new Thread();
+//Or new thread that runs a method.
+Thread t = new Thread(() -> animate(gc));
+```
 
 
-Platform
-Platform.runLater  This makes all graphical method run in a queue when making fast animate. This is a good practice for the program to make it smooth.
-x
 
 
-Enums
-enum is a special type used to define a group of constants
-It increases the performance of codes for some method only take a set of values. Often used for days of week, cards etc.
+### Enums
+* enum is a special type used to define a group of constants
+* It increases the performance of codes for some method only take a set of values. Often used for days of week, cards etc.
 
 
-codes:
-define enum
+#### define Enum
+```java
 enum Sample {
 	SAMPLEA,
 	SAMPLEB,
 	SAMPLEC
 }
+```
 
-access enum
+#### Access Enum
+```java
 Sample x = Sample.SAMPLEA;
+```
 
+#### Usage
+```java
 switch statement example:
 switch(x){
 	case SAMPLEA:
@@ -685,54 +687,60 @@ switch(x){
 			//some code
 			break;
 }
-Exception
-There are three types of error
-1.Syntax Error:Error that prevents compilation. (caused by some checked exception)
-2.Run-time Error:Program compiles, but execution halts unexpectedly.(caused by some unchecked exception)
-3.Logic Error:Program compiles and runs to completion, but does something unexpected or wrong due to bad logic in the code.
-All exceptions are objects, they are a hierarchy relationship. the exception type Exception is at the top of the hierarchy and it represents all exception.
-Custom exception class can be made by extends an Exception class(RuntimeException class) with your now defined parameters. custom methods for the exception can be added inside. A thrower class can be used to take argument and judge exception condition and throw exception object. exception handling clan then be made in main with new thrower object.
+```
 
-A try/catch blocks is used to attempt the execution of some code in the try block, if there is an exception. The corresponding catch block for the specific exception will be executed and the exception object will be passed into the block.
-When there is an error, an exception is thrown to outside of the method. or throw keyword can be used to manually generate a specific exception in a method. Then the program continues to run codes that follows try/catch. When it is not handled, the program stops.
-Exceptions have two types: checked, unchecked. Checked exceptions are checked before compiled and will not run if not handle like InterruptedException for Thread. Unchecked are checked at run time(extends RuntimeException).
+## Exception Handling
+* There are three types of error
+  1. Syntax Error:Error that prevents compilation. (caused by some checked exception)
+  2. Run-time Error:Program compiles, but execution halts unexpectedly.(caused by some unchecked exception)
+  3. Logic Error:Program compiles and runs to completion, but does something unexpected or wrong due to bad logic in the code.
+* All exceptions are objects, they are a hierarchy relationship. the exception type Exception is at the top of the hierarchy and it represents all exception.
+* Custom exception class can be made by extends an Exception class(RuntimeException class) with your now defined parameters. custom methods for the exception can be added inside. A thrower class can be used to take argument and judge exception condition and throw exception object. exception handling clan then be made in main with new thrower object.
+* A try/catch blocks is used to attempt the execution of some code in the try block, if there is an exception. The corresponding catch block for the specific exception will be executed and the exception object will be passed into the block.
+* When there is an error, an exception is thrown to outside of the method. or throw keyword can be used to manually generate a specific exception in a method. Then the program continues to run codes that follows try/catch. When it is not handled, the program stops.
+* Exceptions have two types: checked, unchecked. Checked exceptions are checked before compiled and will not run if not handle like InterruptedException for Thread. Unchecked are checked at run time(extends RuntimeException).
 
-Code:
-try/catch block
+
+### try/catch block
+```java
 try {
 	//some lines of code
 } catch (ExceptionTypeA e) {
 	//code for exception type A
 } catch (Exception e) {
 			// get general exception.
-		}
-
-throw exception
+}
+```
+### throw exception
+```java
 void methodName() throws ExceptionType {
 	throw new ExceptionType("some message");
 	//or
-	ExceptionType e = new ExceptionType("some message");
+	ExceptionType e = new ExceptionType("error message");
 	throw e;
 
 }
-get stack trace info
-e.printStackTrace();
-get error message(which is "some message" in our example)
-e.getMessage()
+```
 
-specifying checked exception to avoid Syntax error before compile.
+### Methods
+* get stack trace info ``e.printStackTrace();``
+* get error message ``e.getMessage()``
+* specifying checked exception to avoid Syntax error before compile.
+```java
 public static void main (String[] args) throws CheckedExceptionType{
 …
 }
-
-create ones own exception types
+```
+* create ones own exception types
+```java
 public class ExampleException extends RuntimeException {
 	public ExampleException() {
 		super("set message here");
 	}
 }
-
-create exception thrower
+```
+* create exception thrower
+```java
 public class ExampleThrower {
 	public ExampleThrower(int x) {
 		if (x<0) {
@@ -740,30 +748,26 @@ public class ExampleThrower {
 		}
 	}
 }
-
-main testing class exception handling
+```
+* main testing class exception handling
+```java
 ExampleThrower x;
 try{
 	ExampleThrower = new ExampleThrower(-5);
 } catch (ExampleException e) {
 	System.out.println(e.getMessage());
 }
-
-
-finnally block always run
-
-
-details:
-one try block can have many catch block, the exceptions for those catch block should be arranged from the most specific one to the most general one, since they are checked from top to bottom.
-whenever there is an exception in the try block, the try block stops running. When the catch block finishes, the code in try block will continue.
-Throws keyword defines the exception that can be thrown in this method. More exception types can be defined after throws in the method definition line, separate them with comma.
+```
+* finally block always run.
+* one try block can have many catch block, the exceptions for those catch block should be arranged from the most specific one to the most general one, since they are checked from top to bottom.
+* whenever there is an exception in the try block, the try block stops running. When the catch block finishes, the code in try block will continue.
+* Throws keyword defines the exception that can be thrown in this method. More exception types can be defined after throws in the method definition line, separate them with comma.
 For InputMismatchException, scannerName.next() is often used in the catch block to clear the wrong user input stored in the buffer.
-IllegalArgumentException is the exception for wrong argument input for a method.
+* IllegalArgumentException is the exception for wrong argument input for a method.
 For custom exception super() in constructor is for getMessage().
 
 
 ## Array
-
 * It is an object.
 * Array name is just a reference of the array object.
 * It is an ordered list of the same type of values
@@ -833,154 +837,140 @@ int y = sample[0].length;
 
 
 
-Comparable interface
-Arrays.sort Arrays.binarySearch works with comparable interface.
-comparable interface has abstract compareTo() method, it compare the current object to the passed parameter return int.(negative when smaller positive when bigger and zero if equal.)
-All arrays of strings have already implemented the comparable interface. can use Array. method directly.
-
-compareTo (ClassName objectName) {
-
-After implement the definition, the array of objects of MyClass can be sorted and searched using the methods above.
-
-The @Override annotation is often used to make your code easier to understand
-
+### Comparable interface
+* ``Arrays.sort``, ``Arrays.binarySearch`` works with comparable interface.
+* comparable interface has abstract ``compareTo()`` method, it compare the current object to the passed parameter return int.(negative when smaller, positive when bigger and zero if equal.)
+* All arrays of strings have already implemented the comparable interface. can use Array. method directly.
+  ```java
+  compareTo (ClassName objectName) {
+  }
+  ```
+* After implement the definition, the array of objects of MyClass can be sorted and searched using the methods above.
 
 
 
+## List
+* These are some special classes provided by Java API in java.util.ListType (import this before use).
+* List is just like array which is also okay with insert and remove element. List is slower than array. ArrayList and LinkedList are some commonly used List type.
+* ArrayList is a generic class. It need to associate to other classes to work. association is denoted by ``< >``.
+* ArrayList only accept objects as its element. For primitive types use its wrapper class. Once declared using wrapper, auto transformation can be done by autoboxing.
+* List’s index start at 0.
+* LinkedList can’t set size when initialize, it got all others syntax the same as ArrayList. It stores additional memory address about the neighbouring elements, make it suitable for large amount of insertion and deletion. ArrayList is faster for accessing data.
+* ArrayList<String> is the type of the arraylist, Ex, ``public void method(ArrayList<String> x){////}``
+* Lists works with enhanced for loop.
 
 
-List
-These are some special classes provided by Java API in java.util.ListType (import this before use).
-List is just like array which is also okay with insert and remove element. List is slower than array. ArrayList and LinkedList are some commonly used List type.
-ArrayList is a generic class. It need to associate to other classes to work. association is denoted by < >.
-ArrayList only accept objects as its element. For primitive types use its wrapper class. Once declared using wrapper, auto transformation can be done by autoboxing.
-List’s index start at 0.
-LinkedList can’t set size when initialize, it got all others syntax the same as ArrayList. It store additional memory address about the neighbouring elements, make it suitable for large amount of insertion and deletion. ArrayList is faster for accessing data.
-
-ArrayList<String> is the type of the arraylist, Ex,
-public void method(ArrayList<String> x){////}
-
-new wrapper class
+### new wrapper class
+```java
 Integer x = new integer(1);
 //it cane printed as int 1.
-
-create arraylist object:
+```
+### create arraylist object
+```java
 ArrayList x = new ArrayList();
+```
+* create arraylist for String with 10 entries.
+```java
+ArrayList<String> x = new ArrayList<String>(10);
+```
 
 
-create linkedlist object with specified type:
+
+
+
+### create linkedlist object
+```java
 LinkedList<Integer> x = new LinkedList<Integer>();
 //LinkedList<Integer> is the complete type as an argument for a function.
+```
 
-create arraylist for String with 10 entries.
-ArrayList<String> x = new ArrayList<String>(10);
-
-add new object to the end of the ArrayList
-arrayListName.add("something");
-arrayListName.add(int index, "something");
-
-set element
+### Access Elements
+* set element
+```java
 set(int index, "something")      //might throw error.
-
-remove element
+```
+* remove element
+```java
 arrayListName.remove("something");
 arrayListName.remove(int index);
 //return true when successful.
+```
+
+### ArrayList Methods
+* add new object to the end of the ArrayList
+```java
+arrayListName.add("something");
+arrayListName.add(int index, "something");
+```
+
+* return true if contain specific element. ``arrayX.contains(Object s)``
+* get first index of an item ``indexOf("Something);   //-1 if not found,``
+* get last index of an item ``lastIndexOf("Something");``
+* get the element on at specific index position ``.get(int index)``
+* return the length ``.size()``
+* remove all elements ``.clear()``
+* convert to array ``.toArray()``
+* for remove(). indexOf(). lastIndexOf(), or contains(). they make the use of equals(), so . equals method needs to be overridden for your own object in the List.
+* Wrapper classes have already defined the proper equals method.
+
+### Observation List?
 
 
-return true if contain specific element.
-.contains(Object s)
+### HashMap
+* It is used to store data using key and value pairs.
+* need to ``import java.util.HashMap``
+* cannot contain duplicated keys, will overwrites old value for this key.
 
-get first index of an item
-indexOf("Something);   //-1 if not found,
-
-get last index of an item
-lastIndexOf("Something");
-
-get the element on at specific index position
-.get(int index)
-
-return the length
-.size()
-
-remove all elements
-.clear()
-
-convert to array
-.toArray()
-
-Lists works with enhanced for loop.
-for remove(). indexOf(). lastIndexOf(), or contains(). they make the use of equals(), so . equals method needs to be overridden for your own object in the List.
-Wrapper classes have already defined the proper equals method.
-
-Observation List?
-
-
-HashMap
-It is used to store data using key and value pairs.
-need to import java.util.HashMap
-
-code:
-Create Hashmap
+#### Create Hashmap
+```java
 HashMap<String,Integer> x = new HashMap<String,Integer>();
-insert value
-x.put("A",1);
-get value
-get("A");
-remove value
-remove("A");
-check existence of a key
-containsKey(key)//return null if this key is not found
-check existence of a value
-containsValue(value)
+```
 
+#### Methods:
+* insert value ``x.put("A",1);``
+* get value ``get("A");``
+* remove value ``remove("A");``
+* check existence of a key ``containsKey(key)`` return null if this key is not found
+* check existence of a value ``containsValue(value)``
 
+### Hashset
+* Hashset cannot contain duplicated values. It donen't order the element. like set in math. * They have other features similar to lists.
 
-details:
-cannot contain duplicated keys, will overwrites old value for this key.
-
-Hashset
-Hashset cannot contain duplicated values. It donent order the element. like set in math. They have other features similar to lists.
-
-Code:
-create:
+#### create
+```java
 HashSet<String> name = new HashSet<Sting>();
-add:
-.add("StingA");
-length:
-.size();
+```
+#### Methods:
+* add ``.add("StingA");``
+* length: ``.size();``
 
 
-LinkedHashSet
-similar to Hashset but It orders the elements.
+#### LinkedHashSet
+* similar to Hashset but It orders the elements.
+* Hashcode??memory address
 
-
-
-
-
-Hashcode??memory address
-
-collection class methods
+### collection class methods
 for all collection class they have static methods:
- Collections.sort(collectionName) , Collections.max(collectionName), Collections.min(collectionName),
- Collections.reverse(listName).
- Collections.shuffle(listName).
+* Collections.sort(collectionName)
+* Collections.max(collectionName)
+* Collections.min(collectionName)
+* Collections.reverse(listName)
+* Collections.shuffle(listName)
 
 
-Iterator
-It is an object created to retrieve elements from a collection.
-
-hasNext(): Returns true if there is at least one more element; otherwise, it returns false.
-next(): Returns the next object and advances the iterator.
-remove(): Removes the last object that was returned by next from the collection.
-
-It can be used in a loop.
-
+## Iterator
+* It is an object created to retrieve elements from a collection.
+* hasNext(): Returns true if there is at least one more element; otherwise, it returns false.
+* next(): Returns the next object and advances the iterator.
+* remove(): Removes the last object that was returned by next from the collection.
+* It can be used in a loop.
+```java
 Iterator<String> it = animals.iterator();
-    while(it.hasNext()) {
-      String value = it.next();
-      System.out.println(value);   
-     }
+while(it.hasNext()) {
+  String value = it.next();
+  System.out.println(value);   
+ }
+```
 
 ### File Class
 * It makes you work with files.
@@ -1050,68 +1040,68 @@ outputFile.println("Hello World");
 outputFile.close();
 ```
 
-
-System class
-System.currentTimeMillis();
-System.current.nanoTime(); measures nano second
-
-StringBuiler class
+## Java classes
 
 
+## System class
+* ``System.currentTimeMillis();``
+* ``System.current.nanoTime();`` measures nano second
 
-Java class
-java.util.Random;
-Random name = new Random();
-name.nextInt(x);    generate x different int from 0
-name.nextDouble(x); generate double int from 0-(x-1)
-name.nextBoolean(x);
+## StringBuiler class
 
 
-Math class
-Math.pow(base,exp);//returns a double
+## Random Class
+* ``java.util.Random;``
+* ``Random name = new Random();``
+* ``name.nextInt(x);``    generate x different int from 0
+* ``name.nextDouble(x);`` generate double int from 0-(x-1)
+* ``name.nextBoolean(x);``
 
+
+## Math class
 it contains all static methods, so can be called without creating math objects.
-Math.round()    round to nearest int
-Math.abs()        find abs for all number type
-Math.max()    return the largest among its parameters.
-Math.min()     return the smallest among its parameters.
-Math.ceil()      return the next int value as a double.
-Math.floor()    return the int value as a double
-Math.pow(x,y)   power of x to the power of y as a double.
-Math.random();  random number from 0 to 1.
-Math.sqrt()
-Math,sin()
-Math.cos()
+
+* ``Math.pow(base,exp);`` returns a double
+* ``Math.round()``    round to nearest int
+* ``Math.abs()``        find abs for all number type
+* ``Math.max()``    return the largest among its parameters.
+* ``Math.min()``     return the smallest among its parameters.
+* ``Math.ceil()``      return the next int value as a double.
+* ``Math.floor()``    return the int value as a double
+* ``Math.pow(x,y)``   power of x to the power of y as a double.
+* ``Math.random();``  random number from 0 to 1.
+* ``Math.sqrt()``
+* ``Math,sin()``
+* ``Math.cos()``
 
 
-Interger
-Interger.toString(intx)
-Interger.parseInt(String) : Int              convert String to int
+## Interger
+* ``Interger.toString(intx)``
+* ``Interger.parseInt(String)`` string to Int
 
-Double
-Double.parseDouble(String) : double
-
-Integer.MAX_VALUE  A constant holding the maximum value an int can have, 2^31-1.
-Integer.MIN_VALUE   A constant holding the minimum value an int can have, -2^31.
-
-
-String
-stringx.valueOf(intx)
-stringx.trim() remove the leading and trailing white space of the string.
-stringx.startsWith(string)       return true is the stringx start with the method argument.
-stringx.endsWith(string)
-string.indexOf("sam")                   return index and -1 if not exist.
-string.toUpperCase
-
-StringBuilder class
+## Double
+* ``Double.parseDouble(String)``string to double
+* ``Integer.MAX_VALUE``  A constant holding the maximum value an int can have, 2^31-1.
+* ``Integer.MIN_VALUE``   A constant holding the minimum value an int can have, -2^31.
 
 
+## String
+* ``stringx.valueOf(intx)``
+* ``stringx.trim()`` remove the leading and trailing white space of the string.
+* ``stringx.startsWith(string)`` return true is the stringx start with the method argument.
+* ``stringx.endsWith(string)``
+* ``string.indexOf("sam")  `` return index and -1 if not exist.
+* ``string.toUpperCase``
 
-Character
-Character.getNumericValue(myString.charAt(0));   return ACSII value of a char in string to real integer value.
+## StringBuilder class
 
-Color
-Color.web("colorName")
+
+
+## Character
+* ``Character.getNumericValue(myString.charAt(0));``   return ACSII value of a char in string to real integer value.
+
+## Color
+* Color.web("colorName")
 
 netbeans trick
 alt+shift+F auto indent
