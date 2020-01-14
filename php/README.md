@@ -48,13 +48,12 @@ if (condition) {
 "www.<?= $domain ?>.com"
 
 ### Use Script Tag
-<script> tag can also hold PHP code.
+``<script>`` tag can also hold PHP code.
 ```php
 <script language="php">
 //PHP code;
 </script>
 ```
-
 
 ## Variables
 * variable starts with $ sign.

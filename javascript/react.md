@@ -6,9 +6,7 @@
 ## Setup
 ### Installation
 1. Download and Install node.js from its official website
-2. ```
-  run sudo npm i -g create-react-app
-  ```
+2. ``run sudo npm i -g create-react-app``
 3. Use Visual Studio Code with Simple React Snippets(enable shortcuts) and Prettier Plugins etc.
 
 ### Create an React App

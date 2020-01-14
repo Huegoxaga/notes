@@ -170,36 +170,36 @@ public abstract class ClassName{
 #### Anonymous classes
 * Anonymous classes are used to override other class method in the main method in braces follow the constructor.
 * This modification is done on the object but not the classes.
-```java
-class Machine {
-  public void start() {
-    System.out.println("Starting...");
-  }
-}
-public static void main(String[ ] args) {
-  Machine m = new Machine() {
-    @Override public void start() {
-      System.out.println("Wooooo");
+  ```java
+  class Machine {
+    public void start() {
+      System.out.println("Starting...");
     }
-  };
-  m.start();
-}
-//Outputs "Wooooo";
-```
+  }
+  public static void main(String[ ] args) {
+    Machine m = new Machine() {
+      @Override public void start() {
+        System.out.println("Wooooo");
+      }
+    };
+    m.start();
+  }
+  //Outputs "Wooooo";
+  ```
 
 #### Inner class
 * a class that is within a class.
 * inner class can be private, outside classes won’t be able to access private inner class.
-```java
-public class Example {
-	public Example(){
-		Inner x = new Inner();
-	}
-	private class Inner {
-		//some code
-	}
-}
-```
+  ```java
+  public class Example {
+  	public Example(){
+  		Inner x = new Inner();
+  	}
+  	private class Inner {
+  		//some code
+  	}
+  }
+  ```
 
 ### Methods
 * Methods define behaviour
@@ -217,10 +217,10 @@ public class Example {
 * static method and variables are created at compile time.
 * When outside the class, always access static variables and methods using the class name, not an object variable.
 * static method has access on only static variables. Unless initialize new variables inside static methods.
-```java
-public static void main(String[] args) {
-}
-```
+  ```java
+  public static void main(String[] args) {
+  }
+  ```
 * the main method takes an array of Strings as its parameters, and does not return a value.
 * ``The currentObject.toString()`` get call every time the object get to print or concatenated. By default, toString print the memory’s hashcode values. However, it is often define specifically to print its formatted variable values.(overriding)
 ```java

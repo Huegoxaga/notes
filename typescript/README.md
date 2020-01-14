@@ -1,4 +1,4 @@
-#TypeScript
+# TypeScript
 
 ## Introduction
 * It is an open-source programming language which is a superset of JavaScript.

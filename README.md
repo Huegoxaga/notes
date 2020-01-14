@@ -11,7 +11,7 @@
   * [Xcode](swift/xcode.md)
 * [Markup Language](markup)
   * [HTML](markup/html.md)
-  * [XML](markup/xml)
+  * [XML](markup/xml.md)
   * [GFM](markup/gfm.md)
 * [CSS](css)
   * [Bootstrap](css/bootstrap.md)

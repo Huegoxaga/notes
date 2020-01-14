@@ -2,31 +2,31 @@
 
 * [Introduction](#introduction)
 * [Basic Syntax](#basic-syntax)
- * [Comments](#comments)
- * [Code Implementation](#code-implementation)
- * [Variables](#variables)
- * [Operators](#operators)  
- * [Control Structures](#control-structures)
- * [Functions](#functions)
- * [Classes](#classes)
- * [Types](#types)
+  * [Comments](#comments)
+  * [Code Implementation](#code-implementation)
+  * [Variables](#variables)
+  * [Operators](#operators)  
+  * [Control Structures](#control-structures)
+  * [Functions](#functions)
+  * [Classes](#classes)
+  * [Types](#types)
 * [Built-in Objects](#built-in-objects)
- * [Arrays](#arrays)
- * [Window Object](#window-object)
- * [Date Object](#date-object)
- * [Math Object](#math-object)
+  * [Arrays](#arrays)
+  * [Window Object](#window-object)
+  * [Date Object](#date-object)
+  * [Math Object](#math-object)
 * [APIs](#apis)
- * [DOM](#dom)
- * [Ajax](#ajax)
- * [GeoLocation](#geolocation)
+  * [DOM](#dom)
+  * [Ajax](#ajax)
+  * [GeoLocation](#geolocation)
 * [Import/Export](#import/export)
 * Libraries
- * [jQuery](jquery.md)
- * [REACT](react.md)
+  * [jQuery](jquery.md)
+  * [REACT](react.md)
 * Framework
- * [React Native](react-native.md)
+  * [React Native](react-native.md)
 * Server-side JavaScript
- * [Node.js](node-js.md)
+  * [Node.js](node-js.md)
 
 
 ## Introduction
@@ -116,20 +116,18 @@ x = 10;	//x is global.
 ##### Destructuring Assignment
 An easier way to assign elements of objects and arrays into variables.
 * For Arrays:
-```js
-  const [x,y,z] = [1,2,3]; //result: x=1, y=2, z=3
-  const [x,,z] = [3,4,5]; //result: x=3, z=5
-```
-* For Objects:
-```js
-  let objectX = {x:1, y:2, z:3};
-  const {x:a, y:b, z:c} = objectX;
-  // result: a=1, b=2, c=3
-  const {prop1, prop2, prop3} =this.props;
-  // the three properties of the props will be assigned to prop1, prop2, prop3 respectively.
+  ```js
+    const [x,y,z] = [1,2,3]; //result: x=1, y=2, z=3
+    const [x,,z] = [3,4,5]; //result: x=3, z=5
   ```
-
-```
+* For Objects:
+  ```js
+    let objectX = {x:1, y:2, z:3};
+    const {x:a, y:b, z:c} = objectX;
+    // result: a=1, b=2, c=3
+    const {prop1, prop2, prop3} =this.props;
+    // the three properties of the props will be assigned to prop1, prop2, prop3 respectively.
+  ```
 
 
 
