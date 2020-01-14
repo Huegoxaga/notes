@@ -65,7 +65,7 @@ class Counter extends Component {
 	//it is used to used to wrap all elements without using parents element like div.
 			<React.Fragment>
 				<img style={this.styles} src={someURL} className="className1 className2">
-				<p style={{fontSize: 30}} >{this.functionName()}{this.state.data2}</p>
+				<p style=\{\{fontSize: 30\}\} >{this.functionName()}{this.state.data2}</p>
 				//map() foreach loop for an array data, each item needs a key.
 				<ul>{this.state.tages.map(tag=><li key={tag}>{tag}</li>)}</ul>
 				//handling events, only pass reference, () is not needed.

@@ -823,9 +823,9 @@ newArray[2] = 10;
 * Nested loop works with multidimensional arrays.
 * Ragged array is a 2D array with various row lengths. ``int [][] arrayName = new int [4][];``
 ```java
-int[][] sample = {{1,2},{3,4},{5,6}}
+int[][] sample = {\{1,2\},\{3,4\},\{5,6\}\};
 //access 2D array
-int x = sample[0][1]  //x==2
+int x = sample[0][1];  //x==2
 //get column length.
 int y = sample[0].length;
 ```

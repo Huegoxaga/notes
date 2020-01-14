@@ -147,7 +147,7 @@ contain text string.
 contain image
 
 Property
-source={{uri:"https://link.com"}}/>
+``source={{uri:"https://link.com"}}/>``
 
 ### Button
 a button
