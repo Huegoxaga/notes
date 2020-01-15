@@ -1,4 +1,4 @@
-# C#
+# C\#
 
 ## Introduction
 * In 2000, Microsoft announced the C# programming language.

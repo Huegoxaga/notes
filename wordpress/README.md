@@ -230,3 +230,5 @@ Add language options for the website in the plugins setting. Add new menu and ne
 
 Custom Sidebar
 Add custom sidebars to hold different widgets in different position.
+
+* use iframe to open a window inside a window,`` <iframe src="https://huegoxaga.github.io/notes/"> </iframe>``
