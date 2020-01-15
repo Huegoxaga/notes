@@ -618,6 +618,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.22" >
+            
+                <span>
+            
+                    
+                    Theory
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.22.1" data-path="../theory/algorithm.html">
+            
+                <a href="../theory/algorithm.html">
+            
+                    
+                    Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -800,66 +832,108 @@
 </li>
 </ul>
 <h2 id="vs-ide">VS IDE</h2>
-<p>View in Broswer
-Select Browse With&#x2026; from toolbar to view page with any installed browser
-Default can be changed here</p>
-<p>VS offers 2 ways to run your site
-F5 offers full debugging which allows interactive breakpoints
-Ctrl+F5 runs without debugging, which runs faster
-Both approaches permit making changes and refreshing browser without relaunching
-XML comments are the preferred technique for documenting code in .NET
-Type /// on the line before any routine and VS will create the XML comment structure</p>
-<h2 id="html-controls">HTML Controls</h2>
+<ul>
+<li>Run code to view pages in Broswer. VS offers 2 ways to run your site<ul>
+<li>F5 offers full debugging which allows interactive breakpoints</li>
+<li>Ctrl+F5 runs without debugging, which runs faster</li>
+<li>Both approaches permit making changes and refreshing browser without relaunching</li>
+</ul>
+</li>
+<li>Select Browse With&#x2026; from toolbar to view page with any installed browser.</li>
+<li>Switch between Design view or Code view, by clicking buttons at the bottom left of the editor. Or right click on the file and click View Code/View Design.</li>
+<li>Uses cookies by default, Can be overridden in Web.config file</li>
+<li>ASP.NET simplifies web programming by automatically maintaining state on page when posting back to the same page
+Known as a postback. Any events or data change will reload the page.</li>
+<li>Implemented using a hidden HTML field: <code>__VIEWSTATE</code></li>
+</ul>
+<h2 id="create-new-project">Create new project</h2>
+<ul>
+<li>select <code>ASP.NET Web Application (.NET Framework)</code> to create a ASP.NET Web Forms using .NET Framework and C#.</li>
+</ul>
+<h3 id="create-aspx-page-file">Create <code>.aspx</code> Page File</h3>
+<ul>
+<li>To create a <code>default.aspx</code> file as the home page, right-click the project choose Add / Web Form, set name to default.</li>
+<li>Drag any components into the <code>pageName.aspx</code> file then add event to it by double clicking in Design View.</li>
+<li>Select the Controls code and press F4 to edit its property in the right panel.</li>
+<li>Methods or Events are edited in the <code>pageName.aspx.cs</code> file.</li>
+<li>For styling, Right-click the project, select Add / Add New Item... From the list, select Style Sheet, name it.</li>
+<li>Drag the css file into the <code>&lt;head&gt;</code> tag of the aspx file for asscociation.</li>
+<li>Classes and Ids still need to be set in the aspx for the css to work</li>
+</ul>
+<h3 id="aspxcs-file"><code>.aspx.cs</code> File</h3>
+<ul>
+<li>It has an <code>IsPostBack</code> variable that is False the first time a page loads, True any subsequent time the page loads.</li>
+<li>It has access to Session data, <code>Session[&quot;var_name&quot;] = data</code>.<ul>
+<li>Read Session data: <code>String name = Session[&quot;name&quot;].ToString();</code>, <code>int cnt = (int)Session[&quot;item_count&quot;];</code>, <code>List&lt;Movie&gt; movies = (List&lt;Movie&gt;)Session[&quot;movies&quot;];</code>.</li>
+</ul>
+</li>
+</ul>
 <h2 id="web-form-controls">Web Form Controls</h2>
-<p>Standard
-Buttons, text boxes, labels, &#x2026;
-Rich
-Calendars, wizards, &#x2026;
-Validation
-Client-side validation
-Data
-Literal control can be used to display text or HTML
-Many more</p>
+<ul>
+<li>Standard .NET Controls</li>
+<li>Buttons<ul>
+<li>has <code>CausesValidation=&quot;false&quot;</code> property.</li>
+</ul>
+</li>
+<li>labels</li>
+<li>DropDownList<ul>
+<li>Hover over the code(above &quot;asp&quot;) and click the arrow button to edit items. Codes will be auto generated when the items are added.</li>
+<li>Has value property to set its initial selection, set <code>Value=&quot;none&quot;</code> if it need initial no selected value.</li>
+<li><code>.SelectedIndex</code> are still used in the <code>.aspx.cs</code> file.</li>
+</ul>
+</li>
+<li>TextBox - used to get user input<ul>
+<li>has attribute <code>TextMode=&quot;Date&quot;</code> to control input type. Text boxes have multiple modes of operation<ul>
+<li>SingleLine (normal)</li>
+<li>MultiLine(Can specify number of rows and/or columns)</li>
+<li>Password</li>
+<li>Color</li>
+<li>Date</li>
+<li>Number</li>
+</ul>
+</li>
+<li>has MaxLength property</li>
+</ul>
+</li>
+<li>Rich</li>
+<li>Calendars, wizards, &#x2026;</li>
+<li>Validation<ul>
+<li>Validator has the following types:<ul>
+<li>RangeValidator</li>
+<li>RequiredValidator</li>
+<li>ValidationSummary - Return the ErrorMessage</li>
+<li>CompareValidator</li>
+<li>RegularExpressionValidator - Email address, phone numb</li>
+</ul>
+</li>
+<li>Used to Validation an control&apos;s data, and present messages and adjust focus if validation fails.</li>
+<li>Associate related controls for validation, type the target control&apos;s id after the ControlToValidate property.</li>
+<li>Need to run <code>Install-Package AspNet.ScriptManager.jQuery</code> in the Tools/NuGet Package Manager / Package Manager Console.</li>
+<li>IsValid variable can be used in <code>.aspx.cs</code> file. It returns true if validation is successful.</li>
+<li>Can use image as output Text <code>Text=&quot;&lt;img src=&apos;images/error.png&apos; alt=&apos;Date is required.&apos; title=&apos;Required.&apos; /&gt;&quot;</code>.</li>
+<li>Dynamic property can make it auto adjust. If a control has more than one validation, set display to dynamic.</li>
+<li>InitialValue is used to inform the validator about its initial value.</li>
+</ul>
+</li>
+<li>Client-side validation</li>
+<li>Data</li>
+<li>Literal control It can be used to display text or HTML. When content is assigned to its Text property.</li>
+</ul>
 <h3 id="page-object">Page Object</h3>
-<p>Events</p>
-<p>PreInit
-Init
-InitComplete
-PreLoad
-Load
-LoadComplete
-Control Events
-PreRender
-PreRenderComplete
-SaveStateComplete
-Unload</p>
-<h3 id="state">State</h3>
-<p>ASP.NET simplifies web programming by automatically maintaining state on page when posting back to the same page
-Known as a postback
-Most other web development environments force you to manage state yourself
-Non-trivial
-State is not stored on the server
-Good for scalability
-Implemented using a hidden HTML field: <code>__VIEWSTATE</code></p>
-<p>Page.IsPostBack
-False the first time a page loads
-True any subsequent time the page loads
-Use to do any one-time tasks</p>
-<p>ASP.NET Sessions</p>
-<p>In web development, we must use session state to move information around from one page to another and between round-trips
-Uses cookies by default
-  Can be overridden in Web.config file
-  If overridden, it is seamless to programmer
-ASP.NET provides a Session[&quot; &quot;] container
-Save any object in a Session
-  i.e. Session[&quot;var_name&quot;] = <object></object></p>
-<p>Putting something into a session variable
-Session[&quot;name&quot;] = &quot;Bob Loblaw&quot;;
-Session[&quot;item_count&quot;] = items.Count;
-Reading a session variable
-String name = Session[&quot;name&quot;].ToString();
-int cnt = (int)Session[&quot;item_count&quot;];
-Strings can be pulled out of session variables using the ToString method, almost anything else will need to be cast</p>
+<p>It has the following Events</p>
+<ul>
+<li>PreInit</li>
+<li>Init</li>
+<li>InitComplete</li>
+<li>PreLoad</li>
+<li>Load - Used with IsPostBack to set the initial state for the page.</li>
+<li>LoadComplete</li>
+<li>Control Events</li>
+<li>PreRender - It is used to pass data before the page is shown.</li>
+<li>PreRenderComplete</li>
+<li>SaveStateComplete</li>
+<li>Unload</li>
+</ul>
 
                                 
                                 </section>
@@ -903,7 +977,7 @@ Strings can be pulled out of session variables using the ToString method, almost
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ASP.NET","level":"1.5.2","depth":2,"next":{"title":"C","level":"1.6","depth":1,"path":"c/README.md","ref":"c/README.md","articles":[]},"previous":{"title":".NET","level":"1.5.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c-sharp/asp-dot-net.md","mtime":"2020-01-08T23:37:01.895Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-15T04:38:00.616Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ASP.NET","level":"1.5.2","depth":2,"next":{"title":"C","level":"1.6","depth":1,"path":"c/README.md","ref":"c/README.md","articles":[]},"previous":{"title":".NET","level":"1.5.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c-sharp/asp-dot-net.md","mtime":"2020-01-15T20:56:37.635Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-15T21:14:13.213Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -101,83 +101,87 @@
   * run on server
 
 ## VS IDE
-View in Broswer
-Select Browse With… from toolbar to view page with any installed browser
-Default can be changed here
+* Run code to view pages in Broswer. VS offers 2 ways to run your site
+  * F5 offers full debugging which allows interactive breakpoints
+  * Ctrl+F5 runs without debugging, which runs faster
+  * Both approaches permit making changes and refreshing browser without relaunching
+* Select Browse With… from toolbar to view page with any installed browser.
+* Switch between Design view or Code view, by clicking buttons at the bottom left of the editor. Or right click on the file and click View Code/View Design.
+* Uses cookies by default, Can be overridden in Web.config file
+* ASP.NET simplifies web programming by automatically maintaining state on page when posting back to the same page
+Known as a postback. Any events or data change will reload the page.
+* Implemented using a hidden HTML field: ``__VIEWSTATE``
 
-VS offers 2 ways to run your site
-F5 offers full debugging which allows interactive breakpoints
-Ctrl+F5 runs without debugging, which runs faster
-Both approaches permit making changes and refreshing browser without relaunching
-XML comments are the preferred technique for documenting code in .NET
-Type /// on the line before any routine and VS will create the XML comment structure
+
+## Create new project
+* select ``ASP.NET Web Application (.NET Framework)`` to create a ASP.NET Web Forms using .NET Framework and C#.
+
+### Create ``.aspx`` Page File
+* To create a ``default.aspx`` file as the home page, right-click the project choose Add / Web Form, set name to default.
+* Drag any components into the ``pageName.aspx`` file then add event to it by double clicking in Design View.
+* Select the Controls code and press F4 to edit its property in the right panel.
+* Methods or Events are edited in the ``pageName.aspx.cs`` file.
+* For styling, Right-click the project, select Add / Add New Item... From the list, select Style Sheet, name it.
+* Drag the css file into the ``<head>`` tag of the aspx file for asscociation.
+* Classes and Ids still need to be set in the aspx for the css to work
 
 
+### ``.aspx.cs`` File
+* It has an ``IsPostBack`` variable that is False the first time a page loads, True any subsequent time the page loads.
+* It has access to Session data, ``Session["var_name"] = data``.
+  * Read Session data: ``String name = Session["name"].ToString();``, ``int cnt = (int)Session["item_count"];``, ``List<Movie> movies = (List<Movie>)Session["movies"];``.
 
-## HTML Controls
 
 
 
 ## Web Form Controls
-Standard
-Buttons, text boxes, labels, …
-Rich
-Calendars, wizards, …
-Validation
-Client-side validation
-Data
-Literal control can be used to display text or HTML
-Many more
-
-
+* Standard .NET Controls
+* Buttons
+  * has ``CausesValidation="false"`` property.
+* labels
+* DropDownList
+  * Hover over the code(above "asp") and click the arrow button to edit items. Codes will be auto generated when the items are added.
+  * Has value property to set its initial selection, set ``Value="none"`` if it need initial no selected value.
+  * ``.SelectedIndex`` are still used in the ``.aspx.cs`` file.
+* TextBox - used to get user input
+  * has attribute ``TextMode="Date"`` to control input type. Text boxes have multiple modes of operation
+    * SingleLine (normal)
+    * MultiLine(Can specify number of rows and/or columns)
+    * Password
+    * Color
+    * Date
+    * Number
+  * has MaxLength property
+* Rich
+* Calendars, wizards, …
+* Validation
+  * Validator has the following types:
+    * RangeValidator
+    * RequiredValidator
+    * ValidationSummary - Return the ErrorMessage
+    * CompareValidator
+    * RegularExpressionValidator - Email address, phone numb
+  * Used to Validation an control's data, and present messages and adjust focus if validation fails.
+  * Associate related controls for validation, type the target control's id after the ControlToValidate property.
+  * Need to run ``Install-Package AspNet.ScriptManager.jQuery`` in the Tools/NuGet Package Manager / Package Manager Console.
+  * IsValid variable can be used in ``.aspx.cs`` file. It returns true if validation is successful.
+  * Can use image as output Text ``Text="<img src='images/error.png' alt='Date is required.' title='Required.' />"``.
+  * Dynamic property can make it auto adjust. If a control has more than one validation, set display to dynamic.
+  * InitialValue is used to inform the validator about its initial value.
+* Client-side validation
+* Data
+* Literal control It can be used to display text or HTML. When content is assigned to its Text property.
 
 ### Page Object
-Events
-
-PreInit
-Init
-InitComplete
-PreLoad
-Load
-LoadComplete
-Control Events
-PreRender
-PreRenderComplete
-SaveStateComplete
-Unload
-
-
-
-
-### State
-ASP.NET simplifies web programming by automatically maintaining state on page when posting back to the same page
-Known as a postback
-Most other web development environments force you to manage state yourself
-Non-trivial
-State is not stored on the server
-Good for scalability
-Implemented using a hidden HTML field: ``__VIEWSTATE``
-
-Page.IsPostBack
-False the first time a page loads
-True any subsequent time the page loads
-Use to do any one-time tasks
-
-
-ASP.NET Sessions
-
-In web development, we must use session state to move information around from one page to another and between round-trips
-Uses cookies by default
-  Can be overridden in Web.config file
-  If overridden, it is seamless to programmer
-ASP.NET provides a Session[" "] container
-Save any object in a Session
-  i.e. Session["var_name"] = <object>
-
-Putting something into a session variable
-Session["name"] = "Bob Loblaw";
-Session["item_count"] = items.Count;
-Reading a session variable
-String name = Session["name"].ToString();
-int cnt = (int)Session["item_count"];
-Strings can be pulled out of session variables using the ToString method, almost anything else will need to be cast
+It has the following Events
+* PreInit
+* Init
+* InitComplete
+* PreLoad
+* Load - Used with IsPostBack to set the initial state for the page.
+* LoadComplete
+* Control Events
+* PreRender - It is used to pass data before the page is shown.
+* PreRenderComplete
+* SaveStateComplete
+* Unload

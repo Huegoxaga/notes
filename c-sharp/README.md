@@ -1,4 +1,4 @@
-# C\#
+# ``C#``
 
 ## Introduction
 * In 2000, Microsoft announced the C# programming language.
@@ -1305,4 +1305,7 @@ SQL
                     sqlConnection.Close();
 	}
 
-  Partial indicates that the class is specified in multiple files
+Partial indicates that the class is specified in multiple files
+movie.DateSeen.ToShortDateString();  
+
+DateTime.Today
