@@ -140,7 +140,7 @@ All of its element have the same length and type.
 
 int[,] x = new int[4,4]; //a new 4 by 4 integer array.  
 // the [,] indicates two dimensional array. for three dimensional array using [, ,]
-int[,] x = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+int[,] x = { {1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16} };
 //x[1][1] is 6 from the above array.
 
 Jagged array

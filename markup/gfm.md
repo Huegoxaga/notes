@@ -189,6 +189,9 @@ LaTeX and MathML are used to created math formula.
 ## Build Website
 * Run ``gitbook init`` everytime when change it made.
 * if ``SUMMARY.md`` is updated, init will add new files in the project folder.
+* ``{{`` or ``}}`` in ``.md`` files in code block will cause error, place a space in between to avoid errors. Ex, ``{ {``
+* all code must be in code block.
 * Run ``gitbook build``
+* Use ``gitbook build ./ --log=debug --debug`` to debug.
 ## Publish
 * github pages host static webpages from repo, it is free.

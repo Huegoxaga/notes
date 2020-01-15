@@ -104,7 +104,7 @@ Each component is related to the following files.
 * ``component-name.component.css``, this is style sheet for the component.
 * ``component-name.component.html``, this is template for the component.
   ```html
-  <!--in {{..}} data and methods from ts file can be used as an expression.-->
+  <!--in { {..} } data and methods from ts file can be used as an expression.-->
   <h1>{{dataName}}</h1>
   <ul>
     <!--ngfor directive work as for each loop the an array-->
