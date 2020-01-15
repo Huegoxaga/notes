@@ -195,3 +195,5 @@ LaTeX and MathML are used to created math formula.
 * Use ``gitbook build ./ --log=debug --debug`` to debug.
 ## Publish
 * github pages host static webpages from repo, it is free.
+* add the generated webpages files in the GitHub Repo
+* in Settings, find GitHub Pages Section and Set the folder location for hosting.
