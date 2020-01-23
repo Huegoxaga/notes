@@ -42,6 +42,23 @@ the following tags are placed in the head tag
 	<script src="demo_defer.js" defer></script>
 	With defer attribute. A script that will not run until after the page has loaded.
 
+	Viewport - part of the page that’s currently shown on-screen. The user may scroll to change the part of the page he sees, or zoom to change the size of the viewport.
+
+	<meta name="viewport" content="width=320">–sets viewport width to be 320px
+	<meta name="viewport" content="width=device-width">
+	sets viewport width to be equal to the device width
+	on Galaxy Nexus, screen is 720px, so viewport will now be 720px
+	this is the recommended way
+	<meta name="viewport" content="width=device-width, initial-scale=2">
+	zoom in by a factor of 2
+	<meta name="viewport" content="width=device-width, initial-scale=.5">
+	zoom out by a factor of 2
+	on Galaxy Nexus, screen is 720px, so viewport will be 360px
+	<meta name="viewport" content="width=320, user-scalable=no">
+	zooming is disable
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 body tag
 It contains main body of the website.
 

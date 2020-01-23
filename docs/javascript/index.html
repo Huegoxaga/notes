@@ -616,14 +616,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" >
+        <li class="chapter " data-level="1.22" data-path="../theory/">
             
-                <span>
+                <a href="../theory/">
             
                     
                     Theory
             
-                </span>
+                </a>
             
 
             
@@ -852,6 +852,8 @@ let keyword is recommended for variable declaration.</p>
 <h4 id="membership-operator">Membership Operator</h4>
 <pre><code class="lang-js">i <span class="hljs-keyword">in</span> arrayX <span class="hljs-comment">//returns true if i is a member of arrayX</span>
 i <span class="hljs-keyword">in</span> arrayX === <span class="hljs-literal">false</span>   <span class="hljs-comment">//is true if i is not a member of arrayX</span>
+pushpin <span class="hljs-keyword">instanceof</span> Microsoft.Maps.Pushpin <span class="hljs-comment">//see if an object is of type a class</span>
+<span class="hljs-keyword">typeof</span> x !== <span class="hljs-string">&apos;undefined&apos;</span>  <span class="hljs-comment">//see if a variable is of certain type.</span>
 </code></pre>
 <h3 id="control-structures">Control Structures</h3>
 <h4 id="conditional-structures">Conditional Structures</h4>
@@ -1317,9 +1319,14 @@ array2 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 <span class="hljs-built_in">console</span>.log(string, variable); <span class="hljs-comment">// auto concatenate its argument.</span>
 Window.localStorage object.
 <span class="hljs-comment">// Simulate a mouse click:</span>
-<span class="hljs-built_in">window</span>.location.href = <span class="hljs-string">&quot;http://www.w3schools.com&quot;</span>;  
+<span class="hljs-built_in">window</span>.location.href = <span class="hljs-string">&quot;http://www.example.com&quot;</span>;  
 <span class="hljs-comment">// Simulate an HTTP redirect:</span>
-<span class="hljs-built_in">window</span>.location.replace(<span class="hljs-string">&quot;http://www.w3schools.com&quot;</span>);
+<span class="hljs-built_in">window</span>.location.replace(<span class="hljs-string">&quot;http://www.example.com&quot;</span>);
+<span class="hljs-comment">//open a new tab</span>
+<span class="hljs-built_in">window</span>.open(<span class="hljs-string">&quot;https://www.example.com&quot;</span>);
+
+<span class="hljs-built_in">window</span>.screen.width <span class="hljs-comment">//Screen Width is the width of the device</span>
+
 <span class="hljs-built_in">document</span>.write(<span class="hljs-string">&quot;\&lt;h1\&gt;abc&lt;\\h1&gt;&quot;</span>);  <span class="hljs-comment">//It is used for testing, it output text string in the HTML.</span>
 alert(<span class="hljs-string">&quot;alert message goes here&quot;</span>);<span class="hljs-comment">//return an alert box</span>
 <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;a string of expression&quot;</span>);     <span class="hljs-comment">//it returns the result of expression as a string, returns undefined if argument is empty.</span>
@@ -1619,11 +1626,20 @@ fetch(URL, options).then(response=&gt;response.text()).then(success);
 <li>In code change response.text() to response.json() to receive JSON data.</li>
 <li>JavaScript Object to JSON String, <code>JSON.stringify(data)</code></li>
 <li>Decode from JSON, <code>JSON.parse(string)</code></li>
+<li>Use <code>eval()</code> method convert json to javaScript objects<pre><code class="lang-js"><span class="hljs-comment">//Eval converts the STRING into a JavaScript Array Map</span>
+<span class="hljs-keyword">var</span> jsObj = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&apos;(&apos;</span> + JSONString + <span class="hljs-string">&apos;)&apos;</span>);
+</code></pre>
+</li>
 </ul>
 <h3 id="geolocation">GeoLocation</h3>
 <ul>
 <li>The HTML Geolocation API is used to locate a user&apos;s position.</li>
 <li>Modern browsers support a global navigator object and the navigator object contains a navigator.geolocation property.</li>
+<li>To calculate the distance between two coordinates use <code>haversine()</code> function.<ul>
+<li>run <code>npm i haversine</code>.
+*</li>
+</ul>
+</li>
 </ul>
 <h4 id="getcurrentposition-method">getCurrentPosition Method</h4>
 <pre><code class="lang-javascript">navigator.geolocation.getCurrentPosition(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">position</span>)</span>{  <span class="hljs-comment">//callback returns position object  </span>
@@ -1656,16 +1672,26 @@ fetch(URL, options).then(response=&gt;response.text()).then(success);
 </li>
 </ul>
 <h4 id="watchposition-method">watchPosition Method</h4>
-<p>Returns the current position of the user and continues to return updated position as the user moves.</p>
-<h4 id="clearwatch-method">clearWatch Method</h4>
-<p>Stops the watchPosition() method</p>
+<ul>
+<li><code>navigator.watchPosition(success, [error], [options]);</code></li>
+<li>Returns the current position of the user and continues to return updated position as the user moves.</li>
+<li>Options:<ul>
+<li><code>timeout (ms)</code> - Is a positive value representing the maximum length of time (in milliseconds) the device is allowed to take in order to return a position. Defaults to INFINITY.</li>
+<li><code>maximumAge (ms)</code> - Is a positive value indicating the maximum age in milliseconds of a possible cached position that is acceptable to return. If set to 0, it means that the device cannot use a cached position and must attempt to retrieve the real current position. If set to Infinity the device will always return a cached position regardless of its age. Defaults to INFINITY.</li>
+<li><code>enableHighAccuracy (bool)</code> - Is a boolean representing if to use GPS or not. If set to true, a GPS position will be requested. If set to false, a WIFI location will be requested.</li>
+<li><code>distanceFilter (m)</code> - The minimum distance from the previous location to exceed before returning a new location. Set to 0 to not filter locations. Defaults to 100m.</li>
+<li><code>useSignificantChanges (bool)</code> - Uses the battery-efficient native significant changes APIs to return locations. Locations will only be returned when the device detects a significant distance has been breached. Defaults to FALSE.<h4 id="clearwatch-method">clearWatch Method</h4>
+Stops the watchPosition() method</li>
+</ul>
+</li>
+</ul>
 <h3 id="bing-maps">Bing Maps</h3>
 <ul>
 <li>Provide map to the webpage.</li>
 <li><a href="https://www.microsoft.com/en-us/maps/documentation" target="_blank">Click</a> to see full documents</li>
 <li><a href="https://www.bing.com/api/maps/sdk/mapcontrol/isdk/Overview#HTML" target="_blank">Click</a> to see sample codes.</li>
 <li>all of the map object has <code>getVisible()</code>, <code>getLocation()</code> methods.</li>
-<li>infobox properties can contain html tags like <code>&lt;br&gt;</code> or <code>description: &quot;&lt;a href=&apos;#&apos; onclick=&apos;return directions(&quot; + variableName + &quot;);&quot; + &quot;&apos;&gt;directions&lt;/a&gt;&quot;</code>.</li>
+<li>infobox properties can contain html tags in description property with close button.  <code>&lt;br&gt;</code> or <code>description: &quot;&lt;a href=&apos;#&apos; onclick=&apos;return directions(&quot; + variableName + &quot;);&quot; + &quot;&apos;&gt;directions&lt;/a&gt;&quot;</code>.</li>
 </ul>
 <h4 id="set-up">Set up</h4>
 <p>API key is required to use the map.</p>
@@ -1695,6 +1721,7 @@ fetch(URL, options).then(response=&gt;response.text()).then(success);
 </code></pre>
 </li>
 <li><code>export</code> keyword can be placed at the end and use curly brackets to enclosed everything needed to export.</li>
+<li>When exporting arrow function, declare the function variable proper using <code>const</code>.</li>
 <li><code>as</code> keyword is used for alias.<ul>
 <li><code>export { myArray, myFunction as NewName, ClassName };</code></li>
 </ul>
@@ -1704,7 +1731,7 @@ fetch(URL, options).then(response=&gt;response.text()).then(success);
 <ul>
 <li><code>import</code> keyword, members to be imported in curly brackets and then the location of the module relative to the current file, <code>import { myFunction, ClassName } from &apos;file.js&apos;;</code></li>
 <li>use <code>as</code> for alias without curly brackets. <code>import myFunction as newName from &apos;file.js&apos;;</code></li>
-<li>You can import everything that&apos;s imported by a module like this: <code>import * as Utils from &apos;app.js&apos;;</code><ul>
+<li>You can import everything that&apos;s exported by a module like this: <code>import * as Utils from &apos;app.js&apos;;</code><ul>
 <li>This allows you access to members with the dot notation: <code>Utils.myLogger();</code></li>
 </ul>
 </li>
@@ -1713,6 +1740,7 @@ fetch(URL, options).then(response=&gt;response.text()).then(success);
 <li>If myArray is the default export, When import <code>import newDefaultArrayName, { ClassName, myFunction } from &apos;file.js&apos;;</code></li>
 </ul>
 </li>
+<li>Note: Imported function and variables is global, they can be accessed anywhere directly.</li>
 </ul>
 
                                 
@@ -1753,7 +1781,7 @@ fetch(URL, options).then(response=&gt;response.text()).then(success);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.4","depth":1,"next":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-01-14T22:59:52.015Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-15T21:14:13.213Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.4","depth":1,"next":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-01-22T05:26:02.392Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

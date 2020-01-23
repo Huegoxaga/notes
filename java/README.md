@@ -1045,7 +1045,7 @@ outputFile.close();
 
 ## System class
 * ``System.currentTimeMillis();``
-* ``System.current.nanoTime();`` measures nano second
+* ``System.current.nanoTime();`` measures difference in nano second by substract values from two of these method. It does not return real time value.
 
 ## StringBuiler class
 

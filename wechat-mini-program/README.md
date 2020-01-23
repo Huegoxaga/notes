@@ -15,7 +15,10 @@
 * Login the development tool.
 * Create new project with appID and start.
 
->_**Notes**_: _To immediately start a project for learning or testing purpose, skips the steps for mini program registration. Download the development tool and create a new project with testing accounts. However, testing account does not have access to cloud services._
+>_**Notes**_:
+* _To immediately start a project for learning or testing purpose, skips the steps for mini program registration. Download the development tool and create a new project with testing accounts. However, testing account does not have access to cloud services._
+* _For newly created projects, Cloud Services will not be available within the first 10 min._
+
 
 # Files
 
@@ -124,9 +127,20 @@
 * For js file of each page, before ```Page({ })```, ```var app = getApp()``` is used to access data and function from ```app.js```.
 * Use ```var util = require('../../utils/util.js')``` in the first line of js file, to access util functions.
 * There is a data object in ```APP({ })``` or ```Page({ })``` in js file. The data object stores data for the current app or page.
+* ``this.getData``, ``this.setData`` are used to access the ``data`` object in the ``.js`` file.
 
 #### wx API
 [Click](https://developers.weixin.qq.com/miniprogram/en/dev/api/open-api/login/wx.login.html) to see complete list of wx methods.
+
+#### Program Life Cycle
+* ``onLaunch``, environment setup is done in this phrase.
+```js
+onLaunch: function () {
+  //clear globalData
+  this.globalData = {}
+}
+```
+
 
 ### wxml file
 * ``.wxml``, or WeiXin Markup Language File controls the layout of the mini program with its own component tags and attributes.
@@ -173,3 +187,84 @@ input tag
 There are two ways to create a new page. Either way works, relevant settings will be auto completed.
 * Right click Pages folder to create new directory, then right click the new folder and select New Page.
 * Add the new page path and name in the pages property in app.json file.
+
+## Cloud Services
+### Initialize
+1. Open Cloud Base and Enter a preferred environment name, an environment ID will be auto generated.
+2. Create new collection in cloud base console.
+3. Initialize the Cloud Services in the ``app.js``'s ``onLaunch`` function.
+  ```js
+  if (!wx.cloud) {
+    console.error('Please lib version 2.2.3 or above.')
+  } else {
+    wx.cloud.init({
+      // enter the cloud environment id here.
+      // It can be found in the cloud base panel/Setting.
+      env: 'env-id',
+      traceUser: true,
+    })
+  }
+  ```
+
+### Usage
+##### Create
+* Template, the cloud function returns an async function with the following implementation.
+  ```js
+  // get sdk
+  const cloud = require('wx-server-sdk')
+  cloud.init()
+  // get ref
+  const db = cloud.database();
+  // cloud function goes inside.
+  exports.main = async (event, context) => {
+    // return a function here.
+    return await db.collection("posts").where({}).get();
+  }
+  ```
+* Read Data
+  * Return the following function to read data from cloud database(collection).
+  ```js
+  return await db.collection("posts").where({}).get();
+  ```
+* Update Data
+  * Return the following function to update data on cloud database(collection).
+  ```js
+  return await db.collection("posts").doc(event.id).update({
+    data: {
+      votes: db.command.inc(1)
+    }
+  })
+  ```
+* Write Data
+  * Return the following function to insert data to cloud database(collection).
+  ```js
+  return await db.collection("posts").add({
+      data: {
+        content: event.content,
+        votes: 0
+      }
+    })
+  ```
+
+##### Upload
+* Right click on the cloud function and upload it.
+##### Call
+* in the js file for all pages, use ``wx.cloud.callFunction()`` to call a cloud function.
+  ```js
+  wx.cloud.callFunction({
+      name: "cloudFunctionName",
+      data: {
+        //pass function parameters
+        id: this.data.id
+      },
+      success: (res) => {
+        //callback after
+      },
+      fail: console.error
+    })
+  ```
+
+  
+## Preview and Publish the App
+* Click upload button in the IDE to upload the trial version.
+* In the mini-program console, select review, the publish it.

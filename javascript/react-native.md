@@ -235,7 +235,7 @@ settingName2: {
   ```
   react-native link react-native-moduleName
   ```
-* for iOS, run: ``install pod`` in the ios folder after add installing the module.
+* for iOS, run: ``pod install`` in the ios folder after add installing the module.
 * restart everything after installing modules
 * look at yellow prompts for error when using npm install. install all the required packages.
 * add path in the podfile if pod install can't find the modules.

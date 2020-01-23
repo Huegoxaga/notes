@@ -46,25 +46,25 @@
 
 ## Programming Models
 * Web Forms
-* Control and event-based programming model similar to Windows Forms
-* Controls encapsulate HTML, JavaScript and CSS
-* Rich UI controls included – datagrids, charts, AJAX, …
-* Browser differences handled for you
-* We will be using Web Forms to start
-* ASP.NET uses the concept of the “web form”, similar to Windows Forms
-* On the form, we place controls
-* Server-side technology
-* The ASP.NET engine renders standards-based HTML and JavaScript code
-* Can also edit in HTML mode
+  * Control and event-based programming model similar to Windows Forms
+  * Controls encapsulate HTML, JavaScript and CSS
+  * Rich UI controls included – datagrids, charts, AJAX, …
+  * Browser differences handled for you
+  * We will be using Web Forms to start
+  * ASP.NET uses the concept of the “web form”, similar to Windows Forms
+  * On the form, we place controls
+  * Server-side technology
+  * The ASP.NET engine renders standards-based HTML and JavaScript code
+  * Can also edit in HTML mode
   * Some changes can only be made this way
 
 
 * MVC
-* Model View Controller
-* Total control of HTML markup
-* Supports unit testing
-* Extremely flexible and extensible
-* Emerging as preferred development technique
+  * Model View Controller
+  * Total control of HTML markup
+  * Supports unit testing
+  * Extremely flexible and extensible
+  * Emerging as preferred development technique
 
 * Web API
   * Application Programming Interface (API)
@@ -105,12 +105,13 @@
   * F5 offers full debugging which allows interactive breakpoints
   * Ctrl+F5 runs without debugging, which runs faster
   * Both approaches permit making changes and refreshing browser without relaunching
+  * Run by IIS Express can choose a ``http`` port and a ``https`` when right click IIS Service Icon in OS Task Bar.
 * Select Browse With… from toolbar to view page with any installed browser.
 * Switch between Design view or Code view, by clicking buttons at the bottom left of the editor. Or right click on the file and click View Code/View Design.
 * Uses cookies by default, Can be overridden in Web.config file
-* ASP.NET simplifies web programming by automatically maintaining state on page when posting back to the same page
-Known as a postback. Any events or data change will reload the page.
+* ASP.NET simplifies web programming by automatically maintaining state on page when posting back to the same page known as a postback. Any events or data change will reload the page.
 * Implemented using a hidden HTML field: ``__VIEWSTATE``
+* Any components have a task button, accessed by hover over the beginning tag and click on the arrow button
 
 
 ## Create new project
@@ -127,20 +128,96 @@ Known as a postback. Any events or data change will reload the page.
 
 
 ### ``.aspx.cs`` File
+* It stores all the event handlers for the component in ``.aspx`` file.
 * It has an ``IsPostBack`` variable that is False the first time a page loads, True any subsequent time the page loads.
 * It has access to Session data, ``Session["var_name"] = data``.
   * Read Session data: ``String name = Session["name"].ToString();``, ``int cnt = (int)Session["item_count"];``, ``List<Movie> movies = (List<Movie>)Session["movies"];``.
 
+## Database
+### Connection
+1. Open the database server.
+2. Add the ``.sql`` script into the project in the Solution Explorer.
+3. open the ``.sql`` file. click the ``Execute`` button.
+4. set Server Name,  ``localhost\serverName`` or any other server address and name, click ``Connect``.
+5. The ``sql`` script should be run in the target database.
+### Access Through Components
+1. In ``.aspx`` file, click the task button of a component, select ``Choose Data Source``.
+2. Select ``New Data Source``.
+3. Choose the Database and set its ID.
+4. Establish New Connection by following the steps to select the corresponding database table.
+5. Connection String will be set in ``Web.config`` file in the project folder.
+6. Select the corresponding columns to display.
 
+### Access in ``.aspx.cs``
+* Requires following directive
+  * ``using System.Data;``
+  * ``using System.Web.Configuration;``
+  * ``using System.Data.SqlClient;``
+* Use the following code to add data to database
+```cs
+try
+{
+  var connectionString = WebConfigurationManager.ConnectionStrings["movie_trackerConnectionString"].ConnectionString;
 
+  using (SqlConnection connection = new SqlConnection(connectionString))
+  {
+    var command = new SqlCommand("INSERT INTO movies VALUES(@title, @date, @genre, @rating)", connection);
+    command.Parameters.Add("@title", SqlDbType.VarChar);
+    command.Parameters["@title"].Value = titleTextBox.Text;
+    command.Parameters.Add("@date", SqlDbType.Date).Value = date.ToShortDateString();
+    command.Parameters.AddWithValue("@genre", genreDropDownList.SelectedValue);
+    command.Parameters.Add("@rating", SqlDbType.Int).Value = rating;
+    connection.Open();
+    command.ExecuteNonQuery();
+  }
+}
+catch (Exception ex)
+{
+  outputLiteral.Text += $"<p style=\"color:red;\">{ex.Message}</p>";
+}
+```
+* Use the following code to read data from database
+```cs
+try
+{
+  var connectionString = WebConfigurationManager.ConnectionStrings["movie_trackerConnectionString"].ConnectionString;
+
+  using (SqlConnection connection = new SqlConnection(connectionString))
+  {
+      var command = new SqlCommand(@"SELECT title, date_seen, genre_description, rating
+                                     FROM movies m
+                                     JOIN genres g
+                                     ON m.genre_id = g.genre_id",
+                                     connection);
+      connection.Open();
+      var reader = command.ExecuteReader();
+
+      while (reader.Read())
+      {
+          outputLiteral.Text += $@"<tr>
+                                     <td>{reader["title"].ToString()}</td>
+                                     <td>{reader.GetDateTime(1).ToShortDateString()}</td>
+                                     <td>{reader["genre_description"].ToString()}</td>
+                                     <td style=""text-align:center;"">{(int)reader["rating"]}</td>
+                                   </tr>";
+      }
+
+      reader.Close();
+  }
+}
+catch (Exception ex)
+{
+  outputLiteral.Text += $"<p style=\"color:red;\">{ex.Message}</p>";
+}
+```
 
 ## Web Form Controls
-* Standard .NET Controls
+* Many Standard .NET Controls Work here.
 * Buttons
   * has ``CausesValidation="false"`` property.
 * labels
 * DropDownList
-  * Hover over the code(above "asp") and click the arrow button to edit items. Codes will be auto generated when the items are added.
+  * Click task button to edit items. Codes will be auto generated when the items are added.
   * Has value property to set its initial selection, set ``Value="none"`` if it need initial no selected value.
   * ``.SelectedIndex`` are still used in the ``.aspx.cs`` file.
 * TextBox - used to get user input
@@ -160,8 +237,9 @@ Known as a postback. Any events or data change will reload the page.
     * RequiredValidator
     * ValidationSummary - Return the ErrorMessage
     * CompareValidator
-    * RegularExpressionValidator - Email address, phone numb
-  * Used to Validation an control's data, and present messages and adjust focus if validation fails.
+    * RegularExpressionValidator - Email address, phone number
+    * CustomValidator - required server side code in OnServerValidate and client side code in ClientValidationFunction written in JavaScript.
+  * Used to Validation a control's data, and present messages and adjust focus if validation fails.
   * Associate related controls for validation, type the target control's id after the ControlToValidate property.
   * Need to run ``Install-Package AspNet.ScriptManager.jQuery`` in the Tools/NuGet Package Manager / Package Manager Console.
   * IsValid variable can be used in ``.aspx.cs`` file. It returns true if validation is successful.
@@ -173,7 +251,7 @@ Known as a postback. Any events or data change will reload the page.
 * Literal control It can be used to display text or HTML. When content is assigned to its Text property.
 
 ### Page Object
-It has the following Events
+It has the following Events:
 * PreInit
 * Init
 * InitComplete

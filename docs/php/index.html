@@ -618,14 +618,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" >
+        <li class="chapter " data-level="1.22" data-path="../theory/">
             
-                <span>
+                <a href="../theory/">
             
                     
                     Theory
             
-                </span>
+                </a>
             
 
             
@@ -960,6 +960,9 @@ It can also be used with arithmetic operator.</li>
         <span class="hljs-comment">//optional, this line will be executed if all values don&#x2019;t match x.</span>
 }
 </code></pre>
+<ul>
+<li>use <code>endswitch;</code> optionally at the end of for each loop if curly brackets are not used.</li>
+</ul>
 <h5 id="breakcontinue-statement">Break/Continue statement</h5>
 <ul>
 <li>If there is no break statement in switch structure, code will keep running when there is a match.
@@ -996,6 +999,9 @@ break statement can be used in all other control structures.</li>
     <span class="hljs-comment">//$key and $value will be set in each iteration.</span>
 }
 </code></pre>
+<ul>
+<li>use <code>endforeach;</code> optionally at the end of for each loop if curly brackets are not used.</li>
+</ul>
 <h2 id="include-and-require-statements">include and require statements</h2>
 <ul>
 <li>They allow for the insertion of the content of the PHP file by appending the file path to the keyword include or require.</li>
@@ -1084,6 +1090,10 @@ $_COOKIE[&#x2018;user&#x2019;]=<span class="hljs-string">&quot;username&quot;</s
 <span class="hljs-comment">//It is used to perform checking.</span>
 </code></pre>
 </li>
+</ul>
+<h3 id="request"><code>$_REQUEST</code></h3>
+<ul>
+<li>It stores the Ajax Request data from the client side.</li>
 </ul>
 <h2 id="classes">Classes</h2>
 <ul>
@@ -1198,13 +1208,13 @@ __construct($x, $y){}    so <span class="hljs-keyword">for</span> <span class="h
 <li><p>null and false are always used for error handling for these functions.</p>
 </li>
 </ul>
-<h4 id="random">Random</h4>
+<h3 id="random">Random</h3>
 <pre><code class="lang-php">rand($min, $max)
 </code></pre>
 <ul>
 <li>returns a random integer $min to $max</li>
 </ul>
-<h4 id="date">Date</h4>
+<h3 id="date">Date</h3>
 <pre><code class="lang-php">date($format)
 date(<span class="hljs-string">&quot;M d Y&quot;</span>)
 date(<span class="hljs-string">&quot;m/d/y&quot;</span>)
@@ -1217,7 +1227,7 @@ date(<span class="hljs-string">&quot;l dS \of F Y h:i:s A&quot;</span>)
 </code></pre>
 </li>
 </ul>
-<h4 id="vardumpvar"><code>var_dump($var)</code></h4>
+<h3 id="vardumpvar"><code>var_dump($var)</code></h3>
 <ul>
 <li>prints the type and content of $var or &amp;object</li>
 <li>In HTML, using <code>&lt;pre&gt;</code> tag to hold space for the <code>var_dump()</code> output. It is not mandatory.<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>= var_dump($varName)<span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
@@ -1226,9 +1236,9 @@ date(<span class="hljs-string">&quot;l dS \of F Y h:i:s A&quot;</span>)
 <li>or directly use <code>var_dump($var)</code> in PHP to print object info in console.</li>
 <li><code>var_dump($_GET)</code> and <code>var_dump($_POST)</code> can be used to check form content.</li>
 </ul>
-<h4 id="phpversion">phpversion()</h4>
+<h3 id="phpversion">phpversion()</h3>
 <p>return the PHP version string</p>
-<h4 id="formatting-number">Formatting Number</h4>
+<h3 id="formatting-number">Formatting Number</h3>
 <pre><code class="lang-php"><span class="hljs-comment">//round $n to $p decimal places</span>
 number_format($n, $p)
 $owing = number_format($user-&gt;get_owing(), <span class="hljs-number">2</span>);
@@ -1237,9 +1247,19 @@ $owing = number_format($user-&gt;get_owing(), <span class="hljs-number">2</span>
 <pre><code class="lang-php">mail($addr, $subj, $msg)
 <span class="hljs-comment">//send email when email server is configured.</span>
 </code></pre>
-<h4 id="hashing-password">Hashing Password:</h4>
+<h3 id="hashing-password">Hashing Password:</h3>
 <pre><code class="lang-php">password_hash($user_pwd, PASSWORD_DEFAULT) <span class="hljs-comment">//return hashed password</span>
 password_verify($user_pwd, $hash) <span class="hljs-comment">//return true if raw password $user_pwd. hashed password $hash.</span>
+</code></pre>
+<h3 id="search-for-pattern">Search for Pattern</h3>
+<p>The preg_match() function searches string for pattern, returning true if pattern exists, and false otherwise.</p>
+<pre><code class="lang-php">$line = <span class="hljs-string">&quot;Vi is the greatest word processor ever created!&quot;</span>;
+<span class="hljs-comment">// perform a case-Insensitive search for the word &quot;Vi&quot;</span>
+<span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/\bVi\b/i&quot;</span>, $line, $match)) :
+   <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Match found!&quot;</span>;
+   <span class="hljs-keyword">endif</span>
+</code></pre>
+<pre><code class="lang-php">preg_match(<span class="hljs-string">&quot;/^[A-Za-z]{3,20}$/&quot;</span>,$string)
 </code></pre>
 <h2 id="files-io">Files I/O</h2>
 <h3 id="open-files">Open Files</h3>
@@ -1398,8 +1418,25 @@ $userlist = [];
 }
 <span class="hljs-keyword">echo</span> json_encode($userlist);
 </code></pre>
+<h2 id="php-filesystem">PHP FileSystem</h2>
 </li>
 </ul>
+<h3 id="filegetcontents"><code>file_get_contents()</code></h3>
+<ul>
+<li>It reads a file into a string, <code>file_get_contents(path)</code>.</li>
+</ul>
+<h3 id="fileputcontents"><code>file_put_contents()</code></h3>
+<ul>
+<li>It writes data to a file and return the number of character it written.
+<code>file_put_contents(filename, data)</code></li>
+<li>It can have optional parameter <code>mode</code>:<ul>
+<li>FILE_USE_INCLUDE_PATH - search for filename in the include directory</li>
+<li>FILE_APPEND - if file already exists, append the data to it - instead of overwriting it</li>
+<li>LOCK_EX - Put an exclusive lock on the file while writing to it</li>
+</ul>
+</li>
+</ul>
+<h2 id="mobileesp-project">MobileESP Project</h2>
 
                                 
                                 </section>
@@ -1443,7 +1480,7 @@ $userlist = [];
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHP","level":"1.11","depth":1,"next":{"title":"Cloud Services","level":"1.12","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[]},"previous":{"title":"Angular","level":"1.10.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"php/README.md","mtime":"2020-01-14T23:04:55.816Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-15T21:14:13.213Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHP","level":"1.11","depth":1,"next":{"title":"Cloud Services","level":"1.12","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[]},"previous":{"title":"Angular","level":"1.10.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"php/README.md","mtime":"2020-01-23T14:39:11.917Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -11,8 +11,11 @@
 
 ## Syatax
 * ``$("selector").jQueryAction()``
-* The $ accesses jQuery.
+* The ``$`` accesses jQuery.
 * The selector finds HTML elements, using CSS selector in double quotes.
+  * ``$(p:first)`` selects the first ``p`` tag.
+  * ``$(p:last)`` selects the last ``p`` tag.
+  * ``$(p:2)`` selects the third ``p`` tag. 2 acts like an index starting at 0.
 * node or nodelist variable can be used with jQuery action methods directly, like ``$(node).jQueryAction()``
 * The jQuery action method performs on all elements the selector selects.
 
@@ -57,13 +60,19 @@ let node = $("<p>").html("Hello, World!").css("color", "aqua").attr("title","Qui
 //The width() and height() methods get and set the dimensions without the padding, borders and margins.
 //The innerWidth() and innerHeight() methods also include the padding.
 //The outerWidth() and outerHeight() methods include the padding and borders.
+$(document).width() //Page Width, width of the document
+$(window).width()  //Viewport is the width of the browser window
 parent() //method returns the direct parent element object of the selected element.
 parents() //returns all ancestors of the selected element.
 .first();  //first item from the nodelist.
 .last();  //last item from the nodelist.
 .eq(index) //method can be used to select a specific element from multiple selected elements. It can be chained after a method that selects multiple elements.
 .remove(); //Remove the selected elements.
-.empty() //method is used to remove the child elements of the selected element(s)
+.empty(); //method is used to remove the child elements of the selected element(s)
+.appendTo("tagName"); //The appendTo() method inserts HTML elements at the end of the selected elements.
+//Example
+$("<span>Hello World!</span>").appendTo("p");
+
 ```
 
 ## Event Handling
@@ -73,8 +82,6 @@ parents() //returns all ancestors of the selected element.
 .EventName(function(){
 //$(this) can be used here to represent the current node that send the event.
 }); //Add event handler of certain event for the selected element.
-.each(function(){ //this is the node in each iteration, like foreach loop
-})
 ```
 
 ### List of Event Names
@@ -154,4 +161,151 @@ $(this).methodscallafteranimation()
 $("#instructions").animate({borderWidth:"10px"});
 $("#instructions").animate({fontSize:"30px", width:"600px"}, 2000);
 $("#instructions").animate({width:"300px"}, 1000, function() {$(this).css("background-color":"white");});
+```
+
+## Ajax
+
+### Load Method
+The load method loads data from any files(txt, html, php) on server and puts the returned data into the selected element.
+* load a file to a tag.
+```js
+$('#id').load('filename.txt');
+```
+* Load a tag with certain id from files.
+```js
+$("#div1").load("demo_test.txt #id");
+```
+* Load method has callback function with the following callback.
+  * ``responseTxt`` - contains the resulting content if the call succeeds
+  * ``statusTxt`` - contains the status of the call
+  * ``xhr`` - contains the XMLHttpRequest object
+```js
+$("#div1").load("demo_test.txt", function(responseTxt, statusTxt, xhr){
+  if(statusTxt == "success")
+    //statusText returns "success" when load method succeed.
+  if(statusTxt == "error")
+    //statusText returns "error" when load method failed.
+    //xhr.status  show status
+    //xhr.statusText   show additional info text
+});
+```
+* Load method can send data with the request to server as an optional parameter.
+* On the server the request data is accessed by ``$_REQUEST[dataName]``.
+```js
+$('#id').load('filename.php', {'dataName':'data'});
+```
+
+### Serialize Method
+* The serialize() method creates a URL encoded text string by serializing form values.
+* One can select one or more form elements (like input and/or text area), or the form element itself. For example: ``$("#form1").serialize();``
+* The serialized values can be used in the URL query string when making an AJAX request.
+* Form elements can also be converted to a serialized array ``var fields = $("#form1").serializeArray();``. Each element of the array has a name key and a value key.
+* Example of serialized values: ``lname=LastName+&fname=+FirstName+&phone=123-456-7890+&email=emailaddress%40example.com```
+
+
+
+### Get Method
+* The get method requests data from the server with an HTTP GET request.
+```js
+$.get("filename.php", {'dataName': 'data'},function(callbackData){ $('#resultTag').html(callbackData) })
+```
+* Get request with Serialized string
+```js
+$.get('filename.php?dataName=data',
+  function(data){
+    //Process data here
+    }
+     )
+```
+
+### GetJSON Method
+* The getJSON method requests JSON data from the server with an HTTP GET request.
+```js
+$.getJSON(	'filename.php?dataName=data',
+  function(data){
+    //Process data here
+    }
+     )
+```
+
+
+
+### Post Method
+* The post method requests data from the server using an HTTP POST request.
+```js
+$.post('filename.php',{dataName : 'data'}, callbackFunction)});
+//result data will be automatically passed into the callback function's parameter.
+```
+* Use a fourth parameter to indicate returned data are json objects.
+```js
+$.post(	'file.php',
+  { dataName : 'data'},
+  function(data){
+    //process data here
+    },
+    'json')	 			   
+       });
+```
+
+### ajax Method
+* The ajax() method is used to perform an AJAX (asynchronous HTTP) request.
+* All jQuery AJAX methods above use the ajax() method. This method is mostly used for requests where the other methods cannot be used.
+```js			   
+$.ajax({
+	type: "GET",
+	url: "09xml.xml",
+	dataType: "xml",
+	success: function(xml) {
+    //process data here.
+	}
+});
+```
+
+## Utility Function
+* Each - iterate over an array
+```js
+jQuery.each(arrayName,function (key,val)
+  {//Access array elements here.
+  }
+)
+```
+* Find - The find() method returns an array of descendant elements of the selected element.
+```js
+$(node).find('target').each(function(){
+  //Process data here
+});
+```
+
+## Templates
+jQuery can be used to construct templates of convert html layout.
+```html
+//Create a template in html
+<script id="employerList" type="text/x-jquery-tmpl">            
+           {{tmpl(employer) "#employerTemplate"}}
+</script>
+<script id="employerTemplate" type="text/x-jquery-tmpl">
+   <h1>${businessName}</h1>
+   <table>
+       <caption>Employees</caption>
+       {{each(i, employee) employees}}{{tmpl(employee) "#employeeTemplate"}}{{/each}}
+   </table>
+</script>
+ <script id="employeeTemplate" type="text/x-jquery-tmpl">
+     <tr>
+         <td>${firstName}</td>
+     </tr>        
+ </script>   
+```
+```js
+//Use templates with different data.
+$(document).ready(
+  function() {
+    $("#ajax-trigger").click(
+      function(event) {
+        $.getJSON("10templates.php", { 'employerId' : 1},
+          function(data) {
+            $("#employerList").tmpl(data).appendTo("#ajax-target");
+          });
+      });
+  });
 ```

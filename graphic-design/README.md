@@ -271,3 +271,7 @@ preview
 build links and transition
 comment
 inspect mode
+
+
+png to base64
+https://www.base64-image.de

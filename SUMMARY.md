@@ -37,5 +37,5 @@
 * [Graphic Design](graphic-design/README.md)
 * [Networking](networking/README.md)
 * [Maple](maple/README.md)
-* Theory
-  * [Algorithm](theory/algorithm.md)
+* [Theory](theory/README.md)
+    * [Algorithm](theory/algorithm.md)

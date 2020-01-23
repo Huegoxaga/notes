@@ -157,6 +157,8 @@ variable = (condition)? value1 : value2
 ```js
 i in arrayX //returns true if i is a member of arrayX
 i in arrayX === false   //is true if i is not a member of arrayX
+pushpin instanceof Microsoft.Maps.Pushpin //see if an object is of type a class
+typeof x !== 'undefined'  //see if a variable is of certain type.
 ```
 
 ### Control Structures
@@ -662,9 +664,14 @@ console.log(string);  //It is used for testing, it output text string in the con
 console.log(string, variable); // auto concatenate its argument.
 Window.localStorage object.
 // Simulate a mouse click:
-window.location.href = "http://www.w3schools.com";  
+window.location.href = "http://www.example.com";  
 // Simulate an HTTP redirect:
-window.location.replace("http://www.w3schools.com");
+window.location.replace("http://www.example.com");
+//open a new tab
+window.open("https://www.example.com");
+
+window.screen.width //Screen Width is the width of the device
+
 document.write("\<h1\>abc<\\h1>");  //It is used for testing, it output text string in the HTML.
 alert("alert message goes here");//return an alert box
 eval("a string of expression"); 	//it returns the result of expression as a string, returns undefined if argument is empty.
@@ -940,10 +947,18 @@ function success(text) {
 * In code change response.text() to response.json() to receive JSON data.
 * JavaScript Object to JSON String, ``JSON.stringify(data)``
 * Decode from JSON, ``JSON.parse(string)``
+* Use ``eval()`` method convert json to javaScript objects
+```js
+  //Eval converts the STRING into a JavaScript Array Map
+  var jsObj = eval('(' + JSONString + ')');
+```
 
 ### GeoLocation
 * The HTML Geolocation API is used to locate a user's position.
 * Modern browsers support a global navigator object and the navigator object contains a navigator.geolocation property.
+* To calculate the distance between two coordinates use ``haversine()`` function.
+  * run ``npm i haversine``.
+  *
 
 #### getCurrentPosition Method
 ```javascript
@@ -972,7 +987,14 @@ if (navigator.geolocation) { //check if there is a geolocation object
   * Example, ``options = { maximumAge: 0, timeout:10 * 1000 , enableHighAccuracy: false}``
 
 #### watchPosition Method
-Returns the current position of the user and continues to return updated position as the user moves.
+* ``navigator.watchPosition(success, [error], [options]);``
+* Returns the current position of the user and continues to return updated position as the user moves.
+* Options:
+  * ``timeout (ms)`` - Is a positive value representing the maximum length of time (in milliseconds) the device is allowed to take in order to return a position. Defaults to INFINITY.
+  * ``maximumAge (ms)`` - Is a positive value indicating the maximum age in milliseconds of a possible cached position that is acceptable to return. If set to 0, it means that the device cannot use a cached position and must attempt to retrieve the real current position. If set to Infinity the device will always return a cached position regardless of its age. Defaults to INFINITY.
+  * ``enableHighAccuracy (bool)`` - Is a boolean representing if to use GPS or not. If set to true, a GPS position will be requested. If set to false, a WIFI location will be requested.
+  * ``distanceFilter (m)`` - The minimum distance from the previous location to exceed before returning a new location. Set to 0 to not filter locations. Defaults to 100m.
+  * ``useSignificantChanges (bool)`` - Uses the battery-efficient native significant changes APIs to return locations. Locations will only be returned when the device detects a significant distance has been breached. Defaults to FALSE.
 #### clearWatch Method
 Stops the watchPosition() method
 
@@ -981,7 +1003,7 @@ Stops the watchPosition() method
 * [Click](https://www.microsoft.com/en-us/maps/documentation) to see full documents
 * [Click](https://www.bing.com/api/maps/sdk/mapcontrol/isdk/Overview#HTML) to see sample codes.
 * all of the map object has ``getVisible()``, ``getLocation()`` methods.
-* infobox properties can contain html tags like ``<br>`` or ``description: "<a href='#' onclick='return directions(" + variableName + ");" + "'>directions</a>"``.
+* infobox properties can contain html tags in description property with close button.  ``<br>`` or ``description: "<a href='#' onclick='return directions(" + variableName + ");" + "'>directions</a>"``.
 
 #### Set up
 API key is required to use the map.
@@ -1011,14 +1033,16 @@ export class ClassName {
 }
 ```
 * ``export`` keyword can be placed at the end and use curly brackets to enclosed everything needed to export.
+* When exporting arrow function, declare the function variable proper using ``const``.
 * ``as`` keyword is used for alias.
   * ``export { myArray, myFunction as NewName, ClassName };``
 
 ### Import
 * ``import`` keyword, members to be imported in curly brackets and then the location of the module relative to the current file, ``import { myFunction, ClassName } from 'file.js';``
 * use ``as`` for alias without curly brackets. ``import myFunction as newName from 'file.js';``
-* You can import everything that's imported by a module like this: ``import * as Utils from 'app.js';``
+* You can import everything that's exported by a module like this: ``import * as Utils from 'app.js';``
   * This allows you access to members with the dot notation: ``Utils.myLogger();``
 * append ``default`` keyword for default export. Default export will allow is to be imported by default.
     * import with a random name will assign and import default export item as this random name. Then followed by any other non-default items in the curly brackets.
     * If myArray is the default export, When import ``import newDefaultArrayName, { ClassName, myFunction } from 'file.js';``
+* Note: Imported function and variables is global, they can be accessed anywhere directly.

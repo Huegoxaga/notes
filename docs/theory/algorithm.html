@@ -58,6 +58,8 @@
 
     
     
+    <link rel="prev" href="./" />
+    
 
     </head>
     <body>
@@ -614,14 +616,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" >
+        <li class="chapter " data-level="1.22" data-path="./">
             
-                <span>
+                <a href="./">
             
                     
                     Theory
             
-                </span>
+                </a>
             
 
             
@@ -691,18 +693,27 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Data structure is a systematic way of organizing and accessing data.
+                                <h1 id="algorithm">Algorithm</h1>
+<p>Data structure is a systematic way of organizing and accessing data.
 Algorithm is a step-by-step procedure for performing some task in a finite amount of time.
 Shorter running time is the major indication of a better data structure or algorithm.</p>
-<p>Algorithm Analysis
-It is used to tell if a data structure or Algorithm is good.</p>
+<h2 id="recursion">Recursion</h2>
+<p>a method that calls itself is a recursive method.
+It has a base case, the method will called itself until the base case is reached and solved.</p>
+<h2 id="iteration">Iteration</h2>
+<p>a method that called repeatedly in a loop.</p>
+<h2 id="algorithm-analysis">Algorithm Analysis</h2>
+<p>It is used to tell if a data structure or Algorithm is good.</p>
 <ul>
-<li>Experimental studies, run methods, output current time before and after the operation, calculate and record the elapsed time for comparison. All irrelevant conditions are controlled.<ul>
+<li><p>Experimental studies, run methods, output current time before and after the operation, calculate and record the elapsed time for comparison. All irrelevant conditions are controlled.</p>
+<ul>
 <li>Different elapsed time may obtained among identical tests due to background services of the testing device.</li>
 <li>the biggest issue with experimental analysis is the Algorithm must be completed for testing.</li>
+<li>IDEs like NetBeans contains a profiler that will indicate the amount of time spent in each function and on what lines in a function.</li>
 </ul>
 </li>
-<li>Counting Primitive Operations, an algorithm can be measured by counting the following primitive operations it has:<ul>
+<li><p>Counting Primitive Operations, an algorithm can be measured by counting the following primitive operations it has:</p>
+<ul>
 <li>Assigning a value to a variables</li>
 <li>Following an object reference</li>
 <li>Performing an arithmetic operation</li>
@@ -715,7 +726,21 @@ It is used to tell if a data structure or Algorithm is good.</p>
 </li>
 </ul>
 </li>
-<li>Asymptotic Analysis<ul>
+<li><p>Asymptotic Analysis</p>
+<ul>
+<li>A computational problem is a problem that is meant to be solved by an algorithm.</li>
+<li>A computational problem is described by specifying the data to be input to the algorithm, and the output that should be produced by the algorithm</li>
+<li>Each possible input is called an instance of the problem. For analysis the instance size <code>N</code> is only taken into consideration.</li>
+<li>There are two types of complexity:<ul>
+<li>the time complexity is the computational complexity that describes the amount of time it takes to run an algorithm.</li>
+<li>Space complexity is a measure of the amount of working storage an algorithm needs.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="time-complexity">Time Complexity</h3>
+<ul>
 <li>Generally larger input run slower.</li>
 <li>This method focus on studying the growth rate of primitive operation count related to the growth of input size.  </li>
 <li>When convert operation count into running time. For inputs with the same sizes, running time may vary. However, the worst-case is usually taken as the running time for this input size. It is good for code improvement.</li>
@@ -723,7 +748,6 @@ It is used to tell if a data structure or Algorithm is good.</p>
 <li>The Big O math model is used to simplify operation count functions for comparison.<ul>
 <li>A function <code>f(x)</code> can be converted to the big-Oh of another function <code>g(x)</code>. if the y value of <code>f(x)</code> is always smaller or equal than <code>g(x)</code> times a constant for all x value greater than certain constant.<ul>
 <li>Then the generalized big-Oh function can be used to represent the complexity of the algorithm.</li>
-<li>The complexity here refers to the time complexity.</li>
 <li>In terms of the complexity, <code>O(1)&lt;O(log(n))&lt;O(n)&lt;O(nlog(n))&lt;O(n^2)&lt;O(2^n)&lt;O(n!)</code>.</li>
 <li><code>O(1)</code> Constant Time: means the number of operations has no thing to do with input size.</li>
 <li><code>O(n)</code> Linear Time: means the number of operations is linear input size.</li>
@@ -738,33 +762,32 @@ It is used to tell if a data structure or Algorithm is good.</p>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 <h2 id="search-algorithm">Search Algorithm</h2>
 <ul>
 <li>A search algorithm is a method of locating a specific item in a larger collection of data.</li>
 <li>This type of algorithm is referred to as &quot;Brute Force&quot; as potentially all elements need to be visited.</li>
 </ul>
-<h3 id="sequential-search-algorithm">Sequential Search Algorithm</h3>
+<h3 id="sequential-search">Sequential Search</h3>
 <ul>
 <li>It use a loop to: sequentially step through an array.</li>
 <li>compare each element with the search value</li>
 <li>stop when the value is found or the end of the array is encountered.</li>
+<li>It can be used with any array.</li>
+<li>Sequential Search searches from one end to another end, it has the following two types.<ul>
+<li>findFirst return the index for the first found value, -1 if not found. Worst case <code>O(n)</code>.</li>
+<li>findAll - When X is found record the position and continue. At the end of the array return all the positions. If X is never found, return an empty list of position, for all cases <code>O(n)</code>.</li>
 </ul>
-<h2 id="recursion">recursion</h2>
-<p>a method that calls itself is a recursive method.
-It has a base case, the method will called itself until the base case is reached and solved.</p>
-<h2 id="iteration">iteration</h2>
-<p>a method that called repeatedly in a loop.</p>
-<h2 id="sequential-search">Sequential Search</h2>
-<p>It can be used with any array.
-Search from one end to another end,
-findFirst - return the index for the first found value, -1 if not found. on average O(n/2).
-findAll - When X is found record the position and continue. At the end of the array return all the positions. If X is never found, return an empty list of position, O(n)</p>
-<h2 id="binary-search">Binary Search</h2>
-<p>It can only be used with sorted arrays, but is much faster than Sequential Search.
-compare target value with the median values, the location the target in upper or lower section, then compare the target with the median of the lower or upper section until it is found.</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[], <span class="hljs-keyword">int</span> lower, <span class="hljs-keyword">int</span> upper, <span class="hljs-keyword">int</span> X)</span></span>{
+</li>
+</ul>
+<h3 id="binary-search">Binary Search</h3>
+<ul>
+<li>It can only be used with sorted arrays, but is much faster than Sequential Search.</li>
+<li>Steps for binary search:<ol>
+<li>compare target value with the median values(    round down if the mid position is not an integer). check equality first, if not determine the location the target in either upper or lower section</li>
+<li>compare the target with the median of the lower or upper section until it is found.</li>
+</ol>
+</li>
+<li>Example of Recursive Binary Search:<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[], <span class="hljs-keyword">int</span> lower, <span class="hljs-keyword">int</span> upper, <span class="hljs-keyword">int</span> X)</span></span>{
   <span class="hljs-comment">// check base case for missing X</span>
   <span class="hljs-keyword">if</span> (lower &gt; upper)
     <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
@@ -779,45 +802,150 @@ compare target value with the median values, the location the target in upper or
     <span class="hljs-keyword">return</span> binSearch(A, lower, middle-<span class="hljs-number">1</span>, X);
 }
 </code></pre>
-<p>Worst case O(logn)</p>
-<pre><code>Algorithm and Complexity
-
-Binary search is for sorted objects, it tests the value at the middle, then locate the correct half of the object and test its mid value step by step.
-if the mid position is not an integer, round down.
-check equality first
-
-bubble sort: compare each value(from left to right one by one) with its next value to the right. swap the bigger one to the right, so one biggest value in the object can be found. repeat the process n times for n is the number of the values in the object.
-def bubbleSort(arr):
-    n = len(arr)
-
-    # Traverse through all array elements
-    for i in range(n):
-
-        # Last i elements are already in place
-        for j in range(0, n-i-1):
-
-            # traverse the array from 0 to n-i-1
-            # Swap if the element found is greater
-            # than the next element
-            if arr[j] &gt; arr[j+1] :
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-or
-    for passnum in range(len(alist)-1,0,-1):
-        for i in range(passnum):
-            if alist[i]&gt;alist[i+1]:
-                temp = alist[i]
-                alist[i] = alist[i+1]
-                alist[i+1] = temp
-
-
-Complexity
-Big O is the notation(read as on the order of) for the worst case performance of an algorithm. variable n is the number of elements of your objects.
-Examples:
-O(log(n): binary search.
-O(n^2): bubble sort.
-O(1): constant time not related to inputs
-for complexity level:
+</li>
+<li>Worst case <code>O(logN)</code>.</li>
+</ul>
+<h2 id="sort">Sort</h2>
+<p>An array is sorted in ascending order if the array entries increase as indices increase.</p>
+<h3 id="bubble-sort">Bubble Sort</h3>
+<ul>
+<li>Steps for bubble sort:<ol>
+<li>compare each value(from left to right one by one) with its next value to the right.</li>
+<li>when a bigger value is found, always swap the bigger one to the right, so one biggest value in each iteration should be places the end.</li>
+<li>Exclude the value found in the previous iteration by shorten the length of the loop by one</li>
+<li>repeat the process n times for n is the number of input.</li>
+</ol>
+</li>
+<li>The complexity of Bubble Sort is <code>&#x41E;(n^2)</code> (worst case).</li>
+<li>Example:<pre><code class="lang-java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> last=N-<span class="hljs-number">1</span>; last&gt;=<span class="hljs-number">1</span>; last--){
+  <span class="hljs-comment">// Move the largest entry in A[0...last] to A[last]</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index=<span class="hljs-number">0</span>; index &lt;= last-<span class="hljs-number">1</span>; index++){     <span class="hljs-comment">//swap adjacent elements if necessary</span>
+    <span class="hljs-keyword">if</span> (A[index] &gt; A[index+<span class="hljs-number">1</span>]){
+      <span class="hljs-keyword">int</span> temp = A[index];  
+      A[index] = A[index+<span class="hljs-number">1</span>];
+      A[index + <span class="hljs-number">1</span>] = temp;
+    }
+  }
+}
 </code></pre>
+</li>
+</ul>
+<h3 id="selection-sort">Selection Sort</h3>
+<ul>
+<li>Steps for bubble sort:<ol>
+<li>Reset the leftmost element as the temp max value.</li>
+<li>Comparing the temp max value with rest values in the array. If a bigger one is found, set it as the temp max value.</li>
+<li>After the comparison in one iteration, swap the max value to its proper location according to a count number that count the rank of the max value of each iteration.</li>
+</ol>
+</li>
+<li>The time complexity of Selection Sort is <code>&#x41E;(n^2)</code>(worst case).</li>
+<li>Example:<pre><code class="lang-java"><span class="hljs-keyword">for</span> (last = N -<span class="hljs-number">1</span>; last &gt;= <span class="hljs-number">1</span>; last --)
+{
+  <span class="hljs-comment">// Move the largest entry in A[0...last] to A[last]</span>
+  <span class="hljs-comment">// Determine position of largest in A[0..last] and store</span>
+  <span class="hljs-comment">// in maxIndex</span>
+  <span class="hljs-keyword">int</span> maxIndex = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">1</span>; index &lt;= last; index++)
+  {
+    <span class="hljs-keyword">if</span> (A[index] &gt; A[maxIndex])
+    maxIndex = index;
+  }
+  <span class="hljs-comment">// maxIndex is position of largest in A[0..last]</span>
+  <span class="hljs-comment">// swap A[maxIndex] with A[last]</span>
+  <span class="hljs-keyword">int</span> temp = A[maxIndex];  
+  A[maxIndex] = A[last];
+  A[last] = temp;   
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="insertion-sort">Insertion Sort</h3>
+<ul>
+<li>Steps for insertion sort:<ol>
+<li>From left to right, starting with the second element, compare it with the first if it is smaller or equals the first place it before the first element.</li>
+<li>For the third element, compare it with the second, then the first. It the third is smaller than or equals with any element, place it before it.</li>
+<li>repeat the process to the last element. In the end all elements are placed into the right location.</li>
+</ol>
+</li>
+<li>The complexity of Insertion Sort is <code>&#x41E;(n^2)</code> (worst case).</li>
+<li>Example:<pre><code class="lang-java"><span class="hljs-comment">//A[0..0] is sorted</span>
+<span class="hljs-keyword">for</span> (index = <span class="hljs-number">1</span>; index &lt;= N-<span class="hljs-number">1</span>; index ++)
+{
+  <span class="hljs-comment">// A[0..index-1] is sorted</span>
+  <span class="hljs-comment">// insert A[index] at the right place in A[0..index]  </span>
+  <span class="hljs-keyword">int</span> unSortedValue = A[index];
+  scan = index;
+  <span class="hljs-keyword">while</span> (scan &gt; <span class="hljs-number">0</span> &amp;&amp; A[scan-<span class="hljs-number">1</span>] &gt; unSortedValue)
+  {
+    A[scan] = A[scan-<span class="hljs-number">1</span>];scan --;
+  }
+  <span class="hljs-comment">// Drop in the unsorted value</span>
+  A[scan] = unSortedValue;
+  <span class="hljs-comment">// Now A[0..index] is sorted</span>
+}
+  <span class="hljs-comment">// Now A[0..N-1] is sorted, so entire array is sorted</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="merge-sort">Merge Sort</h3>
+<ul>
+<li>Steps for merge sort:<ol>
+<li>treat the array as n arrays, each has a length of one.</li>
+<li>create n/2 arrays, the length is doubled.</li>
+<li>compare 1st and 2nd elements, place them into the first larger array in order, compare 3rd and 4th elements, place them into the second larger array in order...</li>
+<li>create n/4 arrays, merge the n/2 arrays into n/4 array.</li>
+<li>repeat the process until merging into n/n arrays which is one big sorted array.</li>
+</ol>
+</li>
+<li>The complexity of Insertion Sort is <code>O(n log(n))</code> (worst case).</li>
+<li>Since each compared value is copied to the new array, the merge sort does require new temporary arrays.</li>
+</ul>
+<h3 id="quick-sort">Quick Sort</h3>
+<ul>
+<li>Steps for quick sort:<ol>
+<li>Set a Pivot point(usually the middle point).</li>
+<li>Compare pivot point with rest of the array, move all smaller value to the left and greater values or equal value to the right. Then the pivot point has the sorted index location.(This step is called Partition).</li>
+<li>Do the same procedure for the left and right sublists. Get two more sorted points.</li>
+<li>Repeat until all sublists has a length of 1 or 0.</li>
+</ol>
+</li>
+<li>The complexity of Insertion Sort is <code>&#x41E;(n^2)</code> (worst case).</li>
+<li>Example:<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">doQuicksort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[ ], <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span>
+</span>{
+<span class="hljs-keyword">if</span> (start &lt; end)
+{
+  <span class="hljs-comment">// partition A[start..end]</span>
+  <span class="hljs-comment">// and get the pivot point</span>
+  <span class="hljs-keyword">int</span> pivotPoint = partition(A, start, end);
+  <span class="hljs-comment">// recursively do the first sublist</span>
+  doQuicksort(A, start, pivotPoint-<span class="hljs-number">1</span>);
+  <span class="hljs-comment">// recursively do the second sublist</span>
+  doQuicksort(A, pivotPoint+<span class="hljs-number">1</span>, end);
+}
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">partition</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[ ], <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span>
+</span>{
+<span class="hljs-comment">// See implementation for improved midpoint selection</span>
+<span class="hljs-keyword">int</span> pivotValue = A[start];
+endOfLeftList = start;
+<span class="hljs-comment">// At this point A[endOfLeftList] == pivotValue</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> scan = start + <span class="hljs-number">1</span>; scan &lt;= end; scan ++)
+{
+  <span class="hljs-keyword">if</span> (A[scan] &lt; pivotValue)
+  {  
+    endOfLeftList++;
+    swap(A, endOfLeftList, scan);
+    <span class="hljs-comment">// At this point A[endOfLeftList] &lt; pivotValue</span>
+  }
+}
+<span class="hljs-comment">// Move the pivotValue between the left and right sublists</span>
+swap(A, start, endOfLeftList);
+<span class="hljs-keyword">return</span> endOfLeftList;
+}
+</code></pre>
+</li>
+</ul>
+
                                 
                                 </section>
                             
@@ -844,6 +972,10 @@ for complexity level:
 
             
                 
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Theory">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
                 
             
         
@@ -852,7 +984,7 @@ for complexity level:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Algorithm","level":"1.22.1","depth":2,"previous":{"title":"Theory","level":"1.22","depth":1,"ref":"","articles":[{"title":"Algorithm","level":"1.22.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-01-11T16:56:42.990Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-15T21:14:13.213Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Algorithm","level":"1.22.1","depth":2,"previous":{"title":"Theory","level":"1.22","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Algorithm","level":"1.22.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-01-23T15:09:06.188Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

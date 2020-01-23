@@ -35,5 +35,5 @@
 * [Graphic Design](https://huegoxaga.github.io/notes/graphic-design/index.html)
 * [Networking](https://huegoxaga.github.io/notes/networking/index.html)
 * [Maple](https://huegoxaga.github.io/notes/maple/index.html)
-* Theory
+* [Theory](https://huegoxaga.github.io/notes/maple/index.html)
   * [Algorithm](https://huegoxaga.github.io/notes/theory/algorithm.html)

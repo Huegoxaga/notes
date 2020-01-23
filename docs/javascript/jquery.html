@@ -618,14 +618,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" >
+        <li class="chapter " data-level="1.22" data-path="../theory/">
             
-                <span>
+                <a href="../theory/">
             
                     
                     Theory
             
-                </span>
+                </a>
             
 
             
@@ -708,8 +708,13 @@
 <h2 id="syatax">Syatax</h2>
 <ul>
 <li><code>$(&quot;selector&quot;).jQueryAction()</code></li>
-<li>The $ accesses jQuery.</li>
-<li>The selector finds HTML elements, using CSS selector in double quotes.</li>
+<li>The <code>$</code> accesses jQuery.</li>
+<li>The selector finds HTML elements, using CSS selector in double quotes.<ul>
+<li><code>$(p:first)</code> selects the first <code>p</code> tag.</li>
+<li><code>$(p:last)</code> selects the last <code>p</code> tag.</li>
+<li><code>$(p:2)</code> selects the third <code>p</code> tag. 2 acts like an index starting at 0.</li>
+</ul>
+</li>
 <li>node or nodelist variable can be used with jQuery action methods directly, like <code>$(node).jQueryAction()</code></li>
 <li>The jQuery action method performs on all elements the selector selects.</li>
 </ul>
@@ -723,56 +728,59 @@ let node = $(&quot;&lt;p&gt;&quot;).html(&quot;Hello, World!&quot;).css(&quot;co
 <h2 id="changing-elements-properties-with-jquery-methods">Changing Elements&apos; Properties with jQuery Methods</h2>
 <ul>
 <li>Methods can be chained together.</li>
-<li>All of the element selected will be set, or the first element of all will be accessed for value.<pre><code class="lang-js">.html(); <span class="hljs-comment">//Get the inner String. or html code.</span>
-.html(<span class="hljs-string">&quot;Text&quot;</span>);   <span class="hljs-comment">//Change text inside selected tag.</span>
-.text(); <span class="hljs-comment">//Get the inner text, filter all tags inside.</span>
-.text(<span class="hljs-string">&quot;Text&quot;</span>);   <span class="hljs-comment">//Change text, ignore tags</span>
-.hide();   <span class="hljs-comment">//Hide the element(s)</span>
-.show(); <span class="hljs-comment">//Show the element(s)</span>
-.attr(<span class="hljs-string">&quot;attributeName&quot;</span>); <span class="hljs-comment">//Get the value of a HTML attribute.</span>
-.attr(<span class="hljs-string">&quot;attributeName&quot;</span>, <span class="hljs-string">&quot;newValue&quot;</span>); <span class="hljs-comment">//Set the attribute to a new value.</span>
-.removeAttr(<span class="hljs-string">&quot;attributeName&quot;</span>)  <span class="hljs-comment">//Remove an attribute.</span>
-.val(); <span class="hljs-comment">//Get the value of a form field.</span>
-.val(<span class="hljs-string">&quot;newValue&quot;</span>); <span class="hljs-comment">//Set the value of a form field.</span>
-.append()  <span class="hljs-comment">//adds a node as the last child of each selected element</span>
-.prepend() <span class="hljs-comment">//adds a node as the first child of each selected element</span>
-.before() <span class="hljs-comment">//inserts a node as the previous sibling of each selected element</span>
-.after() <span class="hljs-comment">//inserts a node as the next sibling of each selected element</span>
-<span class="hljs-comment">//multiple elements can be specified as arguments by the before(), after(), append(), prepend() methods by separating them using commas.</span>
-<span class="hljs-comment">// Use HTML code with tags as Text to insert new nodes.</span>
-.addClass(<span class="hljs-string">&quot;className&quot;</span>) <span class="hljs-comment">//assigns one or more className to the selected element.</span>
-.removeClass(<span class="hljs-string">&quot;className&quot;</span>) <span class="hljs-comment">//removes one or more class names from the selected elements.(more classes can be added and separated by spaces)</span>
-.toggleClass(<span class="hljs-string">&quot;className&quot;</span>) <span class="hljs-comment">//toggles between adding/removing classes from the selected elements.</span>
-.hasClass(<span class="hljs-string">&quot;name&quot;</span>)   <span class="hljs-comment">//return true if found</span>
-.css(<span class="hljs-string">&quot;propertyName&quot;</span>) <span class="hljs-comment">//get the CSS property values.</span>
-.css(<span class="hljs-string">&quot;propertyName&quot;</span>,<span class="hljs-string">&quot;newValue&quot;</span>) <span class="hljs-comment">//set the CSS property values.Use JSON syntax to set multiple CSS properties.</span>
-.css({<span class="hljs-string">&quot;property1&quot;</span>:<span class="hljs-string">&quot;value1&quot;</span>,<span class="hljs-string">&quot;property2&quot;</span>:<span class="hljs-string">&quot;value2&quot;</span>,...});
-.width(); <span class="hljs-comment">//Get a int value for element&#x2019;s width in px.</span>
-.width(newWidth); <span class="hljs-comment">//Set width in px. Same for height.</span>
-<span class="hljs-comment">//The width() and height() methods get and set the dimensions without the padding, borders and margins.</span>
-<span class="hljs-comment">//The innerWidth() and innerHeight() methods also include the padding.</span>
-<span class="hljs-comment">//The outerWidth() and outerHeight() methods include the padding and borders.</span>
-parent() <span class="hljs-comment">//method returns the direct parent element object of the selected element.</span>
-parents() <span class="hljs-comment">//returns all ancestors of the selected element.</span>
-.first();  <span class="hljs-comment">//first item from the nodelist.</span>
-.last();  <span class="hljs-comment">//last item from the nodelist.</span>
-.eq(index) <span class="hljs-comment">//method can be used to select a specific element from multiple selected elements. It can be chained after a method that selects multiple elements.</span>
-.remove(); <span class="hljs-comment">//Remove the selected elements.</span>
-.empty() <span class="hljs-comment">//method is used to remove the child elements of the selected element(s)</span>
-</code></pre>
-</li>
+<li>All of the element selected will be set, or the first element of all will be accessed for value.
+```js
+.html(); //Get the inner String. or html code.
+.html(&quot;Text&quot;);   //Change text inside selected tag.
+.text(); //Get the inner text, filter all tags inside.
+.text(&quot;Text&quot;);   //Change text, ignore tags
+.hide();   //Hide the element(s)
+.show(); //Show the element(s)
+.attr(&quot;attributeName&quot;); //Get the value of a HTML attribute.
+.attr(&quot;attributeName&quot;, &quot;newValue&quot;); //Set the attribute to a new value.
+.removeAttr(&quot;attributeName&quot;)  //Remove an attribute.
+.val(); //Get the value of a form field.
+.val(&quot;newValue&quot;); //Set the value of a form field.
+.append()  //adds a node as the last child of each selected element
+.prepend() //adds a node as the first child of each selected element
+.before() //inserts a node as the previous sibling of each selected element
+.after() //inserts a node as the next sibling of each selected element
+//multiple elements can be specified as arguments by the before(), after(), append(), prepend() methods by separating them using commas.
+// Use HTML code with tags as Text to insert new nodes.
+.addClass(&quot;className&quot;) //assigns one or more className to the selected element.
+.removeClass(&quot;className&quot;) //removes one or more class names from the selected elements.(more classes can be added and separated by spaces)
+.toggleClass(&quot;className&quot;) //toggles between adding/removing classes from the selected elements.
+.hasClass(&quot;name&quot;)   //return true if found
+.css(&quot;propertyName&quot;) //get the CSS property values.
+.css(&quot;propertyName&quot;,&quot;newValue&quot;) //set the CSS property values.Use JSON syntax to set multiple CSS properties.
+.css({&quot;property1&quot;:&quot;value1&quot;,&quot;property2&quot;:&quot;value2&quot;,...});
+.width(); //Get a int value for element&#x2019;s width in px.
+.width(newWidth); //Set width in px. Same for height.
+//The width() and height() methods get and set the dimensions without the padding, borders and margins.
+//The innerWidth() and innerHeight() methods also include the padding.
+//The outerWidth() and outerHeight() methods include the padding and borders.
+$(document).width() //Page Width, width of the document
+$(window).width()  //Viewport is the width of the browser window
+parent() //method returns the direct parent element object of the selected element.
+parents() //returns all ancestors of the selected element.
+.first();  //first item from the nodelist.
+.last();  //last item from the nodelist.
+.eq(index) //method can be used to select a specific element from multiple selected elements. It can be chained after a method that selects multiple elements.
+.remove(); //Remove the selected elements.
+.empty(); //method is used to remove the child elements of the selected element(s)
+.appendTo(&quot;tagName&quot;); //The appendTo() method inserts HTML elements at the end of the selected elements.
+//Example
+$(&quot;<span>Hello World!</span>&quot;).appendTo(&quot;p&quot;);</li>
 </ul>
-<h2 id="event-handling">Event Handling</h2>
-<ul>
-<li>Event object is still available. When pass a variables into the anonymous function.</li>
-</ul>
-<pre><code class="lang-js">.EventName(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-<span class="hljs-comment">//$(this) can be used here to represent the current node that send the event.</span>
-}); <span class="hljs-comment">//Add event handler of certain event for the selected element.</span>
-.each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ <span class="hljs-comment">//this is the node in each iteration, like foreach loop</span>
-})
-</code></pre>
-<h3 id="list-of-event-names">List of Event Names</h3>
+<pre><code>
+## Event Handling
+* Event object is still available. When pass a variables into the anonymous function.
+
+```js
+.EventName(function(){
+//$(this) can be used here to represent the current node that send the event.
+}); //Add event handler of certain event for the selected element.
+</code></pre><h3 id="list-of-event-names">List of Event Names</h3>
 <h4 id="mouse-events">Mouse Events:</h4>
 <ul>
 <li>click occurs when an element is clicked.</li>
@@ -853,6 +861,142 @@ $(<span class="hljs-string">&quot;#instructions&quot;</span>).animate({width:<sp
 </code></pre>
 </li>
 </ul>
+<h2 id="ajax">Ajax</h2>
+<h3 id="load-method">Load Method</h3>
+<p>The load method loads data from any files(txt, html, php) on server and puts the returned data into the selected element.</p>
+<ul>
+<li>load a file to a tag.<pre><code class="lang-js">$(<span class="hljs-string">&apos;#id&apos;</span>).load(<span class="hljs-string">&apos;filename.txt&apos;</span>);
+</code></pre>
+</li>
+<li>Load a tag with certain id from files.<pre><code class="lang-js">$(<span class="hljs-string">&quot;#div1&quot;</span>).load(<span class="hljs-string">&quot;demo_test.txt #id&quot;</span>);
+</code></pre>
+</li>
+<li>Load method has callback function with the following callback.<ul>
+<li><code>responseTxt</code> - contains the resulting content if the call succeeds</li>
+<li><code>statusTxt</code> - contains the status of the call</li>
+<li><code>xhr</code> - contains the XMLHttpRequest object<pre><code class="lang-js">$(<span class="hljs-string">&quot;#div1&quot;</span>).load(<span class="hljs-string">&quot;demo_test.txt&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">responseTxt, statusTxt, xhr</span>)</span>{
+<span class="hljs-keyword">if</span>(statusTxt == <span class="hljs-string">&quot;success&quot;</span>)
+<span class="hljs-comment">//statusText returns &quot;success&quot; when load method succeed.</span>
+<span class="hljs-keyword">if</span>(statusTxt == <span class="hljs-string">&quot;error&quot;</span>)
+<span class="hljs-comment">//statusText returns &quot;error&quot; when load method failed.</span>
+<span class="hljs-comment">//xhr.status  show status</span>
+<span class="hljs-comment">//xhr.statusText   show additional info text</span>
+});
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Load method can send data with the request to server as an optional parameter.</li>
+<li>On the server the request data is accessed by <code>$_REQUEST[dataName]</code>.<pre><code class="lang-js">$(<span class="hljs-string">&apos;#id&apos;</span>).load(<span class="hljs-string">&apos;filename.php&apos;</span>, {<span class="hljs-string">&apos;dataName&apos;</span>:<span class="hljs-string">&apos;data&apos;</span>});
+</code></pre>
+</li>
+</ul>
+<h3 id="serialize-method">Serialize Method</h3>
+<ul>
+<li>The serialize() method creates a URL encoded text string by serializing form values.</li>
+<li>One can select one or more form elements (like input and/or text area), or the form element itself. For example: <code>$(&quot;#form1&quot;).serialize();</code></li>
+<li>The serialized values can be used in the URL query string when making an AJAX request.</li>
+<li>Form elements can also be converted to a serialized array <code>var fields = $(&quot;#form1&quot;).serializeArray();</code>. Each element of the array has a name key and a value key.</li>
+<li>Example of serialized values: ``lname=LastName+&amp;fname=+FirstName+&amp;phone=123-456-7890+&amp;email=emailaddress%40example.com```</li>
+</ul>
+<h3 id="get-method">Get Method</h3>
+<ul>
+<li>The get method requests data from the server with an HTTP GET request.<pre><code class="lang-js">$.get(<span class="hljs-string">&quot;filename.php&quot;</span>, {<span class="hljs-string">&apos;dataName&apos;</span>: <span class="hljs-string">&apos;data&apos;</span>},<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">callbackData</span>)</span>{ $(<span class="hljs-string">&apos;#resultTag&apos;</span>).html(callbackData) })
+</code></pre>
+</li>
+<li>Get request with Serialized string<pre><code class="lang-js">$.get(<span class="hljs-string">&apos;filename.php?dataName=data&apos;</span>,
+<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+  <span class="hljs-comment">//Process data here</span>
+  }
+   )
+</code></pre>
+</li>
+</ul>
+<h3 id="getjson-method">GetJSON Method</h3>
+<ul>
+<li>The getJSON method requests JSON data from the server with an HTTP GET request.<pre><code class="lang-js">$.getJSON(    <span class="hljs-string">&apos;filename.php?dataName=data&apos;</span>,
+<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+  <span class="hljs-comment">//Process data here</span>
+  }
+   )
+</code></pre>
+</li>
+</ul>
+<h3 id="post-method">Post Method</h3>
+<ul>
+<li>The post method requests data from the server using an HTTP POST request.<pre><code class="lang-js">$.post(<span class="hljs-string">&apos;filename.php&apos;</span>,{dataName : <span class="hljs-string">&apos;data&apos;</span>}, callbackFunction)});
+<span class="hljs-comment">//result data will be automatically passed into the callback function&apos;s parameter.</span>
+</code></pre>
+</li>
+<li>Use a fourth parameter to indicate returned data are json objects.<pre><code class="lang-js">$.post(    <span class="hljs-string">&apos;file.php&apos;</span>,
+{ dataName : <span class="hljs-string">&apos;data&apos;</span>},
+<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+  <span class="hljs-comment">//process data here</span>
+  },
+  <span class="hljs-string">&apos;json&apos;</span>)                    
+     });
+</code></pre>
+</li>
+</ul>
+<h3 id="ajax-method">ajax Method</h3>
+<ul>
+<li>The ajax() method is used to perform an AJAX (asynchronous HTTP) request.</li>
+<li>All jQuery AJAX methods above use the ajax() method. This method is mostly used for requests where the other methods cannot be used.<pre><code class="lang-js">$.ajax({
+  type: <span class="hljs-string">&quot;GET&quot;</span>,
+  url: <span class="hljs-string">&quot;09xml.xml&quot;</span>,
+  dataType: <span class="hljs-string">&quot;xml&quot;</span>,
+  success: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">xml</span>) </span>{
+  <span class="hljs-comment">//process data here.</span>
+  }
+});
+</code></pre>
+</li>
+</ul>
+<h2 id="utility-function">Utility Function</h2>
+<ul>
+<li>Each - iterate over an array<pre><code class="lang-js">jQuery.each(arrayName,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key,val</span>)
+</span>{<span class="hljs-comment">//Access array elements here.</span>
+}
+)
+</code></pre>
+</li>
+<li>Find - The find() method returns an array of descendant elements of the selected element.<pre><code class="lang-js">$(node).find(<span class="hljs-string">&apos;target&apos;</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+<span class="hljs-comment">//Process data here</span>
+});
+</code></pre>
+</li>
+</ul>
+<h2 id="templates">Templates</h2>
+<p>jQuery can be used to construct templates of convert html layout.</p>
+<pre><code class="lang-html">//Create a template in html
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;employerList&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/x-jquery-tmpl&quot;</span>&gt;</span><span class="actionscript">            
+           {{tmpl(employer) <span class="hljs-string">&quot;#employerTemplate&quot;</span>}}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;employerTemplate&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/x-jquery-tmpl&quot;</span>&gt;</span><span class="handlebars"><span class="xml">
+   <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>${businessName}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">caption</span>&gt;</span>Employees<span class="hljs-tag">&lt;/<span class="hljs-name">caption</span>&gt;</span>
+       </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">each</span>(i, employee) employees}}</span><span class="xml"></span><span class="hljs-template-variable">{{tmpl(employee) &quot;#employeeTemplate&quot;}}</span><span class="xml"></span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml">
+   <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;employeeTemplate&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/x-jquery-tmpl&quot;</span>&gt;</span><span class="handlebars"><span class="xml">
+     <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>${firstName}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+     <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>        
+ </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">//Use templates with different data.</span>
+$(<span class="hljs-built_in">document</span>).ready(
+  <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    $(<span class="hljs-string">&quot;#ajax-trigger&quot;</span>).click(
+      <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+        $.getJSON(<span class="hljs-string">&quot;10templates.php&quot;</span>, { <span class="hljs-string">&apos;employerId&apos;</span> : <span class="hljs-number">1</span>},
+          <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>{
+            $(<span class="hljs-string">&quot;#employerList&quot;</span>).tmpl(data).appendTo(<span class="hljs-string">&quot;#ajax-target&quot;</span>);
+          });
+      });
+  });
+</code></pre>
 
                                 
                                 </section>
@@ -896,7 +1040,7 @@ $(<span class="hljs-string">&quot;#instructions&quot;</span>).animate({width:<sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"jQuery","level":"1.4.1","depth":2,"next":{"title":"React","level":"1.4.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},"previous":{"title":"JavaScript","level":"1.4","depth":1,"path":"javascript/README.md","ref":"javascript/README.md","articles":[{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},{"title":"React","level":"1.4.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},{"title":"Node.js","level":"1.4.4","depth":2,"path":"javascript/node-js.md","ref":"javascript/node-js.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/jquery.md","mtime":"2020-01-04T16:50:28.668Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-15T21:14:13.213Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"jQuery","level":"1.4.1","depth":2,"next":{"title":"React","level":"1.4.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},"previous":{"title":"JavaScript","level":"1.4","depth":1,"path":"javascript/README.md","ref":"javascript/README.md","articles":[{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},{"title":"React","level":"1.4.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},{"title":"Node.js","level":"1.4.4","depth":2,"path":"javascript/node-js.md","ref":"javascript/node-js.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/jquery.md","mtime":"2020-01-22T05:27:51.484Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

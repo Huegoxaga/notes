@@ -42,6 +42,7 @@
 
 2. Shell
 * Provides a command-line interface where the user can execute commands.
+* Each user can log into one session. use ``alt+F1~F12`` key to switch. (``Alt+F1`` is the first session after OS boot)
 * It has the following functions.
   - Interprets the user commands
   - Passes the interpreted commands to the kernel
@@ -59,7 +60,7 @@
   - exFAT : Provides support for Microsoft’s exFAT (read + write)
   - NTFS : Provides support for Microsoft’s NTFS (read-only)
 * The filesystem start at root does not has volume letter
-* the directories/foldrs are files
+* the directories/folders are files
 * home directory ``~`` are for users
 * the current folder shown before shell symbol, all its contain can be accessed without specify path. In short, ``./`` is ignored for file path.
 * For file contain space use """ surround the whole path.
@@ -89,7 +90,7 @@
   * A permission code can be calculated, using ``r``=4, ``w``=2, ``x``=1, ``-``=0, and and them together.
   * For example, ``400`` means only user has read permission, so the file is private.
 
-## Commands
+## General Commands
 * Command options full name are after ``--``. can use the first letter, can combine the letter after one common ``-``.
 * Large command output press ``Q`` to quit. enter ``/searchContent`` to search.
 * Both the ``| more`` and the ``| less`` command provide paging functionality in a command line environment. For example ``help | less``. shows output that can be control using up and down arrow.
@@ -99,6 +100,7 @@
 * ``shutdown –r now`` restart immediately.
 * ``appname —version``   check the current version for any app.
 * ``man <command name>`` the man pages for Linux commands.  
+* ``info <command name>`` the info pages for certain Linux commands.  
 * ``help <command name>`` To get help with built-in shell commands use the help command
 * ``help`` get list of built in command.
 * ``clear``   clear screen
@@ -130,6 +132,7 @@
   * ``eth0`` the number is the order in which the card has been detected, starting with a zero
 * ``ifconfig`` will display networking information about all device.
 * ``ifup eth0`` set ``eth0`` interface up.
+* ``ifdown eth0`` set ``eth0`` interface down.
 * ``ip addr`` will display the IP address for all active network interfaces.
 * ``route`` 	will display the system default gateway information
 * ``uname -a`` Print operating system info
@@ -141,9 +144,65 @@
 * ``useradd xxx`` add new user
 * ``echo``
 * ``diff <file1> <file2>`` The diff command can be used to compare the contents of two files.
+* ``ps`` list all the user processes
+* ``ps u`` list all the detailed user processes
+* ``ps aux`` list all the user processes including system process.
+* ``ps u root`` list all the root user processes
+* ``exit`` exit the shell.
+* ``sleep <numberOfSecond>`` pause the shell for certain number of seconds.
 
 
 ## Tools
+
+### Init and Run Level
+* It is a daemon process that control the OS Run Level, it runs immediately after system starts up, end when the machine is shutdown.
+* A Run Level is used to control the start or end of certain system services in various level of usage for security reason.
+* ``/etc/rc0.d``~``/etc/rc9.d`` folders stores links for services and whether it needs start or kill.
+* In the ``rcN`` folders, when a link starts with ``S`` it will be started in ``N`` run level. ``K`` means kill or stop the services.
+* ``/etc/inittab`` stores information about the name and usage of all Run Levels and the system default Run Level when start up. ``id:3:initdefault`` means default Run Level when boot is 3.
+#### Related Commands
+* ``init 5`` set run level to 5.
+* ``chkconfig --list`` list all services and their run level.
+* ``chkconfig --list <ServiceName>`` list certain service and its run level info.
+* ``chkconfig --level 3 <ServiceName> on`` set certain service is on, in certain run level.
+* ``service <ServiceName> start`` start a service
+* ``service <ServiceName> stop`` stop a service
+* ``service <ServiceName> restart`` restart a service
+* ``service <ServiceName> status`` check status of a service
+
+### Processes
+* Executing code (applications, services, etc) run as a processes.
+* Each process is assigned a process ID.
+* Processes are control by send signals
+  * common kill signal
+    * ``-1`` or  ``–SIGHUP`` sends a ‘hang up’ signal.  Many daemon processes are programmed to re-read their configuration when they receive a HUP signal
+    * ``-2`` or ``–SIGINT`` sends the same type of signal as ``CTRL+ C``.   Most programs will stop.  In some instances there may be some data loss.
+    * ``-9`` or ``–SIGKILL``.  The OS performs an ‘unclean kill’.  The process is not informed that it is ending.  Most likely to result in data loss.   Should only be used to stop processes that appear to be unstoppable.
+    * ``-15`` or ``–TERM``.  Sends a terminate signal.  Tells the process to stop what it’s doing and terminate itself.  Less likely to result in data loss.
+  * Use Keyboard shortcut
+    * ``CTRL+C`` – End Process, quit gracefully
+    * ``CTRL+D`` – End of Data, quit immediately
+    * ``CTRL+Z`` – Stop Process or Send the Process to the background.
+* When a process is running it is called a job.
+  * Foreground Job - It is running, process is outputted in the console.
+  * Background Job - It is running but is hidden.
+
+
+#### Related Commands
+* ``kill -l`` list kill signal options.
+* ``kill –s <signalNumber> <PID>`` kill a process with certain kill signal, the process is indicated by PID(Process ID).
+* ``jobs`` list all current jobs.
+* ``fg <jobNumber>`` bring a job to foreground.
+* ``<command> &`` start a process and make it a background job.
+* ``bg`` stop a foreground job first, then use this command to send it to background.
+
+
+### RPM
+* Red Hat Package Manager
+* ``rpm -q <ServiceName>`` check if a service is installed.
+
+
+
 ### YUM
 * It is a package manager
 * ``/etc/yum.conf`` allows you to configure which software repositories to use globally (i.e., RedHat, Fedora, CentOS, etc…)
@@ -156,7 +215,9 @@
 * ``yum install gcc –y`` Install the C compiler.
 * ``yum install kernel -y`` and ``yum install kernel-devel –y`` install kernel development source.
 
-##Vim
+
+
+### Vim
 * ``vi``, open vim.
 * ``vi filename.txt``, open a file with vi.
 * Vi has insert mode, press i to enter insert mode, press Esc to exit.

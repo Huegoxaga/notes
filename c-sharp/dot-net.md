@@ -12,11 +12,19 @@
 * It is a formal specification of .NET APIs that are intended to be available on all .NET implementations
 * [Click](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) to see its content.
 
+Formatting
+Advanced/Format Selection
 
+or
+Ctrl + K then Ctrl + F
 
 Debug
 Visual Studio has breakpoint for debugging it allows the program to run line by line.
 There are Autos, Immediate, Locals, and Watch windows for debugging.
+
+Press F9 to add breakpoint.
+will see a red dot represents the breakpoint.
+run in debug mode can view all values for variables when the code stops at breakpoint in the code editor by hovering over the variable name and click the arrow button.
 
 Debug mode
 The Step Into command

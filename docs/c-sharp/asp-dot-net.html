@@ -618,14 +618,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" >
+        <li class="chapter " data-level="1.22" data-path="../theory/">
             
-                <span>
+                <a href="../theory/">
             
                     
                     Theory
             
-                </span>
+                </a>
             
 
             
@@ -758,7 +758,7 @@
 </ul>
 <h2 id="programming-models">Programming Models</h2>
 <ul>
-<li>Web Forms</li>
+<li>Web Forms<ul>
 <li>Control and event-based programming model similar to Windows Forms</li>
 <li>Controls encapsulate HTML, JavaScript and CSS</li>
 <li>Rich UI controls included &#x2013; datagrids, charts, AJAX, &#x2026;</li>
@@ -768,18 +768,20 @@
 <li>On the form, we place controls</li>
 <li>Server-side technology</li>
 <li>The ASP.NET engine renders standards-based HTML and JavaScript code</li>
-<li>Can also edit in HTML mode<ul>
+<li>Can also edit in HTML mode</li>
 <li>Some changes can only be made this way</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>MVC</li>
+<li><p>MVC</p>
+<ul>
 <li>Model View Controller</li>
 <li>Total control of HTML markup</li>
 <li>Supports unit testing</li>
 <li>Extremely flexible and extensible</li>
-<li><p>Emerging as preferred development technique</p>
+<li>Emerging as preferred development technique</li>
+</ul>
 </li>
 <li><p>Web API</p>
 <ul>
@@ -837,14 +839,15 @@
 <li>F5 offers full debugging which allows interactive breakpoints</li>
 <li>Ctrl+F5 runs without debugging, which runs faster</li>
 <li>Both approaches permit making changes and refreshing browser without relaunching</li>
+<li>Run by IIS Express can choose a <code>http</code> port and a <code>https</code> when right click IIS Service Icon in OS Task Bar.</li>
 </ul>
 </li>
 <li>Select Browse With&#x2026; from toolbar to view page with any installed browser.</li>
 <li>Switch between Design view or Code view, by clicking buttons at the bottom left of the editor. Or right click on the file and click View Code/View Design.</li>
 <li>Uses cookies by default, Can be overridden in Web.config file</li>
-<li>ASP.NET simplifies web programming by automatically maintaining state on page when posting back to the same page
-Known as a postback. Any events or data change will reload the page.</li>
+<li>ASP.NET simplifies web programming by automatically maintaining state on page when posting back to the same page known as a postback. Any events or data change will reload the page.</li>
 <li>Implemented using a hidden HTML field: <code>__VIEWSTATE</code></li>
+<li>Any components have a task button, accessed by hover over the beginning tag and click on the arrow button</li>
 </ul>
 <h2 id="create-new-project">Create new project</h2>
 <ul>
@@ -862,22 +865,105 @@ Known as a postback. Any events or data change will reload the page.</li>
 </ul>
 <h3 id="aspxcs-file"><code>.aspx.cs</code> File</h3>
 <ul>
+<li>It stores all the event handlers for the component in <code>.aspx</code> file.</li>
 <li>It has an <code>IsPostBack</code> variable that is False the first time a page loads, True any subsequent time the page loads.</li>
 <li>It has access to Session data, <code>Session[&quot;var_name&quot;] = data</code>.<ul>
 <li>Read Session data: <code>String name = Session[&quot;name&quot;].ToString();</code>, <code>int cnt = (int)Session[&quot;item_count&quot;];</code>, <code>List&lt;Movie&gt; movies = (List&lt;Movie&gt;)Session[&quot;movies&quot;];</code>.</li>
 </ul>
 </li>
 </ul>
+<h2 id="database">Database</h2>
+<h3 id="connection">Connection</h3>
+<ol>
+<li>Open the database server.</li>
+<li>Add the <code>.sql</code> script into the project in the Solution Explorer.</li>
+<li>open the <code>.sql</code> file. click the <code>Execute</code> button.</li>
+<li>set Server Name,  <code>localhost\serverName</code> or any other server address and name, click <code>Connect</code>.</li>
+<li>The <code>sql</code> script should be run in the target database.<h3 id="access-through-components">Access Through Components</h3>
+</li>
+<li>In <code>.aspx</code> file, click the task button of a component, select <code>Choose Data Source</code>.</li>
+<li>Select <code>New Data Source</code>.</li>
+<li>Choose the Database and set its ID.</li>
+<li>Establish New Connection by following the steps to select the corresponding database table.</li>
+<li>Connection String will be set in <code>Web.config</code> file in the project folder.</li>
+<li>Select the corresponding columns to display.</li>
+</ol>
+<h3 id="access-in-aspxcs">Access in <code>.aspx.cs</code></h3>
+<ul>
+<li>Requires following directive<ul>
+<li><code>using System.Data;</code></li>
+<li><code>using System.Web.Configuration;</code></li>
+<li><code>using System.Data.SqlClient;</code></li>
+</ul>
+</li>
+<li><p>Use the following code to add data to database</p>
+<pre><code class="lang-cs"><span class="hljs-keyword">try</span>
+{
+<span class="hljs-keyword">var</span> connectionString = WebConfigurationManager.ConnectionStrings[<span class="hljs-string">&quot;movie_trackerConnectionString&quot;</span>].ConnectionString;
+
+<span class="hljs-keyword">using</span> (SqlConnection connection = <span class="hljs-keyword">new</span> SqlConnection(connectionString))
+{
+  <span class="hljs-keyword">var</span> command = <span class="hljs-keyword">new</span> SqlCommand(<span class="hljs-string">&quot;INSERT INTO movies VALUES(@title, @date, @genre, @rating)&quot;</span>, connection);
+  command.Parameters.Add(<span class="hljs-string">&quot;@title&quot;</span>, SqlDbType.VarChar);
+  command.Parameters[<span class="hljs-string">&quot;@title&quot;</span>].Value = titleTextBox.Text;
+  command.Parameters.Add(<span class="hljs-string">&quot;@date&quot;</span>, SqlDbType.Date).Value = date.ToShortDateString();
+  command.Parameters.AddWithValue(<span class="hljs-string">&quot;@genre&quot;</span>, genreDropDownList.SelectedValue);
+  command.Parameters.Add(<span class="hljs-string">&quot;@rating&quot;</span>, SqlDbType.Int).Value = rating;
+  connection.Open();
+  command.ExecuteNonQuery();
+}
+}
+<span class="hljs-keyword">catch</span> (Exception ex)
+{
+outputLiteral.Text += $<span class="hljs-string">&quot;&lt;p style=\&quot;color:red;\&quot;&gt;{ex.Message}&lt;/p&gt;&quot;</span>;
+}
+</code></pre>
+</li>
+<li><p>Use the following code to read data from database</p>
+<pre><code class="lang-cs">try
+{
+var connectionString = WebConfigurationManager.ConnectionStrings[&quot;movie_trackerConnectionString&quot;].ConnectionString;
+
+using (SqlConnection connection = new SqlConnection(connectionString))
+{
+    var command = new SqlCommand(@&quot;SELECT title, date_seen, genre_description, rating
+                                   FROM movies m
+                                   JOIN genres g
+                                   ON m.genre_id = g.genre_id&quot;,
+                                   connection);
+    connection.Open();
+    var reader = command.ExecuteReader();
+
+    while (reader.Read())
+    {
+        outputLiteral.Text += $@&quot;&lt;tr&gt;
+                                   &lt;td&gt;{reader[&quot;title&quot;].ToString()}&lt;/td&gt;
+                                   &lt;td&gt;{reader.GetDateTime(1).ToShortDateString()}&lt;/td&gt;
+                                   &lt;td&gt;{reader[&quot;genre_description&quot;].ToString()}&lt;/td&gt;
+                                   &lt;td style=&quot;&quot;text-align:center;&quot;&quot;&gt;{(int)reader[&quot;rating&quot;]}&lt;/td&gt;
+                                 &lt;/tr&gt;&quot;;
+    }
+
+    reader.Close();
+}
+}
+catch (Exception ex)
+{
+outputLiteral.Text += $&quot;&lt;p style=\&quot;color:red;\&quot;&gt;{ex.Message}&lt;/p&gt;&quot;;
+}
+</code></pre>
+</li>
+</ul>
 <h2 id="web-form-controls">Web Form Controls</h2>
 <ul>
-<li>Standard .NET Controls</li>
+<li>Many Standard .NET Controls Work here.</li>
 <li>Buttons<ul>
 <li>has <code>CausesValidation=&quot;false&quot;</code> property.</li>
 </ul>
 </li>
 <li>labels</li>
 <li>DropDownList<ul>
-<li>Hover over the code(above &quot;asp&quot;) and click the arrow button to edit items. Codes will be auto generated when the items are added.</li>
+<li>Click task button to edit items. Codes will be auto generated when the items are added.</li>
 <li>Has value property to set its initial selection, set <code>Value=&quot;none&quot;</code> if it need initial no selected value.</li>
 <li><code>.SelectedIndex</code> are still used in the <code>.aspx.cs</code> file.</li>
 </ul>
@@ -903,10 +989,11 @@ Known as a postback. Any events or data change will reload the page.</li>
 <li>RequiredValidator</li>
 <li>ValidationSummary - Return the ErrorMessage</li>
 <li>CompareValidator</li>
-<li>RegularExpressionValidator - Email address, phone numb</li>
+<li>RegularExpressionValidator - Email address, phone number</li>
+<li>CustomValidator - required server side code in OnServerValidate and client side code in ClientValidationFunction written in JavaScript.</li>
 </ul>
 </li>
-<li>Used to Validation an control&apos;s data, and present messages and adjust focus if validation fails.</li>
+<li>Used to Validation a control&apos;s data, and present messages and adjust focus if validation fails.</li>
 <li>Associate related controls for validation, type the target control&apos;s id after the ControlToValidate property.</li>
 <li>Need to run <code>Install-Package AspNet.ScriptManager.jQuery</code> in the Tools/NuGet Package Manager / Package Manager Console.</li>
 <li>IsValid variable can be used in <code>.aspx.cs</code> file. It returns true if validation is successful.</li>
@@ -920,7 +1007,7 @@ Known as a postback. Any events or data change will reload the page.</li>
 <li>Literal control It can be used to display text or HTML. When content is assigned to its Text property.</li>
 </ul>
 <h3 id="page-object">Page Object</h3>
-<p>It has the following Events</p>
+<p>It has the following Events:</p>
 <ul>
 <li>PreInit</li>
 <li>Init</li>
@@ -977,7 +1064,7 @@ Known as a postback. Any events or data change will reload the page.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ASP.NET","level":"1.5.2","depth":2,"next":{"title":"C","level":"1.6","depth":1,"path":"c/README.md","ref":"c/README.md","articles":[]},"previous":{"title":".NET","level":"1.5.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c-sharp/asp-dot-net.md","mtime":"2020-01-15T20:56:37.635Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-15T21:14:13.213Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ASP.NET","level":"1.5.2","depth":2,"next":{"title":"C","level":"1.6","depth":1,"path":"c/README.md","ref":"c/README.md","articles":[]},"previous":{"title":".NET","level":"1.5.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c-sharp/asp-dot-net.md","mtime":"2020-01-23T15:11:31.627Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

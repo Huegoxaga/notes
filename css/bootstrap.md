@@ -14,34 +14,33 @@
 There are many options:
 * In project folder, run ``npm i bootstrap`` to get the modules.
 * Or, Use CDN link in script tag with jQuery, popper.js, bootstrap.js and font files.
-* Or, Download ready-to-use compiled code.
-
-## Grid System
-A responsive grid system that scales up to 12 columns of information to the appropriate device size
-A row is used to define a horizontal group of columns
-Content is places inside the columns•Only columns may be immediate children of rows
-Pre-defined grid classes like .col-xs-4 let us quickly make grid layouts, but we can customize our own
-The 4 part of the pre-defined class tell us that the column using this class will span 4 of the 12 column
+```HTML
+<!-- In <head> tag-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- At the end of the <body> tag-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+```
+* Or, [Download](https://getbootstrap.com/docs/4.4/getting-started/download/) ready-to-use compiled code.
 
 ## Containers
-Bootstrap contents, including grid systems, require a containing element:•<div class=“container”> ... </div>
-Bootstrap containers can be either fixed with (as above) or fluid:
-<div class=“container-fluid”> ... </div>
-Fluid width containers won’t necessarily stack, columns will just get smaller.
+* Bootstrap contents, including grid systems, require a containing element: ``<div class=“container”> ... </div>``
+* Bootstrap containers can be either fixed with (as above) or fluid: ``<div class=“container-fluid”> ... </div>``
+  * Fluid width containers won’t necessarily stack, columns will just get smaller.
 
-## predefined components
-https://getbootstrap.com/docs/4.4/components/alerts/
-Typically a set of CSS classes, maybe supported by JavaScript code, along with associated expectations around how they are to be used in HTML tags•E.g.: drop-down lists, navigation bars, pagination•Extensive example code and tutorials make it easy to integrate into our own applications
 
-page-header
-m-2 margin 2
-badge
-badge-primary
-btn
-btn-secondary
-btn-sm
-btn-lg
-btn-default
-btn-info    change color
-btn-success    change color
-btn-danger    change color
+## Grid System
+* A responsive grid system that scales up to 12 columns of information to the appropriate device size.
+* There are two types of classes, ``row`` class contains multiple ``col`` class items in one row.
+* Pre-defined grid classes like ``.col-lg`` let us quickly make grid layout sizes. ``.col-xs-4`` indicates the column using this class will span 4 of the 12 column.
+* [Click](https://getbootstrap.com/docs/4.1/layout/grid/) to see more.
+
+
+## Predefined Components
+* [Click](https://getbootstrap.com/docs/4.4/components/alerts/) to see full docs.
+* Typically a set of CSS classes, maybe supported by JavaScript code, along with associated expectations around how they are to be used in HTML tags.
+
+## Utilities
+* They provide shortcuts for styling web components. For example: margin, border, height, width.
+* [Click](https://getbootstrap.com/docs/4.4/utilities/borders/) to see details.

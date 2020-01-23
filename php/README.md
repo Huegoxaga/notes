@@ -293,6 +293,8 @@ switch (x) {
 		//optional, this line will be executed if all values don’t match x.
 }
 ```
+* use ``endswitch;`` optionally at the end of for each loop if curly brackets are not used.
+
 
 ##### Break/Continue statement
 * If there is no break statement in switch structure, code will keep running when there is a match.
@@ -336,6 +338,7 @@ foreach ($arrayName as $key => $value){
 	//$key and $value will be set in each iteration.
 }
 ```
+* use ``endforeach; `` optionally at the end of for each loop if curly brackets are not used.
 
 
 
@@ -435,6 +438,8 @@ isset($_COOKIE['user']) //returns true if the the key ‘user’ exists in the $
 //It is used to perform checking.
 ```
 
+### ``$_REQUEST``
+* It stores the Ajax Request data from the client side.
 
 ## Classes
 * PHP class can have member variables called properties and functions called methods.
@@ -556,13 +561,13 @@ filter_input(INPUT_GET/INPUT_POST, "dataName", FILTER_TYPE);
 
 * null and false are always used for error handling for these functions.
 
-#### Random
+### Random
 ```php
 rand($min, $max)
 ```
 * returns a random integer $min to $max
 
-#### Date
+### Date
 ```php
 date($format)
 date("M d Y")
@@ -576,7 +581,7 @@ date("l dS \of F Y h:i:s A")
 date_default_timezone_set("Canada/Eastern");
 ```
 
-#### ``var_dump($var)``
+### ``var_dump($var)``
 * prints the type and content of $var or &object
 * In HTML, using ``<pre>`` tag to hold space for the ``var_dump()`` output. It is not mandatory.
 ```html
@@ -585,10 +590,10 @@ date_default_timezone_set("Canada/Eastern");
 * or directly use ``var_dump($var)`` in PHP to print object info in console.
 * ``var_dump($_GET)`` and ``var_dump($_POST)`` can be used to check form content.
 
-#### phpversion()
+### phpversion()
 return the PHP version string
 
-#### Formatting Number
+### Formatting Number
 ```php
 //round $n to $p decimal places
 number_format($n, $p)
@@ -600,11 +605,27 @@ mail($addr, $subj, $msg)
 //send email when email server is configured.
 ```
 
-#### Hashing Password:
+### Hashing Password:
 ```php
 password_hash($user_pwd, PASSWORD_DEFAULT) //return hashed password
 password_verify($user_pwd, $hash) //return true if raw password $user_pwd. hashed password $hash.
 ```
+
+### Search for Pattern
+The preg_match() function searches string for pattern, returning true if pattern exists, and false otherwise.
+```php
+$line = "Vi is the greatest word processor ever created!";
+// perform a case-Insensitive search for the word "Vi"
+if (preg_match("/\bVi\b/i", $line, $match)) :
+   print "Match found!";
+   endif
+```
+```php
+preg_match("/^[A-Za-z]{3,20}$/",$string)
+```
+
+
+
 ## Files I/O
 
 ### Open Files
@@ -771,3 +792,17 @@ while ($row=$stmt->fetch()) {
 }
 echo json_encode($userlist);
 ```
+## PHP FileSystem
+
+### ``file_get_contents()``
+* It reads a file into a string, ``file_get_contents(path)``.
+
+### ``file_put_contents()``
+* It writes data to a file and return the number of character it written.
+``file_put_contents(filename, data)``
+* It can have optional parameter ``mode``:
+  * FILE_USE_INCLUDE_PATH - search for filename in the include directory
+  * FILE_APPEND - if file already exists, append the data to it - instead of overwriting it
+  * LOCK_EX - Put an exclusive lock on the file while writing to it
+
+## MobileESP Project

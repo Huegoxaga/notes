@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>XML · GitBook</title>
+        <title>Theory · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="gfm.html" />
+    <link rel="next" href="algorithm.html" />
     
     
-    <link rel="prev" href="html.html" />
+    <link rel="prev" href="../maple/" />
     
 
     </head>
@@ -321,9 +321,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="./">
+        <li class="chapter " data-level="1.8" data-path="../markup/">
             
-                <a href="./">
+                <a href="../markup/">
             
                     
                     Markup Language
@@ -335,9 +335,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="html.html">
+        <li class="chapter " data-level="1.8.1" data-path="../markup/html.html">
             
-                <a href="html.html">
+                <a href="../markup/html.html">
             
                     
                     HTML
@@ -348,9 +348,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.2" data-path="xml.html">
+        <li class="chapter " data-level="1.8.2" data-path="../markup/xml.html">
             
-                <a href="xml.html">
+                <a href="../markup/xml.html">
             
                     
                     XML
@@ -361,9 +361,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="gfm.html">
+        <li class="chapter " data-level="1.8.3" data-path="../markup/gfm.html">
             
-                <a href="gfm.html">
+                <a href="../markup/gfm.html">
             
                     
                     GFM
@@ -618,23 +618,23 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" >
+        <li class="chapter active" data-level="1.22" data-path="./">
             
-                <span>
+                <a href="./">
             
                     
                     Theory
             
-                </span>
+                </a>
             
 
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.22.1" data-path="../theory/algorithm.html">
+        <li class="chapter " data-level="1.22.1" data-path="algorithm.html">
             
-                <a href="../theory/algorithm.html">
+                <a href="algorithm.html">
             
                     
                     Algorithm
@@ -680,7 +680,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >XML</a>
+        <a href=".." >Theory</a>
     </h1>
 </div>
 
@@ -695,43 +695,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>XML is plain text and is similar to html coding, so reviewing or editing the configuration files is relatively simple.
-XML uses custom tags to define objects or elements.
-Basic XML formatting rules
-All XML elements must have a closing tag
-XML tags are case sensitive
-Where multiple tags exist, they must be properly nested
-<b><i>bold and italic</i></b> not <i><b>bold and italic</b></i>&lt;/b&gt;
-XML Documents Must Have a Root Element</p>
-<p><root>
-     <child>
-        <subchild>.....</subchild>
-    </child>
-</root>
-XML elements can have attributes in name/value pairs just like in HTML.
-In XML, the attribute values must always be quoted &lt;user name=&#x201C;Joe&quot;&gt;
-Comments in XML are similar to that of HTML.
-<!-- This is a comment --></p>
-<p>XPath</p>
-<p>xPath
-nodename    Selects all nodes with the name &quot;nodename&quot;
-/    Selects from the root node
-//    Selects nodes in the document from the current node no matter where they are
-.    Selects the current node
-..    Selects the parent of the current node
-@    Selects attributes
-    Selects all nodes using wild cards
-|        connect or combine selections.
-node[1]  select first child node of &#x201C;node&#x201D;, starting from 1.
-node[last()-1]  select second last child node.
-node[position()<4] 3="" select="" first="" child="" nodes="" of="" node.="" node[price="">35.00]   select node with price tag has value greater than 35.00</4]></p>
-<p>Examples:</p>
-<p>bookstore       Selects all nodes with the name &quot;bookstore&quot;
-/bookstore    Selects the root element bookstore Note: If the path starts with a slash ( / ) it always represents an absolute path to an element!<br>bookstore/book    Selects all book elements that are children of bookstore
-//book    Selects all book elements no matter where they are in the document
-bookstore//book    Selects all book elements that are descendant of the bookstore element, no matter where they are under the bookstore element
-//@lang    Selects all attributes that are named lang
-//title[@lang]    Selects all the title elements that have an attribute named lang //title[@lang=&apos;en&apos;]    Selects all the title elements that have a &quot;lang&quot; attribute with a value of &quot;en&quot;</p>
+                                <ul>
+<li><a href="https://huegoxaga.github.io/notes/theory/algorithm.html" target="_blank">Data Structure and Algorithm</a></li>
+</ul>
 
                                 
                                 </section>
@@ -759,12 +725,12 @@ bookstore//book    Selects all book elements that are descendant of the bookstor
 
             
                 
-                <a href="html.html" class="navigation navigation-prev " aria-label="Previous page: HTML">
+                <a href="../maple/" class="navigation navigation-prev " aria-label="Previous page: Maple">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="gfm.html" class="navigation navigation-next " aria-label="Next page: GFM">
+                <a href="algorithm.html" class="navigation navigation-next " aria-label="Next page: Algorithm">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -775,7 +741,7 @@ bookstore//book    Selects all book elements that are descendant of the bookstor
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"XML","level":"1.8.2","depth":2,"next":{"title":"GFM","level":"1.8.3","depth":2,"path":"markup/gfm.md","ref":"markup/gfm.md","articles":[]},"previous":{"title":"HTML","level":"1.8.1","depth":2,"path":"markup/html.md","ref":"markup/html.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"markup/xml.md","mtime":"2020-01-08T00:52:44.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-15T21:06:12.392Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Theory","level":"1.22","depth":1,"next":{"title":"Algorithm","level":"1.22.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]},"previous":{"title":"Maple","level":"1.21","depth":1,"path":"maple/README.md","ref":"maple/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/README.md","mtime":"2020-01-23T15:33:37.398Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -783,10 +749,6 @@ bookstore//book    Selects all book elements that are descendant of the bookstor
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
