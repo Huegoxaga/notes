@@ -79,9 +79,9 @@ define("CONSTANTNAME", value, case-insensitive(true or false(default)))
 * A variable variables use the value of another variable as its name.
 
 ```php
-$a = ‘b’
-$b = ‘hello’
-echo $$a -> ‘hello’
+$a = 'b'
+$b = 'hello'
+echo $$a -> 'hello'
 ```
 ### Scope
 * A variable declared outside a function has a global scope.
@@ -117,15 +117,15 @@ It stores a list of values.
 
 ##### Create New Array
 ```php
-$array1 = array(‘a’, ‘b’, ‘c’);
+$array1 = array('a', 'b', 'c');
 //alternatively
-$array1 = [‘a’, ’b’, ’c’];
+$array1 = ['a', 'b', 'c'];
 //alternatively
-$array1[0] = ‘a’;
-$array1[1] = ‘b’;
-$array1[2] = ‘c’;
+$array1[0] = 'a';
+$array1[1] = 'b';
+$array1[2] = 'c';
 echo $array1[1];
-//output: ‘b’
+//output: 'b'
 ```
 
 #### Associative Arrays
@@ -133,19 +133,19 @@ echo $array1[1];
 * Keys can only be strings, values can be of any types.
 * Associative arrays can also be accessed using index integer([0] represents the first value.)
 ```php
-$array2 = array(‘first’ => ‘a’, ‘second’ => ‘b’, ‘third’ => ‘c’);
+$array2 = array('first' => 'a', 'second' => 'b', 'third' => 'c');
 //or
-$array2 = [‘first’ => ‘a’, ‘second’ => ‘b’, ‘third’ => ‘c’];
+$array2 = ['first' => 'a', 'second' => 'b', 'third' => 'c'];
 //alternatively,
 $array2 = [ ];
-$array2[‘first’] = ‘a’;
-$array2[‘second’] = ‘b’;
-$array2[‘third’] = ‘c’;
-echo $array2[‘second’];
-//Output ‘b’
+$array2['first'] = 'a';
+$array2['second'] = 'b';
+$array2['third'] = 'c';
+echo $array2['second'];
+//Output 'b'
 ```
 
-* { and ‘ can be ignored in the PHP string
+* { and ' can be ignored in the PHP string
 ```php
 echo "<p>$array2[second]</p>"
 ```
@@ -180,14 +180,24 @@ array_pust($array, $newElement)	//append $newElement to $array.
 ```php
 "<li>$i</li>"
 ```
-* If this string use "", inside the string "" for html should be changed to ‘’.
+* If this string use "", inside the string "" for html should be changed to ''.
 ```php
-"<div class=‘$class'>$die</div>"
+"<div class='$class'>$die</div>"
 ```
+* heredoc syntax can be used to delimit strings.
+  * It is a special block that contains strings, all special characters inside of the string will be treated as regular characters.
+  * It starts with ``<<<``, followed by a identifier which have be any combination of characters, usually capitalized.
+  * Ex:
+  ```php
+  $str = <<<ABC
+  @#)($*)@#(&%)#":?><}{}"
+  ABC;
+  //ABC is the identifier.
+  ```
 * To embed expressions or embed variables for string with singe quotation, use {}.
 ```php
 "<div><h1>{$user->get_name()}</h1></div>"
-‘{$x+$y}’
+'{$x+$y}'
 ```
 
 
@@ -202,6 +212,7 @@ Is is used to output text. HTML tags can be used in the echo text. So the browse
 echo "Hello World!";
 echo "<h1>Hello World!</h1>";
 ```
+* ``strpos($str, $substr)`` return true if ``$str`` contains ``$substr``. Use ``stripos()`` for case insensitive comparison.
 
 
 ## Operators
@@ -290,7 +301,7 @@ switch (x) {
 		break;
 	…
 	default:
-		//optional, this line will be executed if all values don’t match x.
+		//optional, this line will be executed if all values don't match x.
 }
 ```
 * use ``endswitch;`` optionally at the end of for each loop if curly brackets are not used.
@@ -378,7 +389,7 @@ function xValue($y, $z, $x=1) {}
 
 //return statement
 return $variableX;
-//It stop functions’ execution and return values
+//It stop functions' execution and return values
 //If a function has no return statement, it will return NULL when it is called.
 ```
 
@@ -391,9 +402,10 @@ In PHP, superglobal variables are
 ### ``$_SERVER``
 * ``$_SERVER`` is an associative array that holds information.
 ```php
-$_SERVER[‘SCRIPT_NAME’] // returns the path of the current script.
+$_SERVER['SCRIPT_NAME'] // returns the path of the current script.
 
-$_SERVER[‘HTTP_HOST’]     // returns the host header(the folder that contain the entire host files) name.
+$_SERVER['HTTP_HOST']     // returns the host header(the folder that contain the entire host files) name.
+$_SERVER['REQUEST_METHOD']  // return POST or GET.
 ```
 
 ### ``$_POST`` and ``$_GET``
@@ -413,8 +425,8 @@ A session is started using the following function.
 session_start();
 //It must be the first line of code before <!DOCTYPE>. Same in other pages if session variable will be accessed.
 ```
-When new session is created, A ```$_SESSION[‘PHPSESSID’]``` is assigned as a user session identifier for the server. It is stored in the client’s cookies.
-a variable is stored using the following way. ``$_SESSION[‘username’] = "Tom"``;
+When new session is created, A ```$_SESSION['PHPSESSID']``` is assigned as a user session identifier for the server. It is stored in the client's cookies.
+a variable is stored using the following way. ``$_SESSION['username'] = "Tom"``;
 #### End a Session
 ```php
 session_unset();	//It is used to clear session variables.
@@ -431,15 +443,15 @@ session_destory()	//It is used to end the session, the data still exists on serv
 setcookie(cookieName(only required parameter), cookieValue, expireTimeInSecond(0 make the cookie expire when session ends), cookiePath(where the cookie is available), domainName, secure(Whether the cookie should only be transmitted through HTTPS connection, default FALSE.), httpOnly(TRUE if HTTP protocol is required, default FALSE.))
 setcookie("user", $value, time() + (86400 * 30), '/');
 //The cookie will expire after 30 days.
-//‘/‘ this means the cookie is available for the entire website.
+//'/' this means the cookie is available for the entire website.
 Function time(); //returns the current time.
-$_COOKIE[‘user’]="username"; //Create cookie value.
-isset($_COOKIE['user']) //returns true if the the key ‘user’ exists in the $_COOKIE variable.
+$_COOKIE['user']="username"; //Create cookie value.
+isset($_COOKIE['user']) //returns true if the the key 'user' exists in the $_COOKIE variable.
 //It is used to perform checking.
 ```
 
 ### ``$_REQUEST``
-* It stores the Ajax Request data from the client side.
+* It stores the Ajax Request data from the client side. ``$_REQUEST[dataName]``
 
 ## Classes
 * PHP class can have member variables called properties and functions called methods.
@@ -515,7 +527,7 @@ It can have name like set_name( )
 
 ### Inheritance
 * keyword extends is used for creating subclass.
-* when subclass does not explicitly define constructor, the parent class’s constructor is called, given that this constructor is not private.
+* when subclass does not explicitly define constructor, the parent class's constructor is called, given that this constructor is not private.
 
 * interface are a group of methods that required for a class.
 * multiple methods can be declared together, separated with comma.
@@ -612,11 +624,17 @@ password_verify($user_pwd, $hash) //return true if raw password $user_pwd. hashe
 ```
 
 ### Search for Pattern
-The preg_match() function searches string for pattern, returning true if pattern exists, and false otherwise.
+* The preg_match() function searches string for pattern, returning true if pattern exists, and false otherwise.
+* The pattern is stated as String expressed by Regular Expression. [Click Here](https://regexr.com/) to learn more.
+* The third parameter ``$match`` contains results of search. The $matches[0] will contain the text that matched full pattern, $matches[1] will contain the text that matched the first captured parenthesized subpattern, and so on.
+* The fourth parameter is flags: The flags can be following flags:
+  * ``PREG_OFFSET_CAPTURE``: If this flag is passed, for every match the append string offset will be returned.
+  * ``PREG_UNMATCHED_AS_NULL``: If this flag is passed, subpatterns which are not matched reports as NULL; otherwise they reports as empty string.
+* The fifth parameter is offset: Usually, search starts from the beginning of input string. This optional parameter offset is used to specify the place from where to start the search (in bytes).
 ```php
-$line = "Vi is the greatest word processor ever created!";
+$text = "This is the string we are going to search";
 // perform a case-Insensitive search for the word "Vi"
-if (preg_match("/\bVi\b/i", $line, $match)) :
+if (preg_match("/\bVi\b/i", $text, $match)) :
    print "Match found!";
    endif
 ```
@@ -696,7 +714,7 @@ There are two ways to connect: Mysqli and PDO.
 try {
 	$dbh = new PDO("mysql:host=localhost;dbname=MYID","MYID","MYPASSWORD");
 }catch (Exception $e) {
-	die("ERROR: Couldn’t connect. {$e ->getMessage()}");
+	die("ERROR: Couldn't connect. {$e ->getMessage()}");
 }
 ```
   * die function stops execution and output a message and abort the script.

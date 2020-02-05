@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Algorithm · GitBook</title>
+        <title>Data Structures and Algorithms · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -140,14 +140,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" >
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
             
                 <span>
             
                     
                     Android Studio
             
-                </span>
+                </a>
             
 
             
@@ -635,7 +635,7 @@
                 <a href="algorithm.html">
             
                     
-                    Algorithm
+                    Data Structures and Algorithms
             
                 </a>
             
@@ -678,7 +678,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Algorithm</a>
+        <a href=".." >Data Structures and Algorithms</a>
     </h1>
 </div>
 
@@ -693,16 +693,177 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="algorithm">Algorithm</h1>
-<p>Data structure is a systematic way of organizing and accessing data.
-Algorithm is a step-by-step procedure for performing some task in a finite amount of time.
-Shorter running time is the major indication of a better data structure or algorithm.</p>
-<h2 id="recursion">Recursion</h2>
-<p>a method that calls itself is a recursive method.
-It has a base case, the method will called itself until the base case is reached and solved.</p>
-<h2 id="iteration">Iteration</h2>
-<p>a method that called repeatedly in a loop.</p>
-<h2 id="algorithm-analysis">Algorithm Analysis</h2>
+                                <h1 id="data-structures-and-algorithms">Data Structures and Algorithms</h1>
+<h2 id="data-structures">Data Structures</h2>
+<ul>
+<li>Data structure is a systematic way of organizing and accessing data.</li>
+</ul>
+<h3 id="array">Array</h3>
+<ul>
+<li>An ordered collection of data.</li>
+<li>It has indices for access the elements, usually starts at 0 from left to right.</li>
+<li>It has a fixed size, defined when the array is declared.</li>
+</ul>
+<h3 id="list">List</h3>
+<ul>
+<li>like an array but its size can be changed after the declaration.</li>
+</ul>
+<h4 id="array-list">Array List</h4>
+<ul>
+<li>They are Lists data structures designed base on array data structures.</li>
+<li>Also known as vector in C++ or earliest versions of Java.</li>
+<li>It internally declares a new array everything when the list size changes.</li>
+<li>Dynamic arrays is a technique used to improved the data structure. It always declares some empty elements on both sides of the array to lower the chances for creating and copying the array, every time the array change sizes.</li>
+</ul>
+<h4 id="linked-list">Linked List</h4>
+<ul>
+<li>A type of list that treats all of its elements as nodes.</li>
+<li>The nodes not only has the value for the element, it also stores a reference(link) to its adjacent elements.</li>
+<li>Link Lists have the following types:<ul>
+<li>Singly Linked Lists - All of its node has a reference to the next node of the list.<ul>
+<li>The first node is called the head, the last node is call the tail.</li>
+<li>The tail node has a null reference.</li>
+</ul>
+</li>
+<li>Circularly Linked Lists - When a singly linked list has its tail node reference to the head node, the head and the tail are connected to form a circularly linked list.</li>
+<li>Doubly Linked Lists - All of its node not only has a reference to the next node, but also has a reference to the previous node.<ul>
+<li>provide easy access to both side of certain node.</li>
+<li>There is header node at the beginning and tailer node at the end.</li>
+<li>Header node and tailer node do not store data. Together, they are called sentinels or guards, to protect the boundary, because either next node or previous node of the sentinels are not defined.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="positional-list">Positional List</h4>
+<ul>
+<li>It uses a cursor instead of indices to locate each elements.</li>
+</ul>
+<h3 id="stack">Stack</h3>
+<ul>
+<li>It is a collection of objects are inserted and removed according to the last-in, first-out principle.</li>
+<li>It is originated from a stack of plates in a spring-loaded, cafeteria plate dispenser.</li>
+<li>Inserting data is called push, removing data is called pop.</li>
+</ul>
+<h3 id="queue">Queue</h3>
+<ul>
+<li>Queues are first-in, first-out. It has a first come, first server principle.</li>
+<li>Adding data is called enqueue, removing data is call dequeue.</li>
+</ul>
+<h4 id="priority-queue">Priority Queue</h4>
+<ul>
+<li>A queue that has all of its element with a priority key.</li>
+<li>When dequeuing an element the priority key is considered first. Then, among all the elements with the highest priority, first-in, first-out.</li>
+<li>The key can be called minimal key. When represented by an integer, usually a lower number has a higher priority.</li>
+</ul>
+<h3 id="deck">Deck</h3>
+<ul>
+<li>It also known as double-ended queues.</li>
+<li>It supports insertion and deletion at both the front and the end of the queue.</li>
+</ul>
+<h3 id="tree">Tree</h3>
+<ul>
+<li>It stores objects in a hierarchical structure, like a tree.</li>
+<li>The top node is called the root.</li>
+<li>Each node(except root) has one parent node, and zero or more child node.</li>
+<li>All nodes with a common parent is called siblings.</li>
+<li>A node is called internal if it has child node.</li>
+<li>A node is called external or leaf if it has no child node.</li>
+<li>An edge of a tree is a pair of node with parent and child relationship, the order does not matter.</li>
+<li>A path of a tree is a serial of nodes with direct parent and child relationship.</li>
+<li>The depth is used to describe how many level a node is below the root node.</li>
+<li>The height is used to describe the max depth among all nodes for a tree.</li>
+<li>Subtree is generated by treating a tree&apos;s node as root of a new tree.</li>
+</ul>
+<h4 id="ordered-tree">Ordered Tree</h4>
+<ul>
+<li>A tree structure that place all the sibling nodes in an order.</li>
+</ul>
+<h4 id="binary-tree">Binary Tree</h4>
+<ul>
+<li>All of the nodes have at most two child.</li>
+<li>The children of the nodes are described as the left child and the right child.</li>
+<li>The children are ordered as the left child is the first child.</li>
+<li>For a proper binary tree, all of its internal nodes have two children. Otherwise, it can be called an improper binary tree.</li>
+<li>A traversal of a tree is a way of access all nodes of a tree.</li>
+</ul>
+<h4 id="heap">Heap</h4>
+<ul>
+<li>It can be used to improve the performance of a priority queue.</li>
+<li>It is a binary that stores a key and a value in all of its nodes.</li>
+<li>It also need to satisfy the following requirement.<ul>
+<li>The child node key is always greater or equal to its parent node key.</li>
+<li>Except the nodes with the highest depth of the tree, all nodes have two children(full). This guarantee the tree has minimal height.</li>
+</ul>
+</li>
+</ul>
+<h3 id="maps">Maps</h3>
+<ul>
+<li>It has a collection of key-value pairs(also called entries or mapping).</li>
+<li>Key can be of any data type, and they are unique.</li>
+<li>It is also known as associative arrays.</li>
+<li>The key and value are generally not stored in the same object.</li>
+</ul>
+<h4 id="hash-table">Hash table</h4>
+<ul>
+<li>A structure that help implement maps.</li>
+<li>In a hash table all possible keys in a map can found its associated integer values in the table.  </li>
+<li>It use hash function or hash algorithm is consist of hash code and compression function.</li>
+<li>Hash code finds or converts the integer value of all keys in the ordered hash table.</li>
+<li>Compression function generate and rearrange the new collection to have the same length of the map.</li>
+<li>A good hash code can avoid getting the same integer value as much as possible(avoid collisions).</li>
+<li>If multiple values are found under one hash code, they are stored in a bucket.</li>
+<li>Hash code examples:<ul>
+<li>For Integer objects, you can use the integer value of the object (or its absolute value).</li>
+<li>For Character objects, you can use the UNICODE value for the character.</li>
+<li>For String objects, you can use a function that takes into account the UNICODE values of the characters that make up the string, as well as the position occupied by each character.</li>
+<li>For Object types, you can use some function on the non-mutable components of the object.</li>
+</ul>
+</li>
+</ul>
+<h4 id="multimap">Multimap</h4>
+<ul>
+<li>They are maps that allows a key maps to multiple values.</li>
+</ul>
+<h4 id="linked-map">Linked Map</h4>
+<ul>
+<li>A ordered map.</li>
+</ul>
+<h3 id="set">Set</h3>
+<ul>
+<li>A unordered collection of elements, contains unique values only.</li>
+<li>Support membership operation for sets defined in Math.</li>
+<li>Internally Set are treated as Keys of a map.</li>
+</ul>
+<h4 id="multiset">Multiset</h4>
+<ul>
+<li>Also known as bag, are set that allow duplicated values.</li>
+</ul>
+<h4 id="linked-set">Linked Set</h4>
+<ul>
+<li>A ordered Set.</li>
+</ul>
+<h2 id="algorithm">Algorithm</h2>
+<ul>
+<li>Algorithm is a step-by-step procedure for performing some task in a finite amount of time.</li>
+<li>Shorter running time is the major indication of a better data structure or algorithm.</li>
+</ul>
+<h3 id="iteration">Iteration</h3>
+<ul>
+<li>A method that called repeatedly in a loop.</li>
+</ul>
+<h3 id="recursion">Recursion</h3>
+<ul>
+<li>A method that calls itself is a recursive method.</li>
+<li>It has a base case, the method will called itself until the base case is reached and solved.</li>
+<li>Recursive method can have the following types:<ul>
+<li>Linear Recursion - Each recursive method call itself once.</li>
+<li>Binary Recursion - Each recursive method call itself twice.</li>
+<li>Multiple Recursion - Each recursive method call itself more than twice.</li>
+</ul>
+</li>
+</ul>
+<h3 id="algorithm-analysis">Algorithm Analysis</h3>
 <p>It is used to tell if a data structure or Algorithm is good.</p>
 <ul>
 <li><p>Experimental studies, run methods, output current time before and after the operation, calculate and record the elapsed time for comparison. All irrelevant conditions are controlled.</p>
@@ -739,7 +900,7 @@ It has a base case, the method will called itself until the base case is reached
 </ul>
 </li>
 </ul>
-<h3 id="time-complexity">Time Complexity</h3>
+<h4 id="time-complexity">Time Complexity</h4>
 <ul>
 <li>Generally larger input run slower.</li>
 <li>This method focus on studying the growth rate of primitive operation count related to the growth of input size.  </li>
@@ -762,12 +923,12 @@ It has a base case, the method will called itself until the base case is reached
 </ul>
 </li>
 </ul>
-<h2 id="search-algorithm">Search Algorithm</h2>
+<h3 id="search-algorithm">Search Algorithm</h3>
 <ul>
 <li>A search algorithm is a method of locating a specific item in a larger collection of data.</li>
 <li>This type of algorithm is referred to as &quot;Brute Force&quot; as potentially all elements need to be visited.</li>
 </ul>
-<h3 id="sequential-search">Sequential Search</h3>
+<h4 id="sequential-search">Sequential Search</h4>
 <ul>
 <li>It use a loop to: sequentially step through an array.</li>
 <li>compare each element with the search value</li>
@@ -779,7 +940,7 @@ It has a base case, the method will called itself until the base case is reached
 </ul>
 </li>
 </ul>
-<h3 id="binary-search">Binary Search</h3>
+<h4 id="binary-search">Binary Search</h4>
 <ul>
 <li>It can only be used with sorted arrays, but is much faster than Sequential Search.</li>
 <li>Steps for binary search:<ol>
@@ -805,9 +966,9 @@ It has a base case, the method will called itself until the base case is reached
 </li>
 <li>Worst case <code>O(logN)</code>.</li>
 </ul>
-<h2 id="sort">Sort</h2>
+<h3 id="sort">Sort</h3>
 <p>An array is sorted in ascending order if the array entries increase as indices increase.</p>
-<h3 id="bubble-sort">Bubble Sort</h3>
+<h4 id="bubble-sort">Bubble Sort</h4>
 <ul>
 <li>Steps for bubble sort:<ol>
 <li>compare each value(from left to right one by one) with its next value to the right.</li>
@@ -830,7 +991,7 @@ It has a base case, the method will called itself until the base case is reached
 </code></pre>
 </li>
 </ul>
-<h3 id="selection-sort">Selection Sort</h3>
+<h4 id="selection-sort">Selection Sort</h4>
 <ul>
 <li>Steps for bubble sort:<ol>
 <li>Reset the leftmost element as the temp max value.</li>
@@ -859,7 +1020,7 @@ It has a base case, the method will called itself until the base case is reached
 </code></pre>
 </li>
 </ul>
-<h3 id="insertion-sort">Insertion Sort</h3>
+<h4 id="insertion-sort">Insertion Sort</h4>
 <ul>
 <li>Steps for insertion sort:<ol>
 <li>From left to right, starting with the second element, compare it with the first if it is smaller or equals the first place it before the first element.</li>
@@ -887,7 +1048,7 @@ It has a base case, the method will called itself until the base case is reached
 </code></pre>
 </li>
 </ul>
-<h3 id="merge-sort">Merge Sort</h3>
+<h4 id="merge-sort">Merge Sort</h4>
 <ul>
 <li>Steps for merge sort:<ol>
 <li>treat the array as n arrays, each has a length of one.</li>
@@ -900,7 +1061,7 @@ It has a base case, the method will called itself until the base case is reached
 <li>The complexity of Insertion Sort is <code>O(n log(n))</code> (worst case).</li>
 <li>Since each compared value is copied to the new array, the merge sort does require new temporary arrays.</li>
 </ul>
-<h3 id="quick-sort">Quick Sort</h3>
+<h4 id="quick-sort">Quick Sort</h4>
 <ul>
 <li>Steps for quick sort:<ol>
 <li>Set a Pivot point(usually the middle point).</li>
@@ -984,7 +1145,7 @@ swap(A, start, endOfLeftList);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Algorithm","level":"1.22.1","depth":2,"previous":{"title":"Theory","level":"1.22","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Algorithm","level":"1.22.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-01-23T15:09:06.188Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Data Structures and Algorithms","level":"1.22.1","depth":2,"previous":{"title":"Theory","level":"1.22","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Data Structures and Algorithms","level":"1.22.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-02-04T04:14:25.112Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T04:24:00.740Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

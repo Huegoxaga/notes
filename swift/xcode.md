@@ -36,7 +36,7 @@ Project navigator
 -Command + 0 to hide and show the project navigator.
 -Command + 1 - 9 is used to select 9 tabs on the top of the project navigator.
 -shows file like ViewController.swift and Main.storybord.
--show Asset.xcassets foldder contain set list where you drag image and icon file for importing. And every files will be shown in the set viewer at the centre. file version will be handle automatically. double click can open file. Xcode accept raster and vector image.
+-show Asset.xcassets folder contain set list where you drag image and icon file for importing. And every files will be shown in the set viewer at the centre. file version will be handle automatically. double click can open file. Xcode accept raster and vector image.
 -right click folder can create new group. group name Model(data model) View(custom class) Controller(view controllers) and StoryBoard are recommended to group swift controller files.
 -right click can create new files into the folder. cocoa template is often used for custom class.
 when create custom new class, the class type should be set accordingly.

@@ -13,9 +13,9 @@
 * ``$("selector").jQueryAction()``
 * The ``$`` accesses jQuery.
 * The selector finds HTML elements, using CSS selector in double quotes.
-  * ``$(p:first)`` selects the first ``p`` tag.
-  * ``$(p:last)`` selects the last ``p`` tag.
-  * ``$(p:2)`` selects the third ``p`` tag. 2 acts like an index starting at 0.
+  * ``$("p:first")`` selects the first ``p`` tag.
+  * ``$("p:last")`` selects the last ``p`` tag.
+  * ``$("p:2")`` selects the third ``p`` tag. 2 acts like an index starting at 0.
 * node or nodelist variable can be used with jQuery action methods directly, like ``$(node).jQueryAction()``
 * The jQuery action method performs on all elements the selector selects.
 
@@ -39,6 +39,8 @@ let node = $("<p>").html("Hello, World!").css("color", "aqua").attr("title","Qui
 .show(); //Show the element(s)
 .attr("attributeName"); //Get the value of a HTML attribute.
 .attr("attributeName", "newValue"); //Set the attribute to a new value.
+.prop('disabled', true); //add disable property to a input tag
+.prop('disabled', false);//remove disable property to a input tag
 .removeAttr("attributeName")  //Remove an attribute.
 .val(); //Get the value of a form field.
 .val("newValue"); //Set the value of a form field.
@@ -50,6 +52,7 @@ let node = $("<p>").html("Hello, World!").css("color", "aqua").attr("title","Qui
 // Use HTML code with tags as Text to insert new nodes.
 .addClass("className") //assigns one or more className to the selected element.
 .removeClass("className") //removes one or more class names from the selected elements.(more classes can be added and separated by spaces)
+.removeClass() //removes all class names from the selected elements.
 .toggleClass("className") //toggles between adding/removing classes from the selected elements.
 .hasClass("name")   //return true if found
 .css("propertyName") //get the CSS property values.
@@ -200,7 +203,9 @@ $('#id').load('filename.php', {'dataName':'data'});
 * One can select one or more form elements (like input and/or text area), or the form element itself. For example: ``$("#form1").serialize();``
 * The serialized values can be used in the URL query string when making an AJAX request.
 * Form elements can also be converted to a serialized array ``var fields = $("#form1").serializeArray();``. Each element of the array has a name key and a value key.
-* Example of serialized values: ``lname=LastName+&fname=+FirstName+&phone=123-456-7890+&email=emailaddress%40example.com```
+* Example of serialized values: ``lname=LastName+&fname=+FirstName+&phone=123-456-7890+&email=emailaddress%40example.com``
+* Both post and get can used serialized data:
+``$.post( "test.php", $( "#formid" ).serialize() );``
 
 
 
@@ -220,8 +225,9 @@ $.get('filename.php?dataName=data',
 
 ### GetJSON Method
 * The getJSON method requests JSON data from the server with an HTTP GET request.
+* This method is in the full version of the jQuery. It doesn't exist in the CDN link file.
 ```js
-$.getJSON(	'filename.php?dataName=data',
+$.getJSON('filename.php?dataName=data',
   function(data){
     //Process data here
     }
@@ -249,6 +255,7 @@ $.post(	'file.php',
 
 ### ajax Method
 * The ajax() method is used to perform an AJAX (asynchronous HTTP) request.
+* It can be used to call a single php script to run it at the server side.
 * All jQuery AJAX methods above use the ajax() method. This method is mostly used for requests where the other methods cannot be used.
 ```js			   
 $.ajax({

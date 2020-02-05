@@ -58,7 +58,7 @@ socket = ip address + port number
 3. Network —————————-equivalent to 2 in TCP/IP——packet with IP
 2. Data Link, Frame with MAC address
 1. Physical ———————-1 and 2 are equivalent to 1 inTCP/IP, it is bit(data unit) hardware
-*they all has header added one by one
+* they all has header added one by one
 TCP/IP model
 4. Application
 3. Transport

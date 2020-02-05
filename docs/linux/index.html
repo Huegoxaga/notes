@@ -142,14 +142,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" >
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
             
                 <span>
             
                     
                     Android Studio
             
-                </span>
+                </a>
             
 
             
@@ -637,7 +637,7 @@
                 <a href="../theory/algorithm.html">
             
                     
-                    Algorithm
+                    Data Structures and Algorithms
             
                 </a>
             
@@ -736,19 +736,19 @@
 </li>
 </ul>
 <h2 id="basic-concepts">Basic Concepts</h2>
-<ol>
-<li>Kernel</li>
-<li>The kernel is the core of Unix or Unix &quot;like&quot; OS, used to communicate to the hardware.</li>
-<li><p>It has the following functions.</p>
+<h3 id="kernel">Kernel</h3>
 <ul>
+<li>The kernel is the core of Unix or Unix &quot;like&quot; OS, used to communicate to the hardware.</li>
+<li>It has the following functions.<ul>
 <li>Multi-tasking</li>
 <li>File reads and writes</li>
 <li>Connectivity to networks and devices</li>
 <li>Resource allocation</li>
 </ul>
 </li>
-<li><p>Shell</p>
-</li>
+</ul>
+<h3 id="shell">Shell</h3>
+<ul>
 <li>Provides a command-line interface where the user can execute commands.</li>
 <li>Each user can log into one session. use <code>alt+F1~F12</code> key to switch. (<code>Alt+F1</code> is the first session after OS boot)</li>
 <li>It has the following functions.<ul>
@@ -756,16 +756,16 @@
 <li>Passes the interpreted commands to the kernel</li>
 </ul>
 </li>
-<li><p>famous shells</p>
-<ul>
+<li>famous shells<ul>
 <li>Bourne Shell(sh)</li>
 <li>Bourne-Again Shell(bash), most used shell.</li>
 <li>C Shell(csh)</li>
 <li>Korn Shell(ksh)</li>
 </ul>
 </li>
-<li><p>Filesystem</p>
-</li>
+</ul>
+<h3 id="filesystem">Filesystem</h3>
+<ul>
 <li>For Unix/Linux OS every thing is a file</li>
 <li>Types of file systems:<ul>
 <li>xfs : Default filesystem for many newer Linux distributions</li>
@@ -802,15 +802,20 @@
 </ul>
 </li>
 <li>drag file into the terminal to get its directory.</li>
-<li>files permission can be represented by <code>-</code> or <code>d</code> followed by three groups of three letter.s<ul>
-<li><code>-</code> means file, <code>d</code> means directories.</li>
+<li>Files permission can be represented by a character followed by three groups of three letters.<ul>
+<li><code>ls -al</code> shows the following info.<ul>
+<li>the first character can be <code>-</code> means file, <code>d</code> means directories, <code>s</code> means a symbolic link.</li>
 <li>First group is permission for users, second is for Groups, third is for others.</li>
 <li>In each group <code>r</code> is read permission, <code>w</code> is write permission, <code>x</code> is execute permission, <code>-</code> is no permission.</li>
+<li>execute permission for a folder means the permission to view its content.</li>
+<li>the permission string is followed by the owner name, then owner group name.</li>
+</ul>
+</li>
 <li>A permission code can be calculated, using <code>r</code>=4, <code>w</code>=2, <code>x</code>=1, <code>-</code>=0, and and them together.</li>
 <li>For example, <code>400</code> means only user has read permission, so the file is private.</li>
 </ul>
 </li>
-</ol>
+</ul>
 <h2 id="general-commands">General Commands</h2>
 <ul>
 <li>Command options full name are after <code>--</code>. can use the first letter, can combine the letter after one common <code>-</code>.</li>
@@ -826,7 +831,6 @@
 <li><code>help &lt;command name&gt;</code> To get help with built-in shell commands use the help command</li>
 <li><code>help</code> get list of built in command.</li>
 <li><code>clear</code>   clear screen</li>
-<li><code>who am i</code> check current user name</li>
 <li><code>ls   -al</code> <code>-l</code> for detail <code>-a</code> for include hidden files.<ul>
 <li><code>ls</code> If no directory name is followed, it will list all of the files in the current working directory.</li>
 <li>add <code>\</code> before ls to see not colored outputs.</li>
@@ -857,9 +861,6 @@
 </ul>
 </li>
 <li><code>route -n</code> for checking jumps info.</li>
-<li><code>su</code> change to root user.</li>
-<li><code>su username</code> change to certain user.</li>
-<li><code>su -</code> change user and redirect to default home directory after changed.</li>
 <li><code>ifconfig eth0</code> will display networking information about the device named <code>eth0</code>.<ul>
 <li><code>eth0</code> the number is the order in which the card has been detected, starting with a zero</li>
 </ul>
@@ -871,11 +872,6 @@
 <li><code>route</code>     will display the system default gateway information</li>
 <li><code>uname -a</code> Print operating system info</li>
 <li><code>cat &lt;file.txt&gt;</code> create or read a txt file.</li>
-<li><code>sudo</code> add this before command to get execute as admin</li>
-<li><code>who</code> see current who logged in</li>
-<li><code>chmod &lt;modeCode&gt; fildPath</code> change the file mode.</li>
-<li><code>passwd xxxx</code>modify a user&apos;s password</li>
-<li><code>useradd xxx</code> add new user</li>
 <li><code>echo</code></li>
 <li><code>diff &lt;file1&gt; &lt;file2&gt;</code> The diff command can be used to compare the contents of two files.</li>
 <li><code>ps</code> list all the user processes</li>
@@ -884,6 +880,57 @@
 <li><code>ps u root</code> list all the root user processes</li>
 <li><code>exit</code> exit the shell.</li>
 <li><code>sleep &lt;numberOfSecond&gt;</code> pause the shell for certain number of seconds.</li>
+<li><code>mount &lt;deviceTypeLocation&gt; &lt;folderPath&gt;</code> mount a device to a folder.</li>
+<li><code>mount &lt;deviceTypeLocation&gt;</code>. unmount a device.</li>
+</ul>
+<h3 id="access-control">Access Control</h3>
+<ul>
+<li><code>who</code> see current who logged in.</li>
+<li><code>who am i</code> check current user name</li>
+<li><code>su</code> change to root user.</li>
+<li><code>su username</code> change to certain user.</li>
+<li><code>su -</code> change user and redirect to default home directory after changed.</li>
+<li><code>sudo &lt;command&gt;</code> run any command as root user. using user password.<ul>
+<li>when user password is entered, by default following sudo commands entered in 5 min, doesn&apos;t require any password.</li>
+<li>control user to use certain command without using root password in <code>etc/sudoers</code> file.</li>
+<li><code>visudo</code> this command is used to configure sudoers file, to edit it.<ol>
+<li>In the template, find the command that will be made available to users or groups.</li>
+<li>uncomment the alias, if all of the command in the same category are needed for the users or groups.</li>
+<li>after the line <code>root ALL=(ALL) ALL</code> that defines root user has all access.</li>
+<li>add <code>%&lt;groupname&gt; ALL=commandAliasNeeded</code>.</li>
+</ol>
+</li>
+<li><code>sudo -l</code> list commands that are available for the current user without using root password.</li>
+<li>to enable sudo log, add <code>Defaults logfile=/var/log/sudulog</code> in sudoers, using <code>visudo</code>.</li>
+</ul>
+</li>
+<li><code>useradd &lt;newUsername&gt;</code> create new user account and add the user to a new private group named as the username.<ul>
+<li>After execution, new user will be added in the <code>etc/passwd</code>. It has the following info <code>username:passwordLink:UserID(starting from 500):GroupID::homeDirectory:defaultShell</code>.</li>
+</ul>
+</li>
+<li><code>passwd &lt;username&gt;</code>, follow the prompt to enter and confirm password.<ul>
+<li>Password info will be stored in the <code>etc/shadow</code> file if the system use shadow password.</li>
+<li>New account without setting password is not accessible, will show <code>!!</code> in the <code>etc/shadow</code> file.</li>
+</ul>
+</li>
+<li><code>groupadd &lt;groupname&gt;</code> create a new group.<ul>
+<li>group infos are stored in the <code>etc/group</code> file.</li>
+</ul>
+</li>
+<li><code>usermod -G &lt;groupname&gt; &lt;username&gt;</code> add user to a group.</li>
+<li><code>chmod &lt;permissionCode&gt; &lt;filePath&gt;</code> change the file permission.</li>
+<li><p><code>chmod &lt;permissionCode&gt; &lt;folderPath&gt; -R</code> change permission for the folder and all its contents.</p>
+<ul>
+<li>a permission formula can be used to replace the code.</li>
+<li>first character can be <code>u</code> for user, <code>g</code> for group, <code>o</code> for others and <code>a</code> for all users.</li>
+<li>followed by <code>=+</code> add permission, <code>=-</code> remove permission.</li>
+<li>followed by permission <code>w</code>, <code>r</code>, or <code>x</code>.</li>
+<li>Ex, <code>o=-rx</code>, remove read and execute permission for other users.</li>
+</ul>
+</li>
+<li><p><code>chown &lt;username&gt;.&lt;groupname&gt; &lt;filePath&gt;</code> change file or directory&apos;s ownership.</p>
+</li>
+<li><code>chown &lt;username&gt;.&lt;groupname&gt; &lt;folderPath&gt; -R</code> change ownership for directory and all files under it.</li>
 </ul>
 <h2 id="tools">Tools</h2>
 <h3 id="init-and-run-level">Init and Run Level</h3>
@@ -937,6 +984,10 @@
 <li><code>fg &lt;jobNumber&gt;</code> bring a job to foreground.</li>
 <li><code>&lt;command&gt; &amp;</code> start a process and make it a background job.</li>
 <li><code>bg</code> stop a foreground job first, then use this command to send it to background.</li>
+</ul>
+<h3 id="syslog">Syslog</h3>
+<ul>
+<li>For CentOS, stored in <code>/var/log/secure</code>.</li>
 </ul>
 <h3 id="rpm">RPM</h3>
 <ul>
@@ -1031,7 +1082,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.16","depth":1,"next":{"title":"Virtualization","level":"1.17","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.17.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.17.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]}]},"previous":{"title":"WordPress","level":"1.15","depth":1,"path":"wordpress/README.md","ref":"wordpress/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/README.md","mtime":"2020-01-20T01:09:45.652Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.16","depth":1,"next":{"title":"Virtualization","level":"1.17","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.17.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.17.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]}]},"previous":{"title":"WordPress","level":"1.15","depth":1,"path":"wordpress/README.md","ref":"wordpress/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/README.md","mtime":"2020-02-04T16:53:24.925Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T04:24:00.740Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

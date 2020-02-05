@@ -32,7 +32,7 @@
 
 ## Basic Concepts
 
-1. Kernel
+### Kernel
 * The kernel is the core of Unix or Unix "like" OS, used to communicate to the hardware.
 * It has the following functions.
   - Multi-tasking
@@ -40,7 +40,7 @@
   - Connectivity to networks and devices
   - Resource allocation
 
-2. Shell
+### Shell
 * Provides a command-line interface where the user can execute commands.
 * Each user can log into one session. use ``alt+F1~F12`` key to switch. (``Alt+F1`` is the first session after OS boot)
 * It has the following functions.
@@ -52,7 +52,7 @@
   - C Shell(csh)
   - Korn Shell(ksh)
 
-3. Filesystem
+### Filesystem
 * For Unix/Linux OS every thing is a file
 * Types of file systems:
   - xfs : Default filesystem for many newer Linux distributions
@@ -83,10 +83,13 @@
   * /usr – the ‘user file system’  contains non-system critical files and binary (executable) files
   * /bin and /sbin – contain system binary files
 * drag file into the terminal to get its directory.
-* files permission can be represented by ``-`` or ``d`` followed by three groups of three letter.s
-  * ``-`` means file, ``d`` means directories.
-  * First group is permission for users, second is for Groups, third is for others.
-  * In each group ``r`` is read permission, ``w`` is write permission, ``x`` is execute permission, ``-`` is no permission.
+* Files permission can be represented by a character followed by three groups of three letters.
+  * ``ls -al`` shows the following info.
+    * the first character can be ``-`` means file, ``d`` means directories, ``s`` means a symbolic link.
+    * First group is permission for users, second is for Groups, third is for others.
+    * In each group ``r`` is read permission, ``w`` is write permission, ``x`` is execute permission, ``-`` is no permission.
+    * execute permission for a folder means the permission to view its content.
+    * the permission string is followed by the owner name, then owner group name.
   * A permission code can be calculated, using ``r``=4, ``w``=2, ``x``=1, ``-``=0, and and them together.
   * For example, ``400`` means only user has read permission, so the file is private.
 
@@ -104,7 +107,6 @@
 * ``help <command name>`` To get help with built-in shell commands use the help command
 * ``help`` get list of built in command.
 * ``clear``   clear screen
-* ``who am i`` check current user name
 * ``ls   -al`` ``-l`` for detail ``-a`` for include hidden files.
   * ``ls`` If no directory name is followed, it will list all of the files in the current working directory.
   * add ``\`` before ls to see not colored outputs.
@@ -125,9 +127,6 @@
   * ``-iname`` for any case of the file or directory name (case insensitive)
   * ``2>  /dev/null`` Do not display any access error message   
 * ``route -n`` for checking jumps info.
-* ``su`` change to root user.
-* ``su username`` change to certain user.
-* ``su -`` change user and redirect to default home directory after changed.
 * ``ifconfig eth0`` will display networking information about the device named ``eth0``.
   * ``eth0`` the number is the order in which the card has been detected, starting with a zero
 * ``ifconfig`` will display networking information about all device.
@@ -137,11 +136,6 @@
 * ``route`` 	will display the system default gateway information
 * ``uname -a`` Print operating system info
 * ``cat <file.txt>`` create or read a txt file.
-* ``sudo`` add this before command to get execute as admin
-* ``who`` see current who logged in
-* ``chmod <modeCode> fildPath`` change the file mode.
-* ``passwd xxxx``modify a user's password
-* ``useradd xxx`` add new user
 * ``echo``
 * ``diff <file1> <file2>`` The diff command can be used to compare the contents of two files.
 * ``ps`` list all the user processes
@@ -150,6 +144,43 @@
 * ``ps u root`` list all the root user processes
 * ``exit`` exit the shell.
 * ``sleep <numberOfSecond>`` pause the shell for certain number of seconds.
+* ``mount <deviceTypeLocation> <folderPath>`` mount a device to a folder.
+* ``mount <deviceTypeLocation>``. unmount a device.
+
+### Access Control
+* ``who`` see current who logged in.
+* ``who am i`` check current user name
+* ``su`` change to root user.
+* ``su username`` change to certain user.
+* ``su -`` change user and redirect to default home directory after changed.
+* ``sudo <command>`` run any command as root user. using user password.
+  * when user password is entered, by default following sudo commands entered in 5 min, doesn't require any password.
+  * control user to use certain command without using root password in ``etc/sudoers`` file.
+  * ``visudo`` this command is used to configure sudoers file, to edit it.
+    1. In the template, find the command that will be made available to users or groups.
+    2. uncomment the alias, if all of the command in the same category are needed for the users or groups.
+    3. after the line ``root ALL=(ALL) ALL`` that defines root user has all access.
+    4. add ``%<groupname> ALL=commandAliasNeeded``.
+  * ``sudo -l`` list commands that are available for the current user without using root password.
+  * to enable sudo log, add ``Defaults logfile=/var/log/sudulog`` in sudoers, using ``visudo``.
+* ``useradd <newUsername>`` create new user account and add the user to a new private group named as the username.
+  * After execution, new user will be added in the ``etc/passwd``. It has the following info ``username:passwordLink:UserID(starting from 500):GroupID::homeDirectory:defaultShell``.
+* ``passwd <username>``, follow the prompt to enter and confirm password.
+  * Password info will be stored in the ``etc/shadow`` file if the system use shadow password.
+  * New account without setting password is not accessible, will show ``!!`` in the ``etc/shadow`` file.
+* ``groupadd <groupname>`` create a new group.
+  * group infos are stored in the ``etc/group`` file.
+* ``usermod -G <groupname> <username>`` add user to a group.
+* ``chmod <permissionCode> <filePath>`` change the file permission.
+* ``chmod <permissionCode> <folderPath> -R`` change permission for the folder and all its contents.
+ * a permission formula can be used to replace the code.
+ * first character can be ``u`` for user, ``g`` for group, ``o`` for others and ``a`` for all users.
+ * followed by ``=+`` add permission, ``=-`` remove permission.
+ * followed by permission ``w``, ``r``, or ``x``.
+ * Ex, ``o=-rx``, remove read and execute permission for other users.
+
+* ``chown <username>.<groupname> <filePath>`` change file or directory's ownership.
+* ``chown <username>.<groupname> <folderPath> -R`` change ownership for directory and all files under it.
 
 
 ## Tools
@@ -196,6 +227,10 @@
 * ``<command> &`` start a process and make it a background job.
 * ``bg`` stop a foreground job first, then use this command to send it to background.
 
+
+
+### Syslog
+* For CentOS, stored in ``/var/log/secure``.
 
 ### RPM
 * Red Hat Package Manager

@@ -44,3 +44,33 @@ There are many options:
 ## Utilities
 * They provide shortcuts for styling web components. For example: margin, border, height, width.
 * [Click](https://getbootstrap.com/docs/4.4/utilities/borders/) to see details.
+* If one component needs two or more utility classes, separate them by an empty space.
+
+### Sizing
+* ``w`` for width, ``h``for height, ``mw`` for max width, ``mh`` for max height.
+* not all number works, mainly 25, 50, 75, 100.
+```HTML
+<div class="w-25" style="background-color: #eee;">Width 25%</div>
+```
+### Spacing
+* The classes are named using the format {property}{sides}-{size} for xs and {property}{sides}-{breakpoint}-{size} for sm, md, lg, and xl.
+* For example, ``m-2``, ``mb-3`` means margin-botton at level 5.
+* Where property is one of:
+  * ``m`` - for classes that set margin
+  * ``p`` - for classes that set padding
+* Where sides is one of:
+  * ``t`` - for classes that set ``margin-top`` or ``padding-top``
+  * ``b`` - for classes that set ``margin-bottom`` or ``padding-bottom``
+  * ``l`` - for classes that set ``margin-left`` or ``padding-left``
+  * ``r`` - for classes that set ``margin-right`` or ``padding-right``
+  * ``x`` - for classes that set both ``*-left`` and ``*-right``
+  * ``y`` - for classes that set both ``*-top`` and ``*-bottom``
+  * ``blank`` - for classes that set a margin or padding on all 4 sides of the element
+* Where size is one of:
+  * ``0`` - for classes that eliminate the margin or padding by setting it to 0
+  * ``1`` - (by default) for classes that set the margin or padding to $spacer * .25
+  * ``2`` - (by default) for classes that set the margin or padding to $spacer * .5
+  * ``3`` - (by default) for classes that set the margin or padding to $spacer
+  * ``4`` - (by default) for classes that set the margin or padding to $spacer * 1.5
+  * ``5`` - (by default) for classes that set the margin or padding to $spacer * 3
+  * ``auto`` - for classes that set the margin to auto

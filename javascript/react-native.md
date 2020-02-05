@@ -36,7 +36,6 @@ It is easy to start with, but has some limitation.
   * Launch Virtual Devices from Emulator.
   * In expo terminal select command to launch app in iOS Emulator.
 
-
 ### Publishing
 The packager will minify all your code and generate two versions of your code (one for iOS, one for Android) and then upload those to a CDN.
 1. optimized the assets run: ``expo optimize``.
@@ -316,3 +315,32 @@ export const playButtonPress = () => {
         <Text>Click me</Text>
       </TouchableOpacity>
 ```
+
+### Maps
+* For ``react-native-maps``, initialRegion must be set if immediately followed by animateRegion during during launch.
+
+### File System
+* This module provide access to the folders inside the app folder in the mobile OS file system.
+* Folders will be accessed using the following constant value.
+  * ``MainBundlePath`` (String) The absolute path to the main bundle directory (not available on Android)
+  * ``CachesDirectoryPath`` (String) The absolute path to the caches directory
+  * ``ExternalCachesDirectoryPath`` (String) The absolute path to the external caches directory (android only)
+  * ``DocumentDirectoryPath`` (String) The absolute path to the document directory
+  * ``TemporaryDirectoryPath`` (String) The absolute path to the temporary directory (falls back to Caching-Directory on Android)
+  * ``LibraryDirectoryPath`` (String) The absolute path to the NSLibraryDirectory (iOS only)
+  * ``ExternalDirectoryPath`` (String) The absolute path to the external files, shared directory (android only)
+  * ``ExternalStorageDirectoryPath`` (String) The absolute path to the external storage, shared directory (android only)
+* Follow the [steps](https://github.com/itinance/react-native-fs) to setup and use the module.
+* [Click here](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html) to learn more about iOS file system.
+
+## Deploy
+### Deploy iOS App
+1.  Add the script given below to the ```package.json``` file in the React Native project.
+```json
+"scripts": {
+"build:ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file='index.js' --bundle-output='./main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
+}
+```
+2. Run ``npm run build:ios`` command in the project folder.
+3. add ``main.jsbundle`` and ``assets`` foler to the project folder in Xcode.
+4. Set Release Scheme in Xcode and run.

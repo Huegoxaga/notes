@@ -1,1 +1,1 @@
-* [Data Structure and Algorithm](https://huegoxaga.github.io/notes/theory/algorithm.html)
+* [Data Structures and Algorithms](https://huegoxaga.github.io/notes/theory/algorithm.html)

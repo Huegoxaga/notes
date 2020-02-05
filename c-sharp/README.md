@@ -1021,6 +1021,9 @@ DateTime.Today; 	//return the current day
 DateTime.DaysInMonth(2016,2); 	//return the number of days in the specified month
 DateTime date1 = new DateTime(2017, 8, 30);
 DateTime date2 = new DateTime(2017, 8, 30, 2, 25, 30);
+DateTime.AddYears(18);  //get date 18 years later.
+.ToShortDateString() method
+
 
 can be converted to string
 string s1 = date5.ToString();

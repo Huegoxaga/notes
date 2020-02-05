@@ -142,14 +142,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" >
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
             
                 <span>
             
                     
                     Android Studio
             
-                </span>
+                </a>
             
 
             
@@ -637,7 +637,7 @@
                 <a href="../theory/algorithm.html">
             
                     
-                    Algorithm
+                    Data Structures and Algorithms
             
                 </a>
             
@@ -762,9 +762,9 @@
 <li>Their names start with <code>$$</code>.</li>
 <li>A variable variables use the value of another variable as its name.</li>
 </ul>
-<pre><code class="lang-php">$a = &#x2018;b&#x2019;
-$b = &#x2018;hello&#x2019;
-<span class="hljs-keyword">echo</span> $$a -&gt; &#x2018;hello&#x2019;
+<pre><code class="lang-php">$a = <span class="hljs-string">&apos;b&apos;</span>
+$b = <span class="hljs-string">&apos;hello&apos;</span>
+<span class="hljs-keyword">echo</span> $$a -&gt; <span class="hljs-string">&apos;hello&apos;</span>
 </code></pre>
 <h3 id="scope">Scope</h3>
 <ul>
@@ -799,34 +799,34 @@ $b = &#x2018;hello&#x2019;
 <li>It can contains mixed data types in one array.</li>
 </ul>
 <h5 id="create-new-array">Create New Array</h5>
-<pre><code class="lang-php">$array1 = <span class="hljs-keyword">array</span>(&#x2018;a&#x2019;, &#x2018;b&#x2019;, &#x2018;c&#x2019;);
+<pre><code class="lang-php">$array1 = <span class="hljs-keyword">array</span>(<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;c&apos;</span>);
 <span class="hljs-comment">//alternatively</span>
-$array1 = [&#x2018;a&#x2019;, &#x2019;b&#x2019;, &#x2019;c&#x2019;];
+$array1 = [<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;c&apos;</span>];
 <span class="hljs-comment">//alternatively</span>
-$array1[<span class="hljs-number">0</span>] = &#x2018;a&#x2019;;
-$array1[<span class="hljs-number">1</span>] = &#x2018;b&#x2019;;
-$array1[<span class="hljs-number">2</span>] = &#x2018;c&#x2019;;
+$array1[<span class="hljs-number">0</span>] = <span class="hljs-string">&apos;a&apos;</span>;
+$array1[<span class="hljs-number">1</span>] = <span class="hljs-string">&apos;b&apos;</span>;
+$array1[<span class="hljs-number">2</span>] = <span class="hljs-string">&apos;c&apos;</span>;
 <span class="hljs-keyword">echo</span> $array1[<span class="hljs-number">1</span>];
-<span class="hljs-comment">//output: &#x2018;b&#x2019;</span>
+<span class="hljs-comment">//output: &apos;b&apos;</span>
 </code></pre>
 <h4 id="associative-arrays">Associative Arrays</h4>
 <ul>
 <li>They are arrays that use named keys for each values.</li>
 <li>Keys can only be strings, values can be of any types.</li>
 <li><p>Associative arrays can also be accessed using index integer([0] represents the first value.)</p>
-<pre><code class="lang-php">$array2 = <span class="hljs-keyword">array</span>(&#x2018;first&#x2019; =&gt; &#x2018;a&#x2019;, &#x2018;second&#x2019; =&gt; &#x2018;b&#x2019;, &#x2018;third&#x2019; =&gt; &#x2018;c&#x2019;);
+<pre><code class="lang-php">$array2 = <span class="hljs-keyword">array</span>(<span class="hljs-string">&apos;first&apos;</span> =&gt; <span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;second&apos;</span> =&gt; <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;third&apos;</span> =&gt; <span class="hljs-string">&apos;c&apos;</span>);
 <span class="hljs-comment">//or</span>
-$array2 = [&#x2018;first&#x2019; =&gt; &#x2018;a&#x2019;, &#x2018;second&#x2019; =&gt; &#x2018;b&#x2019;, &#x2018;third&#x2019; =&gt; &#x2018;c&#x2019;];
+$array2 = [<span class="hljs-string">&apos;first&apos;</span> =&gt; <span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;second&apos;</span> =&gt; <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;third&apos;</span> =&gt; <span class="hljs-string">&apos;c&apos;</span>];
 <span class="hljs-comment">//alternatively,</span>
 $array2 = [ ];
-$array2[&#x2018;first&#x2019;] = &#x2018;a&#x2019;;
-$array2[&#x2018;second&#x2019;] = &#x2018;b&#x2019;;
-$array2[&#x2018;third&#x2019;] = &#x2018;c&#x2019;;
-<span class="hljs-keyword">echo</span> $array2[&#x2018;second&#x2019;];
-<span class="hljs-comment">//Output &#x2018;b&#x2019;</span>
+$array2[<span class="hljs-string">&apos;first&apos;</span>] = <span class="hljs-string">&apos;a&apos;</span>;
+$array2[<span class="hljs-string">&apos;second&apos;</span>] = <span class="hljs-string">&apos;b&apos;</span>;
+$array2[<span class="hljs-string">&apos;third&apos;</span>] = <span class="hljs-string">&apos;c&apos;</span>;
+<span class="hljs-keyword">echo</span> $array2[<span class="hljs-string">&apos;second&apos;</span>];
+<span class="hljs-comment">//Output &apos;b&apos;</span>
 </code></pre>
 </li>
-<li><p>{ and &#x2018; can be ignored in the PHP string</p>
+<li><p>{ and &apos; can be ignored in the PHP string</p>
 <pre><code class="lang-php"><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;$array2[second]&lt;/p&gt;&quot;</span>
 </code></pre>
 </li>
@@ -857,11 +857,22 @@ array_pust($array, $newElement)    <span class="hljs-comment">//append $newEleme
 <li>For strings, both single(raw) or double(richly-interpreted) quotation marks work. However only double quotation mark can embed variables.<pre><code class="lang-php"><span class="hljs-string">&quot;&lt;li&gt;$i&lt;/li&gt;&quot;</span>
 </code></pre>
 </li>
-<li>If this string use &quot;&quot;, inside the string &quot;&quot; for html should be changed to &#x2018;&#x2019;.<pre><code class="lang-php"><span class="hljs-string">&quot;&lt;div class=&#x2018;$class&apos;&gt;$die&lt;/div&gt;&quot;</span>
+<li>If this string use &quot;&quot;, inside the string &quot;&quot; for html should be changed to &apos;&apos;.<pre><code class="lang-php"><span class="hljs-string">&quot;&lt;div class=&apos;$class&apos;&gt;$die&lt;/div&gt;&quot;</span>
 </code></pre>
 </li>
+<li>heredoc syntax can be used to delimit strings.<ul>
+<li>It is a special block that contains strings, all special characters inside of the string will be treated as regular characters.</li>
+<li>It starts with <code>&lt;&lt;&lt;</code>, followed by a identifier which have be any combination of characters, usually capitalized.</li>
+<li>Ex:<pre><code class="lang-php">$str = <span class="hljs-string">&lt;&lt;&lt;ABC
+@#)($*)@#(&amp;%)#&quot;:?&gt;&lt;}{}&quot;
+ABC;</span>
+<span class="hljs-comment">//ABC is the identifier.</span>
+</code></pre>
+</li>
+</ul>
+</li>
 <li>To embed expressions or embed variables for string with singe quotation, use {}.<pre><code class="lang-php"><span class="hljs-string">&quot;&lt;div&gt;&lt;h1&gt;{$user-&gt;get_name()}&lt;/h1&gt;&lt;/div&gt;&quot;</span>
-&#x2018;{$x+$y}&#x2019;
+<span class="hljs-string">&apos;{$x+$y}&apos;</span>
 </code></pre>
 </li>
 </ul>
@@ -875,6 +886,7 @@ Is is used to output text. HTML tags can be used in the echo text. So the browse
 <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Hello World!&lt;/h1&gt;&quot;</span>;
 </code></pre>
 </li>
+<li><code>strpos($str, $substr)</code> return true if <code>$str</code> contains <code>$substr</code>. Use <code>stripos()</code> for case insensitive comparison.</li>
 </ul>
 <h2 id="operators">Operators</h2>
 <h3 id="arithmetic-operators">Arithmetic Operators</h3>
@@ -957,7 +969,7 @@ It can also be used with arithmetic operator.</li>
         <span class="hljs-keyword">break</span>;
     &#x2026;
     <span class="hljs-keyword">default</span>:
-        <span class="hljs-comment">//optional, this line will be executed if all values don&#x2019;t match x.</span>
+        <span class="hljs-comment">//optional, this line will be executed if all values don&apos;t match x.</span>
 }
 </code></pre>
 <ul>
@@ -1036,7 +1048,7 @@ xValue(<span class="hljs-number">2</span>)    <span class="hljs-comment">//Outpu
 
 <span class="hljs-comment">//return statement</span>
 <span class="hljs-keyword">return</span> $variableX;
-<span class="hljs-comment">//It stop functions&#x2019; execution and return values</span>
+<span class="hljs-comment">//It stop functions&apos; execution and return values</span>
 <span class="hljs-comment">//If a function has no return statement, it will return NULL when it is called.</span>
 </code></pre>
 <h2 id="predefined-variables">Predefined Variables</h2>
@@ -1047,9 +1059,10 @@ xValue(<span class="hljs-number">2</span>)    <span class="hljs-comment">//Outpu
 <ul>
 <li><code>$_SERVER</code> is an associative array that holds information.
 ```php
-$_SERVER[&#x2018;SCRIPT_NAME&#x2019;] // returns the path of the current script.</li>
+$_SERVER[&apos;SCRIPT_NAME&apos;] // returns the path of the current script.</li>
 </ul>
-<p>$_SERVER[&#x2018;HTTP_HOST&#x2019;]     // returns the host header(the folder that contain the entire host files) name.</p>
+<p>$_SERVER[&apos;HTTP_HOST&apos;]     // returns the host header(the folder that contain the entire host files) name.
+$_SERVER[&apos;REQUEST_METHOD&apos;]  // return POST or GET.</p>
 <pre><code>
 ### ``$_POST`` and ``$_GET``
 * ``$_POST`` is an associative array that holds form data in the action file when the method is post.
@@ -1067,8 +1080,8 @@ A session is started using the following function.
 ```php
 session_start();
 //It must be the first line of code before &lt;!DOCTYPE&gt;. Same in other pages if session variable will be accessed.
-</code></pre><p>When new session is created, A <code>$_SESSION[&#x2018;PHPSESSID&#x2019;]</code> is assigned as a user session identifier for the server. It is stored in the client&#x2019;s cookies.
-a variable is stored using the following way. <code>$_SESSION[&#x2018;username&#x2019;] = &quot;Tom&quot;</code>;</p>
+</code></pre><p>When new session is created, A <code>$_SESSION[&apos;PHPSESSID&apos;]</code> is assigned as a user session identifier for the server. It is stored in the client&apos;s cookies.
+a variable is stored using the following way. <code>$_SESSION[&apos;username&apos;] = &quot;Tom&quot;</code>;</p>
 <h4 id="end-a-session">End a Session</h4>
 <pre><code class="lang-php">session_unset();    <span class="hljs-comment">//It is used to clear session variables.</span>
 session_destory()    <span class="hljs-comment">//It is used to end the session, the data still exists on server. (a session_start() is needed for any session to be terminated.)</span>
@@ -1083,17 +1096,17 @@ session_destory()    <span class="hljs-comment">//It is used to end the session,
 <pre><code class="lang-php">setcookie(cookieName(only required parameter), cookieValue, expireTimeInSecond(<span class="hljs-number">0</span> make the cookie expire when session ends), cookiePath(where the cookie is available), domainName, secure(Whether the cookie should only be transmitted through HTTPS connection, <span class="hljs-keyword">default</span> <span class="hljs-keyword">FALSE</span>.), httpOnly(<span class="hljs-keyword">TRUE</span> <span class="hljs-keyword">if</span> HTTP protocol is required, <span class="hljs-keyword">default</span> <span class="hljs-keyword">FALSE</span>.))
 setcookie(<span class="hljs-string">&quot;user&quot;</span>, $value, time() + (<span class="hljs-number">86400</span> * <span class="hljs-number">30</span>), <span class="hljs-string">&apos;/&apos;</span>);
 <span class="hljs-comment">//The cookie will expire after 30 days.</span>
-<span class="hljs-comment">//&#x2018;/&#x2018; this means the cookie is available for the entire website.</span>
+<span class="hljs-comment">//&apos;/&apos; this means the cookie is available for the entire website.</span>
 <span class="hljs-function"><span class="hljs-keyword">Function</span> <span class="hljs-title">time</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">//returns the current time.</span>
-$_COOKIE[&#x2018;user&#x2019;]=<span class="hljs-string">&quot;username&quot;</span>; <span class="hljs-comment">//Create cookie value.</span>
-<span class="hljs-keyword">isset</span>($_COOKIE[<span class="hljs-string">&apos;user&apos;</span>]) <span class="hljs-comment">//returns true if the the key &#x2018;user&#x2019; exists in the $_COOKIE variable.</span>
+$_COOKIE[<span class="hljs-string">&apos;user&apos;</span>]=<span class="hljs-string">&quot;username&quot;</span>; <span class="hljs-comment">//Create cookie value.</span>
+<span class="hljs-keyword">isset</span>($_COOKIE[<span class="hljs-string">&apos;user&apos;</span>]) <span class="hljs-comment">//returns true if the the key &apos;user&apos; exists in the $_COOKIE variable.</span>
 <span class="hljs-comment">//It is used to perform checking.</span>
 </code></pre>
 </li>
 </ul>
 <h3 id="request"><code>$_REQUEST</code></h3>
 <ul>
-<li>It stores the Ajax Request data from the client side.</li>
+<li>It stores the Ajax Request data from the client side. <code>$_REQUEST[dataName]</code></li>
 </ul>
 <h2 id="classes">Classes</h2>
 <ul>
@@ -1154,7 +1167,7 @@ __construct($x, $y){}    so <span class="hljs-keyword">for</span> <span class="h
 <h3 id="inheritance">Inheritance</h3>
 <ul>
 <li>keyword extends is used for creating subclass.</li>
-<li><p>when subclass does not explicitly define constructor, the parent class&#x2019;s constructor is called, given that this constructor is not private.</p>
+<li><p>when subclass does not explicitly define constructor, the parent class&apos;s constructor is called, given that this constructor is not private.</p>
 </li>
 <li><p>interface are a group of methods that required for a class.</p>
 </li>
@@ -1252,15 +1265,25 @@ $owing = number_format($user-&gt;get_owing(), <span class="hljs-number">2</span>
 password_verify($user_pwd, $hash) <span class="hljs-comment">//return true if raw password $user_pwd. hashed password $hash.</span>
 </code></pre>
 <h3 id="search-for-pattern">Search for Pattern</h3>
-<p>The preg_match() function searches string for pattern, returning true if pattern exists, and false otherwise.</p>
-<pre><code class="lang-php">$line = <span class="hljs-string">&quot;Vi is the greatest word processor ever created!&quot;</span>;
+<ul>
+<li>The preg_match() function searches string for pattern, returning true if pattern exists, and false otherwise.</li>
+<li>The pattern is stated as String expressed by Regular Expression. <a href="https://regexr.com/" target="_blank">Click Here</a> to learn more.</li>
+<li>The third parameter <code>$match</code> contains results of search. The $matches[0] will contain the text that matched full pattern, $matches[1] will contain the text that matched the first captured parenthesized subpattern, and so on.</li>
+<li>The fourth parameter is flags: The flags can be following flags:<ul>
+<li><code>PREG_OFFSET_CAPTURE</code>: If this flag is passed, for every match the append string offset will be returned.</li>
+<li><code>PREG_UNMATCHED_AS_NULL</code>: If this flag is passed, subpatterns which are not matched reports as NULL; otherwise they reports as empty string.</li>
+</ul>
+</li>
+<li>The fifth parameter is offset: Usually, search starts from the beginning of input string. This optional parameter offset is used to specify the place from where to start the search (in bytes).<pre><code class="lang-php">$text = <span class="hljs-string">&quot;This is the string we are going to search&quot;</span>;
 <span class="hljs-comment">// perform a case-Insensitive search for the word &quot;Vi&quot;</span>
-<span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/\bVi\b/i&quot;</span>, $line, $match)) :
-   <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Match found!&quot;</span>;
-   <span class="hljs-keyword">endif</span>
+<span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/\bVi\b/i&quot;</span>, $text, $match)) :
+ <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Match found!&quot;</span>;
+ <span class="hljs-keyword">endif</span>
 </code></pre>
 <pre><code class="lang-php">preg_match(<span class="hljs-string">&quot;/^[A-Za-z]{3,20}$/&quot;</span>,$string)
 </code></pre>
+</li>
+</ul>
 <h2 id="files-io">Files I/O</h2>
 <h3 id="open-files">Open Files</h3>
 <ul>
@@ -1322,7 +1345,7 @@ Name: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span clas
 <pre><code class="lang-php"><span class="hljs-keyword">try</span> {
  $dbh = <span class="hljs-keyword">new</span> PDO(<span class="hljs-string">&quot;mysql:host=localhost;dbname=MYID&quot;</span>,<span class="hljs-string">&quot;MYID&quot;</span>,<span class="hljs-string">&quot;MYPASSWORD&quot;</span>);
 }<span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
- <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;ERROR: Couldn&#x2019;t connect. {$e -&gt;getMessage()}&quot;</span>);
+ <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;ERROR: Couldn&apos;t connect. {$e -&gt;getMessage()}&quot;</span>);
 }
 </code></pre>
 <ul>
@@ -1480,7 +1503,7 @@ $userlist = [];
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHP","level":"1.11","depth":1,"next":{"title":"Cloud Services","level":"1.12","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[]},"previous":{"title":"Angular","level":"1.10.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"php/README.md","mtime":"2020-01-23T14:39:11.917Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHP","level":"1.11","depth":1,"next":{"title":"Cloud Services","level":"1.12","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[]},"previous":{"title":"Angular","level":"1.10.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"php/README.md","mtime":"2020-01-25T22:57:10.553Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T04:24:00.740Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -77,7 +77,7 @@ to add a reference, right click on the references folder, select add reference. 
 camel naming convention is mostly used.    submitButton
 Properties Window on the right-bottom corner is used to view and modify the property values of a given object.
 double-click control item to open the code window in the Form.cs file. A event handler method is generated, it is called when the default event is triggered by the user. the first parameter of the method is the sender object, the second provide additional information about the event. A delegate reference is also auto created in the designer.cs
-click the event icon in the property panel can also add the control a specific event handler.
+click the event(lightning) icon in the property panel and double click on a event name can also add the control a specific event handler.
 
 right-click can select lock to lock a control.
 Press the Tab key to use IntelliSense for automatic code completion.

@@ -142,14 +142,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" >
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
             
                 <span>
             
                     
                     Android Studio
             
-                </span>
+                </a>
             
 
             
@@ -637,7 +637,7 @@
                 <a href="../theory/algorithm.html">
             
                     
-                    Algorithm
+                    Data Structures and Algorithms
             
                 </a>
             
@@ -710,9 +710,9 @@
 <li><code>$(&quot;selector&quot;).jQueryAction()</code></li>
 <li>The <code>$</code> accesses jQuery.</li>
 <li>The selector finds HTML elements, using CSS selector in double quotes.<ul>
-<li><code>$(p:first)</code> selects the first <code>p</code> tag.</li>
-<li><code>$(p:last)</code> selects the last <code>p</code> tag.</li>
-<li><code>$(p:2)</code> selects the third <code>p</code> tag. 2 acts like an index starting at 0.</li>
+<li><code>$(&quot;p:first&quot;)</code> selects the first <code>p</code> tag.</li>
+<li><code>$(&quot;p:last&quot;)</code> selects the last <code>p</code> tag.</li>
+<li><code>$(&quot;p:2&quot;)</code> selects the third <code>p</code> tag. 2 acts like an index starting at 0.</li>
 </ul>
 </li>
 <li>node or nodelist variable can be used with jQuery action methods directly, like <code>$(node).jQueryAction()</code></li>
@@ -738,6 +738,8 @@ let node = $(&quot;&lt;p&gt;&quot;).html(&quot;Hello, World!&quot;).css(&quot;co
 .show(); //Show the element(s)
 .attr(&quot;attributeName&quot;); //Get the value of a HTML attribute.
 .attr(&quot;attributeName&quot;, &quot;newValue&quot;); //Set the attribute to a new value.
+.prop(&apos;disabled&apos;, true); //add disable property to a input tag
+.prop(&apos;disabled&apos;, false);//remove disable property to a input tag
 .removeAttr(&quot;attributeName&quot;)  //Remove an attribute.
 .val(); //Get the value of a form field.
 .val(&quot;newValue&quot;); //Set the value of a form field.
@@ -749,6 +751,7 @@ let node = $(&quot;&lt;p&gt;&quot;).html(&quot;Hello, World!&quot;).css(&quot;co
 // Use HTML code with tags as Text to insert new nodes.
 .addClass(&quot;className&quot;) //assigns one or more className to the selected element.
 .removeClass(&quot;className&quot;) //removes one or more class names from the selected elements.(more classes can be added and separated by spaces)
+.removeClass() //removes all class names from the selected elements.
 .toggleClass(&quot;className&quot;) //toggles between adding/removing classes from the selected elements.
 .hasClass(&quot;name&quot;)   //return true if found
 .css(&quot;propertyName&quot;) //get the CSS property values.
@@ -897,7 +900,9 @@ $(<span class="hljs-string">&quot;#instructions&quot;</span>).animate({width:<sp
 <li>One can select one or more form elements (like input and/or text area), or the form element itself. For example: <code>$(&quot;#form1&quot;).serialize();</code></li>
 <li>The serialized values can be used in the URL query string when making an AJAX request.</li>
 <li>Form elements can also be converted to a serialized array <code>var fields = $(&quot;#form1&quot;).serializeArray();</code>. Each element of the array has a name key and a value key.</li>
-<li>Example of serialized values: ``lname=LastName+&amp;fname=+FirstName+&amp;phone=123-456-7890+&amp;email=emailaddress%40example.com```</li>
+<li>Example of serialized values: <code>lname=LastName+&amp;fname=+FirstName+&amp;phone=123-456-7890+&amp;email=emailaddress%40example.com</code></li>
+<li>Both post and get can used serialized data:
+<code>$.post( &quot;test.php&quot;, $( &quot;#formid&quot; ).serialize() );</code></li>
 </ul>
 <h3 id="get-method">Get Method</h3>
 <ul>
@@ -914,7 +919,8 @@ $(<span class="hljs-string">&quot;#instructions&quot;</span>).animate({width:<sp
 </ul>
 <h3 id="getjson-method">GetJSON Method</h3>
 <ul>
-<li>The getJSON method requests JSON data from the server with an HTTP GET request.<pre><code class="lang-js">$.getJSON(    <span class="hljs-string">&apos;filename.php?dataName=data&apos;</span>,
+<li>The getJSON method requests JSON data from the server with an HTTP GET request.</li>
+<li>This method is in the full version of the jQuery. It doesn&apos;t exist in the CDN link file.<pre><code class="lang-js">$.getJSON(<span class="hljs-string">&apos;filename.php?dataName=data&apos;</span>,
 <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
   <span class="hljs-comment">//Process data here</span>
   }
@@ -941,6 +947,7 @@ $(<span class="hljs-string">&quot;#instructions&quot;</span>).animate({width:<sp
 <h3 id="ajax-method">ajax Method</h3>
 <ul>
 <li>The ajax() method is used to perform an AJAX (asynchronous HTTP) request.</li>
+<li>It can be used to call a single php script to run it at the server side.</li>
 <li>All jQuery AJAX methods above use the ajax() method. This method is mostly used for requests where the other methods cannot be used.<pre><code class="lang-js">$.ajax({
   type: <span class="hljs-string">&quot;GET&quot;</span>,
   url: <span class="hljs-string">&quot;09xml.xml&quot;</span>,
@@ -1040,7 +1047,7 @@ $(<span class="hljs-built_in">document</span>).ready(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"jQuery","level":"1.4.1","depth":2,"next":{"title":"React","level":"1.4.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},"previous":{"title":"JavaScript","level":"1.4","depth":1,"path":"javascript/README.md","ref":"javascript/README.md","articles":[{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},{"title":"React","level":"1.4.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},{"title":"Node.js","level":"1.4.4","depth":2,"path":"javascript/node-js.md","ref":"javascript/node-js.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/jquery.md","mtime":"2020-01-22T05:27:51.484Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"jQuery","level":"1.4.1","depth":2,"next":{"title":"React","level":"1.4.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},"previous":{"title":"JavaScript","level":"1.4","depth":1,"path":"javascript/README.md","ref":"javascript/README.md","articles":[{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},{"title":"React","level":"1.4.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},{"title":"Node.js","level":"1.4.4","depth":2,"path":"javascript/node-js.md","ref":"javascript/node-js.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/jquery.md","mtime":"2020-01-26T00:41:17.039Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T04:24:00.740Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

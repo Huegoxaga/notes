@@ -2,7 +2,7 @@
 * [Python](https://huegoxaga.github.io/notes/python/index.html)
 * [Java](https://huegoxaga.github.io/notes/java/index.html)
   * [JavaFX](https://huegoxaga.github.io/notes/java/javafx.html)
-  * Android Studio
+  * [Android Studio](https://huegoxaga.github.io/notes/java/android.html)
 * [JavaScript](https://huegoxaga.github.io/notes/javascript/index.html)
   * [jQuery](https://huegoxaga.github.io/notes/javascript/jquery.html)
   * [React](https://huegoxaga.github.io/notes/javascript/react.html)
@@ -35,5 +35,5 @@
 * [Graphic Design](https://huegoxaga.github.io/notes/graphic-design/index.html)
 * [Networking](https://huegoxaga.github.io/notes/networking/index.html)
 * [Maple](https://huegoxaga.github.io/notes/maple/index.html)
-* [Theory](https://huegoxaga.github.io/notes/maple/index.html)
-  * [Algorithm](https://huegoxaga.github.io/notes/theory/algorithm.html)
+* [Theory](https://huegoxaga.github.io/notes/theory/index.html)
+  * [Data Structures and Algorithms](https://huegoxaga.github.io/notes/theory/algorithm.html)

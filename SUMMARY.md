@@ -4,7 +4,7 @@
 * [Python](python/README.md)
 * [Java](java/README.md)
     * [JavaFX](java/javafx.md)
-    * Android Studio
+    * [Android Studio](java/android.md)
 * [JavaScript](javascript/README.md)
     * [jQuery](javascript/jquery.md)
     * [React](javascript/react.md)
@@ -38,4 +38,4 @@
 * [Networking](networking/README.md)
 * [Maple](maple/README.md)
 * [Theory](theory/README.md)
-    * [Algorithm](theory/algorithm.md)
+    * [Data Structures and Algorithms](theory/algorithm.md)

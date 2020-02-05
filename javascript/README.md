@@ -341,6 +341,7 @@ let myPromise = new Promise((resolve, reject) => {
     }
 });
 //Pass data to the promise, get result from resolve in then, get result from reject in catch.
+//The .then will only be called if the resolve function is called. .catch is for reject().
 myPromise.then(data => {
   console.log('Resolved: ' + data);
 }).catch(() => {
@@ -975,12 +976,12 @@ if (navigator.geolocation) { //check if there is a geolocation object
   * longitude - The longitude as a decimal number
   * accuracy - The accuracy of position
   * altitude - The altitude in meters above the mean sea level
-  * altitude - AccuracyThe altitude accuracy of position
+  * accuracy - The altitude accuracy of position
   * heading - The heading as degrees clockwise from North
   * speed - The speed in meters per second
   * timestamp - The date/time of the response
 * It can have a second callback function to handle error.
-* It can have a option object as its third argument for some setting.
+* It can have an option object as its third argument for some setting.
   * timeout: how long are we willing to wait for an answer (in millisecs). Default is infinite
   * maximumAge: how old a cached location may be, in order to be acceptable as the ”current” location. Default is 0.
   * enableHighAccuracy: If more than one ”device” for obtaining a position is available, will we want the most accurate one. Default is false.
@@ -1036,6 +1037,7 @@ export class ClassName {
 * When exporting arrow function, declare the function variable proper using ``const``.
 * ``as`` keyword is used for alias.
   * ``export { myArray, myFunction as NewName, ClassName };``
+* ``export`` will export the access to imported modules for the export module since the object exported will trace back to the module file.
 
 ### Import
 * ``import`` keyword, members to be imported in curly brackets and then the location of the module relative to the current file, ``import { myFunction, ClassName } from 'file.js';``

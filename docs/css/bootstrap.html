@@ -142,14 +142,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" >
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
             
                 <span>
             
                     
                     Android Studio
             
-                </span>
+                </a>
             
 
             
@@ -637,7 +637,7 @@
                 <a href="../theory/algorithm.html">
             
                     
-                    Algorithm
+                    Data Structures and Algorithms
             
                 </a>
             
@@ -744,6 +744,42 @@
 <ul>
 <li>They provide shortcuts for styling web components. For example: margin, border, height, width.</li>
 <li><a href="https://getbootstrap.com/docs/4.4/utilities/borders/" target="_blank">Click</a> to see details.</li>
+<li>If one component needs two or more utility classes, separate them by an empty space.</li>
+</ul>
+<h3 id="sizing">Sizing</h3>
+<ul>
+<li><code>w</code> for width, <code>h</code>for height, <code>mw</code> for max width, <code>mh</code> for max height.</li>
+<li>not all number works, mainly 25, 50, 75, 100.<pre><code class="lang-HTML"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w-25&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color: #eee;&quot;</span>&gt;</span>Width 25%<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h3 id="spacing">Spacing</h3>
+</li>
+<li>The classes are named using the format {property}{sides}-{size} for xs and {property}{sides}-{breakpoint}-{size} for sm, md, lg, and xl.</li>
+<li>For example, <code>m-2</code>, <code>mb-3</code> means margin-botton at level 5.</li>
+<li>Where property is one of:<ul>
+<li><code>m</code> - for classes that set margin</li>
+<li><code>p</code> - for classes that set padding</li>
+</ul>
+</li>
+<li>Where sides is one of:<ul>
+<li><code>t</code> - for classes that set <code>margin-top</code> or <code>padding-top</code></li>
+<li><code>b</code> - for classes that set <code>margin-bottom</code> or <code>padding-bottom</code></li>
+<li><code>l</code> - for classes that set <code>margin-left</code> or <code>padding-left</code></li>
+<li><code>r</code> - for classes that set <code>margin-right</code> or <code>padding-right</code></li>
+<li><code>x</code> - for classes that set both <code>*-left</code> and <code>*-right</code></li>
+<li><code>y</code> - for classes that set both <code>*-top</code> and <code>*-bottom</code></li>
+<li><code>blank</code> - for classes that set a margin or padding on all 4 sides of the element</li>
+</ul>
+</li>
+<li>Where size is one of:<ul>
+<li><code>0</code> - for classes that eliminate the margin or padding by setting it to 0</li>
+<li><code>1</code> - (by default) for classes that set the margin or padding to $spacer * .25</li>
+<li><code>2</code> - (by default) for classes that set the margin or padding to $spacer * .5</li>
+<li><code>3</code> - (by default) for classes that set the margin or padding to $spacer</li>
+<li><code>4</code> - (by default) for classes that set the margin or padding to $spacer * 1.5</li>
+<li><code>5</code> - (by default) for classes that set the margin or padding to $spacer * 3</li>
+<li><code>auto</code> - for classes that set the margin to auto</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -788,7 +824,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Bootstrap","level":"1.9.1","depth":2,"next":{"title":"TypeScript","level":"1.10","depth":1,"path":"typescript/README.md","ref":"typescript/README.md","articles":[{"title":"Angular","level":"1.10.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]}]},"previous":{"title":"CSS","level":"1.9","depth":1,"path":"css/README.md","ref":"css/README.md","articles":[{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"css/bootstrap.md","mtime":"2020-01-23T15:03:58.894Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-23T15:43:40.190Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Bootstrap","level":"1.9.1","depth":2,"next":{"title":"TypeScript","level":"1.10","depth":1,"path":"typescript/README.md","ref":"typescript/README.md","articles":[{"title":"Angular","level":"1.10.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]}]},"previous":{"title":"CSS","level":"1.9","depth":1,"path":"css/README.md","ref":"css/README.md","articles":[{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"css/bootstrap.md","mtime":"2020-01-25T22:19:33.354Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T04:24:00.740Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
