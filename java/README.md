@@ -4,7 +4,7 @@
 
 * Java is a high level, modern programming language designed in 1990s by Sun Microsystems, and currently owned by Oracle.
 * javac is the complier executable that is used compile .java(source code) file into .class(byte code) file.
-* java executable is used to run complied byte code. It creates an instance of a Java Virtual Machine(JVM) with an area in the node’s memory
+* java executable is used to run complied byte code. It creates an instance of a Java Virtual Machine(JVM) with an area in the node’s memory.
 * Java Runtime Environment (JRE) contains java executable.
 * Java Development Kit (JDK) contains java and javac.
 * Standard Edition(SE) is the regular JDK for developing applications.
@@ -13,25 +13,204 @@
 * ``*.jar`` is for Java Application.
 * ``*.war`` is for Java Web Application.
 * Java guarantees "Write Once, Run Anywhere."
-
-## Basic Syntax:
-* Every statement ends with ``;``.
-* Every block is surrounded by braces.
 * All programs in Java is object-oriented.
 
 
-### Packages
-* API are packages that is written and ready to be used. see Oracle website for references.
-* packages are often used as a folder for classes and sub-packages.
-* packages folders are under the src folders.
-* java files for classes will have a first line indicates which package it belongs.
-* in order for other package to use a class which is outside the package: ``import packageName.classNAME``;  or ``import packageName.*;`` is needed.
+## IDE
+There are many great IDE for Java.
+* NetBeans:
+  * Auto indentation with ALT+SHIFT+F.
+* Eclipse
 
+
+## Basic Syntax:
+* Every statement ends with ``;``.
+* Every block is surrounded by curly braces.
+
+
+### Comments
+```java
+// single-line comment to the end of the line.
+/* Thie is a multi-line comment or
+    a block comment.
+*/
+/** This is a java doc style comment.
+*/
+```
+* Documentation comments can become external documentation in HTML format using Javadoc
+for doc comments any asterisks beyond two will be ignored.
+* Requirement:
+  * Every class has descriptions with ``@author`` tag
+  * Every method has description start with ``@param variablesName`` and ``@return`` tags
+  * Main method uses ``@param args`` unused
+  * Every variable needs an ``/** **/`` block of explanation.
+  * Section of codes should be marked with //comments on empty lines.
+  * // explaining local variables.
+* JavaDoc HTML page is formatted. comments will be made by tools inside IDE.
+
+
+## Variables
+* In Java, there are 8 primitive types and reference types(object).
+* Primitive types represent single values with no attributes and methods.
+* Primitive types has a table for memory sizes.
+* ``_`` can be added to int for readability.
+* boolean has values ``true`` or ``false``.
+  * default value that initialized without value is false.
+* auto type casting from int to double only.
+* final is the keyword used for assign constant, and the name is always all_caps, all_caps is also shown in UML.
+* final can also be used on method(final method cant be overridden) and class(final classes don’t have subclasses)
+* other are referred as reference type.
+* They use function to make conversion.  (Interger.toString(intx))
+* They use function to test equality(no == sign) (a.equals(b) for Strings)
+* null? relation to reference type with no memory reference. 0 for some float initialization default when they are not assigned with any number.
+
+### Type casting
+* type casting(conversion) put type name in front of the expression within a bracket.
+(int)x;
+* int / int is int
+* Java supports automatic type casting of integers to floating points,
+* For class upcasting is to instantiate a subclass object as a superclass object. It is done automatically. ``Animal a = new Cat();``
+* The other way around is called down-casting. It is done manually.
+  ```java
+  Animal a = new Animal();
+  ((Cat)a).makeSound();
+  ```
+* reference types stores a reference(their value is just a reference) to the memory location. It includes arrays, strings and all objects.
+
+### Scope of Variables
+* Java has block level scope:
+* All variables are local to the block in which they are declared, and even for blocks inside that block.
+* If the variables need to be used outside the block, They are required to be initialized outside of the block with an assigned value.
+* If the variables need to be used inside another block, the value should be initialized and assign an actual value.
+
+## Operators
+### Condition
+* ``<,>,!=,==,<=,>=``
+
+### Membership
+* ``x instanceof ClassName``   
+* this gives true if x is a instance of ClassName
+
+### logical operators
+* && and
+* || or
+* ! not
+* the operands must be compatible.
+
+### Ternary operators
+* result = testCondition ? value1 : value2
+* If testCondition is true, assign the value of value1 to result; otherwise, assign the value of value2 to result."
+
+### Assignment
+```java
+int y;
+String name = "";
+int a = 42, b = 11;
+```
+* in Java the variable name is associate with one type.
+* Variable names start with lower case letter.
+``x +=y -> x = x +y``
+
+### Math Operators
+* ``+, -, *, /``
+* long division happens between integer operand
+* operand need to  be in the same type.
+* ``%`` modulo(remainder)
+
+### Short Forms
+* ``x=x+1 -> ++x``
+* ``x=x-1 -> —x``
+* ``++x`` vs ``x++``
+  * for both prefix and postfix form x=x+1.
+  * for the whole expression, ++x use the value x+1, x++ uses the value x.
+
+## Conditional Structures
+
+### if Condition
+* if
+  ```java
+  if(condition) {
+  }
+  ```
+* either a {…} block or a single statement line can be used after the (…) part. However, {…} is always recommended.
+* if…else
+  ```java
+  if(condition){
+  } else{
+  }
+  ```
+* It can be nested.
+
+* else if statement
+```java
+if(condition) {
+} else if(condition) {
+} else if(condition) {
+} else {
+}
+```
+* switch statement
+```java
+switch (expression) {
+   case value1 :  //test if the value equals to the expression
+   //statements
+   break; //optional jump to the end
+   case value2 :
+   //statements
+   break; //optional
+   default: //Optional run if no case matches.
+   //Statements
+}
+```
+
+### Loop
+* control statements
+  * break; stop the loop.
+  * continue; skip to the next loop.
+* while loop
+```java
+while(condition) {
+	//statements;
+}
+```
+* do…while loops
+```java
+do {
+} while(condition);
+```
+* This makes sure the loop run at least once, inside the do block.
+* Be careful about the different scope for codes after while and after do
+* for loop
+```java
+for (initialization; condition; increment/decrement) {
+  statements;
+}
+for(int x = 1; x<=5; x++){
+}
+for(int a = 1 , int b = 4; a<b ; a++, a—){
+  //not recommend not detail enough
+}
+```
+* enhanced for loop
+* the loop declares new temperate variable i and assign the values of the newArray to i on each iteration.
+```java
+for(int i: newArray){  
+}
+//or
+for(int x=0; x<arrayInt.length; x++){
+    int i;
+    i=arrayInt[x];
+    // ……….  
+  }
+```
+* Because i is an independent temperate value.the value of a primitive type(and Strings  because it’s immutable(the object cannot be changed after initialization))array can’t be change using i variable in the for loop, only the methods(setter) for an array of an objects can be used to change the object values. and assignment for public variable of an object array will work.(the assignment trace the memory location of the object through i, and change the actual value inside the object.)
+* For loops, variables should all have a value before it goes in the loop block, or it may have not to get the chance to contain any value.
+
+## Classes and Methods
 ### Classes
 * Every code in Java must be inside a class. class name usually start with capital letter.
 * class name capitalized, and must match file name.
-* In Java, all statements (except variable declarations) must be inside a
-method, and all methods must be inside a class.
+* In Java, all statements (except variable declarations) must be inside a method, and all methods must be inside a class.
 * One class per file.
 * Class is a blueprint for creating a type of object.
 * Each class is used to define attributes and behavior.
@@ -167,6 +346,49 @@ public abstract class ClassName{
   }
   ```
 
+#### Comparable Interface
+* This interface is implemented by classes that need to compare their objects according to some natural (internal) order.
+* Then comparsion can be used by the compareTo() method.
+```java
+class Employee implements Comparable<Employee>
+{
+   private int rank;
+   private String name;
+   public int compareTo(Employee e)
+   {
+       return this.rank - e.rank;
+   }
+   public Employee(String n, int r)
+   {
+       rank = r;
+       name = n;
+   }
+   public String toString()
+   {
+       return name + " : " + rank;
+   }
+}
+public class Test
+{
+   public static void main(String [ ] args)
+    {
+        Employee bigShot = new Employee("Joe Manager", 10);
+        Employee littleShot = new Employee("Homer Simpson", 1);
+        if (bigShot.compareTo(littleShot) > 0)
+        {
+            System.out.println(bigShot);
+            System.out.println(littleShot);            
+        }
+        else
+        {
+            System.out.println(littleShot);
+            System.out.println(bigShot);
+        }
+    }    
+}
+```
+
+
 #### Anonymous classes
 * Anonymous classes are used to override other class method in the main method in braces follow the constructor.
 * This modification is done on the object but not the classes.
@@ -202,7 +424,7 @@ public abstract class ClassName{
   ```
 
 ### Methods
-* Methods define behaviour
+* Methods define behavior.
 * it can be nested and it is very useful, when u call a nested method u can run also run method inside of it.
 * access modifier for attributes and methods:
   * default: It is available to any other class in the same package.
@@ -217,51 +439,42 @@ public abstract class ClassName{
 * static method and variables are created at compile time.
 * When outside the class, always access static variables and methods using the class name, not an object variable.
 * static method has access on only static variables. Unless initialize new variables inside static methods.
-  ```java
-  public static void main(String[] args) {
-  }
-  ```
-* the main method takes an array of Strings as its parameters, and does not return a value.
+```java
+public static void main(String[] args) {
+}
+```
+* the main method takes an array of string as its parameters, and does not return a value.
 * ``The currentObject.toString()`` get call every time the object get to print or concatenated. By default, toString print the memory’s hashcode values. However, it is often define specifically to print its formatted variable values.(overriding)
 ```java
 class MyClass {
-
   // declared Method sayHello
   static void sayHello() {
     System.out.println("Hello World!");
   }
-
   public static void main(String[ ] args) {
     sayHello();
   }
 }
-
 class MyClass {
-
   static void sayHello(String name) {
     System.out.println("Hello " + name);
   }
-
   public static void main(String[ ] args) {
     sayHello("David");
     sayHello("Amy");
   }
-
 }
 // Method with a parameter
 class MyClass {
-
 static int sum(int val1, int val2) {
   return val1 + val2;
 }
-
   public static void main(String[ ] args) {
     int x = sum(2, 5);
     System.out.println(x);
   }
 }
 // Method returns values
-
 public class Animal {
   int legs;  //attributes
   void bark() {
@@ -278,6 +491,7 @@ class MyClass {
 // This create object, assign attributes and call its method
 //when methods are declared with no static keywords, new instance of the object must be declared, in order to use this method.
 ```
+
 #### Getter and Setter
 * For each variable, the get method returns its value, while the set method sets the value.
 * Getters start with get, followed by the variable name, with the first letter of the variable name capitalized.
@@ -285,12 +499,10 @@ class MyClass {
 ```java
 public class Vehicle {
   private String color;
-
   // Getter
   public String getColor() {
     return color;
   }
-
  // Setter
   public void setColor(String c) {
     this.color = c;
@@ -330,20 +542,17 @@ public class Vehicle {
   Vehicle(String c) {
     this.setColor(c);
   }
-
   // Setter
   public void setColor(String c) {
     this.color = c;
   }
 }
-
 //color will be "Red"
 Vehicle v1 = new Vehicle();
-
 //color will be "Green"
 Vehicle v2 = new Vehicle("Green");
 ```
-* this() can be used in the first line inside a constructor to save codes. It must be the first line of the constructor.
+* ``this()`` can be used in the first line inside a constructor to save codes. It must be the first line of the constructor.
 ```java
 public Circle6() {
 this(10.0, 100.0, 100.0);
@@ -369,14 +578,10 @@ this.y = y;
 * It happens mostly when assign a reference type to a new name.
 * duplicate the referenced value is a good way to avoid it.
 
-
-
 #### Lambda
 ```java
 name = (parameter) -> statement or {} block;       //-> read as become
 ```
-
-
 
 #### Main Method
 * Every Java program starts from the main method.
@@ -390,304 +595,93 @@ name = (parameter) -> statement or {} block;       //-> read as become
   * String[] args is the parameter for the main method.
   * void test()   // it is a test method with no returning value and no parameters.
 
-### String Functions
-* ``System.out.println("");`` println is the method. System is the class and out is the stream to access the println method. the method creates a new line at the end, print() does not.
-
-* ``printf()`` //This is the formatting output method.
-* ``System.out.printf("%s"(this is the formatting string)   %f , aString, aDouble);``
-* ``String.format()`` can also be used to generate formatted string and save it into a variable.
-* ``printf()`` is only good with System.out
-
-* String is an object, a reference type.
-* ``+`` concatenation (auto casting)
-* no ``*`` operation for strings in Java
-
-
-#### Formatting String:
- %
--(left alignment)  %-6s,"good"  ->good_ _  (default right justified)
-+ or a space (add the + sign, ignores the - sign)
-,(use , to divide thousand, million position for a number)
-0(put 0 at the leading part as many as possible)
-width.decimal(default 6 decimal place, precision can be used for %s %b %h as well)(decimal point is 1 space)
-flag:
-### Comments
+### Generic Class
+* A generic class or method is one whose definition uses a placeholder for one or more of the type arguments that are passed as parameters.
+* The type is denoted as a capitalized variable. Ex ``T``.
+  * ``T`` Used for a generic type.
+  * ``S`` Used for a generic type (usually for the second type if used)
+  * ``E`` Used to represent generic type of an element in a collection.
+  * ``K``Used to represent generic type of a key for a collection that maintains key/value pairs.
+  * ``V`` Used to represent generic type of a value for collection that maintains key/value pairs.
 ```java
-// single-line comment to the end of the line.
-/* Thie is a multi-line comment or
-    a block comment.
-*/
-/** This is a java doc style comment.
-*/
+class Point<T>     // T represents a type parameter
+{
+  private T x, y;
+  public Point(T x, T y)           //  Constructor
+  {
+    set(x, y);
+  }
+  public void set(T x, T y)
+  {
+    this.x = x;   this.y = y;
+  }
+  T getX(){ return x;}
+  T getY(){ return y;}
+  public String toString()
+  {
+    return "("+x.toString() +","+ y.toString() + ")";
+  }
+}
+//during instantiation
+public class Test
+{
+  public static void main(String [] s)
+  {
+    Point<String> strPoint = new Point<String>("Anna", "Banana");
+    System.out.println(strPoint);
+    Point<Double> pie = new Point<Double>(3.14, 2.71);
+    System.out.println(pie);
+  }
+}   
+//Program Output:
+//(Anna,Banana)
+//(3.14,2.71)
 ```
-* Documentation comments can become external documentation in HTML format suing Javadoc
-for doc comments any asterisks beyond two will be ignored.
-Requirement:
-Every class has descriptions with ``@author`` tag
-Every method has description start with ``@param variablesName`` and ``@return`` tags
-Main method uses ``@param args`` unused
-Every variable need an ``/** **/`` block of explanation.
-Section of codes should be marked with//comments on empty lines
-// explaining local variables
-* Auto indentation with ALT SHIFT F
-* JavaDoc HTML page that contains formatted comments will be made by tools inside IDE
-
-
-## Variables
-* Date types in Java are 8 primitive types and reference types(object)
-* primitive types represent single values with no attributes and methods.
-* primitive type table for memory sizes.
-* ``_`` can be added to int for readability.
-* boolean has values ``true`` or ``false``.
-  * default value that initialized without value is false.
-* auto type casting from int to double only.
-* final is the keyword used for assign constant, and the name is always all_caps, all_caps is also shown in UML.
-* final can also be used on method(final method cant be overridden) and class(final classes don’t have subclasses)
-* other are referred as reference type.
-* They use function to make conversion.  (Interger.toString(intx))
-* They use function to test equality(no == sign) (a.equals(b) for Strings)
-* null? relation to reference type with no memory reference. 0 for some float initialization default when they are not assigned with any number.
-
-### Type casting
-* type casting(conversion) put type name in front of the expression within a bracket.
-(int)x;
-* int / int is int
-* Java supports automatic type casting of integers to floating points,
-* For class upcasting is to instantiate a subclass object as a superclass object. It is done automatically. ``Animal a = new Cat();``
-* The other way around is called down-casting. It is done manually.
+* Autoboxing is the automatic conversion of a primitive type to the corresponding wrapper type when it is used in a context where a reference type is required.
+* Unboxing is the automatic unwrapping of a wrapper type to give the corresponding primitive type when the wrapper type is used in a context that requires a primitive type.
+```java
+// Unboxing converts Integer to int
+int i = new Integer(34);
+// AutoBoxing converts doubles 3.14, 2.71 to Double
+Point<Double> p = new Point<Double>(3.14, 2.71);
+// p.getX() returns Double which is unboxed to double
+double pi = p.getX();
+```
+* The wildcard type symbol ? stands for any generic type. ``Point<?>`` references will accept a ``Point<T>`` object for any type T.
+  * T will require casting when using wild card without constrain.
   ```java
-  Animal a = new Animal();
-  ((Cat)a).makeSound();
-  ```
-* reference types stores a reference(their value is just a reference) to the memory location. It includes arrays, strings and all objects.
-
-### Scope of Variables
-* Java has block level scope:
-* All variables are local to the block in which they are declared, and even for blocks inside that block.
-* If the variables need to be used outside the block, They are required to be initialized outside of the block with an assigned value.
-* If the variables need to be used inside another block, the value should be initialized and assign an actual value.
-
-
-
-
-
-## Operators
-### Condition
-* ``<,>,!=,==,<=,>=``
-
-### Membership
-* ``x instanceof ClassName``   
-* this gives true if x is a instance of ClassName
-
-### logical operators
-* && and
-* || or
-* ! not
-* the operands must be compatible.
-
-### Ternary operators
-* result = testCondition ? value1 : value2
-* If testCondition is true, assign the value of value1 to result; otherwise, assign the value of value2 to result."
-
-### Assignment:
-int y;
-String name = "";
-int a = 42, b = 11;
-in Java the variable name is associate with one type.
-Variable names start with lower case letter.
-x +=y -> x = x +y
-
-### Math Operators
-``+, -, *, /``
-* long division happens between integer operand
-* operand need to  be in the same type.
-* ``%`` modulo(remainder)
-
-### Short Forms
-* ``x=x+1 -> ++x``
-* ``x=x-1 -> —x``
-* ``++x`` vs ``x++``
-  * for both prefix and postfix form x=x+1.
-  * for the whole expression, ++x use the value x+1, x++ uses the value x.
-
-
-### Scanner Class
-* It is used to get User input or read files.
-```java
-import java.util.Scanner;  //import the Scanner class
-Scanner myVar = new Scanner(System.in);  //Create a Scanner object(instance of this class).
-```
-* run the following scanner methods for different data types.
-```java
-nextByte() //Read a byte
-nextShort() //Read a short
-nextInt() //Read an int
-nextLong() //Read a long
-nextFloat() //Read a float
-nextDouble() //Read a double
-nextBoolean() //Read a boolean
-nextLine() //Read a complete line
-next() //Read a word
-hasNext() //Return bool, work with while loop as its condition.
-//Example:
-System.out.println(myVar.nextLine());  //get user input
-```
-* sometimes scanner can cause error if the lines is mismatched.
-
-## Conditional Structures
-
-### if Condition
-* if
-  ```java
-  if(condition) {
+  static double sqLength(Point<?> p)
+  {
+    // Needs cast to Number
+    Number n1 = (Number)p.getX();
+    Number n2 = (Number)p.getY();
+    double x = n1.doubleValue();
+    double y = n2.doubleValue();
+    return x*x + y*y;
   }
   ```
-* either a {…} block or a single statement line can be used after the (…) part. However, {…} is always recommended.
-* if…else
+  * ``Point <? extends Number> p2;`` Constrained wild card ``p2`` can accept a Point<T> object, where T is any type that extends Number
+  * In class definition ``class Point<T extends Number>`` constrains to a subclass of Number.
+  * A type parameter can be constrained to a type implementing an interface
   ```java
-  if(condition){
-  } else{
+  public static <T extends Comparable<T>>
+  T greatest(T arg1, T arg2)
+  {
+    if (arg1.compareTo(arg2) > 0)
+    return arg1;
+    else
+    return arg2;
+  }
+  public static void main(String [ ] args)
+  {
+    Employee bigShot = new Employee("Joe Manager", 10);
+    Employee littleShot = new Employee("Homer Simpson", 1);
+    Employee great = greatest(bigShot, littleShot);
+    System.out.println(great);
   }
   ```
-* It can be nested.
+* Interfaces, like classes, can be generic.
 
-* else if statement
-```java
-if(condition) {
-} else if(condition) {
-} else if(condition) {
-} else {
-}
-```
-* switch statement
-```java
-switch (expression) {
-   case value1 :  //test if the value equals to the expression
-   //statements
-   break; //optional jump to the end
-   case value2 :
-   //statements
-   break; //optional
-   default: //Optional run if no case matches.
-   //Statements
-}
-```
-
-### Loop
-* control statements
-  * break; stop the loop.
-  * continue; skip to the next loop.
-* while loop
-```java
-while(condition) {
-	//statements;
-}
-```
-* do…while loops
-```java
-do {
-} while(condition);
-```
-* This makes sure the loop run at least once, inside the do block.
-* Be careful about the different scope for codes after while and after do
-* for loop
-```java
-for (initialization; condition; increment/decrement) {
-  statements;
-}
-
-for(int x = 1; x<=5; x++){
-}
-
-for(int a = 1 , int b = 4; a<b ; a++, a—){
-  //not recommend not detail enough
-}
-```
-* enhanced for loop
-* the loop declares new temperate variable i and assign the values of the newArray to i on each iteration.
-```java
-for(int i: newArray){  
-}
-//or
-for(int x=0; x<arrayInt.length; x++){
-    int i;
-    i=arrayInt[x];
-    // ……….  
-  }
-```
-* Because i is an independent temperate value.the value of a primitive type(and Strings  because it’s immutable(the object cannot be changed after initialization))array can’t be change using i variable in the for loop, only the methods(setter) for an array of an objects can be used to change the object values. and assignment for public variable of an object array will work.(the assignment trace the memory location of the object through i, and change the actual value inside the object.)
-* For loops, variables should all have a value before it goes in the loop block, or it may have not to get the chance to contain any value.
-
-## Thread
-* Java is a multi-threaded programming language.
-* The life-cycle of a thread is shown below:
-  * First way to run code in a new Thread, create a subclass of Thread class as your own class, override your own code in the run() method, then create an instant of your class object and run the start() method of the new object.
-  * All thread has priorities range from 1 to 10, can be set with the set Priority() method.
-
-  * Second way to create a Thread(preferred way, make extends available for use), implements the Runnable interface for your own class, and write your own run() method in your class. Later create a new Thread object with(new youClass()) as argument for its constructor. Lastly, run the thread object start() method.
-
-### pause a thread
-* Method
-```java
-Tread.sleep(int numberofMS); //it throws InterruptedException
-```
-* Example
-```java
-public static void main(String[] args) throws InterruptedException {  //exception handling for it
-Thread.sleep(500);} //make it stops for 500ms
-//or use the following pause method instead of Thread.sleep
-public static void pause(int duration) {
-    try {
-        Thread.sleep(duration);
-    } catch (InterruptedException ex) {
-    }
-}
-```
-
-### Create a Thread
-```java
-Thread name = new Thread();
-//Or new thread that runs a method.
-Thread t = new Thread(() -> animate(gc));
-```
-
-
-
-
-### Enums
-* enum is a special type used to define a group of constants
-* It increases the performance of codes for some method only take a set of values. Often used for days of week, cards etc.
-
-
-#### define Enum
-```java
-enum Sample {
-	SAMPLEA,
-	SAMPLEB,
-	SAMPLEC
-}
-```
-
-#### Access Enum
-```java
-Sample x = Sample.SAMPLEA;
-```
-
-#### Usage
-```java
-switch statement example:
-switch(x){
-	case SAMPLEA:
-			//some code
-			break;
-	case SAMPLEB:
-			//some code
-			break;
-	case SAMPLEC:
-			//some code
-			break;
-}
-```
 
 ## Exception Handling
 * There are three types of error
@@ -767,15 +761,162 @@ For InputMismatchException, scannerName.next() is often used in the catch block 
 For custom exception super() in constructor is for getMessage().
 
 
+
+## Packages
+* API are packages that is written and ready to be used. see [Oracle website](https://docs.oracle.com/javase/8/docs/api/) for Java SE 8 API references.
+* packages are often used as a folder for classes and sub-packages.
+* packages folders are under the src folders.
+* java files for classes will have a first line indicates which package it belongs.
+* in order for other package to use a class which is outside the package: ``import packageName.classNAME``;  or ``import packageName.*;`` is needed.
+* All functions in Java exists within a class object, some of them are built in and does not need to import, many others does.
+
+### System class
+* ``System.currentTimeMillis();``
+* ``System.current.nanoTime();`` current time in ns.
+* ``System.nanoTime()`` measures difference in nano second by substract values from two of these method. It does not return real time value.
+
+### Random Class
+* ``java.util.Random;``
+* ``Random name = new Random();``
+* ``name.nextInt(x);``    generate x different int from 0
+* ``name.nextDouble(x);`` generate double int from 0-(x-1)
+* ``name.nextBoolean(x);``
+
+### Math class
+it contains all static methods, so can be called without creating math objects.
+* ``Math.pow(base,exp);`` returns a double
+* ``Math.round()``    round to nearest int
+* ``Math.abs()``        find abs for all number type
+* ``Math.max()``    return the largest among its parameters.
+* ``Math.min()``     return the smallest among its parameters.
+* ``Math.ceil()``      return the next int value as a double.
+* ``Math.floor()``    return the int value as a double
+* ``Math.pow(x,y)``   power of x to the power of y as a double.
+* ``Math.random();``  random number from 0 to 1.
+* ``Math.sqrt()``
+* ``Math,sin()``
+* ``Math.cos()``
+
+### Scanner Class
+* It is used to get User input or read files.
+```java
+import java.util.Scanner;  //import the Scanner class
+Scanner myVar = new Scanner(System.in);  //Create a Scanner object(instance of this class).
+```
+* run the following scanner methods for different data types.
+```java
+nextByte() //Read a byte
+nextShort() //Read a short
+nextInt() //Read an int
+nextLong() //Read a long
+nextFloat() //Read a float
+nextDouble() //Read a double
+nextBoolean() //Read a boolean
+nextLine() //Read a complete line
+next() //Read a word
+hasNext() //Return bool, work with while loop as its condition.
+//Example:
+System.out.println(myVar.nextLine());  //get user input
+```
+* sometimes scanner can cause error if the lines is mismatched.
+
+### Interger
+* ``Interger.toString(intx)``
+* ``Interger.parseInt(String)`` string to Int
+
+### Double
+* ``Double.parseDouble(String)``string to double
+* ``Integer.MAX_VALUE``  A constant holding the maximum value an int can have, 2^31-1.
+* ``Integer.MIN_VALUE``   A constant holding the minimum value an int can have, -2^31.
+
+
+### String
+* ``stringx.valueOf(intx)``
+* ``stringx.trim()`` remove the leading and trailing white space of the string.
+* ``stringx.startsWith(string)`` return true is the stringx start with the method argument.
+* ``stringx.endsWith(string)``
+* ``string.indexOf("sam")  `` return index and -1 if not exist.
+* ``string.toUpperCase``
+
+### StringBuilder class
+
+## Character
+* ``Character.getNumericValue(myString.charAt(0));``   return ACSII value of a char in string to real integer value.
+
+## Color
+* ``Color.web("colorName");``
+
+
+
+### String Class
+#### String Functions
+* ``System.out.println("");`` println is the method. System is the class and out is the stream to access the println method. the method creates a new line at the end, print() does not.
+* ``printf()`` //This is the formatting output method.
+* ``System.out.printf("%s(this is the formatting string)   %f" , aString, aDouble);``
+* ``String.format()`` can also be used to generate formatted string and save it into a variable.
+* ``printf()`` is only good with System.out
+* String is an object, a reference type.
+* ``+`` concatenation (auto casting)
+* no ``*`` operation for strings in Java
+
+#### Formatting String:
+* Format Specifier
+  * ``%f`` Decimal number.
+  * ``%s`` String.
+* Width
+  * width.decimal(default 6 decimal place, precision can be used for %s %b %h as well)(decimal point is 1 space)
+* alignment.  
+  * place ``-`` after ``%`` sign means left alignment. Ex: ``%-6s``,"good"  ->good_ _  (default right justified).
+* divider
+  * ``,`` use , to divide thousand, million position for a number.
+* leading zero
+  * ``0`` 0 will be used to fill the leading space. Ex: ``%010d``.
+
+
+### Enums
+* enum is a special type used to define a group of constants
+* It increases the performance of codes for some method only take a set of values. Often used for days of week, cards etc.
+
+
+#### define Enum
+```java
+enum Sample {
+	SAMPLEA,
+	SAMPLEB,
+	SAMPLEC
+}
+```
+
+#### Access Enum
+```java
+Sample x = Sample.SAMPLEA;
+```
+
+#### Usage
+```java
+switch statement example:
+switch(x){
+	case SAMPLEA:
+			//some code
+			break;
+	case SAMPLEB:
+			//some code
+			break;
+	case SAMPLEC:
+			//some code
+			break;
+}
+```
+
 ## Array
 * It is an object.
 * Array name is just a reference of the array object.
 * It is an ordered list of the same type of values
 * It is fixed in length.
 * index number starts at 0
+* ``import java.util.Arrays;``.
 
 ### Create an Array
-
 * create array with fixed length.
 ```java
 //The following statement declare new int array called newArray with 5 elements from [0] to [4]
@@ -814,7 +955,6 @@ newArray[2] = 10;
 ### Length
 * ``newArray.length``  - returns the length of the array
 
-
 ### Multidimensional arrays
 * Multidimensional arrays are nested arrays
 * first index represents the row, second index represents the column.
@@ -834,9 +974,6 @@ int y = sample[0].length;
 * ``Arrays.copyOf(arrayX, lengthX);``  //get the first lenthX element of arrayX
 * ``Arrays.equals(arrayX, arrayY);`` //return if arrayX and arrayY are equal.
 
-
-
-
 ### Comparable interface
 * ``Arrays.sort``, ``Arrays.binarySearch`` works with comparable interface.
 * comparable interface has abstract ``compareTo()`` method, it compare the current object to the passed parameter return int.(negative when smaller, positive when bigger and zero if equal.)
@@ -848,8 +985,7 @@ int y = sample[0].length;
 * After implement the definition, the array of objects of MyClass can be sorted and searched using the methods above.
 
 
-
-## List
+### List
 * These are some special classes provided by Java API in java.util.ListType (import this before use).
 * List is just like array which is also okay with insert and remove element. List is slower than array. ArrayList and LinkedList are some commonly used List type.
 * ArrayList is a generic class. It need to associate to other classes to work. association is denoted by ``< >``.
@@ -873,10 +1009,6 @@ ArrayList x = new ArrayList();
 ```java
 ArrayList<String> x = new ArrayList<String>(10);
 ```
-
-
-
-
 
 ### create linkedlist object
 ```java
@@ -913,15 +1045,12 @@ arrayListName.add(int index, "something");
 * for remove(). indexOf(). lastIndexOf(), or contains(). they make the use of equals(), so . equals method needs to be overridden for your own object in the List.
 * Wrapper classes have already defined the proper equals method.
 
-### Observation List?
-
-
 ### HashMap
 * It is used to store data using key and value pairs.
 * need to ``import java.util.HashMap``
 * cannot contain duplicated keys, will overwrites old value for this key.
 
-#### Create Hashmap
+#### Create HashMap
 ```java
 HashMap<String,Integer> x = new HashMap<String,Integer>();
 ```
@@ -934,7 +1063,10 @@ HashMap<String,Integer> x = new HashMap<String,Integer>();
 * check existence of a value ``containsValue(value)``
 
 ### Hashset
-* Hashset cannot contain duplicated values. It donen't order the element. like set in math. * They have other features similar to lists.
+* Hashset cannot contain duplicated values. It does not order the element. like set in math. * They have other features similar to lists.
+* The HashSet is a collection of buckets, and each bucket is a collection of elements.
+* The collection of buckets can be implemented as an Array or an ArrayList.  
+* Each bucket may also be a list of elements, usually a LinkedList
 
 #### create
 ```java
@@ -945,9 +1077,8 @@ HashSet<String> name = new HashSet<Sting>();
 * length: ``.size();``
 
 
-#### LinkedHashSet
+### LinkedHashSet
 * similar to Hashset but It orders the elements.
-* Hashcode??memory address
 
 ### collection class methods
 for all collection class they have static methods:
@@ -957,8 +1088,27 @@ for all collection class they have static methods:
 * Collections.reverse(listName)
 * Collections.shuffle(listName)
 
+### HashCode methods
+* Built-in data classes override the hashCode in java to ensure that equal objects return the same hashcodes.
+* By default java uses the object memory location as the hashCode.▪This can't be used if you override the equals method in your class.
+* When override hashcode Methods
+  1. Objects that are equal according to their equalsmethod MUST be assigned the same hash code.
+  2. Because of 1), whenever you override aclass’s equals() method, you MUST also override hashCode().
+  3. Try to minimize collisions.▪Different objects that generate the same hashCode.
 
-## Iterator
+
+### TreeSet
+* A TreeSetstores elements based on a natural order defined on those elements.
+* The natural order is based on the values of the objects being stored .  
+* By internally organizing the storage of its elements according to this order, a TreeSet allows fast search for any element in the collection.
+* A TreeSet requires a mechanism to sort
+  1. The elements being stored must implement the Comparable Interface – Internal order.
+  2. The TreeSet uses a class that implements the Comparator Interface – External order.
+
+### TreeMap
+* TreeMap stores mappings according to the natural order of the keys, or according to an order specified by a Comparator.
+
+### Iterator
 * It is an object created to retrieve elements from a collection.
 * hasNext(): Returns true if there is at least one more element; otherwise, it returns false.
 * next(): Returns the next object and advances the iterator.
@@ -1040,73 +1190,36 @@ outputFile.println("Hello World");
 outputFile.close();
 ```
 
-## Java classes
 
+## Thread
+* Java is a multi-threaded programming language.
+* The life-cycle of a thread is shown below:
+  * First way to run code in a new Thread, create a subclass of Thread class as your own class, override your own code in the run() method, then create an instant of your class object and run the start() method of the new object.
+  * All thread has priorities range from 1 to 10, can be set with the set Priority() method.
 
-## System class
-* ``System.currentTimeMillis();``
-* ``System.current.nanoTime();`` measures difference in nano second by substract values from two of these method. It does not return real time value.
+  * Second way to create a Thread(preferred way, make extends available for use), implements the Runnable interface for your own class, and write your own run() method in your class. Later create a new Thread object with(new youClass()) as argument for its constructor. Lastly, run the thread object start() method.
 
-## StringBuiler class
+### pause a thread
+* Method
+```java
+Tread.sleep(int numberofMS); //it throws InterruptedException
+```
+* Example
+```java
+public static void main(String[] args) throws InterruptedException {  //exception handling for it
+Thread.sleep(500);} //make it stops for 500ms
+//or use the following pause method instead of Thread.sleep
+public static void pause(int duration) {
+    try {
+        Thread.sleep(duration);
+    } catch (InterruptedException ex) {
+    }
+}
+```
 
-
-## Random Class
-* ``java.util.Random;``
-* ``Random name = new Random();``
-* ``name.nextInt(x);``    generate x different int from 0
-* ``name.nextDouble(x);`` generate double int from 0-(x-1)
-* ``name.nextBoolean(x);``
-
-
-## Math class
-it contains all static methods, so can be called without creating math objects.
-
-* ``Math.pow(base,exp);`` returns a double
-* ``Math.round()``    round to nearest int
-* ``Math.abs()``        find abs for all number type
-* ``Math.max()``    return the largest among its parameters.
-* ``Math.min()``     return the smallest among its parameters.
-* ``Math.ceil()``      return the next int value as a double.
-* ``Math.floor()``    return the int value as a double
-* ``Math.pow(x,y)``   power of x to the power of y as a double.
-* ``Math.random();``  random number from 0 to 1.
-* ``Math.sqrt()``
-* ``Math,sin()``
-* ``Math.cos()``
-
-
-## Interger
-* ``Interger.toString(intx)``
-* ``Interger.parseInt(String)`` string to Int
-
-## Double
-* ``Double.parseDouble(String)``string to double
-* ``Integer.MAX_VALUE``  A constant holding the maximum value an int can have, 2^31-1.
-* ``Integer.MIN_VALUE``   A constant holding the minimum value an int can have, -2^31.
-
-
-## String
-* ``stringx.valueOf(intx)``
-* ``stringx.trim()`` remove the leading and trailing white space of the string.
-* ``stringx.startsWith(string)`` return true is the stringx start with the method argument.
-* ``stringx.endsWith(string)``
-* ``string.indexOf("sam")  `` return index and -1 if not exist.
-* ``string.toUpperCase``
-
-## StringBuilder class
-
-
-
-## Character
-* ``Character.getNumericValue(myString.charAt(0));``   return ACSII value of a char in string to real integer value.
-
-## Color
-* Color.web("colorName")
-
-netbeans trick
-alt+shift+F auto indent
-
-Documentation
-https://docs.oracle.com/javase/8/docs/api/
-
-https://docs.oracle.com/javase/8/javafx/api/toc.htm
+### Create a Thread
+```java
+Thread name = new Thread();
+//Or new thread that runs a method.
+Thread t = new Thread(() -> animate(gc));
+```

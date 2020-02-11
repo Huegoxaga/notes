@@ -106,6 +106,7 @@
 
 #### Linked Map
 * A ordered map.
+* Generally based on the insertion order.
 
 
 ### Set
@@ -118,6 +119,8 @@
 
 #### Linked Set
 * A ordered Set.
+* Generally based on the insertion order.
+
 
 ## Algorithm
 * Algorithm is a step-by-step procedure for performing some task in a finite amount of time.
@@ -196,7 +199,7 @@ It is used to tell if a data structure or Algorithm is good.
 #### Binary Search
 * It can only be used with sorted arrays, but is much faster than Sequential Search.
 * Steps for binary search:
-  1. compare target value with the median values(    round down if the mid position is not an integer). check equality first, if not determine the location the target in either upper or lower section
+  1. compare target value with the median values(round down if the mid position is not an integer). check equality first, if not determine the location the target in either upper or lower section
   2. compare the target with the median of the lower or upper section until it is found.
 * Example of Recursive Binary Search:
   ```java
@@ -241,7 +244,7 @@ An array is sorted in ascending order if the array entries increase as indices i
   ```
 
 #### Selection Sort
-* Steps for bubble sort:
+* Steps for Selection sort:
   1. Reset the leftmost element as the temp max value.
   2. Comparing the temp max value with rest values in the array. If a bigger one is found, set it as the temp max value.
   3. After the comparison in one iteration, swap the max value to its proper location according to a count number that count the rank of the max value of each iteration.
@@ -269,8 +272,8 @@ An array is sorted in ascending order if the array entries increase as indices i
 
 #### Insertion Sort
 * Steps for insertion sort:
-  1. From left to right, starting with the second element, compare it with the first if it is smaller or equals the first place it before the first element.
-  2. For the third element, compare it with the second, then the first. It the third is smaller than or equals with any element, place it before it.
+  1. From left to right, starting with the second element, compare it with the first if it is smaller or equals to the first, place it before the first element.
+  2. For the third element, compare it with the second, then the first. If the third is smaller than or equals with any element, place it before it.
   3. repeat the process to the last element. In the end all elements are placed into the right location.
 * The complexity of Insertion Sort is ``О(n^2)`` (worst case).
 * Example:
@@ -296,9 +299,9 @@ An array is sorted in ascending order if the array entries increase as indices i
 #### Merge Sort
 * Steps for merge sort:
   1. treat the array as n arrays, each has a length of one.
-  2. create n/2 arrays, the length is doubled.
-  3. compare 1st and 2nd elements, place them into the first larger array in order, compare 3rd and 4th elements, place them into the second larger array in order...
-  4. create n/4 arrays, merge the n/2 arrays into n/4 array.
+  2. create new n/2 arrays, the length of each array is doubled.
+  3. compare elements in each array, and place them in order.
+  4. create n/4 arrays, merge the n/2 arrays into n/4 array in order.
   5. repeat the process until merging into n/n arrays which is one big sorted array.
 * The complexity of Insertion Sort is ``O(n log(n))`` (worst case).
 * Since each compared value is copied to the new array, the merge sort does require new temporary arrays.
@@ -312,7 +315,7 @@ An array is sorted in ascending order if the array entries increase as indices i
 * The complexity of Insertion Sort is ``О(n^2)`` (worst case).
 * Example:
 ```java
-void doQuicksort(int A[ ], int start, int end)
+void doQuicksort(int A[], int start, int end)
 {
   if (start < end)
   {

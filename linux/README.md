@@ -107,8 +107,9 @@
 * ``help <command name>`` To get help with built-in shell commands use the help command
 * ``help`` get list of built in command.
 * ``clear``   clear screen
-* ``ls   -al`` ``-l`` for detail ``-a`` for include hidden files.
+* ``ls -al`` ``-l`` for detail ``-a`` for include hidden files.
   * ``ls`` If no directory name is followed, it will list all of the files in the current working directory.
+  * ``ls /etc`` it will display all files inside the ``etc`` folder.
   * add ``\`` before ls to see not colored outputs.
 * ``cd`` Change directory to the directory followed, if nothing followed cd to home dir.
 * ``pwd`` display the absolute path to the current working directory.
@@ -138,10 +139,6 @@
 * ``cat <file.txt>`` create or read a txt file.
 * ``echo``
 * ``diff <file1> <file2>`` The diff command can be used to compare the contents of two files.
-* ``ps`` list all the user processes
-* ``ps u`` list all the detailed user processes
-* ``ps aux`` list all the user processes including system process.
-* ``ps u root`` list all the root user processes
 * ``exit`` exit the shell.
 * ``sleep <numberOfSecond>`` pause the shell for certain number of seconds.
 * ``mount <deviceTypeLocation> <folderPath>`` mount a device to a folder.
@@ -178,7 +175,7 @@
  * followed by ``=+`` add permission, ``=-`` remove permission.
  * followed by permission ``w``, ``r``, or ``x``.
  * Ex, ``o=-rx``, remove read and execute permission for other users.
-
+ * Ex, ``-rx``, remove read and execute permission for all users.
 * ``chown <username>.<groupname> <filePath>`` change file or directory's ownership.
 * ``chown <username>.<groupname> <folderPath> -R`` change ownership for directory and all files under it.
 
@@ -204,6 +201,10 @@
 ### Processes
 * Executing code (applications, services, etc) run as a processes.
 * Each process is assigned a process ID.
+* ``ps`` list all the user processes
+* ``ps aux`` list all the user processes including system process.
+* ``ps U root`` list all the root user processes
+* ``ps U <username>`` list all processes from certain user.
 * Processes are control by send signals
   * common kill signal
     * ``-1`` or  ``–SIGHUP`` sends a ‘hang up’ signal.  Many daemon processes are programmed to re-read their configuration when they receive a HUP signal
@@ -275,5 +276,19 @@
 ### NPM
 * ``npm install -g package-name`` -g means install globally.
 
-### SQL Server
+### mssql
+* SQL Server
 * ``mssql -u userName -p password`` connect to SQL Server.
+
+### httpd
+* The Apache Web Service.
+* ``service httpd start`` start apache server.
+* ``/etc/httpd/conf/httpd.conf`` the main Apache configuration file.
+  * ``cat /etc/httpd/conf/httpd.conf | grep 'User'`` see permission that is assigned to users in the user directives.
+  * ``cat /etc/httpd/conf/httpd.conf | grep 'Group'`` see permission that is assigned to groups in the user directives.
+  * ``cat /etc/httpd/conf/httpd.conf | grep 'DocumentRoot'`` see which folder is set as the default website’s content folder.
+* ``/etc/httpd/logs/error_log`` apache server error log.
+
+### iptables
+* it is the firewall for the OS.
+* ``service iptables start`` start the firewall.

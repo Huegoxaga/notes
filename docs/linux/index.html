@@ -379,9 +379,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="../css/README.md">
+        <li class="chapter " data-level="1.9" data-path="../css/">
             
-                <span>
+                <a href="../css/">
             
                     
                     CSS
@@ -831,8 +831,9 @@
 <li><code>help &lt;command name&gt;</code> To get help with built-in shell commands use the help command</li>
 <li><code>help</code> get list of built in command.</li>
 <li><code>clear</code>   clear screen</li>
-<li><code>ls   -al</code> <code>-l</code> for detail <code>-a</code> for include hidden files.<ul>
+<li><code>ls -al</code> <code>-l</code> for detail <code>-a</code> for include hidden files.<ul>
 <li><code>ls</code> If no directory name is followed, it will list all of the files in the current working directory.</li>
+<li><code>ls /etc</code> it will display all files inside the <code>etc</code> folder.</li>
 <li>add <code>\</code> before ls to see not colored outputs.</li>
 </ul>
 </li>
@@ -874,10 +875,6 @@
 <li><code>cat &lt;file.txt&gt;</code> create or read a txt file.</li>
 <li><code>echo</code></li>
 <li><code>diff &lt;file1&gt; &lt;file2&gt;</code> The diff command can be used to compare the contents of two files.</li>
-<li><code>ps</code> list all the user processes</li>
-<li><code>ps u</code> list all the detailed user processes</li>
-<li><code>ps aux</code> list all the user processes including system process.</li>
-<li><code>ps u root</code> list all the root user processes</li>
 <li><code>exit</code> exit the shell.</li>
 <li><code>sleep &lt;numberOfSecond&gt;</code> pause the shell for certain number of seconds.</li>
 <li><code>mount &lt;deviceTypeLocation&gt; &lt;folderPath&gt;</code> mount a device to a folder.</li>
@@ -919,17 +916,16 @@
 </li>
 <li><code>usermod -G &lt;groupname&gt; &lt;username&gt;</code> add user to a group.</li>
 <li><code>chmod &lt;permissionCode&gt; &lt;filePath&gt;</code> change the file permission.</li>
-<li><p><code>chmod &lt;permissionCode&gt; &lt;folderPath&gt; -R</code> change permission for the folder and all its contents.</p>
-<ul>
+<li><code>chmod &lt;permissionCode&gt; &lt;folderPath&gt; -R</code> change permission for the folder and all its contents.<ul>
 <li>a permission formula can be used to replace the code.</li>
 <li>first character can be <code>u</code> for user, <code>g</code> for group, <code>o</code> for others and <code>a</code> for all users.</li>
 <li>followed by <code>=+</code> add permission, <code>=-</code> remove permission.</li>
 <li>followed by permission <code>w</code>, <code>r</code>, or <code>x</code>.</li>
 <li>Ex, <code>o=-rx</code>, remove read and execute permission for other users.</li>
+<li>Ex, <code>-rx</code>, remove read and execute permission for all users.</li>
 </ul>
 </li>
-<li><p><code>chown &lt;username&gt;.&lt;groupname&gt; &lt;filePath&gt;</code> change file or directory&apos;s ownership.</p>
-</li>
+<li><code>chown &lt;username&gt;.&lt;groupname&gt; &lt;filePath&gt;</code> change file or directory&apos;s ownership.</li>
 <li><code>chown &lt;username&gt;.&lt;groupname&gt; &lt;folderPath&gt; -R</code> change ownership for directory and all files under it.</li>
 </ul>
 <h2 id="tools">Tools</h2>
@@ -954,6 +950,10 @@
 <ul>
 <li>Executing code (applications, services, etc) run as a processes.</li>
 <li>Each process is assigned a process ID.</li>
+<li><code>ps</code> list all the user processes</li>
+<li><code>ps aux</code> list all the user processes including system process.</li>
+<li><code>ps U root</code> list all the root user processes</li>
+<li><code>ps U &lt;username&gt;</code> list all processes from certain user.</li>
 <li>Processes are control by send signals<ul>
 <li>common kill signal<ul>
 <li><code>-1</code> or  <code>&#x2013;SIGHUP</code> sends a &#x2018;hang up&#x2019; signal.  Many daemon processes are programmed to re-read their configuration when they receive a HUP signal</li>
@@ -1035,9 +1035,27 @@
 <ul>
 <li><code>npm install -g package-name</code> -g means install globally.</li>
 </ul>
-<h3 id="sql-server">SQL Server</h3>
+<h3 id="mssql">mssql</h3>
 <ul>
+<li>SQL Server</li>
 <li><code>mssql -u userName -p password</code> connect to SQL Server.</li>
+</ul>
+<h3 id="httpd">httpd</h3>
+<ul>
+<li>The Apache Web Service.</li>
+<li><code>service httpd start</code> start apache server.</li>
+<li><code>/etc/httpd/conf/httpd.conf</code> the main Apache configuration file.<ul>
+<li><code>cat /etc/httpd/conf/httpd.conf | grep &apos;User&apos;</code> see permission that is assigned to users in the user directives.</li>
+<li><code>cat /etc/httpd/conf/httpd.conf | grep &apos;Group&apos;</code> see permission that is assigned to groups in the user directives.</li>
+<li><code>cat /etc/httpd/conf/httpd.conf | grep &apos;DocumentRoot&apos;</code> see which folder is set as the default website&#x2019;s content folder.</li>
+</ul>
+</li>
+<li><code>/etc/httpd/logs/error_log</code> apache server error log.</li>
+</ul>
+<h3 id="iptables">iptables</h3>
+<ul>
+<li>it is the firewall for the OS.</li>
+<li><code>service iptables start</code> start the firewall.</li>
 </ul>
 
                                 
@@ -1082,7 +1100,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.16","depth":1,"next":{"title":"Virtualization","level":"1.17","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.17.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.17.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]}]},"previous":{"title":"WordPress","level":"1.15","depth":1,"path":"wordpress/README.md","ref":"wordpress/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/README.md","mtime":"2020-02-04T16:53:24.925Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T04:24:00.740Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.16","depth":1,"next":{"title":"Virtualization","level":"1.17","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.17.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.17.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]}]},"previous":{"title":"WordPress","level":"1.15","depth":1,"path":"wordpress/README.md","ref":"wordpress/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/README.md","mtime":"2020-02-11T03:04:29.840Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-11T03:07:45.214Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

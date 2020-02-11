@@ -26,6 +26,8 @@ Press F9 to add breakpoint.
 will see a red dot represents the breakpoint.
 run in debug mode can view all values for variables when the code stops at breakpoint in the code editor by hovering over the variable name and click the arrow button.
 
+the main method must return either nothing (void) or an int.
+
 Debug mode
 The Step Into command
 Continue to debug by single-stepping through a procedure

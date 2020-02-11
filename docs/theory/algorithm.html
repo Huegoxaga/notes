@@ -377,9 +377,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="../css/README.md">
+        <li class="chapter " data-level="1.9" data-path="../css/">
             
-                <span>
+                <a href="../css/">
             
                     
                     CSS
@@ -828,6 +828,7 @@
 <h4 id="linked-map">Linked Map</h4>
 <ul>
 <li>A ordered map.</li>
+<li>Generally based on the insertion order.</li>
 </ul>
 <h3 id="set">Set</h3>
 <ul>
@@ -842,6 +843,7 @@
 <h4 id="linked-set">Linked Set</h4>
 <ul>
 <li>A ordered Set.</li>
+<li>Generally based on the insertion order.</li>
 </ul>
 <h2 id="algorithm">Algorithm</h2>
 <ul>
@@ -944,7 +946,7 @@
 <ul>
 <li>It can only be used with sorted arrays, but is much faster than Sequential Search.</li>
 <li>Steps for binary search:<ol>
-<li>compare target value with the median values(    round down if the mid position is not an integer). check equality first, if not determine the location the target in either upper or lower section</li>
+<li>compare target value with the median values(round down if the mid position is not an integer). check equality first, if not determine the location the target in either upper or lower section</li>
 <li>compare the target with the median of the lower or upper section until it is found.</li>
 </ol>
 </li>
@@ -993,7 +995,7 @@
 </ul>
 <h4 id="selection-sort">Selection Sort</h4>
 <ul>
-<li>Steps for bubble sort:<ol>
+<li>Steps for Selection sort:<ol>
 <li>Reset the leftmost element as the temp max value.</li>
 <li>Comparing the temp max value with rest values in the array. If a bigger one is found, set it as the temp max value.</li>
 <li>After the comparison in one iteration, swap the max value to its proper location according to a count number that count the rank of the max value of each iteration.</li>
@@ -1023,8 +1025,8 @@
 <h4 id="insertion-sort">Insertion Sort</h4>
 <ul>
 <li>Steps for insertion sort:<ol>
-<li>From left to right, starting with the second element, compare it with the first if it is smaller or equals the first place it before the first element.</li>
-<li>For the third element, compare it with the second, then the first. It the third is smaller than or equals with any element, place it before it.</li>
+<li>From left to right, starting with the second element, compare it with the first if it is smaller or equals to the first, place it before the first element.</li>
+<li>For the third element, compare it with the second, then the first. If the third is smaller than or equals with any element, place it before it.</li>
 <li>repeat the process to the last element. In the end all elements are placed into the right location.</li>
 </ol>
 </li>
@@ -1052,9 +1054,9 @@
 <ul>
 <li>Steps for merge sort:<ol>
 <li>treat the array as n arrays, each has a length of one.</li>
-<li>create n/2 arrays, the length is doubled.</li>
-<li>compare 1st and 2nd elements, place them into the first larger array in order, compare 3rd and 4th elements, place them into the second larger array in order...</li>
-<li>create n/4 arrays, merge the n/2 arrays into n/4 array.</li>
+<li>create new n/2 arrays, the length of each array is doubled.</li>
+<li>compare elements in each array, and place them in order.</li>
+<li>create n/4 arrays, merge the n/2 arrays into n/4 array in order.</li>
 <li>repeat the process until merging into n/n arrays which is one big sorted array.</li>
 </ol>
 </li>
@@ -1071,7 +1073,7 @@
 </ol>
 </li>
 <li>The complexity of Insertion Sort is <code>&#x41E;(n^2)</code> (worst case).</li>
-<li>Example:<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">doQuicksort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[ ], <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span>
+<li>Example:<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">doQuicksort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[], <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span>
 </span>{
 <span class="hljs-keyword">if</span> (start &lt; end)
 {
@@ -1145,7 +1147,7 @@ swap(A, start, endOfLeftList);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Data Structures and Algorithms","level":"1.22.1","depth":2,"previous":{"title":"Theory","level":"1.22","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Data Structures and Algorithms","level":"1.22.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-02-04T04:14:25.112Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T04:24:00.740Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Data Structures and Algorithms","level":"1.22.1","depth":2,"previous":{"title":"Theory","level":"1.22","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Data Structures and Algorithms","level":"1.22.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-02-08T18:50:41.442Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-11T03:07:45.214Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

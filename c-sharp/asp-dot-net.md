@@ -57,22 +57,18 @@
   * The ASP.NET engine renders standards-based HTML and JavaScript code
   * Can also edit in HTML mode
   * Some changes can only be made this way
-
-
 * MVC
   * Model View Controller
   * Total control of HTML markup
   * Supports unit testing
   * Extremely flexible and extensible
   * Emerging as preferred development technique
-
 * Web API
   * Application Programming Interface (API)
-  * REpresentational State Transfer (REST)
+  * Representational State Transfer (REST)
   * Program to program calls across the Internet
   * Allows passing complex objects back and forth
   * Content is typically JavaScript Object Notation (JSON), can also be eXtensible Markup Language (XML) or other schemes
-
 * Web Application
   * Better known as Razor Pages
   * Similar to MVC
@@ -87,20 +83,7 @@
     * Create rich interactive UIs using C# instead of JavaScript
     * Render the UI as HTML and CSS for wide browser support, including mobile browsers
 
-## ASP.NET Controls
-* HTML Controls
-  * Ordinary HTML
-  * Still useful
-  * Lightweight
-  * Not processed by server, sent “as is”
-* Web Form Controls
-  * Denoted by asp:
-  * Richer functionality
-  * Can be manipulated in code
-  * Similar to Windows Form controls
-  * run on server
-
-## VS IDE
+### VS IDE
 * Run code to view the current pages in browser. VS offers 2 ways to run your site
   * F5 offers full debugging which allows interactive breakpoints
   * Ctrl+F5 runs without debugging, which runs faster
@@ -118,10 +101,12 @@
 * Press ``Ctrl+.`` will add directive automatically to the top of the file.
 
 
-## Create new project
+## Web Form Model
+
+### Create new project
 * select ``ASP.NET Web Application (.NET Framework)`` to create a ASP.NET Web Forms using .NET Framework and C#.
 
-### Create ``.aspx`` Page File
+#### Create ``.aspx`` Page File
 * To create a ``default.aspx`` file as the home page, right-click the project choose Add / Web Form, set its name.
 * Has Source View and Design View, one can toggle it by click the Source/Design button at the bottom left.
 * All settings for the controls which are done by using IDE will have some auto generated codes in the ``.aspx``.
@@ -131,14 +116,14 @@
 * Methods or Events are edited in the ``pageName.aspx.cs`` file.
 * can bind data in this way, ``<%: Title %>``.
 
-### ``.aspx.cs`` File
+#### ``.aspx.cs`` File
 * It stores all the event handlers for the component in ``.aspx`` file.
 * It has an ``IsPostBack`` variable that is False the first time a page loads, True any subsequent time the page loads.
 * Most control has ``AutoPostBack="True"`` attribute that allows it to reload the page or update data.
 * It has access to Session data, ``Session["var_name"] = data``.
   * Read Session data: ``String name = Session["name"].ToString();``, ``int cnt = (int)Session["item_count"];``, ``List<Movie> movies = (List<Movie>)Session["movies"];``.
 
-### ``.Master`` File
+#### ``.Master`` File
 * It is a template for ``.aspx`` file.
 * It usually has the navigation, menu, and style of the entire site.
 * Multiple ``.aspx`` can asscotiate with the master page.
@@ -151,7 +136,7 @@
 * ContentPlaceHolders controls define regions for content in an ASP.NET master page.
 * By default each master page will have one ContentPlaceHolder in the <head> section and one in the <body> section.
 
-### ``.css`` File
+#### ``.css`` File
 * For styling, Right-click the project, select Add / Add New Item... From the list, select Style Sheet, name it.
 * Drag the css file into the ``<head>`` tag of the aspx file for association.
 * Classes and Ids still need to be set in the ``.aspx`` for the css to work.
@@ -170,7 +155,7 @@
 ```
 * all components has a ``CssClass`` attribute.
 
-### ``.cs`` custom class File
+#### ``.cs`` custom class File
 * Right-click the project, select Add / Add New Item... From the list, select the Code group, select Class, name it.
 * Define a class in the file, then it can be used in the ``.aspx.cs`` file as a custom object.
 ```cs
@@ -183,8 +168,8 @@ public class ClassName
 }
 ```
 
-## Database
-### Connection
+### Database
+#### Connection
 * Using Server Explorer
   1. click server explorer in the bottom left corner.
   2. click on the ``Connect to Database`` icon.
@@ -198,7 +183,7 @@ public class ClassName
   5. The ``sql`` script should be run in the target database.
 
 
-### Access Through Components
+#### Access Through Components
 1. In ``.aspx`` file, click the task button of a component, select ``Choose Data Source``.
 2. Select ``New Data Source``.
 3. Choose the Database and set its ID.
@@ -206,7 +191,7 @@ public class ClassName
 5. Connection String will be set in ``Web.config`` file in the project folder. Accessed by using the WebConfigurationManager.  ``var connectionString = WebConfigurationManager.ConnectionStrings["movie_trackerConnectionString"].ConnectionString;``
 6. Select the corresponding columns of the table to display. Ex: index is used for value of a DropDownList.
 
-### Access in ``.aspx.cs``
+#### Access in ``.aspx.cs``
 * Requires following directive
   * ``using System.Data;``
   * ``using System.Web.Configuration;``
@@ -276,8 +261,17 @@ catch (Exception ex)
   * ExecuteReader – Executes a SELECT statement and returns a multi-row, multi-column result set
   * ExecuteScalar – Executes a SELECT statement and returns the first column of the first row of the result set, additional columns or rows are ignored.
 
-## Web Form Controls
-* Many Standard .NET Controls Work here.
+### Web Form Controls
+* Denoted by asp, have the following property:
+  * Richer functionality
+  * Can be manipulated in code
+  * run on server
+  * Many Standard .NET Controls Work here.
+* HTML Controls
+  * Ordinary HTML
+  * Still useful
+  * Lightweight
+  * Not processed by server, sent "as is".
 * Buttons
   * has ``CausesValidation="false"`` property. will ignore validator and reset all validators when the button is clicked.
   * has Text attribute.
@@ -376,3 +370,41 @@ catch (Exception ex)
 * DetailsView
   * it is used to show detail, has a default width attribute which is 125px.
   * It can ``Enable Editing`` in the task button options. for edit details.
+
+## ASP.NET Core Application
+* An ASP.NET Core web application is actually an ASP.NET Core console application
+* The console application starts up an instance of an ASP.NET Core web server called Kestrel.
+
+### Start a Web App Project as Console App
+1. In VS, create a new project by selecting Console App (.NET Core) template that has C#.
+2. install ``Microsoft.AspNetCore.Server.Kestrel`` in the Manage NuGet Packages... panel.
+3. start up an instance of the Kestrel Server by using the following sample code.
+```cs
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System;
+namespace sample_server
+{
+    class App
+    {
+        static void Main()
+        {
+            new WebHostBuilder()
+                .UseKestrel()
+                .Configure(a => a.Run(c => c.Response.WriteAsync("Web content goes here.")))
+                .Build()
+                .Run();
+        }
+    }
+}
+```
+4. From the console window that appears, copy one of the URLs and paste and run it in a browser.
+
+### Start a Web App Project using template
+* Start by create new project using the ASP.NET Core Web Application template.
+
+### ``Program.cs`` file
+* It initiate a Kestrel Server.
+
+### ``Startup.cs`` file

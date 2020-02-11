@@ -379,9 +379,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="../css/README.md">
+        <li class="chapter " data-level="1.9" data-path="../css/">
             
-                <span>
+                <a href="../css/">
             
                     
                     CSS
@@ -772,10 +772,7 @@
 <li>Some changes can only be made this way</li>
 </ul>
 </li>
-</ul>
-<ul>
-<li><p>MVC</p>
-<ul>
+<li>MVC<ul>
 <li>Model View Controller</li>
 <li>Total control of HTML markup</li>
 <li>Supports unit testing</li>
@@ -783,10 +780,9 @@
 <li>Emerging as preferred development technique</li>
 </ul>
 </li>
-<li><p>Web API</p>
-<ul>
+<li>Web API<ul>
 <li>Application Programming Interface (API)</li>
-<li>REpresentational State Transfer (REST)</li>
+<li>Representational State Transfer (REST)</li>
 <li>Program to program calls across the Internet</li>
 <li>Allows passing complex objects back and forth</li>
 <li>Content is typically JavaScript Object Notation (JSON), can also be eXtensible Markup Language (XML) or other schemes</li>
@@ -815,25 +811,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="aspnet-controls">ASP.NET Controls</h2>
-<ul>
-<li>HTML Controls<ul>
-<li>Ordinary HTML</li>
-<li>Still useful</li>
-<li>Lightweight</li>
-<li>Not processed by server, sent &#x201C;as is&#x201D;</li>
-</ul>
-</li>
-<li>Web Form Controls<ul>
-<li>Denoted by asp:</li>
-<li>Richer functionality</li>
-<li>Can be manipulated in code</li>
-<li>Similar to Windows Form controls</li>
-<li>run on server</li>
-</ul>
-</li>
-</ul>
-<h2 id="vs-ide">VS IDE</h2>
+<h3 id="vs-ide">VS IDE</h3>
 <ul>
 <li>Run code to view the current pages in browser. VS offers 2 ways to run your site<ul>
 <li>F5 offers full debugging which allows interactive breakpoints</li>
@@ -853,11 +831,12 @@
 <li>can Add a try/catch block by typing try and inserting the snippet by hitting tab twice.</li>
 <li>Press <code>Ctrl+.</code> will add directive automatically to the top of the file.</li>
 </ul>
-<h2 id="create-new-project">Create new project</h2>
+<h2 id="web-form-model">Web Form Model</h2>
+<h3 id="create-new-project">Create new project</h3>
 <ul>
 <li>select <code>ASP.NET Web Application (.NET Framework)</code> to create a ASP.NET Web Forms using .NET Framework and C#.</li>
 </ul>
-<h3 id="create-aspx-page-file">Create <code>.aspx</code> Page File</h3>
+<h4 id="create-aspx-page-file">Create <code>.aspx</code> Page File</h4>
 <ul>
 <li>To create a <code>default.aspx</code> file as the home page, right-click the project choose Add / Web Form, set its name.</li>
 <li>Has Source View and Design View, one can toggle it by click the Source/Design button at the bottom left.</li>
@@ -868,7 +847,7 @@
 <li>Methods or Events are edited in the <code>pageName.aspx.cs</code> file.</li>
 <li>can bind data in this way, <code>&lt;%: Title %&gt;</code>.</li>
 </ul>
-<h3 id="aspxcs-file"><code>.aspx.cs</code> File</h3>
+<h4 id="aspxcs-file"><code>.aspx.cs</code> File</h4>
 <ul>
 <li>It stores all the event handlers for the component in <code>.aspx</code> file.</li>
 <li>It has an <code>IsPostBack</code> variable that is False the first time a page loads, True any subsequent time the page loads.</li>
@@ -878,7 +857,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="master-file"><code>.Master</code> File</h3>
+<h4 id="master-file"><code>.Master</code> File</h4>
 <ul>
 <li>It is a template for <code>.aspx</code> file.</li>
 <li>It usually has the navigation, menu, and style of the entire site.</li>
@@ -892,7 +871,7 @@
 <li>ContentPlaceHolders controls define regions for content in an ASP.NET master page.</li>
 <li>By default each master page will have one ContentPlaceHolder in the <head> section and one in the </head><body> section.</body></li>
 </ul>
-<h3 id="css-file"><code>.css</code> File</h3>
+<h4 id="css-file"><code>.css</code> File</h4>
 <ul>
 <li>For styling, Right-click the project, select Add / Add New Item... From the list, select Style Sheet, name it.</li>
 <li>Drag the css file into the <code>&lt;head&gt;</code> tag of the aspx file for association.</li>
@@ -911,7 +890,7 @@
 </li>
 <li>all components has a <code>CssClass</code> attribute.</li>
 </ul>
-<h3 id="cs-custom-class-file"><code>.cs</code> custom class File</h3>
+<h4 id="cs-custom-class-file"><code>.cs</code> custom class File</h4>
 <ul>
 <li>Right-click the project, select Add / Add New Item... From the list, select the Code group, select Class, name it.</li>
 <li>Define a class in the file, then it can be used in the <code>.aspx.cs</code> file as a custom object.
@@ -924,8 +903,8 @@
     public int PropertyThree { get; set; }
 }</p>
 <pre><code>
-## Database
-### Connection
+### Database
+#### Connection
 * Using Server Explorer
   1. click server explorer in the bottom left corner.
   2. click on the ``Connect to Database`` icon.
@@ -939,7 +918,7 @@
   5. The ``sql`` script should be run in the target database.
 
 
-### Access Through Components
+#### Access Through Components
 1. In ``.aspx`` file, click the task button of a component, select ``Choose Data Source``.
 2. Select ``New Data Source``.
 3. Choose the Database and set its ID.
@@ -947,7 +926,7 @@
 5. Connection String will be set in ``Web.config`` file in the project folder. Accessed by using the WebConfigurationManager.  ``var connectionString = WebConfigurationManager.ConnectionStrings[&quot;movie_trackerConnectionString&quot;].ConnectionString;``
 6. Select the corresponding columns of the table to display. Ex: index is used for value of a DropDownList.
 
-### Access in ``.aspx.cs``
+#### Access in ``.aspx.cs``
 * Requires following directive
   * ``using System.Data;``
   * ``using System.Web.Configuration;``
@@ -1019,9 +998,22 @@ outputLiteral.Text += $&quot;&lt;p style=\&quot;color:red;\&quot;&gt;{ex.Message
 </ul>
 </li>
 </ul>
-<h2 id="web-form-controls">Web Form Controls</h2>
+<h3 id="web-form-controls">Web Form Controls</h3>
 <ul>
+<li>Denoted by asp, have the following property:<ul>
+<li>Richer functionality</li>
+<li>Can be manipulated in code</li>
+<li>run on server</li>
 <li>Many Standard .NET Controls Work here.</li>
+</ul>
+</li>
+<li>HTML Controls<ul>
+<li>Ordinary HTML</li>
+<li>Still useful</li>
+<li>Lightweight</li>
+<li>Not processed by server, sent &quot;as is&quot;.</li>
+</ul>
+</li>
 <li>Buttons<ul>
 <li>has <code>CausesValidation=&quot;false&quot;</code> property. will ignore validator and reset all validators when the button is clicked.</li>
 <li>has Text attribute.</li>
@@ -1156,6 +1148,46 @@ outputLiteral.Text += $&quot;&lt;p style=\&quot;color:red;\&quot;&gt;{ex.Message
 </ul>
 </li>
 </ul>
+<h2 id="aspnet-core-application">ASP.NET Core Application</h2>
+<ul>
+<li>An ASP.NET Core web application is actually an ASP.NET Core console application</li>
+<li>The console application starts up an instance of an ASP.NET Core web server called Kestrel.</li>
+</ul>
+<h3 id="start-a-web-app-project-as-console-app">Start a Web App Project as Console App</h3>
+<ol>
+<li>In VS, create a new project by selecting Console App (.NET Core) template that has C#.</li>
+<li>install <code>Microsoft.AspNetCore.Server.Kestrel</code> in the Manage NuGet Packages... panel.</li>
+<li>start up an instance of the Kestrel Server by using the following sample code.<pre><code class="lang-cs"><span class="hljs-keyword">using</span> Microsoft.AspNetCore.Builder;
+<span class="hljs-keyword">using</span> Microsoft.AspNetCore.Hosting;
+<span class="hljs-keyword">using</span> Microsoft.AspNetCore.Http;
+<span class="hljs-keyword">using</span> System;
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">sample_server</span>
+{
+ <span class="hljs-keyword">class</span> <span class="hljs-title">App</span>
+ {
+     <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"></span>)
+     </span>{
+         <span class="hljs-keyword">new</span> WebHostBuilder()
+             .UseKestrel()
+             .Configure(a =&gt; a.Run(c =&gt; c.Response.WriteAsync(<span class="hljs-string">&quot;Web content goes here.&quot;</span>)))
+             .Build()
+             .Run();
+     }
+ }
+}
+</code></pre>
+</li>
+<li>From the console window that appears, copy one of the URLs and paste and run it in a browser.</li>
+</ol>
+<h3 id="start-a-web-app-project-using-template">Start a Web App Project using template</h3>
+<ul>
+<li>Start by create new project using the ASP.NET Core Web Application template.</li>
+</ul>
+<h3 id="programcs-file"><code>Program.cs</code> file</h3>
+<ul>
+<li>It initiate a Kestrel Server.</li>
+</ul>
+<h3 id="startupcs-file"><code>Startup.cs</code> file</h3>
 
                                 
                                 </section>
@@ -1199,7 +1231,7 @@ outputLiteral.Text += $&quot;&lt;p style=\&quot;color:red;\&quot;&gt;{ex.Message
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ASP.NET","level":"1.5.2","depth":2,"next":{"title":"C","level":"1.6","depth":1,"path":"c/README.md","ref":"c/README.md","articles":[]},"previous":{"title":".NET","level":"1.5.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c-sharp/asp-dot-net.md","mtime":"2020-02-02T23:30:32.885Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T04:24:00.740Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ASP.NET","level":"1.5.2","depth":2,"next":{"title":"C","level":"1.6","depth":1,"path":"c/README.md","ref":"c/README.md","articles":[]},"previous":{"title":".NET","level":"1.5.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c-sharp/asp-dot-net.md","mtime":"2020-02-08T23:33:11.900Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-11T03:07:45.214Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

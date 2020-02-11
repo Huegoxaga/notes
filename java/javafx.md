@@ -1,5 +1,6 @@
 # JavaFX
 * It is a API for Java program with GUI interface
+* [Click here](https://docs.oracle.com/javase/8/javafx/api/toc.htm) for official docs for JavaFX in Java ES 8.
 * sample starting code
 ```java
 import javafx.application.Application;
