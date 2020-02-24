@@ -24,6 +24,8 @@
   * [Angular](https://huegoxaga.github.io/notes/typescript/angular.html)
 * [PHP](https://huegoxaga.github.io/notes/php/index.html)
 * [Cloud Services](https://huegoxaga.github.io/notes/cloud-services/index.html)
+  * [AWS](https://huegoxaga.github.io/notes/cloud-services/aws.html)
+  * [Google Cloud Platform](https://huegoxaga.github.io/notes/cloud-services/google-cloud-platform.html)
 * [SQL](https://huegoxaga.github.io/notes/sql/index.html)
 * [Wechat Mini Program](https://huegoxaga.github.io/notes/wechat-mini-program/index.html)
 * [WordPress](https://huegoxaga.github.io/notes/wordpress/index.html)

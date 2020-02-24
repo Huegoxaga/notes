@@ -316,3 +316,7 @@ $(document).ready(
       });
   });
 ```
+## User Agent String
+* Use a client side solution such as Detect Mobile Browsers with jQuery. [click here](http://detectmobilebrowsers.com) to download the script.
+  * Will be able to access a boolean variable, ``jQuery.browser.mobile``.
+  * It returns true if the user is browsing from a mobile device.

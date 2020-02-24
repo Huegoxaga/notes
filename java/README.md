@@ -596,7 +596,7 @@ name = (parameter) -> statement or {} block;       //-> read as become
   * void test()   // it is a test method with no returning value and no parameters.
 
 ### Generic Class
-* A generic class or method is one whose definition uses a placeholder for one or more of the type arguments that are passed as parameters.
+* A generic class is one whose definition uses a placeholder for one or more of the type arguments that are passed as parameters.
 * The type is denoted as a capitalized variable. Ex ``T``.
   * ``T`` Used for a generic type.
   * ``S`` Used for a generic type (usually for the second type if used)
@@ -682,6 +682,17 @@ double pi = p.getX();
   ```
 * Interfaces, like classes, can be generic.
 
+#### Generic Methods
+* Generic methods are declared as follows
+```java
+public static <T> void methodName(ClassName<T> t){
+}
+```
+  * The ``<T>`` is the generic type the method is taking as parameter.
+* Generic methods are called in the following way.
+```java
+<TypeName>methodName(t);
+```
 
 ## Exception Handling
 * There are three types of error
@@ -837,6 +848,7 @@ System.out.println(myVar.nextLine());  //get user input
 * ``stringx.endsWith(string)``
 * ``string.indexOf("sam")  `` return index and -1 if not exist.
 * ``string.toUpperCase``
+* ``str.charAt(i)`` return the character at position i.
 
 ### StringBuilder class
 
@@ -863,6 +875,7 @@ System.out.println(myVar.nextLine());  //get user input
 * Format Specifier
   * ``%f`` Decimal number.
   * ``%s`` String.
+  * ``%d`` Interger.
 * Width
   * width.decimal(default 6 decimal place, precision can be used for %s %b %h as well)(decimal point is 1 space)
 * alignment.  
@@ -983,6 +996,40 @@ int y = sample[0].length;
   }
   ```
 * After implement the definition, the array of objects of MyClass can be sorted and searched using the methods above.
+* Sort can be done with Lambda express, ``collectionName.sort(
+      (Object o1, Object o2) -> o1.getName().compareTo(o2.getName()));`` or ``collectionName.sort(
+            (o1, o2) -> o1.getName().compareTo(o2.getName()));``
+* For integer values, ``collectionName.sort(
+      (o1, o2) -> o1.getAge()-o2.getAge());``
+* It can be done with Comparator ``Comparator<Object> comparatorName =
+		(Object o1, Object o2)->o1.getName().compareTo(o2.getName());``. then use ``collectionName.sort(comparatorName)``.
+
+
+## Collections
+* The Java Collections Framework is a library of classes and interfaces for working with collections of objects.
+* It has a List interface and a Set interface.
+* The AbstractCollection class provides a skeleton implementation for a Collection class by implementing many of the methods of the Collection interface.
+* Programmer defined data types (class objects) can fit into collection frameworks by supplying the following methods
+  * ``equals`` – used by contains to find an instance of an object
+  * ``compareTo`` – used by sorting methods to provide ordering within a collection.
+  * ``hashCode`` – used to provide fast lookup in hashed based collections
+  * ``toString`` – used to provide a String representation of the class – not strictly needed, but useful
+
+### Collection Interface Methods
+for all collections have static abstract methods:
+* collectionsName.sort(collectionName)
+* collectionsName.max(collectionName)
+* collectionsName.min(collectionName)
+* Collections.reverse(listName)
+* Collections.shuffle(listName)
+* collectionsName.add(element)
+* collectionsName.clear()
+* collectionsName.contains(element)
+* collectionsName.isEmpty()
+* collectionsName.remove(element) return true if successful.
+* collectionsName.size()
+* Collections.binarySearch(collectionName, element); for sorted collection in ascending order only, return the index of the element, return values <0 if not found
+* Collections.binarySearch(collectionName, element, comparator); can use Lambda expression as a comparator. can be in ascending or descending order.
 
 
 ### List
@@ -1020,6 +1067,7 @@ LinkedList<Integer> x = new LinkedList<Integer>();
 * set element
 ```java
 set(int index, "something")      //might throw error.
+get(int index);
 ```
 * remove element
 ```java
@@ -1036,7 +1084,7 @@ arrayListName.add(int index, "something");
 ```
 
 * return true if contain specific element. ``arrayX.contains(Object s)``
-* get first index of an item ``indexOf("Something);   //-1 if not found,``
+* get first index of an item ``indexOf("Something");   //-1 if not found,``
 * get last index of an item ``lastIndexOf("Something");``
 * get the element on at specific index position ``.get(int index)``
 * return the length ``.size()``
@@ -1061,6 +1109,8 @@ HashMap<String,Integer> x = new HashMap<String,Integer>();
 * remove value ``remove("A");``
 * check existence of a key ``containsKey(key)`` return null if this key is not found
 * check existence of a value ``containsValue(value)``
+* ``get(key)`` returns value for the key.
+* ``keySet()`` returns the set of all keys.
 
 ### Hashset
 * Hashset cannot contain duplicated values. It does not order the element. like set in math. * They have other features similar to lists.
@@ -1080,25 +1130,18 @@ HashSet<String> name = new HashSet<Sting>();
 ### LinkedHashSet
 * similar to Hashset but It orders the elements.
 
-### collection class methods
-for all collection class they have static methods:
-* Collections.sort(collectionName)
-* Collections.max(collectionName)
-* Collections.min(collectionName)
-* Collections.reverse(listName)
-* Collections.shuffle(listName)
 
 ### HashCode methods
 * Built-in data classes override the hashCode in java to ensure that equal objects return the same hashcodes.
-* By default java uses the object memory location as the hashCode.▪This can't be used if you override the equals method in your class.
+* By default java uses the object memory location as the hashCode. This can't be used if you override the equals method in your class.
 * When override hashcode Methods
-  1. Objects that are equal according to their equalsmethod MUST be assigned the same hash code.
-  2. Because of 1), whenever you override aclass’s equals() method, you MUST also override hashCode().
-  3. Try to minimize collisions.▪Different objects that generate the same hashCode.
+  1. Objects that are equal according to their equals method MUST be assigned the same hash code.
+  2. Because of 1), whenever you override a class’s equals() method, you MUST also override hashCode().
+  3. Try to minimize collisions. Different objects that generate the same hashCode.
 
 
 ### TreeSet
-* A TreeSetstores elements based on a natural order defined on those elements.
+* A TreeSet stores elements based on a natural order defined on those elements.
 * The natural order is based on the values of the objects being stored .  
 * By internally organizing the storage of its elements according to this order, a TreeSet allows fast search for any element in the collection.
 * A TreeSet requires a mechanism to sort
@@ -1114,6 +1157,7 @@ for all collection class they have static methods:
 * next(): Returns the next object and advances the iterator.
 * remove(): Removes the last object that was returned by next from the collection.
 * It can be used in a loop.
+* The Use of the iterator of the Scanner object is often practiced.
 ```java
 Iterator<String> it = animals.iterator();
 while(it.hasNext()) {

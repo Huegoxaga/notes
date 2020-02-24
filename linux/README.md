@@ -290,5 +290,54 @@
 * ``/etc/httpd/logs/error_log`` apache server error log.
 
 ### iptables
-* it is the firewall for the OS.
-* ``service iptables start`` start the firewall.
+* It is the firewall for the OS.
+* Iptables is used to setup, maintain and query the filter tables.
+* Filter Table has three chains
+  * ``Input`` Packets entering system
+  * ``Output`` Packets leaving system
+  * ``Forward`` Packets going through system (routed)
+* Each chain is a list of rules which can match a set of packets.
+  * With iptables, packets traverse the chain rules until there is a match and then follow the specified target
+  * No more entries in the chain are processed after a match
+  * If there is no match, the chain default policy is applied
+* Built-in targets have the following options for matching packets.
+  * ``Accept`` – allow packet
+  * ``Drop`` – drop the packet
+  * ``Queue`` – sent to an internal application
+  * ``Return`` – move to end of rules
+    * Built-in chain - Default policy
+    * User chain – return to calling chain
+* One can set default action for all chains, There are two approaches in practice.
+  * Allow everything by default then specifically define rules for denying
+  * Allow nothing by default. then specifically define rules for allowing
+* The configuration file for filter tables for IPv4 is stored in ``/etc/sysconfig/iptables``
+* The configuration file for filter tables for IPv6 is stored in ``/etc/sysconfig/ip6tables``
+* Commands
+  * ``service iptables start`` start the firewall.
+  * ``service iptables save`` save changes to the iptables.
+  * ``iptables -L -n`` list on rules in the filter table.
+  * ``iptables -L <chainName>`` list all rules for certain chain.
+  * ``iptables –F <chainName>`` delete all rules in certain chain.
+  * ``iptables -A <chainName> <–i/-o> <interfaceName> -j <targetName>`` append a new rule in certain chain.
+    * use ``-i`` for input interface.
+    * use ``-o`` for output interface.
+  * ``iptables -I <chainName> <insertLineNumber> <–i/-o> <interfaceName> -j <targetName>`` Insert a rule in certain chain.
+  * Ex: ``iptables –I INPUT 3 -i eth0 –p tcp -–dport 1024:65535 -j ACCEPT`` insert a rule at line 3.
+    * ``1024:65535`` means ports 1024 through 65535.
+    * ``-p`` is followed by the Protocol Name.
+    * ``-–dport`` is followed by the specific port number or port range.
+    * In the rules if anything is not specified, all of them will be taken into consideration.
+  * ``iptables -P <chainName> <defaultAction>`` set the default policy.
+    * chainName – ``INPUT``, ``OUTPUT``, ``FORWARD``
+    * defaultAction -  ``ACCEPT``, ``DROP``, ``REJECT``
+    * Example, ``iptables -P INPUT DROP`` set the default policy to deny all inbound connections
+
+
+
+
+
+* ``system-config-firewall`` is a graphical interface for configuring basic firewall rules.
+* ``system-config-firewall-tui``, start the text based system-config-firewall utility.
+  * Use tab Key to move between elements.
+  * Use space bar to toggle on and off.
+  * Use enter key to select elements.

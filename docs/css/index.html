@@ -467,6 +467,38 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../cloud-services/aws.html">
+            
+                <a href="../cloud-services/aws.html">
+            
+                    
+                    AWS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../cloud-services/google-cloud-platform.html">
+            
+                <a href="../cloud-services/google-cloud-platform.html">
+            
+                    
+                    Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.13" data-path="../sql/">
@@ -754,6 +786,11 @@
 </ul>
 </li>
 </ul>
+<h2 id="override-rules">Override Rules</h2>
+<ul>
+<li>add <code>!important</code> at the end of the attribute value to make it overrides other rules.</li>
+<li>Ex, <code>border-width: 5px !important;</code>.</li>
+</ul>
 <h2 id="selector">Selector</h2>
 <ul>
 <li>To select elements for style editing the element tag can be used directly.<pre><code class="lang-css"><span class="hljs-selector-tag">p</span> {
@@ -851,10 +888,6 @@
 </li>
 </ul>
 </li>
-<li>Different stylesheets can associate with different media, in the following external CSS style:<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">media</span>=<span class="hljs-string">&quot;screen and (min-width: 900px)&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;widescreen.css&quot;</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">media</span>=<span class="hljs-string">&quot;screen and (max-width: 600px)&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;smallscreen.css&quot;</span>&gt;</span>
-</code></pre>
-</li>
 </ul>
 <h2 id="css-reset-rule">CSS Reset Rule</h2>
 <ul>
@@ -929,7 +962,8 @@
   <span class="hljs-attribute">text-align</span>: right;
   <span class="hljs-attribute">text-align</span>: center;
   <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">300</span>;
-  <span class="hljs-attribute">text-decoration</span>:bold;
+  <span class="hljs-attribute">text-decoration</span>: underline;
+  <span class="hljs-attribute">text-transform</span>: lowercase;
   <span class="hljs-attribute">cursor</span>: pointer;
   <span class="hljs-attribute">cursor</span>: default;
   <span class="hljs-attribute">list-style-type</span>: none;
@@ -938,6 +972,7 @@
   <span class="hljs-comment">/* simple animation */</span>
   <span class="hljs-attribute">transition</span>: <span class="hljs-number">5s</span> ease;
   <span class="hljs-attribute">transition</span>: width <span class="hljs-number">2s</span>, height <span class="hljs-number">4s</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(../img/img.jpg) no-repeat right top
 }
 </code></pre>
 <h3 id="positioning">Positioning</h3>
@@ -1129,7 +1164,7 @@ grid-area: <span class="hljs-number">1</span> / <span class="hljs-number">2</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CSS","level":"1.9","depth":1,"next":{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]},"previous":{"title":"GFM","level":"1.8.3","depth":2,"path":"markup/gfm.md","ref":"markup/gfm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"css/README.md","mtime":"2020-02-11T01:13:05.274Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-11T03:07:45.214Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CSS","level":"1.9","depth":1,"next":{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]},"previous":{"title":"GFM","level":"1.8.3","depth":2,"path":"markup/gfm.md","ref":"markup/gfm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"css/README.md","mtime":"2020-02-16T21:29:30.408Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T00:18:07.402Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

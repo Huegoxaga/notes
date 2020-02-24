@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>React · GitBook</title>
+        <title>AWS · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="react-native.html" />
+    <link rel="next" href="google-cloud-platform.html" />
     
     
-    <link rel="prev" href="jquery.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -160,9 +160,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="./">
+        <li class="chapter " data-level="1.4" data-path="../javascript/">
             
-                <a href="./">
+                <a href="../javascript/">
             
                     
                     JavaScript
@@ -174,9 +174,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="jquery.html">
+        <li class="chapter " data-level="1.4.1" data-path="../javascript/jquery.html">
             
-                <a href="jquery.html">
+                <a href="../javascript/jquery.html">
             
                     
                     jQuery
@@ -187,9 +187,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2" data-path="react.html">
+        <li class="chapter " data-level="1.4.2" data-path="../javascript/react.html">
             
-                <a href="react.html">
+                <a href="../javascript/react.html">
             
                     
                     React
@@ -200,9 +200,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="react-native.html">
+        <li class="chapter " data-level="1.4.3" data-path="../javascript/react-native.html">
             
-                <a href="react-native.html">
+                <a href="../javascript/react-native.html">
             
                     
                     React Native
@@ -213,9 +213,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="node-js.html">
+        <li class="chapter " data-level="1.4.4" data-path="../javascript/node-js.html">
             
-                <a href="node-js.html">
+                <a href="../javascript/node-js.html">
             
                     
                     Node.js
@@ -379,9 +379,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="../css/README.md">
+        <li class="chapter " data-level="1.9" data-path="../css/">
             
-                <span>
+                <a href="../css/">
             
                     
                     CSS
@@ -456,9 +456,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12" data-path="../cloud-services/">
+        <li class="chapter " data-level="1.12" data-path="./">
             
-                <a href="../cloud-services/">
+                <a href="./">
             
                     
                     Cloud Services
@@ -466,6 +466,38 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.12.1" data-path="aws.html">
+            
+                <a href="aws.html">
+            
+                    
+                    AWS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="google-cloud-platform.html">
+            
+                <a href="google-cloud-platform.html">
+            
+                    
+                    Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -680,7 +712,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >React</a>
+        <a href=".." >AWS</a>
     </h1>
 </div>
 
@@ -695,206 +727,108 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="reactjs">React.js</h1>
+                                <h1 id="aws">AWS</h1>
+<p>Amazon Web Services</p>
+<h2 id="iam">IAM</h2>
+<p>Identity and Access Management - used to create user and group with specific permissions.</p>
 <ul>
-<li>A JavaScript library for building fast and interactive user interfaces.</li>
-<li>It is developed by facebook.</li>
-<li>Whenever the app files are saved the webpage will be reloaded(hot reloaded).</li>
+<li>Follow the steps to create the users and group.</li>
+<li>for each user the keys can be found and created in the <code>Security credentials tab</code></li>
+<li>policy can be either predefined policies(managed policy) or created in the <code>Create Policy</code> page by using a visual editor or importing JSON policy file.</li>
 </ul>
-<h2 id="setup">Setup</h2>
-<h3 id="installation">Installation</h3>
+<h2 id="aws-cli">AWS CLI</h2>
+<p>AWS CLI provide full controls of AWS using command lines.</p>
+<h3 id="setup">Setup</h3>
 <ol>
-<li>Download and Install node.js from its official website</li>
-<li><code>run sudo npm i -g create-react-app</code></li>
-<li>Use Visual Studio Code with Simple React Snippets(enable shortcuts) and Prettier Plugins etc.</li>
+<li>Installation, <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html" target="_blank">click here</a> to see the command needed for installation.<ul>
+<li>to install on macOS for all user, run <code>curl &quot;https://awscli.amazonaws.com/AWSCLIV2.pkg&quot; -o &quot;AWSCLIV2.pkg&quot;
+sudo installer -pkg AWSCLIV2.pkg -target /</code></li>
+</ul>
+</li>
+<li>run <code>aws configure</code> and enter AWS credentials and default settings for the default user profile.</li>
 </ol>
-<h3 id="create-an-react-app">Create an React App</h3>
-<ol>
-<li>create-react-app appFolderName</li>
-<li>in app folder, run <code>npm start</code> to launch development server in port localhost: 3000.</li>
+<h3 id="iam">IAM</h3>
+<p>Identity and Access Management - used to create user and group with specific permissions.</p>
+<ul>
+<li>Follow the steps to create the users and group.</li>
+<li>for each user the keys can be found and created in the <code>Security credentials tab</code></li>
+<li>policy can be either predefined policies(managed policy) or created in the <code>Create Policy</code> page by using a visual editor or importing JSON policy file.</li>
+</ul>
+<h2 id="route-53">Route 53</h2>
+<p>It provides a DNS service that translate the domain name into a designated IP address.</p>
+<ul>
+<li>There is a 50 cents charge per month.</li>
+<li>DNS Records are added in the hostzones.</li>
+<li>Some domain register has free DNS services.</li>
+<li>TTL for the name server can be set to a lower value for  a faster update. Then set it to the longest value for a better performance.</li>
+</ul>
+<h2 id="ec2">EC2</h2>
+<p>It provide computing service.</p>
+<ul>
+<li>A private key will be generated for instance connection.</li>
+<li>click connect in the instance menu for connection guide.</li>
+<li>For Mac/Linux enter the command directly in the terminal.(move file to ~/.ssh and use command chmod 400 to hide the file first)</li>
+<li>For window using SHH through Git Bash.</li>
+</ul>
+<h2 id="dynamodb">DynamoDB</h2>
+<p>A NoSQL database that stores JSON data.</p>
+<h2 id="lambda">Lambda</h2>
+<p>It runs scripts and codes without the need to set up the server.</p>
+<ul>
+<li>Click the Test tab to generate test cases with specific input.</li>
+<li>Add proper Execution Role with specific permission to allow Lambda instance to have access to other AWS services.</li>
+</ul>
+<h2 id="alexa">Alexa</h2>
+<h3 id="alexa-skills-kit">Alexa Skills Kit</h3>
+<p>It is used to build Alexa skills for Alexa supported products.</p>
+<ul>
+<li>A skill is a set of predefined voice command and reaction.</li>
+<li>It can be tested in the console or on any Alexa device that logged in with the developers&apos; account.</li>
+</ul>
+<h4 id="implementation">Implementation</h4>
+<p>Create a Skill - a skill can be created by using the following ways.</p>
+<ul>
+<li>Alexa Skills Kit Developer Console<ol>
+<li><a href="https://developer.amazon.com/alexa/console/ask" target="_blank">Click Here</a> to signup and login the console.</li>
+<li>Follow the steps to create a skill.<ul>
+<li>Invocation Name is the words that used to activate the skill.</li>
+<li>Intents are the tasks the skill can do.</li>
+<li>Utterances are different possible commands that used to invoke the corresponding intent.</li>
+<li>Slot Types are words that can be recognized as variable in the voice command.</li>
+</ul>
+</li>
+<li>The result of all the skill setting will be represented as a JSON file in the JSON editor.<ul>
+<li>Optionally, The step be step setting can be skipped by just entering a complete JSON setting data.</li>
+</ul>
+</li>
+<li>Create Lambda instance as the endpoint for the skill and copy the Lambda link in the endpoint setting.<ul>
+<li>Use the <a href="https://s3.amazonaws.com/webappvui/skillcode/v2/index.html" target="_blank">Code Generator</a> to generate backend code automatically.</li>
+</ul>
+</li>
+<li>In the homepage of the console, click Test to test the skill or enable Beta Testing to allow selected developer account holder to test the skill.</li>
 </ol>
-<h3 id="configuration-for-production-environment">Configuration for production Environment</h3>
-<p><code>npm run eject</code></p>
-<h2 id="indexjs"><code>index.js</code></h2>
-<p><code>index.js</code> is the entry point of the react app, it is used to import and associate components and html DOM elements .</p>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;  <span class="hljs-comment">//get the React library for creating elements and components using jsx syntax.</span>
-<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-dom&quot;</span>;<span class="hljs-comment">//Get DOM for component association</span>
-<span class="hljs-keyword">import</span> componentName <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/componentName&quot;</span>;
-<span class="hljs-comment">//import css</span>
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./cssFile.css&quot;</span>;
-
-<span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>  <span class="hljs-comment">//create new element.</span>
-ReactDOM.render(element, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;id1&quot;</span>));  <span class="hljs-comment">//associate components with DOM</span>
-ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ComponentName</span> /&gt;</span>, document.getElementById(&quot;id2&quot;));
-</span></code></pre>
-<h2 id="component">Component</h2>
-<ul>
-<li>React app is made up by UI component.<h3 id="app-component">App Component</h3>
 </li>
-<li>App component(<code>App.js</code>) is the root component and it contains other customized components in a tree.</li>
-<li>app.js usually is one component that contains all sub-components for the app then to be associated with DOM in index.js.<h3 id="customized-component">Customized Component</h3>
+<li>Alexa Skills Kit CLI<ol>
+<li>Install Node.js 4.5&gt;=</li>
+<li><a href="https://developer.amazon.com/alexa/console/ask" target="_blank">Click Here</a> to signup an Amazon developer account.</li>
+<li>run <code>sudo npm i -g ask-cli</code>.</li>
+<li>run <code>ask init</code>, to sign in with the AWS developer account.</li>
+<li>run <code>ask init --aws-setup</code>, to update the AWS account credentials if AWS default user profile&apos;s credentials has not been set up for the AWS CLI, fill in the AWS account keys.</li>
+<li>run <code>ask new -n &lt;folderName&gt;</code>, to create a skill in a new folder.<ul>
+<li>run <code>ask clone -s &lt;link&gt;</code>, to clone an existing skill.</li>
+</ul>
 </li>
-<li>Component class has a <code>state</code> property to store temp data.</li>
-<li>It has <code>props</code> object that stores data, props is readonly. every component has a <code>props</code> object. For single source data use props instead.</li>
-<li>Component class has a render method that returns component that associated with certain DOM element.</li>
-<li>Component can be represented by JSX file, React html like jsx code in render method will be converted by babel into JavaScript code.</li>
-<li><code>&lt;Component /&gt;</code> this is a self closing component.</li>
-<li><code>&lt;Component&gt;&lt;/Component&gt;</code>  it can be used to pass tags and data into its child component&#x2019;s children props.</li>
-<li>Only one parent element is allowed to return as a component.</li>
-<li><p>For a new customized component, create new jsx files in the component folder.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> &#x2018;react&#x2019;;
-<span class="hljs-keyword">import</span> componentName <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./componentName&quot;</span>;
-<span class="hljs-comment">//import other component that will be used.</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-  <span class="hljs-comment">//its local variable, only initiated when instance of the component is created.</span>
-  state = {
-      data1: <span class="hljs-number">0</span>,
-      data2: <span class="hljs-string">&quot;hi&quot;</span> ,
-      someURL: <span class="hljs-string">&quot;https//google.com&quot;</span>,
-      tags: [&#x2018;tag1&#x2019;,&#x2019;tag2&#x2019;,&#x2019;tag3&#x2019;]
-  };
-  styles = {
-      fontWeight: &#x2018;bold&#x2019;,  <span class="hljs-comment">//use camel case css attributes.</span>
-      fontSize: <span class="hljs-number">10</span>
-  };
-  render() {
-      <span class="hljs-keyword">return</span> (
-  <span class="hljs-comment">//it is used to used to wrap all elements without using parents element like div.</span>
-          &lt;React.Fragment&gt;
-              &lt;img style={this.styles} src={someURL} className=&quot;className1 className2&quot;&gt;
-              &lt;p style={ {fontSize: 30} } &gt;{this.functionName()}{this.state.data2}&lt;/p&gt;
-              //map() foreach loop for an array data, each item needs a key.
-              &lt;ul&gt;{this.state.tages.map(tag=&gt;&lt;li key={tag}&gt;{tag}&lt;/li&gt;)}&lt;/ul&gt;
-              //handling events, only pass reference, () is not needed.
-              &lt;button onClick={this.handlerMethod}&gt;&lt;/button&gt;
-              // or
-              // use arrow function to pass argument in the handler function.
-              &lt;button onClick={( )=&gt;this.handlerWithArg(id)}&gt;&lt;/button&gt;
-              // can put any other component in this component
-              &lt;ComponentName /&gt;
-              //any component object has a props object, to get it                                console.log(this.props);
-              // access of properties in all scope of this class block, read-only
-              console.log(this.block.value);
-      //pass an element to the child Component.
-      //then the element p will be the children property of the &lt;childComponent&gt;
-              &lt;childComponent&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/childComponent&gt;
-      //in child component class use {this.props.children} to show the passed element
-            // pass event handler to child component, in parent component file, declare event handler and return, the following child component with eventName(like onClick) as attribute:
-
-      &lt;childComponent eventName={this.eventHandler}&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/childComponent&gt;
-            //child component will have access of this event handler from its parent component as this.props.eventName
-          &lt;/React.Fragment&gt;
-      );
-  }
-
-  funtionName() {
-      let {data1} = this.state;  //get direct access to data1.
-      return &lt;h1&gt;{data1}&lt;h1&gt;;
-  }
-  handlerMethod() {
-      //&#x2018;this&#x2019; object is not available here, need to bind this to the function by putting this.functionName = this.functionName.bind(this);  in the constructor.
-      //or use =&gt; instead as follows
-  }
-  handlerMethod = ( ) =&gt; {
-      this.setState({data1: this.state.data1+1});
-//it explicitly ask React to check and pass changed values and refresh the pages.
-//when pass argument is needed, use inline arrow functions
-};
-  handlerWithArgs = id =&gt; {
-};
-}
-export default Counter;
-</code></pre>
-</li>
-<li><p>when a component doesn&#x2019;t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> ComponentName = ( ) =&gt; {
-  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
-}
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ComponentName;
-</code></pre>
+<li>run <code>ask deploy</code>, to deploy the skill by uploading skills in the project folder to the Alexa Developer Console and Creating AWS Lambda instance.</li>
+<li>run <code>ask simulate -l en-US -t &quot;voice command for testing&quot;</code>, to test the skill.</li>
+</ol>
 </li>
 </ul>
-<h2 id="life-cycle-hooks">Life Cycle Hooks</h2>
+<h4 id="additional-features">Additional Features</h4>
 <ul>
-<li>There is a life cycle hooks for every components</li>
-<li>They are automatically called.</li>
-<li>Stateless functional component has no life cycle hook.</li>
+<li>Work with DynamoDB, <a href="https://github.com/dabblelab/alexa-dynamodb-skill-template" target="_blank">Click</a> to see the template file, edit and create DynamoDB table as required by the Lambda instance. Make sure Lambda has the permission to access the DynamoDB table.</li>
 </ul>
-<h3 id="mounting-phrase">Mounting Phrase</h3>
-<h4 id="constructor">constructor</h4>
-<pre><code class="lang-js">constrctor(props) {
-    <span class="hljs-keyword">super</span>(props);
-    <span class="hljs-comment">//intialize the props and state of the instance</span>
-}
-</code></pre>
-<ul>
-<li>This is when the component start to render and place to the DOM</li>
-<li>It is called once</li>
-<li>can&#x2019;t use setState, assign the state directly instead.<pre><code class="lang-js"><span class="hljs-keyword">this</span>.state = {
-      name: <span class="hljs-string">&apos;world&apos;</span>
-    }
-</code></pre>
-</li>
-</ul>
-<h4 id="render">render</h4>
-<pre><code class="lang-js">render() {}
-</code></pre>
-<ul>
-<li>It is called after constructor is called.</li>
-<li>All its child component is also rendered recursively.</li>
-</ul>
-<h4 id="componentdidmount">componentDidMount</h4>
-<pre><code class="lang-js">compoenetDidMount() {
-}
-</code></pre>
-<ul>
-<li>This is after the component is rendered and placed to the DOM</li>
-<li>It can be used for Ajax call, and use setState();</li>
-</ul>
-<h3 id="updating-phrase">Updating Phrase</h3>
-<p>It is triggered whenever the state or props of a component changes.</p>
-<h4 id="render">Render</h4>
-<h4 id="componentdidupdate">componentDidUpdate</h4>
-<pre><code class="lang-js">componentDidUpdate(prevProps,prevState){
-    <span class="hljs-comment">//can compare the current and prev value,</span>
-    <span class="hljs-comment">// can make Ajax call only when value changed.</span>
-}
-</code></pre>
-<ul>
-<li>It can be used to see prevProps and prevState</li>
-</ul>
-<h3 id="unmounting-phrase">Unmounting Phrase</h3>
-<h4 id="componentwillunmount">componentWillUnmount</h4>
-<ul>
-<li>It runs when the component is about to be deleted.</li>
-<li>It is good place to do clean up.</li>
-</ul>
-<h2 id="react-hooks">React Hooks</h2>
-<ul>
-<li>New in React version 16.8</li>
-<li>It enable the use of React features in a functional component.</li>
-</ul>
-<h3 id="state-hook">State Hook</h3>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> {useState}
-<span class="hljs-keyword">import</span> React, {useState} <span class="hljs-keyword">from</span> &#x2018;react&#x2019;
-
-<span class="hljs-comment">// declare the array before return method.</span>
-<span class="hljs-keyword">const</span> [currentValue, setFunction] = useState(initialValue)   <span class="hljs-comment">//array destructing</span>
-<span class="hljs-comment">// initialValue can be string num bool object array</span>
-</code></pre>
-<p>In return method, use setFunction(newValue) to update the currentValue.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">return</span>(
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">conClick</span>=<span class="hljs-string">{(</span> ) =&gt;</span> setFunction(prevValue+1)}&gt;{currentValue}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-<span class="hljs-comment">//use variable prevValue to get the previous value.</span>
-<span class="hljs-comment">//work with objects or arrays use: setName({&#x2026;objectName, propertyName: newValue})</span>
-)
-</code></pre>
-<h3 id="effect-hook">Effect Hook</h3>
-<h2 id="debug">Debug</h2>
-<ul>
-<li>Install React Developer Tools Plugin</li>
-<li>React Tab will be shown in the browser inspector, all component tag will be shown.</li>
-</ul>
+<h3 id="alexa-voice-service">Alexa Voice Service</h3>
+<p>It is used to allow devices to support Alexa.</p>
 
                                 
                                 </section>
@@ -922,12 +856,12 @@ export default Counter;
 
             
                 
-                <a href="jquery.html" class="navigation navigation-prev " aria-label="Previous page: jQuery">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Cloud Services">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="react-native.html" class="navigation navigation-next " aria-label="Next page: React Native">
+                <a href="google-cloud-platform.html" class="navigation navigation-next " aria-label="Next page: Google Cloud Platform">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -938,7 +872,7 @@ export default Counter;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React","level":"1.4.2","depth":2,"next":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-01-14T23:56:41.337Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T04:24:00.740Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.12.1","depth":2,"next":{"title":"Google Cloud Platform","level":"1.12.2","depth":2,"path":"cloud-services/google-cloud-platform.md","ref":"cloud-services/google-cloud-platform.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.12","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.12.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"Google Cloud Platform","level":"1.12.2","depth":2,"path":"cloud-services/google-cloud-platform.md","ref":"cloud-services/google-cloud-platform.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-02-22T23:38:16.903Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T00:18:07.402Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -26,6 +26,8 @@
     * [Angular](typescript/angular.md)
 * [PHP](php/README.md)
 * [Cloud Services](cloud-services/README.md)
+  * [AWS](cloud-services/aws.md)
+  * [Google Cloud Platform](cloud-services/google-cloud-platform.md)
 * [SQL](sql/README.md)
 * [Wechat Mini Program](wechat-mini-program/README.md)
 * [WordPress](wordpress/README.md)

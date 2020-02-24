@@ -99,7 +99,20 @@
 * In Design mode. Select any components, press F4 to access its properties
 * can Add a try/catch block by typing try and inserting the snippet by hitting tab twice.
 * Press ``Ctrl+.`` will add directive automatically to the top of the file.
-
+* To change a ASP.NET project to Production mode, In Solution Explorer, right-click the project and select ``Properties``. Click the ``Debug`` tab. Change the ``ASPNETCORE_ENVIRONMENT`` environment variable to ``Production``. Close the ``Properties`` page.
+* Enable Browser Reload on Save
+  1. From the ``Extensions`` menu, select ``Manage Extensions``.
+  2. On the left, click ``Online``. In the Search box, enter ``browser``.
+  3. In the results, locate ``Browser Reload on Save``.
+  4. Select it and click ``Download``. Click ``Close``.
+  5. Close Visual Studio, the install will start. Click ``Modify``.
+  6. Allow the VSIX installer to complete, click ``Close``.
+  7. Start Visual Studio, reopen the project.
+  8. Right-click the project in solution explorer and select ``Manage NuGet Packages...``
+  9. Click the ``Browse`` tab. In the Search box, enter ``browser``.
+  10. Select ``Microsoft.VisualStudio.Web.BrowserLink`` and click ``Install``, accept the license.
+  11. Add ``app.UseBrowserLink();`` in the development section of the Configure method.
+  12. Re-launch the site.
 
 ## Web Form Model
 
@@ -401,10 +414,199 @@ namespace sample_server
 ```
 4. From the console window that appears, copy one of the URLs and paste and run it in a browser.
 
-### Start a Web App Project using template
-* Start by create new project using the ASP.NET Core Web Application template.
+### Start a Web App Project using MVC
+* In VS, create a new project by selecting ASP.NET Core Web Application that has C# with MVC template.
 
 ### ``Program.cs`` file
-* It initiate a Kestrel Server.
+* It initiates a Kestrel Server.
+* It will load the Pages from ``Startup.cs``, by default.
+```cs
+public class Program
+{
+  public static void Main(string[] args)
+  {
+      CreateWebHostBuilder(args).Build().Run();
+  }
+
+  public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+      WebHost.CreateDefaultBuilder(args)
+          .UseStartup<Startup>();
+}
+```
 
 ### ``Startup.cs`` file
+* The Configure method control the pages to be loaded in the Startup file.
+* The ConfigureServices method add configuration for additional services for the middlewares in the Configure method.
+* It can load text into the page by using one middleware.
+```cs
+app.Run(async (context) =>
+  {
+    await context.Response.WriteAsync("Hello World!");
+  });
+```
+* Additional middleware can be added before ``app.Run``.
+```cs
+app.Use(async (context, next) =>
+{
+    await context.Response.WriteAsync("New middleware. ");
+    await next();
+});
+
+app.Run(async (context) =>
+{
+    await context.Response.WriteAsync("Hello World!");
+});
+```
+* Middleware can be loaded when the webpage is loaded under certain path.
+```cs
+if (context.Request.Path.Value.StartsWith("/hi"))
+{
+    await context.Response.WriteAsync("New middleware. ");
+}
+```
+* Middleware can be loaded when the webpage path has certain value.
+```cs
+if (context.Request.Path.Value.Contains("invalid"))
+{
+  await context.Response.WriteAsync("New middleware contains invalid in its path. ");
+}
+```
+* It can serve static pages from ``wwwroot`` folder in project folder using UseFileServer.
+```cs
+app.UseFileServer();
+```
+* Add the following middleware in the first line of the Configure method to handle exception by redirecting all unhandled exception to the error page in Production mode.
+```cs
+app.UseExceptionHandler("/error.html");
+// throw new Exception("ERROR!"); can be used in another middleware to raise exception for testing.
+```
+* It can contains a MVC routing middleware.
+  * In the Configure method add.
+  ```cs
+  app.UseMvc(routes =>
+    {   //It will open the page associate with the path ControllerName/PageName/
+        // and by default the website will load home/index if no path is entered.
+        routes.MapRoute("Default", "{controller=Home}/{action=Index}/{id?}");
+    });
+  ```
+  * In the ConfigureServices method add
+  ```cs
+  services.AddMvc();
+  ```
+### Controllers
+* The main controller is ``HomeController.cs`` by default.
+* It is located in the ``Controllers`` folder in the project Explorer.
+* Controllers can have many pages as a method.
+```cs
+// The index page in Home Controller that returns a string content.
+public IActionResult Index()
+{
+    return new ContentResult { Content = "Hello from HomeController / Index." };
+}
+```
+* A page can take one parameters entered in the path, if the MVC routing middleware has the corresponding variable.
+```cs
+public IActionResult PageName(int id)
+{
+  return new ContentResult { Content = $"Hello from OtherController / Post, id={id.ToString()}." };
+}
+```
+  * ``/ControllerName/PageName?id=100`` also works when passing parameters.
+  * If the value is not entered the default value for the related type will be used.
+  * ``?`` can be added after the type to make it nullable.
+  * a default value can be assigned to the parameter, ``public IActionResult PageName(int id = 1)``
+* Additional Control files can be added in the folder with the following naming convention, ``NameController.cs``.
+* One can also customize the route in the controller.
+```cs
+[Route("newpath/{year:int}/{month:int}/{key}")]
+public IActionResult PageName(int year, int month, string key)
+{
+  return new ContentResult { Content = $"Hello from OtherController / Post, year={year}, month={month}, key={key}." };
+}
+```
+  * The page will be accessed by the route path, not longer by the method name.
+  * One can add route constraints, for example, ``[Route("stuff/{year:min(2018)}/{month:range(1,12)}/{key}")]``
+* Change the return value to ``view()`` will display the page located in the ``View/ControllerName/methodName.cshtml``.
+* In the controller method, data can be passed in ``ViewBag``
+  ```cs
+  ViewBag.Title = "Heading From Controller";
+  ViewBag.Name = "Bob Loblaw";
+  ViewBag.Served = DateTime.Now;
+  ```
+* Controller methods can return class object defined in the ``Models`` folder.
+```cs
+public IActionResult Index()
+{
+  var stuff = new Stuff
+  {
+    Title = "Heading From Controller",
+    Name = "Bob Loblaw",
+    Served = DateTime.Now
+  };
+  return View(stuff);
+}
+```
+
+
+
+### Views
+* Inside the ``Views`` folder.
+* The page in represented as a Razor page file with ``.cshtml`` extension.
+* By default, The ``Index.html`` page of each folder will be loaded.
+* Each ``.cshtml`` is associated with the ``view()`` in the controllers methods.
+* The Controller names are associated with the folder name inside the ``views`` folder.
+* Access data passed in ViewBags. ``<h2>@ViewBag.Title</h2><p>Name: @ViewBag.Name</p><p>Page served: @ViewBag.Served</p>``.
+* Access model object passed from the controller.
+```cs
+@model  projectName.Models.ModelClassName
+<p>@Model.PropertyName</p>
+```
+
+#### Razor Code
+* Passing variable in the page. ``@DateTime.Now.Year``.
+* Links are represented as ``@Url.Action("PageRouteName", "ControllerName")``
+
+#### Layout file
+* In the ``Views/Shared`` folder, a layout file can be created.
+* layout can contains a replacable body and a replaceable section.
+  * Render Body
+  * In the layout file, use ``@RenderBody()`` to indicate the location for the individual page contents.
+  * In the pages that use the layout, add ``@{ Layout = "layoutFileName";}`` at the top.
+  * Render Section
+    * A mandatory render section will raise exception when the content page have not define the render section content.
+    * Add a mandatory render section in the layout file``<div class="container">@RenderSection("header")</div>``
+    * Add an optional render section in the layout file``<div class="container">@RenderSection("header", false)</div>``
+    * Add an optional render section with default setting.
+    ```cs
+    @if (IsSectionDefined("header"))
+    {
+      @RenderSection("header", false)
+    }
+    else
+    {
+      <br /><br />
+      <h1>Header from _Layout</h1>
+    }
+    ```
+    * Define a render section in the content page``@section  header {<p>render section</p>}``
+
+### Models
+* They custom classes, ``.cs`` files, defined in the Models folders.
+* ``using intro_mvc.Models;`` directive is required for other files to access the class definition.
+* Data annotation
+  * Can be used to set constraints to the models' data.
+  * Need ``using System.ComponentModel.DataAnnotations;``
+  * Example:
+  ```cs
+  public class ClassName
+  {
+    [Key]
+    public int Id { get; set; }
+    [Required]
+    public string Title { get; set; }
+    public DateTime? DateTime { get; set; }
+    public string Description { get; set; }
+    [Range(1, 10)]
+    public int? Rating { get; set; }
+  }  
+  ```

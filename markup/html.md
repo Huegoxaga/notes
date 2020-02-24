@@ -38,6 +38,13 @@ It indicates the document is a HTML file, usually placed in the very first line.
 * ``<link rel="stylesheet" type="text/css" href="mystyle.css">`` or ``<link rel="stylesheet" href="css/example.css">``
 	* external style sheet link
 * ``<link rel="stylesheet" type="text/css" href="print.css" media="print">`` style used for printing
+* Different stylesheets can associate with different media, in the following external CSS style:
+```html
+<!-- css for screen size <= 600px -->
+<link rel="stylesheet" media="screen and (max-width: 600px)" href="smallscreen.css">
+<!-- css for screen size >= 900px -->
+<link rel="stylesheet" media="screen and (min-width: 900px)" href="widescreen.css">
+```
 ### Style Tag
 * Place Css content inside the style tag.
 * ``<style></style>`` or ``<style type="text/css"></style>``.

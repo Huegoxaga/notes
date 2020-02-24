@@ -26,7 +26,7 @@
 * ``//`` single-line comment.
 * ``/*   */`` multi-line comment.
 * XML-style comment. It is used to describe classes and methods at the beginning of a class or method definition.
-```c
+```cs
 ///<summary>
 ///
 ///</summary>
@@ -35,7 +35,7 @@
 ```
 ### Region
 region lets you specify a block of code that you can expand or collapse when using the outlining feature of the Visual Studio Code Editor.
-```c
+```cs
 #region MyClass definition  
 public class MyClass   
 {  

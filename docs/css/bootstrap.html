@@ -467,6 +467,38 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../cloud-services/aws.html">
+            
+                <a href="../cloud-services/aws.html">
+            
+                    
+                    AWS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../cloud-services/google-cloud-platform.html">
+            
+                <a href="../cloud-services/google-cloud-platform.html">
+            
+                    
+                    Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.13" data-path="../sql/">
@@ -728,23 +760,80 @@
 </ul>
 </li>
 </ul>
+<h2 id="breakpoints">Breakpoints</h2>
+<ul>
+<li>Most utilities works with breakpoints. It attach the utility settings with specific screen size, and make the design responsive.</li>
+<li>Every single breakpoint for the utilities allows the setting to take effect on screen that is wider than the breakpoint size.</li>
+<li>By default, the breakpoint represents the following screen size.<ul>
+<li><code>xl</code>, &gt; 1200px.</li>
+<li><code>lg</code>, &gt; 992px.</li>
+<li><code>md</code>, &gt; 768px.</li>
+<li><code>sm</code>, &gt; 576px.</li>
+<li>If no breakpoint is specified, the ultilty will work on all screen size greater than 0px. This can be seen as <code>xs</code>.</li>
+</ul>
+</li>
+</ul>
 <h2 id="grid-system">Grid System</h2>
 <ul>
 <li>A responsive grid system that scales up to 12 columns of information to the appropriate device size.</li>
+<li>It works with breakpoints.</li>
 <li>There are two types of classes, <code>row</code> class contains multiple <code>col</code> class items in one row.</li>
-<li>Pre-defined grid classes like <code>.col-lg</code> let us quickly make grid layout sizes. <code>.col-xs-4</code> indicates the column using this class will span 4 of the 12 column.</li>
+<li>Pre-defined grid classes like <code>col</code> let us quickly make grid layout sizes. <code>.col-4</code> indicates the column using this class will span 4 of the 12 column.</li>
 <li><a href="https://getbootstrap.com/docs/4.1/layout/grid/" target="_blank">Click</a> to see more.</li>
 </ul>
 <h2 id="predefined-components">Predefined Components</h2>
 <ul>
 <li><a href="https://getbootstrap.com/docs/4.4/components/alerts/" target="_blank">Click</a> to see full docs.</li>
 <li>Typically a set of CSS classes, maybe supported by JavaScript code, along with associated expectations around how they are to be used in HTML tags.</li>
+<li>Classes for the following tags are listed as follows.<h3 id="img-tags"><code>img</code> Tags</h3>
+</li>
+<li><code>rounded</code> a rounded corner.</li>
+<li><code>rounded-circle</code></li>
+<li><code>img-thumbnail</code> bordered images.</li>
+<li><code>float-left</code></li>
+<li><code>float-right</code></li>
+<li><code>mx-auto d-block</code> centered as a block element.</li>
+<li><code>img-fluid</code> responsive images with 100 width and auto height.<h3 id="table-tags"><code>table</code> Tags</h3>
+</li>
+<li><code>table</code> add basic styling for a table.</li>
+<li><code>table-striped</code> add zebra-stripes.</li>
+<li><code>table-bordered</code></li>
+<li><code>table-hover</code></li>
+<li><code>table-dark</code></li>
+<li><code>table-borderless</code></li>
+<li><code>table-sm</code> table with smaller padding.</li>
+<li><code>table-responsive</code> when screen less than 992px, add a horizontal scroll bar.</li>
+<li>For adding colors for <code>table</code>, <code>row</code> and <code>thead</code>, see <a href="https://getbootstrap.com/docs/4.0/content/tables/#contextual-classes" target="_blank">here</a>.<ul>
+<li>For <code>thead</code>, there are <code>thead-dark</code> and <code>thead-light</code>.</li>
+</ul>
+</li>
 </ul>
 <h2 id="utilities">Utilities</h2>
 <ul>
 <li>They provide shortcuts for styling web components. For example: margin, border, height, width.</li>
 <li><a href="https://getbootstrap.com/docs/4.4/utilities/borders/" target="_blank">Click</a> to see details.</li>
 <li>If one component needs two or more utility classes, separate them by an empty space.</li>
+</ul>
+<h3 id="display">Display</h3>
+<ul>
+<li>has classes as <code>.d-values</code>.</li>
+<li>works with breakpoints.</li>
+<li>change the breakpoint value to <code>print</code> to apply the display setting when printing.</li>
+<li>The value can have the following options.<ul>
+<li><code>none</code>, hidden<ul>
+<li><code>d-none d-md-block d-xl-none</code> This will show the element on <code>md</code> screen only.</li>
+</ul>
+</li>
+<li><code>inline</code></li>
+<li><code>inline-block</code></li>
+<li><code>block</code></li>
+<li><code>table</code></li>
+<li><code>table-cell</code></li>
+<li><code>table-row</code></li>
+<li><code>flex</code></li>
+<li><code>inline-flex</code></li>
+</ul>
+</li>
 </ul>
 <h3 id="sizing">Sizing</h3>
 <ul>
@@ -779,6 +868,33 @@
 <li><code>5</code> - (by default) for classes that set the margin or padding to $spacer * 3</li>
 <li><code>auto</code> - for classes that set the margin to auto</li>
 </ul>
+</li>
+</ul>
+<h3 id="border">Border</h3>
+<ul>
+<li><code>border</code> 1px width border.</li>
+<li><code>border-top-0</code> border that has no top border.</li>
+<li><code>rounded</code> rounded border.</li>
+<li><code>rounded-sm</code> rounded on small screen.</li>
+<li><code>rounded-circle</code> circular border.</li>
+<li><code>rounded-0</code> not rounded border.</li>
+<li><code>border-primary</code> border color, <a href="https://getbootstrap.com/docs/4.4/utilities/borders/#border-color" target="_blank">see</a> for a full list.<h3 id="embed">Embed</h3>
+</li>
+<li>Works for <code>&lt;iframe&gt;</code>, <code>&lt;embed&gt;</code>, <code>&lt;video&gt;</code>, and <code>&lt;object&gt;</code></li>
+<li>Make tags responsive with certain aspect ration.</li>
+<li><code>embed-responsive</code> class and <code>embed-responsive-16by9</code> class should be used for the container of the embed type tags.</li>
+<li><code>16by9</code> can be replaced by the following default aspect ratios.<ul>
+<li><code>21by9</code></li>
+<li><code>16by9</code></li>
+<li><code>4by3</code></li>
+<li><code>1by1</code></li>
+</ul>
+</li>
+<li>Each embed tags are suggested to have a <code>embed-responsive-item</code> class.</li>
+<li>Example:<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;embed-responsive embed-responsive-4by3&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;embed-responsive-item&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
 </li>
 </ul>
 
@@ -824,7 +940,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Bootstrap","level":"1.9.1","depth":2,"next":{"title":"TypeScript","level":"1.10","depth":1,"path":"typescript/README.md","ref":"typescript/README.md","articles":[{"title":"Angular","level":"1.10.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]}]},"previous":{"title":"CSS","level":"1.9","depth":1,"path":"css/README.md","ref":"css/README.md","articles":[{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"css/bootstrap.md","mtime":"2020-01-25T22:19:33.354Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-11T03:07:45.214Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Bootstrap","level":"1.9.1","depth":2,"next":{"title":"TypeScript","level":"1.10","depth":1,"path":"typescript/README.md","ref":"typescript/README.md","articles":[{"title":"Angular","level":"1.10.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]}]},"previous":{"title":"CSS","level":"1.9","depth":1,"path":"css/README.md","ref":"css/README.md","articles":[{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"css/bootstrap.md","mtime":"2020-02-16T22:21:49.150Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T00:18:07.402Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -10,12 +10,16 @@
 
 ### List
 * like an array but its size can be changed after the declaration.
+* The first element in the list has index = 0.
+* Every element on the list other than the first has a predecessor.
+* Every element on the list other than the last has a successor.
 
 #### Array List
 * They are Lists data structures designed base on array data structures.
 * Also known as vector in C++ or earliest versions of Java.
 * It internally declares a new array everything when the list size changes.
 * Dynamic arrays is a technique used to improved the data structure. It always declares some empty elements on both sides of the array to lower the chances for creating and copying the array, every time the array change sizes.
+
 
 #### Linked List
 * A type of list that treats all of its elements as nodes.
@@ -91,15 +95,14 @@
 * A structure that help implement maps.
 * In a hash table all possible keys in a map can found its associated integer values in the table.  
 * It use hash function or hash algorithm is consist of hash code and compression function.
-* Hash code finds or converts the integer value of all keys in the ordered hash table.
-* Compression function generate and rearrange the new collection to have the same length of the map.
-* A good hash code can avoid getting the same integer value as much as possible(avoid collisions).
-* If multiple values are found under one hash code, they are stored in a bucket.
-* Hash code examples:
-  * For Integer objects, you can use the integer value of the object (or its absolute value).
-  * For Character objects, you can use the UNICODE value for the character.
-  * For String objects, you can use a function that takes into account the UNICODE values of the characters that make up the string, as well as the position occupied by each character.
-  * For Object types, you can use some function on the non-mutable components of the object.
+  * Hashcode finds or converts the integer value of all keys in the ordered hash table.
+    * A good hash code can avoid getting the same integer value as much as possible(avoid collisions).
+    * For Integer objects, you can use the integer value of the object (or its absolute value).
+    * For Character objects, you can use the UNICODE value for the character.
+    * For String objects, you can use a function that takes into account the UNICODE values of the characters that make up the string, as well as the position occupied by each character.
+    * For Object types, you can use some function on the non-mutable components of the object.
+  * Compression function generate and rearrange the new collection that has the same length as the map.
+
 
 #### Multimap
 * They are maps that allows a key maps to multiple values.
@@ -113,6 +116,11 @@
 * A unordered collection of elements, contains unique values only.
 * Support membership operation for sets defined in Math.
 * Internally Set are treated as Keys of a map.
+* The hash function for HashSet has the following features.
+  * Elements are usually broken down into groups by the compression function, then they are stored in an array of bucket.
+  * Each bucket can have an array of element for the same group.
+  * Each bucket has an array of elements with the same length.
+
 
 #### Multiset
 * Also known as bag, are set that allow duplicated values.

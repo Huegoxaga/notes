@@ -55,6 +55,10 @@ selector {
   * ``red`` color in plain words
   * ``rgb(255,0,0)`` RGB
 
+## Override Rules
+* add ``!important`` at the end of the attribute value to make it overrides other rules.
+* Ex, ``border-width: 5px !important;``.
+
 ## Selector
 * To select elements for style editing the element tag can be used directly.
 ```css
@@ -139,11 +143,6 @@ p {
     * ``and`` it is used to combine media types and media Features.
     * ``not`` not mediaType the Styling will not work on the mediaType that follows.
     * ``only``
-* Different stylesheets can associate with different media, in the following external CSS style:
-```html
-<link rel="stylesheet" media="screen and (min-width: 900px)" href="widescreen.css">
-<link rel="stylesheet" media="screen and (max-width: 600px)" href="smallscreen.css">
-```
 
 ## CSS Reset Rule
 * It is used to override default browser styles. It is recommended so the website will have the same look on all browser.
@@ -221,7 +220,8 @@ img {
   text-align: right;
   text-align: center;
   font-weight: 300;
-  text-decoration:bold;
+  text-decoration: underline;
+  text-transform: lowercase;
   cursor: pointer;
   cursor: default;
   list-style-type: none;
@@ -230,6 +230,7 @@ img {
   /* simple animation */
   transition: 5s ease;
   transition: width 2s, height 4s;
+  background: url(../img/img.jpg) no-repeat right top
 }
 ```
 ### Positioning

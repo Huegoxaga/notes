@@ -465,6 +465,38 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../cloud-services/aws.html">
+            
+                <a href="../cloud-services/aws.html">
+            
+                    
+                    AWS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../cloud-services/google-cloud-platform.html">
+            
+                <a href="../cloud-services/google-cloud-platform.html">
+            
+                    
+                    Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.13" data-path="../sql/">
@@ -707,6 +739,9 @@
 <h3 id="list">List</h3>
 <ul>
 <li>like an array but its size can be changed after the declaration.</li>
+<li>The first element in the list has index = 0.</li>
+<li>Every element on the list other than the first has a predecessor.</li>
+<li>Every element on the list other than the last has a successor.</li>
 </ul>
 <h4 id="array-list">Array List</h4>
 <ul>
@@ -808,16 +843,16 @@
 <ul>
 <li>A structure that help implement maps.</li>
 <li>In a hash table all possible keys in a map can found its associated integer values in the table.  </li>
-<li>It use hash function or hash algorithm is consist of hash code and compression function.</li>
-<li>Hash code finds or converts the integer value of all keys in the ordered hash table.</li>
-<li>Compression function generate and rearrange the new collection to have the same length of the map.</li>
+<li>It use hash function or hash algorithm is consist of hash code and compression function.<ul>
+<li>Hashcode finds or converts the integer value of all keys in the ordered hash table.<ul>
 <li>A good hash code can avoid getting the same integer value as much as possible(avoid collisions).</li>
-<li>If multiple values are found under one hash code, they are stored in a bucket.</li>
-<li>Hash code examples:<ul>
 <li>For Integer objects, you can use the integer value of the object (or its absolute value).</li>
 <li>For Character objects, you can use the UNICODE value for the character.</li>
 <li>For String objects, you can use a function that takes into account the UNICODE values of the characters that make up the string, as well as the position occupied by each character.</li>
 <li>For Object types, you can use some function on the non-mutable components of the object.</li>
+</ul>
+</li>
+<li>Compression function generate and rearrange the new collection that has the same length as the map.</li>
 </ul>
 </li>
 </ul>
@@ -835,6 +870,12 @@
 <li>A unordered collection of elements, contains unique values only.</li>
 <li>Support membership operation for sets defined in Math.</li>
 <li>Internally Set are treated as Keys of a map.</li>
+<li>The hash function for HashSet has the following features.<ul>
+<li>Elements are usually broken down into groups by the compression function, then they are stored in an array of bucket.</li>
+<li>Each bucket can have an array of element for the same group.</li>
+<li>Each bucket has an array of elements with the same length.</li>
+</ul>
+</li>
 </ul>
 <h4 id="multiset">Multiset</h4>
 <ul>
@@ -1147,7 +1188,7 @@ swap(A, start, endOfLeftList);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Data Structures and Algorithms","level":"1.22.1","depth":2,"previous":{"title":"Theory","level":"1.22","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Data Structures and Algorithms","level":"1.22.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-02-08T18:50:41.442Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-11T03:07:45.214Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Data Structures and Algorithms","level":"1.22.1","depth":2,"previous":{"title":"Theory","level":"1.22","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Data Structures and Algorithms","level":"1.22.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-02-24T00:14:18.426Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T00:18:07.402Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

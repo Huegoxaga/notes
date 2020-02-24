@@ -467,6 +467,38 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../cloud-services/aws.html">
+            
+                <a href="../cloud-services/aws.html">
+            
+                    
+                    AWS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../cloud-services/google-cloud-platform.html">
+            
+                <a href="../cloud-services/google-cloud-platform.html">
+            
+                    
+                    Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.13" data-path="../sql/">
@@ -1054,8 +1086,74 @@
 </ul>
 <h3 id="iptables">iptables</h3>
 <ul>
-<li>it is the firewall for the OS.</li>
+<li>It is the firewall for the OS.</li>
+<li>Iptables is used to setup, maintain and query the filter tables.</li>
+<li>Filter Table has three chains<ul>
+<li><code>Input</code> Packets entering system</li>
+<li><code>Output</code> Packets leaving system</li>
+<li><code>Forward</code> Packets going through system (routed)</li>
+</ul>
+</li>
+<li>Each chain is a list of rules which can match a set of packets.<ul>
+<li>With iptables, packets traverse the chain rules until there is a match and then follow the specified target</li>
+<li>No more entries in the chain are processed after a match</li>
+<li>If there is no match, the chain default policy is applied</li>
+</ul>
+</li>
+<li>Built-in targets have the following options for matching packets.<ul>
+<li><code>Accept</code> &#x2013; allow packet</li>
+<li><code>Drop</code> &#x2013; drop the packet</li>
+<li><code>Queue</code> &#x2013; sent to an internal application</li>
+<li><code>Return</code> &#x2013; move to end of rules<ul>
+<li>Built-in chain - Default policy</li>
+<li>User chain &#x2013; return to calling chain</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>One can set default action for all chains, There are two approaches in practice.<ul>
+<li>Allow everything by default then specifically define rules for denying</li>
+<li>Allow nothing by default. then specifically define rules for allowing</li>
+</ul>
+</li>
+<li>The configuration file for filter tables for IPv4 is stored in <code>/etc/sysconfig/iptables</code></li>
+<li>The configuration file for filter tables for IPv6 is stored in <code>/etc/sysconfig/ip6tables</code></li>
+<li>Commands<ul>
 <li><code>service iptables start</code> start the firewall.</li>
+<li><code>service iptables save</code> save changes to the iptables.</li>
+<li><code>iptables -L -n</code> list on rules in the filter table.</li>
+<li><code>iptables -L &lt;chainName&gt;</code> list all rules for certain chain.</li>
+<li><code>iptables &#x2013;F &lt;chainName&gt;</code> delete all rules in certain chain.</li>
+<li><code>iptables -A &lt;chainName&gt; &lt;&#x2013;i/-o&gt; &lt;interfaceName&gt; -j &lt;targetName&gt;</code> append a new rule in certain chain.<ul>
+<li>use <code>-i</code> for input interface.</li>
+<li>use <code>-o</code> for output interface.</li>
+</ul>
+</li>
+<li><code>iptables -I &lt;chainName&gt; &lt;insertLineNumber&gt; &lt;&#x2013;i/-o&gt; &lt;interfaceName&gt; -j &lt;targetName&gt;</code> Insert a rule in certain chain.</li>
+<li>Ex: <code>iptables &#x2013;I INPUT 3 -i eth0 &#x2013;p tcp -&#x2013;dport 1024:65535 -j ACCEPT</code> insert a rule at line 3.<ul>
+<li><code>1024:65535</code> means ports 1024 through 65535.</li>
+<li><code>-p</code> is followed by the Protocol Name.</li>
+<li><code>-&#x2013;dport</code> is followed by the specific port number or port range.</li>
+<li>In the rules if anything is not specified, all of them will be taken into consideration.</li>
+</ul>
+</li>
+<li><code>iptables -P &lt;chainName&gt; &lt;defaultAction&gt;</code> set the default policy.<ul>
+<li>chainName &#x2013; <code>INPUT</code>, <code>OUTPUT</code>, <code>FORWARD</code></li>
+<li>defaultAction -  <code>ACCEPT</code>, <code>DROP</code>, <code>REJECT</code></li>
+<li>Example, <code>iptables -P INPUT DROP</code> set the default policy to deny all inbound connections</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>system-config-firewall</code> is a graphical interface for configuring basic firewall rules.</li>
+<li><code>system-config-firewall-tui</code>, start the text based system-config-firewall utility.<ul>
+<li>Use tab Key to move between elements.</li>
+<li>Use space bar to toggle on and off.</li>
+<li>Use enter key to select elements.</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -1100,7 +1198,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.16","depth":1,"next":{"title":"Virtualization","level":"1.17","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.17.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.17.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]}]},"previous":{"title":"WordPress","level":"1.15","depth":1,"path":"wordpress/README.md","ref":"wordpress/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/README.md","mtime":"2020-02-11T03:04:29.840Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-11T03:07:45.214Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.16","depth":1,"next":{"title":"Virtualization","level":"1.17","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.17.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.17.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]}]},"previous":{"title":"WordPress","level":"1.15","depth":1,"path":"wordpress/README.md","ref":"wordpress/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/README.md","mtime":"2020-02-13T15:14:37.319Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T00:18:07.402Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

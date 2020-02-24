@@ -467,6 +467,38 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../cloud-services/aws.html">
+            
+                <a href="../cloud-services/aws.html">
+            
+                    
+                    AWS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../cloud-services/google-cloud-platform.html">
+            
+                <a href="../cloud-services/google-cloud-platform.html">
+            
+                    
+                    Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.13" data-path="../sql/">
@@ -1312,7 +1344,7 @@ Vehicle v2 = <span class="hljs-keyword">new</span> Vehicle(<span class="hljs-str
 </ul>
 <h3 id="generic-class">Generic Class</h3>
 <ul>
-<li>A generic class or method is one whose definition uses a placeholder for one or more of the type arguments that are passed as parameters.</li>
+<li>A generic class is one whose definition uses a placeholder for one or more of the type arguments that are passed as parameters.</li>
 <li>The type is denoted as a capitalized variable. Ex <code>T</code>.<ul>
 <li><code>T</code> Used for a generic type.</li>
 <li><code>S</code> Used for a generic type (usually for the second type if used)</li>
@@ -1397,6 +1429,19 @@ System.out.println(great);
 </ul>
 </li>
 <li>Interfaces, like classes, can be generic.</li>
+</ul>
+<h4 id="generic-methods">Generic Methods</h4>
+<ul>
+<li>Generic methods are declared as follows<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">methodName</span><span class="hljs-params">(ClassName&lt;T&gt; t)</span></span>{
+}
+</code></pre>
+<ul>
+<li>The <code>&lt;T&gt;</code> is the generic type the method is taking as parameter.</li>
+</ul>
+</li>
+<li>Generic methods are called in the following way.<pre><code class="lang-java">&lt;TypeName&gt;methodName(t);
+</code></pre>
+</li>
 </ul>
 <h2 id="exception-handling">Exception Handling</h2>
 <ul>
@@ -1551,6 +1596,7 @@ System.out.println(myVar.nextLine());  <span class="hljs-comment">//get user inp
 <li><code>stringx.endsWith(string)</code></li>
 <li><code>string.indexOf(&quot;sam&quot;)</code> return index and -1 if not exist.</li>
 <li><code>string.toUpperCase</code></li>
+<li><code>str.charAt(i)</code> return the character at position i.</li>
 </ul>
 <h3 id="stringbuilder-class">StringBuilder class</h3>
 <h2 id="character">Character</h2>
@@ -1578,6 +1624,7 @@ System.out.println(myVar.nextLine());  <span class="hljs-comment">//get user inp
 <li>Format Specifier<ul>
 <li><code>%f</code> Decimal number.</li>
 <li><code>%s</code> String.</li>
+<li><code>%d</code> Interger.</li>
 </ul>
 </li>
 <li>Width<ul>
@@ -1703,6 +1750,43 @@ newArray[<span class="hljs-number">2</span>] = <span class="hljs-number">10</spa
 </code></pre>
 </li>
 <li>After implement the definition, the array of objects of MyClass can be sorted and searched using the methods above.</li>
+<li>Sort can be done with Lambda express, ``collectionName.sort(<pre><code>(Object o1, Object o2) -&gt; o1.getName().compareTo(o2.getName()));`` or ``collectionName.sort(
+      (o1, o2) -&gt; o1.getName().compareTo(o2.getName()));``
+</code></pre></li>
+<li>For integer values, ``collectionName.sort(<pre><code>(o1, o2) -&gt; o1.getAge()-o2.getAge());``
+</code></pre></li>
+<li>It can be done with Comparator ``Comparator<object> comparatorName =<pre><code>  (Object o1, Object o2)-&gt;o1.getName().compareTo(o2.getName());``. then use ``collectionName.sort(comparatorName)``.
+</code></pre></object></li>
+</ul>
+<h2 id="collections">Collections</h2>
+<ul>
+<li>The Java Collections Framework is a library of classes and interfaces for working with collections of objects.</li>
+<li>It has a List interface and a Set interface.</li>
+<li>The AbstractCollection class provides a skeleton implementation for a Collection class by implementing many of the methods of the Collection interface.</li>
+<li>Programmer defined data types (class objects) can fit into collection frameworks by supplying the following methods<ul>
+<li><code>equals</code> &#x2013; used by contains to find an instance of an object</li>
+<li><code>compareTo</code> &#x2013; used by sorting methods to provide ordering within a collection.</li>
+<li><code>hashCode</code> &#x2013; used to provide fast lookup in hashed based collections</li>
+<li><code>toString</code> &#x2013; used to provide a String representation of the class &#x2013; not strictly needed, but useful</li>
+</ul>
+</li>
+</ul>
+<h3 id="collection-interface-methods">Collection Interface Methods</h3>
+<p>for all collections have static abstract methods:</p>
+<ul>
+<li>collectionsName.sort(collectionName)</li>
+<li>collectionsName.max(collectionName)</li>
+<li>collectionsName.min(collectionName)</li>
+<li>Collections.reverse(listName)</li>
+<li>Collections.shuffle(listName)</li>
+<li>collectionsName.add(element)</li>
+<li>collectionsName.clear()</li>
+<li>collectionsName.contains(element)</li>
+<li>collectionsName.isEmpty()</li>
+<li>collectionsName.remove(element) return true if successful.</li>
+<li>collectionsName.size()</li>
+<li>Collections.binarySearch(collectionName, element); for sorted collection in ascending order only, return the index of the element, return values &lt;0 if not found</li>
+<li>Collections.binarySearch(collectionName, element, comparator); can use Lambda expression as a comparator. can be in ascending or descending order.</li>
 </ul>
 <h3 id="list">List</h3>
 <ul>
@@ -1734,6 +1818,7 @@ newArray[<span class="hljs-number">2</span>] = <span class="hljs-number">10</spa
 <h3 id="access-elements">Access Elements</h3>
 <ul>
 <li>set element<pre><code class="lang-java">set(<span class="hljs-keyword">int</span> index, <span class="hljs-string">&quot;something&quot;</span>)      <span class="hljs-comment">//might throw error.</span>
+get(<span class="hljs-keyword">int</span> index);
 </code></pre>
 </li>
 <li>remove element<pre><code class="lang-java">arrayListName.remove(<span class="hljs-string">&quot;something&quot;</span>);
@@ -1751,7 +1836,7 @@ arrayListName.add(<span class="hljs-keyword">int</span> index, <span class="hljs
 </li>
 <li><p>return true if contain specific element. <code>arrayX.contains(Object s)</code></p>
 </li>
-<li>get first index of an item <code>indexOf(&quot;Something);   //-1 if not found,</code></li>
+<li>get first index of an item <code>indexOf(&quot;Something&quot;);   //-1 if not found,</code></li>
 <li>get last index of an item <code>lastIndexOf(&quot;Something&quot;);</code></li>
 <li>get the element on at specific index position <code>.get(int index)</code></li>
 <li>return the length <code>.size()</code></li>
@@ -1776,6 +1861,8 @@ arrayListName.add(<span class="hljs-keyword">int</span> index, <span class="hljs
 <li>remove value <code>remove(&quot;A&quot;);</code></li>
 <li>check existence of a key <code>containsKey(key)</code> return null if this key is not found</li>
 <li>check existence of a value <code>containsValue(value)</code></li>
+<li><code>get(key)</code> returns value for the key.</li>
+<li><code>keySet()</code> returns the set of all keys.</li>
 </ul>
 <h3 id="hashset">Hashset</h3>
 <ul>
@@ -1796,29 +1883,20 @@ arrayListName.add(<span class="hljs-keyword">int</span> index, <span class="hljs
 <ul>
 <li>similar to Hashset but It orders the elements.</li>
 </ul>
-<h3 id="collection-class-methods">collection class methods</h3>
-<p>for all collection class they have static methods:</p>
-<ul>
-<li>Collections.sort(collectionName)</li>
-<li>Collections.max(collectionName)</li>
-<li>Collections.min(collectionName)</li>
-<li>Collections.reverse(listName)</li>
-<li>Collections.shuffle(listName)</li>
-</ul>
 <h3 id="hashcode-methods">HashCode methods</h3>
 <ul>
 <li>Built-in data classes override the hashCode in java to ensure that equal objects return the same hashcodes.</li>
-<li>By default java uses the object memory location as the hashCode.&#x25AA;This can&apos;t be used if you override the equals method in your class.</li>
+<li>By default java uses the object memory location as the hashCode. This can&apos;t be used if you override the equals method in your class.</li>
 <li>When override hashcode Methods<ol>
-<li>Objects that are equal according to their equalsmethod MUST be assigned the same hash code.</li>
-<li>Because of 1), whenever you override aclass&#x2019;s equals() method, you MUST also override hashCode().</li>
-<li>Try to minimize collisions.&#x25AA;Different objects that generate the same hashCode.</li>
+<li>Objects that are equal according to their equals method MUST be assigned the same hash code.</li>
+<li>Because of 1), whenever you override a class&#x2019;s equals() method, you MUST also override hashCode().</li>
+<li>Try to minimize collisions. Different objects that generate the same hashCode.</li>
 </ol>
 </li>
 </ul>
 <h3 id="treeset">TreeSet</h3>
 <ul>
-<li>A TreeSetstores elements based on a natural order defined on those elements.</li>
+<li>A TreeSet stores elements based on a natural order defined on those elements.</li>
 <li>The natural order is based on the values of the objects being stored .  </li>
 <li>By internally organizing the storage of its elements according to this order, a TreeSet allows fast search for any element in the collection.</li>
 <li>A TreeSet requires a mechanism to sort<ol>
@@ -1837,7 +1915,8 @@ arrayListName.add(<span class="hljs-keyword">int</span> index, <span class="hljs
 <li>hasNext(): Returns true if there is at least one more element; otherwise, it returns false.</li>
 <li>next(): Returns the next object and advances the iterator.</li>
 <li>remove(): Removes the last object that was returned by next from the collection.</li>
-<li>It can be used in a loop.<pre><code class="lang-java">Iterator&lt;String&gt; it = animals.iterator();
+<li>It can be used in a loop.</li>
+<li>The Use of the iterator of the Scanner object is often practiced.<pre><code class="lang-java">Iterator&lt;String&gt; it = animals.iterator();
 <span class="hljs-keyword">while</span>(it.hasNext()) {
 String value = it.next();
 System.out.println(value);   
@@ -1988,7 +2067,7 @@ Thread t = <span class="hljs-keyword">new</span> Thread(() -&gt; animate(gc));
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.3","depth":1,"next":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/README.md","mtime":"2020-02-08T20:10:03.800Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-11T03:07:45.214Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.3","depth":1,"next":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/README.md","mtime":"2020-02-18T01:49:55.525Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T00:18:07.402Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

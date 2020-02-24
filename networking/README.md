@@ -4,7 +4,7 @@ network connects nodes
 LAN-Local area network
 WAN- Wide area network
 
-Internet - a nets of WANs.
+Internet - a net of WANs.
 Ethernet-
 
 8 bits = 1 byte
@@ -76,6 +76,9 @@ All frame transmit data using above model to add headers for each one of them an
 Nodes are connected by switches, wireless access points, and routers.
 
 Internet Protocol (IP) is logical address
+Responsible for packet delivery and routing
+Works at the network layer of the OSI model, receives packets of data from the TCP layer for delivery to the destination
+Each packet in the conversation will have the same source and destination addresses, however they may not take the same path.
 
 Address Resolution Protocol (ARP) is used to find MAC from IP
 
@@ -89,9 +92,16 @@ A group of 4 octets (8-bit) data.
 4.3 billions unique addresses available.
 
 It has network ID in the left portion and node ID in the right portion combined.
+The networkID for certain IPv4 address is obtain by change all host ID to 0 in the binary form.
+the IPv4 address 130.132.19.31 is represented in dotted decimal notation
+The binary equivalent would be 10000010 10000100 00010011 00011111
 network ID is represented by subnet mask 1 value digit place.
-gateway is the representation of the network ID
+	* for an ip with a mask as 11111111 11111111 00000000 00000000 -> 255.255.0.0, the first two groups of oactets, represents networkID.
+gateway is the representation of the network ID.
 
+
+They all associated with a default subnet mask represent after ``/``
+The number followed means the first n number is the networkID. This type of notation is called CIDR notation the number after ``/`` is called network prefix .
 class A
 1.0.0.0 - 126.255.255.255/8
 class B
@@ -100,8 +110,10 @@ class C
 192.0.0.0 - 223.255.255.255/24
 D multicast
 224-239
-E experiment
+E experimental purpose
 240-255
+
+Address starting with 127 is used for diagnostic purpose
 
 the first IP of each Host IP is the Network ID
 the last is the broadcast ID
@@ -121,10 +133,11 @@ ideal network size is < 500
 public ip used in WAN
 private ip used in LAN
 
-private range
-10.0.0.0 - 10.255.255.255
-172.16.0.0 - 172.31.255.255
-192.168.0.0 - 192.168.255.255
+RFC 1918 reserves three ranges of IP addresses for private use
+Class A range 10.0.0.0 - 10.255.255.255
+Class B range 172.16.0.0 - 172.31.255.255
+Class C range 192.168.0.0 - 192.168.255.255
+
 private addresses are not routable. In order to reach the internet NAT is used.
 Automatic Private IP Addressing (APIPA)
 When there is no DHCP, APIPA is configured to assign random IP starts with 169.254 for local communication.i
@@ -201,13 +214,26 @@ If the client need more information from the DHCP offer
 DHCP Release
 The client tell the server to release its IP address when done.
 
-TCP Transmission
-TCP is a connection oriented transmission. UDP is a connectionless transmission.
 
+TCP – Transmission Control Protocol
+Responsible for establishing and maintaining network conversations
+Breaks the session data into packets and passes packets the network layer
+Receives packets from the network layer, verifies and assembles them for delivery to the receiving application
+Works at the Transport and Session layers of the OSI model
+
+TCP Transmission
+TCP is a connection oriented transmission.
+
+TCP uses a three-way handshake to establish a reliable connection.
 3 Way Hand Shake.
 SYN package
 SYN/ACK package
 ACK package
+
+
+UDP is a connectionless transmission.
+UDP (User Datagram Protocol) is an alternative communications protocol to Transmission Control Protocol (TCP) used primarily for establishing low-latency and loss-tolerating connections between applications on the internet.
+
 
 CRC is the hash value attached to the beginning of the frame for error checking process before data is out and in the LAN. It is the job for routers.
 
@@ -366,6 +392,17 @@ check
 show vlan
 
 each vlan has its own management IP
+
+Firewall
+A firewall is designed to prevent unauthorized access to or from a network or host.  
+Network perimeter firewalls:
+	Routes packets based on rules that define:
+	what packets are allowed into internal networks and hosts
+	what packets are allowed to leave the internal network and to what destination 
+Host based firewalls:
+	Used to define what incoming and outgoing network connections are allowed on that single host.
+	Network firewalls cannot provide protection from traffic generated within a trusted network.  Host based firewalls provide that second layer of protection.
+
 
 
 Connection
