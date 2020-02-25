@@ -48,7 +48,6 @@
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //import customized component.
@@ -88,17 +87,14 @@ Each component is related to the following files.
     styleUrls: ['./component-name.component.css']//link to the style sheet of the component.
   })
   export class ComponentTestComponent implements OnInit {
-
     dataName = 100; //Declare any data here for template file to use.
     arrayName  = [1,2,3]; // data for demonstrate directive in template.
     serviceData;
     constructor(service: ServiceNameService) { //declare new service object and pass it as an argument.
     this.serviceData = service.anyFunction();// get service data from service method.
     }
-
     ngOnInit() {
     }
-
   }
   ```
 * ``component-name.component.css``, this is style sheet for the component.
@@ -128,7 +124,6 @@ In project folder, run: ``ng g s service-name``.
 * ``service-name.service.ts`` in the app folder.
 ```typescript
 import { Injectable } from '@angular/core';
-
 @Injectable({
   providedIn: 'root'
 })

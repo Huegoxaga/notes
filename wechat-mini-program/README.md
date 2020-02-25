@@ -218,18 +218,18 @@ There are two ways to create a new page. Either way works, relevant settings wil
   // cloud function goes inside.
   exports.main = async (event, context) => {
     // return a function here.
-    return await db.collection("posts").where({}).get();
+    return await db.collection("collectionName").where({}).get();
   }
   ```
 * Read Data
   * Return the following function to read data from cloud database(collection).
   ```js
-  return await db.collection("posts").where({}).get();
+  return await db.collection("collectionName").where({}).get();
   ```
 * Update Data
   * Return the following function to update data on cloud database(collection).
   ```js
-  return await db.collection("posts").doc(event.id).update({
+  return await db.collection("collectionName").doc(event.id).update({
     data: {
       votes: db.command.inc(1)
     }
@@ -238,7 +238,7 @@ There are two ways to create a new page. Either way works, relevant settings wil
 * Write Data
   * Return the following function to insert data to cloud database(collection).
   ```js
-  return await db.collection("posts").add({
+  return await db.collection("collectionName").add({
       data: {
         content: event.content,
         votes: 0
@@ -264,7 +264,7 @@ There are two ways to create a new page. Either way works, relevant settings wil
     })
   ```
 
-  
+
 ## Preview and Publish the App
 * Click upload button in the IDE to upload the trial version.
 * In the mini-program console, select review, the publish it.

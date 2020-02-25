@@ -782,62 +782,57 @@
 <li><code>app.component.ts</code> is the AppComponent class definition.</li>
 <li><code>app.component.html</code> the layout of the app component.</li>
 <li><code>app.component.css</code> the style sheet of the app component.</li>
-<li><code>app.module.ts</code> the AppModule definition.
-```typescript
-import { BrowserModule } from &apos;@angular/platform-browser&apos;;
-import { NgModule } from &apos;@angular/core&apos;;</li>
-</ul>
-<p>import { AppRoutingModule } from &apos;./app-routing.module&apos;;
-import { AppComponent } from &apos;./app.component&apos;;
-//import customized component.
-import { ComponentComponentName } from &apos;./component-name/component-name.component&apos;;
+<li><code>app.module.ts</code> the AppModule definition.<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { BrowserModule } from <span class="hljs-string">&apos;@angular/platform-browser&apos;</span>;
+<span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { AppRoutingModule } from <span class="hljs-string">&apos;./app-routing.module&apos;</span>;
+<span class="hljs-keyword">import</span> { AppComponent } from <span class="hljs-string">&apos;./app.component&apos;</span>;
+<span class="hljs-comment">//import customized component.</span>
+<span class="hljs-keyword">import</span> { ComponentComponentName } from <span class="hljs-string">&apos;./component-name/component-name.component&apos;</span>;
 @NgModule({
-  declarations: [
-    AppComponent,
-    ComponentName //register the customized component in the app module.
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [
-    ServiceName //register a dependency for all service in use.
-  ],
-  bootstrap: [AppComponent]
+declarations: [
+  AppComponent,
+  ComponentName <span class="hljs-comment">//register the customized component in the app module.</span>
+],
+imports: [
+  BrowserModule,
+  AppRoutingModule
+],
+providers: [
+  ServiceName <span class="hljs-comment">//register a dependency for all service in use.</span>
+],
+bootstrap: [AppComponent]
 })
-export class AppModule { }</p>
-<pre><code>* Any other folders that hold files related to customized components.
-
-## Customized Component
-### Create Component
-In project folder, run: ``ng g c component-name``.
-
-### Files
-Each component is related to the following files.
-* ``component-name.component.ts``, this is the exported component class file.
-  ```typescript
-  import { Component, OnInit } from &apos;@angular/core&apos;; //import decorator.
-  // The decorator function turns the class into a component with meta data.
-  import {ServiceNameService} from &quot;../service-name.service&quot;;//import service
-  @Component({
-    selector: &apos;app-component-name&apos;,// define the name of the component tag in app component html file.
-    templateUrl: &apos;./component-name.component.html&apos;,//link to the layout of the component.
-    styleUrls: [&apos;./component-name.component.css&apos;]//link to the style sheet of the component.
-  })
-  export class ComponentTestComponent implements OnInit {
-
-    dataName = 100; //Declare any data here for template file to use.
-    arrayName  = [1,2,3]; // data for demonstrate directive in template.
-    serviceData;
-    constructor(service: ServiceNameService) { //declare new service object and pass it as an argument.
-    this.serviceData = service.anyFunction();// get service data from service method.
-    }
-
-    ngOnInit() {
-    }
-
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule { }
+</code></pre>
+</li>
+<li>Any other folders that hold files related to customized components.</li>
+</ul>
+<h2 id="customized-component">Customized Component</h2>
+<h3 id="create-component">Create Component</h3>
+<p>In project folder, run: <code>ng g c component-name</code>.</p>
+<h3 id="files">Files</h3>
+<p>Each component is related to the following files.</p>
+<ul>
+<li><code>component-name.component.ts</code>, this is the exported component class file.<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, OnInit } from <span class="hljs-string">&apos;@angular/core&apos;</span>; <span class="hljs-comment">//import decorator.</span>
+<span class="hljs-comment">// The decorator function turns the class into a component with meta data.</span>
+<span class="hljs-keyword">import</span> {ServiceNameService} from <span class="hljs-string">&quot;../service-name.service&quot;</span>;<span class="hljs-comment">//import service</span>
+@Component({
+  selector: <span class="hljs-string">&apos;app-component-name&apos;</span>,<span class="hljs-comment">// define the name of the component tag in app component html file.</span>
+  templateUrl: <span class="hljs-string">&apos;./component-name.component.html&apos;</span>,<span class="hljs-comment">//link to the layout of the component.</span>
+  styleUrls: [<span class="hljs-string">&apos;./component-name.component.css&apos;</span>]<span class="hljs-comment">//link to the style sheet of the component.</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ComponentTestComponent <span class="hljs-keyword">implements</span> OnInit {
+  dataName = <span class="hljs-number">100</span>; <span class="hljs-comment">//Declare any data here for template file to use.</span>
+  arrayName  = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]; <span class="hljs-comment">// data for demonstrate directive in template.</span>
+  serviceData;
+  <span class="hljs-keyword">constructor</span>(service: ServiceNameService) { <span class="hljs-comment">//declare new service object and pass it as an argument.</span>
+  <span class="hljs-keyword">this</span>.serviceData = service.anyFunction();<span class="hljs-comment">// get service data from service method.</span>
   }
-</code></pre><ul>
+  ngOnInit() {
+  }
+}
+</code></pre>
+</li>
 <li><code>component-name.component.css</code>, this is style sheet for the component.</li>
 <li><code>component-name.component.html</code>, this is template for the component.<pre><code class="lang-html"><span class="hljs-comment">&lt;!--in { {..} } data and methods from ts file can be used as an expression.--&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
@@ -862,21 +857,18 @@ Each component is related to the following files.
 <p>In project folder, run: <code>ng g s service-name</code>.</p>
 <h3 id="service-file">Service File</h3>
 <ul>
-<li><code>service-name.service.ts</code> in the app folder.
-```typescript
-import { Injectable } from &apos;@angular/core&apos;;</li>
-</ul>
-<p>@Injectable({
-  providedIn: &apos;root&apos;
+<li><code>service-name.service.ts</code> in the app folder.<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Injectable } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+@Injectable({
+providedIn: <span class="hljs-string">&apos;root&apos;</span>
 })
-export class ServiceNameService {
-  anyFunction(){
-    return &quot;Here is the service.&quot;;
-  }
-  constructor() { }
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ServiceNameService {
+anyFunction(){
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Here is the service.&quot;</span>;
 }
-```</p>
-<ul>
+<span class="hljs-keyword">constructor</span>() { }
+}
+</code></pre>
+</li>
 <li><code>service-name.service.spec.ts</code> in the app folder. It is used for unit test.</li>
 </ul>
 
@@ -922,7 +914,7 @@ export class ServiceNameService {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Angular","level":"1.10.1","depth":2,"next":{"title":"PHP","level":"1.11","depth":1,"path":"php/README.md","ref":"php/README.md","articles":[]},"previous":{"title":"TypeScript","level":"1.10","depth":1,"path":"typescript/README.md","ref":"typescript/README.md","articles":[{"title":"Angular","level":"1.10.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"typescript/angular.md","mtime":"2020-01-15T00:09:49.363Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-24T00:18:07.402Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Angular","level":"1.10.1","depth":2,"next":{"title":"PHP","level":"1.11","depth":1,"path":"php/README.md","ref":"php/README.md","articles":[]},"previous":{"title":"TypeScript","level":"1.10","depth":1,"path":"typescript/README.md","ref":"typescript/README.md","articles":[{"title":"Angular","level":"1.10.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"typescript/angular.md","mtime":"2020-02-24T16:42:29.949Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-25T15:11:11.082Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
