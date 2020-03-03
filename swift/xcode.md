@@ -1,7 +1,7 @@
 Xcode
 
 design concept:
-prototype is necessary before making any app.
+the prototype is necessary before making any app.
 universal app: the app that fits all screen sizes.
 point: it is the fixed unit for screen resolution regardless the screen quality(pixel is depends on screen quality)
 Safe area is all the free space in the current UI, the entire scene excluding navigation bar, status bar etc.
@@ -12,21 +12,15 @@ Clip to bounds means the view which is trimmed by its boundary.
 leading is the left side, trailing is the right side.
 iPhone X’s full screen is extended to Superview.bottom instead of Safe Area.bottom.
 
-
 Playground
 Playground is the Immediate-mode for Swift, it provide real-time result for codes. It has a .playground file.
 shift+command+enter is used to execute codes.
 hold option key and click variables to see its details.
 
-
-
-
 New project creation:
 organization name : personal user use your own name. and the identifier is a reversed domain
 bundle identifier is used during app submission
 Single View has a ViewController class in the swift file and it is associated with a default View Controller Scene. more view can be added by drawing the view controller object. and create new swift file and associate them.
-
-
 
 Workspace environment:
 
@@ -45,18 +39,17 @@ making connection between object in storyboard and class Object, setting object 
 view controller class has the following function.
 Controller class is responsible for objects connection and setting, passing data, user interaction and the appearance of the controller’s view.
 
-
 editor area
 The center part is the editor area. its where you edit the file open from project navigator.
 
 utility area
 right pane is the utility area, it sets the properties of the file selected.
 -hide/show command+option+0
-command + option + (1-6)    select tabs
+command + option + (1-6) select tabs
 
 -Identity inspector: shows associated swift file for each View Controller and object.
 It has User defined runtime attribute editor can insert the code in didSet method here and set its value.
--attributes inspector: stuff like change objects color. "+" button can be used to set properties(or hide by checking the Hidden checkbox)  for specific screen size.   preserve vector option can be used in the attributes inspector when select the image in the assets folds, in order to make vector image has the best quality. initial view controller is the first view to load, can be change in attributes inspector, shown a big arrow on the left, It also has clip to bounds option. change object’s title,
+-attributes inspector: stuff like change objects color. "+" button can be used to set properties(or hide by checking the Hidden checkbox) for specific screen size. preserve vector option can be used in the attributes inspector when select the image in the assets folds, in order to make vector image has the best quality. initial view controller is the first view to load, can be change in attributes inspector, shown a big arrow on the left, It also has clip to bounds option. change object’s title,
 hide navigation bar on swipe(once for all) , change controller size, large navi bar etc.
 -connection inspector: show all the connection between actions and function calls
 -size inspector: shows constrains, change view size, object size.
@@ -74,13 +67,11 @@ assistant editor can open swift files on the top of the editor area
 can be used to option+ drag(object code to UI objects) make connections.
 
 Simulator
--command+1 scale down the simulator size.   command+w to close, command + left and command + right rotate screen
+-command+1 scale down the simulator size. command+w to close, command + left and command + right rotate screen
 Command+k open keyboard
 -drag and move cursor up and down to scroll in the simulator.
 -drag images to the simulator can add image to its photo library.
-command+shift+h   back to home screen
-
-
+command+shift+h back to home screen
 
 Interface builder
 Main.storyboard bring the editing area into a visual editor for storyboard called Interface builder.
@@ -105,8 +96,8 @@ an outline sits between interface builder and project navigator
 -show constrains/stack viewer etc, click and editing in the attributes inspector
 -This place can also be control-dragged, after right click, so connect can be made.
 -right-click can show its property
-- Objects in the outline should be renamed properly for readability.
 
+- Objects in the outline should be renamed properly for readability.
 
 configuration bar
 preview setting
@@ -115,28 +106,24 @@ located in the bottom bar
 -choose live preview device
 -show current size class
 
-
-- Auto layout bar     
-can be done by control-drag between two objects, drag to the constrain you aim at. can be done in doc outline panel.
-constrain to margin means safe area excluding the status bar
-located at right side of the config bar
-default object hard-coded its position relate to the top left corner.
-constrains can be double clicked and edited.
-objects’ width and height can be set as constrain.
-option+drag to itself in the document outlines can set the aspect ratio constrain.
+- Auto layout bar  
+  can be done by control-drag between two objects, drag to the constrain you aim at. can be done in doc outline panel.
+  constrain to margin means safe area excluding the status bar
+  located at right side of the config bar
+  default object hard-coded its position relate to the top left corner.
+  constrains can be double clicked and edited.
+  objects’ width and height can be set as constrain.
+  option+drag to itself in the document outlines can set the aspect ratio constrain.
 
 -Align: add new constrains
 -update frame: reset positions according to the constrains.
 -Embed in: create stack view for selected items, can be nested, can also be found in object library.
 
-
 Top menu:
 Embed tab bar and navi bar.
 
-
 Project Setting:
 disable landscape view.
-
 
 Code editing view:
 -hold control key and drag object to View Control Icon on top and select connection.
@@ -147,29 +134,27 @@ Code editing view:
 -the IDE can give you all available input at each point.
 -command+\ turn a block of code into a comment.
 -one controller per class.
-- in the code comment //MARK: -something is used to separate code into blocks and can be seen by clicking jump bar where shows the files address on the top.
-hold option and click the class name see details. It has reference link at the bottom.
-Control+Command+? and click anything to get info
-objects from the library are optional type.
-There is a traitCollection value to describe the current device properties.
-CGPoint:
-This is the Coordinate of for the storyboard in point unit.
-viewDidLoad
-This is the method that runs when controller completes to load the view.
-This method is only called once when the view is first loaded.
-all the initial value can be set here.
 
+- in the code comment //MARK: -something is used to separate code into blocks and can be seen by clicking jump bar where shows the files address on the top.
+  hold option and click the class name see details. It has reference link at the bottom.
+  Control+Command+? and click anything to get info
+  objects from the library are optional type.
+  There is a traitCollection value to describe the current device properties.
+  CGPoint:
+  This is the Coordinate of for the storyboard in point unit.
+  viewDidLoad
+  This is the method that runs when controller completes to load the view.
+  This method is only called once when the view is first loaded.
+  all the initial value can be set here.
 
 viewWillAppear
 This method is called when the view is about to display.
 It is called every time the view is about to display.
 can be called in other function like viewWillAppear(true), the bool value enables the animation effect.
 
-
 viewDidAppear
 This method is called when the view is presented on screen.
 It is called every time the view is presented.
-
 
 AppDelegate class
 It set the appearance for the entire app.
@@ -183,37 +168,27 @@ It change the behaviour of certain object for the entire app, this controller cl
 the document has up-to-date articles and detail of all methods. three finger click on the touch pad when the cursor is over any code in code editing mode, it will show the document about it.
 use command+f to find keyword in the document windows.
 
-
 NSException might means IBOutlet is not properly connected.
-
 
 didSet block
 didSet block can contain setting for objects right after the declaration.  
 @IBOutlet var newObject: UIType! {
-	didSet {
-			//make changes here.
-	}
+didSet {
+//make changes here.
+}
 }
 
 When copy paste code into the editor be aware of the extra { error. it is solved by restart Xcode.
-
 
 Info.plist file
 the configuration file of the Xcode project using XML
 move the cursor on any entry and click the + button, type the key name and set its value.\
 Or right-click and choose add row.
 
-
-
-
 UI Kit Framework
 UIKit is the framework for iOS mobile app development
 All of it classes have UI prefix.
 for Mac desktop development, referring to AppKit(has NS prefix)
-
-
-
-
 
 Fonts
 It can be placed in a Font folder under Resources folder.
@@ -223,10 +198,9 @@ set font style will enable Dynamic type(user can change the font size through se
 enable the Automatically Adjusts Font option in attributes inspector for dynamic type to take effect immediately.
 use command + = to make change to the new font size immediately.
 
-if let newFont = UIFont(name: "Font name", size: 123.0) {  //declare custom font
-	…//make change here
+if let newFont = UIFont(name: "Font name", size: 123.0) { //declare custom font
+…//make change here
 }
-
 
 button:
 It can be connected to a @IBAction function in the view controller and act like the sender. Code inside this function will be executed.
@@ -235,7 +209,6 @@ control drag button to the controller in the scene dock
 
 in the function:
 sender.titleLabel?.text is the label name of the button.
-
 
 can be activated if mouse over, mouse release ,clicking(default)
 There can be found and set up in the connections inspector.
@@ -247,46 +220,37 @@ Switch
 switchName.setOn(true, animated: false)
 //set the switch on or off according to the boolean parameter.
 
-switchName.isON    //it return the boolean value about its on/off state.
-
-
+switchName.isON //it return the boolean value about its on/off state.
 
 label:
-label.text = "abe"  //set label’s text
+label.text = "abe" //set label’s text
 has auto shirk property to fit small screen with large font size.
 set line number to 0 to enable multiline label.
 
 in didSet:
-		labelName.numberOfLInes = 0   //to enable multi-line for label.
-		labelName.adjustsFontForContentSizeCategory = true  
-		//make dynamic type to be effective immiatediatly after setting
-
-
-
-
-
+labelName.numberOfLInes = 0 //to enable multi-line for label.
+labelName.adjustsFontForContentSizeCategory = true  
+ //make dynamic type to be effective immiatediatly after setting
 
 AlertController class:
 It create a pop-up in the app as an alert window.
-let controllerName = UIAlertController(title: "The title on top", message: "Message in the center.", preferredStyle: .alert)             //alert style is a pop-up window in the middle.
-					  //actionSheet style is displayed at the bottom.
+let controllerName = UIAlertController(title: "The title on top", message: "Message in the center.", preferredStyle: .alert) //alert style is a pop-up window in the middle.
+//actionSheet style is displayed at the bottom.
 AlertAction class defines the buttons of the alert window.
 controllerName.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-					 //default, cancel and destruction styles are available.
+//default, cancel and destruction styles are available.
 //handler is a function defined earlier to be executed when this action is activated.
 alert controller works with present method to present.
 present(controllerName, animated: true, completion: nil)
 
 when working with iPad, a popoverPresentationController is required before presenting.
 if let popoverController = alertControllerName.popoverPresentationController {
-	if let cell = tableView.cellForRow(at: indexPath) {
-		popoverController.sourceView = cell
-		popoverController.sourceRect = cell.bounds
-		//.sourceRect set the location of the popover window.
-	}
+if let cell = tableView.cellForRow(at: indexPath) {
+popoverController.sourceView = cell
+popoverController.sourceRect = cell.bounds
+//.sourceRect set the location of the popover window.
 }
-
-
+}
 
 tableview:
 It can be drag into any controller.
@@ -301,25 +265,22 @@ class ViewControllerName: UIViewController, UITableViewDataSource, UITableViewDe
 
 tableview has section header and table header.
 It require two methods defined in the controller class:
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+func tableView(\_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 {
-	//set the number of rows in the section here. (the default number of section is one.)
+//set the number of rows in the section here. (the default number of section is one.)
 }
 
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-	let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for:indexPath)
-	//dequeueReusableCell is a function that load and relocate new cells when swipe.
-	//Configure the cell here…
-	cell.textLabel?.text = dataArray[indexPath.row]    
-	cell.imageView?.image = UIImage(named: "imageNameInAssets")
-	//textLabel and imageView? are optional in the default TabelViewCell class.
+func tableView(\_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for:indexPath)
+//dequeueReusableCell is a function that load and relocate new cells when swipe.
+//Configure the cell here…
+cell.textLabel?.text = dataArray[indexPath.row]  
+ cell.imageView?.image = UIImage(named: "imageNameInAssets")
+//textLabel and imageView? are optional in the default TabelViewCell class.
 
+    return cell
 
-
-	return cell
 }
-
-
 
 In ViewDidLoad
 tableview.backgroundView = imageName
@@ -328,33 +289,31 @@ tableView.backgroundView?.isHidden = true
 //set and hide temperate empty table background.
 //unhide can be set in the numberOfSection method (it is called when the table is configured) using if statement, along with the separator style setting.
 
-self.tableView.rowHeight       //set the rowHeight of the tableView Controller.
+self.tableView.rowHeight //set the rowHeight of the tableView Controller.
 
 tableView.cellLayoutMarginsFollowReadableWidth = true
 //set a readable width on iPad.
 
+tableView.separatorStyle = .none //it removes the separator between cells.
 
-tableView.separatorStyle = .none          //it removes the separator between cells.
-
-tableView.delegate = self     //it means to use delegate implemented here in this controller.
-tableView.dataSource = self   //set the  association for mandatory protocols for tableview class.
-
+tableView.delegate = self //it means to use delegate implemented here in this controller.
+tableView.dataSource = self //set the association for mandatory protocols for tableview class.
 
 enum can be used to track cells state if certain cell needed to be changed. or the cell reuse will cause bug. action method and cellforRow need to have the updates for the tracking value.
 
 //set the height for all section headers
-override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-	return 50
+override func tableView(\_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+return 50
 }
 
 //set style for all section headers
-override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-	let headerView = view as! UITableViewHeaderFooterView
-	headerView.backgroundView?.backgroundColor = UI Color(red: 236.0/255.0, green: 236.0/255.0, blue: 236.0/255.0, alpha: 1.0)
+override func tableView(\_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+let headerView = view as! UITableViewHeaderFooterView
+headerView.backgroundView?.backgroundColor = UI Color(red: 236.0/255.0, green: 236.0/255.0, blue: 236.0/255.0, alpha: 1.0)
 
-	headerView.textLabel?.font = UIFont(name: "Avenir", size: 25.0)
+    headerView.textLabel?.font = UIFont(name: "Avenir", size: 25.0)
+
 }
-
 
 TableViewController
 
@@ -363,7 +322,7 @@ It has two protocols inherited and connected, all constrains are set for the tab
 It has static table.
 the number of section method needs to be changed to at least 1.
 override func numberOfSections(in tableview: UITableView) -> Int {
-	return 1          
+return 1  
 } //remove this method will set the number of section to default value as 1.
 
 willselect for click cell that is about to open.
@@ -375,88 +334,86 @@ cell.detailTextLabel?.text
 cell.imageView?.image
 
 For selected cell the contain of the following method will be called.
-override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+override func tableView(\_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-	//a certain cell can be found and assigned using
-	let cell = tableView.cellForRow(at: indexPath)
-	//indexPath records the row number of the selected cell
+    //a certain cell can be found and assigned using
+    let cell = tableView.cellForRow(at: indexPath)
+    //indexPath records the row number of the selected cell
 
-	tableView.deselectRow(at: indexPath, animated: false)
-	//this method is used to deselect the row after the selection process is done, otherwise 		
-	//the cell will keep a darker background.
+    tableView.deselectRow(at: indexPath, animated: false)
+    //this method is used to deselect the row after the selection process is done, otherwise
+    //the cell will keep a darker background.
+
 }
 
 To enable left swipe to delete, use the following method.
-override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+override func tableView(\_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
-	if editingStyle == .delete {
-		cellData.remove(at: indexPath.row)  //remove selected cell data
-	}
-	tableView.reloadData() //reload the tableView.
-	or
-	tableView.deleteRows(at: [indexPath], with: .fade)  
-	//delete the row from the current view.
+    if editingStyle == .delete {
+    	cellData.remove(at: indexPath.row)  //remove selected cell data
+    }
+    tableView.reloadData() //reload the tableView.
+    or
+    tableView.deleteRows(at: [indexPath], with: .fade)
+    //delete the row from the current view.
+
 }
-
-
 
 For more customized swiping experience use
 
-
-override func tableView(_ table View: UITableView, leadingSwipeActionConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfigurations? {
-	//right swipe
-
+override func tableView(\_ table View: UITableView, leadingSwipeActionConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfigurations? {
+//right swipe
 
 }
 
-override func tableView(_ table View: UITableView, trailingSwipeActionConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfigurations? {
-	//left swipe
+override func tableView(\_ table View: UITableView, trailingSwipeActionConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfigurations? {
+//left swipe
 
-	let actionName = UIContextualAction(style: .destruction, title: "Delete") {(action, sourceView,completionHandler) in       
+    let actionName = UIContextualAction(style: .destruction, title: "Delete") {(action, sourceView,completionHandler) in
+
 //.destruction presents red color, style can be .normal. it is gray.
-	self.cellData.remove(at: indexPath.row)
+self.cellData.remove(at: indexPath.row)
 
-	self.tableView.deleteRows(at: [indexPath], with: .fade)
+    self.tableView.deleteRows(at: [indexPath], with: .fade)
 
-	completionHandler(true)
-	//ContextualAction object is used for "swipe to delete".
-   }
+    completionHandler(true)
+    //ContextualAction object is used for "swipe to delete".
 
-	actionName.backgroudColor = UIColor()   //set its color.
-	actionName.image = UIImage(named: "abc")  //set its icon.
-	let configurationName = UISwipeActionConfiguration(actions: [actionName1,actionName2,…])
-	return configurationName
 }
 
+    actionName.backgroudColor = UIColor()   //set its color.
+    actionName.image = UIImage(named: "abc")  //set its icon.
+    let configurationName = UISwipeActionConfiguration(actions: [actionName1,actionName2,…])
+    return configurationName
+
+}
 
 The following example code shows how to return a custom height for the first row of each section and use the default height for all other rows.
 
-override func tableView(_ tableView: UITableView,
-           heightForRowAt indexPath: IndexPath) -> CGFloat {
-   // Make the first row larger to accommodate a custom cell.
-  if indexPath.row == 0 {
-      return 80
-   }
+override func tableView(\_ tableView: UITableView,
+heightForRowAt indexPath: IndexPath) -> CGFloat {
+// Make the first row larger to accommodate a custom cell.
+if indexPath.row == 0 {
+return 80
+}
 
-   // Use the default size for all other rows.
-   return UITableView.automaticDimension
+// Use the default size for all other rows.
+return UITableView.automaticDimension
 }
 
 TableView Scroll position.
 tableV.contentOffset.y
 
-
 in tableView(titleForHeaderInSection)
-return sectionTitles[section]	//set section title
+return sectionTitles[section] //set section title
 
 in ViewDidLoad:
-tableView.tableFooterView = UIView( )  		//remove extra separator in a table view.
-
+tableView.tableFooterView = UIView( ) //remove extra separator in a table view.
 
 when changing certain table cell in the didselect or other action methods:
 tableView.beginUpdates( )
 //make change here
-tableView.endUpdates( )	//the code in between will take effect immediately.
+tableView.endUpdates( ) //the code in between will take effect immediately.
 UIColor
 it can be used to set color
 let coelorx = UIColor(red: 123.0/255.0, green: 123.0/255.0, blue: 123.0/255.0, alpha: 1.0)
@@ -469,18 +426,14 @@ set the image file to display in its attribute inspector.
 control drag is used to set aspect ratio.
 
 drag view underneath and set it color to black with some low alpha value can make the image has a dim effect.
-var newImage = UIImage(named: "abc")   //set image use the file name.
-UIImage()           //set image to transparent(blank)
-UIImage(data: newImage as Data)   //load image saved as Data
-newMO.image = newImage.pngData()  //save image in png format
-
+var newImage = UIImage(named: "abc") //set image use the file name.
+UIImage() //set image to transparent(blank)
+UIImage(data: newImage as Data) //load image saved as Data
+newMO.image = newImage.pngData() //save image in png format
 
 in didSet
-imageName.image = UIImage(named:"abc")?. withRenderingMode(.alwaysTemplate) 		//load image abc as a template image
-		heartImageView.tintColor = .white    //change the image color to white.
-
-
-
+imageName.image = UIImage(named:"abc")?. withRenderingMode(.alwaysTemplate) //load image abc as a template image
+heartImageView.tintColor = .white //change the image color to white.
 
 ActivityViewController
 it is used to share content.
@@ -493,12 +446,10 @@ In the controller, the dequeueReusableCell class return type need to specify as 
 self sizing cell is enabled after defining its layout constrains.
 to enable self sizing, in the ViewDidLoad method add:
 tableView.estimatedRowHeight = 100.0
-tableView.rowHeight = UITableView.automaticDimension   //this is the default row height.
-
+tableView.rowHeight = UITableView.automaticDimension //this is the default row height.
 
 in attributes inspector, selection option can be set for reaction style after cell selection.
 cell need to have identifier and is required in the cellForRowAt’s dequeue method.
-
 
 In the customized cell cell, connection and basic setup are needed for all the objects within the cell.
 
@@ -509,12 +460,11 @@ cell object has properties as following.
 cell?.accessoryType = .checkmark
 //There are four types of built-in accessory views, disclosure indicator, detail disclosure button, checkmark and detail. when setup this change, an array of boolean is required to track the change or the dequeueReusableCell method will keep the change on certain cell location and cause bug.
 In order to set multi cell, In cellForRowAt:
-	switch indexPath.row {
+switch indexPath.row {
 
-	case 0: //switch and case statement are usually used in the current controller
-	default:
-		fatalError("error message")
-
+    case 0: //switch and case statement are usually used in the current controller
+    default:
+    	fatalError("error message")
 
 Core Data
 
@@ -529,8 +479,6 @@ Integer 16: a 16-bit signed integer attribute.
 Integer 32: a 32-bit signed integer attribute.
 Integer 64: a 64-bit signed integer attribute.
 
-
-
 attributes name "description" is reserved.
 image file is usually save as Binary data type.
 set the information as required by unchecking the optional checkbox in the data modal inspector.
@@ -541,13 +489,12 @@ when error occurs during rebuilding the project, go to Product->Clean to clean t
 When the managed object class is created, an array of this objects can be declared in all controller classes and the class object is optional type.
 
 if let newImage = MOarray[indexPath.row].image {
-	cell.image = UIImage(data: newImage as Data)
-}		//binary image data access
-
+cell.image = UIImage(data: newImage as Data)
+} //binary image data access
 
 Save Data
-import CoreData   //import CoreData
-var newMO: MO!  //declare new variable
+import CoreData //import CoreData
+var newMO: MO! //declare new variable
 
 In the save method
 //get the AppDelegate object
@@ -557,94 +504,95 @@ newMO = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
 newMO.xText = "x"
 newMO.yText = "y"
 if let newImage = object.image {
-	newMO.image = newImage.pngData()  //save image in png format
+newMO.image = newImage.pngData() //save image in png format
 }
 //call saveContext()
 appDelegate.saveContext()
 
 the save process can also work as an update process.
 
-
 Fetching Data
 if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-	let request: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
-	let context = appDelegate.persistentContainer.viewContext
-	do {
-		restaurants = try context.fetch(request)
-	} catch {
-		print(error)
-	}
+let request: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
+let context = appDelegate.persistentContainer.viewContext
+do {
+restaurants = try context.fetch(request)
+} catch {
+print(error)
+}
 }
 
 In order to monitor the changes of the managed objects, NSFetchedResultsControllerDelegate is used.
 1 import CoreData
+
 2. add the NSFetchedResultControllerDelegate Protocol to the Controller class.
-3.. declare a new fetchResultsController in the controller class
-var fetchResultController: NSFetchedResultsController<restaurantMO>!
-4. add following code in the viewDidLoad
-//fetch data
-let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest( )
-let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-//key name is the attribute name for sorting
-fetchRequest.sortDescriptors = [sortDescriptor]
+   3.. declare a new fetchResultsController in the controller class
+   var fetchResultController: NSFetchedResultsController<restaurantMO>!
+3. add following code in the viewDidLoad
+   //fetch data
+   let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest( )
+   let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+   //key name is the attribute name for sorting
+   fetchRequest.sortDescriptors = [sortDescriptor]
 
 if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-	let context = appDelegate.persistentContainer.viewContext
-	fetchResultController = NSFetchResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-	fetchResultController.delegate = self
+let context = appDelegate.persistentContainer.viewContext
+fetchResultController = NSFetchResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+fetchResultController.delegate = self
 
-	do {
-		try fetchResultController.performFetch( )
-		if let fetchedObjects = fetchResultController.fetchedObjects {
-			restaurants = fetchedObjects
-		}
-	}catch {
-		print(error)
-	}
+    do {
+    	try fetchResultController.performFetch( )
+    	if let fetchedObjects = fetchResultController.fetchedObjects {
+    		restaurants = fetchedObjects
+    	}
+    }catch {
+    	print(error)
+    }
+
 }
 
 Change Data
 //When there are changes made for the Managed objects, the following methods in the controller class are called.
-func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-	tableView.beginUpdates( )
+func controllerWillChangeContent(\_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+tableView.beginUpdates( )
 }
 
-func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+func controller(\_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
 
-	switch type {
-	case .inset:
-		if let newIndexPath = newIndexPath {
-			tableView.insertRows(at: [newIndexPath], with: .fade)
-		}
-	case .delete:
-		if let indexPath = indexPath {
-			tableView.deleteRows(at: [indexPath], with: .fade)
-		}
-	case .update:
-		if let indexPath = indexPath {
-			tableView.reloadRows(at: [indexPath], with: .fade)
-		}
-	default:
-		tableView.reloadData( )
-	}
-	if let fetchedObjects = controller.fetchedObjects {
-		restaurants = fetchedObjects as! [RestaurantMO]
-	}
+    switch type {
+    case .inset:
+    	if let newIndexPath = newIndexPath {
+    		tableView.insertRows(at: [newIndexPath], with: .fade)
+    	}
+    case .delete:
+    	if let indexPath = indexPath {
+    		tableView.deleteRows(at: [indexPath], with: .fade)
+    	}
+    case .update:
+    	if let indexPath = indexPath {
+    		tableView.reloadRows(at: [indexPath], with: .fade)
+    	}
+    default:
+    	tableView.reloadData( )
+    }
+    if let fetchedObjects = controller.fetchedObjects {
+    	restaurants = fetchedObjects as! [RestaurantMO]
+    }
+
 }
 
-func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-	tableView.endUpdates( )
+func controllerDidChangeContent(\_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+tableView.endUpdates( )
 }
 
 Delete Data
 In the deletion action method:
-if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {  //get the delegate
-	let context = appDelegate.persistenContainer.viewContext		//get the context
-	let objectToDelete = self.fetchResultController.object(at: indexPath) //get the object
-	context.delete(objectToDelete)//delete the object, and call controller .delete type action
-	appDelegate.saveContext()   //save the context
+if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) { //get the delegate
+let context = appDelegate.persistenContainer.viewContext //get the context
+let objectToDelete = self.fetchResultController.object(at: indexPath) //get the object
+context.delete(objectToDelete)//delete the object, and call controller .delete type action
+appDelegate.saveContext() //save the context
 }
-
 
 Relationship
 It helps the definition of delete rules
@@ -653,7 +601,6 @@ Nullify - nullify the relationships upon deletion
 Cascade - delete the other objects upon deletion
 No Action - take no action upon deletion
 Deny - protect the other objects upon deletion
-
 
 Relationship needs be set and created on each side with to many or to one properties.
 choose the first entity and add relationship, set the destination to the second entity with corresponding property.
@@ -669,14 +616,12 @@ parentObject.childObjects?.allObjects as! [childObjectType]
 Or sort the array
 parentObject.childObject?.sortedArray(using: [NSSortDescriptor(key: "anyChildObjectAttribute", ascending: true)]) as! [childObjectType]
 
-
 Many relationship enable the addToEntity method.
 many to many relationship enable addToEntity to add multiple objects.
 addToEntity method can be used to add the object to the other as an attribute.
 removeFromEntity is used to remove.
 
-
-_____________________________________________________________________________________
+---
 
 Collection View
 It displays a collection of data like Apple’s default image app.
@@ -696,46 +641,43 @@ Delegate protocol contains methods including didSelectItemAt, didDeselectItemAt
 In action handler method.
 set collectionView?.allowsMultipleSelection = true to enable multi-select.
 
-
 There is an UICollectionViewDelegateFlowLayout protocol to format the layout.
 It has an optional method UICollectionViewLayout to specifying the cell size as following.
 //in the controller class from the FlowLayout protocol.
 extension SampleCollectionViewController: UICollectionViewDelegateFlowLayout {
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+func collectionView(\_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-		let sideSize = (traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .regular) ? 80.0 : 128.0
-		return CGSize (width:sideSize, height: sideSize)
+    	let sideSize = (traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .regular) ? 80.0 : 128.0
+    	return CGSize (width:sideSize, height: sideSize)
 
 }
 
 //for specific header and footer size
-func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
+func collectionView(\_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
 
 To respond the size class change immediately, implement the following method in the controller class:
 
 override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-	collectionView.reloadData( )
+collectionView.reloadData( )
 }
-
-
 
 Header and Footer View
 In controller class use the following method:
-func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+func collectionView(\_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
         if kind == UICollectionView.elementKindSectionHeader{
             let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerView", for: indexPath) as! CuppingHeaderView
             supplementaryView.sampleName.text = "abc"
             return supplementaryView
         }
+
 }
 
 view height:
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        let width = view.bounds.width
-                   return CGSize(width: width, height: 100)
-    }
-
+func collectionView(\_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+let width = view.bounds.width
+return CGSize(width: width, height: 100)
+}
 
 Collection View Cell
 It has .backgroundView and .selectedBackgroundView property.
@@ -746,10 +688,10 @@ Get Date and Time
 let x = Date( )
 //get current date and time using a 64-bit floating point number and the reference date
 
-let hour = calendarX.component(.hour, from: dateX)  //???
+let hour = calendarX.component(.hour, from: dateX) //???
 let minutes = calendarX.component(.minute, from: dateX) //???
 
-x.timeIntervalSinceReferenceDate   
+x.timeIntervalSinceReferenceDate  
 //return the number of sec from the reference date on Jan 1st, 2001 in UTC
 
 let x = Calendar.current
@@ -764,23 +706,22 @@ let minutes = calendar.component(.minute, from: date)
 let seconds = calendar.component(.second, from: date)
 print("hours = \(hour):\(minutes):\(seconds)")
 
-
 //using components
 let requestedComponents: Set<Calendar.Component> = [ .year,.month,.day,.hour,.minute,.second]
 
 let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
 
-dateTimeComponents.year   // 2016
-dateTimeComponents.month  // 10
-dateTimeComponents.day    // 8
-dateTimeComponents.hour   // 22
+dateTimeComponents.year // 2016
+dateTimeComponents.month // 10
+dateTimeComponents.day // 8
+dateTimeComponents.hour // 22
 dateTimeComponents.minute // 42
 dateTimeComponents.second // 17
 
 //Using Date Formatter
 let currentDateTime = Date()
 
-let formatter = DateFormatter()    // initialize and set the style
+let formatter = DateFormatter() // initialize and set the style
 formatter.timeStyle = .medium
 formatter.dateStyle = .long
 
@@ -813,9 +754,6 @@ formatter.timeStyle = .medium
 formatter.dateStyle = .none
 formatter.string(from: currentDateTime)
 
-
-
-
 Set Date and Time
 
 let y = Date(timeIntervalSinceReferenceDate: -1,000,000,000)
@@ -831,14 +769,12 @@ z.hour
 z.minute
 
 var x = Calendar.current
-var dateZ = x.date(from: z)   //create date from components z
+var dateZ = x.date(from: z) //create date from components z
 
 set date using format
 let formatter = DateFormatter()
 formatter.dateFormat = "yyyy/MM/dd HH:mm"
 let someDateTime = formatter.date(from: "2016/10/08 22:31")
-
-
 
 Custom data model
 if core data is not used, an array of custom objects is recommended to store formatted app data, and it is accessed by object[index].attributes. it requires a model class file(initializer should be implemented.). more detail in data mode section
@@ -846,14 +782,14 @@ if core data is not used, an array of custom objects is recommended to store for
 import Foundation
 
 class Restaurant {
-    var name: String
-    var type: String
-    var location: String
-    var phone: String
-    var description: String
-    var image: String
-    var isVisited: Bool
-    var rating: String
+var name: String
+var type: String
+var location: String
+var phone: String
+var description: String
+var image: String
+var isVisited: Bool
+var rating: String
 
     init(name: String, type: String, location: String, phone: String, description: String, image: String, isVisited: Bool, rating: String = "") {
         self.name = name
@@ -869,8 +805,8 @@ class Restaurant {
     convenience init() {
         self.init(name: "", type: "", location: "", phone: "", description: "", image: "", isVisited: false)
     }
-}
 
+}
 
 Tab Bar
 It is a row of buttons at the bottom of the screen.
@@ -895,11 +831,10 @@ destinationController.hidesBottomBarWhenPushed = true
 UITabBar.appearance().tintColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
 
 //Change the background color
-UITabBar.appearance().barTintColor = UIColor.black	UITabBar.appearance().backgroundImage = UIImage(named: "imageName")
+UITabBar.appearance().barTintColor = UIColor.black UITabBar.appearance().backgroundImage = UIImage(named: "imageName")
 
 .selectedIndex
 //This method can be used to set the tab on push.
-
 
 Status bar
 Navigation controller is set as default controller for status bar style, to change its style in different controllers in one app, an extension for UINavigationController class is required.
@@ -907,19 +842,19 @@ Navigation controller is set as default controller for status bar style, to chan
 add the following extension
 import UIKit
 extension UINavigationController {
-	open override var childForStatusBarStyle: UIViewController? {
-		return topViewController
-	}
-}			      //make the status bar refers to the top controller class’s setting
+open override var childForStatusBarStyle: UIViewController? {
+return topViewController
+}
+} //make the status bar refers to the top controller class’s setting
 
 so then make setting in the controller class
 override var preferredStatusBarStyle: UIStatusBarStyle {
-	return .lightContent
+return .lightContent
 }
 
 //to hide staue bar
 override var prefersStatusBarHidden: Bool {
-	return true
+return true
 }
 
 //To make change globally, make change in the AppDelegate file.
@@ -931,16 +866,13 @@ Opt out the View navigation controller-based status bar appearance in the Info.p
 Key name:
 View controller-based status bar appearance
 Value
-NO      //This disable the control for status bar in each view controller.
+NO //This disable the control for status bar in each view controller.
 Hide status bar on launch screen
 in plist file add
 Status bar is initially hidden - Yes
 
-
-
-
 Navigation Controller
-It is the page title  and back buttons on the top part of the app
+It is the page title and back buttons on the top part of the app
 Navigation Item is an object that used to customize navigation bar for certain controller.
 Navigation Item can have bar item and titles for this controller.
 without navigation item all navigation bars are control by the common parent navigation controller.
@@ -968,7 +900,7 @@ navigationItem.hidesBackButton = true
 
 For global change in application(didFinishLaunch) method in AppDelegate file:
 
-//change the back bottom of the navigation bar     
+//change the back bottom of the navigation bar  
 UINavigationBar.appearance( ).backIndicatorImage = someImage
 UINavigationBar.appearance( ).backIndicatorTransitionMaskImage = someImage
 UINavigationBar.appearance().backgroundColor = UIColor()
@@ -998,11 +930,10 @@ navigationController?.navigationBar.shadowImage = UIImage()
 //set navigation font text color and font
 navigationController?.navigationBar.largeTitleTextAttributes = [ NSAttributedString.Key.foregroundColor: .black, NSAttributedString.Key.font: newFont ]
 
- //change the color of items in the navigation
+//change the color of items in the navigation
 navigationController?.navigationBar.tintColor = .white
 
 It also works with contentInsetAdjustmentBehavior to have an overlap effect. viewType.contentInsetAdjustmentBehavior = .never
-
 
 Segue
 segue is the transition between scenes.
@@ -1012,18 +943,16 @@ prepare()this method is called before segue in triggered. It can be used to pass
 in the first controller implement prepare method as following:
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //Any? it can be downcast to the actual object(like UIButton) which actually initiated the segue.
-	//set data transition for the following segue
-	if segue.identifier == "abc" {
-		//get the indexPath for selected row
-		if let indexPath = tableView.indexPathForSelectedRow {
-			//get the destination controller object.
-			let destinationController = segue.destination as! DestiControllerName
-			destinationController.dataName = dataNameArray[indexPath.row]
-		}
-	}
+//set data transition for the following segue
+if segue.identifier == "abc" {
+//get the indexPath for selected row
+if let indexPath = tableView.indexPathForSelectedRow {
+//get the destination controller object.
+let destinationController = segue.destination as! DestiControllerName
+destinationController.dataName = dataNameArray[indexPath.row]
 }
-
-
+}
+}
 
 performSegue(withIdentifier: "abc", sender: sender)
 //This function works in the IBAction func to performSegue.
@@ -1034,10 +963,10 @@ to enable unwind segue, in the previous view controller add:
 
             //data manipulation goes here, using information from segue.identifier or segue.source
 
-	dismiss(animated: true, completion: nil) //(optional) further dismiss the current view with animation
+    dismiss(animated: true, completion: nil) //(optional) further dismiss the current view with animation
+
 }
 then, option + drag the close button to the Exit icon of the scene dock on the top of the view and select the method above.
-
 
 Show segue will add the current navigation controller to the destination view controller.
 
@@ -1046,58 +975,55 @@ let destinationController = segue.destination as! UINavigationController
 let finalDestinationController = destinationController.topViewController as! FinalViewController
 finalDestinationController.attribute = currentAttribute
 
-
 IndexPath
 It can be set using
 IndexPath(row: 0, section: sourceController.sampleNumber)]
-
 
 Object properties(UIView)
 All objects is from a subclass of UIView, including table cell collection cells
 The first UIView of any storyboard is the overall background of the app.
 It has the following properties.
-object.bounds.width    //return the width
+object.bounds.width //return the width
 
 View objects has a size value
 object.frame.size
 the size value has .width and .height attributes.
 
-String(describing: className.self)        //it returns the identifier of the class
+String(describing: className.self) //it returns the identifier of the class
 most object can have a tag
-.superview  //this can refer to the object’s parent.
+.superview //this can refer to the object’s parent.
 var cell: UITableViewCell = sender.superview.superview as UITableViewCell
 
 In ViewDidLoad
 view.backgroundColor = UIcolor.black
 //this set the background to black.
-backgroundImageView.image = UIImage(named: "abc")   //set background image
-anyView.contentInsetAdjustmentBehavior = .never  //the safe area move up to status bar.
-let x = UIBlurEffect(style: .dark)         //.dark, .light, .extraLight
+backgroundImageView.image = UIImage(named: "abc") //set background image
+anyView.contentInsetAdjustmentBehavior = .never //the safe area move up to status bar.
+let x = UIBlurEffect(style: .dark) //.dark, .light, .extraLight
 let y = UIVIsuallEffectView(effect: x)
 y.frame = view.bounds
-backgroundImageView.addSubview(y)      //add blur effect to the background.
+backgroundImageView.addSubview(y) //add blur effect to the background.
 
 In the didSet
-		newObject.layer.cornerRadius = newObject.bounds.width / 2
-		newObject.clipsToBounds = true
-		textFieldName.tag = 1 //all objects can have a tag value.
-
+newObject.layer.cornerRadius = newObject.bounds.width / 2
+newObject.clipsToBounds = true
+textFieldName.tag = 1 //all objects can have a tag value.
 
 Extension for take snapshot:
 import UIKit
 
 extension UIView {
-	var snapshot: UIImage? {
-		var image: UIImage? = nil
-		UIGraphicsBeginImageContext(bounds.size)
-		if let context - UIGraphicsGetCurrentContext( ) {
-			self.layer.render(in: context)
-			image = UIGraphicsGetImageFromCurrentImageContext( )
-		}
-		UIGraphicsEndImageContext( )
+var snapshot: UIImage? {
+var image: UIImage? = nil
+UIGraphicsBeginImageContext(bounds.size)
+if let context - UIGraphicsGetCurrentContext( ) {
+self.layer.render(in: context)
+image = UIGraphicsGetImageFromCurrentImageContext( )
+}
+UIGraphicsEndImageContext( )
 
-		return image
-	}
+    	return image
+    }
 
 //This enable All the .snapshot property of all its subclasses. It take snap of any objects by using object.snapshot.
 Additional view can be added to a view controller as subview or input view(like keyboard)
@@ -1108,7 +1034,6 @@ view.addSubView(subViewName)
 tableView.bringSubviewToFront(buttonView)
 or drag the object to lower in the navigator.????What is it called again?
 
-
 Stepper
 It can return the value in double using the following code
 x = Int(stepperName.value)
@@ -1116,13 +1041,9 @@ can be activated if mouse over, clicking, and value change(default)
 There can be found and set up in the connections inspector.
 When value changed, by default it will send action to IBAction function without connecting to the action.
 
-
-
 SegmentControl
 In action method, get the selected segment using the following code
 if defectSegment.selectedSegmentIndex == 0
-
-
 
 extensions
 extensions are custom class use to simplify or customize classes from the framework, to make the coding easier.
@@ -1133,32 +1054,33 @@ it uses swift template file.
 import UIKit
 
 extension UIColor {
-	convenience init(x:Int, y:Int){
-	//your new initializer goes here
-	self.init(x: Double, y:Double, z:Double) //the original initializer goes here
-	}
+convenience init(x:Int, y:Int){
+//your new initializer goes here
+self.init(x: Double, y:Double, z:Double) //the original initializer goes here
 }
-
+}
 
 Animation
 UIImagePickerController
 let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { (action) in
-	if UIImagePickerController.isSourceTypeAvailable(.camera){
-		let imagePicker = UIImagePickerController()
-		imagePicker.allowsEditing = false
-		imagePicker.sourceType = .camera
+if UIImagePickerController.isSourceTypeAvailable(.camera){
+let imagePicker = UIImagePickerController()
+imagePicker.allowsEditing = false
+imagePicker.sourceType = .camera
 
-		self.present(imagePicker, animated: true, completion: nil)
-	}
+    	self.present(imagePicker, animated: true, completion: nil)
+    }
+
 })
 let photoLibraryAction = UIAlertAction(title: "Photo library", style: .default, handler: { (action) in
-	if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-		let imagePicker = UIImagePickerController()
-		imagePicker.allowsEditing = false
-		imagePicker.sourceType = .photoLibrary
+if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+let imagePicker = UIImagePickerController()
+imagePicker.allowsEditing = false
+imagePicker.sourceType = .photoLibrary
 
-		self.present(imagePicker, animated:true, completion: nil)
-	}
+    	self.present(imagePicker, animated:true, completion: nil)
+    }
+
 })//need popover control for iPad
 
 In Info.plist file
@@ -1174,19 +1096,18 @@ an outlet is required to connect to the file for the image to display.
 In the controller file:
 func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.Infokey :Any]) {
 
-	if let selectedImage = info[UIImagePickerController.Infokey.originalImage] as? UIImage {
-		photoImageView.image = selectedImage
-		photoImageView.contentMode = .scaleAspectFill
-		photoImageView.clipsToBounds = true
-	}
-	dismiss(animated: true, completion: nil)
+    if let selectedImage = info[UIImagePickerController.Infokey.originalImage] as? UIImage {
+    	photoImageView.image = selectedImage
+    	photoImageView.contentMode = .scaleAspectFill
+    	photoImageView.clipsToBounds = true
+    }
+    dismiss(animated: true, completion: nil)
+
 }
 
 //imagePicker.delegate = self is required in the didSelect method.
 
-
 NSLayoutConstraint
-
 
 User input objects
 It can work with a static cells table for user input.
@@ -1195,51 +1116,50 @@ textfield: accept single line input
 text view: accept multi-line input
 customized text field
 
-self.view.endEditing(true)		//close the keyboard.
+self.view.endEditing(true) //close the keyboard.
 
 class RoundedTextField: UITextField {
-	let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10);
-	override func textRect(forBounds bounds: CGRect) -> CGRect {
-		return bounds.inset(by: padding)	//text input area
-	}
-	override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-		return bounds.inset(by:padding)	//placeholder text area
-	}
-	override func editingRect(forBounds bounds: CGRect) -> CGRect {
-		return bound.inset(by: padding)	//text display area
-	}
-	over func layoutSubviews() {    //this method is called every time when the text field is displayed
-		super.layoutSubviews()
-
-		self.layer.cornerRadius = 5.0
-		self.layer.masksToBounds = true
-	}
+let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10);
+override func textRect(forBounds bounds: CGRect) -> CGRect {
+return bounds.inset(by: padding) //text input area
 }
+override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+return bounds.inset(by:padding) //placeholder text area
+}
+override func editingRect(forBounds bounds: CGRect) -> CGRect {
+return bound.inset(by: padding) //text display area
+}
+over func layoutSubviews() { //this method is called every time when the text field is displayed
+super.layoutSubviews()
 
+    	self.layer.cornerRadius = 5.0
+    	self.layer.masksToBounds = true
+    }
+
+}
 
 when adapt UITextFieldDelgate, the following method can be used to enable auto selection after pressing the return key.
 this method is called when pressing return key in a textfield.
-func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-	if let nextTextField = view.viewWithTag(textField.tag + 1) {
-		textField.resignFirstResponder()
-		nextTextField.becomeFirstResponder()
-	}
-	return true
+func textFieldShouldReturn(\_ textField: UITextField) -> Bool {
+if let nextTextField = view.viewWithTag(textField.tag + 1) {
+textField.resignFirstResponder()
+nextTextField.becomeFirstResponder()
+}
+return true
 }
 
-
 In didSet:
-		textFieldName.becomeFirstResponder()
-		//only the first object need to specify the first responder
-		textFieldName.delegate = self
-		//these codes enable auto selection for textfield object
+textFieldName.becomeFirstResponder()
+//only the first object need to specify the first responder
+textFieldName.delegate = self
+//these codes enable auto selection for textfield object
 
 TextField can detect actions like didEndEdit for @IBAction func to act or method like didEndEdit can also be found in the TextFieldDelegate(it will be called when certain action is performed )
 
 NSString
 //return all value contained in the beginning of the string.
-.doubleValue   return double values.
-.intValue	return integer values.
+.doubleValue return double values.
+.intValue return integer values.
 
 Localization
 wrap all strings in the code using NSLocalizedString
@@ -1254,7 +1174,6 @@ select the project in the project navigator, Editor -> import for localization
 
 //the base file is the for the default language that is used for development.
 
-
 Testing
 // testing at runtime
 click the app icon beside run button and choose edit scheme…
@@ -1264,13 +1183,6 @@ then run the app
 open preview and select language at the lower right corner.
 
 To localize storyboard manually, select the storyboard and in file inspector, enable localization. Then XLIFF file will be generated.
-
-
-
-
-
-
-
 
 Test App on real device
 

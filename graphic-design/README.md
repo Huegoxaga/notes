@@ -46,13 +46,11 @@ Pantone is company which makes fine printed colors template with specific code f
 It has coated and uncoated colors to give cplors examples on coated and uncoated paper.
 It is used to calibrate colors on the display and colors on paper.
 
-
 Color Wheel has three color type
 three primary colors: red yellow blue.
 three secondary made by two adjencent primary colours.
 tertiary color made by one primary add one secondary colors.
 green and red draw a line and divide the color into cold and ward color.
-
 
 Hue
 Means color, represented by all the colours on the color wheel. from 0 degree (red) to 360(red),
@@ -67,7 +65,6 @@ Shade
 add black or its complementary color
 Tone
 and grey
-
 
 Color Theory
 
@@ -108,9 +105,6 @@ Background eraser Toll sample background color and remove
 Pen Tool Option dark make point command drag move point
 command click path confirm selection
 
-
-
-
 Top Menu
 Right click selected area->Layer via Copy
 Create new copy in a new layer of the selected area.
@@ -120,7 +114,6 @@ Edit->Fill->Content->Content Aware
 Use back ground pattern of the selected object to fill the selected area.
 New Layer->Select->Color range->add adjustment layer to change
 pick a range of color
-
 
 Layer
 Order - Upper layer is shown first
@@ -132,7 +125,6 @@ HSL - adjust the existing file color using Hue, saturation and Lamination.
 Filter
 It is the final step, tune the image to be better.
 
-
 3D
 3D object can be a postcard(plain) or extrusion to an object.
 3D object can merge with a layer.
@@ -140,7 +132,6 @@ It is the final step, tune the image to be better.
 
 Plugins
 refers to the Adobe Exchange platform.
-
 
 Shortcuts
 [ and ] change tool size.
@@ -152,19 +143,12 @@ ctrl+click on mask
 show the grayscale image of the layer mask.
 Command +U HSB Panel
 
-
-
-
-
-
-
 Photoshop
 [ or ] change brushes size
 
 alt+mask
 
 mask is only black and white(grey)
-
 
 Sketch
 It is a vector editing tool.
@@ -184,17 +168,10 @@ Artboard is where the design is drawn on.
 artboard can be moved by dragging its tittle.
 when create artboard, choose a size on the right panel
 
-
-
-
 Toolbar
 Tool bar is on the top.
 It can be customized: right click -> select customized toolbar
 Insert - All the graphic element is inserted from here.
-
-
-
-
 
 boolean operate
 choose overlapping relationships for multiple shapes.
@@ -207,7 +184,6 @@ anchor point can be chose and deleted.
 
 Export->+ sign add 1X or 2X or 3X export
 
-
 left panel
 pages, symbol pages and its layers are listed in the left panel.
 layers - upper layers is on top.
@@ -216,7 +192,6 @@ for layers, the bottom can be a mask according to its shape.
 slice tool
 change the background size of the shapes for export. should be in the same group of the shapes
 
-
 right panel
 properties are set in the right panel.
 set artboard background.
@@ -224,9 +199,6 @@ alignment for all selected object
 option key + alignment -> align selected object to the artboard.
 fill a shape with an image using cut and paste into the fill thumbnail is an alternative for masking.
 all other properties
-
-
-
 
 Symbols
 Symbol is shared layers or group that can be reused.
@@ -241,8 +213,6 @@ styles
 can be shared in the right panel
 changes can be updated by clicking the sync icon beside the share style menu.
 Same for text style
-
-
 
 Shortcuts
 Option+drag duplicate
@@ -272,6 +242,17 @@ build links and transition
 comment
 inspect mode
 
-
 png to base64
 https://www.base64-image.de
+
+Design Concepts
+
+Check fonts on google.com/fonts
+
+Copyright free Image on pixabay.com
+
+To make logos using logomakr.com
+
+More templates on tyler.com
+
+png format can contain transparent images.
