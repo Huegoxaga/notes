@@ -72,18 +72,30 @@ It is used to build Alexa skills for Alexa supported products.
 
 Create a Skill - a skill can be created by using the following ways.
 
-- Alexa Skills Kit Developer Console
+- Alexa Skills Kit Developer Console - Alexa-Hosted
+
   1. [Click Here](https://developer.amazon.com/alexa/console/ask) to signup and login the console.
-  2. Follow the steps to create a skill.
-  - Invocation Name is the words that used to activate the skill, it has to have at least two words.
-  - Intents are the task or action names.
-  - Utterances are exact voice commands that used to invoke the corresponding intent. One intent can have many utterances.
-  - Slot Types are words that can be recognized as variable in the voice command.
-  3. The result of all the skill setting will be represented as a JSON file in the JSON editor.
-  - Optionally, The step be step setting can be skipped by just entering a complete JSON setting data.
-  4. Create Lambda instance as the endpoint for the skill and copy the Lambda link in the endpoint setting.
-  - Use the [Code Generator](https://s3.amazonaws.com/webappvui/skillcode/v2/index.html) to generate backend code automatically.
+  2. Click on `Create Skill`, select `Alexa-Hosted` option.
+     - Using `Alexa-Hosted` will enable the code editor on the console, and gain immediate access to an AWS Lambda endpoint, 5 GB of media storage with 15 GB of monthly data transfer, and a table for session persistence.
+  3. Follow the steps to create a skill.
+     - Invocation Name is the words that used to activate the skill, it has to have at least two words.
+     - Intents are the task or action names.
+     - Utterances are exact voice commands that used to invoke the corresponding intent. One intent can have many utterances.
+     - Slots are words that can be recognized as variables in the voice command.
+       - It can be set as mandatory, then additional prompts can be set to get its value. This is called `Auto Dialog Delegation`.
+       - A type must be selected for the slots.
+       - Custom types can be set for the slots.
+       - Validating can be set for the slots.
+     - The setting can be tested by using `Utterrance Profile` without any backend code.
+  4. The result of all the skill settings will be represented as a JSON file in the JSON editor.
+     - Optionally, The step by step setup can be skipped by just entering a complete JSON setting data.
   5. In the homepage of the console, click Test to test the skill or enable Beta Testing to allow selected developer account holder to test the skill.
+
+- Alexa Skills Kit Developer Console - Custom
+
+  - Need this additonal step - Create Lambda instance as the endpoint for the skill and copy the Lambda link in the endpoint settings.
+    - Use the [Code Generator](https://s3.amazonaws.com/webappvui/skillcode/v2/index.html) to generate backend code automatically.
+
 - Alexa Skills Kit CLI
   1. Install Node.js 4.5>=
   2. [Click Here](https://developer.amazon.com/alexa/console/ask) to signup an Amazon developer account.
@@ -95,9 +107,63 @@ Create a Skill - a skill can be created by using the following ways.
   7. run `ask deploy`, to deploy the skill by uploading skills in the project folder to the Alexa Developer Console and Creating AWS Lambda instance.
   8. run `ask simulate -l en-US -t "voice command for testing"`, to test the skill.
 
+#### Modification
+
+- To change skill name, go the distribution and change the `Public Name`.
+- To support a new language, add a new language in the dropdown menu, copy the JSON setting from an existing language model, translate it then paste it in the new language model. Then process the backend code using `i18next`.
+
+#### Coding
+
+- Backend code for Alexa skill can be written in Node.js or python.
+
+#### Coding in Node.js
+
+- `index.js` is the entry point.
+
+  - It consists of one handler for each Intent.
+    - Each handler has a `canhandle()` method that determine which intented is requested.
+      - `canhandle()` method will return true if the correspoding intent is requested.
+    - The `handle()` method will process the request.
+      - It can also return another intent and it is called intent chaining.
+      - It can call another handler to make code effecient.
+  - The `handlerInput` is an object that contains info about the user request.
+  - It has two types of Interceptors.
+    - Request interceptors will run right before the all handlers process the requests.
+    - Response interceptors will run right after the all handlers process the requests.
+      - They use the `.process()` method to add additional info for into the `handlerInput` object.
+  - Everything needs to be registered at the bottom of the file, there are two options.
+    - If using `Alexa.SkillBuilders.custom()`. Everything needs to be added manually. Developer has the control of the structure.
+    - If using `Alexa.SkillBuilders.standard()`. It registers many function by default.
+
+- `package.json` controls the dependency for the skill
+
+  - Add records in the file and then build will automatcally install the dependency for the skill project when running on AWS Lamdba.
+
+- Useful Dependencies
+  - The `i18next` determines the language set on the user device, then use a helper function created in the request interceptor to get strings from the `languageStrings.js` in corresponding language.
+
 #### Additional Features
 
+- To store data use the attribute manager and register a persistent adapter.
+  - Session Attributes are passed along with the requests and responses while a seesion is open.
+  - Persistent Attributes are data stored in S3.
+  - When using Alexa-Hosted Template, in the code page click the S3 link to view the saved files.
 - Work with DynamoDB, [Click](https://github.com/dabblelab/alexa-dynamodb-skill-template) to see the template file, edit and create DynamoDB table as required by the Lambda instance. Make sure Lambda has the permission to access the DynamoDB table.
+- Work with ASK APIs
+
+  - Needs to register the `.withApiClient(new Alexa.DefaultApiClient())` at the bottom of the `index.js` file if using custom skill builder.
+  - Access permission info from `ServerClientFactory`.
+  - The customer API returns the user info only when the permission is required in the build page, permission tab in the developer console, and the user permission is given after the propmt or in the Alexa App or `alexa.amazon.com`.
+  - The setting API returns info like the device location.
+  - Reminder API remind the user for a event set by user earlier.
+    - It also needs permissions on developer end and user end.
+  - External API - It is available for the backend code.
+  - Progressive Response API - Alexa request a response every 8 seconds, otherwise the session will be closed. If the device is not responding due to any reason, this API will response certain message in between.
+
+- SSML(Speech Synthesis Markup Language ) - Is a markup language for Alexa Voices and sound effects.
+  - [Click here](https://developer.amazon.com/en-US/docs/alexa/custom-skills/speech-synthesis-markup-language-ssml-reference.html) to see its docs.
+  - It can be injected into output string to add tones to the voices.
+  - It can be tested on the test page under `Voice & Tone` tab.
 
 ### Alexa Voice Service
 

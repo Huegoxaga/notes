@@ -111,6 +111,25 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../python/anaconda.html">
+            
+                <a href="../python/anaconda.html">
+            
+                    
+                    Anaconda
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.3" data-path="../java/">
@@ -504,7 +523,7 @@
                 <a href="../solution-stack/">
             
                     
-                    Solution-Stack
+                    Solution Stack
             
                 </a>
             
@@ -580,6 +599,25 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../linux/regex.html">
+            
+                <a href="../linux/regex.html">
+            
+                    
+                    Regular Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -780,12 +818,22 @@
 <li>They are Lists data structures designed base on array data structures.</li>
 <li>Also known as vector in C++ or earliest versions of Java.</li>
 <li>It internally declares a new array everything when the list size changes.</li>
-<li>Dynamic arrays is a technique used to improved the data structure. It always declares some empty elements on both sides of the array to lower the chances for creating and copying the array, every time the array change sizes.</li>
+<li>Dynamic array is a technique used to improve the data structure. It always declares some empty elements on both sides of the array to lower the chances for creating and copying the array, every time the array change sizes.</li>
+<li>It uses contiguous allocation, list elements occupy consecutive memory locations.<ul>
+<li>Insertion or deletion of elements in the middle of the list involves the laborious relocation of all elements that come after.</li>
+</ul>
+</li>
+<li>It allows random access access elements by jumping to any given element without going through its predecessors.</li>
 </ul>
 <h4 id="linked-list">Linked List</h4>
 <ul>
 <li>A type of list that treats all of its elements as nodes.</li>
 <li>The nodes not only has the value for the element, it also stores a reference(link) to its adjacent elements.</li>
+<li>The reference to a linked list is just the reference to the head node.</li>
+<li>It uses linked allocation.</li>
+<li>It uses sequential access, it accesses nodes starting from the head all the time.</li>
+<li>This type of data structure is referred to a self-referential structure or recursive data structure.</li>
+<li>An empty list is represented with a head reference whose value is null.</li>
 <li>Link Lists have the following types:<ul>
 <li>Singly Linked Lists - All of its node has a reference to the next node of the list.<ul>
 <li>The first node is called the head, the last node is call the tail.</li>
@@ -799,6 +847,11 @@
 <li>Header node and tailer node do not store data. Together, they are called sentinels or guards, to protect the boundary, because either next node or previous node of the sentinels are not defined.</li>
 </ul>
 </li>
+</ul>
+</li>
+<li>Removing Nodes<ul>
+<li>To remove the first node of a list, set the head reference to its successor.</li>
+<li>To remove a node other than the first, set a reference to the predecessor of the targeted node. Route the successor link in the predecessor around the targeted node.</li>
 </ul>
 </li>
 </ul>
@@ -874,7 +927,7 @@
 <h4 id="hash-table">Hash table</h4>
 <ul>
 <li>A structure that help implement maps.</li>
-<li>In a hash table all possible keys in a map can found its associated integer values in the table.  </li>
+<li>In a hash table all possible keys in a map can found its associated integer values in the table.</li>
 <li>It use hash function or hash algorithm is consist of hash code and compression function.<ul>
 <li>Hashcode finds or converts the integer value of all keys in the ordered hash table.<ul>
 <li>A good hash code can avoid getting the same integer value as much as possible(avoid collisions).</li>
@@ -915,12 +968,12 @@
 </ul>
 <h4 id="linked-set">Linked Set</h4>
 <ul>
-<li>A ordered Set.</li>
+<li>An ordered Set.</li>
 <li>Generally based on the insertion order.</li>
 </ul>
 <h2 id="algorithm">Algorithm</h2>
 <ul>
-<li>Algorithm is a step-by-step procedure for performing some task in a finite amount of time.</li>
+<li>An algorithm is a step-by-step procedure for performing some task in a finite amount of time.</li>
 <li>Shorter running time is the major indication of a better data structure or algorithm.</li>
 </ul>
 <h3 id="iteration">Iteration</h3>
@@ -931,12 +984,13 @@
 <ul>
 <li>A method that calls itself is a recursive method.</li>
 <li>It has a base case, the method will called itself until the base case is reached and solved.</li>
-<li>Recursive method can have the following types:<ul>
+<li>Recursive methods can have the following types:<ul>
 <li>Linear Recursion - Each recursive method call itself once.</li>
 <li>Binary Recursion - Each recursive method call itself twice.</li>
 <li>Multiple Recursion - Each recursive method call itself more than twice.</li>
 </ul>
 </li>
+<li>For binary and multiple recursion, the methods call itself as deep as possible than call the sibiling methods after all its recursive methods are called.</li>
 </ul>
 <h3 id="algorithm-analysis">Algorithm Analysis</h3>
 <p>It is used to tell if a data structure or Algorithm is good.</p>
@@ -978,7 +1032,7 @@
 <h4 id="time-complexity">Time Complexity</h4>
 <ul>
 <li>Generally larger input run slower.</li>
-<li>This method focus on studying the growth rate of primitive operation count related to the growth of input size.  </li>
+<li>This method focus on studying the growth rate of primitive operation count related to the growth of input size.</li>
 <li>When convert operation count into running time. For inputs with the same sizes, running time may vary. However, the worst-case is usually taken as the running time for this input size. It is good for code improvement.</li>
 <li>For logarithm function in computer science, the 2 in base 2 is often omitted. It looks similar to LOG with base 10.</li>
 <li>The Big O math model is used to simplify operation count functions for comparison.<ul>
@@ -1057,7 +1111,7 @@
   <span class="hljs-comment">// Move the largest entry in A[0...last] to A[last]</span>
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index=<span class="hljs-number">0</span>; index &lt;= last-<span class="hljs-number">1</span>; index++){     <span class="hljs-comment">//swap adjacent elements if necessary</span>
     <span class="hljs-keyword">if</span> (A[index] &gt; A[index+<span class="hljs-number">1</span>]){
-      <span class="hljs-keyword">int</span> temp = A[index];  
+      <span class="hljs-keyword">int</span> temp = A[index];
       A[index] = A[index+<span class="hljs-number">1</span>];
       A[index + <span class="hljs-number">1</span>] = temp;
     }
@@ -1088,9 +1142,9 @@
   }
   <span class="hljs-comment">// maxIndex is position of largest in A[0..last]</span>
   <span class="hljs-comment">// swap A[maxIndex] with A[last]</span>
-  <span class="hljs-keyword">int</span> temp = A[maxIndex];  
+  <span class="hljs-keyword">int</span> temp = A[maxIndex];
   A[maxIndex] = A[last];
-  A[last] = temp;   
+  A[last] = temp;
 }
 </code></pre>
 </li>
@@ -1108,12 +1162,13 @@
 <span class="hljs-keyword">for</span> (index = <span class="hljs-number">1</span>; index &lt;= N-<span class="hljs-number">1</span>; index ++)
 {
   <span class="hljs-comment">// A[0..index-1] is sorted</span>
-  <span class="hljs-comment">// insert A[index] at the right place in A[0..index]  </span>
+  <span class="hljs-comment">// insert A[index] at the right place in A[0..index]</span>
   <span class="hljs-keyword">int</span> unSortedValue = A[index];
   scan = index;
   <span class="hljs-keyword">while</span> (scan &gt; <span class="hljs-number">0</span> &amp;&amp; A[scan-<span class="hljs-number">1</span>] &gt; unSortedValue)
   {
-    A[scan] = A[scan-<span class="hljs-number">1</span>];scan --;
+    A[scan] = A[scan-<span class="hljs-number">1</span>];
+    scan --;
   }
   <span class="hljs-comment">// Drop in the unsorted value</span>
   A[scan] = unSortedValue;
@@ -1133,7 +1188,7 @@
 <li>repeat the process until merging into n/n arrays which is one big sorted array.</li>
 </ol>
 </li>
-<li>The complexity of Insertion Sort is <code>O(n log(n))</code> (worst case).</li>
+<li>The complexity of Merge Sort is <code>O(nlog(n))</code> (worst case).</li>
 <li>Since each compared value is copied to the new array, the merge sort does require new temporary arrays.</li>
 </ul>
 <h4 id="quick-sort">Quick Sort</h4>
@@ -1145,42 +1200,42 @@
 <li>Repeat until all sublists has a length of 1 or 0.</li>
 </ol>
 </li>
-<li>The complexity of Insertion Sort is <code>&#x41E;(n^2)</code> (worst case).</li>
-<li>Example:<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">doQuicksort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[], <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span>
+<li>The complexity of Quick Sort is <code>&#x41E;(n^2)</code> (worst case).</li>
+<li>Example:</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">doQuicksort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[], <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span>
 </span>{
-<span class="hljs-keyword">if</span> (start &lt; end)
-{
-  <span class="hljs-comment">// partition A[start..end]</span>
-  <span class="hljs-comment">// and get the pivot point</span>
-  <span class="hljs-keyword">int</span> pivotPoint = partition(A, start, end);
-  <span class="hljs-comment">// recursively do the first sublist</span>
-  doQuicksort(A, start, pivotPoint-<span class="hljs-number">1</span>);
-  <span class="hljs-comment">// recursively do the second sublist</span>
-  doQuicksort(A, pivotPoint+<span class="hljs-number">1</span>, end);
-}
+  <span class="hljs-keyword">if</span> (start &lt; end)
+  {
+    <span class="hljs-comment">// partition A[start..end]</span>
+    <span class="hljs-comment">// and get the pivot point</span>
+    <span class="hljs-keyword">int</span> pivotPoint = partition(A, start, end);
+    <span class="hljs-comment">// recursively do the first sublist</span>
+    doQuicksort(A, start, pivotPoint-<span class="hljs-number">1</span>);
+    <span class="hljs-comment">// recursively do the second sublist</span>
+    doQuicksort(A, pivotPoint+<span class="hljs-number">1</span>, end);
+  }
 }
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">partition</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[ ], <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span>
 </span>{
-<span class="hljs-comment">// See implementation for improved midpoint selection</span>
-<span class="hljs-keyword">int</span> pivotValue = A[start];
-endOfLeftList = start;
-<span class="hljs-comment">// At this point A[endOfLeftList] == pivotValue</span>
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> scan = start + <span class="hljs-number">1</span>; scan &lt;= end; scan ++)
-{
-  <span class="hljs-keyword">if</span> (A[scan] &lt; pivotValue)
-  {  
-    endOfLeftList++;
-    swap(A, endOfLeftList, scan);
-    <span class="hljs-comment">// At this point A[endOfLeftList] &lt; pivotValue</span>
+  <span class="hljs-comment">// See implementation for improved midpoint selection</span>
+  <span class="hljs-keyword">int</span> pivotValue = A[start];
+  endOfLeftList = start;
+  <span class="hljs-comment">// At this point A[endOfLeftList] == pivotValue</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> scan = start + <span class="hljs-number">1</span>; scan &lt;= end; scan ++)
+  {
+    <span class="hljs-keyword">if</span> (A[scan] &lt; pivotValue)
+    {
+      endOfLeftList++;
+      swap(A, endOfLeftList, scan);
+      <span class="hljs-comment">// At this point A[endOfLeftList] &lt; pivotValue</span>
+    }
   }
-}
-<span class="hljs-comment">// Move the pivotValue between the left and right sublists</span>
-swap(A, start, endOfLeftList);
-<span class="hljs-keyword">return</span> endOfLeftList;
+  <span class="hljs-comment">// Move the pivotValue between the left and right sublists</span>
+  swap(A, start, endOfLeftList);
+  <span class="hljs-keyword">return</span> endOfLeftList;
 }
 </code></pre>
-</li>
-</ul>
 
                                 
                                 </section>
@@ -1220,7 +1275,7 @@ swap(A, start, endOfLeftList);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Data Structures and Algorithms","level":"1.23.1","depth":2,"previous":{"title":"Theory","level":"1.23","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Data Structures and Algorithms","level":"1.23.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-02-24T00:14:18.426Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-03T02:49:41.696Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Data Structures and Algorithms","level":"1.23.1","depth":2,"previous":{"title":"Theory","level":"1.23","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Data Structures and Algorithms","level":"1.23.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-03-10T19:34:37.098Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

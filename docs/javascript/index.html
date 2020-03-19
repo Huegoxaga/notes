@@ -113,6 +113,25 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../python/anaconda.html">
+            
+                <a href="../python/anaconda.html">
+            
+                    
+                    Anaconda
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.3" data-path="../java/">
@@ -506,7 +525,7 @@
                 <a href="../solution-stack/">
             
                     
-                    Solution-Stack
+                    Solution Stack
             
                 </a>
             
@@ -582,6 +601,25 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../linux/regex.html">
+            
+                <a href="../linux/regex.html">
+            
+                    
+                    Regular Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -766,7 +804,7 @@
 <li><a href="#comments">Comments</a></li>
 <li><a href="#code-implementation">Code Implementation</a></li>
 <li><a href="#variables">Variables</a></li>
-<li><a href="#operators">Operators</a>  </li>
+<li><a href="#operators">Operators</a></li>
 <li><a href="#control-structures">Control Structures</a></li>
 <li><a href="#functions">Functions</a></li>
 <li><a href="#classes">Classes</a></li>
@@ -812,25 +850,25 @@
 <li>Javascript has an extension as .js.</li>
 <li>Semi-colons are optional, but recommended.</li>
 <li>Javascript it case-sensitive.</li>
-<li>JavaScript conforms to the ECMAScript(ES) specification<ul>
+<li>JavaScript conforms to the ECMAScript(ES) specification</li>
 <li>ES6 is introduced in 2015.</li>
 <li>ES7 is introduced in 2016.</li>
 <li>ES8 is introduced in 2017.</li>
 <li>...</li>
 </ul>
-</li>
-</ul>
 <h2 id="basic-syntax">Basic Syntax</h2>
 <h3 id="comments">Comments</h3>
 <ul>
-<li>Single line comment<pre><code class="lang-js"><span class="hljs-comment">//This is the single line comment for JS</span>
-</code></pre>
-</li>
-<li>Multiline comments<pre><code class="lang-js"><span class="hljs-comment">/* This is
-   multiline comment */</span>
-</code></pre>
-</li>
+<li>Single line comment</li>
 </ul>
+<pre><code class="lang-js"><span class="hljs-comment">//This is the single line comment for JS</span>
+</code></pre>
+<ul>
+<li>Multiline comments</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">/* This is
+     multiline comment */</span>
+</code></pre>
 <h3 id="code-implementation">Code Implementation</h3>
 <h4 id="console">Console</h4>
 <ul>
@@ -839,16 +877,17 @@
 <h4 id="script-tag">Script Tag</h4>
 <p>JavaScript code can be added inside the script tag.</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;abc&quot;</span>)
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;abc&quot;</span>);
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <ul>
 <li>The script tag can be placed in the HTML&apos;s <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> tags. It can be mostly found in the <code>&lt;head&gt;</code> tag, or at the bottom of the <code>&lt;body&gt;</code> tag.</li>
 <li><code>&lt;script&gt;</code> can have attribute type, <script type="text/javascript"></script>, not required.</li>
-<li><p>JavaScript code can be placed in a separate js file and link the file using script tag.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span> = &quot;<span class="hljs-attr">js</span>/<span class="hljs-attr">example.js</span>&quot;&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<li>JavaScript code can be placed in a separate js file and link the file using script tag.</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/example.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-</li>
+<ul>
 <li><code>&lt;noscript&gt;</code> tag. If Javascript is not supported by the browser, the content inside <code>&lt;noscript&gt;</code> will be read.</li>
 </ul>
 <h3 id="variables">Variables</h3>
@@ -875,20 +914,20 @@ let keyword is recommended for variable declaration.</p>
 <p><code>const</code> variables have the same scope as variables declared using let. it declares constants.</p>
 <h5 id="undeclared-variables">Undeclared Variables</h5>
 <p>If no keyword is used when declaration. these variables are global by default.</p>
-<pre><code class="lang-js">x = <span class="hljs-number">10</span>;    <span class="hljs-comment">//x is global.</span>
+<pre><code class="lang-js">x = <span class="hljs-number">10</span>; <span class="hljs-comment">//x is global.</span>
 </code></pre>
 <h5 id="destructuring-assignment">Destructuring Assignment</h5>
 <p>An easier way to assign elements of objects and arrays into variables.</p>
 <ul>
-<li>For Arrays:<pre><code class="lang-js">  <span class="hljs-keyword">const</span> [x,y,z] = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]; <span class="hljs-comment">//result: x=1, y=2, z=3</span>
-  <span class="hljs-keyword">const</span> [x,,z] = [<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]; <span class="hljs-comment">//result: x=3, z=5</span>
+<li>For Arrays:<pre><code class="lang-js"><span class="hljs-keyword">const</span> [x, y, z] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]; <span class="hljs-comment">//result: x=1, y=2, z=3</span>
+<span class="hljs-keyword">const</span> [x, , z] = [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]; <span class="hljs-comment">//result: x=3, z=5</span>
 </code></pre>
 </li>
-<li>For Objects:<pre><code class="lang-js">  <span class="hljs-keyword">let</span> objectX = {x:<span class="hljs-number">1</span>, y:<span class="hljs-number">2</span>, z:<span class="hljs-number">3</span>};
-  <span class="hljs-keyword">const</span> {x:a, y:b, z:c} = objectX;
-  <span class="hljs-comment">// result: a=1, b=2, c=3</span>
-  <span class="hljs-keyword">const</span> {prop1, prop2, prop3} =<span class="hljs-keyword">this</span>.props;
-  <span class="hljs-comment">// the three properties of the props will be assigned to prop1, prop2, prop3 respectively.</span>
+<li>For Objects:<pre><code class="lang-js"><span class="hljs-keyword">let</span> objectX = { x: <span class="hljs-number">1</span>, y: <span class="hljs-number">2</span>, z: <span class="hljs-number">3</span> };
+<span class="hljs-keyword">const</span> { x: a, y: b, z: c } = objectX;
+<span class="hljs-comment">// result: a=1, b=2, c=3</span>
+<span class="hljs-keyword">const</span> { prop1, prop2, prop3 } = <span class="hljs-keyword">this</span>.props;
+<span class="hljs-comment">// the three properties of the props will be assigned to prop1, prop2, prop3 respectively.</span>
 </code></pre>
 </li>
 </ul>
@@ -898,10 +937,10 @@ let keyword is recommended for variable declaration.</p>
 </ul>
 <h4 id="comparison-operators">Comparison Operators</h4>
 <ul>
-<li>==     //equal to</li>
-<li>===    //identical (equal and of same type)</li>
-<li>!=    //Not equal</li>
-<li>!==    //Not identical</li>
+<li>== //equal to</li>
+<li>=== //identical (equal and of same type)</li>
+<li>!= //Not equal</li>
+<li>!== //Not identical</li>
 <li>&gt;</li>
 <li>&gt;=</li>
 <li>&lt;</li>
@@ -913,107 +952,113 @@ let keyword is recommended for variable declaration.</p>
 <li><code>bool &amp;&amp; string</code>, if bool true return string, if bool false return false.</li>
 </ul>
 <h4 id="conditionalternary-operator">Conditional(ternary) Operator</h4>
-<pre><code class="lang-js">variable = (condition)? value1 : value2
+<pre><code class="lang-js">variable = condition ? value1 : value2;
 </code></pre>
 <h4 id="membership-operator">Membership Operator</h4>
-<pre><code class="lang-js">i <span class="hljs-keyword">in</span> arrayX <span class="hljs-comment">//returns true if i is a member of arrayX</span>
-i <span class="hljs-keyword">in</span> arrayX === <span class="hljs-literal">false</span>   <span class="hljs-comment">//is true if i is not a member of arrayX</span>
-pushpin <span class="hljs-keyword">instanceof</span> Microsoft.Maps.Pushpin <span class="hljs-comment">//see if an object is of type a class</span>
-<span class="hljs-keyword">typeof</span> x !== <span class="hljs-string">&apos;undefined&apos;</span>  <span class="hljs-comment">//see if a variable is of certain type.</span>
+<pre><code class="lang-js">i <span class="hljs-keyword">in</span> arrayX; <span class="hljs-comment">//returns true if i is a member of arrayX</span>
+i <span class="hljs-keyword">in</span> arrayX === <span class="hljs-literal">false</span>; <span class="hljs-comment">//is true if i is not a member of arrayX</span>
+pushpin <span class="hljs-keyword">instanceof</span> Microsoft.Maps.Pushpin; <span class="hljs-comment">//see if an object is of type a class</span>
+<span class="hljs-keyword">typeof</span> x !== <span class="hljs-string">&quot;undefined&quot;</span>; <span class="hljs-comment">//see if a variable is of certain type.</span>
 </code></pre>
 <h3 id="control-structures">Control Structures</h3>
 <h4 id="conditional-structures">Conditional Structures</h4>
 <ul>
-<li><p>if-else</p>
+<li>if-else</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">if</span> (condition1) {
-<span class="hljs-comment">// code for condition1</span>
+  <span class="hljs-comment">// code for condition1</span>
 } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (condition2) {
-<span class="hljs-comment">// code for condition2</span>
+  <span class="hljs-comment">// code for condition2</span>
 } <span class="hljs-keyword">else</span> {
-<span class="hljs-comment">// code for all other conditions</span>
+  <span class="hljs-comment">// code for all other conditions</span>
 }
 </code></pre>
-</li>
-<li><p>switch</p>
+<ul>
+<li>switch</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">switch</span> (expression) {
   <span class="hljs-keyword">case</span> n1:
-      <span class="hljs-comment">//statements</span>
-      <span class="hljs-keyword">break</span>;
+    <span class="hljs-comment">//statements</span>
+    <span class="hljs-keyword">break</span>;
   <span class="hljs-keyword">case</span> n2:
-      <span class="hljs-comment">//statements</span>
-      <span class="hljs-keyword">break</span>;
+    <span class="hljs-comment">//statements</span>
+    <span class="hljs-keyword">break</span>;
   <span class="hljs-keyword">default</span>:
-      <span class="hljs-comment">//statements</span>
+  <span class="hljs-comment">//statements</span>
 }
 </code></pre>
-</li>
-</ul>
 <h4 id="loops">Loops</h4>
 <ul>
-<li><p>for loop</p>
+<li>for loop</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">for</span>(init; condition ; increment expression) {
-<span class="hljs-comment">//...</span>
+  <span class="hljs-comment">//...</span>
 }
 </code></pre>
 <ul>
-<li>init part can be declared before for loop<pre><code class="lang-js">init
+<li>init part can be declared before for loop</li>
+</ul>
+<pre><code class="lang-js">init
 <span class="hljs-keyword">for</span>(;con;<span class="hljs-keyword">in</span>)
 </code></pre>
-</li>
-<li>init part can declare two variable separated by ,<pre><code class="lang-js"><span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>,text=<span class="hljs-string">&quot;&quot;</span>;;){}
-</code></pre>
-</li>
-<li>increment expression can be written in the loop<pre><code class="lang-js"><span class="hljs-keyword">for</span>(init; con; ){
-<span class="hljs-comment">//increment expression</span>
-}
-</code></pre>
-</li>
-<li>if the condition part is missing, it is an infinite loop<pre><code class="lang-js"><span class="hljs-keyword">for</span>(;;){} <span class="hljs-comment">//This is an infinite loop</span>
-</code></pre>
-</li>
+<ul>
+<li>init part can declare two variable separated by ,</li>
 </ul>
-</li>
-<li><p>for...in loop</p>
-<pre><code class="lang-js"><span class="hljs-keyword">let</span> obj = {a: <span class="hljs-number">1</span>, b: <span class="hljs-number">2</span>, c: <span class="hljs-number">3</span>};
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> v <span class="hljs-keyword">in</span> obj) {
-<span class="hljs-built_in">console</span>.log(v);
+<pre><code class="lang-js"><span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>, text = <span class="hljs-string">&quot;&quot;</span>; ; ) {}
+</code></pre>
+<ul>
+<li>increment expression can be written in the loop</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">for</span> (init; con; ) {
+  <span class="hljs-comment">//increment expression</span>
 }
 </code></pre>
 <ul>
-<li>it is intended for iterating over the enumerable keys of an object.</li>
+<li>if the condition part is missing, it is an infinite loop</li>
 </ul>
+<pre><code class="lang-js"><span class="hljs-keyword">for</span> (;;) {} <span class="hljs-comment">//This is an infinite loop</span>
+</code></pre>
+<ul>
+<li>for...in loop</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> obj = { a: <span class="hljs-number">1</span>, b: <span class="hljs-number">2</span>, c: <span class="hljs-number">3</span> };
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> v <span class="hljs-keyword">in</span> obj) {
+  <span class="hljs-built_in">console</span>.log(v);
+}
+</code></pre>
+<ul>
+<li><p>it is intended for iterating over the enumerable keys of an object.</p>
 </li>
 <li><p>for...of loop</p>
+</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">let</span> list = [<span class="hljs-string">&quot;x&quot;</span>, <span class="hljs-string">&quot;y&quot;</span>, <span class="hljs-string">&quot;z&quot;</span>];
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> val <span class="hljs-keyword">of</span> list) {
-<span class="hljs-built_in">console</span>.log(val);
+  <span class="hljs-built_in">console</span>.log(val);
 }
 </code></pre>
 <ul>
-<li>it creates a loop iterating over iterable objects.</li>
-</ul>
+<li><p>it creates a loop iterating over iterable objects.</p>
 </li>
-</ul>
-<ul>
 <li><p>while loop</p>
-<pre><code class="lang-js"><span class="hljs-keyword">while</span>(condition) {
-<span class="hljs-comment">//...</span>
+</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">while</span> (condition) {
+  <span class="hljs-comment">//...</span>
 }
 </code></pre>
-</li>
-<li><p>do...while loop</p>
-<pre><code class="lang-js"><span class="hljs-keyword">do</span>{
-<span class="hljs-comment">//...</span>
-}<span class="hljs-keyword">while</span>(condition);
-</code></pre>
-</li>
-<li><p>break/continue statements</p>
 <ul>
-<li><code>break;</code> or  <code>continue;</code> statement can be placed at anywhere in the loop.</li>
+<li>do...while loop</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">do</span> {
+  <span class="hljs-comment">//...</span>
+} <span class="hljs-keyword">while</span> (condition);
+</code></pre>
+<ul>
+<li>break/continue statements</li>
+<li><code>break;</code> or <code>continue;</code> statement can be placed at anywhere in the loop.</li>
 <li><code>break;</code> is used to break out the loop.</li>
 <li><code>continue;</code> is used to skip the current iteration.</li>
-</ul>
-</li>
 </ul>
 <h3 id="functions">Functions</h3>
 <ul>
@@ -1029,19 +1074,19 @@ pushpin <span class="hljs-keyword">instanceof</span> Microsoft.Maps.Pushpin <spa
    <span class="hljs-comment">//...</span>
  }
 </code></pre>
-<pre><code class="lang-js"> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a,b</span>) </span>{
-     <span class="hljs-keyword">var</span> c = a + b;
-     <span class="hljs-keyword">return</span> c;
- }
- <span class="hljs-built_in">document</span>.write(sum(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>));
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a, b</span>) </span>{
+  <span class="hljs-keyword">var</span> c = a + b;
+  <span class="hljs-keyword">return</span> c;
+}
+<span class="hljs-built_in">document</span>.write(sum(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>));
 </code></pre>
 <ul>
 <li>If a function has no return statement, the function will return undefined.</li>
 </ul>
 <h4 id="functions-with-default-values">Functions with Default Values</h4>
-<pre><code class="lang-js"> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params">a, b = 3, c = 42</span>) </span>{
-   <span class="hljs-keyword">return</span> a + b + c;
- }
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params">a, b = 3, c = 42</span>) </span>{
+  <span class="hljs-keyword">return</span> a + b + c;
+}
 </code></pre>
 <ul>
 <li>Values are stated on the right side of the parameter list.</li>
@@ -1057,25 +1102,25 @@ pushpin <span class="hljs-keyword">instanceof</span> Microsoft.Maps.Pushpin <spa
 <li>It can also be passed as an argument for a function that take a function as it&apos;s parameters.</li>
 </ul>
 <h4 id="arrow-functions">Arrow Functions</h4>
-<pre><code class="lang-js">  <span class="hljs-keyword">const</span> add = (x, y) =&gt; {
-    <span class="hljs-keyword">let</span> sum = x + y;  
-    <span class="hljs-built_in">console</span>.log(sum);
-    <span class="hljs-keyword">return</span> sum;
-    <span class="hljs-comment">//the value of add will be the sum.</span>
-  }
-  <span class="hljs-comment">//If no parameters uses</span>
-  <span class="hljs-keyword">const</span> x = () =&gt; alert(<span class="hljs-string">&quot;Hi&quot;</span>);
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> add = (x, y) =&gt; {
+  <span class="hljs-keyword">let</span> sum = x + y;
+  <span class="hljs-built_in">console</span>.log(sum);
+  <span class="hljs-keyword">return</span> sum;
+  <span class="hljs-comment">//the value of add will be the sum.</span>
+};
+<span class="hljs-comment">//If no parameters uses</span>
+<span class="hljs-keyword">const</span> x = () =&gt; alert(<span class="hljs-string">&quot;Hi&quot;</span>);
 </code></pre>
 <h4 id="nested-functions">Nested Functions</h4>
-<pre><code class="lang-js"> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outerFunction</span>(<span class="hljs-params">a, b, c = 0</span>) </span>{
-     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">innerFunction</span>(<span class="hljs-params">a, b</span>) </span>{
-         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;inner function called!&quot;</span>);
-         <span class="hljs-keyword">return</span> a * b;
-     };
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outerFunction</span>(<span class="hljs-params">a, b, c = 0</span>) </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">innerFunction</span>(<span class="hljs-params">a, b</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;inner function called!&quot;</span>);
+    <span class="hljs-keyword">return</span> a * b;
+  }
 
-     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;outer function called!&quot;</span>);
-     <span class="hljs-keyword">return</span> innerFunction(b, c) + innerFunction(a, c);
- }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;outer function called!&quot;</span>);
+  <span class="hljs-keyword">return</span> innerFunction(b, c) + innerFunction(a, c);
+}
 </code></pre>
 <h4 id="promise">Promise</h4>
 <ul>
@@ -1085,31 +1130,36 @@ pushpin <span class="hljs-keyword">instanceof</span> Microsoft.Maps.Pushpin <spa
 </ul>
 <h5 id="create-a-promise-as-a-variable">Create a Promise as a variable</h5>
 <pre><code class="lang-js"><span class="hljs-keyword">let</span> myPromise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve, reject) =&gt; {
-    <span class="hljs-keyword">if</span> (condition) {
-      resolve(data);
-    } <span class="hljs-keyword">else</span> {
-      reject();
-    }
+  <span class="hljs-keyword">if</span> (condition) {
+    resolve(data);
+  } <span class="hljs-keyword">else</span> {
+    reject();
+  }
 });
 <span class="hljs-comment">//Pass data to the promise, get result from resolve in then, get result from reject in catch.</span>
 <span class="hljs-comment">//The .then will only be called if the resolve function is called. .catch is for reject().</span>
-myPromise.then(data =&gt; {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Resolved: &apos;</span> + data);
-}).catch(() =&gt; {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Rejected&quot;</span>);
-});
+myPromise
+  .then(data =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Resolved: &quot;</span> + data);
+  })
+  .catch(() =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Rejected&quot;</span>);
+  });
 </code></pre>
 <h5 id="chained-then-functions">Chained then Functions</h5>
 <p><code>.then()</code> can be chained the latter then function has access to the data returned by previous then function.</p>
-<pre><code class="lang-js">myPromise.then(data =&gt; {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Received: &apos;</span> + data);
-  <span class="hljs-keyword">let</span> moreData = <span class="hljs-string">&quot;Another payload&quot;</span>;
-  <span class="hljs-keyword">return</span> moreData;
-}).then(data =&gt; {
-  <span class="hljs-built_in">console</span>.log(data);
-}).catch(() =&gt; {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;There was an error&quot;</span>);
-});
+<pre><code class="lang-js">myPromise
+  .then(data =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Received: &quot;</span> + data);
+    <span class="hljs-keyword">let</span> moreData = <span class="hljs-string">&quot;Another payload&quot;</span>;
+    <span class="hljs-keyword">return</span> moreData;
+  })
+  .then(data =&gt; {
+    <span class="hljs-built_in">console</span>.log(data);
+  })
+  .catch(() =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;There was an error&quot;</span>);
+  });
 </code></pre>
 <h5 id="create-a-promise-as-a-function">Create a Promise as a Function</h5>
 <p>Promise can be created in a function and return as the result of the function, then it can be called use the function name.</p>
@@ -1122,10 +1172,10 @@ myPromise.then(data =&gt; {
 }
 </code></pre>
 <ul>
-<li>A function returns a promise can be assigned to a variable, the variable will have a value when the promise is resolved or rejected.<pre><code class="lang-js"><span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> promiseFunction();
-</code></pre>
-</li>
+<li>A function returns a promise can be assigned to a variable, the variable will have a value when the promise is resolved or rejected.</li>
 </ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> promiseFunction();
+</code></pre>
 <h4 id="async-functions">Async Functions</h4>
 <ul>
 <li>It runs asynchronously and controls the order of execution of the functions it contains. It use return keyword to return a promise.</li>
@@ -1156,38 +1206,41 @@ const functionName = async () =&gt; {</li>
   <span class="hljs-keyword">const</span> b = <span class="hljs-keyword">await</span> promiseFunctionTwo();
   <span class="hljs-keyword">const</span> c = <span class="hljs-keyword">await</span> promiseFunctionThree();
 
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${ a }</span> <span class="hljs-subst">${ b }</span> <span class="hljs-subst">${ c }</span>`</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${a}</span> <span class="hljs-subst">${b}</span> <span class="hljs-subst">${c}</span>`</span>);
 }
 
 <span class="hljs-comment">//call the  functionName() async function to run the code inside the function.</span>
- functionName();
+functionName();
 </code></pre>
 <h5 id="promiseall">Promise.all</h5>
 <ul>
 <li>Promise.all takes an array of functions and returns an array with the resolved values once all the passed-in promises have resolved.</li>
-<li><p>All functions start at the same time.</p>
+<li>All functions start at the same time.</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">functionName</span>(<span class="hljs-params"></span>) </span>{
-<span class="hljs-keyword">const</span> [a, b, c] = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all([promiseFunctionOne(), promiseFunctionTwo(), promiseFunctionThree()]);
+  <span class="hljs-keyword">const</span> [a, b, c] = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all([
+    promiseFunctionOne(),
+    promiseFunctionTwo(),
+    promiseFunctionThree()
+  ]);
 
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${ a }</span> <span class="hljs-subst">${ b }</span> <span class="hljs-subst">${ c }</span>`</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${a}</span> <span class="hljs-subst">${b}</span> <span class="hljs-subst">${c}</span>`</span>);
 }
 functionName();
 </code></pre>
-</li>
-</ul>
 <h3 id="classes">Classes</h3>
 <pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
-    <span class="hljs-keyword">constructor</span>(name, id, balance = 0) {
-        <span class="hljs-keyword">this</span>.name = name;
-        <span class="hljs-keyword">this</span>.id = id;
-        <span class="hljs-keyword">this</span>.balance = balance;
-    }
-    addItem(price) {
-        <span class="hljs-keyword">this</span>.balance += price;
-    }
+  <span class="hljs-keyword">constructor</span>(name, id, balance = 0) {
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.id = id;
+    <span class="hljs-keyword">this</span>.balance = balance;
+  }
+  addItem(price) {
+    <span class="hljs-keyword">this</span>.balance += price;
+  }
 }
 
-<span class="hljs-keyword">let</span> x = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Jim&quot;</span>,<span class="hljs-number">1</span>,<span class="hljs-number">100</span>);
+<span class="hljs-keyword">let</span> x = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Jim&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">100</span>);
 </code></pre>
 <ul>
 <li>extends and static keywords are also supported.</li>
@@ -1212,13 +1265,13 @@ functionName();
 <ul>
 <li>Strings can be enclosed by either single quotes and double quotes. when use single quotes, double quotes can be used without the escape character \. when use double quotes, single quotes can be used inside.</li>
 <li>Uses <code>+</code> sign for concatenation.</li>
-<li><code>parseInt(&quot;10&quot;)</code>,     converts a string into int.</li>
-<li><code>parseFloat(&quot;2.3&quot;)</code>    converts a string into float.</li>
+<li><code>parseInt(&quot;10&quot;)</code>, converts a string into int.</li>
+<li><code>parseFloat(&quot;2.3&quot;)</code> converts a string into float.</li>
 <li>If conversion between a string and a number failed, returns NaN.</li>
-<li><code>s.repeat(3);</code>    returns a repeated string <code>s</code>, for three times.</li>
+<li><code>s.repeat(3);</code> returns a repeated string <code>s</code>, for three times.</li>
 <li><code>s.length</code> return the length of s.</li>
-<li><code>s.split(c)</code>;  turn string into an array, split by character <code>c</code>.</li>
-<li><code>s1.includes(&quot;s2&quot;)</code>  return bool value states if s1 includes s2.</li>
+<li><code>s.split(c)</code>; turn string into an array, split by character <code>c</code>.</li>
+<li><code>s1.includes(&quot;s2&quot;)</code> return bool value states if s1 includes s2.</li>
 <li>Template literals are a way to output variables in the string. <code>&apos;Value: ${variable}&apos;</code>.</li>
 <li>click to see the docs for string.</li>
 </ul>
@@ -1230,59 +1283,64 @@ functionName();
 </ul>
 <h5 id="creating-new-object">Creating New Object:</h5>
 <ul>
-<li>Create an empty object:<pre><code class="lang-js"><span class="hljs-keyword">let</span> objectName = { };
+<li>Create an empty object:</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> objectName = {};
 </code></pre>
-</li>
-<li><p>Create an object with multiple variables:</p>
+<ul>
+<li>Create an object with multiple variables:</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> person = {
-name: <span class="hljs-string">&quot;John Dow&quot;</span>,
-age: <span class="hljs-number">31</span>,
-favColor: <span class="hljs-string">&quot;green&quot;</span>,
-height: <span class="hljs-number">186</span>,
+  name: <span class="hljs-string">&quot;John Dow&quot;</span>,
+  age: <span class="hljs-number">31</span>,
+  favColor: <span class="hljs-string">&quot;green&quot;</span>,
+  height: <span class="hljs-number">186</span>
 };
 </code></pre>
-</li>
-<li><p>Create an object with methods:</p>
+<ul>
+<li>Create an object with methods:</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">let</span> person = {
   name: <span class="hljs-string">&quot;Sam Scott&quot;</span>,
   id: <span class="hljs-number">1021</span>,
   balance: <span class="hljs-number">123.99</span>,
   addItem: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">price</span>) </span>{
-      <span class="hljs-keyword">this</span>.balance = <span class="hljs-keyword">this</span>.balance + price;
+    <span class="hljs-keyword">this</span>.balance = <span class="hljs-keyword">this</span>.balance + price;
   }
 };
 </code></pre>
-</li>
-<li><p>Add Object&apos;s properties after object declaration:</p>
-<pre><code class="lang-js"><span class="hljs-keyword">let</span> circle = {};  
+<ul>
+<li>Add Object&apos;s properties after object declaration:</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> circle = {};
 circle.radius = <span class="hljs-number">5.3</span>;
-circle.getArea = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.radius * <span class="hljs-keyword">this</span>.radius * <span class="hljs-built_in">Math</span>.PI
+circle.getArea = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.radius * <span class="hljs-keyword">this</span>.radius * <span class="hljs-built_in">Math</span>.PI;
 };
 </code></pre>
-</li>
-<li><p>Property shorthand</p>
+<ul>
+<li>Property shorthand</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">let</span> height = <span class="hljs-number">5</span>;
 <span class="hljs-keyword">let</span> health = <span class="hljs-number">100</span>;
 <span class="hljs-keyword">let</span> athlete = {
-height,
-health
+  height,
+  health
 };
 </code></pre>
-</li>
-<li><p>Shorthand object definitions syntax</p>
+<ul>
+<li>Shorthand object definitions syntax</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">let</span> time = {
-day: <span class="hljs-number">10</span>,
-month: <span class="hljs-string">&apos;Feb&apos;</span>,
-nextWeek() {
-  <span class="hljs-keyword">this</span>.day += <span class="hljs-number">7</span>;
-}
+  day: <span class="hljs-number">10</span>,
+  month: <span class="hljs-string">&quot;Feb&quot;</span>,
+  nextWeek() {
+    <span class="hljs-keyword">this</span>.day += <span class="hljs-number">7</span>;
+  }
 };
 time.nextWeek();
 <span class="hljs-built_in">console</span>.log(time.day); <span class="hljs-comment">// Output: 17</span>
 </code></pre>
-</li>
-</ul>
 <h5 id="accessing-object-properties">Accessing Object Properties</h5>
 <p>Objects are like associative arrays, instance variable and method can all be accessed by the named index. They can also be accessed using the dot format.</p>
 <pre><code class="lang-js">node.style[<span class="hljs-string">&quot;color&quot;</span>] = <span class="hljs-string">&quot;blue&quot;</span>;
@@ -1291,13 +1349,12 @@ node.style.color = <span class="hljs-string">&quot;blue&quot;</span>;
 <h5 id="object-constructor-function">Object Constructor Function.</h5>
 <p>It is a good idea to capitalize the first letter of the constructor name to distinguish it from others.</p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>{
-  <span class="hljs-keyword">this</span>.name = name;  
+  <span class="hljs-keyword">this</span>.name = name;
   <span class="hljs-keyword">this</span>.age = age;
-  <span class="hljs-keyword">this</span>.changeName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">variableName</span>) </span>{
+  <span class="hljs-keyword">this</span>.changeName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">variableName</span>) </span>{
     <span class="hljs-keyword">this</span>.variableName = variableName;
-  }
+  };
 }
-
 
 <span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;David&quot;</span>, <span class="hljs-number">21</span>);
 p.changeName(<span class="hljs-string">&quot;John&quot;</span>);
@@ -1305,7 +1362,7 @@ p.changeName(<span class="hljs-string">&quot;John&quot;</span>);
 </code></pre>
 <pre><code class="lang-js"><span class="hljs-comment">//Define the function outside the constructor function and associate it with the object.</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>{
-  <span class="hljs-keyword">this</span>.name= name;  
+  <span class="hljs-keyword">this</span>.name = name;
   <span class="hljs-keyword">this</span>.age = age;
   <span class="hljs-keyword">this</span>.yearOfBirth = bornYear;
 }
@@ -1326,17 +1383,17 @@ p.changeName(<span class="hljs-string">&quot;John&quot;</span>);
 </ul>
 <h4 id="creating-arrays">Creating Arrays</h4>
 <ul>
-<li><p>Array Constructor</p>
+<li>Array Constructor</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> courses = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-string">&quot;HTML&quot;</span>, <span class="hljs-string">&quot;CSS&quot;</span>, <span class="hljs-string">&quot;JS&quot;</span>);
-<span class="hljs-keyword">var</span> courses = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">3</span>);   <span class="hljs-comment">// New array with three elements</span>
+<span class="hljs-keyword">var</span> courses = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">3</span>); <span class="hljs-comment">// New array with three elements</span>
 </code></pre>
-</li>
-<li><p>Array literal(Recommended)</p>
+<ul>
+<li>Array literal(Recommended)</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> courses = [<span class="hljs-string">&quot;HTML&quot;</span>, <span class="hljs-string">&quot;CSS&quot;</span>, <span class="hljs-string">&quot;JS&quot;</span>];
 <span class="hljs-keyword">var</span> courses = []; <span class="hljs-comment">// empty array using literal.</span>
 </code></pre>
-</li>
-</ul>
 <h4 id="accessing-array">Accessing Array</h4>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> courses = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();
 courses[<span class="hljs-number">0</span>] = <span class="hljs-string">&quot;HTML&quot;</span>;
@@ -1345,17 +1402,16 @@ courses[<span class="hljs-number">2</span>] = <span class="hljs-string">&quot;JS
 courses[<span class="hljs-number">3</span>] = <span class="hljs-string">&quot;C++&quot;</span>;
 </code></pre>
 <h4 id="array-methods">Array Methods</h4>
-<pre><code class="lang-js">array.length //return the length
-array.concat(a1,a2) //return the concatenated a1 and a2
-array.push(&quot;newElement&quot;); //add new element to the array and return counts.
-array.includes(&quot;elementX&quot;);//return true if array contains elementX, false if not.
-array.forEach(function(i){//forEach iterates each element of the array as an argument of the function.
-  //function code
+<pre><code class="lang-js">array.length; <span class="hljs-comment">//return the length</span>
+array.concat(a1, a2); <span class="hljs-comment">//return the concatenated a1 and a2</span>
+array.push(<span class="hljs-string">&quot;newElement&quot;</span>); <span class="hljs-comment">//add new element to the array and return counts.</span>
+array.includes(<span class="hljs-string">&quot;elementX&quot;</span>); <span class="hljs-comment">//return true if array contains elementX, false if not.</span>
+array.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i</span>) </span>{
+  <span class="hljs-comment">//forEach iterates each element of the array as an argument of the function.</span>
+  <span class="hljs-comment">//function code</span>
 });
-array.filter(i=&gt;i.id!==1); //filter an array item that has id not equal to 1.
-arrays.map(array =&gt; (//create an array of element base on an array data
-    &lt;li key={array.id}&gt;{array.value}&lt;/li&gt;
-))
+array.filter(i =&gt; i.id !== <span class="hljs-number">1</span>); <span class="hljs-comment">//filter an array item that has id not equal to 1.</span>
+[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map(x =&gt; <span class="hljs-number">2</span> * x); <span class="hljs-comment">//return an array of element base on an array of data.</span>
 </code></pre>
 <h4 id="associative-array">Associative Array</h4>
 <p>Technically, associative array is an object. Array methods cannot be used on associative array.</p>
@@ -1367,16 +1423,18 @@ person[<span class="hljs-string">&quot;age&quot;</span>] = <span class="hljs-num
 </code></pre>
 <h4 id="spread-operator">Spread operator</h4>
 <ul>
-<li><p>It turns an array into a list of its element.</p>
+<li>It turns an array into a list of its element.</li>
+</ul>
 <pre><code class="lang-js">...array = (array[<span class="hljs-number">0</span>], array[<span class="hljs-number">1</span>], array[<span class="hljs-number">2</span>], ...)
 </code></pre>
-</li>
-<li><p>It can be used to insert elements of an array into another array&apos;s elements.</p>
-<pre><code class="lang-js">array1 = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];
-array2 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>, ...array1, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>];
+<ul>
+<li>It can be used to insert elements of an array into another array&apos;s elements.</li>
+</ul>
+<pre><code class="lang-js">array1 = [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
+array2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, ...array1, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>];
 <span class="hljs-comment">//same as array2 = [1,2,3,4,5,6,7];</span>
 </code></pre>
-</li>
+<ul>
 <li><code>...rest</code>, can be used to represent the rest elements of an array.</li>
 </ul>
 <h3 id="window-object">Window Object</h3>
@@ -1386,7 +1444,7 @@ array2 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
 <span class="hljs-built_in">console</span>.log(string, variable); <span class="hljs-comment">// auto concatenate its argument.</span>
 Window.localStorage object.
 <span class="hljs-comment">// Simulate a mouse click:</span>
-<span class="hljs-built_in">window</span>.location.href = <span class="hljs-string">&quot;http://www.example.com&quot;</span>;  
+<span class="hljs-built_in">window</span>.location.href = <span class="hljs-string">&quot;http://www.example.com&quot;</span>;
 <span class="hljs-comment">// Simulate an HTTP redirect:</span>
 <span class="hljs-built_in">window</span>.location.replace(<span class="hljs-string">&quot;http://www.example.com&quot;</span>);
 <span class="hljs-comment">//open a new tab</span>
@@ -1406,34 +1464,34 @@ setTimeout(functionName, milliseconds);<span class="hljs-comment">//Executes a f
 <h3 id="date-object">Date Object</h3>
 <h4 id="create-new-date-object">Create New Date Object</h4>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); <span class="hljs-comment">//d stores the current date and time</span>
-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(milliseconds)
-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(dateString)
-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(year, month, day, hours, minutes, seconds, milliseconds)
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(milliseconds);
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(dateString);
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(year, month, day, hours, minutes, seconds, milliseconds);
 </code></pre>
 <h4 id="methods">Methods</h4>
-<pre><code class="lang-js">date.getFullYear()    <span class="hljs-comment">//gets the year</span>
-date.getMonth()
-date.getDate()
-date.getDay()
-date.getHours()
-date.getMinutes()
-date.getSeconds()
-date.getMilliseconds()
-date.getTime()  <span class="hljs-comment">//returns the number of milliseconds since January 1, 1970:</span>
-date.toDateString()
-date.toTimeString()
+<pre><code class="lang-js">date.getFullYear(); <span class="hljs-comment">//gets the year</span>
+date.getMonth();
+date.getDate();
+date.getDay();
+date.getHours();
+date.getMinutes();
+date.getSeconds();
+date.getMilliseconds();
+date.getTime(); <span class="hljs-comment">//returns the number of milliseconds since January 1, 1970:</span>
+date.toDateString();
+date.toTimeString();
 </code></pre>
 <ul>
 <li>JavaScript counts months from 0 to 11.</li>
 </ul>
 <h3 id="math-object">Math Object</h3>
 <h4 id="constants">Constants</h4>
-<pre><code class="lang-js"><span class="hljs-built_in">Math</span>.PI
-<span class="hljs-built_in">Math</span>.E            
-<span class="hljs-built_in">Math</span>.LN2        <span class="hljs-comment">//natural log of 2</span>
-<span class="hljs-built_in">Math</span>.LN10        <span class="hljs-comment">//natural log of 10</span>
-<span class="hljs-built_in">Math</span>.LOG2E        <span class="hljs-comment">//The base 2 of e</span>
-<span class="hljs-built_in">Math</span>.LOG10E        <span class="hljs-comment">//The base 10 log of e</span>
+<pre><code class="lang-js"><span class="hljs-built_in">Math</span>.PI;
+<span class="hljs-built_in">Math</span>.E;
+<span class="hljs-built_in">Math</span>.LN2; <span class="hljs-comment">//natural log of 2</span>
+<span class="hljs-built_in">Math</span>.LN10; <span class="hljs-comment">//natural log of 10</span>
+<span class="hljs-built_in">Math</span>.LOG2E; <span class="hljs-comment">//The base 2 of e</span>
+<span class="hljs-built_in">Math</span>.LOG10E; <span class="hljs-comment">//The base 10 log of e</span>
 </code></pre>
 <h4 id="methods">Methods</h4>
 <pre><code class="lang-js"><span class="hljs-built_in">Math</span>.sqrt(<span class="hljs-number">4</span>);
@@ -1447,7 +1505,7 @@ date.toTimeString()
 <span class="hljs-built_in">Math</span>.max(x,y,z,....)
 <span class="hljs-built_in">Math</span>.min(x,y,z,....)
 <span class="hljs-built_in">Math</span>.pow(x,y)
-<span class="hljs-built_in">Math</span>.round(x)
+<span class="hljs-built_in">Math</span>.round(x)      <span class="hljs-comment">//rounds a number to the nearest integer.</span>
 <span class="hljs-built_in">Math</span>.random()         <span class="hljs-comment">//random number between [0,1).</span>
 <span class="hljs-built_in">Math</span>.sin
 <span class="hljs-built_in">Math</span>.cos
@@ -1498,7 +1556,7 @@ date.toTimeString()
 <h4 id="nodelist-object">NodeList Object</h4>
 <ul>
 <li>If more than one node is found. Elements will be put in an nodeList</li>
-<li>NodeList is not an Array, it is possible to iterate over it with forEach().<pre><code class="lang-js">nodeListName.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nodeName</span>) </span>{   
+<li>NodeList is not an Array, it is possible to iterate over it with forEach().<pre><code class="lang-js">nodeListName.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nodeName</span>) </span>{
   <span class="hljs-comment">//do something for each node inside nodeList</span>
 });
 </code></pre>
@@ -1566,25 +1624,25 @@ date.toTimeString()
 <li>Adding event handlers, <code>&lt;p onclick=&quot;someFunc()&quot;&gt;some text&lt;/p&gt;</code></li>
 <li>The form tag has an onsubmit attribute that can be assigned to validation checking function. If the function return false the form will not be submitted. In HTML for example: <code>&lt;form onsubmit=&quot;returnvalidate()&quot; method=&quot;get&quot;&gt;&lt;/form&gt;</code></li>
 <li>Event handlers can be assigned to elements.<pre><code class="lang-js"><span class="hljs-keyword">var</span> x = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;demo&quot;</span>);
-x.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+x.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">document</span>.body.innerHTML = <span class="hljs-built_in">Date</span>();
-}
+};
 </code></pre>
 </li>
 <li><code>window.onload</code> event can be used to run code after the whole page is loaded.<pre><code class="lang-js"><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-   <span class="hljs-comment">//some code</span>
-}
+  <span class="hljs-comment">//some code</span>
+};
 </code></pre>
 </li>
 <li>List of events<ul>
 <li>onclick</li>
 <li>onload</li>
 <li>onunload</li>
-<li>onchange    //any change for inside a form</li>
+<li>onchange //any change for inside a form</li>
 <li>onmouseover</li>
-<li>onmouseout    //mouse move out</li>
-<li>onmousedown    //click mouse</li>
-<li>onmouseup    //release mouse</li>
+<li>onmouseout //mouse move out</li>
+<li>onmousedown //click mouse</li>
+<li>onmouseup //release mouse</li>
 <li>onblur</li>
 <li>onfocus</li>
 </ul>
@@ -1615,11 +1673,11 @@ x.onclick = <span class="hljs-function"><span class="hljs-keyword">function</spa
 <li>mousedown</li>
 <li>mouse</li>
 <li>submit</li>
-<li>input    //monitor any user input.</li>
+<li>input //monitor any user input.</li>
 <li>keyup</li>
-<li>change    //monitor input value change.</li>
-<li>focus    //monitor if an input element gain focus.</li>
-<li>blur    //monitor if an input element lose focus.</li>
+<li>change //monitor input value change.</li>
+<li>focus //monitor if an input element gain focus.</li>
+<li>blur //monitor if an input element lose focus.</li>
 <li>load<ul>
 <li>load event can be used for window.load function with act like the main method for the entire script. <code>window.addEventListener(&quot;load&quot;, function () {});</code></li>
 </ul>
@@ -1629,11 +1687,11 @@ x.onclick = <span class="hljs-function"><span class="hljs-keyword">function</spa
 <li>Event Object<ul>
 <li>event listeners always take an event object as its argument. It is always available inside the scope of the function that the event listener calls.</li>
 <li>in <code>function(event){}</code><ul>
-<li><code>event.target</code>     element that triggered event</li>
+<li><code>event.target</code> element that triggered event</li>
 <li><code>event.target.value</code> the trigger element&apos;s value</li>
-<li><code>event.which</code>    mouse button number</li>
-<li><code>event.clientX</code>    X location</li>
-<li><code>event.clientY</code>    Y location</li>
+<li><code>event.which</code> mouse button number</li>
+<li><code>event.clientX</code> X location</li>
+<li><code>event.clientY</code> Y location</li>
 <li><code>event.preventDefault()</code> can be used to stop URL redirects after user click submit.</li>
 <li><code>event.pageX</code>, or pageY the mouse position (X &amp; Y coordinates) at the time the event occurred, relative to the top left of the page.</li>
 <li><code>event.type</code> the type of the event (e.g. &quot;click&quot;).</li>
@@ -1661,31 +1719,37 @@ x.onclick = <span class="hljs-function"><span class="hljs-keyword">function</spa
 <li><code>url=&quot;text.php?nameParam=&quot;+name;</code> usually this PHP echo simple text according the input.</li>
 </ul>
 <h4 id="post-request">POST request</h4>
-<pre><code class="lang-js"><span class="hljs-keyword">let</span> param = <span class="hljs-string">&quot;min=&quot;</span> + min + <span class="hljs-string">&quot;&amp;max=&quot;</span> + max
-fetch(<span class="hljs-string">&quot;target.php&quot;</span>,{
-  method: <span class="hljs-string">&apos;POST&apos;</span>,
-  credentials: <span class="hljs-string">&apos;include&apos;</span>,
-  headers: { <span class="hljs-string">&quot;Content_Type&quot;</span>: <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span>},
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> param = <span class="hljs-string">&quot;min=&quot;</span> + min + <span class="hljs-string">&quot;&amp;max=&quot;</span> + max;
+fetch(<span class="hljs-string">&quot;target.php&quot;</span>, {
+  method: <span class="hljs-string">&quot;POST&quot;</span>,
+  credentials: <span class="hljs-string">&quot;include&quot;</span>,
+  headers: { Content_Type: <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span> },
   body: param
-}).then(response=&gt;response.text()).then(success);
+})
+  .then(response =&gt; response.text())
+  .then(success);
 </code></pre>
 <ul>
 <li>Content_Type specifies the format that used to pass the parameters.</li>
 <li>urlencoded style encodes parameter in url like GET url.</li>
-<li>Second parameter is an object contains request infomation. It can also be like:<pre><code class="lang-js"><span class="hljs-keyword">let</span> options = {};
-options.credentials = <span class="hljs-string">&apos;include&apos;</span>;
-fetch(URL, options).then(response=&gt;response.text()).then(success);
+<li>Second parameter is an object contains request infomation. It can also be like:</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> options = {};
+options.credentials = <span class="hljs-string">&quot;include&quot;</span>;
+fetch(URL, options)
+  .then(response =&gt; response.text())
+  .then(success);
 </code></pre>
-</li>
+<ul>
 <li>credentials:&apos;include&apos; means authorization headers and cookies are included in the request.</li>
 <li>success is the function that process the response.</li>
-<li>can chain more function in then after then.  asynchronously.<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">success</span>(<span class="hljs-params">text</span>) </span>{
+<li>can chain more function in then after then. asynchronously.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">success</span>(<span class="hljs-params">text</span>) </span>{
   <span class="hljs-keyword">let</span> span = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;target&quot;</span>);
   span.innerHTML = text;
 }
 </code></pre>
-</li>
-</ul>
 <h4 id="receive-json-data">Receive JSON data</h4>
 <ul>
 <li>HTTP can only transmit strings. Data transfer formats are used to translate data structures like an array or an object into strings.</li>
@@ -1693,29 +1757,31 @@ fetch(URL, options).then(response=&gt;response.text()).then(success);
 <li>In code change response.text() to response.json() to receive JSON data.</li>
 <li>JavaScript Object to JSON String, <code>JSON.stringify(data)</code></li>
 <li>Decode from JSON, <code>JSON.parse(string)</code></li>
-<li>Use <code>eval()</code> method convert json to javaScript objects<pre><code class="lang-js"><span class="hljs-comment">//Eval converts the STRING into a JavaScript Array Map</span>
-<span class="hljs-keyword">var</span> jsObj = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&apos;(&apos;</span> + JSONString + <span class="hljs-string">&apos;)&apos;</span>);
-</code></pre>
-</li>
+<li>Use <code>eval()</code> method convert json to javaScript objects</li>
 </ul>
+<pre><code class="lang-js"><span class="hljs-comment">//Eval converts the STRING into a JavaScript Array Map</span>
+<span class="hljs-keyword">var</span> jsObj = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;(&quot;</span> + JSONString + <span class="hljs-string">&quot;)&quot;</span>);
+</code></pre>
 <h3 id="geolocation">GeoLocation</h3>
 <ul>
 <li>The HTML Geolocation API is used to locate a user&apos;s position.</li>
 <li>Modern browsers support a global navigator object and the navigator object contains a navigator.geolocation property.</li>
 <li>To calculate the distance between two coordinates use <code>haversine()</code> function.<ul>
 <li>run <code>npm i haversine</code>.
-*</li>
+-</li>
 </ul>
 </li>
 </ul>
 <h4 id="getcurrentposition-method">getCurrentPosition Method</h4>
-<pre><code class="lang-javascript">navigator.geolocation.getCurrentPosition(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">position</span>)</span>{  <span class="hljs-comment">//callback returns position object  </span>
-<span class="hljs-keyword">if</span> (navigator.geolocation) { <span class="hljs-comment">//check if there is a geolocation object    </span>
-  latitude = position.coords.latitude;              
-  longitude = position.coords.longitude;    
-  accuracy = position.coords.accuracy;
-}
-},);
+<pre><code class="lang-javascript">navigator.geolocation.getCurrentPosition(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">position</span>) </span>{
+  <span class="hljs-comment">//callback returns position object</span>
+  <span class="hljs-keyword">if</span> (navigator.geolocation) {
+    <span class="hljs-comment">//check if there is a geolocation object</span>
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+    accuracy = position.coords.accuracy;
+  }
+});
 </code></pre>
 <ul>
 <li>The return object of callback function on success contains the following properties.<ul>
@@ -1747,18 +1813,19 @@ fetch(URL, options).then(response=&gt;response.text()).then(success);
 <li><code>maximumAge (ms)</code> - Is a positive value indicating the maximum age in milliseconds of a possible cached position that is acceptable to return. If set to 0, it means that the device cannot use a cached position and must attempt to retrieve the real current position. If set to Infinity the device will always return a cached position regardless of its age. Defaults to INFINITY.</li>
 <li><code>enableHighAccuracy (bool)</code> - Is a boolean representing if to use GPS or not. If set to true, a GPS position will be requested. If set to false, a WIFI location will be requested.</li>
 <li><code>distanceFilter (m)</code> - The minimum distance from the previous location to exceed before returning a new location. Set to 0 to not filter locations. Defaults to 100m.</li>
-<li><code>useSignificantChanges (bool)</code> - Uses the battery-efficient native significant changes APIs to return locations. Locations will only be returned when the device detects a significant distance has been breached. Defaults to FALSE.<h4 id="clearwatch-method">clearWatch Method</h4>
-Stops the watchPosition() method</li>
+<li><code>useSignificantChanges (bool)</code> - Uses the battery-efficient native significant changes APIs to return locations. Locations will only be returned when the device detects a significant distance has been breached. Defaults to FALSE.</li>
 </ul>
 </li>
 </ul>
+<h4 id="clearwatch-method">clearWatch Method</h4>
+<p>Stops the watchPosition() method</p>
 <h3 id="bing-maps">Bing Maps</h3>
 <ul>
 <li>Provide map to the webpage.</li>
 <li><a href="https://www.microsoft.com/en-us/maps/documentation" target="_blank">Click</a> to see full documents</li>
 <li><a href="https://www.bing.com/api/maps/sdk/mapcontrol/isdk/Overview#HTML" target="_blank">Click</a> to see sample codes.</li>
 <li>all of the map object has <code>getVisible()</code>, <code>getLocation()</code> methods.</li>
-<li>infobox properties can contain html tags in description property with close button.  <code>&lt;br&gt;</code> or <code>description: &quot;&lt;a href=&apos;#&apos; onclick=&apos;return directions(&quot; + variableName + &quot;);&quot; + &quot;&apos;&gt;directions&lt;/a&gt;&quot;</code>.</li>
+<li>infobox properties can contain html tags in description property with close button. <code>&lt;br&gt;</code> or <code>description: &quot;&lt;a href=&apos;#&apos; onclick=&apos;return directions(&quot; + variableName + &quot;);&quot; + &quot;&apos;&gt;directions&lt;/a&gt;&quot;</code>.</li>
 </ul>
 <h4 id="set-up">Set up</h4>
 <p>API key is required to use the map.</p>
@@ -1772,21 +1839,23 @@ Stops the watchPosition() method</li>
 <h3 id="export">Export</h3>
 <ul>
 <li>In a separate javascript file for certain modules, any variable, function, class can be started with an export keyword so other js file can import it and use it.</li>
-<li>Anything without the export keyword will not be available for other js files.<pre><code class="lang-js"><span class="hljs-comment">//export an array</span>
+<li>Anything without the export keyword will not be available for other js files.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">//export an array</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
 <span class="hljs-comment">//export a function</span>
-<span class="hljs-keyword">const</span> strings = [<span class="hljs-string">&apos;AA&apos;</span>, <span class="hljs-string">&apos;BB&apos;</span>, <span class="hljs-string">&apos;CC&apos;</span>]; <span class="hljs-comment">// Not available directly outside the module</span>
+<span class="hljs-keyword">const</span> strings = [<span class="hljs-string">&quot;AA&quot;</span>, <span class="hljs-string">&quot;BB&quot;</span>, <span class="hljs-string">&quot;CC&quot;</span>]; <span class="hljs-comment">// Not available directly outside the module</span>
 <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"></span>) </span>{
-<span class="hljs-built_in">console</span>.log(strings);
+  <span class="hljs-built_in">console</span>.log(strings);
 }
 <span class="hljs-comment">//export a class</span>
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassName</span> </span>{
- <span class="hljs-keyword">constructor</span>() {
-   <span class="hljs-comment">// ...</span>
- }
+  <span class="hljs-keyword">constructor</span>() {
+    <span class="hljs-comment">// ...</span>
+  }
 }
 </code></pre>
-</li>
+<ul>
 <li><code>export</code> keyword can be placed at the end and use curly brackets to enclosed everything needed to export.</li>
 <li>When exporting arrow function, declare the function variable proper using <code>const</code>.</li>
 <li><code>as</code> keyword is used for alias.<ul>
@@ -1853,7 +1922,7 @@ Stops the watchPosition() method</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.4","depth":1,"next":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-01-30T16:30:09.543Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-03T02:49:41.696Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.4","depth":1,"next":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-03-18T18:50:05.852Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -113,6 +113,25 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../python/anaconda.html">
+            
+                <a href="../python/anaconda.html">
+            
+                    
+                    Anaconda
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.3" data-path="../java/">
@@ -506,7 +525,7 @@
                 <a href="../solution-stack/">
             
                     
-                    Solution-Stack
+                    Solution Stack
             
                 </a>
             
@@ -582,6 +601,25 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../linux/regex.html">
+            
+                <a href="../linux/regex.html">
+            
+                    
+                    Regular Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -759,83 +797,130 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Node.js
-It is an open-source JavaScript runtime environment.
-It is a program that runs javascript on the server.
-It is built on Google&apos;s Chrome V8 open-source JavaScript engine, and wrapped with a C++ program.
-It is asynchronous by default.
-Codes for node.js is contained in .js file.
-node.js codes can be run in the command line using node fileName.js. console output of the js file will be shown in the terminal after execution.</p>
-<p>jshint command runs error check for the js file. It will output the summarized errors message for debugging.
-node.js doesn&#x2019;t not have window, document objects.
-Installer is available for download from nodejs.org.
-node --version to check version</p>
-<p>global object
-global object is an object in node.js that contains all the global functions.
-global functions can be used any where in node.js code.
-In Browsers these objects belong to window object instead of global object
-console.log();
-setTimeout();
-setTimeout();  //call a function after a delay
-clearTimeout()
-setInterval();   //repeatedly call a function after a delay.
-clearInterval();</p>
-<p>Modules
-Every file in node.js is a module that has its own scope. it is private to other files.
-The module file that is run by the server is called the main module.
-each module has a module object that stores the module&#x2019;s info.
-every module has a wrapper function with the following arguments: exports, require, module, <strong>dirname, </strong>filename</p>
-<p>A module object has to be exported for other module to use:
-const module,exports.objectExportName = objectName;
-To export a function
-module.exports = functionName</p>
-<p>A module has to import an exported module object in order to use it:
-const objectName = require(&#x2018;filePath&#x2019;);   (extenstion is not required in the filePath)</p>
-<p>Buildin modules
-check the official docs for all builtin Modules.</p>
-<p>import modules
-const modulesName =require(&#x2018;moduleName&#x2019;);</p>
-<p>Any method name end with Sync is a synchronous method.
-Removing Sync from a Synchronous method will make it an asynchronous method, it has a second parameter as the call back function.
-callback function will be called when the asynchronous operation is completed.
-Most of the callback functions have two parameters. first is the error, the second parameter is the result.</p>
-<p>Path module
-require(&#x2018;path&#x2019;);</p>
-<p>methods
-.parse(variableName)   //return the path of the file containing the variable as the argument.</p>
-<p>OS module
-require(&#x2018;os&#x2019;);
-methods
-.totalmem();       //total memory
-.freemem();    //free memory</p>
-<p>File System module
-require(&#x2018;fs&#x2019;);
-.readdir(folderPath,callBack);  return an array of string for fileNames
-.readdirSync(folderPath);  return an array of string for fileNames</p>
-<p>Events module
-require(&#x2018;events&#x2019;);
-This is a class, an object is needed.</p>
-<p>import and define class
-const EventEmitter = require(&#x2018;events&#x2019;);
-instantiate an instance of the class
-const emitter = new EventEmitter();</p>
-<p>.on(&#x2018;eventName&#x2019;,function(eventArgs){//the listener callback function})<br>                    //add event, eventArgs is optional. it is a json style js object for pass data into the event.
-                    //same as .addListener</p>
-<p>.emit(&#x2018;eventName&#x2019;,(eventObject))   //raise an event.
-eventObject can be {name1:value1, name2:value2,&#x2026;}</p>
-<p>In practice, Create a new class that extends the EventEmitter class with the defined event listener.
-const EventEmitter = require(&#x2018;events&#x2019;);
-class ClassName extends EventEmitter {
-    functionName() {
-        this.emit(&#x2026;);
-    }
-}</p>
-<p>HTTP module
-require(&#x2018;fs&#x2019;);</p>
-<p>const server = http.createServer();   create server object, it is inherited from EventEmitter class.
-for server object</p>
-<p>server.on(&#x2018;connection&#x2019;, (socket)=&gt;{&#x2026;})  //add event handler for connection event.
-server.listen(portNumber)  //make the server listen on certain port.</p>
+                                <h1 id="nodejs">Node.js</h1>
+<ul>
+<li>It is an open-source JavaScript runtime environment.</li>
+<li>It is a program that runs javascript on the server.</li>
+<li>It is built on Google&apos;s Chrome V8 open-source JavaScript engine and wrapped with a <code>C++</code> program.</li>
+<li>It is asynchronous by default.</li>
+<li>Codes for node.js is contained in <code>.js</code> file.</li>
+<li>node.js codes can be run in the command line using <code>node fileName.js</code>. console output of the js file will be shown in the terminal after execution.</li>
+<li><code>jshint</code> command runs error check for the js file. It will output the summarized errors message for debugging.</li>
+<li>node.js does not have <code>window</code>, <code>document</code> objects.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ul>
+<li>Installer is available from <a href="nodejs.org">nodejs.org</a>.</li>
+</ul>
+<h2 id="global-object">Global object</h2>
+<ul>
+<li>Global object is an object in node.js that contains all the global functions.</li>
+<li>global functions can be used anywhere in node.js code.</li>
+<li>In Browsers these objects belong to window object instead of global object.</li>
+<li>Common global objects<ul>
+<li>console.log();</li>
+<li>setTimeout();</li>
+<li>setTimeout(); It calls a function after a delay</li>
+<li>clearTimeout()</li>
+<li>setInterval(); It repeatedly calls a function after a delay.</li>
+<li>clearInterval();</li>
+</ul>
+</li>
+</ul>
+<h2 id="modules">Modules</h2>
+<ul>
+<li>Every file in node.js is a module that has its own scope. it is private to other files.</li>
+<li>The module file that is run by the server is called the main module.</li>
+<li>Click here to see the <a href="https://nodejs.org/api/modules.html" target="_blank">Docs</a> about modules</li>
+<li>Each module has a <code>module</code> object that stores the module&apos;s info.</li>
+<li>Every module file is wrapped by a wrapper function as follow:</li>
+</ul>
+<pre><code class="lang-js">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">exports, require, module, __filename, __dirname</span>) </span>{
+  <span class="hljs-comment">// Module code actually lives in here</span>
+});
+</code></pre>
+<ul>
+<li><code>__filename</code> is the file name of the current module.</li>
+<li><code>__dirname</code> is the directory name of the current module.</li>
+<li><code>module</code> is a reference to the current module</li>
+</ul>
+<h3 id="export-modules">Export Modules</h3>
+<p>A module object has to be exported for other module to use:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> <span class="hljs-built_in">module</span>,exports.objectExportName = objectName;
+</code></pre>
+<ul>
+<li>To export a function: <code>module.exports = functionName</code></li>
+</ul>
+<h3 id="import-modules">Import Modules</h3>
+<p>A module has to import an exported module object before using it:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> moduleObjectName = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;filePath&quot;</span>);
+</code></pre>
+<ul>
+<li>extenstion is not required in the filePath</li>
+</ul>
+<h2 id="buildin-modules">Buildin Modules</h2>
+<ul>
+<li>check the official docs for all builtin Modules.</li>
+<li>Any method name end with <code>Sync</code> is a synchronous method.</li>
+<li>Removing Sync from a Synchronous method will make it an asynchronous method, it has a second parameter as the call back function.</li>
+<li>Callback function will be called when the asynchronous operation is completed.</li>
+<li>Most of the callback functions have two parameters. first is the error, the second parameter is the result.</li>
+</ul>
+<h3 id="path-module">Path Module</h3>
+<ul>
+<li><code>require(&apos;path&apos;);</code></li>
+<li>Methods:<ul>
+<li><code>.parse(variableName)</code> It returns the path of the file containing the variable as the argument.</li>
+</ul>
+</li>
+</ul>
+<h3 id="os-module">OS Module</h3>
+<ul>
+<li><code>require(&apos;os&apos;);</code></li>
+<li>Methods:<ul>
+<li><code>.totalmem();</code> total memory</li>
+<li><code>.freemem();</code> free memory</li>
+</ul>
+</li>
+</ul>
+<h3 id="file-system-module">File System module</h3>
+<ul>
+<li><code>require(&apos;fs&apos;);</code></li>
+<li>Methods:<ul>
+<li><code>.readdir(folderPath,callBack);</code> return an array of string for fileNames</li>
+<li><code>.readdirSync(folderPath);</code> return an array of string for fileNames</li>
+</ul>
+</li>
+</ul>
+<h3 id="events-module">Events module</h3>
+<ul>
+<li><code>require(&apos;events&apos;);</code></li>
+<li>This is a class, an object is needed.
+<code>js const EventEmitter = require(&apos;events&apos;); const emitter = new EventEmitter();</code></li>
+<li>Method:<ul>
+<li><code>.on(&apos;eventName&apos;,function(eventArgs){//the listener callback function})</code><ul>
+<li>add event, eventArgs is optional. it is a json style js object for pass data into the event.</li>
+<li>same as using <code>.addListener</code></li>
+</ul>
+</li>
+<li><code>.emit(&apos;eventName&apos;,(eventObject))</code> raise an event.<ul>
+<li>eventObject can be <code>{name1:value1, name2:value2,&#x2026;}</code></li>
+<li>In practice, Create a new class that extends the EventEmitter class with the defined event listener.<code>const EventEmitter = require(&apos;events&apos;); class ClassName extends EventEmitter{ functionName(){ this.emit(&#x2026;); } } }</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="http-module">HTTP module</h3>
+<ul>
+<li><code>require(&apos;fs&apos;);</code></li>
+<li><code>const server = http.createServer();</code> create server object, it is inherited from EventEmitter class.</li>
+<li>Methods:<ul>
+<li><code>server.on(&apos;connection&apos;, (socket)=&gt;{&#x2026;})</code> add event handler for connection event.</li>
+<li><code>server.listen(portNumber)</code> make the server listen on certain port.</li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -879,7 +964,7 @@ server.listen(portNumber)  //make the server listen on certain port.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Node.js","level":"1.4.4","depth":2,"next":{"title":"C#","level":"1.5","depth":1,"path":"c-sharp/README.md","ref":"c-sharp/README.md","articles":[{"title":".NET","level":"1.5.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},{"title":"ASP.NET","level":"1.5.2","depth":2,"path":"c-sharp/asp-dot-net.md","ref":"c-sharp/asp-dot-net.md","articles":[]}]},"previous":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/node-js.md","mtime":"2020-01-06T01:24:43.966Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-03T02:49:41.696Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Node.js","level":"1.4.4","depth":2,"next":{"title":"C#","level":"1.5","depth":1,"path":"c-sharp/README.md","ref":"c-sharp/README.md","articles":[{"title":".NET","level":"1.5.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},{"title":"ASP.NET","level":"1.5.2","depth":2,"path":"c-sharp/asp-dot-net.md","ref":"c-sharp/asp-dot-net.md","articles":[]}]},"previous":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/node-js.md","mtime":"2020-03-07T20:23:44.885Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

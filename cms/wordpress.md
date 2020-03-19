@@ -43,6 +43,7 @@
 - Update WordPress - In the dashboard left panel, click on updates.
 - Change password - In the dashboard left panel, clicking the user name, then change the password.
 - Permalinks settings - The links format for your website pages. In the dashboard left panel, click settings -> Permalinks.
+- All of the settings are stored in the database table `wp-options`.
 
 ## Themes Management
 

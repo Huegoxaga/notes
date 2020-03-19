@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>React · GitBook</title>
+        <title>Regular Expression · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="react-native.html" />
+    <link rel="next" href="../virtualization/" />
     
     
-    <link rel="prev" href="jquery.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -179,9 +179,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="./">
+        <li class="chapter " data-level="1.4" data-path="../javascript/">
             
-                <a href="./">
+                <a href="../javascript/">
             
                     
                     JavaScript
@@ -193,9 +193,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="jquery.html">
+        <li class="chapter " data-level="1.4.1" data-path="../javascript/jquery.html">
             
-                <a href="jquery.html">
+                <a href="../javascript/jquery.html">
             
                     
                     jQuery
@@ -206,9 +206,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2" data-path="react.html">
+        <li class="chapter " data-level="1.4.2" data-path="../javascript/react.html">
             
-                <a href="react.html">
+                <a href="../javascript/react.html">
             
                     
                     React
@@ -219,9 +219,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="react-native.html">
+        <li class="chapter " data-level="1.4.3" data-path="../javascript/react-native.html">
             
-                <a href="react-native.html">
+                <a href="../javascript/react-native.html">
             
                     
                     React Native
@@ -232,9 +232,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="node-js.html">
+        <li class="chapter " data-level="1.4.4" data-path="../javascript/node-js.html">
             
-                <a href="node-js.html">
+                <a href="../javascript/node-js.html">
             
                     
                     Node.js
@@ -591,9 +591,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17" data-path="../linux/">
+        <li class="chapter " data-level="1.17" data-path="./">
             
-                <a href="../linux/">
+                <a href="./">
             
                     
                     Linux
@@ -605,9 +605,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.17.1" data-path="../linux/regex.html">
+        <li class="chapter active" data-level="1.17.1" data-path="regex.html">
             
-                <a href="../linux/regex.html">
+                <a href="regex.html">
             
                     
                     Regular Expression
@@ -782,7 +782,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >React</a>
+        <a href=".." >Regular Expression</a>
     </h1>
 </div>
 
@@ -797,205 +797,141 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="reactjs">React.js</h1>
+                                <h1 id="regular-expression">Regular Expression</h1>
+<h2 id="introduction">Introduction</h2>
 <ul>
-<li>A JavaScript library for building fast and interactive user interfaces.</li>
-<li>It is developed by facebook.</li>
-<li>Whenever the app files are saved the webpage will be reloaded(hot reloaded).</li>
+<li>It is a sequence of characters that define a search pattern.</li>
+<li>It will be &quot;executed&quot; on a string and return a search result.</li>
+<li>Matches will be found if a given string has this pattern.</li>
+<li>The result can be represented by a boolean value or indices.</li>
+<li>It was created in the 1950s, then introduced in the UNIX world.</li>
+<li>The pattern is surrounded by a set of <code>/</code>.</li>
+<li>Go to <a href="https://regexr.com" target="_blank">regexr.com</a> to test, practice and learn more about regular expression.</li>
 </ul>
-<h2 id="setup">Setup</h2>
-<h3 id="installation">Installation</h3>
-<ol>
-<li>Download and Install node.js from its official website</li>
-<li><code>run sudo npm i -g create-react-app</code></li>
-<li>Use Visual Studio Code with Simple React Snippets(enable shortcuts) and Prettier Plugins etc.</li>
-</ol>
-<h3 id="create-an-react-app">Create an React App</h3>
-<ol>
-<li>create-react-app appFolderName</li>
-<li>in app folder, run <code>npm start</code> to launch development server in port localhost: 3000.</li>
-</ol>
-<h3 id="configuration-for-production-environment">Configuration for production Environment</h3>
-<p><code>npm run eject</code></p>
-<h2 id="indexjs"><code>index.js</code></h2>
-<p><code>index.js</code> is the entry point of the react app, it is used to import and associate components and html DOM elements .</p>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;  <span class="hljs-comment">//get the React library for creating elements and components using jsx syntax.</span>
-<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-dom&quot;</span>;<span class="hljs-comment">//Get DOM for component association</span>
-<span class="hljs-keyword">import</span> componentName <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/componentName&quot;</span>;
-<span class="hljs-comment">//import css</span>
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./cssFile.css&quot;</span>;
-
-<span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>  <span class="hljs-comment">//create new element.</span>
-ReactDOM.render(element, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;id1&quot;</span>));  <span class="hljs-comment">//associate components with DOM</span>
-ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ComponentName</span> /&gt;</span>, document.getElementById(&quot;id2&quot;));
-</span></code></pre>
-<h2 id="component">Component</h2>
+<h2 id="syntax">Syntax</h2>
+<h3 id="literal-matches">Literal Matches</h3>
 <ul>
-<li>React app is made up by UI component.<h3 id="app-component">App Component</h3>
+<li>The characters inside will be searched as a pattern one by one.</li>
+<li><code>/a/</code> will search for the character <code>a</code>.</li>
+<li><code>/abc/</code> will search for characters <code>a</code> immediately followed by <code>b</code>, then <code>c</code>.(or word <code>abc</code>).</li>
+</ul>
+<h3 id="metacharacters">Metacharacters</h3>
+<ul>
+<li>They are placed inside the pattern to add special rules.</li>
+<li>When the literal meanings of the following characters are needed, prepend a <code>\</code> to escape.</li>
+<li><code>\</code><ul>
+<li>Escape metacharacters</li>
+<li>Whitespace characters<ul>
+<li><code>[\b]</code> backspace</li>
+<li><code>\f</code> form feed</li>
+<li><code>\n</code> line feed</li>
+<li><code>\r</code> carriage return</li>
+<li><code>\t</code> tab</li>
+<li><code>\v</code> vertical tab</li>
+<li>The use of the whitespace characters is highly dependent on the current OS.</li>
+</ul>
 </li>
-<li>App component(<code>App.js</code>) is the root component and it contains other customized components in a tree.</li>
-<li>app.js usually is one component that contains all sub-components for the app then to be associated with DOM in index.js.<h3 id="customized-component">Customized Component</h3>
-</li>
-<li>Component class has a <code>state</code> property to store temp data.</li>
-<li>It has <code>props</code> object that stores data, props is readonly. every component has a <code>props</code> object. For single source data use props instead.</li>
-<li>Component class has a render method that returns component that associated with certain DOM element.</li>
-<li>Component can be represented by JSX file, React html like jsx code in render method will be converted by babel into JavaScript code.</li>
-<li><code>&lt;Component /&gt;</code> this is a self closing component.</li>
-<li><code>&lt;Component&gt;&lt;/Component&gt;</code>  it can be used to pass tags and data into its child component&#x2019;s children props.</li>
-<li>Only one parent element is allowed to return as a component.</li>
-<li><p>For a new customized component, create new jsx files in the component folder.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> &#x2018;react&#x2019;;
-<span class="hljs-keyword">import</span> componentName <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./componentName&quot;</span>;
-<span class="hljs-comment">//import other component that will be used.</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-  <span class="hljs-comment">//its local variable, only initiated when instance of the component is created.</span>
-  state = {
-      data1: <span class="hljs-number">0</span>,
-      data2: <span class="hljs-string">&quot;hi&quot;</span> ,
-      someURL: <span class="hljs-string">&quot;https//google.com&quot;</span>,
-      tags: [&#x2018;tag1&#x2019;,&#x2019;tag2&#x2019;,&#x2019;tag3&#x2019;]
-  };
-  styles = {
-      fontWeight: &#x2018;bold&#x2019;,  <span class="hljs-comment">//use camel case css attributes.</span>
-      fontSize: <span class="hljs-number">10</span>
-  };
-  render() {
-      <span class="hljs-keyword">return</span> (
-  <span class="hljs-comment">//it is used to used to wrap all elements without using parents element like div.</span>
-          &lt;React.Fragment&gt;
-              &lt;img style={this.styles} src={someURL} className=&quot;className1 className2&quot;&gt;
-              &lt;p style={ {fontSize: 30} } &gt;{this.functionName()}{this.state.data2}&lt;/p&gt;
-              //map() foreach loop for an array data, each item needs a key.
-              &lt;ul&gt;{this.state.tages.map(tag=&gt;&lt;li key={tag}&gt;{tag}&lt;/li&gt;)}&lt;/ul&gt;
-              //handling events, only pass reference, () is not needed.
-              &lt;button onClick={this.handlerMethod}&gt;&lt;/button&gt;
-              // or
-              // use arrow function to pass argument in the handler function.
-              &lt;button onClick={( )=&gt;this.handlerWithArg(id)}&gt;&lt;/button&gt;
-              // can put any other component in this component
-              &lt;ComponentName /&gt;
-              //any component object has a props object, to get it                                console.log(this.props);
-              // access of properties in all scope of this class block, read-only
-              console.log(this.block.value);
-      //pass an element to the child Component.
-      //then the element p will be the children property of the &lt;childComponent&gt;
-              &lt;childComponent&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/childComponent&gt;
-      //in child component class use {this.props.children} to show the passed element
-            // pass event handler to child component, in parent component file, declare event handler and return, the following child component with eventName(like onClick) as attribute:
-
-      &lt;childComponent eventName={this.eventHandler}&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/childComponent&gt;
-            //child component will have access of this event handler from its parent component as this.props.eventName
-          &lt;/React.Fragment&gt;
-      );
-  }
-
-  funtionName() {
-      let {data1} = this.state;  //get direct access to data1.
-      return &lt;h1&gt;{data1}&lt;h1&gt;;
-  }
-  handlerMethod() {
-      //&#x2018;this&#x2019; object is not available here, need to bind this to the function by putting this.functionName = this.functionName.bind(this);  in the constructor.
-      //or use =&gt; instead as follows
-  }
-  handlerMethod = ( ) =&gt; {
-      this.setState({data1: this.state.data1+1});
-//it explicitly ask React to check and pass changed values and refresh the pages.
-//when pass argument is needed, use inline arrow functions
-};
-  handlerWithArgs = id =&gt; {
-};
-}
-export default Counter;
-</code></pre>
-</li>
-<li><p>when a component doesn&#x2019;t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> ComponentName = ( ) =&gt; {
-  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
-}
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ComponentName;
-</code></pre>
+<li>Shorthand character classes<ul>
+<li><code>\d</code> means <code>[0-9]</code></li>
+<li><code>\D</code> means <code>[^0-9]</code></li>
+<li><code>\w</code> means <code>[0-9a-zA-Z_]</code> It will match a character that is a alphanumeric character or underscore.</li>
+<li><code>\W</code> means <code>[^0-9a-zA-Z_]</code></li>
+<li><code>\s</code> means <code>[\f\n\r\t\v]</code></li>
+<li><code>\S</code> means <code>[^\f\n\r\t\v]</code></li>
+<li><code>\b</code> add a word boundary <code>\bhello\b</code> will only match word hello surrounded by spaces.</li>
+<li><code>\B</code> add a word boundary <code>\Bhello\B</code> will match word hello not surrounded by spaces.</li>
+</ul>
 </li>
 </ul>
-<h2 id="life-cycle-hooks">Life Cycle Hooks</h2>
-<ul>
-<li>There is a life cycle hooks for every components</li>
-<li>They are automatically called.</li>
-<li>Stateless functional component has no life cycle hook.</li>
+</li>
+<li><code>^</code> The caret<ul>
+<li>can be used to negated character sets.<ul>
+<li><code>/[^0-9]/</code> it will match any character that is not number.</li>
+<li><code>/[^0-9^a-z^A-Z]/</code> it also works for multiple character sets.</li>
+<li><code>/[^abc]/</code> it will match any character that is not <code>a</code>, <code>b</code> or <code>c</code>.</li>
 </ul>
-<h3 id="mounting-phrase">Mounting Phrase</h3>
-<h4 id="constructor">constructor</h4>
-<pre><code class="lang-js">constrctor(props) {
-    <span class="hljs-keyword">super</span>(props);
-    <span class="hljs-comment">//intialize the props and state of the instance</span>
-}
-</code></pre>
-<ul>
-<li>This is when the component start to render and place to the DOM</li>
-<li>It is called once</li>
-<li>can&#x2019;t use setState, assign the state directly instead.<pre><code class="lang-js"><span class="hljs-keyword">this</span>.state = {
-      name: <span class="hljs-string">&apos;world&apos;</span>
-    }
-</code></pre>
+</li>
+<li>can be used to find match only at the beginning of the string(anchor).<ul>
+<li><code>/^A/</code> it will match the leading <code>A</code> in a given string.</li>
+<li>In a pattern, nothing should be entered before the beginning anchor.</li>
+</ul>
 </li>
 </ul>
-<h4 id="render">render</h4>
-<pre><code class="lang-js">render() {}
-</code></pre>
-<ul>
-<li>It is called after constructor is called.</li>
-<li>All its child component is also rendered recursively.</li>
+</li>
+<li><code>$</code> can be used to find match only at the beginning of the string(anchor).<ul>
+<li><code>/A$/</code> it will match the trailing <code>A</code> in a given string.</li>
+<li>In a pattern, nothing should be entered after the end anchor.</li>
 </ul>
-<h4 id="componentdidmount">componentDidMount</h4>
-<pre><code class="lang-js">compoenetDidMount() {
-}
-</code></pre>
-<ul>
-<li>This is after the component is rendered and placed to the DOM</li>
-<li>It can be used for Ajax call, and use setState();</li>
+</li>
+<li><code>.</code> It matches any single character.<ul>
+<li>empty space will match.</li>
+<li>line breaks won&apos;t match.</li>
 </ul>
-<h3 id="updating-phrase">Updating Phrase</h3>
-<p>It is triggered whenever the state or props of a component changes.</p>
-<h4 id="render">Render</h4>
-<h4 id="componentdidupdate">componentDidUpdate</h4>
-<pre><code class="lang-js">componentDidUpdate(prevProps,prevState){
-    <span class="hljs-comment">//can compare the current and prev value,</span>
-    <span class="hljs-comment">// can make Ajax call only when value changed.</span>
-}
-</code></pre>
-<ul>
-<li>It can be used to see prevProps and prevState</li>
+</li>
+<li><code>?</code><ul>
+<li>Optional<ul>
+<li>It matches any one character or null at a given location.<ul>
+<li><code>/a?c/</code> matches <code>ac</code>, <code>abc</code>, <code>adc</code>, etc.</li>
 </ul>
-<h3 id="unmounting-phrase">Unmounting Phrase</h3>
-<h4 id="componentwillunmount">componentWillUnmount</h4>
-<ul>
-<li>It runs when the component is about to be deleted.</li>
-<li>It is good place to do clean up.</li>
+</li>
+<li>The optional characters can be grouped as <code>()?</code><ul>
+<li><code>/Dec(ember)?/</code> matches both <code>December</code> and <code>Dec</code></li>
 </ul>
-<h2 id="react-hooks">React Hooks</h2>
-<ul>
-<li>New in React version 16.8</li>
-<li>It enable the use of React features in a functional component.</li>
+</li>
 </ul>
-<h3 id="state-hook">State Hook</h3>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> {useState}
-<span class="hljs-keyword">import</span> React, {useState} <span class="hljs-keyword">from</span> &#x2018;react&#x2019;
-
-<span class="hljs-comment">// declare the array before return method.</span>
-<span class="hljs-keyword">const</span> [currentValue, setFunction] = useState(initialValue)   <span class="hljs-comment">//array destructing</span>
-<span class="hljs-comment">// initialValue can be string num bool object array</span>
-</code></pre>
-<p>In return method, use setFunction(newValue) to update the currentValue.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">return</span>(
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">conClick</span>=<span class="hljs-string">{(</span> ) =&gt;</span> setFunction(prevValue+1)}&gt;{currentValue}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-<span class="hljs-comment">//use variable prevValue to get the previous value.</span>
-<span class="hljs-comment">//work with objects or arrays use: setName({&#x2026;objectName, propertyName: newValue})</span>
-)
-</code></pre>
-<h3 id="effect-hook">Effect Hook</h3>
-<h2 id="debug">Debug</h2>
+</li>
+<li>lazy matching<ul>
+<li>add the <code>?</code> after any quantifier, to make the quantifier return the shortest result possible, in case of overmatching.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>*</code> A quantifier that matches zero or more character before it in the pattern.<ul>
+<li><code>/[0-9]*A/</code> returns any group of numbers followed by <code>A</code> and return all the character <code>A</code>.</li>
+</ul>
+</li>
+<li><code>+</code> A quantifier that matches one or more character before it in the pattern.<ul>
+<li><code>/[0-9]+/</code> returns any group of numbers.</li>
+</ul>
+</li>
+<li><code>()</code> grouping, a pattern surrounded by <code>()</code> can be used by another pattern as sub-pattern.</li>
+<li><code>[]</code> It creates character classes(character sets).<ul>
+<li>The occurrence of any one of the characters list inside <code>[]</code> will result a match for one character in a given string.<ul>
+<li><code>/[Gg]r[ea]y/</code> will match <code>Grey</code>, <code>Gray</code>, <code>grey</code>, <code>gray</code>.</li>
+</ul>
+</li>
+<li><code>-</code> can be used to set a range.<ul>
+<li><code>/[A-Z]/</code> will match any capital letters.</li>
+<li><code>/[A-Za-z]/</code> will match any letters.</li>
+<li>The order of the character on the left side and right side of <code>-</code> matters.</li>
+<li>Metacharacters inside the <code>[]</code> do not need to escaped for literal meanings.<ul>
+<li>Except for <code>^</code> at the beginning.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>|</code> A vertical bar separates alternatives.<ul>
+<li><code>/gray|grey/</code> can match <code>gray</code> or <code>grey</code>.</li>
+</ul>
+</li>
+<li><code>{}</code> a quantifier for interval matching.<ul>
+<li><code>/[a-z]{3}/</code> matches a group of 3 letter which is between <code>a</code> and <code>z</code>.</li>
+<li><code>/[a-z]{3,6}/</code> matches a group of 3 to 6 letter which is between <code>a</code> and <code>z</code>.</li>
+<li><code>/[a-z]{3,}/</code> matches a group of 3 to infinite letter which is between <code>a</code> and <code>z</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="flags">Flags</h3>
 <ul>
-<li>Install React Developer Tools Plugin</li>
-<li>React Tab will be shown in the browser inspector, all component tag will be shown.</li>
+<li>A flag can be appended to the end of the pattern.</li>
+<li><code>/g</code> return an array of all matches, not just the first match.</li>
+<li><code>/i</code> case insensitive.</li>
+<li><code>/m</code> multiline</li>
+<li><code>/y</code> sticky</li>
+<li><code>/u</code> unicode</li>
+<li><code>/s</code> single line(dotall)</li>
 </ul>
 
                                 
@@ -1024,12 +960,12 @@ export default Counter;
 
             
                 
-                <a href="jquery.html" class="navigation navigation-prev " aria-label="Previous page: jQuery">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Linux">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="react-native.html" class="navigation navigation-next " aria-label="Next page: React Native">
+                <a href="../virtualization/" class="navigation navigation-next " aria-label="Next page: Virtualization">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1040,7 +976,7 @@ export default Counter;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React","level":"1.4.2","depth":2,"next":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-01-14T23:56:41.337Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Regular Expression","level":"1.17.1","depth":2,"next":{"title":"Virtualization","level":"1.18","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.18.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.18.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]}]},"previous":{"title":"Linux","level":"1.17","depth":1,"path":"linux/README.md","ref":"linux/README.md","articles":[{"title":"Regular Expression","level":"1.17.1","depth":2,"path":"linux/regex.md","ref":"linux/regex.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/regex.md","mtime":"2020-03-19T14:54:51.432Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

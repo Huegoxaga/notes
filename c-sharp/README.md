@@ -1,84 +1,78 @@
-# ``C#``
+# `C#`
 
 ## Introduction
-* In 2000, Microsoft announced the C# programming language.
-* C# has roots in the C, C++ and Java programming language
-* C# is an object-oriented language that run on the .NET Framework.
-* C# graphical user interfaces (GUIs) are event driven. It waits to responds users input.
-* Microsoft’s Visual Studio enables you to use C# as a visual programming language.
-* C# can be used to create Windows, mobile, database application and Web services etc.
-* The source code for programs that are executed and managed by the Common Language Runtime (CLR) is called managed code. It is firstly compiled into Microsoft Intermediate Language (MSIL), then translated the code in executable file by the just-in-time compiler or Just-In-Time (JIT) compiler into machine language.
-.NET Framework consists of the Common Language Runtime(CLR) and the .NET Framework class library.
-* When user creates a new project in Visual Studio A solution and a folder are created at the same time with the same name as the project.
-* The project belongs to the solution
-* Multiple projects can be included in a solution
-* The folder stores files related to the project including:
-  * A solution file (.sln)
-  * A project file (.csproj)
-* C# is case-sensitive.
-* C# requires ``;`` at the end of each line.
-* The apps have extension of .cs.
-* Console apps input and output text in a console window, which in Windows is known as the Command Prompt.
+
+- In 2000, Microsoft announced the C# programming language.
+- C# has roots in the C, C++ and Java programming language
+- C# is an object-oriented language that runs on the .NET Framework.
+- C# graphical user interfaces (GUIs) are event-driven. It waits to respond to the users' input.
+- Microsoft’s Visual Studio enables you to use C# as a visual programming language.
+- C# can be used to create Windows, mobile, database application and Web services, etc.
+- The source code for programs that are executed and managed by the Common Language Runtime (CLR) is called managed code. It is first compiled into Microsoft Intermediate Language (MSIL), then translated the code in executable file by the just-in-time compiler or Just-In-Time (JIT) compiler into machine language.
+  - .NET Framework consists of the Common Language Runtime(CLR) and the .NET Framework class library.
+- When the user creates a new project in Visual Studio A solution and a folder are created at the same time with the same name as the project.
+- The project belongs to the solution
+- Multiple projects can be included in a solution
+- The folder stores files related to the project including:
+  - A solution file (`.sln`)
+  - A project file (`.csproj`)
+- C# is case-sensitive.
+- C# requires `;` at the end of each line.
+- The apps have an extension of .cs.
+- Console apps input and output text in a console window, which in Windows is known as the Command Prompt.
 
 ## Basic Syntax
 
 ### Comments
-* ``//`` single-line comment.
-* ``/*   */`` multi-line comment.
-* XML-style comment. It is used to describe classes and methods at the beginning of a class or method definition.
-```cs
-///<summary>
-///
-///</summary>
-///<param name="value"></param>
-///<returns></returns>
-```
+
+- `//` single-line comment.
+- `/* */` multi-line comment.
+- XML-style comment. It is used to describe classes and methods at the beginning of a class or method definition.
+  ```cs
+  ///<summary>
+  ///
+  ///</summary>
+  ///<param name="value"></param>
+  ///<returns></returns>
+  ```
+
 ### Region
-region lets you specify a block of code that you can expand or collapse when using the outlining feature of the Visual Studio Code Editor.
-```cs
-#region MyClass definition  
-public class MyClass   
-{  
-    static void Main()   
-    {  
-    }  
-}  
-#endregion
-```
 
-the using directive is used to import namespaces in the app.
+- Region lets you specify a block of code that you can expand or collapse when using the outlining feature of the Visual Studio Code Editor.
+  ```cs
+  #region MyClass definition
+  public class MyClass
+  {
+     static void Main()
+     {
+     }
+  }
+  #endregion
+  ```
 
-the System namespace contains the predefined Console class.
+### Namespaces
 
-namespace is a collection of pre-defined classes, without the using directive class method from other namespace can only be used in namespace.class.method format.
-//if using System is absent.
-System.Console.WriteLine("abc");
+- The `using ...` directive is used to import namespaces in the app.
+- The `System` namespace contains the predefined Console classes.
+- The namespace is a collection of pre-defined classes
+- Class methods from other namespaces can only be accessed as `namespace.class.method`, when the `using ..` directive is absent.
+  - If `using.System` is absent. Use `System.Console.WriteLine("abc");`
 
-———————————————————————————————
 ### Variables
-Declare and assign a new variable.
-modifier type name = value;
 
-access modifier for variables can be either:
-public     //default when modifier is not used in declaration.
-private
-protected  // this type of variable can be accessible from its derived class.
-
-For implicitly typed variables, using keyword var, a value is mandatory. the compiler will determine the type automatically.
-var x = 6; //x will be int
-
-var num = 12;
-var let the compiler to determine the value type.
-This is called an implicitly typed variables. a value must be assigned to it.
-
-const double PI = 3.1415926;
-const keyword is for constant, must assign a value, name needs all-cap.
-constants are all static.
-
-
-C# use stack to store static value, like primitive type data and address reference for objects. It uses heap to store object information.
+- Declare and assign a new variable. `modifier` `type` `name` = `value;`
+- access modifier for variables can be either:
+  - `public`, default when the modifier is not used in the declaration.
+  - `private`
+  - `protected`, this type of variable can be accessed from its derived class.
+- For implicitly typed variables, using keyword `var`, a value is mandatory. the compiler will determine the type automatically. `var x = 6; //x will be int`
+  - This is called an implicitly typed variable a value must be assigned to it.
+- `const` keyword is for constant, must assign a value, variable names need all-cap. `const double PI = 3.1415926;`
+  - Constants are all static.
+- C# use stack to store static value, like primitive type data and address reference for objects. It uses heap to store object information.
 
 ### Type
+
 Instance variables of types char, byte, sbyte, short, ushort, int, uint, long, ulong, float, double, and decimal are all given the value 0 by default.
 Instance variables of type bool are given the value false by default.
 Reference-type instance variables are initialized by default to the value null.
@@ -88,10 +82,11 @@ nullable type has property HasValue, returns true if it is not null.
 
 float x = 0.0f; //it is represented by 0.0f, can store 7 numbers after decimal point.
 double x = 0.0d; //it is represented by 0.0d, can store 15 numbers after decimal point.
-decimal x = 0.0m;  //it is represented by 0.0m, can store 28 numbers after decimal point.
-		     //decimal work with price
+decimal x = 0.0m; //it is represented by 0.0m, can store 28 numbers after decimal point.
+//decimal work with price
 
 ### Operator
+
 standard operator can all be used in C#.
 int divide int will get a int result.
 
@@ -123,9 +118,10 @@ decimal salary = employee?.BaseSalary ?? 0M;
 if employee is not null, salary is assigned the employee’s BaseSalary; otherwise, salary is assigned 0M.
 
 ————————————————————————————————————————
+
 ### Array
 
-int[] arrayName = new int[5]   //an array of int with 5 elements.
+int[] arrayName = new int[5] //an array of int with 5 elements.
 or
 int[] arrayName = new int[5] {1,2,3,4,5}; //assign values during instantiation.
 or
@@ -133,7 +129,7 @@ int[] arrayName = new int[] {1,2,3,4,5};
 or
 int[] arrayName = {1,2,3,4,5};
 
-arrayName[0] = 5  //assign 5 to the first element of this array.
+arrayName[0] = 5 //assign 5 to the first element of this array.
 
 Multidimensional Array
 All of its element have the same length and type.
@@ -152,7 +148,7 @@ int[][] x = new int[][] {new int[] {1,2}, new int[] {1,2,3}, new int[] {1,2,3,4}
 
 Array Properties
 arrayName.Length //return array length.
-arrayName.Rank   //return the number of dimension.
+arrayName.Rank //return the number of dimension.
 arrayName.Max
 arrayName.Min
 arrayName.Sum
@@ -162,17 +158,17 @@ Array.Sort(arrayName);
 Array.Reverse(arrayName);
 
 ———————————————————————————————————
+
 ### String
+
 String type is similar to a one dimensional array it can be accessed using index in [].
 Strings use double quotation.
 String can be compared directly using comparison operators. Characters of each string are compared one by one until a difference is found.
 
-
-
 \r\n will start a new line.
 
 String indexer
-s[index]  return the chat on the index.
+s[index] return the chat on the index.
 
 String properties
 s.Length returns the length of the string.
@@ -184,38 +180,37 @@ s.IndexOf(value, startPosition) search from start position.
 s.IndexOf(value, startPosition, endPosition) search the value from start to end position.
 s.Insert(index, value) inserts the value into the string starting from the specified index.
 s.Remove(index) removes all characters in the string after the specified index.
-s.Replace(oldValue, newValue)  replaces the specified value in the string.
+s.Replace(oldValue, newValue) replaces the specified value in the string.
 s.Substring(index, length) returns a substring of the specified length, starting from the specified index. If length is not specified, the operation continues to the end of the string.
 s.Contains(value) returns true if the string contains the specified value.
-s.ToUpper()	//convert all to uppercase
-s.ToLower()	//convert all to lowercase
-s.ToTitleCase()  //convert the first letter to upper
-s.StartsWith("stringX")	//return true if s string starts with stringX
+s.ToUpper() //convert all to uppercase
+s.ToLower() //convert all to lowercase
+s.ToTitleCase() //convert the first letter to upper
+s.StartsWith("stringX") //return true if s string starts with stringX
 s.EndsWith
-s.Empty			//represents an empty string.
-s.TrimStart() 		//removes leading spaces
-s.TrimEnd()   		//removes trailing spaces
-s.Trim()          		//removes leading and trailing space
-s.Substring(Start)	//Returns the characters from the Start position to the end of the string, first position is 0.
-s.Substring(Start, Length)	//Returns the characters from the Start position to specified Length
+s.Empty //represents an empty string.
+s.TrimStart() //removes leading spaces
+s.TrimEnd() //removes trailing spaces
+s.Trim() //removes leading and trailing space
+s.Substring(Start) //Returns the characters from the Start position to the end of the string, first position is 0.
+s.Substring(Start, Length) //Returns the characters from the Start position to specified Length
 s.ToCharArray();
-s.Split(char[]);  //uses all chars in the char[] as separator, separator the s into an array of strings.
+s.Split(char[]); //uses all chars in the char[] as separator, separator the s into an array of strings.
 s.CopyTo (int sourceBeginIndex, char[] destination, int destinationBeginIndex, int charCount);
 String class method
 String.Concat(s1,s2);
-String.Equals(s1,s2);	//return true if s1 s2 have same context.
+String.Equals(s1,s2); //return true if s1 s2 have same context.
 String class constructor
-new string(character, number)   this repeatedly prints a character for a number of time.
+new string(character, number) this repeatedly prints a character for a number of time.
 new String("0",5); get a string with five "a" in a row
 new string(charArray); //convert an array of char into string.
 new string(charArray, index, length); //convert part of an array of char into string.
-
 
 Formatted String
 String interpolation allows the creation of formatted strings.
 
 string person = "Jack";
-Console.WriteLine($"Welcome to C# Programming, {person}!");
+Console.WriteLine(\$"Welcome to C# Programming, {person}!");
 
 In {} variable names can be followed by a format specifier and alignment number like {variableName,alignment:format}
 
@@ -227,9 +222,9 @@ C or c is for currency symbol
 D or d is for whole number
 N or n is for number has thousand separator and a default of two decimal places.
 E or e using scientific notation and 6 decimal places.
-F or f using certain number of decimal places(default 2)  //F1 represents one decimal place.
+F or f using certain number of decimal places(default 2) //F1 represents one decimal place.
 
-$ indicates the start of an interpolated string.
+\$ indicates the start of an interpolated string.
 {} is the place holder for the value.
 
 Substitution parameters can also be used, starting at {0}
@@ -237,36 +232,36 @@ string s = "World!"
 Console.WriteLine("{0} {1}", "Hello", s);
 
 Verbatim strings do not require \ to escape special characters. It is indicated by @
-string s1 = @"\a\b\c"   //If s1 get printed, it will have output \a\b\c
+string s1 = @"\a\b\c" //If s1 get printed, it will have output \a\b\c
 
 Composite formatting of parameters
 more information can added in {} after index for formatted substitution.
-{index(starts from 0)[[,alignment][:formatString]}
-
+{index(starts from 0)[[,alignment][:formatstring]}
 
 ### Character
+
 Chars use single quotation.
 
 Character Methods
-char.IsDigit(‘a’);	//returns true if the character in the bracket is an integer.
+char.IsDigit(‘a’); //returns true if the character in the bracket is an integer.
 
 ### Type Conversion
 
 Type casting
 (double)19; //gets 19.0
-((objType)i).Property;  //cast an object into a specific object when applying polymorphism.
+((objType)i).Property; //cast an object into a specific object when applying polymorphism.
 
 Any type can be converted to its string representation explicitly by using that type’s .ToString() method:
-double d1 = 3.14159;   string s3 = d1.ToString();
+double d1 = 3.14159; string s3 = d1.ToString();
 A string can be converted to any type by using that type’s .Parse() method:
-string s4 = "3.14159";  double d2 = double.Parse(s4);
+string s4 = "3.14159"; double d2 = double.Parse(s4);
 
 Each numeric variable type has a TryParse method
 if(TryParse(StringX, out int valueX)){}
 or
 int valueX = 0;
 if(TryParse(StringX, out valueX)){}
- //returns true(succeed) or false(failed), if true valueX is assigned.
+//returns true(succeed) or false(failed), if true valueX is assigned.
 DateTime & Boolean types include the TryParse method as well.
 
 There is a Convert class that convert argument x into any type, specified in the method name.
@@ -277,13 +272,14 @@ Convert.ToInt32(x);
 Convert.ToInt64(x);
 
 ### Generic Type
+
 <T>, it is a form of representing all type as one. It only cares about reference relationship.
 
 Generic Methods
 static void Swap<T>(ref T a, ref T b) {
-  T temp = a;
-  a = b;
-  b = temp;
+T temp = a;
+a = b;
+b = temp;
 }
 
 <T> represents a generic type variable T
@@ -291,13 +287,13 @@ static void Swap<T>(ref T a, ref T b) {
 T then can be replaced by any other type
 
 In Main method:
-  int a = 4, b = 9;
-  Swap<int>(ref a, ref b);
-  //Now b is 4, a is 9
+int a = 4, b = 9;
+Swap<int>(ref a, ref b);
+//Now b is 4, a is 9
 
-  string x = "Hello";
-  string y = "World";
-  Swap<string>(ref x, ref y);
+string x = "Hello";
+string y = "World";
+Swap<string>(ref x, ref y);
 
 Type can even be omitted
 
@@ -314,45 +310,45 @@ It’s object and method also works like in the old way
 Stack<int> intStack = new Stack<int>();
 intStack.Push(3);
 
-
 ### Collections
+
 Collections can change size.
 All elements in collection have to be the same type.
 
 Generic collection
 using Systems.Collections.Generic;
- - List<T>
- - Dictionary<TKey, TValue>
- - SortedList<TKey, TValue>
- - Stack<T>
- - Queue<T>
- - Hashset<T>
+
+- List<T>
+- Dictionary<TKey, TValue>
+- SortedList<TKey, TValue>
+- Stack<T>
+- Queue<T>
+- Hashset<T>
 
 Non-Generic Collections
 using System.Collections
 It can store objects, and it is slower
 ArrayList
- - SortedList
- - Stack
- - Queue
- - Hashtable
- - BitArray
 
+- SortedList
+- Stack
+- Queue
+- Hashtable
+- BitArray
 
 Collections can all be created using following format.
 Collection<T> name = new Collection<T>();
 and initializer
 var name = new Collection<T> {element1, element2, element 3, ... };
 
-
 List
 List is a collection
 List<int> li = new List<int>();
 
-List<int>  This is the type identifier for a list of integer.
+List<int> This is the type identifier for a list of integer.
 
 Use initializer
-var items = new List<string>  {"a","b","c"};
+var items = new List<string> {"a","b","c"};
 List<T> properties and methods include:
 Count A property that gets the number of elements contained in the list.
 Item[int i] Gets or sets the element in the list at the index i. Item is the indexer and is not required when accessing an element. You only need to use the brackets [] and the index value inside the brackets.
@@ -398,7 +394,7 @@ A bit array is a collection of bits
 BitArray ba1 = new BitArray(4);
 
 BitArray properties include:
-Count -  Gets the number of bits in the bit array.
+Count - Gets the number of bits in the bit array.
 IsReadOnly - Gets a value indicating if the bit array is read only or not.
 
 BitArray methods include:
@@ -478,21 +474,19 @@ UnionWith(ICollection c) Applies set union operation on the hash set and the spe
 IntersectWith(ICollection c) Applies set intersection operation on the hash set and the specified collection (c).
 ExceptWith(ICollection c) Applies set difference operation on the hash set and the specified collection (c).
 
-
 Most the collection type has the following methods
-Add (item As Object)		Method: adds item to the collection, returning its index position
-Clear (  )			Method: removes all items in the collection. No return value
-Contains (value As Object)	Method: returns True if value is found at least once in the collection.
-Count				Property: returns the number of items in the collection. Read-only
-IndexOf (value As Object)	Method: returns the Integer index position of the first occurrence of value in the collection. If value is not found, the return value is   –1
+Add (item As Object) Method: adds item to the collection, returning its index position
+Clear ( ) Method: removes all items in the collection. No return value
+Contains (value As Object) Method: returns True if value is found at least once in the collection.
+Count Property: returns the number of items in the collection. Read-only
+IndexOf (value As Object) Method: returns the Integer index position of the first occurrence of value in the collection. If value is not found, the return value is –1
 
 Insert (index As Integer, item As Object)
-				Method: insert item in the collection at position index. No return
+Method: insert item in the collection at position index. No return
 value
-Item (index As Integer)	Property: returns the object located at position index
-Remove (value As Object)	Method: removes value from the collection. No return value
-RemoveAt(index As Integer)	Method: removes the item at the specified index. No return value
-
+Item (index As Integer) Property: returns the object located at position index
+Remove (value As Object) Method: removes value from the collection. No return value
+RemoveAt(index As Integer) Method: removes the item at the specified index. No return value
 
 Control Structure
 
@@ -515,8 +509,8 @@ switch(x)
                       break;
    case 2:
                       //code2
- 
-                    break;
+
+break;
    default:  
                   //code if none matches
                  break;
@@ -528,7 +522,6 @@ It can be shorten like using the following format:
 int x = 0;
 while(++x < 6)
     Console.WriteLine(x);
-
 
 for(init; condition ; increment expression) {}
 
@@ -555,7 +548,7 @@ modifier [static] <return type> methodName(type1 par1, type2 par2, ... , typeN p
 Access modifier for methods:
 public
 private
-protected   this type of variable can be accessible from its derived class.
+protected this type of variable can be accessible from its derived class.
 sealed - not available for inheritance.
 
 Return type should be void if no value is returned from the method.
@@ -595,7 +588,7 @@ It usually works with array
 static void Method(params int[] x){
 }
 when call
-Method(1,2)   -> x = [1,2]
+Method(1,2) -> x = [1,2]
 Method(1,2,3,4) -> x = [1,2,3,4]
 
 Method Overloading
@@ -603,18 +596,18 @@ Method overloading also works for methods have same name but different parameter
 
 //method override
 public override void Method1()
-{               
-	Console.WriteLine("Derived - Method1");           
-}  
+{  
+ Console.WriteLine("Derived - Method1");  
+}
 
 Delegate
 It helps using method as a parameter of other methods.
 public bool RunTheMethod(Func<string, int> myMethodName)
 {
-    // ... do stuff
-    int i = myMethodName("My String");
-    // ... do more stuff
-    return true;
+// ... do stuff
+int i = myMethodName("My String");
+// ... do more stuff
+return true;
 }
 
 Extension Method
@@ -625,25 +618,26 @@ example for define extension class:
 
 static class TimeExtensions
 {
-   // display the Time2 object in console
-   public static void DisplayTime(this Time2 aTime)
-   {
-      Console.WriteLine(aTime.ToString());
-   }
+// display the Time2 object in console
+public static void DisplayTime(this Time2 aTime)
+{
+Console.WriteLine(aTime.ToString());
+}
 
-   // add the specified number of hours to the time
-   // and return a new Time2 object
-   public static Time2 AddHours(this Time2 aTime, int hours)
-   {
-      // create a new Time object
-      var newTime = new Time2() {
-         Minute = aTime.Minute, Second = aTime.Second};
+// add the specified number of hours to the time
+// and return a new Time2 object
+public static Time2 AddHours(this Time2 aTime, int hours)
+{
+// create a new Time object
+var newTime = new Time2() {
+Minute = aTime.Minute, Second = aTime.Second};
 
       // add the specified number of hours to the given time
       newTime.Hour = (aTime.Hour + hours) % 24;
 
       return newTime; // return the new Time2 object
-   }
+
+}
 }
 
 //this keyword before a method’s first parameter notifies the compiler that the method extends an existing class
@@ -653,10 +647,10 @@ a method can call itself in the method definition. an exit condition should exis
 
 Expression Bodied Methods
 static int Cube(int x) {
-                      return x * x * x;
+return x _ x _ x;
 }
 can be written as.
-static int Cube(int x) => x * x * x;
+static int Cube(int x) => x _ x _ x;
 
 —————————————————————————————————
 Class
@@ -668,22 +662,23 @@ C# enables nested class, a class definition contains within another class’s de
 Simple Class example
 class Account
 {
-	private string name;
+private string name;
 
-	public void SetName(string accountName)
-	{
-		name = accountName;
-	}
+    public void SetName(string accountName)
+    {
+    	name = accountName;
+    }
 
-	public string GetName( )
-	{
-		return name;
-	}
+    public string GetName( )
+    {
+    	return name;
+    }
+
 }
 
 readonly keyword can be added to indicated that the variable can only be edited in declaration or from within a constructor.
 readonly variable names use Pascal case by convention.
-private readonly string name;  //it can be declared without initialization(without assigning a value.)
+private readonly string name; //it can be declared without initialization(without assigning a value.)
 a class can be static, once it is static all of its method and variable should be static. It can not be instantiated.
 
 Class Properties
@@ -693,46 +688,42 @@ The set accessor uses the keyword value as its parameter.
 a property can also be private.
 accessors of a property can be omitted.
 
-
 Simple Class example using properties
 
 class Account
 {
-	private string name;
-	public string Name
-	{
-		get
-		{
-			return name;
-		}
-		set
-		{
-			name = value;
-		}
-	}
+private string name;
+public string Name
+{
+get
+{
+return name;
+}
+set
+{
+name = value;
+}
+}
 }// the private name, can now be accessed using property Name.
-
-
 
 Example in Main class:
 using System;
 class AccountTest
 {
-	static void Main( )
-	{
-		Account myAccount = new Account( );
+static void Main( )
+{
+Account myAccount = new Account( );
 
-		Console.WriteLine($”Initial name is: {myAccount.Name}”);
+    	Console.WriteLine($”Initial name is: {myAccount.Name}”);
 
-		Console.Write(“Please enter the name: ”);
-		string theName = Console.ReadLine();
-		myAccount.Name = theName;
+    	Console.Write(“Please enter the name: ”);
+    	string theName = Console.ReadLine();
+    	myAccount.Name = theName;
 
-		Console.WriteLine($”myAccount’s name is: {myAccount.Name}”);
-	}
+    	Console.WriteLine($”myAccount’s name is: {myAccount.Name}”);
+    }
+
 }
-
-
 
 Using auto-implemented property to shorten the code with simple getter and setter.
 these accessors only read or write the original value of the private property.
@@ -757,26 +748,25 @@ the ClassName(x) constructor is chained with the ClassName() constructor. When C
 
 Define constructor for a derived class.
 public CommissionEmployee(string firstName, string lastName,
-      string socialSecurityNumber, decimal grossSales,
-      decimal commissionRate)
-      : base(firstName, lastName, socialSecurityNumber)
-   {
-	GrossSales = grossSales; // additional properties in the current constructor.
-      CommissionRate = commissionRate;
-   }
+string socialSecurityNumber, decimal grossSales,
+decimal commissionRate)
+: base(firstName, lastName, socialSecurityNumber)
+{
+GrossSales = grossSales; // additional properties in the current constructor.
+CommissionRate = commissionRate;
+}
 base keyword is used to borrow property assignment from the base constructor.
 
 If the base class does not have a default constructor, every derived constructor must explicitly invoke one of the base class constructors using base
 
 public Account(string accountName)
 {
-	Name = accountName;
+Name = accountName;
 }
 
 constructor can be static, when a static variable is accessed, the static method will be called.
 In UML, it can be
 <<constructor>> Account(accountName: string)
-
 
 Partial class????
 
@@ -793,10 +783,10 @@ Operator Overloading
 Operator overloading can be used to define custom actions for operators. Then, these operator can be used in between two object variables.
 
 public static Box operator+ (Box a, Box b) {
-	int h = a.Height + b.Height;
-	int w = a.Width + b.Width;
-	Box res = new Box(h,w);
-	return res;  //return type is also Box
+int h = a.Height + b.Height;
+int w = a.Width + b.Width;
+Box res = new Box(h,w);
+return res; //return type is also Box
 }
 //all arithmetic operator can be define, for comparison operator they return bool, also < and > should be defined together. Same for <= and >=, == and !=(object .Equal()method works better with many other language in .NET it is more recommended than ==)
 
@@ -807,11 +797,11 @@ If the operation is guarantee to succeed with no data lost, use implicit keyword
 Indexers
 Indexers can be used to create index for a class objects.
 class Clients {
-	private string[] names = new string[10];
-	public string this [int index] {
-	get{ return names[index];}
-	set{ names[index] =value; }
-	}
+private string[] names = new string[10];
+public string this [int index] {
+get{ return names[index];}
+set{ names[index] =value; }
+}
 }}
 
 In main;
@@ -836,14 +826,13 @@ DerivedType x = new BaseType();
 
 A method can be defined as a virtual method in base class, then overridden in different derived class.
 class BaseClass {
-	public virtual void MethodName() {
-	}
+public virtual void MethodName() {
+}
 }
 class DerivedClass : BaseClass {
-	public override void MethodName() {
-	}
+public override void MethodName() {
 }
-
+}
 
 new keyword in the derived class can be use to hide base.method, it works even the base method is not a virtual method.
 Keyword base can be used to represent the method from base class.
@@ -852,38 +841,39 @@ base.methodName();
 In a derived class:
 public new void methodName()
 {
-	base.methodName();
-	//additional changes goes here.
+base.methodName();
+//additional changes goes here.
 }
 
 Abstract class
 If method or property does not need to be defined in the base class, the method can be an abstract method or property, the class itself also need to be abstract to hold an abstract method and property. abstract class cannot be instantiated. non-abstract class are described as concrete class.
 abstract class BaseClass {
-	public abstract PropertyType MyProperty { get; set; }
+public abstract PropertyType MyProperty { get; set; }
 
-	public abstract void MethodName();
+    public abstract void MethodName();
+
 }
 class DerivedClass : BaseClass {
-	public override void MethodName(){
-	//implementation for the abstract method is mandatory.
-	}
+public override void MethodName(){
+//implementation for the abstract method is mandatory.
+}
 }
 
 Interface
 If a class has only abstract members, it is an interface.
 All members of an interface are always public.
-public interface IShapes	//interface name usually starts with an ‘I’
+public interface IShapes //interface name usually starts with an ‘I’
 {
-	void AbstractMethodName();
+void AbstractMethodName();
 }
 
 Interface can contain properties and method, however it cannot contain variables.
 Interface can implement one or more other interfaces. It called extending or combining an interface.
 A class can implement multiple interfaces, separated by , after :
 class Name : Ione, Itwo, Three {
-	public void AbstractMethod(){
-	//keyword override is not needed in this case.
-	}
+public void AbstractMethod(){
+//keyword override is not needed in this case.
+}
 }
 
 A class can have a reference to its interface class.
@@ -892,13 +882,12 @@ To use a method from interface reference, an implemented class can be instantiat
 
 If a Document class implements IPrintable  
 IPrintable myPrintable = new Document();
-IStorable[] myStorableArray = new IStorable[3];  
+IStorable[] myStorableArray = new IStorable[3];
 
 Document myDoc = new Document(…);  
-IStorable myStorable = myDoc;  
+IStorable myStorable = myDoc;
 
 myStorable.method();
-
 
 Interface IEnumerable<T>
 Implements this interface enable a data/object type to be used for iteration like foreach loop and linq queries.
@@ -923,7 +912,7 @@ In the class that declare and use the delegate:
 public delegate returnType DelegateName();
 //Declare method take the delegate
 public void DelegateMethodName(DelegateName DelegateVariableName){
-	//use delegate method here as DelegateVariableName()
+//use delegate method here as DelegateVariableName()
 }
 
 Assume that there is a method called SomeMethod in OtherClass.
@@ -938,17 +927,14 @@ DelegateClass.DelegateName newDelegate = new DelegateClass.DelegateName(newOther
 //then the SomeMethod can be called by the delegate.
 newDelegateClass.DelegateMethodName(newDelegate);
 
-
-
-
 ——————————————————————————————————————
 Struct
 It is a customized type which can store multiple value inside.
 
 struct Quality {
-	public string body;
-	public string aroma;
-	public double score;
+public string body;
+public string aroma;
+public double score;
 }
 In Main class
 Quality x;
@@ -957,14 +943,14 @@ b.score = 100.0;
 
 struct can have constructor. new keyword is required to use struct constructor.
 struct Quality {
-	public string body;
-	public string aroma;
-	public double score;
-	public Quality(string x, string y, double z) {
-		this.body = x;
-		this.aroma = y;
-		this.score = z;
-	}
+public string body;
+public string aroma;
+public double score;
+public Quality(string x, string y, double z) {
+this.body = x;
+this.aroma = y;
+this.score = z;
+}
 }
 
 in main:
@@ -981,31 +967,30 @@ Ex:
 Days x;
 x = Days.Mon;
 
-
 enum elements can have a value starts from 0, increased by 1 to the right
-int x = (int)Days.Mon;  //x = 0
+int x = (int)Days.Mon; //x = 0
 The value can be assigned specifically
 enum Days {Mon, Tue = 10, Wed, Thu, Fri };
 Then Days.Mon is 0, Days.Tue is 10, Days.Wed is 11, Days.Thu is 12.
 
 enums can be used with switch cases
 switch (x) {
-	case Days.Mon:
-		//code
-		break;
-	case Days.Tue:
-		//code
-		break;
+case Days.Mon:
+//code
+break;
+case Days.Tue:
+//code
+break;
 }
 
 —————————————————————————————————
 Random class
 Random randomObject = new Random( );
 
-int newNumber = randomObject.Next(1,7)  //generates random number from 1 to 6.
-randomObject.Next()		//generates random integer from 0 to 2,147,483,647
-randomObject.Next(100)	//generates random integer from 0 to 99
-randomObject.NextDouble()	//generates random floating-point number in range [0.0,1.0)
+int newNumber = randomObject.Next(1,7) //generates random number from 1 to 6.
+randomObject.Next() //generates random integer from 0 to 2,147,483,647
+randomObject.Next(100) //generates random integer from 0 to 99
+randomObject.NextDouble() //generates random floating-point number in range [0.0,1.0)
 
 A seed value is used by the random number generation algorithm. It produces a repeated series of number as “random” numbers.
 Seed value can be assigned in the random object constructor.
@@ -1016,14 +1001,13 @@ By default, C# uses a current time value as the seed value as it keeps changing.
 —————————————————————————————————————
 DateTime class
 
-DateTime.Now; 	//return the current date & time
-DateTime.Today; 	//return the current day
-DateTime.DaysInMonth(2016,2); 	//return the number of days in the specified month
+DateTime.Now; //return the current date & time
+DateTime.Today; //return the current day
+DateTime.DaysInMonth(2016,2); //return the number of days in the specified month
 DateTime date1 = new DateTime(2017, 8, 30);
 DateTime date2 = new DateTime(2017, 8, 30, 2, 25, 30);
-DateTime.AddYears(18);  //get date 18 years later.
+DateTime.AddYears(18); //get date 18 years later.
 .ToShortDateString() method
-
 
 can be converted to string
 string s1 = date5.ToString();
@@ -1034,7 +1018,7 @@ DateTime date6 = DateTime.Parse(s2);
 —————————————————————————————————————
 Math class
 It is static class.
-Math.PI;   //return pi
+Math.PI; //return pi
 Math.E
 Math.Max()
 Min
@@ -1056,11 +1040,10 @@ Equals()
 Finalize()
 GetHashCode()
 GetValueOrDefault()
-GetType()	returns the object type in a string
+GetType() returns the object type in a string
 Memberwise-Clone()
 Reference-Equals(): static method returns true if two objects are the same instance or are both null.otherwise returns false
 ToString method returns a string that describes the class object when called.
-
 
 Exception Class
 
@@ -1086,11 +1069,10 @@ finally {
 }
 //This is the catch all error try-catch block with finally block.
 
-
 static void CodeWithCleanup()
 {
-    System.IO.FileStream file = null;
-    System.IO.FileInfo fileInfo = null;
+System.IO.FileStream file = null;
+System.IO.FileInfo fileInfo = null;
 
     try
     {
@@ -1110,6 +1092,7 @@ static void CodeWithCleanup()
             file.Close();
         }
     }
+
 }
 
 catch(ExceptionType name) when(condition)
@@ -1133,56 +1116,51 @@ To create user defined exception class
 
 public class NegativeNumberException : Exception
 {
-   // default constructor                                
-   public NegativeNumberException()
-      : base("Illegal operation for a negative number")
-   {
-      // empty body                                      
-   }
+// default constructor  
+ public NegativeNumberException()
+: base("Illegal operation for a negative number")
+{
+// empty body  
+ }
 
-   // constructor for customizing error message         
-   public NegativeNumberException(string messageValue)
-      : base(messageValue)
-   {
-      // empty body                                     
-   }
+// constructor for customizing error message  
+ public NegativeNumberException(string messageValue)
+: base(messageValue)
+{
+// empty body  
+ }
 
-   // constructor for customizing the exception's error
-   // message and specifying the InnerException object
-   public NegativeNumberException(string messageValue, Exception inner)
-      : base(messageValue, inner)
-   {
-      // empty body                                    
-   }
+// constructor for customizing the exception's error
+// message and specifying the InnerException object
+public NegativeNumberException(string messageValue, Exception inner)
+: base(messageValue, inner)
+{
+// empty body  
+ }
 }
-
-
 
 The using statement simplifies writing code in which you obtain a resource.
 It is possible to nest multiple using statements one after another.
 using (var exampleObject = new ExampleClass())
 {
-   exampleObject.SomeMethod();
+exampleObject.SomeMethod();
 }
-
 
 The using statement code is equivalent to
- {
-   var exampleObject = new ExampleClass();
-   try
-   {
-      exampleObject.SomeMethod();
-   }
-   finally
-   {
-      if (exampleObject != null)
-      {
-         ((IDisposable) exampleObject).Dispose();
-      }
-   }
+{
+var exampleObject = new ExampleClass();
+try
+{
+exampleObject.SomeMethod();
 }
-
-
+finally
+{
+if (exampleObject != null)
+{
+((IDisposable) exampleObject).Dispose();
+}
+}
+}
 
 ———————————————————————————————————————
 File I/O
@@ -1207,9 +1185,9 @@ To read from a file, use StreamReader class
 Object Instantiation:
 StreamReader data = new StreamReader(file);
 string s = data.ReadToEnd(); //read entire file
-string s = data.Read(); 	//read file character by character
+string s = data.Read(); //read file character by character
 string s = data.ReadBlock();
-string s = data.ReadLine();    //read file line by line, if there is no more data in the file return null.
+string s = data.ReadLine(); //read file line by line, if there is no more data in the file return null.
 
 When file I/O is over, close the stream and the file.
 close stream
@@ -1238,22 +1216,20 @@ string[] drives = Directory.GetLogialDrives();//drives would be an array of logi
 string[] dirs = Directory.GetDirectories(“c:\\”); //return an array of directory names under c drive.
 string[] file = Directory.GetFiles(“c:\\”); //return an array of file names under c drive.
 
-
 LINQ
 System.Linq namespace is a library that allows programmer using LINQ to Objects provider to write SQL in the code.
 LINQ uses deferred execution—the query executes only when you access the results, not when you define the query.
 
-
 var sortedValue =
-	from value in arrayName
-	where value > 10
-	orderby value descending  //delete descending for ascending result.
-	select value;
+from value in arrayName
+where value > 10
+orderby value descending //delete descending for ascending result.
+select value;
 
 select clause can create new object type using:
 var names =
-	from e in employees
-	select new {e.FirstName, e.LastName}
+from e in employees
+select new {e.FirstName, e.LastName}
 
 This can be used to generate new data according to the original data, It is called transformation.
 
@@ -1262,42 +1238,38 @@ where (e.MonthlySalary >= 4000M) && (e.MonthlySalay <= 6000M)
 orderby clause can have more than one data enties.
 orderby e.Lastname, e,FirstName
 
-let clause can be used to create a new range variable to store atemporary result for use later in the LINQ query
+s clause can be used to create a new range variable to store atemporary result for use later in the LINQ query
 var convertUpper =
-	from item in items
-	let uppercaseString = item.ToUpper()
-	select upperString;
-
+from item in items
+s uppercaseString = item.ToUpper()
+select upperString;
 
 Methods
-Any	returns true if there is at least one element, false if not.
-First	returns the first result.
-Count 	returns the number of results.
-Distrinct 	removes duplicate elements.
-
-
-
+Any returns true if there is at least one element, false if not.
+First returns the first result.
+Count returns the number of results.
+Distrinct removes duplicate elements.
 
 Linq has extesion method ToArray and ToList
 These methods immediately execute the query on which they are called. the query is only executed once.
 
 SQL
-            try
-            {
-                string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=COMP10204_Lab5;Integrated Security=True";
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-                {
-                    sqlConnection.Open();
-                    string doctorQuery = "SELECT * FROM DOCTOR";
-                    SqlCommand doctorCommand = new SqlCommand(doctorQuery, sqlConnection);
-                    SqlDataReader doctorReader = doctorCommand.ExecuteReader();
-                    while (doctorReader.Read())
-                    {
-                        int doctorId = int.Parse(doctorReader["DOCTORID"].ToString());
-                        string actor = doctorReader["ACTOR"].ToString();
-                        int series = int.Parse(doctorReader["SERIES"].ToString());
-                        int age = int.Parse(doctorReader["AGE"].ToString());
-                        int debut = int.Parse(doctorReader["DEBUT"].ToString());
+try
+{
+string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=COMP10204_Lab5;Integrated Security=True";
+using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+{
+sqlConnection.Open();
+string doctorQuery = "SELECT \* FROM DOCTOR";
+SqlCommand doctorCommand = new SqlCommand(doctorQuery, sqlConnection);
+SqlDataReader doctorReader = doctorCommand.ExecuteReader();
+while (doctorReader.Read())
+{
+int doctorId = int.Parse(doctorReader["DOCTORID"].ToString());
+string actor = doctorReader["ACTOR"].ToString();
+int series = int.Parse(doctorReader["SERIES"].ToString());
+int age = int.Parse(doctorReader["AGE"].ToString());
+int debut = int.Parse(doctorReader["DEBUT"].ToString());
 
                         byte[] photo = (byte[])doctorReader["PICTURE"];
                         MemoryStream stream = new MemoryStream(photo);
@@ -1306,9 +1278,9 @@ SQL
                         doctorsList.Add(new Doctor(doctorId, actor, series, age, debut, image));
                     }
                     sqlConnection.Close();
-	}
+    }
 
 Partial indicates that the class is specified in multiple files
-movie.DateSeen.ToShortDateString();  
+movie.DateSeen.ToShortDateString();
 
 DateTime.Today

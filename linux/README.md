@@ -100,6 +100,9 @@
 
 ## General Commands
 
+- Each command will return a status after execution, run `$?` to view the status of the last command.
+  - 0 means succeed, 1 means error.
+  - 127 is command not found.
 - Command options full name are after `--`. can use the first letter, can combine the letter after one common `-`.
 - Large command output press `Q` to quit. enter `/searchContent` to search.
 - Both the `| more` and the `| less` command provide paging functionality in a command line environment. For example `help | less`. shows output that can be control using up and down arrow.
@@ -120,6 +123,7 @@
 - `cd` Change directory to the directory followed, if nothing followed cd to home dir.
 - `pwd` display the absolute path to the current working directory.
 - `touch` create new file
+- `basename <path>` return filename or directory portion of pathname
 - `mkdir <directory path(s)>` make new dir
   - create multiple new folderName separate by space.
 - `cp <source> <destination> -R`, copy files for folders, `-R` include directories.
@@ -143,13 +147,26 @@
 - `route` will display the system default gateway information
 - `uname -a` Print operating system info
 - `cat <file.txt>` create or read a txt file.
-- `echo`
+- `*` will return all files in the current directory in a list.
+  - `*.txt` will return files with a certain extension.
+- `which` print the path of the command.
+- `echo` command is used to print the string or text file. Ex: `echo hello world`.
+  - `echo` can be followed by a single line of string. In this case quotation marks need to be escaped by the backward slash.
+  - `echo` can be followed by strings surrounded by single or double quote marks, then backward slash for the other qoute is not required. `echo "'hello world'"`
+  - `-e` will enable the backslash-escaped characters like `\n`, quotation marks are required.
+  - `-n` prevent adding a new line after the output is printed.
+  - `echo` adds a space automatically between two adjacent arguments (in the output) by default. `echo fileA fileB fileC`.
 - `diff <file1> <file2>` The diff command can be used to compare the contents of two files.
 - `exit` exit the shell.
 - `sleep <numberOfSecond>` pause the shell for a certain number of seconds.
 - `mount <deviceTypeLocation> <folderPath>` mount a device to a folder.
 - `mount <deviceTypeLocation>`. unmount a device.
 - `source <FileName>`, it can be used to load any functions file into the current shell script or a command prompt. It read and executes commands from given FILENAME.
+- `alias` it will list all the alias the shell current have.
+  - To add new alias temperately run `alias shortcut="fullCommand"`
+  - Or place them into `.bash_profile` or `.bashrc` to make it available all the time.
+  - run `unalias alias_name` to remove the alias.
+  - run `unalias -a` to remove all alias.
 
 ### Access Control
 
@@ -185,7 +202,9 @@
 - Ex, `o=-rx`, remove read and execute permission for other users.
 - Ex, `-rx`, remove read and execute permission for all users.
 - `chown <username>.<groupname> <filePath>` change file or directory's ownership.
+  - `mount /dev/cdrom /media`
 - `chown <username>.<groupname> <folderPath> -R` change ownership for directory and all files under it.
+  - `umount /dev/cdrom`
 
 ## Tools
 
@@ -235,13 +254,85 @@
 - `kill -l` list kill signal options.
 - `kill –s <signalNumber> <PID>` kill a process with certain kill signal, the process is indicated by PID(Process ID).
 - `jobs` list all current jobs.
-- `fg <jobNumber>` bring a job to foreground.
+- `fg <jobNumber>` bring a job to the foreground.
 - `<command> &` start a process and make it a background job.
-- `bg` stop a foreground job first, then use this command to send it to background.
+- `bg` stop a foreground job first, then use this command to send it to the background.
 
-### Syslog
+### Environment Variables
 
-- For CentOS, stored in `/var/log/secure`.
+#### PATH
+
+- Every a command is run, it will search for the path of the commands according to the directories stored in the PATH variable.
+- It will search from left to right.
+- Change the PATH Variable
+  - The PATH variable can be changed temperately be run `PATH=$PATH:/other/dir` to append a new directory or run `PATH=/other/dir:$PATH` to prepend.
+  - It can be changed in the users `bash_profile` file. It will work for certain user only.
+  - To change the PATH variable for the entire system. Modifying the `etc/profile` file.
+  - Scripts in `etc/profile.d` are also responsible for changing the system environment.
+
+#### PS1
+
+- It is used to customize the command prompt. `PS1="custom prompt"`
+- It utilizes the following special characters.
+  - `\u` It will shows the current user name.
+  - `\h` hostname
+  - `\t` current time
+  - `\s` name of the shell
+  - `\n` newline
+  - `\w` current working directory
+  - `\W` current working directory basename
+- Use `\[$(tput setaf colorCode)\]` to add color. Use `\[$(tput sgr0)\]` to reset the color to default.
+  - `colorCode` uses `Xterm` number for 256 colors.
+
+### Bash Startup Files
+
+#### `bash_profile`
+
+- It is located in each user's home directory.
+- It will export a PATH variable that stores a list of directories.
+- It is a shell script runs whenever new user login to a new seesion.
+
+#### `bashrc`
+
+- It is located in each user's home directory.
+- It is a shell script that runs whenever the user run bash.
+
+### rsyslog
+
+- syslogd centralizes logging for many applications: Kernel messages, system error messages, login activity, etc.
+- Typically writes log files to the `/var/log` directory
+- When the configuration file is changed run `service rsyslog restart`.
+
+#### Configuration
+
+- The syslogd deamon is controlled via the `/etc/rsyslog.conf` file
+- `rsyslog.conf` stores a list of events that will be logged by syslogd.
+- Records in the `rsyslog.conf` follow this format: `facility.priorityLevel Action`.
+  - For example `kern.* /var/adm/kernel` stores all log messages from kernel facility to file `/var/adm/kernel`.
+- facility
+  - By default, the facility for Apache is `local7`.
+  - `kern` is the kernel facility.
+- LogLevel options:
+  - EMERG 0 System is unusable
+  - ALERT 1 Action must be taken immediately
+  - CRIT 2 Critical conditions
+  - ERR 3 Error conditions
+  - WARNING 4 Warning conditions
+  - NOTICE 5 Normal but significant condition
+  - INFO 6 Informational
+  - DEBUG 7 Debug-level messages
+- Selector Examples
+  - `facility.priorityLevel` this part of the record is called selectors.
+  - `kern.*` select all levels of messages from kernel facility.
+  - `*.=emerg` select all `emerg` level messages.
+  - `kern.info` select all kern message from info to emerg.
+  - `*.=crit;kern.none` select all critical message, excluding kernal facility.
+  - `kern.info;kern.!err` select all kern message from info to warn.
+  - `mail.*;mail.!=info` select all mail message except info level.
+- Action
+  - can be sent to a local file path.
+  - can be sent to a remote host `@hostname`
+  - can be sent to a logged user `root,username`.
 
 ### RPM
 
@@ -293,7 +384,13 @@
 ### mssql
 
 - SQL Server
-- `mssql -u userName -p password` connect to SQL Server.
+- Initially root username is `root`, password is empty string.
+- `mysqladmin -u root password 'newpassword'` set password for root account
+- `mysql -u root -p` login to root. enter password after prompt.
+- `mysql -u userName -p` login to a user account. enter password after prompt.
+- `mssql -u userName -p password` connect to SQL Server with password entered.
+- SQL account information is stored in the tables of the mysql database. See more about account management in SQL notes.
+- The username and password in the connection string in `PHP` can be stored as text in a file in the `/etc/httpd/` folder.
 
 ### httpd
 
@@ -348,10 +445,10 @@
 - Directive Scope
   - Directives placed in the main section of the configuration file apply to the entire server
   - Placing Directives in one of the following blocks restricts them in a certain scope.
-    - `<Directory></Directory>` - used to enclose a group of directives which will apply only to the named directory and its sub-directories
-    - `<Files></Files>` - provides for access control by filename.
-    - `<Location></Location>` provides for access control by URL. i.e. `Alias /cgi-bin /usr/bin/cgi-bin`, `<Location /cgi-bin>`
-    - `<VirtualHost></VirtualHost>` - used to enclose a group of directives which will apply only to a particular virtual host
+    - `<Directory "/path"></Directory>` - used to enclose a group of directives which will apply only to the named directory and its sub-directories
+    - `<Files "filename.html"></Files>` - provides for access control by filename.
+    - `<Location></Location>` provides for access control by URL. i.e. `Alias "/cgi-bin" "/usr/bin/cgi-bin"`, `<Location "/cgi-bin"></Location>`
+    - `<VirtualHost IP></VirtualHost>` - used to enclose a group of directives which will apply only to a particular virtual host
       - Apache can serve multiple websites simultaneously
       - Each site is referred to as a Virtual Host
 - There are 5 kinds of status directives have, based on the module it belongs to.
@@ -379,6 +476,45 @@
       - a wildcard match to include several files at once, `conf/vhosts/*.conf`
       - a directory, rather than a file. Apache will read all files in that directory and any subdirectory, `Include /etc/httpd/conf/vhosts/`.
     - `LoadModule` added modules to the Apache server.
+  - `ErrorLog`
+    - set the error log file name and path.
+    - `ErrorLog logs/error_log` Without a leading, it is assumed to be relative to the ServerRoot.
+    - `ErrorLog syslog` apache sends error messages to the syslogd daemon.
+    - `ErrorLog syslog:local0` apache sends error messages to the syslogd daemon with facility ID as `local0`.
+  - `LogLevel`
+    - set log level
+    - `LogLevel notice`
+    - Apache uses the same Error Log Levels as `syslogd`.
+      - `emerg` - A crippling error causing the system to be unusable
+      - `alert` - immediate action is required
+      - `crit` - Apache can usually recover, but an important service or subsystem has failed
+      - `error` - an error has occurred in the content or in a request (useful in content debugging)
+      - `warn` - Apache has recovered from the error and the content was delivered
+      - `notice` - Normal but significant conditions (server starts and stops)
+      - `info` - minor events e.g. all child processes are busy and the server may become overloaded
+      - `debug` - detail the workings of the server, file openings and closings, socket management
+  - `TransferLog`
+    - configure the location of a server or virtual host access information log.
+    - use the default Common Log Format for the access logs.
+  - `LogFormat`
+    - configure custom format using Combined Log format.
+    - Combined Log format is an extension of the Common Log Format (CLF) standard.
+    - The default format can be represent as `LogFormat “%h %l %u %t \”%r\” %>s %b”`
+      - `%h` - host name or IP address of the browser making the request
+      - `%l` - ident identification if available (requires an identd server)
+      - `%u` - the login name as supplied by the user if available
+      - `%t` - the date and time (CERN’s Common Log Format)
+      - `%r` - the first line of the browser request
+      - `%>s` - the status returned to the browser
+      - `%b` - the number of bytes sent in the response
+    - Example: `LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"" combined`
+      - `\` is used to escape `"`.
+      - `combined` is a nickname chosen in the example.
+      - `\n` and `\t` can be used.
+    - The new format needs to output to an alias file.
+  - `CustomLog`
+    - apply an alias for the custom access log
+    - `CustomLog logs/myhost/access_log combined`.
 
 #### Command
 
@@ -391,10 +527,19 @@
 - `apachectl configtest` Or `apachectl -t`, check for syntax errors in conf files.
 - `apachectl -l`, see which modules are currently compiled into the server
 
+#### ab
+
+- It is a benchmark tool that can be used to test how a given Apache server performs.
+- `ab –Ausername:password –n30 -c3 –v1 http://urlfortesting/index.html` run test on the target URL and return result.
+  - The `–A` option specifies the authentication credentials to send to the server
+  - The `–n` option specifies the number of requests to be made
+  - The `–c` option specifies the number of concurrent connections to be made
+  - The `–v` option specifies the level of reporting (verbosity)
+
 ### openssl
 
 - OpenSSL is an open-source command line tool that is commonly used to generate private keys, create CSRs, install your SSL/TLS certificate, and identify certificate information.
-- OpenSSL version 1.0.1, 1.0.1f, 1.0.2-beta, 1.0.2-beta1 are vulnerable to the HeartBleed bug.
+- OpenSSL version `1.0.1`, `1.0.1f`, `1.0.2-beta`, `1.0.2-beta1` are vulnerable to the HeartBleed bug.
 
 ### iptables
 
@@ -421,6 +566,7 @@
 - The configuration file for filter tables for IPv4 is stored in `/etc/sysconfig/iptables`
 - The configuration file for filter tables for IPv6 is stored in `/etc/sysconfig/ip6tables`
 - Commands
+
   - `service iptables start` start the firewall.
   - `service iptables save` save changes to the iptables.
   - `iptables -L -n` list on rules in the filter table.
@@ -440,8 +586,227 @@
     - defaultAction - `ACCEPT`, `DROP`, `REJECT`
     - Example, `iptables -P INPUT DROP` set the default policy to deny all inbound connections
 
-* `system-config-firewall` is a graphical interface for configuring basic firewall rules.
-* `system-config-firewall-tui`, start the text based system-config-firewall utility.
+- `system-config-firewall` is a graphical interface for configuring basic firewall rules.
+- `system-config-firewall-tui`, start the text based system-config-firewall utility.
   - Use tab Key to move between elements.
   - Use space bar to toggle on and off.
   - Use enter key to select elements.
+
+## Bash Scripting
+
+### Introduction
+
+- It stores a batch of command in order to complete certain task in one execution.
+- It usually has an extension as `.sh`. It also can be run without any extenion or as `.txt`.
+- Bash does not have a type system, everything is saved as strings.
+- It can be edited by any text editing tool.
+- It is recommanded to run the full path of the commands in the scripts.
+
+### Run Script
+
+- Any text file contains commands line by line can be run using `bash filename`.
+- Shebang is used at the first line of the text file to make the file executable by itself.
+  - It is an operator look like `#!`
+  - It is followed by the path of the interpreter.
+  - For bash scripting, use `#!/bin/sh` or `#!/usr/bin/env bash` if the path of bash is unknown.
+  - The user needs the `execute` file permission for the script.
+  - The file can then be executed by using `./filename`.
+  - Add the directory path into the `$PATH` variable to make the script run without `./`.
+- Each script will be run in a separate session.
+
+### Syntax
+
+#### Comment
+
+- Any line starts with `#` can be followed by a single line comment.
+
+- `\` can be placed at the end of each line. It will make the command continue in a new line.
+- `commandA && commandB` can be used to run two command from left to right.
+- `;` can be used to separate multiple command in entered one line.
+
+#### Exit
+
+- keyword `exit` is used to stop the script.
+
+#### Variables
+
+- declare a new variable using `name=value`.
+  - No space between `=` sign.
+  - String values need to be surrounded by quotes.
+- Access variable using `$name`
+  - When printing the variable, double quotes are required. Ex, `echo "Good Morning! $name"`
+  - It can also accessed by using `${name}`.
+    - `${name}` can be placed inside a string surrounded by double quotes.
+- Using backticks to save command as variable
+  ```bash
+  BASH_VERSION=`bash --version`
+  echo $BASH_VERSION
+  ```
+- Save or Print or Save the ouput of a command in a variable using `$()`.
+  ```bash
+  result=$(pwd)
+  echo $result
+  #or
+  echo $(pwd)
+  ```
+- Strings can be concatenated if two variable are placed together without space. Ex, `$A$B`.
+- Strings can be concatenated using `+=`.
+- `$RANDOM` generate a 16-bit random number between `0` to `32767`.
+  - use modulus calculation to generate numbers in certain range. `$RANDOM % 11` will get random number from 0 to 10.
+
+#### User Input
+
+- use `read name` will prompt the user to enter a value for the variable `name`.
+
+#### Array
+
+- Declare an array, `arrayName=('A' 'B' 'C' 'D')`.
+- Print an array element, `echo ${arrayName[3]}`.
+  - Index starts at 0.
+- Sequence generation
+  - `echo {0..10}` generate a list of number from 0 to 10.
+  - `echo $(seq 0 10)` generate a list of number from 0 to 10.
+  - `echo $(seq 0 3 10)` generate a list of number from 0 to 10 with step 3.
+    - step can be a negative number. It will generate the list in reversed order.
+
+#### Arithmetic Operations
+
+- All common arithmetic operations works here including `%`, `++` or `+=`.
+- `let` Command
+  - `let RESULT=1+1; echo $RESULT;`
+  - `let RESULT="1 + 1"; echo $RESULT;`
+  - `let "RESULT = 5 * 5"; echo $RESULT`
+- `expr` Command
+  - It evaluate the express followed and print the result.
+  - needs space in between operators. `expr 1 + 5`
+  - Without using quotes special characters like `*` need to be escaped. `expr 5 \* 1`
+- `$((expression))` syntax
+  - `RESULT=$((1 + 1))` evaluate expression and store it in a new variable.
+  - `VAR=1; (( VAR += VAR ));` declare a variable and modify without `$`.
+
+#### Comparison
+
+- For numbers use the following operators:
+  - `-eq` Equal
+  - `-ne` Not equal
+  - `-gt` Greater than
+  - `-ge` Greater than or equal
+  - `-lt` Less than
+  - `-le` Less than or equal
+  - For example: `$10 -gt 20`.
+- For strings use `>`, `<`, `<=`, `>=`, `==`, `!=`
+  - Use `-z` to check if the string is empty. `-z ''`
+  - Use `-n` to check if the string is non-empty.
+  - Both `=` and `==` works.
+  - `>` and `<` needs to be escaped, `'b' \> "a"`.
+- `test` command can be used to evaluate boolean expression.
+  - If the result is true the command status will be 0, If the result is false the command status will be 1.
+  - `test` command has alias command `[` that requires a `]` at the end. Ex, `[3 -gt 1]`
+- `!` can be used to negate a condition.`![true && true]` or `[!false && true]`
+- `&&` means `and`. `||` means `or`. They can be used to connect boolean expression.
+  - Use parentheses to make them run in order `([ 1 -le 5 ] && [ 3 -lt 9 ]) || ([ 1 -gt 1 ] && [ 1 -ne 0 ])`
+  - `&&` can also be used to connect to valid command. When evaluate two valid commands they will be execute at the meantime.
+
+#### If Condition
+
+- `if`
+  ```bash
+  if [ "$PROCEED" = "YES" ]
+  then
+      echo "Performing task..."
+  fi
+  #or in one line like
+  if [ 'proceed' == "proceed" ]; then echo "Performing task..."; fi
+  ```
+- `if-else`
+  ```bash
+  echo 'Enter a number?'
+  read number
+  if [ $number -gt 100 ]
+  then
+      echo 'It is greater than 100.'
+  else
+      echo 'It is smaller than 100.'
+  fi
+  ```
+- `if-elif-else`
+  ```bash
+  VALUE=-10
+  if [ "$VALUE" -lt 0 ]; then
+      echo "VALUE is less than 0"
+  elif [ "$VALUE" -eq 0 ]; then
+      echo "VALUE is 0"
+  else
+      echo "VALUE is greater than 0"
+  fi
+  ```
+- Nested `if-else`
+  ```bash
+  VALUE=10
+  if [ "$VALUE" -lt 0 ]; then
+      echo "VALUE is less than 0"
+  else
+      echo "VALUE is greater than 0"
+      if [ "$VALUE" -le 10 ]; then
+          echo "VALUE is less than or equal to 10"
+      else
+          echo "VALUE is greater than 10"
+      fi # end of nested if block
+  fi # end of parent if block
+  ```
+
+#### Loops
+
+- Use `exit` to break out of loops.
+- `for...in` loop
+  ```bash
+  files=/filepath/
+  for file in $files
+  do
+    echo $(basename $file)
+  done
+  ```
+  - If the `in` and variable followed is missing, the script need to run with a parameter. `./filename.sh $VAR`
+- for loop
+  ```bash
+  for (( i = 0; i < 5; i++ )); do
+      echo "The number is: $i"
+  done
+  # Use two variables in loop
+  for (( n = 0, i = 1; n < 5; n++, i += i )); do
+      echo -n "$i, "
+  done
+  # infinite for loop
+  for ((;;))
+  ```
+- `while` loop
+  ```bash
+  NUMBER=1
+  while [ $NUMBER -lt 5 ]; do
+      echo "Number is: $((NUMBER++))"
+  done
+  # infinite while loop
+  while true
+  do
+    # perform action
+  done
+  # or
+  while :
+  do
+    # perform action
+  done
+  ```
+- `until` loop
+
+```bash
+NUMBER=1
+until [ $NUMBER == 4 ]
+do
+    echo "Number is: $((NUMBER++))"
+done
+# infinite until loop
+until false
+do
+    echo "Hello World"
+done
+```

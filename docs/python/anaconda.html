@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>React · GitBook</title>
+        <title>Anaconda · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="react-native.html" />
+    <link rel="next" href="../java/" />
     
     
-    <link rel="prev" href="jquery.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -102,9 +102,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="../python/">
+        <li class="chapter " data-level="1.2" data-path="./">
             
-                <a href="../python/">
+                <a href="./">
             
                     
                     Python
@@ -116,9 +116,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="../python/anaconda.html">
+        <li class="chapter active" data-level="1.2.1" data-path="anaconda.html">
             
-                <a href="../python/anaconda.html">
+                <a href="anaconda.html">
             
                     
                     Anaconda
@@ -179,9 +179,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="./">
+        <li class="chapter " data-level="1.4" data-path="../javascript/">
             
-                <a href="./">
+                <a href="../javascript/">
             
                     
                     JavaScript
@@ -193,9 +193,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="jquery.html">
+        <li class="chapter " data-level="1.4.1" data-path="../javascript/jquery.html">
             
-                <a href="jquery.html">
+                <a href="../javascript/jquery.html">
             
                     
                     jQuery
@@ -206,9 +206,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2" data-path="react.html">
+        <li class="chapter " data-level="1.4.2" data-path="../javascript/react.html">
             
-                <a href="react.html">
+                <a href="../javascript/react.html">
             
                     
                     React
@@ -219,9 +219,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="react-native.html">
+        <li class="chapter " data-level="1.4.3" data-path="../javascript/react-native.html">
             
-                <a href="react-native.html">
+                <a href="../javascript/react-native.html">
             
                     
                     React Native
@@ -232,9 +232,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="node-js.html">
+        <li class="chapter " data-level="1.4.4" data-path="../javascript/node-js.html">
             
-                <a href="node-js.html">
+                <a href="../javascript/node-js.html">
             
                     
                     Node.js
@@ -782,7 +782,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >React</a>
+        <a href=".." >Anaconda</a>
     </h1>
 </div>
 
@@ -797,205 +797,196 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="reactjs">React.js</h1>
+                                <h1 id="anaconda">Anaconda</h1>
+<h2 id="introduction">Introduction</h2>
 <ul>
-<li>A JavaScript library for building fast and interactive user interfaces.</li>
-<li>It is developed by facebook.</li>
-<li>Whenever the app files are saved the webpage will be reloaded(hot reloaded).</li>
+<li>Python packages make Python capable of doing many tasks.</li>
+<li>Most popular packages are included in one Python distribution called Anaconda.</li>
+<li>It manages libraries, dependencies, and environments with Conda, instead of Python Package Index (PyPI).</li>
 </ul>
-<h2 id="setup">Setup</h2>
-<h3 id="installation">Installation</h3>
-<ol>
-<li>Download and Install node.js from its official website</li>
-<li><code>run sudo npm i -g create-react-app</code></li>
-<li>Use Visual Studio Code with Simple React Snippets(enable shortcuts) and Prettier Plugins etc.</li>
-</ol>
-<h3 id="create-an-react-app">Create an React App</h3>
-<ol>
-<li>create-react-app appFolderName</li>
-<li>in app folder, run <code>npm start</code> to launch development server in port localhost: 3000.</li>
-</ol>
-<h3 id="configuration-for-production-environment">Configuration for production Environment</h3>
-<p><code>npm run eject</code></p>
-<h2 id="indexjs"><code>index.js</code></h2>
-<p><code>index.js</code> is the entry point of the react app, it is used to import and associate components and html DOM elements .</p>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;  <span class="hljs-comment">//get the React library for creating elements and components using jsx syntax.</span>
-<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-dom&quot;</span>;<span class="hljs-comment">//Get DOM for component association</span>
-<span class="hljs-keyword">import</span> componentName <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/componentName&quot;</span>;
-<span class="hljs-comment">//import css</span>
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./cssFile.css&quot;</span>;
-
-<span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>  <span class="hljs-comment">//create new element.</span>
-ReactDOM.render(element, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;id1&quot;</span>));  <span class="hljs-comment">//associate components with DOM</span>
-ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ComponentName</span> /&gt;</span>, document.getElementById(&quot;id2&quot;));
-</span></code></pre>
-<h2 id="component">Component</h2>
+<h2 id="installation">Installation</h2>
 <ul>
-<li>React app is made up by UI component.<h3 id="app-component">App Component</h3>
+<li><a href="https://www.anaconda.com/distribution/" target="_blank">Click</a> to download Anaconda.</li>
+<li>Follow the instructions to install.</li>
+<li>Once complete, the following libraries, dependencies, and environments are ready to use.</li>
+</ul>
+<h2 id="jupyter-notebook">Jupyter NoteBook</h2>
+<h3 id="introduction">Introduction</h3>
+<ul>
+<li>It is upgraded from <code>IPython</code>.<ul>
+<li><code>IPython</code> run Python code line by line in CLI.</li>
+<li><a href="https://ipython.readthedocs.io/en/stable/index.html" target="_blank">Click</a> to see more details.</li>
+</ul>
 </li>
-<li>App component(<code>App.js</code>) is the root component and it contains other customized components in a tree.</li>
-<li>app.js usually is one component that contains all sub-components for the app then to be associated with DOM in index.js.<h3 id="customized-component">Customized Component</h3>
-</li>
-<li>Component class has a <code>state</code> property to store temp data.</li>
-<li>It has <code>props</code> object that stores data, props is readonly. every component has a <code>props</code> object. For single source data use props instead.</li>
-<li>Component class has a render method that returns component that associated with certain DOM element.</li>
-<li>Component can be represented by JSX file, React html like jsx code in render method will be converted by babel into JavaScript code.</li>
-<li><code>&lt;Component /&gt;</code> this is a self closing component.</li>
-<li><code>&lt;Component&gt;&lt;/Component&gt;</code>  it can be used to pass tags and data into its child component&#x2019;s children props.</li>
-<li>Only one parent element is allowed to return as a component.</li>
-<li><p>For a new customized component, create new jsx files in the component folder.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> &#x2018;react&#x2019;;
-<span class="hljs-keyword">import</span> componentName <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./componentName&quot;</span>;
-<span class="hljs-comment">//import other component that will be used.</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-  <span class="hljs-comment">//its local variable, only initiated when instance of the component is created.</span>
-  state = {
-      data1: <span class="hljs-number">0</span>,
-      data2: <span class="hljs-string">&quot;hi&quot;</span> ,
-      someURL: <span class="hljs-string">&quot;https//google.com&quot;</span>,
-      tags: [&#x2018;tag1&#x2019;,&#x2019;tag2&#x2019;,&#x2019;tag3&#x2019;]
-  };
-  styles = {
-      fontWeight: &#x2018;bold&#x2019;,  <span class="hljs-comment">//use camel case css attributes.</span>
-      fontSize: <span class="hljs-number">10</span>
-  };
-  render() {
-      <span class="hljs-keyword">return</span> (
-  <span class="hljs-comment">//it is used to used to wrap all elements without using parents element like div.</span>
-          &lt;React.Fragment&gt;
-              &lt;img style={this.styles} src={someURL} className=&quot;className1 className2&quot;&gt;
-              &lt;p style={ {fontSize: 30} } &gt;{this.functionName()}{this.state.data2}&lt;/p&gt;
-              //map() foreach loop for an array data, each item needs a key.
-              &lt;ul&gt;{this.state.tages.map(tag=&gt;&lt;li key={tag}&gt;{tag}&lt;/li&gt;)}&lt;/ul&gt;
-              //handling events, only pass reference, () is not needed.
-              &lt;button onClick={this.handlerMethod}&gt;&lt;/button&gt;
-              // or
-              // use arrow function to pass argument in the handler function.
-              &lt;button onClick={( )=&gt;this.handlerWithArg(id)}&gt;&lt;/button&gt;
-              // can put any other component in this component
-              &lt;ComponentName /&gt;
-              //any component object has a props object, to get it                                console.log(this.props);
-              // access of properties in all scope of this class block, read-only
-              console.log(this.block.value);
-      //pass an element to the child Component.
-      //then the element p will be the children property of the &lt;childComponent&gt;
-              &lt;childComponent&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/childComponent&gt;
-      //in child component class use {this.props.children} to show the passed element
-            // pass event handler to child component, in parent component file, declare event handler and return, the following child component with eventName(like onClick) as attribute:
-
-      &lt;childComponent eventName={this.eventHandler}&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/childComponent&gt;
-            //child component will have access of this event handler from its parent component as this.props.eventName
-          &lt;/React.Fragment&gt;
-      );
-  }
-
-  funtionName() {
-      let {data1} = this.state;  //get direct access to data1.
-      return &lt;h1&gt;{data1}&lt;h1&gt;;
-  }
-  handlerMethod() {
-      //&#x2018;this&#x2019; object is not available here, need to bind this to the function by putting this.functionName = this.functionName.bind(this);  in the constructor.
-      //or use =&gt; instead as follows
-  }
-  handlerMethod = ( ) =&gt; {
-      this.setState({data1: this.state.data1+1});
-//it explicitly ask React to check and pass changed values and refresh the pages.
-//when pass argument is needed, use inline arrow functions
-};
-  handlerWithArgs = id =&gt; {
-};
-}
-export default Counter;
-</code></pre>
-</li>
-<li><p>when a component doesn&#x2019;t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> ComponentName = ( ) =&gt; {
-  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
-}
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ComponentName;
-</code></pre>
+<li>It is a website that can run Python code line by line. Markdown can be used to explain the codes in between.</li>
+<li>It has an extension as <code>.ipynb</code>.</li>
+<li>Blocks of codes or markdown are contained in separate cells.</li>
+<li>The <code>.ipynb</code> file source code is JSON data about cell objects.</li>
+<li>The <code>JupyterLab</code> is the newest product of the Jupyter Project.<ul>
+<li><a href="https://jupyterlab.readthedocs.io/en/latest/index.html" target="_blank">Click</a> to see details.</li>
+<li>To Download JupyterLab, run command <code>conda install -c conda-forge jupyterlab</code>.</li>
+<li>To Run JupyterLab, run command <code>jupyter lab</code>.</li>
+</ul>
 </li>
 </ul>
-<h2 id="life-cycle-hooks">Life Cycle Hooks</h2>
+<h3 id="usage">Usage</h3>
 <ul>
-<li>There is a life cycle hooks for every components</li>
-<li>They are automatically called.</li>
-<li>Stateless functional component has no life cycle hook.</li>
+<li><a href="https://jupyter.readthedocs.io/en/latest/index.html" target="_blank">Click</a> to see the docs for Jupyter</li>
+<li>Run command <code>jupyter notebook</code> to start a server and open the notebook in the browser.</li>
+<li>It supports LaTeX code in markdown cell, inside <code>$$</code> block.</li>
 </ul>
-<h3 id="mounting-phrase">Mounting Phrase</h3>
-<h4 id="constructor">constructor</h4>
-<pre><code class="lang-js">constrctor(props) {
-    <span class="hljs-keyword">super</span>(props);
-    <span class="hljs-comment">//intialize the props and state of the instance</span>
-}
-</code></pre>
+<h2 id="numpy">NumPy</h2>
+<h3 id="introduction">Introduction</h3>
 <ul>
-<li>This is when the component start to render and place to the DOM</li>
-<li>It is called once</li>
-<li>can&#x2019;t use setState, assign the state directly instead.<pre><code class="lang-js"><span class="hljs-keyword">this</span>.state = {
-      name: <span class="hljs-string">&apos;world&apos;</span>
-    }
-</code></pre>
+<li><code>NumPy</code> means numerical python.</li>
+<li>It provides high-level mathematical and numerical functions and tools.</li>
+<li>It utilizes numpy array which is a high-performance multidimensional data structure.</li>
+<li>Like any array type, Numpy arrays are a fixed size, indexed starting at 0, and contain elements of all the same type.</li>
+<li>Numpy arrays are defined in the class <code>numpy.ndarray</code> of the numpy package. Numpy arrays are objects of type <code>numpy.ndarray</code>.</li>
+<li>For any numpy arrays the dimensions are axes and the number of axes is called rank.</li>
+<li><a href="https://docs.scipy.org/doc/numpy/reference/index.html" target="_blank">Click here</a> to see <code>NumPy</code> official reference.</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<h4 id="import-the-package">Import the package</h4>
+<ul>
+<li>add <code>import numpy as np</code> to the first line of the code.</li>
+<li>For most function <code>np.functionName(arrayName)</code> works the same as <code>arrayName.functionName()</code></li>
+</ul>
+<h4 id="create-an-array">Create an array</h4>
+<ul>
+<li>Create a <code>numpy</code> array of rank 1<ul>
+<li><code>array = np.array([1,2,3,4])</code></li>
+</ul>
+</li>
+<li>Create a <code>numpy</code> array of rank 2<ul>
+<li><code>array = np.array([[1,2,3,4],[5,6,7,8]])</code></li>
+</ul>
+</li>
+<li>Create an array of ones</li>
+<li><code>array = np.ones((3,5))</code>, a <code>3*5</code> array with all elements as 1.</li>
+<li>Create an array of zeros<ul>
+<li><code>array = np.zeros((2,4))</code>, a <code>2*4</code> array with all elements as 0.</li>
+</ul>
+</li>
+<li>Create an array with random values<ul>
+<li><code>array = np.random.random(5)</code>, an array with 5 random double value in range <code>[0,1)</code>.</li>
+</ul>
+</li>
+<li>Create an array with certain constant<ul>
+<li><code>array = np.full((2,2),7)</code>, return a <code>2*2</code> array with all elements as 7.</li>
+</ul>
+</li>
+<li>Create an empty array<ul>
+<li><code>array = np.empty()</code></li>
+</ul>
+</li>
+<li>Create an identity arrays<ul>
+<li><code>np.eye()</code></li>
+<li><code>np.identity()</code></li>
+</ul>
+</li>
+<li>Specify the data type for array elements upon creation<ul>
+<li><code>array = np.full((2,2),12,dtype=np.float32)</code></li>
+</ul>
+</li>
+<li>Create a array from another array<ul>
+<li><code>newArray = oldArray.copy()</code></li>
+</ul>
+</li>
+<li>Create an array from a <code>txt</code> file<ul>
+<li><code>array = loadtxt(filePath)</code></li>
+</ul>
+</li>
+<li>Create an array that has elements in a certain range<ul>
+<li><code>array = np.arange(start, end, step)</code></li>
+<li>only <code>end</code> is the required parameter.</li>
+<li>when <code>start</code> is missing. It starts at 0.</li>
+<li>when <code>step</code> is missing. It is 1.</li>
+</ul>
+</li>
+<li>Create an array that has elements evenly spaced in a certain range<ul>
+<li><code>array = np.linspace(start, end, numofvalues)</code></li>
+</ul>
 </li>
 </ul>
-<h4 id="render">render</h4>
-<pre><code class="lang-js">render() {}
-</code></pre>
+<h4 id="access-the-array">Access the array</h4>
 <ul>
-<li>It is called after constructor is called.</li>
-<li>All its child component is also rendered recursively.</li>
+<li>Access an element of a rank 2 <code>numpy</code> array<ul>
+<li><code>array[0,1]</code>, it return element value from row 0, column 1.</li>
 </ul>
-<h4 id="componentdidmount">componentDidMount</h4>
-<pre><code class="lang-js">compoenetDidMount() {
-}
-</code></pre>
-<ul>
-<li>This is after the component is rendered and placed to the DOM</li>
-<li>It can be used for Ajax call, and use setState();</li>
+</li>
+<li><code>numpy</code> array can be printed directly.<ul>
+<li><code>print(array)</code></li>
 </ul>
-<h3 id="updating-phrase">Updating Phrase</h3>
-<p>It is triggered whenever the state or props of a component changes.</p>
-<h4 id="render">Render</h4>
-<h4 id="componentdidupdate">componentDidUpdate</h4>
-<pre><code class="lang-js">componentDidUpdate(prevProps,prevState){
-    <span class="hljs-comment">//can compare the current and prev value,</span>
-    <span class="hljs-comment">// can make Ajax call only when value changed.</span>
-}
-</code></pre>
-<ul>
-<li>It can be used to see prevProps and prevState</li>
+</li>
+<li>Get the rank of the array.<ul>
+<li><code>array.ndim</code> returns the rank.</li>
 </ul>
-<h3 id="unmounting-phrase">Unmounting Phrase</h3>
-<h4 id="componentwillunmount">componentWillUnmount</h4>
-<ul>
-<li>It runs when the component is about to be deleted.</li>
-<li>It is good place to do clean up.</li>
+</li>
+<li>Get row and column number<ul>
+<li><code>array.shape</code> returns array shape as <code>(rowNumber, columnNumber)</code></li>
 </ul>
-<h2 id="react-hooks">React Hooks</h2>
-<ul>
-<li>New in React version 16.8</li>
-<li>It enable the use of React features in a functional component.</li>
+</li>
+<li>Get number of elements<ul>
+<li><code>array.size</code> returns the total number of elements in the array.</li>
 </ul>
-<h3 id="state-hook">State Hook</h3>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> {useState}
-<span class="hljs-keyword">import</span> React, {useState} <span class="hljs-keyword">from</span> &#x2018;react&#x2019;
-
-<span class="hljs-comment">// declare the array before return method.</span>
-<span class="hljs-keyword">const</span> [currentValue, setFunction] = useState(initialValue)   <span class="hljs-comment">//array destructing</span>
-<span class="hljs-comment">// initialValue can be string num bool object array</span>
-</code></pre>
-<p>In return method, use setFunction(newValue) to update the currentValue.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">return</span>(
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">conClick</span>=<span class="hljs-string">{(</span> ) =&gt;</span> setFunction(prevValue+1)}&gt;{currentValue}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-<span class="hljs-comment">//use variable prevValue to get the previous value.</span>
-<span class="hljs-comment">//work with objects or arrays use: setName({&#x2026;objectName, propertyName: newValue})</span>
-)
-</code></pre>
-<h3 id="effect-hook">Effect Hook</h3>
-<h2 id="debug">Debug</h2>
+</li>
+<li>Get the data type<ul>
+<li><code>type(array)</code> returns <code>numpy.ndarray</code></li>
+</ul>
+</li>
+<li>Export array to a <code>txt</code> file<ul>
+<li><code>array.save()</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="modify-the-array">Modify the array</h4>
 <ul>
-<li>Install React Developer Tools Plugin</li>
-<li>React Tab will be shown in the browser inspector, all component tag will be shown.</li>
+<li>Modify the shape of an array<ul>
+<li><code>array.resize(newRowNum,newColumnNum)</code> The shape of the original array is changed.</li>
+<li><code>array.reshape(newRowNum,newColumnNum)</code> Returns a new shape, but the shape of the original array is kept intact.</li>
+<li>These methods can be used to increase the rank of the array.</li>
+</ul>
+</li>
+<li>Convert any array into a one-dimension array.<ul>
+<li><code>array.ravel()</code> or <code>np.ravel(array)</code> returns a flattened array.</li>
+</ul>
+</li>
+<li>Transpose an array<ul>
+<li><code>np.transpose(array)</code> or <code>array.transpose()</code> the row and column numbers of an element are switched.</li>
+</ul>
+</li>
+</ul>
+<h4 id="doing-calculations">Doing calculations</h4>
+<ul>
+<li>Arithmetic Functions<ul>
+<li>It works between two arrays.</li>
+<li><code>np.add(x,y)</code> or <code>x+y</code> add each element of the same location if x and y have the same shape.<ul>
+<li>If two arrays have different sizes, broadcasting will be performed to stretch the smaller array.<ul>
+<li>Broadcasting requires the arrays to have the same degree of dimension or the smaller one is a one-dimensional array.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>It also has <code>subtract(x,y)</code>, <code>multiply(x,y)</code>, <code>divide(x,y)</code>, <code>remainder(x,y)</code> and <code>power(x,y)</code> functions.</li>
+<li>Math operators <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> and <code>**</code> also works.</li>
+<li>Logical comparisons are available by using <code>&lt;</code>, <code>==</code>, and <code>&gt;</code>. It turns an array of Booleans after comparsion each element of the same location from two arrays as result.</li>
+<li><code>np.dot(x,y)</code> return the dot product of matrix x and y.</li>
+</ul>
+</li>
+<li>Elementwise Functions<ul>
+<li>It changes the values of all elements of one array.</li>
+<li><code>np.sqrt(x)</code> It returns a matrix of elements of <code>x</code> which all have taken the square root.</li>
+<li>It also has functions <code>exp(s)</code>, <code>around(x,roundToNDecimal)</code>, <code>trunc(x)</code>, <code>floor(x)</code>, <code>ceil(x)</code>, <code>log(x)</code>.</li>
+</ul>
+</li>
+<li>Array Functions<ul>
+<li>It works on the entire array and return a single value.</li>
+<li>It has functions <code>sum()</code>, <code>min()</code>, <code>max()</code>, <code>cumsum(); //cumulative sum</code>, <code>mean()</code>, <code>median()</code>, <code>corrcoef()</code>, <code>std()</code>.</li>
+<li>All functions can have <code>axis=1</code> as its parameter. This makes the function evaluate row by row, and return a list of results.</li>
+<li>All functions can have <code>axis=0</code> as its parameter. This makes the function evaluate column by column, and return a list of results.</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -1024,12 +1015,12 @@ export default Counter;
 
             
                 
-                <a href="jquery.html" class="navigation navigation-prev " aria-label="Previous page: jQuery">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Python">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="react-native.html" class="navigation navigation-next " aria-label="Next page: React Native">
+                <a href="../java/" class="navigation navigation-next " aria-label="Next page: Java">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1040,7 +1031,7 @@ export default Counter;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React","level":"1.4.2","depth":2,"next":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-01-14T23:56:41.337Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Anaconda","level":"1.2.1","depth":2,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]}]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-03-17T22:52:13.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

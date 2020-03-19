@@ -680,6 +680,14 @@ date("l dS \of F Y h:i:s A")
 date_default_timezone_set("Canada/Eastern");
 ```
 
+### Time
+
+```php
+time()
+```
+
+- return current timestamp.
+
 ### `var_dump($var)`
 
 - prints the type and content of \$var or &object
@@ -720,8 +728,8 @@ password_verify($user_pwd, $hash) //return true if raw password $user_pwd. hashe
 
 ### Search for Pattern
 
-- The preg_match() function searches string for pattern, returning true if pattern exists, and false otherwise.
-- The pattern is stated as String expressed by Regular Expression. [Click Here](https://regexr.com/) to learn more.
+- The `preg_match()` function searches string for pattern, returning true if pattern exists, and false otherwise.
+- The pattern is stated as String expressed by Regular Expression.
 - The third parameter `$match` contains results of search. The $matches[0] will contain the text that matched full pattern, $matches[1] will contain the text that matched the first captured parenthesized subpattern, and so on.
 - The fourth parameter is flags: The flags can be following flags:
   - `PREG_OFFSET_CAPTURE`: If this flag is passed, for every match the append string offset will be returned.

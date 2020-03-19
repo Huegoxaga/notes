@@ -60,7 +60,7 @@
     <link rel="next" href="javafx.html" />
     
     
-    <link rel="prev" href="../python/" />
+    <link rel="prev" href="../python/anaconda.html" />
     
 
     </head>
@@ -112,6 +112,25 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../python/anaconda.html">
+            
+                <a href="../python/anaconda.html">
+            
+                    
+                    Anaconda
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -506,7 +525,7 @@
                 <a href="../solution-stack/">
             
                     
-                    Solution-Stack
+                    Solution Stack
             
                 </a>
             
@@ -582,6 +601,25 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../linux/regex.html">
+            
+                <a href="../linux/regex.html">
+            
+                    
+                    Regular Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -825,7 +863,7 @@ for doc comments any asterisks beyond two will be ignored.</li>
 <li>final is the keyword used for assign constant, and the name is always all_caps, all_caps is also shown in UML.</li>
 <li>final can also be used on method(final method cant be overridden) and class(final classes don&#x2019;t have subclasses)</li>
 <li>other are referred as reference type.</li>
-<li>They use function to make conversion.  (Interger.toString(intx))</li>
+<li>They use function to make conversion. (Interger.toString(intx))</li>
 <li>They use function to test equality(no == sign) (a.equals(b) for Strings)</li>
 <li>null? relation to reference type with no memory reference. 0 for some float initialization default when they are not assigned with any number.</li>
 </ul>
@@ -856,7 +894,7 @@ for doc comments any asterisks beyond two will be ignored.</li>
 </ul>
 <h3 id="membership">Membership</h3>
 <ul>
-<li><code>x instanceof ClassName</code>   </li>
+<li><code>x instanceof ClassName</code></li>
 <li>this gives true if x is a instance of ClassName</li>
 </ul>
 <h3 id="logical-operators">logical operators</h3>
@@ -885,7 +923,7 @@ String name = <span class="hljs-string">&quot;&quot;</span>;
 <ul>
 <li><code>+, -, *, /</code></li>
 <li>long division happens between integer operand</li>
-<li>operand need to  be in the same type.</li>
+<li>operand need to be in the same type.</li>
 <li><code>%</code> modulo(remainder)</li>
 </ul>
 <h3 id="short-forms">Short Forms</h3>
@@ -914,26 +952,28 @@ String name = <span class="hljs-string">&quot;&quot;</span>;
 <li><p>It can be nested.</p>
 </li>
 <li><p>else if statement</p>
+</li>
+</ul>
 <pre><code class="lang-java"><span class="hljs-keyword">if</span>(condition) {
 } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(condition) {
 } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(condition) {
 } <span class="hljs-keyword">else</span> {
 }
 </code></pre>
-</li>
-<li>switch statement<pre><code class="lang-java"><span class="hljs-keyword">switch</span> (expression) {
- <span class="hljs-keyword">case</span> value1 :  <span class="hljs-comment">//test if the value equals to the expression</span>
- <span class="hljs-comment">//statements</span>
- <span class="hljs-keyword">break</span>; <span class="hljs-comment">//optional jump to the end</span>
- <span class="hljs-keyword">case</span> value2 :
- <span class="hljs-comment">//statements</span>
- <span class="hljs-keyword">break</span>; <span class="hljs-comment">//optional</span>
- <span class="hljs-keyword">default</span>: <span class="hljs-comment">//Optional run if no case matches.</span>
- <span class="hljs-comment">//Statements</span>
+<ul>
+<li>switch statement</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">switch</span> (expression) {
+   <span class="hljs-keyword">case</span> value1 :  <span class="hljs-comment">//test if the value equals to the expression</span>
+   <span class="hljs-comment">//statements</span>
+   <span class="hljs-keyword">break</span>; <span class="hljs-comment">//optional jump to the end</span>
+   <span class="hljs-keyword">case</span> value2 :
+   <span class="hljs-comment">//statements</span>
+   <span class="hljs-keyword">break</span>; <span class="hljs-comment">//optional</span>
+   <span class="hljs-keyword">default</span>: <span class="hljs-comment">//Optional run if no case matches.</span>
+   <span class="hljs-comment">//Statements</span>
 }
 </code></pre>
-</li>
-</ul>
 <h3 id="loop">Loop</h3>
 <ul>
 <li>control statements<ul>
@@ -941,39 +981,47 @@ String name = <span class="hljs-string">&quot;&quot;</span>;
 <li>continue; skip to the next loop.</li>
 </ul>
 </li>
-<li>while loop<pre><code class="lang-java"><span class="hljs-keyword">while</span>(condition) {
-  <span class="hljs-comment">//statements;</span>
+<li>while loop</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">while</span>(condition) {
+    <span class="hljs-comment">//statements;</span>
 }
 </code></pre>
-</li>
-<li>do&#x2026;while loops<pre><code class="lang-java">do {
+<ul>
+<li>do&#x2026;while loops</li>
+</ul>
+<pre><code class="lang-java">do {
 } <span class="hljs-keyword">while</span>(condition);
 </code></pre>
-</li>
+<ul>
 <li>This makes sure the loop run at least once, inside the do block.</li>
 <li>Be careful about the different scope for codes after while and after do</li>
-<li>for loop<pre><code class="lang-java"><span class="hljs-keyword">for</span> (initialization; condition; increment/decrement) {
-statements;
+<li>for loop</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span> (initialization; condition; increment/decrement) {
+  statements;
 }
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x&lt;=<span class="hljs-number">5</span>; x++){
 }
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span> , <span class="hljs-keyword">int</span> b = <span class="hljs-number">4</span>; a&lt;b ; a++, a&#x2014;){
-<span class="hljs-comment">//not recommend not detail enough</span>
+  <span class="hljs-comment">//not recommend not detail enough</span>
 }
 </code></pre>
-</li>
+<ul>
 <li>enhanced for loop</li>
-<li>the loop declares new temperate variable i and assign the values of the newArray to i on each iteration.<pre><code class="lang-java"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i: newArray){  
+<li>the loop declares new temperate variable i and assign the values of the newArray to i on each iteration.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i: newArray){
 }
 <span class="hljs-comment">//or</span>
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> x=<span class="hljs-number">0</span>; x&lt;arrayInt.length; x++){
-  <span class="hljs-keyword">int</span> i;
-  i=arrayInt[x];
-  <span class="hljs-comment">// &#x2026;&#x2026;&#x2026;.  </span>
-}
+    <span class="hljs-keyword">int</span> i;
+    i=arrayInt[x];
+    <span class="hljs-comment">// &#x2026;&#x2026;&#x2026;.</span>
+  }
 </code></pre>
-</li>
-<li>Because i is an independent temperate value.the value of a primitive type(and Strings  because it&#x2019;s immutable(the object cannot be changed after initialization))array can&#x2019;t be change using i variable in the for loop, only the methods(setter) for an array of an objects can be used to change the object values. and assignment for public variable of an object array will work.(the assignment trace the memory location of the object through i, and change the actual value inside the object.)</li>
+<ul>
+<li>Because i is an independent temperate value.the value of a primitive type(and Strings because it&#x2019;s immutable(the object cannot be changed after initialization))array can&#x2019;t be change using i variable in the for loop, only the methods(setter) for an array of an objects can be used to change the object values. and assignment for public variable of an object array will work.(the assignment trace the memory location of the object through i, and change the actual value inside the object.)</li>
 <li>For loops, variables should all have a value before it goes in the loop block, or it may have not to get the chance to contain any value.</li>
 </ul>
 <h2 id="classes-and-methods">Classes and Methods</h2>
@@ -1004,10 +1052,12 @@ statements;
 <li>The class that are inherited is the superclass(base class, or parent class)</li>
 <li>Java class can only inherit one class.</li>
 <li>The extends keyword is used to create a subclass.</li>
-<li>all class is inherited from object class by default.<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Subclass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Superclass</span> </span>{
+<li>all class is inherited from object class by default.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Subclass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Superclass</span> </span>{
 }
 </code></pre>
-</li>
+<ul>
 <li>subclass has all superclass&#x2019;s non-private variables and methods.</li>
 <li>Constructors won&#x2019;t inherit from parent class. However, all parent class default</li>
 <li>constructors(if no super method to ask a specific constructor of its parent.) will be call upon subclass instantiation at first from grandparent to parent.</li>
@@ -1059,7 +1109,7 @@ statements;
 }
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
   Shape a = <span class="hljs-keyword">new</span> Circle();
-  Shape b = <span class="hljs-keyword">new</span> Square();  
+  Shape b = <span class="hljs-keyword">new</span> Square();
 <span class="hljs-comment">/***create reference type Shape using subclass&#x2019;s objects.***important here***/</span>
 <span class="hljs-comment">//declared type is Shape, actual type is Circle or Square</span>
 }
@@ -1087,12 +1137,12 @@ b.whatShape();
 <li>abstract method use keyword abstract and also shown in italics font.</li>
 <li>It it mandatory for subclass to implement abstract method.</li>
 <li>Any class with abstract method should be defined as abstract classes.</li>
-<li>An abstract method use abstract keyword and has no {}, it ended with ;<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassName</span></span>{
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">methodName</span><span class="hljs-params">()</span></span>;
+<li>An abstract method use abstract keyword and has no {}, it ended with ;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassName</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">methodName</span><span class="hljs-params">()</span></span>;
 }
 </code></pre>
-</li>
-</ul>
 <h4 id="interface">Interface</h4>
 <ul>
 <li>An interface is a completely abstract class that contains only abstract methods.</li>
@@ -1127,45 +1177,45 @@ b.whatShape();
 <h4 id="comparable-interface">Comparable Interface</h4>
 <ul>
 <li>This interface is implemented by classes that need to compare their objects according to some natural (internal) order.</li>
-<li>Then comparsion can be used by the compareTo() method.<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">Employee</span>&gt;
+<li>Then comparsion can be used by the compareTo() method.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">Employee</span>&gt;
 </span>{
- <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> rank;
- <span class="hljs-keyword">private</span> String name;
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(Employee e)</span>
- </span>{
-     <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.rank - e.rank;
- }
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String n, <span class="hljs-keyword">int</span> r)</span>
- </span>{
-     rank = r;
-     name = n;
- }
- <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span>
- </span>{
-     <span class="hljs-keyword">return</span> name + <span class="hljs-string">&quot; : &quot;</span> + rank;
- }
+   <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> rank;
+   <span class="hljs-keyword">private</span> String name;
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(Employee e)</span>
+   </span>{
+       <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.rank - e.rank;
+   }
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String n, <span class="hljs-keyword">int</span> r)</span>
+   </span>{
+       rank = r;
+       name = n;
+   }
+   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span>
+   </span>{
+       <span class="hljs-keyword">return</span> name + <span class="hljs-string">&quot; : &quot;</span> + rank;
+   }
 }
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>
 </span>{
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [ ] args)</span>
-  </span>{
-      Employee bigShot = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Joe Manager&quot;</span>, <span class="hljs-number">10</span>);
-      Employee littleShot = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Homer Simpson&quot;</span>, <span class="hljs-number">1</span>);
-      <span class="hljs-keyword">if</span> (bigShot.compareTo(littleShot) &gt; <span class="hljs-number">0</span>)
-      {
-          System.out.println(bigShot);
-          System.out.println(littleShot);            
-      }
-      <span class="hljs-keyword">else</span>
-      {
-          System.out.println(littleShot);
-          System.out.println(bigShot);
-      }
-  }    
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [ ] args)</span>
+    </span>{
+        Employee bigShot = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Joe Manager&quot;</span>, <span class="hljs-number">10</span>);
+        Employee littleShot = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;Homer Simpson&quot;</span>, <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">if</span> (bigShot.compareTo(littleShot) &gt; <span class="hljs-number">0</span>)
+        {
+            System.out.println(bigShot);
+            System.out.println(littleShot);
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            System.out.println(littleShot);
+            System.out.println(bigShot);
+        }
+    }
 }
 </code></pre>
-</li>
-</ul>
 <h4 id="anonymous-classes">Anonymous classes</h4>
 <ul>
 <li>Anonymous classes are used to override other class method in the main method in braces follow the constructor.</li>
@@ -1219,89 +1269,93 @@ b.whatShape();
 <li>Instance variables belong to the object. no object, no instance variables.</li>
 <li>static method and variables are created at compile time.</li>
 <li>When outside the class, always access static variables and methods using the class name, not an object variable.</li>
-<li>static method has access on only static variables. Unless initialize new variables inside static methods.<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+<li>static method has access on only static variables. Unless initialize new variables inside static methods.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
 }
 </code></pre>
-</li>
+<ul>
 <li>the main method takes an array of string as its parameters, and does not return a value.</li>
-<li><code>The currentObject.toString()</code> get call every time the object get to print or concatenated. By default, toString print the memory&#x2019;s hashcode values. However, it is often define specifically to print its formatted variable values.(overriding)<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> </span>{
-<span class="hljs-comment">// declared Method sayHello</span>
-<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sayHello</span><span class="hljs-params">()</span> </span>{
-  System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>);
-}
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
-  sayHello();
-}
+<li><code>The currentObject.toString()</code> get call every time the object get to print or concatenated. By default, toString print the memory&#x2019;s hashcode values. However, it is often define specifically to print its formatted variable values.(overriding)</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> </span>{
+  <span class="hljs-comment">// declared Method sayHello</span>
+  <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sayHello</span><span class="hljs-params">()</span> </span>{
+    System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>);
+  }
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
+    sayHello();
+  }
 }
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> </span>{
-<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sayHello</span><span class="hljs-params">(String name)</span> </span>{
-  System.out.println(<span class="hljs-string">&quot;Hello &quot;</span> + name);
-}
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
-  sayHello(<span class="hljs-string">&quot;David&quot;</span>);
-  sayHello(<span class="hljs-string">&quot;Amy&quot;</span>);
-}
+  <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sayHello</span><span class="hljs-params">(String name)</span> </span>{
+    System.out.println(<span class="hljs-string">&quot;Hello &quot;</span> + name);
+  }
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
+    sayHello(<span class="hljs-string">&quot;David&quot;</span>);
+    sayHello(<span class="hljs-string">&quot;Amy&quot;</span>);
+  }
 }
 <span class="hljs-comment">// Method with a parameter</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> </span>{
 <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">sum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val1, <span class="hljs-keyword">int</span> val2)</span> </span>{
-<span class="hljs-keyword">return</span> val1 + val2;
+  <span class="hljs-keyword">return</span> val1 + val2;
 }
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
-  <span class="hljs-keyword">int</span> x = sum(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>);
-  System.out.println(x);
-}
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
+    <span class="hljs-keyword">int</span> x = sum(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>);
+    System.out.println(x);
+  }
 }
 <span class="hljs-comment">// Method returns values</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>{
-<span class="hljs-keyword">int</span> legs;  <span class="hljs-comment">//attributes</span>
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bark</span><span class="hljs-params">()</span> </span>{
-  System.out.println(<span class="hljs-string">&quot;Woof-Woof&quot;</span>);
-}<span class="hljs-comment">//methods</span>
+  <span class="hljs-keyword">int</span> legs;  <span class="hljs-comment">//attributes</span>
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bark</span><span class="hljs-params">()</span> </span>{
+    System.out.println(<span class="hljs-string">&quot;Woof-Woof&quot;</span>);
+  }<span class="hljs-comment">//methods</span>
 }<span class="hljs-comment">// This create new class for generating Animal object</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> </span>{
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
-  Animal dog = <span class="hljs-keyword">new</span> Animal();
-  dog.legs=<span class="hljs-number">4</span>;
-  dog.bark();
-}
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
+    Animal dog = <span class="hljs-keyword">new</span> Animal();
+    dog.legs=<span class="hljs-number">4</span>;
+    dog.bark();
+  }
 }
 <span class="hljs-comment">// This create object, assign attributes and call its method</span>
 <span class="hljs-comment">//when methods are declared with no static keywords, new instance of the object must be declared, in order to use this method.</span>
 </code></pre>
-</li>
-</ul>
 <h4 id="getter-and-setter">Getter and Setter</h4>
 <ul>
 <li>For each variable, the get method returns its value, while the set method sets the value.</li>
 <li>Getters start with get, followed by the variable name, with the first letter of the variable name capitalized.</li>
-<li>Setters start with set, followed by the variable name, with the first letter of the variable name capitalized. (a boolean type return is recommended for a better implementation.)<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vehicle</span> </span>{
-<span class="hljs-keyword">private</span> String color;
-<span class="hljs-comment">// Getter</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getColor</span><span class="hljs-params">()</span> </span>{
-  <span class="hljs-keyword">return</span> color;
-}
-<span class="hljs-comment">// Setter</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setColor</span><span class="hljs-params">(String c)</span> </span>{
-  <span class="hljs-keyword">this</span>.color = c;
-  <span class="hljs-comment">//data validation can be done here.</span>
-}
+<li>Setters start with set, followed by the variable name, with the first letter of the variable name capitalized. (a boolean type return is recommended for a better implementation.)</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vehicle</span> </span>{
+  <span class="hljs-keyword">private</span> String color;
+  <span class="hljs-comment">// Getter</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getColor</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> color;
+  }
+ <span class="hljs-comment">// Setter</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setColor</span><span class="hljs-params">(String c)</span> </span>{
+    <span class="hljs-keyword">this</span>.color = c;
+    <span class="hljs-comment">//data validation can be done here.</span>
+  }
 }
 </code></pre>
-</li>
+<ul>
 <li>The getter method returns the value of the attribute.</li>
 <li>The setter method takes a parameter and assigns it to the attribute.</li>
 <li>The keyword this is used to refer to the current object. Basically, this.color is the color attribute of the current object.</li>
 <li>Sometimes methodName(class other) -&gt; other.variable refers to the object&#x2019;s variable that input from the parameters, different from this.variables</li>
 <li>other can be replaced by other words like that</li>
-<li>Then it can be used in main to manipulate private variables.<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
-Vehicle v1 = <span class="hljs-keyword">new</span> Vehicle();
-v1.setColor(<span class="hljs-string">&quot;Red&quot;</span>);
-System.out.println(v1.getColor());
+<li>Then it can be used in main to manipulate private variables.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[ ] args)</span> </span>{
+  Vehicle v1 = <span class="hljs-keyword">new</span> Vehicle();
+  v1.setColor(<span class="hljs-string">&quot;Red&quot;</span>);
+  System.out.println(v1.getColor());
 }
 </code></pre>
-</li>
-</ul>
 <h4 id="constructor">Constructor</h4>
 <ul>
 <li>Constructor is used to set a default value for instance variable when creating new objects. It is called when new object is initialized using new keyword, it can have parameters, entered after new in the brackets. It can also be used with setter.</li>
@@ -1309,28 +1363,32 @@ System.out.println(v1.getColor());
 <li>A constructor must have no explicit return type</li>
 <li>A constructor is not responsible to create variable, it only assign value for created variable under the class declaration line.</li>
 <li>There is also a default constructor in all java classes, it is empty inside bracket. It only initialize the instant variable initialization part(the first few lines for variables before the first method.)</li>
-<li>a private constructor can be created and called using a static create() method, this create method is also called static factory methods.<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vehicle</span> </span>{
-<span class="hljs-keyword">private</span> String color;
-Vehicle() {
-  <span class="hljs-keyword">this</span>.setColor(<span class="hljs-string">&quot;Red&quot;</span>);
+<li>a private constructor can be created and called using a static create() method, this create method is also called static factory methods.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vehicle</span> </span>{
+  <span class="hljs-keyword">private</span> String color;
+  Vehicle() {
+    <span class="hljs-keyword">this</span>.setColor(<span class="hljs-string">&quot;Red&quot;</span>);
+  }
 }
-}
-<span class="hljs-comment">//it is overloaded with different parameters.</span>
-Vehicle(String c) {
-  <span class="hljs-keyword">this</span>.setColor(c);
-}
-<span class="hljs-comment">// Setter</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setColor</span><span class="hljs-params">(String c)</span> </span>{
-  <span class="hljs-keyword">this</span>.color = c;
-}
+ <span class="hljs-comment">//it is overloaded with different parameters.</span>
+  Vehicle(String c) {
+    <span class="hljs-keyword">this</span>.setColor(c);
+  }
+  <span class="hljs-comment">// Setter</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setColor</span><span class="hljs-params">(String c)</span> </span>{
+    <span class="hljs-keyword">this</span>.color = c;
+  }
 }
 <span class="hljs-comment">//color will be &quot;Red&quot;</span>
 Vehicle v1 = <span class="hljs-keyword">new</span> Vehicle();
 <span class="hljs-comment">//color will be &quot;Green&quot;</span>
 Vehicle v2 = <span class="hljs-keyword">new</span> Vehicle(<span class="hljs-string">&quot;Green&quot;</span>);
 </code></pre>
-</li>
-<li><code>this()</code> can be used in the first line inside a constructor to save codes. It must be the first line of the constructor.<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Circle6</span><span class="hljs-params">()</span> </span>{
+<ul>
+<li><code>this()</code> can be used in the first line inside a constructor to save codes. It must be the first line of the constructor.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Circle6</span><span class="hljs-params">()</span> </span>{
 <span class="hljs-keyword">this</span>(<span class="hljs-number">10.0</span>, <span class="hljs-number">100.0</span>, <span class="hljs-number">100.0</span>);
 }
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Circle6</span><span class="hljs-params">(<span class="hljs-keyword">double</span> radius)</span> </span>{
@@ -1346,8 +1404,6 @@ Vehicle v2 = <span class="hljs-keyword">new</span> Vehicle(<span class="hljs-str
 <span class="hljs-keyword">this</span>.y = y;
 }
 </code></pre>
-</li>
-</ul>
 <h4 id="association">Association</h4>
 <ul>
 <li>Directed association(one-way association): It is basically object from other class is inside this class. The class has reference to the object.</li>
@@ -1366,11 +1422,11 @@ Vehicle v2 = <span class="hljs-keyword">new</span> Vehicle(<span class="hljs-str
 <li>It is the view for the user(interface) and class is the model(implementation that never get input or output for the users).</li>
 <li>In the main method declarations:<ul>
 <li>public or private: the accessibility of the code block.</li>
-<li>static: method cane run without creating an instance of the class containing the main method.</li>
+<li>static: method can run without creating an instance of the class containing the main method.</li>
 <li>void: method doesn&apos;t return any value.</li>
 <li>main: the name of the method.</li>
 <li>String[] args is the parameter for the main method.</li>
-<li>void test()   // it is a test method with no returning value and no parameters.</li>
+<li>void test() // it is a test method with no returning value and no parameters.</li>
 </ul>
 </li>
 </ul>
@@ -1381,53 +1437,57 @@ Vehicle v2 = <span class="hljs-keyword">new</span> Vehicle(<span class="hljs-str
 <li><code>T</code> Used for a generic type.</li>
 <li><code>S</code> Used for a generic type (usually for the second type if used)</li>
 <li><code>E</code> Used to represent generic type of an element in a collection.</li>
-<li><code>K</code>Used to represent generic type of a key for a collection that maintains key/value pairs.</li>
-<li><code>V</code> Used to represent generic type of a value for collection that maintains key/value pairs.<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span>&lt;<span class="hljs-title">T</span>&gt;     // <span class="hljs-title">T</span> <span class="hljs-title">represents</span> <span class="hljs-title">a</span> <span class="hljs-title">type</span> <span class="hljs-title">parameter</span>
+<li><code>K</code> Used to represent generic type of a key for a collection that maintains key/value pairs.</li>
+<li><code>V</code> Used to represent generic type of a value for collection that maintains key/value pairs.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span>&lt;<span class="hljs-title">T</span>&gt;     // <span class="hljs-title">T</span> <span class="hljs-title">represents</span> <span class="hljs-title">a</span> <span class="hljs-title">type</span> <span class="hljs-title">parameter</span>
 </span>{
-<span class="hljs-keyword">private</span> T x, y;
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Point</span><span class="hljs-params">(T x, T y)</span>           <span class="hljs-comment">//  Constructor</span>
-</span>{
-set(x, y);
-}
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">set</span><span class="hljs-params">(T x, T y)</span>
-</span>{
-<span class="hljs-keyword">this</span>.x = x;   <span class="hljs-keyword">this</span>.y = y;
-}
-<span class="hljs-function">T <span class="hljs-title">getX</span><span class="hljs-params">()</span></span>{ <span class="hljs-keyword">return</span> x;}
-<span class="hljs-function">T <span class="hljs-title">getY</span><span class="hljs-params">()</span></span>{ <span class="hljs-keyword">return</span> y;}
-<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span>
-</span>{
-<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;(&quot;</span>+x.toString() +<span class="hljs-string">&quot;,&quot;</span>+ y.toString() + <span class="hljs-string">&quot;)&quot;</span>;
-}
+  <span class="hljs-keyword">private</span> T x, y;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Point</span><span class="hljs-params">(T x, T y)</span>           <span class="hljs-comment">//  Constructor</span>
+  </span>{
+    set(x, y);
+  }
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">set</span><span class="hljs-params">(T x, T y)</span>
+  </span>{
+    <span class="hljs-keyword">this</span>.x = x;   <span class="hljs-keyword">this</span>.y = y;
+  }
+  <span class="hljs-function">T <span class="hljs-title">getX</span><span class="hljs-params">()</span></span>{ <span class="hljs-keyword">return</span> x;}
+  <span class="hljs-function">T <span class="hljs-title">getY</span><span class="hljs-params">()</span></span>{ <span class="hljs-keyword">return</span> y;}
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span>
+  </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;(&quot;</span>+x.toString() +<span class="hljs-string">&quot;,&quot;</span>+ y.toString() + <span class="hljs-string">&quot;)&quot;</span>;
+  }
 }
 <span class="hljs-comment">//during instantiation</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>
 </span>{
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [] s)</span>
-</span>{
-Point&lt;String&gt; strPoint = <span class="hljs-keyword">new</span> Point&lt;String&gt;(<span class="hljs-string">&quot;Anna&quot;</span>, <span class="hljs-string">&quot;Banana&quot;</span>);
-System.out.println(strPoint);
-Point&lt;Double&gt; pie = <span class="hljs-keyword">new</span> Point&lt;Double&gt;(<span class="hljs-number">3.14</span>, <span class="hljs-number">2.71</span>);
-System.out.println(pie);
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [] s)</span>
+  </span>{
+    Point&lt;String&gt; strPoint = <span class="hljs-keyword">new</span> Point&lt;String&gt;(<span class="hljs-string">&quot;Anna&quot;</span>, <span class="hljs-string">&quot;Banana&quot;</span>);
+    System.out.println(strPoint);
+    Point&lt;Double&gt; pie = <span class="hljs-keyword">new</span> Point&lt;Double&gt;(<span class="hljs-number">3.14</span>, <span class="hljs-number">2.71</span>);
+    System.out.println(pie);
+  }
 }
-}   
 <span class="hljs-comment">//Program Output:</span>
 <span class="hljs-comment">//(Anna,Banana)</span>
 <span class="hljs-comment">//(3.14,2.71)</span>
 </code></pre>
-</li>
-</ul>
-</li>
+<ul>
 <li>Autoboxing is the automatic conversion of a primitive type to the corresponding wrapper type when it is used in a context where a reference type is required.</li>
-<li>Unboxing is the automatic unwrapping of a wrapper type to give the corresponding primitive type when the wrapper type is used in a context that requires a primitive type.<pre><code class="lang-java"><span class="hljs-comment">// Unboxing converts Integer to int</span>
+<li>Unboxing is the automatic unwrapping of a wrapper type to give the corresponding primitive type when the wrapper type is used in a context that requires a primitive type.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">// Unboxing converts Integer to int</span>
 <span class="hljs-keyword">int</span> i = <span class="hljs-keyword">new</span> Integer(<span class="hljs-number">34</span>);
 <span class="hljs-comment">// AutoBoxing converts doubles 3.14, 2.71 to Double</span>
 Point&lt;Double&gt; p = <span class="hljs-keyword">new</span> Point&lt;Double&gt;(<span class="hljs-number">3.14</span>, <span class="hljs-number">2.71</span>);
 <span class="hljs-comment">// p.getX() returns Double which is unboxed to double</span>
 <span class="hljs-keyword">double</span> pi = p.getX();
 </code></pre>
-</li>
-<li>The wildcard type symbol ? stands for any generic type. <code>Point&lt;?&gt;</code> references will accept a <code>Point&lt;T&gt;</code> object for any type T.<ul>
+<ul>
+<li>The wildcard type symbol <code>?</code> stands for any generic type. <code>Point&lt;?&gt;</code> references will accept a <code>Point&lt;T&gt;</code> object for any type T.<ul>
 <li>T will require casting when using wild card without constrain.<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> <span class="hljs-title">sqLength</span><span class="hljs-params">(Point&lt;?&gt; p)</span>
 </span>{
 <span class="hljs-comment">// Needs cast to Number</span>
@@ -1439,7 +1499,7 @@ Number n2 = (Number)p.getY();
 }
 </code></pre>
 </li>
-<li><code>Point &lt;? extends Number&gt; p2;</code> Constrained wild card <code>p2</code> can accept a Point<t> object, where T is any type that extends Number</t></li>
+<li><code>Point &lt;? extends Number&gt; p2;</code> Constrained wild card <code>p2</code> can accept a <code>Point&lt;T&gt;</code> object, where T is any type that extends Number</li>
 <li>In class definition <code>class Point&lt;T extends Number&gt;</code> constrains to a subclass of Number.</li>
 <li>A type parameter can be constrained to a type implementing an interface<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T extends Comparable&lt;T&gt;&gt;
 <span class="hljs-function">T <span class="hljs-title">greatest</span><span class="hljs-params">(T arg1, T arg2)</span>
@@ -1464,17 +1524,17 @@ System.out.println(great);
 </ul>
 <h4 id="generic-methods">Generic Methods</h4>
 <ul>
-<li>Generic methods are declared as follows<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">methodName</span><span class="hljs-params">(ClassName&lt;T&gt; t)</span></span>{
+<li>Generic methods are declared as follows</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">methodName</span><span class="hljs-params">(ClassName&lt;T&gt; t)</span></span>{
 }
 </code></pre>
 <ul>
-<li>The <code>&lt;T&gt;</code> is the generic type the method is taking as parameter.</li>
+<li>The <code>&lt;T&gt;</code> is the generic type the method is taking as a parameter.</li>
+<li>Generic methods are called in the following way.</li>
 </ul>
-</li>
-<li>Generic methods are called in the following way.<pre><code class="lang-java">&lt;TypeName&gt;methodName(t);
+<pre><code class="lang-java">&lt;TypeName&gt;methodName(t);
 </code></pre>
-</li>
-</ul>
 <h2 id="exception-handling">Exception Handling</h2>
 <ul>
 <li>There are three types of error<ol>
@@ -1511,35 +1571,43 @@ System.out.println(great);
 <ul>
 <li>get stack trace info <code>e.printStackTrace();</code></li>
 <li>get error message <code>e.getMessage()</code></li>
-<li>specifying checked exception to avoid Syntax error before compile.<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span> <span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> CheckedExceptionType</span>{
+<li>specifying checked exception to avoid Syntax error before compile.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span> <span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> CheckedExceptionType</span>{
 &#x2026;
 }
 </code></pre>
-</li>
-<li>create ones own exception types<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RuntimeException</span> </span>{
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ExampleException</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">super</span>(<span class="hljs-string">&quot;set message here&quot;</span>);
-  }
+<ul>
+<li>create ones own exception types</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RuntimeException</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ExampleException</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>(<span class="hljs-string">&quot;set message here&quot;</span>);
+    }
 }
 </code></pre>
-</li>
-<li>create exception thrower<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleThrower</span> </span>{
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ExampleThrower</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
-      <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>) {
-          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> OutOfRangeException();
-      }
-  }
+<ul>
+<li>create exception thrower</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleThrower</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ExampleThrower</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+        <span class="hljs-keyword">if</span> (x&lt;<span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> OutOfRangeException();
+        }
+    }
 }
 </code></pre>
-</li>
-<li>main testing class exception handling<pre><code class="lang-java">ExampleThrower x;
+<ul>
+<li>main testing class exception handling</li>
+</ul>
+<pre><code class="lang-java">ExampleThrower x;
 <span class="hljs-keyword">try</span>{
-  ExampleThrower = <span class="hljs-keyword">new</span> ExampleThrower(-<span class="hljs-number">5</span>);
+    ExampleThrower = <span class="hljs-keyword">new</span> ExampleThrower(-<span class="hljs-number">5</span>);
 } <span class="hljs-keyword">catch</span> (ExampleException e) {
-  System.out.println(e.getMessage());
+    System.out.println(e.getMessage());
 }
 </code></pre>
-</li>
+<ul>
 <li>finally block always run.</li>
 <li>one try block can have many catch block, the exceptions for those catch block should be arranged from the most specific one to the most general one, since they are checked from top to bottom.</li>
 <li>whenever there is an exception in the try block, the try block stops running. When the catch block finishes, the code in try block will continue.</li>
@@ -1554,7 +1622,7 @@ For custom exception super() in constructor is for getMessage().</li>
 <li>packages are often used as a folder for classes and sub-packages.</li>
 <li>packages folders are under the src folders.</li>
 <li>java files for classes will have a first line indicates which package it belongs.</li>
-<li>in order for other package to use a class which is outside the package: <code>import packageName.classNAME</code>;  or <code>import packageName.*;</code> is needed.</li>
+<li>in order for other package to use a class which is outside the package: <code>import packageName.classNAME</code>; or <code>import packageName.*;</code> is needed.</li>
 <li>All functions in Java exists within a class object, some of them are built in and does not need to import, many others does.</li>
 </ul>
 <h3 id="system-class">System class</h3>
@@ -1567,7 +1635,7 @@ For custom exception super() in constructor is for getMessage().</li>
 <ul>
 <li><code>java.util.Random;</code></li>
 <li><code>Random name = new Random();</code></li>
-<li><code>name.nextInt(x);</code>    generate x different int from 0</li>
+<li><code>name.nextInt(x);</code> generate x different int from 0</li>
 <li><code>name.nextDouble(x);</code> generate double int from 0-(x-1)</li>
 <li><code>name.nextBoolean(x);</code></li>
 </ul>
@@ -1575,25 +1643,29 @@ For custom exception super() in constructor is for getMessage().</li>
 <p>it contains all static methods, so can be called without creating math objects.</p>
 <ul>
 <li><code>Math.pow(base,exp);</code> returns a double</li>
-<li><code>Math.round()</code>    round to nearest int</li>
-<li><code>Math.abs()</code>        find abs for all number type</li>
-<li><code>Math.max()</code>    return the largest among its parameters.</li>
-<li><code>Math.min()</code>     return the smallest among its parameters.</li>
-<li><code>Math.ceil()</code>      return the next int value as a double.</li>
-<li><code>Math.floor()</code>    return the int value as a double</li>
-<li><code>Math.pow(x,y)</code>   power of x to the power of y as a double.</li>
-<li><code>Math.random();</code>  random number from 0 to 1.</li>
+<li><code>Math.round()</code> round to nearest int</li>
+<li><code>Math.abs()</code> find abs for all number type</li>
+<li><code>Math.max()</code> return the largest among its parameters.</li>
+<li><code>Math.min()</code> return the smallest among its parameters.</li>
+<li><code>Math.ceil()</code> return the next int value as a double.</li>
+<li><code>Math.floor()</code> return the int value as a double</li>
+<li><code>Math.pow(x,y)</code> power of x to the power of y as a double.</li>
+<li><code>Math.random();</code> random number from 0 to 1.</li>
 <li><code>Math.sqrt()</code></li>
 <li><code>Math,sin()</code></li>
 <li><code>Math.cos()</code></li>
 </ul>
 <h3 id="scanner-class">Scanner Class</h3>
 <ul>
-<li>It is used to get User input or read files.<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.Scanner;  <span class="hljs-comment">//import the Scanner class</span>
+<li>It is used to get User input or read files.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.Scanner;  <span class="hljs-comment">//import the Scanner class</span>
 Scanner myVar = <span class="hljs-keyword">new</span> Scanner(System.in);  <span class="hljs-comment">//Create a Scanner object(instance of this class).</span>
 </code></pre>
-</li>
-<li>run the following scanner methods for different data types.<pre><code class="lang-java">nextByte() <span class="hljs-comment">//Read a byte</span>
+<ul>
+<li>run the following scanner methods for different data types.</li>
+</ul>
+<pre><code class="lang-java">nextByte() <span class="hljs-comment">//Read a byte</span>
 nextShort() <span class="hljs-comment">//Read a short</span>
 nextInt() <span class="hljs-comment">//Read an int</span>
 nextLong() <span class="hljs-comment">//Read a long</span>
@@ -1606,7 +1678,7 @@ hasNext() <span class="hljs-comment">//Return bool, work with while loop as its 
 <span class="hljs-comment">//Example:</span>
 System.out.println(myVar.nextLine());  <span class="hljs-comment">//get user input</span>
 </code></pre>
-</li>
+<ul>
 <li>sometimes scanner can cause error if the lines is mismatched.</li>
 </ul>
 <h3 id="interger">Interger</h3>
@@ -1617,8 +1689,8 @@ System.out.println(myVar.nextLine());  <span class="hljs-comment">//get user inp
 <h3 id="double">Double</h3>
 <ul>
 <li><code>Double.parseDouble(String)</code>string to double</li>
-<li><code>Integer.MAX_VALUE</code>  A constant holding the maximum value an int can have, 2^31-1.</li>
-<li><code>Integer.MIN_VALUE</code>   A constant holding the minimum value an int can have, -2^31.</li>
+<li><code>Integer.MAX_VALUE</code> A constant holding the maximum value an int can have, 2^31-1.</li>
+<li><code>Integer.MIN_VALUE</code> A constant holding the minimum value an int can have, -2^31.</li>
 </ul>
 <h3 id="string">String</h3>
 <ul>
@@ -1629,11 +1701,12 @@ System.out.println(myVar.nextLine());  <span class="hljs-comment">//get user inp
 <li><code>string.indexOf(&quot;sam&quot;)</code> return index and -1 if not exist.</li>
 <li><code>string.toUpperCase</code></li>
 <li><code>str.charAt(i)</code> return the character at position i.</li>
+<li><code>str.substring(a, b)</code> only take string from charact with index <code>a</code> to <code>b - 1</code>.</li>
 </ul>
 <h3 id="stringbuilder-class">StringBuilder class</h3>
 <h2 id="character">Character</h2>
 <ul>
-<li><code>Character.getNumericValue(myString.charAt(0));</code>   return ACSII value of a char in string to real integer value.</li>
+<li><code>Character.getNumericValue(myString.charAt(0));</code> return ACSII value of a char in string to real integer value.</li>
 </ul>
 <h2 id="color">Color</h2>
 <ul>
@@ -1644,7 +1717,7 @@ System.out.println(myVar.nextLine());  <span class="hljs-comment">//get user inp
 <ul>
 <li><code>System.out.println(&quot;&quot;);</code> println is the method. System is the class and out is the stream to access the println method. the method creates a new line at the end, print() does not.</li>
 <li><code>printf()</code> //This is the formatting output method.</li>
-<li><code>System.out.printf(&quot;%s(this is the formatting string)   %f&quot; , aString, aDouble);</code></li>
+<li><code>System.out.printf(&quot;%s(this is the formatting string) %f&quot; , aString, aDouble);</code></li>
 <li><code>String.format()</code> can also be used to generate formatted string and save it into a variable.</li>
 <li><code>printf()</code> is only good with System.out</li>
 <li>String is an object, a reference type.</li>
@@ -1663,12 +1736,12 @@ System.out.println(myVar.nextLine());  <span class="hljs-comment">//get user inp
 <li>width.decimal(default 6 decimal place, precision can be used for %s %b %h as well)(decimal point is 1 space)</li>
 </ul>
 </li>
-<li>alignment.  <ul>
-<li>place <code>-</code> after <code>%</code> sign means left alignment. Ex: <code>%-6s</code>,&quot;good&quot;  -&gt;good<em> </em>  (default right justified).</li>
+<li>alignment.<ul>
+<li>place <code>-</code> after <code>%</code> sign means left alignment. Ex: <code>%-6s</code>,&quot;good&quot; -&gt;good_ _ (default right justified).</li>
 </ul>
 </li>
 <li>divider<ul>
-<li><code>,</code> use , to divide thousand, million position for a number.</li>
+<li><code>,</code> use <code>,</code> to divide thousand, million position for a number.</li>
 </ul>
 </li>
 <li>leading zero<ul>
@@ -1716,22 +1789,26 @@ System.out.println(myVar.nextLine());  <span class="hljs-comment">//get user inp
 </ul>
 <h3 id="create-an-array">Create an Array</h3>
 <ul>
-<li>create array with fixed length.<pre><code class="lang-java"><span class="hljs-comment">//The following statement declare new int array called newArray with 5 elements from [0] to [4]</span>
-<span class="hljs-keyword">int</span>[] newArray;                 
+<li>create array with fixed length.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//The following statement declare new int array called newArray with 5 elements from [0] to [4]</span>
+<span class="hljs-keyword">int</span>[] newArray;
 newArray = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">5</span>];
 <span class="hljs-comment">//or</span>
 <span class="hljs-keyword">int</span>[] newArray = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">5</span>];
 </code></pre>
-</li>
-<li><p>array literal</p>
+<ul>
+<li>array literal</li>
+</ul>
 <pre><code class="lang-java"><span class="hljs-comment">//instantiating array for the first time.</span>
 String[] newWithValue = {<span class="hljs-string">&quot;A&quot;</span>,<span class="hljs-string">&quot;B&quot;</span>,<span class="hljs-string">&quot;C&quot;</span>,<span class="hljs-string">&quot;D&quot;</span>};
 <span class="hljs-comment">//at any time</span>
 String[] newWithValue;
 newWithValue = <span class="hljs-keyword">new</span> String[]{<span class="hljs-string">&quot;A&quot;</span>,<span class="hljs-string">&quot;B&quot;</span>,<span class="hljs-string">&quot;C&quot;</span>,<span class="hljs-string">&quot;D&quot;</span>};
 </code></pre>
-</li>
-<li><p>Create an array of objects</p>
+<ul>
+<li>Create an array of objects</li>
+</ul>
 <pre><code class="lang-java">Obj[] name;
 name = <span class="hljs-keyword">new</span> Obj[<span class="hljs-number">5</span>];
 <span class="hljs-comment">//Initialize an object in array</span>
@@ -1741,54 +1818,50 @@ name[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span>
 <li>after creating an array of objects, all objects have a default value null(or an array of nulls) with no value in memory. Before initialize each object in the array, be aware of null exceptions(error).</li>
 <li>Array is a good way to handle large amount of objects using array of objects</li>
 </ul>
-</li>
-</ul>
 <h3 id="access-an-array">Access an Array</h3>
 <pre><code class="lang-java"><span class="hljs-comment">// This assign a value of 10 to the 3rd position of the array</span>
 newArray[<span class="hljs-number">2</span>] = <span class="hljs-number">10</span>;
 </code></pre>
 <ul>
-<li><code>.</code> Can be used to access a object in the array: <code>array[0].method()</code>;</li>
+<li><code>.</code> Can be used to access an object in the array: <code>array[0].method()</code>;</li>
 </ul>
 <h3 id="length">Length</h3>
 <ul>
-<li><code>newArray.length</code>  - returns the length of the array</li>
+<li><code>newArray.length</code> - returns the length of the array</li>
 </ul>
 <h3 id="multidimensional-arrays">Multidimensional arrays</h3>
 <ul>
 <li>Multidimensional arrays are nested arrays</li>
-<li>first index represents the row, second index represents the column.</li>
+<li>first index represents the row, the second index represents the column.</li>
 <li>Multidimensional array must also be in the same type.</li>
 <li>Java supports int[][][] and more.</li>
 <li>Nested loop works with multidimensional arrays.</li>
-<li>Ragged array is a 2D array with various row lengths. <code>int [][] arrayName = new int [4][];</code><pre><code class="lang-java"><span class="hljs-keyword">int</span>[][] sample = { {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>},{<span class="hljs-number">3</span>,<span class="hljs-number">4</span>},{<span class="hljs-number">5</span>,<span class="hljs-number">6</span>} };
+<li>Ragged array is a 2D array with various row lengths. <code>int [][] arrayName = new int [4][];</code></li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span>[][] sample = { {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>},{<span class="hljs-number">3</span>,<span class="hljs-number">4</span>},{<span class="hljs-number">5</span>,<span class="hljs-number">6</span>} };
 <span class="hljs-comment">//access 2D array</span>
 <span class="hljs-keyword">int</span> x = sample[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>];  <span class="hljs-comment">//x==2</span>
-<span class="hljs-comment">//get column length.</span>
+<span class="hljs-comment">//get the length of the first row.</span>
 <span class="hljs-keyword">int</span> y = sample[<span class="hljs-number">0</span>].length;
 </code></pre>
 <h3 id="arrays-class">Arrays class</h3>
-</li>
-<li><code>Arrays.toString(arrayX);</code>     //print out the array content</li>
-<li><code>Arrays.copyOf(arrayX, lengthX);</code>  //get the first lenthX element of arrayX</li>
+<ul>
+<li><code>Arrays.toString(arrayX);</code> //print out the array content</li>
+<li><code>Arrays.copyOf(arrayX, lengthX);</code> //get the first lenthX element of arrayX</li>
 <li><code>Arrays.equals(arrayX, arrayY);</code> //return if arrayX and arrayY are equal.</li>
 </ul>
 <h3 id="comparable-interface">Comparable interface</h3>
 <ul>
 <li><code>Arrays.sort</code>, <code>Arrays.binarySearch</code> works with comparable interface.</li>
-<li>comparable interface has abstract <code>compareTo()</code> method, it compare the current object to the passed parameter return int.(negative when smaller, positive when bigger and zero if equal.)</li>
+<li>comparable interface has an abstract <code>compareTo()</code> method, it compare the current object to the passed parameter return int.(negative when smaller, positive when bigger and zero if equal.)</li>
 <li>All arrays of strings have already implemented the comparable interface. can use Array. method directly.<pre><code class="lang-java">compareTo (ClassName objectName) {
 }
 </code></pre>
 </li>
 <li>After implement the definition, the array of objects of MyClass can be sorted and searched using the methods above.</li>
-<li>Sort can be done with Lambda express, ``collectionName.sort(<pre><code>(Object o1, Object o2) -&gt; o1.getName().compareTo(o2.getName()));`` or ``collectionName.sort(
-      (o1, o2) -&gt; o1.getName().compareTo(o2.getName()));``
-</code></pre></li>
-<li>For integer values, ``collectionName.sort(<pre><code>(o1, o2) -&gt; o1.getAge()-o2.getAge());``
-</code></pre></li>
-<li>It can be done with Comparator ``Comparator<object> comparatorName =<pre><code>  (Object o1, Object o2)-&gt;o1.getName().compareTo(o2.getName());``. then use ``collectionName.sort(comparatorName)``.
-</code></pre></object></li>
+<li>Sort can be done with Lambda express, <code>collectionName.sort( (Object o1, Object o2) -&gt; o1.getName().compareTo(o2.getName()));</code> or <code>collectionName.sort( (o1, o2) -&gt; o1.getName().compareTo(o2.getName()));</code></li>
+<li>For integer values, <code>collectionName.sort( (o1, o2) -&gt; o1.getAge()-o2.getAge());</code></li>
+<li>It can be done with Comparator <code>Comparator&lt;Object&gt; comparatorName = (Object o1, Object o2)-&gt;o1.getName().compareTo(o2.getName());</code>. then use <code>collectionName.sort(comparatorName)</code>.</li>
 </ul>
 <h2 id="collections">Collections</h2>
 <ul>
@@ -1828,47 +1901,54 @@ newArray[<span class="hljs-number">2</span>] = <span class="hljs-number">10</spa
 <li>ArrayList only accept objects as its element. For primitive types use its wrapper class. Once declared using wrapper, auto transformation can be done by autoboxing.</li>
 <li>List&#x2019;s index start at 0.</li>
 <li>LinkedList can&#x2019;t set size when initialize, it got all others syntax the same as ArrayList. It stores additional memory address about the neighbouring elements, make it suitable for large amount of insertion and deletion. ArrayList is faster for accessing data.</li>
-<li>ArrayList<string> is the type of the arraylist, Ex, <code>public void method(ArrayList&lt;String&gt; x){////}</code></string></li>
-<li>Lists works with enhanced for loop.</li>
+<li><code>ArrayList&lt;String&gt;</code> is the type of the arraylist, Ex, <code>public void method(ArrayList&lt;String&gt; x){////}</code></li>
+<li>Lists work well with enhanced for loop.</li>
 </ul>
 <h3 id="new-wrapper-class">new wrapper class</h3>
 <pre><code class="lang-java">Integer x = <span class="hljs-keyword">new</span> integer(<span class="hljs-number">1</span>);
-<span class="hljs-comment">//it cane printed as int 1.</span>
+<span class="hljs-comment">//it can be printed as int 1.</span>
 </code></pre>
 <h3 id="create-arraylist-object">create arraylist object</h3>
 <pre><code class="lang-java">ArrayList x = <span class="hljs-keyword">new</span> ArrayList();
 </code></pre>
 <ul>
-<li>create arraylist for String with 10 entries.<pre><code class="lang-java">ArrayList&lt;String&gt; x = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;(<span class="hljs-number">10</span>);
-</code></pre>
-</li>
+<li>create arraylist for String with 10 entries.</li>
 </ul>
+<pre><code class="lang-java">ArrayList&lt;String&gt; x = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;(<span class="hljs-number">10</span>);
+</code></pre>
+<ul>
+<li>create arraylist based on an array.</li>
+</ul>
+<pre><code class="lang-java">ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>, <span class="hljs-number">30</span>, <span class="hljs-number">50</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">90</span>));
+</code></pre>
 <h3 id="create-linkedlist-object">create linkedlist object</h3>
 <pre><code class="lang-java">LinkedList&lt;Integer&gt; x = <span class="hljs-keyword">new</span> LinkedList&lt;Integer&gt;();
 <span class="hljs-comment">//LinkedList&lt;Integer&gt; is the complete type as an argument for a function.</span>
 </code></pre>
 <h3 id="access-elements">Access Elements</h3>
 <ul>
-<li>set element<pre><code class="lang-java">set(<span class="hljs-keyword">int</span> index, <span class="hljs-string">&quot;something&quot;</span>)      <span class="hljs-comment">//might throw error.</span>
+<li>set element</li>
+</ul>
+<pre><code class="lang-java">set(<span class="hljs-keyword">int</span> index, <span class="hljs-string">&quot;something&quot;</span>)      <span class="hljs-comment">//might throw type error.</span>
 get(<span class="hljs-keyword">int</span> index);
 </code></pre>
-</li>
-<li>remove element<pre><code class="lang-java">arrayListName.remove(<span class="hljs-string">&quot;something&quot;</span>);
+<ul>
+<li>remove element</li>
+</ul>
+<pre><code class="lang-java">arrayListName.remove(<span class="hljs-string">&quot;something&quot;</span>);
 arrayListName.remove(<span class="hljs-keyword">int</span> index);
 <span class="hljs-comment">//return true when successful.</span>
 </code></pre>
-</li>
-</ul>
 <h3 id="arraylist-methods">ArrayList Methods</h3>
 <ul>
-<li><p>add new object to the end of the ArrayList</p>
+<li>add a new object to the end of the ArrayList</li>
+</ul>
 <pre><code class="lang-java">arrayListName.add(<span class="hljs-string">&quot;something&quot;</span>);
 arrayListName.add(<span class="hljs-keyword">int</span> index, <span class="hljs-string">&quot;something&quot;</span>);
 </code></pre>
-</li>
-<li><p>return true if contain specific element. <code>arrayX.contains(Object s)</code></p>
-</li>
-<li>get first index of an item <code>indexOf(&quot;Something&quot;);   //-1 if not found,</code></li>
+<ul>
+<li>return true if contain specific element. <code>arrayX.contains(Object s)</code></li>
+<li>get first index of an item <code>indexOf(&quot;Something&quot;); //-1 if not found,</code></li>
 <li>get last index of an item <code>lastIndexOf(&quot;Something&quot;);</code></li>
 <li>get the element on at specific index position <code>.get(int index)</code></li>
 <li>return the length <code>.size()</code></li>
@@ -1900,7 +1980,7 @@ arrayListName.add(<span class="hljs-keyword">int</span> index, <span class="hljs
 <ul>
 <li>Hashset cannot contain duplicated values. It does not order the element. like set in math. * They have other features similar to lists.</li>
 <li>The HashSet is a collection of buckets, and each bucket is a collection of elements.</li>
-<li>The collection of buckets can be implemented as an Array or an ArrayList.  </li>
+<li>The collection of buckets can be implemented as an Array or an ArrayList.</li>
 <li>Each bucket may also be a list of elements, usually a LinkedList</li>
 </ul>
 <h4 id="create">create</h4>
@@ -1929,7 +2009,7 @@ arrayListName.add(<span class="hljs-keyword">int</span> index, <span class="hljs
 <h3 id="treeset">TreeSet</h3>
 <ul>
 <li>A TreeSet stores elements based on a natural order defined on those elements.</li>
-<li>The natural order is based on the values of the objects being stored .  </li>
+<li>The natural order is based on the values of the objects being stored .</li>
 <li>By internally organizing the storage of its elements according to this order, a TreeSet allows fast search for any element in the collection.</li>
 <li>A TreeSet requires a mechanism to sort<ol>
 <li>The elements being stored must implement the Comparable Interface &#x2013; Internal order.</li>
@@ -1948,14 +2028,14 @@ arrayListName.add(<span class="hljs-keyword">int</span> index, <span class="hljs
 <li>next(): Returns the next object and advances the iterator.</li>
 <li>remove(): Removes the last object that was returned by next from the collection.</li>
 <li>It can be used in a loop.</li>
-<li>The Use of the iterator of the Scanner object is often practiced.<pre><code class="lang-java">Iterator&lt;String&gt; it = animals.iterator();
-<span class="hljs-keyword">while</span>(it.hasNext()) {
-String value = it.next();
-System.out.println(value);   
-}
-</code></pre>
-</li>
+<li>The Use of the iterator of the Scanner object is often practiced.</li>
 </ul>
+<pre><code class="lang-java">Iterator&lt;String&gt; it = animals.iterator();
+<span class="hljs-keyword">while</span>(it.hasNext()) {
+  String value = it.next();
+  System.out.println(value);
+ }
+</code></pre>
 <h3 id="file-class">File Class</h3>
 <ul>
 <li>It makes you work with files.</li>
@@ -1964,63 +2044,73 @@ System.out.println(value);
 </ul>
 <h4 id="open-file">Open File</h4>
 <ul>
-<li>Use File class to open a file.<pre><code class="lang-java"><span class="hljs-keyword">try</span> {
-File fileName = <span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;C:\\folderName\\test.txt&quot;</span>);
+<li>Use File class to open a file.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">try</span> {
+  File fileName = <span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;C:\\folderName\\test.txt&quot;</span>);
 }
-<span class="hljs-keyword">catch</span> (FileNotFoundException e) {
+ <span class="hljs-keyword">catch</span> (FileNotFoundException e) {
 }
 </code></pre>
-</li>
+<ul>
 <li>if use relative path, the path is in the same folder as the <code>src</code> folder.</li>
 <li>we used double backslashes in the path, as one backslash should be escaped in the path String.</li>
-<li><code>exists()</code> method, determine whether a file exists.   //return boolean</li>
+<li><code>exists()</code> method, determine whether a file exists. //return boolean</li>
 <li>The <code>getName()</code> method returns the name of the file.</li>
 </ul>
 <h4 id="read-file">Read File</h4>
 <ul>
-<li>Scanner class can be used to read files<pre><code class="lang-java"><span class="hljs-keyword">try</span> {
-File x = <span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;C:\\folderName\\test.txt&quot;</span>);
-Scanner sc = <span class="hljs-keyword">new</span> Scanner(x);      
+<li>Scanner class can be used to read files</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">try</span> {
+  File x = <span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;C:\\folderName\\test.txt&quot;</span>);
+  Scanner sc = <span class="hljs-keyword">new</span> Scanner(x);
 }
-<span class="hljs-keyword">catch</span> (FileNotFoundException e) {
+ <span class="hljs-keyword">catch</span> (FileNotFoundException e) {
 }
 </code></pre>
-</li>
+<ul>
 <li>Scanner&apos;s close() method is used to close the file</li>
-<li>Scanner class in a sub class of Interator it hs next and has method that can be used in a loop<pre><code class="lang-java"><span class="hljs-keyword">try</span> {
-File x = <span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;C:\\folderName\\test.txt&quot;</span>);
-Scanner sc = <span class="hljs-keyword">new</span> Scanner(x);
-<span class="hljs-keyword">while</span>(sc.hasNext()) {
-  System.out.println(sc.next());
-}
-sc.close();
+<li>Scanner class in a sub class of Interator it hs next and has method that can be used in a loop</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">try</span> {
+  File x = <span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;C:\\folderName\\test.txt&quot;</span>);
+  Scanner sc = <span class="hljs-keyword">new</span> Scanner(x);
+  <span class="hljs-keyword">while</span>(sc.hasNext()) {
+    System.out.println(sc.next());
+  }
+  sc.close();
 } <span class="hljs-keyword">catch</span> (FileNotFoundException e) {
-System.out.println(<span class="hljs-string">&quot;Error&quot;</span>);
+  System.out.println(<span class="hljs-string">&quot;Error&quot;</span>);
 }
 </code></pre>
 <h4 id="write-file">Write File</h4>
-</li>
-<li>Formatter class is used to create content and write or overwrite it to files<pre><code class="lang-java"><span class="hljs-keyword">try</span> {
-  Formatter f = <span class="hljs-keyword">new</span> Formatter(<span class="hljs-string">&quot;C:\\sololearn\\test.txt&quot;</span>);
-} <span class="hljs-keyword">catch</span> (Exception e) {
-    System.out.println(<span class="hljs-string">&quot;Error&quot;</span>);
-}
+<ul>
+<li>Formatter class is used to create content and write or overwrite it to files</li>
+</ul>
+<pre><code class="lang-java"> <span class="hljs-keyword">try</span> {
+    Formatter f = <span class="hljs-keyword">new</span> Formatter(<span class="hljs-string">&quot;C:\\sololearn\\test.txt&quot;</span>);
+  } <span class="hljs-keyword">catch</span> (Exception e) {
+      System.out.println(<span class="hljs-string">&quot;Error&quot;</span>);
+  }
 </code></pre>
-</li>
+<ul>
 <li>Format method is used to write content</li>
-<li>it also has close method.<pre><code class="lang-java">Formatter f = <span class="hljs-keyword">new</span> Formatter(<span class="hljs-string">&quot;C:\\sololearn\\test.txt&quot;</span>);
-  f.format(<span class="hljs-string">&quot;%s %s %s&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Smith \r\n&quot;</span>);
-  f.format(<span class="hljs-string">&quot;%s %s %s&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>,<span class="hljs-string">&quot;Amy&quot;</span>, <span class="hljs-string">&quot;Brown&quot;</span>);
-  f.close();
+<li>it also has close method.</li>
+</ul>
+<pre><code class="lang-java">Formatter f = <span class="hljs-keyword">new</span> Formatter(<span class="hljs-string">&quot;C:\\sololearn\\test.txt&quot;</span>);
+    f.format(<span class="hljs-string">&quot;%s %s %s&quot;</span>, <span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Smith \r\n&quot;</span>);
+    f.format(<span class="hljs-string">&quot;%s %s %s&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>,<span class="hljs-string">&quot;Amy&quot;</span>, <span class="hljs-string">&quot;Brown&quot;</span>);
+    f.close();
 </code></pre>
-</li>
-<li>PrintWriter class can also be used to write content.<pre><code class="lang-java"><span class="hljs-comment">//write Hello World into file.txt</span>
+<ul>
+<li>PrintWriter class can also be used to write content.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//write Hello World into file.txt</span>
 PrintWriter outputFile = <span class="hljs-keyword">new</span> PrintWriter (<span class="hljs-string">&quot;file.txt&quot;</span>);
 outputFile.println(<span class="hljs-string">&quot;Hello World&quot;</span>);
 outputFile.close();
 </code></pre>
-</li>
-</ul>
 <h2 id="thread">Thread</h2>
 <ul>
 <li>Java is a multi-threaded programming language.</li>
@@ -2036,21 +2126,23 @@ outputFile.close();
 </ul>
 <h3 id="pause-a-thread">pause a thread</h3>
 <ul>
-<li>Method<pre><code class="lang-java">Tread.sleep(<span class="hljs-keyword">int</span> numberofMS); <span class="hljs-comment">//it throws InterruptedException</span>
+<li>Method</li>
+</ul>
+<pre><code class="lang-java">Tread.sleep(<span class="hljs-keyword">int</span> numberofMS); <span class="hljs-comment">//it throws InterruptedException</span>
 </code></pre>
-</li>
-<li>Example<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>{  <span class="hljs-comment">//exception handling for it</span>
+<ul>
+<li>Example</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>{  <span class="hljs-comment">//exception handling for it</span>
 Thread.sleep(<span class="hljs-number">500</span>);} <span class="hljs-comment">//make it stops for 500ms</span>
 <span class="hljs-comment">//or use the following pause method instead of Thread.sleep</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pause</span><span class="hljs-params">(<span class="hljs-keyword">int</span> duration)</span> </span>{
-  <span class="hljs-keyword">try</span> {
-      Thread.sleep(duration);
-  } <span class="hljs-keyword">catch</span> (InterruptedException ex) {
-  }
+    <span class="hljs-keyword">try</span> {
+        Thread.sleep(duration);
+    } <span class="hljs-keyword">catch</span> (InterruptedException ex) {
+    }
 }
 </code></pre>
-</li>
-</ul>
 <h3 id="create-a-thread">Create a Thread</h3>
 <pre><code class="lang-java">Thread name = <span class="hljs-keyword">new</span> Thread();
 <span class="hljs-comment">//Or new thread that runs a method.</span>
@@ -2083,7 +2175,7 @@ Thread t = <span class="hljs-keyword">new</span> Thread(() -&gt; animate(gc));
 
             
                 
-                <a href="../python/" class="navigation navigation-prev " aria-label="Previous page: Python">
+                <a href="../python/anaconda.html" class="navigation navigation-prev " aria-label="Previous page: Anaconda">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2099,7 +2191,7 @@ Thread t = <span class="hljs-keyword">new</span> Thread(() -&gt; animate(gc));
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.3","depth":1,"next":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/README.md","mtime":"2020-02-18T01:49:55.525Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-03T02:49:41.696Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.3","depth":1,"next":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"previous":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/README.md","mtime":"2020-03-17T02:44:24.367Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

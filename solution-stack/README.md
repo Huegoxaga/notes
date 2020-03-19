@@ -22,6 +22,7 @@
 - It consists of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.
 - The Apache server host content inside the `htdocs` folder inside the stack exported data volume.
 - The MySQL can be accessed using the following address `http://localhost:8080/phpmyadmin/`.
+- The database does not need to log in the enter. the user name is `root`, the password is empty string.
 - By default, the database has no username and password.
 
 ## WAMP Solution Stack

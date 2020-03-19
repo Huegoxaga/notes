@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../java/" />
+    <link rel="next" href="anaconda.html" />
     
     
     <link rel="prev" href="../" />
@@ -112,6 +112,25 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="anaconda.html">
+            
+                <a href="anaconda.html">
+            
+                    
+                    Anaconda
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -506,7 +525,7 @@
                 <a href="../solution-stack/">
             
                     
-                    Solution-Stack
+                    Solution Stack
             
                 </a>
             
@@ -582,6 +601,25 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../linux/regex.html">
+            
+                <a href="../linux/regex.html">
+            
+                    
+                    Regular Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -773,11 +811,13 @@
 <p>It is generally consisted of comments, statements, methods, functions and modules.</p>
 <h3 id="comments">Comments</h3>
 <ul>
-<li><p>Single line comment is followed by <code>#</code>, everything after # in one line will be ignored.</p>
+<li>Single line comment is followed by <code>#</code>, everything after # in one line will be ignored.</li>
+</ul>
 <pre><code class="lang-python"><span class="hljs-comment"># Single line comment goes here.</span>
 </code></pre>
-</li>
-<li><p>Three sets of double quotation marks is called doctrings. Doctrings contains multi-lines comments and explains the following code after the first line. It is retained through runtime.</p>
+<ul>
+<li>Three sets of double quotation marks is called doctrings. Doctrings contains multi-lines comments and explains the following code after the first line. It is retained through runtime.</li>
+</ul>
 <pre><code class="lang-python"><span class="hljs-string">&quot;&quot;&quot;
 Summary or Description of the Function
 Parameters:
@@ -786,8 +826,6 @@ Returns:
 int:Returning value
 &quot;&quot;&quot;</span>
 </code></pre>
-</li>
-</ul>
 <h3 id="statements">Statements</h3>
 <ul>
 <li>It is recognized by one keyword in the entire line, or sometimes followed by a variables after a singe space.</li>
@@ -810,11 +848,11 @@ x.upper()
 </ul>
 <blockquote>
 <h4 id="basic-useful-functions">Basic Useful Functions</h4>
+</blockquote>
 <pre><code class="lang-py">print(x)              <span class="hljs-comment">#It prints variable x with a new line, x can be any data type.</span>
 print(x, y)           <span class="hljs-comment">#It prints any two data types with a space in between.</span>
 input(<span class="hljs-string">&quot;Prompt: &quot;</span>)     <span class="hljs-comment">#It prompts, get and returns user input as a string. The string that input() returns is automatically escaped.</span>
 </code></pre>
-</blockquote>
 <h3 id="modules">Modules</h3>
 <ul>
 <li>Modules provide additional methods or functions for the programming. They are imported at the very beginning.</li>
@@ -853,21 +891,21 @@ input(<span class="hljs-string">&quot;Prompt: &quot;</span>)     <span class="hl
 </ul>
 <blockquote>
 <h4 id="useful-math-functions">Useful Math Functions</h4>
+</blockquote>
 <pre><code class="lang-py">round(value, toHowManyDigitAfterDecimal) <span class="hljs-comment">#Rounding to specific decimal place</span>
 abs(value) <span class="hljs-comment">#Get the absolute value of a number.</span>
 </code></pre>
-</blockquote>
 <h4 id="character">Character:</h4>
 <ul>
 <li>It can be any single character.</li>
 </ul>
 <blockquote>
 <h4 id="character-conversion">Character Conversion</h4>
+</blockquote>
 <pre><code class="lang-py">ord(character)  <span class="hljs-comment">#Transforming a character to its ASCII code number. Character can be Unicode like u&#x2019;\u1234&#x2019;</span>
 chr(number)   <span class="hljs-comment"># transform ASCII (a number from 0 to 255) to character.</span>
 unichr(number)   <span class="hljs-comment"># transform UCS2 (a number from 0 to 65535) to character.</span>
 </code></pre>
-</blockquote>
 <h4 id="string">String:</h4>
 <ul>
 <li>String is like list type for character, but can not change(immutable).</li>
@@ -882,8 +920,8 @@ unichr(number)   <span class="hljs-comment"># transform UCS2 (a number from 0 to
 </ul>
 <h5 id="membership-operator">Membership Operator</h5>
 <p>It returns membership relationship between two objects as boolean.</p>
-<pre><code class="lang-py">a <span class="hljs-keyword">in</span> b                         
-a <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> b                     
+<pre><code class="lang-py">a <span class="hljs-keyword">in</span> b
+a <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> b
 <span class="hljs-keyword">not</span> a <span class="hljs-keyword">in</span> b
 </code></pre>
 <h5 id="relational-operators">Relational operators</h5>
@@ -891,7 +929,7 @@ a <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> b
 <h5 id="string-methods">String Methods</h5>
 <pre><code class="lang-py">stringX[n]  <span class="hljs-comment">#Get the character of stringX at nth index.</span>
 
-stringX[m:n]  <span class="hljs-comment">#Get the character of stringX at index from m to n-1, max or min if m or n is missing.   </span>
+stringX[m:n]  <span class="hljs-comment">#Get the character of stringX at index from m to n-1, max or min if m or n is missing.</span>
 <span class="hljs-string">&quot;&quot;&quot;
 There could be a third parameter that represents the step.
 -1 means backward from its left or right end.
@@ -912,7 +950,7 @@ str.strip(string)   <span class="hljs-comment">#Strip all the characters in the 
 <h3 id="type-casting">Type Casting</h3>
 <p>Explicitly convert types.</p>
 <pre><code class="lang-py">str(x)    <span class="hljs-comment">#To  string</span>
-int(x)    <span class="hljs-comment">#To  integer  </span>
+int(x)    <span class="hljs-comment">#To  integer</span>
 float(x) <span class="hljs-comment">#To   float</span>
 list(x)   <span class="hljs-comment">#To   list</span>
 </code></pre>
@@ -923,33 +961,33 @@ list(x)   <span class="hljs-comment">#To   list</span>
 <li>The location, order, and content of data is indicated by {}.</li>
 <li>The argument of .format is the value of data in the {}.</li>
 </ul>
-<pre><code class="lang-py"><span class="hljs-string">&quot;{x},{y}&quot;</span>.format(x=<span class="hljs-number">5</span>,y=<span class="hljs-number">12</span>)         
+<pre><code class="lang-py"><span class="hljs-string">&quot;{x},{y}&quot;</span>.format(x=<span class="hljs-number">5</span>,y=<span class="hljs-number">12</span>)
 <span class="hljs-comment">#Output:5,12</span>
-<span class="hljs-string">&quot;{} {}&quot;</span>.format(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>)                
+<span class="hljs-string">&quot;{} {}&quot;</span>.format(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>)
 <span class="hljs-comment">#Output:100 50</span>
-<span class="hljs-string">&quot;{1}abc{0}&quot;</span>.format(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>)         
+<span class="hljs-string">&quot;{1}abc{0}&quot;</span>.format(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>)
 <span class="hljs-comment">#Output:50abc100</span>
-<span class="hljs-string">&quot;{:04d}&quot;</span>.format(<span class="hljs-number">1</span>)                      
+<span class="hljs-string">&quot;{:04d}&quot;</span>.format(<span class="hljs-number">1</span>)
 <span class="hljs-comment">#Output:0001</span>
-<span class="hljs-string">&quot;{:06.2f}&quot;</span>.format(<span class="hljs-number">1.2</span>)                 
+<span class="hljs-string">&quot;{:06.2f}&quot;</span>.format(<span class="hljs-number">1.2</span>)
 <span class="hljs-comment">#Output:001.20     #decimal point counts</span>
-<span class="hljs-string">&quot;{:_&lt;10}&quot;</span>.format(<span class="hljs-string">&quot;left&quot;</span>)               
+<span class="hljs-string">&quot;{:_&lt;10}&quot;</span>.format(<span class="hljs-string">&quot;left&quot;</span>)
 <span class="hljs-comment">#Output:left______</span>
-<span class="hljs-string">&quot;{:&gt;10}&quot;</span>.format(<span class="hljs-string">&quot;right&quot;</span>)               
+<span class="hljs-string">&quot;{:&gt;10}&quot;</span>.format(<span class="hljs-string">&quot;right&quot;</span>)
 <span class="hljs-comment">#Output:     right</span>
 
 <span class="hljs-string">&quot;&quot;&quot;
 Other Methods
 &quot;&quot;&quot;</span>
-<span class="hljs-string">&quot;,&quot;</span>.join([<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>])                       
+<span class="hljs-string">&quot;,&quot;</span>.join([<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>])
 <span class="hljs-comment">#Output:&#x2019;a,b,c&#x2019;</span>
-<span class="hljs-string">&quot;Hello ME&quot;</span>.replace(<span class="hljs-string">&quot;ME&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>)          
+<span class="hljs-string">&quot;Hello ME&quot;</span>.replace(<span class="hljs-string">&quot;ME&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>)
 <span class="hljs-comment">#Output:&#x2019;Hello world&#x2019;</span>
-<span class="hljs-string">&quot;This is a sentence&quot;</span>.startswith(<span class="hljs-string">&quot;This&quot;</span>)   
+<span class="hljs-string">&quot;This is a sentence&quot;</span>.startswith(<span class="hljs-string">&quot;This&quot;</span>)
 <span class="hljs-comment">#Output:True</span>
-<span class="hljs-string">&quot;Hello World!&quot;</span>.endswith(<span class="hljs-string">&quot;world!&quot;</span>)         
-<span class="hljs-comment">#Output:False        </span>
-<span class="hljs-string">&quot;x,y,z&quot;</span>.split(<span class="hljs-string">&quot;,&quot;</span>)                                   
+<span class="hljs-string">&quot;Hello World!&quot;</span>.endswith(<span class="hljs-string">&quot;world!&quot;</span>)
+<span class="hljs-comment">#Output:False</span>
+<span class="hljs-string">&quot;x,y,z&quot;</span>.split(<span class="hljs-string">&quot;,&quot;</span>)
 <span class="hljs-comment">#Output:[&#x2018;x&#x2019;,&#x2019;y&#x2019;,&#x2019;z&#x2019;]</span>
 </code></pre>
 <h2 id="operators">Operators</h2>
@@ -980,8 +1018,6 @@ Other Methods
 <li>Bitwise or <code>|</code></li>
 </ul>
 </li>
-</ul>
-<ul>
 <li><p>Relational Operators</p>
 <ul>
 <li>greater <code>&gt;</code></li>
@@ -990,7 +1026,7 @@ Other Methods
 <li>smaller or equal <code>&lt;=</code></li>
 <li>equal <code>==</code></li>
 <li>not equal <code>!=</code></li>
-<li>string membership <code>in</code>   </li>
+<li>string membership <code>in</code></li>
 </ul>
 </li>
 <li><p>Binary Boolean Operators</p>
@@ -1012,23 +1048,23 @@ Other Methods
 <li>and <code>&amp;</code></li>
 <li>or <code>|</code></li>
 <li>not <code>~</code></li>
-<li>XOR,  it is an &quot;or&quot; operations that doesn&#x2019;t include &quot;and&quot;, <code>^</code></li>
+<li>XOR, it is an &quot;or&quot; operations that doesn&#x2019;t include &quot;and&quot;, <code>^</code></li>
 </ul>
 <pre><code class="lang-py">a=<span class="hljs-number">1101101</span>
 ~a=<span class="hljs-number">0010010</span>
 </code></pre>
 <blockquote>
 <h5 id="hint">Hint:</h5>
+</blockquote>
 <ul>
 <li><code>del x</code>, this statement remove one reference count from the name to the value in memory.</li>
-<li><code>a+=b</code> is treated as  <code>a=a+b</code></li>
+<li><code>a+=b</code> is treated as <code>a=a+b</code></li>
 <li><code>a**b**c</code> is same as <code>a**(b**c)</code>. This is called right associative.</li>
 </ul>
-</blockquote>
 <h2 id="basic-structures">Basic Structures</h2>
 <h4 id="if-condition">If Condition</h4>
 <p>The execution of a certain code block is determined by conditions. Conditions are a boolean expression. When the condition is true the codes after will be executed.</p>
-<pre><code class="lang-py"><span class="hljs-keyword">if</span> condition:   
+<pre><code class="lang-py"><span class="hljs-keyword">if</span> condition:
     <span class="hljs-comment">#&#x2026;</span>
 <span class="hljs-keyword">elif</span> condition:
     <span class="hljs-comment">#&#x2026;</span>
@@ -1066,13 +1102,13 @@ Output:
 </code></pre>
 <blockquote>
 <p><strong>Notes:</strong></p>
+</blockquote>
 <ul>
 <li>Flag is a condition for the loops which can be tested and modified in the loop.</li>
 <li>Sentinel value is a value in the loop condition, it is used to determine the exit of a loop.</li>
 <li>break statement in the loop can stop looping immediately.</li>
 <li>continue statement restart the loop from the top.</li>
 </ul>
-</blockquote>
 <h2 id="list">List</h2>
 <ul>
 <li>It is a mutable object. Its content can be changed. This index starts at 0.<pre><code class="lang-py">list=[&#x2018;a&#x2019;,&#x2019;b&#x2019;,&#x2019;c&#x2019;,&#x2019;d&#x2019;]
@@ -1100,7 +1136,17 @@ list.index(object)<span class="hljs-comment">#It returns the first index of the 
 <li>join <code>+</code></li>
 <li>repeat <code>*</code></li>
 <li>existence(return Boolean) <code>in</code></li>
-<li>slicing(from index n to m-1) <code>n:m</code></li>
+<li>slicing - It modifies the original list.<ul>
+<li><code>a[n:m]</code>, slice list <code>a</code> from index <code>n</code> to <code>m-1</code>.</li>
+<li><code>a[n:m:k]</code>, slice list <code>a</code> from index <code>n</code> to <code>m-1</code> with step <code>k</code>.</li>
+<li><code>a[::-1]</code>, reverse list <code>a</code> by getting elements from left to right.</li>
+<li><code>a[n:m,x]</code> for 2-D list, return a list of elements of index x from row <code>n</code> to row <code>m-1</code>.</li>
+<li><code>a[...,x]</code> for 2-D list, return a list of elements of index x from all rows. same as <code>a[:,x]</code></li>
+<li>If the starting index is missing, it is one by default.</li>
+<li>If the ending index is miss, it will take all elements to the end.</li>
+<li>A negative index counts from the end of the list. Ex: <code>a[-5:]</code> it take the last 5 elements of list a.</li>
+</ul>
+</li>
 </ul>
 <h4 id="list-function">List Function</h4>
 <pre><code class="lang-py">len(list)
@@ -1121,11 +1167,11 @@ x[key1] = newValue
 </code></pre>
 <h4 id="operators">Operators</h4>
 <ul>
-<li>Membership Operator - in<pre><code class="lang-py">keyName <span class="hljs-keyword">in</span> dictionaryName      
+<li>Membership Operator - in</li>
+</ul>
+<pre><code class="lang-py">keyName <span class="hljs-keyword">in</span> dictionaryName
 keyName <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> dictionaryName
 </code></pre>
-</li>
-</ul>
 <h4 id="methods">Methods</h4>
 <pre><code class="lang-py">dictionary.get(key, notification)  <span class="hljs-comment">#It returns the key&#x2019;s value and None if key is not found. or display specific notification.</span>
 </code></pre>
@@ -1169,12 +1215,12 @@ set.pop()  <span class="hljs-comment">#It removes a random element from the list
 <h3 id="range-object">Range Object</h3>
 <ul>
 <li>A sequential list of numbers.</li>
-<li>Created by range function.<pre><code class="lang-py">range(<span class="hljs-number">2</span>,<span class="hljs-number">5</span>) <span class="hljs-comment">#It represents number from 2 to 4.</span>
+<li>Created by range function.</li>
+</ul>
+<pre><code class="lang-py">range(<span class="hljs-number">2</span>,<span class="hljs-number">5</span>) <span class="hljs-comment">#It represents number from 2 to 4.</span>
 list(range(<span class="hljs-number">5</span>))=[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]
 range(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>,x) <span class="hljs-comment">#It creates a range from 5 to 19 with certain interval x.</span>
 </code></pre>
-</li>
-</ul>
 <h3 id="none-object">None object</h3>
 <ul>
 <li>It is a False when converted to boolean type.</li>
@@ -1186,7 +1232,7 @@ range(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>,x) 
 </code></pre>
 <ul>
 <li>It returns a map object that manipulate the old list(or other iterables) according to the function.</li>
-<li>The map object needs to be transferred  into a list(or other iterables).</li>
+<li>The map object needs to be transferred into a list(or other iterables).</li>
 </ul>
 <h3 id="filter-object">Filter Object</h3>
 <pre><code class="lang-py">filter(function,iterables)
@@ -1235,10 +1281,10 @@ list(accumulate(range(<span class="hljs-number">8</span>)))
 <h2 id="lambda">Lambda</h2>
 <ul>
 <li>It is used to create anonymous function with has no variable name.</li>
-<li>It can be assigned to a variable to become a normal function.<pre><code class="lang-py">print(lambda  x: 2*x*x(10))  -&gt;  200
-</code></pre>
-</li>
+<li>It can be assigned to a variable to become a normal function.</li>
 </ul>
+<pre><code class="lang-py">print(lambda  x: 2*x*x(10))  -&gt;  200
+</code></pre>
 <h2 id="user-defined-functions">User Defined Functions</h2>
 <pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">functionName</span><span class="hljs-params">(variable)</span>:</span>
     &#x2026;..
@@ -1285,7 +1331,7 @@ print(list(number(<span class="hljs-number">11</span>)))
         print(<span class="hljs-string">&quot;===================&quot;</span>)
         func()
         print(<span class="hljs-string">&quot;==================&quot;</span>)
-    <span class="hljs-keyword">return</span> wrap  
+    <span class="hljs-keyword">return</span> wrap
 <span class="hljs-comment">#Then, newly defined function could be decorated by adding @decorfunction before def statement.</span>
 <span class="hljs-meta">@decor</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rawfunction</span><span class="hljs-params">()</span>:</span>
@@ -1429,7 +1475,7 @@ spam &gt; eggs
 <li><code>__iter__</code> for iteration over objects (e.g., in for loops)</li>
 <li><code>__contains__</code> for in</li>
 <li><code>__call__</code> for calling objects as functions</li>
-<li><code>__int__</code> or  <code>__str__</code> for converting objects to built-in types.</li>
+<li><code>__int__</code> or <code>__str__</code> for converting objects to built-in types.</li>
 </ul>
 <pre><code class="lang-py"><span class="hljs-keyword">import</span> random
 
@@ -1560,27 +1606,31 @@ print(pizza.pineapple_allowed)
 </code></pre>
 <h4 id="raise-an-error">Raise an Error</h4>
 <ul>
-<li>Raise statement is used to raise an error<pre><code class="lang-py"><span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;display some other details&quot;</span>)
-</code></pre>
-</li>
-<li>It can be used in except block alone to reraise errors.<pre><code class="lang-py"><span class="hljs-keyword">except</span>:
- print(<span class="hljs-string">&quot;An error occurred&quot;</span>)
- <span class="hljs-keyword">raise</span>
-</code></pre>
-</li>
+<li>Raise statement is used to raise an error</li>
 </ul>
+<pre><code class="lang-py"><span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;display some other details&quot;</span>)
+</code></pre>
+<ul>
+<li>It can be used in except block alone to reraise errors.</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-keyword">except</span>:
+   print(<span class="hljs-string">&quot;An error occurred&quot;</span>)
+   <span class="hljs-keyword">raise</span>
+</code></pre>
 <h4 id="assert">Assert</h4>
 <ul>
-<li>Assert statement is used to assume a condition then raise an error accordingly.<pre><code class="lang-py"><span class="hljs-keyword">assert</span> <span class="hljs-number">1</span>==<span class="hljs-number">2</span>
+<li>Assert statement is used to assume a condition then raise an error accordingly.</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-keyword">assert</span> <span class="hljs-number">1</span>==<span class="hljs-number">2</span>
 <span class="hljs-comment"># Result: AssertionError</span>
 </code></pre>
-</li>
-<li>It can has an argument to display details<pre><code class="lang-py">temp = <span class="hljs-number">-10</span>
+<ul>
+<li>It can has an argument to display details</li>
+</ul>
+<pre><code class="lang-py">temp = <span class="hljs-number">-10</span>
 <span class="hljs-keyword">assert</span> (temp &gt;= <span class="hljs-number">0</span>), <span class="hljs-string">&quot;Colder than absolute zero!&quot;</span>
 <span class="hljs-comment"># Result: AssertionError: Colder than absolute zero!</span>
 </code></pre>
-</li>
-</ul>
 <h2 id="file">File</h2>
 <h4 id="open-a-file">Open a File</h4>
 <pre><code class="lang-py">newfile = open(<span class="hljs-string">&quot;localfile.txt&quot;</span>, r+)
@@ -1588,9 +1638,9 @@ print(pizza.pineapple_allowed)
 <h4 id="file-mode">File Mode</h4>
 <ul>
 <li>r: read mode It is the default mode</li>
-<li>w: write mode that can create new files and will overwrite old content  </li>
+<li>w: write mode that can create new files and will overwrite old content</li>
 <li>b: binary mode for non-text files</li>
-<li>a: append mode for adding new content to the end of the file.    </li>
+<li>a: append mode for adding new content to the end of the file.</li>
 <li>r+ read and write mode</li>
 </ul>
 <h4 id="file-method">File Method</h4>
@@ -1649,7 +1699,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
                 </a>
                 
                 
-                <a href="../java/" class="navigation navigation-next " aria-label="Next page: Java">
+                <a href="anaconda.html" class="navigation navigation-next " aria-label="Next page: Anaconda">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1660,7 +1710,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-01-14T22:50:16.008Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-03T02:49:41.696Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-03-17T21:59:31.478Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
