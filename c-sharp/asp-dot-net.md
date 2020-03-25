@@ -633,6 +633,44 @@ public class Program
       db = movieRepository;
     }
   ```
+- Sorting
+  ```cs
+  public async Task<IActionResult> Index(string sortOrder)
+  {
+      ViewData["DescriptionSortParm"] = String.IsNullOrEmpty(sortOrder) ? "description_desc" : "";
+      ViewData["CostSortParm"] = sortOrder == "cost" ? "cost_desc" : "cost";
+      var medications = from m in _context.Medications
+                          select m;
+      switch (sortOrder)
+      {
+          case "description_desc":
+              medications = medications.OrderByDescending(m => m.MedicationDescription);
+              break;
+          case "cost":
+              medications = medications.OrderBy(m => m.MedicationCost);
+              break;
+          case "cost_desc":
+              medications = medications.OrderByDescending(m => m.MedicationCost);
+              break;
+          default:
+              medications = medications.OrderBy(m => m.MedicationDescription);
+              break;
+      }
+      // return with change tracking disabled
+      return View(await _context.Medicationsmedications.AsNoTracking().ToListAsync());
+  }
+  ```
+- Search
+  ```cs
+  ViewData["CurrentFilter"] = searchString;
+  var medications = from m in _context.Medications
+                      select m;
+  if (!String.IsNullOrEmpty(searchString))
+  {
+      medications = medications.Where(m => m.MedicationDescription.Contains(searchString));
+  }
+  ```
+  - the searchString is a parameter passed into the Index method. The variable name must match the `?VariableName=value` in the URL with the first letter in lowercase. The parameter also has to be of type `string`.
 
 ### Views
 
@@ -665,12 +703,50 @@ public class Program
 - Links are represented as `@Url.Action("PageRouteName", "ControllerName")`
 - Access data passed in ViewBags. `<h2>@ViewBag.Title</h2><p>Name: @ViewBag.Name</p><p>Page served: @ViewBag.Served</p>`.
 - Links are represented as `asp-controller="ControllerName" asp-action="PageName"`
+  - `controllerName` is the first part of the controller file names. Ex, for `HomeController.cs`, `Home` is the value for the `asp-controller` attribute.
 - `<input asp-for="Id" class="form-control" readonly />`, make the input readonly.
 - `<input asp-for="Title" class="form-control" autofocus />`, make the input autofocused.
 - HTML Helpers
   - `@Html.DisplayNameFor` – plain text to display the read-only field name
   - `@Html.DisplayFor` – figures out the best HTML5 for read-only display of the actual field value
   - `@Html.ActionLink` – action link with anchor tag
+- A select List `<select asp-for="GenreId" class ="form-control" asp-items="ViewBag.ListItems"></select>`
+  - SelectList is an object defined in the `.cs` file `ViewBag.ListItem = new SelectList(ListofItems, "ColA", "ColB");`
+- Sorting
+  ```html
+  <th>
+      <a asp-action="Index" asp-route-sortOrder="@ViewData["DescriptionSortParm"]">
+          @Html.DisplayNameFor(model => model.MedicationDescription)
+      </a>
+  </th>
+  <th>
+      <a asp-action="Index" asp-route-sortOrder="@ViewData["CostSortParm"]">
+          @Html.DisplayNameFor(model => model.MedicationCost)
+      </a>
+  </th>
+  ```
+- Search
+  ```html
+  <form asp-action="Index" method="get">
+    <p>
+      Filter by Description: <input type="text" name="SearchString"
+      value="@ViewData["CurrentFilter"]" />
+      <input type="submit" value="Search" class="btn btn-primary" /> |
+      <a asp-action="Index">All Medications</a>
+    </p>
+  </form>
+  ```
+- Filter List
+  ```cs
+  <form asp-action="Index" method="get">
+    <p>
+        Manager:
+        <select asp-for="@Model.FirstOrDefault().NursingUnitId" asp-items="@ViewBag.NursingUnitId"></select>
+        <input type="submit" value="Filter" class="btn btn-primary" /> |
+        <a asp-action="Index">All Admitted Patients</a>
+    </p>
+  </form>
+  ```
 
 #### Layout file
 
@@ -722,6 +798,8 @@ public class Program
       [Range(1, 10)]
       [DisplayFormat(DataFormatString="{0:C}")]
       public int? Rating { get; set; }
+      [EmailAddress]
+      public string email { get; set; }
     }
     ```
 - Use repository as data model
@@ -753,8 +831,15 @@ public class Program
   }
   ```
   - Check the primary key in the data class, represented as the `[Key]` constraint.
+  - Foreign Key will be denoted as `[ForeignKey("columnName")]`.
+    - Use `using System.ComponentModel.DataAnnotations.Schema;` when database relationship is applied.
+    - If two data model has a referencial relationship. Each data model class need to have a property of the other model class object(Navigation property). When access the other object use `ObjectsA.Include(m => m.ObjectBProperty)` in the controller and use `model.objectName.Property` in the `.cshtml` to access the objects from the other table.
   - Setup the inject in the `Startup.cs`.
   - Add connection string in the `appsettings.json`.
+    ```json
+    "ConnectionStrings": {
+    "DataContext": "Data Source=localhost\\sqlexpress;Initial Catalog=project_name;Integrated Security=True"
+    ```
   - Declear the Data Context object in the controller file.
   - To use `sqlite`:
     - Right-click the project and select `Manage NuGet Packages...`
@@ -767,6 +852,27 @@ public class Program
     5. From the `Tools` menu, select `SQLite/SQL Server Compact Toolbox`.
     6. Click the `Add SQLite and SQL Compact connections` from current Solution button.
     7. Expand database file. Right-click and select Edit Top 200 Rows to see the data.
+- Database Migrations
+  - In the Package Manager Console, run `Add-Migration init`.
+    - make sure the default project is the current project.
+    - A folder called `Migrations` will be created with two files inside.
+      - `YYYYMMDDHHMMSS_init.cs` contains code to create the database schema.
+      - `DataContextModelSnapshot.cs` contains code to insert the data.
+  - run `Update-Database`
+    - This will update the data into the associated database.
+    - The database will have an expected table and a migration history table.
+  - run `Add-Migration column_name` or `Add-Migration table_name` If a new column is created later.
+    - one can always run `Update-Database` to synchronize the table.
+- Scaffold-DbContext
+  - It will automatically generate data and models for an existing database.
+  - It needs to set the connection string first in the `appsetting.json`.
+    ```json
+    "ConnectionStrings": {
+    "DBName": "Data Source=localhost\\sqlexpress;Initial Catalog=dbName;Integrated Security=True"
+    },
+    ```
+  - In Package Manager Console, run `Scaffold-DbContext name=chdb Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -ContextDir Data -DataAnnotations`.
+  - Then, controller can be generated using the `MVC Controller with views, using Entity Framework` option when creating the controller, select the table and data model for the controller.
 
 ### MVC Error Handling
 
@@ -789,7 +895,7 @@ public class Program
       return View(dataObject);
   }
   ```
-- In the controllder file, return an error page in the catch block.
+- In the controller file, return an error page in the catch block.
   ```cs
   catch (Exception ex)
     {
@@ -862,3 +968,7 @@ public class Program
   3.  Make change to the controller file.
   4.  See if the test pass or fail.
   5.  From the Test menu, select `Live Unit Testing / Stop`.
+
+```
+
+```

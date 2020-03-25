@@ -141,6 +141,7 @@
 - `ifconfig eth0` will display networking information about the device named `eth0`.
   - `eth0` the number is the order in which the card has been detected, starting with a zero
 - `ifconfig` will display networking information about all device.
+- `system-config-network-tui` starts an interactive network configuration utility.
 - `ifup eth0` set `eth0` interface up.
 - `ifdown eth0` set `eth0` interface down.
 - `ip addr` will display the IP address for all active network interfaces.
@@ -362,7 +363,7 @@
   - `:wq` or `ZZ`, save and quit.
   - `:q!` quit without save.
   - `:r <file>` insert file after current line.
-  - Enter `/keyword` to search keyword in the document.
+  - Enter `/keyword` to search the keyword in the document. It is case ssensitive
 
 ### SCP
 
@@ -377,16 +378,22 @@
 
 ### NPM
 
+- `npm install -g npm@latest` update the npm to the last version.
 - `npm install -g package-name` -g means install globally.
 - `npm install` install packages listed in `package.json` file.
 - `npm update` update packages listed in `package.json` file and update the `package.json` file.
+- `npm list` list install package in the project folder.
+- `npm list -g --depth=0` list all globally installed package, only show the root folder name.
 
 ### mssql
 
 - SQL Server
+- run `yum install mysql` and `yum install mysql-server` to install
+- run `service mysqld start` to start.
+- need `php` and `php-mysql` to work with PHP.
 - Initially root username is `root`, password is empty string.
 - `mysqladmin -u root password 'newpassword'` set password for root account
-- `mysql -u root -p` login to root. enter password after prompt.
+- `mysql -u root -p` login to root and start the mysql command interface. enter password after prompt.
 - `mysql -u userName -p` login to a user account. enter password after prompt.
 - `mssql -u userName -p password` connect to SQL Server with password entered.
 - SQL account information is stored in the tables of the mysql database. See more about account management in SQL notes.
@@ -425,6 +432,7 @@
 
 - By default, configuration file is stored in `/etc/httpd/conf/httpd.conf`.
 - Any changes made to the main configuration files are only recognized by Apache when it is started or restarted.
+- The Apache server itself acts as user `apache` and in group `apache`.
 - Directives are the title of the setting.
 - Apache configuration files contain one directive per line
 - A specific setting(arguments) is written after the corresponding directive.
@@ -468,9 +476,13 @@
     - `Listen 10.100.1.101`, will ensure that Apache will only respond to requests destined for the IP Address 10.100.1.101
     - `Listen 10.100.1.101:80`, ensures apache only responds to requests destined for the host 10.100.1.101 on port 80
     - `Listen 80`, respond to requests on all bound IP addresses on port 80.
+  - `DocumentRoot`
+    - It set the folder for apache to serve web content.
+    - usually has the following permission `chown root.apache /var/www/content -R; chmod 750 /var/www/content -R;`
   - `Include`
     - tell apache to look for additional configuration directives located elsewhere in the file system.
     - The file path specified may be an absolute path, or may be relative to the ServerRoot directory (/etc/httpd)
+    - The config file may have an extension as `.conf` and placed in the `/etc/httpd/conf.d` directory.
     - The argument can be:
       - a file name, `Include conf/ssl.conf`
       - a wildcard match to include several files at once, `conf/vhosts/*.conf`
@@ -515,10 +527,84 @@
   - `CustomLog`
     - apply an alias for the custom access log
     - `CustomLog logs/myhost/access_log combined`.
+  - `AllowOverride`
+    - It is placed inside a `<directory>` block to enable or disable the directives stored in the `.htaccess`. The `.htaccess` should be in the same folder the `<directory>` specify.
+    - changes made to `.htaccess` file does not require the service to restart to be in effect and it does depend on root user. However, it is less secure than adding directives directly inside the config files.
+    - It has the following options.
+      - `AuthConfig` - Allows the use of authorization/authentication directives (`AuthType`, `AuthName`, `Require`)
+      - `All` - any directives in the `.htaccess` will be allowed.
+      - `None`- apache will not look for an `.htaccess` file in that directory and access files will be ignored.
+      - `Indexes` - Allow use of the directives controlling the use and format of directory listings (List order, by file, by folder, use of icons)
+      - `Limit` - Allows the use of directives controlling host access (`Allow`, `Deny` and `Order`).
+      - `Options` - Allows the use of the directives controlling specific directory features (`Options` `Indexes`, `Includes`).
+    - When a folder is configured to use the `.htaccess` file, all its child directory will be check to see if the `.htaccess` exists.
+  - Access Control directives
+    - They can be placed in the `.htaccess` files or inside any block directives. Access inside the scope of the block directive will be controlled by the following rules they define.
+    - `Order Deny,Allow` default allow all, then make the Deny rules get checked first.
+    - `Order Allow,Deny` default deny all, then make the Allow rules get checked first.
+      - The last rules get run will override the preview rules.
+    - `Allow from` and `Deny from` add rules. They can as many as need and be followed by:
+      - `10.109.1.254` a full IP address.
+      - `10.109` a partial IP address.
+      - `10.1.0.0/255.255.0.0` IP/Mask
+      - `10.109.0.0/16` CIDR
+      - `example.com` URL
+      - `2001::4137:9e74:8e9:66e:0:651b` IPv6
+      - `all`
+  - `Options`
+    - It should be defined after the virtual host block host in the directory block.
+    - It makes the website have access to certain directory. In the virtual host config file, both of the following examples work.
+      ```xml
+      <Directory /var/www/vhost/files>
+        Options Indexes
+      </Directory>
+      <Directory /var/www/vhost/files>
+        Options +Indexes
+      </Directory>
+      ```
+    - The link to the folder for the website will be `href="./files"` if `/var/www/vhost` is the DocumentRoot folder.
+    - When a request is made that maps to a directory and there is no `DirectoryIndex` (e.g., index.html) in that directory, then a formatted listing of the directory will be returned to the browser.
+  - `Mod_ssl` Directives
+    - It is used to setup the `Mod_ssl` Directives
+    - Global setting are done in the `/etc/httpd/conf.d/ssl.conf` file.
+    - add the following directives inside the `<VirtualHost>` block for the server.
+      - `SSLEngine on`
+      - `SSLCertificateFile <CertificateFilePath>`
+      - `SSLCertificateKeyFile <KeyFilePath>`
+    - After changing the config file stop and start the service(not restart). enter the pass phrase for Apache to access the key file.
+    - make sure the firewall allows `https` transmition.
+- Apache Web Users
+  - `htpasswd -c /etc/httpd/passwords username` follow the prompt to enter the password and add the user
+    - `-c /etc/httpd/passwords` will to create or override the file `/etc/httpd/passwords` with a new user added later.
+    - the username in the password is in plaintext, and the password is hashed.
+    - A group file can be created manually that contains a list of users in a defined group.
+      - `vi /etc/httpd/conf/groups` create a group file.
+      - `groupname: user1 user2 user3` add users and groups in this format.
+    - the password file and group file should hava permission that only allow the web server to read the file and root to read and write to it.
+      - `chown root.apache /etc/httpd/passwords`
+      - `chmod 640 /etc/httpd/passwords`
+    - For security concern, make sure that the group file and the user file are stored outside of the document tree of the web server.
+  - Add the following directives to the `<directory>` scope or in `.htaccess` file to make the authentication be in effect.
+    - `AuthType` Authentication type being used. It can be,
+      - `Basic` which uses Base64 encoding of credentials
+      - `Digest` may have some client-side support issues
+    - `AuthName "Auth Name"`
+      - It is the title of the dilogue box.
+      - Sent with http 401 message
+      - Defines the name of the authentication realm
+      - The client browser caches the username and password that you supplied, and stores it along with the authentication realm, if other resources are requested from the same realm, the same username and password can be returned.
+    - `AuthUserFile` Specifies the path to the password file
+    - `AuthGroupFile` Specifies the path to the group file if any
+    - `Require` control who can enter password and username. It can be followed by the following options.
+      - `user` followed by a username or a space delimited list of usernames
+      - `group` followed by a group name or a space delimited list of groups
+      - `valid-user` any user in the user file.
 
 #### Command
 
-- `service httpd start` start apache server.
+- `service httpd start` or `apachectl start` start apache server.
+- `service httpd restart` or `apachectl restart` to restart apache server.
+  - needed whenever the server configuration is changed.
 - `/etc/httpd/conf/httpd.conf` the main Apache configuration file.
   - `cat /etc/httpd/conf/httpd.conf | grep 'User'` see permission that is assigned to users in the user directives.
   - `cat /etc/httpd/conf/httpd.conf | grep 'Group'` see permission that is assigned to groups in the user directives.
@@ -540,6 +626,11 @@
 
 - OpenSSL is an open-source command line tool that is commonly used to generate private keys, create CSRs, install your SSL/TLS certificate, and identify certificate information.
 - OpenSSL version `1.0.1`, `1.0.1f`, `1.0.2-beta`, `1.0.2-beta1` are vulnerable to the HeartBleed bug.
+- run `openssl genrsa -des3 -out server.ca.key 2048` to generates a Triple-DES encrypted and PEM formatted private key in the current directory. will be prompted for a pass phrase. The pass phrase will be used to encrypt the private key.
+  - the private key file `server.ca.key`
+- run `openssl req -new -x509 -days 365 -key server.ca.key -out 192.168.100.100.crt` and will create a self-signed x509 Certificate, valid for one year (365 days) in the current directory. Signed with private key `server.ca.key`. will be prompted to enter the pass phrase to access the private key.
+  - the certificate file will be `192.168.100.100.crt`
+  - Users will be prompted to enter the Distinguished Name. For some of the field enter `.` can leave it blank.
 
 ### iptables
 
@@ -591,222 +682,3 @@
   - Use tab Key to move between elements.
   - Use space bar to toggle on and off.
   - Use enter key to select elements.
-
-## Bash Scripting
-
-### Introduction
-
-- It stores a batch of command in order to complete certain task in one execution.
-- It usually has an extension as `.sh`. It also can be run without any extenion or as `.txt`.
-- Bash does not have a type system, everything is saved as strings.
-- It can be edited by any text editing tool.
-- It is recommanded to run the full path of the commands in the scripts.
-
-### Run Script
-
-- Any text file contains commands line by line can be run using `bash filename`.
-- Shebang is used at the first line of the text file to make the file executable by itself.
-  - It is an operator look like `#!`
-  - It is followed by the path of the interpreter.
-  - For bash scripting, use `#!/bin/sh` or `#!/usr/bin/env bash` if the path of bash is unknown.
-  - The user needs the `execute` file permission for the script.
-  - The file can then be executed by using `./filename`.
-  - Add the directory path into the `$PATH` variable to make the script run without `./`.
-- Each script will be run in a separate session.
-
-### Syntax
-
-#### Comment
-
-- Any line starts with `#` can be followed by a single line comment.
-
-- `\` can be placed at the end of each line. It will make the command continue in a new line.
-- `commandA && commandB` can be used to run two command from left to right.
-- `;` can be used to separate multiple command in entered one line.
-
-#### Exit
-
-- keyword `exit` is used to stop the script.
-
-#### Variables
-
-- declare a new variable using `name=value`.
-  - No space between `=` sign.
-  - String values need to be surrounded by quotes.
-- Access variable using `$name`
-  - When printing the variable, double quotes are required. Ex, `echo "Good Morning! $name"`
-  - It can also accessed by using `${name}`.
-    - `${name}` can be placed inside a string surrounded by double quotes.
-- Using backticks to save command as variable
-  ```bash
-  BASH_VERSION=`bash --version`
-  echo $BASH_VERSION
-  ```
-- Save or Print or Save the ouput of a command in a variable using `$()`.
-  ```bash
-  result=$(pwd)
-  echo $result
-  #or
-  echo $(pwd)
-  ```
-- Strings can be concatenated if two variable are placed together without space. Ex, `$A$B`.
-- Strings can be concatenated using `+=`.
-- `$RANDOM` generate a 16-bit random number between `0` to `32767`.
-  - use modulus calculation to generate numbers in certain range. `$RANDOM % 11` will get random number from 0 to 10.
-
-#### User Input
-
-- use `read name` will prompt the user to enter a value for the variable `name`.
-
-#### Array
-
-- Declare an array, `arrayName=('A' 'B' 'C' 'D')`.
-- Print an array element, `echo ${arrayName[3]}`.
-  - Index starts at 0.
-- Sequence generation
-  - `echo {0..10}` generate a list of number from 0 to 10.
-  - `echo $(seq 0 10)` generate a list of number from 0 to 10.
-  - `echo $(seq 0 3 10)` generate a list of number from 0 to 10 with step 3.
-    - step can be a negative number. It will generate the list in reversed order.
-
-#### Arithmetic Operations
-
-- All common arithmetic operations works here including `%`, `++` or `+=`.
-- `let` Command
-  - `let RESULT=1+1; echo $RESULT;`
-  - `let RESULT="1 + 1"; echo $RESULT;`
-  - `let "RESULT = 5 * 5"; echo $RESULT`
-- `expr` Command
-  - It evaluate the express followed and print the result.
-  - needs space in between operators. `expr 1 + 5`
-  - Without using quotes special characters like `*` need to be escaped. `expr 5 \* 1`
-- `$((expression))` syntax
-  - `RESULT=$((1 + 1))` evaluate expression and store it in a new variable.
-  - `VAR=1; (( VAR += VAR ));` declare a variable and modify without `$`.
-
-#### Comparison
-
-- For numbers use the following operators:
-  - `-eq` Equal
-  - `-ne` Not equal
-  - `-gt` Greater than
-  - `-ge` Greater than or equal
-  - `-lt` Less than
-  - `-le` Less than or equal
-  - For example: `$10 -gt 20`.
-- For strings use `>`, `<`, `<=`, `>=`, `==`, `!=`
-  - Use `-z` to check if the string is empty. `-z ''`
-  - Use `-n` to check if the string is non-empty.
-  - Both `=` and `==` works.
-  - `>` and `<` needs to be escaped, `'b' \> "a"`.
-- `test` command can be used to evaluate boolean expression.
-  - If the result is true the command status will be 0, If the result is false the command status will be 1.
-  - `test` command has alias command `[` that requires a `]` at the end. Ex, `[3 -gt 1]`
-- `!` can be used to negate a condition.`![true && true]` or `[!false && true]`
-- `&&` means `and`. `||` means `or`. They can be used to connect boolean expression.
-  - Use parentheses to make them run in order `([ 1 -le 5 ] && [ 3 -lt 9 ]) || ([ 1 -gt 1 ] && [ 1 -ne 0 ])`
-  - `&&` can also be used to connect to valid command. When evaluate two valid commands they will be execute at the meantime.
-
-#### If Condition
-
-- `if`
-  ```bash
-  if [ "$PROCEED" = "YES" ]
-  then
-      echo "Performing task..."
-  fi
-  #or in one line like
-  if [ 'proceed' == "proceed" ]; then echo "Performing task..."; fi
-  ```
-- `if-else`
-  ```bash
-  echo 'Enter a number?'
-  read number
-  if [ $number -gt 100 ]
-  then
-      echo 'It is greater than 100.'
-  else
-      echo 'It is smaller than 100.'
-  fi
-  ```
-- `if-elif-else`
-  ```bash
-  VALUE=-10
-  if [ "$VALUE" -lt 0 ]; then
-      echo "VALUE is less than 0"
-  elif [ "$VALUE" -eq 0 ]; then
-      echo "VALUE is 0"
-  else
-      echo "VALUE is greater than 0"
-  fi
-  ```
-- Nested `if-else`
-  ```bash
-  VALUE=10
-  if [ "$VALUE" -lt 0 ]; then
-      echo "VALUE is less than 0"
-  else
-      echo "VALUE is greater than 0"
-      if [ "$VALUE" -le 10 ]; then
-          echo "VALUE is less than or equal to 10"
-      else
-          echo "VALUE is greater than 10"
-      fi # end of nested if block
-  fi # end of parent if block
-  ```
-
-#### Loops
-
-- Use `exit` to break out of loops.
-- `for...in` loop
-  ```bash
-  files=/filepath/
-  for file in $files
-  do
-    echo $(basename $file)
-  done
-  ```
-  - If the `in` and variable followed is missing, the script need to run with a parameter. `./filename.sh $VAR`
-- for loop
-  ```bash
-  for (( i = 0; i < 5; i++ )); do
-      echo "The number is: $i"
-  done
-  # Use two variables in loop
-  for (( n = 0, i = 1; n < 5; n++, i += i )); do
-      echo -n "$i, "
-  done
-  # infinite for loop
-  for ((;;))
-  ```
-- `while` loop
-  ```bash
-  NUMBER=1
-  while [ $NUMBER -lt 5 ]; do
-      echo "Number is: $((NUMBER++))"
-  done
-  # infinite while loop
-  while true
-  do
-    # perform action
-  done
-  # or
-  while :
-  do
-    # perform action
-  done
-  ```
-- `until` loop
-
-```bash
-NUMBER=1
-until [ $NUMBER == 4 ]
-do
-    echo "Number is: $((NUMBER++))"
-done
-# infinite until loop
-until false
-do
-    echo "Hello World"
-done
-```

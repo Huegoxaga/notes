@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../java/" />
+    <link rel="next" href="standard-library.html" />
     
     
     <link rel="prev" href="./" />
@@ -122,6 +122,32 @@
             
                     
                     Anaconda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="standard-library.html">
+            
+                <a href="standard-library.html">
+            
+                    
+                    Python Stardard Library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="django.html">
+            
+                <a href="django.html">
+            
+                    
+                    Django
             
                 </a>
             
@@ -618,6 +644,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.17.2" data-path="../linux/bash-scripting.html">
+            
+                <a href="../linux/bash-scripting.html">
+            
+                    
+                    Bash Scripting
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -832,8 +871,9 @@
 <h3 id="usage">Usage</h3>
 <ul>
 <li><a href="https://jupyter.readthedocs.io/en/latest/index.html" target="_blank">Click</a> to see the docs for Jupyter</li>
-<li>Run command <code>jupyter notebook</code> to start a server and open the notebook in the browser.</li>
+<li>Run command <code>jupyter notebook</code> in the project folder to start a server and open the notebook in the browser.</li>
 <li>It supports LaTeX code in markdown cell, inside <code>$$</code> block.</li>
+<li><code>Shift + Enter</code> to run code block in the cell.</li>
 </ul>
 <h2 id="numpy">NumPy</h2>
 <h3 id="introduction">Introduction</h3>
@@ -988,6 +1028,178 @@
 </ul>
 </li>
 </ul>
+<h2 id="pandas">Pandas</h2>
+<h3 id="introduction">Introduction</h3>
+<ul>
+<li>It is used to process data in tables.</li>
+<li>Dataframe stores data in rows and columns of a table.</li>
+<li>Dataframe is a dictionary structure that has column names as the key. All data for one column is stored in a list from top to bottom as value for the key.</li>
+<li>A column of data is of type series. It has a 1-D list structure.<ul>
+<li>Dataframe is a container for multiple series.</li>
+</ul>
+</li>
+<li><a href="https://pandas.pydata.org/docs/reference/index.html" target="_blank">Click</a> to see the completed documentation for more details.</li>
+<li>run <code>pip install pandas</code> to install it separately.</li>
+<li>By default many method itself in <code>pandas</code> will not change the data it stores. A <code>inplace</code> parameter is required to set <code>True</code> to make it happen. This is great to run without <code>inplace</code> first to see if it gives expected results then add the parameter to confirm changes.</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<ul>
+<li><code>import pandas as pd</code></li>
+<li><code>df = pd.read_csv(&apos;filePath.csv&apos;)</code> load a csv file.<ul>
+<li><code>df = pd.read_csv(&apos;filePath.csv&apos;, index_col=&apos;colName&apos;)</code> load a csv file, and using a column as its index.</li>
+</ul>
+</li>
+<li><code>df.shape</code> return the <code>(row, column)</code> of the dataframe.</li>
+<li>run <code>df</code> to print out data frame in Jupyter directly</li>
+<li><code>df.info()</code> returns shape column name and column data type about the dataframe.</li>
+<li><code>pd.set_option(&apos;display.max_columns&apos;, 10)</code> display a max of 10 columns when print.</li>
+<li><code>pd.set_option(&apos;display.max_rows&apos;, 10)</code> display a max of 10 rows when print.</li>
+<li><code>df.head(10)</code> show the first 10 rows of data.<ul>
+<li>If no parameter entered it will show the first 5 rows.</li>
+</ul>
+</li>
+<li><code>df.tail(10)</code> show the last 10 rows of data<ul>
+<li>If no parameter entered it will show the last 5 rows.</li>
+</ul>
+</li>
+<li><code>df = pd.DataFrame(data)</code> convert dictionary data into dataframe</li>
+<li><code>df[&apos;columnName&apos;]</code> print all data under one column plus its data type(return a series).<ul>
+<li><code>df.columnName</code> dot notation also works.</li>
+<li><code>df[[&apos;columnNameA&apos;,&apos;columnNameB]]</code> returns al list of columns(a filtered dataframe)</li>
+<li><code>df[&apos;columnName&apos;]= df[&apos;columnName&apos;].str.lower()</code> change all data in one column in lowercase.</li>
+<li><code>df[&apos;columnA&apos;] + &apos;@&apos; + df[&apos;columnB&apos;]</code> edit and combine data from two column and create a new series.</li>
+<li><code>df[&apos;NewCol&apos;] = series</code> create a new column called <code>NewCol</code> with data from <code>series</code></li>
+<li><code>df[[&apos;ColA&apos;,&apos;ColB&apos;]]=df[&apos;Col&apos;].str.split(&apos; &apos;, expand=True)</code> split one col into two new column.</li>
+</ul>
+</li>
+<li><code>df.columns</code> show info about all columns.<ul>
+<li><code>df.columns = [&apos;ColName1&apos;, &apos;ColName2&apos;, &apos;ColName3&apos;]</code> rename all column field names.</li>
+<li><code>df.columns = [x.upper() for x in df.columns]</code> change all field name to uppercase.</li>
+<li><code>df.columns = df.columns.str.replace(&apos; &apos;, &apos;_&apos;)</code> change all space in the column name to <code>_</code>.</li>
+</ul>
+</li>
+<li><code>df.rename(columns={&apos;ColNameA&apos;: &apos;ColNameB&apos;, &apos;NewColNameA&apos;: &apos;NewColNameB&apos;}, inplace=True)</code> rename certain column field names.</li>
+<li><code>df.drop(columns=[&apos;ColA&apos;, &apos;ColB&apos;], inplace=True)</code> delete certain columns.</li>
+<li><code>df.iloc[0]</code> <code>iloc</code> return data based on integer location. In the example returns the first row .<ul>
+<li><code>df.iloc[rowIndex, colIndex]</code> return data from certain row and column.</li>
+<li><code>df.iloc[[0,1]]</code> returns the first and second row as dataframe.</li>
+<li><code>df.iloc[0:5]</code> returns the first 5 rows using slicing.</li>
+<li><code>df.iloc[[0,1],1]</code> return data from the first and second row, and second coloumn.</li>
+</ul>
+</li>
+<li><code>df.loc[[0,1],&apos;columnName&apos;]</code> <code>loc</code> similar to <code>iloc</code> but it return data based on label and the default index label.<ul>
+<li>slicing also works with label, <code>`df.loc[[0,1],&apos;columnNameA&apos;:&apos;columnNameB&apos;]</code></li>
+<li><code>df.loc[2] = [&apos;newdata1&apos;, &apos;newdata2&apos;, &apos;newdata3&apos;]</code> update the third row with new data.</li>
+<li><code>df.loc[2, [&apos;Col2&apos;, &apos;Col3&apos;]] = [&apos;newdata2&apos;, &apos;newdata3&apos;]</code> update the third row&apos;s data in column2 and column3.</li>
+<li><code>df.loc[2, &apos;Col2&apos;] = &apos;newdata2&apos;</code> or <code>df.at[2, &apos;Col2&apos;] = &apos;newdata2&apos;</code> update a single value.</li>
+</ul>
+</li>
+<li><code>series.value_counts()</code> count unique values in the series.</li>
+<li><code>df.set_index(&apos;columnName&apos;)</code> set a column as the index, then and print<ul>
+<li>This method does not change the original dataframe. To replace the original dataframe use, <code>df.set_index(&apos;columnName&apos; inplace=True)</code>.</li>
+<li>Once the customized index is set the default integer index will not be available for the <code>loc</code> method.</li>
+</ul>
+</li>
+<li><code>df.index</code> review index info.</li>
+<li><code>df.reset_index(inplace=True)</code> reset the index to default.</li>
+<li><code>df.sort_index()</code> sort index in descending order.<ul>
+<li><code>df.sort_index(ascending=False)</code> sort index in ascending order.</li>
+<li><code>df.sort_index(inplace=True)</code> sort index in descending order and replace the original dataframe.</li>
+</ul>
+</li>
+<li><code>ft = (df[&apos;colName&apos;] == &apos;Value&apos;)</code> It return a series of boolean values. True means a match is found. False means the column value and the filter value does not match.<ul>
+<li>filter is a key word that can not be used.</li>
+<li>To access all the match values, run <code>df[ft]</code></li>
+<li><code>-ft</code> will negate the filter result.</li>
+<li>use <code>==</code>, <code>&gt;</code>,<code>&gt;=</code>,<code>&lt;=</code>, <code>&lt;</code> for the expression.</li>
+<li>Combine expression with and(<code>&amp;</code>), or(<code>|</code>) to make the filter powerful.</li>
+<li><code>df.loc[ft]</code> also works, It column can also be specified. Ex: <code>df.loc[ft,&apos;colA&apos;]</code></li>
+<li><code>ft = df[&apos;colName&apos;].isin(listValue)</code>, it can be used to check membership relationship for a list of values.</li>
+<li><code>ft = df[&apos;ColName&apos;].str.contains(&apos;value&apos;, na=False)</code> find records contain <code>value</code> in the string, and ignore all cells does not have value.</li>
+</ul>
+</li>
+<li><code>df[&apos;col&apos;].apply(x)</code> <code>x</code> is a function or property that will be passed and run on all data in the column.<ul>
+<li><code>df[&apos;col&apos;] = df[&apos;col&apos;].apply(x)</code> updata the data with newly calculated values.</li>
+<li><code>x</code> can be a lambda function. Ex, <code>df[&apos;col&apos;].apply(lambda x: x.lower())</code></li>
+</ul>
+</li>
+<li><code>df.apply(x)</code> apply <code>x</code> function on each searies object on each columns vertically.<ul>
+<li><code>df.apply(x, axis=&apos;columns&apos;)</code> apply <code>x</code> function on each searies object on each rows horizontally.</li>
+</ul>
+</li>
+<li><code>df.applymap(x)</code> apply <code>x</code> function on each data object in the dataframe.</li>
+<li><code>df[&apos;col&apos;] = df[&apos;col&apos;].map({&apos;data1&apos;: &apos;newdata1&apos;, &apos;data2&apos;: &apos;newdata2&apos;})</code> replace certain data in the column, unchanged data will be set to NaN.</li>
+<li><code>df[&apos;col&apos;] = df[&apos;col&apos;].replace({&apos;data1&apos;: &apos;newdata1&apos;, &apos;data2&apos;: &apos;newdata2&apos;})</code> replace certain data in the column, unchanged data will be left unchanged.</li>
+</ul>
+<h2 id="matplotlib">Matplotlib</h2>
+<h3 id="introduction">Introduction</h3>
+<ul>
+<li>It is used to plot graphs.</li>
+<li><a href="https://matplotlib.org/contents.html#" target="_blank">Click</a> to see the completed documentation for more details.</li>
+</ul>
+<h3 id="pyplot">pyplot</h3>
+<ul>
+<li><code>from matplotlib import pyplot as plt</code></li>
+<li><code>plt.plot(listofX, listofY)</code> plot a line, run this method multiple times to draw multiple lines.<ul>
+<li><code>plt.plot(listofX, listofY, label=&apos;line legend&apos;)</code> add a legend to the line.</li>
+<li><code>plt.plot(listofX, listofY, color=&apos;#3b3b3b&apos;, linewidth=2,linestyle=&apos;--&apos; label=&apos;line legend&apos;)</code> or <code>plt.plot(listofX, listofY, &apos;formatstring&apos;,label=&apos;line legend&apos;)</code> to add format to the line, see details about the characters <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot" target="_blank">here</a></li>
+</ul>
+</li>
+<li><code>plt.bar(listofX, listofY, label=&apos;bar legend&apos;)</code> draw a bar chart.<ul>
+<li>Use numpy to off set the x-value to display multiple groups of data using bar chart.<code>plt.bar(np.arange(len(x_datalist))+0.25, y_datalist, width=0.25, color=&quot;#ebebeb&quot;, label=&quot;labelName&quot;)</code></li>
+</ul>
+</li>
+<li><code>plt.barh(x_data, y_data)</code> draw a horizontal bar chart.</li>
+<li><code>plt.xticks(ticks=np.arange(len(x_datalist)), labels=x_datalist)</code> display the corrent x-axis label.</li>
+<li><code>plt.pie(integer_list)</code> plot a pie chart. The percentage is auto calculates<ul>
+<li><code>plt.pie(integer_list, labels=label_list)</code> add labels.</li>
+<li><code>plt.pie(integer_list, labels=label_list, wedgeprops={&apos;edgecolor&apos;:&apos;black&apos;})</code> add edge.</li>
+<li><code>plt.pie(integer_list, explode=explodefactor_list)</code> For the factor, <code>0</code> mean no explode. <code>0.1</code> should be good enough.</li>
+<li><code>plt.pie(integer_list, shadow=True)</code> show a shadow</li>
+<li><code>plt.pie(integer_list, startangle=90)</code> rotate the pie chart</li>
+<li><code>plt.pie(integer_list, autopct=&apos;%1.1f%%&apos;)</code> show percentage data in the pie chart</li>
+<li><code>plt.pie(integer_list, color= color List )</code> add labels.</li>
+</ul>
+</li>
+<li><code>plt.stackplot(x_data_list,list_of_list)</code> or <code>plt.stackplot(x_data_list,list1,list2,list3)</code> draw a stackplot.<ul>
+<li>It also has labels and colors parameters.</li>
+</ul>
+</li>
+<li><code>plt.xlabel(&apos;XAxisLabel&apos;)</code></li>
+<li><code>plt.ylabel(&apos;YAxisLabel&apos;)</code></li>
+<li><code>plt.title(&apos;Graph Title&apos;)</code></li>
+<li><code>plt.legend()</code> add legend base on labels automatically<ul>
+<li><code>plt.legend([&apos;firstLineLegend&apos;,&apos;firstLineLegend&apos;])</code> set legend text.</li>
+<li><code>plt.legend(loc=&apos;upper left&apos;)</code> or <code>plt.legend(loc=(percent_from_left, percent_from_bottom))</code> set the legend location.</li>
+</ul>
+</li>
+<li><code>plt.tight_layout()</code> set a tight padding.</li>
+<li><code>plt.grid(True)</code> show grid</li>
+<li><code>print(plt.style.available)</code> show the styles available</li>
+<li><code>plt.style.use(&apos;stylename&apos;)</code> set a style</li>
+<li><code>plt.skcd()</code> set a comic style</li>
+<li><code>plt.show()</code> show the graph</li>
+<li><code>plt.savefig(&apos;filename.png&apos;)</code> save the file in the working directory.</li>
+</ul>
+<h2 id="beautifulsoup">BeautifulSoup</h2>
+<h3 id="introduction">Introduction</h3>
+<ul>
+<li>It is used to process strings containing <code>html</code> source code.</li>
+<li><code>from bs4 import BeautifulSoup</code></li>
+</ul>
+<h3 id="usage">Usage</h3>
+<ul>
+<li><code>soup = BeautifulSoup(html, features=&apos;lxml&apos;)</code> load the source code string into a soup object.</li>
+<li><code>soup.tagName</code> access all the content in between certain tag. Ex, <code>soup.p</code> print all html source code start with <code>&lt;p&gt;</code> and end with <code>&lt;/p&gt;</code>.</li>
+<li><code>soup.find_all(&apos;tagName&apos;)</code> return a list of matched soup objects.</li>
+<li><code>soup[&apos;attribute&apos;]</code> access certain attribute of a tag. Ex, <code>soup[&apos;href&apos;]</code>.</li>
+<li><code>soup.find_all(&apos;tagName&apos;, {&quot;attribute&quot;: &quot;value&quot;})</code> return a list of tags with certain attribute value.<ul>
+<li>Attribute value can be replaced by a complied regular expression patterm. Ex, <code>soup.find_all(&apos;a&apos;, {&apos;href&apos;: re.compile(&apos;https://example.*&apos;)})</code></li>
+</ul>
+</li>
+<li><code>soup.get_text()</code> get the text inside the tag.</li>
+<li><code>soup.find(&apos;ul&apos;, {&quot;class&quot;: &quot;className&quot;})</code> <code>find</code> method return the one result.</li>
+</ul>
 
                                 
                                 </section>
@@ -1020,7 +1232,7 @@
                 </a>
                 
                 
-                <a href="../java/" class="navigation navigation-next " aria-label="Next page: Java">
+                <a href="standard-library.html" class="navigation navigation-next " aria-label="Next page: Python Stardard Library">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1031,7 +1243,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Anaconda","level":"1.2.1","depth":2,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]}]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-03-17T22:52:13.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Anaconda","level":"1.2.1","depth":2,"next":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-03-24T05:28:12.492Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T19:51:01.914Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

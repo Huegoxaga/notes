@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>WordPress · GitBook</title>
+        <title>Bash Scripting · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../linux/" />
+    <link rel="next" href="../virtualization/" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="regex.html" />
     
 
     </head>
@@ -122,6 +122,32 @@
             
                     
                     Anaconda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../python/standard-library.html">
+            
+                <a href="../python/standard-library.html">
+            
+                    
+                    Python Stardard Library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+            
+                <a href="../python/django.html">
+            
+                    
+                    Django
             
                 </a>
             
@@ -559,9 +585,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.16" data-path="./">
+        <li class="chapter " data-level="1.16" data-path="../cms/">
             
-                <a href="./">
+                <a href="../cms/">
             
                     
                     Content Management Systems
@@ -573,9 +599,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.16.1" data-path="wordpress.html">
+        <li class="chapter " data-level="1.16.1" data-path="../cms/wordpress.html">
             
-                <a href="wordpress.html">
+                <a href="../cms/wordpress.html">
             
                     
                     WordPress
@@ -591,9 +617,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17" data-path="../linux/">
+        <li class="chapter " data-level="1.17" data-path="./">
             
-                <a href="../linux/">
+                <a href="./">
             
                     
                     Linux
@@ -605,12 +631,25 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.17.1" data-path="../linux/regex.html">
+        <li class="chapter " data-level="1.17.1" data-path="regex.html">
             
-                <a href="../linux/regex.html">
+                <a href="regex.html">
             
                     
                     Regular Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.17.2" data-path="bash-scripting.html">
+            
+                <a href="bash-scripting.html">
+            
+                    
+                    Bash Scripting
             
                 </a>
             
@@ -782,7 +821,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >WordPress</a>
+        <a href=".." >Bash Scripting</a>
     </h1>
 </div>
 
@@ -797,304 +836,245 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="wordpress">WordPress</h1>
+                                <h1 id="bash-scripting">Bash Scripting</h1>
 <h2 id="introduction">Introduction</h2>
 <ul>
-<li>It uses PHP at the backend.</li>
-<li>WordPress is the most popular CMS.</li>
-<li>It powers roughly 1/3rd of the web, tens of millions of sites.</li>
-<li>Based on PHP &amp; MySQL.</li>
-<li>First released in 2003.</li>
+<li>It stores a batch of command in order to complete certain task in one execution.</li>
+<li>It usually has an extension as <code>.sh</code>. It also can be run without any extenion or as <code>.txt</code>.</li>
+<li>Bash does not have a type system, everything is saved as strings.</li>
+<li>It can be edited by any text editing tool.</li>
+<li>It is recommanded to run the full path of the commands in the scripts.</li>
 </ul>
-<h2 id="installation">Installation</h2>
-<h3 id="launch-wordpress-in-an-apache-server">Launch WordPress in an Apache Server</h3>
-<ol>
-<li>Unzip the content inside the <a href="https://en-ca.wordpress.org/download/" target="_blank">WordPress</a> package in the folder that will be hosted by the server.</li>
-<li>Visit the website in a browser.</li>
-<li>Select the database created for the website.</li>
-<li>Enter the admin info.</li>
-<li>Launch the Site.</li>
-</ol>
-<h3 id="launch-wordpress-using-aws-ec2">Launch WordPress using AWS EC2</h3>
-<ol>
-<li>When launching an EC2 instance, choose WordPress powered by BitNami as the Amazon Machine Image(AMI)<ul>
-<li>If the SSH connection to the server is not required, it can be processed without a key pair.</li>
-</ul>
-</li>
-<li>Put the public IP in the address bar in a browser to login the site.<ul>
-<li>Login username will be <code>user</code>,</li>
-<li>password can be found in <code>Actions -&gt; Instance Setting -&gt; Get System Log for WordPress instance.</code> The password is surrounded by hash marks.</li>
-</ul>
-</li>
-<li>To remove the banner link to the Bitnami Info page, follow these steps:<ul>
-<li>Log in to your server console using SSH and execute the following command. <code>sudo /opt/bitnami/apps/wordpress/bnconfig --disable_banner 1</code></li>
-<li>If you&#x2019;re using Apache, execute the command below: (The type is indicated in the AMI info) <code>sudo /opt/bitnami/ctlscript.sh restart</code></li>
-<li>If you&#x2019;re using NGINX, execute the command below: <code>sudo /opt/bitnami/ctlscript.sh restart nginx</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="website-management">Website Management</h2>
+<h2 id="run-script">Run Script</h2>
 <ul>
-<li>Example website access: <code>yourdomain.com</code></li>
-<li><p>Dashboard Access:</p>
+<li>Any text file contains commands line by line can be run using <code>bash filename</code>.</li>
+<li>Shebang is used at the first line of the text file to make the file executable by itself.<ul>
+<li>It is an operator look like <code>#!</code></li>
+<li>It is followed by the path of the interpreter.</li>
+<li>For bash scripting, use <code>#!/bin/sh</code> or <code>#!/usr/bin/env bash</code> if the path of bash is unknown.</li>
+<li>The user needs the <code>execute</code> file permission for the script.</li>
+<li>The file can then be executed by using <code>./filename</code>.</li>
+<li>Add the directory path into the <code>$PATH</code> variable to make the script run without <code>./</code>.</li>
+</ul>
+</li>
+<li>Each script will be run in a separate session.</li>
+</ul>
+<h2 id="syntax">Syntax</h2>
+<h3 id="comment">Comment</h3>
 <ul>
-<li><code>yourdomain.com/login</code></li>
-<li><code>yourdomain.com/wp-admin</code></li>
-<li><code>yourdomain.com/admin</code></li>
-</ul>
+<li><p>Any line starts with <code>#</code> can be followed by a single line comment.</p>
 </li>
-<li><p>View Site - in the top <code>navigation bar</code>, click <code>Create a Website -&gt; View Site</code></p>
+<li><p><code>\</code> can be placed at the end of each line. It will make the command continue in a new line.</p>
 </li>
-<li>Update WordPress - In the dashboard left panel, click on updates.</li>
-<li>Change password - In the dashboard left panel, clicking the user name, then change the password.</li>
-<li>Permalinks settings - The links format for your website pages. In the dashboard left panel, click settings -&gt; Permalinks.</li>
-<li>All of the settings are stored in the database table <code>wp-options</code>.</li>
+<li><code>commandA &amp;&amp; commandB</code> can be used to run two command from left to right.</li>
+<li><code>;</code> can be used to separate multiple command in entered one line.</li>
 </ul>
-<h2 id="themes-management">Themes Management</h2>
+<h3 id="exit">Exit</h3>
 <ul>
-<li>They are templates.</li>
-<li>It can be customized by users, created and sold for profit. <a href="https://codex.wordpress.org/Theme_Development" target="_blank">Click</a> to see the docs about themes development.</li>
+<li>keyword <code>exit</code> is used to stop the script.</li>
 </ul>
-<h3 id="install-themes">Install Themes</h3>
+<h3 id="variables">Variables</h3>
 <ul>
-<li>Installing WordPress Themes can usually be done automatically from the backend.<ul>
-<li>In dashboard left panel, Appearance -&gt; Themes</li>
-<li>under the navigation menu when viewing the website, click create a website -&gt; themes</li>
-<li>all the Installed themes are displayed here. Some theme has its plugins for easier editing.</li>
-<li>Click <code>Add New</code> to install new themes.</li>
+<li>declare a new variable using <code>name=value</code>.<ul>
+<li>No space between <code>=</code> sign.</li>
+<li>String values need to be surrounded by quotes.</li>
 </ul>
 </li>
-<li>Optionally, WordPress themes can also be installed by unzipping them into <code>/wp-content/themes</code> folder.</li>
-<li>WordPress themes then need to be activated to make them the currently used theme.</li>
-<li>Some themes are powered by the desgniated plug-ins like <code>Ocean Extra</code> for <code>OceanWP</code>.</li>
+<li>Access variable using <code>$name</code><ul>
+<li>When printing the variable, double quotes are required. Ex, <code>echo &quot;Good Morning! $name&quot;</code></li>
+<li>It can also accessed by using <code>${name}</code>.<ul>
+<li><code>${name}</code> can be placed inside a string surrounded by double quotes.</li>
 </ul>
-<h3 id="theme-package-files">Theme Package Files</h3>
+</li>
+</ul>
+</li>
+<li>Using backticks to save command as variable<pre><code class="lang-bash">BASH_VERSION=`bash --version`
+<span class="hljs-built_in">echo</span> <span class="hljs-variable">$BASH_VERSION</span>
+</code></pre>
+</li>
+<li>Save or Print or Save the ouput of a command in a variable using <code>$()</code>.<pre><code class="lang-bash">result=$(<span class="hljs-built_in">pwd</span>)
+<span class="hljs-built_in">echo</span> <span class="hljs-variable">$result</span>
+<span class="hljs-comment">#or</span>
+<span class="hljs-built_in">echo</span> $(<span class="hljs-built_in">pwd</span>)
+</code></pre>
+</li>
+<li>Strings can be concatenated if two variable are placed together without space. Ex, <code>$A$B</code>.</li>
+<li>Strings can be concatenated using <code>+=</code>.</li>
+<li><code>$RANDOM</code> generate a 16-bit random number between <code>0</code> to <code>32767</code>.<ul>
+<li>use modulus calculation to generate numbers in certain range. <code>$RANDOM % 11</code> will get random number from 0 to 10.</li>
+</ul>
+</li>
+</ul>
+<h3 id="user-input">User Input</h3>
 <ul>
-<li><code>style.css</code><ul>
-<li>Defines the CSS styles for the theme</li>
-<li>It contains theme details in comments at the top of the page</li>
-<li>These theme details must be present for the theme.</li>
-<li>Each theme must have unique theme details.</li>
+<li>use <code>read name</code> will prompt the user to enter a value for the variable <code>name</code>.</li>
 </ul>
-</li>
-<li>screenshot.png<ul>
-<li>This will represent the theme in the WordPress backend theme selection page</li>
-</ul>
-</li>
-<li><code>js</code>, <code>img</code>, <code>fonts</code> folders<ul>
-<li>These folders contain images, Javascript, fonts and other code used by the theme to render the page.</li>
-</ul>
-</li>
-<li><code>functions.php</code><ul>
-<li>Acts like a plugin... it&#x2019;s run by WordPress during initialization&#x2022;</li>
-<li>Can define helper functions used in your theme files.</li>
-<li>Loads theme style sheets and scripts</li>
-<li>Enables theme features such as sidebars, navigation menus, etc.</li>
-<li>Set up the options menu to allow admin users the ability to change aspects of the theme.</li>
-</ul>
-</li>
-<li>Template Files<ul>
-<li><a href="https://codex.wordpress.org/Stepping_Into_Templates" target="_blank">Click</a> to see more explanation about template files.</li>
-<li>They are located in the root of each theme folder.</li>
-<li><code>index.php</code> mandatory is the main template file.</li>
-<li><code>page.php</code> is the template that displays all pages by default.</li>
-<li><code>header.php</code> is the template that displays all of the <code>&lt;head&gt;</code> section and everything up until.</li>
-<li><code>single.php</code> template for a single post.</li>
-<li>etc.</li>
-</ul>
-</li>
-<li><code>template</code> Folder<ul>
-<li>It contains templates for page settings.</li>
-</ul>
-</li>
-<li><code>template-part</code> Folder<ul>
-<li>It contains sample components.</li>
-</ul>
-</li>
-</ul>
-<h3 id="theme-editor">Theme Editor</h3>
+<h3 id="array">Array</h3>
 <ul>
-<li>It can be used to edit theme files directly from the console.</li>
-<li>Steps<ul>
-<li>Access <code>functions.php</code> Through WordPress Admin</li>
-<li>Log in or sign in WordPress as administrator.</li>
-<li>Select &quot;Appearance &gt; Theme Editor&quot; from the sidebar.</li>
-<li>In the editor, select the theme which you want to edit from <code>Select theme to edit</code> drop-down menu.</li>
-<li>Locate the file for edition.</li>
+<li>Declare an array, <code>arrayName=(&apos;A&apos; &apos;B&apos; &apos;C&apos; &apos;D&apos;)</code>.</li>
+<li>Print an array element, <code>echo ${arrayName[3]}</code>.<ul>
+<li>Index starts at 0.</li>
+</ul>
+</li>
+<li>Sequence generation<ul>
+<li><code>echo {0..10}</code> generate a list of number from 0 to 10.</li>
+<li><code>echo $(seq 0 10)</code> generate a list of number from 0 to 10.</li>
+<li><code>echo $(seq 0 3 10)</code> generate a list of number from 0 to 10 with step 3.<ul>
+<li>step can be a negative number. It will generate the list in reversed order.</li>
 </ul>
 </li>
 </ul>
-<h3 id="customize-theme">Customize Theme</h3>
+</li>
+</ul>
+<h3 id="arithmetic-operations">Arithmetic Operations</h3>
 <ul>
-<li>Click on the <code>Customize</code> button in the top navigation menu.</li>
-<li>It is used to editing homepage settings, menus, header, and footer of the website.</li>
-<li>Select the blue icon to change the related item in the left menu.</li>
-<li>Click publish on the top of the left panel to save changes.</li>
-<li>Click the exit button to view the website.</li>
-<li>Header includes menus</li>
-<li>Page links can be added to the menu.</li>
-<li>menu types<ul>
-<li>Top bar: A bar menu on the top of the page.</li>
-<li>Main menu: A navigation menu beside the page title.</li>
+<li>All common arithmetic operations works here including <code>%</code>, <code>++</code> or <code>+=</code>.</li>
+<li><code>let</code> Command<ul>
+<li><code>let RESULT=1+1; echo $RESULT;</code></li>
+<li><code>let RESULT=&quot;1 + 1&quot;; echo $RESULT;</code></li>
+<li><code>let &quot;RESULT = 5 * 5&quot;; echo $RESULT</code></li>
 </ul>
 </li>
-<li>Set Site Identity:<ul>
-<li>In the top navigation bar, click customize, select site identity.</li>
-<li>Site Title is the Name of the website.</li>
-<li>A tagline is the explanation of the website.</li>
-<li>Site Icon is the icon for the site in the tab of the browser.(should be at least 512X512px)</li>
+<li><code>expr</code> Command<ul>
+<li>It evaluate the express followed and print the result.</li>
+<li>needs space in between operators. <code>expr 1 + 5</code></li>
+<li>Without using quotes special characters like <code>*</code> need to be escaped. <code>expr 5 \* 1</code></li>
+</ul>
+</li>
+<li><code>$((expression))</code> syntax<ul>
+<li><code>RESULT=$((1 + 1))</code> evaluate expression and store it in a new variable.</li>
+<li><code>VAR=1; (( VAR += VAR ));</code> declare a variable and modify without <code>$</code>.</li>
 </ul>
 </li>
 </ul>
-<h3 id="special-setting">Special Setting</h3>
+<h3 id="comparison">Comparison</h3>
 <ul>
-<li>Different Theme might have different settings in the customize menu.</li>
-<li>For the famous <code>OceanWP</code> theme, it has.<ul>
-<li>Footer template<ul>
-<li>It is added through the theme panel.</li>
-<li>There are two footers in many templates, one is the desktop version and the other is the mobile version.</li>
-<li>Footer template section is added to the pages as footer widget.</li>
+<li>For numbers use the following operators:<ul>
+<li><code>-eq</code> Equal</li>
+<li><code>-ne</code> Not equal</li>
+<li><code>-gt</code> Greater than</li>
+<li><code>-ge</code> Greater than or equal</li>
+<li><code>-lt</code> Less than</li>
+<li><code>-le</code> Less than or equal</li>
+<li>For example: <code>$10 -gt 20</code>.</li>
 </ul>
 </li>
-<li>Add logo<ul>
-<li>An image or image with text on the top of every pages.</li>
-<li>In Customize, select header -&gt; logo</li>
+<li>For strings use <code>&gt;</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code><ul>
+<li>Use <code>-z</code> to check if the string is empty. <code>-z &apos;&apos;</code></li>
+<li>Use <code>-n</code> to check if the string is non-empty.</li>
+<li>Both <code>=</code> and <code>==</code> works.</li>
+<li><code>&gt;</code> and <code>&lt;</code> needs to be escaped, <code>&apos;b&apos; \&gt; &quot;a&quot;</code>.</li>
+</ul>
+</li>
+<li><code>test</code> command can be used to evaluate boolean expression.<ul>
+<li>If the result is true the command status will be 0, If the result is false the command status will be 1.</li>
+<li><code>test</code> command has alias command <code>[</code> that requires a <code>]</code> at the end. Ex, <code>[3 -gt 1]</code></li>
+</ul>
+</li>
+<li><code>!</code> can be used to negate a condition.<code>![true &amp;&amp; true]</code> or <code>[!false &amp;&amp; true]</code></li>
+<li><code>&amp;&amp;</code> means <code>and</code>. <code>||</code> means <code>or</code>. They can be used to connect boolean expression.<ul>
+<li>Use parentheses to make them run in order <code>([ 1 -le 5 ] &amp;&amp; [ 3 -lt 9 ]) || ([ 1 -gt 1 ] &amp;&amp; [ 1 -ne 0 ])</code></li>
+<li><code>&amp;&amp;</code> can also be used to connect to valid command. When evaluate two valid commands they will be execute at the meantime.</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h3 id="child-themes">Child Themes</h3>
+<h3 id="if-condition">If Condition</h3>
 <ul>
-<li>Allow us to make tweaks to existing themes that won&#x2019;t be overwritten when the parent theme is updated.</li>
-<li>Steps to create a child theme<ol>
-<li>Create a child theme folder as in the <code>theme</code> folder.<ul>
-<li>The name of the child theme can be <code>parentThemeName-child</code>.</li>
-</ul>
+<li><code>if</code><pre><code class="lang-bash"><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$PROCEED</span>&quot;</span> = <span class="hljs-string">&quot;YES&quot;</span> ]
+<span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Performing task...&quot;</span>
+<span class="hljs-keyword">fi</span>
+<span class="hljs-comment">#or in one line like</span>
+<span class="hljs-keyword">if</span> [ <span class="hljs-string">&apos;proceed&apos;</span> == <span class="hljs-string">&quot;proceed&quot;</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Performing task...&quot;</span>; <span class="hljs-keyword">fi</span>
+</code></pre>
 </li>
-<li>Create a <code>style.css</code><ul>
-<li>Must have a unique name.</li>
-<li>Add <code>Template: parentThemeDirectoryName</code> in the file.</li>
-</ul>
+<li><code>if-else</code><pre><code class="lang-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;Enter a number?&apos;</span>
+<span class="hljs-built_in">read</span> number
+<span class="hljs-keyword">if</span> [ <span class="hljs-variable">$number</span> <span class="hljs-_">-gt</span> 100 ]
+<span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;It is greater than 100.&apos;</span>
+<span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;It is smaller than 100.&apos;</span>
+<span class="hljs-keyword">fi</span>
+</code></pre>
 </li>
-<li>Inherit parent theme in <code>functions.php</code><ul>
-<li>Example Code:<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
-add_action( <span class="hljs-string">&apos;wp_enqueue_scripts&apos;</span>, <span class="hljs-string">&apos;my_theme_enqueue_styles&apos;</span> );
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">my_theme_enqueue_styles</span><span class="hljs-params">()</span> </span>{
-$parent_style = <span class="hljs-string">&apos;parent-theme-name&apos;</span>;
-wp_enqueue_style( $parent_style, get_template_directory_uri() . <span class="hljs-string">&apos;/style.css&apos;</span> );
-wp_enqueue_style( <span class="hljs-string">&apos;child-style&apos;</span>,
-  get_stylesheet_directory_uri() . <span class="hljs-string">&apos;/style.css&apos;</span>,
-  <span class="hljs-keyword">array</span>( $parent_style ),
-  wp_get_theme()-&gt;get(<span class="hljs-string">&apos;Version&apos;</span>)
-);
-}
+<li><code>if-elif-else</code><pre><code class="lang-bash">VALUE=-10
+<span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> <span class="hljs-_">-lt</span> 0 ]; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is less than 0&quot;</span>
+<span class="hljs-keyword">elif</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> <span class="hljs-_">-eq</span> 0 ]; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is 0&quot;</span>
+<span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is greater than 0&quot;</span>
+<span class="hljs-keyword">fi</span>
+</code></pre>
+</li>
+<li>Nested <code>if-else</code><pre><code class="lang-bash">VALUE=10
+<span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> <span class="hljs-_">-lt</span> 0 ]; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is less than 0&quot;</span>
+<span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is greater than 0&quot;</span>
+    <span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> -le 10 ]; <span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is less than or equal to 10&quot;</span>
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is greater than 10&quot;</span>
+    <span class="hljs-keyword">fi</span> <span class="hljs-comment"># end of nested if block</span>
+<span class="hljs-keyword">fi</span> <span class="hljs-comment"># end of parent if block</span>
 </code></pre>
 </li>
 </ul>
-</li>
-<li>Activate child theme</li>
-<li>Adding Template Files<ul>
-<li>Any file that is added to the child theme will overwrite the same file in the parent theme.</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="pages-management">Pages Management</h2>
+<h3 id="loops">Loops</h3>
 <ul>
-<li>To manage pages, in dashboard left panel, click Pages<ul>
-<li>Delete - click trash to move the page to the trash can, then delete it permanently in the trash can.</li>
-<li>Add New Page, in the top navigation menu, select New -&gt; Page -&gt; Type page title -&gt; Edit with <code>elementor</code>.</li>
-<li>Optionally, add pages in the pages menu in the dashboard and type pages context in the white space like using Office Word. Clicking update after editing.</li>
+<li>Use <code>exit</code> to break out of loops.</li>
+<li><code>for...in</code> loop<pre><code class="lang-bash">files=/filepath/
+<span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> <span class="hljs-variable">$files</span>
+<span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> $(basename <span class="hljs-variable">$file</span>)
+<span class="hljs-keyword">done</span>
+</code></pre>
+<ul>
+<li>If the <code>in</code> and variable followed is missing, the script need to run with a parameter. <code>./filename.sh $VAR</code></li>
 </ul>
 </li>
-<li>templates can be added for the new page or drag and drop elements from the left panel for customization.</li>
-<li>Settings for the new page is shown at the bottom.</li>
-<li>The pages URL slug is set in the quick edit menu.</li>
-<li>Clicking the save button to save the design of this new page.</li>
-</ul>
-<h2 id="posts-management">Posts management</h2>
-<ul>
-<li>To manage posts, In dashboard left panel, click Posts<ul>
-<li>Delete - click trash to move the post to the trash can, then delete it permanently in the trash can.</li>
-</ul>
+<li>for loop<pre><code class="lang-bash"><span class="hljs-keyword">for</span> (( i = 0; i &lt; 5; i++ )); <span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;The number is: <span class="hljs-variable">$i</span>&quot;</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># Use two variables in loop</span>
+<span class="hljs-keyword">for</span> (( n = 0, i = 1; n &lt; 5; n++, i += i )); <span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> -n <span class="hljs-string">&quot;<span class="hljs-variable">$i</span>, &quot;</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># infinite for loop</span>
+<span class="hljs-keyword">for</span> ((;;))
+</code></pre>
 </li>
-<li>For themes designed with post layouts, when a new post is added, the page is updated with the new post at the bottom.</li>
-</ul>
-<h2 id="plugins">Plugins:</h2>
-<ul>
-<li>Plugins extend the functionality of WordPress.</li>
-<li>It can be customized, created and sold for pro</li>
-<li>Plugins can have add-ons for more modification, most of the add-ons are paid.</li>
-<li>Plugins can provide more options for widgets.</li>
-</ul>
-<h3 id="install-plugins">Install Plugins</h3>
-<ul>
-<li>In the dashboard side menu click plugin -&gt; add new, then it can be searched and installed.</li>
-<li>Optionally, download the plugin from the internet, then drag and drop plugin files to upload.</li>
-</ul>
-<h3 id="delete-plugins">Delete Plugins</h3>
-<ul>
-<li>Deactivate first, then delete the plugins.</li>
-</ul>
-<h3 id="popular-plugins">Popular Plugins</h3>
-<h4 id="elementor">Elementor:</h4>
-<ul>
-<li>It is a very popular page builder.</li>
-<li>It is a plugin.</li>
-<li>Located in the top navigation menu.</li>
-<li>It is used for editing website main content except for header and footer.</li>
-<li>After clicking the edit with the elementor button, all the page content can be selected and edited directly.</li>
-<li>For text, click on the text and starting to edit. html tags can be used inside its text editor.</li>
-<li>For button, clicking on the button and edit its appearance in the left panel.</li>
-<li>For image, clicking on the image, selecting the image in the left panel, then drag and drop the desired image file.</li>
-<li>The default setting for all elements are not zero.</li>
-<li>Any element can be duplicated and dragged around.</li>
-<li>When done editing, clicking save in the left menu to save the image.</li>
-<li>Adaptive Design:<ul>
-<li>Display device can be chose in the left bottom menu, then adaptive design can get started for different devices.</li>
-<li>set minimum height for 100 vh to make sure the content cover the entire screen.</li>
-</ul>
+<li><code>while</code> loop<pre><code class="lang-bash">NUMBER=1
+<span class="hljs-keyword">while</span> [ <span class="hljs-variable">$NUMBER</span> <span class="hljs-_">-lt</span> 5 ]; <span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Number is: <span class="hljs-variable">$((NUMBER++)</span>)&quot;</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># infinite while loop</span>
+<span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>
+<span class="hljs-keyword">do</span>
+  <span class="hljs-comment"># perform action</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># or</span>
+<span class="hljs-keyword">while</span> :
+<span class="hljs-keyword">do</span>
+  <span class="hljs-comment"># perform action</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
 </li>
-<li>For all elements in the advanced menu, padding and margin can be set for three screen sizes (desktop, tablet and mobile devices) separately.</li>
-<li>Navigator found in the bottom left menu is very easy for element selection.</li>
-<li>Clicking on the exit button in the left bottom corner, selecting View Page or Dashboard to quit.</li>
-<li>Templates<ul>
-<li>It provide templates in the library, template json files can be searched and downloaded online and imported to build customized pages.</li>
-<li>Add template files - In the dashboard left side menu click Elementor -&gt; My Library -&gt; Add New</li>
+<li><code>until</code> loop</li>
 </ul>
-</li>
-<li>Font will not be adjustable if the paragraph is copied with certain font settings from any word editing software.</li>
-<li>use iframe to open a window inside a window,<code>&lt;iframe src=&quot;https://huegoxaga.github.io/notes/&quot;&gt; &lt;/iframe&gt;</code></li>
-</ul>
-<h4 id="contact-form">Contact Form</h4>
-<ul>
-<li>It can be added using plugins like Contact Form 7, wpforms or ninja form</li>
-<li>Contact Form can then be created and edited in the Contact section of the dashboard left panel.</li>
-<li>make sure the email address is set properly, so when reader submit the form the content can be sent to this email address. By default, some plugin uses the email address in the dashboard setting.</li>
-<li>copy the shortcode. in the elementor page editing interface, add a new shortcode element and paste the code in the shortcode element menu to add contact form to the page.</li>
-<li>shortcode can also be used in the text editing mode(the method like using Office word) for a new page.</li>
-<li>for some plugins, insert the form as an element.</li>
-</ul>
-<h4 id="slider">Slider</h4>
-<ul>
-<li>It is created using plugin like Smart Slider 3.</li>
-<li>It can be edited in the Smart Slider section of the dashboard left panel.</li>
-<li>It can be added as elementor&#x2019;s element.</li>
-</ul>
-<h4 id="polylang">Polylang</h4>
-<ul>
-<li>Add language options for the website in the plugins setting. Add - new menu and new pages for different language. Be aware of the new language options for pages management on the top WordPress navigation bar. And new positions for menus in different language.</li>
-</ul>
-<h4 id="custom-sidebar">Custom Sidebar</h4>
-<ul>
-<li>Add custom sidebars to hold different widgets in different positions.</li>
-</ul>
-<h4 id="export-as-static-webpages">Export as static webpages</h4>
-<ul>
-<li>Plugins like WP Static HTML Output or Simple Static or WP2Static can be used to convert the web pages into HTML files.</li>
-</ul>
+<pre><code class="lang-bash">NUMBER=1
+until [ <span class="hljs-variable">$NUMBER</span> == 4 ]
+<span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Number is: <span class="hljs-variable">$((NUMBER++)</span>)&quot;</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># infinite until loop</span>
+until <span class="hljs-literal">false</span>
+<span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello World&quot;</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
 
                                 
                                 </section>
@@ -1122,12 +1102,12 @@ wp_enqueue_style( <span class="hljs-string">&apos;child-style&apos;</span>,
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Content Management Systems">
+                <a href="regex.html" class="navigation navigation-prev " aria-label="Previous page: Regular Expression">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../linux/" class="navigation navigation-next " aria-label="Next page: Linux">
+                <a href="../virtualization/" class="navigation navigation-next " aria-label="Next page: Virtualization">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1138,7 +1118,7 @@ wp_enqueue_style( <span class="hljs-string">&apos;child-style&apos;</span>,
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"WordPress","level":"1.16.1","depth":2,"next":{"title":"Linux","level":"1.17","depth":1,"path":"linux/README.md","ref":"linux/README.md","articles":[{"title":"Regular Expression","level":"1.17.1","depth":2,"path":"linux/regex.md","ref":"linux/regex.md","articles":[]}]},"previous":{"title":"Content Management Systems","level":"1.16","depth":1,"path":"cms/README.md","ref":"cms/README.md","articles":[{"title":"WordPress","level":"1.16.1","depth":2,"path":"cms/wordpress.md","ref":"cms/wordpress.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cms/wordpress.md","mtime":"2020-03-06T00:50:02.478Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:26:52.584Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Bash Scripting","level":"1.17.2","depth":2,"next":{"title":"Virtualization","level":"1.18","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.18.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.18.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]}]},"previous":{"title":"Regular Expression","level":"1.17.1","depth":2,"path":"linux/regex.md","ref":"linux/regex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/bash-scripting.md","mtime":"2020-03-24T13:49:53.682Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T19:51:01.914Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

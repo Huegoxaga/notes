@@ -127,6 +127,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.2" data-path="../python/standard-library.html">
+            
+                <a href="../python/standard-library.html">
+            
+                    
+                    Python Stardard Library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+            
+                <a href="../python/django.html">
+            
+                    
+                    Django
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -616,6 +642,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.17.2" data-path="../linux/bash-scripting.html">
+            
+                <a href="../linux/bash-scripting.html">
+            
+                    
+                    Bash Scripting
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -864,11 +903,30 @@
 <li>It is a collection of objects are inserted and removed according to the last-in, first-out principle.</li>
 <li>It is originated from a stack of plates in a spring-loaded, cafeteria plate dispenser.</li>
 <li>Inserting data is called push, removing data is called pop.</li>
+<li>A stack can be implemented by using an array to hold the items being stored.<ul>
+<li>need a variable called <code>top</code> which stores the end index(the first empty slot) for the stack in the array.</li>
+<li>The exception thrown when an attempt is made to push a value onto a stack whose array if full is called a stack overflow exception.</li>
+<li>The exception thrown when an attempt is made to pop an empty stack is sometimes called stack underflow.</li>
+</ul>
+</li>
+<li>ArrayList can be used to create a generic stack structure.</li>
+<li>A linked list can be used to implement a stack by using the head node object of the list as the &quot;top&quot; of the stack.</li>
 </ul>
 <h3 id="queue">Queue</h3>
 <ul>
 <li>Queues are first-in, first-out. It has a first come, first server principle.</li>
 <li>Adding data is called enqueue, removing data is call dequeue.</li>
+<li>For an array-based implementation, it should:<ul>
+<li>track the front and rear of the array. Adding new elements and removing old elements in order of increasing index.</li>
+<li>wrap around to the beginning of the array when the queue reaches the end.</li>
+<li>Use an integer variable to track the size.</li>
+</ul>
+</li>
+<li>A linked list can be used to implement a queue.<ul>
+<li>The head of the linked list is used as the front of the queue.</li>
+<li>The end of the linked list is used as the rear of the queue.</li>
+</ul>
+</li>
 </ul>
 <h4 id="priority-queue">Priority Queue</h4>
 <ul>
@@ -1275,7 +1333,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Data Structures and Algorithms","level":"1.23.1","depth":2,"previous":{"title":"Theory","level":"1.23","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Data Structures and Algorithms","level":"1.23.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-03-10T19:34:37.098Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Data Structures and Algorithms","level":"1.23.1","depth":2,"previous":{"title":"Theory","level":"1.23","depth":1,"path":"theory/README.md","ref":"theory/README.md","articles":[{"title":"Data Structures and Algorithms","level":"1.23.1","depth":2,"path":"theory/algorithm.md","ref":"theory/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/algorithm.md","mtime":"2020-03-23T23:44:03.177Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T19:51:01.914Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -129,6 +129,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.2" data-path="../python/standard-library.html">
+            
+                <a href="../python/standard-library.html">
+            
+                    
+                    Python Stardard Library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+            
+                <a href="../python/django.html">
+            
+                    
+                    Django
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -618,6 +644,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.17.2" data-path="bash-scripting.html">
+            
+                <a href="bash-scripting.html">
+            
+                    
+                    Bash Scripting
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -975,6 +1014,7 @@
 </ul>
 </li>
 <li><code>ifconfig</code> will display networking information about all device.</li>
+<li><code>system-config-network-tui</code> starts an interactive network configuration utility.</li>
 <li><code>ifup eth0</code> set <code>eth0</code> interface up.</li>
 <li><code>ifdown eth0</code> set <code>eth0</code> interface down.</li>
 <li><code>ip addr</code> will display the IP address for all active network interfaces.</li>
@@ -1237,7 +1277,7 @@
 <li><code>:wq</code> or <code>ZZ</code>, save and quit.</li>
 <li><code>:q!</code> quit without save.</li>
 <li><code>:r &lt;file&gt;</code> insert file after current line.</li>
-<li>Enter <code>/keyword</code> to search keyword in the document.</li>
+<li>Enter <code>/keyword</code> to search the keyword in the document. It is case ssensitive</li>
 </ul>
 </li>
 </ul>
@@ -1254,16 +1294,22 @@
 </ul>
 <h3 id="npm">NPM</h3>
 <ul>
+<li><code>npm install -g npm@latest</code> update the npm to the last version.</li>
 <li><code>npm install -g package-name</code> -g means install globally.</li>
 <li><code>npm install</code> install packages listed in <code>package.json</code> file.</li>
 <li><code>npm update</code> update packages listed in <code>package.json</code> file and update the <code>package.json</code> file.</li>
+<li><code>npm list</code> list install package in the project folder.</li>
+<li><code>npm list -g --depth=0</code> list all globally installed package, only show the root folder name.</li>
 </ul>
 <h3 id="mssql">mssql</h3>
 <ul>
 <li>SQL Server</li>
+<li>run <code>yum install mysql</code> and <code>yum install mysql-server</code> to install</li>
+<li>run <code>service mysqld start</code> to start.</li>
+<li>need <code>php</code> and <code>php-mysql</code> to work with PHP.</li>
 <li>Initially root username is <code>root</code>, password is empty string.</li>
 <li><code>mysqladmin -u root password &apos;newpassword&apos;</code> set password for root account</li>
-<li><code>mysql -u root -p</code> login to root. enter password after prompt.</li>
+<li><code>mysql -u root -p</code> login to root and start the mysql command interface. enter password after prompt.</li>
 <li><code>mysql -u userName -p</code> login to a user account. enter password after prompt.</li>
 <li><code>mssql -u userName -p password</code> connect to SQL Server with password entered.</li>
 <li>SQL account information is stored in the tables of the mysql database. See more about account management in SQL notes.</li>
@@ -1312,6 +1358,7 @@
 <ul>
 <li>By default, configuration file is stored in <code>/etc/httpd/conf/httpd.conf</code>.</li>
 <li>Any changes made to the main configuration files are only recognized by Apache when it is started or restarted.</li>
+<li>The Apache server itself acts as user <code>apache</code> and in group <code>apache</code>.</li>
 <li>Directives are the title of the setting.</li>
 <li>Apache configuration files contain one directive per line</li>
 <li>A specific setting(arguments) is written after the corresponding directive.</li>
@@ -1368,9 +1415,15 @@ DirectoryIndex index.html
 <li><code>Listen 80</code>, respond to requests on all bound IP addresses on port 80.</li>
 </ul>
 </li>
+<li><code>DocumentRoot</code><ul>
+<li>It set the folder for apache to serve web content.</li>
+<li>usually has the following permission <code>chown root.apache /var/www/content -R; chmod 750 /var/www/content -R;</code></li>
+</ul>
+</li>
 <li><code>Include</code><ul>
 <li>tell apache to look for additional configuration directives located elsewhere in the file system.</li>
 <li>The file path specified may be an absolute path, or may be relative to the ServerRoot directory (/etc/httpd)</li>
+<li>The config file may have an extension as <code>.conf</code> and placed in the <code>/etc/httpd/conf.d</code> directory.</li>
 <li>The argument can be:<ul>
 <li>a file name, <code>Include conf/ssl.conf</code></li>
 <li>a wildcard match to include several files at once, <code>conf/vhosts/*.conf</code></li>
@@ -1435,12 +1488,119 @@ DirectoryIndex index.html
 <li><code>CustomLog logs/myhost/access_log combined</code>.</li>
 </ul>
 </li>
+<li><code>AllowOverride</code><ul>
+<li>It is placed inside a <code>&lt;directory&gt;</code> block to enable or disable the directives stored in the <code>.htaccess</code>. The <code>.htaccess</code> should be in the same folder the <code>&lt;directory&gt;</code> specify.</li>
+<li>changes made to <code>.htaccess</code> file does not require the service to restart to be in effect and it does depend on root user. However, it is less secure than adding directives directly inside the config files.</li>
+<li>It has the following options.<ul>
+<li><code>AuthConfig</code> - Allows the use of authorization/authentication directives (<code>AuthType</code>, <code>AuthName</code>, <code>Require</code>)</li>
+<li><code>All</code> - any directives in the <code>.htaccess</code> will be allowed.</li>
+<li><code>None</code>- apache will not look for an <code>.htaccess</code> file in that directory and access files will be ignored.</li>
+<li><code>Indexes</code> - Allow use of the directives controlling the use and format of directory listings (List order, by file, by folder, use of icons)</li>
+<li><code>Limit</code> - Allows the use of directives controlling host access (<code>Allow</code>, <code>Deny</code> and <code>Order</code>).</li>
+<li><code>Options</code> - Allows the use of the directives controlling specific directory features (<code>Options</code> <code>Indexes</code>, <code>Includes</code>).</li>
+</ul>
+</li>
+<li>When a folder is configured to use the <code>.htaccess</code> file, all its child directory will be check to see if the <code>.htaccess</code> exists.</li>
+</ul>
+</li>
+<li>Access Control directives<ul>
+<li>They can be placed in the <code>.htaccess</code> files or inside any block directives. Access inside the scope of the block directive will be controlled by the following rules they define.</li>
+<li><code>Order Deny,Allow</code> default allow all, then make the Deny rules get checked first.</li>
+<li><code>Order Allow,Deny</code> default deny all, then make the Allow rules get checked first.<ul>
+<li>The last rules get run will override the preview rules.</li>
+</ul>
+</li>
+<li><code>Allow from</code> and <code>Deny from</code> add rules. They can as many as need and be followed by:<ul>
+<li><code>10.109.1.254</code> a full IP address.</li>
+<li><code>10.109</code> a partial IP address.</li>
+<li><code>10.1.0.0/255.255.0.0</code> IP/Mask</li>
+<li><code>10.109.0.0/16</code> CIDR</li>
+<li><code>example.com</code> URL</li>
+<li><code>2001::4137:9e74:8e9:66e:0:651b</code> IPv6</li>
+<li><code>all</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Options</code><ul>
+<li>It should be defined after the virtual host block host in the directory block.</li>
+<li>It makes the website have access to certain directory. In the virtual host config file, both of the following examples work.<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Directory</span> /<span class="hljs-attr">var</span>/<span class="hljs-attr">www</span>/<span class="hljs-attr">vhost</span>/<span class="hljs-attr">files</span>&gt;</span>
+  Options Indexes
+<span class="hljs-tag">&lt;/<span class="hljs-name">Directory</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Directory</span> /<span class="hljs-attr">var</span>/<span class="hljs-attr">www</span>/<span class="hljs-attr">vhost</span>/<span class="hljs-attr">files</span>&gt;</span>
+  Options +Indexes
+<span class="hljs-tag">&lt;/<span class="hljs-name">Directory</span>&gt;</span>
+</code></pre>
+</li>
+<li>The link to the folder for the website will be <code>href=&quot;./files&quot;</code> if <code>/var/www/vhost</code> is the DocumentRoot folder.</li>
+<li>When a request is made that maps to a directory and there is no <code>DirectoryIndex</code> (e.g., index.html) in that directory, then a formatted listing of the directory will be returned to the browser.</li>
+</ul>
+</li>
+<li><code>Mod_ssl</code> Directives<ul>
+<li>It is used to setup the <code>Mod_ssl</code> Directives</li>
+<li>Global setting are done in the <code>/etc/httpd/conf.d/ssl.conf</code> file.</li>
+<li>add the following directives inside the <code>&lt;VirtualHost&gt;</code> block for the server.<ul>
+<li><code>SSLEngine on</code></li>
+<li><code>SSLCertificateFile &lt;CertificateFilePath&gt;</code></li>
+<li><code>SSLCertificateKeyFile &lt;KeyFilePath&gt;</code></li>
+</ul>
+</li>
+<li>After changing the config file stop and start the service(not restart). enter the pass phrase for Apache to access the key file.</li>
+<li>make sure the firewall allows <code>https</code> transmition.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Apache Web Users<ul>
+<li><code>htpasswd -c /etc/httpd/passwords username</code> follow the prompt to enter the password and add the user<ul>
+<li><code>-c /etc/httpd/passwords</code> will to create or override the file <code>/etc/httpd/passwords</code> with a new user added later.</li>
+<li>the username in the password is in plaintext, and the password is hashed.</li>
+<li>A group file can be created manually that contains a list of users in a defined group.<ul>
+<li><code>vi /etc/httpd/conf/groups</code> create a group file.</li>
+<li><code>groupname: user1 user2 user3</code> add users and groups in this format.</li>
+</ul>
+</li>
+<li>the password file and group file should hava permission that only allow the web server to read the file and root to read and write to it.<ul>
+<li><code>chown root.apache /etc/httpd/passwords</code></li>
+<li><code>chmod 640 /etc/httpd/passwords</code></li>
+</ul>
+</li>
+<li>For security concern, make sure that the group file and the user file are stored outside of the document tree of the web server.</li>
+</ul>
+</li>
+<li>Add the following directives to the <code>&lt;directory&gt;</code> scope or in <code>.htaccess</code> file to make the authentication be in effect.<ul>
+<li><code>AuthType</code> Authentication type being used. It can be,<ul>
+<li><code>Basic</code> which uses Base64 encoding of credentials</li>
+<li><code>Digest</code> may have some client-side support issues</li>
+</ul>
+</li>
+<li><code>AuthName &quot;Auth Name&quot;</code><ul>
+<li>It is the title of the dilogue box.</li>
+<li>Sent with http 401 message</li>
+<li>Defines the name of the authentication realm</li>
+<li>The client browser caches the username and password that you supplied, and stores it along with the authentication realm, if other resources are requested from the same realm, the same username and password can be returned.</li>
+</ul>
+</li>
+<li><code>AuthUserFile</code> Specifies the path to the password file</li>
+<li><code>AuthGroupFile</code> Specifies the path to the group file if any</li>
+<li><code>Require</code> control who can enter password and username. It can be followed by the following options.<ul>
+<li><code>user</code> followed by a username or a space delimited list of usernames</li>
+<li><code>group</code> followed by a group name or a space delimited list of groups</li>
+<li><code>valid-user</code> any user in the user file.</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h4 id="command">Command</h4>
 <ul>
-<li><code>service httpd start</code> start apache server.</li>
+<li><code>service httpd start</code> or <code>apachectl start</code> start apache server.</li>
+<li><code>service httpd restart</code> or <code>apachectl restart</code> to restart apache server.<ul>
+<li>needed whenever the server configuration is changed.</li>
+</ul>
+</li>
 <li><code>/etc/httpd/conf/httpd.conf</code> the main Apache configuration file.<ul>
 <li><code>cat /etc/httpd/conf/httpd.conf | grep &apos;User&apos;</code> see permission that is assigned to users in the user directives.</li>
 <li><code>cat /etc/httpd/conf/httpd.conf | grep &apos;Group&apos;</code> see permission that is assigned to groups in the user directives.</li>
@@ -1466,6 +1626,15 @@ DirectoryIndex index.html
 <ul>
 <li>OpenSSL is an open-source command line tool that is commonly used to generate private keys, create CSRs, install your SSL/TLS certificate, and identify certificate information.</li>
 <li>OpenSSL version <code>1.0.1</code>, <code>1.0.1f</code>, <code>1.0.2-beta</code>, <code>1.0.2-beta1</code> are vulnerable to the HeartBleed bug.</li>
+<li>run <code>openssl genrsa -des3 -out server.ca.key 2048</code> to generates a Triple-DES encrypted and PEM formatted private key in the current directory. will be prompted for a pass phrase. The pass phrase will be used to encrypt the private key.<ul>
+<li>the private key file <code>server.ca.key</code></li>
+</ul>
+</li>
+<li>run <code>openssl req -new -x509 -days 365 -key server.ca.key -out 192.168.100.100.crt</code> and will create a self-signed x509 Certificate, valid for one year (365 days) in the current directory. Signed with private key <code>server.ca.key</code>. will be prompted to enter the pass phrase to access the private key.<ul>
+<li>the certificate file will be <code>192.168.100.100.crt</code></li>
+<li>Users will be prompted to enter the Distinguished Name. For some of the field enter <code>.</code> can leave it blank.</li>
+</ul>
+</li>
 </ul>
 <h3 id="iptables">iptables</h3>
 <ul>
@@ -1538,245 +1707,6 @@ DirectoryIndex index.html
 </ul>
 </li>
 </ul>
-<h2 id="bash-scripting">Bash Scripting</h2>
-<h3 id="introduction">Introduction</h3>
-<ul>
-<li>It stores a batch of command in order to complete certain task in one execution.</li>
-<li>It usually has an extension as <code>.sh</code>. It also can be run without any extenion or as <code>.txt</code>.</li>
-<li>Bash does not have a type system, everything is saved as strings.</li>
-<li>It can be edited by any text editing tool.</li>
-<li>It is recommanded to run the full path of the commands in the scripts.</li>
-</ul>
-<h3 id="run-script">Run Script</h3>
-<ul>
-<li>Any text file contains commands line by line can be run using <code>bash filename</code>.</li>
-<li>Shebang is used at the first line of the text file to make the file executable by itself.<ul>
-<li>It is an operator look like <code>#!</code></li>
-<li>It is followed by the path of the interpreter.</li>
-<li>For bash scripting, use <code>#!/bin/sh</code> or <code>#!/usr/bin/env bash</code> if the path of bash is unknown.</li>
-<li>The user needs the <code>execute</code> file permission for the script.</li>
-<li>The file can then be executed by using <code>./filename</code>.</li>
-<li>Add the directory path into the <code>$PATH</code> variable to make the script run without <code>./</code>.</li>
-</ul>
-</li>
-<li>Each script will be run in a separate session.</li>
-</ul>
-<h3 id="syntax">Syntax</h3>
-<h4 id="comment">Comment</h4>
-<ul>
-<li><p>Any line starts with <code>#</code> can be followed by a single line comment.</p>
-</li>
-<li><p><code>\</code> can be placed at the end of each line. It will make the command continue in a new line.</p>
-</li>
-<li><code>commandA &amp;&amp; commandB</code> can be used to run two command from left to right.</li>
-<li><code>;</code> can be used to separate multiple command in entered one line.</li>
-</ul>
-<h4 id="exit">Exit</h4>
-<ul>
-<li>keyword <code>exit</code> is used to stop the script.</li>
-</ul>
-<h4 id="variables">Variables</h4>
-<ul>
-<li>declare a new variable using <code>name=value</code>.<ul>
-<li>No space between <code>=</code> sign.</li>
-<li>String values need to be surrounded by quotes.</li>
-</ul>
-</li>
-<li>Access variable using <code>$name</code><ul>
-<li>When printing the variable, double quotes are required. Ex, <code>echo &quot;Good Morning! $name&quot;</code></li>
-<li>It can also accessed by using <code>${name}</code>.<ul>
-<li><code>${name}</code> can be placed inside a string surrounded by double quotes.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Using backticks to save command as variable<pre><code class="lang-bash">BASH_VERSION=`bash --version`
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$BASH_VERSION</span>
-</code></pre>
-</li>
-<li>Save or Print or Save the ouput of a command in a variable using <code>$()</code>.<pre><code class="lang-bash">result=$(<span class="hljs-built_in">pwd</span>)
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$result</span>
-<span class="hljs-comment">#or</span>
-<span class="hljs-built_in">echo</span> $(<span class="hljs-built_in">pwd</span>)
-</code></pre>
-</li>
-<li>Strings can be concatenated if two variable are placed together without space. Ex, <code>$A$B</code>.</li>
-<li>Strings can be concatenated using <code>+=</code>.</li>
-<li><code>$RANDOM</code> generate a 16-bit random number between <code>0</code> to <code>32767</code>.<ul>
-<li>use modulus calculation to generate numbers in certain range. <code>$RANDOM % 11</code> will get random number from 0 to 10.</li>
-</ul>
-</li>
-</ul>
-<h4 id="user-input">User Input</h4>
-<ul>
-<li>use <code>read name</code> will prompt the user to enter a value for the variable <code>name</code>.</li>
-</ul>
-<h4 id="array">Array</h4>
-<ul>
-<li>Declare an array, <code>arrayName=(&apos;A&apos; &apos;B&apos; &apos;C&apos; &apos;D&apos;)</code>.</li>
-<li>Print an array element, <code>echo ${arrayName[3]}</code>.<ul>
-<li>Index starts at 0.</li>
-</ul>
-</li>
-<li>Sequence generation<ul>
-<li><code>echo {0..10}</code> generate a list of number from 0 to 10.</li>
-<li><code>echo $(seq 0 10)</code> generate a list of number from 0 to 10.</li>
-<li><code>echo $(seq 0 3 10)</code> generate a list of number from 0 to 10 with step 3.<ul>
-<li>step can be a negative number. It will generate the list in reversed order.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="arithmetic-operations">Arithmetic Operations</h4>
-<ul>
-<li>All common arithmetic operations works here including <code>%</code>, <code>++</code> or <code>+=</code>.</li>
-<li><code>let</code> Command<ul>
-<li><code>let RESULT=1+1; echo $RESULT;</code></li>
-<li><code>let RESULT=&quot;1 + 1&quot;; echo $RESULT;</code></li>
-<li><code>let &quot;RESULT = 5 * 5&quot;; echo $RESULT</code></li>
-</ul>
-</li>
-<li><code>expr</code> Command<ul>
-<li>It evaluate the express followed and print the result.</li>
-<li>needs space in between operators. <code>expr 1 + 5</code></li>
-<li>Without using quotes special characters like <code>*</code> need to be escaped. <code>expr 5 \* 1</code></li>
-</ul>
-</li>
-<li><code>$((expression))</code> syntax<ul>
-<li><code>RESULT=$((1 + 1))</code> evaluate expression and store it in a new variable.</li>
-<li><code>VAR=1; (( VAR += VAR ));</code> declare a variable and modify without <code>$</code>.</li>
-</ul>
-</li>
-</ul>
-<h4 id="comparison">Comparison</h4>
-<ul>
-<li>For numbers use the following operators:<ul>
-<li><code>-eq</code> Equal</li>
-<li><code>-ne</code> Not equal</li>
-<li><code>-gt</code> Greater than</li>
-<li><code>-ge</code> Greater than or equal</li>
-<li><code>-lt</code> Less than</li>
-<li><code>-le</code> Less than or equal</li>
-<li>For example: <code>$10 -gt 20</code>.</li>
-</ul>
-</li>
-<li>For strings use <code>&gt;</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code><ul>
-<li>Use <code>-z</code> to check if the string is empty. <code>-z &apos;&apos;</code></li>
-<li>Use <code>-n</code> to check if the string is non-empty.</li>
-<li>Both <code>=</code> and <code>==</code> works.</li>
-<li><code>&gt;</code> and <code>&lt;</code> needs to be escaped, <code>&apos;b&apos; \&gt; &quot;a&quot;</code>.</li>
-</ul>
-</li>
-<li><code>test</code> command can be used to evaluate boolean expression.<ul>
-<li>If the result is true the command status will be 0, If the result is false the command status will be 1.</li>
-<li><code>test</code> command has alias command <code>[</code> that requires a <code>]</code> at the end. Ex, <code>[3 -gt 1]</code></li>
-</ul>
-</li>
-<li><code>!</code> can be used to negate a condition.<code>![true &amp;&amp; true]</code> or <code>[!false &amp;&amp; true]</code></li>
-<li><code>&amp;&amp;</code> means <code>and</code>. <code>||</code> means <code>or</code>. They can be used to connect boolean expression.<ul>
-<li>Use parentheses to make them run in order <code>([ 1 -le 5 ] &amp;&amp; [ 3 -lt 9 ]) || ([ 1 -gt 1 ] &amp;&amp; [ 1 -ne 0 ])</code></li>
-<li><code>&amp;&amp;</code> can also be used to connect to valid command. When evaluate two valid commands they will be execute at the meantime.</li>
-</ul>
-</li>
-</ul>
-<h4 id="if-condition">If Condition</h4>
-<ul>
-<li><code>if</code><pre><code class="lang-bash"><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$PROCEED</span>&quot;</span> = <span class="hljs-string">&quot;YES&quot;</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Performing task...&quot;</span>
-<span class="hljs-keyword">fi</span>
-<span class="hljs-comment">#or in one line like</span>
-<span class="hljs-keyword">if</span> [ <span class="hljs-string">&apos;proceed&apos;</span> == <span class="hljs-string">&quot;proceed&quot;</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Performing task...&quot;</span>; <span class="hljs-keyword">fi</span>
-</code></pre>
-</li>
-<li><code>if-else</code><pre><code class="lang-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;Enter a number?&apos;</span>
-<span class="hljs-built_in">read</span> number
-<span class="hljs-keyword">if</span> [ <span class="hljs-variable">$number</span> <span class="hljs-_">-gt</span> 100 ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;It is greater than 100.&apos;</span>
-<span class="hljs-keyword">else</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;It is smaller than 100.&apos;</span>
-<span class="hljs-keyword">fi</span>
-</code></pre>
-</li>
-<li><code>if-elif-else</code><pre><code class="lang-bash">VALUE=-10
-<span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> <span class="hljs-_">-lt</span> 0 ]; <span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is less than 0&quot;</span>
-<span class="hljs-keyword">elif</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> <span class="hljs-_">-eq</span> 0 ]; <span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is 0&quot;</span>
-<span class="hljs-keyword">else</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is greater than 0&quot;</span>
-<span class="hljs-keyword">fi</span>
-</code></pre>
-</li>
-<li>Nested <code>if-else</code><pre><code class="lang-bash">VALUE=10
-<span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> <span class="hljs-_">-lt</span> 0 ]; <span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is less than 0&quot;</span>
-<span class="hljs-keyword">else</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is greater than 0&quot;</span>
-    <span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> -le 10 ]; <span class="hljs-keyword">then</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is less than or equal to 10&quot;</span>
-    <span class="hljs-keyword">else</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is greater than 10&quot;</span>
-    <span class="hljs-keyword">fi</span> <span class="hljs-comment"># end of nested if block</span>
-<span class="hljs-keyword">fi</span> <span class="hljs-comment"># end of parent if block</span>
-</code></pre>
-</li>
-</ul>
-<h4 id="loops">Loops</h4>
-<ul>
-<li>Use <code>exit</code> to break out of loops.</li>
-<li><code>for...in</code> loop<pre><code class="lang-bash">files=/filepath/
-<span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> <span class="hljs-variable">$files</span>
-<span class="hljs-keyword">do</span>
-  <span class="hljs-built_in">echo</span> $(basename <span class="hljs-variable">$file</span>)
-<span class="hljs-keyword">done</span>
-</code></pre>
-<ul>
-<li>If the <code>in</code> and variable followed is missing, the script need to run with a parameter. <code>./filename.sh $VAR</code></li>
-</ul>
-</li>
-<li>for loop<pre><code class="lang-bash"><span class="hljs-keyword">for</span> (( i = 0; i &lt; 5; i++ )); <span class="hljs-keyword">do</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;The number is: <span class="hljs-variable">$i</span>&quot;</span>
-<span class="hljs-keyword">done</span>
-<span class="hljs-comment"># Use two variables in loop</span>
-<span class="hljs-keyword">for</span> (( n = 0, i = 1; n &lt; 5; n++, i += i )); <span class="hljs-keyword">do</span>
-    <span class="hljs-built_in">echo</span> -n <span class="hljs-string">&quot;<span class="hljs-variable">$i</span>, &quot;</span>
-<span class="hljs-keyword">done</span>
-<span class="hljs-comment"># infinite for loop</span>
-<span class="hljs-keyword">for</span> ((;;))
-</code></pre>
-</li>
-<li><code>while</code> loop<pre><code class="lang-bash">NUMBER=1
-<span class="hljs-keyword">while</span> [ <span class="hljs-variable">$NUMBER</span> <span class="hljs-_">-lt</span> 5 ]; <span class="hljs-keyword">do</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Number is: <span class="hljs-variable">$((NUMBER++)</span>)&quot;</span>
-<span class="hljs-keyword">done</span>
-<span class="hljs-comment"># infinite while loop</span>
-<span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>
-<span class="hljs-keyword">do</span>
-  <span class="hljs-comment"># perform action</span>
-<span class="hljs-keyword">done</span>
-<span class="hljs-comment"># or</span>
-<span class="hljs-keyword">while</span> :
-<span class="hljs-keyword">do</span>
-  <span class="hljs-comment"># perform action</span>
-<span class="hljs-keyword">done</span>
-</code></pre>
-</li>
-<li><code>until</code> loop</li>
-</ul>
-<pre><code class="lang-bash">NUMBER=1
-until [ <span class="hljs-variable">$NUMBER</span> == 4 ]
-<span class="hljs-keyword">do</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Number is: <span class="hljs-variable">$((NUMBER++)</span>)&quot;</span>
-<span class="hljs-keyword">done</span>
-<span class="hljs-comment"># infinite until loop</span>
-until <span class="hljs-literal">false</span>
-<span class="hljs-keyword">do</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello World&quot;</span>
-<span class="hljs-keyword">done</span>
-</code></pre>
 
                                 
                                 </section>
@@ -1820,7 +1750,7 @@ until <span class="hljs-literal">false</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.17","depth":1,"next":{"title":"Regular Expression","level":"1.17.1","depth":2,"path":"linux/regex.md","ref":"linux/regex.md","articles":[]},"previous":{"title":"WordPress","level":"1.16.1","depth":2,"path":"cms/wordpress.md","ref":"cms/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/README.md","mtime":"2020-03-19T15:09:14.792Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.17","depth":1,"next":{"title":"Regular Expression","level":"1.17.1","depth":2,"path":"linux/regex.md","ref":"linux/regex.md","articles":[]},"previous":{"title":"WordPress","level":"1.16.1","depth":2,"path":"cms/wordpress.md","ref":"cms/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/README.md","mtime":"2020-03-25T04:49:11.683Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T19:51:01.914Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

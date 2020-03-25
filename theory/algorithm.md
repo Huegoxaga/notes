@@ -58,11 +58,24 @@
 - It is a collection of objects are inserted and removed according to the last-in, first-out principle.
 - It is originated from a stack of plates in a spring-loaded, cafeteria plate dispenser.
 - Inserting data is called push, removing data is called pop.
+- A stack can be implemented by using an array to hold the items being stored.
+  - need a variable called `top` which stores the end index(the first empty slot) for the stack in the array.
+  - The exception thrown when an attempt is made to push a value onto a stack whose array if full is called a stack overflow exception.
+  - The exception thrown when an attempt is made to pop an empty stack is sometimes called stack underflow.
+- ArrayList can be used to create a generic stack structure.
+- A linked list can be used to implement a stack by using the head node object of the list as the "top" of the stack.
 
 ### Queue
 
 - Queues are first-in, first-out. It has a first come, first server principle.
 - Adding data is called enqueue, removing data is call dequeue.
+- For an array-based implementation, it should:
+  - track the front and rear of the array. Adding new elements and removing old elements in order of increasing index.
+  - wrap around to the beginning of the array when the queue reaches the end.
+  - Use an integer variable to track the size.
+- A linked list can be used to implement a queue.
+  - The head of the linked list is used as the front of the queue.
+  - The end of the linked list is used as the rear of the queue.
 
 #### Priority Queue
 

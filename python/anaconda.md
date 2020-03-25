@@ -31,8 +31,9 @@
 ### Usage
 
 - [Click](https://jupyter.readthedocs.io/en/latest/index.html) to see the docs for Jupyter
-- Run command `jupyter notebook` to start a server and open the notebook in the browser.
+- Run command `jupyter notebook` in the project folder to start a server and open the notebook in the browser.
 - It supports LaTeX code in markdown cell, inside `$$` block.
+- `Shift + Enter` to run code block in the cell.
 
 ## NumPy
 
@@ -134,3 +135,140 @@
   - It has functions `sum()`, `min()`, `max()`, `cumsum(); //cumulative sum`, `mean()`, `median()`, `corrcoef()`, `std()`.
   - All functions can have `axis=1` as its parameter. This makes the function evaluate row by row, and return a list of results.
   - All functions can have `axis=0` as its parameter. This makes the function evaluate column by column, and return a list of results.
+
+## Pandas
+
+### Introduction
+
+- It is used to process data in tables.
+- Dataframe stores data in rows and columns of a table.
+- Dataframe is a dictionary structure that has column names as the key. All data for one column is stored in a list from top to bottom as value for the key.
+- A column of data is of type series. It has a 1-D list structure.
+  - Dataframe is a container for multiple series.
+- [Click](https://pandas.pydata.org/docs/reference/index.html) to see the completed documentation for more details.
+- run `pip install pandas` to install it separately.
+- By default many method itself in `pandas` will not change the data it stores. A `inplace` parameter is required to set `True` to make it happen. This is great to run without `inplace` first to see if it gives expected results then add the parameter to confirm changes.
+
+### Usage
+
+- `import pandas as pd`
+- `df = pd.read_csv('filePath.csv')` load a csv file.
+  - `df = pd.read_csv('filePath.csv', index_col='colName')` load a csv file, and using a column as its index.
+- `df.shape` return the `(row, column)` of the dataframe.
+- run `df` to print out data frame in Jupyter directly
+- `df.info()` returns shape column name and column data type about the dataframe.
+- `pd.set_option('display.max_columns', 10)` display a max of 10 columns when print.
+- `pd.set_option('display.max_rows', 10)` display a max of 10 rows when print.
+- `df.head(10)` show the first 10 rows of data.
+  - If no parameter entered it will show the first 5 rows.
+- `df.tail(10)` show the last 10 rows of data
+  - If no parameter entered it will show the last 5 rows.
+- `df = pd.DataFrame(data)` convert dictionary data into dataframe
+- `df['columnName']` print all data under one column plus its data type(return a series).
+  - `df.columnName` dot notation also works.
+  - `df[['columnNameA','columnNameB]]` returns al list of columns(a filtered dataframe)
+  - `df['columnName']= df['columnName'].str.lower()` change all data in one column in lowercase.
+  - `df['columnA'] + '@' + df['columnB']` edit and combine data from two column and create a new series.
+  - `df['NewCol'] = series` create a new column called `NewCol` with data from `series`
+  - `df[['ColA','ColB']]=df['Col'].str.split(' ', expand=True)` split one col into two new column.
+- `df.columns` show info about all columns.
+  - `df.columns = ['ColName1', 'ColName2', 'ColName3']` rename all column field names.
+  - `df.columns = [x.upper() for x in df.columns]` change all field name to uppercase.
+  - `df.columns = df.columns.str.replace(' ', '_')` change all space in the column name to `_`.
+- `df.rename(columns={'ColNameA': 'ColNameB', 'NewColNameA': 'NewColNameB'}, inplace=True)` rename certain column field names.
+- `df.drop(columns=['ColA', 'ColB'], inplace=True)` delete certain columns.
+- `df.iloc[0]` `iloc` return data based on integer location. In the example returns the first row .
+  - `df.iloc[rowIndex, colIndex]` return data from certain row and column.
+  - `df.iloc[[0,1]]` returns the first and second row as dataframe.
+  - `df.iloc[0:5]` returns the first 5 rows using slicing.
+  - `df.iloc[[0,1],1]` return data from the first and second row, and second coloumn.
+- `df.loc[[0,1],'columnName']` `loc` similar to `iloc` but it return data based on label and the default index label.
+  - slicing also works with label, ``df.loc[[0,1],'columnNameA':'columnNameB']`
+  - `df.loc[2] = ['newdata1', 'newdata2', 'newdata3']` update the third row with new data.
+  - `df.loc[2, ['Col2', 'Col3']] = ['newdata2', 'newdata3']` update the third row's data in column2 and column3.
+  - `df.loc[2, 'Col2'] = 'newdata2'` or `df.at[2, 'Col2'] = 'newdata2'` update a single value.
+- `series.value_counts()` count unique values in the series.
+- `df.set_index('columnName')` set a column as the index, then and print
+  - This method does not change the original dataframe. To replace the original dataframe use, `df.set_index('columnName' inplace=True)`.
+  - Once the customized index is set the default integer index will not be available for the `loc` method.
+- `df.index` review index info.
+- `df.reset_index(inplace=True)` reset the index to default.
+- `df.sort_index()` sort index in descending order.
+  - `df.sort_index(ascending=False)` sort index in ascending order.
+  - `df.sort_index(inplace=True)` sort index in descending order and replace the original dataframe.
+- `ft = (df['colName'] == 'Value')` It return a series of boolean values. True means a match is found. False means the column value and the filter value does not match.
+  - filter is a key word that can not be used.
+  - To access all the match values, run `df[ft]`
+  - `-ft` will negate the filter result.
+  - use `==`, `>`,`>=`,`<=`, `<` for the expression.
+  - Combine expression with and(`&`), or(`|`) to make the filter powerful.
+  - `df.loc[ft]` also works, It column can also be specified. Ex: `df.loc[ft,'colA']`
+  - `ft = df['colName'].isin(listValue)`, it can be used to check membership relationship for a list of values.
+  - `ft = df['ColName'].str.contains('value', na=False)` find records contain `value` in the string, and ignore all cells does not have value.
+- `df['col'].apply(x)` `x` is a function or property that will be passed and run on all data in the column.
+  - `df['col'] = df['col'].apply(x)` updata the data with newly calculated values.
+  - `x` can be a lambda function. Ex, `df['col'].apply(lambda x: x.lower())`
+- `df.apply(x)` apply `x` function on each searies object on each columns vertically.
+  - `df.apply(x, axis='columns')` apply `x` function on each searies object on each rows horizontally.
+- `df.applymap(x)` apply `x` function on each data object in the dataframe.
+- `df['col'] = df['col'].map({'data1': 'newdata1', 'data2': 'newdata2'})` replace certain data in the column, unchanged data will be set to NaN.
+- `df['col'] = df['col'].replace({'data1': 'newdata1', 'data2': 'newdata2'})` replace certain data in the column, unchanged data will be left unchanged.
+
+## Matplotlib
+
+### Introduction
+
+- It is used to plot graphs.
+- [Click](https://matplotlib.org/contents.html#) to see the completed documentation for more details.
+
+### pyplot
+
+- `from matplotlib import pyplot as plt`
+- `plt.plot(listofX, listofY)` plot a line, run this method multiple times to draw multiple lines.
+  - `plt.plot(listofX, listofY, label='line legend')` add a legend to the line.
+  - `plt.plot(listofX, listofY, color='#3b3b3b', linewidth=2,linestyle='--' label='line legend')` or `plt.plot(listofX, listofY, 'formatstring',label='line legend')` to add format to the line, see details about the characters [here](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot)
+- `plt.bar(listofX, listofY, label='bar legend')` draw a bar chart.
+  - Use numpy to off set the x-value to display multiple groups of data using bar chart.`plt.bar(np.arange(len(x_datalist))+0.25, y_datalist, width=0.25, color="#ebebeb", label="labelName")`
+- `plt.barh(x_data, y_data)` draw a horizontal bar chart.
+- `plt.xticks(ticks=np.arange(len(x_datalist)), labels=x_datalist)` display the corrent x-axis label.
+- `plt.pie(integer_list)` plot a pie chart. The percentage is auto calculates
+  - `plt.pie(integer_list, labels=label_list)` add labels.
+  - `plt.pie(integer_list, labels=label_list, wedgeprops={'edgecolor':'black'})` add edge.
+  - `plt.pie(integer_list, explode=explodefactor_list)` For the factor, `0` mean no explode. `0.1` should be good enough.
+  - `plt.pie(integer_list, shadow=True)` show a shadow
+  - `plt.pie(integer_list, startangle=90)` rotate the pie chart
+  - `plt.pie(integer_list, autopct='%1.1f%%')` show percentage data in the pie chart
+  - `plt.pie(integer_list, color= color List )` add labels.
+- `plt.stackplot(x_data_list,list_of_list)` or `plt.stackplot(x_data_list,list1,list2,list3)` draw a stackplot.
+  - It also has labels and colors parameters.
+- `plt.xlabel('XAxisLabel')`
+- `plt.ylabel('YAxisLabel')`
+- `plt.title('Graph Title')`
+- `plt.legend()` add legend base on labels automatically
+  - `plt.legend(['firstLineLegend','firstLineLegend'])` set legend text.
+  - `plt.legend(loc='upper left')` or `plt.legend(loc=(percent_from_left, percent_from_bottom))` set the legend location.
+- `plt.tight_layout()` set a tight padding.
+- `plt.grid(True)` show grid
+- `print(plt.style.available)` show the styles available
+- `plt.style.use('stylename')` set a style
+- `plt.skcd()` set a comic style
+- `plt.show()` show the graph
+- `plt.savefig('filename.png')` save the file in the working directory.
+
+## BeautifulSoup
+
+### Introduction
+
+- It is used to process strings containing `html` source code.
+- `from bs4 import BeautifulSoup`
+
+### Usage
+
+- `soup = BeautifulSoup(html, features='lxml')` load the source code string into a soup object.
+- `soup.tagName` access all the content in between certain tag. Ex, `soup.p` print all html source code start with `<p>` and end with `</p>`.
+- `soup.find_all('tagName')` return a list of matched soup objects.
+- `soup['attribute']` access certain attribute of a tag. Ex, `soup['href']`.
+- `soup.find_all('tagName', {"attribute": "value"})` return a list of tags with certain attribute value.
+  - Attribute value can be replaced by a complied regular expression patterm. Ex, `soup.find_all('a', {'href': re.compile('https://example.*')})`
+- `soup.get_text()` get the text inside the tag.
+- `soup.find('ul', {"class": "className"})` `find` method return the one result.

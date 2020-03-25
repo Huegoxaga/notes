@@ -89,11 +89,13 @@ Create a Skill - a skill can be created by using the following ways.
      - The setting can be tested by using `Utterrance Profile` without any backend code.
   4. The result of all the skill settings will be represented as a JSON file in the JSON editor.
      - Optionally, The step by step setup can be skipped by just entering a complete JSON setting data.
-  5. In the homepage of the console, click Test to test the skill or enable Beta Testing to allow selected developer account holder to test the skill.
+  5. In the homepage of the console, click Test to test the skill or enable Beta Testing to allow selected developer account holders to test the skill.
+  6. In the `Build` page, `Interface` Tab, enable `Presentation Layer` and generate display `JSON` model in the `display` tab.
+  7. In code, Add an utiltity function to check if device support APL, and add the APL `json` model to the code. Edit handlers
 
 - Alexa Skills Kit Developer Console - Custom
 
-  - Need this additonal step - Create Lambda instance as the endpoint for the skill and copy the Lambda link in the endpoint settings.
+  - Need this additional step - Create Lambda instance as the endpoint for the skill and copy the Lambda link in the endpoint settings.
     - Use the [Code Generator](https://s3.amazonaws.com/webappvui/skillcode/v2/index.html) to generate backend code automatically.
 
 - Alexa Skills Kit CLI
@@ -119,13 +121,12 @@ Create a Skill - a skill can be created by using the following ways.
 #### Coding in Node.js
 
 - `index.js` is the entry point.
-
   - It consists of one handler for each Intent.
     - Each handler has a `canhandle()` method that determine which intented is requested.
       - `canhandle()` method will return true if the correspoding intent is requested.
     - The `handle()` method will process the request.
       - It can also return another intent and it is called intent chaining.
-      - It can call another handler to make code effecient.
+      - It can call another handler to make code efficient.
   - The `handlerInput` is an object that contains info about the user request.
   - It has two types of Interceptors.
     - Request interceptors will run right before the all handlers process the requests.
@@ -133,37 +134,36 @@ Create a Skill - a skill can be created by using the following ways.
       - They use the `.process()` method to add additional info for into the `handlerInput` object.
   - Everything needs to be registered at the bottom of the file, there are two options.
     - If using `Alexa.SkillBuilders.custom()`. Everything needs to be added manually. Developer has the control of the structure.
-    - If using `Alexa.SkillBuilders.standard()`. It registers many function by default.
-
+    - If using `Alexa.SkillBuilders.standard()`. It registers many functions by default.
 - `package.json` controls the dependency for the skill
-
-  - Add records in the file and then build will automatcally install the dependency for the skill project when running on AWS Lamdba.
-
+  - Add records in the file and then build will automatically install the dependency for the skill project when running on AWS Lambda.
 - Useful Dependencies
-  - The `i18next` determines the language set on the user device, then use a helper function created in the request interceptor to get strings from the `languageStrings.js` in corresponding language.
+  - The `i18next` determines the language set on the user device, then use a helper function created in the request interceptor to get strings from the `languageStrings.js` in the corresponding language.
 
 #### Additional Features
 
 - To store data use the attribute manager and register a persistent adapter.
-  - Session Attributes are passed along with the requests and responses while a seesion is open.
+  - Session Attributes are passed along with the requests and responses while a session is open.
   - Persistent Attributes are data stored in S3.
   - When using Alexa-Hosted Template, in the code page click the S3 link to view the saved files.
 - Work with DynamoDB, [Click](https://github.com/dabblelab/alexa-dynamodb-skill-template) to see the template file, edit and create DynamoDB table as required by the Lambda instance. Make sure Lambda has the permission to access the DynamoDB table.
 - Work with ASK APIs
-
   - Needs to register the `.withApiClient(new Alexa.DefaultApiClient())` at the bottom of the `index.js` file if using custom skill builder.
   - Access permission info from `ServerClientFactory`.
   - The customer API returns the user info only when the permission is required in the build page, permission tab in the developer console, and the user permission is given after the propmt or in the Alexa App or `alexa.amazon.com`.
   - The setting API returns info like the device location.
-  - Reminder API remind the user for a event set by user earlier.
+  - Reminder API reminds the user for an event set by user earlier.
     - It also needs permissions on developer end and user end.
   - External API - It is available for the backend code.
   - Progressive Response API - Alexa request a response every 8 seconds, otherwise the session will be closed. If the device is not responding due to any reason, this API will response certain message in between.
-
 - SSML(Speech Synthesis Markup Language ) - Is a markup language for Alexa Voices and sound effects.
   - [Click here](https://developer.amazon.com/en-US/docs/alexa/custom-skills/speech-synthesis-markup-language-ssml-reference.html) to see its docs.
   - It can be injected into output string to add tones to the voices.
   - It can be tested on the test page under `Voice & Tone` tab.
+
+#### Debugging
+
+- Console log will be printed to the AWS CloudWatch Log.
 
 ### Alexa Voice Service
 

@@ -129,6 +129,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.2" data-path="../python/standard-library.html">
+            
+                <a href="../python/standard-library.html">
+            
+                    
+                    Python Stardard Library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+            
+                <a href="../python/django.html">
+            
+                    
+                    Django
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -618,6 +644,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.17.2" data-path="../linux/bash-scripting.html">
+            
+                <a href="../linux/bash-scripting.html">
+            
+                    
+                    Bash Scripting
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -800,125 +839,221 @@
                                 <h1 id="reactjs">React.js</h1>
 <ul>
 <li>A JavaScript library for building fast and interactive user interfaces.</li>
-<li>It is developed by facebook.</li>
+<li>Developed by Jordan Walke software engineer at Facebook in 2011 for newsfeed. Open sourced in May 2013 at JavaScript Conference.</li>
 <li>Whenever the app files are saved the webpage will be reloaded(hot reloaded).</li>
 </ul>
 <h2 id="setup">Setup</h2>
-<h3 id="installation">Installation</h3>
+<ul>
+<li>For a quick start, optionally code can be written directly in the <code>.html</code> with the following scripts without installation for learning purpose.</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>
+    <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/react@16/umd/react.development.js&quot;</span>
+    <span class="hljs-attr">crossorigin</span>
+  &gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>
+    <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;</span>
+    <span class="hljs-attr">crossorigin</span>
+  &gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/babel-standalone@6/babel.min.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- basic layout here --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- React code --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/babel&quot;</span>&gt;</span><span class="actionscript">
+    <span class="hljs-comment">// Everything goes here in one place</span>
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<h3 id="using-create-react-app-toolchain">Using create-react-app Toolchain</h3>
 <ol>
 <li>Download and Install node.js from its official website</li>
-<li><code>run sudo npm i -g create-react-app</code></li>
-<li>Use Visual Studio Code with Simple React Snippets(enable shortcuts) and Prettier Plugins etc.</li>
+<li>Use <code>Visual Studio Code</code> with <code>Simple React Snippets</code>(enable shortcuts) and <code>Prettier Plugins</code> etc.</li>
+<li><code>npx create-react-app &lt;AppFolerName&gt;</code> to create new project</li>
+<li>In the app folder, run <code>npm start</code> to launch development server in port <code>localhost: 3000</code>.</li>
+<li><code>npm test</code> Launches the test runner in the interactive watch mode. See the section about running tests for more information.</li>
+<li><code>npm run build</code> Builds the app for production to the <code>build</code> folder for hosting. It correctly bundles React in production mode and optimizes the build for the best performance.</li>
+<li><p>run <code>npm run eject</code>, to stop using the toolchain and configure everything manually(can not recover once the command is ran).</p>
+</li>
+<li><p><a href="https://create-react-app.dev/docs/getting-started" target="_blank">Click</a> to see the full docs about this tool.</p>
+</li>
 </ol>
-<h3 id="create-an-react-app">Create an React App</h3>
-<ol>
-<li>create-react-app appFolderName</li>
-<li>in app folder, run <code>npm start</code> to launch development server in port localhost: 3000.</li>
-</ol>
-<h3 id="configuration-for-production-environment">Configuration for production Environment</h3>
-<p><code>npm run eject</code></p>
 <h2 id="indexjs"><code>index.js</code></h2>
-<p><code>index.js</code> is the entry point of the react app, it is used to import and associate components and html DOM elements .</p>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;  <span class="hljs-comment">//get the React library for creating elements and components using jsx syntax.</span>
-<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-dom&quot;</span>;<span class="hljs-comment">//Get DOM for component association</span>
+<ul>
+<li><code>index.js</code> is the entry point of the react app, it is used to import and associate components and <code>html</code> <code>DOM</code> elements .</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>; <span class="hljs-comment">//get the React library for creating elements and components using jsx syntax.</span>
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-dom&quot;</span>; <span class="hljs-comment">//Get DOM for component association</span>
 <span class="hljs-keyword">import</span> componentName <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./components/componentName&quot;</span>;
 <span class="hljs-comment">//import css</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./cssFile.css&quot;</span>;
 
-<span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>  <span class="hljs-comment">//create new element.</span>
-ReactDOM.render(element, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;id1&quot;</span>));  <span class="hljs-comment">//associate components with DOM</span>
+<span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>; <span class="hljs-comment">//create new element.</span>
+ReactDOM.render(element, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;id1&quot;</span>)); <span class="hljs-comment">//associate components with DOM</span>
 ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ComponentName</span> /&gt;</span>, document.getElementById(&quot;id2&quot;));
+// The elements can also be created using React.createElement() instead of jsx html tags.
+ReactDOM.render(
+  React.createElement(&quot;h1&quot;, null, &quot;Hello, World!&quot;),
+  document.getElementById(&quot;id3&quot;)
+); // This is what bible does to the jsx code after compiling.
 </span></code></pre>
 <h2 id="component">Component</h2>
 <ul>
-<li>React app is made up by UI component.<h3 id="app-component">App Component</h3>
+<li>React app is made up by <code>components</code>.</li>
+<li>Based on the use of the components, they can be categorized into two type:<ul>
+<li><code>presentational components</code> are concerned with how things look, they should be stateless. It has only <code>props</code> no <code>state</code>.</li>
+<li><code>container components</code> are more concerned with how things work, they are stateful.</li>
+</ul>
 </li>
+</ul>
+<h3 id="app-component">App Component</h3>
+<ul>
 <li>App component(<code>App.js</code>) is the root component and it contains other customized components in a tree.</li>
-<li>app.js usually is one component that contains all sub-components for the app then to be associated with DOM in index.js.<h3 id="customized-component">Customized Component</h3>
-</li>
-<li>Component class has a <code>state</code> property to store temp data.</li>
-<li>It has <code>props</code> object that stores data, props is readonly. every component has a <code>props</code> object. For single source data use props instead.</li>
-<li>Component class has a render method that returns component that associated with certain DOM element.</li>
-<li>Component can be represented by JSX file, React html like jsx code in render method will be converted by babel into JavaScript code.</li>
+<li><code>app.js</code> usually is one component that contains all sub-components for the app then to be associated with DOM in index.js.</li>
+</ul>
+<h3 id="customized-component">Customized Component</h3>
+<ul>
+<li>The component class has a <code>state</code> property to store internal temp data.</li>
+<li>It has <code>props</code> object that stores data, props are readonly. Every component has a <code>props</code> object. For data passed from outside use <code>props</code> instead of <code>state</code>.</li>
+<li>The component class has a render method that returns the component which will be associated with certain a DOM element.</li>
+<li>Component can be represented by JSX file, React html-like <code>jsx</code> code in render method will be converted by babel into JavaScript code.</li>
 <li><code>&lt;Component /&gt;</code> this is a self closing component.</li>
-<li><code>&lt;Component&gt;&lt;/Component&gt;</code>  it can be used to pass tags and data into its child component&#x2019;s children props.</li>
-<li>Only one parent element is allowed to return as a component.</li>
-<li><p>For a new customized component, create new jsx files in the component folder.</p>
+<li><code>&lt;Component&gt;&lt;/Component&gt;</code> it can be used to pass tags and data into its child component&#x2019;s children props.</li>
+<li>must have exactly one outer element to return as a component.</li>
+<li>For a new customized component, create new <code>.jsx</code> files in the component folder.</li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> &#x2018;react&#x2019;;
-<span class="hljs-keyword">import</span> componentName <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./componentName&quot;</span>;
 <span class="hljs-comment">//import other component that will be used.</span>
+<span class="hljs-keyword">import</span> componentName <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./componentName&quot;</span>;
+<span class="hljs-comment">// import image if logo.svg is found in /src</span>
+<span class="hljs-keyword">import</span> logo <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./logo.svg&apos;</span>;
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-  <span class="hljs-comment">//its local variable, only initiated when instance of the component is created.</span>
-  state = {
-      data1: <span class="hljs-number">0</span>,
-      data2: <span class="hljs-string">&quot;hi&quot;</span> ,
-      someURL: <span class="hljs-string">&quot;https//google.com&quot;</span>,
-      tags: [&#x2018;tag1&#x2019;,&#x2019;tag2&#x2019;,&#x2019;tag3&#x2019;]
-  };
-  styles = {
-      fontWeight: &#x2018;bold&#x2019;,  <span class="hljs-comment">//use camel case css attributes.</span>
-      fontSize: <span class="hljs-number">10</span>
-  };
-  render() {
-      <span class="hljs-keyword">return</span> (
-  <span class="hljs-comment">//it is used to used to wrap all elements without using parents element like div.</span>
-          &lt;React.Fragment&gt;
-              &lt;img style={this.styles} src={someURL} className=&quot;className1 className2&quot;&gt;
-              &lt;p style={ {fontSize: 30} } &gt;{this.functionName()}{this.state.data2}&lt;/p&gt;
-              //map() foreach loop for an array data, each item needs a key.
-              &lt;ul&gt;{this.state.tages.map(tag=&gt;&lt;li key={tag}&gt;{tag}&lt;/li&gt;)}&lt;/ul&gt;
-              //handling events, only pass reference, () is not needed.
-              &lt;button onClick={this.handlerMethod}&gt;&lt;/button&gt;
-              // or
-              // use arrow function to pass argument in the handler function.
-              &lt;button onClick={( )=&gt;this.handlerWithArg(id)}&gt;&lt;/button&gt;
-              // can put any other component in this component
-              &lt;ComponentName /&gt;
-              //any component object has a props object, to get it                                console.log(this.props);
-              // access of properties in all scope of this class block, read-only
-              console.log(this.block.value);
-      //pass an element to the child Component.
-      //then the element p will be the children property of the &lt;childComponent&gt;
-              &lt;childComponent&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/childComponent&gt;
-      //in child component class use {this.props.children} to show the passed element
-            // pass event handler to child component, in parent component file, declare event handler and return, the following child component with eventName(like onClick) as attribute:
-
-      &lt;childComponent eventName={this.eventHandler}&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/childComponent&gt;
-            //child component will have access of this event handler from its parent component as this.props.eventName
-          &lt;/React.Fragment&gt;
-      );
-  }
-
-  funtionName() {
-      let {data1} = this.state;  //get direct access to data1.
-      return &lt;h1&gt;{data1}&lt;h1&gt;;
-  }
-  handlerMethod() {
-      //&#x2018;this&#x2019; object is not available here, need to bind this to the function by putting this.functionName = this.functionName.bind(this);  in the constructor.
-      //or use =&gt; instead as follows
-  }
-  handlerMethod = ( ) =&gt; {
-      this.setState({data1: this.state.data1+1});
-//it explicitly ask React to check and pass changed values and refresh the pages.
-//when pass argument is needed, use inline arrow functions
-};
-  handlerWithArgs = id =&gt; {
-};
+    <span class="hljs-comment">//its local variable, only initiated when instance of the component is created.</span>
+    state = {
+        data1: <span class="hljs-number">0</span>,
+        data2: <span class="hljs-string">&quot;hi&quot;</span> ,
+        someURL: <span class="hljs-string">&quot;https//google.com&quot;</span>,
+        tags: [&#x2018;tag1&#x2019;,&#x2019;tag2&#x2019;,&#x2019;tag3&#x2019;]
+    };
+    styles = {
+        fontWeight: &#x2018;bold&#x2019;,  <span class="hljs-comment">//use camel case css attributes.</span>
+        fontSize: <span class="hljs-number">10</span>
+    };<span class="hljs-comment">// set default props value here</span>
+    Counter.defaultProps = {
+        myProp : <span class="hljs-string">&quot;Default Text&quot;</span>
+    };
+    render() {
+        <span class="hljs-comment">//if statement can be used here(after render() and outside return()) for conditional rendering</span>
+        <span class="hljs-keyword">let</span> component;
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.state.isGood){
+            component = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>hi<span class="hljs-tag">&lt;/<span class="hljs-name">hi</span>&gt;</span></span>
+        }<span class="hljs-keyword">else</span>{
+            component = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>bye<span class="hljs-tag">&lt;/<span class="hljs-name">hi</span>&gt;</span></span>
+        }
+        <span class="hljs-keyword">return</span> (
+            <span class="hljs-comment">//it is used to used to wrap all elements without using parents element like div.</span>
+            &lt;React.Fragment&gt;
+                &lt;img style={this.styles} src={someURL} className=&quot;className1 className2&quot;&gt;
+                &lt;p style={ {fontSize: 30} }&gt;{this.functionName()}{this.state.data2}&lt;/p&gt;
+                // map() foreach loop for an array data, each item needs an unique key.
+                &lt;ul&gt;{this.state.tages.map(tag=&gt;&lt;li key={tag}&gt;{tag}&lt;/li&gt;)}&lt;/ul&gt;
+                //handling events, only pass reference, () is not needed.
+                &lt;button onClick={this.handlerMethod}&gt;&lt;/button&gt;
+                // use arrow function to pass argument in the handler function.
+                &lt;button onClick={()=&gt;this.handlerWithArg(id)}&gt;&lt;/button&gt;
+                // or pass argument as the second parameter of the bind method.
+                &lt;button onClick={this.deleteRow.bind(this, id)}&gt;Delete Row&lt;/button&gt;
+                // can put any other component in this component
+                &lt;ComponentName /&gt;
+                //any component object has a props object, access by:
+                console.log(this.props);
+                // access the properties in all scope of this class block, read-only
+                console.log(this.block.value);
+                //pass an element to the child Component.
+                //then the element p will be the children property of the &lt;childComponent&gt;
+                &lt;childComponent&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/childComponent&gt;
+                //in child component class use {this.props.children} to show the passed element
+                  // pass event handler to child component, in parent component file, declare the event handler. The following child component will have the onClick event as attribute:
+                &lt;childComponent onClick={this.eventHandler}&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/childComponent&gt;
+                  //child component will have access of this event handler from its parent component as this.this.props.onClick
+                // input component always work with onChange handler that update a related state variable constantly.
+                &lt;input type=&quot;text&quot; onChange={this.props.inputStateChange.bind(this)}/&gt;
+                // add image
+                &lt;img src={logo} className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;
+            &lt;/React.Fragment&gt;
+        );
+    }
+    funtionName() {
+        let {data1} = this.state;  //get direct access to data1.
+        return &lt;h1&gt;{data1}&lt;h1&gt;;
+    }
+    handlerMethod() {
+        //&#x2018;this&#x2019; object is not available here, need to bind this to the function by putting this.functionName = this.functionName.bind(this);  in the constructor.
+        //or use arrow funciton instead as follows
+    }
+    handlerMethod = () =&gt; {
+        //it explicitly ask React to check and pass changed values and refresh the pages.
+        // can&apos;t be called in render() directly, because whenever page is refreshed setState inside render will be called and refresh the page again.
+        this.setState({data1: this.state.data1+1});
+    };
+    handlerWithArgs = id =&gt; {
+        //when pass argument is needed, use inline arrow functions
+    };
 }
 export default Counter;
 </code></pre>
-</li>
-<li><p>when a component doesn&#x2019;t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> ComponentName = ( ) =&gt; {
+<ul>
+<li>when a component doesn&#x2019;t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> ComponentName = () =&gt; {
   <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
-}
+};
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ComponentName;
 </code></pre>
-</li>
+<h2 id="react-router">React Router</h2>
+<ul>
+<li>It works with URL links and redirection for single-page apps made by React.</li>
+<li>In the app folder, run <code>npm install react-router-dom</code> to install the module.</li>
 </ul>
+<pre><code class="lang-js">import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink
+} from &quot;react-router-dom&quot;;
+// BrowserRouter uses HTML5 history API to keep track of URL
+// Optionally, HashRouter uses a hash portion of the URL to keep track of URL
+&lt;Router&gt;
+  // Router Component can only have one child component // They use Link and
+  Route Component to make routing work.
+  &lt;div&gt;
+    // create links and changed the path of the app when link is clicked.
+    &lt;Link to=&quot;/linkpage/table&quot;&gt;About&lt;/Link&gt;
+    &lt;Link to=&quot;/linkpage/list&quot;&gt;List&lt;/Link&gt;
+    // render certain component when the current path matchs
+    &lt;Route path=&quot;/linkpage/table&quot; component={TableComp} /&gt;
+    &lt;Route path=&quot;/linkpage/list&quot; component={ListComp} /&gt;
+    // simalar to Link component, plus any matched link will be style in a class
+    called active, the active class should be defined in the css
+    &lt;NavLink to=&quot;/contact&quot;&gt;Contact&lt;/NavLink&gt;
+    // root path will always be in active class, use exact to fix this.
+    &lt;NavLink exact to=&quot;/&quot;&gt;
+      Home
+    &lt;/NavLink&gt;
+    // use exact for root path, otherwise it always got renderred.
+    &lt;Route exact path=&quot;/&quot; component={Home} /&gt;
+    // to pass variables using in URL
+    &lt;Route path=&quot;/urlparm/:varName&quot; component={ChildComponent} /&gt;
+    // In the child component accesss the variable using
+    this.props.match.params.varName
+  &lt;/div&gt;
+&lt;/Router&gt;;
+</code></pre>
 <h2 id="life-cycle-hooks">Life Cycle Hooks</h2>
 <ul>
-<li>There is a life cycle hooks for every components</li>
+<li>There are a life cycle hooks for every component.</li>
 <li>They are automatically called.</li>
 <li>Stateless functional component has no life cycle hook.</li>
 </ul>
@@ -927,22 +1062,21 @@ export default Counter;
 <pre><code class="lang-js">constrctor(props) {
     <span class="hljs-keyword">super</span>(props);
     <span class="hljs-comment">//intialize the props and state of the instance</span>
+    <span class="hljs-keyword">this</span>.state = {
+    name: <span class="hljs-string">&quot;world&quot;</span>
+    };
 }
 </code></pre>
 <ul>
 <li>This is when the component start to render and place to the DOM</li>
 <li>It is called once</li>
-<li>can&#x2019;t use setState, assign the state directly instead.<pre><code class="lang-js"><span class="hljs-keyword">this</span>.state = {
-      name: <span class="hljs-string">&apos;world&apos;</span>
-    }
-</code></pre>
-</li>
+<li>can&#x2019;t use setState, assign the state directly instead.</li>
 </ul>
 <h4 id="render">render</h4>
 <pre><code class="lang-js">render() {}
 </code></pre>
 <ul>
-<li>It is called after constructor is called.</li>
+<li>It is called after the constructor is called.</li>
 <li>All its child component is also rendered recursively.</li>
 </ul>
 <h4 id="componentdidmount">componentDidMount</h4>
@@ -963,18 +1097,18 @@ export default Counter;
 }
 </code></pre>
 <ul>
-<li>It can be used to see prevProps and prevState</li>
+<li>It can be used to see <code>prevProps</code> and <code>prevState</code></li>
 </ul>
 <h3 id="unmounting-phrase">Unmounting Phrase</h3>
 <h4 id="componentwillunmount">componentWillUnmount</h4>
 <ul>
 <li>It runs when the component is about to be deleted.</li>
-<li>It is good place to do clean up.</li>
+<li>It is a good place to do clean up.</li>
 </ul>
 <h2 id="react-hooks">React Hooks</h2>
 <ul>
 <li>New in React version 16.8</li>
-<li>It enable the use of React features in a functional component.</li>
+<li>It enables the use of React features in a functional component.</li>
 </ul>
 <h3 id="state-hook">State Hook</h3>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> {useState}
@@ -985,11 +1119,11 @@ export default Counter;
 <span class="hljs-comment">// initialValue can be string num bool object array</span>
 </code></pre>
 <p>In return method, use setFunction(newValue) to update the currentValue.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">return</span>(
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">conClick</span>=<span class="hljs-string">{(</span> ) =&gt;</span> setFunction(prevValue+1)}&gt;{currentValue}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-<span class="hljs-comment">//use variable prevValue to get the previous value.</span>
-<span class="hljs-comment">//work with objects or arrays use: setName({&#x2026;objectName, propertyName: newValue})</span>
-)
+<pre><code class="lang-js"><span class="hljs-keyword">return</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">conClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setFunction(prevValue + 1)}&gt;{currentValue}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  <span class="hljs-comment">//use variable prevValue to get the previous value.</span>
+  <span class="hljs-comment">//work with objects or arrays use: setName({&#x2026;objectName, propertyName: newValue})</span>
+);
 </code></pre>
 <h3 id="effect-hook">Effect Hook</h3>
 <h2 id="debug">Debug</h2>
@@ -1040,7 +1174,7 @@ export default Counter;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React","level":"1.4.2","depth":2,"next":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-01-14T23:56:41.337Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React","level":"1.4.2","depth":2,"next":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-03-25T19:28:10.351Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T19:51:01.914Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

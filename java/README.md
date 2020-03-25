@@ -1217,6 +1217,24 @@ arrayListName.add(int index, "something");
 - for remove(). indexOf(). lastIndexOf(), or contains(). they make the use of equals(), so . equals method needs to be overridden for your own object in the List.
 - Wrapper classes have already defined the proper equals method.
 
+### Stack
+
+- `Stack<T> stack = new Stack<T>();`
+- `Stack<Integer> intStack = new Stack<Integer>();`
+- `stack.empty()` check if the stack is empty.
+- `stack.push(x)` add new element on top
+- `stack.pop()` remove and return the top element
+- `stack.peek()` return the top element
+
+### Queue
+
+- `Queue<T> stack = new Queue<T>();`
+- `Queue<Integer> intQueue = new Queue<Integer>();`
+- `queue.empty()` check if the stack is empty.
+- `queue.enqueue(x)` add new element to the last.
+- `queue.dequeue()` remove and return the first element
+- `queue.peek()` return the first element that will be dequeued.
+
 ### HashMap
 
 - It is used to store data using key and value pairs.

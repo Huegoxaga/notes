@@ -333,23 +333,22 @@ while condition:
 
 #### For Loop
 
-Every elements of an object is assigned to the variable x.
-
-```py
-for x in objects:
-	print(x)
-
-for x in enumerate([1,3,5,7]):
-	print(x)
-"""
-Output:
-(0,1)
-(1,3)
-(2,5)
-(3,7)
-"""
-# Enumerate(x) casts other types into enumerate.
-```
+- Every elements of an object is assigned to the variable x.
+  ```py
+  for x in objects:
+    print(x)
+  for x in enumerate([1,3,5,7]):
+    print(x)
+  """
+  Output:
+  (0,1)
+  (1,3)
+  (2,5)
+  (3,7)
+  """
+  # Enumerate(x) casts other types into enumerate.
+  ```
+- Shorthand For loop, `[i.x for i in list]` return a list of `i.x`.
 
 > **Notes:**
 
@@ -534,6 +533,15 @@ from math import *
 from math import sqrt as square_root
 ```
 
+#### `__name__` variable
+
+- By default `__name__` is set to `__main__`, when a module is imported it will be set to the module name.
+- Use the following code if the module will be imported only but its function is not intended to run.
+  ```py
+  def main():   myFunction()
+  if __name__ == '__main__':    main()
+  ```
+
 #### Sources of Modules
 
 1. Some of them are preinstalled in the standard Library
@@ -587,8 +595,7 @@ print(lambda  x: 2*x*x(10))  ->  200
 
 ```py
 def functionName(variable):
-	…..
-	…..
+  # function code here
 functionName(variable)
 ```
 
@@ -604,6 +611,10 @@ functionName(variable)
 
 Once a value is returned from a function, it immediately stops being executed.
 
+#### global variable
+
+In order to access and modify variables defined outside the function definition, Prepend the keyword `global`. For example, `global X = 100`.
+
 ## Generator
 
 ```py
@@ -613,7 +624,7 @@ def count():
 		yield i
 		i-=1
 for i in count():
-	print(i)  -> 5 4 3 2 1
+	print(i)  # output 5 4 3 2 1
 ```
 
 - It is a type of iterable, it doesn’t contain indices.
@@ -651,7 +662,7 @@ def rawfunction():
 
 ## Recursion
 
-- Function that repeatedly calls themselves is called recursion.
+- Functions that repeatedly calls themselves is called recursion.
 - The last step is called the base case, it’s an exit point of recursion.
 - Multiple functions can get involved in on recursion.
 
@@ -667,7 +678,7 @@ def factorial(x):
 
 - the name should be Capital letters for each word like OneTwoThree.
 - It is the blueprint for creating objects.
-- Instance is an object which is being called.
+- An instance is an object which is being called.
 
 #### Object methods
 

@@ -2,6 +2,8 @@
 
 - [Python](https://huegoxaga.github.io/notes/python/index.html)
   - [Anaconda](https://huegoxaga.github.io/notes/python/anaconda.html)
+  - [Python Standard Library](https://huegoxaga.github.io/notes/python/standard-library.html)
+  - [Django](https://huegoxaga.github.io/notes/python/django.html)
 - [Java](https://huegoxaga.github.io/notes/java/index.html)
   - [JavaFX](https://huegoxaga.github.io/notes/java/javafx.html)
   - [Android Studio](https://huegoxaga.github.io/notes/java/android.html)
@@ -35,6 +37,7 @@
   [WordPress](https://huegoxaga.github.io/notes/cms/wordpress.html)
 - [Linux](https://huegoxaga.github.io/notes/linux/index.html)
   - [Regular Expression](https://huegoxaga.github.io/notes/linux/regex.html)
+  - [Bash Scripting](https://huegoxaga.github.io/notes/linux/bash-scripting.html)
 - [Virtualization](https://huegoxaga.github.io/notes/virtualization/index.html)
   - [VirtualBox](https://huegoxaga.github.io/notes/virtualization/virtualbox.html)
   - [Docker](https://huegoxaga.github.io/notes/virtualization/docker.html)

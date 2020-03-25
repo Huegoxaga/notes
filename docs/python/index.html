@@ -129,6 +129,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.2" data-path="standard-library.html">
+            
+                <a href="standard-library.html">
+            
+                    
+                    Python Stardard Library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="django.html">
+            
+                <a href="django.html">
+            
+                    
+                    Django
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -618,6 +644,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.17.2" data-path="../linux/bash-scripting.html">
+            
+                <a href="../linux/bash-scripting.html">
+            
+                    
+                    Bash Scripting
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1085,12 +1124,11 @@ Other Methods
     <span class="hljs-comment">#&#x2026;.</span>
 </code></pre>
 <h4 id="for-loop">For Loop</h4>
-<p>Every elements of an object is assigned to the variable x.</p>
-<pre><code class="lang-py"><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> objects:
-    print(x)
-
+<ul>
+<li>Every elements of an object is assigned to the variable x.<pre><code class="lang-py"><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> objects:
+  print(x)
 <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> enumerate([<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>]):
-    print(x)
+  print(x)
 <span class="hljs-string">&quot;&quot;&quot;
 Output:
 (0,1)
@@ -1100,6 +1138,9 @@ Output:
 &quot;&quot;&quot;</span>
 <span class="hljs-comment"># Enumerate(x) casts other types into enumerate.</span>
 </code></pre>
+</li>
+<li>Shorthand For loop, <code>[i.x for i in list]</code> return a list of <code>i.x</code>.</li>
+</ul>
 <blockquote>
 <p><strong>Notes:</strong></p>
 </blockquote>
@@ -1247,6 +1288,14 @@ range(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>,x) 
 <span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *
 <span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> sqrt <span class="hljs-keyword">as</span> square_root
 </code></pre>
+<h4 id="name-variable"><code>__name__</code> variable</h4>
+<ul>
+<li>By default <code>__name__</code> is set to <code>__main__</code>, when a module is imported it will be set to the module name.</li>
+<li>Use the following code if the module will be imported only but its function is not intended to run.<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>   myFunction()
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:    main()
+</code></pre>
+</li>
+</ul>
 <h4 id="sources-of-modules">Sources of Modules</h4>
 <ol>
 <li><p>Some of them are preinstalled in the standard Library</p>
@@ -1287,8 +1336,7 @@ list(accumulate(range(<span class="hljs-number">8</span>)))
 </code></pre>
 <h2 id="user-defined-functions">User Defined Functions</h2>
 <pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">functionName</span><span class="hljs-params">(variable)</span>:</span>
-    &#x2026;..
-    &#x2026;..
+  <span class="hljs-comment"># function code here</span>
 functionName(variable)
 </code></pre>
 <ul>
@@ -1302,14 +1350,16 @@ functionName(variable)
 </ul>
 <h4 id="return-statement">return statement</h4>
 <p>Once a value is returned from a function, it immediately stops being executed.</p>
+<h4 id="global-variable">global variable</h4>
+<p>In order to access and modify variables defined outside the function definition, Prepend the keyword <code>global</code>. For example, <code>global X = 100</code>.</p>
 <h2 id="generator">Generator</h2>
-<pre><code class="lang-py">def count():
-    i=5
-    while i&gt;0:
-        yield i
-        i-=1
-for i in count():
-    print(i)  -&gt; 5 4 3 2 1
+<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">count</span><span class="hljs-params">()</span>:</span>
+    i=<span class="hljs-number">5</span>
+    <span class="hljs-keyword">while</span> i&gt;<span class="hljs-number">0</span>:
+        <span class="hljs-keyword">yield</span> i
+        i-=<span class="hljs-number">1</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> count():
+    print(i)  <span class="hljs-comment"># output 5 4 3 2 1</span>
 </code></pre>
 <ul>
 <li>It is a type of iterable, it doesn&#x2019;t contain indices.</li>
@@ -1339,7 +1389,7 @@ print(list(number(<span class="hljs-number">11</span>)))
 </code></pre>
 <h2 id="recursion">Recursion</h2>
 <ul>
-<li>Function that repeatedly calls themselves is called recursion.</li>
+<li>Functions that repeatedly calls themselves is called recursion.</li>
 <li>The last step is called the base case, it&#x2019;s an exit point of recursion.</li>
 <li>Multiple functions can get involved in on recursion.</li>
 </ul>
@@ -1353,7 +1403,7 @@ print(list(number(<span class="hljs-number">11</span>)))
 <ul>
 <li>the name should be Capital letters for each word like OneTwoThree.</li>
 <li>It is the blueprint for creating objects.</li>
-<li>Instance is an object which is being called.</li>
+<li>An instance is an object which is being called.</li>
 </ul>
 <h4 id="object-methods">Object methods</h4>
 <ul>
@@ -1710,7 +1760,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-03-17T21:59:31.478Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T15:28:13.462Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-03-25T18:11:01.963Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T19:51:01.914Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

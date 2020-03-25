@@ -87,9 +87,22 @@
 ### Flags
 
 - A flag can be appended to the end of the pattern.
+
+#### In Javascript
+
 - `/g` return an array of all matches, not just the first match.
 - `/i` case insensitive.
 - `/m` multiline
 - `/y` sticky
 - `/u` unicode
 - `/s` single line(dotall)
+
+#### In Python
+
+- `re.A` or `re.ASCII` - Make \w, \W, \b, \B, \d, \D, \s and \S perform ASCII-only matching instead of full Unicode matching.
+- `re.DEBUG` - Display debug information about compiled expression. No corresponding inline flag.
+- `re.I` or `re.IGNORECASE` - Perform case-insensitive matching
+- `re.L` or `re.LOCALE` - Make \w, \W, \b, \B and case-insensitive matching dependent on the current locale.
+- `re.M` or `re.MULTILINE` - When specified, the pattern character '^' matches at the beginning of the string and at the beginning of each line; and the pattern character '\$' matches at the end of the string and at the end of each line.
+- `re.S` or `re.DOTALL` - Make the '.' special character match any character at all, including a newline;
+- `re.X` or `re.VERBOSE` - Whitespace and comments within the pattern is ignored.
