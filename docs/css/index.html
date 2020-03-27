@@ -844,7 +844,7 @@
 </ul>
 <h2 id="syntax">Syntax</h2>
 <pre><code class="lang-css"><span class="hljs-selector-tag">selector</span> {
-  <span class="hljs-attribute">propertyName</span>: Value;
+  <span class="hljs-attribute">propertyname</span>: Value;
   <span class="hljs-comment">/*... more */</span>
 }
 </code></pre>
@@ -854,12 +854,13 @@
 </ul>
 <h2 id="implementation">Implementation</h2>
 <h3 id="inline-css">Inline CSS</h3>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span> = &quot;<span class="hljs-attr">color:</span> <span class="hljs-attr">blue</span>;&quot;&gt;</span> this is the blue text <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color: blue;&quot;</span>&gt;</span>this is the blue text<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre>
 <h3 id="embedded-or-internal-css">Embedded or Internal CSS</h3>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-  <span class="hljs-selector-tag">p</span> {<span class="hljs-attribute">color</span>: blue;
-    }
+  <span class="hljs-selector-tag">p</span> {
+    <span class="hljs-attribute">color</span>: blue;
+  }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
 </code></pre>
 <ul>
@@ -878,7 +879,7 @@
 <li><code>px</code> pixel</li>
 <li><code>%</code> percentage</li>
 <li><code>cm</code> centimeter</li>
-<li><code>mm</code>    millimeter Try it</li>
+<li><code>mm</code> millimeter Try it</li>
 <li><code>in</code> inch</li>
 <li><code>vw</code> Relative to 1% of the width of the viewport</li>
 <li><code>vh</code> Relative to 1% of the height of the viewport</li>
@@ -902,18 +903,24 @@
 </ul>
 <h2 id="selector">Selector</h2>
 <ul>
-<li>To select elements for style editing the element tag can be used directly.<pre><code class="lang-css"><span class="hljs-selector-tag">p</span> {
+<li>To select elements for style editing the element tag can be used directly.</li>
+</ul>
+<pre><code class="lang-css"><span class="hljs-selector-tag">p</span> {
 }
 </code></pre>
-</li>
-<li>For HTML elements with class identifier.<pre><code class="lang-css"><span class="hljs-selector-class">.className</span> {
+<ul>
+<li>For HTML elements with class identifier.</li>
+</ul>
+<pre><code class="lang-css"><span class="hljs-selector-class">.className</span> {
 }
 </code></pre>
-</li>
-<li>For HTML elements with id identifier.<pre><code class="lang-css"><span class="hljs-selector-id">#idName</span> {
+<ul>
+<li>For HTML elements with id identifier.</li>
+</ul>
+<pre><code class="lang-css"><span class="hljs-selector-id">#idName</span> {
 }
 </code></pre>
-</li>
+<ul>
 <li>Use a combination of tag, id, and class selectors.<ul>
 <li><code>tagA tagB</code> select all the tagB in tagA.</li>
 <li><code>tagA&gt;tagB</code> select the tagB who is directly inside tagA(tagA is the parent of tagB)</li>
@@ -935,30 +942,28 @@
 </ul>
 </li>
 <li>The default colors can be changed, by using styles:<pre><code class="lang-css"><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span> {
-  <span class="hljs-attribute">color</span>: green;
-  <span class="hljs-attribute">background-color</span>: transparent;
-  <span class="hljs-attribute">text-decoration</span>: none;
+<span class="hljs-attribute">color</span>: green;
+<span class="hljs-attribute">background-color</span>: transparent;
+<span class="hljs-attribute">text-decoration</span>: none;
 }
 <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> {
-  <span class="hljs-attribute">color</span>: pink;
-  <span class="hljs-attribute">background-color</span>: transparent;
-  <span class="hljs-attribute">text-decoration</span>: none;
+<span class="hljs-attribute">color</span>: pink;
+<span class="hljs-attribute">background-color</span>: transparent;
+<span class="hljs-attribute">text-decoration</span>: none;
 }
 <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
-  <span class="hljs-attribute">color</span>: red;
-  <span class="hljs-attribute">background-color</span>: transparent;
-  <span class="hljs-attribute">text-decoration</span>: underline;
+<span class="hljs-attribute">color</span>: red;
+<span class="hljs-attribute">background-color</span>: transparent;
+<span class="hljs-attribute">text-decoration</span>: underline;
 }
 <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span> {
-  <span class="hljs-attribute">color</span>: yellow;
-  <span class="hljs-attribute">background-color</span>: transparent;
-  <span class="hljs-attribute">text-decoration</span>: underline;
+<span class="hljs-attribute">color</span>: yellow;
+<span class="hljs-attribute">background-color</span>: transparent;
+<span class="hljs-attribute">text-decoration</span>: underline;
 }
 </code></pre>
-<ul>
-<li><code>a</code> can be replaced be other tag.</li>
-</ul>
 </li>
+<li><code>a</code> can be replaced be other tag.</li>
 </ul>
 </li>
 </ul>
@@ -966,15 +971,20 @@
 <ul>
 <li>It can be done by using a special selector for different screen size.<ul>
 <li>should arrange from small to big.<pre><code class="lang-css"><span class="hljs-comment">/* Extra small devices (phones, 600px and down) */</span>
-@<span class="hljs-keyword">media</span> only screen and (max-width: <span class="hljs-number">600px</span>) {}
+@<span class="hljs-keyword">media</span> only screen and (max-width: <span class="hljs-number">600px</span>) {
+}
 <span class="hljs-comment">/* Small devices (portrait tablets and large phones, 600px and up) */</span>
-@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">600px</span>) {}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">600px</span>) {
+}
 <span class="hljs-comment">/* Medium devices (landscape tablets, 768px and up) */</span>
-@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">768px</span>) {}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">768px</span>) {
+}
 <span class="hljs-comment">/* Large devices (laptops/desktops, 992px and up) */</span>
-@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">992px</span>) {}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">992px</span>) {
+}
 <span class="hljs-comment">/* Extra large devices (large laptops and desktops, 1200px and up) */</span>
-@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">1200px</span>) {}
+@<span class="hljs-keyword">media</span> only screen and (min-width: <span class="hljs-number">1200px</span>) {
+}
 </code></pre>
 </li>
 <li>Media Features, structures like <code>(min-width: 1200px)</code> are known as media features, there are many others.<ul>
@@ -983,10 +993,10 @@
 </ul>
 </li>
 <li>Media Types, the keyword screen in the example can be replaced by the following Media Types.<ul>
-<li><code>all</code>    Default. Used for all media type devices</li>
-<li><code>print</code>    Used for printers</li>
-<li><code>screen</code>    Used for computer screens, tablets, smart-phones etc.</li>
-<li><code>speech</code>    Used for screenreaders that &quot;reads&quot; the page out loud</li>
+<li><code>all</code> Default. Used for all media type devices</li>
+<li><code>print</code> Used for printers</li>
+<li><code>screen</code> Used for computer screens, tablets, smart-phones etc.</li>
+<li><code>speech</code> Used for screenreaders that &quot;reads&quot; the page out loud</li>
 </ul>
 </li>
 <li>The keyword <code>only</code> can be replaced by other keywords like:<ul>
@@ -1001,27 +1011,26 @@
 <h2 id="css-reset-rule">CSS Reset Rule</h2>
 <ul>
 <li>It is used to override default browser styles. It is recommended so the website will have the same look on all browser.</li>
-<li>The following block of css rules is usually used.
-```css</li>
-<li>{
-  margin: 0;
-  border: 0;
-  padding: 0;
-  text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
-}
-```</li>
+<li>The following block of css rules is usually used.</li>
 </ul>
+<pre><code class="lang-css">* {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">font-family</span>: Arial, Helvetica, sans-serif;
+}
+</code></pre>
 <h2 id="css-attributes">CSS attributes</h2>
 <h3 id="sizing-and-spacing">Sizing and Spacing</h3>
 <pre><code class="lang-css"><span class="hljs-selector-class">.Sizing</span> {
-  <span class="hljs-attribute">width</span>:<span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
   <span class="hljs-comment">/* height cannot use with 100% it is infinite, and acquired by the web app */</span>
-  <span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;
-  <span class="hljs-attribute">font-size</span>:<span class="hljs-number">80px</span>;
-  <span class="hljs-attribute">margin</span>:<span class="hljs-number">10px</span>;
-  <span class="hljs-attribute">margin</span>:auto;
-  <span class="hljs-attribute">padding</span>:<span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">80px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">margin</span>: auto;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
   <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">5px</span>;
   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">5px</span>;
   <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">5px</span>;
@@ -1047,24 +1056,24 @@
 </code></pre>
 <h3 id="coloring">Coloring</h3>
 <pre><code class="lang-css"><span class="hljs-selector-class">.coloring</span> {
-  <span class="hljs-attribute">background-color</span>:lightgrey;
-  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">RGB</span>(128,0,0);
+  <span class="hljs-attribute">background-color</span>: lightgrey;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">RGB</span>(128, 0, 0);
   <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;paper.gif&quot;</span>);
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#cccccc</span>;
   <span class="hljs-attribute">background-color</span>: yellow;
   <span class="hljs-attribute">color</span>: red;
   <span class="hljs-attribute">color</span>: green;
   <span class="hljs-attribute">border-color</span>: blue;
-  <span class="hljs-attribute">vertical-align</span>:middle;
+  <span class="hljs-attribute">vertical-align</span>: middle;
   <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.5</span>;
 }
 </code></pre>
 <h3 id="decoration">Decoration</h3>
 <pre><code class="lang-css"><span class="hljs-selector-class">.decoration</span> {
-  <span class="hljs-attribute">font-weight</span>:bold;
-  <span class="hljs-attribute">font-family</span>:sans-serif;
-  <span class="hljs-attribute">border</span>:<span class="hljs-number">3px</span> solid black;
-  <span class="hljs-attribute">border-radius</span>:<span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">font-family</span>: sans-serif;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">3px</span> solid black;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
   <span class="hljs-attribute">text-decoration</span>: none;
   <span class="hljs-attribute">text-decoration</span>: underline;
   <span class="hljs-attribute">text-align</span>: left;
@@ -1081,13 +1090,13 @@
   <span class="hljs-comment">/* simple animation */</span>
   <span class="hljs-attribute">transition</span>: <span class="hljs-number">5s</span> ease;
   <span class="hljs-attribute">transition</span>: width <span class="hljs-number">2s</span>, height <span class="hljs-number">4s</span>;
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(../img/img.jpg) no-repeat right top
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(../img/img.jpg) no-repeat right top;
 }
 </code></pre>
 <h3 id="positioning">Positioning</h3>
 <pre><code class="lang-css">.positioning {
-  position: static;    /* Default */
-  position: relative;    /* positioned relative to its normal position. */
+  position: static; /* Default */
+  position: relative; /* positioned relative to its normal position. */
   position: fixed; /* positioned relative to the viewport, even if the page is scrolled. */
   position: absolute; /* positioned relative to the parent element that has any non-static position style. */
   position: sticky;
@@ -1096,7 +1105,7 @@
     bottom: 0;
     right: 0;
     width: 300px;
-    border: 3px solid #73AD21;
+    border: 3px solid #73ad21;
   }
 }
 </code></pre>
@@ -1108,123 +1117,139 @@
 <h3 id="block-elements">Block Elements</h3>
 <ul>
 <li>A block-level element always starts on a new line and takes up the full width available (stretches out to the left and right as far as it can)</li>
-<li>By default, the following tags are block elements.<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">address</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+<li>By default, the following tags are block elements.</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">address</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">noscript</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">tfoot</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">video</span>&gt;</span>
 </code></pre>
-</li>
-<li>An element can be explicitly set to block element by using <code>display : block</code>.<h3 id="inline-elements">Inline Elements</h3>
-</li>
+<ul>
+<li>An element can be explicitly set to block element by using <code>display : block</code>.</li>
+</ul>
+<h3 id="inline-elements">Inline Elements</h3>
+<ul>
 <li>An inline element does not start on a new line and only takes up as much width as necessary.</li>
-<li>By default, the following tags are inline elements.<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">abbr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">acronym</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">bdo</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">big</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">cite</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dfn</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span>&gt;</span>
+<li>By default, the following tags are inline elements.</li>
+</ul>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">abbr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">acronym</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">bdo</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">big</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">cite</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dfn</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">input</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">kbd</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">map</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">object</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">output</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">q</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">samp</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">sub</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">sup</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">time</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">tt</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">var</span>&gt;</span>
 </span></span></code></pre>
-</li>
-<li>An element can be explicitly set to inline element by using <code>display : inline</code>.<h3 id="inline-block">Inline block</h3>
-</li>
+<ul>
+<li>An element can be explicitly set to inline element by using <code>display : inline</code>.</li>
+</ul>
+<h3 id="inline-block">Inline block</h3>
+<ul>
 <li>An inline element that can apply height and width values to it.</li>
-<li>set by using <code>display : inline-block</code><h3 id="flex">Flex</h3>
-</li>
+<li>set by using <code>display : inline-block</code></li>
+</ul>
+<h3 id="flex">Flex</h3>
+<ul>
 <li>Elements in the flex container will transform its length and width accordingly.</li>
 <li>set by using <code>display : flex</code>.</li>
-<li>for the flex container<pre><code class="lang-css"><span class="hljs-selector-class">.container</span>{
-<span class="hljs-comment">/*  allow the items to wrap as needed with this property, default nowrap */</span>
-<span class="hljs-attribute">flex-wrap</span>: wrap;
-<span class="hljs-attribute">flex-wrap</span>: wrap-reverse;
-<span class="hljs-comment">/* adjust wrap content horizontally, default flex-start  */</span>
-<span class="hljs-attribute">justify-content</span>: space-between;
-<span class="hljs-attribute">justify-content</span>: space-around;
-<span class="hljs-attribute">justify-content</span>: center;
-<span class="hljs-attribute">justify-content</span>: flex-end;
-<span class="hljs-comment">/* adjust wrap content vertically, default stretch */</span>
-<span class="hljs-attribute">align-items</span>:flex-start;
-<span class="hljs-attribute">align-items</span>: center;
-<span class="hljs-comment">/* control the arrangement of the flex boxes in vertical or horizontal direction. */</span>
-<span class="hljs-attribute">flex-direction</span>: row;
-<span class="hljs-attribute">flex-direction</span>: row-reverse;
-<span class="hljs-attribute">flex-direction</span>: column;
-<span class="hljs-attribute">flex-direction</span>: column-reverse;
-<span class="hljs-comment">/* aligns a flex container&apos;s lines within when there is extra space in the cross-axis, default stretch */</span>
-<span class="hljs-attribute">align-content</span>: flex-start;
-<span class="hljs-attribute">align-content</span>: flex-end;
-<span class="hljs-attribute">align-content</span>: space-around;
-<span class="hljs-attribute">align-content</span>: center;
+<li>for the flex container</li>
+</ul>
+<pre><code class="lang-css"><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-comment">/*  allow the items to wrap as needed with this property, default nowrap */</span>
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">flex-wrap</span>: wrap-reverse;
+  <span class="hljs-comment">/* adjust wrap content horizontally, default flex-start  */</span>
+  <span class="hljs-attribute">justify-content</span>: space-between;
+  <span class="hljs-attribute">justify-content</span>: space-around;
+  <span class="hljs-attribute">justify-content</span>: center;
+  <span class="hljs-attribute">justify-content</span>: flex-end;
+  <span class="hljs-comment">/* adjust wrap content vertically, default stretch */</span>
+  <span class="hljs-attribute">align-items</span>: flex-start;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-comment">/* control the arrangement of the flex boxes in vertical or horizontal direction. */</span>
+  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">flex-direction</span>: row-reverse;
+  <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">flex-direction</span>: column-reverse;
+  <span class="hljs-comment">/* aligns a flex container&apos;s lines within when there is extra space in the cross-axis, default stretch */</span>
+  <span class="hljs-attribute">align-content</span>: flex-start;
+  <span class="hljs-attribute">align-content</span>: flex-end;
+  <span class="hljs-attribute">align-content</span>: space-around;
+  <span class="hljs-attribute">align-content</span>: center;
 }
 </code></pre>
-</li>
-<li>for the sections inside flex container<pre><code class="lang-css"><span class="hljs-selector-class">.childItems</span> {
-<span class="hljs-comment">/* the rate for size change relative to other elements */</span>
-<span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
+<ul>
+<li>for the sections inside flex container</li>
+</ul>
+<pre><code class="lang-css"><span class="hljs-selector-class">.childItems</span> {
+  <span class="hljs-comment">/* the rate for size change relative to other elements */</span>
+  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
   <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">1</span>;
-<span class="hljs-comment">/* the initial size */</span>
+  <span class="hljs-comment">/* the initial size */</span>
   <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">1</span>;
-<span class="hljs-comment">/* flex: grow shrink basis for short; */</span>
+  <span class="hljs-comment">/* flex: grow shrink basis for short; */</span>
   <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>;
-<span class="hljs-attribute">min-width</span>: <span class="hljs-number">5px</span>;
-<span class="hljs-comment">/* items with lower order number comes first */</span>
-<span class="hljs-attribute">order</span>: -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-comment">/* items with lower order number comes first */</span>
+  <span class="hljs-attribute">order</span>: -<span class="hljs-number">1</span>;
 }
 </code></pre>
 <h3 id="grid">Grid</h3>
-</li>
+<ul>
 <li>display as a table of block elements, base on the current size of the browser.</li>
 <li>set by using <code>display : grid</code>.</li>
-<li>for the container<pre><code class="lang-css"><span class="hljs-selector-class">.container</span>{
-<span class="hljs-attribute">grid-row-gap</span>: <span class="hljs-number">50px</span>;
-<span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-number">50px</span>;
-<span class="hljs-comment">/* shorthand property for the grid-column-gap and the grid-row-gap properties */</span>
-<span class="hljs-attribute">grid-gap</span>: <span class="hljs-number">50px</span> <span class="hljs-number">50px</span>;
-<span class="hljs-comment">/* Make a grid with 4 columns */</span>
-<span class="hljs-attribute">grid-template-columns</span>: auto auto auto auto;
-<span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">80px</span> <span class="hljs-number">200px</span> auto <span class="hljs-number">40px</span>;
-<span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-number">2</span>fr <span class="hljs-number">1</span>fr <span class="hljs-number">3</span>fr;
-<span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">30%</span> <span class="hljs-number">20%</span> <span class="hljs-number">50%</span>;
-<span class="hljs-comment">/* vertical alignment relative to the grid container */</span>
-<span class="hljs-attribute">align-content</span>: center;
-<span class="hljs-attribute">align-content</span>: space-around;
-<span class="hljs-attribute">align-content</span>: space-between;
-<span class="hljs-attribute">align-content</span>: start;
-<span class="hljs-attribute">align-content</span>: end;
-<span class="hljs-comment">/* horizontal alignment relative to the grid container */</span>
-<span class="hljs-attribute">justify-content</span>: space-evenly;
-<span class="hljs-attribute">justify-content</span>: space-between;
-<span class="hljs-attribute">justify-content</span>: start;
-<span class="hljs-attribute">justify-content</span>: end;
-<span class="hljs-comment">/* horizontal alignment for all items inside grid container, default stretch */</span>
-<span class="hljs-attribute">justify-items</span>: start;
-<span class="hljs-attribute">justify-items</span>: end;
-<span class="hljs-attribute">justify-items</span>: center;
-<span class="hljs-attribute">justify-items</span>: stretch;
-<span class="hljs-comment">/* vertical alignment for all items inside grid container, default stretch */</span>
-<span class="hljs-attribute">align-items</span>: start;
-<span class="hljs-attribute">align-items</span>: end;
-<span class="hljs-attribute">align-items</span>: center;
-<span class="hljs-attribute">align-items</span>: stretch;
-}
-</code></pre>
-</li>
-<li>for the item<pre><code class="lang-css"><span class="hljs-selector-class">.childItems</span> {
-<span class="hljs-comment">/* Place a grid item at column line 1, and let it end on column line 3: */</span>
-<span class="hljs-attribute">grid-column-start</span>: <span class="hljs-number">1</span>;
-<span class="hljs-attribute">grid-column-end</span>: <span class="hljs-number">3</span>;
-<span class="hljs-comment">/* Make the item start on column 1 and end before column 5 */</span>
-<span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / <span class="hljs-number">5</span>;
-<span class="hljs-comment">/* Make &quot;item1&quot; start on column 1 and span 3 columns */</span>
-<span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / span <span class="hljs-number">3</span>;
-<span class="hljs-comment">/* Place a grid item at row line 1, and let it end on row line 3 */</span>
-<span class="hljs-attribute">grid-row-start</span>: <span class="hljs-number">1</span>;
-<span class="hljs-attribute">grid-row-end</span>: <span class="hljs-number">3</span>;
-<span class="hljs-comment">/* Make the item start on row 1 and end before row 5 */</span>
-<span class="hljs-attribute">grid-row</span>: <span class="hljs-number">1</span> / <span class="hljs-number">5</span>
-<span class="hljs-comment">/* shorthand property for the grid-row-start, grid-column-start, grid-row-end and the grid-column-end properties. */</span>
-grid-area: <span class="hljs-number">1</span> / <span class="hljs-number">2</span> / <span class="hljs-number">5</span> / <span class="hljs-number">6</span>;
-<span class="hljs-comment">/* start on row-line 2 and column-line 1, and span 2 rows and 3 columns */</span>
-<span class="hljs-attribute">grid-area</span>: <span class="hljs-number">2</span> / <span class="hljs-number">1</span> / span <span class="hljs-number">2</span> / span <span class="hljs-number">3</span>;
-}
-</code></pre>
-</li>
+<li>for the container</li>
 </ul>
+<pre><code class="lang-css"><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">grid-row-gap</span>: <span class="hljs-number">50px</span>;
+  <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-number">50px</span>;
+  <span class="hljs-comment">/* shorthand property for the grid-column-gap and the grid-row-gap properties */</span>
+  <span class="hljs-attribute">grid-gap</span>: <span class="hljs-number">50px</span> <span class="hljs-number">50px</span>;
+  <span class="hljs-comment">/* Make a grid with 4 columns */</span>
+  <span class="hljs-attribute">grid-template-columns</span>: auto auto auto auto;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">80px</span> <span class="hljs-number">200px</span> auto <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-number">2</span>fr <span class="hljs-number">1</span>fr <span class="hljs-number">3</span>fr;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">30%</span> <span class="hljs-number">20%</span> <span class="hljs-number">50%</span>;
+  <span class="hljs-comment">/* vertical alignment relative to the grid container */</span>
+  <span class="hljs-attribute">align-content</span>: center;
+  <span class="hljs-attribute">align-content</span>: space-around;
+  <span class="hljs-attribute">align-content</span>: space-between;
+  <span class="hljs-attribute">align-content</span>: start;
+  <span class="hljs-attribute">align-content</span>: end;
+  <span class="hljs-comment">/* horizontal alignment relative to the grid container */</span>
+  <span class="hljs-attribute">justify-content</span>: space-evenly;
+  <span class="hljs-attribute">justify-content</span>: space-between;
+  <span class="hljs-attribute">justify-content</span>: start;
+  <span class="hljs-attribute">justify-content</span>: end;
+  <span class="hljs-comment">/* horizontal alignment for all items inside grid container, default stretch */</span>
+  <span class="hljs-attribute">justify-items</span>: start;
+  <span class="hljs-attribute">justify-items</span>: end;
+  <span class="hljs-attribute">justify-items</span>: center;
+  <span class="hljs-attribute">justify-items</span>: stretch;
+  <span class="hljs-comment">/* vertical alignment for all items inside grid container, default stretch */</span>
+  <span class="hljs-attribute">align-items</span>: start;
+  <span class="hljs-attribute">align-items</span>: end;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">align-items</span>: stretch;
+}
+</code></pre>
+<ul>
+<li>for the item</li>
+</ul>
+<pre><code class="lang-css"><span class="hljs-selector-class">.childItems</span> {
+  <span class="hljs-comment">/* Place a grid item at column line 1, and let it end on column line 3: */</span>
+  <span class="hljs-attribute">grid-column-start</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-column-end</span>: <span class="hljs-number">3</span>;
+  <span class="hljs-comment">/* Make the item start on column 1 and end before column 5 */</span>
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / <span class="hljs-number">5</span>;
+  <span class="hljs-comment">/* Make &quot;item1&quot; start on column 1 and span 3 columns */</span>
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / span <span class="hljs-number">3</span>;
+  <span class="hljs-comment">/* Place a grid item at row line 1, and let it end on row line 3 */</span>
+  <span class="hljs-attribute">grid-row-start</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-row-end</span>: <span class="hljs-number">3</span>;
+  <span class="hljs-comment">/* Make the item start on row 1 and end before row 5 */</span>
+  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">1</span> / <span class="hljs-number">5</span>
+  <span class="hljs-comment">/* shorthand property for the grid-row-start, grid-column-start, grid-row-end and the grid-column-end properties. */</span>
+  grid-area: <span class="hljs-number">1</span> / <span class="hljs-number">2</span> / <span class="hljs-number">5</span> / <span class="hljs-number">6</span>;
+  <span class="hljs-comment">/* start on row-line 2 and column-line 1, and span 2 rows and 3 columns */</span>
+  <span class="hljs-attribute">grid-area</span>: <span class="hljs-number">2</span> / <span class="hljs-number">1</span> / span <span class="hljs-number">2</span> / span <span class="hljs-number">3</span>;
+}
+</code></pre>
 <h3 id="inline-grid">Inline Grid</h3>
 <ul>
 <li>display as a table of inline elements</li>
@@ -1273,7 +1298,7 @@ grid-area: <span class="hljs-number">1</span> / <span class="hljs-number">2</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CSS","level":"1.9","depth":1,"next":{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]},"previous":{"title":"GFM","level":"1.8.3","depth":2,"path":"markup/gfm.md","ref":"markup/gfm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"css/README.md","mtime":"2020-02-16T21:29:30.408Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T19:51:01.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CSS","level":"1.9","depth":1,"next":{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]},"previous":{"title":"GFM","level":"1.8.3","depth":2,"path":"markup/gfm.md","ref":"markup/gfm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"css/README.md","mtime":"2020-03-25T22:29:37.807Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-27T05:09:08.618Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

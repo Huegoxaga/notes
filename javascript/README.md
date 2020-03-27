@@ -217,7 +217,7 @@ switch (expression) {
 - for loop
 
 ```js
-for(init; condition ; increment expression) {
+for (i = 0; i < x; i++) {
   //...
 }
 ```
@@ -703,6 +703,7 @@ array.forEach(function(i) {
 });
 array.filter(i => i.id !== 1); //filter an array item that has id not equal to 1.
 [1, 2, 3].map(x => 2 * x); //return an array of element base on an array of data.
+array.splice(2, 3); // delete 3 items starting at index 2.
 ```
 
 #### Associative Array
@@ -822,6 +823,7 @@ Math.min(x,y,z,....)
 Math.pow(x,y)
 Math.round(x)      //rounds a number to the nearest integer.
 Math.random() 		//random number between [0,1).
+Math.floor((Math.random() * 10) + 1); //random integer from 0 - 10
 Math.sin
 Math.cos
 Math.tan

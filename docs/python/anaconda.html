@@ -1130,6 +1130,15 @@
 <li><code>df.applymap(x)</code> apply <code>x</code> function on each data object in the dataframe.</li>
 <li><code>df[&apos;col&apos;] = df[&apos;col&apos;].map({&apos;data1&apos;: &apos;newdata1&apos;, &apos;data2&apos;: &apos;newdata2&apos;})</code> replace certain data in the column, unchanged data will be set to NaN.</li>
 <li><code>df[&apos;col&apos;] = df[&apos;col&apos;].replace({&apos;data1&apos;: &apos;newdata1&apos;, &apos;data2&apos;: &apos;newdata2&apos;})</code> replace certain data in the column, unchanged data will be left unchanged.</li>
+<li><code>df.sort_values(by=&apos;col&apos;, ascending=False)</code> Sort data by certain colum in descending order.<ul>
+<li><code>df.sort_values(by=[&apos;colA&apos;, &apos;colB&apos;], ascending=False)</code> order by two columns.</li>
+<li><code>df.sort_values(by=[&apos;last&apos;, &apos;first&apos;], ascending=[False, True])</code> order by two columns in different order.</li>
+<li><code>df[&apos;col&apos;].sort_values()</code> sort series from one column.</li>
+</ul>
+</li>
+<li><code>df.sort_index()</code> sort by index.</li>
+<li><code>df[&apos;col&apos;].nlargest(10)</code> show the 10 largest data of a column as series.</li>
+<li><code>df.nsmallest(10, &apos;col&apos;)</code> show the 10 smalleset data of a column as series.</li>
 </ul>
 <h2 id="matplotlib">Matplotlib</h2>
 <h3 id="introduction">Introduction</h3>
@@ -1165,6 +1174,19 @@
 <li>It also has labels and colors parameters.</li>
 </ul>
 </li>
+<li><code>plt.fill_between(x_data_list,y_data_list,alpha=0.2)</code> fill the plot in color with 0.2 opacity from the bottom.<ul>
+<li><code>plt.fill_between(x_data_list,y_data_list,y_axis_fill,alpha=0.2)</code> fill in color above and below the <code>y_axis_fill</code> line.</li>
+<li>add <code>where(y_data_list&lt;y_axis), interpolate=True</code> to fill below certain line.</li>
+<li>The <code>y-axis</code> data can also be a list.</li>
+<li>add <code>label=&apos;label text&apos;</code> to add legend for fill.</li>
+</ul>
+</li>
+<li><code>plt.hist(data_list, bin=5, edgecolor=&apos;black&apos;)</code> divide a list of data into 5 category with edgecolor.<ul>
+<li>the range of bin can be set by passing into a list of boundaries.</li>
+<li>add <code>log=True</code> draw data in the logorithmic scale(y-axis will be 10^n).</li>
+</ul>
+</li>
+<li><code>plt.axcline(y, label=&quot;text&quot;)</code> add a vertical line in the graph.</li>
 <li><code>plt.xlabel(&apos;XAxisLabel&apos;)</code></li>
 <li><code>plt.ylabel(&apos;YAxisLabel&apos;)</code></li>
 <li><code>plt.title(&apos;Graph Title&apos;)</code></li>
@@ -1243,7 +1265,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Anaconda","level":"1.2.1","depth":2,"next":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-03-24T05:28:12.492Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T19:51:01.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Anaconda","level":"1.2.1","depth":2,"next":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-03-27T04:58:41.878Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-27T05:09:08.618Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

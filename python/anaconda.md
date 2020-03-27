@@ -213,6 +213,13 @@
 - `df.applymap(x)` apply `x` function on each data object in the dataframe.
 - `df['col'] = df['col'].map({'data1': 'newdata1', 'data2': 'newdata2'})` replace certain data in the column, unchanged data will be set to NaN.
 - `df['col'] = df['col'].replace({'data1': 'newdata1', 'data2': 'newdata2'})` replace certain data in the column, unchanged data will be left unchanged.
+- `df.sort_values(by='col', ascending=False)` Sort data by certain colum in descending order.
+  - `df.sort_values(by=['colA', 'colB'], ascending=False)` order by two columns.
+  - `df.sort_values(by=['last', 'first'], ascending=[False, True])` order by two columns in different order.
+  - `df['col'].sort_values()` sort series from one column.
+- `df.sort_index()` sort by index.
+- `df['col'].nlargest(10)` show the 10 largest data of a column as series.
+- `df.nsmallest(10, 'col')` show the 10 smalleset data of a column as series.
 
 ## Matplotlib
 
@@ -241,6 +248,15 @@
   - `plt.pie(integer_list, color= color List )` add labels.
 - `plt.stackplot(x_data_list,list_of_list)` or `plt.stackplot(x_data_list,list1,list2,list3)` draw a stackplot.
   - It also has labels and colors parameters.
+- `plt.fill_between(x_data_list,y_data_list,alpha=0.2)` fill the plot in color with 0.2 opacity from the bottom.
+  - `plt.fill_between(x_data_list,y_data_list,y_axis_fill,alpha=0.2)` fill in color above and below the `y_axis_fill` line.
+  - add `where(y_data_list<y_axis), interpolate=True` to fill below certain line.
+  - The `y-axis` data can also be a list.
+  - add `label='label text'` to add legend for fill.
+- `plt.hist(data_list, bin=5, edgecolor='black')` divide a list of data into 5 category with edgecolor.
+  - the range of bin can be set by passing into a list of boundaries.
+  - add `log=True` draw data in the logorithmic scale(y-axis will be 10^n).
+- `plt.axcline(y, label="text")` add a vertical line in the graph.
 - `plt.xlabel('XAxisLabel')`
 - `plt.ylabel('YAxisLabel')`
 - `plt.title('Graph Title')`

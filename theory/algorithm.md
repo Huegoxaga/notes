@@ -68,7 +68,7 @@
 ### Queue
 
 - Queues are first-in, first-out. It has a first come, first server principle.
-- Adding data is called enqueue, removing data is call dequeue.
+- Adding data to the `rear` is called enqueue, removing data from the `front` is call dequeue.
 - For an array-based implementation, it should:
   - track the front and rear of the array. Adding new elements and removing old elements in order of increasing index.
   - wrap around to the beginning of the array when the queue reaches the end.

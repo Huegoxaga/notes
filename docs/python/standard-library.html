@@ -841,7 +841,7 @@
 <li>All the following libraries are commonly included in Python distributions.</li>
 <li><a href="https://docs.python.org/3.8/library/index.html" target="_blank">Click here</a> to view the complete documentation.</li>
 </ul>
-<h2 id="re"><code>re</code></h2>
+<h2 id="re">re</h2>
 <ul>
 <li>It supports Regular Expression.</li>
 <li><code>import re</code></li>
@@ -872,11 +872,11 @@
 </ul>
 </li>
 </ul>
-<h2 id="urllib"><code>urllib</code></h2>
+<h2 id="urllib">urllib</h2>
 <ul>
 <li>It is a package that collects several modules for working with URLs:</li>
 </ul>
-<h3 id="urllibrequest"><code>urllib.request</code></h3>
+<h3 id="urllibrequest">urllib.request</h3>
 <ul>
 <li>It is used for opening and reading URLs</li>
 <li><code>from urllib.request import urlopen</code></li>
@@ -889,7 +889,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="csv"><code>csv</code></h2>
+<h2 id="csv">csv</h2>
 <ul>
 <li>It works with <code>.csv</code> files.</li>
 <li><code>import csv</code></li>
@@ -917,8 +917,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="collections"><code>collections</code></h2>
-<h3 id="counter"><code>Counter</code></h3>
+<h2 id="collections">collections</h2>
+<h3 id="counter">Counter</h3>
 <ul>
 <li>It is used to count the occurrence of data that read by the Counter.<pre><code class="lang-py"><span class="hljs-keyword">from</span> collection <span class="hljs-keyword">import</span> Counter
 c = Counter()
@@ -930,7 +930,7 @@ print(c)
 </li>
 <li><code>c.most_common(10)</code> return the 10 most common items in the counter. in a list of tuples.</li>
 </ul>
-<h2 id="queue"><code>Queue</code></h2>
+<h2 id="queue">Queue</h2>
 <ul>
 <li>A queue data structure.</li>
 <li><code>from queue import Queue</code></li>
@@ -938,13 +938,13 @@ print(c)
 <li><code>q.put(x)</code> add element <code>x</code> to the queue.</li>
 <li><code>q.get()</code> get the from element from the queue.</li>
 </ul>
-<h2 id="time"><code>time</code></h2>
+<h2 id="time">time</h2>
 <ul>
 <li><code>import time</code></li>
 <li><code>time.sleep(x)</code> stop the thread x number of seconds.</li>
 <li><code>time.time()</code> return the system time in seconds.</li>
 </ul>
-<h2 id="threading"><code>threading</code></h2>
+<h2 id="threading">threading</h2>
 <ul>
 <li>Multi-threading still process one task at one time. It just focus on one thread at first. After some progress is made, it will be focusing on the next thread, instead of complete first one. This is controlled by the global interpreter lock(GIL).</li>
 <li><code>import threading as td</code></li>
@@ -973,7 +973,7 @@ print(c)
 </ul>
 </li>
 </ul>
-<h2 id="multiprocessing"><code>multiprocessing</code></h2>
+<h2 id="multiprocessing">multiprocessing</h2>
 <ul>
 <li><code>import multiprocessing as mp</code></li>
 <li>It enables methods to be run on multiple CPU cores.</li>
@@ -1004,7 +1004,7 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 </ul>
 </li>
 </ul>
-<h2 id="tkinter"><code>tkinter</code></h2>
+<h2 id="tkinter">tkinter</h2>
 <ul>
 <li>It is used to create Graphical User Interfaces Apps</li>
 <li><code>import tkinter as tk</code></li>
@@ -1144,593 +1144,7 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 </li>
 <li><code>canvas.move(shape, x, y)</code> move the move to the right <code>x</code> unit, to the bottom <code>y</code> unit.</li>
 </ul>
-<p>This is a example using urlopen for web scraping</p>
-<p>from urllib.request import urlopen</p>
-<h1 id="if-has-chinese-apply-decode">if has Chinese, apply decode()</h1>
-<p>html = urlopen(&quot;<a href="https://morvanzhou.github.io/static/scraping/basic-structure.html&quot;).read().decode(&apos;utf-8" target="_blank">https://morvanzhou.github.io/static/scraping/basic-structure.html&quot;).read().decode(&apos;utf-8</a>&apos;)
-print(html)</p>
-<p>import re
-res = re.findall(r&quot;<title>(.+?)</title>&quot;, html)
-print(&quot;\nPage title is: &quot;, res[0])</p>
-<h1 id="this-code-is-used-to-read-content-in-the--tag">This code is used to read content in the <title> tag.</title></h1>
-<p>res = re.findall(r&quot;</p><p>(.\*?)</p>&quot;, html, flags=re.DOTALL) # re.DOTALL if multi line
-print(&quot;\nPage paragraph is: &quot;, res[0])<p></p>
-<h1 id="this-code-is-used-to-read-content-in-the--tag">This code is used to read content in the <p> tag.</p></h1>
-<p>res = re.findall(r&apos;href=&quot;(.*?)&quot;&apos;, html)
-print(&quot;\nAll links: &quot;, res</p>
-<h1 id="this-code-is-used-to-read-content-in-the--tag">This code is used to read content in the <a> tag.</a></h1>
-<p>beautiful soup</p>
-<p>install
-for python3 in console type
-pip3 install beautiful4</p>
-<p>from bs4 import BeautifulSoup
-from urllib.request import urlopen</p>
-<h1 id="if-has-chinese-apply-decode">if has Chinese, apply decode()</h1>
-<p>html = urlopen(&quot;<a href="https://morvanzhou.github.io/static/scraping/basic-structure.html&quot;).read().decode(&apos;utf-8" target="_blank">https://morvanzhou.github.io/static/scraping/basic-structure.html&quot;).read().decode(&apos;utf-8</a>&apos;)
-print(html)</p>
-<h1 id="load-content-to-soup">load content to soup</h1>
-<p>soup = BeautifulSoup(html, features=&apos;lxml&apos;)
-print(soup.h1)
-print(&apos;\n&apos;, soup.p)</p>
-<h1 id="this-code-is-used-to-read-content-in-the--or--tag
-allhref--soupfindalla
-allhref--lhref-for-l-in-allhref
-printn-allhref
-this-finds-all-links
-month--soupfindallli-class-month
-for-m-in-month
-printmgettext-gettext-is-method-for-pure-content-without-tags
-this-uses-class-tag-from-css-code
-jan--soupfindul-class-jan
-djan--janfindallli--use-jan-as-a-parent
-for-d-in-djan
-printdgettext
-this-is-used-to-find-content-in-a-tag-of-a-class
-combine-re-and-soup
-from-bs4-import-beautifulsoup
-from-urllibrequest-import-urlopen
-import-re
-if-has-chinese-apply-decode
-html--urlopenhttpsmorvanzhougithubiostaticscrapingtablehtmlreaddecodeutf-8
-printhtml
-soup--beautifulsouphtml-featureslxml
-imglinks--soupfindallimg-src-recompilejpg
-for-link-in-imglinks
-printlinksrc
-courselinks--soupfindalla-href-recompilehttpsmorvan
-for-link-in-courselinks
-printlinkhref
-example-code
-from-bs4-import-beautifulsoup
-from-urllibrequest-import-urlopen
-import-re
-import-random
-baseurl--httpsbaikebaiducom
-his--iteme7bd91e7bb9ce788ace899ab5162711
-url--baseurl--his-1
-html--urlopenurlreaddecodeutf-8
-soup--beautifulsouphtml-featureslxml
-printsoupfindh1gettext--url--his-1
-find-return-the-first-result
-find-valid-urls
-suburls--soupfindalla-target-blank-href-recompileitem2
-if-lensuburls--0
-hisappendrandomsamplesuburls-10href
-else--no-valid-sub-link-found
-hispop
-printhis
-find-all-url
-his--iteme7bd91e7bb9ce788ace899ab5162711
-for-i-in-range20
-url--baseurl--his-1
-html--urlopenurlreaddecodeutf-8
-soup--beautifulsouphtml-featureslxml
-printi-soupfindh1gettext-----url--his-1
 
--find-valid-urls
-suburls--soupfindalla-target-blank-href-recompileitem2
-
-if-lensuburls--0
-----hisappendrandomsamplesuburls-10href
-else
------no-valid-sub-link-found
-----hispop
-for-post-and-get-access
-using-requests-to-get-online-data
-pip-install-requests
-pip3-install-requests
-import-requests
-import-webbrowser
-for-get-request
-get-result-into-r-directly
-param--wd-&#x83AB;&#x70E6;-python
-this-generate-auto-url-for-the-wd-keyword
-r--requestsgethttpwwwbaiducoms-paramsparam
-printrurl
-open-browser-within-the-program
-webbrowseropenrurl
-for-post-request
-post-data-into-server-and-save-result-into-r
-data--firstname-&#x83AB;&#x70E6;-lastname-&#x5468;
-r--requestsposthttppythonscrapingcomfilesprocessingphp-datadata
-printrtext
-upload-image
-file--uploadfile-openimagepng-rb
-r--requestsposthttppythonscrapingcomfilesprocessing2php-filesfile
-printrtext
-login
-payload--username-morvan-password-password
-r--requestsposthttppythonscrapingcompagescookieswelcomephp-datapayload
-printrcookiesgetdict
-cookies-is-mandatory-to-keep-the-connection
-r--requestsgethttppythonscrapingcompagescookiesprofilephp-cookiesrcookies
-printrtext
-another-login-method
-using-session-control-cookie
-session--requestssession
-payload--username-morvan-password-password
-r--sessionposthttppythonscrapingcompagescookieswelcomephp-datapayload
-printrcookiesgetdict
-r--sessiongethttppythonscrapingcompagescookiesprofilephp
-printrtext
-download-files
-import-os
-osmakedirsimg-existoktrue
-imageurl--httpsmorvanzhougithubiostaticimgdescriptionlearningstepflowchartpng
-using-urltrtrieve
-from-urllibrequest-import-urlretrieve
-urlretrieveimageurl-imgimage1png--whole-document
-using-request
-import-requests
-r--requestsgetimageurl
-with-openimgimage2png-wb-as-f
-fwritercontent
-r--requestsgetimageurl-streamtrue--stream-loading
-with-openimgimage3png-wb-as-f
-for-chunk-in-ritercontentchunksize32
-fwritechunk
-from-bs4-import-beautifulsoup
-import-requests
-url--httpwwwnationalgeographiccomcnanimals
-html--requestsgeturltext
-soup--beautifulsouphtml-lxml
-imgul--soupfindallul-class-imglist
-import-os
-osmakedirsimg-existoktrue
-for-ul-in-imgul
-imgs--ulfindallimg
-for-img-in-imgs
-url--imgsrc
-r--requestsgeturl-streamtrue
-imagename--urlsplit-1
-with-openimgs--imagename-wb-as-f
-for-chunk-in-ritercontentchunksize128
-fwritechunk
-printsaved-s--imagename
-import-multiprocessing-as-mp
-import-time
-from-urllibrequest-import-urlopen-urljoin
-from-bs4-import-beautifulsoup
-import-re
-baseurl--http1270014000
-baseurl--httpsmorvanzhougithubio
-dont-over-crawl-the-website-or-you-may-never-visit-again
-if-baseurl--http1270014000
-restrictedcrawl--true
-else
-restrictedcrawl--false
-def-crawlurl
-response--urlopenurl
-timesleep01-pretend-to-wait-slightly-delay-for-downloading
-return-responsereaddecode
-def-parsehtml
-soup--beautifulsouphtml-lxml
-urls--soupfindalla-href-recompile
-title--soupfindh1gettextstrip
-pageurls--seturljoinbaseurl-urlhref-for-url-in-urls
-url--soupfindmeta-property-ogurlcontent
-return-title-pageurls-url
-normal-way
-unseen--setbaseurl
-seen--set
-count-t1--1-timetime
-while-lenunseen--0--still-get-some-url-to-visit
-if-restrictedcrawl-and-lenseen--20
-break
-printndistributed-crawling
-htmls--crawlurl-for-url-in-unseen
-
-printndistributed-parsing
-results--parsehtml-for-html-in-htmls
-
-printnanalysing
-seenupdateunseen----------seen-the-crawled
-unseenclear---------------nothing-unseen
-
-for-title-pageurls-url-in-results
-----printcount-title-url
-----count--1
-----unseenupdatepageurls---seen------get-new-url-to-crawl
-printtotal-time-1f-s--timetime-t1---53-s
-multiprocessing
-unseen--setbaseurl
-seen--set
-pool--mppool4count-t1--1-timetime
-while-lenunseen--0--still-get-some-url-to-visit
-if-restrictedcrawl-and-lenseen--20
-break
-printndistributed-crawling
-crawljobs--poolapplyasynccrawl-argsurl-for-url-in-unseen
-htmls--jget-for-j-in-crawljobs--request-connection
-printndistributed-parsing
-parsejobs--poolapplyasyncparse-argshtml-for-html-in-htmls
-results--jget-for-j-in-parsejobs--------------------------------------parse-html
-
-printnanalysing
-seenupdateunseen----------seen-the-crawled
-unseenclear---------------nothing-unseen
-
-for-title-pageurls-url-in-results
-----printcount-title-url
-----count--1
-----unseenupdatepageurls---seen------get-new-url-to-crawl
-printtotal-time-1f-s--timetime-t1---16-s-
-asyncio-tutorial
-import-time
-normal-way
-def-jobt
-printstart-job--t
-timesleept--wait-for-t-seconds
-printjob--t--takes--t--s
-def-main
-jobt-for-t-in-range1-3
-t1--timetime
-main
-printno-async-total-time---timetime---t1
-using-asyncio
-import-asyncio
-async-def-jobt
-printstart-job--t
-await-asynciosleept--wait-for-t-seconds-it-will-look-for-another-job-while-await
-printjob--t--takes--t--s
-async-def-mainloop
-tasks--loopcreatetaskjobt-for-t-in-range1-3--just-create-not-run-job
-await-asynciowaittasks--run-jobs-and-wait-for-all-tasks-done
-t1--timetime
-loop--asynciogeteventloop
-looprununtilcompletemainloop
-loopclose--ipython-notebook-gives-error-if-close-loop
-printasync-total-time---timetime---t1
-normal-way-for-scraping
-import-requests
-url--httpsmorvanzhougithubio
-def-normal-for-i-in-range2
-r--requestsgeturl
-url--rurl
-printurl
-t1--timetime
-normal
-printnormal-total-time-timetime-t1
-using-aiohttp-from-saync
-import-aiohttp
-async-def-jobsession
-response--await-sessiongeturl
-return-strresponseurl
-async-def-mainloop
-async-with-aiohttpclientsession-as-session
-tasks--loopcreatetaskjobsession-for--in-range2
-finished-unfinished--await-asynciowaittasks
-allresults--rresult-for-r-in-finished--get-return-from-job
-printallresults
-t1--timetime
-loop--asynciogeteventloop
-looprununtilcompletemainloop
-loopclose--ipython-notebook-gives-error-if-close-loop
-printasync-total-time-timetime---t1
-selenium-generate-user-behaviour-into-code-and-run-in-python-code
-1-pip-install-selenium
-2-driver-for-brewer-copy-heckodriver-to-binchmod-m
-for-firefox-katalonrecorder-is-easier-to-add-as-addons
-scrapy-library
-advanced-automatically-tools-for-scraping
-pip-install-scrapy
-import-scrapy
-class-mofanspiderscrapyspider
-name--mofan
-starturls--
-httpsmorvanzhougithubio
---unseen--set--seen--set--we-dont-need-these-two-as-scrapy-will-deal-with-them-automatically
-def-parseself-response
-----yield-------return-some-results
---------title-responsecssh1textextractfirstdefaultmissingstripreplace-
---------url-responseurl
-----
-
-----urls--responsecssaattrhrefrer------find-all-sub-urls
-----for-url-in-urls
---------yield-responsefollowurl-callbackselfparse------it-will-filter-duplication-automatically
-lastly-run-this-in-terminal
-scrapy-runspider-5-2-scrapypy--o-resjson
-">This code is used to read content in the <h1 id="or--tag"> or <p> tag.</p></h1>
-<p>all_href = soup.find_all(&apos;a&apos;)
-all_href = [l[&apos;href&apos;] for l in all_href]
-print(&apos;\n&apos;, all_href)</p>
-<h1 id="this-finds-all-links">This finds all links</h1>
-<p>month = soup.find_all(&apos;li&apos;, {&quot;class&quot;: &quot;month&quot;})
-for m in month:
-print(m.get_text()) #get_text is method for pure content without tags.</p>
-<h1 id="this-uses-class-tag-from-css-code">This uses class tag from css code.</h1>
-<p>jan = soup.find(&apos;ul&apos;, {&quot;class&quot;: &apos;jan&apos;})
-d_jan = jan.find_all(&apos;li&apos;) # use jan as a parent
-for d in d_jan:
-print(d.get_text())</p>
-<p>This is used to find content in a tag of a class.</p>
-<p>Combine RE and soup</p>
-<p>from bs4 import BeautifulSoup
-from urllib.request import urlopen
-import re</p>
-<h1 id="if-has-chinese-apply-decode">if has Chinese, apply decode()</h1>
-<p>html = urlopen(&quot;<a href="https://morvanzhou.github.io/static/scraping/table.html&quot;).read().decode(&apos;utf-8" target="_blank">https://morvanzhou.github.io/static/scraping/table.html&quot;).read().decode(&apos;utf-8</a>&apos;)
-print(html)
-soup = BeautifulSoup(html, features=&apos;lxml&apos;)</p>
-<p>img<em>links = soup.find_all(&quot;img&quot;, {&quot;src&quot;: re.compile(&apos;.</em>?.jpg&apos;)})
-for link in img<em>links:
-print(link[&#x2018;src&apos;])
-course_links = soup.find_all(&apos;a&apos;, {&apos;href&apos;: re.compile(&apos;<a href="https://morvan" target="_blank">https://morvan</a>.</em>&apos;)})
-for link in course_links:
-print(link[&#x2018;href&#x2019;])</p>
-<p>Example code:</p>
-<p>from bs4 import BeautifulSoup
-from urllib.request import urlopen
-import re
-import random</p>
-<p>base_url = &quot;<a href="https://baike.baidu.com" target="_blank">https://baike.baidu.com</a>&quot;
-his = [&#x201C;/item/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/5162711&quot;]</p>
-<p>url = base_url + his[-1]</p>
-<p>html = urlopen(url).read().decode(&apos;utf-8&apos;)
-soup = BeautifulSoup(html, features=&apos;lxml&apos;)
-print(soup.find(&apos;h1&apos;).get_text(), &apos; url: &apos;, his[-1])</p>
-<h1 id="find-return-the-first-result">find return the first result</h1>
-<h1 id="find-valid-urls">find valid urls</h1>
-<p>sub_urls = soup.find_all(&quot;a&quot;, {&quot;target&quot;: &quot;_blank&quot;, &quot;href&quot;: re.compile(&quot;/item/(%.{2})+$&quot;)})</p>
-<p>if len(sub_urls) != 0:
-his.append(random.sample(sub_urls, 1)[0][&apos;href&apos;])
-else: # no valid sub link found
-his.pop()
-print(his)</p>
-<h1 id="find-all-url">find all url</h1>
-<p>his = [&quot;/item/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/5162711&quot;]</p>
-<p>for i in range(20):
-url = base_url + his[-1]</p>
-<pre><code>html = urlopen(url).read().decode(&apos;utf-8&apos;)
-soup = BeautifulSoup(html, features=&apos;lxml&apos;)
-print(i, soup.find(&apos;h1&apos;).get_text(), &apos;    url: &apos;, his[-1])
-
-# find valid urls
-sub_urls = soup.find_all(&quot;a&quot;, {&quot;target&quot;: &quot;_blank&quot;, &quot;href&quot;: re.compile(&quot;/item/(%.{2})+$&quot;)})
-
-if len(sub_urls) != 0:
-    his.append(random.sample(sub_urls, 1)[0][&apos;href&apos;])
-else:
-    # no valid sub link found
-    his.pop()
-</code></pre><p>For post and get access</p>
-<p>Using requests to get online data</p>
-<p>pip install requests
-pip3 install requests</p>
-<p>import requests
-import webbrowser</p>
-<h1 id="for-get-request">for get request</h1>
-<h1 id="get-result-into-r-directly">get result into r directly</h1>
-<p>param = {&quot;wd&quot;: &#x201C;&#x83AB;&#x70E6; Python&quot;}</p>
-<h1 id="this-generate-auto-url-for-the-wd-keyword">this generate auto url for the wd keyword.</h1>
-<p>r = requests.get(&apos;<a href="http://www.baidu.com/s" target="_blank">http://www.baidu.com/s</a>&apos;, params=param)
-print(r.url)</p>
-<h1 id="open-browser-within-the-program">open browser within the program</h1>
-<p>webbrowser.open(r.url)</p>
-<h1 id="for-post-request">for post request</h1>
-<h1 id="post-data-into-server-and-save-result-into-r">post data into server, and save result into r</h1>
-<p>data = {&apos;firstname&apos;: &apos;&#x83AB;&#x70E6;&apos;, &apos;lastname&apos;: &apos;&#x5468;&apos;}
-r = requests.post(&apos;<a href="http://pythonscraping.com/files/processing.php" target="_blank">http://pythonscraping.com/files/processing.php</a>&apos;, data=data)
-print(r.text)</p>
-<p>upload image
-file = {&apos;uploadFile&apos;: open(&apos;./image.png&apos;, &apos;rb&apos;)}
-r = requests.post(&apos;<a href="http://pythonscraping.com/files/processing2.php" target="_blank">http://pythonscraping.com/files/processing2.php</a>&apos;, files=file)
-print(r.text)</p>
-<p>login</p>
-<p>payload = {&apos;username&apos;: &apos;Morvan&apos;, &apos;password&apos;: &apos;password&apos;}
-r = requests.post(&apos;<a href="http://pythonscraping.com/pages/cookies/welcome.php" target="_blank">http://pythonscraping.com/pages/cookies/welcome.php</a>&apos;, data=payload)
-print(r.cookies.get_dict())</p>
-<h1 id="cookies-is-mandatory-to-keep-the-connection">cookies is mandatory to keep the connection.</h1>
-<p>r = requests.get(&apos;<a href="http://pythonscraping.com/pages/cookies/profile.php" target="_blank">http://pythonscraping.com/pages/cookies/profile.php</a>&apos;, cookies=r.cookies)
-print(r.text)</p>
-<p>another login method</p>
-<h1 id="using-session-control-cookie">using session control cookie.</h1>
-<p>session = requests.Session()
-payload = {&apos;username&apos;: &apos;Morvan&apos;, &apos;password&apos;: &apos;password&apos;}
-r = session.post(&apos;<a href="http://pythonscraping.com/pages/cookies/welcome.php" target="_blank">http://pythonscraping.com/pages/cookies/welcome.php</a>&apos;, data=payload)
-print(r.cookies.get_dict())
-r = session.get(&quot;<a href="http://pythonscraping.com/pages/cookies/profile.php" target="_blank">http://pythonscraping.com/pages/cookies/profile.php</a>&quot;)
-print(r.text)</p>
-<p>download files</p>
-<p>import os
-os.makedirs(&apos;./img/&apos;, exist_ok=True)</p>
-<p>IMAGE_URL = &#x201C;<a href="https://morvanzhou.github.io/static/img/description/learning_step_flowchart.png" target="_blank">https://morvanzhou.github.io/static/img/description/learning_step_flowchart.png</a>&quot;</p>
-<h1 id="using-urltrtrieve">using urltrtrieve</h1>
-<p>from urllib.request import urlretrieve
-urlretrieve(IMAGE_URL, &apos;./img/image1.png&apos;) # whole document</p>
-<h1 id="using-request">Using request</h1>
-<p>import requests
-r = requests.get(IMAGE_URL)
-with open(&apos;./img/image2.png&apos;, &apos;wb&apos;) as f:
-f.write(r.content)</p>
-<p>r = requests.get(IMAGE_URL, stream=True) # stream loading</p>
-<p>with open(&apos;./img/image3.png&apos;, &apos;wb&apos;) as f:
-for chunk in r.iter_content(chunk_size=32):
-f.write(chunk)</p>
-<p>from bs4 import BeautifulSoup
-import requests</p>
-<p>URL = &#x201C;<a href="http://www.nationalgeographic.com.cn/animals/" target="_blank">http://www.nationalgeographic.com.cn/animals/</a>&quot;</p>
-<p>html = requests.get(URL).text
-soup = BeautifulSoup(html, &apos;lxml&apos;)
-img_ul = soup.find_all(&apos;ul&apos;, {&quot;class&quot;: &#x201C;img_list&quot;})</p>
-<p>import os</p>
-<p>os.makedirs(&apos;./img/&apos;, exist_ok=True)</p>
-<p>for ul in img_ul:
-imgs = ul.find_all(&apos;img&apos;)
-for img in imgs:
-url = img[&apos;src&apos;]
-r = requests.get(url, stream=True)
-image_name = url.split(&apos;/&apos;)[-1]
-with open(&apos;./img/%s&apos; % image_name, &apos;wb&apos;) as f:
-for chunk in r.iter_content(chunk_size=128):
-f.write(chunk)
-print(&apos;Saved %s&apos; % image_name)</p>
-<p>import multiprocessing as mp
-import time
-from urllib.request import urlopen, urljoin
-from bs4 import BeautifulSoup
-import re</p>
-<p>base_url = &quot;<a href="http://127.0.0.1:4000/" target="_blank">http://127.0.0.1:4000/</a>&quot;</p>
-<h1 id="baseurl--httpsmorvanzhougithubio">base_url = &apos;<a href="https://morvanzhou.github.io/" target="_blank">https://morvanzhou.github.io/</a>&apos;</h1>
-<h1 id="dont-over-crawl-the-website-or-you-may-never-visit-again">DON&apos;T OVER CRAWL THE WEBSITE OR YOU MAY NEVER VISIT AGAIN</h1>
-<p>if base_url != &quot;<a href="http://127.0.0.1:4000/" target="_blank">http://127.0.0.1:4000/</a>&quot;:
-restricted_crawl = True
-else:
-restricted_crawl = False</p>
-<p>def crawl(url):
-response = urlopen(url)
-time.sleep(0.1) #pretend to wait slightly delay for downloading
-return response.read().decode()</p>
-<p>def parse(html):
-soup = BeautifulSoup(html, &apos;lxml&apos;)
-urls = soup.find_all(&apos;a&apos;, {&quot;href&quot;: re.compile(&apos;^/.+?/$&apos;)})
-title = soup.find(&apos;h1&apos;).get_text().strip()
-page_urls = set([urljoin(base_url, url[&apos;href&apos;]) for url in urls])
-url = soup.find(&apos;meta&apos;, {&apos;property&apos;: &quot;og:url&quot;})[&apos;content&apos;]
-return title, page_urls, url</p>
-<p>Normal way:
-unseen = set([base_url,])
-seen = set()</p>
-<p>count, t1 = 1, time.time()</p>
-<p>while len(unseen) != 0: # still get some url to visit
-if restricted_crawl and len(seen) &gt; 20:
-break</p>
-<pre><code>print(&apos;\nDistributed Crawling...&apos;)
-htmls = [crawl(url) for url in unseen]
-
-print(&apos;\nDistributed Parsing...&apos;)
-results = [parse(html) for html in htmls]
-
-print(&apos;\nAnalysing...&apos;)
-seen.update(unseen)         # seen the crawled
-unseen.clear()              # nothing unseen
-
-for title, page_urls, url in results:
-    print(count, title, url)
-    count += 1
-    unseen.update(page_urls - seen)     # get new url to crawl
-</code></pre><p>print(&apos;Total time: %.1f s&apos; % (time.time()-t1, )) # 53 s</p>
-<p>Multiprocessing:
-unseen = set([base_url,])
-seen = set()</p>
-<p>pool = mp.Pool(4)<br>count, t1 = 1, time.time()
-while len(unseen) != 0: # still get some url to visit
-if restricted_crawl and len(seen) &gt; 20:
-break
-print(&apos;\nDistributed Crawling...&apos;)
-crawl_jobs = [pool.apply_async(crawl, args=(url,)) for url in unseen]
-htmls = [j.get() for j in crawl_jobs] # request connection</p>
-<pre><code>print(&apos;\nDistributed Parsing...&apos;)
-parse_jobs = [pool.apply_async(parse, args=(html,)) for html in htmls]
-results = [j.get() for j in parse_jobs]                                     # parse html
-
-print(&apos;\nAnalysing...&apos;)
-seen.update(unseen)         # seen the crawled
-unseen.clear()              # nothing unseen
-
-for title, page_urls, url in results:
-    print(count, title, url)
-    count += 1
-    unseen.update(page_urls - seen)     # get new url to crawl
-</code></pre><p>print(&apos;Total time: %.1f s&apos; % (time.time()-t1, )) # 16 s !!!</p>
-<p>Asyncio tutorial</p>
-<p>import time</p>
-<h1 id="normal-way">normal way</h1>
-<p>def job(t):
-print(&apos;Start job &apos;, t)
-time.sleep(t) # wait for &quot;t&quot; seconds
-print(&apos;Job &apos;, t, &apos; takes &apos;, t, &apos; s&apos;)</p>
-<p>def main():
-[job(t) for t in range(1, 3)]</p>
-<p>t1 = time.time()
-main()
-print(&quot;NO async total time : &quot;, time.time() - t1)</p>
-<h1 id="using-asyncio">using asyncio</h1>
-<p>import asyncio</p>
-<p>async def job(t):
-print(&apos;Start job &apos;, t)
-await asyncio.sleep(t) # wait for &quot;t&quot; seconds, it will look for another job while await
-print(&apos;Job &apos;, t, &apos; takes &apos;, t, &apos; s&apos;)</p>
-<p>async def main(loop):
-tasks = [loop.create_task(job(t)) for t in range(1, 3)] # just create, not run job
-await asyncio.wait(tasks) # run jobs and wait for all tasks done</p>
-<p>t1 = time.time()
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main(loop))</p>
-<h1 id="loopclose--ipython-notebook-gives-error-if-close-loop">loop.close() # Ipython notebook gives error if close loop</h1>
-<p>print(&quot;Async total time : &quot;, time.time() - t1)</p>
-<h1 id="normal-way-for-scraping">normal way for scraping</h1>
-<p>import requests</p>
-<p>URL = &apos;<a href="https://morvanzhou.github.io/" target="_blank">https://morvanzhou.github.io/</a>&apos;</p>
-<p>def normal():<br> for i in range(2):
-r = requests.get(URL)
-url = r.url
-print(url)</p>
-<p>t1 = time.time()
-normal()
-print(&quot;Normal total time:&quot;, time.time()-t1)</p>
-<h1 id="using-aiohttp-from-saync">using aiohttp from saync</h1>
-<p>import aiohttp</p>
-<p>async def job(session):
-response = await session.get(URL)
-return str(response.url)</p>
-<p>async def main(loop):
-async with aiohttp.ClientSession() as session:
-tasks = [loop.create<em>task(job(session)) for </em> in range(2)]
-finished, unfinished = await asyncio.wait(tasks)
-all_results = [r.result() for r in finished] # get return from job
-print(all_results)</p>
-<p>t1 = time.time()
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main(loop))</p>
-<h1 id="loopclose--ipython-notebook-gives-error-if-close-loop">loop.close() # Ipython notebook gives error if close loop</h1>
-<p>print(&quot;Async total time:&quot;, time.time() - t1)
-Selenium generate user behaviour into code and run in python code
-1 pip install selenium
-2 driver for brewer copy heckodriver to bin(chmod +m)</p>
-<p>For firefox katalonrecorder is easier to add as addons.</p>
-<p>Scrapy library
-advanced automatically tools for scraping</p>
-<p>pip install scrapy
-import scrapy</p>
-<p>class MofanSpider(scrapy.Spider):
-name = &quot;mofan&quot;
-start_urls = [
-&apos;<a href="https://morvanzhou.github.io/" target="_blank">https://morvanzhou.github.io/</a>&apos;,
-] # unseen = set() # seen = set() # we don&apos;t need these two as scrapy will deal with them automatically</p>
-<pre><code>def parse(self, response):
-    yield {     # return some results
-        &apos;title&apos;: response.css(&apos;h1::text&apos;).extract_first(default=&apos;Missing&apos;).strip().replace(&apos;&quot;&apos;, &quot;&quot;),
-        &apos;url&apos;: response.url,
-    }
-
-    urls = response.css(&apos;a::attr(href)&apos;).re(r&apos;^/.+?/$&apos;)     # find all sub urls
-    for url in urls:
-        yield response.follow(url, callback=self.parse)     # it will filter duplication automatically
-</code></pre><h1 id="lastly-run-this-in-terminal">lastly, run this in terminal</h1>
-<h1 id="scrapy-runspider-5-2-scrapypy--o-resjson">scrapy runspider 5-2-scrapy.py -o res.json</h1>
-</h1>
                                 
                                 </section>
                             
@@ -1773,7 +1187,7 @@ start_urls = [
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-03-25T19:28:00.278Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T19:51:01.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-03-27T05:08:35.141Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-27T05:09:08.618Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

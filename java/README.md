@@ -967,8 +967,9 @@ System.out.println(myVar.nextLine());  //get user input
 
 - Format Specifier
   - `%f` Decimal number.
-  - `%s` String.
+  - `%s` String or Object `toString()`.
   - `%d` Interger.
+  - `%n` new line.
 - Width
   - width.decimal(default 6 decimal place, precision can be used for %s %b %h as well)(decimal point is 1 space)
 - alignment.
