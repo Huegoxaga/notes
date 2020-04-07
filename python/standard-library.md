@@ -269,3 +269,43 @@
 - `shape = canvas.create_image(x, y, anchor='nw', image=file)` add an image
   - the `anchor` value `nw` means northwesteron corner. `x` and `y` is the distance from the anchor.
 - `canvas.move(shape, x, y)` move the move to the right `x` unit, to the bottom `y` unit.
+
+## os
+
+- Allows access with the Underlying Operating System Functionality
+
+### Usage
+
+- `os.getcwd()` print out the current working directory
+- `os.chdir('newPath')` change the working directory
+- `os.listdir()` a list of file and folder in the current working directory.
+  - `os.listdir('path')`list path in certain directory.
+- `os.mkdir()` make one new folder.
+- `os.makedirs()` one folder and its sub-folder at once.
+- `os.rmdir('path')` remove a foler
+- `os.removedirs('path')` remove folders recursively.
+- `os.rename('oldNamePath','newNamePath')` rename file.
+- `os.stat('filePath')` return file info.
+- `os.walk('path')` return three info about all subdirectory for a path.
+  ```py
+  for root, dirs, files in os.walk('path'):
+    print(root, dirs, files)
+  ```
+- `os.environ` return all environment variables.
+  - `os.environ.get('ValueName')` get certain environment value.
+- `os.path.join('folderPath','file')` return a path as `folderPath/file`
+- `os.path.basename('path')` return file name of the path.
+- `os.path.dirname('path')` return directory name of the path.
+- `os.path.split('path')` return path name and file name separately.
+- `os.path.exist('path')` return true if file exists.
+- `os.path.isdir('path')` return true if it is a directory.
+- `os.path.isfile('path')` return true if it is a file.
+- `os.path.splitext('path')` return a file path and an extension of the file separately.
+
+## datetime
+
+- `from datetime import datetime`
+
+### Usage
+
+- `datetime.fromtimestamp(timestamp)` convert timestamp to value to datetime string.

@@ -387,7 +387,7 @@ let myPromise = new Promise((resolve, reject) => {
 //Pass data to the promise, get result from resolve in then, get result from reject in catch.
 //The .then will only be called if the resolve function is called. .catch is for reject().
 myPromise
-  .then(data => {
+  .then((data) => {
     console.log("Resolved: " + data);
   })
   .catch(() => {
@@ -401,12 +401,12 @@ myPromise
 
 ```js
 myPromise
-  .then(data => {
+  .then((data) => {
     console.log("Received: " + data);
     let moreData = "Another payload";
     return moreData;
   })
-  .then(data => {
+  .then((data) => {
     console.log(data);
   })
   .catch(() => {
@@ -420,7 +420,7 @@ Promise can be created in a function and return as the result of the function, t
 
 ```js
 function promiseFunction() {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(data);
     }, 500);
@@ -484,7 +484,7 @@ async function functionName() {
   const [a, b, c] = await Promise.all([
     promiseFunctionOne(),
     promiseFunctionTwo(),
-    promiseFunctionThree()
+    promiseFunctionThree(),
   ]);
 
   console.log(`${a} ${b} ${c}`);
@@ -562,7 +562,7 @@ var person = {
   name: "John Dow",
   age: 31,
   favColor: "green",
-  height: 186
+  height: 186,
 };
 ```
 
@@ -573,9 +573,9 @@ let person = {
   name: "Sam Scott",
   id: 1021,
   balance: 123.99,
-  addItem: function(price) {
+  addItem: function (price) {
     this.balance = this.balance + price;
-  }
+  },
 };
 ```
 
@@ -584,7 +584,7 @@ let person = {
 ```js
 let circle = {};
 circle.radius = 5.3;
-circle.getArea = function() {
+circle.getArea = function () {
   return this.radius * this.radius * Math.PI;
 };
 ```
@@ -596,7 +596,7 @@ let height = 5;
 let health = 100;
 let athlete = {
   height,
-  health
+  health,
 };
 ```
 
@@ -608,7 +608,7 @@ let time = {
   month: "Feb",
   nextWeek() {
     this.day += 7;
-  }
+  },
 };
 time.nextWeek();
 console.log(time.day); // Output: 17
@@ -631,7 +631,7 @@ It is a good idea to capitalize the first letter of the constructor name to dist
 function Person(name, age) {
   this.name = name;
   this.age = age;
-  this.changeName = function(variableName) {
+  this.changeName = function (variableName) {
     this.variableName = variableName;
   };
 }
@@ -703,7 +703,11 @@ array.forEach(function(i) {
 });
 array.filter(i => i.id !== 1); //filter an array item that has id not equal to 1.
 [1, 2, 3].map(x => 2 * x); //return an array of element base on an array of data.
-array.splice(2, 3); // delete 3 items starting at index 2.
+array.splice(2, 3); // delete 3 items starting at index 2.(have to call it independently and get the result after.)
+array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+//reduce iterate over each element of the function and return a value that will be used by the next iteration.
+let arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length //get avg
+Math.max(...array);
 ```
 
 #### Associative Array
@@ -870,7 +874,7 @@ Math.tan
 - If more than one node is found. Elements will be put in an nodeList
 - NodeList is not an Array, it is possible to iterate over it with forEach().
   ```js
-  nodeListName.forEach(function(nodeName) {
+  nodeListName.forEach(function (nodeName) {
     //do something for each node inside nodeList
   });
   ```
@@ -929,13 +933,13 @@ After the node is found, following method can be used.
 - Event handlers can be assigned to elements.
   ```js
   var x = document.getElementById("demo");
-  x.onclick = function() {
+  x.onclick = function () {
     document.body.innerHTML = Date();
   };
   ```
 - `window.onload` event can be used to run code after the whole page is loaded.
   ```js
-  window.onload = function() {
+  window.onload = function () {
     //some code
   };
   ```
@@ -1002,6 +1006,7 @@ After the node is found, following method can be used.
 - Ajax stands for Asynchronous JavaScript and XML, it is handled asynchronously, all other code runs normally, while Ajax is waiting or processing HTTP Responses.
 - In Chrome, the Network tab of the Developer Tools shows the HTTP Request and Response details.
 - XMLHttpRequest and fetch APIs are used to initiate HTTP Requests. Fetch is recommended.
+  - [Click here](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) for detailed docs.
 - An external library polypill can be added to provide fetch APIs supports.(unnecessary in the future)
 - To send and process HTTP request, `fetch(URL, {credentials:'include'}).then(response=>response.text()).then(success);`
 
@@ -1019,9 +1024,9 @@ fetch("target.php", {
   method: "POST",
   credentials: "include",
   headers: { Content_Type: "application/x-www-form-urlencoded" },
-  body: param
+  body: param,
 })
-  .then(response => response.text())
+  .then((response) => response.text())
   .then(success);
 ```
 
@@ -1033,7 +1038,7 @@ fetch("target.php", {
 let options = {};
 options.credentials = "include";
 fetch(URL, options)
-  .then(response => response.text())
+  .then((response) => response.text())
   .then(success);
 ```
 
@@ -1073,7 +1078,7 @@ var jsObj = eval("(" + JSONString + ")");
 #### getCurrentPosition Method
 
 ```javascript
-navigator.geolocation.getCurrentPosition(function(position) {
+navigator.geolocation.getCurrentPosition(function (position) {
   //callback returns position object
   if (navigator.geolocation) {
     //check if there is a geolocation object

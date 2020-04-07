@@ -251,3 +251,7 @@ Text can be hidden in <!- -Text- -> or <Text>
 - add the generated webpages files in the GitHub Repo
 - in Settings, find GitHub Pages Section and Set the folder location for hosting.
 - The Theme if for `.md` pages.
+
+## Escape Special Symbols
+
+Use a keyword `raw` and `endraw` surrounded by `{`(outter) and `%`(inner) to escape special symbols that causes build error

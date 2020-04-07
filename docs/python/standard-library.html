@@ -733,9 +733,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../networking/">
+        <li class="chapter " data-level="1.21" data-path="../networking/README.md">
             
-                <a href="../networking/">
+                <span>
             
                     
                     Networking
@@ -1144,6 +1144,49 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 </li>
 <li><code>canvas.move(shape, x, y)</code> move the move to the right <code>x</code> unit, to the bottom <code>y</code> unit.</li>
 </ul>
+<h2 id="os">os</h2>
+<ul>
+<li>Allows access with the Underlying Operating System Functionality</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<ul>
+<li><code>os.getcwd()</code> print out the current working directory</li>
+<li><code>os.chdir(&apos;newPath&apos;)</code> change the working directory</li>
+<li><code>os.listdir()</code> a list of file and folder in the current working directory.<ul>
+<li><code>os.listdir(&apos;path&apos;)</code>list path in certain directory.</li>
+</ul>
+</li>
+<li><code>os.mkdir()</code> make one new folder.</li>
+<li><code>os.makedirs()</code> one folder and its sub-folder at once.</li>
+<li><code>os.rmdir(&apos;path&apos;)</code> remove a foler</li>
+<li><code>os.removedirs(&apos;path&apos;)</code> remove folders recursively.</li>
+<li><code>os.rename(&apos;oldNamePath&apos;,&apos;newNamePath&apos;)</code> rename file.</li>
+<li><code>os.stat(&apos;filePath&apos;)</code> return file info.</li>
+<li><code>os.walk(&apos;path&apos;)</code> return three info about all subdirectory for a path.<pre><code class="lang-py"><span class="hljs-keyword">for</span> root, dirs, files <span class="hljs-keyword">in</span> os.walk(<span class="hljs-string">&apos;path&apos;</span>):
+  print(root, dirs, files)
+</code></pre>
+</li>
+<li><code>os.environ</code> return all environment variables.<ul>
+<li><code>os.environ.get(&apos;ValueName&apos;)</code> get certain environment value.</li>
+</ul>
+</li>
+<li><code>os.path.join(&apos;folderPath&apos;,&apos;file&apos;)</code> return a path as <code>folderPath/file</code></li>
+<li><code>os.path.basename(&apos;path&apos;)</code> return file name of the path.</li>
+<li><code>os.path.dirname(&apos;path&apos;)</code> return directory name of the path.</li>
+<li><code>os.path.split(&apos;path&apos;)</code> return path name and file name separately.</li>
+<li><code>os.path.exist(&apos;path&apos;)</code> return true if file exists.</li>
+<li><code>os.path.isdir(&apos;path&apos;)</code> return true if it is a directory.</li>
+<li><code>os.path.isfile(&apos;path&apos;)</code> return true if it is a file.</li>
+<li><code>os.path.splitext(&apos;path&apos;)</code> return a file path and an extension of the file separately.</li>
+</ul>
+<h2 id="datetime">datetime</h2>
+<ul>
+<li><code>from datetime import datetime</code></li>
+</ul>
+<h3 id="usage">Usage</h3>
+<ul>
+<li><code>datetime.fromtimestamp(timestamp)</code> convert timestamp to value to datetime string.</li>
+</ul>
 
                                 
                                 </section>
@@ -1187,7 +1230,7 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-03-27T05:08:35.141Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-27T05:09:08.618Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-04-02T16:42:35.749Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-07T16:11:26.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

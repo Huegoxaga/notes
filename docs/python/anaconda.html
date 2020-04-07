@@ -733,9 +733,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../networking/">
+        <li class="chapter " data-level="1.21" data-path="../networking/README.md">
             
-                <a href="../networking/">
+                <span>
             
                     
                     Networking
@@ -848,6 +848,67 @@
 <li><a href="https://www.anaconda.com/distribution/" target="_blank">Click</a> to download Anaconda.</li>
 <li>Follow the instructions to install.</li>
 <li>Once complete, the following libraries, dependencies, and environments are ready to use.</li>
+</ul>
+<h2 id="conda">Conda</h2>
+<ul>
+<li>It is the package manager that aimed to replace <code>pip</code>.</li>
+<li>It is a virtual environment tool that can replace <code>virtualenv</code>.</li>
+<li><a href="https://docs.conda.io/projects/conda/en/latest/commands.html" target="_blank">Click here</a> for complete command reference.</li>
+<li>Environments separate projects to run with certain packages and python version installed in this environment.<ul>
+<li>The <code>base</code> environment is the default environment that has up-to-date python and all anaconda packages installed inside.</li>
+</ul>
+</li>
+<li>Packages and Environments can be controlled using a GUI tool called Anaconda Navigator.</li>
+<li>If conda cannot find a certain package use <code>pip</code> to install.<ul>
+<li>It is better to create a conda environment to isolate any changes pip makes</li>
+<li>the packages installed by <code>pip</code> won&apos;t be managed by the Conda package manager, they will still be managed by the Anaconda environment<ul>
+<li>Any packaged installed by <code>pip</code> can be found using <code>conda list</code>. However, conda won&apos;t track all changes made by <code>pip</code>.</li>
+<li>conda env will export or create environments based on a file with conda and pip requirements.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Remember to restart all terminals when installation or changes are made.</li>
+</ul>
+<h3 id="commands">Commands</h3>
+<ul>
+<li><code>anaconda-navigator</code> start an instance of the Anaconda Navigator</li>
+<li><code>conda list</code> list installed packages and versions installed in active environment</li>
+<li><code>conda list --revisions</code> List the history of each change to the current environment</li>
+<li><code>conda info</code> Verify conda is installed, check version number</li>
+<li><code>conda update conda</code> Update conda to the current version</li>
+<li><code>conda install &lt;packagename&gt;</code> Install a package included in Anaconda<ul>
+<li><code>conda install &lt;packagename&gt; --file filename.txt</code> install packages base on text file info.</li>
+</ul>
+</li>
+<li><code>conda update &lt;packagename&gt;</code> Update any installed program</li>
+<li><code>conda create --name py35 python=3.5</code>Create a new environment named py35, install Python 3.5<ul>
+<li><code>conda create --name bio-env &lt;packagenametoinstall&gt;</code> all in one command for creating env and instal packages.</li>
+<li>Versions can be specified as the following ways.</li>
+<li><code>numpy=1.11</code> all its subversion are included like <code>1.11.0</code> and <code>1.11.1</code></li>
+<li><code>numpy==1.11</code> exact match <code>1.11.0</code></li>
+<li><code>&quot;numpy&gt;=1.11&quot;</code></li>
+<li><code>&quot;numpy=1.11.1|1.11.3&quot;</code></li>
+<li><code>&quot;numpy&gt;=1.8,&lt;2&quot;</code></li>
+</ul>
+</li>
+<li><code>source activate py35</code> Activate the new environment to use it.</li>
+<li><code>conda env list</code> list all environment, activated one is shown with <code>*</code></li>
+<li><code>conda create --clone &lt;envname&gt; --name &lt;newname&gt;</code>Make exact copy of an environment</li>
+<li><code>conda install --revision 2</code> Restore environment to a previous revision</li>
+<li><code>conda list --explicit &gt; bio-env.txt</code> Save environment to a text file</li>
+<li><code>conda env remove --name bio-env</code> Delete an environment and everything in it</li>
+<li><code>conda deactivate</code> Deactivate the current environment</li>
+<li><code>conda env create --file bio-env.txt</code> Create environment from a text file</li>
+<li><code>conda search &lt;keyword&gt;</code> search packages</li>
+<li><code>conda install &lt;packagename&gt;</code> Install a new package (Jupyter Notebook) in the active environment</li>
+<li><code>conda install --name &lt;env-name&gt; &lt;packagename&gt;</code> Install a new package in a different environment.</li>
+<li><code>conda update &lt;packagename&gt;</code> Update a package in the current environment</li>
+<li><code>conda remove --name bio-env toolz boltons</code> Remove one or more packages (toolz, boltons) from a specific environment (bio-env)</li>
+<li><code>which -a python</code> Show the locations of all versions of Python that are currently in the path<ul>
+<li>The first version of Python in the list will be executed.</li>
+</ul>
+</li>
 </ul>
 <h2 id="jupyter-notebook">Jupyter NoteBook</h2>
 <h3 id="introduction">Introduction</h3>
@@ -1265,7 +1326,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Anaconda","level":"1.2.1","depth":2,"next":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-03-27T04:58:41.878Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-27T05:09:08.618Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Anaconda","level":"1.2.1","depth":2,"next":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-03-31T19:37:39.280Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-07T16:11:26.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

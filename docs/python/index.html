@@ -733,9 +733,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../networking/">
+        <li class="chapter " data-level="1.21" data-path="../networking/README.md">
             
-                <a href="../networking/">
+                <span>
             
                     
                     Networking
@@ -1171,6 +1171,7 @@ list.reverse()  <span class="hljs-comment">#It will reverse the order, print(lis
 list.insert(index, element)<span class="hljs-comment">#It will insert an element at certain index location.</span>
 list.count(object)<span class="hljs-comment">#It returns how many times an item occurs in the list</span>
 list.index(object)<span class="hljs-comment">#It returns the first index of the item, ValueError if not find.</span>
+list.pop(index)<span class="hljs-comment">#It returns the element according the index and remove the element from the existing list.</span>
 </code></pre>
 <h4 id="list-operators">List Operators</h4>
 <ul>
@@ -1215,6 +1216,7 @@ keyName <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</spa
 </code></pre>
 <h4 id="methods">Methods</h4>
 <pre><code class="lang-py">dictionary.get(key, notification)  <span class="hljs-comment">#It returns the key&#x2019;s value and None if key is not found. or display specific notification.</span>
+dictionay.pop(key,default)  <span class="hljs-comment"># It returns and remove the value that match the key. Return the default value if not found.</span>
 </code></pre>
 <h2 id="tuples">Tuples</h2>
 <ul>
@@ -1301,12 +1303,20 @@ range(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>,x) 
 <li><p>Some of them are preinstalled in the standard Library</p>
 </li>
 <li><p>Third-party Python modules.
-They can be stored on the Python Package Index (PyPI).
-Command line: <code>pip install library_name</code></p>
+They can be stored on the Python Package Index (PyPI). Here are some useful commands.</p>
+<ul>
+<li><code>pip install &lt;packagename&gt;</code> install a package</li>
+<li><code>pip install --upgrade &lt;packagename&gt;</code> update a package</li>
+<li><code>pip install -r requirements.txt</code> install packages according the <code>requirements.txt</code></li>
+<li><code>pip uninstall &lt;packagename&gt;</code> uninstall a package</li>
+<li><code>pip search &lt;keyword&gt;</code> search for a package</li>
+<li><code>pip list</code> list packages</li>
+<li><code>pip freeze</code> output package info file</li>
+<li><code>pip install -U pip</code> update pip</li>
+</ul>
 </li>
-<li><p>Your own module.
-Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file.</p>
-</li>
+<li>Your own module.
+Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file.</li>
 </ol>
 <h3 id="itertools-modules">itertools modules</h3>
 <h4 id="import-module">Import module</h4>
@@ -1332,7 +1342,7 @@ list(accumulate(range(<span class="hljs-number">8</span>)))
 <li>It is used to create anonymous function with has no variable name.</li>
 <li>It can be assigned to a variable to become a normal function.</li>
 </ul>
-<pre><code class="lang-py">print(lambda  x: 2*x*x(10))  -&gt;  200
+<pre><code class="lang-py">print(<span class="hljs-keyword">lambda</span>  x: <span class="hljs-number">2</span>*x*x(<span class="hljs-number">10</span>))  <span class="hljs-comment"># Output: 200</span>
 </code></pre>
 <h2 id="user-defined-functions">User Defined Functions</h2>
 <pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">functionName</span><span class="hljs-params">(variable)</span>:</span>
@@ -1347,6 +1357,8 @@ functionName(variable)
 <li>functions can be assigned to a variable names.</li>
 <li>The variable can be called.</li>
 <li>function can be argument of other function.</li>
+<li>Functions can have variables name starts with <code>*</code>, it enable the function to take a list of itratable variable with any length, generally it is called <code>*args</code>.</li>
+<li>Functions can have variables name starts with <code>**</code>, it enable the function to take a dictionary of itratable keys and values with any length, generally it is called <code>**kwargs</code>.</li>
 </ul>
 <h4 id="return-statement">return statement</h4>
 <p>Once a value is returned from a function, it immediately stops being executed.</p>
@@ -1525,7 +1537,8 @@ spam &gt; eggs
 <li><code>__iter__</code> for iteration over objects (e.g., in for loops)</li>
 <li><code>__contains__</code> for in</li>
 <li><code>__call__</code> for calling objects as functions</li>
-<li><code>__int__</code> or <code>__str__</code> for converting objects to built-in types.</li>
+<li><code>__int__</code> for converting objects to integer value.</li>
+<li><code>__str__</code> convert object to string when print</li>
 </ul>
 <pre><code class="lang-py"><span class="hljs-keyword">import</span> random
 
@@ -1760,7 +1773,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-03-25T18:11:01.963Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-27T05:09:08.618Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-04-07T13:36:07.131Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-07T16:11:26.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

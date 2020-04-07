@@ -69,22 +69,25 @@ Expo has many limitations, in order to transfer the project to react native cli 
 5. Create new project run: `npx react-native init projectName`.
 6. To start the created project or existing project, cd to iOS folder run: `pod install`
 7. cd to the project folder
-
-- run: `npx react-native run-ios` (to start iOS Emulator)
-- or, `react-native run-ios --simulator="iPhone 5s"` to run on certain device.
-- run: `xcrun simctl list devices` to check available devices.
-
+   - run: `npx react-native run-ios` (to start iOS Emulator)
+   - or, `react-native run-ios --simulator="iPhone 5s"` to run on certain device.
+   - run: `xcrun simctl list devices` to check available devices.
 8. To run the project on a real device, run the `.xcodeproj` file or `.xcworkspace` using Xcode to register and run the project using real devices.
 
-### Running GitHub Projects Repo for the First Time
+### Running iOS Projects Repo for the First Time
 
 1. run `npm install`
-
-- For iOS:
-
 2. run `cd ios && pod install`
 3. Open the project in Xcode, Sign in the Developer Account.
 4. Run in Xcode or run `npx react-native run-ios`.
+
+### Publish iOS Project
+
+1. re-enable ATS prior to building your app for production by removing the localhost entry from the NSExceptionDomains dictionary and setting NSAllowsArbitraryLoads to false in your Info.plist file in the ios/ folder.
+2. Configure your app to be built using the Release scheme, go to Product → Scheme → Edit Scheme. Select the Run tab in the sidebar, then set the Build Configuration dropdown to Release.
+   - It will also bundle the JavaScript locally, so you can put the app on a device and test whilst not connected to the computer.
+3. You can now build your app for release by tapping ⌘B or selecting Product → Build from the menu bar.
+4. Distribute the app to beta testers and submit the app to the App Store.
 
 ## Using react native cli on Mac for Android
 
@@ -93,7 +96,7 @@ Expo has many limitations, in order to transfer the project to react native cli 
 3. install android sdk
 4. run additional environment setup, add following path:
 
-```
+```bash
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -140,84 +143,82 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 ## Core Component
 
-See a full list of core component at [here](https://facebook.github.io/react-native/docs/components-and-apis.html)
+- See a full list of core component at [here](https://facebook.github.io/react-native/docs/components-and-apis.html)
 
 ### View
 
-container for component in the screen.
-use flex box to organize children components.
+- container for component in the screen.
+- use flex box to organize children components.
 
 ### ScrollView
 
-a view component that is scrollable.
+- a view component that is scrollable.
 
 ### Touchable
 
-make components inside the component touchable.
+- make components inside the component touchable.
 
 ### touchableOpacity
 
-make components touch and respond to the user an opacity effect when touched.
+- make components touch and respond to the user an opacity effect when touched.
 
 ### TouchableHighlight
 
-touchable and change background color when touched.
+- touchable and change background color when touched.
 
 #### properties
 
-`activeOpacity = {0.5}` set the opacity level for the effect.
+- `activeOpacity = {0.5}` set the opacity level for the effect.
 
 ### FlatList
 
-It is useful for long list
+- It is useful for a long list
 
 #### properties:
 
-`data` an array of object for the list, the object must have a key or id property.
-`renderItem` a function a process the data and return components for each element of the array object.
-`keyExtractor` a function a take object element and index and return the actually object property as key.
+- `data` an array of object for the list, the object must have a key or id property.
+- `renderItem` a function a process the data and return components for each element of the array object.
+- `keyExtractor` a function a take object element and index and return the actually object property as key.
 
 ### SafeAreaView
 
-view inside safe area.
+- view inside safe area.
 
 ### Text
 
-contain text string.
+- contain text string.
 
 ### Image
 
-contain image
-
-Property
-`source={ {uri:"https://link.com"} }/>`
+- contain image
+- Property `source={ {uri:"https://link.com"} }/>`
 
 ### Button
 
-a button
+- a button
 
 #### properties:
 
-title: the title of the button.
+- title: the title of the button.
 
 ### TextInput
 
-allows user input text.
+- allows user input text.
 
 #### properties:
 
-placeholder
-borderColor
-borderWidth
+- placeholder
+- borderColor
+- borderWidth
 
 ### Modal
 
-wrap component, in a movable component.
+- wrap component, in a movable component.
 
 #### properties
 
-visible true or false
-animationType
+- visible true or false
+- animationType
 
 ## Styling
 
@@ -225,7 +226,7 @@ animationType
 
 attach the style sheet as an view property.
 
-```
+```js
 <View style={styleName: value}>
 ```
 

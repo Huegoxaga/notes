@@ -12,6 +12,55 @@
 - Follow the instructions to install.
 - Once complete, the following libraries, dependencies, and environments are ready to use.
 
+## Conda
+
+- It is the package manager that aimed to replace `pip`.
+- It is a virtual environment tool that can replace `virtualenv`.
+- [Click here](https://docs.conda.io/projects/conda/en/latest/commands.html) for complete command reference.
+- Environments separate projects to run with certain packages and python version installed in this environment.
+  - The `base` environment is the default environment that has up-to-date python and all anaconda packages installed inside.
+- Packages and Environments can be controlled using a GUI tool called Anaconda Navigator.
+- If conda cannot find a certain package use `pip` to install.
+  - It is better to create a conda environment to isolate any changes pip makes
+  - the packages installed by `pip` won't be managed by the Conda package manager, they will still be managed by the Anaconda environment
+    - Any packaged installed by `pip` can be found using `conda list`. However, conda won't track all changes made by `pip`.
+    - conda env will export or create environments based on a file with conda and pip requirements.
+- Remember to restart all terminals when installation or changes are made.
+
+### Commands
+
+- `anaconda-navigator` start an instance of the Anaconda Navigator
+- `conda list` list installed packages and versions installed in active environment
+- `conda list --revisions` List the history of each change to the current environment
+- `conda info` Verify conda is installed, check version number
+- `conda update conda` Update conda to the current version
+- `conda install <packagename>` Install a package included in Anaconda
+  - `conda install <packagename> --file filename.txt` install packages base on text file info.
+- `conda update <packagename>` Update any installed program
+- `conda create --name py35 python=3.5`Create a new environment named py35, install Python 3.5
+  - `conda create --name bio-env <packagenametoinstall>` all in one command for creating env and instal packages.
+  - Versions can be specified as the following ways.
+  - `numpy=1.11` all its subversion are included like `1.11.0` and `1.11.1`
+  - `numpy==1.11` exact match `1.11.0`
+  - `"numpy>=1.11"`
+  - `"numpy=1.11.1|1.11.3"`
+  - `"numpy>=1.8,<2"`
+- `source activate py35` Activate the new environment to use it.
+- `conda env list` list all environment, activated one is shown with `*`
+- `conda create --clone <envname> --name <newname>`Make exact copy of an environment
+- `conda install --revision 2` Restore environment to a previous revision
+- `conda list --explicit > bio-env.txt` Save environment to a text file
+- `conda env remove --name bio-env` Delete an environment and everything in it
+- `conda deactivate` Deactivate the current environment
+- `conda env create --file bio-env.txt` Create environment from a text file
+- `conda search <keyword>` search packages
+- `conda install <packagename>` Install a new package (Jupyter Notebook) in the active environment
+- `conda install --name <env-name> <packagename>` Install a new package in a different environment.
+- `conda update <packagename>` Update a package in the current environment
+- `conda remove --name bio-env toolz boltons` Remove one or more packages (toolz, boltons) from a specific environment (bio-env)
+- `which -a python` Show the locations of all versions of Python that are currently in the path
+  - The first version of Python in the list will be executed.
+
 ## Jupyter NoteBook
 
 ### Introduction

@@ -382,6 +382,7 @@ list.reverse()  #It will reverse the order, print(list.sort()) will not work
 list.insert(index, element)#It will insert an element at certain index location.
 list.count(object)#It returns how many times an item occurs in the list
 list.index(object)#It returns the first index of the item, ValueError if not find.
+list.pop(index)#It returns the element according the index and remove the element from the existing list.
 ```
 
 #### List Operators
@@ -440,6 +441,7 @@ keyName not in dictionaryName
 
 ```py
 dictionary.get(key, notification)  #It returns the key’s value and None if key is not found. or display specific notification.
+dictionay.pop(key,default)  # It returns and remove the value that match the key. Return the default value if not found.
 ```
 
 ## Tuples
@@ -547,9 +549,15 @@ from math import sqrt as square_root
 1. Some of them are preinstalled in the standard Library
 
 2. Third-party Python modules.
-   They can be stored on the Python Package Index (PyPI).
-   Command line: `pip install library_name`
-
+   They can be stored on the Python Package Index (PyPI). Here are some useful commands.
+   - `pip install <packagename>` install a package
+   - `pip install --upgrade <packagename>` update a package
+   - `pip install -r requirements.txt` install packages according the `requirements.txt`
+   - `pip uninstall <packagename>` uninstall a package
+   - `pip search <keyword>` search for a package
+   - `pip list` list packages
+   - `pip freeze` output package info file
+   - `pip install -U pip` update pip
 3. Your own module.
    Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file.
 
@@ -588,7 +596,7 @@ list(accumulate(range(8)))
 - It can be assigned to a variable to become a normal function.
 
 ```py
-print(lambda  x: 2*x*x(10))  ->  200
+print(lambda  x: 2*x*x(10))  # Output: 200
 ```
 
 ## User Defined Functions
@@ -606,6 +614,8 @@ functionName(variable)
 - functions can be assigned to a variable names.
 - The variable can be called.
 - function can be argument of other function.
+- Functions can have variables name starts with `*`, it enable the function to take a list of itratable variable with any length, generally it is called `*args`.
+- Functions can have variables name starts with `**`, it enable the function to take a dictionary of itratable keys and values with any length, generally it is called `**kwargs`.
 
 #### return statement
 
@@ -811,7 +821,8 @@ spam > eggs
 - `__iter__` for iteration over objects (e.g., in for loops)
 - `__contains__` for in
 - `__call__` for calling objects as functions
-- `__int__` or `__str__` for converting objects to built-in types.
+- `__int__` for converting objects to integer value.
+- `__str__` convert object to string when print
 
 ```py
 import random

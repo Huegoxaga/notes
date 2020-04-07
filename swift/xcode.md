@@ -1202,21 +1202,24 @@ enable connect via network for the device
 make sure the device and the Mac are connected to the same network
 when a globe icon is shown in device list, wi-fi deployment is now available
 
-Testflight
-enroll in the iOS Developer Program
-go on Apple Store Connect website
-select my App and click + to add a new app
-provide required information(name <= 30 char, SKU can be anything, like "appName-slogan")
-provide additional information including subtitle, privacy policy page, availability & price. (The information can be provided in different language.)
-provide submission information like screenshots, promotion text, descriptions, keywords, website URL etc.
-Update version and build number in Xcode, version number is like major version + minor version + reversion(separated by "."), build number is the number of build for the software or major version + minor version in alphabet + number of builds for this minor version.(Eg. 6B358)
-Edit scheme -> Archive -> Set Build Config to Release
-Select device as generic device or your personal device. In Xcode menu, Product -> Archive
-In organizer, click Validate App
-In App Store Distribution Option, click Distribute App, choose automatically manage signing, click Validate.
-In organizer, click Distribute App, select iOS App Store, click Upload.
-In Apple Connect Website, select Testflight(It will be shown few minutes after uploading).
-In Test Information, fill in all fields. Internal tester can be added directly, External tester can be added after app review.
+## Testflight
 
-Submission
-In Apple Connect - My App, click prepare for submission. In build section, click + to add your build. Fill in all required info. then, click submit for review.
+1. Enroll in the iOS Developer Program
+2. Go on Apple Store Connect website
+3. Select my App and click `+` to add a new app
+4. Provide required information(name <= 30 char, SKU can be anything, like "appName-slogan"), add a unique bundle ID.
+5. Provide additional information including subtitle, privacy policy page, availability & price. (The information can be provided in different language.)
+6. provide submission information like screenshots, promotion text, descriptions, keywords, website URL etc.
+7. Update version and build number in Xcode, version number is like major version + minor version + reversion(separated by "."), build number is the number of build for the software or major version + minor version in alphabet + number of builds for this minor version.(Eg. 6B358)
+8. Edit scheme -> Run -> Set Build Config to Release
+9. Select the device as generic device or your personal device. In Xcode menu, `Product -> Archive`
+10. Update the Bundle ID, set it the same as the bundle entered in Apple Connect console.
+11. In `Window -> Organizer`, click Validate App.
+12. After click Validation, click distribute, select App Store Distribution -> Upload, click choose automatically manage signing.
+13. In the Organizer, find the archive click Distribute App, select iOS App Store, click Upload.
+14. In Apple Connect Website, select Testflight(It will be shown few minutes after uploading).
+15. In Test Information, fill in all fields. Internal tester can be added directly, External tester can be added after app review.
+
+## Submission
+
+- In Apple Connect - My App, click prepare for submission. In the build section, click `+` to add your build. Fill in all required info. then, click submit for review.

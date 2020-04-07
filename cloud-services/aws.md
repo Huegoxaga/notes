@@ -2,37 +2,66 @@
 
 Amazon Web Services
 
-## IAM
-
-Identity and Access Management - used to create user and group with specific permissions.
-
-- Follow the steps to create the users and group.
-- for each user the keys can be found and created in the `Security credentials tab`
-- policy can be either predefined policies(managed policy) or created in the `Create Policy` page by using a visual editor or importing JSON policy file.
-
 ## AWS CLI
 
 AWS CLI provides full controls of AWS using command lines.
 
 ### Setup
 
-1. Installation, [click here](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) to see the command needed for installation.
+- Installation, [click here](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) to see the command needed for installation.
+  - to install on macOS for all user, run `curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg" sudo installer -pkg AWSCLIV2.pkg -target /`
+- run `aws configure` and enter AWS credentials and default settings for the default user profile.
+  - run `aws configure --profile username` to set up non-default user.
+  - When execute commands using non-default user credentials, appending `--profile produser` to all commands.
+  - profile files can be found at `~/.aws/credentials` and `~/.aws/config`.
+  - json is the default output format.
+- Environment variables can be set up to override user profiles setting, it is useful for one time execution in scripts.
+  ```bash
+  export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+  export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  export AWS_DEFAULT_REGION=us-west-2
+  ```
+- Environment variables can also be stored in the `.bash_profile`.
 
-- to install on macOS for all user, run `curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg" sudo installer -pkg AWSCLIV2.pkg -target /`
+### General Usage
 
-2. run `aws configure` and enter AWS credentials and default settings for the default user profile.
+- help
+  - `aws help`
+  - `aws <servicename> help`
+- [Click here](https://docs.aws.amazon.com/cli/latest/index.html#) for complete reference.
 
-### IAM
+## IAM
 
 Identity and Access Management - used to create user and group with specific permissions.
 
 - Follow the steps to create the users and group.
-- for each user the keys can be found and created in the `Security credentials tab`
-- policy can be either predefined policies(managed policy) or created in the `Create Policy` page by using a visual editor or importing JSON policy file.
+- For each user the keys can be found and created in the `Security credentials tab`
+- Policy can be either predefined policies(managed policy) or created in the `Create Policy` page by using a visual editor or importing JSON policy file.
+
+## S3
+
+Provide Persistent Storage
+
+### CLI Commands
+
+- `aws s3 mb s3://bucket-name` Create new bucket.
+  - bucket name has to be unique.
+- `aws s3 ls` list all buckets.
+  - `aws s3 ls s3://bucket-name` list certain bucket.
+- `aws s3 rb s3://bucket-name` remove certain bucket.
+  - append `--force` to remove a non-empty bucket.
+- `aws s3 sync <from> <to>` synchronize one folder to another.
+  - It only copies missing or outdated files or objects between the source and target.
+  - can sync from local to s3, from s3 to local, from s3 to s3.
+  - add `--delete` option is the `sync` process will cause a file to be deleted.
+  - `--grant` option is available for granting permissions. Ex, `--grants Permission=Grantee_Type=Grantee_ID [Permission=Grantee_Type=Grantee_ID ...]`
+- `aws s3 cp <from> <to>` copy files. usage is similar with sync.
+- `aws s3 rm s3://my-bucket/path/filename` remove a file.
+  - add `--recursive` to delete a path(folder) inside a bucket.
 
 ## Route 53
 
-It provides a DNS service that translate the domain name into a designated IP address.
+It provides a DNS service that translates the domain name into a designated IP address.
 
 - There is a 50 cents charge per month.
 - DNS Records are added in the hostzones.
@@ -47,6 +76,56 @@ It provide computing service.
 - click connect in the instance menu for connection guide.
 - For Mac/Linux enter the command directly in the terminal.(move file to ~/.ssh and use command chmod 400 to hide the file first)
 - For window using SHH through Git Bash.
+
+## Elastic Beanstalk
+
+It helps deploy app on EC2 and will do capacity provisioning, load balancing, scaling, and application health monitoring automatically.
+
+- It has its own command line tool called `EB CLI`
+
+### EB CLI
+
+#### Installation
+
+- run `brew update && brew install awsebcli` to install EB CLI
+
+#### Setup
+
+- Crendentials set in for AWS CLI can be accessed by EB CLI by using `--profile username`
+- Config file can be set for EB CLI only in file `~/.elasticbeanstalk/config`
+- EB CLI is configured in the project directory.
+- run `eb init` to add project info and credentials for the project.
+  - or `eb init --profile username` add existing user to the project.
+
+#### Usage
+
+- Deploy Django App
+  - In project folder export `requirement.txt`, by running `pip freeze > requirements.txt`
+  - Create a folder `mkdir .ebextensions`
+  - Add the following text in the `.ebextensions/django.config` file
+    ```
+    option_settings:
+    aws:elasticbeanstalk:container:python:
+      WSGIPath: projectname/wsgi.py
+    ```
+  - `eb init -p python-3.6 project-name` Initialize EB CLI repository
+  - `eb create name-env` create new env and add project to it.
+  - `eb status` check details.
+  - add app domain name in the `ALLOWED_HOSTS` in the `settings.py` file.
+  - `eb deploy` to update the app.
+    - Whenever changes are made to the local file, run deploy again to update.
+  - `eb open` open the website.
+  - add the following `db-migrate.config` file in the `.ebextensions` allows auto migration while deploying.
+    ```
+    container_commands:
+    01_migrate:
+      command: "django-admin.py migrate"
+      leader_only: true
+      option_settings:
+    aws:elasticbeanstalk:application:environment:
+      DJANGO_SETTINGS_MODULE: projectname.settings
+    ```
+  - run `eb terminate django-env` to stop the instance.
 
 ## DynamoDB
 

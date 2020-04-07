@@ -733,9 +733,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../networking/">
+        <li class="chapter " data-level="1.21" data-path="../networking/README.md">
             
-                <a href="../networking/">
+                <span>
             
                     
                     Networking
@@ -906,26 +906,30 @@
 <li>install CocoaPods run: <code>sudo gem install cocoapods</code> in project root folder</li>
 <li>Create new project run: <code>npx react-native init projectName</code>.</li>
 <li>To start the created project or existing project, cd to iOS folder run: <code>pod install</code></li>
-<li><p>cd to the project folder</p>
-</li>
-<li><p>run: <code>npx react-native run-ios</code> (to start iOS Emulator)</p>
-</li>
+<li>cd to the project folder<ul>
+<li>run: <code>npx react-native run-ios</code> (to start iOS Emulator)</li>
 <li>or, <code>react-native run-ios --simulator=&quot;iPhone 5s&quot;</code> to run on certain device.</li>
-<li><p>run: <code>xcrun simctl list devices</code> to check available devices.</p>
+<li>run: <code>xcrun simctl list devices</code> to check available devices.</li>
+</ul>
 </li>
-<li><p>To run the project on a real device, run the <code>.xcodeproj</code> file or <code>.xcworkspace</code> using Xcode to register and run the project using real devices.</p>
-</li>
+<li>To run the project on a real device, run the <code>.xcodeproj</code> file or <code>.xcworkspace</code> using Xcode to register and run the project using real devices.</li>
 </ol>
-<h3 id="running-github-projects-repo-for-the-first-time">Running GitHub Projects Repo for the First Time</h3>
+<h3 id="running-ios-projects-repo-for-the-first-time">Running iOS Projects Repo for the First Time</h3>
 <ol>
-<li><p>run <code>npm install</code></p>
-</li>
-<li><p>For iOS:</p>
-</li>
-<li><p>run <code>cd ios &amp;&amp; pod install</code></p>
-</li>
+<li>run <code>npm install</code></li>
+<li>run <code>cd ios &amp;&amp; pod install</code></li>
 <li>Open the project in Xcode, Sign in the Developer Account.</li>
 <li>Run in Xcode or run <code>npx react-native run-ios</code>.</li>
+</ol>
+<h3 id="publish-ios-project">Publish iOS Project</h3>
+<ol>
+<li>re-enable ATS prior to building your app for production by removing the localhost entry from the NSExceptionDomains dictionary and setting NSAllowsArbitraryLoads to false in your Info.plist file in the ios/ folder.</li>
+<li>Configure your app to be built using the Release scheme, go to Product &#x2192; Scheme &#x2192; Edit Scheme. Select the Run tab in the sidebar, then set the Build Configuration dropdown to Release.<ul>
+<li>It will also bundle the JavaScript locally, so you can put the app on a device and test whilst not connected to the computer.</li>
+</ul>
+</li>
+<li>You can now build your app for release by tapping &#x2318;B or selecting Product &#x2192; Build from the menu bar.</li>
+<li>Distribute the app to beta testers and submit the app to the App Store.</li>
 </ol>
 <h2 id="using-react-native-cli-on-mac-for-android">Using react native cli on Mac for Android</h2>
 <ol>
@@ -934,12 +938,13 @@
 <li>install android sdk</li>
 <li>run additional environment setup, add following path:</li>
 </ol>
-<pre><code>export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-</code></pre><ol>
+<pre><code class="lang-bash"><span class="hljs-built_in">export</span> ANDROID_HOME=<span class="hljs-variable">$HOME</span>/Library/Android/sdk
+<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$ANDROID_HOME</span>/emulator
+<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$ANDROID_HOME</span>/tools
+<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$ANDROID_HOME</span>/tools/bin
+<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$ANDROID_HOME</span>/platform-tools
+</code></pre>
+<ol>
 <li>run: <code>npx react-native run-android</code></li>
 </ol>
 <h2 id="files">Files</h2>
@@ -977,54 +982,90 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 </li>
 </ul>
 <h2 id="core-component">Core Component</h2>
-<p>See a full list of core component at <a href="https://facebook.github.io/react-native/docs/components-and-apis.html" target="_blank">here</a></p>
+<ul>
+<li>See a full list of core component at <a href="https://facebook.github.io/react-native/docs/components-and-apis.html" target="_blank">here</a></li>
+</ul>
 <h3 id="view">View</h3>
-<p>container for component in the screen.
-use flex box to organize children components.</p>
+<ul>
+<li>container for component in the screen.</li>
+<li>use flex box to organize children components.</li>
+</ul>
 <h3 id="scrollview">ScrollView</h3>
-<p>a view component that is scrollable.</p>
+<ul>
+<li>a view component that is scrollable.</li>
+</ul>
 <h3 id="touchable">Touchable</h3>
-<p>make components inside the component touchable.</p>
+<ul>
+<li>make components inside the component touchable.</li>
+</ul>
 <h3 id="touchableopacity">touchableOpacity</h3>
-<p>make components touch and respond to the user an opacity effect when touched.</p>
+<ul>
+<li>make components touch and respond to the user an opacity effect when touched.</li>
+</ul>
 <h3 id="touchablehighlight">TouchableHighlight</h3>
-<p>touchable and change background color when touched.</p>
+<ul>
+<li>touchable and change background color when touched.</li>
+</ul>
 <h4 id="properties">properties</h4>
-<p><code>activeOpacity = {0.5}</code> set the opacity level for the effect.</p>
+<ul>
+<li><code>activeOpacity = {0.5}</code> set the opacity level for the effect.</li>
+</ul>
 <h3 id="flatlist">FlatList</h3>
-<p>It is useful for long list</p>
+<ul>
+<li>It is useful for a long list</li>
+</ul>
 <h4 id="properties">properties:</h4>
-<p><code>data</code> an array of object for the list, the object must have a key or id property.
-<code>renderItem</code> a function a process the data and return components for each element of the array object.
-<code>keyExtractor</code> a function a take object element and index and return the actually object property as key.</p>
+<ul>
+<li><code>data</code> an array of object for the list, the object must have a key or id property.</li>
+<li><code>renderItem</code> a function a process the data and return components for each element of the array object.</li>
+<li><code>keyExtractor</code> a function a take object element and index and return the actually object property as key.</li>
+</ul>
 <h3 id="safeareaview">SafeAreaView</h3>
-<p>view inside safe area.</p>
+<ul>
+<li>view inside safe area.</li>
+</ul>
 <h3 id="text">Text</h3>
-<p>contain text string.</p>
+<ul>
+<li>contain text string.</li>
+</ul>
 <h3 id="image">Image</h3>
-<p>contain image</p>
-<p>Property
-<code>source={ {uri:&quot;https://link.com&quot;} }/&gt;</code></p>
+<ul>
+<li>contain image</li>
+<li>Property <code>source={ {uri:&quot;https://link.com&quot;} }/&gt;</code></li>
+</ul>
 <h3 id="button">Button</h3>
-<p>a button</p>
+<ul>
+<li>a button</li>
+</ul>
 <h4 id="properties">properties:</h4>
-<p>title: the title of the button.</p>
+<ul>
+<li>title: the title of the button.</li>
+</ul>
 <h3 id="textinput">TextInput</h3>
-<p>allows user input text.</p>
+<ul>
+<li>allows user input text.</li>
+</ul>
 <h4 id="properties">properties:</h4>
-<p>placeholder
-borderColor
-borderWidth</p>
+<ul>
+<li>placeholder</li>
+<li>borderColor</li>
+<li>borderWidth</li>
+</ul>
 <h3 id="modal">Modal</h3>
-<p>wrap component, in a movable component.</p>
+<ul>
+<li>wrap component, in a movable component.</li>
+</ul>
 <h4 id="properties">properties</h4>
-<p>visible true or false
-animationType</p>
+<ul>
+<li>visible true or false</li>
+<li>animationType</li>
+</ul>
 <h2 id="styling">Styling</h2>
 <h3 id="inline-style">inline style</h3>
 <p>attach the style sheet as an view property.</p>
-<pre><code>&lt;View style={styleName: value}&gt;
-</code></pre><h3 id="stylesheet-object">stylesheet object</h3>
+<pre><code class="lang-js">&lt;View style={styleName: value}&gt;
+</code></pre>
+<h3 id="stylesheet-object">stylesheet object</h3>
 <ol>
 <li>import the StyleSheet</li>
 </ol>
@@ -1233,7 +1274,7 @@ export const playButtonPress = () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React Native","level":"1.4.3","depth":2,"next":{"title":"Node.js","level":"1.4.4","depth":2,"path":"javascript/node-js.md","ref":"javascript/node-js.md","articles":[]},"previous":{"title":"React","level":"1.4.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react-native.md","mtime":"2020-03-02T05:37:27.713Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-27T05:09:08.618Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React Native","level":"1.4.3","depth":2,"next":{"title":"Node.js","level":"1.4.4","depth":2,"path":"javascript/node-js.md","ref":"javascript/node-js.md","articles":[]},"previous":{"title":"React","level":"1.4.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react-native.md","mtime":"2020-03-30T15:36:41.571Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-07T16:11:26.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

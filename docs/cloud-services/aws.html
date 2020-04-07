@@ -733,9 +733,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../networking/">
+        <li class="chapter " data-level="1.21" data-path="../networking/README.md">
             
-                <a href="../networking/">
+                <span>
             
                     
                     Networking
@@ -838,33 +838,75 @@
                                 
                                 <h1 id="aws">AWS</h1>
 <p>Amazon Web Services</p>
+<h2 id="aws-cli">AWS CLI</h2>
+<p>AWS CLI provides full controls of AWS using command lines.</p>
+<h3 id="setup">Setup</h3>
+<ul>
+<li>Installation, <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html" target="_blank">click here</a> to see the command needed for installation.<ul>
+<li>to install on macOS for all user, run <code>curl &quot;https://awscli.amazonaws.com/AWSCLIV2.pkg&quot; -o &quot;AWSCLIV2.pkg&quot; sudo installer -pkg AWSCLIV2.pkg -target /</code></li>
+</ul>
+</li>
+<li>run <code>aws configure</code> and enter AWS credentials and default settings for the default user profile.<ul>
+<li>run <code>aws configure --profile username</code> to set up non-default user.</li>
+<li>When execute commands using non-default user credentials, appending <code>--profile produser</code> to all commands.</li>
+<li>profile files can be found at <code>~/.aws/credentials</code> and <code>~/.aws/config</code>.</li>
+<li>json is the default output format.</li>
+</ul>
+</li>
+<li>Environment variables can be set up to override user profiles setting, it is useful for one time execution in scripts.<pre><code class="lang-bash"><span class="hljs-built_in">export</span> AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+<span class="hljs-built_in">export</span> AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxR<span class="hljs-keyword">fi</span>CYEXAMPLEKEY
+<span class="hljs-built_in">export</span> AWS_DEFAULT_REGION=us-west-2
+</code></pre>
+</li>
+<li>Environment variables can also be stored in the <code>.bash_profile</code>.</li>
+</ul>
+<h3 id="general-usage">General Usage</h3>
+<ul>
+<li>help<ul>
+<li><code>aws help</code></li>
+<li><code>aws &lt;servicename&gt; help</code></li>
+</ul>
+</li>
+<li><a href="https://docs.aws.amazon.com/cli/latest/index.html#" target="_blank">Click here</a> for complete reference.</li>
+</ul>
 <h2 id="iam">IAM</h2>
 <p>Identity and Access Management - used to create user and group with specific permissions.</p>
 <ul>
 <li>Follow the steps to create the users and group.</li>
-<li>for each user the keys can be found and created in the <code>Security credentials tab</code></li>
-<li>policy can be either predefined policies(managed policy) or created in the <code>Create Policy</code> page by using a visual editor or importing JSON policy file.</li>
+<li>For each user the keys can be found and created in the <code>Security credentials tab</code></li>
+<li>Policy can be either predefined policies(managed policy) or created in the <code>Create Policy</code> page by using a visual editor or importing JSON policy file.</li>
 </ul>
-<h2 id="aws-cli">AWS CLI</h2>
-<p>AWS CLI provides full controls of AWS using command lines.</p>
-<h3 id="setup">Setup</h3>
-<ol>
-<li><p>Installation, <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html" target="_blank">click here</a> to see the command needed for installation.</p>
-</li>
-<li><p>to install on macOS for all user, run <code>curl &quot;https://awscli.amazonaws.com/AWSCLIV2.pkg&quot; -o &quot;AWSCLIV2.pkg&quot; sudo installer -pkg AWSCLIV2.pkg -target /</code></p>
-</li>
-<li><p>run <code>aws configure</code> and enter AWS credentials and default settings for the default user profile.</p>
-</li>
-</ol>
-<h3 id="iam">IAM</h3>
-<p>Identity and Access Management - used to create user and group with specific permissions.</p>
+<h2 id="s3">S3</h2>
+<p>Provide Persistent Storage</p>
+<h3 id="cli-commands">CLI Commands</h3>
 <ul>
-<li>Follow the steps to create the users and group.</li>
-<li>for each user the keys can be found and created in the <code>Security credentials tab</code></li>
-<li>policy can be either predefined policies(managed policy) or created in the <code>Create Policy</code> page by using a visual editor or importing JSON policy file.</li>
+<li><code>aws s3 mb s3://bucket-name</code> Create new bucket.<ul>
+<li>bucket name has to be unique.</li>
+</ul>
+</li>
+<li><code>aws s3 ls</code> list all buckets.<ul>
+<li><code>aws s3 ls s3://bucket-name</code> list certain bucket.</li>
+</ul>
+</li>
+<li><code>aws s3 rb s3://bucket-name</code> remove certain bucket.<ul>
+<li>append <code>--force</code> to remove a non-empty bucket.</li>
+</ul>
+</li>
+<li><code>aws s3 sync &lt;from&gt; &lt;to&gt;</code> synchronize one folder to another.<ul>
+<li>It only copies missing or outdated files or objects between the source and target.</li>
+<li>can sync from local to s3, from s3 to local, from s3 to s3.</li>
+<li>add <code>--delete</code> option is the <code>sync</code> process will cause a file to be deleted.</li>
+<li><code>--grant</code> option is available for granting permissions. Ex, <code>--grants Permission=Grantee_Type=Grantee_ID [Permission=Grantee_Type=Grantee_ID ...]</code></li>
+</ul>
+</li>
+<li><code>aws s3 cp &lt;from&gt; &lt;to&gt;</code> copy files. usage is similar with sync.</li>
+<li><code>aws s3 rm s3://my-bucket/path/filename</code> remove a file.<ul>
+<li>add <code>--recursive</code> to delete a path(folder) inside a bucket.</li>
+</ul>
+</li>
 </ul>
 <h2 id="route-53">Route 53</h2>
-<p>It provides a DNS service that translate the domain name into a designated IP address.</p>
+<p>It provides a DNS service that translates the domain name into a designated IP address.</p>
 <ul>
 <li>There is a 50 cents charge per month.</li>
 <li>DNS Records are added in the hostzones.</li>
@@ -878,6 +920,56 @@
 <li>click connect in the instance menu for connection guide.</li>
 <li>For Mac/Linux enter the command directly in the terminal.(move file to ~/.ssh and use command chmod 400 to hide the file first)</li>
 <li>For window using SHH through Git Bash.</li>
+</ul>
+<h2 id="elastic-beanstalk">Elastic Beanstalk</h2>
+<p>It helps deploy app on EC2 and will do capacity provisioning, load balancing, scaling, and application health monitoring automatically.</p>
+<ul>
+<li>It has its own command line tool called <code>EB CLI</code></li>
+</ul>
+<h3 id="eb-cli">EB CLI</h3>
+<h4 id="installation">Installation</h4>
+<ul>
+<li>run <code>brew update &amp;&amp; brew install awsebcli</code> to install EB CLI</li>
+</ul>
+<h4 id="setup">Setup</h4>
+<ul>
+<li>Crendentials set in for AWS CLI can be accessed by EB CLI by using <code>--profile username</code></li>
+<li>Config file can be set for EB CLI only in file <code>~/.elasticbeanstalk/config</code></li>
+<li>EB CLI is configured in the project directory.</li>
+<li>run <code>eb init</code> to add project info and credentials for the project.<ul>
+<li>or <code>eb init --profile username</code> add existing user to the project.</li>
+</ul>
+</li>
+</ul>
+<h4 id="usage">Usage</h4>
+<ul>
+<li>Deploy Django App<ul>
+<li>In project folder export <code>requirement.txt</code>, by running <code>pip freeze &gt; requirements.txt</code></li>
+<li>Create a folder <code>mkdir .ebextensions</code></li>
+<li>Add the following text in the <code>.ebextensions/django.config</code> file<pre><code>option_settings:
+aws:elasticbeanstalk:container:python:
+  WSGIPath: projectname/wsgi.py
+</code></pre></li>
+<li><code>eb init -p python-3.6 project-name</code> Initialize EB CLI repository</li>
+<li><code>eb create name-env</code> create new env and add project to it.</li>
+<li><code>eb status</code> check details.</li>
+<li>add app domain name in the <code>ALLOWED_HOSTS</code> in the <code>settings.py</code> file.</li>
+<li><code>eb deploy</code> to update the app.<ul>
+<li>Whenever changes are made to the local file, run deploy again to update.</li>
+</ul>
+</li>
+<li><code>eb open</code> open the website.</li>
+<li>add the following <code>db-migrate.config</code> file in the <code>.ebextensions</code> allows auto migration while deploying.<pre><code>container_commands:
+01_migrate:
+  command: &quot;django-admin.py migrate&quot;
+  leader_only: true
+  option_settings:
+aws:elasticbeanstalk:application:environment:
+  DJANGO_SETTINGS_MODULE: projectname.settings
+</code></pre></li>
+<li>run <code>eb terminate django-env</code> to stop the instance.</li>
+</ul>
+</li>
 </ul>
 <h2 id="dynamodb">DynamoDB</h2>
 <p>A NoSQL database that stores JSON data.</p>
@@ -1076,7 +1168,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.12.1","depth":2,"next":{"title":"Google Cloud Platform","level":"1.12.2","depth":2,"path":"cloud-services/google-cloud-platform.md","ref":"cloud-services/google-cloud-platform.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.12","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.12.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"Google Cloud Platform","level":"1.12.2","depth":2,"path":"cloud-services/google-cloud-platform.md","ref":"cloud-services/google-cloud-platform.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-03-24T13:43:22.659Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-27T05:09:08.618Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.12.1","depth":2,"next":{"title":"Google Cloud Platform","level":"1.12.2","depth":2,"path":"cloud-services/google-cloud-platform.md","ref":"cloud-services/google-cloud-platform.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.12","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.12.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"Google Cloud Platform","level":"1.12.2","depth":2,"path":"cloud-services/google-cloud-platform.md","ref":"cloud-services/google-cloud-platform.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-04-06T02:53:01.885Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-07T16:11:26.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

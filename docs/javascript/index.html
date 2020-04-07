@@ -733,9 +733,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../networking/">
+        <li class="chapter " data-level="1.21" data-path="../networking/README.md">
             
-                <a href="../networking/">
+                <span>
             
                     
                     Networking
@@ -1178,7 +1178,7 @@ pushpin <span class="hljs-keyword">instanceof</span> Microsoft.Maps.Pushpin; <sp
 <span class="hljs-comment">//Pass data to the promise, get result from resolve in then, get result from reject in catch.</span>
 <span class="hljs-comment">//The .then will only be called if the resolve function is called. .catch is for reject().</span>
 myPromise
-  .then(data =&gt; {
+  .then((data) =&gt; {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Resolved: &quot;</span> + data);
   })
   .catch(() =&gt; {
@@ -1188,12 +1188,12 @@ myPromise
 <h5 id="chained-then-functions">Chained then Functions</h5>
 <p><code>.then()</code> can be chained the latter then function has access to the data returned by previous then function.</p>
 <pre><code class="lang-js">myPromise
-  .then(data =&gt; {
+  .then((data) =&gt; {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Received: &quot;</span> + data);
     <span class="hljs-keyword">let</span> moreData = <span class="hljs-string">&quot;Another payload&quot;</span>;
     <span class="hljs-keyword">return</span> moreData;
   })
-  .then(data =&gt; {
+  .then((data) =&gt; {
     <span class="hljs-built_in">console</span>.log(data);
   })
   .catch(() =&gt; {
@@ -1203,7 +1203,7 @@ myPromise
 <h5 id="create-a-promise-as-a-function">Create a Promise as a Function</h5>
 <p>Promise can be created in a function and return as the result of the function, then it can be called use the function name.</p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">promiseFunction</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(resolve =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve) =&gt; {
     setTimeout(() =&gt; {
       resolve(data);
     }, <span class="hljs-number">500</span>);
@@ -1260,7 +1260,7 @@ functionName();
   <span class="hljs-keyword">const</span> [a, b, c] = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all([
     promiseFunctionOne(),
     promiseFunctionTwo(),
-    promiseFunctionThree()
+    promiseFunctionThree(),
   ]);
 
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${a}</span> <span class="hljs-subst">${b}</span> <span class="hljs-subst">${c}</span>`</span>);
@@ -1333,7 +1333,7 @@ functionName();
   name: <span class="hljs-string">&quot;John Dow&quot;</span>,
   age: <span class="hljs-number">31</span>,
   favColor: <span class="hljs-string">&quot;green&quot;</span>,
-  height: <span class="hljs-number">186</span>
+  height: <span class="hljs-number">186</span>,
 };
 </code></pre>
 <ul>
@@ -1343,9 +1343,9 @@ functionName();
   name: <span class="hljs-string">&quot;Sam Scott&quot;</span>,
   id: <span class="hljs-number">1021</span>,
   balance: <span class="hljs-number">123.99</span>,
-  addItem: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">price</span>) </span>{
+  addItem: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">price</span>) </span>{
     <span class="hljs-keyword">this</span>.balance = <span class="hljs-keyword">this</span>.balance + price;
-  }
+  },
 };
 </code></pre>
 <ul>
@@ -1353,7 +1353,7 @@ functionName();
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">let</span> circle = {};
 circle.radius = <span class="hljs-number">5.3</span>;
-circle.getArea = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+circle.getArea = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.radius * <span class="hljs-keyword">this</span>.radius * <span class="hljs-built_in">Math</span>.PI;
 };
 </code></pre>
@@ -1364,7 +1364,7 @@ circle.getArea = <span class="hljs-function"><span class="hljs-keyword">function
 <span class="hljs-keyword">let</span> health = <span class="hljs-number">100</span>;
 <span class="hljs-keyword">let</span> athlete = {
   height,
-  health
+  health,
 };
 </code></pre>
 <ul>
@@ -1375,7 +1375,7 @@ circle.getArea = <span class="hljs-function"><span class="hljs-keyword">function
   month: <span class="hljs-string">&quot;Feb&quot;</span>,
   nextWeek() {
     <span class="hljs-keyword">this</span>.day += <span class="hljs-number">7</span>;
-  }
+  },
 };
 time.nextWeek();
 <span class="hljs-built_in">console</span>.log(time.day); <span class="hljs-comment">// Output: 17</span>
@@ -1390,7 +1390,7 @@ node.style.color = <span class="hljs-string">&quot;blue&quot;</span>;
 <pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>{
   <span class="hljs-keyword">this</span>.name = name;
   <span class="hljs-keyword">this</span>.age = age;
-  <span class="hljs-keyword">this</span>.changeName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">variableName</span>) </span>{
+  <span class="hljs-keyword">this</span>.changeName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">variableName</span>) </span>{
     <span class="hljs-keyword">this</span>.variableName = variableName;
   };
 }
@@ -1451,8 +1451,12 @@ array.forEach(<span class="hljs-function"><span class="hljs-keyword">function</s
 });
 array.filter(i =&gt; i.id !== <span class="hljs-number">1</span>); <span class="hljs-comment">//filter an array item that has id not equal to 1.</span>
 [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map(x =&gt; <span class="hljs-number">2</span> * x); <span class="hljs-comment">//return an array of element base on an array of data.</span>
-array.splice(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// delete 3 items starting at index 2.</span>
-</code></pre>
+array.splice(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// delete 3 items starting at index 2.(have to call it independently and get the result after.)</span>
+array.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">total, currentValue, currentIndex, arr</span>), <span class="hljs-title">initialValue</span>)
+//<span class="hljs-title">reduce</span> <span class="hljs-title">iterate</span> <span class="hljs-title">over</span> <span class="hljs-title">each</span> <span class="hljs-title">element</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">function</span> <span class="hljs-title">and</span> <span class="hljs-title">return</span> <span class="hljs-title">a</span> <span class="hljs-title">value</span> <span class="hljs-title">that</span> <span class="hljs-title">will</span> <span class="hljs-title">be</span> <span class="hljs-title">used</span> <span class="hljs-title">by</span> <span class="hljs-title">the</span> <span class="hljs-title">next</span> <span class="hljs-title">iteration</span>.
+<span class="hljs-title">let</span> <span class="hljs-title">arrAvg</span> = <span class="hljs-title">arr</span> =&gt; <span class="hljs-title">arr</span>.<span class="hljs-title">reduce</span>(<span class="hljs-params">(a,b</span>) =&gt; <span class="hljs-title">a</span> + <span class="hljs-title">b</span>, 0) / <span class="hljs-title">arr</span>.<span class="hljs-title">length</span> //<span class="hljs-title">get</span> <span class="hljs-title">avg</span>
+<span class="hljs-title">Math</span>.<span class="hljs-title">max</span>(<span class="hljs-params">...array</span>);
+</span></code></pre>
 <h4 id="associative-array">Associative Array</h4>
 <p>Technically, associative array is an object. Array methods cannot be used on associative array.</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> person = []; <span class="hljs-comment">//empty array</span>
@@ -1597,7 +1601,7 @@ date.toTimeString();
 <h4 id="nodelist-object">NodeList Object</h4>
 <ul>
 <li>If more than one node is found. Elements will be put in an nodeList</li>
-<li>NodeList is not an Array, it is possible to iterate over it with forEach().<pre><code class="lang-js">nodeListName.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nodeName</span>) </span>{
+<li>NodeList is not an Array, it is possible to iterate over it with forEach().<pre><code class="lang-js">nodeListName.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nodeName</span>) </span>{
   <span class="hljs-comment">//do something for each node inside nodeList</span>
 });
 </code></pre>
@@ -1665,12 +1669,12 @@ date.toTimeString();
 <li>Adding event handlers, <code>&lt;p onclick=&quot;someFunc()&quot;&gt;some text&lt;/p&gt;</code></li>
 <li>The form tag has an onsubmit attribute that can be assigned to validation checking function. If the function return false the form will not be submitted. In HTML for example: <code>&lt;form onsubmit=&quot;returnvalidate()&quot; method=&quot;get&quot;&gt;&lt;/form&gt;</code></li>
 <li>Event handlers can be assigned to elements.<pre><code class="lang-js"><span class="hljs-keyword">var</span> x = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;demo&quot;</span>);
-x.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+x.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">document</span>.body.innerHTML = <span class="hljs-built_in">Date</span>();
 };
 </code></pre>
 </li>
-<li><code>window.onload</code> event can be used to run code after the whole page is loaded.<pre><code class="lang-js"><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+<li><code>window.onload</code> event can be used to run code after the whole page is loaded.<pre><code class="lang-js"><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-comment">//some code</span>
 };
 </code></pre>
@@ -1749,7 +1753,10 @@ x.onclick = <span class="hljs-function"><span class="hljs-keyword">function</spa
 <li>It is used to send HTTP Requests and receive the HTTP Responses programmatically at runtime, without a page load.</li>
 <li>Ajax stands for Asynchronous JavaScript and XML, it is handled asynchronously, all other code runs normally, while Ajax is waiting or processing HTTP Responses.</li>
 <li>In Chrome, the Network tab of the Developer Tools shows the HTTP Request and Response details.</li>
-<li>XMLHttpRequest and fetch APIs are used to initiate HTTP Requests. Fetch is recommended.</li>
+<li>XMLHttpRequest and fetch APIs are used to initiate HTTP Requests. Fetch is recommended.<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">Click here</a> for detailed docs.</li>
+</ul>
+</li>
 <li>An external library polypill can be added to provide fetch APIs supports.(unnecessary in the future)</li>
 <li>To send and process HTTP request, <code>fetch(URL, {credentials:&apos;include&apos;}).then(response=&gt;response.text()).then(success);</code></li>
 </ul>
@@ -1765,9 +1772,9 @@ fetch(<span class="hljs-string">&quot;target.php&quot;</span>, {
   method: <span class="hljs-string">&quot;POST&quot;</span>,
   credentials: <span class="hljs-string">&quot;include&quot;</span>,
   headers: { Content_Type: <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span> },
-  body: param
+  body: param,
 })
-  .then(response =&gt; response.text())
+  .then((response) =&gt; response.text())
   .then(success);
 </code></pre>
 <ul>
@@ -1778,7 +1785,7 @@ fetch(<span class="hljs-string">&quot;target.php&quot;</span>, {
 <pre><code class="lang-js"><span class="hljs-keyword">let</span> options = {};
 options.credentials = <span class="hljs-string">&quot;include&quot;</span>;
 fetch(URL, options)
-  .then(response =&gt; response.text())
+  .then((response) =&gt; response.text())
   .then(success);
 </code></pre>
 <ul>
@@ -1814,7 +1821,7 @@ fetch(URL, options)
 </li>
 </ul>
 <h4 id="getcurrentposition-method">getCurrentPosition Method</h4>
-<pre><code class="lang-javascript">navigator.geolocation.getCurrentPosition(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">position</span>) </span>{
+<pre><code class="lang-javascript">navigator.geolocation.getCurrentPosition(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">position</span>) </span>{
   <span class="hljs-comment">//callback returns position object</span>
   <span class="hljs-keyword">if</span> (navigator.geolocation) {
     <span class="hljs-comment">//check if there is a geolocation object</span>
@@ -1963,7 +1970,7 @@ fetch(URL, options)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.4","depth":1,"next":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-03-26T21:22:13.145Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-27T05:09:08.618Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.4","depth":1,"next":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-04-07T03:38:31.116Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-07T16:11:26.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

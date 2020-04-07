@@ -43,5 +43,5 @@
 
 ### Container Providers
 
-- Kubernetes (K8s)
+- Kubernetes
 - Docker

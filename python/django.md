@@ -12,8 +12,472 @@
 - `django-admin` show a list of sub-command
 - `django-admin startproject <project_name>` create a new project.
 - `python manage.py runserver` it will run the website and return the url of the running website. By default it is localhost:8000
-- `python manage.py startapp <appname>` create a new app inside a project
+- `python manage.py startapp <appname>` create a new app inside a project.
+- `python manage.py makemigrations` update changes made on database model files for an app.
+  - create files in the `app/migrations` folder for the `migrate` command to run.
+  - run `python manage.py sqlmigrate <appname> <migrationID>` to see the SQL code that will be run on the database when executing migrate command.
+    - Migration ID is the number in the file names in the `app/migration` folder.
+- `python manage.py migrate`
+  - first migration command will create default databases.
+- `python manage.py createsuperuser` follow the promts and create admin account for the admin page.
+- `python manage.py shell` It starts an interactive shell to run django project code line by line.
+- `manage.py collectstatic` it populates the static directory with static assets (JavaScript, CSS, and images).
 
-## Design Django App
+## Project Folder
 
-### `view.py`
+### settings.py
+
+- To register an app to the project, add the element `'appname.apps.AppNameConfig'` or just `'AppName'` in the `INSTALLED_APPS` array.
+- Add `STATIC_ROOT = 'static'` to tell Django where to store static files.
+
+### urls.py
+
+```py
+from django.contrib import admin
+from django.urls import path, include
+from users import views as user_views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('appnameA.urls')),
+    path('a/', include('appnameB.urls')),
+    path('register/', user_views.register, name='register'),
+]
+```
+
+- `urlpatterns` contains a list of path.
+- The first parameter of path is the url string, root path is empty.
+- A match is found when actual path begins with the string in the first parameter. Ex. `www.example.com/a/b/c` will matchs string `a/`.
+- When a match is found the `urls.py` file for the app `appnameA` will be loaded if the path is `www.example.com/`
+- The path can also point to an app view file directly.
+
+## App Folder
+
+### apps.py
+
+```py
+from django.apps import AppConfig
+class AppNameConfig(AppConfig):
+    name = 'appname'
+```
+
+- The class name `AppNameConfig` should be registered in the project's `settings.py` file for the project to access the app.
+
+### urls.py
+
+```py
+from django.urls import path
+from . import views
+urlpatterns = [
+    path('', views.home, name='appname-home'),
+    path('about/', views.about, name='appname-about'),
+]
+```
+
+- The full path excluded the matched string in the project `urls.py` will be used to match with the path strings here. For `www.example.com/a/b/c` after `a/` is matched in the project `urls.py`, `b/` will be used here to find a match.
+- the second parameter `views.home` is pointing to the `home` method in the `view.py` file.
+
+### view.py
+
+```py
+from django.shortcuts import render
+from django.http import HttpResponse
+from .models import ModelClass
+def home(request):
+    return HttpResponse('<h1>Blog Home</h1>')
+def about(request):
+    return HttpResponse('<h1>Blog About</h1>')
+def home(request):
+    context = {
+        'posts': ModelClass.objects.all()
+    }
+    return render(request, 'blog/home.html', context)
+def about(request):
+    return render(request, 'blog/about.html', {'title': 'About'})
+```
+
+- Each method here is a page.
+- Each method has a parameter `request`.
+- `HttpResponse` can be used to return html content in text for the webpage.
+- render method can be used to render a template page.
+  - The third parameter is the data that will be passed to the template page.
+  - The data passed in like `post` can be a list of dictionary or just a dictionary of data.
+  - The data passed in the example is from a data model.
+
+### models.py
+
+- This is the data model for the project.
+- Each class is corresponding to a database table.
+  ```py
+  from django.db import models
+  from django.utils import timezone
+  #import user from built-in auth models
+  from django.contrib.auth.models import User
+  class Post(models.Model):
+      # exists by default, primary_key is mandatory.
+      id = models.AutoField(primary_key=True)
+      # add nullable and allow it to be black options
+      title = models.CharField(max_length=100,blank=True, null=True)
+      # add default value
+      content = models.TextField(default="Yes")
+      # add unique option
+      date_posted = models.DateTimeField(default=timezone.now, unique=True)
+      # set foreign key in the user table, delete all associated posts when user object is deleted.
+      author = models.ForeignKey(User, on_delete=models.CASCADE)
+      # Meta provides additional info for the Model
+      class Meta:
+        # add check constrains
+        constraints = [
+            models.CheckConstraint(check=models.Q(age__gte=18), name='age_gte_18'),
+        ]# add index
+        index_together = ["pub_date", "deadline"]
+        indexes = [
+            models.Index(fields=['last_name', 'first_name']),
+            models.Index(fields=['first_name'], name='first_name_idx'),
+        ]
+        # set name
+        db_table = 'music_album'
+        # set order when query
+        get_latest_by = "order_date"
+        ordering = ['-pub_date', 'author']
+  ```
+  - `on.delete` has the following options:
+    - `models.CASCADE` delete all associated records.
+    - `models.PROTECT` prevent deletion
+    - `models.SET_NULL`
+    - `models.SET_DEFAULT` only default value it set.
+    - `models.SET('value')` set to certain value.
+  - When a class is defined as `abstract=True` in `Meta` options. Its fields can be reused by pass the Class Name in other class definition.
+    ```py
+    # The student table will have all fields from the CommonInfoAbstract class
+    class Student(CommonInfoAbstract):
+      home_group = models.CharField(max_length=5)
+    ```
+  - Model class can have a `__str__` method to define a string representation.
+    ```py
+    def __str__(self):
+        return self.title
+    ```
+- Whenever a file import the data model. It will have access to the data from the database.
+  ```py
+  from .models import ModelClass
+  ModelClass.objects.all() # return all objects of this class from the database.
+  ModelClass.objects.first() # return the first object
+  ModelClass.objects.last() # return the last object
+  ModelClass.objects.filter(propertyname='value') # return a list of matching objects.
+  ModelClass.objects.filter(propertyname='value') # return the first matching object.
+  ModelClass.objects.get(id=1) # return the object with id 1
+  newobject = ModelClass(property1='value1', property2 = 'value2') #create a new object
+  newobject.save() # save the object to the database
+  modelObject.id # get the object id
+  modelObject.pk # get the object primary key value
+  modelObject.relatedModel_set.all() # return all assciated model of one model.
+  modelObject.relatedModel_set.create(property1='value1', property2 = 'value2') # create a new related model of the model.
+  ```
+
+### admin.py
+
+- It controls the admin page.
+- The default admin path is the site url followed by `/admin`.
+- Can be used to create users and groups.
+
+```py
+from django.contrib import admin
+from .models import Post
+admin.site.register(Post)
+```
+
+- Data models need to be registered here for the admin page to display and edit.
+
+### static folder
+
+- It can be used to store additional static files for the app, like css files.
+
+### template folder
+
+- Apps can have template that stores dynamic html file that can access variables and run code inside.
+  - If support basic logic syntax in between html codes. Unlike Python code, each code block requried to be closed in the end.
+- Variables here are passed from the `view.py`.
+<!-- {% raw %} -->
+- To access `.css` files in the static folder, add `{% load static %}` at the first line and set css link url to `href="{% static 'appfolder/filename.css' %}"`
+- All links in the template files are represented as `href="{% url 'path-name' %}"`. The pass name is the name attributes of the paths elements in the `urls.py`.
+- To display date in certain format use format string as `{{ post.date|date:"F d, Y" }}`
+<!-- {% endraw %} -->
+
+#### base.html
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    {% if title %}
+    <title>Django Blog - {{ title }}</title>
+    {% else %}
+    <title>Django Blog</title>
+    {% endif %}
+  </head>
+  <body>
+    {% block blockname %}{% endblock %}
+  </body>
+</html>
+```
+
+- This is the layout that can be shared by all views.
+
+#### content.html
+
+```
+{% extends "appname/base.html" %}
+{% block blockname %}
+    {% for post in posts %}
+              <h1>{{ post.author }}</h1>
+              <p>{{ post.content }} posted on {{ post.date }}</p>
+    {% endfor %}
+{% endblock blockname %}
+```
+
+- This is the file that will be inserted into the base template.
+- Templates from other apps can also be used here.
+- The block name should be the same name specified in the `base.html`.
+
+### Customized Forms
+
+- Create a `forms.py` in the app folder. Define a custom form class that inherit the default auth form from Django.
+  ```py
+  from django import forms
+  from django.contrib.auth.models import User
+  from django.contrib.auth.forms import UserCreationForm
+  class UserRegisterForm(UserCreationForm):
+      email = forms.EmailField()
+      class Meta:
+          model = User
+          fields = ['username', 'email', 'password1', 'password2']
+          # use this if all fields are included.
+          fields = '__all__'
+  ```
+- In the view page set up the request logic.
+  ```py
+  from django.shortcuts import render, redirect
+  from django.contrib import messages
+  from .forms import UserRegisterForm
+  def register(request):
+      # If reveiving data
+      if request.method == 'POST':
+          form = UserRegisterForm(request.POST)
+          if form.is_valid():
+              form.save()
+              username = form.cleaned_data.get('username')
+              messages.success(request, f'Account created for {username}!')
+              return redirect('blog-home')
+      else:
+          # if not receiving data initilize a new empty form
+          form = UserRegisterForm()
+      # render the form in the view
+      return render(request, 'users/register.html', {'form': form})
+  ```
+- run `pip install django-crispy-forms` to install the app that helps style the form with `Bootstrap`.
+- In `settings.py`, register the app as `'crispy_forms'` in `INSTALLED_APPS`, and `CRISPY_TEMPLATE_PACK = 'bootstrap4'` at the bottom to specify the package in use.
+- For the form template:
+  <!-- {% raw %} -->
+  ```py
+  {% extends "blog/base.html" %}
+  {% load crispy_forms_tags %}
+  {% block content %}
+      <div class="content-section">
+          <form method="POST">
+              {% csrf_token %}
+              <fieldset>
+                  <legend>Join Today</legend>
+                  {{ form|crispy }}
+              </fieldset>
+              <div>
+                  <button type="submit">Sign Up</button>
+              </div>
+          </form>
+      </div>
+  {% endblock content %}
+  ```
+  <!-- {% raw %} -->
+- Use this for feedback upon valid submission.
+  ```py
+  {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+  ```
+
+## Cloud Storages
+
+- [Click](https://django-storages.readthedocs.io/en/latest/) to see many possible cloud storage implementation for Django.
+
+### AWS S3
+
+1. create a S3 bucket and set up permissions.
+2. create a designated IAM user role for access.
+3. Save credentials and buck name in the virtual environment's `.bash_profile` file.
+4. run `pip install boto3` and `pip install django-storages`
+5. In `settings.py` add `'storages'` and following settings.
+   ```
+   AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+   AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+   AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+   AWS_S3_FILE_OVERWRITE = False
+   AWS_DEFAULT_ACL = None
+   DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+   ```
+
+## REST Framework
+
+- It is used to create restful api for the web app.
+- [Click here](https://www.django-rest-framework.org) for full docs.
+- run `pip install djangorestframework` to install
+- add `'rest_framework'` to `INSTALLED_APPS` in `settings.py`
+- The Serializers convert objects into JSON data. It is defined in the `serializers.py` in the api app folder.
+  - Model Serializers - It provides a template that is easy to implement a serializer class based on model class.
+  ```py
+  from rest_framework import serializers
+  from .models import Sample
+  class SampleSerializer(serializers.ModelSerializer):
+    # add fielder from other serializers
+    someFields = OtherSerializer(many=True)
+    # add fields in the meta class
+    class Meta:
+        model = Sample
+        # add certain fields
+        fields = ['id', 'account_name', 'users', 'created']
+        # exclude a certain field
+        exclude = ['id']
+        # add all fields
+        fields = '__all__'
+        # add more options for previous fields.
+        extra_kwargs = {
+                'created': {'write_only': True},
+                'id': {'required': True}
+        }
+  ```
+  - Serializers can be used to update or create JSON object by defining the `create()` and `update()` method in Serializer Class.
+  ```py
+  def create(self, validated_data):
+        return Sample.objects.create(**validated_data)
+  def update(self, instance, validated_data):
+      instance.name = validated_data.get('name', instance.name)
+      instance.email = validated_data.get('email', instance.email)
+      instance.save()
+      return instance
+  ```
+  - Validation method can be added in the Serializer Class.
+  ```py
+  # field level validation
+  def validate_title(self, value):
+        # check if value contains keyword django
+        if 'django' not in value.lower():
+            raise serializers.ValidationError("Blog post is not about Django")
+        return value
+  # object level validation
+  def validate(self, data):
+        if data['start'] > data['finish']:
+            raise serializers.ValidationError("finish must occur after start")
+        return data
+  ```
+- In `views.py` defines the behavior of the certain path, when either a POST(update) request or GET(read) request is sent.
+  ```py
+  from rest_framework import status # return status
+  # enable .as_view in urls.py that return a view based on JSON result
+  from rest_framework.views import APIView
+  # Response to return for each view method
+  from rest_framework.response import Response
+  from .models import Sample
+  from .serializers import SampleSerializer
+  # inherite methods from APIView class
+  class SampleView(APIView):
+    def get(self, request):
+      # get all current data
+      data = Sample.objects.all()
+      # initalize a serializer take multiple data object into JSON.
+      # many = True enables convertion of multiple objects
+      serializer = SampleSerializer(data, many = True)
+      # return the JSON data in response
+      return Response(serializer.data)
+    def post(self):
+      # if pass here means this method does nothing.
+      pass
+      # if serializer has create method.
+      data = Snippet(code='foo = "bar"\n')
+  ```
+  - When serializer has `create()` or `update()` methods. `serializer.save(data=data)` method will run `create()`. `serializer.save(existingObject, data=data)` will run `update()`.
+  - When serializer has `validate()`, `serializer.is_valid()` will run validation. Then use `serializer.error()` to return errors.
+- In `urls.py` add the view method that returning data as view to path, `path('api/', views.SampleView.as_view()),`
+- Pagination
+  - Set Pagination globally in `settings.py`
+    - For Pagination based on page number
+      ```js
+      REST_FRAMEWORK = {
+        DEFAULT_PAGINATION_CLASS:
+          "rest_framework.pagination.PageNumberPagination",
+        PAGE_SIZE: 100,
+      };
+      ```
+    - For cursor pagination
+      ```js
+      REST_FRAMEWORK = {
+        DEFAULT_PAGINATION_CLASS: "rest_framework.pagination.CursorPagination",
+        PAGE_SIZE: 100,
+      };
+      ```
+    - For Limit Offset Pagination
+      ```js
+      REST_FRAMEWORK = {
+        DEFAULT_PAGINATION_CLASS:
+          "rest_framework.pagination.LimitOffsetPagination",
+      };
+      ```
+  - Set Pagination for each method of `views.py` individually
+    - defind the pagination class
+      ```py
+      class StandardResultsSetPagination(PageNumberPagination):
+      page_size = 100
+      page_size_query_param = 'page_size'
+      max_page_size = 1000
+      ```
+    - Assign the class name to the `pagination_class` variables in the each view method.
+
+### Swagger
+
+- It auto generate document pages for the Rest API
+
+##### Usage
+
+1. Run `pip install django-rest-swagger`
+2. Add `'rest_framework_swagger'` to `INSTALLED_APPS` in Django settings.
+3. In API app's `views.py` add
+   ```py
+   from rest_framework_swagger.views import get_swagger_view
+   schema_view = get_swagger_view(title='Pastebin API')
+   ```
+   - There are two optional parameter for the `get_swagger_view()` method:
+     - `title`: The title of the documentation `(Default: None)`
+     - `url`: The URL to the documentation, if not on the same host or path. Can be a relative path or can be an absolute URL. `(Default: None)`
+4. add path in `urls.py`
+   ```py
+   from django.conf.urls import url
+   urlpatterns = [
+       url(r'^$', appname.views.docs_view)
+   ]
+   ```
+5. Make additional setting in the `settings.py` file.
+   ```py
+   SWAGGER_SETTINGS = {
+     'SHOW_REQUEST_HEADERS': True,
+     'SUPPORTED_SUBMIT_METHODS': [
+         'get',
+         'post',
+     ]
+   }
+   ```
+   - [Click Here](https://django-rest-swagger.readthedocs.io/en/latest/settings/) to see all setting options.
+6. Add docs string comments to provide more info in the docs page.
+
+- If see `'AutoSchema' object has no attribute 'get_link' swagger` error, add `'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',` in the `settings.py`.
