@@ -97,6 +97,9 @@
     - the permission string is followed by the owner name, then owner group name.
   - A permission code can be calculated, using `r`=4, `w`=2, `x`=1, `-`=0, and and them together.
   - For example, `400` means only user has read permission, so the file is private.
+- Related Commands
+  - `df -h` list file systems.
+  - `lsblk` list block devices info.
 
 ## General Commands
 
@@ -376,15 +379,6 @@
 - It is used to log in remote servers.
 - Ex, `ssh -i ~/.ssh/"WordPress Key.pem" ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com`
 
-### NPM
-
-- `npm install -g npm@latest` update the npm to the last version.
-- `npm install -g package-name` -g means install globally.
-- `npm install` install packages listed in `package.json` file.
-- `npm update` update packages listed in `package.json` file and update the `package.json` file.
-- `npm list` list install package in the project folder.
-- `npm list -g --depth=0` list all globally installed package, only show the root folder name.
-
 ### mssql
 
 - SQL Server
@@ -551,6 +545,18 @@
       - `example.com` URL
       - `2001::4137:9e74:8e9:66e:0:651b` IPv6
       - `all`
+    ```xml
+    <Directory /var/www/content/secret>
+    Options +Indexes
+    AuthType basic
+    AuthName "Secret Files"
+    AuthUserFile /etc/httpd/conf/users
+    Require valid-user
+    Order Deny,Allow
+    Deny from all
+    Allow from HostIPAddress
+    </Directory>
+    ```
   - `Options`
     - It should be defined after the virtual host block host in the directory block.
     - It makes the website have access to certain directory. In the virtual host config file, both of the following examples work.

@@ -310,6 +310,8 @@ else:
 	#…
 ```
 
+- Ternary: `x = a if condition else b`.
+
 #### All and Any
 
 It can be used to test the condition among multiple values in an object.
@@ -411,38 +413,49 @@ sum(list)
 
 #### List Comprehension
 
-It is the shortcut for creating lists.
-
-```py
-squareList = [i**2 for i in range(5)]
-evenSquareList = [i**2 for i in range(10) if i**2%2 ==0]
-```
+- It is the shortcut for creating lists.
+  ```py
+  squareList = [i**2 for i in range(5)]
+  evenSquareList = [i**2 for i in range(10) if i**2%2 ==0]
+  ```
 
 ## Dictionary
 
-It is mutable.
-
-```py
-x = {key1:value1, key2:value2, key3:value3, …}
-print(x[key1])
-x[key1] = newValue
-```
+- It is mutable.
+  ```py
+  x = {key1:value1, key2:value2, key3:value3, …}
+  print(x[key1])
+  x[key1] = newValue
+  ```
+- To add a new key/value pair to a dictionay, simply assign the value to a new key.
 
 #### Operators
 
 - Membership Operator - in
-
-```py
-keyName in dictionaryName
-keyName not in dictionaryName
-```
+  ```py
+  keyName in dictionaryName
+  keyName not in dictionaryName
+  ```
 
 #### Methods
 
 ```py
 dictionary.get(key, notification)  #It returns the key’s value and None if key is not found. or display specific notification.
 dictionay.pop(key,default)  # It returns and remove the value that match the key. Return the default value if not found.
+dictionay.values() # Return a list of values.
+dictionay.keys() # Return a list of keys.
+dictionay.items() # Return a list of dictionay elements.
 ```
+
+#### Iteration
+
+- Generate a dictionary from a list of tuples `damage_rate = {xVar: yVar for (xVar, yVar) in tupleList}`.
+- Generate a dictionary from a list of objects `city_dict = {x.id: x.name for x in objectList}}`.
+- To loop every key and value from a dictionary:
+  ```py
+  for k, v in dict.items():
+        print(k,v)
+  ```
 
 ## Tuples
 
@@ -557,6 +570,7 @@ from math import sqrt as square_root
    - `pip search <keyword>` search for a package
    - `pip list` list packages
    - `pip freeze` output package info file
+     - `pip freeze >requirement.txt` output package info file as txt file.
    - `pip install -U pip` update pip
 3. Your own module.
    Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file.
@@ -722,6 +736,9 @@ fido = Dog("Fido","brown")
 fido.bark() -> Woof!
 fido.legs -> Dog.legs -> 4
 ```
+
+- `hasattr(object, attributeName)` check is one object has certain attribute.
+  - The hasattr() is called by `getattr()` to check to see if `AttributeError` is to be raised or not.
 
 ## Superclass
 

@@ -1,524 +1,425 @@
 # Networking
 
+## Network
+
+- Α network is simply defined as something that connects things together for a specific purpose.
 - A computer network connects two or more devices together to share a nearly limitless range of information and services
+- Network Types categorized by size:
+  - `LAN` - Local Area Network
+    - `Ethernet` - Ethernet is the most common LAN technology.
+  - `WAN` - Wide Area Network
+    - `Internet` - a net of WANs.
+  - `MAN` - Metropolitan Area Network
+    - It is defined as a network that connects LAN’s across a city-wide geographic area.
+- Network Types categorized by function:
+  - `SAN`- Storage Area Network
+    - It provides systems with high-speed, lossless access to high-capacity storage devices.
+  - `VPN` - Virtual Private Network
+    - It allows for information to be securely sent across a public or unsecure network(public Internet). Common uses of a VPN are to connect branch offices or remote users to a main office.
+- Measurement:
+  - `network speeds` - it is represented by the slowest connection in between.
+    - Bits and Byte
+      - 8 bits = 1 byte
+      - `bits` are generally used to describe network speed. It should be represented as lowercase `b`. `1Mbps` means one megabits per second
+      - `bytes` are generally used to describe data size. It should be represented as uppercase `B`. `1MB` means one megabytes.
+    - Fast Ethernet(100Mbps) or Gigabit Ethernet(1000Mbps)
+  - `delay` - It depends on the distance between devices.
+  - `availability` - it depends on the links available
+- Transmission Modes
+  - `Full Duplex` - the communication between sender and receiver can occur simultaneously. The sender and receiver can both transmit and receive at the same time.
+  - `Half Duplex` - The communication between sender and receiver occurs in both directions, but only one at a time. The sender and receiver can both send and receive the information, but only one is allowed to send at any given time.
+  - `Simplex` - In simplex transmission mode, the communication between sender and receiver occurs in only one direction. The sender can only send the data, and the receiver can only receive the data.
+- Network Architectures
+  - It consisted of hosts(network devices) or nodes. It can act as one of the following three roles
+    - A host can request data, often referred to as a client.
+    - A host can provide data, often referred to as a server.
+    - A host can both request and provide data, often referred to as a peer.
+  - Types of Network Architectures
+    - Peer-to-Peer - all hosts on the network can both request and provide data and services.
+    - Client/Server - hosts are assigned specific roles. Clients request data and services stored on servers.
+    - Mainframe/Terminal - a single device (the mainframe) stores all data and services for the network.
+- Topology:
+  - It is the arrangement of the elements of a communication network.
+  - Types:
+    - Star - share one core switch.
+    - Ring - connected one by one.
+    - Bus - share one cable.
 
-LAN-Local area network
-WAN- Wide area network
+## Network Reference Models
 
-Internet - a net of WANs.
-Ethernet-
+- It is used to divide and break down a complicated network system into layers.
+- It is used to standardize networks.
 
-8 bits = 1 byte
+### OSI model
 
-Speed:
-network speeds - it is represented by the slowest connection in between.
-delay - It depends on the distance between devices.
-availability - it depends on the links available
+- The Open Systems Interconnection (OSI) model.
+- Developed by International Organization for Standardization(ISO), because IBM vs DEC cannot communicate.
+- Each layer work independently
 
-Topology:
-Star = share one core switch.
-Ring = connected one by one.
-Bus = share one cable.
-
-Cable type
-UTP cables
-CAT5 100MHz
-5E 125MHz 100MB/s
-6 250MHz 1000MB/s
-6A 500MHz 10Gbit/s
-CAT5 has less twist than CAT6
-RJ45 connector is the head
-crimping tool to make
-
-T568A
-T568B
-
-Same head is Straight Through Between different devices
-
-different head is Crossover Diagram between same devices.
-
-Auto MDIX doesn’t care.
-
-OSI model
-
-developed by ISO, because IBM vs DEC cannot communicate.
-
-each layer work independently
-
-Please Do Not Throw Sausage Pizza Away
-
+1. Physical - present data as bit, all hardwares likes cables and wires are in the physical layer.
+2. Data Link - present data as frame with MAC address in the data link header. It will also handle error checking.
+3. Network — present data as packet and add IP address in the packet header. It naviagte and find the best path for data transmition.
+   - Each packet in the conversation will have the same source and destination addresses, however they may not take the same path.
+4. Transport - present data as encapsulated segement with header. It decide which data transmition protocol to use and add a port number and a source port number to the IP address.
+5. Session - create and maintain session.
+6. Presentation - the layer generify data, deal with data encryption and convserion.
 7. Application - the point of contact for network aware application
-   FTP. TFTP,SNMP,DNS,HTTP protocol work on this layer
-8. Presentation - the layer generify data, encryption convserion, TLS,SSL
-9. Session - create and maintain session, has
-   ————above equals 4 in TCP/IP———————————-above layers will not be discussed by network engineer.
-   socket = ip address + port number
-10. Transport ———————————————- segement with header and encapsulation create TCP(Reliable) or UDP(Faster) and add Port Numbers. equivalent to 3 in TCP/IP
-11. Network —————————-equivalent to 2 in TCP/IP——packet with IP
-12. Data Link, Frame with MAC address
-13. Physical ———————-1 and 2 are equivalent to 1 inTCP/IP, it is bit(data unit) hardware
-
-- they all has header added one by one
-  TCP/IP model
-
-4. Application
-5. Transport
-6. Internet
-7. Network Interface
-   TCP/IP comes in A TIN
-
-Media Access Control is a unique physical address for each devices, it is hard-coded.
-MAC is a 12 digit hexadecimal value, there are two digit in one pair, consisted of 6 pairs.
-
-All frame transmit data using above model to add headers for each one of them and strip the header according layer types.
-
-Nodes are connected by switches, wireless access points, and routers.
-
-Internet Protocol (IP) is logical address
-Responsible for packet delivery and routing
-Works at the network layer of the OSI model, receives packets of data from the TCP layer for delivery to the destination
-Each packet in the conversation will have the same source and destination addresses, however they may not take the same path.
-
-Address Resolution Protocol (ARP) is used to find MAC from IP
 
-Port numbers are used to identify the type of application or services during data transmission.
-random port number
+- Mnemonic: `Please Do Not Throw Sausage Pizza Away`
+- 2, 3, 4 layers all have its own header that will be added or processed during data transmition.
+  - as a result, a frame will have three headers. a segement will have one header.
 
-ICMP protocol
+### TCP/IP model
 
-IPv4
-A group of 4 octets (8-bit) data.
-4.3 billions unique addresses available.
-
-It has network ID in the left portion and node ID in the right portion combined.
-The networkID for certain IPv4 address is obtain by change all host ID to 0 in the binary form.
-the IPv4 address 130.132.19.31 is represented in dotted decimal notation
-The binary equivalent would be 10000010 10000100 00010011 00011111
-network ID is represented by subnet mask 1 value digit place. \* for an ip with a mask as 11111111 11111111 00000000 00000000 -> 255.255.0.0, the first two groups of oactets, represents networkID.
-gateway is the representation of the network ID.
-
-They all associated with a default subnet mask represent after `/`
-The number followed means the first n number is the networkID. This type of notation is called CIDR notation the number after `/` is called network prefix .
-class A
-1.0.0.0 - 126.255.255.255/8
-class B
-128.0.0.0 - 191.255.255.255/16
-class C
-192.0.0.0 - 223.255.255.255/24
-D multicast
-224-239
-E experimental purpose
-240-255
-
-Address starting with 127 is used for diagnostic purpose
-
-the first IP of each Host IP is the Network ID
-the last is the broadcast ID
-
-Subnetting is classless IP address (CIDR)
-it is achieved by have 1 more bit in subnet mask
-
-Supernetting is lend 1 bit to represent all its subnets. it is a summarization of ip addresses.
-
-ideal network size is < 500
-
-public ip used in WAN
-private ip used in LAN
-
-RFC 1918 reserves three ranges of IP addresses for private use
-Class A range 10.0.0.0 - 10.255.255.255
-Class B range 172.16.0.0 - 172.31.255.255
-Class C range 192.168.0.0 - 192.168.255.255
-
-private addresses are not routable. In order to reach the internet NAT is used.
-Automatic Private IP Addressing (APIPA)
-When there is no DHCP, APIPA is configured to assign random IP starts with 169.254 for local communication.i
-169.254.0.0 - 169.254.255.255
-starts with 127 (127.0.0.1)is a loopback address.
-Unused/Reserved 0.0.0.0 - 0.255.255.255
-224.0.0.0 - 255.255.255.255
-
-IPv6
-8 group of 4 hexadecimal values, delimited by colon
-0s can be group and simplified.
-::1 is loopback
-
-MAC address is a 12 X (Hexdecimal) 4 bit = 48 bit Number divided by : into 3 parts.
-
-Devices
-hub
-it copy info from 1 port to all port.
-not intelligent
-1 collision domain
-1 broadcast domain
-
-Bridge
-between hub and switch
-
-Switch
-Intelligent - it learn Mac address of devices on CAM table
-Many Collision Domains - 1 port a collision domains
-One or more broadcast domains(VLAN)
-
-manegement IP is the switch IP used for telnet connection
-
-Router
-Intelligent - only exchange info between different networks,
-Many Collision Domains
-Many broadcast Domains
-
-AUX is connected to a modem
-
-USB port is for update
-
-Console is used to connect to computer.(ouf of band access)
-connect With putty/Tera Term/ Secure CRT/Hyper Term.
-
-Use ARP to broadcast request to get destination MAC address
-only device with the request Mac address will reply
-
-GNS is a emulator. but it cannot mimic switch as a hardware.
-Packet tracer is made by cisco for practise its is good for switch.
-
-DHCP
-Is a protocol that automatically configure IP to a host
-
-6 message
-
-4 mandatory
-DHCP Discocvery
-broadcast to find DHCP,
-DHCP offer
-all DHCP server in the network reserver one IP address and sent a offer
-DHCP Request
-Client confirm
-DHCP Ack
-accepted server confirm. others server take the offer back and free its IP pool.
-
-4 non-critical messages
-DHCP Information
-If the client need more information from the DHCP offer
-DHCP Release
-The client tell the server to release its IP address when done.
-
-TCP – Transmission Control Protocol
-Responsible for establishing and maintaining network conversations
-Breaks the session data into packets and passes packets the network layer
-Receives packets from the network layer, verifies and assembles them for delivery to the receiving application
-Works at the Transport and Session layers of the OSI model
-
-TCP Transmission
-TCP is a connection oriented transmission.
-
-TCP uses a three-way handshake to establish a reliable connection.
-3 Way Hand Shake.
-SYN package
-SYN/ACK package
-ACK package
-
-UDP is a connectionless transmission.
-UDP (User Datagram Protocol) is an alternative communications protocol to Transmission Control Protocol (TCP) used primarily for establishing low-latency and loss-tolerating connections between applications on the internet.
-
-CRC is the hash value attached to the beginning of the frame for error checking process before data is out and in the LAN. It is the job for routers.
-
-Windowing
-It is the trail process for testing the max packages can be sent at the same time using TCP connection.
-
-Port Number
-It is used to marking destination and source devices
-Source port number random number in upper part of 65535
-Destination port number uses well-known port number.
-
-0-65535 port numbers
-
-Some standard port number.
-80
-
-- Unsecured web browsing (http)
-  443
-- Secured web browsing (https)
-  25
-- Unsecured/secured sending of e-mail messages (smtp/smtp-s)
-  110
-- Unsecured/secured receiving of e-mail messages (pop/pop-s)
-  143
-- Unsecured/secured receiving of e-mail messages (
-  imap/
-  imap-s
-  )
-  Where:
-  http(s)
-- Hypertext Transport Protocol (Secured)
-  smtp(-s)
-- Simple Mail Transport Protocol (Secured)
-  pop(-s)
-- Post Office Protocol (Secured)
-  imap(-s)
-  Internet Message Access Protocol (Secured)
-
-There are (3) sub-ranges for stanrdrand port numbers
-Well-known Ports: registered with a governing body
-(a.k.a. System Ports)
-Range:
-0 - 1,023
-Registered Ports: registered by developer, can be used when no conflict.
-Range:
-1,024 - 49,151
-Dynamic, Private, or Ephemeral Ports: not registered, for temp use.like web browser applications.
-Range:
-49,152 - 65,535
-
-subnet mask is used to indicate the network ID
-
-router is the only way for traffic goes in and out. it is the gateway and has a routing table.
-Fully Qualified Domain Names:
-hardest.acme.com
-hostname domain FQDN
-
-Domain Name Service(DNS)
-is a distributed database
-forward lookups is FQDN -> IP
-reverse lookups is IP ->FQDN
-
-There is a Local Resolution Files
-Windows C:\Windows\System32\drivers\etc\hosts
-Linux /etc/hosts
-
-Command for Windows
-ipconfig -?
-ipconfig
-ipconfig /all
-netsh interface ipv4 show addresses
-ping 127.0.0.1
-ping 206.191.86.29
-ping mocomotion
-ping www.google.com
-ping -4 www.google.com
-ping –a 206.191.86.29
-ping -4 –a 206.191.86.29
-ping -6 www.google.com
-ping -6 2607:f8b0:400b:80b::2004
-ping -6 -a 2607:f8b0:400b:80b::2004
-arp -a
-netsh int ipv4 show neighbors
-netsh int ipv6 show neighbors
-
-Computer networks can be divided into (2) distinct models
-
-- Peer-to-Peer Network Models
-  Client/Server Network Models
-
-Switch has two mode:
-Access mode
-used to connect an end device
-Switch(config-if)# switchport mode access
-Trunk mode(.1qi is the current popular encapsulation)
-used to connect another switch(extend the switch)
-Switch(config-if)# switchport mode trunk
-Dynamic Trunking Protocol(Cisco owns)
-Desirable - starts to negotiate truck(it is not safe to have all desirable mode)
-Switch(config-if)# switchport mode dynamic desirable
-Auto - accept truck mode.
-Switch(config-if)# switchport mode dynamic auto
-No Negotiate - turn DTP off
-Switch(config-if)# switchport nonegotiate
-
-Switch functions:
-Address Learning
-learning devices info through communication between devices.
-Forwarding Decision
-Cut Through
-It only check the destination info and transmit
-Store & Forward
-It check the entire info and check data and transmit
-Loop avoidance
-Broadcast between two switch has two links cause loop.(Layer -2 loop)
-Spanning Tree Protocol disconnect one links if there are many backup links. enable it when that only links is broken.
-
-VLAN
-Divided one switch to two virtual to separate network among ports.
-it can logically group, Segment broadcast, subnet correlation.
-info from port in a VLAN has VLAN Tags, its a layer 2 feature
-port without VLAN setting belongs to native VLAN.
-when change native VLAN all switch should be changed
-
-VLAN trunking protocol (VTP)
-make vlan setting among all connected switch
-uses switch setting with the highest reversion number.
-
-Server - can make a changes about VLAN
-
-Client - cannot make changes about VLAN
-
-Transparent - turn VTP off.
-
-VTP version 1/2 (2 default)
-VTP domain - safety setting
-VTP password
-
-VTP Pruning
-look at VLAN and prevent not useful information travel to other switch.
-switchport trunk allowed vlan x
-
-check
-show vlan
-
-each vlan has its own management IP
-
-Firewall
-A firewall is designed to prevent unauthorized access to or from a network or host.  
-Network perimeter firewalls:
-Routes packets based on rules that define:
-what packets are allowed into internal networks and hosts
-what packets are allowed to leave the internal network and to what destination
-Host based firewalls:
-Used to define what incoming and outgoing network connections are allowed on that single host.
-Network firewalls cannot provide protection from traffic generated within a trusted network. Host based firewalls provide that second layer of protection.
-
-Connection
-Speed
-Fast Ethernet(100Mbps) or Gigabit Ethernet(1000Mbps)
-
-Switch(config-if)# speed 100 (switch will restart)
-Duplex
-full and half should coordinate.
-auto setting for fast ethane is half
-auto setting for giga ethernet is full
-full
-both send and receive
-half
-either send or receive
-Switch(config-if)# duplex full
-
-Switch security
-Allow certain Mac address or sticky it stick to the next mac address who connect it
-set max number of mac address for this port
-set violation what to do if there is a violation:
-can choose three consequence
-protect - protect from wrong Mac device
-restrict - protect plus log the incidence using SNMP
-shutdown
-To enable port security: Switch(config-if)# switchport port-security.
-
-check
-show port-security
-
-Router
-Router rely on software, Cisco IOS
-Has the help of hardware CEF(Cisco Express forwarding)
-
-Static
-set path
-Dynamic
-auto path, using protocol and router auto communicate and route.
-IGP
-for LAN
-RIP Old, distance vector, shortest path.
-OSPF Link state, fastest path.
-EIGRP(Cisco own) both distance and speed
-EGP
-for WAN
-BGP
-EGP
-
-RIP
-open source
-RIPv1
-classful Version(no VLSM)
-No Authentication - anyone can provide routing info
-Uses Broadcast: send broadcast routing info everywhere
-
-RIPv2
-Classless Version(supoorts VLSM)
-Adds Authentication
-Uses Multicast
-
-Update Timer default every 30 second
-Invalid Timer default 180 seconds - when no info received from certain network
-Holddown Timer default 180 after invalid timer finish
-Flush Tmer:240s starts when invalid timer starts
-
-Rip problems
-It has auto-summarzation for routing table. it cause problem.
-
-adjacent router send misleading info about info network on opposite side network, loop for large hop count.
-Solved by:
-Split Horizon - don’t send info to router which u learn this info earlier.
-Route poison - generate large hop count(16(not accessible)) right away
-
-Inter switch routing
-router in between two switches
-
-inter VLAN routing (router on a stick)
-Use one cable from router with 2 - sub interface setting to connect one switch’s 2 VLAN seperately using truck mode.
-
-DNS
-find the IP of Domain names.
-Check Local DNS record -> Resolver <-> Root Server
-<-TLD Server(Top level Domain)
-<->Authoritative name servers.
-<-
-Private Resolver for private Domain
-public resolver for internet(ISP resolver and Google DNS)
-
-ACL
-it has permit/deny
-it can be a compares from top to down
-only a match found execute right away, no more comparison
-has a implicit deny at the end(if one user define condition is created.)
-
-Standard ACL
-name 1-99 & 1300-1999
-or name
-Based on source IP
-
-Extended ACL
-100-199& 2000-2699
-Based on Source IP, Destination IP, protocol or port No.
-
-Wildcard mask:
-It is the inverse of subnet mask. change subnet mask’s 1 to 0, 0 to 1
-
-Rules:
-Standard ACL applied close to Destination
-Extended ACL applied close to Source //no more two S in one statement to remember.
-
-NAT
-
-Inside Local - before transit source
-Inside Global - after transit source
-Outside Local - Destination address before transition
-Outside Global - Destination address after transition
-Outside address are usually the same.
-
-Static NAT
-one to one transition. one public address for each device.
-Dynamic NAT
-many to many transition. inside local auto assign public IP when there is one available.
-NAT Overloading(PAT)
-many to one, one public IP address but with different random source port number. for both inside local and inside global IP address.
-
-Cisco three layer architecture
-access layer - connect to device
-distribution layer - building layer (connect access layer)
-core layer - connect to the outside. connected by ether Channel
-
-Ether Channel
-Combine two link to one link with double speed
-
-CDP
-Cisco Discovery Protocol
-Cisco own
-
-LLDP
-Link Layer Discovery Protocol
-open source
-
-dictionary attack
-A dictionary attack is a method of breaking into a password-protected computer or server by systematically entering every word in a dictionary as a password.
-If the hashed password on the host is found. A list of hash code can be generated base on the dictionary. Then the original password might be retrieved if a match if found.
-
-#### scurity zones
+- Developed by the Department of Defense.
+
+1. Network Interface - equivelent to OSI model 1 and 2.
+2. Internet - equivelent to OSI model 3.
+3. Transport - equivelent to OSI model 4.
+4. Application - equivelent to OSI model 5,6,7.
+   - This layer is handled by the operating system and will not be discussed by network engineer.
+
+- Mnemonic: TCP/IP comes in `A TIN`.
+
+## Protocols
+
+### DataLink Layer Protocols
+
+#### Address Resolution Protocol (ARP)
+
+- Data transmition in the data link layer uses MAC addresses to find destination.
+- This protocol is used to find MAC address of the destination device in a local network before sending the data.
+  - If destination IP is not local the ARP request will be sent to the gateway.
+- It is achieved by broading the destination IP address to all devices in the network.
+- only device with the request Mac address will reply
+
+### Network Layer Protocols
+
+#### ICMP protocol
+
+- Internet Control Message Protocol
+
+#### Internet Protocol
+
+- Internet Protocol (IP) is the logical address of devices.
+- Responsible for packet delivery and routing
+
+##### IPv4
+
+- A group of 4 octets (8-bit) data with a total of 32 bits.
+- 4.3 billions unique addresses available.
+- IPv4 can be presented in dotted decimal notation: `130.132.19.31`. It can be converted to binary form as `10000010.10000100.00010011.00011111`.
+- The gateway IP is the IP address of a router.
+- Subnet Mask
+  - It has network ID in the left portion and node ID in the right portion combined.
+  - Subnet Mask is used to determine which part of the IP is networkID.
+    - network ID is represented by subnet mask 1 value digit place. For an ip with a mask as `11111111.11111111.00000000.00000000` -> `255.255.0.0`, the first two groups of octets, represents networkID.
+  - For `192.168.0.1/24` The number followed means the first n number is the networkID. This type of notation is called classless IP address (CIDR) notation the number after `/` is called network prefix .
+- Among all the hosts in a network, the first IP is the network ID. The last one is the boardcast ID.
+- IPv4 address can be devided into different classes according to its first octet.
+  - class A: `1.0.0.0 - 126.255.255.255/8`
+  - class B: `128.0.0.0 - 191.255.255.255/16`
+  - class C: `192.0.0.0 - 223.255.255.255/24`
+  - class D(multicast): `224.0.0.0 - 239.255.255.255`
+  - class E(experimental purpose) `240.0.0.0 - 255.255.255.255`
+- Subnetting is achieved by have 1 more bit of subnet mask compare to its IP class default mask.
+- Supernetting is lend 1 bit to represent all the subnets. it is a summarization of ip addresses.
+- ideal network size is less than 500 hosts.
+- RFC 1918 reserves three ranges of IP addresses for private use
+  - Class A range `10.0.0.0 - 10.255.255.255`
+  - Class B range `172.16.0.0 - 172.31.255.255`
+  - Class C range `192.168.0.0 - 192.168.255.255`
+  - private ip is used in LAN while public ip is used in WAN
+  - private addresses are not routable. In order to reach the internet NAT is used.
+- Automatic Private IP Addressing (APIPA)
+  - When there is no DHCP, APIPA is configured to assign random IP starts with `169.254` for local communication. `169.254.0.0 - 169.254.255.255`
+- `0.0.0.0 - 0.255.255.255` is Unused/Reserved IP
+
+##### IPv6
+
+- 8 group of 4 hexadecimal values, delimited by colon
+- 0s can be group and simplified.
+- ::1 is loopback
+
+### Transport Layer Protocols
+
+##### Transmission Control Protocol(TCP)
+
+- TCP is a connection oriented transmission.
+- Responsible for establishing and maintaining network conversations
+- It breaks the session data into packets and passes packets the network layer.
+- It receives packets from the network layer, verifies and assembles them for delivery to the receiving application
+- It is more reliable than UDP
+  - TCP uses a three-way handshake to establish a reliable connection.
+    1. SYN package
+    2. SYN/ACK package
+    3. ACK package
+- Windowing - It is the trail process for testing the max packages can be sent at the same time using TCP connection.
+
+##### User Datagram Protocol(UDP)
+
+- It is a connectionless transmission.
+- It is an alternative communications protocol to Transmission Control Protocol (TCP) used primarily for establishing low-latency and loss-tolerating connections between applications on the internet. It is faster than TCP.
+
+### Presentation Layer Protocols
+
+TLS,SSL
+
+### Application Layer Protocols
+
+FTP. TFTP,SNMP,DNS,HTTP, smtp pop imap
+http(s)
+
+##### Hypertext Transport Protocol(HTTP)
+
+- It uses port 80.
+- HTTP is called a stateless protocol because each command is executed independently, without any knowledge of the commands that came before it.
+- It has request methods as
+- It has a Authentication realms for authentication
+- The response message contain:
+  - a status line which includes the status code and reason message (e.g., HTTP/1.1 200 OK, which indicates that the client's request succeeded)
+  - response header fields (e.g., Content-Type: text/html)
+  - an empty line
+  - an optional message body
+- The response status codes are
+  - 1×× Informational
+    - 100 Continue
+    - 101 Switching Protocols
+    - 102 Processing
+      2×× Success
+    - 200 OK
+    - 201 Created
+    - 202 Accepted
+    - 203 Non-authoritative Information
+    - 204 No Content
+    - 205 Reset Content
+    - 206 Partial Content
+    - 207 Multi-Status
+    - 208 Already Reported
+    - 226 IM Used
+  - 3×× Redirection
+    - 300 Multiple Choices
+    - 301 Moved Permanently
+    - 302 Found
+    - 303 See Other
+    - 304 Not Modified
+    - 305 Use Proxy
+    - 307 Temporary Redirect
+    - 308 Permanent Redirect
+  - 4×× Client Error
+    - 400 Bad Request
+    - 401 Unauthorized
+    - 402 Payment Required
+    - 403 Forbidden
+    - 404 Not Found
+    - 405 Method Not Allowed
+    - 406 Not Acceptable
+    - 407 Proxy Authentication Required
+    - 408 Request Timeout
+    - 409 Conflict
+    - 410 Gone
+    - 411 Length Required
+    - 412 Precondition Failed
+    - 413 Payload Too Large
+    - 414 Request-URI Too Long
+    - 415 Unsupported Media Type
+    - 416 Requested Range Not Satisfiable
+    - 417 Expectation Failed
+    - 418 I'm a teapot
+    - 421 Misdirected Request
+    - 422 Unprocessable Entity
+    - 423 Locked
+    - 424 Failed Dependency
+    - 426 Upgrade Required
+    - 428 Precondition Required
+    - 429 Too Many Requests
+    - 431 Request Header Fields Too Large
+    - 444 Connection Closed Without Response
+    - 451 Unavailable For Legal Reasons
+    - 499 Client Closed Request
+  - 5×× Server Error
+    - 500 Internal Server Error
+    - 501 Not Implemented
+    - 502 Bad Gateway
+    - 503 Service Unavailable
+    - 504 Gateway Timeout
+    - 505 HTTP Version Not Supported
+    - 506 Variant Also Negotiates
+    - 507 Insufficient Storage
+    - 508 Loop Detected
+    - 510 Not Extended
+    - 511 Network Authentication Required
+    - 599 Network Connect Timeout Error
+
+##### Hyper Text Transfer Protocol Secure(HTTPS)
+
+- It use port number 443.
+- It is the secure version of HTTP.
+  Communications between the browser and website are encrypted by two ways:
+  - Secure Sockets Layer (SSL)
+    - Website uses SSL certificate to identify itself and establish secure connections with clients.
+  - Transport Layer Security (TLS)
+    - It is the next generation of SSL.
+
+##### Simple Mail Transport Protocol(SMTP)
+
+##### Post Office Protocol(POP)
+
+##### Internet Message Access Protocol(IMAP)
+
+##### Dynamic Host Configuration Protocol(DHCP)
+
+- Is a protocol that automatically configure IP to a host
+- It generates 6 messages
+  - 4 mandatory messages
+    - `DHCP Discocvery` broadcast to find DHCP
+    - `DHCP offer` all DHCP server in the network reserver one IP address and sent a offer
+    - `DHCP Request` Client confirm
+    - `DHCP Ack` accepted server confirm. others server take the offer back and free its IP pool.
+  - 2 non-critical messages
+    - `DHCP Information` If the client need more information from the DHCP offer
+    - `DHCP Release` The client tell the server to release its IP address when done.
+
+## Basic Concepts
+
+### Port Number
+
+- It is used to marking destination and source devices
+- Source port number is a random number in upper part of 65535
+- Destination port number uses well-known port number.
+- A socket is an IP address with a port number.
+- Port numbers have a range between 0-65535.
+- Port numbers are used to identify the type of application or services during data transmission.
+- Here are Some standard port number.
+  80 - Unsecured web browsing (http)
+  443 - Secured web browsing (https)
+  25 - Unsecured/secured sending of e-mail messages (smtp/smtp-s)
+  110 - Unsecured/secured receiving of e-mail messages (pop/pop-s)
+  143 - Unsecured/secured receiving of e-mail messages ( imap imap-s )
+- There are (3) sub-ranges for stanrdrand port numbers
+  - Well-known Ports: registered with a governing body(a.k.a. System Ports)
+    - Range: 0 - 1,023
+  - Registered Ports: registered by developer, can be used when no conflict.
+    - Range: 1,024 - 49,151
+  - Dynamic, Private, or Ephemeral Ports: not registered, for temp use. like web browser applications.
+    - Range: 49,152 - 65,535
+
+### Fully Qualified Domain Names
+
+- A fully qualified domain name (FQDN) is the complete domain name for a specific computer, or host, on the internet.
+- The FQDN consists of two parts: the hostname and the domain name.
+  - For `www.example.com`. `www` is the hostname and `example.com` is the domain name.
+- Top-level domain (TLD) is the last part of an URL. Ex, `.com`
+
+### Domain Name Service(DNS)
+
+- It is a distributed database system.
+- It provides two services.
+  - Forward lookups converts FQDN to IP address.
+  - Reverse lookups converts IP address to FQDN.
+- Steps
+  1. For any FQDN, The host machine will check Local DNS record first.
+     - For Window, it is located in `C:\Windows\System32\drivers\etc\hosts`.
+     - For Linux, It is located in `/etc/hosts`.
+  2. If not found. the host will ask the DNS resolver from its ISP(Internet Service Provider).
+     - Private Resolver resolves private Domains
+     - Public resolver resolves domains in the internet(ISP resolver and Google DNS)
+  3. If the record not found in the Resolver's cache, The DNS resolver will ask the Root Server
+     - There are 13 sets of root servers around the world.
+  4. Root Server will tell resolver the corresponding TLD Server(Top level Domain) IP
+  5. The TLD Server will tell the resolver which Authoritative name servers to ask.
+  6. The authoritative name servers will provide the answer to the resolver.
+  7. The resolver will send the request IP to the host.
+
+## Network Devices
+
+- Media Access Control is a unique physical address for each devices, it is hard-coded.
+- MAC is a 12 digit hexadecimal value, there are two digit in one pair, consisted of 6 pairs.
+- MAC address is a 12 X (Hexdecimal) 4 bit = 48 bit Number divided by : into 3 parts.
+- All device port(network interface) have its own unique MAC address.
+- All frame transmit data using above model to add headers for each one of them and strip the header according layer types.
+- Nodes are connected by switches, wireless access points, and routers.
+- collision domain - A collision domain is, as the name implies, the part of a network where packet collisions can occur.
+  - A collision occurs when two devices send a packet at the same time on the shared network segment.
+- Broadcast domain - A broadcast domain is the domain in which a broadcast is forwarded. A broadcast domain contains all devices that can reach each other at the data link layer (OSI layer 2) by using broadcast.
+
+### Cable
+
+- Twisted pair cable
+  - Widely used for Enthenet in LAN.
+  - It has two types:
+    - Unshielded-Twisted-Pair (UTP) Cable - widely used everywhere.
+    - Shielded-Twisted-Pair (UTP) Cable - used for industrial purpose.
+  - RJ45 connector should be connected on each end of the cable.
+  - use cable striper to remove the shield or skin of the cable.
+  - use wire crimper to attach the RJ45 to the cable.
+  - There are two wiring standards
+    - T568A
+    - T568B
+      - more popular
+  - The order of the cables has two types.
+    - straight(patch) cable
+      - two end of the cable used the same wiring standards
+      - it is used to connect different types of devices.
+    - crossover cable
+      - two end of the cable used the opposite wiring standards.
+      - it is used to connect same types of devices.
+    - Auto MDIX is a technology that can auto convert between straight and crossover cable based on the current use cases.
+  - Twisted pair cables have the following categories. Each has different Max speed.
+    - CAT3 10Mbps
+    - CAT5 100Mbps
+    - CAT5e(enhanced) 100Mbps 125MHz
+    - CAT6 1Gbps 250MHz
+    - CAT6a 1Gbps 500MHz (10 Gbps under 100 meters)
+    - CAT7(shielded CAT6a) 10Gps
+    - CAT8 40Gps (under 30 meters)
+    - Higher level has tigher twist, result in higher Max speed.
+
+### Hub
+
+- it copy info from 1 port to all port.
+- 1 collision domain
+- 1 broadcast domain
+
+### Bridge
+
+- It has more function that hub and less function than switch.
+
+### Switch
+
+- It has Application specific integration cicuitry(ASIC)
+  - it learn Mac address of devices on CAM table
+- Many Collision Domains - 1 port a collision domains
+- One or more broadcast domains - as many as the VLANs
+- Manegement IP is the switch IP used for telnet connection
+- It does not need power if it is not used as power source for devices(POE)
+- works at layer two.
+
+### Router
+
+- Intelligent - only exchange info between different networks,
+- Many Collision Domains
+- Many broadcast Domains
+- It has the ability to assign source and destination mac address according to the source and destination ip addresses if the IP addresses are from different sub networks.
+- router is the only way for traffic goes in and out. it is the gateway and has a routing table.
+- It works at layer three.
+- Cyclic Redundancy Check(CRC) is the hash value attached to the beginning of the frame for error checking process before data is out and in the LAN. It is the job for routers.
+- Network Address Translation(NAT) is a router features that auto translate LAN IP and WAN IP address according to port number. In order to let private IPs share a common public IP because the number of public IPs are limited.
+- Port Forwarding is an application of NAT that redirects a communication request from one address and port number combination to another while the packets are traversing a network gateway, such as a router or firewall.
+  - It is commonly used for remote desktop connection using port number 3389.
+
+### Firewall
+
+- A firewall is designed to prevent unauthorized access to or from a network or host.  
+  Network perimeter firewalls:
+  Routes packets based on rules that define:
+  what packets are allowed into internal networks and hosts
+  what packets are allowed to leave the internal network and to what destination
+  Host based firewalls:
+  Used to define what incoming and outgoing network connections are allowed on that single host.
+  Network firewalls cannot provide protection from traffic generated within a trusted network. Host based firewalls provide that second layer of protection.
+
+#### Security zones
 
 - scurity zones are discrete network segments containing systems that share common requirements (eg. Info, processes, security level, etc.)
 - Developed to separate systems available to the public Internet from private systems in use by an organization
@@ -530,7 +431,7 @@ If the hashed password on the host is found. A list of hash code can be generate
   - DMZ systems are placed between two firewall devices that have different rule sets, which allow Internet access to services offered by the DMZ systems but not to the computers on the protected network
   - A third interface can be added to a single firewall, and the DMZ systems are placed on that network segment.
 
-#### firewall
+#### Firewall
 
 - a device that filters traffic based upon established rules
 - packet filters Firewall can act only on a combination of source IP address, destination IP address, and port numbers based only on the contents of the IP headerThey are fast and inexpensiveWork at the network layer of the OSI model.

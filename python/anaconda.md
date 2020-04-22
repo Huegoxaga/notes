@@ -55,6 +55,7 @@
 - `conda env create --file bio-env.txt` Create environment from a text file
 - `conda search <keyword>` search packages
 - `conda install <packagename>` Install a new package (Jupyter Notebook) in the active environment
+  - `conda install python=3.5.0` Install a certain version of python or packages for the env.
 - `conda install --name <env-name> <packagename>` Install a new package in a different environment.
 - `conda update <packagename>` Update a package in the current environment
 - `conda remove --name bio-env toolz boltons` Remove one or more packages (toolz, boltons) from a specific environment (bio-env)

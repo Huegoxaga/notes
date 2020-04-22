@@ -521,6 +521,7 @@ let x = new Person("Jim", 1, 100);
 - NaN is a number type which stands for not-a-number.
 - function `isNaN(x)`, returns true if x is `NaN`.
 - `typeof x == 'number'` return true if x is a number.
+- Use `x.toString()` to convert integer to string.
 
 #### Boolean
 
@@ -540,6 +541,8 @@ let x = new Person("Jim", 1, 100);
 - `s1.includes("s2")` return bool value states if s1 includes s2.
 - Template literals are a way to output variables in the string. `'Value: ${variable}'`.
 - click to see the docs for string.
+- `s.toLowerCase()`
+- `s.toUpperCase()`
 
 #### Objects
 

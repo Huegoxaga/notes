@@ -93,6 +93,9 @@ import React, { Component } from ‘react’;
 import componentName from "./componentName";
 // import image if logo.svg is found in /src
 import logo from './logo.svg';
+// can use css directly here instead of html file
+import "./App.css";
+
 class Counter extends Component {
 	//its local variable, only initiated when instance of the component is created.
 	state = {
@@ -112,9 +115,9 @@ class Counter extends Component {
 		//if statement can be used here(after render() and outside return()) for conditional rendering
 		let component;
 		if(this.state.isGood){
-			component = <h1>hi</hi>
+			component = <h1>hi</h1>
 		}else{
-			component = <h1>bye</hi>
+			component = <h1>bye</h1>
 		}
 		return (
 			//it is used to used to wrap all elements without using parents element like div.
@@ -200,7 +203,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  NavLink
+  NavLink,
 } from "react-router-dom";
 // BrowserRouter uses HTML5 history API to keep track of URL
 // Optionally, HashRouter uses a hash portion of the URL to keep track of URL

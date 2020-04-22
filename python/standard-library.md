@@ -304,8 +304,88 @@
 
 ## datetime
 
+### datetime.datetime
+
 - `from datetime import datetime`
+
+#### Usage
+
+- `datetime.fromtimestamp(timestamp)` convert timestamp to value to datetime string.
+- `time = datetime.now()` get a current datetime object.
+  - `time = datetime.now(timezone_object)` get a current datetime object for a certain timezone.
+- `datetime.now().time()` get a current time object.
+- `timeObject.strftime("%H:%M:%S")` return a formatted time string.
+- For datetime object
+  - `time.year`
+  - `time.month`
+  - `time.day`
+  - `time.hour`
+  - `time.minute`
+  - `time.second`
+  - `time.microsecond`
+
+### datetime.date
+
+- `from datetime import date`
+
+#### Usage
+
+- `date.today()`
+
+## time
+
+- `import time`
 
 ### Usage
 
-- `datetime.fromtimestamp(timestamp)` convert timestamp to value to datetime string.
+- `time.localtime()` get local time.
+
+## pytz
+
+- It create a timezone object
+
+### Usage
+
+- `myTimeZone = pytz.timezone('Country/City')`
+  - `myTimeZone = pytz.timezone('America/New_York')`
+
+## uuid
+
+- It generates uuid objects.
+
+### uuid objects
+
+- Can use `str()` to cast it to a string.
+- x.bytes get the raw 16 bytes of the UUID
+- `UUID.hex` The UUID as a 32-character hexadecimal string.
+- `UUID.int` The UUID as a 128-bit integer.
+- `UUID.urn` The UUID as a URN as specified in RFC 4122.
+- `UUID.variant` The UUID variant, which determines the internal layout of the UUID. This will be one of the constants `RESERVED_NCS`, `RFC_4122`, `RESERVED_MICROSOFT`, or `RESERVED_FUTURE`.
+- `UUID.version` The UUID version number (1 through 5, meaningful only when the variant is `RFC_4122`).
+
+### Methods
+
+- `uuid.uuid1()` make a UUID based on the host ID and current time
+- `uuid.uuid3(uuid.NAMESPACE_DNS, 'python.org')` make a UUID using an MD5 hash of a namespace UUID and a name
+- `uuid.uuid4()` make a random UUID
+- `uuid.uuid5(uuid.NAMESPACE_DNS, 'python.org')` make a UUID using a SHA-1 hash of a namespace UUID and a name
+- `uuid.UUID('{00010203-0405-0607-0809-0a0b0c0d0e0f}')` make a UUID from a string of hex digits (braces and hyphens ignored)
+
+# def \_createHash():
+
+# """This function generate 10 character long hash"""
+
+# hash = hashlib.sha1()
+
+# hash.update(str(time.time()))
+
+# return hash.hexdigest()[:-10]
+
+# """This function generate 10 character long hash"""
+
+# return hexlify(os.urandom(5))
+
+import hashlib
+import time
+import random
+from binascii import hexlify

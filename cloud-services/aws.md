@@ -63,10 +63,13 @@ Provide Persistent Storage
 
 It provides a DNS service that translates the domain name into a designated IP address.
 
-- There is a 50 cents charge per month.
+- There is a 50 cents charge per month per host zone.
 - DNS Records are added in the hostzones.
 - Some domain register has free DNS services.
 - TTL for the name server can be set to a lower value for a faster update. Then set it to the longest value for a better performance.
+- Alias records(A or AAAA) and CNAME records are used to redirects queries. They have the following difference:
+  - Alias records can only be used for selected AWS services. It is free.
+  - CNAME records can be used for any domain. Can't redirect hostzone top level domain. It is not free.
 
 ## EC2
 
@@ -76,12 +79,23 @@ It provide computing service.
 - click connect in the instance menu for connection guide.
 - For Mac/Linux enter the command directly in the terminal.(move file to ~/.ssh and use command chmod 400 to hide the file first)
 - For window using SHH through Git Bash.
+- A load balancer helps a group of EC2 instances works together. There are three types of them:
+  - Classic Load Balancer
+  - Application Load Balancer
+    - It can redirect HTTP to HTTPS
+    - It will ping a certain URL for health check, if it don't get 200 response, the loab balancer will be marked as unhealth.
+  - Network Load Balancer
+  - A target group will be associated with load balancer, health check is configured here.
+- Load balancer can assign Security Policies to certain SSL Certificates
+  - A security policy is a combination of protocols and ciphers, The `ELBSecurityPolicy-2016-08` security policy has the highest compatibility.
 
 ## Elastic Beanstalk
 
 It helps deploy app on EC2 and will do capacity provisioning, load balancing, scaling, and application health monitoring automatically.
 
 - It has its own command line tool called `EB CLI`
+- An EB App can have multiple Environment, each deployed environment has an URL which is an alias(A record) to its corresponding load balancer.
+  - Once the environment is created the load balancer type cannot be changed.
 
 ### EB CLI
 
@@ -101,6 +115,7 @@ It helps deploy app on EC2 and will do capacity provisioning, load balancing, sc
 
 - Deploy Django App
   - In project folder export `requirement.txt`, by running `pip freeze > requirements.txt`
+    - `requirement.txt` needs to be updated whenever pip packages are changed in the project.
   - Create a folder `mkdir .ebextensions`
   - Add the following text in the `.ebextensions/django.config` file
     ```
@@ -109,27 +124,49 @@ It helps deploy app on EC2 and will do capacity provisioning, load balancing, sc
       WSGIPath: projectname/wsgi.py
     ```
   - `eb init -p python-3.6 project-name` Initialize EB CLI repository
-  - `eb create name-env` create new env and add project to it.
+    - new `config.yml` will be created in the `.elasticbeanstalk` folder, customization can be added in the file. The file will only be read during environment creation process.
+  - `eb use my-env-name` setup a default env for the current git branch
+  - `eb create name-env` create new env and deploy project to it.
   - `eb status` check details.
   - add app domain name in the `ALLOWED_HOSTS` in the `settings.py` file.
   - `eb deploy` to update the app.
     - Whenever changes are made to the local file, run deploy again to update.
+    - When the project is under version control, only commited changes will be deployed.
+    - or run `eb deploy --stage` to deploy staged changed instead of committing it first.
   - `eb open` open the website.
+  - `eb logs` see error logs.
+  - `eb use env-name` associate a default environment with a certain branch.
   - add the following `db-migrate.config` file in the `.ebextensions` allows auto migration while deploying.
     ```
     container_commands:
-    01_migrate:
-      command: "django-admin.py migrate"
-      leader_only: true
-      option_settings:
+      01_migrate:
+        command: "django-admin.py migrate"
+    option_settings:
     aws:elasticbeanstalk:application:environment:
-      DJANGO_SETTINGS_MODULE: projectname.settings
+    DJANGO_SETTINGS_MODULE: projectname.settings
     ```
-  - run `eb terminate django-env` to stop the instance.
+  - run `eb terminate env-name` to stop the instance.
+  - run `eb ssh env-name` to connect to the instance.
+  - run `eb config env-name` to check configuration.
+  - run `eb health env-name` to check environment health.
 
 ## DynamoDB
 
 A NoSQL database that stores JSON data.
+
+## RDS
+
+It hosts and maintain SQL Database server.
+
+- When a new database is registered, be default it is set to private. It can be set to public by modifying the instance.
+
+## CloudWatch
+
+It generates metrics for other services.
+
+- By default it generates metrics for every 5 mins for free. For a enhanced plan, it will generate metrics everything with a fee.
+- Enhanced plan will provides more metrics.
+- It can be used to set rules for auto scaling policy when the values from a certain metric reach certain value.
 
 ## Lambda
 

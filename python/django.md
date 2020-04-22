@@ -19,9 +19,13 @@
     - Migration ID is the number in the file names in the `app/migration` folder.
 - `python manage.py migrate`
   - first migration command will create default databases.
+  - `python manage.py migrate --fake <appname> <migratationID>` make certain migration, assume the database is the same as this migration file is made, reset the migration record. Migration Files after this time can be deleted.
+  - `python manage.py migrate --fake-initial` force making initial migrate with database is already exists.
+- `python manage.py showmigrations` Check migration history.
 - `python manage.py createsuperuser` follow the promts and create admin account for the admin page.
 - `python manage.py shell` It starts an interactive shell to run django project code line by line.
-- `manage.py collectstatic` it populates the static directory with static assets (JavaScript, CSS, and images).
+- `python manage.py collectstatic` it populates the static directory with static assets (JavaScript, CSS, and images).
+  - Make sure that `django.contrib.staticfiles` is included in the `INSTALLED_APPS` in `settings.py`.
 
 ## Project Folder
 
@@ -29,6 +33,8 @@
 
 - To register an app to the project, add the element `'appname.apps.AppNameConfig'` or just `'AppName'` in the `INSTALLED_APPS` array.
 - Add `STATIC_ROOT = 'static'` to tell Django where to store static files.
+- Add `USE_TZ = True` enable timezone support, then use `from django.utils import timezone`, `timezone.now()` to get current local time.
+- When `Debug=True`, static file will be auto generated.
 
 ### urls.py
 
@@ -164,11 +170,12 @@ def about(request):
   ModelClass.objects.all() # return all objects of this class from the database.
   ModelClass.objects.first() # return the first object
   ModelClass.objects.last() # return the last object
+  ModelClass.objects.all()[0:20]# return first 20 objects
   ModelClass.objects.filter(propertyname='value') # return a list of matching objects.
   ModelClass.objects.filter(propertyname='value') # return the first matching object.
   ModelClass.objects.get(id=1) # return the object with id 1
   newobject = ModelClass(property1='value1', property2 = 'value2') #create a new object
-  newobject.save() # save the object to the database
+  newobject.save() # save change to the object that is already in the database
   modelObject.id # get the object id
   modelObject.pk # get the object primary key value
   modelObject.relatedModel_set.all() # return all assciated model of one model.
@@ -180,14 +187,17 @@ def about(request):
 - It controls the admin page.
 - The default admin path is the site url followed by `/admin`.
 - Can be used to create users and groups.
-
-```py
-from django.contrib import admin
-from .models import Post
-admin.site.register(Post)
-```
-
+- All changes need to be made on the admin page not in the database directly. Otherwise, database tables need to be resync for the pointer values.
+  - For Postgre: run SQL `SELECT setval('your_table_id_seq', COALESCE((SELECT MAX(id) FROM your_table), 1), false);` in the database.
+    - run `SELECT nextval('your_table_id_seq');` to check the next value for insert.
+      - Everytime it runs, it will increase the `nextval` by one.
+    - run `SELECT MAX(id) FROM your_table;` to check the total record count.
 - Data models need to be registered here for the admin page to display and edit.
+  ```py
+  from django.contrib import admin
+  from .models import Post
+  admin.site.register(Post)
+  ```
 
 ### static folder
 
@@ -481,3 +491,29 @@ admin.site.register(Post)
 6. Add docs string comments to provide more info in the docs page.
 
 - If see `'AutoSchema' object has no attribute 'get_link' swagger` error, add `'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',` in the `settings.py`.
+
+### GeoDjango
+
+- It provide data model and function for GIS supported database.
+  - `PostgreSQL` uses `PostGIS` extenstion.
+- It is included in the Django package.
+- `QGIS` is a GIS app that helps install all the required database drivers.
+  - `PostgreSQL` requires `GDAL`, `GEOS`, and `PROJ.4`.
+
+#### Setup
+
+- Install drivers
+  - `PostgreSQL` requires `GDAL`, `GEOS`, and `PROJ.4`.
+    - For Mac:
+      - run `brew install gdal`
+      - run `brew install geos`
+      - run `brew install proj`
+- Install PostGIS extension
+  - If installing locally, click the PostGIS extension in the slack builder wizards.
+  - If using AWS RDS, skip this step and enable the exstension directly.
+- Add extension to the database, in PGAdmin select the database, right click extension, then add.
+  - or run SQL `CREATE EXTENSION postgis`.
+- Download and Install QGIS from its [official website](https://qgis.org/en/site/forusers/download.html)
+- Set database engine in `setting.py`.
+  - Use `django.contrib.gis.db.backends.postgis` for `PostgreSQL`.
+- Add `django.contrib.gis` to `INSTALLED_APPS` in `setting.py`

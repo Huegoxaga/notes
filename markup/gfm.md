@@ -254,4 +254,4 @@ Text can be hidden in <!- -Text- -> or <Text>
 
 ## Escape Special Symbols
 
-Use a keyword `raw` and `endraw` surrounded by `{`(outter) and `%`(inner) to escape special symbols that causes build error
+Use a keyword `raw` and `endraw` surrounded by `{`(outter) and `%`(inner) as html comments to escape special symbols that causes build error

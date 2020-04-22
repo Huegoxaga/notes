@@ -77,7 +77,7 @@
 - `git remote` List all the current remote repos.
 - `git remote add origin <URL>` Add the remote repos.
   - For Github repos, the URL is usually like, `https://github.com/AccountName/ReposName.git`
-- `git push -u origin <remoteBranch>` Add the current branch to certain remote branch and set the remote branch as the remote tracking branch.
+- `git push -u origin <remoteBranch>` push to certain remote branch and set the remote branch as the remote tracking branch.
 - `git push` update the remote repo with its corresponding local branch.
 - `git pull <URLorRemoteBranchName>` pull from a certain remote branch.
 - `git pull` Pull the latest from the remote repos

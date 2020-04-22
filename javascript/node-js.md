@@ -13,6 +13,17 @@
 
 - Installer is available from [nodejs.org](nodejs.org).
 
+### NPM
+
+- It is the package manager for `node.js`.
+- `npm install -g npm` update npm.
+  - `npm install -g npm@latest` update the npm to the last version.
+- `npm install -g package-name` -g means install globally.
+- `npm install` install packages listed in `package.json` file.
+- `npm update` update packages listed in `package.json` file and update the `package.json` file.
+- `npm list` list install package in the project folder.
+- `npm list -g --depth=0` list all globally installed package, only show the root folder name.
+
 ## Global object
 
 - Global object is an object in node.js that contains all the global functions.
@@ -35,7 +46,7 @@
 - Every module file is wrapped by a wrapper function as follow:
 
 ```js
-(function(exports, require, module, __filename, __dirname) {
+(function (exports, require, module, __filename, __dirname) {
   // Module code actually lives in here
 });
 ```

@@ -5,9 +5,65 @@
 - Machines learning is one type of artificial intelligence.
   - AI is a technique which enables machines to mimic human behaviour.
 - Machine Learning has 4 categories:
-  - `supervised learning` - data with label (neural nets )
-  - `unsupervised learning` - data without label
-  - `semi-supervised learning` - little data with label, many other data without label.
-  - `reinforcement learning` - learning from experience or similar genetic algorithm
+  - `Supervised Learning` - Machine learns from data with labels
+    - Suitable Tasks
+      - Classification
+        - Data are labeled manually with its class, expected to let the machine determine the class after learning from the data.
+      - Regression
+        - It is used to predict a numeric value called target.
+        - A set of attributes with value or features are provided for learning, they are called predictors, along with target values as labels.
+          - `attribute` is a type of information that will be learned by the machine.
+          - `feature` is a type of information with a value that will be learned by the machine.
+    - Supervised Learning Algorithms
+      - Support Vector Machines(SVMs)
+      - Decision Trees and Random Forests
+      - Neural networks
+        - It can be also used in unsupervised and semisupervised learning.
+      - Logistic Regression
+        - It will output the probability of an instance belonging one class, hence it is suitable for classification.
+      - k-Nearest Neighbors
+      - Linear Regression
+      - Logistic Regression
+- `Unsupervised Learning` - data without label
+  - Suitable Tasks
+    - Clustering
+      - Grouping data
+    - Anomaly detection
+      - Find any data that is different from most of samples
+    - Novelty detection
+      - Find any data that has never been seen from all the sample data.
+    - Visualizetion
+      - Generates a 2D or 3D representation of input data points
+    - Dimensionality Reduction
+      - Sumarize data and make them have less attributes, as known as feature extraction.
+      - It can be used to prepare data before putting into others machine learning algorithm.
+    - Association rule learning
+      - It is used to discover relations between attributes from different sample data.
+  - Unsupervised Learning Algorithms
+    - K-Means
+    - DBSCAN
+    - Hierarchical Cluster Analysis(HCA)
+      - Each Cluster group can have subgroups
+    - One-class SVM
+    - Isolation Forest
+    - Principal Component Analysis(PCA)
+    - Kernel PCA
+    - Locally Linear Embedding(LLE)
+    - t-Distributed Stochastic Neighbor Embedding(t-SNE)
+    - Apriori
+    - Eclat
+- `Semisupervised learning` - little data with label, many other data without label.
+  - It uses a combination of both supervised learning algorithms and unsupervised learning algorithms .
+- `reinforcement learning` - learning from experience or similar genetic algorithm.
+  - An agent will be given different situation. The agent will perform observation and perform an action. The agent will be rewarded and penalized accordingly. Policy will then be establish for it to get the most reward in different situation.
+- Any ML methods can be either one of the following type:
+  - online learning or batch learning
+    - whether or not the learning process is done at one time(batch learning) or consequently overtime based on a stream of incoming data(online learning)
+    - batch learning is also called offline learning.
+    - batch learning requires a lot of computing resources while online learning uses data as mini batch which can be cheap and fast.
+    - online learning is vulnerable to bad data.
+  - instance-based learning or model-based learning
+    - instance-based will compare new data with sample data then make judgement.
+    - model-based learning will generalize sample data, then processing new data based on the model.
 - Deep learning is the method of using multi-layer neutral network for machine learning.
 - Data science are math tools used by machine learning.

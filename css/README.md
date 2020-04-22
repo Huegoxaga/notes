@@ -156,7 +156,7 @@ p {
   ```
   - Media Features, structures like `(min-width: 1200px)` are known as media features, there are many others.
     - `max-height`
-    - `min-height`
+    - `min-height` useful for a dynamic page.
   - Media Types, the keyword screen in the example can be replaced by the following Media Types.
     - `all` Default. Used for all media type devices
     - `print` Used for printers
