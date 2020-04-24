@@ -48,3 +48,5 @@
 - [Maple](maple/README.md)
 - [Theory](theory/README.md)
   - [Data Structures and Algorithms](theory/algorithm.md)
+  - [Networking](theory/networking.md)
+  - [Machine Learning](theory/ml.md)

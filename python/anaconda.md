@@ -338,3 +338,140 @@
   - Attribute value can be replaced by a complied regular expression patterm. Ex, `soup.find_all('a', {'href': re.compile('https://example.*')})`
 - `soup.get_text()` get the text inside the tag.
 - `soup.find('ul', {"class": "className"})` `find` method return the one result.
+
+## Celery
+
+### Introduction
+
+- It’s a task queue with focus on real-time processing, while also supporting task scheduling.
+- It is not included in the anaconda default package, and need to be installed using command `conda install celery`.
+
+### Basic Usage
+
+1. Celery requires a broker to store task list in a queue. There are three options, follow one of the link to install:
+   - RabbitMQ - [click](http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq) to see installation & configuration instruction.
+   - Redis - [click](http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis) to see installation & configuration instruction.
+     - run `pip install -U "celery[redis]"` to install Celery and Redis as a bundle.
+     - For Django app add `BROKER_URL = 'redis://localhost:6379/0'` and `BROKER_TRANSFER = 'redis'` in `settings.py`.
+   - Amazon SQS - [click](http://docs.celeryproject.org/en/latest/getting-started/brokers/sqs.html#broker-sqs) to see installation & configuration instruction.
+2. Defines the task in `tasks.py`
+   ```py
+   from celery import Celery
+   app = Celery('tasks', broker='pyamqp://guest@localhost//')
+   @app.task
+   def add(x, y):
+     return x + y
+   ```
+3. Run the Celery server by running command `celery -A <projectName> worker --loglevel=info`.
+4. Call the task
+   ```py
+   from tasks import add
+   >>> add.delay(4, 4)
+   ```
+5. Setup and view the result
+   1. add the `backend` argument to Celery, using a selected backend storage method from [here](http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html#keeping-results)
+   2. Access result using the following ways
+   ```py
+   result = add.delay(4, 4)
+   result.ready() #return true if it is done.
+   result.get(timeout=1) # get result after a certain duration.
+   result.get(propagate=False) # preventing a exception is reraised when calling get() after an error.
+   result.traceback #  access to the original traceback after a exception is raised.
+   # Remember to call either get() or forget() to release the memory
+   result.forget()
+   ```
+6. Do additional settings
+   - To change a certain settings `app.conf.task_serializer = 'json'`
+   - To change multiple settings:
+     ```py
+     app.conf.update(
+     task_serializer='json',
+     accept_content=['json'],  # Ignore other content
+     result_serializer='json',
+     timezone='Europe/Oslo',
+     enable_utc=True,
+     )
+     ```
+   - To change settings from a config file, use `app.config_from_object('celeryconfig')`, An example config file named `celeryconfig.py` is shown as follows:
+     ```py
+     broker_url = 'pyamqp://'
+     result_backend = 'rpc://'
+     task_serializer = 'json'
+     result_serializer = 'json'
+     accept_content = ['json']
+     timezone = 'Europe/Oslo'
+     enable_utc = True
+     ```
+
+### Work with Django
+
+1. Add the Celery instance definition at `proj/proj/celery.py`
+   ```py
+   from __future__ import absolute_import, unicode_literals
+   import os
+   from celery import Celery
+   # set the default Django settings module for the 'celery' program.
+   os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
+   app = Celery('proj')
+   # Using a string here means the worker doesn't have to serialize
+   # the configuration object to child processes.
+   # - namespace='CELERY' means all celery-related configuration keys
+   #   should have a `CELERY_` prefix.
+   app.config_from_object('django.conf:settings', namespace='CELERY')
+   # Load task modules from all registered Django app configs.
+   app.autodiscover_tasks()
+   @app.task(bind=True)
+   def debug_task(self):
+       print('Request: {0!r}'.format(self.request))
+   ```
+2. Let celery start in the `proj/proj/__init__.py` when django starts.
+   ```py
+   from __future__ import absolute_import, unicode_literals
+   # This will make sure the app is always imported when
+   # Django starts so that shared_task will use this app.
+   from .celery import app as celery_app
+   __all__ = ('celery_app',)
+   ```
+3. Write tasks in the `tasks.py` in app folders
+   ```py
+   # Create your tasks here
+   from __future__ import absolute_import, unicode_literals
+   from celery import shared_task
+   from demoapp.models import Widget
+   @shared_task
+   def add(x, y):
+       return x + y
+   @shared_task
+   def mul(x, y):
+       return x * y
+   @shared_task
+   def xsum(numbers):
+       return sum(numbers)
+   @shared_task
+   def count_widgets():
+       return Widget.objects.count()
+   @shared_task
+   def rename_widget(widget_id, name):
+       w = Widget.objects.get(id=widget_id)
+       w.name = name
+       w.save()
+   ```
+
+### Celery Beat
+
+- This is a celery extension that stores the schedule in the Django database, and presents a convenient admin interface to manage periodic tasks at runtime.
+- Setup steps:
+  1. Use pip to install the package, `pip install django-celery-beat`
+  2. Add the `django_celery_beat` module to `INSTALLED_APPS` in `settings.py`
+  3. Apply Django database migrations so that the necessary tables are created: `python manage.py migrate`
+  4. Start the celery beat service `celery -A proj beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler`
+  5. add the related settings if nesscery, [click](http://docs.celeryproject.org/en/latest/userguide/configuration.html#beat-settings-celery-beat) to see more details.
+  6. Visit the Django-Admin interface to set up some periodic tasks.
+
+### Daemonization
+
+- In production you’ll want to run the worker in the background as a daemon instead of running the service using commands explicitly.
+- If the Server OS uses `systemd` to control all background service. Add the worker files to the .. folder
+  - For celery:
+  - For Celery Beat:
+- run `` to update the deamon settings.

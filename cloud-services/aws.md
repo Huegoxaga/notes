@@ -215,13 +215,14 @@ Create a Skill - a skill can be created by using the following ways.
     - Use the [Code Generator](https://s3.amazonaws.com/webappvui/skillcode/v2/index.html) to generate backend code automatically.
 
 - Alexa Skills Kit CLI
+
   1. Install Node.js 4.5>=
   2. [Click Here](https://developer.amazon.com/alexa/console/ask) to signup an Amazon developer account.
   3. run `sudo npm i -g ask-cli`.
   4. run `ask init`, to sign in with the AWS developer account.
   5. run `ask init --aws-setup`, to update the AWS account credentials if AWS default user profile's credentials has not been set up for the AWS CLI, fill in the AWS account keys.
   6. run `ask new -n <folderName>`, to create a skill in a new folder.
-  - run `ask clone -s <link>`, to clone an existing skill.
+     - run `ask clone -s <link>`, to clone an existing skill.
   7. run `ask deploy`, to deploy the skill by uploading skills in the project folder to the Alexa Developer Console and Creating AWS Lambda instance.
   8. run `ask simulate -l en-US -t "voice command for testing"`, to test the skill.
 

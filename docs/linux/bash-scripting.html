@@ -1,0 +1,1183 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Bash Scripting · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../virtualization/" />
+    
+    
+    <link rel="prev" href="regex.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../python/">
+            
+                <a href="../python/">
+            
+                    
+                    Python
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../python/anaconda.html">
+            
+                <a href="../python/anaconda.html">
+            
+                    
+                    Anaconda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../python/standard-library.html">
+            
+                <a href="../python/standard-library.html">
+            
+                    
+                    Python Stardard Library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+            
+                <a href="../python/django.html">
+            
+                    
+                    Django
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../java/">
+            
+                <a href="../java/">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../java/javafx.html">
+            
+                <a href="../java/javafx.html">
+            
+                    
+                    JavaFX
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+            
+                <span>
+            
+                    
+                    Android Studio
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../javascript/">
+            
+                <a href="../javascript/">
+            
+                    
+                    JavaScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../javascript/jquery.html">
+            
+                <a href="../javascript/jquery.html">
+            
+                    
+                    jQuery
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../javascript/react.html">
+            
+                <a href="../javascript/react.html">
+            
+                    
+                    React
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../javascript/react-native.html">
+            
+                <a href="../javascript/react-native.html">
+            
+                    
+                    React Native
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../javascript/node-js.html">
+            
+                <a href="../javascript/node-js.html">
+            
+                    
+                    Node.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c-sharp/">
+            
+                <a href="../c-sharp/">
+            
+                    
+                    C#
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c-sharp/dot-net.html">
+            
+                <a href="../c-sharp/dot-net.html">
+            
+                    
+                    .NET
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../c-sharp/asp-dot-net.html">
+            
+                <a href="../c-sharp/asp-dot-net.html">
+            
+                    
+                    ASP.NET
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c/">
+            
+                <a href="../c/">
+            
+                    
+                    C
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../swift/">
+            
+                <a href="../swift/">
+            
+                    
+                    Swift
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../swift/xcode.html">
+            
+                <a href="../swift/xcode.html">
+            
+                    
+                    Xcode
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../markup/">
+            
+                <a href="../markup/">
+            
+                    
+                    Markup Language
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../markup/html.html">
+            
+                <a href="../markup/html.html">
+            
+                    
+                    HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../markup/xml.html">
+            
+                <a href="../markup/xml.html">
+            
+                    
+                    XML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../markup/gfm.html">
+            
+                <a href="../markup/gfm.html">
+            
+                    
+                    GFM
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../css/">
+            
+                <a href="../css/">
+            
+                    
+                    CSS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../css/bootstrap.html">
+            
+                <a href="../css/bootstrap.html">
+            
+                    
+                    Bootstrap
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../typescript/">
+            
+                <a href="../typescript/">
+            
+                    
+                    TypeScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../typescript/angular.html">
+            
+                <a href="../typescript/angular.html">
+            
+                    
+                    Angular
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../php/">
+            
+                <a href="../php/">
+            
+                    
+                    PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../cloud-services/">
+            
+                <a href="../cloud-services/">
+            
+                    
+                    Cloud Services
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../cloud-services/aws.html">
+            
+                <a href="../cloud-services/aws.html">
+            
+                    
+                    AWS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../cloud-services/google-cloud-platform.html">
+            
+                <a href="../cloud-services/google-cloud-platform.html">
+            
+                    
+                    Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../solution-stack/">
+            
+                <a href="../solution-stack/">
+            
+                    
+                    Solution Stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../sql/">
+            
+                <a href="../sql/">
+            
+                    
+                    SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../wechat-mini-program/">
+            
+                <a href="../wechat-mini-program/">
+            
+                    
+                    Wechat Mini Program
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../cms/">
+            
+                <a href="../cms/">
+            
+                    
+                    Content Management Systems
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="../cms/wordpress.html">
+            
+                <a href="../cms/wordpress.html">
+            
+                    
+                    WordPress
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="regex.html">
+            
+                <a href="regex.html">
+            
+                    
+                    Regular Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.17.2" data-path="bash-scripting.html">
+            
+                <a href="bash-scripting.html">
+            
+                    
+                    Bash Scripting
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="../virtualization/">
+            
+                <a href="../virtualization/">
+            
+                    
+                    Virtualization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../virtualization/virtualbox.html">
+            
+                <a href="../virtualization/virtualbox.html">
+            
+                    
+                    VirtualBox
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="../virtualization/docker.html">
+            
+                <a href="../virtualization/docker.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="../git/">
+            
+                <a href="../git/">
+            
+                    
+                    Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../graphic-design/">
+            
+                <a href="../graphic-design/">
+            
+                    
+                    Graphic Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="../networking/README.md">
+            
+                <span>
+            
+                    
+                    Networking
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="../maple/">
+            
+                <a href="../maple/">
+            
+                    
+                    Maple
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="../theory/">
+            
+                <a href="../theory/">
+            
+                    
+                    Theory
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.23.1" data-path="../theory/algorithm.html">
+            
+                <a href="../theory/algorithm.html">
+            
+                    
+                    Data Structures and Algorithms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.2" data-path="../theory/networking.html">
+            
+                <a href="../theory/networking.html">
+            
+                    
+                    Networking
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.3" data-path="../theory/ml.html">
+            
+                <a href="../theory/ml.html">
+            
+                    
+                    Machine Learning
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Bash Scripting</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="bash-scripting">Bash Scripting</h1>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>It stores a batch of command in order to complete certain task in one execution.</li>
+<li>It usually has an extension as <code>.sh</code>. It also can be run without any extenion or as <code>.txt</code>.</li>
+<li>Bash does not have a type system, everything is saved as strings.</li>
+<li>It can be edited by any text editing tool.</li>
+<li>It is recommanded to run the full path of the commands in the scripts.</li>
+</ul>
+<h2 id="run-script">Run Script</h2>
+<ul>
+<li>Any text file contains commands line by line can be run using <code>bash filename</code>.</li>
+<li>Shebang is used at the first line of the text file to make the file executable by itself.<ul>
+<li>It is an operator look like <code>#!</code></li>
+<li>It is followed by the path of the interpreter.</li>
+<li>For bash scripting, use <code>#!/bin/sh</code> or <code>#!/usr/bin/env bash</code> if the path of bash is unknown.</li>
+<li>The user needs the <code>execute</code> file permission for the script.</li>
+<li>The file can then be executed by using <code>./filename</code>.</li>
+<li>Add the directory path into the <code>$PATH</code> variable to make the script run without <code>./</code>.</li>
+</ul>
+</li>
+<li>Each script will be run in a separate session.</li>
+</ul>
+<h2 id="syntax">Syntax</h2>
+<h3 id="comment">Comment</h3>
+<ul>
+<li><p>Any line starts with <code>#</code> can be followed by a single line comment.</p>
+</li>
+<li><p><code>\</code> can be placed at the end of each line. It will make the command continue in a new line.</p>
+</li>
+<li><code>commandA &amp;&amp; commandB</code> can be used to run two command from left to right.</li>
+<li><code>;</code> can be used to separate multiple command in entered one line.</li>
+</ul>
+<h3 id="exit">Exit</h3>
+<ul>
+<li>keyword <code>exit</code> is used to stop the script.</li>
+</ul>
+<h3 id="variables">Variables</h3>
+<ul>
+<li>declare a new variable using <code>name=value</code>.<ul>
+<li>No space between <code>=</code> sign.</li>
+<li>String values need to be surrounded by quotes.</li>
+</ul>
+</li>
+<li>Access variable using <code>$name</code><ul>
+<li>When printing the variable, double quotes are required. Ex, <code>echo &quot;Good Morning! $name&quot;</code></li>
+<li>It can also accessed by using <code>${name}</code>.<ul>
+<li><code>${name}</code> can be placed inside a string surrounded by double quotes.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Using backticks to save command as variable<pre><code class="lang-bash">BASH_VERSION=`bash --version`
+<span class="hljs-built_in">echo</span> <span class="hljs-variable">$BASH_VERSION</span>
+</code></pre>
+</li>
+<li>Save or Print or Save the ouput of a command in a variable using <code>$()</code>.<pre><code class="lang-bash">result=$(<span class="hljs-built_in">pwd</span>)
+<span class="hljs-built_in">echo</span> <span class="hljs-variable">$result</span>
+<span class="hljs-comment">#or</span>
+<span class="hljs-built_in">echo</span> $(<span class="hljs-built_in">pwd</span>)
+</code></pre>
+</li>
+<li>Strings can be concatenated if two variable are placed together without space. Ex, <code>$A$B</code>.</li>
+<li>Strings can be concatenated using <code>+=</code>.</li>
+<li><code>$RANDOM</code> generate a 16-bit random number between <code>0</code> to <code>32767</code>.<ul>
+<li>use modulus calculation to generate numbers in certain range. <code>$RANDOM % 11</code> will get random number from 0 to 10.</li>
+</ul>
+</li>
+</ul>
+<h3 id="user-input">User Input</h3>
+<ul>
+<li>use <code>read name</code> will prompt the user to enter a value for the variable <code>name</code>.</li>
+</ul>
+<h3 id="array">Array</h3>
+<ul>
+<li>Declare an array, <code>arrayName=(&apos;A&apos; &apos;B&apos; &apos;C&apos; &apos;D&apos;)</code>.</li>
+<li>Print an array element, <code>echo ${arrayName[3]}</code>.<ul>
+<li>Index starts at 0.</li>
+</ul>
+</li>
+<li>Sequence generation<ul>
+<li><code>echo {0..10}</code> generate a list of number from 0 to 10.</li>
+<li><code>echo $(seq 0 10)</code> generate a list of number from 0 to 10.</li>
+<li><code>echo $(seq 0 3 10)</code> generate a list of number from 0 to 10 with step 3.<ul>
+<li>step can be a negative number. It will generate the list in reversed order.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="arithmetic-operations">Arithmetic Operations</h3>
+<ul>
+<li>All common arithmetic operations works here including <code>%</code>, <code>++</code> or <code>+=</code>.</li>
+<li><code>let</code> Command<ul>
+<li><code>let RESULT=1+1; echo $RESULT;</code></li>
+<li><code>let RESULT=&quot;1 + 1&quot;; echo $RESULT;</code></li>
+<li><code>let &quot;RESULT = 5 * 5&quot;; echo $RESULT</code></li>
+</ul>
+</li>
+<li><code>expr</code> Command<ul>
+<li>It evaluate the express followed and print the result.</li>
+<li>needs space in between operators. <code>expr 1 + 5</code></li>
+<li>Without using quotes special characters like <code>*</code> need to be escaped. <code>expr 5 \* 1</code></li>
+</ul>
+</li>
+<li><code>$((expression))</code> syntax<ul>
+<li><code>RESULT=$((1 + 1))</code> evaluate expression and store it in a new variable.</li>
+<li><code>VAR=1; (( VAR += VAR ));</code> declare a variable and modify without <code>$</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="comparison">Comparison</h3>
+<ul>
+<li>For numbers use the following operators:<ul>
+<li><code>-eq</code> Equal</li>
+<li><code>-ne</code> Not equal</li>
+<li><code>-gt</code> Greater than</li>
+<li><code>-ge</code> Greater than or equal</li>
+<li><code>-lt</code> Less than</li>
+<li><code>-le</code> Less than or equal</li>
+<li>For example: <code>$10 -gt 20</code>.</li>
+</ul>
+</li>
+<li>For strings use <code>&gt;</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code><ul>
+<li>Use <code>-z</code> to check if the string is empty. <code>-z &apos;&apos;</code></li>
+<li>Use <code>-n</code> to check if the string is non-empty.</li>
+<li>Both <code>=</code> and <code>==</code> works.</li>
+<li><code>&gt;</code> and <code>&lt;</code> needs to be escaped, <code>&apos;b&apos; \&gt; &quot;a&quot;</code>.</li>
+</ul>
+</li>
+<li><code>test</code> command can be used to evaluate boolean expression.<ul>
+<li>If the result is true the command status will be 0, If the result is false the command status will be 1.</li>
+<li><code>test</code> command has alias command <code>[</code> that requires a <code>]</code> at the end. Ex, <code>[3 -gt 1]</code></li>
+</ul>
+</li>
+<li><code>!</code> can be used to negate a condition.<code>![true &amp;&amp; true]</code> or <code>[!false &amp;&amp; true]</code></li>
+<li><code>&amp;&amp;</code> means <code>and</code>. <code>||</code> means <code>or</code>. They can be used to connect boolean expression.<ul>
+<li>Use parentheses to make them run in order <code>([ 1 -le 5 ] &amp;&amp; [ 3 -lt 9 ]) || ([ 1 -gt 1 ] &amp;&amp; [ 1 -ne 0 ])</code></li>
+<li><code>&amp;&amp;</code> can also be used to connect to valid command. When evaluate two valid commands they will be execute at the meantime.</li>
+</ul>
+</li>
+</ul>
+<h3 id="if-condition">If Condition</h3>
+<ul>
+<li><code>if</code><pre><code class="lang-bash"><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$PROCEED</span>&quot;</span> = <span class="hljs-string">&quot;YES&quot;</span> ]
+<span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Performing task...&quot;</span>
+<span class="hljs-keyword">fi</span>
+<span class="hljs-comment">#or in one line like</span>
+<span class="hljs-keyword">if</span> [ <span class="hljs-string">&apos;proceed&apos;</span> == <span class="hljs-string">&quot;proceed&quot;</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Performing task...&quot;</span>; <span class="hljs-keyword">fi</span>
+</code></pre>
+</li>
+<li><code>if-else</code><pre><code class="lang-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;Enter a number?&apos;</span>
+<span class="hljs-built_in">read</span> number
+<span class="hljs-keyword">if</span> [ <span class="hljs-variable">$number</span> <span class="hljs-_">-gt</span> 100 ]
+<span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;It is greater than 100.&apos;</span>
+<span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&apos;It is smaller than 100.&apos;</span>
+<span class="hljs-keyword">fi</span>
+</code></pre>
+</li>
+<li><code>if-elif-else</code><pre><code class="lang-bash">VALUE=-10
+<span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> <span class="hljs-_">-lt</span> 0 ]; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is less than 0&quot;</span>
+<span class="hljs-keyword">elif</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> <span class="hljs-_">-eq</span> 0 ]; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is 0&quot;</span>
+<span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is greater than 0&quot;</span>
+<span class="hljs-keyword">fi</span>
+</code></pre>
+</li>
+<li>Nested <code>if-else</code><pre><code class="lang-bash">VALUE=10
+<span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> <span class="hljs-_">-lt</span> 0 ]; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is less than 0&quot;</span>
+<span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is greater than 0&quot;</span>
+    <span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$VALUE</span>&quot;</span> -le 10 ]; <span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is less than or equal to 10&quot;</span>
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;VALUE is greater than 10&quot;</span>
+    <span class="hljs-keyword">fi</span> <span class="hljs-comment"># end of nested if block</span>
+<span class="hljs-keyword">fi</span> <span class="hljs-comment"># end of parent if block</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="loops">Loops</h3>
+<ul>
+<li>Use <code>exit</code> to break out of loops.</li>
+<li><code>for...in</code> loop<pre><code class="lang-bash">files=/filepath/
+<span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> <span class="hljs-variable">$files</span>
+<span class="hljs-keyword">do</span>
+  <span class="hljs-built_in">echo</span> $(basename <span class="hljs-variable">$file</span>)
+<span class="hljs-keyword">done</span>
+</code></pre>
+<ul>
+<li>If the <code>in</code> and variable followed is missing, the script need to run with a parameter. <code>./filename.sh $VAR</code></li>
+</ul>
+</li>
+<li>for loop<pre><code class="lang-bash"><span class="hljs-keyword">for</span> (( i = 0; i &lt; 5; i++ )); <span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;The number is: <span class="hljs-variable">$i</span>&quot;</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># Use two variables in loop</span>
+<span class="hljs-keyword">for</span> (( n = 0, i = 1; n &lt; 5; n++, i += i )); <span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> -n <span class="hljs-string">&quot;<span class="hljs-variable">$i</span>, &quot;</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># infinite for loop</span>
+<span class="hljs-keyword">for</span> ((;;))
+</code></pre>
+</li>
+<li><code>while</code> loop<pre><code class="lang-bash">NUMBER=1
+<span class="hljs-keyword">while</span> [ <span class="hljs-variable">$NUMBER</span> <span class="hljs-_">-lt</span> 5 ]; <span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Number is: <span class="hljs-variable">$((NUMBER++)</span>)&quot;</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># infinite while loop</span>
+<span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>
+<span class="hljs-keyword">do</span>
+  <span class="hljs-comment"># perform action</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># or</span>
+<span class="hljs-keyword">while</span> :
+<span class="hljs-keyword">do</span>
+  <span class="hljs-comment"># perform action</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+</li>
+<li><code>until</code> loop</li>
+</ul>
+<pre><code class="lang-bash">NUMBER=1
+until [ <span class="hljs-variable">$NUMBER</span> == 4 ]
+<span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Number is: <span class="hljs-variable">$((NUMBER++)</span>)&quot;</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># infinite until loop</span>
+until <span class="hljs-literal">false</span>
+<span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello World&quot;</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="regex.html" class="navigation navigation-prev " aria-label="Previous page: Regular Expression">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../virtualization/" class="navigation navigation-next " aria-label="Next page: Virtualization">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Bash Scripting","level":"1.17.2","depth":2,"next":{"title":"Virtualization","level":"1.18","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.18.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.18.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]}]},"previous":{"title":"Regular Expression","level":"1.17.1","depth":2,"path":"linux/regex.md","ref":"linux/regex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/bash-scripting.md","mtime":"2020-03-24T13:49:53.682Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-24T00:40:32.900Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
