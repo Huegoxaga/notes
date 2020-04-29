@@ -349,6 +349,8 @@ while condition:
   (3,7)
   """
   # Enumerate(x) casts other types into enumerate.
+  for x in range(6): #from 0 - 5
+  print(x)
   ```
 - Shorthand For loop, `[i.x for i in list]` return a list of `i.x`.
 

@@ -22,6 +22,7 @@
   - [HTML](https://huegoxaga.github.io/notes/markup/html.html)
   - [XML](https://huegoxaga.github.io/notes/markup/xml.html)
   - [GFM](https://huegoxaga.github.io/notes/markup/gfm.html)
+  - [LaTex](https://huegoxaga.github.io/notes/markup/latex.html)
 - [CSS](https://huegoxaga.github.io/notes/css/index.html)
   - [Bootstrap](https://huegoxaga.github.io/notes/css/bootstrap.html)
 - [TypeScript](https://huegoxaga.github.io/notes/typescript/index.html)
@@ -49,3 +50,4 @@
   - [Data Structures and Algorithms](https://huegoxaga.github.io/notes/theory/algorithm.html)
   - [Networking](https://huegoxaga.github.io/notes/theory/networking.html)
   - [Machine Learning](https://huegoxaga.github.io/notes/theory/ml.html)
+  - [Cryptography](https://huegoxaga.github.io/notes/theory/cryptography.html)

@@ -663,7 +663,6 @@
 - The configuration file for filter tables for IPv4 is stored in `/etc/sysconfig/iptables`
 - The configuration file for filter tables for IPv6 is stored in `/etc/sysconfig/ip6tables`
 - Commands
-
   - `service iptables start` start the firewall.
   - `service iptables save` save changes to the iptables.
   - `iptables -L -n` list on rules in the filter table.
@@ -682,9 +681,34 @@
     - chainName – `INPUT`, `OUTPUT`, `FORWARD`
     - defaultAction - `ACCEPT`, `DROP`, `REJECT`
     - Example, `iptables -P INPUT DROP` set the default policy to deny all inbound connections
-
 - `system-config-firewall` is a graphical interface for configuring basic firewall rules.
 - `system-config-firewall-tui`, start the text based system-config-firewall utility.
   - Use tab Key to move between elements.
   - Use space bar to toggle on and off.
   - Use enter key to select elements.
+
+### crontab
+
+- Cron is a time-based job scheduler in Unix-like computer operating systems.
+- Cron tasks format:
+  - It has five positional values represent time intervals.
+    - from left to right each value represents `minutes`(0-59), `hours`(1-23), `day`(1-31), `month`(1-12), `day of week`(0-6, Sunday-Saturday)
+    - `0 3 * * *` - command runs every 3am everyday.
+    - `* * * * *` - command runs every minutes every day.
+    - `*/30 * * * *` - command runs every 30 minutes.
+    - `* * * * 1-5` - command runs every minutes on weekdays.
+    - `0,30 * * * *` - command runs every whole hours and 30 minutes pass any hours.
+  - Use [crontab guru](https://crontab.guru) - A crontab schedule translator to check the format.
+- Syntax:
+  - The following line will be entered to the systmen using the `crontab -e` command.
+  - `* * * * * <command>` The command will be run every minutes.
+  - `* * * * * <command> >> <outputlog>` The command will be run every minutes with a log.
+- command:
+  - `crontab -l` list all current cron tasks in the cron table for the current user.
+    - `crontab -u <username> -l`list cron tasks for a certain user
+    - `sudo crontab -l` list cron tasks for root user
+  - `crontab -e` edit cron tasks in the cron table for the current user.
+    - `crontab -u <username> -e` edit cron tasks for a certain user
+    - `sudo crontab -e` edit cron tasks for root user
+  - `crontab -r` remove all crontab tasks
+    - optionally, delete all lines in the `crontab -r`.

@@ -23,6 +23,7 @@
   - [HTML](markup/html.md)
   - [XML](markup/xml.md)
   - [GFM](markup/gfm.md)
+  - [LaTeX](markup/latex.md)
 - [CSS](css/README.md)
   - [Bootstrap](css/bootstrap.md)
 - [TypeScript](typescript/README.md)
@@ -50,3 +51,4 @@
   - [Data Structures and Algorithms](theory/algorithm.md)
   - [Networking](theory/networking.md)
   - [Machine Learning](theory/ml.md)
+  - [Cryptography](theory/cryptography.md)

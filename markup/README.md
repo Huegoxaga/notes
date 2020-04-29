@@ -11,6 +11,7 @@
 - Markdown is a library that generates HTML markup.
   - [Github Flavored Markdown](https://huegoxaga.github.io/notes/markup/gfm.html)
 
-# LaTeX
+## LaTeX
 
 - It provides a way to represent Math formula when using LaTeX supported editors.
+- See more details [here](https://huegoxaga.github.io/notes/markup/latex.html).

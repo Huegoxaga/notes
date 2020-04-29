@@ -255,11 +255,13 @@ http(s)
 
 - It use port number 443.
 - It is the secure version of HTTP.
-  Communications between the browser and website are encrypted by two ways:
+- Communications between the browser and website are encrypted by two ways:
   - Secure Sockets Layer (SSL)
     - Website uses SSL certificate to identify itself and establish secure connections with clients.
   - Transport Layer Security (TLS)
     - It is the next generation of SSL.
+- Digital certificates will be issued by certificate authorities(CAs) for SSL/TLS connection
+- Each SSL/TLS connection begins with a “handshake” – the negotiation between two client and host that nails down the details of how they’ll proceed. The handshake determines what cipher suite will be used to encrypt their communications, verifies the server, and establishes that a secure connection is in place before beginning the actual transfer of data.
 
 ##### Simple Mail Transport Protocol(SMTP)
 

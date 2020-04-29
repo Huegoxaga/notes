@@ -96,6 +96,7 @@ It helps deploy app on EC2 and will do capacity provisioning, load balancing, sc
 - It has its own command line tool called `EB CLI`
 - An EB App can have multiple Environment, each deployed environment has an URL which is an alias(A record) to its corresponding load balancer.
   - Once the environment is created the load balancer type cannot be changed.
+- EB Worker App host a EB worker to handle periodical tasks with AmazonSQS.
 
 ### EB CLI
 
@@ -149,6 +150,25 @@ It helps deploy app on EC2 and will do capacity provisioning, load balancing, sc
   - run `eb ssh env-name` to connect to the instance.
   - run `eb config env-name` to check configuration.
   - run `eb health env-name` to check environment health.
+  - Follow the step to run shell command on server:
+    ```bash
+    eb ssh
+    source /opt/python/run/venv/bin/activate
+    source /opt/python/current/env
+    cd /opt/python/current/app
+    python manage.py shell
+    ```
+  - Add Cron jobs using to EB worker app.
+    1.  In the root project folder add file `cron.yaml`
+    2.  add schedule info to the file
+        ```yaml
+        version: 1
+        cron:
+         — name: "test"
+           url: "/postapi"
+           schedule: "* * * * *"
+        ```
+    3.  After deployment, a post request will be sent to the `url` periodically.
 
 ## DynamoDB
 

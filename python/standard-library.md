@@ -332,6 +332,11 @@
 
 - `date.today()`
 
+### datetime.timedelta
+
+- `from datetime import date, timedelta`
+- `yesterday = date.today() - timedelta(days=1)`
+
 ## time
 
 - `import time`

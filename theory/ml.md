@@ -43,13 +43,7 @@
 
 ## Machine Learning Algorithms
 
-- Support Vector Machines(SVMs)
 - Decision Trees and Random Forests
-- Logistic Regression
-  - It will output the probability of an instance belonging one class, hence it is suitable for classification.
-- k-Nearest Neighbors
-- Linear Regression
-- Logistic Regression
 - K-Means
 - DBSCAN
 - Hierarchical Cluster Analysis(HCA)
@@ -62,6 +56,80 @@
 - t-Distributed Stochastic Neighbor Embedding(t-SNE)
 - Apriori
 - Eclat
+
+### Linear Regression
+
+- Linear regression is used to find the best fitting line(not nesscessirily straight) of a set of data points
+- suitable for solving regression problems that find a predicted value.
+- Ordinary least squares is used to calculate the best fit
+  - find the minimum value of the square of the difference of y and y hat.
+  - y hat is the predicted value while y is the actual value.
+- Simple linear regression - The model will be a linear function with one constant, one dependent variable and one independent variable `x` times a coefficient.
+- Multiple linear regression has one constant, one dependent variable and many combinations of independent variables times a coefficient.
+  - Each independent variable represents a different feature in a single row of data.
+  - Dummy Variable - For a categorical featue each possible category will form a new field with value 0 or 1, when the current row of data is belonds this a certain category the value for this category will be 1 and others are 0.
+    - Dummy Variable Trap - The number of this categorical independent variable will always be one less than the total number of the possible options since all others are 0 implys this record belong to the last category already.
+- Polynomial(linear) regression - It is like Multiple linear regression but the power of independent variable increases with the number of them.
+- For linear regression models all of the following assumptions must be achieved.
+  - Linearity
+  - Homoscedasticity
+  - Multivariate normality
+  - Independence of errors
+  - Lack of multicollinearity
+
+### Decision Trees
+
+##### Classification Trees
+
+- It is used for classification problems
+
+##### Regression Trees
+
+- It is used for regression problems
+- The algorithm uses information entripy to split datapoints into groups based on the independent variables of a data point.
+- Each one of the split is called a leaf.
+  - Each of the final split is called the terminal leaf.
+- A decision tree is a binary tree structure, each node check if one of the independent variable is greater or smaller than a certain value.
+  - Nodes from the same depth are dealing with the same independent variable.
+- The split add information to the datapoint and group them.
+- The average of all data points in one leaf will be calculated as the prediced value for all new data point if it falls in the split.
+
+### Random Forests
+
+- It is a type of ensemble learning.
+  - A algorithm that utlizes a single machine learning algorithm multiple times or uses different algorithm at the same time.
+- It uses subsets of the datapoints to form decision trees.
+- The average of all split from each decision tree will be used to make prediction.
+- It works for both classification tree and regression tree.
+
+##### Random Forests for
+
+### k-Nearest Neighbors
+
+- A classfication algorithm
+- Select a `k` value(small interger value). For any new data point find its `k` nearest neighbors, then the new data point belongs to the category that is the same as most of its neighbors.
+- Euclidean Distance(geometrical distance, square root of the sum of the square difference) is often used.
+
+### Logistic Regression
+
+- It is a classification algorithm.
+- Fit a linear regression into a range of 0 and 1 as the probabilities using the logistic regression formula.
+  - Subsitute `y` in the linear regression formula into the sigmoid function.
+- It can generate `P` hat as predicted probability of a given value.
+- It can return ethier 0 or 1 as `y` hat value if yes or no is the only required result.
+  - return `y` hat as 1 if the probability is higher than a certain defined value and vise versa.
+
+### Support Vector Machines(SVMs)
+
+- It is a classificaton algorithm
+- It focuses on finding the boundary, then make decision only based on the boundary.
+- The boundary is found to separate all data point with maximum margin.
+  - Maximum margin means the greatest distance to points from different categories.
+- The points that have the same cloest distance to the boundary is called support vectors.
+- The boundary is called maximum margin hyperplane or maximum margin classifier.
+- The lines which are parallel to the maximum margin hyperplane and have zero distance to the support vectors are called positive or negative hyperplane.
+
+##### Support Vector Regression
 
 ### Neural Networks
 
@@ -84,6 +152,8 @@
 - The input values are called the input layer the output values are called output layer.
 - Nodes in between are called hidden layers, each layers will process values and generate output for the next layer.
   - Each neuron in the same layer focuses on different aspects of the input info.
+  - Generally, the ideal number of nodes in each hidden layer is close to half of the input layer nodes plus output layer nodes.
+    - Fine tuning can be made to improve, however this approximate number is good enough for determining the number of nodes for all hidden layers.
   - Hidden layers can have as many as possible, the neural network can be called deep learning if there are lots of layers of neurons in between.
   - ANNs with fewer hidden layers can be called shallow learning.
 - The final output will be compared with the labeled target value, and use back propagation to adjust all weights of synapse, in order to achieve a higher accuracy.
@@ -131,3 +201,17 @@
   - The last fully connected layer will vote for the result for image recognition.
   - The softmax function is used to calculation possibilities of each result for image recogition so possibilities of all possible answers add up to 1.
   - The cost function in CNNs is called loss function, cross-entropy formula is frequenly used.
+
+## Steps for a Machine Learning Project
+
+### Data Preprocessing
+
+1. Importing the data.
+2. Replacing missing values by the average of all other values.
+3. Encoding categorical data - generating dummy variables.
+4. Splitting the dataset into the Training set and Test set.
+5. Feature Scaling - put all the features on the same scales.
+   - There are two ways for Feature Scaling
+     - Standardization returns a result from -3 to 3, Standardization alway works.
+     - Normalization returns a result from 0 to 1, Normalization works only if data have a normal distribution in most of the features.
+   - Dummy variables do not need to apply feature scaling.
