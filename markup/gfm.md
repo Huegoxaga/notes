@@ -219,10 +219,13 @@ They can't be added directly but you can add an image with a link to the video l
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE " target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg"  alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 ```
 
-### Comments(to be tested)
+### LaTeX
 
-Text can be hidden in <!- -Text- -> or <Text>
-[//]: # (This syntax works like a comment, and won't appear in any output.)
+- Insert LaTeX code as images as `https://render.githubusercontent.com/render/math?math=x = -1`
+  - `+` need to be replaced by its percent-encoding value which is `%2B`.
+- Another to way insert`![$x=1+a$](https://render.githubusercontent.com/render/math?math=%24x%3D1%2Ba%24)`
+  - It works only when there is no space in the path. Can replce space with its encoded value `%20`.
+  - [Click](https://alexanderrodin.com/github-latex-markdown/) to use the path generator tools
 
 # Gitbook
 
@@ -245,13 +248,13 @@ Text can be hidden in <!- -Text- -> or <Text>
 - Run `gitbook build`
 - Use `gitbook build ./ --log=debug --debug` to debug.
 
+#### Escape Special Symbols
+
+Use a keyword `raw` and `endraw` surrounded by `{`(outter) and `%`(inner) as html comments to escape special symbols that cause build errors
+
 ## Publish
 
 - github pages host static webpages from repo, it is free.
 - add the generated webpages files in the GitHub Repo
 - in Settings, find GitHub Pages Section and Set the folder location for hosting.
 - The Theme if for `.md` pages.
-
-## Escape Special Symbols
-
-Use a keyword `raw` and `endraw` surrounded by `{`(outter) and `%`(inner) as html comments to escape special symbols that causes build error

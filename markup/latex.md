@@ -94,6 +94,10 @@ while working on a draft.
 \end{document}
 ```
 
+- New Line
+  - One extra empty line will place text in a new line.
+  - Use `\\`
+
 ### Mathematics
 
 ##### Mathematical modes
@@ -103,6 +107,40 @@ while working on a draft.
 - display mode - centered math expression in a new paragraph.
   - use delimiters: `\[ \]`, `$$ $$`, `\begin{displaymath} \end{displaymath}` or `\begin{equation} \end{equation}`
 
+##### Symbol Size
+
+- `$\displaystyle{x}$` normal size for math symbols.
+
 ##### Math Symbols
 
 - Use [Detexify](http://detexify.kirelabs.org/classify.html) to draw a symbol and find the LeTaX syntax for it.
+- `\` can be used to escape special symbols used by the compiler.
+- `$3x^2$` ![$3x^2$](https://render.githubusercontent.com/render/math?math=%243x%5E2%24) superscripts
+- `$3x^{3x^2+1}$` ![$3x^{3x^2+1}$](https://render.githubusercontent.com/render/math?math=%243x%5E%7B3x%5E2%2B1%7D%24) superscripts for more than 1 character
+- `$x_1$` ![$x_1$](https://render.githubusercontent.com/render/math?math=%24x_1%24) subscripts
+- `${x_1}_2$` ![${x_1}_2$](https://render.githubusercontent.com/render/math?math=%24%7Bx_1%7D_2%24) subscript of a subscript
+- `$\pi$` ![$\pi](https://render.githubusercontent.com/render/math?math=%24%5Cpi) greek letters
+- `$A=\pi r^2$` ![$A=\pi r^2$](https://render.githubusercontent.com/render/math?math=%24A%3D%5Cpi%20r%5E2%24) greek letter need to have a space with others.
+- `$\sin{x}$` ![$\sin{x}$](https://render.githubusercontent.com/render/math?math=%24%5Csin%7Bx%7D%24) trig functions
+- `$\log{x}$` ![$\log{x}$](https://render.githubusercontent.com/render/math?math=%24%5Clog%7Bx%7D%24) log functions
+- `$\log_5{x}$` ![$\log_5{x}$](https://render.githubusercontent.com/render/math?math=%24%5Clog_5%7Bx%7D%24) log function with a base
+- `$\ln{x}$` ![$\ln{x}$](https://render.githubusercontent.com/render/math?math=%24%5Cln%7Bx%7D%24) nature log function
+- `$\sqrt{2}$` ![$\sqrt{2}$](https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B2%7D%24) square root
+- `$\sqrt{3}{2}$` ![$\sqrt{3}{2}$](https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B3%7D%7B2%7D%24) cubic root
+- `$\sqrt{3}{1+\sqrt{x}}$` ![$\sqrt{3}{1+\sqrt{x}}$](https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B3%7D%7B1%2B%5Csqrt%7Bx%7D%7D%24) square root of a cubic root
+- `$\frac{1}{3}$` ![$\frac{1}{3}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7B1%7D%7B3%7D%24) fraction
+- `$(x+1)$` ![$(x+1)$](<https://render.githubusercontent.com/render/math?math=%24(x%2B1)%24>) parentheses
+- `$|x|$` ![$|x|$](https://render.githubusercontent.com/render/math?math=%24%7Cx%7C%24) absolute value
+- `$\left(frac{2}{3}\right)$` ![$\left(frac{2}{3}\right)$](<https://render.githubusercontent.com/render/math?math=%24%5Cleft(frac%7B2%7D%7B3%7D%5Cright)%24>) expand the brackets, otherwise it looks like this
+- `$\left(frac{2}{3}\right.$` ![$\left(frac{2}{3}\right.$](https://render.githubusercontent.com/render/math?math=%24%5Cleft(frac%7B2%7D%7B3%7D%5Cright.%24) show only the left bracket.
+- `$[x+1]$` ![$[x+1]$](https://render.githubusercontent.com/render/math?math=%24%5Bx%2B1%5D%24) square bracket
+- `$\{x,y,z\}$` ![${x,y,z}$](https://render.githubusercontent.com/render/math?math=%24%5C%7Bx%2Cy%2Cz%5C%7D%24) curly brackets need to be escaped by `\`
+- `$\$88.88$` ![$$88.88$](https://render.githubusercontent.com/render/math?math=%24%5C%2488.88%24) escape dollar sign
+- `$\sum_{n=0}^{\infty}$` ![$\sum_{n=0}^{\infty}$](https://render.githubusercontent.com/render/math?math=%24%5Csum_%7Bn%3D0%7D%5E%7B%5Cinfty%7D%24) sigma sum
+- `$\int_a^b$` ![$\int_a^b$](https://render.githubusercontent.com/render/math?math=%24%5Cint_a%5Eb%24) integral
+- `$\lim_{x \to a}$` ![$\lim_{x \to a}$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%24) limit
+- `$\lim_{x \to a^+} f(x)$` ![$\lim_{x \to a^+} f(x)$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7D%20f(x)%24>) limit
+- `$f'(a)$` ![$f'(a)$](<https://render.githubusercontent.com/render/math?math=%24f'(a)%24>) derivative
+- `$\begin{matrix} a & b \\ c & d \end{matrix}$` ![$\begin{matrix} a & b \ c & d \end{matrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bmatrix%7D%24) matrix without brackets
+- `$\begin{pmatrix} a & b \\ c & d \end{pmatrix}$` ![$\begin{pmatrix} a & b \ c & d \end{pmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bpmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bpmatrix%7D%24) matrix with round brackets
+- `$\begin{bmatrix} 1 & 2 & 1 \\ 3 & 0 & 1 \\ 0 & 2 & 4 \end{bmatrix}$` ![$\begin{bmatrix} 1 & 2 & 1 \ 3 & 0 & 1 \ 0 & 2 & 4 \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%201%20%26%202%20%26%201%20%5C%5C%203%20%26%200%20%26%201%20%5C%5C%200%20%26%202%20%26%204%20%5Cend%7Bbmatrix%7D%24) matrix with square brackets

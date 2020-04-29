@@ -419,6 +419,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8.4" data-path="../markup/latex.html">
+            
+                <a href="../markup/latex.html">
+            
+                    
+                    LaTeX
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -812,6 +825,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.23.4" data-path="../theory/cryptography.html">
+            
+                <a href="../theory/cryptography.html">
+            
+                    
+                    Cryptography
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -975,6 +1001,74 @@
 <li>Once the environment is created the load balancer type cannot be changed.</li>
 </ul>
 </li>
+<li>EB Worker App host a EB worker to handle periodical tasks with AmazonSQS.</li>
+</ul>
+<h3 id="eb-configuration-files">EB Configuration Files</h3>
+<ul>
+<li>Configuration files are YAML- or JSON-formatted documents with a <code>.config</code> file extension that you place in a folder named <code>.ebextensions</code> and deploy in your application source bundle.<ul>
+<li>YAML format is widely used and the it is recommanded format for the config files.</li>
+</ul>
+</li>
+<li><a href="https://github.com/awsdocs/elastic-beanstalk-samples" target="_blank">Click Here</a> to see some official config samples</li>
+</ul>
+<h5 id="config-sections">Config Sections</h5>
+<ul>
+<li>A config file can contain the following sections.</li>
+<li><a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers-ec2.html" target="_blank">Click</a> to see full examples from the official documents.</li>
+<li><code>option_settings</code> it defines values for configuration options for an EB environment<ul>
+<li>The following example set the EB CLI command timeout length.<pre><code class="lang-yaml"><span class="hljs-attr">option_settings:</span>
+<span class="hljs-attr">aws:</span>elasticbeanstalk:command:
+<span class="hljs-attr">Timeout:</span> <span class="hljs-number">1200</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><code>Resources</code> it defines the setting for AWS resources used by the EB environment.<ul>
+<li>The following example instruct the active Application Load Balancer for the EB environment to auto redirect HTTP to HTTPs<pre><code class="lang-yaml"><span class="hljs-attr">Resources:</span>
+<span class="hljs-attr">AWSEBV2LoadBalancerListener:</span>
+<span class="hljs-attr">  Type:</span> AWS::ElasticLoadBalancingV2::Listener
+<span class="hljs-attr">  Properties:</span>
+<span class="hljs-attr">    LoadBalancerArn:</span>
+<span class="hljs-attr">      Ref:</span> AWSEBV2LoadBalancer
+<span class="hljs-attr">    Port:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">    Protocol:</span> HTTP
+<span class="hljs-attr">    DefaultActions:</span>
+<span class="hljs-attr">      - Type:</span> redirect
+<span class="hljs-attr">        RedirectConfig:</span>
+<span class="hljs-attr">          Host:</span> <span class="hljs-string">&quot;#{host}&quot;</span>
+<span class="hljs-attr">          Path:</span> <span class="hljs-string">&quot;/#{path}&quot;</span>
+<span class="hljs-attr">          Port:</span> <span class="hljs-string">&quot;443&quot;</span>
+<span class="hljs-attr">          Protocol:</span> <span class="hljs-string">&quot;HTTPS&quot;</span>
+<span class="hljs-attr">          Query:</span> <span class="hljs-string">&quot;#{query}&quot;</span>
+<span class="hljs-attr">          StatusCode:</span> <span class="hljs-string">&quot;HTTP_301&quot;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><code>packages</code> it install defined packages upon deployment<pre><code class="lang-yaml"><span class="hljs-attr">packages:</span>
+<span class="hljs-attr">  yum:</span>
+<span class="hljs-attr">    libmemcached:</span> []
+<span class="hljs-attr">    ruby-devel:</span> []
+<span class="hljs-attr">    gcc:</span> []
+<span class="hljs-attr">  rpm:</span>
+<span class="hljs-attr">    epel:</span> http://download.fedoraproject.org/pub/epel/<span class="hljs-number">5</span>/i386/epel-release<span class="hljs-bullet">-5</span><span class="hljs-bullet">-4.</span>noarch.rpm
+<span class="hljs-attr">  rubygems:</span>
+<span class="hljs-attr">    chef:</span> <span class="hljs-string">&quot;0.10.2&quot;</span>
+</code></pre>
+</li>
+<li><code>files</code> create files on the EC2 instance</li>
+<li><code>groups</code> create Linux server user groups</li>
+<li><code>user</code> create Linux server users</li>
+<li><code>sources</code> download an archive file from a public URL and unpack it in a target directory on the EC2 instance.</li>
+<li><code>command</code> execute commands on the EC2 instance.<ul>
+<li><code>ignoreErrors</code> when true, ignore error during deployment.</li>
+</ul>
+</li>
+<li><code>container_commands</code> run command in the project folder after initial environment setup.<ul>
+<li><code>leader_only</code> When true, the command are only executed during environment creation and deployments</li>
+</ul>
+</li>
+<li><code>services</code> define which services should be started or stopped when the instance is launched.</li>
 </ul>
 <h3 id="eb-cli">EB CLI</h3>
 <h4 id="installation">Installation</h4>
@@ -1020,18 +1114,65 @@ aws:elasticbeanstalk:container:python:
 <li><code>eb open</code> open the website.</li>
 <li><code>eb logs</code> see error logs.</li>
 <li><code>eb use env-name</code> associate a default environment with a certain branch.</li>
-<li>add the following <code>db-migrate.config</code> file in the <code>.ebextensions</code> allows auto migration while deploying.<pre><code>container_commands:
+<li>add the following <code>.config</code> content in the <code>.ebextensions</code> allows auto migration while deploying.<pre><code>container_commands:
   01_migrate:
     command: &quot;django-admin.py migrate&quot;
 option_settings:
-aws:elasticbeanstalk:application:environment:
-DJANGO_SETTINGS_MODULE: projectname.settings
+  aws:elasticbeanstalk:application:environment:
+    DJANGO_SETTINGS_MODULE: projectname.settings
 </code></pre></li>
 <li>run <code>eb terminate env-name</code> to stop the instance.</li>
 <li>run <code>eb ssh env-name</code> to connect to the instance.</li>
 <li>run <code>eb config env-name</code> to check configuration.</li>
 <li>run <code>eb health env-name</code> to check environment health.</li>
+<li>Follow the step to run shell command on server:<pre><code class="lang-bash">eb ssh
+<span class="hljs-built_in">source</span> /opt/python/run/venv/bin/activate
+<span class="hljs-built_in">source</span> /opt/python/current/env
+<span class="hljs-built_in">cd</span> /opt/python/current/app
+python manage.py shell
+</code></pre>
+</li>
 </ul>
+</li>
+</ul>
+<h3 id="working-with-crontab">Working with Crontab</h3>
+<ul>
+<li>Add Cron jobs using to EB worker app.<ol>
+<li>In the root project folder add file <code>cron.yaml</code></li>
+<li>add schedule info to the file<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">1</span>
+<span class="hljs-attr">cron:</span>
+ &#x2014; name: <span class="hljs-string">&quot;test&quot;</span>
+<span class="hljs-attr">   url:</span> <span class="hljs-string">&quot;/postapi&quot;</span>
+<span class="hljs-attr">   schedule:</span> <span class="hljs-string">&quot;* * * * *&quot;</span>
+</code></pre>
+</li>
+<li>After deployment, a post request will be sent to the <code>url</code> periodically.</li>
+</ol>
+</li>
+<li>Add cron jobs to all instance of the EB web app environment by putting the following config content into the <code>.ebextensions</code> foloder.<pre><code class="lang-conf">files:
+    &quot;/etc/cron.d/mycron&quot;:
+        mode: &quot;000644&quot;
+        owner: root
+        group: root
+        content: |
+            0 3 * * * root /usr/local/bin/myscript.sh
+    &quot;/usr/local/bin/myscript.sh&quot;:
+        mode: &quot;000755&quot;
+        owner: root
+        group: root
+        content: |
+            #!/bin/bash
+            date &gt; /tmp/date
+            # Your actual script content
+            source /opt/python/run/venv/bin/activate
+            source /opt/python/current/env
+            cd /opt/python/current/app
+            python manage.py shell --command=&quot;import iport.tasks; iport.tasks.daily_report()&quot;
+            exit 0
+commands:
+    remove_old_cron:
+        command: &quot;rm -f /etc/cron.d/mycron.bak&quot;
+</code></pre>
 </li>
 </ul>
 <h2 id="dynamodb">DynamoDB</h2>
@@ -1245,7 +1386,7 @@ DJANGO_SETTINGS_MODULE: projectname.settings
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.12.1","depth":2,"next":{"title":"Google Cloud Platform","level":"1.12.2","depth":2,"path":"cloud-services/google-cloud-platform.md","ref":"cloud-services/google-cloud-platform.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.12","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.12.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"Google Cloud Platform","level":"1.12.2","depth":2,"path":"cloud-services/google-cloud-platform.md","ref":"cloud-services/google-cloud-platform.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-04-23T03:54:12.186Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-24T00:40:32.900Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.12.1","depth":2,"next":{"title":"Google Cloud Platform","level":"1.12.2","depth":2,"path":"cloud-services/google-cloud-platform.md","ref":"cloud-services/google-cloud-platform.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.12","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.12.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"Google Cloud Platform","level":"1.12.2","depth":2,"path":"cloud-services/google-cloud-platform.md","ref":"cloud-services/google-cloud-platform.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-04-29T16:44:46.328Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-29T22:47:55.842Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

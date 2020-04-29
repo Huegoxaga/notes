@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../css/" />
+    <link rel="next" href="latex.html" />
     
     
     <link rel="prev" href="xml.html" />
@@ -412,6 +412,19 @@
             
                     
                     GFM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="latex.html">
+            
+                <a href="latex.html">
+            
+                    
+                    LaTeX
             
                 </a>
             
@@ -812,6 +825,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.23.4" data-path="../theory/cryptography.html">
+            
+                <a href="../theory/cryptography.html">
+            
+                    
+                    Cryptography
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1024,8 +1050,18 @@ Content column 1 | Content column 2
 <h3 id="youtube-videos">YouTube Videos</h3>
 <p>They can&apos;t be added directly but you can add an image with a link to the video like this:</p>
 <pre><code>&lt;a href=&quot;http://www.youtube.com/watch?feature=player_embedded&amp;v=YOUTUBE_VIDEO_ID_HERE &quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg&quot;  alt=&quot;IMAGE ALT TEXT HERE&quot; width=&quot;240&quot; height=&quot;180&quot; border=&quot;10&quot; /&gt;&lt;/a&gt;
-</code></pre><h3 id="commentsto-be-tested">Comments(to be tested)</h3>
-<p>Text can be hidden in &lt;!- -Text- -&gt; or <text></text></p>
+</code></pre><h3 id="latex">LaTeX</h3>
+<ul>
+<li>Insert LaTeX code as images as <code>https://render.githubusercontent.com/render/math?math=x = -1</code><ul>
+<li><code>+</code> need to be replaced by its percent-encoding value which is <code>%2B</code>.</li>
+</ul>
+</li>
+<li>Another to way insert<code>![$x=1+a$](https://render.githubusercontent.com/render/math?math=%24x%3D1%2Ba%24)</code><ul>
+<li>It works only when there is no space in the path. Can replce space with its encoded value <code>%20</code>.</li>
+<li><a href="https://alexanderrodin.com/github-latex-markdown/" target="_blank">Click</a> to use the path generator tools</li>
+</ul>
+</li>
+</ul>
 <h1 id="gitbook">Gitbook</h1>
 <ul>
 <li>a CLI tool that auto convert <code>.md</code> file into webpages.</li>
@@ -1047,6 +1083,8 @@ Content column 1 | Content column 2
 <li>Run <code>gitbook build</code></li>
 <li>Use <code>gitbook build ./ --log=debug --debug</code> to debug.</li>
 </ul>
+<h4 id="escape-special-symbols">Escape Special Symbols</h4>
+<p>Use a keyword <code>raw</code> and <code>endraw</code> surrounded by <code>{</code>(outter) and <code>%</code>(inner) as html comments to escape special symbols that cause build errors</p>
 <h2 id="publish">Publish</h2>
 <ul>
 <li>github pages host static webpages from repo, it is free.</li>
@@ -1054,8 +1092,6 @@ Content column 1 | Content column 2
 <li>in Settings, find GitHub Pages Section and Set the folder location for hosting.</li>
 <li>The Theme if for <code>.md</code> pages.</li>
 </ul>
-<h2 id="escape-special-symbols">Escape Special Symbols</h2>
-<p>Use a keyword <code>raw</code> and <code>endraw</code> surrounded by <code>{</code>(outter) and <code>%</code>(inner) as html comments to escape special symbols that causes build error</p>
 
                                 
                                 </section>
@@ -1088,7 +1124,7 @@ Content column 1 | Content column 2
                 </a>
                 
                 
-                <a href="../css/" class="navigation navigation-next " aria-label="Next page: CSS">
+                <a href="latex.html" class="navigation navigation-next " aria-label="Next page: LaTeX">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1099,7 +1135,7 @@ Content column 1 | Content column 2
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GFM","level":"1.8.3","depth":2,"next":{"title":"CSS","level":"1.9","depth":1,"path":"css/README.md","ref":"css/README.md","articles":[{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]}]},"previous":{"title":"XML","level":"1.8.2","depth":2,"path":"markup/xml.md","ref":"markup/xml.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"markup/gfm.md","mtime":"2020-04-07T16:18:55.986Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-24T00:40:32.900Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GFM","level":"1.8.3","depth":2,"next":{"title":"LaTeX","level":"1.8.4","depth":2,"path":"markup/latex.md","ref":"markup/latex.md","articles":[]},"previous":{"title":"XML","level":"1.8.2","depth":2,"path":"markup/xml.md","ref":"markup/xml.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"markup/gfm.md","mtime":"2020-04-29T17:20:05.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-29T22:47:55.842Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

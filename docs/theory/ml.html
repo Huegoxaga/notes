@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="cryptography.html" />
+    
     
     <link rel="prev" href="networking.html" />
     
@@ -410,6 +412,19 @@
             
                     
                     GFM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../markup/latex.html">
+            
+                <a href="../markup/latex.html">
+            
+                    
+                    LaTeX
             
                 </a>
             
@@ -810,6 +825,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.23.4" data-path="cryptography.html">
+            
+                <a href="cryptography.html">
+            
+                    
+                    Cryptography
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -940,15 +968,7 @@
 </ul>
 <h2 id="machine-learning-algorithms">Machine Learning Algorithms</h2>
 <ul>
-<li>Support Vector Machines(SVMs)</li>
 <li>Decision Trees and Random Forests</li>
-<li>Logistic Regression<ul>
-<li>It will output the probability of an instance belonging one class, hence it is suitable for classification.</li>
-</ul>
-</li>
-<li>k-Nearest Neighbors</li>
-<li>Linear Regression</li>
-<li>Logistic Regression</li>
 <li>K-Means</li>
 <li>DBSCAN</li>
 <li>Hierarchical Cluster Analysis(HCA)<ul>
@@ -964,6 +984,97 @@
 <li>Apriori</li>
 <li>Eclat</li>
 </ul>
+<h3 id="linear-regression">Linear Regression</h3>
+<ul>
+<li>Linear regression is used to find the best fitting line(not nesscessirily straight) of a set of data points</li>
+<li>suitable for solving regression problems that find a predicted value.</li>
+<li>Ordinary least squares is used to calculate the best fit<ul>
+<li>find the minimum value of the square of the difference of y and y hat.</li>
+<li>y hat is the predicted value while y is the actual value.</li>
+</ul>
+</li>
+<li>Simple linear regression - The model will be a linear function with one constant, one dependent variable and one independent variable <code>x</code> times a coefficient.</li>
+<li>Multiple linear regression has one constant, one dependent variable and many combinations of independent variables times a coefficient.<ul>
+<li>Each independent variable represents a different feature in a single row of data.</li>
+<li>Dummy Variable - For a categorical featue each possible category will form a new field with value 0 or 1, when the current row of data is belonds this a certain category the value for this category will be 1 and others are 0.<ul>
+<li>Dummy Variable Trap - The number of this categorical independent variable will always be one less than the total number of the possible options since all others are 0 implys this record belong to the last category already.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Polynomial(linear) regression - It is like Multiple linear regression but the power of independent variable increases with the number of them.</li>
+<li>For linear regression models all of the following assumptions must be achieved.<ul>
+<li>Linearity</li>
+<li>Homoscedasticity</li>
+<li>Multivariate normality</li>
+<li>Independence of errors</li>
+<li>Lack of multicollinearity</li>
+</ul>
+</li>
+</ul>
+<h3 id="decision-trees">Decision Trees</h3>
+<h5 id="classification-trees">Classification Trees</h5>
+<ul>
+<li>It is used for classification problems</li>
+</ul>
+<h5 id="regression-trees">Regression Trees</h5>
+<ul>
+<li>It is used for regression problems</li>
+<li>The algorithm uses information entripy to split datapoints into groups based on the independent variables of a data point.</li>
+<li>Each one of the split is called a leaf.<ul>
+<li>Each of the final split is called the terminal leaf.</li>
+</ul>
+</li>
+<li>A decision tree is a binary tree structure, each node check if one of the independent variable is greater or smaller than a certain value.<ul>
+<li>Nodes from the same depth are dealing with the same independent variable.</li>
+</ul>
+</li>
+<li>The split add information to the datapoint and group them.</li>
+<li>The average of all data points in one leaf will be calculated as the prediced value for all new data point if it falls in the split.</li>
+</ul>
+<h3 id="random-forests">Random Forests</h3>
+<ul>
+<li>It is a type of ensemble learning.<ul>
+<li>A algorithm that utlizes a single machine learning algorithm multiple times or uses different algorithm at the same time.</li>
+</ul>
+</li>
+<li>It uses subsets of the datapoints to form decision trees.</li>
+<li>The average of all split from each decision tree will be used to make prediction.</li>
+<li>It works for both classification tree and regression tree.</li>
+</ul>
+<h5 id="random-forests-for">Random Forests for</h5>
+<h3 id="k-nearest-neighbors">k-Nearest Neighbors</h3>
+<ul>
+<li>A classfication algorithm</li>
+<li>Select a <code>k</code> value(small interger value). For any new data point find its <code>k</code> nearest neighbors, then the new data point belongs to the category that is the same as most of its neighbors.</li>
+<li>Euclidean Distance(geometrical distance, square root of the sum of the square difference) is often used.</li>
+</ul>
+<h3 id="logistic-regression">Logistic Regression</h3>
+<ul>
+<li>It is a classification algorithm.</li>
+<li>Fit a linear regression into a range of 0 and 1 as the probabilities using the logistic regression formula.<ul>
+<li>Subsitute <code>y</code> in the linear regression formula into the sigmoid function.</li>
+</ul>
+</li>
+<li>It can generate <code>P</code> hat as predicted probability of a given value.</li>
+<li>It can return ethier 0 or 1 as <code>y</code> hat value if yes or no is the only required result.<ul>
+<li>return <code>y</code> hat as 1 if the probability is higher than a certain defined value and vise versa.</li>
+</ul>
+</li>
+</ul>
+<h3 id="support-vector-machinessvms">Support Vector Machines(SVMs)</h3>
+<ul>
+<li>It is a classificaton algorithm</li>
+<li>It focuses on finding the boundary, then make decision only based on the boundary.</li>
+<li>The boundary is found to separate all data point with maximum margin.<ul>
+<li>Maximum margin means the greatest distance to points from different categories.</li>
+</ul>
+</li>
+<li>The points that have the same cloest distance to the boundary is called support vectors.</li>
+<li>The boundary is called maximum margin hyperplane or maximum margin classifier.</li>
+<li>The lines which are parallel to the maximum margin hyperplane and have zero distance to the support vectors are called positive or negative hyperplane.</li>
+</ul>
+<h5 id="support-vector-regression">Support Vector Regression</h5>
 <h3 id="neural-networks">Neural Networks</h3>
 <ul>
 <li>It was first introduced in 1980s, it was getting popular recently only becase the improved stroage and computing</li>
@@ -987,6 +1098,10 @@
 <li>The input values are called the input layer the output values are called output layer.</li>
 <li>Nodes in between are called hidden layers, each layers will process values and generate output for the next layer.<ul>
 <li>Each neuron in the same layer focuses on different aspects of the input info.</li>
+<li>Generally, the ideal number of nodes in each hidden layer is close to half of the input layer nodes plus output layer nodes.<ul>
+<li>Fine tuning can be made to improve, however this approximate number is good enough for determining the number of nodes for all hidden layers.</li>
+</ul>
+</li>
 <li>Hidden layers can have as many as possible, the neural network can be called deep learning if there are lots of layers of neurons in between.</li>
 <li>ANNs with fewer hidden layers can be called shallow learning.</li>
 </ul>
@@ -1059,6 +1174,23 @@
 </ul>
 </li>
 </ul>
+<h2 id="steps-for-a-machine-learning-project">Steps for a Machine Learning Project</h2>
+<h3 id="data-preprocessing">Data Preprocessing</h3>
+<ol>
+<li>Importing the data.</li>
+<li>Replacing missing values by the average of all other values.</li>
+<li>Encoding categorical data - generating dummy variables.</li>
+<li>Splitting the dataset into the Training set and Test set.</li>
+<li>Feature Scaling - put all the features on the same scales.<ul>
+<li>There are two ways for Feature Scaling<ul>
+<li>Standardization returns a result from -3 to 3, Standardization alway works.</li>
+<li>Normalization returns a result from 0 to 1, Normalization works only if data have a normal distribution in most of the features.</li>
+</ul>
+</li>
+<li>Dummy variables do not need to apply feature scaling.</li>
+</ul>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -1086,10 +1218,14 @@
 
             
                 
-                <a href="networking.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Networking">
+                <a href="networking.html" class="navigation navigation-prev " aria-label="Previous page: Networking">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="cryptography.html" class="navigation navigation-next " aria-label="Next page: Cryptography">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -1098,7 +1234,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Machine Learning","level":"1.23.3","depth":2,"previous":{"title":"Networking","level":"1.23.2","depth":2,"path":"theory/networking.md","ref":"theory/networking.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/ml.md","mtime":"2020-04-24T00:35:45.025Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-24T00:40:32.900Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Machine Learning","level":"1.23.3","depth":2,"next":{"title":"Cryptography","level":"1.23.4","depth":2,"path":"theory/cryptography.md","ref":"theory/cryptography.md","articles":[]},"previous":{"title":"Networking","level":"1.23.2","depth":2,"path":"theory/networking.md","ref":"theory/networking.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/ml.md","mtime":"2020-04-29T05:46:45.597Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-29T22:47:55.842Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

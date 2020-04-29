@@ -419,6 +419,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8.4" data-path="../markup/latex.html">
+            
+                <a href="../markup/latex.html">
+            
+                    
+                    LaTeX
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -805,6 +818,19 @@
             
                     
                     Machine Learning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.4" data-path="../theory/cryptography.html">
+            
+                <a href="../theory/cryptography.html">
+            
+                    
+                    Cryptography
             
                 </a>
             
@@ -1703,8 +1729,7 @@ Allow from HostIPAddress
 </li>
 <li>The configuration file for filter tables for IPv4 is stored in <code>/etc/sysconfig/iptables</code></li>
 <li>The configuration file for filter tables for IPv6 is stored in <code>/etc/sysconfig/ip6tables</code></li>
-<li><p>Commands</p>
-<ul>
+<li>Commands<ul>
 <li><code>service iptables start</code> start the firewall.</li>
 <li><code>service iptables save</code> save changes to the iptables.</li>
 <li><code>iptables -L -n</code> list on rules in the filter table.</li>
@@ -1731,12 +1756,51 @@ Allow from HostIPAddress
 </li>
 </ul>
 </li>
-<li><p><code>system-config-firewall</code> is a graphical interface for configuring basic firewall rules.</p>
-</li>
+<li><code>system-config-firewall</code> is a graphical interface for configuring basic firewall rules.</li>
 <li><code>system-config-firewall-tui</code>, start the text based system-config-firewall utility.<ul>
 <li>Use tab Key to move between elements.</li>
 <li>Use space bar to toggle on and off.</li>
 <li>Use enter key to select elements.</li>
+</ul>
+</li>
+</ul>
+<h3 id="crontab">crontab</h3>
+<ul>
+<li>Cron is a time-based job scheduler in Unix-like computer operating systems.</li>
+<li>Cron tasks format:<ul>
+<li>It has five positional values represent time intervals.<ul>
+<li>from left to right each value represents <code>minutes</code>(0-59), <code>hours</code>(1-23), <code>day</code>(1-31), <code>month</code>(1-12), <code>day of week</code>(0-6, Sunday-Saturday)</li>
+<li><code>0 3 * * *</code> - command runs every 3am everyday.</li>
+<li><code>* * * * *</code> - command runs every minutes every day.</li>
+<li><code>*/30 * * * *</code> - command runs every 30 minutes.</li>
+<li><code>* * * * 1-5</code> - command runs every minutes on weekdays.</li>
+<li><code>0,30 * * * *</code> - command runs every whole hours and 30 minutes pass any hours.</li>
+</ul>
+</li>
+<li>Use <a href="https://crontab.guru" target="_blank">crontab guru</a> - A crontab schedule translator to check the format.</li>
+</ul>
+</li>
+<li>Syntax:<ul>
+<li>The following line will be entered to the systmen using the <code>crontab -e</code> command.</li>
+<li><code>* * * * * &lt;command&gt;</code> The command will be run every minutes.</li>
+<li><code>* * * * * &lt;command&gt; &gt;&gt; &lt;outputlog&gt;</code> The command will be run every minutes with a log.</li>
+</ul>
+</li>
+<li>command:<ul>
+<li><code>crontab -l</code> list all current cron tasks in the cron table for the current user.<ul>
+<li><code>crontab -u &lt;username&gt; -l</code>list cron tasks for a certain user</li>
+<li><code>sudo crontab -l</code> list cron tasks for root user</li>
+</ul>
+</li>
+<li><code>crontab -e</code> edit cron tasks in the cron table for the current user.<ul>
+<li><code>crontab -u &lt;username&gt; -e</code> edit cron tasks for a certain user</li>
+<li><code>sudo crontab -e</code> edit cron tasks for root user</li>
+</ul>
+</li>
+<li><code>crontab -r</code> remove all crontab tasks<ul>
+<li>optionally, delete all lines in the <code>crontab -r</code>.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1783,7 +1847,7 @@ Allow from HostIPAddress
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.17","depth":1,"next":{"title":"Regular Expression","level":"1.17.1","depth":2,"path":"linux/regex.md","ref":"linux/regex.md","articles":[]},"previous":{"title":"WordPress","level":"1.16.1","depth":2,"path":"cms/wordpress.md","ref":"cms/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/README.md","mtime":"2020-04-21T23:48:12.609Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-24T00:40:32.900Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.17","depth":1,"next":{"title":"Regular Expression","level":"1.17.1","depth":2,"path":"linux/regex.md","ref":"linux/regex.md","articles":[]},"previous":{"title":"WordPress","level":"1.16.1","depth":2,"path":"cms/wordpress.md","ref":"cms/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux/README.md","mtime":"2020-04-28T15:25:56.880Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-29T22:47:55.842Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

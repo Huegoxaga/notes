@@ -4,6 +4,8 @@
 
 - Django is a Python-based free and open-source web framework
 - One Django project can have multiple Apps as web components.
+- Django uses WSGI to control the communication between the web server communicates and web applications, and how web applications can be chained together to process one request.
+  - WSGI is the Web Server Gateway Interface.
 
 ## Useful Commands
 
