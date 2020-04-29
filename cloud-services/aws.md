@@ -98,6 +98,66 @@ It helps deploy app on EC2 and will do capacity provisioning, load balancing, sc
   - Once the environment is created the load balancer type cannot be changed.
 - EB Worker App host a EB worker to handle periodical tasks with AmazonSQS.
 
+### EB Configuration Files
+
+- Configuration files are YAML- or JSON-formatted documents with a `.config` file extension that you place in a folder named `.ebextensions` and deploy in your application source bundle.
+  - YAML format is widely used and the it is recommanded format for the config files.
+- [Click Here](https://github.com/awsdocs/elastic-beanstalk-samples) to see some official config samples
+
+##### Config Sections
+
+- A config file can contain the following sections.
+- [Click](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers-ec2.html) to see full examples from the official documents.
+- `option_settings` it defines values for configuration options for an EB environment
+  - The following example set the EB CLI command timeout length.
+    ```yaml
+    option_settings:
+    aws:elasticbeanstalk:command:
+    Timeout: 1200
+    ```
+- `Resources` it defines the setting for AWS resources used by the EB environment.
+  - The following example instruct the active Application Load Balancer for the EB environment to auto redirect HTTP to HTTPs
+    ```yaml
+    Resources:
+    AWSEBV2LoadBalancerListener:
+      Type: AWS::ElasticLoadBalancingV2::Listener
+      Properties:
+        LoadBalancerArn:
+          Ref: AWSEBV2LoadBalancer
+        Port: 80
+        Protocol: HTTP
+        DefaultActions:
+          - Type: redirect
+            RedirectConfig:
+              Host: "#{host}"
+              Path: "/#{path}"
+              Port: "443"
+              Protocol: "HTTPS"
+              Query: "#{query}"
+              StatusCode: "HTTP_301"
+    ```
+- `packages` it install defined packages upon deployment
+  ```yaml
+  packages:
+    yum:
+      libmemcached: []
+      ruby-devel: []
+      gcc: []
+    rpm:
+      epel: http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+    rubygems:
+      chef: "0.10.2"
+  ```
+- `files` create files on the EC2 instance
+- `groups` create Linux server user groups
+- `user` create Linux server users
+- `sources` download an archive file from a public URL and unpack it in a target directory on the EC2 instance.
+- `command` execute commands on the EC2 instance.
+  - `ignoreErrors` when true, ignore error during deployment.
+- `container_commands` run command in the project folder after initial environment setup.
+  - `leader_only` When true, the command are only executed during environment creation and deployments
+- `services` define which services should be started or stopped when the instance is launched.
+
 ### EB CLI
 
 #### Installation
@@ -137,14 +197,14 @@ It helps deploy app on EC2 and will do capacity provisioning, load balancing, sc
   - `eb open` open the website.
   - `eb logs` see error logs.
   - `eb use env-name` associate a default environment with a certain branch.
-  - add the following `db-migrate.config` file in the `.ebextensions` allows auto migration while deploying.
+  - add the following `.config` content in the `.ebextensions` allows auto migration while deploying.
     ```
     container_commands:
       01_migrate:
         command: "django-admin.py migrate"
     option_settings:
-    aws:elasticbeanstalk:application:environment:
-    DJANGO_SETTINGS_MODULE: projectname.settings
+      aws:elasticbeanstalk:application:environment:
+        DJANGO_SETTINGS_MODULE: projectname.settings
     ```
   - run `eb terminate env-name` to stop the instance.
   - run `eb ssh env-name` to connect to the instance.
@@ -158,17 +218,46 @@ It helps deploy app on EC2 and will do capacity provisioning, load balancing, sc
     cd /opt/python/current/app
     python manage.py shell
     ```
-  - Add Cron jobs using to EB worker app.
-    1.  In the root project folder add file `cron.yaml`
-    2.  add schedule info to the file
-        ```yaml
-        version: 1
-        cron:
-         — name: "test"
-           url: "/postapi"
-           schedule: "* * * * *"
-        ```
-    3.  After deployment, a post request will be sent to the `url` periodically.
+
+### Working with Crontab
+
+- Add Cron jobs using to EB worker app.
+  1.  In the root project folder add file `cron.yaml`
+  2.  add schedule info to the file
+      ```yaml
+      version: 1
+      cron:
+       — name: "test"
+         url: "/postapi"
+         schedule: "* * * * *"
+      ```
+  3.  After deployment, a post request will be sent to the `url` periodically.
+- Add cron jobs to all instance of the EB web app environment by putting the following config content into the `.ebextensions` foloder.
+  ```conf
+  files:
+      "/etc/cron.d/mycron":
+          mode: "000644"
+          owner: root
+          group: root
+          content: |
+              0 3 * * * root /usr/local/bin/myscript.sh
+      "/usr/local/bin/myscript.sh":
+          mode: "000755"
+          owner: root
+          group: root
+          content: |
+              #!/bin/bash
+              date > /tmp/date
+              # Your actual script content
+              source /opt/python/run/venv/bin/activate
+              source /opt/python/current/env
+              cd /opt/python/current/app
+              python manage.py shell --command="import iport.tasks; iport.tasks.daily_report()"
+              exit 0
+  commands:
+      remove_old_cron:
+          command: "rm -f /etc/cron.d/mycron.bak"
+  ```
 
 ## DynamoDB
 
