@@ -274,6 +274,7 @@ When operator are chained together, The operation order is determined from top t
 
 * Assignment
   - It is used to assign value to a variable name. `=`
+  - Multiple assignment: `x = y = 10`
 
 ### Bitwise operators
 
@@ -391,6 +392,9 @@ list.pop(index)#It returns the element according the index and remove the elemen
 
 #### List Operators
 
+- Unpacking assignment:
+  - `x, y = [1, 2]` as a result `x = 1`, `y = 2`
+  - `first, *rest = [1, 2, 3, 4]` as a result `first = 1, rest = [2, 3, 4]`
 - join `+`
 - repeat `*`
 - existence(return Boolean) `in`
@@ -463,6 +467,9 @@ dictionay.items() # Return a list of dictionay elements.
 
 - It is an immutable list with or without parentheses(use comma for separation).
 - It is faster than list, because it can not be changed or there will be a typeError.
+- Tuple unpacking:
+  - `x,y = 1,2` is equivalent as `x = 1` and `y = 2`
+  - it is also equivalent as `x,y = (1,2)` or `(x,y) = 1,2` or `(x,y) = (1,2)`
 
 ```py
 #Creates an empty tuples.

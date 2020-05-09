@@ -22,7 +22,7 @@
   - [HTML](https://huegoxaga.github.io/notes/markup/html.html)
   - [XML](https://huegoxaga.github.io/notes/markup/xml.html)
   - [GFM](https://huegoxaga.github.io/notes/markup/gfm.html)
-  - [LaTex](https://huegoxaga.github.io/notes/markup/latex.html)
+  - [LaTeX](https://huegoxaga.github.io/notes/markup/latex.html)
 - [CSS](https://huegoxaga.github.io/notes/css/index.html)
   - [Bootstrap](https://huegoxaga.github.io/notes/css/bootstrap.html)
 - [TypeScript](https://huegoxaga.github.io/notes/typescript/index.html)

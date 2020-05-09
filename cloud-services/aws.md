@@ -73,12 +73,11 @@ It provides a DNS service that translates the domain name into a designated IP a
 
 ## EC2
 
-It provide computing service.
+It provide computing services.
 
-- A private key will be generated for instance connection.
+- A private key will be generated for instance connection upon creation.
 - click connect in the instance menu for connection guide.
-- For Mac/Linux enter the command directly in the terminal.(move file to ~/.ssh and use command chmod 400 to hide the file first)
-- For window using SHH through Git Bash.
+- For Mac/Linux using SSH connection, move file to ~/.ssh and use command chmod 400 to hide the file first.
 - A load balancer helps a group of EC2 instances works together. There are three types of them:
   - Classic Load Balancer
   - Application Load Balancer
@@ -91,7 +90,7 @@ It provide computing service.
 
 ## Elastic Beanstalk
 
-It helps deploy app on EC2 and will do capacity provisioning, load balancing, scaling, and application health monitoring automatically.
+It deploys app on EC2 and will do capacity provisioning, load balancing, scaling, and application health monitoring automatically.
 
 - It has its own command line tool called `EB CLI`
 - An EB App can have multiple Environment, each deployed environment has an URL which is an alias(A record) to its corresponding load balancer.
@@ -276,6 +275,7 @@ It generates metrics for other services.
 - By default it generates metrics for every 5 mins for free. For a enhanced plan, it will generate metrics everything with a fee.
 - Enhanced plan will provides more metrics.
 - It can be used to set rules for auto scaling policy when the values from a certain metric reach certain value.
+- Alarms can be set based on Metrics' states and values.
 
 ## Lambda
 
@@ -283,6 +283,24 @@ It runs scripts and codes without the need to set up the server.
 
 - Click the Test tab to generate test cases with specific input.
 - Add proper Execution Role with specific permission to allow Lambda instance to have access to other AWS services.
+
+## SNS
+
+It is used to send notifications to user emails or other resources.
+
+- A topic is an object that recevice notifications.
+- A topic can have many subscribers with differenct protocols(Email, SQS, Lambda) to receive the message.
+- Each topic has a `Publish message` button that can be used to test a message with all subscribers.
+- Each subscription can have a unique filter for all messages.
+
+## API Gateway
+
+It provides support for generating serverless APIs.
+
+- All API methods are defined as resources.
+- Resources need to be deploy as stages before using.
+- Custom Domain Names will attach user's own certificate to the URL and map the domain to the staged resources.
+- Custom Domain Names will need an Alias in Route 53 for its API Gateway domain name.
 
 ## Alexa
 

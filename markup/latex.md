@@ -21,7 +21,7 @@
 
 ## Syntax
 
-#### Document Formatting
+### Document Formatting
 
 - title
 
@@ -98,9 +98,25 @@ while working on a draft.
   - One extra empty line will place text in a new line.
   - Use `\\`
 
+### Text Styles
+
+- `\textit{text}` italic
+- `\textbf{text}` bold
+- `\textsc{text}` small captalized
+- `\texttt{text}` typewriter font
+- `\begin(large)text\end(large)` large font size
+- `\begin(Large)text\end(Large)` very large font size
+- `\begin(huge)text\end(huge)` huge font size
+- `\begin(Huge)text\end(Huge)` very huge font size
+- `\begin(small)text\end(small)` small font size
+- `\begin(tiny)text\end(tiny)` tiny font size
+- `\begin(center)text\end(center)` centered
+- `\begin(flushleft)text\end(flushleft)` left-justified
+- `\begin(flushright)text\end(flushright)` right-justified
+
 ### Mathematics
 
-##### Mathematical modes
+##### Mathematical Modes
 
 - inline mode - inline math expression as part of a text
   - use delimiters: `\( \)`, `$ $` or `\begin{math} \end{math}`
@@ -109,9 +125,16 @@ while working on a draft.
 
 ##### Symbol Size
 
-- `$\displaystyle{x}$` normal size for math symbols.
+- `$\displaystyle{x}$` normal size for math symbols and expressions.
+- or replace `\display` with `\large`, `\Large`, `\LARGE`, `\huge`, `\Huge` to make the math object even bigger.
 
-##### Math Symbols
+##### Common Math Symbols
+
+- `\times` multiply
+- `\approx` approximate
+- `\pm` plus minus
+
+##### Math Expressions
 
 - Use [Detexify](http://detexify.kirelabs.org/classify.html) to draw a symbol and find the LeTaX syntax for it.
 - `\` can be used to escape special symbols used by the compiler.
@@ -131,8 +154,8 @@ while working on a draft.
 - `$\frac{1}{3}$` ![$\frac{1}{3}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7B1%7D%7B3%7D%24) fraction
 - `$(x+1)$` ![$(x+1)$](<https://render.githubusercontent.com/render/math?math=%24(x%2B1)%24>) parentheses
 - `$|x|$` ![$|x|$](https://render.githubusercontent.com/render/math?math=%24%7Cx%7C%24) absolute value
-- `$\left(frac{2}{3}\right)$` ![$\left(frac{2}{3}\right)$](<https://render.githubusercontent.com/render/math?math=%24%5Cleft(frac%7B2%7D%7B3%7D%5Cright)%24>) expand the brackets, otherwise it looks like this
-- `$\left(frac{2}{3}\right.$` ![$\left(frac{2}{3}\right.$](https://render.githubusercontent.com/render/math?math=%24%5Cleft(frac%7B2%7D%7B3%7D%5Cright.%24) show only the left bracket.
+- `$\left(\frac{2}{3}\right)$` ![$\left(\frac{2}{3}\right)$](<https://render.githubusercontent.com/render/math?math=%24%5Cleft(%5Cfrac%7B2%7D%7B3%7D%5Cright)%24>) expand the brackets, otherwise it looks like this
+- `$\left(\frac{2}{3}\right.$` ![$\left(\frac{2}{3}\right.$](https://render.githubusercontent.com/render/math?math=%24%5Cleft(%5Cfrac%7B2%7D%7B3%7D%5Cright.%24) show only the left bracket.
 - `$[x+1]$` ![$[x+1]$](https://render.githubusercontent.com/render/math?math=%24%5Bx%2B1%5D%24) square bracket
 - `$\{x,y,z\}$` ![${x,y,z}$](https://render.githubusercontent.com/render/math?math=%24%5C%7Bx%2Cy%2Cz%5C%7D%24) curly brackets need to be escaped by `\`
 - `$\$88.88$` ![$$88.88$](https://render.githubusercontent.com/render/math?math=%24%5C%2488.88%24) escape dollar sign
@@ -141,6 +164,59 @@ while working on a draft.
 - `$\lim_{x \to a}$` ![$\lim_{x \to a}$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%24) limit
 - `$\lim_{x \to a^+} f(x)$` ![$\lim_{x \to a^+} f(x)$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7D%20f(x)%24>) limit
 - `$f'(a)$` ![$f'(a)$](<https://render.githubusercontent.com/render/math?math=%24f'(a)%24>) derivative
+- `$\binom{n}{k} = \frac{n!}{k!(n-k)!}$` binomial
 - `$\begin{matrix} a & b \\ c & d \end{matrix}$` ![$\begin{matrix} a & b \ c & d \end{matrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bmatrix%7D%24) matrix without brackets
 - `$\begin{pmatrix} a & b \\ c & d \end{pmatrix}$` ![$\begin{pmatrix} a & b \ c & d \end{pmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bpmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bpmatrix%7D%24) matrix with round brackets
 - `$\begin{bmatrix} 1 & 2 & 1 \\ 3 & 0 & 1 \\ 0 & 2 & 4 \end{bmatrix}$` ![$\begin{bmatrix} 1 & 2 & 1 \ 3 & 0 & 1 \ 0 & 2 & 4 \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%201%20%26%202%20%26%201%20%5C%5C%203%20%26%200%20%26%201%20%5C%5C%200%20%26%202%20%26%204%20%5Cend%7Bbmatrix%7D%24) matrix with square brackets
+
+### Block Contents
+
+##### Tables
+
+```
+\begin{tabular}{ |c|c|c| }
+ \hline
+ $x$ & 1 & 2 \\ \hline
+ $2x$ & 2 & 4 \\ \hline
+ $3x$ & 3 & 6 \\ \hline
+ \hline
+\end{tabular}
+```
+
+- Each `c` represent a centered column
+- Use `|` to define vertical border
+- Use `\\` to separate rows
+- Use `\hline` to define horizontal border
+- Space between `&` is not mandatory
+
+##### Equation Array
+
+```
+\begin{eqnarray}
+5x^2-9&=&x+3\\
+4x^2&=&12\\
+x^3&=&3
+x&\approx&\pm1.732
+\end{eqnarray}
+```
+
+- Anything in the equation array is math mode by default.
+- Add `*` after `eqnarray` to remove equation numbering.
+
+##### List
+
+```
+\begin{enumerate}
+\item item1
+\item item1
+  \begin{enumerate}
+  \item subitem1
+  \item subitem2
+  \end{enumerate}
+\item
+\end{enumerate}
+```
+
+- The example shows a auto numbered list and a list within a list.
+- Add `[itemname]` after `\item` to specify item name for display instead of numbers.
+- Use `itemize` instead of `enumerate` for bullet list.

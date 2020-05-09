@@ -285,6 +285,7 @@
 ### pyplot
 
 - `from matplotlib import pyplot as plt`
+- `plt.scatter(X_train, y_train, color = 'red')` plot points
 - `plt.plot(listofX, listofY)` plot a line, run this method multiple times to draw multiple lines.
   - `plt.plot(listofX, listofY, label='line legend')` add a legend to the line.
   - `plt.plot(listofX, listofY, color='#3b3b3b', linewidth=2,linestyle='--' label='line legend')` or `plt.plot(listofX, listofY, 'formatstring',label='line legend')` to add format to the line, see details about the characters [here](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot)
@@ -390,6 +391,14 @@
     - `y` dependent variables to split.
     - `test_size` `20%` data as test set, `80%` data as training set.
     - `random_state` When equals `1` always return the same spliting result.
+
+### sklearn.linear_model
+
+- LinearRegression
+  - `from sklearn.linear_model import LinearRegression`
+  - `regressor = LinearRegression()` initialize the linear regression model
+  - `regressor.fit(X_train, y_train)` training the training data
+  - `y_pred = regressor.predict(X_test)` get predict result from test set data points
 
 ## Keras
 

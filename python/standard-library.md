@@ -41,6 +41,20 @@
   - `html = urlopen("https://www.example.com/index.html").read().decode('utf-8')` load the webpage that containing special characters from other languages.
   - Indentation and format of the `html` is preserved.
 
+## urllib3
+
+- `import urllib3`
+
+#### Usage
+
+- `http = urllib3.PoolManager()` create the pool manager to make HTTP calls.
+- `r = http.request('GET', url)` make get request
+  - `r = http.request('POST', url, fields={'key': 'value'})` post request with parameters.
+  - `r = http.request( 'GET', url, headers={})` send get request with a header.
+- `r.status` get returning status code
+- `r.data` get response as a byte string
+- `r.headers` get header info as a dictionary
+
 ## csv
 
 - It works with `.csv` files.
@@ -348,6 +362,7 @@
 ## pytz
 
 - It create a timezone object
+- `import pytz`
 
 ### Usage
 
@@ -375,6 +390,30 @@
 - `uuid.uuid4()` make a random UUID
 - `uuid.uuid5(uuid.NAMESPACE_DNS, 'python.org')` make a UUID using a SHA-1 hash of a namespace UUID and a name
 - `uuid.UUID('{00010203-0405-0607-0809-0a0b0c0d0e0f}')` make a UUID from a string of hex digits (braces and hyphens ignored)
+
+## requests
+
+- It makes HTTP requrests
+- `import requests`
+
+### Usage
+
+- `response = requests.get(url, headers=headers)` make get requests when `headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer {0}'.format(token)}`
+  - `response.content` get the returning json data as string.
+  - `response.status_code` get the response status code.
+  - `response.json()` Get the response data as a dictionary.
+  - `response.headers` get the header as a dictionary
+  - It can pass parameters as `response = requests.get(url, params=parameters, headers=headers)` where `parameters` is a dictionary.
+
+## json
+
+- It manages python json objects.
+- `import json`
+
+### Usage
+
+- `json.loads(jsonObject.decode('utf-8'))` It converts a string into a python object. Typically, it decodes a json object from a string.
+- `json.dumps(x)` converts a python object like a list or a dictionary into a string.
 
 # def \_createHash():
 

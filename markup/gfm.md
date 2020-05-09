@@ -225,7 +225,7 @@ They can't be added directly but you can add an image with a link to the video l
   - `+` need to be replaced by its percent-encoding value which is `%2B`.
 - Another to way insert`![$x=1+a$](https://render.githubusercontent.com/render/math?math=%24x%3D1%2Ba%24)`
   - It works only when there is no space in the path. Can replce space with its encoded value `%20`.
-  - [Click](https://alexanderrodin.com/github-latex-markdown/) to use the path generator tools
+  - [Click](https://alexanderrodin.com/github-latex-markdown/) to use the LaTeX image link generator tools for GFM.
 
 # Gitbook
 
