@@ -1,3 +1,5 @@
+# Mathematics
+
 # Discrete Mathematics
 
 - A **prime number** is an integer greater than 1 whose only positive divisors are 1 and itself.
@@ -38,3 +40,7 @@
 
 - When an integer*(a)* is divided by a positive integer*(b)* we get a quotient*(q)* and a remainder*(r)*.
   - For example, `a = 365,840 and b = 125,460 a = bq + r`
+
+# Calculus
+
+# Linear Algebra

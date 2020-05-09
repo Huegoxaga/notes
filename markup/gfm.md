@@ -9,7 +9,10 @@
 
 ### Inline HTML
 
-Raw HTML can be used in the Markdown file, and it'll mostly work pretty well.
+- Raw HTML can be used in the Markdown file, and it'll mostly work pretty well.
+- Styling can be added to the HTML tag:
+  - align content, `<div align="center"></div>`
+  - styling images, `<img align="left" width="200" height="100" />`
 
 ### Headers
 
@@ -221,7 +224,7 @@ They can't be added directly but you can add an image with a link to the video l
 
 ### LaTeX
 
-- Insert LaTeX code as images as `https://render.githubusercontent.com/render/math?math=x = -1`
+- Insert LaTeX code in an `img` tag as `https://render.githubusercontent.com/render/math?math=x = -1`
   - `+` need to be replaced by its percent-encoding value which is `%2B`.
 - Another to way insert`![$x=1+a$](https://render.githubusercontent.com/render/math?math=%24x%3D1%2Ba%24)`
   - It works only when there is no space in the path. Can replce space with its encoded value `%20`.

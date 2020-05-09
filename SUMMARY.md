@@ -52,3 +52,4 @@
   - [Networking](theory/networking.md)
   - [Machine Learning](theory/ml.md)
   - [Cryptography](theory/cryptography.md)
+  - [Mathematics](theory/math.md)

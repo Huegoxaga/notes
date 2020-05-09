@@ -51,3 +51,4 @@
   - [Networking](https://huegoxaga.github.io/notes/theory/networking.html)
   - [Machine Learning](https://huegoxaga.github.io/notes/theory/ml.html)
   - [Cryptography](https://huegoxaga.github.io/notes/theory/cryptography.html)
+  - [Mathematics](https://huegoxaga.github.io/notes/theory/math.html)
