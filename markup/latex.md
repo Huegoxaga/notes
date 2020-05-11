@@ -128,6 +128,14 @@ while working on a draft.
 - `$\displaystyle{x}$` normal size for math symbols and expressions.
 - or replace `\display` with `\large`, `\Large`, `\LARGE`, `\huge`, `\Huge` to make the math object even bigger.
 
+##### Spacing
+
+- LaTeX provides the following four commands for spacing in math mode:
+  - `\;` - a thick space.
+  - `\:` - a medium space.
+  - `\,` - a thin space.
+  - `\!` - a negative thin space.
+
 ##### Common Math Symbols
 
 - `\times` multiply

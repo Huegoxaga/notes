@@ -206,12 +206,22 @@
 
 ### Data Preprocessing
 
+##### Numeric Data Preprocessing
+
 1. Importing the data.
 2. Replacing missing values by the average of all other values.
 3. Encoding categorical data - generating dummy variables.
 4. Splitting the dataset into the Training set and Test set.
 5. Feature Scaling - put all the features on the same scales.
+   - Not all models need to have feature scaling.
+   - Applied on training set only.
    - There are two ways for Feature Scaling
      - Standardization returns a result from -3 to 3, Standardization alway works.
      - Normalization returns a result from 0 to 1, Normalization works only if data have a normal distribution in most of the features.
    - Dummy variables do not need to apply feature scaling.
+
+##### Image Preprocessing
+
+##### Timeseries data preprocessing
+
+##### Text data preprocessing

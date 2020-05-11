@@ -380,10 +380,11 @@
   - `sc = StandardScaler()` apply Standardization for feature scaling
   - `X_train[:, 3:] = sc.fit_transform(X_train[:, 3:])` fit will get the mean and standard deviation, transform method will return the standardized value.
   - `X_test[:, 3:] = sc.transform(X_test[:, 3:])` only return the standardized value.
+- Image Preprocessing
 
 ### sklearn.model_selection
 
-- train_test_split
+- Splitting test and train data
   - `from sklearn.model_selection import train_test_split`
   - `X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)`
     - For return values on the left side.
@@ -394,13 +395,45 @@
 
 ### sklearn.linear_model
 
-- LinearRegression
+- Linear Regression Model
   - `from sklearn.linear_model import LinearRegression`
   - `regressor = LinearRegression()` initialize the linear regression model
   - `regressor.fit(X_train, y_train)` training the training data
   - `y_pred = regressor.predict(X_test)` get predict result from test set data points
 
+### sklearn.metrics
+
+- Confusion Matrix
+  - `from sklearn.metrics import confusion_matrix`
+  - `cm = confusion_matrix(y_test, y_pred)` calculate accurracy
+
 ## Keras
 
 - A all in one package for deep learning including both tensorflow and theano
 - run `conda install -c conda-forge keras` to installing keras from the conda-forge channel
+- `import keras`
+- Defince ANN models as a sequence of layers.
+  ```py
+  # Initializing the ANN
+  ann = keras.models.Sequential()
+  # Adding the input layer and the first hidden layer
+  ann.add(keras.layers.Dense(output_dim = 6, init = 'uniform', activation='relu', input_dim = 10))
+  # Adding the second hidden layer
+  ann.add(keras.layers.Dense(output_dim = 6, init = 'uniform', activation='relu'))
+  # Adding the output layer using sigmoid for probability
+  ann.add(keras.layers.Dense(output_dim = 1, init = 'uniform', activation='sigmoid'))
+  ```
+  - `output_dim` represents the number of output nodes for the layer.
+  - `input_dim` represents the number of input nodes for the layer.
+  - `init` represent the ways to initilize weight for the model.
+- Compile the ANNs, `ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])`
+  - `optimizer` the algorithm for finding the optimized weights.
+    - `adam` is a type of stochastic gradient descent algorithm.
+  - `loss` define the loss function.
+    - `binary_crossentropy` loss function for two outcome.
+    - `categorical_crossentropy` loss function for more than two outcome.
+  - `metrics` it takes a list of metrics to evaluate the model.
+    - `accuracy` based on the accuracy of the model.
+- Train the model, `ann.fit(X_train, y_train, batch_size = 32, epochs = 100)`
+- Make prediction, `y_pred = ann.predict(X_test)`
+  - separate the results in True or False using a defined metric, `y_pred = (y_pred > 0.5)`
