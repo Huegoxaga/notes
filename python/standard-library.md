@@ -415,7 +415,94 @@
 - `json.loads(jsonObject.decode('utf-8'))` It converts a string into a python object. Typically, it decodes a json object from a string.
 - `json.dumps(x)` converts a python object like a list or a dictionary into a string.
 
-# def \_createHash():
+## unittest
+
+- It is used to do unit testing.
+- `import unittest`
+- All test method name should start with `test_`
+- The order of all test methods is random.
+
+### Assertion Methods
+
+- `assertEqual(a, b)` checks `a == b`
+- `assertNotEqual(a, b)` checks `a != b`
+- `assertTrue(x)` checks if `bool(x)` is True
+- `assertFalse(x)` checks if `bool(x)` is False
+- `assertIs(a, b)` checks if `a` is `b`
+- `assertIsNot(a, b)` checks if `a` is not `b`
+- `assertIsNone(x)` checks if `x` is `None`
+- `assertIsNotNone(x)` checks if `x` is not `None`
+- `assertIn(a, b)` checks if `a` in `b`
+- `assertNotIn(a, b)` checks if `a` not in `b`
+- `assertIsInstance(a, b)` checks if `isinstance(a, b)`
+- `assertNotIsInstance(a, b)` checks if not `isinstance(a, b)`
+
+### Mock
+
+- create a fake object for testing
+
+##### patch
+
+- `from unittest.mock import patch`
+- In the class definition:
+  ```py
+  def method_for_test(self, t):
+        response = requests.get(f'http://company.com/{self.x}/{y}')
+        if response.ok:
+            return response.text
+        else:
+            return 'Bad Response!'
+  ```
+- In the test method:
+  ```py
+  def test_method(self):
+       with patch('classname.requests.get') as mocked_get:
+           # create fake response object
+           mocked_get.return_value.ok = True
+           mocked_get.return_value.text = 'Success'
+           schedule = self.object.monthly_schedule('Y')
+           # test the called param
+           mocked_get.assert_called_with('http://company.com/x/Y/')
+           # test mocked response object
+           self.assertEqual(schedule, 'Success')
+  ```
+
+### Example
+
+```py
+class TestExample(unittest.TestCase):
+    # Run once at the beginning
+    @classmethod
+    def setUpClass(cls):
+        pass
+    # Run once after all test cases.
+    @classmethod
+    def tearDownClass(cls):
+        pass
+    # run before every test method
+    def setUp(self):
+        pass
+    # run after every test method
+    def tearDown(self):
+        pass
+    # test method one
+    def test_add(self):
+        self.assertEqual(calc.add(-1, 1), 0)
+        self.assertEqual(calc.add(-1, -1), -2)
+    # test method two
+    def test_divide(self):
+        self.assertEqual(calc.divide(-1, -1), 1)
+        self.assertEqual(calc.divide(5, 2), 2.5)
+        # Optionally
+        with self.assertRaises(ValueError):
+            calc.divide(10, 0)
+# Enable the test cases run using command 'python filename.py'
+# Without the following two lines run 'python -m  unittest filemane.py'
+if __name__ == '__main__':
+    unittest.main()
+```
+
+# def createHash():
 
 # """This function generate 10 character long hash"""
 
@@ -433,3 +520,4 @@ import hashlib
 import time
 import random
 from binascii import hexlify
+import contextlib

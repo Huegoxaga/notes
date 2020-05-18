@@ -691,3 +691,58 @@ def about(request):
 
 - In production you’ll want to run the worker in the background as a daemon instead of running the service using commands explicitly.
 - Either `systemd` or `supervisord` can be used.
+
+## Unit Testing
+
+- Writing test methods in `test.py` as follows
+  ```py
+  from django.test import TestCase
+  class MyTestCase(TestCase):
+     # Your test methods
+  ```
+- Or optionally, replace tests.py with a folder called tests, insert an empty file inside called `__init__.py`, and create the `test_*.py` files. Django will discover and execute these.
+- run `python manage.py test` to start all test method in the project or `python manage.py <appname>` to run test cases in a certain app folder.
+- Example Code:
+  ```py
+  from django.test import TestCase, Client
+  from django.urls import reverse
+  import json
+  from iport.models import *
+  class TestViews(TestCase):
+      def setUp(self):
+          self.client = Client()
+          # For Rest API framework
+          url = reverse('token_obtain_pair')
+          u = User.objects.create_user(username='user', email='user@foo.com', password='pass')
+          u.is_active = True
+          u.save()
+          self.client = APIClient()
+          resp = self.client.post(url, {'username':'user', 'password':'pass'}, format='json')
+          self.token = resp.data['access']
+          self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + self.token)
+          # get urls from view name with args
+          self.url = reverse('view_name', args=[value])
+      def test_example(self):
+          # test get request using url
+          response = client.get(self.list_url)
+          # create object in database
+          ModelName.objects.create(
+              field1 = 'value1',
+              field2 = 200
+          )
+          # test post request with parameters.
+          response = self.client.post(self.url, {
+              'key1': 'value1',
+              'key2': 10000
+          })
+          # delete objects
+          response = self.client.delete(self.url, json.dumps({
+              'id': 1
+          }))
+          # assert status code
+          self.assertEquals(response.status_code, 200)
+          # assert template page
+          self.assertTemplateUsed(response, 'templates/template.html')
+          self.assertEquals(self.url.func, view_method_name)
+          self.assertEquals(self.url.func.view_class, ViewClassName)
+  ```

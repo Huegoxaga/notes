@@ -43,6 +43,10 @@
 
 - [Click](https://create-react-app.dev/docs/getting-started) to see the full docs about this tool.
 
+### Run Existing Project
+
+- Delete the node_modules folder and any 'lock' files such as `yarn.lock` or `package-lock.json` first, then run `npm install` and `npm start`.
+
 ## `index.js`
 
 - `index.js` is the entry point of the react app, it is used to import and associate components and `html` `DOM` elements .
@@ -315,17 +319,18 @@ import React, {useState} from ‘react’
 // declare the array before return method.
 const [currentValue, setFunction] = useState(initialValue)   //array destructing
 // initialValue can be string num bool object array
-```
-
-In return method, use setFunction(newValue) to update the currentValue.
-
-```js
 return (
   <button conClick={() => setFunction(prevValue + 1)}>{currentValue}</button>
   //use variable prevValue to get the previous value.
   //work with objects or arrays use: setName({…objectName, propertyName: newValue})
 );
 ```
+
+- In return method, use `setFunction(newValue)` to update the currentValue.
+- `useState()` returns an array of values, the current state value and a function that is used to update values.
+- `useState()` can have an arrow function as its variable, and it will be only ran once when rander.
+- `useState()` can have an object as variable.
+- `useState()` cannot be placed inside if or loops
 
 ### Effect Hook
 

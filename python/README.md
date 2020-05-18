@@ -1031,7 +1031,7 @@ assert (temp >= 0), "Colder than absolute zero!"
 #### Open a File
 
 ```py
-newfile = open("localfile.txt", r+)
+newfile = open("localfile.txt", 'r+')
 ```
 
 #### File Mode
