@@ -407,26 +407,78 @@
   - `from sklearn.metrics import confusion_matrix`
   - `cm = confusion_matrix(y_test, y_pred)` calculate accurracy
 
-## Keras
+## TensorFlow
 
-- A all in one package for deep learning including both tensorflow and theano
-- run `conda install -c conda-forge keras` to installing keras from the conda-forge channel
-- `import keras`
-- Defince ANN models as a sequence of layers.
+- TensorFlow 2.0 uses Keras as its official high-level API
+  - Keras is an all in one package for deep learning including both tensorflow and theano
+- Install TensorFlow 2.0
+  - `tf.__version__` check version
+- Import everything
+  - `import tensorflow as tf`
+
+### Data Preprocessing
+
+##### Image Preprocessing
+
+- ImageDataGenerator
+  - Generate Images based on a certain settings.
+    - `train_datagen = ImageDataGenerator(rescale = 1./255, shear_range = 0.2, zoom_range = 0.2, horizontal_flip = True)`
+      - `rescale`
+      - `shear_range`
+      - `zoom_range`
+      - `horizontal_flip`
+  - Load the images from files.
+    - `training_set = train_datagen.flow_from_directory('dataset/training_set', target_size = (64, 64), batch_size = 32, class_mode = 'binary')`
+      - First argument is the file path.
+      - `target_size`
+      - `batch_size`
+      - `class_mode`
+
+### Build Model
+
+##### ANN Model
+
+- Define the ANN model as a sequence of layers.
   ```py
   # Initializing the ANN
-  ann = keras.models.Sequential()
+  ann = tf.keras.models.Sequential()
   # Adding the input layer and the first hidden layer
-  ann.add(keras.layers.Dense(output_dim = 6, init = 'uniform', activation='relu', input_dim = 10))
+  ann.add(tf.keras.layers.Dense(output_dim = 6, init = 'uniform', activation='relu', input_dim = 10))
   # Adding the second hidden layer
-  ann.add(keras.layers.Dense(output_dim = 6, init = 'uniform', activation='relu'))
+  ann.add(tf.keras.layers.Dense(output_dim = 6, init = 'uniform', activation='relu'))
   # Adding the output layer using sigmoid for probability
-  ann.add(keras.layers.Dense(output_dim = 1, init = 'uniform', activation='sigmoid'))
+  ann.add(tf.keras.layers.Dense(output_dim = 1, init = 'uniform', activation='sigmoid'))
   ```
   - `output_dim` represents the number of output nodes for the layer.
   - `input_dim` represents the number of input nodes for the layer.
   - `init` represent the ways to initilize weight for the model.
+
+##### CNN Model
+
+- Define the CNN model as a sequence of layers.
+  ```py
+  # Initializing the CNN
+  cnn = tf.keras.models.Sequential()
+  # Define the Convolution Layer
+  cnn.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding="same", activation="relu", input_shape=[64, 64, 3]))
+  # Define the Pooling Layer
+  cnn.add(tf.keras.layers.MaxPool2D(pool_size=2, strides=2, padding='valid'))
+  # Flattening
+  cnn.add(tf.keras.layers.Flatten())
+  # Full Connection
+  cnn.add(tf.keras.layers.Dense(units=128, activation='relu'))
+  # Define the Output Layer
+  cnn.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
+  ```
+  - `padding` for the Convolution Layer
+    - `same`
+  - `padding` for the Pooling Layer
+    - `valid`
+
+### Compile Model
+
 - Compile the ANNs, `ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])`
+- Compile the CNNs, `cnn.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])`
   - `optimizer` the algorithm for finding the optimized weights.
     - `adam` is a type of stochastic gradient descent algorithm.
   - `loss` define the loss function.
@@ -434,6 +486,13 @@
     - `categorical_crossentropy` loss function for more than two outcome.
   - `metrics` it takes a list of metrics to evaluate the model.
     - `accuracy` based on the accuracy of the model.
-- Train the model, `ann.fit(X_train, y_train, batch_size = 32, epochs = 100)`
+
+### Train Model
+
+- Train ANN model, `ann.fit(X_train, y_train, batch_size = 32, epochs = 100)`
+- Train CNN model, `cnn.fit_generator(training_set, steps_per_epoch = 334, epochs = 25, validation_data = test_set, validation_steps = 334)`
+
+### Use Model
+
 - Make prediction, `y_pred = ann.predict(X_test)`
   - separate the results in True or False using a defined metric, `y_pred = (y_pred > 0.5)`

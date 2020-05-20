@@ -152,8 +152,6 @@
 - The input values are called the input layer the output values are called output layer.
 - Nodes in between are called hidden layers, each layers will process values and generate output for the next layer.
   - Each neuron in the same layer focuses on different aspects of the input info.
-  - Generally, the ideal number of nodes in each hidden layer is close to half of the input layer nodes plus output layer nodes.
-    - Fine tuning can be made to improve, however this approximate number is good enough for determining the number of nodes for all hidden layers.
   - Hidden layers can have as many as possible, the neural network can be called deep learning if there are lots of layers of neurons in between.
   - ANNs with fewer hidden layers can be called shallow learning.
 - The final output will be compared with the labeled target value, and use back propagation to adjust all weights of synapse, in order to achieve a higher accuracy.
@@ -202,7 +200,7 @@
   - The softmax function is used to calculation possibilities of each result for image recogition so possibilities of all possible answers add up to 1.
   - The cost function in CNNs is called loss function, cross-entropy formula is frequenly used.
 
-## Steps for a Machine Learning Project
+## Steps of a Machine Learning Project
 
 ### Data Preprocessing
 
@@ -222,6 +220,21 @@
 
 ##### Image Preprocessing
 
+- The color value of the images can be rescaled from 0-255 to 0-1 to simplify the data.
+  - The training data and testing data should use have the same recaling setting.
+- Images can be altered by zooming, flipping and shearing to provide variaties for training.
+
 ##### Timeseries data preprocessing
 
 ##### Text data preprocessing
+
+### Build Model
+
+##### ANNs
+
+- Generally, the ideal number of nodes in each hidden layer is close to half of the input layer nodes plus output layer nodes.
+  - Fine tuning can be made to improve, however this approximate number is good enough for determining the number of nodes for all hidden layers.
+
+##### CNNs
+
+- More convolutional layer will increase the accuracy of the prediction.
