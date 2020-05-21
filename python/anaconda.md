@@ -470,9 +470,8 @@
   # Define the Output Layer
   cnn.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
   ```
-  - `padding` for the Convolution Layer
+  - `padding` for Layers
     - `same`
-  - `padding` for the Pooling Layer
     - `valid`
 
 ### Compile Model

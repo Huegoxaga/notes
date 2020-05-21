@@ -900,21 +900,24 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="mathematics">Mathematics</h1>
-<h1 id="discrete-mathematics">Discrete Mathematics</h1>
+<h1 id="arithmetic">Arithmetic</h1>
 <ul>
 <li>A <strong>prime number</strong> is an integer greater than 1 whose only positive divisors are 1 and itself.</li>
 <li>A <strong>composite number</strong> is an integer greater than 1 that is not a prime. It can be written as a product of integers greater than 1.</li>
 <li>The <strong>factors</strong> of a composite number is all the integer that can can divide the number into an integer.</li>
-<li>Test for Primality - check if the number is divisible by any prime number in the range from 2 to its square root.</li>
+<li>Test for Primality - Test if a number if a prime<ul>
+<li>It can be done by checking if the number is divisible by any prime number in the range from 2 to its square root.</li>
+</ul>
+</li>
 <li>Prime factorization - Prime factorization of a number is to find a product of primes with the same value<ul>
 <li>Ex, <img src="https://render.githubusercontent.com/render/math?math=%2428050%20%3D%202%5Ctimes3%5Ctimes5%5E2%5Ctimes11%5Ctimes17%24" alt="$28050 = 2\times3\times5^2\times11\times17$"> (this is the format for prime factorization result)</li>
 </ul>
 </li>
 </ul>
-<h3 id="the-fundamental-theorem-of-arithmetic">The Fundamental Theorem of Arithmetic</h3>
-<ul>
-<li>Every integer greater than 1 is either prime or can be expressed as a product of primes in a unique order in which the factors occur.</li>
-</ul>
+<blockquote>
+<h5 id="the-fundamental-theorem-of-arithmetic">The Fundamental Theorem of Arithmetic</h5>
+<p>Every integer greater than 1 is either prime or can be expressed as a product of primes in a unique order in which the factors occur.</p>
+</blockquote>
 <h3 id="divisibility-rules">Divisibility Rules</h3>
 <ul>
 <li>Divisibility rule for 2: All even numbers are divisible by 2;</li>
@@ -931,12 +934,31 @@ the last digit doubled subtracted this doubled value from the first part(132for1
 </ul>
 <h3 id="gcf--lcm">GCF &amp; LCM</h3>
 <ul>
-<li>A Greatest Common Factor, GCF, of two (or more) numbers is the biggest number that we can divide with (is a factor of) both numbers. AnB</li>
-<li>A Least Common Multiple, LCM, of two (or more) numbers is the smallest number that both numbers will divide into. AuB(A,B are factors of the numbers)</li>
+<li>A Greatest Common Factor, GCF, of two (or more) numbers is the biggest number that we can divide with (is a factor of) both numbers.<ul>
+<li>It can be express as <img src="https://render.githubusercontent.com/render/math?math=%24A%20%5Ccap%20B%24" alt="$A \cap B$">, when A and B are the set of factors of the two numbers.</li>
+</ul>
+</li>
+<li>A Least Common Multiple, LCM, of two (or more) numbers is the smallest number that both numbers will divide into.<ul>
+<li>It can be express as <img src="https://render.githubusercontent.com/render/math?math=%24A%20%5Ccup%20B%24" alt="$A \cup B$">, when A and B are the set of factors of the two numbers.</li>
+</ul>
+</li>
+<li>Euclidian Algorithm<ul>
+<li>It can be used to find the GCF of two large numbers.</li>
+<li>For Example, find the GCF of 125,460 and 365,840.<ol>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24365840%20%3D%202%20%5Ctimes%20125460%20%2B%20114920%24" alt="$365840 = 2 \times 125460 + 114920$"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24125460%20%3D%201%20%5Ctimes%20114920%20%2B%2010540%24" alt="$125460 = 1 \times 114920 + 10540$"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24114920%20%3D%2010%20%5Ctimes%2010540%20%2B%209520%24" alt="$114920 = 10 \times 10540 + 9520$"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%2410540%20%3D%201%20%5Ctimes%209520%20%2B%201020%20%24" alt="$10540 = 1 \times 9520 + 1020 $"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%249520%20%3D%209%20%5Ctimes%201020%20%2B%20340%20%24" alt="$9520 = 9 \times 1020 + 340 $"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%241020%20%3D%203%20%5Ctimes%20340%20%2B%200%24" alt="$1020 = 3 \times 340 + 0$"></li>
+</ol>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="modular-arithmetic">Modular Arithmetic</h2>
 <ul>
-<li>Modular arithmetic is a system in which all numbers up to some positive integer n are used.</li>
+<li>Modular arithmetic is a system in which all numbers up to some positive integer <code>n</code> are used.</li>
 </ul>
 <h3 id="division-algorithm">Division Algorithm</h3>
 <ul>
@@ -945,8 +967,476 @@ the last digit doubled subtracted this doubled value from the first part(132for1
 </ul>
 </li>
 </ul>
+<h3 id="modular-systems">Modular Systems</h3>
+<ul>
+<li>The integers (a) and (b) are <strong>congruent modulo</strong> <code>m</code> (where m is a natural number greater than 1) if and only if the difference <code>a &#x2013; b</code>  is divisible by <code>m</code>. hence <code>a</code> and <code>b</code> both have the same remainder when divided by <code>m</code>.</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24a%20%5Cequiv%20b%24" alt="$a \equiv b$"> <em>(mod m)</em>, From where <code>a - b = k&#xB7;m</code> (for some integer k)</li>
+<li>It also means that there is calculation among the positional number in each mod n system.</li>
+<li>It is like a is circling around a circle of 0 to m-1 and ends up at b.
+so b is like the positional number for a which is counting around the circle.</li>
+</ul>
+<h3 id="modular-arithmetic">Modular Arithmetic</h3>
+<ul>
+<li>If <img src="https://render.githubusercontent.com/render/math?math=%24a%20%5Cequiv%20b%24" alt="$a \equiv b$"> <em>(mod n)</em> and <img src="https://render.githubusercontent.com/render/math?math=%24c%20%5Cequiv%20d%24" alt="$c \equiv d$"> <em>(mod n)</em> then:<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24a%20%2B%20c%20%5Cequiv%20b%20%2B%20d%24" alt="$a + c \equiv b + d$"> <em>(mod n)</em></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24a%20-%20c%20%5Cequiv%20%5C%3A%20b%20-%20%20d%24" alt="$a - c \equiv : b -  d$"> <em>(mod n)</em></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24a%20%5Ccdot%20c%20%5Cequiv%20b%20%5Ccdot%20d%24" alt="$a \cdot c \equiv b \cdot d$"> <em>(mod n)</em></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24a%5Ek%20%5Cequiv%20b%5Ek%24" alt="$a^k \equiv b^k$"> <em>(mod n)</em></li>
+</ul>
+</li>
+<li>module equation holds by plus and multiply, power operations on both sides. (position number on both sides change together)
+module equation holds by plus and multiply operations with unknowns on both sides.</li>
+<li>As a result, if you want to evaluate <code>mod p</code> of an expression just do the arithmetic calculate of both side normally and then simplify by taking the remainder after dividing by p.</li>
+<li>The remainder of a negative number is the negative remain add one full circle.</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24a%20x%20%5Cequiv%20b%20(mod%20%5C%3A%20m" alt="$a x \equiv b (mod : m)$">%24&gt;) is called a Congruence equation , unknown <code>x</code> is always an integer, <code>x</code> will be solved as follow.<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24x%20%5Cequiv%20b%20(mod%20%5C%3A%20m" alt="$x \equiv b (mod : m)$">%24&gt;), where be is an positive integer that is smaller than <code>m</code>.</li>
+<li>The solution for all positive values can also be represented as <img src="https://render.githubusercontent.com/render/math?math=%24x%20%5Cin%20%5C%7Bb%2C%20bm%2Cb%2B2m%2C%20%5Cdotsc%20%5C%7D%24" alt="$x \in {b, bm,b+2m, \dotsc }$"> or <img src="https://render.githubusercontent.com/render/math?math=%24x%20%5Cin%20%5Cemptyset%24" alt="$x \in \emptyset$"> if no solution is found.</li>
+</ul>
+</li>
+<li>In order to find the positional b of a large number with exponent.<ul>
+<li>find position for the base and the raise the power of the base position number and then find the positional number for the newly generated number.</li>
+<li>Sometimes when base is not 1 and the exponent is still too big, see if it can be -1.</li>
+<li>Sometimes the base is divisible on the mod n.</li>
+</ul>
+</li>
+</ul>
+<h3 id="application">Application</h3>
+<ul>
+<li>The following application has the check digit located at the last digit.<ul>
+<li>Airline Tickets - The check digit is the remainder of the main part divided by 7.</li>
+<li>Social Insurance Number<ul>
+<li>Luhn algorithm<ul>
+<li>Remove the check digit x</li>
+<li>Double the even position digits from left and add their digits: (only here: if 12, add 1 and 2. if 14 its 1+4)</li>
+<li>Add the rest of the digits:</li>
+<li>multiply by -1</li>
+<li>The check digit is mod 10</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>UPC &#x2013; Universal Product Code<ul>
+<li><em>check digit =</em> <img src="https://render.githubusercontent.com/render/math?math=%24-(3a_11%2Ba_10%2B3a_9%2Ba_8%2B3a_7%2Ba_6%2B3a_5%2Ba_4%2B3a_3%2Ba_2%2B3a_1" alt="$-(3a_11+a_10+3a_9+a_8+3a_7+a_6+3a_5+a_4+3a_3+a_2+3a_1); (mod: 10)$">%5C%3B%20(mod%5C%3A%2010)%24&gt;)</li>
+</ul>
+</li>
+<li>ISBN &#x2013; International Standard Book Number<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=a_0%20%3D%20a_9%2B2a_8%2B3a_7%2B4a_6%2B5a_5%2B6a_4%2B7a_3%2B8a_2%2B9a_1%20%5C%3B%20(mod%20%5C%3A%2011" alt="a_0 = a_9+2a_8+3a_7+4a_6+5a_5+6a_4+7a_3+8a_2+9a_1 ; (mod : 11)">&gt;)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Round-Robin Tournament<ul>
+<li>Each team must play against every team once.</li>
+<li>In even number of teams<ul>
+<li>each team plays in every round</li>
+<li>the number of rounds is 1 less than the total number of teams.</li>
+</ul>
+</li>
+<li>In odd number of teams<ul>
+<li>one team stays with a <code>bye</code> (has no match to play)in every round</li>
+<li>the number of rounds is the same as the total number of teams.</li>
+</ul>
+</li>
+<li>In a tournament with N teams<ul>
+<li>Team X will be playing against X in round r, <code>Y = r-X (mod N or N-1)</code></li>
+<li>When N is odd and Y = X(assumes there is a unknown team x that plays with itself), the team is assigned a bye.</li>
+<li>When N is even, the schedule is made as there are one less number of teams mod is (N-1) and in case Y = X, the team is assigned to play with Team N.<ul>
+<li>round 0 is round N.</li>
+<li>careful about TeamN in even Team situation.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="basic-algebra">Basic Algebra</h1>
 <h1 id="calculus">Calculus</h1>
+<h2 id="limit">Limit</h2>
+<h4 id="definition">Definition</h4>
+<ul>
+<li>Intuitive Definitions<ul>
+<li>Definition of a Limit<ul>
+<li>Suppose <em><code>f(x)</code></em> is defined when <code>x</code> is near the number <code>a</code>. (This means that f is defined on some open interval that contains a, except possibly at a itself.) Then we write <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x)=L$">%3DL%24&gt;) and say &quot;the limit of f sxd, as x approaches a, equals L&quot; if we can make the values of <em><code>f(x)</code></em> arbitrarily close to L (as close to L as we like) by restricting x to be sufficiently close to a (on either side of a) but not equal to a.</li>
+</ul>
+</li>
+<li>Definition of One-Sided Limits<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df(x" alt="$\lim_{x \to a^-}f(x)=L$">%3DL%24&gt;) and say the left-hand limit of <em><code>f(x)</code></em> as x approaches a [or the limit of f sxd as x approaches <code>a</code> from the left] is equal to <code>L</code> if we can make the values of <em><code>f(x)</code></em> arbitrarily close to <code>L</code> by taking <code>x</code> to be sufficiently close to a with <code>x</code> less than <code>a</code>.</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df(x" alt="$\lim_{x \to a^+}f(x)=L$">%3DL%24&gt;) if we require that x be greater than a, we get &quot;the right-hand limit of <em><code>f(x)</code></em> as <code>x</code> approaches <code>a</code> is equal to <code>L</code>&quot;.</li>
+</ul>
+</li>
+<li>Definition of an Infinite Limit<ul>
+<li>Let <code>f</code> be a function defined on both sides of <code>a</code>, except possibly at <code>a</code> itself. Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x)= \infty$">%3D%20%5Cinfty%24&gt;) means that the values of <em><code>f(x)</code></em> can be made arbitrarily large (as large as we please) by taking <code>x</code> sufficiently close to <code>a</code>, but not equal to <code>a</code>.</li>
+<li>Let <code>f</code> be a function defined on both sides of <code>a</code>, except possibly at <code>a</code> itself. Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x)= - \infty$">%3D%20-%20%5Cinfty%24&gt;) means that the values of <em><code>f(x)</code></em> can be made arbitrarily large negative by taking <code>x</code> sufficiently close to <code>a</code>, but not equal to <code>a</code>.</li>
+</ul>
+</li>
+<li>Definition of a Limit at Infinity<ul>
+<li>Let <em>f</em> be a function defined on some interval <img src="https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty" alt="$(a, \infty)$">%24&gt;). Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7Df(x" alt="$\lim_{x \to \infty}f(x)= L$">%3D%20L%24&gt;) means that the values of <em>f(x)</em> can be made arbitrarily close to <em>L</em> by requiring <em>x</em> to be sufficiently large.</li>
+<li>Let <em>f</em> be a function defined on some interval <img src="https://render.githubusercontent.com/render/math?math=%24(a%2C%20-%5Cinfty" alt="$(a, -\infty)$">%24&gt;). Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7Df(x" alt="$\lim_{x \to - \infty}f(x)= L$">%3D%20L%24&gt;) means that the values of <em>f(x)</em> can be made arbitrarily close to <em>L</em> by requiring <em>x</em> to be sufficiently large negative.</li>
+</ul>
+</li>
+<li>Definition of an Infinite Limit at Infinity<ul>
+<li>Let <em>f</em> be a function defined on some interval <img src="https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty" alt="$(a, \infty)$">%24&gt;). Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7Df(x" alt="$\lim_{x \to \infty}f(x)= \infty$">%3D%20%5Cinfty%24&gt;) means that for every positive number <em>M</em> there is a corresponding positive number <em>N</em> such that if <img src="https://render.githubusercontent.com/render/math?math=%24x%20%3E%20N%24" alt="$x &gt; N$"> then <img src="https://render.githubusercontent.com/render/math?math=%24f(x" alt="$f(x) &gt; M$">%20%3E%20M%24&gt;)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Precise Definitions<ul>
+<li>Definition of a Limit<ul>
+<li>Let <em><code>f</code></em> be a function defined on some open interval that contains the number <em><code>a</code></em>, except possibly at <em><code>a</code></em> itself. Then we say that the limit of <em><code>f(x)</code></em> as <em><code>x</code></em> approaches <em><code>a</code></em> is <em><code>L</code></em>, and we write <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x) = L$">%20%3D%20L%24&gt;) if for every number <img src="https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24" alt="$\epsilon &gt; 0$"> there is a number <img src="https://render.githubusercontent.com/render/math?math=%24%5Cdelta%20%3E%200%24" alt="$\delta &gt; 0$"> such that, if <img src="https://render.githubusercontent.com/render/math?math=%240%20%3C%20%7Cx-a%7C%20%3C%20%5Cdelta%24" alt="$0 &lt; |x-a| &lt; \delta$"> then <img src="https://render.githubusercontent.com/render/math?math=%24%7Cf(x" alt="$|f(x) - L| &lt; \epsilon$">%20-%20L%7C%20%3C%20%5Cepsilon%24&gt;)</li>
+</ul>
+</li>
+<li>Definition of One-Sided Limits<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df(x" alt="$\lim_{x \to a^-}f(x) = L$">%20%3D%20L%24&gt;) if for every number <img src="https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24" alt="$\epsilon &gt; 0$"> there is a number <img src="https://render.githubusercontent.com/render/math?math=%24%5Cdelta%20%3E%200%24" alt="$\delta &gt; 0$"> such that, if <img src="https://render.githubusercontent.com/render/math?math=%24a%20-%20%5Cdelta%20%3C%20x%20%3C%20a%24" alt="$a - \delta &lt; x &lt; a$"> then <img src="https://render.githubusercontent.com/render/math?math=%24%7Cf(x" alt="$|f(x) - L| &lt; \epsilon$">%20-%20L%7C%20%3C%20%5Cepsilon%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df(x" alt="$\lim_{x \to a^-}f(x) = L$">%20%3D%20L%24&gt;) if for every number <img src="https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24" alt="$\epsilon &gt; 0$"> there is a number <img src="https://render.githubusercontent.com/render/math?math=%24%5Cdelta%20%3E%200%24" alt="$\delta &gt; 0$"> such that, if <img src="https://render.githubusercontent.com/render/math?math=%24a%20%3C%20x%20%3C%20a%20%2B%20%5Cdelta%20%24" alt="$a &lt; x &lt; a + \delta $"> then <img src="https://render.githubusercontent.com/render/math?math=%24%7Cf(x" alt="$|f(x) - L| &lt; \epsilon$">%20-%20L%7C%20%3C%20%5Cepsilon%24&gt;)</li>
+</ul>
+</li>
+<li>Definition of an Infinite Limit<ul>
+<li>Let <em><code>f</code></em> be a function defined on some open interval that contains the number <em><code>a</code></em>, except possibly at <em><code>a</code></em> itself. Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x) = \infty$">%20%3D%20%5Cinfty%24&gt;) means that for every positive number <em>M</em> there is a positive number <img src="https://render.githubusercontent.com/render/math?math=%24%5Cdelta%24" alt="$\delta$"> such that if <img src="https://render.githubusercontent.com/render/math?math=%240%20%3C%20%7Cx-a%7C%20%3C%20%5Cdelta%24" alt="$0 &lt; |x-a| &lt; \delta$"> then <img src="https://render.githubusercontent.com/render/math?math=%24f(x" alt="$f(x) &gt; M$">%20%3E%20M%24&gt;)</li>
+<li>Let <em><code>f</code></em> be a function defined on some open interval that contains the number <em><code>a</code></em>, except possibly at <em><code>a</code></em> itself. Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x) = - \infty$">%20%3D%20-%20%5Cinfty%24&gt;) means that for every positive number <em>M</em> there is a negetive number <img src="https://render.githubusercontent.com/render/math?math=%24%5Cdelta%24" alt="$\delta$"> such that if <img src="https://render.githubusercontent.com/render/math?math=%240%20%3C%20%7Cx-a%7C%20%3C%20%5Cdelta%24" alt="$0 &lt; |x-a| &lt; \delta$"> then <img src="https://render.githubusercontent.com/render/math?math=%24f(x" alt="$f(x) &lt; N$">%20%3C%20N%24&gt;)</li>
+</ul>
+</li>
+<li>Definition of a Limit at Infinity - Let <em>f</em> be a function defined on some interval <img src="https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty" alt="$(a, \infty)$">%24&gt;). Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%20f(x" alt="$\lim_{x \to \infty} f(x) = L$">%20%3D%20L%24&gt;) means that for every <img src="https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24" alt="$\epsilon &gt; 0$"> there is a corresponding number <em>N</em> such that if <img src="https://render.githubusercontent.com/render/math?math=%24x%20%3E%20N%24" alt="$x &gt; N$"> then <img src="https://render.githubusercontent.com/render/math?math=%24%7C%20f(x" alt="$| f(x) - L| &lt; \epsilon$">%20-%20L%7C%20%3C%20%5Cepsilon%24&gt;) - Let <em>f</em> be a function defined on some interval <img src="https://render.githubusercontent.com/render/math?math=%24(-%5Cinfty%20%2C%20a" alt="$(-\infty , a)$">%24&gt;). Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%5Cinfty%7D%20f(x" alt="$\lim_{x \to -\infty} f(x) = L$">%20%3D%20L%24&gt;) means that for every <img src="https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24" alt="$\epsilon &gt; 0$"> there is a corresponding number <em>N</em> such that if <img src="https://render.githubusercontent.com/render/math?math=%24x%20%3C%20N%24" alt="$x &lt; N$"> then <img src="https://render.githubusercontent.com/render/math?math=%24%7C%20f(x" alt="$| f(x) - L| &lt; \epsilon$">%20-%20L%7C%20%3C%20%5Cepsilon%24&gt;)</li>
+</ul>
+</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x)=L$">%3DL%24&gt;) if and only if <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df(x" alt="$\lim_{x \to a^+}f(x)=L$">%3DL%24&gt;) and <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df(x" alt="$\lim_{x \to a^-}f(x)=L$">%3DL%24&gt;)</li>
+<li>The vertical line <code>x = a</code> is called a vertical asymptote of the curve <img src="https://render.githubusercontent.com/render/math?math=%24y%3D%20f(x" alt="$y= f(x)$">%24&gt;) if at least one of the following statements is true:<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x)= \infty$">%3D%20%5Cinfty%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df(x" alt="$\lim_{x \to a^-}f(x)= \infty$">%3D%20%5Cinfty%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df(x" alt="$\lim_{x \to a^+}f(x)= \infty$">%3D%20%5Cinfty%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x)=- \infty$">%3D-%20%5Cinfty%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df(x" alt="$\lim_{x \to a^-}f(x)=- \infty$">%3D-%20%5Cinfty%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df(x" alt="$\lim_{x \to a^+}f(x)=- \infty$">%3D-%20%5Cinfty%24&gt;)</li>
+<li>Example: <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%200%5E%2B%7D%20%5Cln%7Bx%7D%3D-%20%5Cinfty%24" alt="$\lim_{x \to 0^+} \ln{x}=- \infty$"></li>
+</ul>
+</li>
+<li>the line <em>y = mx + b</em> is called a slant(oblique) asymptote where <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%20%5Bf(x" alt="$\lim_{x \to \infty} [f(x)-(mx+b)]=0$">-(mx%2Bb)%5D%3D0%24&gt;) if <img src="https://render.githubusercontent.com/render/math?math=%24m%20%5Cneq%200%24" alt="$m \neq 0$"></li>
+<li>A function <em>f</em> is continuous at a number a if <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x) = f(a)$">%20%3D%20f(a)%24&gt;)</li>
+<li>A function <em>f</em> is continuous from the right at a number <em>a</em> if <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df(x" alt="$\lim_{x \to a^+}f(x) = f(a)$">%20%3D%20f(a)%24&gt;)</li>
+<li>A function <em>f</em> is continuous from the left at a number <em>a</em> if <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df(x" alt="$\lim_{x \to a^-}f(x) = f(a)$">%20%3D%20f(a)%24&gt;)</li>
+<li>A function <em>f</em> is continuous on an interval if it is continuous at every number in the interval. (If <em>f</em> is defined only on one side of an endpoint of the interval, we understand continuous at the endpoint to mean continuous from the right or continuous from the left.)</li>
+<li>The line <em>y = L</em> is called a horizontal asymptote of the curve <em>y = f(x)</em> if either <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x)= - \infty$">%3D%20-%20%5Cinfty%24&gt;) or <img src="https://render.githubusercontent.com/render/math?math=%24(a%2C%20-%5Cinfty" alt="$(a, -\infty)$">%24&gt;). Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7Df(x" alt="$\lim_{x \to - \infty}f(x)= L$">%3D%20L%24&gt;)<ul>
+<li>For Example:<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7D%5Ctan%5E%7B-1%7D%7Bx%7D%3D%20-%20%5Cfrac%7B%5Cpi%7D%7B2%7D%20%24" alt="$\lim_{x \to - \infty}\tan^{-1}{x}= - \frac{\pi}{2} $"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%5Ctan%5E%7B-1%7D%7Bx%7D%3D%20%5Cfrac%7B%5Cpi%7D%7B2%7D%20%24" alt="$\lim_{x \to \infty}\tan^{-1}{x}= \frac{\pi}{2} $"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7D%20e%5Ex%20%3D%200%24" alt="$\lim_{x \to - \infty} e^x = 0$"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Definition of the Number <em>e</em><ul>
+<li><em>e</em> is the number such that <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bh%20%5Cto%200%7D%20%5Cfrac%7Be%5Eh-1%7D%7Bh%7D%20%3D%201%24" alt="$\lim_{h \to 0} \frac{e^h-1}{h} = 1$"></li>
+<li>So, <img src="https://render.githubusercontent.com/render/math?math=%24e%20%3D%20%5Clim_%7Bx%20%5Cto%200%7D%20(1%2Bx" alt="$e = \lim_{x \to 0} (1+x)^{\frac{1}{x}}$">%5E%7B%5Cfrac%7B1%7D%7Bx%7D%7D%24&gt;) or <img src="https://render.githubusercontent.com/render/math?math=%24e%20%3D%20%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%20%5Cleft(1%2B%20%5Cfrac%7B1%7D%7Bn%7D%5Cright" alt="$e = \lim_{x \to \infty} \left(1+ \frac{1}{n}\right)^n$">%5En%24&gt;)</li>
+</ul>
+</li>
+<li>L&apos;Hospital&apos;s Rule - Suppose <em>f</em> and <em>t</em> are differentiable and <img src="https://render.githubusercontent.com/render/math?math=%24g&apos;(x" alt="$g&apos;(x) \neq 0$">%20%5Cneq%200%24&gt;) on an open interval <em>I</em> that contains <em>a</em> (except possibly at <em>a</em>). Suppose that <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x) = 0$">%20%3D%200%24&gt;) and <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x" alt="$\lim_{x \to a}g(x) = 0$">%20%3D%200%24&gt;) or that <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x) = \pm \infty$">%20%3D%20%5Cpm%20%5Cinfty%24&gt;) and <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x" alt="$\lim_{x \to a}g(x) = \pm \infty$">%20%3D%20%5Cpm%20%5Cinfty%24&gt;) In other words, we have an indeterminate form of type 0/0 or <img src="https://render.githubusercontent.com/render/math?math=%24%5Cinfty%20%2F%20%5Cinfty%24" alt="$\infty / \infty$">. Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf(x" alt="$\lim_{x \to a} \frac{f(x)}{g(x)}=\lim_{x \to a} \frac{f&apos;(x)}{g&apos;(x)}$">%7D%7Bg(x)%7D%3D%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf&apos;(x)%7D%7Bg&apos;(x)%7D%24&gt;) if the limit on the right side exists (or is opposite/negative inifinity)</li>
+</ul>
+<h4 id="laws">Laws</h4>
+<ul>
+<li>Limit Laws, Suppose that <code>c</code> is a constant and the limits <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20f(x" alt="$\lim_{x \to a} f(x)$">%24&gt;) and <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20g(x" alt="$\lim_{x \to a} g(x)$">%24&gt;) exist. Then:<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bf(x" alt="$\lim_{x \to a} [f(x)+g(x)]=\lim_{x \to a} f(x)+\lim_{x \to a} g(x)$">%2Bg(x)%5D%3D%5Clim<em>%7Bx%20%5Cto%20a%7D%20f(x)%2B%5Clim</em>%7Bx%20%5Cto%20a%7D%20g(x)%24&gt;) Sum Law</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bf(x" alt="$\lim_{x \to a} [f(x)-g(x)]=\lim_{x \to a} f(x)-\lim_{x \to a} g(x)$">-g(x)%5D%3D%5Clim<em>%7Bx%20%5Cto%20a%7D%20f(x)-%5Clim</em>%7Bx%20%5Cto%20a%7D%20g(x)%24&gt;) Difference Law</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bcf(x" alt="$\lim_{x \to a} [cf(x)]=c \lim_{x \to a} f(x)$">%5D%3Dc%20%5Clim_%7Bx%20%5Cto%20a%7D%20f(x)%24&gt;) Constant Multiple Law</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bf(x" alt="$\lim_{x \to a} [f(x)g(x)]=\lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)$">g(x)%5D%3D%5Clim<em>%7Bx%20%5Cto%20a%7D%20f(x)%20%5Ccdot%20%5Clim</em>%7Bx%20%5Cto%20a%7D%20g(x)%24&gt;) Product Law</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf(x" alt="$\lim_{x \to a} \frac{f(x)}{g(x)}=\frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}$">%7D%7Bg(x)%7D%3D%5Cfrac%7B%5Clim<em>%7Bx%20%5Cto%20a%7D%20f(x)%7D%7B%5Clim</em>%7Bx%20%5Cto%20a%7D%20g(x)%7D%24&gt;) if <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20g(x" alt="$\lim_{x \to a} g(x) \neq 0$">%20%5Cneq%200%24&gt;) Quotient Law</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bf(x" alt="$\lim_{x \to a} [f(x)]^n = \left[\lim_{x \to a} f(x)\right]^n$">%5D%5En%20%3D%20%5Cleft%5B%5Clim_%7Bx%20%5Cto%20a%7D%20f(x)%5Cright%5D%5En%24&gt;) where n is a positive integer, Power Law</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dc%3Dc%20%24" alt="$\lim_{x \to a}c=c $"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dx%3Da%20%24" alt="$\lim_{x \to a}x=a $"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20x%5En%3Da%5En%20%24" alt="$\lim_{x \to a} x^n=a^n $"> where n is a positive integer</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Csqrt%5Bn%5D%7Bx%7D%3D%5Csqrt%5Bn%5D%7Ba%7D%20%24" alt="$\lim_{x \to a} \sqrt[n]{x}=\sqrt[n]{a} $"> where <code>n</code> is a positive integer (If <code>n</code> is even, we assume that <code>a &gt; 0</code>.)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Csqrt%5Bn%5D%7Bf(x" alt="$\lim_{x \to a} \sqrt[n]{f(x)}=\sqrt[n]{\lim_{x \to a} f(x)} $">%7D%3D%5Csqrt%5Bn%5D%7B%5Clim<em>%7Bx%20%5Cto%20a%7D%20f(x)%7D%20%24&gt;) where <code>n</code> is a positive integer. If <code>n</code> is even, we assume that ![$\lim</em>{x \to a}f(x) &gt; 0$](<a href="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x)%20%3E%200%24" target="_blank">https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x)%20%3E%200%24</a>). Root Law</li>
+</ul>
+</li>
+</ul>
+<h4 id="properties">Properties</h4>
+<ul>
+<li>Direct Substitution Property If <em><code>f</code></em> is a polynomial or a rational function and <em><code>a</code></em> is in the domain of <em><code>f</code></em> , then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x) = f(a)$">%20%3D%20f(a)%24&gt;)</li>
+<li>If <img src="https://render.githubusercontent.com/render/math?math=%24f(x" alt="$f(x)=g(x)$">%3Dg(x)%24&gt;) when <img src="https://render.githubusercontent.com/render/math?math=%24x%20%5Cneq%20a%24" alt="$x \neq a$">, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x) = \lim_{x \to a}g(x)$">%20%3D%20%5Clim_%7Bx%20%5Cto%20a%7Dg(x)%24&gt;) provided the limits exist.</li>
+</ul>
+<h4 id="theorem">Theorem</h4>
+<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x) = L$">%20%3D%20L%24&gt;) if and only if <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a_-%7Df(x" alt="$\lim_{x \to a_-}f(x) = L = \lim_{x \to a_+}f(x)$">%20%3D%20L%20%3D%20%5Clim<em>%7Bx%20%5Cto%20a</em>%2B%7Df(x)%24&gt;)</li>
+<li>If <img src="https://render.githubusercontent.com/render/math?math=%24f(x" alt="$f(x) \leqslant g(x)$">%20%5Cleqslant%20g(x)%24&gt;) where <em><code>x</code></em> is near <em><code>a</code></em> (except possibly at <em><code>a</code></em>) and the limits of <em><code>f</code></em> and <em><code>g</code></em> both exist as <em><code>x</code></em> approaches <em><code>a</code></em>, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x) \leqslant \lim_{x \to a}g(x)$">%20%5Cleqslant%20%5Clim_%7Bx%20%5Cto%20a%7Dg(x)%24&gt;)</li>
+<li>The Squeeze Theorem - If <img src="https://render.githubusercontent.com/render/math?math=%24f(x" alt="$f(x) \leqslant g(x) \leqslant h(x)$">%20%5Cleqslant%20g(x)%20%5Cleqslant%20h(x)%24&gt;) when <em><code>x</code></em> is near <em><code>a</code></em> (except possibly at <em><code>a</code></em>) and <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x" alt="$\lim_{x \to a}f(x)= \lim_{x \to a}h(x) = L$">%3D%20%5Clim<em>%7Bx%20%5Cto%20a%7Dh(x)%20%3D%20L%24&gt;) then ![$\lim</em>{x \to a}g(x) = L$](<a href="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x)%20%3D%20L%24" target="_blank">https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x)%20%3D%20L%24</a>)</li>
+<li>If <em>f</em> and <em>g</em> are continuous at <em>a</em> and <em>c</em> is a constant, then the following functions are also continuous at <em>a</em>:<ul>
+<li><em>f + g</em></li>
+<li><em>f - g</em></li>
+<li><em>cf</em></li>
+<li><em>fg</em></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bf%7D%7Bg%7D%24" alt="$\frac{f}{g}$"> if <img src="https://render.githubusercontent.com/render/math?math=%24g(a" alt="$g(a) \neq 0$">%20%5Cneq%200%24&gt;)</li>
+</ul>
+</li>
+<li>Any polynomial is continuous everywhere; that is, it is continuous on <img src="https://render.githubusercontent.com/render/math?math=%24%5Cmathbb%7BR%7D%20%3D%20(-%20%5Cinfty%2C%20%5Cinfty" alt="$\mathbb{R} = (- \infty, \infty)$">%24&gt;).</li>
+<li>Any rational function is continuous wherever it is defined; that is, it is contin- uous on its domain.</li>
+<li>The following types of functions are continuous at every number in their domains:<ul>
+<li>polynomials</li>
+<li>rational functions</li>
+<li>root functions</li>
+<li>trigonometric functions</li>
+<li>exponential functions</li>
+<li>inverse trigonometric functions</li>
+<li>logarithmic functions</li>
+</ul>
+</li>
+<li>If <em>f</em> is continuous at <em>b</em> and <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x" alt="$\lim_{x \to a}g(x) = b$">%20%3D%20b%24&gt;), then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(g(x" alt="$\lim_{x \to a}f(g(x)) =f(b)$">)%20%3Df(b)%24&gt;). In other words, <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(g(x" alt="$\lim_{x \to a}f(g(x)) =f\left(\lim_{x \to a}g(x)\right)$">)%20%3Df%5Cleft(%5Clim_%7Bx%20%5Cto%20a%7Dg(x)%5Cright)%24&gt;)</li>
+<li>If <em>g</em> is continuous at <em>a</em> and <em>f</em> is continuous at <em>g(a)</em>, then the composite function <img src="https://render.githubusercontent.com/render/math?math=%24f%20%5Ccirc%20g%24" alt="$f \circ g$"> given by <img src="https://render.githubusercontent.com/render/math?math=%24(f%20%5Ccirc%20g" alt="$(f \circ g)(x) = f(g(x))$">(x)%20%3D%20f(g(x))%24&gt;) is continuous at <em>a</em>.</li>
+<li>The Intermediate Value Theorem - Suppose that <em>f</em> is continuous on the closed interval <img src="https://render.githubusercontent.com/render/math?math=%24%5Ba%2Cb%5D%24" alt="$[a,b]$"> and let <em>N</em> be any number between <em>f(a)</em> and <em>f(b)</em> , where <img src="https://render.githubusercontent.com/render/math?math=%24f(a" alt="$f(a) \neq f(b)$">%20%5Cneq%20f(b)%24&gt;). Then there exists <em>a</em> number <em>c</em> in <img src="https://render.githubusercontent.com/render/math?math=%24(a%2Cb" alt="$(a,b)$">%24&gt;) such that <em>f(c) = N</em>.</li>
+<li>If <img src="https://render.githubusercontent.com/render/math?math=%24r%20%3E%200%24" alt="$r &gt; 0$"> is a rational number, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%5Cfrac%7B1%7D%7Bx%5Er%7D%3D%200%24" alt="$\lim_{x \to \infty}\frac{1}{x^r}= 0$"> If <img src="https://render.githubusercontent.com/render/math?math=%24r%20%3E%200%24" alt="$r &gt; 0$"> is a rational number such that <img src="https://render.githubusercontent.com/render/math?math=%24x%5Er%24" alt="$x^r$"> is defined for all <em>x</em>, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7D%5Cfrac%7B1%7D%7Bx%5Er%7D%3D%200%24" alt="$\lim_{x \to - \infty}\frac{1}{x^r}= 0$"></li>
+</ul>
+<h4 id="related-solving-methods">Related Solving Methods</h4>
+<ul>
+<li>use <em>f</em> over the recipical of <em>g</em> for Indeterminate products, in order to use the L&apos;Hospital&apos;s Rule.</li>
+</ul>
+<h2 id="derivatives">Derivatives</h2>
+<h4 id="definition">Definition</h4>
+<ul>
+<li>Tangent Line - The tangent line to the curve <img src="https://render.githubusercontent.com/render/math?math=%24y%20%3D%20f(x" alt="$y = f(x)$">%24&gt;) at the point <img src="https://render.githubusercontent.com/render/math?math=%24P(a%2C%20f(a" alt="$P(a, f(a))$">)%24&gt;) is the line through <em>P</em> with slope <img src="https://render.githubusercontent.com/render/math?math=%24m%20%3D%20%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf(x" alt="$m = \lim_{x \to a} \frac{f(x)-f(a)}{x-a}$">-f(a)%7D%7Bx-a%7D%24&gt;) provided that this limit exists.<ul>
+<li>Optionally, <img src="https://render.githubusercontent.com/render/math?math=%24m%20%3D%20%5Clim_%7Bh%20%5Cto%200%7D%20%5Cfrac%7Bf(a%2Bh" alt="$m = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$">-f(a)%7D%7Bh%7D%24&gt;)</li>
+<li>Or it can be <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7B%5CDelta%20x%20%5Cto%200%7D%20%5Cfrac%7B%5CDelta%20y%7D%7B%5CDelta%20x%7D%20%3D%20%5Clim_%7Bx_2%20%5Cto%20x_1%7D%20%5Cfrac%7Bf(x_2" alt="$\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim_{x_2 \to x_1} \frac{f(x_2)-f(x_1)}{x_2 - x_1} $">-f(x_1)%7D%7Bx_2%20-%20x_1%7D%20%24&gt;)</li>
+</ul>
+</li>
+<li>The derivative of a function <em>f</em> at a number <em>a</em>, denoted by <img src="https://render.githubusercontent.com/render/math?math=%24f&apos;(a" alt="$f&apos;(a)$">%24&gt;) is <img src="https://render.githubusercontent.com/render/math?math=%24f&apos;(a" alt="$f&apos;(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$">%20%3D%20%5Clim_%7Bh%20%5Cto%200%7D%20%5Cfrac%7Bf(a%2Bh)-f(a)%7D%7Bh%7D%24&gt;)<ul>
+<li>It is the function that returns the slope of the tangent as dependent variable.</li>
+<li>It can also represent the instantaneous rate of change</li>
+<li>The derivateve of a function can be also denoted as<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdx%7D%7Bdy%7D%24" alt="$\frac{dx}{dy}$">, known as Leibniz notation.</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdy%7D(y" alt="$\frac{d}{dy}(y)$">%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24y&apos;%24" alt="$y&apos;$"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cdot%7Bx%7D%24" alt="$\dot{x}$"> if <em>x</em> represents time</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Higher Derivatives<ul>
+<li>The derivatives of a derivative is called the second derivative, it can be denoted as follows:<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdy%7D%5Cleft(%5Cfrac%7Bdy%7D%7Bdx%7D%5Cright" alt="$\frac{d}{dy}\left(\frac{dy}{dx}\right)$">%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%5E2%20y%7D%7Bd%20x%5E2%7D%24" alt="$\frac{d^2 y}{d x^2}$"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24f&apos;&apos;(x" alt="$f&apos;&apos;(x)$">%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24y&apos;&apos;%24" alt="$y&apos;&apos;$"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cddot%7Bx%7D%24" alt="$\ddot{x}$"></li>
+</ul>
+</li>
+<li>Same idea for third and fourth and higher derivatives.</li>
+</ul>
+</li>
+<li>A function <em>f</em> is differentiable at a if <em>f&apos;(a)</em> exists. It is differen- tiable on an open interval (<em>a, b</em>)[or <img src="https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty" alt="$(a, \infty)$">%24&gt;) or <img src="https://render.githubusercontent.com/render/math?math=%24(-%5Cinfty%2C%20a" alt="$(-\infty, a)$">%24&gt;) or <img src="https://render.githubusercontent.com/render/math?math=%24(-%5Cinfty%2C%20%5Cinfty" alt="$(-\infty, \infty)$">%24&gt;)] if it is differentiable at every number in the interval.</li>
+<li>Let <em>c</em> be a number in the domain <em>D</em> of a function <em>f</em>. Then <em>f(c)</em> is the<ul>
+<li>absolute maximum value of <em>f</em> on <em>D</em> if <img src="https://render.githubusercontent.com/render/math?math=%24f(c" alt="$f(c) \geqslant f(x)$">%20%5Cgeqslant%20f(x)%24&gt;) for all <em>x</em> in <em>D</em>.</li>
+<li>absolute minimum value of f on D if <img src="https://render.githubusercontent.com/render/math?math=%24f(c" alt="$f(c) \leqslant f(x)$">%20%5Cleqslant%20f(x)%24&gt;) for all <em>x</em> in <em>D</em>.</li>
+</ul>
+</li>
+<li>The number <em>f(c)</em> is a<ul>
+<li>local maximum value of <em>f</em> if <img src="https://render.githubusercontent.com/render/math?math=%24f(c" alt="$f(c) \geqslant f(x)$">%20%5Cgeqslant%20f(x)%24&gt;) when <em>x</em> is near <em>c</em>.</li>
+<li>local maximum value of <em>f</em> if <img src="https://render.githubusercontent.com/render/math?math=%24f(c" alt="$f(c) \leqslant f(x)$">%20%5Cleqslant%20f(x)%24&gt;) when <em>x</em> is near <em>c</em>.</li>
+</ul>
+</li>
+<li>A critical number of a function <em>f</em> is a number <em>c</em> in the domain of <em>f</em> such that either <em>f&apos;(c) = 0</em> or <em>f&apos;(c)</em> does not exist.<ul>
+<li>If <em>f</em> has a local maximum or minimum at <em>c</em>, then <em>c</em> is a critical number of <em>f</em>.</li>
+</ul>
+</li>
+<li>If the graph of <em>f</em> lies above all of its tangents on an interval <em>I</em>, then it is called concave upward on <em>I</em>. If the graph of <em>f</em> lies below all of its tangents on <em>I</em>, it is called concave downward on <em>I</em>.</li>
+<li>A point <em>P</em> on a curve <em>y = f(x)</em> is called an inflection point if <em>f</em> is continuous there and the curve changes from concave upward to concave downward or from concave downward to concave upward at <em>P</em>.</li>
+<li>A function <em>F</em> is called an antiderivative of <em>f</em> on an interval <em>I</em> if <code>F&apos;(x)=f(x)</code> for all <em>x</em> in <em>I</em>.</li>
+</ul>
+<h4 id="rules">Rules</h4>
+<ul>
+<li>Derivative of a Constant Function <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(c" alt="$\frac{d}{dx}(c)=0$">%3D0%24&gt;)</li>
+<li>The Power Rule - <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(x%5En" alt="$\frac{d}{dx}(x^n)=nx^{n-1}$">%3Dnx%5E%7Bn-1%7D%24&gt;)</li>
+<li>The Constant Multiple Rule - If <em>c</em> is a constant and <em>f</em> is a differentiable function, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Bcf(x" alt="$\frac{d}{dx}[cf(x)]=c \frac{d}{dx}f(x)$">%5D%3Dc%20%5Cfrac%7Bd%7D%7Bdx%7Df(x)%24&gt;)</li>
+<li>The Sum Rule - If <em>f</em> and <em>g</em> are both differentiable, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x" alt="$\frac{d}{dx}[f(x)+g(x)]= \frac{d}{dx}f(x)+\frac{d}{dx}g(x)$">%2Bg(x)%5D%3D%20%5Cfrac%7Bd%7D%7Bdx%7Df(x)%2B%5Cfrac%7Bd%7D%7Bdx%7Dg(x)%24&gt;)</li>
+<li>The Difference Rule - If <em>f</em> and <em>g</em> are both differentiable, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x" alt="$\frac{d}{dx}[f(x)-g(x)]= \frac{d}{dx}f(x)-\frac{d}{dx}g(x)$">-g(x)%5D%3D%20%5Cfrac%7Bd%7D%7Bdx%7Df(x)-%5Cfrac%7Bd%7D%7Bdx%7Dg(x)%24&gt;)</li>
+<li>Derivative of the Natural Exponential Function - <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(e%5Ex" alt="$\frac{d}{dx}(e^x)=e^x$">%3De%5Ex%24&gt;)</li>
+<li>The Product Rule - If <em>f</em> and <em>g</em> are both differentiable, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x" alt="$\frac{d}{dx}[f(x)g(x)]=f(x) \frac{d}{dx}[g(x)]+g(x) \frac{d}{dx}[f(x)]$">g(x)%5D%3Df(x)%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bg(x)%5D%2Bg(x)%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x)%5D%24&gt;)</li>
+<li>The Quotient Rule - If <em>f</em> and <em>g</em> are differentiable, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Cleft%5B%5Cfrac%7Bf(x" alt="$\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x) \frac{d}{dx}[f(x)]-f(x) \frac{d}{dx}[g(x)]}{[g(x)]^2}$">%7D%7Bg(x)%7D%5Cright%5D%3D%5Cfrac%7Bg(x)%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x)%5D-f(x)%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bg(x)%5D%7D%7B%5Bg(x)%5D%5E2%7D%24&gt;)</li>
+<li>The Chain Rule - If <em>g</em> is differentiable at <em>x</em> and <em>f</em> is differentiable at <em>g(x)</em>, then the composite function <img src="https://render.githubusercontent.com/render/math?math=%24F%3Df%20%5Ccirc%20g%24" alt="$F=f \circ g$"> defined by <img src="https://render.githubusercontent.com/render/math?math=%24F(x" alt="$F(x)=f(g(x))$">%3Df(g(x))%24&gt;)is differentiable at <em>x</em> and <em>F&apos;</em> is given by the product <img src="https://render.githubusercontent.com/render/math?math=%24F&apos;(x" alt="$F&apos;(x)=f&apos;(g(x)) \cdot g&apos;(x)$">%3Df&apos;(g(x))%20%5Ccdot%20g&apos;(x)%24&gt;) In Leibniz notation, if <em>y = f(u)</em> and <em>u = g(x)</em> are both differentiable functions, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdy%7D%7Bdx%7D%3D%20%5Cfrac%7Bdy%7D%7Bdu%7D%20%5Cfrac%7Bdu%7D%7Bdx%7D%24" alt="$\frac{dy}{dx}= \frac{dy}{du} \frac{du}{dx}$"></li>
+</ul>
+<h4 id="derivatives-of-common-functions">Derivatives of Common Functions</h4>
+<ul>
+<li>Derivatives of Trigonometric Functions<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Csin%20x" alt="$\frac{d}{dx} (\sin x)=\cos x$">%3D%5Ccos%20x%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccos%20x" alt="$\frac{d}{dx} (\cos x)=-\sin x$">%3D-%5Csin%20x%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ctan%20x" alt="$\frac{d}{dx} (\tan x)=\sec^2 x$">%3D%5Csec%5E2%20x%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccsc%20x" alt="$\frac{d}{dx} (\csc x)=-\csc x \cot x$">%3D-%5Ccsc%20x%20%5Ccot%20x%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccsc%20x" alt="$\frac{d}{dx} (\csc x)=-\csc x : \cot x$">%3D-%5Ccsc%20x%20%5C%3A%20%5Ccot%20x%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Csec%20x" alt="$\frac{d}{dx} (\sec x)=\sec x : \tan x$">%3D%5Csec%20x%20%5C%3A%20%5Ctan%20x%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccot%20x" alt="$\frac{d}{dx} (\cot x)=-\csc^2 x$">%3D-%5Ccsc%5E2%20x%24&gt;)</li>
+</ul>
+</li>
+<li>Derivatives of Inverse Trigonometric Functions<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Csin%5E%7B-1%7D%7Bx%7D" alt="$\frac{d}{dx}(\sin^{-1}{x})=\frac{1}{\sqrt{1-x^2}}$">%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B1-x%5E2%7D%7D%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Ccos%5E%7B-1%7D%7Bx%7D" alt="$\frac{d}{dx}(\cos^{-1}{x})=-\frac{1}{\sqrt{1-x^2}}$">%3D-%5Cfrac%7B1%7D%7B%5Csqrt%7B1-x%5E2%7D%7D%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Ctan%5E%7B-1%7D%7Bx%7D" alt="$\frac{d}{dx}(\tan^{-1}{x})=\frac{1}{1+x^2}$">%3D%5Cfrac%7B1%7D%7B1%2Bx%5E2%7D%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Ccsc%5E%7B-1%7D%7Bx%7D" alt="$\frac{d}{dx}(\csc^{-1}{x})=-\frac{1}{x \sqrt{x^2-1}}$">%3D-%5Cfrac%7B1%7D%7Bx%20%5Csqrt%7Bx%5E2-1%7D%7D%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Csec%5E%7B-1%7D%7Bx%7D" alt="$\frac{d}{dx}(\sec^{-1}{x})=\frac{1}{x \sqrt{x^2-1}}$">%3D%5Cfrac%7B1%7D%7Bx%20%5Csqrt%7Bx%5E2-1%7D%7D%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Ccot%5E%7B-1%7D%7Bx%7D" alt="$\frac{d}{dx}(\cot^{-1}{x})=-\frac{1}{1+x^2}$">%3D-%5Cfrac%7B1%7D%7B1%2Bx%5E2%7D%24&gt;)</li>
+</ul>
+</li>
+<li>Derivative of Logarithmic Functions<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Clog_%7Bb%7D%7Bx%7D" alt="$\frac{d}{dx}(\log_{b}{x})=\frac{1}{x \ln{b}}$">%3D%5Cfrac%7B1%7D%7Bx%20%5Cln%7Bb%7D%7D%24&gt;)</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Cln%7Bx%7D" alt="$\frac{d}{dx}(\ln{x})=\frac{1}{x}$">%3D%5Cfrac%7B1%7D%7Bx%7D%24&gt;) or <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20%5Cln%7B%7Cx%7C%7D%3D%5Cfrac%7B1%7D%7Bx%7D%24" alt="$\frac{d}{dx} \ln{|x|}=\frac{1}{x}$"></li>
+</ul>
+</li>
+<li>Derivatives of Hyperbolic Functions</li>
+<li>Derivatives of Inverse Hyperbolic Functions</li>
+</ul>
+<h4 id="theorem">Theorem</h4>
+<ul>
+<li>If <em>f</em> is differentiable at <em>a</em>, then <em>f</em> is continuous at <em>a</em>.</li>
+<li>The only solutions of the differential equation <em>dy/dt=ky</em> where <em>k</em> is a constant, are the exponential functions <img src="https://render.githubusercontent.com/render/math?math=%24y(t" alt="$y(t) = y(0)e^{kt}$">%20%3D%20y(0)e%5E%7Bkt%7D%24&gt;)<ul>
+<li><em>dy/dt=ky</em> is called the law of natural growth if <em>k&gt;0</em> or the law of natural decay if <em>k&lt;0</em>.</li>
+</ul>
+</li>
+<li>The Extreme Value Theorem - If <em>f</em> is continuous on a closed interval [<em>a, b</em>] then <em>f</em> attains an absolute maximum value <em>f(c)</em> and an absolute minimum value <em>f(d)</em> at some numbers <em>c</em> and <em>d</em> in [<em>a, b</em>].</li>
+<li>Fermat&#x2019;s Theorem - If <em>f</em> has a local maximum or minimum at <em>c</em>, and if <em>f&apos;(c)</em>
+exists, then <em>f&apos;(c) = 0</em>.</li>
+<li>Rolle&#x2019;s Theorem - Let <em>f</em> be a function that satisfies the following three hypotheses, Then there is a number <em>c</em> in (<em>a, b</em>) such that <em>f&apos;(c)=0</em>:<ol>
+<li><em>f</em> is continuous on the closed interval [<em>a, b</em>].</li>
+<li><em>f</em> is differentiable on the open interval (<em>a, b</em>).</li>
+<li><em>f(a) = f(b)</em></li>
+</ol>
+</li>
+<li>The Mean Value Theorem - Let <em>f</em> be a function that satisfies the following hypotheses, Then there is a number <em>c</em> in (<em>a, b</em>) such that <img src="https://render.githubusercontent.com/render/math?math=%24f&apos;(c" alt="$f&apos;(c) = \frac{f(b)-f(a)}{b-a}$">%20%3D%20%5Cfrac%7Bf(b)-f(a)%7D%7Bb-a%7D%24&gt;) or, equivalently, <img src="https://render.githubusercontent.com/render/math?math=%24f(b" alt="$f(b)-f(a)=f&apos;(c)(b-a)$">-f(a)%3Df&apos;(c)(b-a)%24&gt;) (compare to the Rolle&#x2019;s Theorem the horizontal tangent line is changed to a tangent line with slope as <em>f&apos;(c)</em>)<ol>
+<li><em>f</em> is continuous on the closed interval [<em>a, b</em>].</li>
+<li><em>f</em> is differentiable on the open interval (<em>a, b</em>).</li>
+</ol>
+</li>
+<li>If <em>f&apos;(x)=0</em> for all <em>x</em> in an interval (<em>a, b</em>), then <em>f</em> is constant on (<em>a, b</em>).<ul>
+<li>If <em>f&apos;(x)-g&apos;(x)</em> for all <em>x</em> in an interval (<em>a, b</em>), then <em>f - g</em> is constant on (<em>a, b</em>); that is, <em>f(x)=g(x)+c</em> where <em>c</em> is a constant.</li>
+</ul>
+</li>
+<li>If <em>F</em> is an antiderivative of <em>f</em> on an interval <em>I</em>, then the most general
+antiderivative of <em>f</em> on <em>I</em> is <em>F(x) + C</em> where <em>C</em> is an arbitrary constant.</li>
+</ul>
+<h4 id="solving-methods-for-related-problem">Solving Methods for Related Problem</h4>
+<ul>
+<li>Implicit differentiation. This consists of differentiating both sides of the equation with respect to <em>x</em> and then solving the resulting equation for <em>y&apos;</em>.</li>
+<li>Logarithmic differentiation - The calculation of derivatives of complicated functions involving products, quotients, or powers can often be simplified by taking logarithms. The method used in the following example is called logarithmic differentiation.</li>
+<li>linear approximation - or tangent line approximation of <em>f</em> at <em>a</em> uses the tangent line of the function at <em>a</em> to replace the original funtion, then make prediction about values that is close to <em>a</em>. As a result we have the linear approximation <em>L(x)</em> equals to <img src="https://render.githubusercontent.com/render/math?math=%24f(a" alt="$f(a)+f&apos;(a)(x-a)$">%2Bf&apos;(a)(x-a)%24&gt;).</li>
+<li>The Closed interval Method - To find the absolute maximum and minimum values of a continuous function <em>f</em> on a closed interval [<em>a, b</em>]:<ol>
+<li>Find the values of all critical numbers of <em>f</em> in (<em>a, b</em>).</li>
+<li>Find the values of the endpoints of the interval.</li>
+<li>The largest of the values from Steps 1 and 2 is the absolute maximum value; the smallest of these values is the absolute minimum value.</li>
+</ol>
+</li>
+<li>Increasing/Decreasing Test<ul>
+<li>If <em>f&apos;(x)&gt;0</em> on an interval, then <em>f</em> is increasing on that interval.</li>
+<li>If <em>f&apos;(x)&lt;0</em> on an interval, then <em>f</em> is decreasing on that interval.</li>
+</ul>
+</li>
+<li>The First Derivative Test - Suppose that <em>c</em> is a critical number of a continuous function <em>f</em>.<ul>
+<li>If <em>f&apos;</em> changes from positive to negative at <em>c</em>, then <em>f</em> has a local maximum at <em>c</em>.</li>
+<li>If <em>f&apos;</em> changes from negative to positive at <em>c</em>, then <em>f</em> has a local minimum at <em>c</em>.</li>
+<li>If <em>f&apos;</em> is positive to the left and right of <em>c</em>, or negative to the left and right of <em>c</em>, then <em>f</em> has no local maximum or minimum at <em>c</em>.</li>
+<li>If <img src="https://render.githubusercontent.com/render/math?math=%24f&apos;(x" alt="$f&apos;(x) &gt; 0$">%20%3E%200%24&gt;) for all <em><code>x &lt; c</code></em> and <img src="https://render.githubusercontent.com/render/math?math=%24f&apos;(x" alt="$f&apos;(x) &lt; 0$">%20%3C%200%24&gt;) for all <em><code>x &gt; c</code></em>, then <em>f(c)</em> is the absolute maximum value of <em>f</em>.</li>
+<li>If <img src="https://render.githubusercontent.com/render/math?math=%24f&apos;(x" alt="$f&apos;(x) &lt; 0$">%20%3C%200%24&gt;) for all <em><code>x &lt; c</code></em> and <img src="https://render.githubusercontent.com/render/math?math=%24f&apos;(x" alt="$f&apos;(x) &gt; 0$">%20%3E%200%24&gt;) for all <em><code>x &gt; c</code></em>, then <em>f(c)</em> is the absolute minimum value of <em>f</em>.</li>
+</ul>
+</li>
+<li>Concavity Test<ul>
+<li>If <em>f&apos;&apos;(x)&gt;0</em> for all <em>x</em> in <em>I</em>, then the graph of <em>f</em> is concave upward on <em>I</em>.</li>
+<li>If <em>f&apos;&apos;(x)&lt;0</em> for all <em>x</em> in <em>I</em>, then the graph of <em>f</em> is concave downward on <em>I</em>.</li>
+</ul>
+</li>
+<li>The Second Derivative Test - Suppose <em>f&apos;&apos;</em> is continuous near <em>c</em>.<ul>
+<li>If <em>f&apos;(c)=0</em> and <em>f&apos;&apos;(c)&gt;0</em>, then <em>f</em> has a local minimum at <em>c</em>.</li>
+<li>If <em>f&apos;(c)=0</em> and <em>f&apos;&apos;(c)&lt;0</em>, then <em>f</em> has a local maximum at <em>c</em>.</li>
+</ul>
+</li>
+</ul>
 <h1 id="linear-algebra">Linear Algebra</h1>
+<h2 id="matrices">Matrices</h2>
+<h4 id="definition-of-matrices">Definition of Matrices</h4>
+<ul>
+<li>A Matrix is a representation of a system of linear equations.<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24a_1x%2Bb_1y%3Dc_1%24" alt="$a_1x+b_1y=c_1$"> and <img src="https://render.githubusercontent.com/render/math?math=%24a_2x%2Bb_2y%3Dc_2%24" alt="$a_2x+b_2y=c_2$"> and be represented by a matrix as <img src="https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%20a_1%20%26%20b_1%20%5C%5C%20a_2%20%26%20b_2%20%20%5Cend%7Bbmatrix%7D%24" alt="$\begin{bmatrix} a_1 &amp; b_1 \ a_2 &amp; b_2  \end{bmatrix}$"></li>
+</ul>
+</li>
+<li>Augmented Matrix includes dependent variables of a system of linear equations in the right most column, <img src="https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%20a_1%20%26%20b_1%20%26%20c_1%20%5C%5C%20a_2%20%26%20b_2%20%26%20c_2%20%20%5Cend%7Bbmatrix%7D%24" alt="$\begin{bmatrix} a_1 &amp; b_1 &amp; c_1 \ a_2 &amp; b_2 &amp; c_2  \end{bmatrix}$"> or <img src="https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bcc%7Cr%7D%20a_1%20%26%20b_1%20%26%20c_1%5C%5C%20a_2%20%26%20b_2%20%26%20c_2%20%5Cend%7Barray%7D%20%5Cright%5D%24" alt="$\left[ \begin{array}{cc|r} a_1 &amp; b_1 &amp; c_1\ a_2 &amp; b_2 &amp; c_2 \end{array} \right]$"></li>
+<li>The Size of A Matrix can be represented as <code>2 X 3</code><ul>
+<li>First number represents the number of rows.(number of equations)</li>
+<li>First number represents the number of columns.(number of variables)</li>
+</ul>
+</li>
+<li>Square Matrix - is a matrix has the same number of rows and columns.</li>
+<li>The elements or entries of the matrix can be represented as <img src="https://render.githubusercontent.com/render/math?math=%24a_%7Bij%7D%24" alt="$a_{ij}$"> where <code>i</code> is its row number and <code>j</code> is its column number.<ul>
+<li>For example, <img src="https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%20a_%7B11%7D%20%26%20a_%7B12%7D%20%26%20a_%7B13%7D%20%5C%5C%20a_%7B21%7D%20%26%20a_%7B22%7D%20%26%20a_%7B23%7D%20%5C%5C%20a_%7B31%7D%20%26%20a_%7B32%7D%20%26%20a_%7B33%7D%20%5Cend%7Bbmatrix%7D%24" alt="$\begin{bmatrix} a_{11} &amp; a_{12} &amp; a_{13} \ a_{21} &amp; a_{22} &amp; a_{23} \ a_{31} &amp; a_{32} &amp; a_{33} \end{bmatrix}$"></li>
+</ul>
+</li>
+<li>For Matrix <code>A</code> and <code>B</code>, <code>A = B</code> if they have the same dimension and all their elements are the same.</li>
+<li>When a matrix add a matrix, a Matrix minus a matrix and a matrix multiply or divide by a constant. These operations will take effect on each element of the matrix independently.<ul>
+<li>For example, <code>A + B</code> will get Matrix <code>C</code> which all of its element equals the sum of elements of <code>A</code> and <code>B</code> from the same location.</li>
+<li>These three operations of matrix can be combined and calculated at the same time.</li>
+<li>Addition and Subtraction only works for two matrix that has the same dimension.</li>
+<li>The dimension of matrices will not be changed by these operation.</li>
+</ul>
+</li>
+<li>When a matrix multiply by a matrix. If Matrix <code>A</code> has shape <code>M X N</code>, If Matrix <code>B</code> has shape <code>P X Q</code><ul>
+<li><code>N</code> must equal <code>P</code>.</li>
+<li>The result will be matrix <code>C</code> with shape <code>M X Q</code>.</li>
+<li>matrix <code>C</code> will have element <img src="https://render.githubusercontent.com/render/math?math=%24c_%7Bmq%7D%20%3D%20%24" alt="$c_{mq} = $"> equals the sum of elements from row <code>m</code> of Matrix A multiplies elements from row <code>q</code> of Matrix B. Ex, <img src="https://render.githubusercontent.com/render/math?math=%24c_%7Bmq%7D%20%3D%20a_%7Bm1%7Db_%7B1q%7D%2Ba_%7Bm2%7Db_%7B2q%7D%2B%20%5Cldots%20%24" alt="$c_{mq} = a_{m1}b_{1q}+a_{m2}b_{2q}+ \ldots $"></li>
+</ul>
+</li>
+<li>Identity Matrix <img src="https://render.githubusercontent.com/render/math?math=%24I_n%24" alt="$I_n$"> is a <code>n X n</code> square matrix has 1 aross diagonal and 0 for all other elements.</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24A%5E%7B-1%7D%24" alt="$A^{-1}$"> is the inverse of matrix <code>A</code> if <img src="https://render.githubusercontent.com/render/math?math=%24A%5E%7B-1%7DA%3DAA%5E%7B-1%7D%3DI%24" alt="$A^{-1}A=AA^{-1}=I$"><ul>
+<li>Find the inverse of a 2 by 2 matrix<ul>
+<li>if <img src="https://render.githubusercontent.com/render/math?math=%24A%20%3D%20%5Cbegin%7Bbmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bbmatrix%7D%24" alt="$A = \begin{bmatrix} a &amp; b \ c &amp; d \end{bmatrix}$"> then <img src="https://render.githubusercontent.com/render/math?math=%24A%5E%7B-1%7D%20%3D%20%5Cfrac%7B1%7D%7BD%7D%20%5Cbegin%7Bbmatrix%7D%20d%20%26%20-b%20%5C%5C%20-c%20%26%20a%20%5Cend%7Bbmatrix%7D%24" alt="$A^{-1} = \frac{1}{D} \begin{bmatrix} d &amp; -b \ -c &amp; a \end{bmatrix}$"> where <code>D</code> is the determinat of <code>A</code> <img src="https://render.githubusercontent.com/render/math?math=%24D%20%3D%20ad-bc%24" alt="$D = ad-bc$"></li>
+</ul>
+</li>
+<li>Find the inverse of any matrices by using Gaussian Elimination<ul>
+<li>If <img src="https://render.githubusercontent.com/render/math?math=%24A%3D%5Cbegin%7Bbmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bbmatrix%7D%24" alt="$A=\begin{bmatrix} a &amp; b \ c &amp; d \end{bmatrix}$"></li>
+<li>Convert the matrix A on the left side to Identity matrix then the inverse matrix will be the matrix on the right side. <img src="https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bcc%7Crr%7D%20a%20%26%20b%20%26%201%20%26%200%20%5C%5C%20c%20%26%20d%20%26%200%20%26%201%20%5Cend%7Barray%7D%20%5Cright%5D%20%5CRightarrow%20%5BI%20%5C%3A%20%7C%20%5C%3B%20A%5E%7B-1%7D%5D%24" alt="$\left[ \begin{array}{cc|rr} a &amp; b &amp; 1 &amp; 0 \ c &amp; d &amp; 0 &amp; 1 \end{array} \right] \Rightarrow [I : | ; A^{-1}]$"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Matrix <code>A</code> divide by <code>B</code> equals to <code>A</code> times the inverse of <code>B</code>.<ul>
+<li>A system of linear equations can be represent by <code>AX = B</code> where <code>A</code> is a matrix of coefficient, <code>X</code> is a <code>n</code> by 1 matrix n variables, <code>C</code> equals a <code>n</code> by 1 matrix of the values of the dependent variables. Then <code>X</code> can be solved by using <code>B</code> times the inverse of <code>A</code>.</li>
+</ul>
+</li>
+<li>The determinant of a matrix is a single value calculated from all elements of the matrix.<ul>
+<li>The determinant of a matrix <code>A</code> can be represented as <code>|A|</code> or <code>det(A)</code></li>
+<li>For a <code>2 X 2</code> matrix <img src="https://render.githubusercontent.com/render/math?math=%24A%20%3D%20%5Cbegin%7Bbmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bbmatrix%7D%24" alt="$A = \begin{bmatrix} a &amp; b \ c &amp; d \end{bmatrix}$">, the determinant equals to <code>ad - bc</code>.</li>
+<li>For a <code>3 X 3</code> matrix to get the determinant, expand two more new column to the right, copy first column as the fourth column, copy the second column as the fifth column. and draw all the possible diagonal lines in two direction. Multiple all elements on one diagonal lines, add the sum of diagonal elements that goes from top-left to bottom right, substract the sum of diagonal elements that goes from top-right to bottom left.<ul>
+<li>Same idea for matrices with larger sizes.</li>
+</ul>
+</li>
+<li>coefficient + - + method</li>
+</ul>
+</li>
+</ul>
+<h4 id="gaussian-elimination">Gaussian Elimination</h4>
+<ul>
+<li>Row Echelon Form - It has 1 across diagonal, all entries below 1 is 0.<ul>
+<li>In an augmented matrix, independent variables can be solved by subsitution.</li>
+</ul>
+</li>
+<li>Reduced Echelon form - has 1 across diagonal, all other entries are 0.<ul>
+<li>In an augmented matrix, independent variables is solved and equals to corresponding entries in the right most coloumn.</li>
+</ul>
+</li>
+<li>Method of Gaussian Elimination - Solve a system of linear equations by finding the Row Echelon Form or Reduced Echelon Form of an augmented matrix.<ul>
+<li>Steps for finding the Row Echelon Form<ul>
+<li>Divide the entire row by the first element to make the first element on first row 1.</li>
+<li>Multiply first row and Substitute to the second row so the first element of the second row is 0.</li>
+<li>repeat the step for the next row until the matrix is in the Row Echelon Form</li>
+</ul>
+</li>
+<li>Steps for finding the Reduced Echelon Form<ul>
+<li>find the Row Echelon Form first.</li>
+<li>multiply and subsitute the last row into the second last row to make the last element of the second last row 0.</li>
+<li>Transform the upper rows step by step until the matrix become Reduced Echelon Form.</li>
+</ul>
+</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bccc%7Cr%7D%201%20%26%202%20%26%202%20%26%203%20%5C%5C%200%20%26%201%20%26%201%20%26%202%20%5C%5C%200%20%26%200%20%26%200%20%26%202%20%5Cend%7Barray%7D%20%5Cright%5D%24" alt="$\left[ \begin{array}{ccc|r} 1 &amp; 2 &amp; 2 &amp; 3 \ 0 &amp; 1 &amp; 1 &amp; 2 \ 0 &amp; 0 &amp; 0 &amp; 2 \end{array} \right]$"> this system of linear equations has no solution, because <img src="https://render.githubusercontent.com/render/math?math=%240x%2B0y%2B0z%20%5Cneq%202%24" alt="$0x+0y+0z \neq 2$"></li>
+<li>In Echelon Form if one row are all 0s, the equation has inifite solutions.</li>
+</ul>
+</li>
+</ul>
+<h4 id="cramers-rule">Cramer&apos;s Rule</h4>
+<ul>
+<li>For a system of linear equations <code>D</code> is the determinant of the matrix of coefficient. <img src="https://render.githubusercontent.com/render/math?math=%24D_x%24" alt="$D_x$"> is the determinant of the matrix of coefficient which the column for coefficient of <code>x</code> is replaced by the dependent variable matrix. <img src="https://render.githubusercontent.com/render/math?math=%24D_x%24" alt="$D_y$"> is the determinant of the matrix of coefficient which the column for coefficient of <code>y</code> is replaced by the dependent variable matrix, and so on. Then <img src="https://render.githubusercontent.com/render/math?math=%24x%3D%20%5Cfrac%7BD_x%7D%7BD%7D%2C%20y%3D%20%5Cfrac%7BD_y%7D%7BD%7D%2C%20%5Cldots%24" alt="$x= \frac{D_x}{D}, y= \frac{D_y}{D}, \ldots$"></li>
+</ul>
+<h1 id="probability">Probability</h1>
+<h1 id="statistics">Statistics</h1>
 
                                 
                                 </section>
@@ -986,7 +1476,7 @@ the last digit doubled subtracted this doubled value from the first part(132for1
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Mathematics","level":"1.23.5","depth":2,"previous":{"title":"Cryptography","level":"1.23.4","depth":2,"path":"theory/cryptography.md","ref":"theory/cryptography.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/math.md","mtime":"2020-05-09T22:25:58.731Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-09T22:28:15.640Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Mathematics","level":"1.23.5","depth":2,"previous":{"title":"Cryptography","level":"1.23.4","depth":2,"path":"theory/cryptography.md","ref":"theory/cryptography.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"theory/math.md","mtime":"2020-05-21T00:55:02.450Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-21T01:01:41.715Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

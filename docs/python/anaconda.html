@@ -1405,10 +1405,11 @@
 <li><code>X_test[:, 3:] = sc.transform(X_test[:, 3:])</code> only return the standardized value.</li>
 </ul>
 </li>
+<li>Image Preprocessing</li>
 </ul>
 <h3 id="sklearnmodelselection">sklearn.model_selection</h3>
 <ul>
-<li>train_test_split<ul>
+<li>Splitting test and train data<ul>
 <li><code>from sklearn.model_selection import train_test_split</code></li>
 <li><code>X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)</code><ul>
 <li>For return values on the left side.</li>
@@ -1423,7 +1424,7 @@
 </ul>
 <h3 id="sklearnlinearmodel">sklearn.linear_model</h3>
 <ul>
-<li>LinearRegression<ul>
+<li>Linear Regression Model<ul>
 <li><code>from sklearn.linear_model import LinearRegression</code></li>
 <li><code>regressor = LinearRegression()</code> initialize the linear regression model</li>
 <li><code>regressor.fit(X_train, y_train)</code> training the training data</li>
@@ -1431,10 +1432,130 @@
 </ul>
 </li>
 </ul>
-<h2 id="keras">Keras</h2>
+<h3 id="sklearnmetrics">sklearn.metrics</h3>
 <ul>
-<li>A all in one package for deep learning including both tensorflow and theano</li>
-<li>run <code>conda install -c conda-forge keras</code> to installing keras from the conda-forge channel</li>
+<li>Confusion Matrix<ul>
+<li><code>from sklearn.metrics import confusion_matrix</code></li>
+<li><code>cm = confusion_matrix(y_test, y_pred)</code> calculate accurracy</li>
+</ul>
+</li>
+</ul>
+<h2 id="tensorflow">TensorFlow</h2>
+<ul>
+<li>TensorFlow 2.0 uses Keras as its official high-level API<ul>
+<li>Keras is an all in one package for deep learning including both tensorflow and theano</li>
+</ul>
+</li>
+<li>Install TensorFlow 2.0<ul>
+<li><code>tf.__version__</code> check version</li>
+</ul>
+</li>
+<li>Import everything<ul>
+<li><code>import tensorflow as tf</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="data-preprocessing">Data Preprocessing</h3>
+<h5 id="image-preprocessing">Image Preprocessing</h5>
+<ul>
+<li>ImageDataGenerator<ul>
+<li>Generate Images based on a certain settings.<ul>
+<li><code>train_datagen = ImageDataGenerator(rescale = 1./255, shear_range = 0.2, zoom_range = 0.2, horizontal_flip = True)</code><ul>
+<li><code>rescale</code></li>
+<li><code>shear_range</code></li>
+<li><code>zoom_range</code></li>
+<li><code>horizontal_flip</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Load the images from files.<ul>
+<li><code>training_set = train_datagen.flow_from_directory(&apos;dataset/training_set&apos;, target_size = (64, 64), batch_size = 32, class_mode = &apos;binary&apos;)</code><ul>
+<li>First argument is the file path.</li>
+<li><code>target_size</code></li>
+<li><code>batch_size</code></li>
+<li><code>class_mode</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="build-model">Build Model</h3>
+<h5 id="ann-model">ANN Model</h5>
+<ul>
+<li>Define the ANN model as a sequence of layers.<pre><code class="lang-py"><span class="hljs-comment"># Initializing the ANN</span>
+ann = tf.keras.models.Sequential()
+<span class="hljs-comment"># Adding the input layer and the first hidden layer</span>
+ann.add(tf.keras.layers.Dense(output_dim = <span class="hljs-number">6</span>, init = <span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>, input_dim = <span class="hljs-number">10</span>))
+<span class="hljs-comment"># Adding the second hidden layer</span>
+ann.add(tf.keras.layers.Dense(output_dim = <span class="hljs-number">6</span>, init = <span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>))
+<span class="hljs-comment"># Adding the output layer using sigmoid for probability</span>
+ann.add(tf.keras.layers.Dense(output_dim = <span class="hljs-number">1</span>, init = <span class="hljs-string">&apos;uniform&apos;</span>, activation=<span class="hljs-string">&apos;sigmoid&apos;</span>))
+</code></pre>
+<ul>
+<li><code>output_dim</code> represents the number of output nodes for the layer.</li>
+<li><code>input_dim</code> represents the number of input nodes for the layer.</li>
+<li><code>init</code> represent the ways to initilize weight for the model.</li>
+</ul>
+</li>
+</ul>
+<h5 id="cnn-model">CNN Model</h5>
+<ul>
+<li>Define the CNN model as a sequence of layers.<pre><code class="lang-py"><span class="hljs-comment"># Initializing the CNN</span>
+cnn = tf.keras.models.Sequential()
+<span class="hljs-comment"># Define the Convolution Layer</span>
+cnn.add(tf.keras.layers.Conv2D(filters=<span class="hljs-number">32</span>, kernel_size=<span class="hljs-number">3</span>, padding=<span class="hljs-string">&quot;same&quot;</span>, activation=<span class="hljs-string">&quot;relu&quot;</span>, input_shape=[<span class="hljs-number">64</span>, <span class="hljs-number">64</span>, <span class="hljs-number">3</span>]))
+<span class="hljs-comment"># Define the Pooling Layer</span>
+cnn.add(tf.keras.layers.MaxPool2D(pool_size=<span class="hljs-number">2</span>, strides=<span class="hljs-number">2</span>, padding=<span class="hljs-string">&apos;valid&apos;</span>))
+<span class="hljs-comment"># Flattening</span>
+cnn.add(tf.keras.layers.Flatten())
+<span class="hljs-comment"># Full Connection</span>
+cnn.add(tf.keras.layers.Dense(units=<span class="hljs-number">128</span>, activation=<span class="hljs-string">&apos;relu&apos;</span>))
+<span class="hljs-comment"># Define the Output Layer</span>
+cnn.add(tf.keras.layers.Dense(units=<span class="hljs-number">1</span>, activation=<span class="hljs-string">&apos;sigmoid&apos;</span>))
+</code></pre>
+<ul>
+<li><code>padding</code> for Layers<ul>
+<li><code>same</code></li>
+<li><code>valid</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="compile-model">Compile Model</h3>
+<ul>
+<li>Compile the ANNs, <code>ann.compile(optimizer = &apos;adam&apos;, loss = &apos;binary_crossentropy&apos;, metrics = [&apos;accuracy&apos;])</code></li>
+<li>Compile the CNNs, <code>cnn.compile(optimizer = &apos;adam&apos;, loss = &apos;binary_crossentropy&apos;, metrics = [&apos;accuracy&apos;])</code><ul>
+<li><code>optimizer</code> the algorithm for finding the optimized weights.<ul>
+<li><code>adam</code> is a type of stochastic gradient descent algorithm.</li>
+</ul>
+</li>
+<li><code>loss</code> define the loss function.<ul>
+<li><code>binary_crossentropy</code> loss function for two outcome.</li>
+<li><code>categorical_crossentropy</code> loss function for more than two outcome.</li>
+</ul>
+</li>
+<li><code>metrics</code> it takes a list of metrics to evaluate the model.<ul>
+<li><code>accuracy</code> based on the accuracy of the model.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="train-model">Train Model</h3>
+<ul>
+<li>Train ANN model, <code>ann.fit(X_train, y_train, batch_size = 32, epochs = 100)</code></li>
+<li>Train CNN model, <code>cnn.fit_generator(training_set, steps_per_epoch = 334, epochs = 25, validation_data = test_set, validation_steps = 334)</code></li>
+</ul>
+<h3 id="use-model">Use Model</h3>
+<ul>
+<li>Make prediction, <code>y_pred = ann.predict(X_test)</code><ul>
+<li>separate the results in True or False using a defined metric, <code>y_pred = (y_pred &gt; 0.5)</code></li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -1479,7 +1600,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Anaconda","level":"1.2.1","depth":2,"next":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-04-30T02:17:53.222Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-09T22:28:15.640Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Anaconda","level":"1.2.1","depth":2,"next":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},{"title":"Python Stardard Library","level":"1.2.2","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-05-20T18:45:53.303Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-21T01:01:41.715Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

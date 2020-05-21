@@ -1036,11 +1036,23 @@ while working on a draft.
 <li><code>$\displaystyle{x}$</code> normal size for math symbols and expressions.</li>
 <li>or replace <code>\display</code> with <code>\large</code>, <code>\Large</code>, <code>\LARGE</code>, <code>\huge</code>, <code>\Huge</code> to make the math object even bigger.</li>
 </ul>
+<h5 id="spacing">Spacing</h5>
+<ul>
+<li>LaTeX provides the following four commands for spacing in math mode:<ul>
+<li><code>\;</code> - a thick space.</li>
+<li><code>\:</code> - a medium space.</li>
+<li><code>\,</code> - a thin space.</li>
+<li><code>\!</code> - a negative thin space.</li>
+</ul>
+</li>
+</ul>
 <h5 id="common-math-symbols">Common Math Symbols</h5>
 <ul>
 <li><code>\times</code> multiply</li>
 <li><code>\approx</code> approximate</li>
 <li><code>\pm</code> plus minus</li>
+<li><code>\cdot</code> dot for multiplication</li>
+<li><code>\neq</code> not equal</li>
 </ul>
 <h5 id="math-expressions">Math Expressions</h5>
 <ul>
@@ -1053,12 +1065,13 @@ while working on a draft.
 <li><code>$\pi$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Cpi" alt="$\pi"> greek letters</li>
 <li><code>$A=\pi r^2$</code> <img src="https://render.githubusercontent.com/render/math?math=%24A%3D%5Cpi%20r%5E2%24" alt="$A=\pi r^2$"> greek letter need to have a space with others.</li>
 <li><code>$\sin{x}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Csin%7Bx%7D%24" alt="$\sin{x}$"> trig functions</li>
+<li><code>$\tan^{-1}{x}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Ctan%5E%7B-1%7D%7Bx%7D%24" alt="$\tan^{-1}{x}$"> trig functions with exponent</li>
 <li><code>$\log{x}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Clog%7Bx%7D%24" alt="$\log{x}$"> log functions</li>
 <li><code>$\log_5{x}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Clog_5%7Bx%7D%24" alt="$\log_5{x}$"> log function with a base</li>
 <li><code>$\ln{x}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Cln%7Bx%7D%24" alt="$\ln{x}$"> nature log function</li>
 <li><code>$\sqrt{2}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B2%7D%24" alt="$\sqrt{2}$"> square root</li>
-<li><code>$\sqrt{3}{2}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B3%7D%7B2%7D%24" alt="$\sqrt{3}{2}$"> cubic root</li>
-<li><code>$\sqrt{3}{1+\sqrt{x}}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B3%7D%7B1%2B%5Csqrt%7Bx%7D%7D%24" alt="$\sqrt{3}{1+\sqrt{x}}$"> square root of a cubic root</li>
+<li><code>$\sqrt[3]{2}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B3%7D%7B2%7D%24" alt="$\sqrt{3}{2}$"> cubic root</li>
+<li><code>$\sqrt[3]{1+\sqrt{x}}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B3%7D%7B1%2B%5Csqrt%7Bx%7D%7D%24" alt="$\sqrt{3}{1+\sqrt{x}}$"> square root of a cubic root</li>
 <li><code>$\frac{1}{3}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7B1%7D%7B3%7D%24" alt="$\frac{1}{3}$"> fraction</li>
 <li><code>$(x+1)$</code> <img src="https://render.githubusercontent.com/render/math?math=%24(x%2B1" alt="$(x+1)$">%24&gt;) parentheses</li>
 <li><code>$|x|$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%7Cx%7C%24" alt="$|x|$"> absolute value</li>
@@ -1076,6 +1089,7 @@ while working on a draft.
 <li><code>$\begin{matrix} a &amp; b \\ c &amp; d \end{matrix}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bmatrix%7D%24" alt="$\begin{matrix} a &amp; b \ c &amp; d \end{matrix}$"> matrix without brackets</li>
 <li><code>$\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bpmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bpmatrix%7D%24" alt="$\begin{pmatrix} a &amp; b \ c &amp; d \end{pmatrix}$"> matrix with round brackets</li>
 <li><code>$\begin{bmatrix} 1 &amp; 2 &amp; 1 \\ 3 &amp; 0 &amp; 1 \\ 0 &amp; 2 &amp; 4 \end{bmatrix}$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%201%20%26%202%20%26%201%20%5C%5C%203%20%26%200%20%26%201%20%5C%5C%200%20%26%202%20%26%204%20%5Cend%7Bbmatrix%7D%24" alt="$\begin{bmatrix} 1 &amp; 2 &amp; 1 \ 3 &amp; 0 &amp; 1 \ 0 &amp; 2 &amp; 4 \end{bmatrix}$"> matrix with square brackets</li>
+<li><code>$\left[ \begin{array}{cc|r} 3 &amp; 4 &amp; 5 \\ 1 &amp; 3 &amp; 729 \end{array} \right]$</code> <img src="https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bcc%7Cr%7D%203%20%26%204%20%26%205%20%5C%5C%201%20%26%203%20%26%20729%20%5Cend%7Barray%7D%20%5Cright%5D%24" alt="$\left[ \begin{array}{cc|r} 3 &amp; 4 &amp; 5 \ 1 &amp; 3 &amp; 729 \end{array} \right]$"> Augmented Matrix</li>
 </ul>
 <h3 id="block-contents">Block Contents</h3>
 <h5 id="tables">Tables</h5>
@@ -1162,7 +1176,7 @@ x&amp;\approx&amp;\pm1.732
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LaTeX","level":"1.8.4","depth":2,"next":{"title":"CSS","level":"1.9","depth":1,"path":"css/README.md","ref":"css/README.md","articles":[{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]}]},"previous":{"title":"GFM","level":"1.8.3","depth":2,"path":"markup/gfm.md","ref":"markup/gfm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"markup/latex.md","mtime":"2020-04-30T14:11:50.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-09T22:28:15.640Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LaTeX","level":"1.8.4","depth":2,"next":{"title":"CSS","level":"1.9","depth":1,"path":"css/README.md","ref":"css/README.md","articles":[{"title":"Bootstrap","level":"1.9.1","depth":2,"path":"css/bootstrap.md","ref":"css/bootstrap.md","articles":[]}]},"previous":{"title":"GFM","level":"1.8.3","depth":2,"path":"markup/gfm.md","ref":"markup/gfm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"markup/latex.md","mtime":"2020-05-20T04:13:35.423Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-21T01:01:41.715Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1366,7 +1366,89 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 <li><code>json.loads(jsonObject.decode(&apos;utf-8&apos;))</code> It converts a string into a python object. Typically, it decodes a json object from a string.</li>
 <li><code>json.dumps(x)</code> converts a python object like a list or a dictionary into a string.</li>
 </ul>
-<h1 id="def-createhash">def _createHash():</h1>
+<h2 id="unittest">unittest</h2>
+<ul>
+<li>It is used to do unit testing.</li>
+<li><code>import unittest</code></li>
+<li>All test method name should start with <code>test_</code></li>
+<li>The order of all test methods is random.</li>
+</ul>
+<h3 id="assertion-methods">Assertion Methods</h3>
+<ul>
+<li><code>assertEqual(a, b)</code> checks <code>a == b</code></li>
+<li><code>assertNotEqual(a, b)</code> checks <code>a != b</code></li>
+<li><code>assertTrue(x)</code> checks if <code>bool(x)</code> is True</li>
+<li><code>assertFalse(x)</code> checks if <code>bool(x)</code> is False</li>
+<li><code>assertIs(a, b)</code> checks if <code>a</code> is <code>b</code></li>
+<li><code>assertIsNot(a, b)</code> checks if <code>a</code> is not <code>b</code></li>
+<li><code>assertIsNone(x)</code> checks if <code>x</code> is <code>None</code></li>
+<li><code>assertIsNotNone(x)</code> checks if <code>x</code> is not <code>None</code></li>
+<li><code>assertIn(a, b)</code> checks if <code>a</code> in <code>b</code></li>
+<li><code>assertNotIn(a, b)</code> checks if <code>a</code> not in <code>b</code></li>
+<li><code>assertIsInstance(a, b)</code> checks if <code>isinstance(a, b)</code></li>
+<li><code>assertNotIsInstance(a, b)</code> checks if not <code>isinstance(a, b)</code></li>
+</ul>
+<h3 id="mock">Mock</h3>
+<ul>
+<li>create a fake object for testing</li>
+</ul>
+<h5 id="patch">patch</h5>
+<ul>
+<li><code>from unittest.mock import patch</code></li>
+<li>In the class definition:<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">method_for_test</span><span class="hljs-params">(self, t)</span>:</span>
+      response = requests.get(f<span class="hljs-string">&apos;http://company.com/{self.x}/{y}&apos;</span>)
+      <span class="hljs-keyword">if</span> response.ok:
+          <span class="hljs-keyword">return</span> response.text
+      <span class="hljs-keyword">else</span>:
+          <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;Bad Response!&apos;</span>
+</code></pre>
+</li>
+<li>In the test method:<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_method</span><span class="hljs-params">(self)</span>:</span>
+     <span class="hljs-keyword">with</span> patch(<span class="hljs-string">&apos;classname.requests.get&apos;</span>) <span class="hljs-keyword">as</span> mocked_get:
+         <span class="hljs-comment"># create fake response object</span>
+         mocked_get.return_value.ok = <span class="hljs-keyword">True</span>
+         mocked_get.return_value.text = <span class="hljs-string">&apos;Success&apos;</span>
+         schedule = self.object.monthly_schedule(<span class="hljs-string">&apos;Y&apos;</span>)
+         <span class="hljs-comment"># test the called param</span>
+         mocked_get.assert_called_with(<span class="hljs-string">&apos;http://company.com/x/Y/&apos;</span>)
+         <span class="hljs-comment"># test mocked response object</span>
+         self.assertEqual(schedule, <span class="hljs-string">&apos;Success&apos;</span>)
+</code></pre>
+</li>
+</ul>
+<h3 id="example">Example</h3>
+<pre><code class="lang-py"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestExample</span><span class="hljs-params">(unittest.TestCase)</span>:</span>
+    <span class="hljs-comment"># Run once at the beginning</span>
+<span class="hljs-meta">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setUpClass</span><span class="hljs-params">(cls)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+    <span class="hljs-comment"># Run once after all test cases.</span>
+<span class="hljs-meta">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">tearDownClass</span><span class="hljs-params">(cls)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+    <span class="hljs-comment"># run before every test method</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setUp</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+    <span class="hljs-comment"># run after every test method</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">tearDown</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+    <span class="hljs-comment"># test method one</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_add</span><span class="hljs-params">(self)</span>:</span>
+        self.assertEqual(calc.add(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>), <span class="hljs-number">0</span>)
+        self.assertEqual(calc.add(<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>), <span class="hljs-number">-2</span>)
+    <span class="hljs-comment"># test method two</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_divide</span><span class="hljs-params">(self)</span>:</span>
+        self.assertEqual(calc.divide(<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>), <span class="hljs-number">1</span>)
+        self.assertEqual(calc.divide(<span class="hljs-number">5</span>, <span class="hljs-number">2</span>), <span class="hljs-number">2.5</span>)
+        <span class="hljs-comment"># Optionally</span>
+        <span class="hljs-keyword">with</span> self.assertRaises(ValueError):
+            calc.divide(<span class="hljs-number">10</span>, <span class="hljs-number">0</span>)
+<span class="hljs-comment"># Enable the test cases run using command &apos;python filename.py&apos;</span>
+<span class="hljs-comment"># Without the following two lines run &apos;python -m  unittest filemane.py&apos;</span>
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    unittest.main()
+</code></pre>
+<h1 id="def-createhash">def createHash():</h1>
 <h1 id="this-function-generate-10-character-long-hash">&quot;&quot;&quot;This function generate 10 character long hash&quot;&quot;&quot;</h1>
 <h1 id="hash--hashlibsha1">hash = hashlib.sha1()</h1>
 <h1 id="hashupdatestrtimetime">hash.update(str(time.time()))</h1>
@@ -1376,7 +1458,8 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 <p>import hashlib
 import time
 import random
-from binascii import hexlify</p>
+from binascii import hexlify
+import contextlib</p>
 
                                 
                                 </section>
@@ -1420,7 +1503,7 @@ from binascii import hexlify</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-05-04T16:05:10.590Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-09T22:28:15.640Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Anaconda","level":"1.2.1","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-05-12T18:22:19.807Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-21T01:01:41.715Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

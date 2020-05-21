@@ -137,6 +137,9 @@
 - Can be used for both regression and classification tasks.
 - In neural science, each neuron has dedrites(receiver) and axon(transmitter), millions of millions of neuron work together. sigals are passed through synapses.
 - In neural networks, the processing unit is called neuron or node. The connection between neuron is also called synapse.
+- Overfitting and Underfitting - Underfitting implys a model that is too simply to make prediction, Overfitting implys a model that is learning too hard from the train data and too complicated to effectively and correctly make prediction.
+  - The goal is to aim to build a model that is a bit overfitting and slightly adjust it to prevent overfitting.
+- Hyperparameters are parameters used to build and train models.
 
 ##### Artificial Neural Networks(ANNs)
 
@@ -200,7 +203,7 @@
   - The softmax function is used to calculation possibilities of each result for image recogition so possibilities of all possible answers add up to 1.
   - The cost function in CNNs is called loss function, cross-entropy formula is frequenly used.
 
-## Steps of a Machine Learning Project
+## Optimatization Tips in each ML Step
 
 ### Data Preprocessing
 
@@ -222,13 +225,15 @@
 
 - The color value of the images can be rescaled from 0-255 to 0-1 to simplify the data.
   - The training data and testing data should use have the same recaling setting.
-- Images can be altered by zooming, flipping and shearing to provide variaties for training.
+- Image augumentation step alteres the images by zooming, flipping and shearing to provide variaties for training.
 
 ##### Timeseries data preprocessing
 
 ##### Text data preprocessing
 
 ### Build Model
+
+- Hyperparameters in the build model step is called Model Hyperparameters.
 
 ##### ANNs
 
@@ -238,3 +243,13 @@
 ##### CNNs
 
 - More convolutional layer will increase the accuracy of the prediction.
+
+### Train Model
+
+- Hyperparameters in the train model step is called Optimizer Hyperparameters.
+- Epochs
+  - If the number of epochs is too small the model will be underfitting, If the number of epochs is too large the model will be overfitting.
+    - The best number of epochs will make the test set and the model have the best performance, this is called the Goldilocks point.
+    - Early Stopping is the algorithm for finding the Goldilocks point, hence determine the best number of epochs to train the model.
+- Learning rate
+- Minibatch size

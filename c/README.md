@@ -83,7 +83,7 @@
 - `x[1] = 260;` assign a value to an element.
 - two-dimensional array
   - `int a[2][3];` 2 x 3 array
-  - `int a[2][3] = {{3, 2, 6}, {4, 5, 20}};`
+  - `{%raw%}int a[2][3] = {{3, 2, 6}, {4, 5, 20}};{%endraw%}`
   - More dimensions are supported.
 - An array of pointers
   - `char *a[] = {"aaa", "bbb", "ccc"};`

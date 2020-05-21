@@ -87,6 +87,7 @@ It provide computing services.
   - A target group will be associated with load balancer, health check is configured here.
 - Load balancer can assign Security Policies to certain SSL Certificates
   - A security policy is a combination of protocols and ciphers, The `ELBSecurityPolicy-2016-08` security policy has the highest compatibility.
+- For some instance types AWS sets a limit of 0 which prevent the user from running, a limit increase request should be sent in these cases.
 
 ## Elastic Beanstalk
 

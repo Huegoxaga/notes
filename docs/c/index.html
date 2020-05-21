@@ -902,395 +902,707 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="c">C</h1>
+<h2 id="introduction">Introduction</h2>
 <ul>
 <li>It is a low-level language that relates closely to the way machines work</li>
+<li>It is used to write operating systems and other languages.</li>
 </ul>
-<h1 id="include-">include <stdio.h></stdio.h></h1>
-<p>The header file package defines function related to input and output</p>
-<p>This is the main function, the entry point of the program.
+<h2 id="syntax">Syntax</h2>
+<ul>
+<li>Each statement must end with a semicolon.</li>
+<li>The C programming language is case-sensitive,</li>
+<li>Single-line comments <code>//</code><ul>
+<li>It is introduced in <code>C++</code> and adopted by some of the C compiler.</li>
+</ul>
+</li>
+<li>Multi-line comments<pre><code class="lang-c"><span class="hljs-comment">/*
+ * Multi-line comments
+ */</span>
+</code></pre>
+</li>
+<li><code>#include &lt;stdio.h&gt;</code>, this is the header file included files that imports function.</li>
+<li>main function is the entry point of the program<pre><code class="lang-c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello, World!\n&quot;</span>);
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<ul>
+<li>main function return 0 to the calling process after execution.</li>
+<li>0 means the program executed successfully, other number indicates the program has failed.</li>
+</ul>
+</li>
+</ul>
+<h2 id="data-types">Data Types</h2>
+<ul>
+<li>int: integer, a whole number.</li>
+<li>float: floating point, a number with a fractional part.</li>
+<li>double: double-precision floating point value.</li>
+<li>char: single character.<ul>
+<li>A string is stored in a char array.</li>
+<li>A character, such as <code>&apos;b&apos;</code>, is indicated by single quotation marks and cannot be treated as a string.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Notes:
+C has no Boolean Type.</p>
+</blockquote>
+<h3 id="related-functions">Related Functions</h3>
+<ul>
+<li><code>sizeof(typename)</code> can be used to show the memory required by each type<ul>
+<li>The storage space required by each type varies by platform</li>
+<li>returns number of bytes required by a certain type.</li>
+<li>Ex, <code>sizeof(int)</code></li>
+</ul>
+</li>
+<li>Type casting<ul>
+<li>Implicit Type Conversion<ul>
+<li>compiler automatically convert types in the same numerical operation.</li>
+</ul>
+</li>
+<li>Explice Type Conversion<ul>
+<li>use <code>(typeName)variablesName;</code></li>
+<li><code>(float) 1 / 2;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="variables">Variables</h2>
+<ul>
+<li>Variable name must begin with either a letter or an underscore and can be composed of letters, digits, and the underscore character.</li>
+<li>Popular naming conventions is using lowercase letters with an underscore to separate words (snake_case).</li>
+<li>Variables must be declared as a data type<ul>
+<li><code>int my_var;</code></li>
+<li><code>int a, b;</code> declares multiple variables at once.</li>
+</ul>
+</li>
+<li><code>my_var = 42;</code> value assignment after declaration.<ul>
+<li><code>int my_var = 42;</code>, optionally declaration and assignment can be written in one line.</li>
+</ul>
+</li>
+<li>A constant stores a value that cannot be changed from its initial assignment.<ul>
+<li>Constant use uppercase identifiers.</li>
+<li><code>const double PI = 3.14;</code> constant declaration and assignment</li>
+<li>Constants must be initialized with a value when declared.</li>
+<li><code>#define PI 3.1415</code> optionally one can define a constant using the #define preprocessor directive.<ul>
+<li><code>#define</code> is a macro identifer that replace all <code>PI</code> in the code with its value before compiling.</li>
+<li>This way of definine constants saves memory.</li>
+</ul>
+</li>
+<li>In a function declaration, pass in variable as constant can make sure its value is unchanged.</li>
+</ul>
+</li>
+</ul>
+<h2 id="array">Array</h2>
+<ul>
+<li>Declaration and Initialization<ul>
+<li><code>int array_name[25];</code> an array of init with 25 elements</li>
+<li><code>float prices[5] = {3.2, 6.55, 10.49, 1.25, 0.99};</code></li>
+<li>An array can be partially initialized, missing values will be set to 0<ul>
+<li><code>float prices[5] = {3.2, 6.55};</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Index starts at 0</li>
+<li><code>x[0]</code> access array element,</li>
+<li><code>x[1] = 260;</code> assign a value to an element.</li>
+<li>two-dimensional array<ul>
+<li><code>int a[2][3];</code> 2 x 3 array</li>
+<li><code>int a[2][3] = {{3, 2, 6}, {4, 5, 20}};</code></li>
+<li>More dimensions are supported.</li>
+</ul>
+</li>
+<li>An array of pointers<ul>
+<li><code>char *a[] = {&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;};</code></li>
+<li>This is the recommanded way to create an array of string. Optionally, use 2-D array for <code>char</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="string">String</h2>
+<ul>
+<li>A string in C is an array of characters that ends with a NULL character &apos;\0&apos;.</li>
+<li>Declaration<pre><code class="lang-c++"><span class="hljs-keyword">char</span> str1[<span class="hljs-number">6</span>] = <span class="hljs-string">&quot;hello&quot;</span>;
+<span class="hljs-keyword">char</span> str2[ ] = <span class="hljs-string">&quot;world&quot;</span>; <span class="hljs-comment">/* size 6 */</span>
+<span class="hljs-keyword">char</span> str3[<span class="hljs-number">6</span>] = {<span class="hljs-string">&apos;h&apos;</span>, <span class="hljs-string">&apos;e&apos;</span>, <span class="hljs-string">&apos;l&apos;</span>, <span class="hljs-string">&apos;l&apos;</span>, <span class="hljs-string">&apos;o&apos;</span>, <span class="hljs-string">&apos;\0&apos;</span>};
+<span class="hljs-keyword">char</span> str4[ ] = {<span class="hljs-string">&apos;h&apos;</span>, <span class="hljs-string">&apos;e&apos;</span>, <span class="hljs-string">&apos;l&apos;</span>, <span class="hljs-string">&apos;l&apos;</span>, <span class="hljs-string">&apos;o&apos;</span>, <span class="hljs-string">&apos;\0&apos;</span>}; <span class="hljs-comment">/* size 6 */</span>
+</code></pre>
+<ul>
+<li>During declaration, array size can be optionally stated. The size is the string length plus one for the NULL character.</li>
+<li><code>\0</code> has to included explicitly</li>
+<li>A string literal is a text enclosed in double quotation marks.</li>
+<li><code>char *str = &quot;hello&quot;;</code> is the string pointer declaration, it is considered a constant and cannot be changed from its initial value.</li>
+</ul>
+</li>
+</ul>
+<h2 id="standard-library">Standard Library</h2>
+<ul>
+<li>import function with <code>#include &lt;package_name.h&gt;</code></li>
+</ul>
+<h3 id="stdioh"><code>stdio.h</code></h3>
+<ul>
+<li>It defines function related input and output.</li>
+<li><code>#include &lt;stdio.h&gt;</code></li>
+</ul>
+<h5 id="output">Output</h5>
+<ul>
+<li><code>printf()</code> generates output<ul>
+<li>printf(&#x201C;formatted string with format specifier (%d)&#x201D;,variablesXToReplace%d);, Formatted output</li>
+<li>Escape sequences begin with a backslash <code>\</code>:<ul>
+<li><code>\n</code> new line</li>
+<li><code>\t</code> horizontal tab</li>
+<li><code>\\</code> backslash</li>
+<li><code>\b</code> backspace</li>
+<li><code>\&apos;</code> single quote</li>
+<li><code>\&quot;</code> double quote</li>
+</ul>
+</li>
+<li><code>%[-][width].[precision]conversion_character</code>, Format specifier for printf<ul>
+<li>The optional <code>-</code> specifies left alignment of the data in the string.</li>
+<li>The optional width gives the minimum number of characters for the data.</li>
+<li>The period <code>.</code> separates the width from the precision.</li>
+<li>The optional precision gives the number of decimal places for numeric data.<ul>
+<li>If <code>s</code> is used as the conversion character, then precision determines the number of characters to print.</li>
+</ul>
+</li>
+<li>The conversion character converts the argument, if necessary, to the indicated type:<ul>
+<li><code>d</code> decimal</li>
+<li><code>ld</code> long decimal</li>
+<li><code>c</code>character</li>
+<li><code>s</code> string</li>
+<li><code>f</code> float</li>
+<li><code>e</code> scientific notation</li>
+<li><code>x</code> hexadecimal</li>
+</ul>
+</li>
+<li>To print the <code>%</code> symbol, use <code>%%</code> in the format string.</li>
+<li>Example:<pre><code class="lang-c++"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Color: %s, Number: %d, float: %5.2f \n&quot;</span>, <span class="hljs-string">&quot;red&quot;</span>, <span class="hljs-number">42</span>, <span class="hljs-number">3.14159</span>);
+<span class="hljs-comment">/* Color: red, Number: 42, float:  3.14  */</span>
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Pi = %3.2f&quot;</span>, <span class="hljs-number">3.14159</span>);
+<span class="hljs-comment">/* Pi = 3.14 */</span>
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Pi = %8.5f&quot;</span>, <span class="hljs-number">3.14159</span>);
+<span class="hljs-comment">/* Pi =   3.14159 */</span>
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Pi = %-8.5f&quot;</span>, <span class="hljs-number">3.14159</span>);
+<span class="hljs-comment">/* Pi = 3.14159 */</span>
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;There are %d %s in the tree.&quot;</span>, <span class="hljs-number">22</span>, <span class="hljs-string">&quot;apples&quot;</span>);
+<span class="hljs-comment">/* There are 22 apples in the tree. */</span>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>putchar()</code> Outputs a single character.</li>
+<li><code>fputs()</code><ul>
+<li><code>fputs(stringName, stdout);</code></li>
+<li><code>stdout</code> means standard output</li>
+</ul>
+</li>
+<li>The <code>puts()</code> function add a new line after each output.<ul>
+<li><code>puts(stringName);</code></li>
+</ul>
+</li>
+<li><code>putf()</code></li>
+<li><code>sprintf()</code> creates formatted strings. auto convert data types for output string.<pre><code class="lang-c++"><span class="hljs-keyword">char</span> info[<span class="hljs-number">100</span>];
+<span class="hljs-keyword">char</span> dept[ ] = <span class="hljs-string">&quot;HR&quot;</span>;
+<span class="hljs-keyword">int</span> emp = <span class="hljs-number">75</span>;
+<span class="hljs-built_in">sprintf</span>(info, <span class="hljs-string">&quot;The %s dept has %d employees.&quot;</span>, dept, emp);
+</code></pre>
+</li>
+</ul>
+<h5 id="input">Input</h5>
+<ul>
+<li><code>getchar()</code> Returns the value of the next single character input.<ul>
+<li><code>char x = getxhar()</code></li>
+</ul>
+</li>
+<li>The gets() function is used to read a string.<pre><code class="lang-c++"><span class="hljs-keyword">char</span> a[<span class="hljs-number">100</span>];
+gets(a);
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;You entered: %s&quot;</span>, a);
+</code></pre>
+</li>
+<li><code>scanf()</code> scans input that matches format specifiers.<pre><code class="lang-c++"><span class="hljs-keyword">int</span> a, b;
+<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>, &amp;a, &amp;b);
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;You entered: %d and %d&quot;</span>, a, b);
+</code></pre>
+<ul>
+<li>stops read input when a space is entered.</li>
+<li><code>scanf()</code> read variable addresses(pointers).</li>
+<li>if type does not match, it automatically convert input type, it cannot read when the convertion cannot be made.</li>
+<li>For format specifiers, Blanks, tabs, and newlines are ignored.</li>
+<li><code>%[*][max_field]conversion character</code> - The optional <code>*</code> will skip the input field. - The optional max_width gives the maximum number of characters to assign to an input field. - The conversion character converts the argument to the defined type, it uses the following letters as specifier:<ul>
+<li><code>%d</code> for double</li>
+<li><code>%f</code> for float</li>
+<li><code>%c</code> for character</li>
+<li><code>%s</code> for string</li>
+<li><code>%x</code> for hexadecimal</li>
+<li>Ex, <code>%*3f</code> It will take or convert input to a float with 3 digit and it will be ignored.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>gets()</code> stop read input after newline(enter key).<pre><code class="lang-c++"><span class="hljs-keyword">char</span> input[<span class="hljs-number">10</span>];
+<span class="hljs-keyword">int</span> num;
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter a number: &quot;</span>);
+gets(input);
+num = atoi(input);
+</code></pre>
+</li>
+<li><code>fgets()</code> similar with <code>gets()</code> but limit max input size<ul>
+<li>it stores newline characters.</li>
+<li>it prevents buffer overflow, which happens when the string array size is smaller than the input size.<pre><code class="lang-c++"><span class="hljs-keyword">char</span> full_name[<span class="hljs-number">50</span>];
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter your full name: &quot;</span>);
+fgets(full_name, <span class="hljs-number">50</span>, <span class="hljs-built_in">stdin</span>);
+</code></pre>
+</li>
+<li><code>stdin</code> is the pointer for keyboard inputs</li>
+<li>It read a input with 49 character(lat one is\0)</li>
+</ul>
+</li>
+<li><code>sscanf()</code> for scanning a string for values.<pre><code class="lang-c++"><span class="hljs-keyword">char</span> info[ ] = <span class="hljs-string">&quot;Snoqualmie WA 13190&quot;</span>;
+<span class="hljs-keyword">char</span> city[<span class="hljs-number">50</span>];
+<span class="hljs-keyword">char</span> state[<span class="hljs-number">50</span>];
+<span class="hljs-keyword">int</span> population;
+<span class="hljs-built_in">sscanf</span>(info, <span class="hljs-string">&quot;%s %s %d&quot;</span>, city, state, &amp;population);
+</code></pre>
+</li>
+</ul>
+<h5 id="parse-strings">Parse Strings</h5>
+<ul>
+<li><code>int atoi(str)</code> Stands for ASCII to integer. Converts string numbers to the equivalent int value. 0 is returned if the first character is not a number or no numbers are encountered.</li>
+<li><code>double atof(str)</code> Stands for ASCII to float. Converts string numbers to the equivalent double value. 0.0 is returned if the first character is not a number or no numbers are encountered.</li>
+<li><code>long int atol(str)</code> Stands for ASCII to long int. Converts str to the equivalent long integer value. 0 is returned if the first character is not a number or no numbers are encountered.</li>
+<li><code>strtol()</code> is similar with <code>atol()</code> but have error handling.</li>
+</ul>
+<h3 id="stringh"><code>string.h</code></h3>
+<ul>
+<li>string functions</li>
+<li><code>#include &lt;string.h&gt;</code></li>
+<li><code>strlen(str)</code> - get length of a string not include <code>\0</code></li>
+<li><code>strcat(str1, str2)</code> - merge two strings returns a pointer to str1.</li>
+<li><code>strcpy(str1, str2)</code> - Copies str2 to str1.</li>
+<li><code>strlwr(str)</code> - convert string to lower case</li>
+<li><code>strupr(str)</code> - conver string to upper case</li>
+<li><code>strrev(str)</code> - reverse string</li>
+<li><code>strcmp(str1, str2)</code> - compare two strings</li>
+<li><code>strncat(str1, str2, n)</code> Appends (concatenates) first n characters of str2 to the end of str1 and returns a pointer to str1.</li>
+<li><code>strncpy(str1, str2, n)</code> Copies the first n characters of str2 to str1.</li>
+<li><code>strcmp(str1, str2)</code> Returns 0 when str1 is equal to str2, less than 0 when str1 &lt; str2, and greater than 0 when str1 &gt; str2.</li>
+<li><code>strncmp(str1, str2, n)</code> Returns 0 when the first n characters of str1 is equal to the first n characters of str2, less than 0 when str1 &lt; str2, and greater than 0 when str1 &gt; str2.</li>
+<li><code>strchr(str1, c)</code> Returns a pointer to the first occurrence of char c in str1, or NULL if character not found.</li>
+<li><code>strrchr(str1, c)</code> Searches str1 in reverse and returns a pointer to the position of char c in str1, or NULL if character not found.</li>
+<li><code>strstr(str1, str2)</code> Returns a pointer to the first occurrence of str2 in str1, or NULL if str2 not found.</li>
+</ul>
+<h3 id="stdlibh"><code>stdlib.h</code></h3>
+<ul>
+<li><code>qsort()</code> Quick Sort<ul>
+<li>Declaration, <code>void qsort(void *base, size_t num, size_t width, int (*compare)(const void *, const void *))</code></li>
+<li><code>void *base</code> A void pointer to the array.</li>
+<li><code>size_t num</code> The number of elements in the array.</li>
+<li><code>size_t</code> width The size of an element.</li>
+<li><code>int (*compare (const void *, const void *)</code> A function pointer which has two arguments and returns:<ul>
+<li><code>0</code> when the arguments have the same value.</li>
+<li><code>&lt;0</code> when arg1 comes before arg2.</li>
+<li><code>&gt;0</code> when arg1 comes after arg2.</li>
+</ul>
+</li>
+<li>Example:<pre><code class="lang-c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">compare</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *, <span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">int</span> arr[<span class="hljs-number">5</span>] = {<span class="hljs-number">52</span>, <span class="hljs-number">23</span>, <span class="hljs-number">56</span>, <span class="hljs-number">19</span>, <span class="hljs-number">4</span>};
+  <span class="hljs-keyword">int</span> num, width, i;
+  num = <span class="hljs-keyword">sizeof</span>(arr)/<span class="hljs-keyword">sizeof</span>(arr[<span class="hljs-number">0</span>]);
+  width = <span class="hljs-keyword">sizeof</span>(arr[<span class="hljs-number">0</span>]);
+  qsort((<span class="hljs-keyword">void</span> *)arr, num, width, compare);
+  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, arr[ i ]);
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">compare</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *elem1, <span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *elem2)</span> </span>{
+  <span class="hljs-keyword">if</span> ((*(<span class="hljs-keyword">int</span> *)elem1) == (*(<span class="hljs-keyword">int</span> *)elem2))
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((*(<span class="hljs-keyword">int</span> *)elem1) &lt; (*(<span class="hljs-keyword">int</span> *)elem2))
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+  <span class="hljs-keyword">else</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="operators">Operators</h2>
+<h4 id="arithmetic-operators">Arithmetic Operators</h4>
+<ul>
+<li><code>+</code> addition</li>
+<li><code>-</code> subtraction</li>
+<li><code>*</code> multiplication</li>
+<li><code>/</code> division<ul>
+<li>Integer division - Integers dividing integers will get integers.</li>
+</ul>
+</li>
+<li><code>%</code> modulus division<ul>
+<li>Modulus division only works on integers.</li>
+</ul>
+</li>
+<li>C may not evaluate a numeric expression from left to right among operators with the same precedence.</li>
+<li>Using parentheses <code>( )</code> to indicate which operations are to be performed first.</li>
+</ul>
+<h4 id="assignment-operators">Assignment Operators</h4>
+<ul>
+<li>Apply numerical operation with itself by using the following:<ul>
+<li><code>+=</code></li>
+<li><code>-=</code></li>
+<li><code>*=</code></li>
+<li><code>/=</code></li>
+</ul>
+</li>
+<li>Increment and Decrement<ul>
+<li>increment operator <code>++</code></li>
+<li>decrement operator <code>--</code></li>
+</ul>
+</li>
+<li>Prefix and Postfix<ul>
+<li><code>++i</code>, the prefix form increments/decrements the variable and then uses it in the assignment statement.</li>
+<li><code>i++</code>, the postfix form uses the value of the variable first, before incrementing/decrementing it.</li>
+</ul>
+</li>
+</ul>
+<h2 id="conditionals-and-loops">Conditionals and Loops</h2>
+<ul>
+<li>If statements<pre><code class="lang-c++"><span class="hljs-keyword">if</span> (expression)
+  <span class="hljs-comment">//statements;</span>
+</code></pre>
+<ul>
+<li>statements can be a single statement or a code block enclosed by curly braces { }.</li>
+</ul>
+</li>
+<li>relational operators<ul>
+<li>it can be used to form a Boolean expression, which returns true or false:<ul>
+<li><code>&lt;</code> less than</li>
+<li><code>&lt;=</code> less than or equal to</li>
+<li><code>&gt;</code> greater than</li>
+<li><code>&gt;=</code> greater than or equal to</li>
+<li><code>==</code> equal to</li>
+<li><code>!=</code> not equal to</li>
+</ul>
+</li>
+<li>An expression that evaluates to a non-zero value is considered true.<pre><code class="lang-c++"><span class="hljs-keyword">int</span> in_stock = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">if</span> (in_stock)
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Order received.\n&quot;</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+<li>if-else statements<pre><code class="lang-c++"><span class="hljs-keyword">if</span> (condition)
+  <span class="hljs-comment">//statement</span>
+<span class="hljs-keyword">else</span>
+  <span class="hljs-comment">//statement</span>
+</code></pre>
+</li>
+<li>If statements can be nested.</li>
+<li>conditional expression.<ul>
+<li><code>x = (condition) ? statement1 : statement2;</code></li>
+<li>If true statement1 is returned, if false statement2 is returned</li>
+</ul>
+</li>
+<li>Switch statement<pre><code class="lang-c++"><span class="hljs-keyword">switch</span> (expression) {
+<span class="hljs-keyword">case</span> val1:
+  <span class="hljs-comment">//statements</span>
+<span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">case</span> val2:
+  <span class="hljs-comment">//statements</span>
+<span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">default</span>:
+  <span class="hljs-comment">//statements</span>
+}
+</code></pre>
+<ul>
+<li>Without the break statement, program execution falls through to the next case statement.</li>
+</ul>
+</li>
+<li>Logical operators<ul>
+<li><code>&amp;&amp;</code> and</li>
+<li><code>||</code> or</li>
+<li><code>!</code> not</li>
+<li>A compound Boolean expression is evaluated from left to right.</li>
+<li>precedence, <code>!</code> &gt; <code>&amp;&amp;</code> &gt; <code>||</code></li>
+<li>Use () to change precedence</li>
+</ul>
+</li>
+<li>While loop<pre><code class="lang-c++"><span class="hljs-keyword">while</span> (expression) {
+  <span class="hljs-comment">//statements</span>
+}
+</code></pre>
+</li>
+<li>do-while loop<pre><code class="lang-c++"><span class="hljs-keyword">do</span> {
+  <span class="hljs-comment">//statements</span>
+} <span class="hljs-keyword">while</span> (expression);
+</code></pre>
+<ul>
+<li>The do-while loop always executes at least once</li>
+</ul>
+</li>
+<li><code>break;</code> exit loop</li>
+<li><code>continue;</code> skip the rest code of this iteration.</li>
+<li>for loop<pre><code class="lang-c++"><span class="hljs-keyword">int</span> i;
+<span class="hljs-keyword">int</span> max = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; max; i++) {
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, i);
+}
+</code></pre>
+</li>
+<li>The for loop can contain multiple expressions separated by commas in each part.<pre><code class="lang-c++"><span class="hljs-keyword">for</span> (x = <span class="hljs-number">0</span>, y = num; x &lt; y; i++, y--) {
+  <span class="hljs-comment">//statements;</span>
+}
+</code></pre>
+</li>
+<li>Also, you can skip the initvalue, condition and/or increment.<pre><code class="lang-c++"><span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> max = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">for</span> (; i &lt; max; i++) {
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, i);
+}
+</code></pre>
+</li>
+<li>Loops can also be nested.</li>
+</ul>
+<h2 id="function">Function</h2>
+<ul>
+<li>Declarations usually appear above the main() function.</li>
+<li>Function definitions usually appear after the main() function.<pre><code class="lang-c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-comment">/* declaration */</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">square</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">int</span> x, result;
+  x = <span class="hljs-number">5</span>;
+  result = square(x);
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d squared is %d\n&quot;</span>, x, result);
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+<span class="hljs-comment">/* definition */</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">square</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>{
+  <span class="hljs-keyword">int</span> y;
+  y = num * num;
+  <span class="hljs-keyword">return</span>(y);
+}
+</code></pre>
+</li>
+<li>A function is not required to return a value, in this case use void.</li>
+<li>Variables declared outside all functions are global to the entire program.</li>
+<li>Function destroys its local variables and parameters upon exiting.</li>
+<li>Static variables<ul>
+<li>It is declared in a function.</li>
+<li>It has a local scope but are not destroyed when a function is exited.</li>
+<li>When a variable need to be passed out of a function, it should be static.</li>
+<li><code>static int num_calls = 1;</code></li>
+</ul>
+</li>
+<li>A recursive function is one that calls itself and includes a base case, or exit condition, for ending the recursive calls.<pre><code class="lang-c++">#include &lt;stdio.h&gt;
+//function declaration
+int factorial(int num);
 int main() {
-  printf(&quot;Hello, World!\n&quot;);
+  int x = 5;
+  printf(&quot;The factorial of %d is %d\n&quot;, x, factorial(x));
   return 0;
 }
-Escape sequences begin with a backslash \:
-\n new line
-\t horizontal tab
-\ backslash
-\b backspace
-\&apos; single quote
-\&quot; double quote</p>
-<p>Format specifier for printf
-The optional - specifies left alignment of the data in the string.
-The optional width gives the minimum number of characters for the data.
-The period . separates the width from the precision.
-The optional precision gives the number of decimal places for numeric data. If s is used as the conversion character, then precision determines the number of characters to print.
-The conversion character converts the argument, if necessary, to the indicated type:
-d decimal
-c character
-s string
-f float
-e scientific notation
-x hexadecimal</p>
-<p>To print the % symbol, use %% in the format string.</p>
-<pre><code>printf(&quot;Color: %s, Number: %d, float: %5.2f \n&quot;, &quot;red&quot;, 42, 3.14159);
-/* Color: red, Number: 42, float:  3.14  */
-
-printf(&quot;Pi = %3.2f&quot;, 3.14159);
-/* Pi = 3.14 */
-
-printf(&quot;Pi = %8.5f&quot;, 3.14159);
-/* Pi =   3.14159 */
-
-printf(&quot;Pi = %-8.5f&quot;, 3.14159);
-/* Pi = 3.14159 */
-
-printf(&quot;There are %d %s in the tree.&quot;, 22, &quot;apples&quot;);
-/* There are 22 apples in the tree. */
-</code></pre><p>%[-][width].[precision]conversion character</p>
-<p>Each statement must end with a semicolon.
-The C programming language is case-sensitive,
-Single-line comments//
-Multi-line comments<code>/*  */</code></p>
-<p>return 0;
-This statement terminates the main() function and returns the value 0 to the calling process.</p>
-<p>data types:
-int: integer, a whole number.
-float: floating point, a number with a fractional part.
-double: double-precision floating point value.
-char: single character.
-A string is stored in a char array.</p>
-<p>Note: C has no Boolean Type.</p>
-<p>amount of storage required for each type varies by platforms use built-in sizeof operator to check details.</p>
-<p>sizeof(int);
-sizeof(float);
-sizeof(double);
-sizeof(char);
-return size in bytes for each data type.</p>
-<p>Formatted output</p>
-<p>printf(&#x201C;formatted string with format specifier (%d)&#x201D;,variablesXToReplace%d);</p>
-<p>%d for double
-%f for float
-%c for character
-%s for string
-%x for hexadecimal</p>
-<p>Variable name must begin with either a letter or an underscore and can be composed of letters, digits, and the underscore character.</p>
-<p>Common naming conventions is using lowercase letters with an underscore to separate words (snake_case).</p>
-<p>int my_var;  declared as a data type
-my_var = 42; initialize (assign an initial value) a variable</p>
-<p>  int a, b;  declares multiple at once.</p>
-<p>A constant stores a value that cannot be changed from its initial assignment.
-Constant use uppercase identifiers.
-const double PI = 3.14;
-Constants must be initialized with a value when declared.</p>
-<p>Another way to define a constant is with the #define preprocessor directive.</p>
-<h1 id="include-">include <stdio.h></stdio.h></h1>
-<h1 id="define-pi-314">define PI 3.14</h1>
-<h1 id="is-the-macro-identifier">is the macro Identifier?</h1>
-<p>Before compilation, the preprocessor replaces every macro identifier in the code with its corresponding value from the directive. In this case, every occurrence of PI is replaced with 3.14.
-The second method doesn&#x2019;t use memory.</p>
-<p>getchar() Returns the value of the next single character input.
-The gets() function is used to read a string.
-char a[100];
-gets(a);
-printf(&quot;You entered: %s&quot;, a);</p>
-<p>scanf() scans input and convert input that matches format specifiers.
-  int a;
-  scanf(&quot;%d. &quot;, &amp;a);</p>
-<p>  Input: 12.3.</p>
-<p>  printf(&quot;You entered: %d&quot;, a);</p>
-<p>  Output: You entered: 12</p>
-<p>For format specifiers
-Blanks, tabs, and newlines are ignored.</p>
-<p>%[<em>][max_field]conversion character
-The optional </em> will skip the input field.
-The optional max_width gives the maximum number of characters to assign to an input field.
-The conversion character converts the argument, if necessary, to the indicated type:
-d decimal
-c character
-s string
-f float
-x hexadecimal</p>
-<p>int x, y;
-char text[20];</p>
-<p>scanf(&quot;%2d %d %<em>f %5s&quot;, &amp;x, &amp;y, text);
-/</em> input: 1234  5.7  elephant <em>/
-printf(&quot;%d  %d  %s&quot;, x, y, text);
-/</em> output: 12  34  eleph */</p>
-<p>The &amp; sign before the variable name is the address operator. It gives the address, or location in memory, of a variable. This is needed because scanf places an input value at a variable address.
-Memory addresses are represented by an 8 digit hexadecimal number.
-string variable name acts as a pointer, it doesn&#x2019;t need &amp;.</p>
-<p>Multiple inputs with scanf
-  scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
-scanf() stops reading as soon as it encounters a space</p>
-<p>putchar() Outputs a single character.
-The puts() function is used to display output as a string.</p>
-<p>C supports arithmetic operators + (addition), - (subtraction), * (multiplication), / (division), and % (modulus division).</p>
-<p>Integer division:
-Integers dividing integers will get integers.</p>
-<p>Modulus division only works on integers.</p>
-<p>C may not evaluate a numeric expression as desired when the associative property allows any order.
-using parentheses ( ) to indicate which operations are to be performed first.</p>
-<p>type casting
-(typeName)variablesName
-(float) 1 / 2;</p>
-<p>assignment operator
-=</p>
-<h1 id="">+=</h1>
-<p>*=
-/=</p>
-<p>Increment &amp; Decrement
-increment operator ++
-decrement operator --
-++i
-The prefix form increments/decrements the variable and then uses it in the assignment statement.
-i++
-The postfix form uses the value of the variable first, before incrementing/decrementing it.</p>
-<p>If statements
-if (expression)
-  statements
-statements can be a single statement or a code block enclosed by curly braces { }.</p>
-<p>relational operators
-it can be used to form a Boolean expression, which returns true or false:
-&lt;    less than
-&lt;=  less than or equal to</p>
-<blockquote>
-<p>   greater than
-=  greater than or equal to
-==  equal to
-!=   not equal to</p>
-</blockquote>
-<p>An expression that evaluates to a non-zero value is considered true.</p>
-<p>int in_stock = 20;
-if (in_stock)
-  printf(&quot;Order received.\n&quot;);</p>
-<p>if - else if statements
-if (condition)
-    //statement
- else if
-    //statement
-   else
-     //statement
- If statements can be nested.</p>
-<p>conditional expression.
-The ?: operator
-It can have only one statement associated with the if and the else.</p>
-<p> x = (condition) ?  statement1 : statement2;
-If true statement1 is returned, if false statement2 is returned</p>
-<p>switch statement
-switch (expression) {
-  case val1:
-    statements
-  break;
-  case val2:
-    statements
-  break;
-  default:
-    statements
-}</p>
-<p>Without the break statement, program execution falls through to the next case statement.</p>
-<p>Logical operators
-&amp;&amp; and
-||    or
-!     not</p>
-<p>A compound Boolean expression is evaluated from left to right.
-precedence
-! &gt; &amp;&amp; &gt; ||
-Use () to change precedence</p>
-<p>While loop
-while (expression) {
-  statements
-}</p>
-<p>do-while loop
-do {
-  statements
-} while (expression);</p>
-<p>The do-while loop always executes at least once</p>
-<p>break; exit loop
-continue; skip the rest code of this iteration.</p>
-<p>for loop</p>
-<p>for (initvalue; condition; increment) {
-  statements;
-}</p>
-<p>int i;
-int max = 10;</p>
-<p>for (i = 0; i &lt; max; i++) {
-  printf(&quot;%d\n&quot;, i);
-}</p>
-<p>The for loop can contain multiple expressions separated by commas in each part.</p>
-<p>for (x = 0, y = num; x &lt; y; i++, y--) {
-  statements;
-}</p>
-<p>Also, you can skip the initvalue, condition and/or increment.</p>
-<p>int i=0;
-int max = 10;
-for (; i &lt; max; i++) {
-  printf(&quot;%d\n&quot;, i);
-}</p>
-<p>Loops can also be nested.</p>
-<p>Function
-A function is not required to return a value, in this case use void.</p>
-<p>Declarations usually appear above the main() function.
-Function definitions usually appear after the main() function.</p>
-<h1 id="include-">include <stdio.h></stdio.h></h1>
-<p>/<em> declaration </em>/
-int square (int num);</p>
-<p>int main() {
-  int x, result;</p>
-<p>  x = 5;
-  result = square(x);
-  printf(&quot;%d squared is %d\n&quot;, x, result);</p>
-<p>  return 0;
-}</p>
-<p>/<em> definition </em>/
-int square (int num) {
-  int y;</p>
-<p>  y = num * num;</p>
-<p>  return(y);
-}</p>
-<p>Variables declared outside all functions are global to the entire program.
-function destroys its local variables and parameters upon exiting.</p>
-<p>Static variables have a local scope but are not destroyed when a function is exited.</p>
-<p>static int num_calls = 1;</p>
-<p>A recursive function is one that calls itself and includes a base case, or exit condition, for ending the recursive calls.</p>
-<h1 id="include-">include <stdio.h></stdio.h></h1>
-<p>//function declaration
-int factorial(int num);</p>
-<p>int main() {<br>  int x = 5;</p>
-<p>  printf(&quot;The factorial of %d is %d\n&quot;, x, factorial(x));</p>
-<p>  return 0;
-}</p>
-<p>//function definition
-int factorial(int num) {</p>
-<p>  if (num == 1)  /<em> base case </em>/
+//function definition
+int factorial(int num) {
+  if (num == 1)
     return (1);
   else
     return (num * factorial(num - 1));
-}</p>
-<p>Array</p>
-<p>int array_name[25];  //an array of init with 25 elements</p>
-<p>or</p>
-<p>float prices[5] = {3.2, 6.55, 10.49, 1.25, 0.99};
-An array can be partially initialized, missing values will be set to 0
-float prices[5] = {3.2, 6.55};</p>
-<p>Index starts at 0
-To access array element
-printf(&quot;The second element is %d\n&quot;, x[1]); /<em> 45 </em>/
-To change array element
-x[1] = 260;
-two-dimensional array</p>
-<p>int a[2][3]; /<em> A 2 x 3 array </em>/</p>
-<p>int a[2][3] = {
-  {3, 2, 6},
-  {4, 5, 20}
-};
-More dimensions are supported.</p>
-<p>Pointers</p>
-<p>A pointer is a variable that contains the address of another variable.
-The address value is an 8 digit hexadecimal.</p>
-<p>Declaration
-int j = 8;
-int *p = NULL;
-p = &amp;j;</p>
-<p>Pointers should be initialized to NULL until they are assigned a valid location.</p>
-<p>dereferencing
-Print *p will get the value it points to, which is 8.</p>
-<p>Pointer can be used to point another pointer.
-This type of variable declaration uses <strong>, and can be assigned the address of another pointer, as in:
-int x = 12;
-int *p = NULL
-int </strong>ptr = NULL;
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="pointers">Pointers</h2>
+<ul>
+<li>Memory Addresses<ul>
+<li>Assigned randomly whenever the program is executed.</li>
+<li>The address value is an 8 digit hexadecimal.</li>
+<li>Each address value stores 1 byte value.</li>
+</ul>
+</li>
+<li>Get Memory Addresses of Variables<ul>
+<li>The <code>&amp;</code> sign before the variable name is the address operator. It gives the memory address of a variable.</li>
+</ul>
+</li>
+<li>A pointer is a variable that contains the address of another variable.<ul>
+<li>The address location is random every time the program is executed.</li>
+</ul>
+</li>
+<li>Variable names for strings and arrays act as a pointer.</li>
+<li>Declaration<pre><code class="lang-c++"><span class="hljs-keyword">int</span> j = <span class="hljs-number">8</span>;
+<span class="hljs-keyword">int</span> *p = <span class="hljs-literal">NULL</span>;
+p = &amp;j;
+</code></pre>
+<ul>
+<li>Data type is required for a point to know where the next available address is, based on the amount of data required for the type.</li>
+<li>Pointers should be initialized to NULL until they are assigned a valid location.</li>
+<li>dereferencing, prepend dereference operator <code>*</code> to the pointer variable will get the value it points to. It is opposite to <code>&amp;</code>.</li>
+</ul>
+</li>
+<li>Pointer can be used to point another pointer.<ul>
+<li>Prepend <code>**</code> to the pointer that point to another pointer<pre><code class="lang-c++"><span class="hljs-keyword">int</span> x = <span class="hljs-number">12</span>;
+<span class="hljs-keyword">int</span> *p = <span class="hljs-literal">NULL</span>
+<span class="hljs-keyword">int</span> **ptr = <span class="hljs-literal">NULL</span>;
 p = &amp;x;
-ptr = &amp;p;</p>
-<p>Arithmetic operators can be applied to whatever the pointer is pointing to.</p>
-<p>y = *p + 2;</p>
-<p>(*p)++;    //parentheses are required for increments and decrements</p>
-<p>For a pointer of array x
-x is the first element of a
-<em>(x+1) or </em>(x++) is the second element and so on.</p>
-<p>If pointer point to an integer (4 bytes) x++ will make the hexadecimal value goes up by 4.
-Using pointer can change the actual values of functions.</p>
-<p>void swap (int <em>num1, int </em>num2);</p>
-<p>int main() {
-  int x = 25;
-  int y = 100;</p>
-<p>  printf(&quot;x is %d, y is %d\n&quot;, x, y);
-  swap(&amp;x, &amp;y);
-  printf(&quot;x is %d, y is %d\n&quot;, x, y);</p>
-<p>  return 0;
-}</p>
-<p>void swap (int <em>num1, int </em>num2) {
-  int temp;</p>
-<p>  temp = <em>num1;
-  </em>num1 = <em>num2;
-  </em>num2 = temp;
-}</p>
-<p>Array and string names are pointers wu need  to passing an array name to a function is passing a pointer to the array.</p>
-<p>Pointer c can be returned in a function</p>
-<p>String
-A string in C is an array of characters that ends with a NULL character &apos;\0&apos;.</p>
-<p>char str1[6] = &quot;hello&quot;;
-char str2[ ] = &quot;world&quot;;  /<em> size 6 </em>/
-During declaration, array size can be optionally stated. The size is the string length plus one for the NULL character.</p>
-<p>Or</p>
-<p>char str3[6] = {&apos;h&apos;, &apos;e&apos;, &apos;l&apos;, &apos;l&apos;, &apos;o&apos;, &apos;\0&apos;};</p>
-<p>char str4[ ] = {&apos;h&apos;, &apos;e&apos;, &apos;l&apos;, &apos;l&apos;, &apos;o&apos;, &apos;\0&apos;}; /<em> size 6 </em>/
-// \0 has to included explicitly
-A string literal is a text enclosed in double quotation marks.</p>
-<p>A string pointer declaration such as char *str = &quot;stuff&quot;; is considered a constant and cannot be changed from its initial value.</p>
-<h1 id="include-">include <string.h></string.h></h1>
-<p>strlen() - get length of a string not include \0</p>
-<p>strcat() - merge two strings returns a pointer to str1.
-strcpy() - Copies str2 to str1.
-strlwr() - convert string to lower case
-strupr() - conver string to upper case
-strrev() - reverse string
-strcmp() - compare two strings
-strncat(str1, str2, n) Appends (concatenates) first n characters of str2 to the end of str1 and returns a pointer to str1.
-strncpy(str1, str2, n) Copies the first n characters of str2 to str1.
-strcmp(str1, str2) Returns 0 when str1 is equal to str2, less than 0 when str1 &lt; str2, and greater than 0 when str1 &gt; str2.
-strncmp(str1, str2, n) Returns 0 when the first n characters of str1 is equal to the first n characters of str2, less than 0 when str1 &lt; str2, and greater than 0 when str1 &gt; str2.
-strchr(str1, c) Returns a pointer to the first occurrence of char c in str1, or NULL if character not found.
-strrchr(str1, c) Searches str1 in reverse and returns a pointer to the position of char c in str1, or NULL if character not found.
-strstr(str1, str2) Returns a pointer to the first occurrence of str2 in str1, or NULL if str2 not found.
-strtol()</p>
-<p>The stdio.h library contains the following functions for converting a string to a number:
-int atoi(str) Stands for ASCII to integer. Converts str to the equivalent int value. 0 is returned if the first character is not a number or no numbers are encountered.
-double atof(str) Stands for ASCII to float. Converts str to the equivalent double value. 0.0 is returned if the first character is not a number or no numbers are encountered.
-long int atol(str) Stands for ASCII to long int. Converts str to the equivalent long integer value. 0 is returned if the first character is not a number or no numbers are encountered.</p>
-<p>  char input[10];
-  int num;</p>
-<p>  printf(&quot;Enter a number: &quot;);
-  gets(input);
-  num = atoi(input);</p>
-<p>Input
-scanf(), gets(), and fgets() functions.</p>
-<p>fgets()
-char full_name[50];
-printf(&quot;Enter your full name: &quot;);
-fgets(full_name, 50, stdin);
-stdin is the pointer for keyboard inputs</p>
-<p>It read a input with 49 character(lat one is\0)</p>
-<p>fputs()
-fputs(stringName, stdout);
-stdout means standard output</p>
-<p>The puts() function takes only a string argument and add a new line.
-puts(stringName);</p>
-<p>Others output function
-fputs(), putf(), and printf() functions.</p>
-<p>sprintf()
-A formatted string can be created with the sprintf() function.</p>
-<p>  char info[100];
-  char dept[ ] = &quot;HR&quot;;
-  int emp = 75;
-  sprintf(info, &quot;The %s dept has %d employees.&quot;, dept, emp);</p>
-<p>sscanf() for scanning a string for values.</p>
-<p>  char info[ ] = &quot;Snoqualmie WA 13190&quot;;
-  char city[50];
-  char state[50];
-  int population;
-  sscanf(info, &quot;%s %s %d&quot;, city, state, &amp;population);</p>
-<p>Character
-A character, such as &apos;b&apos;, is indicated by single quotation marks and cannot be treated as a string.</p>
+ptr = &amp;p;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Arithmetic operators can be applied to whatever the pointer is pointing to.<ul>
+<li><code>y = *p + 2;</code></li>
+<li><code>(*p)++;</code> parentheses are required for increments and decrements</li>
+</ul>
+</li>
+<li>Pointer of an array<ul>
+<li>Array and string names are pointers, it points to the first element of the array.</li>
+</ul>
+</li>
+<li>Address Arithmetic, for pointer <code>x</code>:<ul>
+<li><code>x+1</code> or <code>x++</code> returns the memory location for the next element.</li>
+<li><code>x-1</code> or <code>x--</code> returns the memory location for the previous element.</li>
+<li>If pointer point to an integer (4 bytes) <code>x++</code> will make the hexadecimal value goes up by 4.</li>
+<li>pointer addresses can also be compared by using <code>&gt;</code>, <code>==</code> etc.</li>
+</ul>
+</li>
+<li>Using pointer as parameters of a function to change the actual variables&apos; values.<pre><code class="lang-c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> *num1, <span class="hljs-keyword">int</span> *num2)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+<span class="hljs-keyword">int</span> x = <span class="hljs-number">25</span>;
+<span class="hljs-keyword">int</span> y = <span class="hljs-number">100</span>;
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x is %d, y is %d\n&quot;</span>, x, y);
+swap(&amp;x, &amp;y);
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x is %d, y is %d\n&quot;</span>, x, y);
+<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> *num1, <span class="hljs-keyword">int</span> *num2)</span> </span>{
+<span class="hljs-keyword">int</span> temp;
+temp = *num1;
+*num1 = *num2;
+*num2 = temp;
+}
+</code></pre>
+</li>
+<li>A pointer can be returned in a function<pre><code class="lang-c++"><span class="hljs-function"><span class="hljs-keyword">int</span> * <span class="hljs-title">get_evens</span><span class="hljs-params">()</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">int</span> *a;
+  <span class="hljs-keyword">int</span> k;
+  a = get_evens(); <span class="hljs-comment">/* get first 5 even numbers */</span>
+  <span class="hljs-keyword">for</span> (k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">5</span>; k++)
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a[k]);
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> * <span class="hljs-title">get_evens</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> nums[<span class="hljs-number">5</span>];
+  <span class="hljs-keyword">int</span> k;
+  <span class="hljs-keyword">int</span> even = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">5</span>; k++) {
+    nums[k] = even += <span class="hljs-number">2</span>;
+  }
+  <span class="hljs-keyword">return</span> (nums);
+}
+</code></pre>
+</li>
+<li>Function Pointers<ul>
+<li>It points to executable code for a function in memory.</li>
+<li>A function name points to the start of executable code.<pre><code class="lang-c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">say_hello</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num_times)</span></span>; <span class="hljs-comment">/* function */</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">void</span> (*funptr)(<span class="hljs-keyword">int</span>);  <span class="hljs-comment">/* function pointer */</span>
+  funptr = say_hello;  <span class="hljs-comment">/* pointer assignment */</span>
+  funptr(<span class="hljs-number">3</span>);  <span class="hljs-comment">/* function call */</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">say_hello</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num_times)</span> </span>{
+  <span class="hljs-keyword">int</span> k;
+  <span class="hljs-keyword">for</span> (k = <span class="hljs-number">0</span>; k &lt; num_times; k++)
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello\n&quot;</span>);
+}
+</code></pre>
+</li>
+<li>Function pointers can be stored in an array.<ul>
+<li><code>int (*op[4])(int, int);</code> declares the array of function pointers</li>
+<li>Each array element must have the same parameters and return type.</li>
+<li>The statement <code>result = op[index](x, y);</code> executes the appropriate function</li>
+</ul>
+</li>
+<li>Function pointers can be passed as arguments to other functions.<ul>
+<li>A function pointer used as an argument is sometimes referred to as a callback function.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>the void pointer for variables<ul>
+<li>When the type for a pointer is unknown use the void pointer.<ul>
+<li><code>void *ptr;</code></li>
+<li>It can be used for different types of data&apos;s memory location.</li>
+</ul>
+</li>
+<li>When dereferencing a void pointer, type casting is required for the pointer to the appropriate data type before dereferencing with <code>*</code>.<ul>
+<li><code>* ((int *)ptr)</code></li>
+</ul>
+</li>
+<li>cannot perform pointer arithmetic with void pointers, because the data size is unknown.</li>
+</ul>
+</li>
+<li>the void pointer for functions<ul>
+<li>Using a <code>void *</code> return type allows for any return type. Similarly, parameters that are <code>void *</code> accept any argument type.<ul>
+<li>Input argument need to be cast when dereferencing with <code>*</code> before use.</li>
+</ul>
+</li>
+<li><code>void * example (void *);</code></li>
+<li>It makes the function generic.</li>
+</ul>
+</li>
+</ul>
+<h2 id="structures">Structures</h2>
+<ul>
+<li>It is a user-defined data type that contains variables(members) of different data types.<ul>
+<li>The member of astructure can be of all basic types, strings, arrays, pointers, and other sturctures.</li>
+</ul>
+</li>
+<li>The name of the structure is defined by the struct tag after keyword <code>struct</code>.</li>
+<li>Declaration<pre><code class="lang-c++"><span class="hljs-keyword">struct</span> sample {
+    <span class="hljs-keyword">int</span> id;
+    <span class="hljs-keyword">char</span> name[<span class="hljs-number">12</span>];
+    <span class="hljs-keyword">float</span> value;
+};
+<span class="hljs-keyword">struct</span> sample s1;
+<span class="hljs-keyword">struct</span> sample s2;
+</code></pre>
+</li>
+<li>All members stores in a contiguous block of memery. The memory size of a structure can be determined by using <code>sizeof()</code></li>
+<li>Initialization<pre><code class="lang-c++"><span class="hljs-keyword">struct</span> sample s3 = {<span class="hljs-number">1</span>, <span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-number">23.32</span>};
+<span class="hljs-comment">//or</span>
+<span class="hljs-keyword">struct</span> sample s4;
+s4 = (<span class="hljs-keyword">struct</span> sample) {<span class="hljs-number">1</span>, <span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-number">23.32</span>};
+<span class="hljs-comment">//or</span>
+<span class="hljs-keyword">struct</span> sample s5 = {.name = <span class="hljs-string">&quot;John&quot;</span>, .id = <span class="hljs-number">1</span>, .value = <span class="hljs-number">23.32</span>};
+<span class="hljs-comment">//or</span>
+<span class="hljs-keyword">struct</span> sample s6 = s5;
+</code></pre>
+</li>
+<li>Access Members using dot operator <code>.</code>, <code>s1.value = 77.7</code>.<ul>
+<li>Assign new string value to a member use <code>strcpy(s1.name, &quot;new name&quot;)</code></li>
+</ul>
+</li>
+<li><code>typydef</code> keyword<ul>
+<li>It can be used to declare structures, and keyword <code>struct</code> can be ignored in future when declaring variables.<pre><code class="lang-c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> {
+  <span class="hljs-keyword">int</span> id;
+  <span class="hljs-keyword">char</span> title[<span class="hljs-number">40</span>];
+  <span class="hljs-keyword">float</span> hours;
+} course;
+course cs1;
+course cs2;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -1334,7 +1646,7 @@ A character, such as &apos;b&apos;, is indicated by single quotation marks and c
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C","level":"1.6","depth":1,"next":{"title":"Swift","level":"1.7","depth":1,"path":"swift/README.md","ref":"swift/README.md","articles":[{"title":"Xcode","level":"1.7.1","depth":2,"path":"swift/xcode.md","ref":"swift/xcode.md","articles":[]}]},"previous":{"title":"ASP.NET","level":"1.5.2","depth":2,"path":"c-sharp/asp-dot-net.md","ref":"c-sharp/asp-dot-net.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c/README.md","mtime":"2020-01-12T22:08:04.689Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-09T22:28:15.640Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C","level":"1.6","depth":1,"next":{"title":"Swift","level":"1.7","depth":1,"path":"swift/README.md","ref":"swift/README.md","articles":[{"title":"Xcode","level":"1.7.1","depth":2,"path":"swift/xcode.md","ref":"swift/xcode.md","articles":[]}]},"previous":{"title":"ASP.NET","level":"1.5.2","depth":2,"path":"c-sharp/asp-dot-net.md","ref":"c-sharp/asp-dot-net.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c/README.md","mtime":"2020-05-21T01:01:38.732Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-21T01:01:41.715Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

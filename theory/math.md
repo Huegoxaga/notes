@@ -151,6 +151,7 @@
   - ![$\lim_{x \to a^-}f(x)=- \infty$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df(x)%3D-%20%5Cinfty%24>)
   - ![$\lim_{x \to a^+}f(x)=- \infty$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df(x)%3D-%20%5Cinfty%24>)
   - Example: ![$\lim_{x \to 0^+} \ln{x}=- \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%200%5E%2B%7D%20%5Cln%7Bx%7D%3D-%20%5Cinfty%24)
+- the line _y = mx + b_ is called a slant(oblique) asymptote where ![$\lim_{x \to \infty} [f(x)-(mx+b)]=0$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%20%5Bf(x)-(mx%2Bb)%5D%3D0%24>) if ![$m \neq 0$](https://render.githubusercontent.com/render/math?math=%24m%20%5Cneq%200%24)
 - A function _f_ is continuous at a number a if ![$\lim_{x \to a}f(x) = f(a)$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x)%20%3D%20f(a)%24>)
 - A function _f_ is continuous from the right at a number _a_ if ![$\lim_{x \to a^+}f(x) = f(a)$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df(x)%20%3D%20f(a)%24>)
 - A function _f_ is continuous from the left at a number _a_ if ![$\lim_{x \to a^-}f(x) = f(a)$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df(x)%20%3D%20f(a)%24>)
@@ -162,6 +163,8 @@
     - ![$\lim_{x \to - \infty} e^x = 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7D%20e%5Ex%20%3D%200%24)
 - Definition of the Number _e_
   - _e_ is the number such that ![$\lim_{h \to 0} \frac{e^h-1}{h} = 1$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bh%20%5Cto%200%7D%20%5Cfrac%7Be%5Eh-1%7D%7Bh%7D%20%3D%201%24)
+  - So, ![$e = \lim_{x \to 0} (1+x)^{\frac{1}{x}}$](<https://render.githubusercontent.com/render/math?math=%24e%20%3D%20%5Clim_%7Bx%20%5Cto%200%7D%20(1%2Bx)%5E%7B%5Cfrac%7B1%7D%7Bx%7D%7D%24>) or ![$e = \lim_{x \to \infty} \left(1+ \frac{1}{n}\right)^n$](<https://render.githubusercontent.com/render/math?math=%24e%20%3D%20%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%20%5Cleft(1%2B%20%5Cfrac%7B1%7D%7Bn%7D%5Cright)%5En%24>)
+- L'Hospital's Rule - Suppose _f_ and _t_ are differentiable and ![$g'(x) \neq 0$](<https://render.githubusercontent.com/render/math?math=%24g'(x)%20%5Cneq%200%24>) on an open interval _I_ that contains _a_ (except possibly at _a_). Suppose that ![$\lim_{x \to a}f(x) = 0$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x)%20%3D%200%24>) and ![$\lim_{x \to a}g(x) = 0$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x)%20%3D%200%24>) or that ![$\lim_{x \to a}f(x) = \pm \infty$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x)%20%3D%20%5Cpm%20%5Cinfty%24>) and ![$\lim_{x \to a}g(x) = \pm \infty$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x)%20%3D%20%5Cpm%20%5Cinfty%24>) In other words, we have an indeterminate form of type 0/0 or ![$\infty / \infty$](https://render.githubusercontent.com/render/math?math=%24%5Cinfty%20%2F%20%5Cinfty%24). Then ![$\lim_{x \to a} \frac{f(x)}{g(x)}=\lim_{x \to a} \frac{f'(x)}{g'(x)}$](<https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf(x)%7D%7Bg(x)%7D%3D%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf'(x)%7D%7Bg'(x)%7D%24>) if the limit on the right side exists (or is opposite/negative inifinity)
 
 #### Laws
 
@@ -211,6 +214,8 @@
 
 #### Related Solving Methods
 
+- use _f_ over the recipical of _g_ for Indeterminate products, in order to use the L'Hospital's Rule.
+
 ## Derivatives
 
 #### Definition
@@ -222,7 +227,7 @@
   - It is the function that returns the slope of the tangent as dependent variable.
   - It can also represent the instantaneous rate of change
   - The derivateve of a function can be also denoted as
-    - ![$\frac{dx}{dy}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdx%7D%7Bdy%7D%24)
+    - ![$\frac{dx}{dy}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdx%7D%7Bdy%7D%24), known as Leibniz notation.
     - ![$\frac{d}{dy}(y)$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdy%7D(y)%24>)
     - ![$y'$](https://render.githubusercontent.com/render/math?math=%24y'%24)
     - ![$\dot{x}$](https://render.githubusercontent.com/render/math?math=%24%5Cdot%7Bx%7D%24) if _x_ represents time
@@ -235,6 +240,17 @@
     - ![$\ddot{x}$](https://render.githubusercontent.com/render/math?math=%24%5Cddot%7Bx%7D%24)
   - Same idea for third and fourth and higher derivatives.
 - A function _f_ is differentiable at a if _f'(a)_ exists. It is differen- tiable on an open interval (_a, b_)[or ![$(a, \infty)$](<https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty)%24>) or ![$(-\infty, a)$](<https://render.githubusercontent.com/render/math?math=%24(-%5Cinfty%2C%20a)%24>) or ![$(-\infty, \infty)$](<https://render.githubusercontent.com/render/math?math=%24(-%5Cinfty%2C%20%5Cinfty)%24>)] if it is differentiable at every number in the interval.
+- Let _c_ be a number in the domain _D_ of a function _f_. Then _f(c)_ is the
+  - absolute maximum value of _f_ on _D_ if ![$f(c) \geqslant f(x)$](<https://render.githubusercontent.com/render/math?math=%24f(c)%20%5Cgeqslant%20f(x)%24>) for all _x_ in _D_.
+  - absolute minimum value of f on D if ![$f(c) \leqslant f(x)$](<https://render.githubusercontent.com/render/math?math=%24f(c)%20%5Cleqslant%20f(x)%24>) for all _x_ in _D_.
+- The number _f(c)_ is a
+  - local maximum value of _f_ if ![$f(c) \geqslant f(x)$](<https://render.githubusercontent.com/render/math?math=%24f(c)%20%5Cgeqslant%20f(x)%24>) when _x_ is near _c_.
+  - local maximum value of _f_ if ![$f(c) \leqslant f(x)$](<https://render.githubusercontent.com/render/math?math=%24f(c)%20%5Cleqslant%20f(x)%24>) when _x_ is near _c_.
+- A critical number of a function _f_ is a number _c_ in the domain of _f_ such that either _f'(c) = 0_ or _f'(c)_ does not exist.
+  - If _f_ has a local maximum or minimum at _c_, then _c_ is a critical number of _f_.
+- If the graph of _f_ lies above all of its tangents on an interval _I_, then it is called concave upward on _I_. If the graph of _f_ lies below all of its tangents on _I_, it is called concave downward on _I_.
+- A point _P_ on a curve _y = f(x)_ is called an inflection point if _f_ is continuous there and the curve changes from concave upward to concave downward or from concave downward to concave upward at _P_.
+- A function _F_ is called an antiderivative of _f_ on an interval _I_ if `F'(x)=f(x)` for all _x_ in _I_.
 
 #### Rules
 
@@ -246,6 +262,10 @@
 - Derivative of the Natural Exponential Function - ![$\frac{d}{dx}(e^x)=e^x$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(e%5Ex)%3De%5Ex%24>)
 - The Product Rule - If _f_ and _g_ are both differentiable, then ![$\frac{d}{dx}[f(x)g(x)]=f(x) \frac{d}{dx}[g(x)]+g(x) \frac{d}{dx}[f(x)]$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x)g(x)%5D%3Df(x)%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bg(x)%5D%2Bg(x)%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x)%5D%24>)
 - The Quotient Rule - If _f_ and _g_ are differentiable, then ![$\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x) \frac{d}{dx}[f(x)]-f(x) \frac{d}{dx}[g(x)]}{[g(x)]^2}$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Cleft%5B%5Cfrac%7Bf(x)%7D%7Bg(x)%7D%5Cright%5D%3D%5Cfrac%7Bg(x)%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x)%5D-f(x)%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bg(x)%5D%7D%7B%5Bg(x)%5D%5E2%7D%24>)
+- The Chain Rule - If _g_ is differentiable at _x_ and _f_ is differentiable at _g(x)_, then the composite function ![$F=f \circ g$](https://render.githubusercontent.com/render/math?math=%24F%3Df%20%5Ccirc%20g%24) defined by ![$F(x)=f(g(x))$](<https://render.githubusercontent.com/render/math?math=%24F(x)%3Df(g(x))%24>)is differentiable at _x_ and _F'_ is given by the product ![$F'(x)=f'(g(x)) \cdot g'(x)$](<https://render.githubusercontent.com/render/math?math=%24F'(x)%3Df'(g(x))%20%5Ccdot%20g'(x)%24>) In Leibniz notation, if _y = f(u)_ and _u = g(x)_ are both differentiable functions, then ![$\frac{dy}{dx}= \frac{dy}{du} \frac{du}{dx}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdy%7D%7Bdx%7D%3D%20%5Cfrac%7Bdy%7D%7Bdu%7D%20%5Cfrac%7Bdu%7D%7Bdx%7D%24)
+
+#### Derivatives of Common Functions
+
 - Derivatives of Trigonometric Functions
   - ![$\frac{d}{dx} (\sin x)=\cos x$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Csin%20x)%3D%5Ccos%20x%24>)
   - ![$\frac{d}{dx} (\cos x)=-\sin x$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccos%20x)%3D-%5Csin%20x%24>)
@@ -254,12 +274,63 @@
   - ![$\frac{d}{dx} (\csc x)=-\csc x : \cot x$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccsc%20x)%3D-%5Ccsc%20x%20%5C%3A%20%5Ccot%20x%24>)
   - ![$\frac{d}{dx} (\sec x)=\sec x : \tan x$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Csec%20x)%3D%5Csec%20x%20%5C%3A%20%5Ctan%20x%24>)
   - ![$\frac{d}{dx} (\cot x)=-\csc^2 x$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccot%20x)%3D-%5Ccsc%5E2%20x%24>)
+- Derivatives of Inverse Trigonometric Functions
+  - ![$\frac{d}{dx}(\sin^{-1}{x})=\frac{1}{\sqrt{1-x^2}}$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Csin%5E%7B-1%7D%7Bx%7D)%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B1-x%5E2%7D%7D%24>)
+  - ![$\frac{d}{dx}(\cos^{-1}{x})=-\frac{1}{\sqrt{1-x^2}}$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Ccos%5E%7B-1%7D%7Bx%7D)%3D-%5Cfrac%7B1%7D%7B%5Csqrt%7B1-x%5E2%7D%7D%24>)
+  - ![$\frac{d}{dx}(\tan^{-1}{x})=\frac{1}{1+x^2}$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Ctan%5E%7B-1%7D%7Bx%7D)%3D%5Cfrac%7B1%7D%7B1%2Bx%5E2%7D%24>)
+  - ![$\frac{d}{dx}(\csc^{-1}{x})=-\frac{1}{x \sqrt{x^2-1}}$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Ccsc%5E%7B-1%7D%7Bx%7D)%3D-%5Cfrac%7B1%7D%7Bx%20%5Csqrt%7Bx%5E2-1%7D%7D%24>)
+  - ![$\frac{d}{dx}(\sec^{-1}{x})=\frac{1}{x \sqrt{x^2-1}}$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Csec%5E%7B-1%7D%7Bx%7D)%3D%5Cfrac%7B1%7D%7Bx%20%5Csqrt%7Bx%5E2-1%7D%7D%24>)
+  - ![$\frac{d}{dx}(\cot^{-1}{x})=-\frac{1}{1+x^2}$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Ccot%5E%7B-1%7D%7Bx%7D)%3D-%5Cfrac%7B1%7D%7B1%2Bx%5E2%7D%24>)
+- Derivative of Logarithmic Functions
+  - ![$\frac{d}{dx}(\log_{b}{x})=\frac{1}{x \ln{b}}$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Clog_%7Bb%7D%7Bx%7D)%3D%5Cfrac%7B1%7D%7Bx%20%5Cln%7Bb%7D%7D%24>)
+  - ![$\frac{d}{dx}(\ln{x})=\frac{1}{x}$](<https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(%5Cln%7Bx%7D)%3D%5Cfrac%7B1%7D%7Bx%7D%24>) or ![$\frac{d}{dx} \ln{|x|}=\frac{1}{x}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20%5Cln%7B%7Cx%7C%7D%3D%5Cfrac%7B1%7D%7Bx%7D%24)
+- Derivatives of Hyperbolic Functions
+- Derivatives of Inverse Hyperbolic Functions
 
 #### Theorem
 
 - If _f_ is differentiable at _a_, then _f_ is continuous at _a_.
+- The only solutions of the differential equation _dy/dt=ky_ where _k_ is a constant, are the exponential functions ![$y(t) = y(0)e^{kt}$](<https://render.githubusercontent.com/render/math?math=%24y(t)%20%3D%20y(0)e%5E%7Bkt%7D%24>)
+  - _dy/dt=ky_ is called the law of natural growth if _k>0_ or the law of natural decay if _k<0_.
+- The Extreme Value Theorem - If _f_ is continuous on a closed interval [_a, b_] then _f_ attains an absolute maximum value _f(c)_ and an absolute minimum value _f(d)_ at some numbers _c_ and _d_ in [_a, b_].
+- Fermat’s Theorem - If _f_ has a local maximum or minimum at _c_, and if _f'(c)_
+  exists, then _f'(c) = 0_.
+- Rolle’s Theorem - Let _f_ be a function that satisfies the following three hypotheses, Then there is a number _c_ in (_a, b_) such that _f'(c)=0_:
+  1. _f_ is continuous on the closed interval [_a, b_].
+  2. _f_ is differentiable on the open interval (_a, b_).
+  3. _f(a) = f(b)_
+- The Mean Value Theorem - Let _f_ be a function that satisfies the following hypotheses, Then there is a number _c_ in (_a, b_) such that ![$f'(c) = \frac{f(b)-f(a)}{b-a}$](<https://render.githubusercontent.com/render/math?math=%24f'(c)%20%3D%20%5Cfrac%7Bf(b)-f(a)%7D%7Bb-a%7D%24>) or, equivalently, ![$f(b)-f(a)=f'(c)(b-a)$](<https://render.githubusercontent.com/render/math?math=%24f(b)-f(a)%3Df'(c)(b-a)%24>) (compare to the Rolle’s Theorem the horizontal tangent line is changed to a tangent line with slope as _f'(c)_)
+  1. _f_ is continuous on the closed interval [_a, b_].
+  2. _f_ is differentiable on the open interval (_a, b_).
+- If _f'(x)=0_ for all _x_ in an interval (_a, b_), then _f_ is constant on (_a, b_).
+  - If _f'(x)-g'(x)_ for all _x_ in an interval (_a, b_), then _f - g_ is constant on (_a, b_); that is, _f(x)=g(x)+c_ where _c_ is a constant.
+- If _F_ is an antiderivative of _f_ on an interval _I_, then the most general
+  antiderivative of _f_ on _I_ is _F(x) + C_ where _C_ is an arbitrary constant.
 
-#### Related Solving Methods
+#### Solving Methods for Related Problem
+
+- Implicit differentiation. This consists of differentiating both sides of the equation with respect to _x_ and then solving the resulting equation for _y'_.
+- Logarithmic differentiation - The calculation of derivatives of complicated functions involving products, quotients, or powers can often be simplified by taking logarithms. The method used in the following example is called logarithmic differentiation.
+- linear approximation - or tangent line approximation of _f_ at _a_ uses the tangent line of the function at _a_ to replace the original funtion, then make prediction about values that is close to _a_. As a result we have the linear approximation _L(x)_ equals to ![$f(a)+f'(a)(x-a)$](<https://render.githubusercontent.com/render/math?math=%24f(a)%2Bf'(a)(x-a)%24>).
+- The Closed interval Method - To find the absolute maximum and minimum values of a continuous function _f_ on a closed interval [_a, b_]:
+  1. Find the values of all critical numbers of _f_ in (_a, b_).
+  2. Find the values of the endpoints of the interval.
+  3. The largest of the values from Steps 1 and 2 is the absolute maximum value; the smallest of these values is the absolute minimum value.
+- Increasing/Decreasing Test
+  - If _f'(x)>0_ on an interval, then _f_ is increasing on that interval.
+  - If _f'(x)<0_ on an interval, then _f_ is decreasing on that interval.
+- The First Derivative Test - Suppose that _c_ is a critical number of a continuous function _f_.
+  - If _f'_ changes from positive to negative at _c_, then _f_ has a local maximum at _c_.
+  - If _f'_ changes from negative to positive at _c_, then _f_ has a local minimum at _c_.
+  - If _f'_ is positive to the left and right of _c_, or negative to the left and right of _c_, then _f_ has no local maximum or minimum at _c_.
+  - If ![$f'(x) > 0$](<https://render.githubusercontent.com/render/math?math=%24f'(x)%20%3E%200%24>) for all _`x < c`_ and ![$f'(x) < 0$](<https://render.githubusercontent.com/render/math?math=%24f'(x)%20%3C%200%24>) for all _`x > c`_, then _f(c)_ is the absolute maximum value of _f_.
+  - If ![$f'(x) < 0$](<https://render.githubusercontent.com/render/math?math=%24f'(x)%20%3C%200%24>) for all _`x < c`_ and ![$f'(x) > 0$](<https://render.githubusercontent.com/render/math?math=%24f'(x)%20%3E%200%24>) for all _`x > c`_, then _f(c)_ is the absolute minimum value of _f_.
+- Concavity Test
+  - If _f''(x)>0_ for all _x_ in _I_, then the graph of _f_ is concave upward on _I_.
+  - If _f''(x)<0_ for all _x_ in _I_, then the graph of _f_ is concave downward on _I_.
+- The Second Derivative Test - Suppose _f''_ is continuous near _c_.
+  - If _f'(c)=0_ and _f''(c)>0_, then _f_ has a local minimum at _c_.
+  - If _f'(c)=0_ and _f''(c)<0_, then _f_ has a local maximum at _c_.
 
 # Linear Algebra
 

@@ -945,6 +945,10 @@
 <li><p><a href="https://create-react-app.dev/docs/getting-started" target="_blank">Click</a> to see the full docs about this tool.</p>
 </li>
 </ol>
+<h3 id="run-existing-project">Run Existing Project</h3>
+<ul>
+<li>Delete the node_modules folder and any &apos;lock&apos; files such as <code>yarn.lock</code> or <code>package-lock.json</code> first, then run <code>npm install</code> and <code>npm start</code>.</li>
+</ul>
 <h2 id="indexjs"><code>index.js</code></h2>
 <ul>
 <li><code>index.js</code> is the entry point of the react app, it is used to import and associate components and <code>html</code> <code>DOM</code> elements .</li>
@@ -1197,14 +1201,19 @@ export default Counter;
 <span class="hljs-comment">// declare the array before return method.</span>
 <span class="hljs-keyword">const</span> [currentValue, setFunction] = useState(initialValue)   <span class="hljs-comment">//array destructing</span>
 <span class="hljs-comment">// initialValue can be string num bool object array</span>
-</code></pre>
-<p>In return method, use setFunction(newValue) to update the currentValue.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">return</span> (
+<span class="hljs-keyword">return</span> (
   <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">conClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setFunction(prevValue + 1)}&gt;{currentValue}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
   <span class="hljs-comment">//use variable prevValue to get the previous value.</span>
   <span class="hljs-comment">//work with objects or arrays use: setName({&#x2026;objectName, propertyName: newValue})</span>
 );
 </code></pre>
+<ul>
+<li>In return method, use <code>setFunction(newValue)</code> to update the currentValue.</li>
+<li><code>useState()</code> returns an array of values, the current state value and a function that is used to update values.</li>
+<li><code>useState()</code> can have an arrow function as its variable, and it will be only ran once when rander.</li>
+<li><code>useState()</code> can have an object as variable.</li>
+<li><code>useState()</code> cannot be placed inside if or loops</li>
+</ul>
 <h3 id="effect-hook">Effect Hook</h3>
 <h2 id="debug">Debug</h2>
 <ul>
@@ -1254,7 +1263,7 @@ export default Counter;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React","level":"1.4.2","depth":2,"next":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-04-11T22:55:56.291Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-09T22:28:15.640Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React","level":"1.4.2","depth":2,"next":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-05-15T00:08:41.449Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-21T01:01:41.715Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
