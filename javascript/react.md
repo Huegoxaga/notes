@@ -356,7 +356,7 @@ useEffect(() => {
 - Makes component share common data across pages.
 - In a `context.js` create the context by using `export const ContextName = createContext(initialValue)`
   - `initialValue` can be null.
-- In `App.js` use `<ContextName.Provider value={{value1, value2}}> <Toolbar /> </ContextName.Provider>` to create context and assign values to the context.
+- In `App.js` use `{%raw%}<ContextName.Provider value={{value1, value2}}> <Toolbar /> </ContextName.Provider>{%endraw%}` to create context and assign values to the context.
 - In component class use `const {value1, value2} = useContext(ContextName);` to get values
 
 ## Material UI

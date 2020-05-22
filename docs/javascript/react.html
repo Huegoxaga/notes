@@ -1089,13 +1089,17 @@ ReactDOM.render(
 export default Counter;
 </code></pre>
 <ul>
-<li>when a component doesn&#x2019;t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.</li>
-</ul>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> ComponentName = () =&gt; {
+<li>when a component doesn&#x2019;t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.<pre><code class="lang-js"><span class="hljs-keyword">const</span> ComponentName = (props) =&gt; {
   <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
 };
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ComponentName;
 </code></pre>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Welcome</span>(<span class="hljs-params">props</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+}
+</code></pre>
+</li>
+</ul>
 <h2 id="react-router">React Router</h2>
 <ul>
 <li>It works with URL links and redirection for single-page apps made by React.</li>
@@ -1209,16 +1213,46 @@ export default Counter;
 </code></pre>
 <ul>
 <li>In return method, use <code>setFunction(newValue)</code> to update the currentValue.</li>
-<li><code>useState()</code> returns an array of values, the current state value and a function that is used to update values.</li>
+<li><code>useState()</code> returns an array of values, the current state value and a function that is used to update values by pass new values in it.</li>
 <li><code>useState()</code> can have an arrow function as its variable, and it will be only ran once when rander.</li>
 <li><code>useState()</code> can have an object as variable.</li>
 <li><code>useState()</code> cannot be placed inside if or loops</li>
 </ul>
 <h3 id="effect-hook">Effect Hook</h3>
+<pre><code class="lang-js"><span class="hljs-comment">// Similar to componentDidMount and componentDidUpdate:</span>
+useEffect(() =&gt; {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;rendered&quot;</span>);
+});
+</code></pre>
+<ul>
+<li>First parameter holds a function that will be called everything the component is rendered and rerendered.</li>
+<li>Second parameter holds an array of variables. The function in the first parameter will then only be called when these variables change.<ul>
+<li>When this parameter is an empty array, The function in the first parameter will be only called once when the component is mounted.</li>
+<li>a <code>return() =&gt; {}</code> block can be added to the <code>useEffect()</code> function, code in this block will be called only once during component unmount.</li>
+</ul>
+</li>
+<li>One component can have multiple <code>useEffect()</code> function and they will be executed in order.</li>
+</ul>
+<h3 id="context-hook">Context Hook</h3>
+<ul>
+<li>Makes component share common data across pages.</li>
+<li>In a <code>context.js</code> create the context by using <code>export const ContextName = createContext(initialValue)</code><ul>
+<li><code>initialValue</code> can be null.</li>
+</ul>
+</li>
+<li>In <code>App.js</code> use <code>&lt;ContextName.Provider value={{value1, value2}}&gt; &lt;Toolbar /&gt; &lt;/ContextName.Provider&gt;</code> to create context and assign values to the context.</li>
+<li>In component class use <code>const {value1, value2} = useContext(ContextName);</code> to get values</li>
+</ul>
+<h2 id="material-ui">Material UI</h2>
+<ul>
+<li>The Bootstrap for React</li>
+<li><a href="https://material-ui.com/getting-started/installation/" target="_blank">Click</a> to see its Docs.</li>
+</ul>
 <h2 id="debug">Debug</h2>
 <ul>
 <li>Install React Developer Tools Plugin</li>
 <li>React Tab will be shown in the browser inspector, all component tag will be shown.</li>
+<li><code>open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=/tmp/chrome_dev_test --disable-web-security</code> open a Broswer with no security requirement.</li>
 </ul>
 
                                 
@@ -1263,7 +1297,7 @@ export default Counter;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React","level":"1.4.2","depth":2,"next":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-05-15T00:08:41.449Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-21T01:01:41.715Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React","level":"1.4.2","depth":2,"next":{"title":"React Native","level":"1.4.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-05-22T00:15:53.237Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-22T00:15:57.781Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

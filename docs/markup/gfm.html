@@ -1078,7 +1078,10 @@ Content column 1 | Content column 2
 </li>
 <li>Another to way insert<code>![$x=1+a$](https://render.githubusercontent.com/render/math?math=%24x%3D1%2Ba%24)</code><ul>
 <li>It works only when there is no space in the path. Can replce space with its encoded value <code>%20</code>.</li>
-<li><a href="https://alexanderrodin.com/github-latex-markdown/" target="_blank">Click</a> to use the LaTeX image link generator tools for GFM.</li>
+<li><a href="https://alexanderrodin.com/github-latex-markdown/" target="_blank">Click</a> to use the LaTeX image link generator tools for GFM.<ul>
+<li>This generator does not encode <code>(</code> which is <code>%28</code> and <code>)</code> which is <code>%29</code>. It should be changed manually.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1155,7 +1158,7 @@ Content column 1 | Content column 2
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GFM","level":"1.8.3","depth":2,"next":{"title":"LaTeX","level":"1.8.4","depth":2,"path":"markup/latex.md","ref":"markup/latex.md","articles":[]},"previous":{"title":"XML","level":"1.8.2","depth":2,"path":"markup/xml.md","ref":"markup/xml.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"markup/gfm.md","mtime":"2020-05-09T22:04:38.414Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-21T01:01:41.715Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GFM","level":"1.8.3","depth":2,"next":{"title":"LaTeX","level":"1.8.4","depth":2,"path":"markup/latex.md","ref":"markup/latex.md","articles":[]},"previous":{"title":"XML","level":"1.8.2","depth":2,"path":"markup/xml.md","ref":"markup/xml.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"markup/gfm.md","mtime":"2020-05-21T23:09:28.430Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-22T00:15:57.781Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
