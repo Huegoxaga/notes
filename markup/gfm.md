@@ -229,6 +229,7 @@ They can't be added directly but you can add an image with a link to the video l
 - Another to way insert`![$x=1+a$](https://render.githubusercontent.com/render/math?math=%24x%3D1%2Ba%24)`
   - It works only when there is no space in the path. Can replce space with its encoded value `%20`.
   - [Click](https://alexanderrodin.com/github-latex-markdown/) to use the LaTeX image link generator tools for GFM.
+    - This generator does not encode `(` which is `%28` and `)` which is `%29`. It should be changed manually.
 
 # Gitbook
 

@@ -189,13 +189,17 @@ export default Counter;
 ```
 
 - when a component doesn’t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.
-
-```js
-const ComponentName = () => {
-  return <div>Hello</div>;
-};
-export default ComponentName;
-```
+  ```js
+  const ComponentName = (props) => {
+    return <div>Hello</div>;
+  };
+  export default ComponentName;
+  ```
+  ```js
+  function Welcome(props) {
+    return <h1>Hello, {props.name}</h1>;
+  }
+  ```
 
 ## React Router
 
@@ -327,14 +331,41 @@ return (
 ```
 
 - In return method, use `setFunction(newValue)` to update the currentValue.
-- `useState()` returns an array of values, the current state value and a function that is used to update values.
+- `useState()` returns an array of values, the current state value and a function that is used to update values by pass new values in it.
 - `useState()` can have an arrow function as its variable, and it will be only ran once when rander.
 - `useState()` can have an object as variable.
 - `useState()` cannot be placed inside if or loops
 
 ### Effect Hook
 
+```js
+// Similar to componentDidMount and componentDidUpdate:
+useEffect(() => {
+  console.log("rendered");
+});
+```
+
+- First parameter holds a function that will be called everything the component is rendered and rerendered.
+- Second parameter holds an array of variables. The function in the first parameter will then only be called when these variables change.
+  - When this parameter is an empty array, The function in the first parameter will be only called once when the component is mounted.
+  - a `return() => {}` block can be added to the `useEffect()` function, code in this block will be called only once during component unmount.
+- One component can have multiple `useEffect()` function and they will be executed in order.
+
+### Context Hook
+
+- Makes component share common data across pages.
+- In a `context.js` create the context by using `export const ContextName = createContext(initialValue)`
+  - `initialValue` can be null.
+- In `App.js` use `<ContextName.Provider value={{value1, value2}}> <Toolbar /> </ContextName.Provider>` to create context and assign values to the context.
+- In component class use `const {value1, value2} = useContext(ContextName);` to get values
+
+## Material UI
+
+- The Bootstrap for React
+- [Click](https://material-ui.com/getting-started/installation/) to see its Docs.
+
 ## Debug
 
 - Install React Developer Tools Plugin
 - React Tab will be shown in the browser inspector, all component tag will be shown.
+- `open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=/tmp/chrome_dev_test --disable-web-security` open a Broswer with no security requirement.

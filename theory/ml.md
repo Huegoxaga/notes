@@ -203,7 +203,7 @@
   - The softmax function is used to calculation possibilities of each result for image recogition so possibilities of all possible answers add up to 1.
   - The cost function in CNNs is called loss function, cross-entropy formula is frequenly used.
 
-## Optimatization Tips in each ML Step
+## Optimatization Tips
 
 ### Data Preprocessing
 
