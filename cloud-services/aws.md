@@ -42,6 +42,9 @@ Identity and Access Management - used to create user and group with specific per
 
 Provide Persistent Storage
 
+- Each bucket belong to a certain region and replicated across multiple availbility zones.
+- A file name is called key.
+
 ### CLI Commands
 
 - `aws s3 mb s3://bucket-name` Create new bucket.
@@ -302,6 +305,30 @@ It provides support for generating serverless APIs.
 - Resources need to be deploy as stages before using.
 - Custom Domain Names will attach user's own certificate to the URL and map the domain to the staged resources.
 - Custom Domain Names will need an Alias in Route 53 for its API Gateway domain name.
+
+## Sagemaker
+
+Fully managed Cloud based machine learning service
+
+#### Notebook
+
+- A Notebook instance can be used to develop and build model code in a Jupyter notebook using designated instances.
+- It have many pre-configured popular ML algorithm
+- Import model code from github
+- In a note book instance select open instance, new -> terminal, cd to sagemaker folder then git clone the project.
+
+  - The sagemaker folder in the terminal will be the root folder of the Jupyter notebook
+
+- support data type CSV recordIO Int32 Float32 Float64
+- Training result(artifact) will be stored in s3
+  - Two training data input mode pipe mode(streaming) and file mode(batch)
+  - Training will be fully managed and done on one or many instances. and supports Petabyte datasets.
+- Deploy for Realtime prediction can be done by Sagemaker endpoint. It supports auto scaling.
+- Deploy for non-interactive use cases can be done by Sagemaker Batch Transform. Fully managed.
+- Sagemaker Ground Truth helps with data labeling.
+  - Auto labeling
+  - Manual labeling
+- Sagemaker Neo uses edge locations to reduce lantency in training and use custmized hardwares.
 
 ## Alexa
 

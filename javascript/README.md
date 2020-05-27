@@ -698,7 +698,7 @@ courses[3] = "C++";
 ```js
 array.length; //return the length
 array.concat(a1, a2); //return the concatenated a1 and a2
-array.push("newElement"); //add new element to the array and return counts.
+array.push("newElement"); //add new element to the end of array and return counts.
 array.includes("elementX"); //return true if array contains elementX, false if not.
 array.forEach(function(i) {
   //forEach iterates each element of the array as an argument of the function.
@@ -710,7 +710,8 @@ array.splice(2, 3); // delete 3 items starting at index 2.(have to call it indep
 array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 //reduce iterate over each element of the function and return a value that will be used by the next iteration.
 let arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length //get avg
-Math.max(...array);
+Math.max(...array);//find the max value among array elements
+array.unshift(a,b,c);//adds one or more items or elements to the beginning of the array and returns the new length of the array.
 ```
 
 #### Associative Array

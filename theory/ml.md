@@ -32,7 +32,7 @@
   - `Reinforcement learning` - learning from experience or similar genetic algorithm.
     - An agent will be given different situation. The agent will perform observation and perform an action. The agent will be rewarded and penalized accordingly. Policy will then be establish for it to get the most reward in different situation.
 - Any ML methods can be either one of the following type:
-  - online learning or batch learning
+  - online(stochastic) learning or batch learning
     - whether or not the learning process is done at one time(batch learning) or consequently overtime based on a stream of incoming data(online learning)
     - batch learning is also called offline learning.
     - batch learning requires a lot of computing resources while online learning uses data as mini batch which can be cheap and fast.
@@ -139,6 +139,7 @@
 - In neural networks, the processing unit is called neuron or node. The connection between neuron is also called synapse.
 - Overfitting and Underfitting - Underfitting implys a model that is too simply to make prediction, Overfitting implys a model that is learning too hard from the train data and too complicated to effectively and correctly make prediction.
   - The goal is to aim to build a model that is a bit overfitting and slightly adjust it to prevent overfitting.
+  - The most important indicator of overfitting is the train set accurancy is much better than the test set.
 - Hyperparameters are parameters used to build and train models.
 
 ##### Artificial Neural Networks(ANNs)
@@ -203,7 +204,7 @@
   - The softmax function is used to calculation possibilities of each result for image recogition so possibilities of all possible answers add up to 1.
   - The cost function in CNNs is called loss function, cross-entropy formula is frequenly used.
 
-## Optimatization Tips
+## Optimatization Tips for Neural Networks
 
 ### Data Preprocessing
 
@@ -234,15 +235,17 @@
 ### Build Model
 
 - Hyperparameters in the build model step is called Model Hyperparameters.
-
-##### ANNs
-
 - Generally, the ideal number of nodes in each hidden layer is close to half of the input layer nodes plus output layer nodes.
   - Fine tuning can be made to improve, however this approximate number is good enough for determining the number of nodes for all hidden layers.
-
-##### CNNs
-
-- More convolutional layer will increase the accuracy of the prediction.
+  - The number nodes in each hidden layer determines the capacity of the model to learn a complex model. When the capacity is greater than needed it will learn to much and cause overfitting.
+  - the first hidden layer is suggested to have more nodes than the input layer.
+- the number of layers
+  - For the number of hidden layer, 3 layer is way better 2. A 4, 5, 6 layers ANNs won't necessarily increase the accurancy greatly.
+  - More convolutional layer will increase the accuracy of the prediction.
+  - The more fully connected hidden layers, the better the model predict.
+- Transfer Learning for CNNs - Use good trained model that can accomplish similar tasks.
+  - One technique is to remove the last few convolutional layers then train the data since only those layers are reponsible for specific feature detecting for trained model's own labeling strategy.
+  - Fine-Tuning - replace the last fully connected layers with a new layer then train the model based on existing weight from trained model.
 
 ### Train Model
 
@@ -251,5 +254,16 @@
   - If the number of epochs is too small the model will be underfitting, If the number of epochs is too large the model will be overfitting.
     - The best number of epochs will make the test set and the model have the best performance, this is called the Goldilocks point.
     - Early Stopping is the algorithm for finding the Goldilocks point, hence determine the best number of epochs to train the model.
+      - It can be set to stop whenever accurancy decreace, or when accurancy doesn't improve in the next 10 or 20 epoch.
 - Learning rate
+  - can be a value from 0.1 - 0.00001
+  - It controls how fast weight changes during gradient descent.
+  - 0.01 suggested starting value.
+  - If to small it will take longer steps to find the best weight, if too big the algorithm might not be able to find the best weight.
+  - Learning rate decay is an algorithm that helps the model to find the best weight.
+    - it can decrease the learning rate linearly or exponentially after a certain epochs.
+    - Adaptive Learning Rate changes learning rate dynamically based on the data and training result after each epoch.
 - Minibatch size
+  - It is 2^n and it can be anywhere from 1 - 256, 32 is a good starting point, then 64, 128, 256.
+  - Larger batch size requires more computational resources, and it might cause out of memory errors.
+  - Smaller batch size helps preventing the weight to be found at local minima, and it will be slow.

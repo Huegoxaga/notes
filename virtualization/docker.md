@@ -152,3 +152,140 @@
   - By default, the container have read and write access to the shared folder.
   - Must use absolut path on existing folders.
 - add `--mount type=bind,source=<HostSideFilePath>,target=<ContainerFilePath>` in the `docker run` command to establish a shared file.
+
+### Dockerfile
+
+- It is used to define customized images.
+- Scripts for defining an image is store in a file called `Dockerfile` without any extension
+- It is consisted of a serires of commands that will be executed in order.
+  - Each command will compose one layer for the image.
+  - The max number of layers is 127.
+- It supports new lines with `\`
+- It supports comments after `#`
+
+##### Commands
+
+- `FROM`
+  - It must be the first command in a `Dockerfile`.
+  - It specify the base image for the customized image. Ex, `FROM nginx`
+  - `FROM scratch` an empty image for apps that can run on machine by itself.
+    - Suitable for apps developed by GOlang.
+- `RUN`
+  - Can be used to execute CLI commands.
+  - Commands followed by it will be run.
+  - or append `[filename, param1, param2]` to `RUN` command, then the file will also be executed.
+  - To avoid redudent layers, multiple commands should be combined by using `&&` and using one `RUN` command.
+
+##### Build Image
+
+- `docker build -t <repoName>:<TagName> <contextfolderpath>`
+  - context folder is the folder that will be uploaded to Docker server for generating image.
+  - By default the `Dockerfile` in the context folder will be executed.
+  - use `-f <filepath>` to specify the file as the docker file.
+  - use `.dockerignore` to specify the files to be ignored for uploading.
+  - `docker build <GitHubURL>#:<FolderName>` build from git repo
+  - `docker build <TarURL>` download tar as context folder then build.
+  - `docker build - < Dockerfile` or `cat Dockerfile | docker build -` build from files using standard input.
+  - `docker build - < <filepath>` build from compressed files using standard input.
+
+### Docker Compose
+
+- The official container orchestration tool supported by Docker.
+- Uses `YAML` format file(`docker-compose.yml`) to define multiple containers at once and let them work together.
+- A service is a container, or multiple container instances that running the same image.
+- A project is made of by a series of services, defined in the `docker-compose.yml`.
+- It is written in `Python`, uses `Docker API`.
+- It supports `Linux`, `macOS`, `Windows 10`.
+- `Docker Desktop for Mac/Windows` includes `docker-compose`
+
+### Kubernetes
+
+##### Introduction
+
+- Also known as k8s.
+- The open source container orchestration tool developed and supported by Google, donated to Cloud Native Computing Foundation (CNCF).
+- Written in Golang.
+- Supports managing multiple containers works with cloud platforms and internal data center.
+
+##### Architecture
+
+- A cluster is consisted of one or more master nodes and one or more worker nodes.
+  - Multiple master nodes are used to achieve high availability.
+  - one cluster can have no more than 5000 nodes, 150,000 pods and 300,000 containers.
+- Each node can have multiple pods.
+  - There are two types of nodes master nodes and work nodes. master nodes are used to control, monitor worker nodes.
+  - A node can be phsical machine or VM or VM Cloud.
+  - one node can have no more than 100 pods.
+  - A service is set of pods that work together.
+    - pods in a service share a single domain name and can be load balanced.
+- Each pod can have multiple containers.
+  - Each pod will have an unique IP and all containers in the pod shares a single volumn.
+  - The volumn can be cloud storage, or network work storage like Network File System.
+- A master node has four components
+  - API Server - It is uses API transmit cluster info and config in JSON format, it is responsibe for all communications between developer and the cluster. It can be used by two API tool from the client side:
+    - Command line tool `kubectl`, which is a Go lang binary.
+    - Kubernetes Dashboard
+  - Scheduler - schedules pods on nodes and read config files.
+    - It will select node for scheduling new pods based on the hardware config info from the config file.
+    - It read resource usage data from worker nodes via the API server from ETCD database.
+  - Controller Manager - runs controllers,
+    - kube-controller-manager - control local machines
+      - Ensures nodes are running all the time
+      - Ensures the number of pods are the same as
+      - controller watch the environment in a certain interval and take acting accordingly.
+      - it has the following controller, each of them is a separate process, but compiled into a single binary and run as a single process.
+        - Node controller - monitor the nodes health
+        - Replication controller(rc or rcs)
+          - Auto restart failed containers, nodes based on health check result
+          - Replication Controler make sure the number of pods and settings defined in the Manifest file is always satisfied.
+        - Endpoints controller - maintain endpoint services
+        - Service account and token controllers - maintain account credentials.
+    - cloud-controller-manager - control cloud machines
+      - Node Controller - monitor the cloud nodes health
+      - Route Controller - setup the cloud nodes routes
+      - Service Controller - setup cloud provider load balancers
+      - Volume Controller - setup cloud volumes
+  - Etcd - open source, distributed key-value database from CoreOS.
+    - It is only connected to the API Server
+    - Can be a part of master node or configured externally.
+    - It has a max size of 1MB.
+    - It stores `Secret` data - `Secret` is a k8s object which stores sensitive data like credentials.
+    - It stores `Config Maps` data - a K8s objects stores configs.
+- A worker node has three components
+  - kubelet - connected to the master API Server, reponsible for communication.
+    - It is reponsible for keeping pod health, according to the requirement in the `PodSpecs`
+    - When pod is unhealthy, it will try to restart or run it on a different node
+    - It only manage containers created by k8s
+  - kube-proxy - maintain network config & rules and exposes services available to the internet.
+    - It watches API server on the master node for instructions.
+  - container runtime
+    - a software which is reponsible for running containers
+    - common container runtime
+      - Docker
+      - Containerd
+      - Cri-o
+      - Rktlet
+      - Kubernetes CRI(Container Runtime Interface)
+- K8s Addons are available for providing dashboard, monitoring, centralized logging, and DNS management.
+- Automatic bin packing - auto assign jobs amongst containers based on memory and requirement.
+- Rollout happens when new changes are deployed, rollbacks can be used to revert changes.
+  - This is auto handled by k8s with no downtime.
+  - When errors are detected during rollout, k8s will rollback.
+- Horizontal Pod Autoscaler - is used to add or remove pods based on CPU utilization by changing setting in the Replication Controller. It can also auto scales by using commands or dashboard.
+- K8s can also run jobs, which is controlled and scheduled by the Job Controller
+  - each job can be run on one or more pods as required and do auto scaling.
+  - when the job is complete all pods will be shutdown
+
+##### Installation
+
+- Online Kubernetes Labs - Web based console for learning k8s
+  - [Kubernetes Playground](https://www.katacoda.com/courses/kubernetes/playground)
+  - [Play with K8s](https://labs.play-with-k8s.com)
+  - [Play with Kubernetes Classroom](https://training.play-with-kubernetes.com)
+- Installation Tools - Minimun installation that run a single node cluster inside a VM on the laptops for development
+  - [Minikube](https://kubernetes.io/docs/setup/learning-environment/minikube/#installation)
+  - [Kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+- Cloud based Kubernetes services - Provide setting and let the cloud service setup everything
+  - GKE - Google Kubernetes Engine
+  - AKS - Azure Kubernentes Service
+  - Amazon EKS

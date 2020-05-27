@@ -289,6 +289,7 @@ http(s)
 - It is used to marking destination and source devices
 - Source port number is a random number in upper part of 65535
 - Destination port number uses well-known port number.
+  - A frame has both a source port number and a destination port number
 - A socket is an IP address with a port number.
 - Port numbers have a range between 0-65535.
 - Port numbers are used to identify the type of application or services during data transmission.
@@ -390,12 +391,33 @@ http(s)
 ### Switch
 
 - It has Application specific integration cicuitry(ASIC)
-  - it learn Mac address of devices on CAM table
+  - It learns Mac address of devices on CAM table(Address Learning)
 - Many Collision Domains - 1 port a collision domains
 - One or more broadcast domains - as many as the VLANs
 - Manegement IP is the switch IP used for telnet connection
 - It does not need power if it is not used as power source for devices(POE)
 - works at layer two.
+- Each on of its port has access mode that is used to connected to end devices, and trunk mode that connects to other switches.
+  - Two switches connected in trunk mode will act like one combined switch.
+  - There are two encapuslation protocal for trunking:
+    - `802.1q` most used
+    - ISL - inter switch link
+- Dynamic Trunking Protocol is a Cisco Switch protocol that controls the port to be in either access mode or trunk mode. It has the following settings:
+  - `Desirable` - It will start to negotiate trunk mode connection.
+  - `Auto` - It accepts trunk mode connection.
+  - `No Negotiate` - It won't accept trunk mode connection.
+- Spanning Tree Protocol - It is used for loop avoidance. It detects if the network has duplicated connection that will causes layer-2 loops. It will disconnect thoese links logically.
+- Forwarding Decision - A switch will have two types of forwarding decision:
+  - `Cut Through` - forwarding immediately.
+  - `Store & Forward` - wait to receive the entire frame then do error checking before forwarding.
+- Virtual LAN(VLAN) - Logically separate ports, each group of ports in a VLAN is isolated from others.
+  - Native VLAN - When a port is added to a VLAN it will have a tag, by default when a port has no tag it will be put in the native VLAN.
+  - Each switch has a VLAN database, and there is a revision number starts at 0, it increment by 1 everything an change is made.
+- VLAN Trunking Protocol(VTP) - it will copy and paste VLAN settings among all switches in trunk mode based on the highest revision number. There are three mode for VTP setting:
+  - `Server` - For switch with `Server` setting, all the changes are made on this single switch.
+  - `Client` - Other switches that accept updates from the `Server` switch.
+  - `Transparent` - Turn VTP off on this switch.
+- VTP Pruning - Stop transmitting traffic for a certain VLAN on the switch with VTP Pruning setting.
 
 ### Router
 
@@ -405,10 +427,30 @@ http(s)
 - It has the ability to assign source and destination mac address according to the source and destination ip addresses if the IP addresses are from different sub networks.
 - router is the only way for traffic goes in and out. it is the gateway and has a routing table.
 - It works at layer three.
-- Cyclic Redundancy Check(CRC) is the hash value attached to the beginning of the frame for error checking process before data is out and in the LAN. It is the job for routers.
+- Cyclic Redundancy Check(CRC) is the hash value attached to the beginning of the frame for error checking process before data is out and in the LAN. It is the job for routers to apply the hash algorithm and check if the hash value matches.
 - Network Address Translation(NAT) is a router features that auto translate LAN IP and WAN IP address according to port number. In order to let private IPs share a common public IP because the number of public IPs are limited.
 - Port Forwarding is an application of NAT that redirects a communication request from one address and port number combination to another while the packets are traversing a network gateway, such as a router or firewall.
   - It is commonly used for remote desktop connection using port number 3389.
+- Cisco uses CEF Enhanced semi-hardware and semi-software structure to improve performance.
+- Router uses software to control routing.
+  - Routing can be static, the router make routing based on memorized rules.
+  - Dynamic routing, the router make routing by itself.
+- Dynamic routing have the following categories.
+  - Internal Gateway Protocol - Used in LAN
+    - RIP - routing based on distance, it belonds to distance vector type
+      - RIP has two version `RIPv1` and `RIPv2`. Compared to the second version, the first version does not have supports VLSM(classless IP), authentication, and multicast.
+      - It has for timer:
+        1. update timer - the time interval for sending info about routes.
+        2. flush timer - starts once no info is received about a route
+        3. holddown timer - starts when invalid timer ran out.
+        4. invalid timer - starts once no info is received about a route
+      - It uses a hoop count that updated every 30 seconds to determine the distance.
+      - When a connection is lost due to the delayed infomation, the router might still thinks there is a connection then devices lie to each other. This is called counting to infinity.
+    - OSPF - routing based on speed, it belongs to link state type
+    - EIGRP - combines the best of RIP and OSPF, Used by Cisco devices.
+  - External Gateway Protocol - Used in WAN
+    - BGP
+    - EGP
 
 ### Firewall
 

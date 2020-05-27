@@ -363,6 +363,19 @@ useEffect(() => {
 
 - The Bootstrap for React
 - [Click](https://material-ui.com/getting-started/installation/) to see its Docs.
+- Example
+  ```js
+  import React from "react";
+  import ReactDOM from "react-dom";
+  import Button from "@material-ui/core/Button";
+  function App() {
+    return (
+      <Button variant="contained" color="primary">
+        Hello World
+      </Button>
+    );
+  }
+  ```
 
 ## Debug
 
