@@ -346,7 +346,8 @@ useEffect(() => {
 ```
 
 - First parameter holds a function that will be called everything the component is rendered and rerendered.
-- Second parameter holds an array of variables. The function in the first parameter will then only be called when these variables change.
+- Second parameter holds an array of variables called dependency array. The function in the first parameter will then only be called when these variables change.
+  - All variables in the `useEffect()` use be added to the dependency array.
   - When this parameter is an empty array, The function in the first parameter will be only called once when the component is mounted.
   - a `return() => {}` block can be added to the `useEffect()` function, code in this block will be called only once during component unmount.
 - One component can have multiple `useEffect()` function and they will be executed in order.
@@ -357,6 +358,7 @@ useEffect(() => {
 - In a `context.js` create the context by using `export const ContextName = createContext(initialValue)`
   - `initialValue` can be null.
 - In `App.js` use `{%raw%}<ContextName.Provider value={{value1, value2}}> <Toolbar /> </ContextName.Provider>{%endraw%}` to create context and assign values to the context.
+- reload will clear all context.
 - In component class use `const {value1, value2} = useContext(ContextName);` to get values
 
 ## Material UI
@@ -382,3 +384,4 @@ useEffect(() => {
 - Install React Developer Tools Plugin
 - React Tab will be shown in the browser inspector, all component tag will be shown.
 - `open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=/tmp/chrome_dev_test --disable-web-security` open a Broswer with no security requirement.
+- statement `debugger;` will trigger the debugger to run.

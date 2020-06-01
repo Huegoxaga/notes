@@ -152,18 +152,19 @@ An easier way to assign elements of objects and arrays into variables.
 
 #### Comparison Operators
 
-- == //equal to
-- === //identical (equal and of same type)
-- != //Not equal
-- !== //Not identical
-- \>
-- \>=
-- <
-- <=
+- `==` //equal to
+- `===` //identical (equal and of same type)
+- `!=` //Not equal
+- `!==` //Not identical
+- `>`
+- `>=`
+- `<`
+- `<=`
 
 #### Logical Operators
 
 - JavaScript uses `&&`, `||`, `!` as logical operators.
+  - `!!` will convert the variable to its corresponding boolean value by return the opposite boolean first then negate it again.
 - `bool && string`, if bool true return string, if bool false return false.
 
 #### Conditional(ternary) Operator

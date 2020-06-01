@@ -366,7 +366,7 @@ while condition:
 
 - It is a mutable object. Its content can be changed. This index starts at 0.
   ```py
-  list=[‘a’,’b’,’c’,’d’]
+  list=['a','b','c','d']
   print(list[0])
   #Output:’a’
   ```

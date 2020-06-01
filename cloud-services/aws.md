@@ -287,6 +287,11 @@ It runs scripts and codes without the need to set up the server.
 
 - Click the Test tab to generate test cases with specific input.
 - Add proper Execution Role with specific permission to allow Lambda instance to have access to other AWS services.
+- A layer is a ZIP archive that contains libraries, a custom runtime, or other dependencies.
+  - It can be a dock image.
+  - If the image size is over 50MB upload to S3 and use link to add layer.
+- The Lambda Develop package cannot be over 250MB
+- By default all Lambda layers are mounted to `/opt`, and `$PATH` value `/opt` for Lambda to find the package, In environment variable add key `PYTHONPATH` and value `/opt/`.
 
 ## SNS
 

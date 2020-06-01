@@ -135,6 +135,9 @@
 
 - It was first introduced in 1980s, it was getting popular recently only becase the improved stroage and computing
 - Can be used for both regression and classification tasks.
+- Most Neural Networks are consist of a Feedforward Process and Backpropagation.
+  - FeedForward Process(Nerual Network) uses static mapping as the output only depend on the input and the weights
+  - Going from output to input and finding the better weights for the model using stochastic gradient descent with the chain rule
 - In neural science, each neuron has dedrites(receiver) and axon(transmitter), millions of millions of neuron work together. sigals are passed through synapses.
 - In neural networks, the processing unit is called neuron or node. The connection between neuron is also called synapse.
 - Overfitting and Underfitting - Underfitting implys a model that is too simply to make prediction, Overfitting implys a model that is learning too hard from the train data and too complicated to effectively and correctly make prediction.
@@ -203,6 +206,31 @@
   - The last fully connected layer will vote for the result for image recognition.
   - The softmax function is used to calculation possibilities of each result for image recogition so possibilities of all possible answers add up to 1.
   - The cost function in CNNs is called loss function, cross-entropy formula is frequenly used.
+
+##### Recurrent Neural Networks(RNNs)
+
+- RNNs are a type of ANNs that can capture temporal dependencies.
+  - Temporal Dependencies or Dependencies Over Time - Current output dependent on both current and past inputs.
+- Most speed recognition, natural language processing(NLP), time series prediction, gesture recognition uses RNNs.
+  - Gesture recoginition combine CNNs and RNNs.
+- The inputs for RNNs are in a certain sequence in stead of a single independent input.
+- The output of a hidden layer will be stored by the previous layer as additional inputs for that hidden layer.
+  - Thoses additioanl input nodes are the memory that stores the states info of the RNNs.
+  - The value of the previous state node is applied with the activation function.
+  - Each feed back from the previous output is called a time step.
+- The exploding gradient Problem happens when it grows too large
+  - It can be solved by gradient clipping which will normalize the gradient when it is over a certain threshold.
+- RNNs uses Back propagation through time
+- vanishing gradient problem causes the RNNs only remember inputs from only a few time step.
+- RNNs has a folded model that has a circular arrow which point to the node itself with memory value _s_. The model looks the same at any given time.
+- RNNS has a unfolded model that represent the changes of one node throughout a given time period.
+  - For unfolded models the input layer is at the bottom the output layer is at the top. Time goes from left to right.
+- Time Delay Neural Networks(TDNNs) - The first attempt to add memory to the nerual networks.
+- Simple RNNs or Elman(Jordan) network
+  - A basic three layer neural network with feedback that serve as memory inputs.
+- Long Short Term Memory(LSTM)
+  - solving the problem called vanishing gradient problem of other RNNs in which contributions of information decayed geometrically over time.
+- Gated Recurrent Networks(GRUs) refines the LSTM.
 
 ## Optimatization Tips for Neural Networks
 

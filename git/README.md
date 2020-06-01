@@ -11,6 +11,10 @@
 - GUI apps are available for Git, however command line is recommended for learning purposes.
 - One repository can have multiple branches, the first branch created by default it called master.
 - The master branch is usually shared by the team, regular commits are suggested to make on a separate branch.
+- There is a HEAD in each repo, by default it is the master branch. It can be set in the repo setting.
+- When a branch is ahead of the `HEAD`, it can be merged to the HEAD to update the `HEAD`.
+- When a branch is behind the `HEAD`, it can `pull` the head and update from the `HEAD`.
+- A fast-forward is when, instead of constructing a merge commit, git just moves your branch pointer to point at the incoming commit. It happens if it detects that the current `HEAD` is an ancestor of the commit you're trying to merge.
 
 ## Installation
 
@@ -71,6 +75,10 @@
 - `git checkout branchName` Switch branch.
 - `git merge` Combines remote tracking branch into current local branch.
 - `git merge branchName` Merge certain branch to the current branch, when done input commit message.
+- `git merge origin/remoteBranch` Merge certain remote branch to the current branch, when done input commit message.
+  - When making pull request that will not be able to auto-merged, merge code locally then push it, then auto merge for the pull request will be enabled.
+  - The `--no-ff` flag prevents git merge from executing a `fast-forward`
+  - `--ff-only` means fast-forward only.
 
 ### Working with Remote Repository
 
@@ -79,6 +87,8 @@
   - For Github repos, the URL is usually like, `https://github.com/AccountName/ReposName.git`
 - `git push -u origin <remoteBranch>` push to certain remote branch and set the remote branch as the remote tracking branch.
 - `git push` update the remote repo with its corresponding local branch.
+- `git push origin <branchName>` push to a certain remote branch.
+- `git fetch origin` git fetch is similar to pull but doesn't merge. It fetches remote updates but the local stays the same.
 - `git pull <URLorRemoteBranchName>` pull from a certain remote branch.
 - `git pull` Pull the latest from the remote repos
 - `git clone URL` Clone repos into the current directory.

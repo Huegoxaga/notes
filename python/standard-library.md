@@ -305,7 +305,7 @@
   for root, dirs, files in os.walk('path'):
     print(root, dirs, files)
   ```
-- `os.environ` return all environment variables.
+- `os.environ` return all environment variables in a dictionary.
   - `os.environ.get('ValueName')` get certain environment value.
 - `os.path.join('folderPath','file')` return a path as `folderPath/file`
 - `os.path.basename('path')` return file name of the path.
