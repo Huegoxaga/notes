@@ -492,6 +492,9 @@
 - A power series is a series of the form ![$\sum^{\infty}_{n=0} c_nx^n=c_0+c_1x+c_2x^2+ c_3x^3 + \cdots$](https://render.githubusercontent.com/render/math?math=%24%5Csum%5E%7B%5Cinfty%7D_%7Bn%3D0%7D%20c_nx%5En%3Dc_0%2Bc_1x%2Bc_2x%5E2%2B%20c_3x%5E3%20%2B%20%5Ccdots%24) where _x_ is the variable, and the _c_'s are constants called the coefficients of the series.
   - If _c_ are all 1, the power series becomes the geometric series.
   - If replace _x_ with (_x - a_), it is called a power series in (_x - a_) or a power series centered at _a_ or a power series about _a_.
+- Taylor’s Inequality - If ![$\left|f^{(n+1)}(x)\right| \leqslant M$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%7Cf%5E%7B(n%2B1%29%7D(x%29%5Cright%7C%20%5Cleqslant%20M%24) for ![$|x-a| \leqslant d$](https://render.githubusercontent.com/render/math?math=%24%7Cx-a%7C%20%5Cleqslant%20d%24), then the remainder ![$R_n(x)$](https://render.githubusercontent.com/render/math?math=%24R_n(x%29%24) of the Taylor series satisfies the inequality ![$\left|R_n(x) \right| \leqslant \frac{M}{(n+1)!} |x-a|^{n+1}$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%7CR_n(x%29%20%5Cright%7C%20%5Cleqslant%20%5Cfrac%7BM%7D%7B(n%2B1%29!%7D%20%7Cx-a%7C%5E%7Bn%2B1%7D%24) for ![$\left|x-a \right| \leqslant d$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%7Cx-a%20%5Cright%7C%20%5Cleqslant%20d%24)
+- The Binomial Series - If _k_ is any real number and _|x| < 1_, then ![$(1+x)^k = \sum^{\infty}_{n=0} \left( \begin{array}{c} k \ n \end{array} \right) x^n=1+kx+ \frac{k(k-1)}{2!} x^2+ \frac{k(k-1)(k-2)}{3!}x^3+ \cdots$](https://render.githubusercontent.com/render/math?math=%24(1%2Bx%29%5Ek%20%3D%20%5Csum%5E%7B%5Cinfty%7D_%7Bn%3D0%7D%20%5Cleft(%20%5Cbegin%7Barray%7D%7Bc%7D%20k%20%5C%5C%20n%20%5Cend%7Barray%7D%20%5Cright%29%20x%5En%3D1%2Bkx%2B%20%5Cfrac%7Bk(k-1%29%7D%7B2!%7D%20x%5E2%2B%20%5Cfrac%7Bk(k-1%29(k-2%29%7D%7B3!%7Dx%5E3%2B%20%5Ccdots%24)
+- P768
 
 #### Properties
 
@@ -524,6 +527,7 @@
   - subsititute coefficients formula into the power series returns the Taylor series ![$f(x)= \sum^{\infty}_{n=0} \frac{f^{(n)}(a)}{n!} (x-a)^n$](https://render.githubusercontent.com/render/math?math=%24f(x%29%3D%20%5Csum%5E%7B%5Cinfty%7D_%7Bn%3D0%7D%20%5Cfrac%7Bf%5E%7B(n%29%7D(a%29%7D%7Bn!%7D%20(x-a%29%5En%24)
     - It returns the Taylor series of the function _f_ at _a_ (or about _a_ or centered at _a_)
     - When _a = 0_ it becomes Maclaurin series. ![$f(x)= \sum^{\infty}_{n=0} \frac{f^{(n)}(0)}{n!} x^n$](https://render.githubusercontent.com/render/math?math=%24f(x%29%3D%20%5Csum%5E%7B%5Cinfty%7D_%7Bn%3D0%7D%20%5Cfrac%7Bf%5E%7B(n%29%7D(0%29%7D%7Bn!%7D%20x%5En%24)
+- If ![$f(x)=T_n(x)+R_n(x)$](https://render.githubusercontent.com/render/math?math=%24f(x%29%3DT_n(x%29%2BR_n(x%29%24), where ![$T_n$](https://render.githubusercontent.com/render/math?math=%24T_n%24) is the nth-degree Taylor polynomial of _f_ at _a_ and ![$\lim_{n \to \infty} R_n(x) = 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20R_n(x%29%20%3D%200%24) for _|x - a| < R_, then _f_ is equal to the sum of its Taylor series on the interval _|x - a| < R_.
 
 #### Methods
 

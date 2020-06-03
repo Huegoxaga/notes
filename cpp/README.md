@@ -1,32 +1,42 @@
-# C
+# `C++`
 
 ## Introduction
 
-- It is a low-level language that relates closely to the way machines work
-- It is used to write operating systems and other languages.
+- It is a general-purpose programming language.
+- It was derived from `C`, and is largely based on it.
+- It needs the installation of a compiler to run.
+  - `GNU GCC` is one of the popular compilers available for `C++`
+- `C++` source files have `.cpp`, `.cp` or `.c` extensions.
+- Source file need to be complied to run.
 
 ## Syntax
 
+- Whitespace, such as spaces, tabs, and newlines, is also ignored,
+- In general, blank lines serve to improve the code's readability and structure.
+- The `C++` compiler ignores blank lines.
 - Each statement must end with a semicolon.
-- The C programming language is case-sensitive,
+- The `C++` programming language is case-sensitive,
 - Single-line comments `//`
-  - It is introduced in `C++` and adopted by some of the C compiler.
+  - It tells the compiler to ignore everything that follows, until the end of the line.
 - Multi-line comments
-  ```c
+  ```cpp
   /*
    * Multi-line comments
    */
   ```
-- `#include <stdio.h>`, this is the header file included files that imports function.
+- A block is a set of logically connected statements, surrounded by curly braces (`{}`).
+- `#include <iostream>`, this is the header file included files that imports function.
+- `using namespace std`, inform the compiler, the selection of namespace.
 - main function is the entry point of the program
-  ```c++
+  ```cpp
   int main() {
-    printf("Hello, World!\n");
+    cout << "Hello world!"
     return 0;
   }
   ```
   - main function return 0 to the calling process after execution.
-  - 0 means the program executed successfully, other number indicates the program has failed.
+  - The line return 0; terminates the main() function and causes it to return the value 0 to the calling process. A non-zero value (usually of 1) signals abnormal termination.
+  - If the return statement is left off, the `C++` compiler implicitly inserts `return 0;` to the end of the `main()` function.
 
 ## Data Types
 
@@ -43,7 +53,7 @@
 ### Related Functions
 
 - `sizeof(typename)` can be used to show the memory required by each type
-  - The storage space required by each type varies by platform
+  - The storage space required by each type varies by operating system,
   - returns number of bytes required by a certain type.
   - Ex, `sizeof(int)`
 - Type casting
@@ -55,12 +65,15 @@
 
 ## Variables
 
-- Variable name must begin with either a letter or an underscore and can be composed of letters, digits, and the underscore character.
+- `C++` requires that you specify the type and the identifier for each variable defined.
+- An identifier is a name for a variable, function, class, module, or any other user-defined item.
+- An identifier starts with a letter (`A-Z` or `a-z`) or an underscore (`_`), followed by additional letters, underscores, and digits (`0` to `9`).
 - Popular naming conventions is using lowercase letters with an underscore to separate words (snake_case).
 - Variables must be declared as a data type
   - `int my_var;`
   - `int a, b;` declares multiple variables at once.
 - `my_var = 42;` value assignment after declaration.
+  - the assigned value should match the declared data type.
   - `int my_var = 42;`, optionally declaration and assignment can be written in one line.
 - A constant stores a value that cannot be changed from its initial assignment.
   - Constant use uppercase identifiers.
@@ -115,6 +128,13 @@
 
 ##### Output
 
+- `cout`
+  - Output content should follow the insertion operator `<<`. For example, `cout << "Hi!";`
+  - You can add multiple insertion operators after cout. Output will be in one line. `cout << "This " << "is " << "awesome!";`
+  - NewLine
+  - One way to print two lines is to use the endl manipulator, `cout << "Hello world!" << endl;`
+  - The new line character `\n` can be used as an alternative to `endl`.
+  - Two newline characters (`\n\n`) placed together result in a blank line.
 - `printf()` generates output
   - printf(“formatted string with format specifier (%d)”,variablesXToReplace%d);, Formatted output
   - Escape sequences begin with a backslash `\`:
@@ -169,6 +189,9 @@
 
 ##### Input
 
+- `cin`
+  - Input content is indicated by the extraction operator (`>>`). For example, `int num; cin >> num;`.
+  - extractions on cin can be chained to request more than one input in a single statement: `cin >> a >> b;`
 - `getchar()` Returns the value of the next single character input.
   - `char x = getxhar()`
 - The gets() function is used to read a string.
@@ -292,9 +315,9 @@
 - `*` multiplication
 - `/` division
   - Integer division - Integers dividing integers will get integers.
+  - If one or both of the operands are floating point values, the division operator performs floating point division.
 - `%` modulus division
   - Modulus division only works on integers.
-- C may not evaluate a numeric expression from left to right among operators with the same precedence.
 - Using parentheses `( )` to indicate which operations are to be performed first.
 
 #### Assignment Operators
@@ -567,74 +590,3 @@
     - Input argument need to be cast when dereferencing with `*` before use.
   - `void * example (void *);`
   - It makes the function generic.
-
-## Structures
-
-- It is a user-defined data type that contains variables(members) of different data types.
-  - The member of astructure can be of all basic types, strings, arrays, pointers, and other sturctures.
-- The name of the structure is defined by the struct tag after keyword `struct`.
-- Declaration
-  ```c++
-  struct sample {
-      int id;
-      char name[12];
-      float value;
-  };
-  struct sample s1;
-  struct sample s2;
-  ```
-- All members stores in a contiguous block of memery. The memory size of a structure can be determined by using `sizeof()`
-- Initialization
-  ```c++
-  struct sample s3 = {1, "John", 23.32};
-  //or
-  struct sample s4;
-  s4 = (struct sample) {1, "John", 23.32};
-  //or
-  struct sample s5 = {.name = "John", .id = 1, .value = 23.32};
-  //or
-  struct sample s6 = s5;
-  ```
-- Access Members using dot operator `.`, `s1.value = 77.7`.
-  - Assign new string value to a member use `strcpy(s1.name, "new name")`
-- `typydef` keyword
-  - It can be used to declare structures, and keyword `struct` can be ignored in future when declaring variables.
-    ```c++
-    typedef struct {
-      int id;
-      char title[40];
-      float hours;
-    } course;
-    course cs1;
-    course cs2;
-    ```
-- The members of a structure may also be structures.
-  - `c.center.x`
-  - Nested curly braces are used to initialize members that are structs. `circle c = {4.5, {1, 3}};`
-  - A struct definition must appear before it can be used inside another struct
-- defines a pointer for structure. `struct myStruct *struct_ptr;`
-- stores the address of the structure variable in the pointer. `struct_ptr = &struct_var;`
-- accesses the value of the structure member `struct_ptr -> struct_mem;`
-- Structures can be as function parameters
-- Structures can be the elements of an array.
-
-## Unions
-
-- A union allows to store different data types in the same memory location.
-  And it has members.
-- Union members can be of any data type, including basic types, strings, arrays, pointers, and structures.
-- The largest member data type is used to determine the size of the memory to share and then all members use this one location. This process also helps limit memory fragmentation
-- Define unions
-  ```cpp
-  union val {
-  int int_num;
-  float fl_num;
-  char str[20];
-  };
-  ```
-- Declare unions
-  ```cpp
-  union val u1;
-  union val u2;
-  u2 = u1;
-  ```

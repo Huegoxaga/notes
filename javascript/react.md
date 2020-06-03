@@ -125,6 +125,7 @@ class Counter extends Component {
 		}
 		return (
 			//it is used to used to wrap all elements without using parents element like div.
+			// or simply <> and </>
 			<React.Fragment>
 				<img style={this.styles} src={someURL} className="className1 className2">
 				<p style={ {fontSize: 30} }>{this.functionName()}{this.state.data2}</p>
@@ -204,6 +205,7 @@ export default Counter;
 ## React Router
 
 - It works with URL links and redirection for single-page apps made by React.
+- Typying new addresses and pressing enter key will reload the entire app, this is different from the SPA's way of routing pages.
 - In the app folder, run `npm install react-router-dom` to install the module.
 
 ```js

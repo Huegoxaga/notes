@@ -73,6 +73,7 @@
 - `git branch --set-upstream-to <remoteBranchName>` or `git branch -u <remoteBranchName>` set the remote tracking branch for the local branch.
 - `git push origin --delete branchName` Delete the branch in the remote repos.
 - `git checkout branchName` Switch branch.
+- `git checkout -b branchName` create a new branch and switch to that branch.
 - `git merge` Combines remote tracking branch into current local branch.
 - `git merge branchName` Merge certain branch to the current branch, when done input commit message.
 - `git merge origin/remoteBranch` Merge certain remote branch to the current branch, when done input commit message.
@@ -82,6 +83,10 @@
 
 ### Working with Remote Repository
 
+- `git log` see records and past commit id
+- `git revert <commitID>` revert back a certain commit and commit the changes.
+- `git reset <commitID>` reset the files to the state after a certain commit.
+  - use `git push --force` will delete all the newer commits in the remote repo.
 - `git remote` List all the current remote repos.
 - `git remote add origin <URL>` Add the remote repos.
   - For Github repos, the URL is usually like, `https://github.com/AccountName/ReposName.git`
