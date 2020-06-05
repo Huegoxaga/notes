@@ -30,6 +30,22 @@ AWS CLI provides full controls of AWS using command lines.
   - `aws <servicename> help`
 - [Click here](https://docs.aws.amazon.com/cli/latest/index.html#) for complete reference.
 
+## AWS SDK
+
+They are used to connect AWS services from the programming written in various languages.
+
+### Python - Boto3
+
+- [Click](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) to see documents for boto3.
+- AWS services can be accessed in three ways.
+  - Client: `boto3.client('service_name')` low-level AWS service access. All AWS service operations are supported by clients.
+    - `region_name` can be set during initialization
+  - Resource: `boto3.resource('service_name')` higher-level, object-oriented API.
+  - Session: `my_west_session = boto3.Session(region_name = 'us-west-2')` then `backup_s3 = my_west_session.resource('s3')`
+    - stores configuration information (primarily credentials and selected region)
+    - allows developer to create service clients and resources
+    - `boto3` creates a default session if not specified.
+
 ## IAM
 
 Identity and Access Management - used to create user and group with specific permissions.
@@ -42,7 +58,7 @@ Identity and Access Management - used to create user and group with specific per
 
 Provide Persistent Storage
 
-- Each bucket belong to a certain region and replicated across multiple availbility zones.
+- All buckets(global) are shown in the `S3` console. However, each bucket belong to a certain region and can be replicated across multiple regions.
 - A file name is called key.
 
 ### CLI Commands
@@ -266,6 +282,8 @@ It deploys app on EC2 and will do capacity provisioning, load balancing, scaling
 
 A NoSQL database that stores JSON data.
 
+- Whenever the database is updated, new record or updated record will be sent to the DynamoDB Stream.
+
 ## RDS
 
 It hosts and maintain SQL Database server.
@@ -286,12 +304,30 @@ It generates metrics for other services.
 It runs scripts and codes without the need to set up the server.
 
 - Click the Test tab to generate test cases with specific input.
-- Add proper Execution Role with specific permission to allow Lambda instance to have access to other AWS services.
+- Add proper Lambda Execution Role to allow Lambda instance to be triggered by other AWS services.
 - A layer is a ZIP archive that contains libraries, a custom runtime, or other dependencies.
   - It can be a dock image.
   - If the image size is over 50MB upload to S3 and use link to add layer.
 - The Lambda Develop package cannot be over 250MB
 - By default all Lambda layers are mounted to `/opt`, and `$PATH` value `/opt` for Lambda to find the package, In environment variable add key `PYTHONPATH` and value `/opt/`.
+- DynamoDB can trigger Lambda function using DynamoDB stream. Edited records or new records will be sent to lambda.
+
+## SQS
+
+It store messages as a cache for other services to fetch, then delete processed messages.
+
+- Any triggered lambda function will delete messages after its done.
+- Delivery means the client side delivery a new message to the SQS.
+- Receive means any services starts to process the message from SQS.
+- `Receive Message Wait Time` - The number of seconds of the interval for other services fetch messages from SQS. By default it is 0 second.
+  - 0 second means short polling, other services fetch messages contantly.
+  - Any value assigned other greater than 0 second make it long polling.
+- `Message Retention Period` - the length of the period that the messages are available to other services.
+- `Default Visibility Timeout` - the length of the period that the messages become invisible for other services, once a service has started processing it.
+- `Delivery Delay` - the time it takes for the SQS to show new messages.
+- `Dead Letter Queue` - It is a Queue in SQS that designated to receive data that cannot be processed by the services.
+  - When a service receive a message from SQS and failed to process. The message will be available in the queue again and again.
+  - `Maximum Receives` the number of failure for message to reach before it is moved to Dead Letter Queue.
 
 ## SNS
 
@@ -301,6 +337,29 @@ It is used to send notifications to user emails or other resources.
 - A topic can have many subscribers with differenct protocols(Email, SQS, Lambda) to receive the message.
 - Each topic has a `Publish message` button that can be used to test a message with all subscribers.
 - Each subscription can have a unique filter for all messages.
+
+## SES
+
+It can be used to send formatted emails from registered email addresses.
+
+- The email that will be used to send messages should be verified first.
+- The email can also be sent by cutomized SMTP Service by adding Domain.
+- By default email are sent throught AWS mailbox simulator. The message trigger spoof warning or treated as spam sometimes. Request sending limit increase will move SES out of the sandbox mode.
+- SES template is a `json` file with the following format.
+  ```json
+  {
+    "Template": {
+      "TemplateName": "orangeville_limit_exceeded",
+      "SubjectPart": "THRESHOLD LIMIT EXCEEDED",
+      "TextPart": "THRESHOLD LIMIT EXCEEDED",
+      "HtmlPart": "HTML_CONTENT"
+    }
+  }
+  ```
+  - `HtmlPart` - It neens a escaped json string. [Click here](https://www.freeformatter.com/json-escape.html) to use the json escape tool to convert it to string.
+  - run `aws ses create-template --cli-input-json fileb://<filePath> --region <regionCode> --profile <profileName>` to create the template.
+  - run `aws ses update-template --cli-input-json fileb://<filePath> --region <regionCode> --profile <profileName>` to update the template.
+- Use other SDK to send the email using html template or plain text.
 
 ## API Gateway
 
@@ -334,6 +393,12 @@ Fully managed Cloud based machine learning service
   - Auto labeling
   - Manual labeling
 - Sagemaker Neo uses edge locations to reduce lantency in training and use custmized hardwares.
+
+## Rekognition
+
+It provides an endpoint service for image and video analysis. It is the AWS's top level AI service for computer vision.
+
+- The endpoint is available from CLI, SDKs as long as the credential role has access to the service.
 
 ## Alexa
 

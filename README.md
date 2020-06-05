@@ -16,6 +16,7 @@
   - [.NET](https://huegoxaga.github.io/notes/c-sharp/dot-net.html)
   - [ASP.NET](https://huegoxaga.github.io/notes/c-sharp/asp-dot-net.html)
 - [C](https://huegoxaga.github.io/notes/c/index.html)
+- [C++](https://huegoxaga.github.io/notes/cpp/index.html)
 - [Swift](https://huegoxaga.github.io/notes/swift/index.html)
   - [Xcode](https://huegoxaga.github.io/notes/swift/xcode.html)
 - [Markup Language](https://huegoxaga.github.io/notes/markup/index.html)

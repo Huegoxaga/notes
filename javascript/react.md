@@ -189,6 +189,8 @@ class Counter extends Component {
 export default Counter;
 ```
 
+### Functional Component
+
 - when a component doesn’t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.
   ```js
   const ComponentName = (props) => {
@@ -201,6 +203,25 @@ export default Counter;
     return <h1>Hello, {props.name}</h1>;
   }
   ```
+
+### Higher-order Component(HOC)
+
+- A higher-order component is a function that takes a component as an argument and returns a new component.
+- Definition
+  ```js
+  import React from "react";
+  const higherOrderComponentFunction = (WrappedComponent) => {
+    class HOC extends React.Component {
+      render() {
+        // passes props from WrappedComponent in this.props, then add a newProp
+        return <WrappedComponent {...this.props} newProp={123} />;
+      }
+    }
+    return HOC;
+  };
+  export default higherOrderComponentFunction;
+  ```
+- Invoke - `const SimpleHOC = higherOrderComponentFunction(MyComponent);`
 
 ## React Router
 

@@ -194,8 +194,9 @@ list(x)   #To   list
 `"formatedStringUsing{}".format(x,y,z)`
 
 - String is formatted in a set of double quotation marks.
-- The location, order, and content of data is indicated by {}.
-- The argument of .format is the value of data in the {}.
+- The location, order, and content of data is indicated by `{}`.
+- The argument of `.format` is the value of data in the `{}`.
+- Use double curly bracket to escape `{}`
 
 ```py
 "{x},{y}".format(x=5,y=12)

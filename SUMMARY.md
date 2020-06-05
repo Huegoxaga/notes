@@ -17,6 +17,7 @@
   - [.NET](c-sharp/dot-net.md)
   - [ASP.NET](c-sharp/asp-dot-net.md)
 - [C](c/README.md)
+- [C++](cpp/README.md)
 - [Swift](swift/README.md)
   - [Xcode](swift/xcode.md)
 - [Markup Language](markup/README.md)

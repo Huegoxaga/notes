@@ -40,19 +40,37 @@
 
 ## Data Types
 
-- int: integer, a whole number.
-- float: floating point, a number with a fractional part.
-- double: double-precision floating point value.
-- char: single character.
-  - A string is stored in a char array.
-  - A character, such as `'b'`, is indicated by single quotation marks and cannot be treated as a string.
-
-> Notes:
-> C has no Boolean Type.
+- The operating system allocates memory and selects what will be stored in the reserved memory based on the variable's data type.
+- The data type defines the proper use of a variable identifier, what kind of data can be stored, and which types of operations can be performed.
+- `int`: integer, a whole number.
+  - Minimum size: 2 byte
+  - It has the following type modifiers:
+    - signed: A signed integer can hold both negative and positive numbers.
+    - unsigned: An unsigned integer can hold only positive values. Ex, `unsigned long int a;`
+    - short: Half of the default size. Minimum size: 1 byte
+    - long: Twice the default size, Minimum size: 4 byte
+- `float`: floating point, a number with a fractional part.
+  - Floating point data types are always signed, which means that they have the capability to hold both positive and negative values. `double temp = 4.21;`
+  - Minimum size: 4 byte
+- `double`: double-precision floating point value.
+  - Minimum size: 8 byte
+- `long double`:
+  - Minimum size: 8 byte
+- `char`: A character, such as `'b'`, is a single letter or symbol, and must be enclosed between single quotes.
+  - A char variable holds a 1-byte integer. and typically interpreted as an ASCII character.
+  - Minimum size: 1 byte
+- `string`: A string is composed of numbers, characters, or symbols. String literals are placed in double quotation
+  - the `<string>` library is required to use the string data type.
+  - The `<string>` library is included in the `<iostream>` library,
+  - It is part of the Standard Library.
+- `bool`: The Boolean data type returns just two possible values: true (1) and false (0). `bool online = false;`
+  - Minimum size: 1 byte
+  - If a Boolean value is assigned to an integer, true becomes 1 and false becomes 0.
+  - If an integer value is assigned to a Boolean, 0 becomes false and any value that has a non-zero value becomes true.
 
 ### Related Functions
 
-- `sizeof(typename)` can be used to show the memory required by each type
+- `sizeof(typename)` The sizeof operator determines and returns the actual size of either a type or a variable in bytes.
   - The storage space required by each type varies by operating system,
   - returns number of bytes required by a certain type.
   - Ex, `sizeof(int)`
@@ -68,6 +86,7 @@
 - `C++` requires that you specify the type and the identifier for each variable defined.
 - An identifier is a name for a variable, function, class, module, or any other user-defined item.
 - An identifier starts with a letter (`A-Z` or `a-z`) or an underscore (`_`), followed by additional letters, underscores, and digits (`0` to `9`).
+- `C++` keyword (reserved word) cannot be used as variable names.
 - Popular naming conventions is using lowercase letters with an underscore to separate words (snake_case).
 - Variables must be declared as a data type
   - `int my_var;`
@@ -91,6 +110,7 @@
   - `float prices[5] = {3.2, 6.55, 10.49, 1.25, 0.99};`
   - An array can be partially initialized, missing values will be set to 0
     - `float prices[5] = {3.2, 6.55};`
+  - If the size of the array is omitted, an array just big enough to hold the initialization is created. `int b[] = {11, 45, 62, 70, 88};`
 - Index starts at 0
 - `x[0]` access array element,
 - `x[1] = 260;` assign a value to an element.
@@ -117,195 +137,6 @@
   - A string literal is a text enclosed in double quotation marks.
   - `char *str = "hello";` is the string pointer declaration, it is considered a constant and cannot be changed from its initial value.
 
-## Standard Library
-
-- import function with `#include <package_name.h>`
-
-### `stdio.h`
-
-- It defines function related input and output.
-- `#include <stdio.h>`
-
-##### Output
-
-- `cout`
-  - Output content should follow the insertion operator `<<`. For example, `cout << "Hi!";`
-  - You can add multiple insertion operators after cout. Output will be in one line. `cout << "This " << "is " << "awesome!";`
-  - NewLine
-  - One way to print two lines is to use the endl manipulator, `cout << "Hello world!" << endl;`
-  - The new line character `\n` can be used as an alternative to `endl`.
-  - Two newline characters (`\n\n`) placed together result in a blank line.
-- `printf()` generates output
-  - printf(“formatted string with format specifier (%d)”,variablesXToReplace%d);, Formatted output
-  - Escape sequences begin with a backslash `\`:
-    - `\n` new line
-    - `\t` horizontal tab
-    - `\\` backslash
-    - `\b` backspace
-    - `\'` single quote
-    - `\"` double quote
-  - `%[-][width].[precision]conversion_character`, Format specifier for printf
-    - The optional `-` specifies left alignment of the data in the string.
-    - The optional width gives the minimum number of characters for the data.
-    - The period `.` separates the width from the precision.
-    - The optional precision gives the number of decimal places for numeric data.
-      - If `s` is used as the conversion character, then precision determines the number of characters to print.
-    - The conversion character converts the argument, if necessary, to the indicated type:
-      - `d` decimal
-      - `ld` long decimal
-      - `c`character
-      - `s` string
-      - `f` float
-      - `e` scientific notation
-      - `x` hexadecimal
-    - To print the `%` symbol, use `%%` in the format string.
-    - Example:
-      ```c++
-      printf("Color: %s, Number: %d, float: %5.2f \n", "red", 42, 3.14159);
-      /* Color: red, Number: 42, float:  3.14  */
-      printf("Pi = %3.2f", 3.14159);
-      /* Pi = 3.14 */
-      printf("Pi = %8.5f", 3.14159);
-      /* Pi =   3.14159 */
-      printf("Pi = %-8.5f", 3.14159);
-      /* Pi = 3.14159 */
-      printf("There are %d %s in the tree.", 22, "apples");
-      /* There are 22 apples in the tree. */
-      ```
-- `putchar()` Outputs a single character.
-- `fputs()`
-  - `fputs(stringName, stdout);`
-  - `stdout` means standard output
-- The `puts()` function add a new line after each output.
-  - `puts(stringName);`
-- `putf()`
-- `sprintf()` creates formatted strings. auto convert data types for output string.
-  ```c++
-  char info[100];
-  char dept[ ] = "HR";
-  int emp = 75;
-  sprintf(info, "The %s dept has %d employees.", dept, emp);
-  ```
-
-##### Input
-
-- `cin`
-  - Input content is indicated by the extraction operator (`>>`). For example, `int num; cin >> num;`.
-  - extractions on cin can be chained to request more than one input in a single statement: `cin >> a >> b;`
-- `getchar()` Returns the value of the next single character input.
-  - `char x = getxhar()`
-- The gets() function is used to read a string.
-  ```c++
-  char a[100];
-  gets(a);
-  printf("You entered: %s", a);
-  ```
-- `scanf()` scans input that matches format specifiers.
-  ```c++
-  int a, b;
-  scanf("%d %d", &a, &b);
-  printf("You entered: %d and %d", a, b);
-  ```
-  - stops read input when a space is entered.
-  - `scanf()` read variable addresses(pointers).
-  - if type does not match, it automatically convert input type, it cannot read when the convertion cannot be made.
-  - For format specifiers, Blanks, tabs, and newlines are ignored.
-  - `%[*][max_field]conversion character` - The optional `*` will skip the input field. - The optional max_width gives the maximum number of characters to assign to an input field. - The conversion character converts the argument to the defined type, it uses the following letters as specifier:
-    - `%d` for double
-    - `%f` for float
-    - `%c` for character
-    - `%s` for string
-    - `%x` for hexadecimal
-    - Ex, `%*3f` It will take or convert input to a float with 3 digit and it will be ignored.
-- `gets()` stop read input after newline(enter key).
-  ```c++
-  char input[10];
-  int num;
-  printf("Enter a number: ");
-  gets(input);
-  num = atoi(input);
-  ```
-- `fgets()` similar with `gets()` but limit max input size
-  - it stores newline characters.
-  - it prevents buffer overflow, which happens when the string array size is smaller than the input size.
-  ```c++
-  char full_name[50];
-  printf("Enter your full name: ");
-  fgets(full_name, 50, stdin);
-  ```
-  - `stdin` is the pointer for keyboard inputs
-  - It read a input with 49 character(lat one is\0)
-- `sscanf()` for scanning a string for values.
-  ```c++
-  char info[ ] = "Snoqualmie WA 13190";
-  char city[50];
-  char state[50];
-  int population;
-  sscanf(info, "%s %s %d", city, state, &population);
-  ```
-
-##### Parse Strings
-
-- `int atoi(str)` Stands for ASCII to integer. Converts string numbers to the equivalent int value. 0 is returned if the first character is not a number or no numbers are encountered.
-- `double atof(str)` Stands for ASCII to float. Converts string numbers to the equivalent double value. 0.0 is returned if the first character is not a number or no numbers are encountered.
-- `long int atol(str)` Stands for ASCII to long int. Converts str to the equivalent long integer value. 0 is returned if the first character is not a number or no numbers are encountered.
-- `strtol()` is similar with `atol()` but have error handling.
-
-### `string.h`
-
-- string functions
-- `#include <string.h>`
-- `strlen(str)` - get length of a string not include `\0`
-- `strcat(str1, str2)` - merge two strings returns a pointer to str1.
-- `strcpy(str1, str2)` - Copies str2 to str1.
-- `strlwr(str)` - convert string to lower case
-- `strupr(str)` - conver string to upper case
-- `strrev(str)` - reverse string
-- `strcmp(str1, str2)` - compare two strings
-- `strncat(str1, str2, n)` Appends (concatenates) first n characters of str2 to the end of str1 and returns a pointer to str1.
-- `strncpy(str1, str2, n)` Copies the first n characters of str2 to str1.
-- `strcmp(str1, str2)` Returns 0 when str1 is equal to str2, less than 0 when str1 < str2, and greater than 0 when str1 > str2.
-- `strncmp(str1, str2, n)` Returns 0 when the first n characters of str1 is equal to the first n characters of str2, less than 0 when str1 < str2, and greater than 0 when str1 > str2.
-- `strchr(str1, c)` Returns a pointer to the first occurrence of char c in str1, or NULL if character not found.
-- `strrchr(str1, c)` Searches str1 in reverse and returns a pointer to the position of char c in str1, or NULL if character not found.
-- `strstr(str1, str2)` Returns a pointer to the first occurrence of str2 in str1, or NULL if str2 not found.
-
-### `stdlib.h`
-
-- `qsort()` Quick Sort
-  - Declaration, `void qsort(void *base, size_t num, size_t width, int (*compare)(const void *, const void *))`
-  - `void *base` A void pointer to the array.
-  - `size_t num` The number of elements in the array.
-  - `size_t` width The size of an element.
-  - `int (*compare (const void *, const void *)` A function pointer which has two arguments and returns:
-    - `0` when the arguments have the same value.
-    - `<0` when arg1 comes before arg2.
-    - `>0` when arg1 comes after arg2.
-  - Example:
-    ```c++
-    #include <stdio.h>
-    #include <stdlib.h>
-    int compare (const void *, const void *);
-    int main() {
-      int arr[5] = {52, 23, 56, 19, 4};
-      int num, width, i;
-      num = sizeof(arr)/sizeof(arr[0]);
-      width = sizeof(arr[0]);
-      qsort((void *)arr, num, width, compare);
-      for (i = 0; i < 5; i++)
-        printf("%d ", arr[ i ]);
-      return 0;
-    }
-    int compare (const void *elem1, const void *elem2) {
-      if ((*(int *)elem1) == (*(int *)elem2))
-        return 0;
-      else if ((*(int *)elem1) < (*(int *)elem2))
-        return -1;
-      else
-        return 1;
-    }
-    ```
-
 ## Operators
 
 #### Arithmetic Operators
@@ -327,12 +158,32 @@
   - `-=`
   - `*=`
   - `/=`
+  - `%=`
 - Increment and Decrement
   - increment operator `++`
   - decrement operator `--`
 - Prefix and Postfix
   - `++i`, the prefix form increments/decrements the variable and then uses it in the assignment statement.
   - `i++`, the postfix form uses the value of the variable first, before incrementing/decrementing it.
+
+#### Relational Operators
+
+- it can be used to form a Boolean expression, which returns true or false:
+  - `<` less than
+  - `<=` less than or equal to
+  - `>` greater than
+  - `>=` greater than or equal to
+  - `==` equal to
+  - `!=` not equal to
+
+#### Logical Operators
+
+- `&&` and
+- `||` or
+- `!` not
+- A compound Boolean expression is evaluated from left to right.
+- precedence, `!` > `&&` > `||`
+- Use `()` to change precedence
 
 ## Conditionals and Loops
 
@@ -341,15 +192,7 @@
   if (expression)
     //statements;
   ```
-  - statements can be a single statement or a code block enclosed by curly braces { }.
-- relational operators
-  - it can be used to form a Boolean expression, which returns true or false:
-    - `<` less than
-    - `<=` less than or equal to
-    - `>` greater than
-    - `>=` greater than or equal to
-    - `==` equal to
-    - `!=` not equal to
+  - statements can be a single statement or a code block enclosed by curly braces `{ }`.
   - An expression that evaluates to a non-zero value is considered true.
     ```c++
     int in_stock = 20;
@@ -363,7 +206,8 @@
   else
     //statement
   ```
-- If statements can be nested.
+- `C++` provides the option of nesting an unlimited number of if/else statements.
+- If there is only one statement, the curly braces can be removed.
 - conditional expression.
   - `x = (condition) ? statement1 : statement2;`
   - If true statement1 is returned, if false statement2 is returned
@@ -380,14 +224,8 @@
     //statements
   }
   ```
-  - Without the break statement, program execution falls through to the next case statement.
-- Logical operators
-  - `&&` and
-  - `||` or
-  - `!` not
-  - A compound Boolean expression is evaluated from left to right.
-  - precedence, `!` > `&&` > `||`
-  - Use () to change precedence
+  - Without the break statement, program execution falls through to the next case statement until a break statement is met.
+  - The default case must appear at the end of the switch.
 - While loop
   ```c++
   while (expression) {
@@ -425,56 +263,48 @@
     printf("%d\n", i);
   }
   ```
+  - Semicolons are still mandatory.
 - Loops can also be nested.
 
 ## Function
 
-- Declarations usually appear above the main() function.
-- Function definitions usually appear after the main() function.
+- Declarations appear above the main() function.
+- Function definitions appear after the main() function.
   ```c++
-  #include <stdio.h>
-  /* declaration */
-  int square (int num);
+  #include <iostream>
+  using namespace std;
+  //Function declaration
+  void printSomething();
   int main() {
-    int x, result;
-    x = 5;
-    result = square(x);
-    printf("%d squared is %d\n", x, result);
+    printSomething();
     return 0;
   }
-  /* definition */
-  int square (int num) {
-    int y;
-    y = num * num;
-    return(y);
+  //Function definition
+  void printSomething() {
+    cout << "Hi there!";
+  }
+  ```
+- Declaration and definition can be done together before main.
+  ```cpp
+  void printSomething(int x)
+  {
+    cout << x;
+  }
+  int main() {
+  printSomething();
+  return 0;
   }
   ```
 - A function is not required to return a value, in this case use void.
+  - void is a basic data type that defines a valueless state.
 - Variables declared outside all functions are global to the entire program.
-- Function destroys its local variables and parameters upon exiting.
+- Parameters inside a function are local
+  - Function destroys its local variables and parameters upon exiting.
 - Static variables
   - It is declared in a function.
   - It has a local scope but are not destroyed when a function is exited.
   - When a variable need to be passed out of a function, it should be static.
   - `static int num_calls = 1;`
-- A recursive function is one that calls itself and includes a base case, or exit condition, for ending the recursive calls.
-  ```c++
-  #include <stdio.h>
-  //function declaration
-  int factorial(int num);
-  int main() {
-    int x = 5;
-    printf("The factorial of %d is %d\n", x, factorial(x));
-    return 0;
-  }
-  //function definition
-  int factorial(int num) {
-    if (num == 1)
-      return (1);
-    else
-      return (num * factorial(num - 1));
-  }
-  ```
 
 ## Pointers
 
@@ -492,10 +322,16 @@
   int j = 8;
   int *p = NULL;
   p = &j;
+  //also
+  double *dp;   // pointer to a double
+  float *fp;  // pointer to a float
+  char *ch;  // pointer to a character
   ```
   - Data type is required for a point to know where the next available address is, based on the amount of data required for the type.
-  - Pointers should be initialized to NULL until they are assigned a valid location.
-  - dereferencing, prepend dereference operator `*` to the pointer variable will get the value it points to. It is opposite to `&`.
+  - The asterisk sign here is not the dereferencing operator, it simply indicate this is a pointer.
+  - The asterisk sign can be placed next to the data type, or the variable name, or in the middle.
+  - Pointers can be initialized to NULL until they are assigned a valid location.
+  - A pointer assigned NULL is called a null pointer. For example: `int *ptr = NULL;`
 - Pointer can be used to point another pointer.
   - Prepend `**` to the pointer that point to another pointer
   ```c++
@@ -504,6 +340,31 @@
   int **ptr = NULL;
   p = &x;
   ptr = &p;
+  ```
+- Dereferencing, prepend dereference operator `*` to the pointer variable will get the value it points to. It is opposite to `&`. Ex, `x = *p;` will assign the value p is referencing to `x`.
+- In a `C++` program, memory is divided into two parts:
+  - The stack: All of your local variables take up memory from the stack. Pointers are stored in stack
+    - For local variables on the stack, managing memory is carried out automatically.
+  - The heap: Unused program memory that can be used when the program runs to dynamically allocate the memory. A pool of memory used for dynamic memory allocation.
+    - On the heap, it's necessary to manually handle the dynamically allocated memory,
+- `new` operator
+  - it returns the address of the space allocated. `new int;`
+  - The allocated address can be stored in a pointer, which can then be dereferenced to access the variable.
+    ```cpp
+    int *p = new int;
+    *p = 5;
+    ```
+- `delete` operator
+- use the delete operator to free up the memory when it's no longer needed. `delete pointer;`
+  - This statement releases the memory pointed to by pointer.
+  - Forgetting to free up memory that has been allocated with the new keyword will result in memory leaks, because that memory will stay allocated until the program shuts down.
+- Pointers that are left pointing to non-existent memory locations are called dangling pointers.
+  - It can be reused without declaring
+- memory allocation for arrays.
+  ```cpp
+  int *p = NULL; // Pointer initialized with null
+  p = new int[20]; // Request memory
+  delete [] p; // Delete array pointed to by p
   ```
 - Arithmetic operators can be applied to whatever the pointer is pointing to.
   - `y = *p + 2;`
@@ -558,7 +419,6 @@
   - It points to executable code for a function in memory.
   - A function name points to the start of executable code.
     ```c++
-    #include <stdio.h>
     void say_hello(int num_times); /* function */
     int main() {
       void (*funptr)(int);  /* function pointer */
@@ -590,3 +450,47 @@
     - Input argument need to be cast when dereferencing with `*` before use.
   - `void * example (void *);`
   - It makes the function generic.
+
+## Standard Library
+
+- import function with `#include <package_name.h>`
+- `using namespace std`
+
+### `cstdlib`
+
+- `#include <cstdlib>`
+
+##### Ramdon number
+
+- `rand()` return an integer
+  - Use the modulo (%) operator to generate random numbers within a specific range. `1 + (rand() % 6)` will generate an integer from 1 to 6.
+- `srand()` assign a seend for `rand()`. Ex: `srand(98);`
+  - the same seed will result in the same output from `rand()`.
+  - A solution to generate truly random numbers, is to use the current time as a seed value for the `srand()` function. `srand(time(0));`
+
+### `ctime`
+
+- `#include <ctime>`
+- `time()` function to get the number of seconds on your system time
+  - `time(0)` will return the current second count,
+
+### `iostream`
+
+- It defines the standard stream objects that input and output data.
+- `#include <iostream>`
+
+##### Output
+
+- `cout`
+  - Output content should follow the insertion operator `<<`. For example, `cout << "Hi!";`
+  - You can add multiple insertion operators after cout. Output will be in one line. `cout << "This " << "is " << "awesome!";`
+  - NewLine
+  - One way to print two lines is to use the endl manipulator, `cout << "Hello world!" << endl;`
+  - The new line character `\n` can be used as an alternative to `endl`.
+  - Two newline characters (`\n\n`) placed together result in a blank line.
+
+##### Input
+
+- `cin`
+  - Input content is indicated by the extraction operator (`>>`). For example, `int num; cin >> num;`.
+  - extractions on cin can be chained to request more than one input in a single statement: `cin >> a >> b;`
