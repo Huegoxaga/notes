@@ -100,6 +100,7 @@
 - Related Commands
   - `df -h` list file systems.
   - `lsblk` list block devices info.
+  - `du -sh <folder> | sort -h` List all files inside the folder and its size in order.
 
 ## General Commands
 
@@ -132,8 +133,9 @@
 - `cp <source> <destination> -R`, copy files for folders, `-R` include directories.
   - `cp ~/a* ~/Documents/a` copy anything begins with a to `a` folder.
 - `mv <source> <destination>` The mv command is used to move or rename files
-- `rm <PathToFile> -r` remove files for folders, `-r` includes folders.
-  - a folder must be empty in order to execute `rm` command.
+- `rm <PathToFile>` remove files
+  - `-r` includes folders
+  - `-f` forcibly delete files without asking
 - `rmdir` remove empty directories
 - `find <fromFolderPath> -type f -iname "*.txt" 2> /dev/null`
   - `-type f` is used to locates only files
@@ -171,6 +173,18 @@
   - Or place them into `.bash_profile` or `.bashrc` to make it available all the time.
   - run `unalias alias_name` to remove the alias.
   - run `unalias -a` to remove all alias.
+- `type -f <keyword>` returns the type of the keyword.
+- `type <command>` returns the type of the command.
+- `export VAR=123` define a environment variables for current terminal session and sub-sessions.
+  - Use `.bash_profile` for permenenet changes.
+- `printenv` list all environment variables definded for the current session and its sub-sessions.
+- `sort <file>` sort a file.
+  - `sort <fileA> <fileB>` sort and print the contents from two files.
+  - `-h` sort by numbers.
+  - `-r` sort in reversed order.
+  - `-n` sort contents numerically.
+  - `-u` sort and ignore duplicated contents.
+  - `-k2` sort by the second column.
 
 ### Access Control
 

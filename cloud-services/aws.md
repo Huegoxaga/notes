@@ -289,6 +289,7 @@ A NoSQL database that stores JSON data.
 It hosts and maintain SQL Database server.
 
 - When a new database is registered, be default it is set to private. It can be set to public by modifying the instance.
+- Double check VPC and SG for database created in a new region.
 
 ## CloudWatch
 
@@ -311,6 +312,16 @@ It runs scripts and codes without the need to set up the server.
 - The Lambda Develop package cannot be over 250MB
 - By default all Lambda layers are mounted to `/opt`, and `$PATH` value `/opt` for Lambda to find the package, In environment variable add key `PYTHONPATH` and value `/opt/`.
 - DynamoDB can trigger Lambda function using DynamoDB stream. Edited records or new records will be sent to lambda.
+- Lambda function can also be identified as `Function:Alias`
+  - By default when only use the function name, it means the lastest version(the one without any version number and alias).
+  - An Alias can point to one version at a time.
+  - Updating alias to point to a new version by `aws lambda update-alias --function-name <FunctionName> --name <AliasName> --function-version <VersionNumber>`
+  - A Lambda version is a readonly snapshot that is saved for other resources to trigger.
+- Updating a function with additional dependencies using AWS CLI
+  1. Run `~/my-function$ pip install --target ./package <pkgName>` to install the package to the `package` folder inside the project foloder.
+  2. Run `zip -r9 ${OLDPWD}/function.zip .` to create a ZIP archive of the dependencies in the project folder.
+  3. Run `cd $OLDPWD && zip -g function.zip lambda_function.py` to add lambda function code to the archive.
+  4. Run `aws lambda update-function-code --function-name <LambdaName> --zip-file fileb://function.zip` to update the function code from the project folder
 
 ## SQS
 
@@ -369,6 +380,15 @@ It provides support for generating serverless APIs.
 - Resources need to be deploy as stages before using.
 - Custom Domain Names will attach user's own certificate to the URL and map the domain to the staged resources.
 - Custom Domain Names will need an Alias in Route 53 for its API Gateway domain name.
+- CORS can be enabled for each individual method in the `Actions` menu.
+- If integrated with Lambda, Allow CORS in the response header in the return statement at the end.
+  ```py
+  'headers': {
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+  },
+  ```
 
 ## Sagemaker
 

@@ -110,10 +110,10 @@
 ### Remove Images
 
 - When removing top layer images all related layers will be untagged first. The layers will only be deleted when no top layer images are tagged to it or no existing containers rely on it.
-- `docker rm <repoName>:<TagName>`, remove certain image
-- `docker rm <repoName>`, remove a certain image
-- `docker rm <repoName>@<Digest>`, remove certain image
-- `docker rm <ImageID>`, remove certain an image using image ID.
+- `docker image rm <repoName>:<TagName>`, remove certain image
+- `docker image rm <repoName>`, remove a certain image
+- `docker image rm <repoName>@<Digest>`, remove certain image
+- `docker image rm <ImageID>`, remove certain an image using image ID.
   - It requires only the first few characters of the image ID, as long as the CLI can find a unique match.
 - Combines command to delete a batch of images.
   - `$ docker image rm $(docker image ls -q <RepoName>)` delete all images of certain repo.
@@ -129,6 +129,14 @@
 - run `docker container -f rm <containerIDorNames>`, send kill signal and remove a running container.
 - run `docker container prune` remove all stopped containers.
 - run `docker container -v rm <containerIDorNames>`, remove a stopped container along with its attached volumn.
+
+### Clean Up
+
+- run `docker system prune` This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - all dangling build cache
 
 ### Use Docker Hub Account
 

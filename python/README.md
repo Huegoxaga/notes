@@ -266,6 +266,7 @@ When operator are chained together, The operation order is determined from top t
   - equal `==`
   - not equal `!=`
   - string membership `in`
+  - refer to the same object `is`
 
 * Binary Boolean Operators
 
@@ -1077,3 +1078,66 @@ finally:
 with open("localfile.txt") as newfile:
 	print(newfile.read())    #This create a temperate variable newfile within the block. It will also make sure the file closure.
 ```
+
+## Database
+
+- Python needs a driver for database connection
+- There are drivers for different database engines.
+
+### Postgres
+
+- Run `pip install psycopg2`
+- Example Usage
+
+```py
+#Import the python driver for PostgreSQL
+import psycopg2
+
+#Create a connection credentials to the PostgreSQL database
+try:
+    connection = psycopg2.connect(
+        user = "postgres",
+        password = "1234",
+        host = "localhost",
+        port = "5432",
+        database = "demo"
+    )
+
+    #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
+    cursor = connection.cursor()
+    print(connection.get_dsn_parameters(),"\n")
+
+    #Display the PostgreSQL version installed
+    cursor.execute("SELECT version();")
+    record = cursor.fetchone()
+    print("You are connected into the - " record,"\n")
+
+    #Get the column name of a table inside the database and put some values
+    pg_insert = """ INSERT INTO book (id, author, isbn, title, date_published)
+                VALUES (%s,%s,%s,%s,%s)"""
+
+    inserted_values = (1, 'Layla Nowiztki', '789-1-46-268414-1', 'How to become a professional programmer', 'January 25 2011')
+
+    #Execute the pg_insert SQL string
+    cursor.execute(pg_insert, inserted_values)
+
+    #Commit transaction and prints the result successfully
+    connection.commit()
+    count = cursor.rowcount
+    print (count, "Successfully inserted")
+
+
+#Handle the error throws by the command that is useful when using python while working with PostgreSQL
+except(Exception, psycopg2.Error) as error:
+    print("Error connecting to PostgreSQL database", error)
+    connection = None
+
+#Close the database connection
+finally:
+    if(connection != None):
+        cursor.close()
+        connection.close()
+        print("PostgreSQL connection is now closed")
+```
+
+- `inserted_values` has to be a tuple, even if it has only one parameter. For example, use `(1,)`.

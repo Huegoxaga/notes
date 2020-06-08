@@ -23,6 +23,9 @@
 - `npm update` update packages listed in `package.json` file and update the `package.json` file.
 - `npm list` list install package in the project folder.
 - `npm list -g --depth=0` list all globally installed package, only show the root folder name.
+- `npm cache clean [<path>]` delete cache in the `_cacache` folder
+- `npm cache verify` Verify the contents of the `_cacache` folder, garbage collecting any unneeded data, and verifying the integrity of the cache index and all cached data.
+- `npm -g uninstall package-name --save` remove global package.
 
 ## Global object
 

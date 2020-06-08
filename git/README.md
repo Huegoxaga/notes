@@ -26,7 +26,7 @@
   ```
   sudo yum install git
   ```
-- Mac, [Click](http://git-scm.com/download/mac) to download the installation package.
+- Mac, run `brew install git`.
 - Windows, [Click](http://git-scm.com/download/win) to download the installation package.
 
 ## Git Commands
