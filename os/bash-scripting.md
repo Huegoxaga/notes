@@ -33,9 +33,10 @@
 - `;` can be used to separate multiple command in entered one line.
 - `commandA && commandB` Run next command if previous is command successful.
 - `commandA || commandB` Run commands until one is successful.
-- `commandA ; commandB` Run all commands.
 - `commandA | commandB` pass `STDOUT` of the `commandA` to `STDIN` of `commandB`.
   - `STDOUT`, `STDIN` and `STDERR` is streaming data.
+- Three or more commands can be chained with the above operators.
+- `commandA ; commandB` Run all commands in one lines.
 - `echo "ABC" >> filepath` use redirection operator to write `STDOUT` string to a file at once.
 - `commandA >> filepath` write the `STDOUT` of a command to a file continuously.
 - `command < filepath` send the file data to the command.
@@ -162,6 +163,7 @@
 - For strings use `>`, `<`, `<=`, `>=`, `==`, `!=`
   - Use `-z` to check if the string is empty. `-z ''`
   - Use `-n` to check if the string is non-empty.
+  - Use `-f` to see if a file exist.
   - Both `=` and `==` works.
   - `>` and `<` needs to be escaped, `'b' \> "a"`.
 - `test` command can be used to evaluate boolean expression.

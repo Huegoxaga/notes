@@ -1,8 +1,8 @@
 # Notes
 
 - [Python](https://huegoxaga.github.io/notes/python/index.html)
-  - [Anaconda](https://huegoxaga.github.io/notes/python/anaconda.html)
   - [Python Standard Library](https://huegoxaga.github.io/notes/python/standard-library.html)
+  - [Libraries with Anaconda](https://huegoxaga.github.io/notes/python/anaconda.html)
   - [Django](https://huegoxaga.github.io/notes/python/django.html)
 - [Java](https://huegoxaga.github.io/notes/java/index.html)
   - [JavaFX](https://huegoxaga.github.io/notes/java/javafx.html)
@@ -35,7 +35,7 @@
 - [SQL](https://huegoxaga.github.io/notes/sql/index.html)
 - [Wechat Mini Program](https://huegoxaga.github.io/notes/wechat-mini-program/index.html)
 - [Content Management Systems](https://huegoxaga.github.io/notes/cms/index.html)
-  [WordPress](https://huegoxaga.github.io/notes/cms/wordpress.html)
+  - [WordPress](https://huegoxaga.github.io/notes/cms/wordpress.html)
 - [Operating Systems](https://huegoxaga.github.io/notes/os/index.html)
   - [Linux](https://huegoxaga.github.io/notes/os/linux.html)
   - [macOS](https://huegoxaga.github.io/notes/os/macos.html)
@@ -44,6 +44,7 @@
 - [Virtualization](https://huegoxaga.github.io/notes/virtualization/index.html)
   - [VirtualBox](https://huegoxaga.github.io/notes/virtualization/virtualbox.html)
   - [Docker](https://huegoxaga.github.io/notes/virtualization/docker.html)
+  - [Kubernetes](https://huegoxaga.github.io/notes/virtualization/kubernetes.html)
 - [Git](https://huegoxaga.github.io/notes/git/index.html)
 - [Graphic Design](https://huegoxaga.github.io/notes/graphic-design/index.html)
 - [Networking](https://huegoxaga.github.io/notes/networking/index.html)

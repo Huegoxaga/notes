@@ -104,185 +104,6 @@
   - A string literal is a text enclosed in double quotation marks.
   - `char *str = "hello";` is the string pointer declaration, it is considered a constant and cannot be changed from its initial value.
 
-## Standard Library
-
-- import function with `#include <package_name.h>`
-
-### `stdio.h`
-
-- It defines function related input and output.
-- `#include <stdio.h>`
-
-##### Output
-
-- `printf()` generates output
-  - printf(“formatted string with format specifier (%d)”,variablesXToReplace%d);, Formatted output
-  - Escape sequences begin with a backslash `\`:
-    - `\n` new line
-    - `\t` horizontal tab
-    - `\\` backslash
-    - `\b` backspace
-    - `\'` single quote
-    - `\"` double quote
-  - `%[-][width].[precision]conversion_character`, Format specifier for printf
-    - The optional `-` specifies left alignment of the data in the string.
-    - The optional width gives the minimum number of characters for the data.
-    - The period `.` separates the width from the precision.
-    - The optional precision gives the number of decimal places for numeric data.
-      - If `s` is used as the conversion character, then precision determines the number of characters to print.
-    - The conversion character converts the argument, if necessary, to the indicated type:
-      - `d` decimal
-      - `ld` long decimal
-      - `c`character
-      - `s` string
-      - `f` float
-      - `e` scientific notation
-      - `x` hexadecimal
-    - To print the `%` symbol, use `%%` in the format string.
-    - Example:
-      ```c++
-      printf("Color: %s, Number: %d, float: %5.2f \n", "red", 42, 3.14159);
-      /* Color: red, Number: 42, float:  3.14  */
-      printf("Pi = %3.2f", 3.14159);
-      /* Pi = 3.14 */
-      printf("Pi = %8.5f", 3.14159);
-      /* Pi =   3.14159 */
-      printf("Pi = %-8.5f", 3.14159);
-      /* Pi = 3.14159 */
-      printf("There are %d %s in the tree.", 22, "apples");
-      /* There are 22 apples in the tree. */
-      ```
-- `putchar()` Outputs a single character.
-- `fputs()`
-  - `fputs(stringName, stdout);`
-  - `stdout` means standard output
-- The `puts()` function add a new line after each output.
-  - `puts(stringName);`
-- `putf()`
-- `sprintf()` creates formatted strings. auto convert data types for output string.
-  ```c++
-  char info[100];
-  char dept[ ] = "HR";
-  int emp = 75;
-  sprintf(info, "The %s dept has %d employees.", dept, emp);
-  ```
-
-##### Input
-
-- `getchar()` Returns the value of the next single character input.
-  - `char x = getxhar()`
-- The gets() function is used to read a string.
-  ```c++
-  char a[100];
-  gets(a);
-  printf("You entered: %s", a);
-  ```
-- `scanf()` scans input that matches format specifiers.
-  ```c++
-  int a, b;
-  scanf("%d %d", &a, &b);
-  printf("You entered: %d and %d", a, b);
-  ```
-  - stops read input when a space is entered.
-  - `scanf()` read variable addresses(pointers).
-  - if type does not match, it automatically convert input type, it cannot read when the convertion cannot be made.
-  - For format specifiers, Blanks, tabs, and newlines are ignored.
-  - `%[*][max_field]conversion character` - The optional `*` will skip the input field. - The optional max_width gives the maximum number of characters to assign to an input field. - The conversion character converts the argument to the defined type, it uses the following letters as specifier:
-    - `%d` for double
-    - `%f` for float
-    - `%c` for character
-    - `%s` for string
-    - `%x` for hexadecimal
-    - Ex, `%*3f` It will take or convert input to a float with 3 digit and it will be ignored.
-- `gets()` stop read input after newline(enter key).
-  ```c++
-  char input[10];
-  int num;
-  printf("Enter a number: ");
-  gets(input);
-  num = atoi(input);
-  ```
-- `fgets()` similar with `gets()` but limit max input size
-  - it stores newline characters.
-  - it prevents buffer overflow, which happens when the string array size is smaller than the input size.
-  ```c++
-  char full_name[50];
-  printf("Enter your full name: ");
-  fgets(full_name, 50, stdin);
-  ```
-  - `stdin` is the pointer for keyboard inputs
-  - It read a input with 49 character(lat one is\0)
-- `sscanf()` for scanning a string for values.
-  ```c++
-  char info[ ] = "Snoqualmie WA 13190";
-  char city[50];
-  char state[50];
-  int population;
-  sscanf(info, "%s %s %d", city, state, &population);
-  ```
-
-##### Parse Strings
-
-- `int atoi(str)` Stands for ASCII to integer. Converts string numbers to the equivalent int value. 0 is returned if the first character is not a number or no numbers are encountered.
-- `double atof(str)` Stands for ASCII to float. Converts string numbers to the equivalent double value. 0.0 is returned if the first character is not a number or no numbers are encountered.
-- `long int atol(str)` Stands for ASCII to long int. Converts str to the equivalent long integer value. 0 is returned if the first character is not a number or no numbers are encountered.
-- `strtol()` is similar with `atol()` but have error handling.
-
-### `string.h`
-
-- string functions
-- `#include <string.h>`
-- `strlen(str)` - get length of a string not include `\0`
-- `strcat(str1, str2)` - merge two strings returns a pointer to str1.
-- `strcpy(str1, str2)` - Copies str2 to str1.
-- `strlwr(str)` - convert string to lower case
-- `strupr(str)` - conver string to upper case
-- `strrev(str)` - reverse string
-- `strcmp(str1, str2)` - compare two strings
-- `strncat(str1, str2, n)` Appends (concatenates) first n characters of str2 to the end of str1 and returns a pointer to str1.
-- `strncpy(str1, str2, n)` Copies the first n characters of str2 to str1.
-- `strcmp(str1, str2)` Returns 0 when str1 is equal to str2, less than 0 when str1 < str2, and greater than 0 when str1 > str2.
-- `strncmp(str1, str2, n)` Returns 0 when the first n characters of str1 is equal to the first n characters of str2, less than 0 when str1 < str2, and greater than 0 when str1 > str2.
-- `strchr(str1, c)` Returns a pointer to the first occurrence of char c in str1, or NULL if character not found.
-- `strrchr(str1, c)` Searches str1 in reverse and returns a pointer to the position of char c in str1, or NULL if character not found.
-- `strstr(str1, str2)` Returns a pointer to the first occurrence of str2 in str1, or NULL if str2 not found.
-
-### `stdlib.h`
-
-- `qsort()` Quick Sort
-  - Declaration, `void qsort(void *base, size_t num, size_t width, int (*compare)(const void *, const void *))`
-  - `void *base` A void pointer to the array.
-  - `size_t num` The number of elements in the array.
-  - `size_t` width The size of an element.
-  - `int (*compare (const void *, const void *)` A function pointer which has two arguments and returns:
-    - `0` when the arguments have the same value.
-    - `<0` when arg1 comes before arg2.
-    - `>0` when arg1 comes after arg2.
-  - Example:
-    ```c++
-    #include <stdio.h>
-    #include <stdlib.h>
-    int compare (const void *, const void *);
-    int main() {
-      int arr[5] = {52, 23, 56, 19, 4};
-      int num, width, i;
-      num = sizeof(arr)/sizeof(arr[0]);
-      width = sizeof(arr[0]);
-      qsort((void *)arr, num, width, compare);
-      for (i = 0; i < 5; i++)
-        printf("%d ", arr[ i ]);
-      return 0;
-    }
-    int compare (const void *elem1, const void *elem2) {
-      if ((*(int *)elem1) == (*(int *)elem2))
-        return 0;
-      else if ((*(int *)elem1) < (*(int *)elem2))
-        return -1;
-      else
-        return 1;
-    }
-    ```
-
 ## Operators
 
 #### Arithmetic Operators
@@ -429,6 +250,10 @@
 - A function is not required to return a value, in this case use void.
 - Variables declared outside all functions are global to the entire program.
 - Function destroys its local variables and parameters upon exiting.
+- Exit command
+  - exit command immediately stops the execution of a program and sends an exit code back to the calling process.
+  - it closes any open file connections and processes.
+  - return any value through an exit statement, but 0 for success and -1 for failure are typical. The predefined stdlib.h macros EXIT_SUCCESS and EXIT_FAILURE are also commonly used. Ex, `exit(EXIT_FAILURE);`
 - Static variables
   - It is declared in a function.
   - It has a local scope but are not destroyed when a function is exited.
@@ -620,8 +445,7 @@
 
 ## Unions
 
-- A union allows to store different data types in the same memory location.
-  And it has members.
+- A union allows to store different data types in the same memory location among all of its members.
 - Union members can be of any data type, including basic types, strings, arrays, pointers, and structures.
 - The largest member data type is used to determine the size of the memory to share and then all members use this one location. This process also helps limit memory fragmentation
 - Define unions
@@ -638,3 +462,645 @@
   union val u2;
   u2 = u1;
   ```
+  - One union can be assigned to another of the same type.
+- assignment
+  ```cpp
+  union val test;
+  test.int_num = 123;
+  test.fl_num = 98.76;
+  strcpy(test.str, "hello")
+  ```
+  - The last assignment always overwrite the value
+- Unions are often used within structures
+  ```cpp
+  typedef struct {
+    char make[20];
+    int model_year;
+    int id_type; /* 0 for id_num, 1 for VIN */
+    union {
+      int id_num;
+      char VIN[20];
+    } id;
+  } vehicle;
+  vehicle car1;
+  strcpy(car1.make, "Ford");
+  car1.model_year = 2017;
+  car1.id_type = 0;
+  car1.id.id_num = 123098;
+  ```
+- A union can also contain a structure.
+- A union pointer
+  ```cpp
+  union val {
+    int int_num;
+    float fl_num;
+    char str[20];
+  };
+  union val info;
+  union val *ptr = NULL;
+  ptr = &info;
+  ptr->int_num = 10;
+  printf("info.int_num is %d", info.int_num);
+  ```
+  - When you want to access the union members through a pointer, the `->` operator is required.
+    - `(*ptr).int_num` is the same as `ptr->int_num`
+- Use union variable for a function that is read only, it won't change the original value of the union.
+  ```cpp
+  union id {
+    int id_num;
+    char name[20];
+  };
+  void show_id(union id item) {
+    printf("ID is %d", item.id_num);
+  }
+  ```
+- Use pointer parameters is used for a function to change the actual value in a union memory location,
+  ```cpp
+  union id {
+    int id_num;
+    char name[20];
+  };
+  void set_id(union id *item) {
+    item->id_num = 42;
+  }
+  ```
+- An array can store unions. Ex, `union union_name nums[10];`
+  - Arrays of unions allow storing values of different types.
+
+## Preprocessor
+
+- The C preprocessor uses the `#` directives to make substitutions in program source code before compilation.
+- `#` must be the character on each line. There can be any amount of white space before `#` , between the `#` and the directive.
+- No semicolons needed for the directives
+
+#### `#include` Directives
+
+- It is used to include header files.
+- A header file declares a collection of functions and macros for a library,
+- The `#include` directive expects brackets `<>` around the header filename if the file should be searched for in the compiler include paths. `#include <stdio.h>`
+- A user-defined header file is also given the `.h` extension, but is referred to with quotation marks, as in `"myutil.h"`. When quotation marks are used, the file is searched for in the source code directory. `#include "myutil.h"`
+- Some developers use `.hpp` extension for header files.
+
+#### `#define` Directives
+
+- define directive is used to create object-like macros for constants based on values or expressions. `#define PI 3.14`
+- It can also create function-like macros with arguments that will be replaced by the preprocessor. `#define AREA(r) (PI*r*r)`
+- Enclose each parameter in parentheses to obtain the correct order of operations.
+- If a `#` directive is lengthy, you can use the `\` continuation character to extend the definition over more than one line.
+  ```cpp
+    #define VERY_LONG_CONSTANT \
+  23.678901
+  #define MAX 100
+  #define MIN 0
+  #    define SQUARE(x) \
+      x*x
+  ```
+- there are several standard predefined macros that are always available in a C program without requiring the `#define` directive:
+  - `__DATE__` it stores The current date as a string in the format Mm dd yyyy
+  - `__TIME__` it stores The current time as a string in the format hh:mm:ss
+  - `__FILE__` it stores The current filename as a string
+  - `__LINE__` it shows The current line number as an int value
+  - `__STDC__` 1 its 1.
+
+#### `#undef` Directives
+
+- It it used to undefining macros.
+
+#### Directives for Conditional Compilation
+
+- Conditional Compilation of macros, it works with `#define`
+  - `#ifdef`, check if a certain macros is defined.
+  - `#ifndef`, check if a certain macros is not defined.
+    ```cpp
+    #include <stdio.h>
+    #define RATE 0.08
+    #ifndef TERM
+      #define TERM 24
+    #endif
+    int main() {
+      #ifdef RATE  /* this branch will be compiled */
+        #undef RATE
+        printf("Redefining RATE\n");
+        #define RATE 0.068
+      #else  /* this branch will not be compiled */
+        #define RATE 0.068
+      #endif
+      printf("%f  %d\n", RATE, TERM);
+      return 0;
+    }
+    ```
+- Conditional compilation of segments of code
+  - `#if`, `#else`, `#elif`, `#endif`
+    ```cpp
+    #define LEVEL 4
+    int main() {
+      #if LEVEL > 6
+        /* do something */
+      #elif LEVEL > 5
+        /* else if branch */
+      #elif LEVEL > 4
+        /* another else if */
+      #else
+        /* last option here */
+      #endif
+      return 0;
+    }
+    ```
+- The `defined()` preprocessor operator can be used with `#if`,
+  ```cpp
+  #if !defined(LEVEL)
+    /* statements */
+  #endif
+  ```
+
+#### `#pragma` Directives
+
+- Implementation and compiler specific.
+
+#### Directives for Errors
+
+- `#error`, `#warning` Output an error or warning message An error halts compilation.
+
+#### Preprocessor Operators
+
+- stringification operator
+  - The `#` macro operator, also known as the stringizing operator. It tells the preprocessor to convert a parameter to a string constant.
+  ```cpp
+  #define TO_STR(x) #x
+  printf("%s\n", TO_STR( 123\\12 ));
+  ```
+  - `#` of the `#x` is the stringification operator
+  - `TO_STR( 123\\12 )` will be read by the compiler as string `"123\\12"` before compilation.
+- Token pasting operator
+  - The `##` operator appends, or "pastes", tokens together.
+  ```cpp
+  #define VAR(name, num) name##num
+  int x1 = 125;
+  int x2 = 250;
+  int x3 = 500;
+  printf("%d\n", VAR(x, 3));
+  ```
+  - `VAR(x, 3)` will be read by the compiler as `x3`.
+
+## Standard Library
+
+- import function with `#include <package_name.h>`
+
+### `stdio.h`
+
+- It defines function related input and output.
+- `#include <stdio.h>`
+
+##### Output
+
+- `printf()` generates output
+  - printf(“formatted string with format specifier (%d)”,variablesXToReplace%d);, Formatted output
+  - Escape sequences begin with a backslash `\`:
+    - `\n` new line
+    - `\t` horizontal tab
+    - `\\` backslash
+    - `\b` backspace
+    - `\'` single quote
+    - `\"` double quote
+  - `%[-][width].[precision]conversion_character`, Format specifier for printf
+    - The optional `-` specifies left alignment of the data in the string.
+    - The optional width gives the minimum number of characters for the data.
+    - The period `.` separates the width from the precision.
+    - The optional precision gives the number of decimal places for numeric data.
+      - If `s` is used as the conversion character, then precision determines the number of characters to print.
+    - The conversion character converts the argument, if necessary, to the indicated type:
+      - `d` decimal
+      - `ld` long decimal
+      - `c`character
+      - `s` string
+      - `f` float
+      - `e` scientific notation
+      - `x` hexadecimal
+    - To print the `%` symbol, use `%%` in the format string.
+    - Example:
+      ```c++
+      printf("Color: %s, Number: %d, float: %5.2f \n", "red", 42, 3.14159);
+      /* Color: red, Number: 42, float:  3.14  */
+      printf("Pi = %3.2f", 3.14159);
+      /* Pi = 3.14 */
+      printf("Pi = %8.5f", 3.14159);
+      /* Pi =   3.14159 */
+      printf("Pi = %-8.5f", 3.14159);
+      /* Pi = 3.14159 */
+      printf("There are %d %s in the tree.", 22, "apples");
+      /* There are 22 apples in the tree. */
+      ```
+- `putchar()` Outputs a single character.
+- `fputs()`
+  - `fputs(stringName, stdout);`
+  - `stdout` means standard output
+- The `puts()` function add a new line after each output.
+  - `puts(stringName);`
+- `putf()`
+- `sprintf()` creates formatted strings. auto convert data types for output string.
+  ```c++
+  char info[100];
+  char dept[ ] = "HR";
+  int emp = 75;
+  sprintf(info, "The %s dept has %d employees.", dept, emp);
+  ```
+
+##### Input
+
+- `getchar()` Returns the value of the next single character input.
+  - `char x = getxhar()`
+- The gets() function is used to read a string.
+  ```c++
+  char a[100];
+  gets(a);
+  printf("You entered: %s", a);
+  ```
+- `scanf()` scans input that matches format specifiers.
+  ```c++
+  int a, b;
+  scanf("%d %d", &a, &b);
+  printf("You entered: %d and %d", a, b);
+  ```
+  - stops read input when a space is entered.
+  - `scanf()` read variable addresses(pointers).
+  - if type does not match, it automatically convert input type, it cannot read when the convertion cannot be made.
+  - For format specifiers, Blanks, tabs, and newlines are ignored.
+  - `%[*][max_field]conversion character` - The optional `*` will skip the input field. - The optional max_width gives the maximum number of characters to assign to an input field. - The conversion character converts the argument to the defined type, it uses the following letters as specifier:
+    - `%d` for double
+    - `%f` for float
+    - `%c` for character
+    - `%s` for string
+    - `%x` for hexadecimal
+    - Ex, `%*3f` It will take or convert input to a float with 3 digit and it will be ignored.
+- `gets()` stop read input after newline(enter key).
+  ```c++
+  char input[10];
+  int num;
+  printf("Enter a number: ");
+  gets(input);
+  num = atoi(input);
+  ```
+- `fgets()` similar with `gets()` but limit max input size
+  - it stores newline characters.
+  - it prevents buffer overflow, which happens when the string array size is smaller than the input size.
+  ```c++
+  char full_name[50];
+  printf("Enter your full name: ");
+  fgets(full_name, 50, stdin);
+  ```
+  - `stdin` is the pointer for keyboard inputs
+  - It read a input with 49 character(lat one is\0)
+- `sscanf()` for scanning a string for values.
+  ```c++
+  char info[ ] = "Snoqualmie WA 13190";
+  char city[50];
+  char state[50];
+  int population;
+  sscanf(info, "%s %s %d", city, state, &population);
+  ```
+
+##### Parse Strings
+
+- `int atoi(str)` Stands for ASCII to integer. Converts string numbers to the equivalent int value. 0 is returned if the first character is not a number or no numbers are encountered.
+- `double atof(str)` Stands for ASCII to float. Converts string numbers to the equivalent double value. 0.0 is returned if the first character is not a number or no numbers are encountered.
+- `long int atol(str)` Stands for ASCII to long int. Converts str to the equivalent long integer value. 0 is returned if the first character is not a number or no numbers are encountered.
+- `strtol()` is similar with `atol()` but have error handling.
+
+##### File I/O
+
+- open and close a file:
+  - `filePointer = fopen(filename, mode)` Returns a pointer of type FILE
+    - It opens files using the following modes.
+      - `r` open for reading (file must exist)
+      - `w` open for writing (file need not exist)
+      - `a`open for append (file need not exist)
+      - `r+` open for reading and writing from beginning
+      - `w+` open for reading and writing, overwriting file
+      - `a+` open for reading and writing, appending to file
+      - add `b` for binary files
+    - If a file cannot be opened, NULL is returned.
+    - If there is an error when opening the file, a `-1` error code is returned to the system.
+  - `fclose(filePointer)` Closes file opened with FILE pointer
+    - returning `0` if close was successful.
+    - EOF (end of file) is returned if there is an error in closing.
+  - For example:
+    ```cpp
+    #include <stdio.h>
+    int main() {
+      FILE *fptr;
+      fptr = fopen("myfile.txt", "w");
+      if (fptr == NULL) {
+        printf("Error opening file.");
+        return -1;
+      }
+      fclose(fptr);
+      return 0;
+    }
+    ```
+    - When a string literal is used to specify a filename, the escape sequence `\\` indicates a single backslash.
+- read a file
+  - fgetc(fp) Returns the next character from the file pointed to by fp. If the end of the file has been reached, then EOF is returned.
+  - fgets(buff, n, fp) Reads n-1 characters from the file pointed to by fp and stores the string in buff. A NULL character '\0' is appended as the last character in buff. If fgets encounters a newline character or the end of file before n-1 characters is reached, then only the characters up to that point are stored in buff.
+  - fscanf(fp, conversion_specifiers, vars) Reads characters from the file pointed to by fp and assigns input to a list of variable pointers vars using conversion_specifiers. As with scanf, fscanf stops reading a string when a space or newline is encountered.
+  - For example:
+    ```cpp
+    #include <stdio.h>
+    int main() {
+      FILE *fptr;
+      int c, stock;
+      char buffer[200], item[10];
+      float price;
+      /* myfile.txt: Inventory\n100 Widget 0.29\nEnd of List */
+      fptr = fopen("myfile.txt", "r");
+      fgets(buffer, 20, fptr); /* read a line */
+      printf("%s\n", buffer);
+      fscanf(fptr, "%d%s%f", &stock, item, &price); /* read data */
+      printf("%d %s %4.2f\n", stock, item, price);
+      while ((c = getc(fptr)) != EOF) /* read the rest of the file */
+        printf("%c", c);
+      fclose(fptr);
+      return 0;
+    }
+    ```
+- write a file
+  - When writing to a file, newline characters `\n` must be explicitly added.
+  - `fputc(char, fp)` Writes character char to the file pointed to by fp.
+  - `fputs(str, fp)` Writes string str to the file pointed to by fp.
+  - `fprintf(fp, str, vars)` Prints string str to the file pointed to by fp. str can optionally include format specifiers and a list of variables vars.
+  - For example:
+  ```cpp
+  FILE *fptr;
+  char filename[50];
+  printf("Enter the filename of the file to create: ");
+  gets(filename);
+  fptr = fopen(filename, "w");
+  /* write to file */
+  fprintf(fptr, "Inventory\n");
+  fprintf(fptr, "%d %s %f\n", 100, "Widget", 0.29);
+  fputs("End of List", fptr);
+  ```
+- Binary Files I/O - To write entire blocks of memory to a file
+  - fwrite(ptr, item_size, num_items, fp) Writes num_items items of item_size size from pointer ptr to the file pointed to by file pointer fp.
+  - fread(ptr, item_size, num_items, fp) Reads num_items items of item_size size from the file pointed to by file pointer fp into memory pointed to by ptr.
+  - fclose(fp) Closes file opened with file fp, returning 0 if close was successful. EOF is returned if there is an error in closing.
+  - feof(fp) Returns 0 when the end of the file stream has been reached.
+  - For example:
+    ```cpp
+    FILE *fptr;
+    int arr[10];
+    int x[10];
+    int k;
+    /* generate array of numbers */
+    for (k = 0; k < 10; k++)
+    arr[k] = k;
+    /* write array to file */
+    fptr = fopen("datafile.bin", "wb");
+    fwrite(arr, sizeof(arr[0]), sizeof(arr)/sizeof(arr[0]), fptr);
+    fclose(fptr);
+    /* read array from file */
+    fptr = fopen("datafile.bin", "rb");
+    fread(x, sizeof(arr[0]), sizeof(arr)/sizeof(arr[0]), fptr);
+    fclose(fptr);
+    /* print array */
+    for (k = 0; k < 10; k++)
+    printf("%d", x[k]);
+    ```
+- Control pointer for binary file
+  - `ftell(fp)` Returns a long int value corresponding to the fp file pointer position in number of bytes from the start of the file.
+  - `fseek(fp, num_bytes, from_pos)` Moves the fp file pointer position by num_bytes bytes relative to position from_pos, which can be one of the following constants:
+    - `SEEK_SET` start of file
+    - `SEEK_CUR` current position
+    - `SEEK_END` end of file
+  - For example:
+    ```cpp
+    typedef struct {
+    int id;
+    char name[20];
+    } item;
+    int main() {
+      FILE *fptr;
+      item first, second, secondf;
+      /* create records */
+      first.id = 10276;
+      strcpy(first.name, "Widget");
+      second.id = 11786;
+      strcpy(second.name, "Gadget");
+      /* write records to a file */
+      fptr = fopen("info.dat", "wb");
+      fwrite(&first, 1, sizeof(first), fptr);
+      fwrite(&second, 1, sizeof(second), fptr);
+      fclose(fptr);
+      /* file contains 2 records of type item */
+      fptr = fopen("info.dat", "rb");
+      /* seek second record */
+      fseek(fptr, 1\*sizeof(item), SEEK_SET);
+      fread(&secondf, 1, sizeof(item), fptr);
+      printf("%d %s\n", secondf.id, secondf.name);
+      fclose(fptr);
+      return 0;
+    }
+    ```
+
+##### Error Handling
+
+- `feof(fp)` Returns a nonzero value if the end of stream has been reached, 0 otherwise. `feof` also sets EOF.
+- `ferror(fp)` Returns a nonzero value if there is an error, 0 for no error.
+  ```cpp
+  FILE *fptr;
+  int c;
+  errno = 0;
+  fptr = fopen("myfile.txt", "r");
+  if (fptr == NULL) {
+    fprintf(stderr, "Error opening file. %s\n", strerror(errno));
+    exit(EXIT_FAILURE);
+  }
+  while ((c = getc(fptr)) != EOF) /* read the rest of the file */
+    printf("%c", c);
+  if (ferror(fptr)) {
+    printf("I/O error reading file.");
+    exit(EXIT_FAILURE);
+  }
+  else if (feof(fptr)) {
+    printf("End of file reached.");
+  }
+  ```
+
+### `string.h`
+
+- string functions
+- `#include <string.h>`
+- `strlen(str)` - get length of a string not include `\0`
+- `strcat(str1, str2)` - merge two strings returns a pointer to str1.
+- `strcpy(str1, str2)` - Copies str2 to str1.
+- `strlwr(str)` - convert string to lower case
+- `strupr(str)` - conver string to upper case
+- `strrev(str)` - reverse string
+- `strcmp(str1, str2)` - compare two strings
+- `strncat(str1, str2, n)` Appends (concatenates) first n characters of str2 to the end of str1 and returns a pointer to str1.
+- `strncpy(str1, str2, n)` Copies the first n characters of str2 to str1.
+- `strcmp(str1, str2)` Returns 0 when str1 is equal to str2, less than 0 when str1 < str2, and greater than 0 when str1 > str2.
+- `strncmp(str1, str2, n)` Returns 0 when the first n characters of str1 is equal to the first n characters of str2, less than 0 when str1 < str2, and greater than 0 when str1 > str2.
+- `strchr(str1, c)` Returns a pointer to the first occurrence of char c in str1, or NULL if character not found.
+- `strrchr(str1, c)` Searches str1 in reverse and returns a pointer to the position of char c in str1, or NULL if character not found.
+- `strstr(str1, str2)` Returns a pointer to the first occurrence of str2 in str1, or NULL if str2 not found.
+
+##### Error handling
+
+- `strerror()` returns a pointer to the error message text according to the argument `errno`.
+  ```cpp
+  FILE *fptr;
+  errno = 0;
+  fptr = fopen("file.txt", "r");
+  if (fptr == NULL) {
+    fprintf(stderr, "%s\n", strerror(errno));
+    exit(EXIT_FAILURE);
+  }
+  ```
+- Use the following code can print out message for all error codes
+  ```cpp
+  for (int x = 0; x < 135; x++)
+    fprintf(stderr, "%d: %s\n", x, strerror(x));
+  ```
+
+### `stdlib.h`
+
+##### Sort
+
+- `qsort()` Quick Sort
+  - Declaration, `void qsort(void *base, size_t num, size_t width, int (*compare)(const void *, const void *))`
+  - `void *base` A void pointer to the array.
+  - `size_t num` The number of elements in the array.
+  - `size_t` width The size of an element.
+  - `int (*compare (const void *, const void *)` A function pointer which has two arguments and returns:
+    - `0` when the arguments have the same value.
+    - `<0` when arg1 comes before arg2.
+    - `>0` when arg1 comes after arg2.
+  - Example:
+    ```c++
+    #include <stdio.h>
+    #include <stdlib.h>
+    int compare (const void *, const void *);
+    int main() {
+      int arr[5] = {52, 23, 56, 19, 4};
+      int num, width, i;
+      num = sizeof(arr)/sizeof(arr[0]);
+      width = sizeof(arr[0]);
+      qsort((void *)arr, num, width, compare);
+      for (i = 0; i < 5; i++)
+        printf("%d ", arr[ i ]);
+      return 0;
+    }
+    int compare (const void *elem1, const void *elem2) {
+      if ((*(int *)elem1) == (*(int *)elem2))
+        return 0;
+      else if ((*(int *)elem1) < (*(int *)elem2))
+        return -1;
+      else
+        return 1;
+    }
+    ```
+
+##### Memory Management
+
+- Types of memory allocation
+  - Stack Allocation
+    - All data types with known sizes is auto managed by CPU
+    - They are allocated in contiguous blocks of memory.
+    - Ex, basic data types, array.
+    - When the stack memory is full, it causes stack overflow exception.
+  - Static Allocation
+    - It is initilzed by the compiler and exists throughout the entire life of the program.
+    - global and static variables are allocated here.
+  - Heap Allocation
+    - It is a dynamic memory managed with pointers that point to newly allocated blocks of memory.
+    - Need to be managed by the programmer.
+      - C has no garbage collection, not releasing memory when no pointer points the memory will cause memory leak.
+      - A space leak occurs when a computer program uses more memory than necessary.
+- `stdlib.h` library provides the following function for memory management.
+  - `malloc(bytes)` Returns a pointer to a contiguous block of memory that is of size bytes.
+    ```cpp
+    int *ptr;
+    /* a block of 10 ints */
+    ptr = malloc(10 * sizeof(*ptr));
+    if (ptr != NULL) {
+      *(ptr + 2) = 50;  /* assign 50 to third int */
+    }
+    ```
+    - If the allocation is unsuccessful, NULL is returned. Because of this, you should include code to check for a NULL pointer.
+  - `calloc(num_items, item_size)` Returns a pointer to a contiguous block of memory that has `num_items` items, each of size `item_size` bytes. Typically used for arrays, structures, and other derived data types. The allocated memory is initialized to `0`.
+    ```cpp
+    typedef struct {
+      int num;
+      char *info;
+    } record;
+    record *recs;
+    int num_recs = 2;
+    int k;
+    char str[ ] = "This is information";
+    recs = calloc(num_recs, sizeof(record));
+    if (recs != NULL) {
+      for (k = 0; k < num_recs; k++) {
+        (recs+k)->num = k;
+        (recs+k)->info = malloc(sizeof(str));
+        strcpy((recs+k)->info, str);
+      }
+    }
+    ```
+  - `realloc(ptr, bytes)` Resizes the memory pointed to by ptr to size bytes. The newly allocated memory is not initialized.
+    ```cpp
+    int *ptr;
+    ptr = malloc(10 * sizeof(*ptr));
+    if (ptr != NULL) {
+      *(ptr + 2) = 50;  /* assign 50 to third int */
+    }
+    ptr = realloc(ptr, 100 * sizeof(*ptr));
+    *(ptr + 30) = 75;
+    ```
+  - `free(ptr)` Releases the block of memory pointed to by `ptr`. to make the block available to be allocated again. Ex, `free(ptr);`
+- When allocating memory for a string pointer, you may want to use string length rather than the sizeof operator
+  - otherwise, be sure to include one extra byte for the NULL character `\0`.
+
+### `errno.h`
+
+- It defines the error code as a global variable named `errno`.
+- Optionally it can be declared with the statement `extern int errno;`
+- It need to be set to `0` before calling a library function.
+- To output the error code stored in errno, It is suggested to use `fprintf` to print to the `stderr` file stream.
+  ```cpp
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <errno.h>
+  // extern int errno;
+  int main() {
+    FILE *fptr;
+    errno = 0;
+    fptr = fopen("nonexistantfile.txt", "r");
+    if (fptr == NULL) {
+      fprintf(stderr, "Error opening file. Error code: %d\n", errno);
+      exit(EXIT_FAILURE);
+    }
+    fclose(fptr);
+    return 0;
+  }
+  ```
+- use `perror()` for a more descriptive error message
+  - `perror()` must include a string that will precede the actual error message.
+  - Example:
+    ```c
+    FILE *fptr;
+    errno = 0;
+    fptr = fopen("nonexistantfile.txt", "r");
+    if (fptr == NULL) {
+      perror("Error");
+      exit(EXIT_FAILURE);
+    }
+    ```
+    - The argument for `perror()` is the error message title.
+
+### `math.h`
+
+##### Error handling
+
+- Some of the mathematical functions set `errno` to pre-defined macro value automatically.
+  - It will be `EDOM` when a domain is out of range.
+  - It will be `ERANGE` when there is a range error.

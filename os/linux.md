@@ -1,37 +1,5 @@
 # Linux
 
-## Background
-
-### Unix
-
-- UNIX is an operating system since the 1960’s
-- Unix is a [trademarked](www.unix.org) name.
-- UNIX operating system is one that
-  - conforms to a set of standards
-  - is registered with the governing body of the trademark.
-  - If any those two requirement is not met, it can only be called Unix 'like' OS.
-- Active Unix OS:
-  - Hewlett Packard(HP-UX)
-  - IBM AIX
-  - IBM z/OS
-  - Oracle Solaris
-  - Apple macOS
-
-### Linux
-
-- Linux is Unix "like" OS.
-- Linux was created around 1990's
-- Linux is a [trademarked](www.linuxmark.org) name.
-- Linux is the name of the OS kernel, means Linux "based" OS.
-- Active Linux OS:
-  - Google Android
-  - Oracle Linux
-    - Red Hat Enterprise Linux
-    - CentOS - It is based on Red Hat Enterprise Linux
-    - Fedora
-  - Ubuntu Linux
-  - Debian Linux
-
 ## Basic Concepts
 
 ### Kernel
@@ -176,7 +144,8 @@
 - `type -f <keyword>` returns the type of the keyword.
 - `type <command>` returns the type of the command.
 - `export VAR=123` define a environment variables for current terminal session and sub-sessions.
-  - Use `.bash_profile` for permenenet changes.
+  - Use `.bash_profile` for permenenet changes. That will be ran upon new sessions.
+  - Use `.bashrc` for permenenet changes. That will be ran upon new sub-sessions.
 - `printenv` list all environment variables definded for the current session and its sub-sessions.
 - `sort <file>` sort a file.
   - `sort <fileA> <fileB>` sort and print the contents from two files.
@@ -185,6 +154,7 @@
   - `-n` sort contents numerically.
   - `-u` sort and ignore duplicated contents.
   - `-k2` sort by the second column.
+- `wc -l <file>` count the number of lines in a file.
 
 ### Access Control
 
@@ -299,8 +269,11 @@
   - `\n` newline
   - `\w` current working directory
   - `\W` current working directory basename
-- Use `\[$(tput setaf colorCode)\]` to add color. Use `\[$(tput sgr0)\]` to reset the color to default.
-  - `colorCode` uses `Xterm` number for 256 colors.
+- Use `\[$(tput setaf colorCode)\]` to add color.
+- Use `\[$(tput sgr0)\]` to reset the color to default.
+- Use `\[$(tput bold)\]` for bold font.
+  - `\[` and `\]` is to used to properly position the cursor.
+  - `colorCode` uses `Xterm` number in a 256 color chart.
 
 ### Bash Startup Files
 
@@ -354,12 +327,12 @@
 
 ### RPM
 
-- Red Hat Package Manager
+- It is a package manager for Red Hat based Linux.
 - `rpm -q <ServiceName>` check if a service is installed.
 
 ### YUM
 
-- It is a package manager
+- It is a package manager that works on the top of RPM
 - `/etc/yum.conf` allows you to configure which software repositories to use globally (i.e., RedHat, Fedora, CentOS, etc…)
 - `/etc/yum.repos.d/` is the configuration file for the current repositories, that will override `/etc/yum.conf` configuration.
 - `cdrom.repo` configuring this file allows installation from cd-rom
@@ -369,6 +342,11 @@
 - `yum groupinstall -y 'X Window System' 'Desktop' 'Fonts'` install X window GUI
 - `yum install gcc –y` Install the C compiler.
 - `yum install kernel -y` and `yum install kernel-devel –y` install kernel development source.
+
+### APT-GET
+
+- It is a package manager for debian-based Linux machine.
+- `apt-get install <PackageName>`
 
 ### Vim
 
@@ -382,6 +360,23 @@
   - `:r <file>` insert file after current line.
   - Enter `/keyword` to search the keyword in the document. It is case ssensitive
 
+### Grep
+
+- `grep <pattern> <filepath>` find matched lines in the file.
+  - `-i` case insensitive
+  - `-w` match whole words only
+  - `-n` print the line numbers for matched lines
+  - `-r` recursive search for a directory instead of a file
+  - `-l` only return the file names
+  - `-c` show the number of matches
+  - `-P` use regex to search a pattern.
+  - `-B 4` 4 lines before the match
+  - `-A 2` 2 lines after the match
+  - `-C 3` 3 lines before and after the match
+- For example:
+  - `grep "Hello" ./*.txt` search `Hello` in all `txt` files in the current directory.
+  - `grep "...-...-...." contacts.txt` search phone numbers
+
 ### SCP
 
 - It is used to transfer files between local machine and remote server.
@@ -392,6 +387,17 @@
 
 - It is used to log in remote servers.
 - Ex, `ssh -i ~/.ssh/"WordPress Key.pem" ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com`
+
+### CURL
+
+- curl is a command line tool to transfer data to or from a server, using any of the supported protocols (HTTP, FTP, IMAP, POP3, SCP, SFTP, SMTP, TFTP, TELNET, LDAP or FILE)
+- `curl <URL>` send an empty get request get response body.
+- `curl -i <URL>` send an empty get request and get response header and body.
+- `curl -d "key1=value1&key2=value2" <URL>` send a post request with data and get response body.
+- `curl -X PUT -d "key1=value1&key2=value2" <URL>` send a put request with data and get response body.
+- `curl -X DELETE -d "key1=value1&key2=value2" <URL>` send a delete request
+- `curl -u <username>:<password> <URL>` send a get request with credentials.
+- `curl -o <FileName> <URL>` send a get request, download response into a local file.
 
 ### mssql
 
@@ -652,6 +658,18 @@
   - the certificate file will be `192.168.100.100.crt`
   - Users will be prompted to enter the Distinguished Name. For some of the field enter `.` can leave it blank.
 
+### zip
+
+- `zip myfile.zip filename.txt` zip a file
+  - `-r` zip a folder
+  - zip `*` contains all files in the current folder
+  - `-d` remove a file from the zip file
+  - `–u` add a new file to the zip file
+  - `-m` deletes the original files after zipping
+  - `-x` zip all files from the current directory
+  - `-v` print diagnostic version info
+- `unzip myfile.zip` unzip a file
+
 ### iptables
 
 - It is the firewall for the OS.
@@ -726,3 +744,5 @@
     - `sudo crontab -e` edit cron tasks for root user
   - `crontab -r` remove all crontab tasks
     - optionally, delete all lines in the `crontab -r`.
+
+### systemctl

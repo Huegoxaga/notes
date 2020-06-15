@@ -41,10 +41,12 @@
     - instance-based will compare new data with sample data then make judgement.
     - model-based learning will generalize sample data, then processing new data based on the model.
 
-## Machine Learning Algorithms
+## Classical Machine Learning Algorithms
 
 - Decision Trees and Random Forests
 - K-Means
+  - It is a unsupervised learning algorithm for clustering
+  - It can identify discrete groupings within data
 - DBSCAN
 - Hierarchical Cluster Analysis(HCA)
   - Each Cluster group can have subgroups
@@ -55,7 +57,20 @@
 - Locally Linear Embedding(LLE)
 - t-Distributed Stochastic Neighbor Embedding(t-SNE)
 - Apriori
+  - It is a type of association rules learning algorithm
+    - It can be used to find out the association of user behaviors and be used for task like movie recommandtion
+  - It calculates three values:
+    - Support: divide the number of users interested in the topic by the total number of users.
+    - Confidence: divide the number of users interested in the related topic by the number of users interested in the original topic.
+    - Lift, divide the confidence score by the support score.
+  - This algorithm compares all possible combination from the sample.
+    - Each combination is a potential rule.
+  - Only the samples have support and confidence scores higher than the minimum value set at the beginning of the calculation will be recorded.
+  - The final result will rank the lift score from high to low.
 - Eclat
+  - It is a type of association rules learning algorithm
+  - It only has a support score which is calculated by dividing the rule set by the total number of samples
+  - It also need to set a minimum support value and the support score will be ranked from high to low as the final result.
 
 ### Linear Regression
 
@@ -86,29 +101,34 @@
 ##### Regression Trees
 
 - It is used for regression problems
-- The algorithm uses information entripy to split datapoints into groups based on the independent variables of a data point.
+- It split the datapoints into groups based on the independent variables of a data point.
+- It uses an information entripy algorithm to optimaize the split.
 - Each one of the split is called a leaf.
   - Each of the final split is called the terminal leaf.
 - A decision tree is a binary tree structure, each node check if one of the independent variable is greater or smaller than a certain value.
   - Nodes from the same depth are dealing with the same independent variable.
 - The split add information to the datapoint and group them.
-- The average of all data points in one leaf will be calculated as the prediced value for all new data point if it falls in the split.
+- The average of all data points in one terminal leaf will be calculated as the prediced value for all new data point if it falls in the split.
 
 ### Random Forests
 
 - It is a type of ensemble learning.
   - A algorithm that utlizes a single machine learning algorithm multiple times or uses different algorithm at the same time.
-- It uses subsets of the datapoints to form decision trees.
+- It uses random subsets of the datapoints to form decision trees.
+  - The number of data points in each subset should be set.
+  - The total numbers of trees should be set.
 - The average of all split from each decision tree will be used to make prediction.
 - It works for both classification tree and regression tree.
 
-##### Random Forests for
-
 ### k-Nearest Neighbors
 
-- A classfication algorithm
-- Select a `k` value(small interger value). For any new data point find its `k` nearest neighbors, then the new data point belongs to the category that is the same as most of its neighbors.
-- Euclidean Distance(geometrical distance, square root of the sum of the square difference) is often used.
+- A supervised learning algorithm
+- For Classification:
+  - Select a `k` value(small interger value). For any new data point find its `k` nearest neighbors, then the new data point belongs to the category that is the same as most of its neighbors.
+  - Euclidean Distance(geometrical distance, square root of the sum of the square difference) is often used.
+- For regression:
+  - Queries K-Nearest Neighbors and returns average value for the instance
+- It does not scale well for large datasets
 
 ### Logistic Regression
 
@@ -140,7 +160,7 @@
   - Going from output to input and finding the better weights for the model using stochastic gradient descent with the chain rule
 - In neural science, each neuron has dedrites(receiver) and axon(transmitter), millions of millions of neuron work together. sigals are passed through synapses.
 - In neural networks, the processing unit is called neuron or node. The connection between neuron is also called synapse.
-- Overfitting and Underfitting - Underfitting implys a model that is too simply to make prediction, Overfitting implys a model that is learning too hard from the train data and too complicated to effectively and correctly make prediction.
+- Overfitting and Underfitting - Underfitting(High Bias) implys a model that is too simply to make prediction, Overfitting(High Variance) implys a model that is learning too hard from the train data and too complicated to effectively and correctly make prediction.
   - The goal is to aim to build a model that is a bit overfitting and slightly adjust it to prevent overfitting.
   - The most important indicator of overfitting is the train set accurancy is much better than the test set.
 - Hyperparameters are parameters used to build and train models.
@@ -232,9 +252,9 @@
   - solving the problem called vanishing gradient problem of other RNNs in which contributions of information decayed geometrically over time.
 - Gated Recurrent Networks(GRUs) refines the LSTM.
 
-## Optimatization Tips for Neural Networks
+### Optimatization Tips for Neural Networks
 
-### Data Preprocessing
+#### Data Preprocessing
 
 ##### Numeric Data Preprocessing
 
@@ -259,6 +279,10 @@
 ##### Timeseries data preprocessing
 
 ##### Text data preprocessing
+
+#### Hyperparameters Tuning
+
+- Hyperparameters Tuning can be done during model building and model training.
 
 ### Build Model
 
@@ -295,3 +319,146 @@
   - It is 2^n and it can be anywhere from 1 - 256, 32 is a good starting point, then 64, 128, 256.
   - Larger batch size requires more computational resources, and it might cause out of memory errors.
   - Smaller batch size helps preventing the weight to be found at local minima, and it will be slow.
+
+## Advanced Machine Learning Algorithms
+
+- fastText
+  - It is used for text data
+  - fastText is a library for learning of word embeddings and text classification created by Facebook's AI Research (FAIR) lab.
+  - It is implemented through python ML library `Gensim`
+  - Facebook makes available pretrained models for 294 languages.
+  - fastText uses a neural network for word embedding.
+  - It is extended as BlazingText as an AWS Sagemaker built-in algorithm
+  - It can be a unsupervised learning algorithm. It converts text to vector(Word2Vec)
+    - Word2Vec is a text preprocessing step for downstream NLP, Sentiment analysis, named entity recognition and translation.
+    - Words that are semantically similar have vectors that are closer to each other
+  - It can be a supervised learning algorithm that supports multi-class, multi-label classification
+- Object2Vec
+  - A bulit-in algorithm from the AWS Sagemaker
+  - It utlizes average-pooled embeddings, hierarchical Convolutional Neural Networks (CNNs), as well as multi-layered Bi-Directional-Long-Short-Term-Memory (BiLSTM)-based Recurrent Neural Networks as encoders
+  - It is a supervised learning algorithm for classification, regression.
+  - It is extends Word2Vec
+  - It can capture structure of sentences and learn relationship between pair of objects
+- Factorization Machines
+  - A supervised learning algorithm for classification, regression.
+  - Works very well with high dimensional sparse datasets
+  - Popular algorithm for building Recommender systems. Ex, Movie Recommendation based on your viewing habits
+  - It can do collaborative filtering, Ex, cross recommend based on similar users
+- Linear Learner
+  - Supervised ML algorithm.
+  - An AWS sagemaker built-in algorithm for linear regression and logistic regression
+  - It works for for regression, binary classification and multi-class classifcation problems.
+- XGBoost
+  - Supervised ML algorithm for regression and classification problems
+  - Gradient Boosted Trees Algorithm
+  - Very Popular Algorithm - Won several competitions
+- AWS Sagemaker DeepAR
+  - Supervised learning algorithm for timeseries forecasting
+  - The built-in RNN model in AWS Sagemaker
+  - It is the enhanced version of classical forecasting methods, such as autoregressive integrated moving average (ARIMA) or exponential smoothing (ETS), fit a single model to each individual time series.
+  - Train multiple related time series using a single model
+  - Generate predictions for new, similar timeseries
+- Amazon Sagemaker Object Detection
+  - The name of the CNNs model provided by AWS Sagemaker.
+  - A supervised learning algorithm for classification.
+  - It detects and classifies Objects in an image then returns a bounding box of each object location.
+- Amazon Sagemaker Image Classification
+  - The name of the CNNs model provided by AWS Sagemaker.
+  - A supervised learning algorithm for classification.
+  - It classify the entire image and it supports multi-labels.
+- Amazon Sagemaker Semantic Segmentation
+  - A supervised learning algorithm for classification.
+  - an AWS sagemaker built-in model
+  - Image Analysis Algorithm for Computer Vision Applications
+  - Tags each pixel in an image with a class label
+- Amazon SageMaker Sequence to Sequence
+  - A supervised learning algorithm for convert sequence of tokens
+  - the input is a sequence of tokens (for example, text, audio) and the output generated is another sequence of tokens.
+  - Example applications include: machine translation, text summarization, speech-to-text.
+  - It uses Recurrent Neural Networks (RNNs) and Convolutional Neural Network (CNN) models with attention as encoder-decoder architectures.
+- Amazon SageMaker Latent Dirichlet Allocation
+  - A unsupervised learning algorithm for topic modeling
+  - Group documents by user specified number of topics
+  - For documents, it assigns a probability score for each topic
+- Amazon SageMaker Neural Topic Model
+  - Similar to Amazon SageMaker Latent Dirichlet Allocation
+
+## Model Evaluation
+
+## Machine Learning Frameworks(Libraries)
+
+- A ML frameworks is a libray for a certain programming language which contains various ML algorithm as methods.
+
+#### [TensorFlow](https://www.tensorflow.org)
+
+- It was developed by the Google Brain team for internal Google use. It was released under the Apache License 2.0 on November 9, 2015.
+- It is the most popular deep learning framework for Python
+- There are also experimental interfaces available in JavaScript, C++, Java and Go, C# and Julia.
+- TensorFlow can run on multiple CPUs and GPUs
+- TensorFlow is available on 64-bit Linux, macOS, Windows, and mobile computing platforms including Android and iOS.
+- Static computation graph - The model should be defined first then compile and train it after.
+- TensorFlow 2.0 uses Keras as its official high-level API
+
+#### [PyTorch](https://pytorch.org)
+
+- PyTorch is an open source machine learning library based on the Torch library
+  - Torch is an open-source machine learning library, a scientific computing framework, and a script language based on the Lua programming language.It provides a wide range of algorithms for deep learning
+- PyTorch also has a C++ interface
+- It is developed by Facebook's AI Research lab (FAIR).
+- Dynamically Updated Graph - The model is compile after each line of the model definition
+- PyTorch is suited for small projects and prototyping
+
+#### [Sonnet](https://sonnet.readthedocs.io/en/latest/)
+
+- Sonnet is a high level library to build complex neural network structures in TensorFlow.
+- It is designed to create neural networks with a complex architecture by DeepMind.
+
+#### [MXNet](https://mxnet.apache.org)
+
+- It is owned by Apache Software Foundation
+- The framework initially supports a large number of languages (including C++, Python, Java, Julia, Matlab, JavaScript, Go, R, Scala, Perl, and Wolfram Language.)
+- MXNet is supported by public cloud providers including Amazon Web Services (AWS) and Microsoft Azure.
+- Amazon has chosen MXNet as its deep learning framework of choice at AWS.
+- Apache MXNet is a lean, flexible, and ultra-scalable deep learning framework that supports state of the art in deep learning models, including convolutional neural networks (CNNs) and long short-term memory networks (LSTMs).
+- MXNet is designed to be distributed on dynamic cloud infrastructure, using a distributed parameter server, and can achieve almost linear scale with multiple GPUs or CPUs.
+- It is powered by the high-level API library [Gluon](https://gluon.mxnet.io),
+  - Gluon simplifies the creation of deep learning models.
+  - the Gluon supports work with a dynamic graph.
+
+## Dataset
+
+- There are many dataset that are ready for various models to use.
+- Training on the same dataset is a way to compare the quality of a certain mode.
+- Some competition are hosted based on a certain dataset.
+- Dataset are often used as the data source for acedemic researches.
+- See a complete list [here](https://en.wikipedia.org/wiki/List_of_datasets_for_machine-learning_research).
+
+### Image Data
+
+##### MNIST
+
+- It contains Database of handwritten digits.
+- It has 60,000 images, created by National Institute of Standards and Technology in 1998.
+
+##### [ImageNet](http://www.image-net.org)
+
+- ImageNet is an image database organized according to the WordNet hierarchy (currently only the nouns), in which each node of the hierarchy is depicted by hundreds and thousands of images.
+  - WordNet is a large lexical database of English. Nouns, verbs, adjectives and adverbs are grouped into sets of cognitive synonyms (synsets), each expressing a distinct concept.
+
+##### [COCO](http://cocodataset.org/#home)
+
+- Microsoft Common Objects in Context (COCO)
+- Images are preprocessed with object highlighting, labeling, and classification into 91 object types.
+
+##### [ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/index.html)
+
+- Released by MIT CSAIL Computer Vision Group
+- 20210 images are fully annotated with objects and, many of the images have parts too.
+- 2000 images are fully annotated with objects and parts
+
+### Numeric Data
+
+##### [Iris Dataset](http://archive.ics.uci.edu/ml/datasets/Iris)
+
+- It has measurement data for three types of iris plants taken by R. Fisher, released in 1936.
+- The dataset contains a set of 150 records under 4 attributes - sepal length, sepal width, petal length, petal width.

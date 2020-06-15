@@ -81,7 +81,7 @@
   - use `csv.DictWriter(csv_file, fieldnames=listOfHeaders)` to write `csv` files from an ordered dictionary. add `csv_writer.writeheader()` first to write the header to the first line.
   - can use `del line['headerName']` to delete certain field, then to a new file.
 
-## collections
+## collection
 
 ### Counter
 

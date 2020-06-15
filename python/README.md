@@ -187,6 +187,9 @@ str(x)    #To  string
 int(x)    #To  integer
 float(x) #To   float
 list(x)   #To   list
+eval(x) # parse and evaluation a string to other types
+eval('[1]') #string to list
+eval('1') #string to int
 ```
 
 ### String Formatting
@@ -1038,11 +1041,11 @@ newfile = open("localfile.txt", 'r+')
 
 #### File Mode
 
-- r: read mode It is the default mode
-- w: write mode that can create new files and will overwrite old content
-- b: binary mode for non-text files
-- a: append mode for adding new content to the end of the file.
-- r+ read and write mode
+- `r`: read mode It is the default mode
+- `w`: write mode that can create new files and will overwrite old content
+- `b`: binary mode for non-text files
+- `a`: append mode for adding new content to the end of the file.
+- `r+`: read and write mode
 
 #### File Method
 

@@ -2,8 +2,8 @@
 
 - [Introduction](README.md)
 - [Python](python/README.md)
-  - [Anaconda](python/anaconda.md)
   - [Python Stardard Library](python/standard-library.md)
+  - [Libraries with Anaconda](python/anaconda.md)
   - [Django](python/django.md)
 - [Java](java/README.md)
   - [JavaFX](java/javafx.md)
@@ -45,6 +45,7 @@
 - [Virtualization](virtualization/README.md)
   - [VirtualBox](virtualization/virtualbox.md)
   - [Docker](virtualization/docker.md)
+  - [Kubernetes](virtualization/kubernetes.md)
 - [Git](git/README.md)
 - [Graphic Design](graphic-design/README.md)
 - [Networking](networking/README.md)

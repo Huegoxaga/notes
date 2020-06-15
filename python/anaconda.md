@@ -1,4 +1,4 @@
-# Anaconda
+# Libriries with Anaconda
 
 ## Introduction
 
@@ -115,6 +115,9 @@
 - `array = np.ones((3,5))`, a `3*5` array with all elements as 1.
 - Create an array of zeros
   - `array = np.zeros((2,4))`, a `2*4` array with all elements as 0.
+  - Optionally, `dtype` can be its second argument which defines the elements data type.
+- Create an array of ones with the same shape and type as a given array.
+  - `array = np.ones_like(img, np.uint8)` create an array of ones which is the same as `img`, with data type as `np.uint8`.(generate a white image with the same size of `img`)
 - Create an array with random values
   - `array = np.random.random(5)`, an array with 5 random double value in range `[0,1)`.
 - Create an array with certain constant
@@ -197,7 +200,6 @@
 - A column of data is of type series. It has a 1-D list structure.
   - Dataframe is a container for multiple series.
 - [Click](https://pandas.pydata.org/docs/reference/index.html) to see the completed documentation for more details.
-- run `pip install pandas` to install it separately.
 - By default many method itself in `pandas` will not change the data it stores. A `inplace` parameter is required to set `True` to make it happen. This is great to run without `inplace` first to see if it gives expected results then add the parameter to confirm changes.
 
 ### Usage
@@ -274,6 +276,81 @@
 - `df.sort_index()` sort by index.
 - `df['col'].nlargest(10)` show the 10 largest data of a column as series.
 - `df.nsmallest(10, 'col')` show the 10 smalleset data of a column as series.
+
+## OpenCV
+
+### Introduction
+
+- OpenCV (Open Source Computer Vision) is a computer vision library that contains various functions to perform operations on pictures or videos.
+- It was originally developed by Intel but was later maintained by Willow Garage and is now maintained by Itseez.
+- It has C++, C, Python and Java interfaces and supports Windows, Linux, Mac OS, iOS and Android.
+- It plays a major role in real-time operation for photos and videos.
+- Images in openCV are 3-D numpy arrays with `np.uint8` as its elements and three color layer for blue, green and red.
+- run `conda install -c menpo opencv` to install
+
+### Usage
+
+- `img = cv2.imread('filePath.jpg', colormode)`, read a image
+  - The color mode used to read an image is optional, it can be one of the following options.
+    - `cv2.IMREAD_GRAYSCALE` read as a grayscale image
+    - `cv2.IMREAD_COLOR` read as a colorful image
+    - `h, w = image.shape[:2]` will get the height and width of the image
+    - `(B, G, R) = image[x, y]` get the `B`, `R`, `G` color values of one pixel at `(x, y)` on the image.
+    - `roi = image[x : h, y : w]` get a rectangle area which starts at the top-left point `(x, y)` with height `h` and width `w`.
+- `resize = cv2.resize(image, (w, h))` resize an image.
+- `matrix = cv2.getRotationMatrix2D((x, y), angle, scale)`, Generating a rotation matrix.
+  - center – The center coordinates of the image.
+  - Angle – The angle (in degrees) by which the image should be rotated
+  - Scale – The scaling factor. Ex, `1.0` represents 1 to 1 scale.
+- `output = img1 + img2` image can be added to output an overlaped one since they are numpy arrays.
+- `lineType`
+  - `cv2.LINE_4` will be medium zigzag pixels in solid color
+  - `cv2.LINE_AA` will be wide zigzag pixels in solid and light color
+  - `cv2.LINE_8` will one narrow line of pixels in solid color
+- `rotated = cv2.warpAffine(image, matrix, (w, h))` perform ratation.
+  - `matrix` is the rotation matrix that will be performed.
+  - `(w, h)` defines the image size after rotation.
+- `output = img.copy()` copy the original image
+- `rectangle = cv2.rectangle(img, (left, top), (bottom, right), (B, G, R), fillMethod)` draw rectangle box on `img`
+  - `FillMethod` can be any integer value as line width for bounding box.
+  - `FillMethod` can be `cv2.FILLED` for a filled rectangle
+- `cv2.putText(img, 'Text Content', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 4, (255, 0, 0), 2)` add text on `img`, it uses the following arguments.
+  - Image
+  - Text to be displayed
+  - Bottom-left corner co-ordinates, from where the text should start
+  - Font
+  - Font size
+  - Color (BGR format)
+  - Line width
+- `image=cv.drawContours(image, contours, contourIdx, color, thickness, lineType, hierarchy, maxLevel, offset)`, draws contours outlines or filled contours. This method will return a smoother shape
+  - `image` - Destination image.
+  - `contours` - array of contours, 4-D array. Each contour is stored as a point vector.
+  - `contourIdx` - Parameter indicating a contour to draw. If it is negative, all the contours are drawn.
+  - `color` - Color of the contours.
+  - `thickness` - Thickness of lines the contours are drawn with. If it is negative (for example, thickness=FILLED ), the contour interiors are drawn.
+  - `lineType` - Line connectivity. See LineTypes
+  - `hierarchy` - Optional information about hierarchy. It is only needed if you want to draw only some of the contours (see maxLevel ).
+  - `maxLevel` - Maximal level for drawn contours. If it is 0, only the specified contour is drawn. If it is 1, the function draws the contour(s) and all the nested contours. If it is 2, the function draws the contours, all the nested contours, all the nested-to-nested contours, and so on. This parameter is only taken into account when there is hierarchy available.
+  - `offset` - Optional contour shift parameter. Shift all the drawn contours by the specified `\(\texttt{offset}=(dx,dy)\)`.
+- `img=cv.fillPoly(img, pts, color, lineType)`, Fills the area bounded by one or more polygons.
+  - `pts` can be an array of ploygons, each with an array of points. Each point is an array like `[x, y]`. Hence, `pts` holds a 3-D array.
+  - `lineType` optional, type of the polygon boundaries.
+- `cv.bitwise_not(input, output, mask)` Inverts every bit of an array.
+  - `invert = cv2.bitwise_not(white,white, mask=mask)` can be used to find the invert of a mask.
+- `dst=cv.bitwise_and(input1, input2, output, mask)` computes bitwise conjunction of the two arrays. Calculates the per-element bit-wise conjunction of two arrays or an array and a scalar.
+  - `mask` optional, 8-bit single channel array, that specifies elements of the output array to be changed.
+  - It usually works with mask that output a masked image. Only the white area of a mask will be shown after this operation.
+- `cv2.imshow('image',img)`, showing the stored image
+  - The first parameter is the title of title window.
+- `imwrite(filename, img)`, save an image to a file
+- `cap = cv2.VideoCapture(0)`, reading video directly from the webcam
+- `cap = cv2.VideoCapture('LOCATION OF THE VIDEO')`, reading a video from local storage
+- `cap.isOpened()`, check if the video is successfully stored in the variable
+- `cap.release()`, release the stored video after processing is done
+- `cv2.waitKey(delay)` The function waitKey waits for a any key event infinitely
+  - `delay` – the length of time to wait in milliseconds. 0 is the special value that means "forever".
+- `cv2.destroyAllWindows()` Exit window and destroy all windows
+- `cv2.boundingRect(points)` return the bounding rectangle `(x,y,w,h)` of a shape defined as points.
 
 ## Matplotlib
 

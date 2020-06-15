@@ -29,6 +29,9 @@ AWS CLI provides full controls of AWS using command lines.
   - `aws help`
   - `aws <servicename> help`
 - [Click here](https://docs.aws.amazon.com/cli/latest/index.html#) for complete reference.
+- When uploading files with aws cli:
+  - use `file://<filepath>` for text file
+  - use `fileb://<filepath>` for binary file
 
 ## AWS SDK
 
@@ -306,20 +309,25 @@ It runs scripts and codes without the need to set up the server.
 
 - Click the Test tab to generate test cases with specific input.
 - Add proper Lambda Execution Role to allow Lambda instance to be triggered by other AWS services.
-- A layer is a ZIP archive that contains libraries, a custom runtime, or other dependencies.
-  - It can be a dock image.
-  - If the image size is over 50MB upload to S3 and use link to add layer.
-- The Lambda Develop package cannot be over 250MB
-- By default all Lambda layers are mounted to `/opt`, and `$PATH` value `/opt` for Lambda to find the package, In environment variable add key `PYTHONPATH` and value `/opt/`.
-- DynamoDB can trigger Lambda function using DynamoDB stream. Edited records or new records will be sent to lambda.
+- When SQS is the trigger, the batch means the number of SQS messages the lambda wants to receive and process during one invocation.
+- A layer is a ZIP archive that contains libraries, a custom runtime, or other dependencies which will be deployed in to the `/opt` folder of your Lambda container
+  - If the zipped image size is over 50MB upload to S3 and use link to add layer.
+  - The Lambda Develop package cannot be over 250MB after unzipping
+  - The layer should obey the following file structure
+    - For `Python 2.7`, the full path is `/opt/python` . For `Python 3.6` and `3.7`, that full path is `/opt/python/lib/python3.6/site-packages` and `/opt/python/lib/python3.7/site-packages` respectively.
+    - only the reqired package folders are needed.`*.dist-info`, `bin` and `__pycache__` are not required. run `rm -r *.dist-info __pycache__ */__pycache__` for clean up.
+    - Amazon Linux supports specific Linux version for certain packages.
+    - In environment variable add the folder path to key `PYTHONPATH` if anything goes wrong.
+- DynamoDB can trigger Lambda function using DynamoDB stream. All records will be sent to lambda when one or more records are edited.
 - Lambda function can also be identified as `Function:Alias`
   - By default when only use the function name, it means the lastest version(the one without any version number and alias).
   - An Alias can point to one version at a time.
   - Updating alias to point to a new version by `aws lambda update-alias --function-name <FunctionName> --name <AliasName> --function-version <VersionNumber>`
   - A Lambda version is a readonly snapshot that is saved for other resources to trigger.
 - Updating a function with additional dependencies using AWS CLI
-  1. Run `~/my-function$ pip install --target ./package <pkgName>` to install the package to the `package` folder inside the project foloder.
+  1. Run `pip install --target ./package <pkgName>` to install the package to the `package` folder inside the project foloder.
   2. Run `zip -r9 ${OLDPWD}/function.zip .` to create a ZIP archive of the dependencies in the project folder.
+     - all the dependency directories are at the top level of the zip file
   3. Run `cd $OLDPWD && zip -g function.zip lambda_function.py` to add lambda function code to the archive.
   4. Run `aws lambda update-function-code --function-name <LambdaName> --zip-file fileb://function.zip` to update the function code from the project folder
 
@@ -414,11 +422,81 @@ Fully managed Cloud based machine learning service
   - Manual labeling
 - Sagemaker Neo uses edge locations to reduce lantency in training and use custmized hardwares.
 
-## Rekognition
+## AI Services
+
+- They are high-level(ready-to-use) Machine Learning services provided by AWS
+
+### Rekognition
 
 It provides an endpoint service for image and video analysis. It is the AWS's top level AI service for computer vision.
 
 - The endpoint is available from CLI, SDKs as long as the credential role has access to the service.
+
+### Transcribe
+
+It provides speech to text services
+
+- It supports both realtime and batch translation.
+- Call the service endpoint for realtime translation.
+- For batch translation, use AWS console to create a job and Upload audio file to S3 and run the service.
+- Amazon Transcribe Medical is specialized in transcribing medical speech into text
+- Adding words that are hard to recongize to custom vocabulary to improve accuracy
+  - For a phrase add hypens `-` in between.
+  - For acronyms add dots in betweens.
+  - It can be a list format or a table format
+    - Words can be provided in a `txt` file that has a word in each line, then it can be uploaded from local machine.
+    - Table format is tab delimited and must have the following columns, columns can be entered in any order. The file can be `txt` and it must be uploaded to S3 first.
+      - `Phrase` same as the words in list formats
+      - `SoundsLike` break a word or phrase down into smaller pieces using the standard orthography of the language, then connect them in hypens. Ex, `loss-ann-gel-es` for `Los-Angeles`
+      - `IPA` To specify the pronunciation of your word or phrase, include characters in the International Phonetic Alphabet (IPA) in this field.
+        - one word cannot have both `IPA` and `SoundsLike` defined.
+      - `DisplayAs` Defines the how the word or phrase looks when it's output.
+- A word filter can be added with a list of unwanted words in the list format.
+
+### Translate
+
+It is a neural network based translation service.
+
+- It takes into account the entire context of the source sentence as well as translation it has generated so far, to create a more accurate and fluent translation
+- It supports both realtime and batch translation.
+
+### Polly
+
+It provides text to speech services
+
+- It can generate audio stream for realtime use cases.
+- It can create a audio file for batch use cases.
+- It supports a wide range of voices and languages.
+- The voice can be customized using SSML(Speech Synthesis Markup Language)
+
+### Textract
+
+It can extract content from text image.
+
+- Upload the text file in JPEG, PNG, or PDF format to the endpoint, it will return processed text in raw text, form and table format.
+
+### Comprehend
+
+Amazon Comprehend is a natural language processing (NLP) service that uses machine learning to discover insights from text.
+
+- Amazon Comprehend provides Keyphrase Extraction, Sentiment Analysis, Entity Recognition, Topic Modeling, and Language Detection APIs
+  - Keyphrase Extraction - The Keyphrase Extraction API returns the key phrases or talking points and a confidence score to support that this is a key phrase.
+  - Sentiment Analysis - The Sentiment Analysis API returns the overall sentiment of a text (Positive, Negative, Neutral, or Mixed).
+  - Syntax Analysis - The Amazon Comprehend Syntax API enables customers to analyze text using tokenization and Parts of Speech (PoS), and identify word boundaries and labels like nouns and adjectives within the text.
+  - Entity Recognition - The Entity Recognition API returns the named entities ("People," "Places," "Locations," etc.) that are automatically categorized based on the provided text.
+  - Medical Named Entity and Relationship Extraction (NERe) - The Medical NERe API returns the medical information such as medication, medical condition, test, treatment and procedures (TTP), anatomy, and Protected Health Information (PHI).
+  - Medical Ontology Linking - The Medical Ontology Linking APIs identifies medical information and links them to codes and concepts in standard medical ontologies.
+  - Custom Entities - Custom Entities allows you to customize Amazon Comprehend to identify terms that are specific to your domain.
+  - Language Detection - The Language Detection API automatically identifies text written in over 100 languages and returns the dominant language with a confidence score to support that a language is dominant.
+  - Custom Classification - The Custom Classification API enables you to easily build custom text classification models using your business-specific labels.
+  - Topic Modeling - Topic Modeling identifies relevant terms or topics from a collection of documents stored in Amazon S3. It will identify the most common topics in the collection and organize them in groups and then map which documents belong to which topic.
+  - Multiple language support - Amazon Comprehend can perform text analysis on English, French, German, Italian, Portuguese, and Spanish texts.
+
+### Lex
+
+Conversational interfaces for your applications powered by the same deep learning technologies as Alexa
+
+- Defining Lex model is similar with creating a skill for Alexa.
 
 ## Alexa
 

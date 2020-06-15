@@ -305,6 +305,43 @@
   - It has a local scope but are not destroyed when a function is exited.
   - When a variable need to be passed out of a function, it should be static.
   - `static int num_calls = 1;`
+- specify a default value for each of the last parameters. If the corresponding argument is missing when you call a function, it uses the default value.
+  ```cpp
+  int sum(int a, int b=42) {
+    int result = a + b;
+    return (result);
+  }
+  ```
+- Function overloading allows to create multiple functions with the same name, so long as they have different parameters.
+  ```cpp
+  void printNumber(int a) {
+    cout << a;
+  }
+  void printNumber(float a) {
+    cout << a;
+  }
+  ```
+  - You can not overload function declarations that differ only by return type.
+- An array can also be passed to a function as an argument.
+  ```cpp
+  void printArray(int arr[], int size) {
+    for(int x=0; x<size; x++) {
+      cout <<arr[x];
+    }
+  }
+  ```
+- By default, arguments in `C++` are passed by value. When passed by value, a copy of the argument is passed to the function. the original argument is not modified by the function.
+- To pass the value by reference, argument pointers are passed to the functions. the original argument is modified by the function.
+  ```cpp
+  void myFunc(int *x) {
+    *x = 100;
+  }
+  int main() {
+    int var = 20;
+    myFunc(&var);
+    cout << var;
+  }
+  ```
 
 ## Pointers
 
