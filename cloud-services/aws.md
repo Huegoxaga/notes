@@ -317,6 +317,7 @@ It runs scripts and codes without the need to set up the server.
     - For `Python 2.7`, the full path is `/opt/python` . For `Python 3.6` and `3.7`, that full path is `/opt/python/lib/python3.6/site-packages` and `/opt/python/lib/python3.7/site-packages` respectively.
     - only the reqired package folders are needed.`*.dist-info`, `bin` and `__pycache__` are not required. run `rm -r *.dist-info __pycache__ */__pycache__` for clean up.
     - Amazon Linux supports specific Linux version for certain packages.
+      - If running `pip install` locally and the package doesn't work, build Amazon Linux container using Docker or use EC2 run `pip install` and get the package for Amazon Linux.
     - In environment variable add the folder path to key `PYTHONPATH` if anything goes wrong.
 - DynamoDB can trigger Lambda function using DynamoDB stream. All records will be sent to lambda when one or more records are edited.
 - Lambda function can also be identified as `Function:Alias`

@@ -97,6 +97,8 @@
   - `-d` Runs the container in detached mode leaving your current terminal free as well as allowing the container to run in the background.
   - `microsoft/mssql-server-linux` - This tells Docker which image to use.
 - optionally, run `docker exec`
+- `docker run --rm -it -v $(pwd):/data <ImageName> cp <CopyFileFrom> /data` mount a data volumn to the local directory then copy a from to the volumn from the container.
+  - `-v` is used to mount a volumn
 
 ### Stop a Container
 

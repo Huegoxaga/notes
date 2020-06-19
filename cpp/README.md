@@ -184,6 +184,7 @@
 - A compound Boolean expression is evaluated from left to right.
 - precedence, `!` > `&&` > `||`
 - Use `()` to change precedence
+- Ternary operator, `(a < b ? a : b);`
 
 ## Conditionals and Loops
 
@@ -342,6 +343,36 @@
     cout << var;
   }
   ```
+- Function Template(Generic Function)
+  - To define a function template, use the keyword `template`, followed by the template type definition:
+  - `C++` provides us with the capability of defining functions using placeholder types, called template type parameters. which is a generic data type.
+  ```cpp
+  #include <iostream>
+  using namespace std;
+  template <class T>
+  T sum(T a, T b) {
+    return a+b;
+  }
+  int main () {
+    int x=7, y=15;
+    cout << sum(x, y) << endl;
+  }
+  ```
+  - Optionally, use `template <typename T>`.
+  - Function templates also make it possible to work with multiple generic data types.
+    ```cpp
+    template <class T, class U>
+    T smaller(T a, U b) {
+      return (a < b ? a : b);
+    }
+    int main () {
+      int x=72;
+      double y=15.34;
+      cout << smaller(x, y) << endl;
+    }
+    // Outputs 15
+    ```
+    - the function template's return type to be of the same type as the first parameter (`T`)
 
 ## Pointers
 
@@ -488,6 +519,499 @@
   - `void * example (void *);`
   - It makes the function generic.
 
+## Class
+
+#### Declaration
+
+- A class definition must be followed by a semicolon.
+- access specifier
+  - multiple members can follow a single access modifier.
+  - If no access specifier is defined, all members of a class are set to private by default.
+  - Public
+    - A public member is accessible from outside the class, and anywhere within the scope of the class object.
+  - private
+    - A private member cannot be accessed, or even viewed, from outside the class; it can be accessed only from within the class.
+  - protected
+    - A protected member variable or function can be accessed in the derived classes.
+  - Example private with getter and sette
+    ```cpp
+    class myClass {
+      public:
+        void setName(string x) {
+        name = x;
+        }
+        string getName() {
+        return name;
+        }
+      private:
+        string name;
+      };
+    ```
+
+#### Instantiation
+
+- A class must be declared before using it,
+  ```cpp
+  int main()
+  {
+  BankAccount test;
+  test.sayHi();
+  }
+  ```
+
+#### Constructors
+
+```cpp
+class myClass {
+public:
+  myClass(string nm) {
+    setName(nm);
+  }
+  void setName(string x) {
+    name = x;
+  }
+  string getName() {
+    return name;
+  }
+private:
+    string name;
+  };
+```
+
+- Class constructors are special member functions of a class. They are executed whenever new objects are created within that class.
+- The constructor's name is identical to that of the class. It has no return type, not even void.
+- It's possible to have multiple constructors that take different numbers of parameters.
+
+#### Destructors
+
+```cpp
+class MyClass {
+public:
+  ~MyClass() {
+    // some code
+  }
+};
+```
+
+- Destructors are special functions, as well. They're called when an object is destroyed or deleted.
+- Objects are destroyed when they go out of scope, or whenever the delete expression is applied to a pointer directed at an object of a class.
+- The name of a destructor will be exactly the same as the class, only prefixed with a tilde (~).
+- A destructor can't return a value or take any parameters.
+- Destructors can be very useful for releasing resources before coming out of the program. This can include closing files, releasing memory, and so on.
+
+#### Header Files and Source Files
+
+- A class has two files
+  - MyClass.h is the header file.
+  - MyClass.cpp is the source file.
+  - The header file (`.h`) holds the function declarations (prototypes) and variable declarations.
+  - Example Header file
+    ```cpp
+    #ifndef MYCLASS_H
+    #define MYCLASS_H
+    class MyClass
+    {
+      public:
+        MyClass();
+        void myPrint();
+      protected:
+      private:
+    };
+    #endif // MYCLASS_H
+    ```
+  - Example source file
+    ```cpp
+    #include "MyClass.h"
+    MyClass::MyClass()
+    {
+      //
+    }
+    void MyClass::myPrint()
+    {
+      cout <<"Hello"<<endl;
+    }
+    ```
+- Preprocessors
+  - `#ifndefine`
+    - This prevents a header file from being included more than once within one file.
+  - `#include "MyClass.h"`
+    - double quotes are used to include customized header file
+- `MyClass::MyClass()` means MyClass class has a contractor function, then write the constructor definition in the corresponding code blocks
+
+#### Class Object
+
+- The arrow member selection operator (->) is used to access an object's members with a pointer.
+  ```cpp
+  MyClass obj;
+  MyClass *ptr = &obj;
+  ptr->myPrint();
+  ```
+- Constant Objects, `const MyClass obj;`
+  - Must have constructors for initialization
+- Constant Functions
+  - Const obj can only call by const functions
+  - Declaration
+    ```cpp
+    class MyClass
+    {
+    public:
+      void myPrint() const;
+    };
+    ```
+  - Definition
+    ```cpp
+    #include "MyClass.h"
+    #include <iostream>
+    using namespace std;
+    void MyClass::myPrint() const {
+    cout <<"Hello"<<endl;
+    }
+    ```
+- `this` pointer
+  - Every object in C++ has access to its own address through an important pointer called the this pointer.
+  - Inside a member function this refer to the invoking object.
+    ```cpp
+    class MyClass {
+      public:
+      MyClass(int a) : var(a){ }
+      void printInfo() {
+        cout << var<<endl;
+        cout << this->var<<endl;
+        cout << (\*this).var<<endl;
+      }
+    private:
+      int var;
+    };
+    ```
+    - All three alternatives will produce the same result.
+
+#### Member Initialization List
+
+- It must be used for constant.
+
+```cpp
+#include <iostream>
+using namespace std;
+class MyClass {
+  public:
+    MyClass(int a, int b);
+  private:
+    int regVar;
+    const int constVar;
+};
+MyClass::MyClass(int a, int b)
+: regVar(a), constVar(b)
+{
+  cout << regVar << endl;
+  cout << constVar << endl;
+}
+int main() {
+MyClass obj(42, 33);
+}
+```
+
+#### Friends
+
+- Declaring a non-member function as a friend of a class allows it to access the class's private members
+
+```cpp
+#include <iostream>
+using namespace std;
+class MyClass {
+  public:
+    MyClass() {
+      regVar = 0;
+    }
+  private:
+    int regVar;
+    friend void someFunc(MyClass &obj);
+};
+
+void someFunc(MyClass &obj) {
+  obj.regVar = 42;
+  cout << obj.regVar;
+}
+
+int main() {
+  MyClass obj;
+  someFunc(obj);
+}
+```
+
+- Similar to friend functions, you can define a friend class, which has access to the private members of another class.
+- Friend functions do not have a `this` pointer, because friends are not members of a class.
+
+#### Operator Overloading
+
+- Most of the `C++` built-in operators can be redefined or overloaded
+- Operators that can't be overloaded include `:: | .\* | . | ?:`
+- it's not possible to alter the operators' precedence, grouping, or number of operands.
+- Overloaded operators are functions, defined by the keyword operator followed by the symbol for the operator being defined.
+- An overloaded operator is similar to other functions in that it has a return type and a parameter list.
+  ```cpp
+  #include <iostream>
+  using namespace std;
+  class MyClass {
+  public:
+    int var;
+    MyClass() { }
+    MyClass(int a): var(a) { }
+    MyClass operator+(MyClass &obj) {
+      MyClass res;
+      res.var= this->var+obj.var;
+      return res;
+    }
+  };
+  int main() {
+    MyClass obj1(12), obj2(55);
+    MyClass res = obj1+obj2;
+    cout << res.var;
+  }
+  ```
+
+#### Composition
+
+- Classes can have classes
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Birthday {
+ public:
+  Birthday(int m, int d, int y)
+  : month(m), day(d), year(y)
+  {  }
+  void printDate()
+  {
+   cout<<month<<"/"<<day <<"/"<<year<<endl;
+  }
+ private:
+  int month;
+  int day;
+  int year;
+};
+
+class Person {
+ public:
+  Person(string n, Birthday b)
+  : name(n), bd(b)
+  {  }
+  void printInfo()
+  {
+   cout << name << endl;
+   bd.printDate();
+  }
+ private:
+  string name;
+  Birthday bd;
+};
+
+int main() {
+ Birthday bd(2, 21, 1985);
+ Person p("David", bd);
+ p.printInfo();
+}
+```
+
+#### Inheritance
+
+- The class whose properties are inherited by another class is called the Base class. - The class which inherits the properties is called the Derived class.
+- The Base class is specified using a colon and an access specifier:
+  - `public` public members of the base class become public members of the derived class `class Daughter: protected Mother`
+  - `protected` public and protected members of the base class become protected members of the derived class.`class Daughter: protected Mother`
+  - `private` public and protected members of the base class become private members of the derived class. `class Daughter: private Mother`
+  - If no access specifier is used when inheriting classes, the type becomes private by default.
+- Derived class inherits all base class methods with the following exceptions:
+  - Constructors, destructor - they are being called when an object of the derived class is created or deleted.
+    - The base class' constructor is called first, and the derived class' constructor is called next.
+    - When the object is destroyed, the derived class's destructor is called, and then the base class' destructor is called.
+  - Overloaded operators
+  - The friend functions
+  ```cpp
+  #include <iostream>
+  using namespace std;
+  class Mother
+  {
+  public:
+    Mother() {};
+    void sayHi() {
+      cout << "Hi";
+    }
+  };
+  class Daughter: public Mother
+  {
+  public:
+    Daughter() {};
+  };
+  int main() {
+    Daughter d;
+    d.sayHi();
+  //Outputs "Hi"
+  }
+  ```
+- A class can be derived from multiple classes by specifying the base classes in a comma-separated list. For example: `class Daughter: public Mother, public Father`
+- C++ polymorphism means that a call to a member function will cause a different implementation to be executed depending on the type of object that invokes the function.
+  ```cpp
+  #include <iostream>
+  using namespace std;
+  class Enemy {
+    protected:
+      int attackPower;
+  public:
+    void setAttackPower(int a){
+      attackPower = a;
+    }
+  };
+  class Ninja: public Enemy {
+  public:
+    void attack() {
+      cout << "Ninja! - "<<attackPower<<endl;
+    }
+  };
+  class Monster: public Enemy {
+  public:
+    void attack() {
+      cout << "Monster! - "<<attackPower<<endl;
+    }
+  };
+  int main() {
+    Ninja n;
+    Monster m;
+    Enemy *e1 = &n;
+    Enemy *e2 = &m;
+    e1->setAttackPower(20);
+    e2->setAttackPower(80);
+    n.attack();
+    m.attack();
+  }
+  ```
+  - created two pointers of type Enemy, pointing them to the Ninja and Monster objects.
+
+#### Virtual Function
+
+- A virtual function is a base class function that is declared using the keyword virtual. It can be either defined or empty. It can be overridden by it’s derived class.
+  ```cpp
+  class Enemy {
+    public:
+      virtual void attack() {
+    }
+  };
+  class Ninja: public Enemy {
+    public:
+      void attack() {
+        cout << "Ninja!"<<endl;
+      }
+  };
+  class Monster: public Enemy {
+    public:
+      void attack() {
+        cout << "Monster!"<<endl;
+      }
+  };
+  ```
+- A class that declares or inherits a virtual function is called a polymorphic class.
+- pure virtual functions
+  - The virtual member functions without definition are known as pure virtual functions.
+  - The syntax is to replace their definition by =0 (an equal sign and a zero):
+    ```cpp
+    class Enemy {
+    public:
+    virtual void attack() = 0;
+    };
+    ```
+  - The `= 0` tells the compiler that the function has no body.
+  - Every derived class inheriting from a class with a pure virtual function must override that function.
+  - Objects cannot be created from the base class with a pure virtual function.
+  - These classes are called abstract.
+  - It can be used to create pointers
+    ```cpp
+    Ninja n;
+    Monster m;
+    Enemy *e1 = &n;
+    Enemy *e2 = &m;
+    e1->attack();
+    e2->attack();
+    ```
+
+#### Class Template
+
+- Generic Class
+  ```cpp
+  template <class T>
+  class Pair {
+    private:
+      T first, second;
+    public:
+      Pair (T a, T b):
+      first(a), second(b) {
+      }
+  };
+  ```
+- When define member functions outside of the class
+  ```cpp
+  template <class T>
+  class Pair {
+    private:
+      T first, second;
+    public:
+      Pair (T a, T b):
+      first(a), second(b){
+      }
+      T bigger();
+  };
+  template <class T>
+  T Pair<T>::bigger() {
+    // some code
+  }
+  ```
+- To create objects of the template class for different types, specify the data type in angle brackets,
+  ```cpp
+  Pair <int> obj(11, 22);
+  cout << obj.bigger();
+  // Outputs 22
+  ```
+- template specialization - It enables a different behavior for a certain data type
+  ```cpp
+  template <class T>
+  class MyClass {
+    public:
+      MyClass (T x) {
+      cout <<x<<" - not a char"<<endl;
+    }
+  };
+  template < >
+  class MyClass<char> {
+    public:
+      MyClass (char x) {
+        cout <<x<<" is a char!"<<endl;
+      }
+  };
+  ```
+- Use `template<>`, if all types are known and no template arguments are required for this specialization
+
+## Exceptions Handling
+
+- throw is used to throw an exception when a problem shows up.
+- A try block identifies a block of code that will activate specific exceptions. It's followed by one or more catch blocks.
+  - specify what type of exception you want to catch in parentheses following the keyword catch.
+  - Multiple catch statements may be listed to handle various exceptions in case multiple exceptions are thrown by the try block.
+  ```cpp
+  try {
+    int motherAge = 29;
+    int sonAge = 36;
+    if (sonAge > motherAge) {
+      throw 99;
+    }
+  }
+  catch (int x) {
+    cout<<"Wrong age values - Error "<<x;
+  }
+  //Outputs "Wrong age values - Error 99"
+  ```
+  - The error code 99, which is an integer, appears in the throw statement, so it results in an exception of type int.
+- Catch All - It's possible to specify that your catch block handles any type of exception thrown in a try block. To accomplish this, add an ellipsis (...) between the parentheses of catch
+
 ## Standard Library
 
 - import function with `#include <package_name.h>`
@@ -531,3 +1055,70 @@
 - `cin`
   - Input content is indicated by the extraction operator (`>>`). For example, `int num; cin >> num;`.
   - extractions on cin can be chained to request more than one input in a single statement: `cin >> a >> b;`
+
+### `fstream`
+
+- `#include <fstream>`
+- Three new data types are defined in fstream:
+  - `ofstream`: Output file stream that creates and writes information to files.
+  - `ifstream`: Input file stream that reads information from files.
+  - `fstream`: General file stream, with both ofstream and ifstream capabilities that allow it to create, read, and write information to files.
+
+##### Open and Write a File
+
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main() {
+  ofstream MyFile;
+  MyFile.open("path/to/test.txt");
+  MyFile << "Some text. \n";
+}
+```
+
+- If the specified file does not exist, the open function will create it automatically.
+- file path can also be specified using the `ofstream` objects constructor, instead of calling the open function.
+  ```cpp
+  #include <fstream>
+  using namespace std;
+  int main() {
+    ofstream MyFile("test.txt");
+    MyFile << "This is awesome! \n";
+    MyFile.close();
+  }
+  ```
+- The `is_open()` member function checks whether the file is open and ready to be accessed. `MyFile.is_open()` returns a Boolean.
+- An optional second parameter of the open function defines the mode in which the file is opened. This list shows the supported modes.
+  - `ios::app` append to end of file
+  - `ios::ate` go to end of file on opening
+  - `ios::binary` file open in binary mode
+  - `ios::in` open file for reading only
+  - `ios::out` open file for writing only
+  - `ios::trunc` delete the contents of the file if it exists
+  - All these flags can be combined using the bitwise operator OR (`|`).
+    ```cpp
+    ofstream outfile;
+    outfile.open("file.dat", ios::out | ios::trunc );
+    ```
+
+##### Read a File
+
+- The getline function reads characters from an input stream and places them into a string.
+  ```cpp
+  #include <iostream>
+  #include <fstream>
+  using namespace std;
+  int main () {
+    string line;
+    ifstream MyFile("test.txt");
+    while ( getline (MyFile, line) ) {
+      cout << line << '\n';
+    }
+    MyFile.close();
+  }
+  ```
+
+##### Closing a File
+
+- `MyFile.close();`

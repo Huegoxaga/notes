@@ -94,9 +94,7 @@
 
 ### Decision Trees
 
-##### Classification Trees
-
-- It is used for classification problems
+- It can handle non-linear datasets.
 
 ##### Regression Trees
 
@@ -110,15 +108,24 @@
 - The split add information to the datapoint and group them.
 - The average of all data points in one terminal leaf will be calculated as the prediced value for all new data point if it falls in the split.
 
+##### Classification Trees
+
+- It is used for classification problems
+- similar to regression tree but each leaf represents one category
+- Doesn't have to go the terminal leaves for result, it can be stopped at any time and return the probobility for each classification result
+
 ### Random Forests
 
-- It is a type of ensemble learning.
+- It is a type of ensemble machine learning algorithm called Bootstrap Aggregation or bagging.
   - A algorithm that utlizes a single machine learning algorithm multiple times or uses different algorithm at the same time.
+- For complicated data, a single decision tree can easily get deep and overfitting.
 - It uses random subsets of the datapoints to form decision trees.
   - The number of data points in each subset should be set.
   - The total numbers of trees should be set.
-- The average of all split from each decision tree will be used to make prediction.
+- It uses random combination of features of a data point.
 - It works for both classification tree and regression tree.
+  - For regresssion: the average of all split from each decision tree will be used to make prediction.
+  - For classification: the most common categories result among all trees will be used as the final result.
 
 ### k-Nearest Neighbors
 
@@ -134,9 +141,9 @@
 
 - It is a classification algorithm.
 - Fit a linear regression into a range of 0 and 1 as the probabilities using the logistic regression formula.
-  - Subsitute `y` in the linear regression formula into the sigmoid function.
+  - Subsitute `y` in the linear regression formula into the sigmoid function will return the logistic regression formula.
 - It can generate `P` hat as predicted probability of a given value.
-- It can return ethier 0 or 1 as `y` hat value if yes or no is the only required result.
+- It can return ethier 0 or 1 as `y` hat value if categorical results are preferred..
   - return `y` hat as 1 if the probability is higher than a certain defined value and vise versa.
 
 ### Support Vector Machines(SVMs)
@@ -344,13 +351,19 @@
   - Works very well with high dimensional sparse datasets
   - Popular algorithm for building Recommender systems. Ex, Movie Recommendation based on your viewing habits
   - It can do collaborative filtering, Ex, cross recommend based on similar users
-- Linear Learner
+- Amazon Sagemaker Linear Learner
   - Supervised ML algorithm.
   - An AWS sagemaker built-in algorithm for linear regression and logistic regression
   - It works for for regression, binary classification and multi-class classifcation problems.
 - XGBoost
   - Supervised ML algorithm for regression and classification problems
-  - Gradient Boosted Trees Algorithm
+  - It is evolved from decision tree in the following order
+    1. Decision Trees - A graphical representation of possible solutions to a decision based on certain conditions.
+    2. Bagging - Bootstrap aggregating or Bagging is a ensemble meta-algorithm combining predictions from multiple decision trees through a majority voting mechanism.
+    3. Random Forest - Bagging-based algorithm where only a subset of features are selected at random to build a forest or collection of decision trees.
+    4. Boosting - Models are built sequentially by minimizing the errors from previous models while increasing(boosting) influence of high-performing models.(New model trained by data points that can’t correctly predict by previous model until no further improvement can be made.)
+    5. Gradient Boosting - Gradient Boosting employs gradient descent algorithm to minimize errors in sequential models.
+    6. XGBoost - Optimized Gradient Boosting algorithm through parallel processing, tree-pruning, handing missing values and regularization to avoid overfitting.
   - Very Popular Algorithm - Won several competitions
 - AWS Sagemaker DeepAR
   - Supervised learning algorithm for timeseries forecasting
@@ -384,6 +397,55 @@
   - Similar to Amazon SageMaker Latent Dirichlet Allocation
 
 ## Model Evaluation
+
+### Evaluating Regression Models
+
+##### Root Mean Square Error(RMSE)
+
+- The smaller the better
+
+##### Residual Histograms
+
+- Residual value equals to the actual value minus predicted value.
+- Residual Histograms have Residual value for each prediction on x-axis and count on y-asix.
+- It can represent the distribution of the residual if 0 is in the center and the range of x-axis is small, the model is good.
+
+### Evaluating Classification Models
+
+##### Confusion Matrix
+
+- It is a table which has predicted result on one axis and actual result on the other axis, then for a binary classification each prediction has four kinds of outcome:
+  - True Positive - Correctly predicted a positive result.
+  - True Negative - Correctly predicted a negative result.
+  - False Positive(type I error) - A false prediction which is predicted as Positive.
+  - False Negative(type II error) - A false prediction which is predicted as Negative.
+- For Multiclass classifier that has `n` classes, use confusion matrix with shape `n X n`.
+
+##### Binary Classifier Metrics
+
+- True Negative and False Positive divide by the actual negative count will get the True Negative rate and False Positive rate.
+- True Positive and False Negative divide by the actual positive count will get the True Positive rate and False Negative rate.
+- Accuracy rate - correct prediction count over the total prediction count.
+  - accuracy paradox - It happens when only use accuracy rate as the reference to consider the performance of a model. because the number of the actual positive and negative results does not always be the same.
+- Error rate - wrong prediction count over the total prediction count.
+- `Precision = True Positive/(True Positive + False Positive)`
+- F1 Score = harmonic mean of Precision and Recall = `2*Precision*Recall / (Precision + Recall)`
+  - F1 Score closer to 1 is better. Closer to 0 is worse.
+- Area Under Curve (AUC)
+  - AUC is the area of a curve formed by plotting True Positive Rate against False Positive Rate at different cut-off thresholds
+  - Good model have AUC closer to 1
+  - 0.5 is considered random guess
+  - Closer to 0 is unusual and it indicates model is flipping results
+- Use one class again all other classes for multiclass classifier.
+
+##### CAP
+
+- The number of correct prediction is on the y-axis. The total number of prediction is on the x-axis.
+- A a random prediction will generate a linear line.
+- A better model will generate a curve with higher slope at the beginning
+- There is a perfect linear model that get every prediction correct.
+- If the area under the line for random model is `Sr` and `Sp` for the perfect model, the area under the curve for the model is `S`. The accuracy rate can be calculated with `(S-Sr)/(Sp-Sr)`.
+- A good model can be determined by curve when the x value is in the middle of x-asix the point on the curve will have y-value at above 70% of the y-axis
 
 ## Machine Learning Frameworks(Libraries)
 
