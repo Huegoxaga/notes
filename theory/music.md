@@ -20,13 +20,15 @@
   - notes like B# and C, Fb and E are enharmonic equivalent
   - all black key notes and notes C E F B have enharmonic note names.
 - Clef
-  - Treble Clef ![Treble Clef]()
-  - Bass Clef ![Bass Clef]()
+  - Treble Clef - `C5` on the second space count from top
+  - Bass Clef - `C3` on the second space count from the bottom
 - Staff
   - staff is made up by 5 horizontal lines.
 - Grand staff
   - a combination of treble clef and bass clef is called the grand staff.
-  - ![grand staff]()
+  - ![grand staff](music/grand_staff.png)
+    - Treble Clef at the top
+    - Bass Clef at the bottom
 - ledger line
   - It is the extra short line for notes outside the staff’s five lines.
 - white keys on the keyboards are represented by the lines and spaces.
@@ -41,15 +43,18 @@
 - rhythmic unit is the beats
 - speed is the bpm(beats per minute)
 - a dot adds the note half of its original rhythmic value.
-- Time Signature ![Time signature]()
+- Time Signature ![Time signature](music/time_signature.png)
 - bottom number indicates 2(half note) or 4(quarter note) or 8(eighth note) is treated as one pulse.
 - upper number indicates how many pulse in one measure(bar).
-- 4/4 is known as common time C.
-- 2/2 is known as `cut` time ![Cut Time]()
+- 4/4 is known as common time `C`.
+- 2/2 is known as `cut` time, vertical bar on `C`
 - Ties - they are curves across muliple notes
   - For notes with the same pitch, the rhythm of the two will be added up and treated as one note.
   - For notes with the different pitches, there will make continuous sound.
 - A number like 3, 5 , 7 underneath a group of notes will generally add an extra note in the original rhythmic gap.
+- A rest defines the length of silence.
+- See the charts for all notes and rests
+  - ![Time signature](music/notes.jpg)
 
 ## Amplitude
 
@@ -120,18 +125,26 @@
   - from a natural minor scale, the harmonic minor scale raises its 7th degree by half-step.
   - from a harmonic minor scale, the melodic minor scale raises its 6th degree by half-step.
 
+#### Modes
+
+- Also known as Modal scales
+- They are scale that start at different degree of a major scale(mostly).
+- The major scale that the mode is based on is called the relative major.
+- start from the 1st degree to 7th degree, each scale is called:
+  - Ionian, Dorian, Phrygian, Lydian, Mixolydian, Aeolian, Locrian.
+- Lettername is used to describe the starting note, with the music alphabet which indicate the degree of the relative major the starting note is on.
+  - Ex, D Dorian mode is C major starts from D. C major is the relative major of D Dorian.
+
 #### the Circle of Fifths
 
 - The circle of fifths or the circle of fourths are tetrachords connected by `<WS>`s
 - the letter names of the tetrachord are used to draw the circle in sequence.
 - The C major tetrachord is on the top of the circle, it goes to the higher major tetrachord in clockwise direction.
-  - ![Circle of Fifths]()
+  - ![Circle of Fifths](music/circle_of_fifths.png)
 - On the circle of fifths
   - From C counter-clockwise, each major key adds one flats(on fourth degree).
   - From C clockwise, each major key adds one sharps(on seventh degree).
-- For key signatures, sharps and flats add from left to right in the following order.
-  - ![Sharp Key Signature]()
-  - ![Flat Key Signature]()
+- For key signatures, sharps and flats add from left to right in the order corresponding to the circle of fifths.
 
 ## Chords
 
@@ -141,12 +154,14 @@
 - root - the note on the first degree of the scale
 - 3rd - the note on the third degree of the scale
 - 5th - the note on the fifth degree of the scale
-- | Chord Name           | Composition                     | Chord Symbol                                   |
-  | -------------------- | ------------------------------- | ---------------------------------------------- |
-  | The major triad      | root, major 3rd, perfect 5th    | C - C major triad or `CMa`, `CM`, `CΔ`, `CMaj` |
-  | The minor triad      | root, minor 3rd, perfect 5th    | Cmi- C minor triad or `Cmin`,`Cm`,`C-`         |
-  | The augmented triad  | root, major 3rd, augmented 5th  | C+ or Caug - C augmented triad                 |
-  | The diminished triad | root, minor 3rd, diminished 5th | Cº or Cdim - C diminished triad                |
+
+| Chord Name           | Composition                     | Chord Symbol                                     |
+| -------------------- | ------------------------------- | ------------------------------------------------ |
+| the Major Triad      | root, major 3rd, perfect 5th    | `C` or `CMa`, `CM`, `CΔ`, `CMaj` - C major triad |
+| the Minor Triad      | root, minor 3rd, perfect 5th    | `Cmi`or `Cmin`,`Cm`,`C-` - C minor triad         |
+| the Augmented Triad  | root, major 3rd, augmented 5th  | `C+` or `Caug` - C augmented triad               |
+| the Diminished Triad | root, minor 3rd, diminished 5th | `Cº` or `Cdim` - C diminished triad              |
+
 - inversions
   - root position - root, 3rd, 5th
   - 1st inversion - 3rd, 5th, root
@@ -160,68 +175,66 @@
   - on the 6th degree of major scale: a minor triad
   - on the 7th degree of major scale: a diminished triad
   - The augmented triad is not found in the major scale it is the only non-diatonic triad. the internal interval(interval between notes) are the same for all its inversions.
-- Triad plurality - are the property of a chord that can be found from different major scale.
-- one major and minor chord can be found from three different major scale.
-- diminished chord doesn’t have this property since it has a one to one relationship with every major scale.
-- modal scales or modes
-  - they are scale that start at different degree of a major scale(mostly).
-- this major scale that the mode is based on is called the relative major.
-- start from the 1st degree to 7th degree, each scale is called:
-  - Ionian, Dorian, Phrygian, Lydian, Mixolydian, Aeolian, Locrian.
-  - Lettername is used to describe the starting note, with the above name which indicate the degree of the relative major the starting note is on.
-  - Ex, D Dorian mode is C major starts from D. C major is the relative major of D Dorian.
-- four-part chores has four notes
-  chord name | composition | chord symbol
+- Triad plurality - are triads that can be found from different major scale.
+  - one major and minor chord can be found from three different major scale.
+- Diminished chords don’t have this property since it has a one to one relationship with every major scale.
 
----
+#### Four-part Chord
 
-major seventh | root, major 3rd, perfect 5th, major 7th | `Cma7` or `CMaj7`, `Cmaj7`, `CM7`, `CΔ7`
-major sixth | root, major 3rd, perfect 5th, major 6th | `C6` or `CMaj6`, `Cmaj6`, `CM6`
-minor seventh | root, minor 3rd, perfect 5th, minor 7th | `Cmi7` or `Cmin7`, `Cm7`, `C-7`
-dominant seventh | root, major 3rd, perfect 5th, minor 7th | `C7`
-minor major seventh | root, minor 3rd, perfect 5th, major 7th | `CmiMa7` or `Cmima7`, `CmiΔ7`, `C-ma7`, `C-Δ7`, `CmM7`
-minor sixth | root, minor 3rd, perfect 5th, major 6th | `Cmi6` or `Cmin6`, `Cm6`, `C-6`
+- It has four notes.
+
+| Chord Name          | Composition                             | Chord Symbol                                           |
+| ------------------- | --------------------------------------- | ------------------------------------------------------ |
+| major seventh       | root, major 3rd, perfect 5th, major 7th | `Cma7` or `CMaj7`, `Cmaj7`, `CM7`, `CΔ7`               |
+| major sixth         | root, major 3rd, perfect 5th, major 6th | `C6` or `CMaj6`, `Cmaj6`, `CM6`                        |
+| minor seventh       | root, minor 3rd, perfect 5th, minor 7th | `Cmi7` or `Cmin7`, `Cm7`, `C-7`                        |
+| dominant seventh    | root, major 3rd, perfect 5th, minor 7th | `C7`                                                   |
+| minor major seventh | root, minor 3rd, perfect 5th, major 7th | `CmiMa7` or `Cmima7`, `CmiΔ7`, `C-ma7`, `C-Δ7`, `CmM7` |
+| minor sixth         | root, minor 3rd, perfect 5th, major 6th | `Cmi6` or `Cmin6`, `Cm6`, `C-6`                        |
 
 - all four-part chord contains a perfect 5th.
-- In a major scale, the following four-part chord can be found when is starts on different degree.
-  Chord Name | Starting Degree
+- Using notes in a major scale only, the following diatonic four-part chord can be found when is starts on different degree.
 
----
-
-major 7th or major 6th | 1st degree
-minor 7th | 2nd degree
-minor 7th | 3rd degree
-major 7th or major 6th | 4th degree
-dominant 7th | 5th degree
-minor 7th | 6th degree
-minor 7th with flatted 5th | 7th degree
+  | Chord Name                 | Starting Degree |
+  | -------------------------- | --------------- |
+  | major 7th or major 6th     | 1st degree      |
+  | minor 7th                  | 2nd degree      |
+  | minor 7th                  | 3rd degree      |
+  | major 7th or major 6th     | 4th degree      |
+  | dominant 7th               | 5th degree      |
+  | minor 7th                  | 6th degree      |
+  | minor 7th with flatted 5th | 7th degree      |
 
 - plurality rules can be derived from the above conclusion.
-- diatonic four-part chord can also be found above
 - four-part chords have a root position and 1st, 2nd, 3rd inversion.
-- Five-part chords or ninth chords
-  chord name | composition | chord symbol
 
----
+#### Five-part Chord
 
-minor 9th | minor 7th + major 9th interval | `Cmi9` or `Cmin9`, `Cmi7(9)`,`Cm9`, `C-9`
-dominant 9th | dominant 7th + major 9th interval | `C9` or `G7(9)`, `G7(add9)`
-suspended dominant 9th | 7sus + major 9th interval | `C9sus` or `Gsus9`, `G11`
-major 9th | major 7th + major 9th interval | `Cma9` or `CMaj9`, `Cmaj9`, `CMa7(9)`, `CM9`, `CΔ9`
-major six nine | major 6th + major 9th | `C69` or `CMa69`, `6(add9)`, `M69`, `CΔ69`
+- Also known as ninth chord
 
-- Suspended chord
-  - generally refer to a replacement of the 3rd of a chord.
-  - perfect 4th interval is the default interval to replace the original chord.
-  - Chord symbol
-    - `Csus` or `Csus4` - C suspended major triad
-    - `Cmi sus` or `Cmisus4` - C suspended minor triad
-    - `C7sus` or `C7 sus4`, `Csus7` - C suspended dominant seventh
-- Altered chord
-  - deals with the fifth of a chord, either flat or sharp.
-  - lower 5th of a C major triad become C(b5) - C major triad with flatted 5th
-  - raise 5th of a C minor become Cmi(#5)- C minor triad with sharped 5th
-    - It is also the 1st inversion of a major triad.
+| Chord Name             | Composition                       | Chord Symbol                                        |
+| ---------------------- | --------------------------------- | --------------------------------------------------- |
+| minor 9th              | minor 7th + major 9th interval    | `Cmi9` or `Cmin9`, `Cmi7(9)`,`Cm9`, `C-9`           |
+| dominant 9th           | dominant 7th + major 9th interval | `C9` or `G7(9)`, `G7(add9)`                         |
+| suspended dominant 9th | 7sus + major 9th interval         | `C9sus` or `Gsus9`, `G11`                           |
+| major 9th              | major 7th + major 9th interval    | `Cma9` or `CMaj9`, `Cmaj9`, `CMa7(9)`, `CM9`, `CΔ9` |
+| major six nine         | major 6th + major 9th             | `C69` or `CMa69`, `6(add9)`, `M69`, `CΔ69`          |
+
+#### Suspended chord
+
+- generally refer to a replacement of the 3rd of a chord.
+- perfect 4th interval is the default interval to replace the original chord.
+- Chord symbol
+  - `Csus` or `Csus4` - C suspended major triad
+  - `Cmi sus` or `Cmisus4` - C suspended minor triad
+  - `C7sus` or `C7 sus4`, `Csus7` - C suspended dominant seventh
+
+#### Altered chord
+
+- deals with the fifth of a chord, either flat or sharp.
+- lower 5th of a C major triad become C(b5) - C major triad with flatted 5th
+- raise 5th of a C minor become Cmi(#5)- C minor triad with sharped 5th
+  - It is also the 1st inversion of a major triad.
 - raise the 5th of a C major triad is C+, lower the 5th of a C minor triad is Cº
 - same for four-part chords. Ex:
   - Cma7(b5)
@@ -232,15 +245,15 @@ major six nine | major 6th + major 9th | `C69` or `CMa69`, `6(add9)`, `M69`, `C�
   - C7(#5) has another chord symbol C+7
   - Cmi7(#5)
   - Cmi7(b5) also called half diminished(C,C7), it is four-part chord that starts at the seventh degree of a major scale
-- added chord
+
+#### added chord
+
 - add a note form a certain interval from the root.
-  chord name | composition | chord symbol
 
----
-
-C major ‘add nine’ | root, major 3rd, perfect 5th, major 9th | `Cadd9` or `C(add9)`, `C(9)`, `C2`, `Cadd2`
-
-C minor ‘add nine’ | root, minor 3rd, perfect 5th, major 9th | `Cmi(add9)` or `Cmi(add9)`, `Cmi(9)`, `Cmi2`, `Cmi(add2)`
+| Chord Name         | Composition                             | Chord Symbol                                              |
+| ------------------ | --------------------------------------- | --------------------------------------------------------- |
+| C major 'add nine' | root, major 3rd, perfect 5th, major 9th | `Cadd9` or `C(add9)`, `C(9)`, `C2`, `Cadd2`               |
+| C minor 'add nine' | root, minor 3rd, perfect 5th, major 9th | `Cmi(add9)` or `Cmi(add9)`, `Cmi(9)`, `Cmi2`, `Cmi(add2)` |
 
 - sometimes the major 9th interval can be one octave lower and become a major 2nd.
 - omitted chord
@@ -249,20 +262,24 @@ C minor ‘add nine’ | root, minor 3rd, perfect 5th, major 9th | `Cmi(add9)` o
 - composition: root, perfect 5th, major 9th
 - chord symbol `Cadd9(omit3)` or `Cadd9(no3)`, `Csus2` , `C2`
   - It is equivalent to `Cma9` remove 3rd and 7rd, so it sounds very non-definitive.
-- Chord progression
-  - are the repeated flow of chord in a piece of music, represented by a series of degrees of the root for the chord in a certain scale. all of the notes are picked from the scale.
-  - Ex, In C major scale, II is a minor triad.
-  - Ex, II-V-I progression is used in many music
+
+#### Chord Progression
+
+- are the repeated flow of chord in a piece of music, represented by a series of degrees of the root for the chord in a certain scale. all of the notes are picked from the scale.
+- Ex, In C major scale, II is a minor triad.
+- Ex, II-V-I progression is used in many music
 - four-part chords have typical chord progression like `II-V-I`, `Dmi7-G7-Cma7`
 - Using a four-part chord doesn’t mean that all the notes are used. The 3rd and 7th are the signature for the chord. among all the variation the top notes can be used to represent this progression like 7 - 3 - 7 voicing or 3 - 7 - 3 voicing.
 - using five-part chord can add some complex to the original chord progression.
 - Shell voicing - All combination of of the two notes, one from 3rd or minor 3rd and one from 7th or dominant 7th can define the quality of the chord and hence it can be called the shell of the chord.
 - Arpeggios - play a chord one by one from low to high or high to low.
-- Improvision
-  - The elements of improvision can be as follow:
-    - Scales - Run the main scale of the current music
-      - starting at different notes can make a difference. Especially, 7th, 6th.
-      - Break the scales with a 4th or 3rd can also be commonly seen.
-    - Arpeggios - Using Arpeggios instead of Scale or combine them together.
-    - Chords - Using chords cooresponding to the left hand.
-    - Chromaticism - Using the notes that is half step higher or lower to decorate the initial starting notes.
+
+## Improvision
+
+- The elements of improvision can be as follows:
+  - Scales - Run the main scale of the current music
+    - starting at different notes can make a difference. Especially, 7th, 6th.
+    - Break the scales with a 4th or 3rd can also be commonly seen.
+  - Arpeggios - Using Arpeggios instead of Scale or combine them together.
+  - Chords - Using chords cooresponding to the left hand.
+  - Chromaticism - Using the notes that is half step higher or lower to decorate the initial starting notes.
