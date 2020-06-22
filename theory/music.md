@@ -141,14 +141,12 @@
 - root - the note on the first degree of the scale
 - 3rd - the note on the third degree of the scale
 - 5th - the note on the fifth degree of the scale
-
-## |chord name | composition | chord symbol|
-
-The major triad | root, major 3rd, perfect 5th | C - C major triad or `CMa`, `CM`, `CΔ`, `CMaj`
-The minor triad | root, minor 3rd, perfect 5th | Cmi- C minor triad or `Cmin`,`Cm`,`C-`
-The augmented triad | root, major 3rd, augmented 5th | C+ or Caug - C augmented triad
-The diminished triad | root, minor 3rd, diminished 5th | Cº or Cdim - C diminished triad
-
+- | Chord Name           | Composition                     | Chord Symbol                                   |
+  | -------------------- | ------------------------------- | ---------------------------------------------- |
+  | The major triad      | root, major 3rd, perfect 5th    | C - C major triad or `CMa`, `CM`, `CΔ`, `CMaj` |
+  | The minor triad      | root, minor 3rd, perfect 5th    | Cmi- C minor triad or `Cmin`,`Cm`,`C-`         |
+  | The augmented triad  | root, major 3rd, augmented 5th  | C+ or Caug - C augmented triad                 |
+  | The diminished triad | root, minor 3rd, diminished 5th | Cº or Cdim - C diminished triad                |
 - inversions
   - root position - root, 3rd, 5th
   - 1st inversion - 3rd, 5th, root
