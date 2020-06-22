@@ -57,3 +57,5 @@
   - [Machine Learning](theory/ml.md)
   - [Cryptography](theory/cryptography.md)
   - [Mathematics](theory/math.md)
+  - [Music](theory/music.md)
+  - [Embedded Systems](theory/embedded.md)

@@ -8,8 +8,8 @@
 - From the keyboard perspective: `C` is the left of the group of 2 black key.
 - From the frequency perspective: `A4` has `440Hz`(variation applies)
   - one octave higher means double the frequency, hence `A3 = 220Hz`, `A5= 880Hz`
-  - In general: `f = f0 * 2^(n/12)`
-  - `n` is the steps away from the key with known frequency `f0`
+  - In general: ![octave formula](https://render.githubusercontent.com/render/math?math=$f%20=%20f_0%20\times%202^{(\frac{n}{12}%29}$)
+  - `n` is the steps away from the key with known frequency ![f0](https://render.githubusercontent.com/render/math?math=$f_0$)
 - Pitch class is a group of pitch with the same name, `A3` and `A4` are in one pitch class.
 - `C4` is middle `C`. It is the `C` notes in the middle of the piano keyboard.
 - Blacks are described by using left white key letter name plus sharp sign(`#`) or right withe key plus flat(b) sign.
@@ -54,7 +54,7 @@
 - A number like 3, 5 , 7 underneath a group of notes will generally add an extra note in the original rhythmic gap.
 - A rest defines the length of silence.
 - See the charts for all notes and rests
-  - ![Time signature](music/notes.jpg)
+  - ![Notes and Rests](music/notes.jpg)
 
 ## Amplitude
 

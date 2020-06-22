@@ -1,0 +1,1341 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Kubernetes · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../git/" />
+    
+    
+    <link rel="prev" href="docker.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../python/">
+            
+                <a href="../python/">
+            
+                    
+                    Python
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../python/standard-library.html">
+            
+                <a href="../python/standard-library.html">
+            
+                    
+                    Python Stardard Library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../python/anaconda.html">
+            
+                <a href="../python/anaconda.html">
+            
+                    
+                    Libraries with Anaconda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+            
+                <a href="../python/django.html">
+            
+                    
+                    Django
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../java/">
+            
+                <a href="../java/">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../java/javafx.html">
+            
+                <a href="../java/javafx.html">
+            
+                    
+                    JavaFX
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+            
+                <span>
+            
+                    
+                    Android Studio
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../javascript/">
+            
+                <a href="../javascript/">
+            
+                    
+                    JavaScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../javascript/jquery.html">
+            
+                <a href="../javascript/jquery.html">
+            
+                    
+                    jQuery
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../javascript/react.html">
+            
+                <a href="../javascript/react.html">
+            
+                    
+                    React
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../javascript/react-native.html">
+            
+                <a href="../javascript/react-native.html">
+            
+                    
+                    React Native
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../javascript/node-js.html">
+            
+                <a href="../javascript/node-js.html">
+            
+                    
+                    Node.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c-sharp/">
+            
+                <a href="../c-sharp/">
+            
+                    
+                    C#
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c-sharp/dot-net.html">
+            
+                <a href="../c-sharp/dot-net.html">
+            
+                    
+                    .NET
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../c-sharp/asp-dot-net.html">
+            
+                <a href="../c-sharp/asp-dot-net.html">
+            
+                    
+                    ASP.NET
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c/">
+            
+                <a href="../c/">
+            
+                    
+                    C
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../cpp/">
+            
+                <a href="../cpp/">
+            
+                    
+                    C++
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../swift/">
+            
+                <a href="../swift/">
+            
+                    
+                    Swift
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../swift/xcode.html">
+            
+                <a href="../swift/xcode.html">
+            
+                    
+                    Xcode
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../markup/">
+            
+                <a href="../markup/">
+            
+                    
+                    Markup Language
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../markup/html.html">
+            
+                <a href="../markup/html.html">
+            
+                    
+                    HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../markup/xml.html">
+            
+                <a href="../markup/xml.html">
+            
+                    
+                    XML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../markup/gfm.html">
+            
+                <a href="../markup/gfm.html">
+            
+                    
+                    GFM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../markup/latex.html">
+            
+                <a href="../markup/latex.html">
+            
+                    
+                    LaTeX
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../css/">
+            
+                <a href="../css/">
+            
+                    
+                    CSS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../css/bootstrap.html">
+            
+                <a href="../css/bootstrap.html">
+            
+                    
+                    Bootstrap
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../typescript/">
+            
+                <a href="../typescript/">
+            
+                    
+                    TypeScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../typescript/angular.html">
+            
+                <a href="../typescript/angular.html">
+            
+                    
+                    Angular
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../php/">
+            
+                <a href="../php/">
+            
+                    
+                    PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../cloud-services/">
+            
+                <a href="../cloud-services/">
+            
+                    
+                    Cloud Services
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../cloud-services/aws.html">
+            
+                <a href="../cloud-services/aws.html">
+            
+                    
+                    AWS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../cloud-services/google-cloud-platform.html">
+            
+                <a href="../cloud-services/google-cloud-platform.html">
+            
+                    
+                    Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../sql/">
+            
+                <a href="../sql/">
+            
+                    
+                    SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../wechat-mini-program/">
+            
+                <a href="../wechat-mini-program/">
+            
+                    
+                    Wechat Mini Program
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../cms/">
+            
+                <a href="../cms/">
+            
+                    
+                    Content Management Systems
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="../cms/wordpress.html">
+            
+                <a href="../cms/wordpress.html">
+            
+                    
+                    WordPress
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../os/">
+            
+                <a href="../os/">
+            
+                    
+                    Operating Systems
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../os/linux.html">
+            
+                <a href="../os/linux.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="../os/bash-scripting.html">
+            
+                <a href="../os/bash-scripting.html">
+            
+                    
+                    Bash Scripting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.3" data-path="../os/macos.html">
+            
+                <a href="../os/macos.html">
+            
+                    
+                    MacOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.4" data-path="../os/solution-stack.html">
+            
+                <a href="../os/solution-stack.html">
+            
+                    
+                    Solution Stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Virtualization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="virtualbox.html">
+            
+                <a href="virtualbox.html">
+            
+                    
+                    VirtualBox
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="docker.html">
+            
+                <a href="docker.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.18.3" data-path="kubernetes.html">
+            
+                <a href="kubernetes.html">
+            
+                    
+                    Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="../git/">
+            
+                <a href="../git/">
+            
+                    
+                    Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../graphic-design/">
+            
+                <a href="../graphic-design/">
+            
+                    
+                    Graphic Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="../networking/README.md">
+            
+                <span>
+            
+                    
+                    Networking
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="../maple/">
+            
+                <a href="../maple/">
+            
+                    
+                    Maple
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="../theory/">
+            
+                <a href="../theory/">
+            
+                    
+                    Theory
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.23.1" data-path="../theory/algorithm.html">
+            
+                <a href="../theory/algorithm.html">
+            
+                    
+                    Data Structures and Algorithms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.2" data-path="../theory/networking.html">
+            
+                <a href="../theory/networking.html">
+            
+                    
+                    Networking
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.3" data-path="../theory/regex.html">
+            
+                <a href="../theory/regex.html">
+            
+                    
+                    Regular Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.4" data-path="../theory/ml.html">
+            
+                <a href="../theory/ml.html">
+            
+                    
+                    Machine Learning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.5" data-path="../theory/cryptography.html">
+            
+                <a href="../theory/cryptography.html">
+            
+                    
+                    Cryptography
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.6" data-path="../theory/math.html">
+            
+                <a href="../theory/math.html">
+            
+                    
+                    Mathematics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.7" data-path="../theory/music.html">
+            
+                <a href="../theory/music.html">
+            
+                    
+                    Music
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.8" data-path="../theory/embedded.html">
+            
+                <a href="../theory/embedded.html">
+            
+                    
+                    Embedded Systems
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Kubernetes</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="kubernetes">Kubernetes</h1>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>Also known as k8s.</li>
+<li>The open source container orchestration tool developed and supported by Google, donated to Cloud Native Computing Foundation (CNCF).</li>
+<li>Written in Golang.</li>
+<li>Supports managing multiple containers works with cloud platforms and internal data center.</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<ul>
+<li>A cluster is consisted of one or more master nodes and one or more worker nodes.<ul>
+<li>Multiple master nodes are used to achieve high availability.</li>
+<li>one cluster can have no more than 5000 nodes, 150,000 pods and 300,000 containers.</li>
+</ul>
+</li>
+<li>Each node can have multiple pods.<ul>
+<li>There are two types of nodes master nodes and work nodes. master nodes are used to control, monitor worker nodes.<ul>
+<li>Each node will have an IP address</li>
+</ul>
+</li>
+<li>A node can be phsical machine or VM or VM Cloud.</li>
+<li>one node can have no more than 100 pods.</li>
+<li>A service is set of pods that work together.<ul>
+<li>pods in a service share a single domain name and can be load balanced.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Each pod can have one or more containers.<ul>
+<li>Each pod will have an unique IP and all containers in the pod shares a single volumn.</li>
+<li>The volumn can be cloud storage, or network work storage like Network File System.</li>
+</ul>
+</li>
+<li>A master node has four components<ul>
+<li>API Server - It is uses API transmit cluster info and config in JSON format, it is responsibe for all communications between developer and the cluster. It can be used by two API tool from the client side:<ul>
+<li>Command line tool <code>kubectl</code>, which is a Go lang binary.</li>
+<li>Kubernetes Dashboard</li>
+</ul>
+</li>
+<li>Scheduler - schedules pods on nodes and read config files. It is where the desired state is defines.<ul>
+<li>It will select node for scheduling new pods based on the hardware config info from the config file.</li>
+<li>It read resource usage data from worker nodes via the API server from ETCD database.</li>
+</ul>
+</li>
+<li>Controller Manager - runs controllers. It drives the current state to the desired state.<ul>
+<li>kube-controller-manager - control local machines<ul>
+<li>Ensures nodes are running all the time</li>
+<li>Ensures the number of pods are the same as</li>
+<li>controller watch the environment in a certain interval and take acting accordingly.</li>
+<li>it has the following controller, each of them is a separate process, but compiled into a single binary and run as a single process.<ul>
+<li>Node controller - monitor the nodes health</li>
+<li>Replication controller(rc or rcs)<ul>
+<li>Auto restart failed containers, nodes based on health check result</li>
+<li>Replication Controler make sure the number of pods and settings defined in the Manifest file is always satisfied.</li>
+</ul>
+</li>
+<li>Endpoints controller - maintain endpoint services</li>
+<li>Service account and token controllers - maintain account credentials.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>cloud-controller-manager - control cloud machines<ul>
+<li>Node Controller - monitor the cloud nodes health</li>
+<li>Route Controller - setup the cloud nodes routes</li>
+<li>Service Controller - setup cloud provider load balancers</li>
+<li>Volume Controller - setup cloud volumes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Etcd - open source, distributed key-value database from CoreOS.<ul>
+<li>It is only connected to the API Server</li>
+<li>Can be a part of master node or configured externally.</li>
+<li>It has a max size of 1MB.</li>
+<li>It stores <code>Secret</code> data - <code>Secret</code> is a k8s object which stores sensitive data like credentials.</li>
+<li>It stores <code>Config Maps</code> data - a K8s objects stores configs.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>A worker node has three components<ul>
+<li>kubelet - connected to the master API Server, reponsible for communication.<ul>
+<li>It is reponsible for keeping pod health, according to the requirement in the <code>PodSpecs</code></li>
+<li>When pod is unhealthy, it will try to restart or run it on a different node</li>
+<li>It only manage containers created by k8s</li>
+</ul>
+</li>
+<li>kube-proxy - maintain network config &amp; rules and exposes services available to the end users.<ul>
+<li>It watches API server on the master node for instructions.</li>
+</ul>
+</li>
+<li>container runtime<ul>
+<li>a software which is reponsible for running containers</li>
+<li>common container runtime<ul>
+<li>Docker</li>
+<li>Containerd</li>
+<li>Cri-o</li>
+<li>Rktlet</li>
+<li>Kubernetes CRI(Container Runtime Interface)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>K8s Addons are available for providing dashboard, monitoring, centralized logging, and DNS management.</li>
+<li>Automatic bin packing - auto assign jobs amongst containers based on memory and requirement.</li>
+<li>Rollout happens when new changes are deployed, rollbacks can be used to revert changes.<ul>
+<li>This is auto handled by k8s with no downtime.</li>
+<li>When errors are detected during rollout, k8s will rollback.</li>
+</ul>
+</li>
+<li>Horizontal Pod Autoscaler - is used to add or remove pods based on CPU utilization by changing setting in the Replication Controller. It can also auto scales by using commands or dashboard.</li>
+<li>K8s can also run jobs, which is controlled and scheduled by the Job Controller<ul>
+<li>each job can be run on one or more pods as required and do auto scaling.</li>
+<li>when the job is complete all pods will be shutdown</li>
+</ul>
+</li>
+<li>Networking<ul>
+<li>The two main types of Kubernetes networking services:<ol>
+<li>ClusterIP<ul>
+<li>This is the default service type</li>
+<li>This provides a virtual IP that can only be accessed within the cluster</li>
+</ul>
+</li>
+<li>NodePort<ul>
+<li>Assigns a ClusterIP and a port between 30000-32767</li>
+<li>These are mapped to the service</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>The definitions of these services reference three different kinds of ports and it is important to understand the differences between them:<ol>
+<li>Port (ClusterIP and NodePort service types)<ul>
+<li>This is the port number that makes the service visible to the rest of the cluster</li>
+<li>If another service needs to communicate with this service, it would do so with: <code>[ClusterIP]:[Port]</code></li>
+</ul>
+</li>
+<li>TargetPort (ClusterIP and NodePort service types)<ul>
+<li>This is the port within the container that the app is actually running on.</li>
+<li>In the NGINX example, port 80 is where the web server listens for http requests</li>
+<li>This is the port that the service will forward traffic on</li>
+</ul>
+</li>
+<li>NodePort (Only NodePort service type)<ul>
+<li>This is the port which makes the service visible from outside of the cluster</li>
+<li>This port can be used to access the service externally with <code>[node&apos;s IP]:[nodeport]</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ul>
+<li>Online Kubernetes Labs - Web based console for learning k8s<ul>
+<li><a href="https://www.katacoda.com/courses/kubernetes/playground" target="_blank">Kubernetes Playground</a></li>
+<li><a href="https://labs.play-with-k8s.com" target="_blank">Play with K8s</a></li>
+<li><a href="https://training.play-with-kubernetes.com" target="_blank">Play with Kubernetes Classroom</a></li>
+</ul>
+</li>
+<li>Installation Tools - Minimun installation that run a single node cluster inside a VM on the laptops for development<ul>
+<li><a href="https://kubernetes.io/docs/setup/learning-environment/minikube/#installation" target="_blank">Minikube</a></li>
+<li><a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/" target="_blank">Kubeadm</a><ul>
+<li>Install on Debina Linux<pre><code>curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+sudo touch /etc/apt/sources.list.d/kubernetes.list
+sudo chmod 753 /etc/apt/sources.list.d/kubernetes.list
+sudo cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+sudo apt-get update
+sudo apt-get install -y kubelet=&quot;1.13.4-00&quot; kubeadm=&quot;1.13.4-00&quot; kubectl=&quot;1.13.  4-00&quot; kubernetes-cni=&quot;0.6.0-00&quot;
+sudo apt-mark hold kubelet kubeadm kubectl kubernetes-cni
+</code></pre></li>
+<li>initialize the cluster, <code>sudo kubeadm init --pod-network-cidr=192.168.0.0/16</code><ul>
+<li><code>--pod-network-cidr</code> defines the pod IP.</li>
+<li>run cammand with <code>--dry-run</code> will check errors before actually attempting to initialize. Here are some common errors:<ul>
+<li><code>[ERROR FileContent--proc-sys-net-bridge-bridge-nf-call-iptables]: /proc/sys/net/bridge/bridge-nf-call-iptables does not exist</code>. Solution: run <code>sudo modprobe br_netfilter</code></li>
+<li><code>[ERROR Swap]: running with swap on is not supported. Please disable swap</code>. Solution: run <code>sudo swapoff -a</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Follow the output of the <code>kubeadm init</code> to complete further setup including adding nodes to the cluster and defining certificates.</li>
+<li>Install network add-ons, choose one of the following to install by applying manifests to the cluster.<ul>
+<li>Cilium - <code>kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.4/examples/kubernetes/1.13/cilium.yaml</code></li>
+<li>Calico</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cloud based Kubernetes services - Provide setting and let the cloud service setup everything<ul>
+<li>GKE - Google Kubernetes Engine</li>
+<li>AKS - Azure Kubernentes Service</li>
+<li>Amazon EKS</li>
+</ul>
+</li>
+</ul>
+<h2 id="manifest">Manifest</h2>
+<ul>
+<li>A K8s object are defined in manifest files in <code>YAML</code> format.<ul>
+<li>Objects are K8s components including <code>Pod</code>, <code>ReplicationController</code>, <code>Service</code>, <code>Namespace</code>,<code>Node</code> etc.</li>
+</ul>
+</li>
+</ul>
+<h5 id="define-a-pod-object">Define a Pod Object</h5>
+<pre><code class="lang-yaml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Pod
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> nginx
+<span class="hljs-attr">  labels:</span>
+<span class="hljs-attr">    app:</span> nginx-server
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  containers:</span>
+<span class="hljs-attr">    - name:</span> nginx-custom
+<span class="hljs-attr">      image:</span> [yourDockerHubUsername]/[yourNginxImage]:[yourTag]
+<span class="hljs-attr">      ports:</span>
+<span class="hljs-attr">        - containerPort:</span> <span class="hljs-number">80</span>
+</code></pre>
+<h5 id="defind-a-service">Defind a Service</h5>
+<ul>
+<li>Setup Cluster IP<pre><code class="lang-yaml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> nginx-service-clusterip
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">&quot;ClusterIP&quot;</span>
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - port:</span> <span class="hljs-number">8080</span>
+<span class="hljs-attr">      protocol:</span> TCP
+<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> nginx-server
+</code></pre>
+</li>
+<li>Setup Node Port<pre><code class="lang-yaml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> nginx-service
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  type:</span> <span class="hljs-string">&quot;NodePort&quot;</span>
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - port:</span> <span class="hljs-number">8080</span>
+<span class="hljs-attr">      protocol:</span> TCP
+<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> nginx-server
+</code></pre>
+</li>
+</ul>
+<h2 id="kubectl-commands"><code>kubectl</code> Commands</h2>
+<ul>
+<li><code>kubectl explain &lt;object&gt;</code> or <code>kubectl explain &lt;object&gt;.&lt;subfield&gt;</code> will field of a object in a manifest<ul>
+<li>object is any kubernetes object you can define in a manifest</li>
+<li><code>--recursive</code> will explain objects of sub-fields.</li>
+</ul>
+</li>
+<li><code>kubectl taint nodes --all node-role.kubernetes.io/master-</code> This removes the &quot;NoSchedule&quot; taint, which then allows the master to think of itself as a worker to form a kubernetes single node cluster.<ul>
+<li>Worker nodes do not have the &quot;NoSchedule&quot; taint.</li>
+</ul>
+</li>
+<li><code>kubectl get nodes</code> List all nodes in the cluster. Each node is a bare-metal device (could also be a VM).</li>
+<li><code>kubectl get pods</code> List pods</li>
+<li><code>kubectl get svc</code> get the status of services</li>
+<li><code>kubectl describe svc &lt;ServiceName&gt;</code> request the details of a service</li>
+<li><code>kubectl describe nodes &lt;NodeName&gt;</code> request the details of a node</li>
+<li><code>kubectl describe pods &lt;PodName&gt;</code> request the details of a node</li>
+<li><code>kubectl create -f pod.yaml</code> create an object from manifest file.</li>
+<li><code>kubectl apply -f &lt;FilePath&gt;</code> apply changes to an object.</li>
+<li><code>kubectl delete -f pod.yaml</code> Remove a object created with the manifest.</li>
+<li><code>kubectl delete svc nginx-service-clusterip</code> delete a service object<ul>
+<li>same as <code>kubectl delete -f service.yaml</code></li>
+</ul>
+</li>
+<li><code>kubectl exec -it &lt;PodName&gt; /bin/bash</code> Exec into the container</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="docker.html" class="navigation navigation-prev " aria-label="Previous page: Docker">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../git/" class="navigation navigation-next " aria-label="Next page: Git">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Kubernetes","level":"1.18.3","depth":2,"next":{"title":"Git","level":"1.19","depth":1,"path":"git/README.md","ref":"git/README.md","articles":[]},"previous":{"title":"Docker","level":"1.18.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"virtualization/kubernetes.md","mtime":"2020-06-10T23:03:07.099Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-22T17:46:11.394Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
