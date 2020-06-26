@@ -33,16 +33,16 @@
   - `0`: normal sleep, memory is always powered during sleep. default sleep mode for desktop Macs.
   - `1`: hibernate mode, memory is cached and not powered on disk during sleep. this is the default for pre-2005 laptops.
   - `3`: safe sleep, memory is cached on disk and powered during sleep. this is the default for laptops made after 2005.
-  - `25`: hibernate mode, memory is cached and not powered on disk during sleep. the setting used for post-2005) laptops.
+  - `25`: hibernate mode, memory is cached and not powered on disk during sleep. the setting used for post-2005 laptops.
 - `standby`:
   - `1`: let the machine enter hibernate mode from safe sleep after it has slept for a specified time period.
   - `0`: machine won't enter hibernate mode under any circumstances.
 - `hibernatefile` - location for the memory image on disk.
 - Change setting using the -a, -b, -c, -u flags. For example, `sudo pmset -a hibernatemode 25`
   - `-b`, apply to battery
-  - `-c` charger
-  - `-u` UPS
-  - `-a` all
+  - `-c`, charger
+  - `-u`, UPS
+  - `-a`, all
 
 ### Xcode Command Line Tools
 

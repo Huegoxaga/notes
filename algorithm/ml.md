@@ -41,7 +41,7 @@
     - instance-based will compare new data with sample data then make judgement.
     - model-based learning will generalize sample data, then processing new data based on the model.
 
-## Classical Machine Learning Algorithms
+## Machine Learning Algorithms
 
 - Decision Trees and Random Forests
 - K-Means
@@ -233,6 +233,26 @@
   - The last fully connected layer will vote for the result for image recognition.
   - The softmax function is used to calculation possibilities of each result for image recogition so possibilities of all possible answers add up to 1.
   - The cost function in CNNs is called loss function, cross-entropy formula is frequenly used.
+  - Famous CNNs Architectures
+    - CNNs Architectures are models with predefined structures
+    - [LeNet-5](https://homl.info/lenet5)
+      - Created by Yann LeCun in 1998 for MNIST dataset.
+    - [AlexNet](https://homl.info/80)
+      - Won the 2012 ILSVRC challenge
+    - [GoogLeNet](https://homl.info/81)
+      - Won the 2014 ILSVRC challenge
+    - [VGGNet](https://homl.info/83)
+    - [ResNet](https://homl.info/82)
+      - Won the 2015 ILSVRC challenge
+      - The CNN is called Residual Network.
+    - [Xception](https://homl.info/xception)
+      - A variant of GoogLeNet
+    - [SENet](https://homl.info/senet)
+      - Squeeze-and-Excitation Network
+    - You Only Look Once(YOLO)
+      - [YOLO](https://homl.info/yolo)
+      - [YOLOv2](https://homl.info/yolo2)
+      - [YOLOv3](https://homl.info/yolo3)
 
 ##### Recurrent Neural Networks(RNNs)
 
@@ -257,77 +277,61 @@
   - A basic three layer neural network with feedback that serve as memory inputs.
 - Long Short Term Memory(LSTM)
   - solving the problem called vanishing gradient problem of other RNNs in which contributions of information decayed geometrically over time.
-- Gated Recurrent Networks(GRUs) refines the LSTM.
+  - It keeps track of both of the long term and long term memeory
+  - It uses four layers to filter and combine long and short term memory. Each layer get input from both current input vector and previous short-term state.
+    - The main layer is used to generated output that will be added to the current long-term state.
+    - The other three layers are gate controllers for the following gates:
+      - forget gate - instruct what can be forget from the previous long-term state before adding new info.
+      - input gate - controls what info from the main layer output can be added to the long term state.
+      - output gate - uses a copy of the current long term state to generate the short term state.
+- Gated Recurrent Networks(GRUs)
+  - A refined and simplified version of the LSTM.
+- A Seq2Seq model can be a RNN model that takes a sequence of items (words, letters, time series, etc) and outputs another sequence of items.
+  - A typical sequence to sequence model has two parts – an encoder and a decoder. Both the parts are practically two different neural network models combined into one giant network.
+  - The task of an encoder network is to understand the input sequence, and create a smaller dimensional representation of it. This representation is then forwarded to a decoder network which generates a sequence of its own that represents the output.
+- Amazon SageMaker Sequence to Sequence
+  - A supervised learning algorithm for convert sequence of tokens
+  - the input is a sequence of tokens (for example, text, audio) and the output generated is another sequence of tokens.
+  - Example applications include: machine translation, text summarization, speech-to-text.
+  - It uses Recurrent Neural Networks (RNNs) and Convolutional Neural Network (CNN) models with attention as encoder-decoder architectures.
 
-### Optimatization Tips for Neural Networks
+##### Hyperparameters Tuning
 
-#### Data Preprocessing
+- For Neural Networks, hyperparameters tuning can be done during model building and model training.
+- Build Model
+  - Hyperparameters in the build model step is called Model Hyperparameters.
+  - Generally, the ideal number of nodes in each hidden layer is close to half of the input layer nodes plus output layer nodes.
+    - Fine tuning can be made to improve, however this approximate number is good enough for determining the number of nodes for all hidden layers.
+    - The number nodes in each hidden layer determines the capacity of the model to learn a complex model. When the capacity is greater than needed it will learn to much and cause overfitting.
+    - the first hidden layer is suggested to have more nodes than the input layer.
+  - the number of layers
+    - For the number of hidden layer, 3 layer is way better 2. A 4, 5, 6 layers ANNs won't necessarily increase the accurancy greatly.
+    - More convolutional layer will increase the accuracy of the prediction.
+    - The more fully connected hidden layers, the better the model predict.
+  - Transfer Learning for CNNs - Use good trained model that can accomplish similar tasks.
+    - One technique is to remove the last few convolutional layers then train the data since only those layers are reponsible for specific feature detecting for trained model's own labeling strategy.
+    - Fine-Tuning - replace the last fully connected layers with a new layer then train the model based on existing weight from trained model.
+- Train Model
+  - Hyperparameters in the train model step is called Optimizer Hyperparameters.
+  - Epochs
+    - If the number of epochs is too small the model will be underfitting, If the number of epochs is too large the model will be overfitting.
+      - The best number of epochs will make the test set and the model have the best performance, this is called the Goldilocks point.
+      - Early Stopping is the algorithm for finding the Goldilocks point, hence determine the best number of epochs to train the model.
+        - It can be set to stop whenever accurancy decreace, or when accurancy doesn't improve in the next 10 or 20 epoch.
+  - Learning rate
+    - can be a value from 0.1 - 0.00001
+    - It controls how fast weight changes during gradient descent.
+    - 0.01 suggested starting value.
+    - If to small it will take longer steps to find the best weight, if too big the algorithm might not be able to find the best weight.
+    - Learning rate decay is an algorithm that helps the model to find the best weight.
+      - it can decrease the learning rate linearly or exponentially after a certain epochs.
+      - Adaptive Learning Rate changes learning rate dynamically based on the data and training result after each epoch.
+  - Minibatch size
+    - It is 2^n and it can be anywhere from 1 - 256, 32 is a good starting point, then 64, 128, 256.
+    - Larger batch size requires more computational resources, and it might cause out of memory errors.
+    - Smaller batch size helps preventing the weight to be found at local minima, and it will be slow.
 
-##### Numeric Data Preprocessing
-
-1. Importing the data.
-2. Replacing missing values by the average of all other values.
-3. Encoding categorical data - generating dummy variables.
-4. Splitting the dataset into the Training set and Test set.
-5. Feature Scaling - put all the features on the same scales.
-   - Not all models need to have feature scaling.
-   - Applied on training set only.
-   - There are two ways for Feature Scaling
-     - Standardization returns a result from -3 to 3, Standardization alway works.
-     - Normalization returns a result from 0 to 1, Normalization works only if data have a normal distribution in most of the features.
-   - Dummy variables do not need to apply feature scaling.
-
-##### Image Preprocessing
-
-- The color value of the images can be rescaled from 0-255 to 0-1 to simplify the data.
-  - The training data and testing data should use have the same recaling setting.
-- Image augumentation step alteres the images by zooming, flipping and shearing to provide variaties for training.
-
-##### Timeseries data preprocessing
-
-##### Text data preprocessing
-
-#### Hyperparameters Tuning
-
-- Hyperparameters Tuning can be done during model building and model training.
-
-### Build Model
-
-- Hyperparameters in the build model step is called Model Hyperparameters.
-- Generally, the ideal number of nodes in each hidden layer is close to half of the input layer nodes plus output layer nodes.
-  - Fine tuning can be made to improve, however this approximate number is good enough for determining the number of nodes for all hidden layers.
-  - The number nodes in each hidden layer determines the capacity of the model to learn a complex model. When the capacity is greater than needed it will learn to much and cause overfitting.
-  - the first hidden layer is suggested to have more nodes than the input layer.
-- the number of layers
-  - For the number of hidden layer, 3 layer is way better 2. A 4, 5, 6 layers ANNs won't necessarily increase the accurancy greatly.
-  - More convolutional layer will increase the accuracy of the prediction.
-  - The more fully connected hidden layers, the better the model predict.
-- Transfer Learning for CNNs - Use good trained model that can accomplish similar tasks.
-  - One technique is to remove the last few convolutional layers then train the data since only those layers are reponsible for specific feature detecting for trained model's own labeling strategy.
-  - Fine-Tuning - replace the last fully connected layers with a new layer then train the model based on existing weight from trained model.
-
-### Train Model
-
-- Hyperparameters in the train model step is called Optimizer Hyperparameters.
-- Epochs
-  - If the number of epochs is too small the model will be underfitting, If the number of epochs is too large the model will be overfitting.
-    - The best number of epochs will make the test set and the model have the best performance, this is called the Goldilocks point.
-    - Early Stopping is the algorithm for finding the Goldilocks point, hence determine the best number of epochs to train the model.
-      - It can be set to stop whenever accurancy decreace, or when accurancy doesn't improve in the next 10 or 20 epoch.
-- Learning rate
-  - can be a value from 0.1 - 0.00001
-  - It controls how fast weight changes during gradient descent.
-  - 0.01 suggested starting value.
-  - If to small it will take longer steps to find the best weight, if too big the algorithm might not be able to find the best weight.
-  - Learning rate decay is an algorithm that helps the model to find the best weight.
-    - it can decrease the learning rate linearly or exponentially after a certain epochs.
-    - Adaptive Learning Rate changes learning rate dynamically based on the data and training result after each epoch.
-- Minibatch size
-  - It is 2^n and it can be anywhere from 1 - 256, 32 is a good starting point, then 64, 128, 256.
-  - Larger batch size requires more computational resources, and it might cause out of memory errors.
-  - Smaller batch size helps preventing the weight to be found at local minima, and it will be slow.
-
-## Advanced Machine Learning Algorithms
+## Ready-to-use Algorithms
 
 - fastText
   - It is used for text data
@@ -336,9 +340,7 @@
   - Facebook makes available pretrained models for 294 languages.
   - fastText uses a neural network for word embedding.
   - It is extended as BlazingText as an AWS Sagemaker built-in algorithm
-  - It can be a unsupervised learning algorithm. It converts text to vector(Word2Vec)
-    - Word2Vec is a text preprocessing step for downstream NLP, Sentiment analysis, named entity recognition and translation.
-    - Words that are semantically similar have vectors that are closer to each other
+  - It can be a unsupervised learning algorithm using text to vector(Word2Vec)
   - It can be a supervised learning algorithm that supports multi-class, multi-label classification
 - Object2Vec
   - A bulit-in algorithm from the AWS Sagemaker
@@ -384,17 +386,48 @@
   - an AWS sagemaker built-in model
   - Image Analysis Algorithm for Computer Vision Applications
   - Tags each pixel in an image with a class label
-- Amazon SageMaker Sequence to Sequence
-  - A supervised learning algorithm for convert sequence of tokens
-  - the input is a sequence of tokens (for example, text, audio) and the output generated is another sequence of tokens.
-  - Example applications include: machine translation, text summarization, speech-to-text.
-  - It uses Recurrent Neural Networks (RNNs) and Convolutional Neural Network (CNN) models with attention as encoder-decoder architectures.
 - Amazon SageMaker Latent Dirichlet Allocation
   - A unsupervised learning algorithm for topic modeling
   - Group documents by user specified number of topics
   - For documents, it assigns a probability score for each topic
 - Amazon SageMaker Neural Topic Model
   - Similar to Amazon SageMaker Latent Dirichlet Allocation
+
+## Data Preprocessing
+
+### Numeric Data Preprocessing
+
+1. Importing the data.
+2. Replacing missing values by the average of all other values.
+3. Encoding categorical data - generating dummy variables.
+4. Splitting the dataset into the Training set and Test set.
+5. Feature Scaling - put all the features on the same scales.
+   - Not all models need to have feature scaling.
+   - Applied on training set only.
+   - There are two ways for Feature Scaling
+     - Standardization returns a result from -3 to 3, Standardization alway works.
+     - Normalization returns a result from 0 to 1, Normalization works only if data have a normal distribution in most of the features.
+   - Dummy variables do not need to apply feature scaling.
+
+### Image Preprocessing
+
+- The color value of the images can be rescaled from 0-255 to 0-1 to simplify the data.
+  - The training data and testing data should use have the same recaling setting.
+- Image augumentation step alteres the images by zooming, flipping and shearing to provide variaties for training.
+
+### Timeseries data preprocessing
+
+### Text data preprocessing
+
+- Bag of word - It is a way to preprocess text data by using an array of count for all possible words to record the occurrence of each word in the text data.
+  - Then, the data can be fed into other algorithms. Ex, ANNs or Native Bayes for classfication.
+- Word2Vec
+  - Word2vec is a group of two-layer neural networks models that are used to produce word embeddings.
+    - It can be obtained using two methods: Skip Gram or Common Bag Of Words (CBOW)
+    - Word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers.
+    - It uses pre-trained models to convert word to vectors with several hundred dimensions.
+  - Word2Vec is a text preprocessing step for downstream NLP, Sentiment analysis, named entity recognition and translation.
+  - Words that are semantically similar have vectors that are closer to each other
 
 ## Model Evaluation
 

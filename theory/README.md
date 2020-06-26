@@ -1,4 +1,0 @@
-- [Data Structures and Algorithms](https://huegoxaga.github.io/notes/theory/algorithm.html)
-- [Networking](https://huegoxaga.github.io/notes/theory/networking.html)
-- [Machine Learning](https://huegoxaga.github.io/notes/theory/ml.html)
-- [Cryptography](https://huegoxaga.github.io/notes/theory/cryptography.html)

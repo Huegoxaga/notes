@@ -391,108 +391,94 @@ This choose any text begin with A.
   - UNICODE
   - UPPER
 - Date And Time Functions
-
   - CURRENT_TIMESTAMP
   - DATEDIFF(datepartType, startdate, enddate)
     - datepartType: year, quarter, month, dayofyear, day, week, hour, minute, second, millisecond, microsecond, nanonsecond
-
-  ```sql
-  SELECT DATEDIFF(DAY, '2017-01-01', '2018-09-01')
-  Result is 608 days
-
-  SELECT DATEDIFF(MONTH, '2017-01-01', '2018-09-01')
-  Result is 20 months
-
-  SELECT DATEDIFF(YEAR, '1999-11-15', '2018-10-02')
-  Result is 19 years
-  ```
-
-  - Be careful, DATEDIFF with YEAR does not calculate age. A person born on November 15, 1999 is not 19 on October 2, 2018. Use the following way to calculate.
-
-  ```sql
-  SELECT FLOOR(DATEDIFF(DAY, '1999-11-15', '2018-10-02') / 365.25)
-  Result is 18 years
-  ```
-
+    - Be careful, DATEDIFF with YEAR does not calculate age. A person born on November 15, 1999 is not 19 on October 2, 2018. Use the following way to calculate.
+    ```sql
+    SELECT DATEDIFF(DAY, '2017-01-01', '2018-09-01')
+    Result is 608 days
+    SELECT DATEDIFF(MONTH, '2017-01-01', '2018-09-01')
+    Result is 20 months
+    SELECT DATEDIFF(YEAR, '1999-11-15', '2018-10-02')
+    Result is 19 years
+    ```
+    ```sql
+    SELECT FLOOR(DATEDIFF(DAY, '1999-11-15', '2018-10-02') / 365.25)
+    Result is 18 years
+    ```
   - DATEDIFF extracts the YEAR from both dates and performs subtraction without considering the months or days
   - DATEADD(datepart, number, date)
-
-  ```sql
-  SELECT DATEADD(DAY, 60, '2018-09-01')
-  Result is 2018-10-31
-
-  SELECT DATEADD(MONTH, 5, '2018-09-01')
-  Result is 2019-02-01
-
-  SELECT DATEADD(YEAR, 3, '2018-09-01')
-  Result is 2021-09-01
-  ```
-
+    ```sql
+    SELECT DATEADD(DAY, 60, '2018-09-01')
+    Result is 2018-10-31
+    SELECT DATEADD(MONTH, 5, '2018-09-01')
+    Result is 2019-02-01
+    SELECT DATEADD(YEAR, 3, '2018-09-01')
+    Result is 2021-09-01
+    ```
   - use DATEADD with negative values
-
-  ```sql
-  SELECT DATEADD(DAY, -60, '2018-09-01')
-  Result is 2018-07-03
-
-  SELECT DATEADD(MONTH, -5, '2018-09-01')
-  Result is 2018-04-01
-
-  SELECT DATEADD(YEAR, -3, '2018-09-01')
-  Result is 2015-09-01
-  ```
-
+    ```sql
+    SELECT DATEADD(DAY, -60, '2018-09-01')
+    Result is 2018-07-03
+    SELECT DATEADD(MONTH, -5, '2018-09-01')
+    Result is 2018-04-01
+    SELECT DATEADD(YEAR, -3, '2018-09-01')
+    Result is 2015-09-01
+    ```
   - DATENAME(datepart, date) works like DATEPART but returns a string instead of an integer
-
-  ```sql
-  SELECT encounter_date_time,
-         DATENAME(HOUR, encounter_date_time) AS [hour],
-         DATENAME(MINUTE, encounter_date_time) AS [minute],
-         DATENAME(SECOND, encounter_date_time) AS [second]
-  FROM encounters
-  ```
-
+    ```sql
+    SELECT encounter_date_time,
+          DATENAME(HOUR, encounter_date_time) AS [hour],
+          DATENAME(MINUTE, encounter_date_time) AS [minute],
+          DATENAME(SECOND, encounter_date_time) AS [second]
+    FROM encounters
+    ```
   - DATEPART(datepart, date)
-
-  ```sql
-  SELECT encounter_date_time,
-         DATEPART(HOUR, encounter_date_time) AS [hour],
-         DATEPART(MINUTE, encounter_date_time) AS [minute],
-         DATEPART(SECOND, encounter_date_time) AS [second]
-  FROM encounters
-  ```
-
+    ```sql
+    SELECT encounter_date_time,
+          DATEPART(HOUR, encounter_date_time) AS [hour],
+          DATEPART(MINUTE, encounter_date_time) AS [minute],
+          DATEPART(SECOND, encounter_date_time) AS [second]
+    FROM encounters
+    ```
+    ```sql
+    SELECT  DATEPART(YEAR, Timestamp) AS 'Year',
+            DATEPART(MONTH, Timestamp) AS 'Month',
+            DATEPART(DAY, Timestamp) AS 'Day',
+            COUNT(*) AS 'Visits'
+    FROM      tblVisits
+    GROUP BY  DATEPART(DAY, Timestamp),
+              DATEPART(MONTH, Timestamp),
+              DATEPART(YEAR, Timestamp)
+    ORDER BY  'Year',
+              'Month',
+              'Day'
+    ```
   - DAY(date) extracts the day of the month
   - MONTH(date) extracts the month of the year
   - YEAR(date) extracts the year
-
-  ```sql
-  SELECT birth_date,
-         YEAR(birth_date) AS [year],
-         MONTH(birth_date) AS [month],
-         DAY(birth_date) AS [day]
-  FROM patients
-  ```
-
+    ```sql
+    SELECT birth_date,
+          YEAR(birth_date) AS [year],
+          MONTH(birth_date) AS [month],
+          DAY(birth_date) AS [day]
+    FROM patients
+    ```
   - The GETDATE function returns the current date with time
-
-  ```sql
-  SELECT GETDATE()
-  ```
-
+    ```sql
+    SELECT GETDATE()
+    ```
   - To get the date without the time, the CONVERT function can be used
-
-  ```sql
-  SELECT CONVERT(DATE, GETDATE())
-  ```
-
+    ```sql
+    SELECT CONVERT(DATE, GETDATE())
+    ```
   - Calculate patient age
-
-  ```sql
-  SELECT birth_date,
-         FLOOR(DATEDIFF(DAY, birth_date, GETDATE()) / 365.25)
-  FROM patients
-  ```
-
+    ```sql
+    SELECT birth_date,
+          FLOOR(DATEDIFF(DAY, birth_date, GETDATE()) / 365.25)
+    FROM patients
+    ```
   - GETUTCDATE
   - ISDATE
   - MONTH
@@ -642,17 +628,17 @@ One can insert multiple rows
 INSERT INTO tablename[(column1, column2, column3, column4)]
 SELECT statement
 
-INSERT INTO dental_service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
+INSERT INTO dental*service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
 SELECT service_id, service_description, service_type, hourly_rate, sales_ytd
 FROM dental_services
 or
 INSERT INTO dental_service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
-SELECT _
-FROM dental_services
+SELECT *
+FROM dental*services
 WHERE sales_ytd >= 500
 or
 INSERT INTO dental_service_archives
-SELECT _
+SELECT *
 FROM dental_services  
 (all column must have values.and in order)
 
@@ -1228,10 +1214,10 @@ sys.sql_modules
 TRANSCATION
 ROLLBACK
 
-SELECT _ FROM physicians WHERE physician_id = 2;SELECT _ FROM patients WHERE patient_id = 1251;BEGIN TRANSACTION;UPDATE physicians SET specialty = 'Hematology' WHERE physician_id = 2;UPDATE patients SET allergies = 'Almonds' WHERE patient_id = 1251;SELECT _ FROM physicians WHERE physician_id = 2;SELECT _ FROM patients WHERE patient_id = 1251;ROLLBACK TRANSACTION;SELECT _ FROM physicians WHERE physician_id = 2;SELECT _ FROM patients WHERE patient_id = 1251;
+SELECT _ FROM physicians WHERE physician_id = 2;SELECT _ FROM patients WHERE patient*id = 1251;BEGIN TRANSACTION;UPDATE physicians SET specialty = 'Hematology' WHERE physician_id = 2;UPDATE patients SET allergies = 'Almonds' WHERE patient_id = 1251;SELECT * FROM physicians WHERE physician*id = 2;SELECT * FROM patients WHERE patient*id = 1251;ROLLBACK TRANSACTION;SELECT * FROM physicians WHERE physician*id = 2;SELECT * FROM patients WHERE patient_id = 1251;
 
 Commit
-SELECT _ FROM physicians WHERE physician_id = 2;SELECT _ FROM patients WHERE patient_id = 1251;BEGIN TRANSACTION T1;UPDATE physicians SET specialty = 'Hematology' WHERE physician_id = 2;UPDATE patients SET allergies = 'Almonds' WHERE patient_id = 1251;SELECT _ FROM physicians WHERE physician_id = 2;SELECT _ FROM patients WHERE patient_id = 1251;COMMIT TRANSACTION T1;SELECT _ FROM physicians WHERE physician_id = 2;SELECT _ FROM patients WHERE patient_id = 1251;
+SELECT _ FROM physicians WHERE physician_id = 2;SELECT _ FROM patients WHERE patient*id = 1251;BEGIN TRANSACTION T1;UPDATE physicians SET specialty = 'Hematology' WHERE physician_id = 2;UPDATE patients SET allergies = 'Almonds' WHERE patient_id = 1251;SELECT * FROM physicians WHERE physician*id = 2;SELECT * FROM patients WHERE patient*id = 1251;COMMIT TRANSACTION T1;SELECT * FROM physicians WHERE physician*id = 2;SELECT * FROM patients WHERE patient_id = 1251;
 
 SQL Script
 the script put multiple SQL statement together one by one in a file.

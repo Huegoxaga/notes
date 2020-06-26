@@ -26,7 +26,7 @@
   - staff is made up by 5 horizontal lines.
 - Grand staff
   - a combination of treble clef and bass clef is called the grand staff.
-  - ![grand staff](music/grand_staff.png)
+  - ![grand staff](img/grand_staff.png)
     - Treble Clef at the top
     - Bass Clef at the bottom
 - ledger line
@@ -43,18 +43,26 @@
 - rhythmic unit is the beats
 - speed is the bpm(beats per minute)
 - a dot adds the note half of its original rhythmic value.
-- Time Signature ![Time signature](music/time_signature.png)
+- Time Signature ![Time signature](img/time_signature.png)
 - bottom number indicates 2(half note) or 4(quarter note) or 8(eighth note) is treated as one pulse.
 - upper number indicates how many pulse in one measure(bar).
 - 4/4 is known as common time `C`.
 - 2/2 is known as `cut` time, vertical bar on `C`
+- Simple meters have 2 notes per beat.
+  - If there are 2 beat per bar. It is called a simple duple.
+  - If there are 3 beat per bar. It is called a simple triple.
+  - If there are 4 beat per bar. It is called a simple quadruple.
+- Compound meters have 3 notes per beat.
+  - If there are 2 beat per bar. It is called a compound duple.
+  - If there are 3 beat per bar. It is called a compound triple.
+  - If there are 4 beat per bar. It is called a compound quadruple.
 - Ties - they are curves across muliple notes
   - For notes with the same pitch, the rhythm of the two will be added up and treated as one note.
   - For notes with the different pitches, there will make continuous sound.
 - A number like 3, 5 , 7 underneath a group of notes will generally add an extra note in the original rhythmic gap.
 - A rest defines the length of silence.
 - See the charts for all notes and rests
-  - ![Notes and Rests](music/notes.jpg)
+  - ![Notes and Rests](img/notes.jpg)
 
 ## Amplitude
 
@@ -140,13 +148,15 @@
 - The circle of fifths or the circle of fourths are tetrachords connected by `<WS>`s
 - the letter names of the tetrachord are used to draw the circle in sequence.
 - The C major tetrachord is on the top of the circle, it goes to the higher major tetrachord in clockwise direction.
-  - ![Circle of Fifths](music/circle_of_fifths.png)
+  - ![Circle of Fifths](img/circle_of_fifths.png)
 - On the circle of fifths
   - From C counter-clockwise, each major key adds one flats(on fourth degree).
   - From C clockwise, each major key adds one sharps(on seventh degree).
 - For key signatures, sharps and flats add from left to right in the order corresponding to the circle of fifths.
 
 ## Chords
+
+- Arpeggios - play a chord one by one from low to high or high to low.
 
 #### Triad
 
@@ -178,10 +188,11 @@
 - Triad plurality - are triads that can be found from different major scale.
   - one major and minor chord can be found from three different major scale.
 - Diminished chords don’t have this property since it has a one to one relationship with every major scale.
+- Triads can also add octaves for any one of the three notes, it will still be a triad and its quality will stay the same.
 
 #### Four-part Chord
 
-- It has four notes.
+- It has four notes, also known as seventh chord
 
 | Chord Name          | Composition                             | Chord Symbol                                           |
 | ------------------- | --------------------------------------- | ------------------------------------------------------ |
@@ -210,7 +221,7 @@
 
 #### Five-part Chord
 
-- Also known as ninth chord
+- It has five notes, also known as ninth chord
 
 | Chord Name             | Composition                       | Chord Symbol                                        |
 | ---------------------- | --------------------------------- | --------------------------------------------------- |
@@ -242,7 +253,7 @@
   - C6(b5)
   - C6(#5) undesirable, practically does not exist.
   - C7(b5)
-  - C7(#5) has another chord symbol C+7
+  - C7(#5) has another chord symbol `C+7`
   - Cmi7(#5)
   - Cmi7(b5) also called half diminished(C,C7), it is four-part chord that starts at the seventh degree of a major scale
 
@@ -272,7 +283,7 @@
 - Using a four-part chord doesn’t mean that all the notes are used. The 3rd and 7th are the signature for the chord. among all the variation the top notes can be used to represent this progression like 7 - 3 - 7 voicing or 3 - 7 - 3 voicing.
 - using five-part chord can add some complex to the original chord progression.
 - Shell voicing - All combination of of the two notes, one from 3rd or minor 3rd and one from 7th or dominant 7th can define the quality of the chord and hence it can be called the shell of the chord.
-- Arpeggios - play a chord one by one from low to high or high to low.
+- Non-chord tones are notes that does not belongs to the current chord.
 
 ## Improvision
 
@@ -283,3 +294,22 @@
   - Arpeggios - Using Arpeggios instead of Scale or combine them together.
   - Chords - Using chords cooresponding to the left hand.
   - Chromaticism - Using the notes that is half step higher or lower to decorate the initial starting notes.
+
+```
+- The key that is being used throughout the tune or indicated by the key signature is the momentart key.
+- Harmonic analysis summary for difference music styles.
+- sub change chord quality
+- plural sub chord can be found by makeing the definitite chord
+  - a separate chord and then using the top four notes.
+- In major key the IV VII III chord can always replace a II V I chord
+- When a I chord in minot is also treated as a II of a major by the following. it is called a linking chord.
+- Chromatic solfeg C#-DI d#-RI F# FI G#SI A# LI Db RA Eb ME GB SE Ab LE Bb TE
+- Voice leading occurs on the top notes of each chord
+- certain inversion is used in ascending or decending order
+- if using the same note it is called common tome
+  - common tone voice leading can be used for triad progression around circle of fifith
+- these notes should't be too far from each other
+- eleventh chord
+- C major 13th
+- C11
+```

@@ -250,6 +250,8 @@ http(s)
     - 510 Not Extended
     - 511 Network Authentication Required
     - 599 Network Connect Timeout Error
+- The URL will be encoded using the `UTF-8` encoding scheme
+  - `+` means a space only in `application/x-www-form-urlencoded` content, such as the query part of a URL.
 
 ##### Hyper Text Transfer Protocol Secure(HTTPS)
 

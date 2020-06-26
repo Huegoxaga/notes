@@ -41,6 +41,21 @@
   - `html = urlopen("https://www.example.com/index.html").read().decode('utf-8')` load the webpage that containing special characters from other languages.
   - Indentation and format of the `html` is preserved.
 
+### urllib.parse
+
+- `import urllib.parse`
+
+#### Usage
+
+- `urllib.parse.quote(s)` encode `s` using the `UTF-8` encoding scheme
+  - `/` in string `s` will not be encoded
+- `urllib.parse.quote(s, safe='')` encode all characted in `s` including `/`
+  - `/` is the default `safe` value. Change it to other character will keep that charter intact during encoding.
+- `urllib.parse.quote_plus(s)` similar with `.qoute(s)`. It will encoded space as `+`.
+- `urllib.parse.urlencode(params)` encode multiple parameters at once using `.qoute_plus(s)`.
+  - `params` can be a dictionary like `params = {'key1': 'value1', 'key2': 'value2'}`
+- `urllib.parse.urlencode(params, doseq=True)` enable `params` to hold a list as key value.
+
 ## urllib3
 
 - `import urllib3`
