@@ -3,10 +3,16 @@
 ## Introduction
 
 - It uses PHP at the backend.
-- WordPress is the most popular CMS.
 - It powers roughly 1/3rd of the web, tens of millions of sites.
 - Based on PHP & MySQL.
 - First released in 2003.
+- WordPress is the most popular CMS.
+  - Content management systems(CMS) are applications(web apps) used to manage digital content.
+  - 50% of the webs are made by Content Management Systems.
+  - Popular CMSs are listed below. They are all written in PHP.
+    - WordPress
+    - Drupal
+    - Joomla
 
 ## Installation
 

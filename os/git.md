@@ -76,7 +76,7 @@
 - `git checkout -b branchName` create a new branch and switch to that branch.
 - `git merge` Combines remote tracking branch into current local branch.
 - `git merge branchName` Merge certain branch to the current branch, when done input commit message.
-- `git merge origin/remoteBranch` Merge certain remote branch to the current branch, when done input commit message.
+- `git merge origin/remoteBranch --no-commit --no-ff` Merge certain remote branch to the current branch, when done input commit message.
   - When making pull request that will not be able to auto-merged, merge code locally then push it, then auto merge for the pull request will be enabled.
   - The `--no-ff` flag prevents git merge from executing a `fast-forward`
   - `--ff-only` means fast-forward only.
@@ -95,6 +95,7 @@
 - `git push origin <branchName>` push to a certain remote branch.
 - `git fetch origin` git fetch is similar to pull but doesn't merge. It fetches remote updates but the local stays the same.
 - `git pull <URLorRemoteBranchName>` pull from a certain remote branch.
+  - `git pull origin master --no-commit` this is recommanded to merge new codes from master before sending pull request from working branches.
 - `git pull` Pull the latest from the remote repos
 - `git clone URL` Clone repos into the current directory.
 - `git clone URL folderAddress` Clone repos into the certain directory.

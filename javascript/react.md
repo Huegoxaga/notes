@@ -407,4 +407,4 @@ useEffect(() => {
 - Install React Developer Tools Plugin
 - React Tab will be shown in the browser inspector, all component tag will be shown.
 - `open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=/tmp/chrome_dev_test --disable-web-security` open a Broswer with no security requirement.
-- statement `debugger;` will trigger the debugger to run.
+- statement `debugger;` will trigger the debugger to run when the program reaches that particular line.

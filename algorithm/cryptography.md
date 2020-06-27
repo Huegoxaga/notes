@@ -36,7 +36,17 @@
   - `SHA-0`: A retronym applied to the original version of the 160-bit hash function published in 1993 under the name "SHA". It was withdrawn shortly after publication due to an undisclosed "significant flaw" and replaced by the slightly revised version SHA-1.
   - `SHA-1`: A 160-bit hash function which resembles the earlier MD5 algorithm. This was designed by the National Security Agency (NSA) to be part of the Digital Signature Algorithm. Cryptographic weaknesses were discovered in SHA-1, and the standard was no longer approved for most cryptographic uses after 2010.
   - `SHA-2`: A family of two similar hash functions, with different block sizes, known as SHA-256 and SHA-512. They differ in the word size; SHA-256 uses 32-byte words where SHA-512 uses 64-byte words. There are also truncated versions of each standard, known as SHA-224, SHA-384, SHA-512/224 and SHA-512/256. These were also designed by the NSA.
+    - `SHA-256`
+      - It takes 256-bit memory and has 64 Hexdecimal digits.
+      - This algorithm generates a unique hash for all files.
   - `SHA-3`: A hash function formerly called Keccak, chosen in 2012 after a public competition among non-NSA designers. It supports the same hash lengths as SHA-2, and its internal structure differs significantly from the rest of the SHA family.
+- [Click](https://www.staff.science.uu.nl/~tel00101/liter/Books/CrypCont.pdf) to see the details about SHA algorithm in Chapter 1.
+- Requirement for a good Hash Algorithms
+  - One-way - the original data can not be retrieved from the hash code.
+  - Deterministic - the data will generate the same hash code.
+  - Fast Computation
+  - The Avalanche Effect - One small change in the data will completely change the hash code.
+  - Must withstand collisions - Two different input data rarely generate the same hash code.
 
 ## Salted Hashing Algorithm
 
