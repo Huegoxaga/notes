@@ -13,7 +13,7 @@
   - IBM AIX
   - IBM z/OS
   - Oracle Solaris
-  - Apple macOS
+  - Apple MacOS
 
 ### Linux
 
