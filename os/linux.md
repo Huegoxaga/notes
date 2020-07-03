@@ -81,17 +81,21 @@
 - `| grep <filterString>` Grep will return only those lines in the file that contain the supplied string. For Example `cat /etc/man.config | grep MANPATH`
 - `startx` start X Windows System GUI.
 - `shutdown –h now` shutdown immediately.
-- `shutdown –r now` restart immediately.
+  - `shutdown -h 12:00`
+  - `shutdown –r now` restart immediately.
+- `reboot` reboot the machine.
 - `appname —version` check the current version for any app.
 - `man <command name>` the man pages for Linux commands.
 - `info <command name>` the info pages for certain Linux commands.
 - `help <command name>` To get help with built-in shell commands use the help command
 - `help` get list of built in command.
 - `clear` clear screen
+- `date` get the current time
 - `ls -al` `-l` for detail `-a` for include hidden files.
   - `ls` If no directory name is followed, it will list all of the files in the current working directory.
   - `ls /etc` it will display all files inside the `etc` folder.
   - add `\` before ls to see not colored outputs.
+- `lsusb` check all existing USB devices.(debian-based Linux)
 - `cd` Change directory to the directory followed, if nothing followed cd to home dir.
 - `pwd` display the absolute path to the current working directory.
 - `touch` create new file
@@ -114,6 +118,8 @@
 - `ifconfig eth0` will display networking information about the device named `eth0`.
   - `eth0` the number is the order in which the card has been detected, starting with a zero
 - `ifconfig` will display networking information about all device.
+- `iwconfig` Check which network the wireless adapter is using
+- `hostname` show hosts
 - `system-config-network-tui` starts an interactive network configuration utility.
 - `ifup eth0` set `eth0` interface up.
 - `ifdown eth0` set `eth0` interface down.
@@ -288,13 +294,17 @@
 - It is located in each user's home directory.
 - It is a shell script that runs whenever the user run bash.
 
-### rsyslog
+### System Config Files
+
+- reboot the system after any changes
+
+#### rsyslog
 
 - syslogd centralizes logging for many applications: Kernel messages, system error messages, login activity, etc.
 - Typically writes log files to the `/var/log` directory
 - When the configuration file is changed run `service rsyslog restart`.
 
-#### Configuration
+##### Configuration
 
 - The syslogd deamon is controlled via the `/etc/rsyslog.conf` file
 - `rsyslog.conf` stores a list of events that will be logged by syslogd.
@@ -325,6 +335,11 @@
   - can be sent to a remote host `@hostname`
   - can be sent to a logged user `root,username`.
 
+#### HDCP
+
+- It is confifured in the `/etc/dhcpcd.conf` file.
+- Static IP setting can be done here.
+
 ### RPM
 
 - It is a package manager for Red Hat based Linux.
@@ -345,8 +360,24 @@
 
 ### APT-GET
 
+- Advanced Package Tool
 - It is a package manager for debian-based Linux machine.
+  - debian-based Linux uses dpkg packages with the `*.deb` extension.
 - `apt-get install <PackageName>`
+- `apt-get update` update package list
+- `apt-get dist-upgrade` will install or remove packages as necessary to complete the upgrade,
+- `apt upgrade` will automatically install but not remove packages.
+- `apt full-upgrade` performs the same function as apt-get dist-upgrade
+- `apt-get remove <PackageName>` uninstall a package
+- `apt-get purge <PackageName>` uninstall a package and remove all its config files.
+- `apt-get -f install` fix broken dependencies.
+- `apt-get -f clean` clean up download files.
+- `apt autoremove` find dangling dependencies and remove them.
+- `dpkg --get-selections` Shows all of your installed packages
+
+### WGET
+
+- `wget http://www.website.com/file.txt` Downloads the file located at `http://www.website.com/file.txt`
 
 ### Vim
 
@@ -359,6 +390,10 @@
   - `:q!` quit without save.
   - `:r <file>` insert file after current line.
   - Enter `/keyword` to search the keyword in the document. It is case ssensitive
+
+### Nano
+
+- `nano example.txt` Opens the file `example.txt` in the Linux text editor Nano
 
 ### Grep
 
@@ -731,6 +766,7 @@
     - `* * * * 1-5` - command runs every minutes on weekdays.
     - `0,30 * * * *` - command runs every whole hours and 30 minutes pass any hours.
   - Use [crontab guru](https://crontab.guru) - A crontab schedule translator to check the format.
+  - `@reboot <command> &` this will run command after reboot in the background.
 - Syntax:
   - The following line will be entered to the systmen using the `crontab -e` command.
   - `* * * * * <command>` The command will be run every minutes.
@@ -746,3 +782,43 @@
     - optionally, delete all lines in the `crontab -r`.
 
 ### systemctl
+
+### Motion
+
+- It is a webcam server
+- run `sudo apt-get install motion` to install
+- run `sudo service motion start` to start the server
+- run `sudo service motion stop` to end the server
+- Server will be running on port `8081`.
+
+#### Configuration
+
+- `motion.conf` is the config file for the server, located at `/etc/motion/motion.conf`
+- Setting for remote camera mode
+  ```
+  daemon on
+  stream_localhost off
+  webcontrol_localhost off
+  ```
+- Change the services setting file `motiom`
+  ```
+  start_motion_daemon=yes
+  ```
+
+### fswebcam
+
+- A webcam controller
+- run `sudo apt-get install fswebcam` to intall
+
+#### Usage
+
+- run `fswebcam image.jpg` to take a photo.
+  - `fswebcam -r 1280x720 image2.jpg` specify resolution
+  - `--no-banner` disable banner.
+- Run the following script to take photos
+  ```bash
+  #!/bin/bash
+  DATE=$(date +"%Y-%m-%d_%H%M")
+  mkdir /home/pi/Downloads/photos
+  fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/$DATE.jpg
+  ```

@@ -31,6 +31,7 @@
 
 - `\` can be placed at the end of each line. It will make the command continue in a new line.
 - `;` can be used to separate multiple command in entered one line.
+- `!!` will run the last executed command.
 - `commandA && commandB` Run next command if previous is command successful.
 - `commandA || commandB` Run commands until one is successful.
 - `commandA | commandB` pass `STDOUT` of the `commandA` to `STDIN` of `commandB`.

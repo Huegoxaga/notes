@@ -187,7 +187,7 @@
       - round 0 is round N.
       - careful about TeamN in even Team situation.
 
-## Boolean algebra
+## Boolean Algebra
 
 - A logical statement can have two values, True (1) and False (0)
 - Boolean Constant is a value that does not change during an operation. It can have values of 1 or 0 only;

@@ -71,6 +71,24 @@
       - `<data>` should be an HDFS path like `hdfs://<path>.`
       - if using local file it will be copied to HDFS for processing.
       - `--hadoop-streaming-jar` needs to be specified for some platform.
+- Example code for MapReduce job in Python using `mrjob` library
+  ```py
+  from mrjob.job import MRJob
+  from mrjob.step import MRStep
+  class RatingsBreakdown(MRJob):
+      def steps(self):
+          return [
+              MRStep(mapper=self.mapper_get_ratings,
+                    reducer=self.reducer_count_ratings)
+          ]
+      def mapper_get_ratings(self, _, line):
+          (userID, movieID, rating, timestamp) = line.split('\t')
+          yield rating, 1
+      def reducer_count_ratings(self, key, values):
+          yield key, sum(values)
+  if __name__ == '__main__':
+      RatingsBreakdown.run()
+  ```
 
 #### Yet Another Resource Negotiator (YARN)
 
@@ -88,26 +106,77 @@
 
 #### Spark
 
-- It runs on `YARN` or `MESOS`
+- It provides a memory based solution that can run tasks on RAM.
+- It uses (directed acyclic graph) DAG
+  - Each task is defined first, when it get started it will determine the best path to find and solve the task first, in order to increase the speed.
+- The spark core is a driver program to generate spark context
+  - Spark context is used to create RDD object
+  - It transform data into a Resilient Distributed Dataset (RDD) object for fast manipulation.
+  - The driver can be used to retrive data from `Program Variables`, `Local files`, `HDFS`, `HIVE context`, `External database through JDBC`, `Hbase` etc.
+- Spark 2.0 uses Dataset which is based on RDD
+- Spark 2.0 is enpowered by some libaries built on top of Spart Core
+  - Sparking Streaming - It supports real time processing instead of batch processing
+  - Spark SQL - It supports SQL queries for Spark
+  - MLLib - Data mining and ML models.
+  - GraphX - Analysis data using graph theory.
+- It runs on `YARN` or `MESOS`, or it can use its own cluster manaer.
 - It is much faster than `MapReduce`
 - It supports `Scala`, `Python` and `Java`
-  - `Scala` is the recommanded language for Spark
+  - Spark is written in Scala
+  - `Scala` is the recommanded language for Spark, it is faster and it saves resources.
 - It supports SQL queries, machine learning, and realtime streaming data.
+- RDD object methods example in Python:
+  ```py
+  rdd.map(lambda x: x*x) # Iterate through all elements of the dataset and apply the lambda
+  rdd.flatmap(fucntion) # return dataset with combined or splited elements.
+  rdd.filter(function) # filter
+  rdd.distinct() # return distinct values
+  rdd.sample()
+  rdd1.union(rdd2) # combine elements
+  rdd1.intersection(rdd2)
+  rdd1.substract(rdd2)
+  rdd1.cartesian(rdd2)
+  rdd.collect() # Return dataset as python object
+  rdd.count() # Count the elements in the dataset
+  rdd.countByValue(value) # Count the occurance of a certain value
+  rdd.take(n) # Get n elements from the dataset
+  rdd.top(n) # Get n elements from the dataset
+  rdd.reduce(function) # take a function to process dataset
+  ```
 
 #### TEZ
 
 - It is similar to `Spark`
 - It runs on `YARN`
 - It is another alternative to `MapReduce`
+- It uses (directed acyclic graph) DAG to speed up the jobs
 
 #### Pig
 
 - It runs on MapReduce.
+- It can runs faster on TEZ.
 - It allows queries using SQL-like scripting language called Pig Latin.
-- It can runs on TEZ and complete MapRuduce jobs faster.
+- It can translate SQL script into query jobs. Ex, Codes for MapReduce jobs if it runs on MapReduce.
 - Pig Latin enables user defined functions.
 - Grunt is a Pig command line tool that can run script one line at a time.
   - It can also run an entire script file.
+- When use Ambari console, click run on TEZ option will make the query much faster.
+- Data needs to be loaded to create a relationship, the schema is only created during loading.
+  ```sql
+  ratings = LOAD '/user/maria_dev/ml-100k/u.data' AS (userID:int, movieID:int, rating:int, ratingTime:int);
+  metadata = LOAD '/user/maria_dev/ml-100k/u.item' USING PigStorage('|')
+    AS (movieID:int, movieTitle:chararray, releaseDate:chararray, videoRealese:chararray, imdblink:chararray);
+  nameLookup = FOREACH metadata GENERATE movieID, movieTitle,
+    ToUnixTime(ToDate(releaseDate, 'dd-MMM-yyyy')) AS releaseTime;
+  ratingsByMovie = GROUP ratings BY movieID;
+  avgRatings = FOREACH ratingsByMovie GENERATE group as movieID, AVG(ratings.rating) as avgRating;
+  fiveStarMovies = FILTER avgRatings BY avgRating > 4.0;
+  fiveStarsWithData = JOIN fiveStarMovies BY movieID, nameLookup BY movieID;
+  oldestFiveStarMovies = ORDER fiveStarsWithData BY nameLookup::releaseTime;
+  DUMP oldestFiveStarMovies;
+  ```
+  - `DUMP` will print out the data.
+  - `DESCRIBE` will show the relationship for a certain data.
 
 #### Hive
 

@@ -609,3 +609,5 @@ Create a Skill - a skill can be created by using the following ways.
 ### Alexa Voice Service
 
 It is used to allow devices to support Alexa.
+
+- Register a product from the developer console in order to get crendentials required by the customized Alexa Device.

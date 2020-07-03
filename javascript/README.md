@@ -707,12 +707,14 @@ array.forEach(function(i) {
 });
 array.filter(i => i.id !== 1); //filter an array item that has id not equal to 1.
 [1, 2, 3].map(x => 2 * x); //return an array of element base on an array of data.
+[1, 2, 3].map((item, index, array) => 2 * x); //it can takes optional parameters, index(second), and the array itself(third)
 array.splice(2, 3); // delete 3 items starting at index 2.(have to call it independently and get the result after.)
 array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 //reduce iterate over each element of the function and return a value that will be used by the next iteration.
 let arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length //get avg
 Math.max(...array);//find the max value among array elements
 array.unshift(a,b,c);//adds one or more items or elements to the beginning of the array and returns the new length of the array.
+array.slice(1, 3);//The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
 ```
 
 #### Associative Array

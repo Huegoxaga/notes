@@ -27,6 +27,7 @@
 - Many IoT devices use microcontrollers. Their main advantage is reducing the size and cost of a similar system using separate microprocessors/memory/input/output devices.
 - There are development boards that include a microcontroller. It removes the necessity of designing a PCB for the microcontroller.
   - A programeer with a debugger is an additional hardware lays in between the development boards's MCU and the USB input port.
+  - Debugger also has a smaller MCU and an have its own clock. It need the installation of a firmware. USB connector should connect to it to debug. It has a jumpper and only works when jumpper are connected.
 - Types of Microcontroller
   - PIC Microcontroller - PIC Stands for Peripheral Interface Controller produced by Microchip technology
   - ARM Microcontroller - ARM stands for Advanced RISC Machine.
@@ -43,6 +44,63 @@
 - The memory devices are divided into two types, they are
   - Embedded memory microcontroller
   - External memory microcontroller
+- Useful Documents
+  - Each MCU has a dataset and a user manual
+  - Each development board has a schematics, user manual and specification.
+- Memory Map
+  - A processor in a MCU can be described by its width of the system bus.
+    - 8 bits,it can provide 2^8 memory address on the system bus. from
+    - 16 bits, it can provide 2^16 memory address on the system bus, from `0x0000` to `0xffff`
+    - 32 bits, it can provide 2^32 memory address(4G) on the system bus, from `0x0000_0000` to `0xffff_ffff`
+  - `0x` is a prefix that saying the number followed is a hexadecimal number.
+  - `_` or a space is used to increase readability.
+  - Different peripherals is assigned with different range of the the memory address.
+  - Detailed boundaries are stated on the reference manual.
+  - The relationship between the range and the assigned peripheral is called a memory map.
+- Types of memory
+  - ROM(Flash memory)
+    - It is the program memory, stores the logic(instruction) of the program
+    - stores constants data
+    - stores vector tables
+    - Data in the FLASH memory is accessed through the Flash controller
+  - SRAM
+    - It stores variables, it can also stores instructions.
+    - It is the data memory
+- Bus Interfaces
+  - It is depicted by the MCU block diagrams.
+  - Bus interfaces are the communication pathes between processors and peripherals.
+  - It allows data from multiple data sources goes into the processor concurrently. The number of concurrent data trasmittion equals the number of buses.
+  - There are three types of bus coming out of a processor with Advanced High-performance Bus (AHB) - Full speed, also known as HCLK speed
+    - ICode Bus - Instruction Bus - get program instruction from FLASH memory
+    - DCode Bus - Data Bus - get data and debug from FLASH memory
+    - S-Bus - Connect to SRAM and other peripherals,
+      - it can also fetch data and instruction from SRAM, it is not connected to the Flash memory.
+      - its memory address boundary includes addresses for I-Bus and D-Bus.
+      - All the peripherals will use S-Bus to access the processor.
+      - S-Bus will be split into two AHB
+        - AHB2 is used for external interfaces like USB and camera which require high I/O
+        - AHB1 is used for other internal peripheral like GPIO
+      - S-Bus's AHB1 will be split into two Advanced Peripheral Bus(APB) for other peripherals
+        - APB1 - Half of the full speed, also known as P1CLK speed.
+        - APB2 - One fourth of the full speed, also known as P2CLK speed.
+        - GPIO are connected to AHB1 before the split at full speed
+- Bus Matrix is where all the inter-connection happens
+  - A processor is a master
+  - all other peripherals it connects to are slaves.
+  - Each bus interface of the master connects to certain peripherals selectively.
+- Clock
+  - All the peripherals are syncronized by clocks.
+  - It determine the SYSCLK, SYSCLK is the main clock for the MCU
+  - The clock is depicted by the clock tree in the mannul
+  - The higher frenquency the clock has the higher power comsumption the board will have.
+  - There are several clock resources:
+    - The Cystal Oscillator (external to MCU) it is the high speed external(HSE) clock
+      - Have the option to use on board external clock(Crystal mode)
+      - Have the option to install own external clock or use dubeg board's clock (External mode)
+    - The RC Oscillator (internal to MCU) it is the high speed internal(HSI) clock
+    - Phase Locked Group (PLL) (internal to MCU) is uses HSE or HSI to boost the systen clock speed much higher.
+  - All peripherals need to enable the peripheral clock before using or configuring it. It is done by changing values in the registers.
+  - The register memoery location is the base address plus the offset stated in the manual
 
 #### Microprocessor
 
