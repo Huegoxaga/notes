@@ -4,7 +4,7 @@
 - Embedded systems talk with the outside world via peripherals
   - A peripheral device is ancillary device used to put information into and get information out.
 
-#### Integrated Circuit (IC)
+## Integrated Circuit (IC)
 
 - A set of electronic circuits integrated into one small flat chip of semiconductor material (usually silicon).
 - This results in a chip that is orders of magnitude smaller than a circuit that would have to be built by hand using separate electronic components.
@@ -20,7 +20,7 @@
   - They are customized ICs which used as off-the-shelf components.
   - Their uses include USB interface chips, controller chips for a PC, and a chip for a modem.
 
-#### Microcontroller (MCU)
+## Microcontroller (MCU)
 
 - It is a single integrated circuit which contains at least one CPU (processor core), memory (RAM, flash, ROM), and programmable I/O peripherals.
 - They are designed for embedded applications
@@ -101,8 +101,23 @@
     - Phase Locked Group (PLL) (internal to MCU) is uses HSE or HSI to boost the systen clock speed much higher.
   - All peripherals need to enable the peripheral clock before using or configuring it. It is done by changing values in the registers.
   - The register memoery location is the base address plus the offset stated in the manual
+  - MCO is the Microcontroller output signal, the signal can be configured to output to a certain pin for measurement, performed by a USB logic analyzer or a digital oscilloscope. The signal can also act as an external clock for other MCU.
+    - 2 pins are connected for measurement, one is the output pin, one is the Ground on the borad.
+- An Vector tables is a table of pointers which points to exception handlers.
+  - Exceptions include 15 system exceptions and 240 interrupts(external exceptions)
+- GPIO(General Purpose Input Output)
+  - It has ports, like port A, port B, port C.
+  - Each port has multiple pins. Each pin can take 1 bit data(either 1 or 0 at a time) in the memory addresses.
+  - Each GPIO pin is connected to an input buffer and output buffer on the enable line.
+    - The enable line can be configured by the GPIO registers.
+  - For MCU, The actually pin number for a pin from a certain port is listed in the pin and ball definition table or the MCU schematic.
+    - Each MCU comes with a package name, the pin number arrangement of different MCU package is different.
+  - Input pin with high impedance state or Hi-Z state make the pin to a floating state by connection it to either high or ground. It is the default state for all input pins when the power is on, and it will lead to leakage current.
+    - Hence, internal pull up or pull down resistors are needed for all unused pins.
+- Alternate function mapping is a table which explain the alternative functionalities of a MCU pin.
+  - Each pin of each port can be mapped to a certain function selected from a group, each function is corresponding to a certain functionality, listed in the table.
 
-#### Microprocessor
+## Microprocessor
 
 - A microprocessor is a device that incorporates the functions of a CPU on a single IC (or a few). It is a clock-driven, register-based digital integrated circuit
 - It accepts binary data as input, processes it according to an instruction set stored in its memory, and provides output.
@@ -115,7 +130,7 @@
   - optimized for continuous processing in real-time.
   - have better power efficiency and are used in mobile phones or devices with power consumption constraints.
 
-#### System on a Chip (SoC)
+## System on a Chip (SoC)
 
 - An integrated circuit with all the components of a computer, including a CPU, memory, I/O ports, and secondary storage.
 - It consumes less power and take up less space than a multi-chip design, and are common in embedded systems.
@@ -123,7 +138,7 @@
 - It is widely used in Smart phones.
 - Some common ones are the Cypress Semiconductor Programmable System on a Chip (PSoC) and Altera System on a Programmable Chip (SOPC). On that topic, PSoC solely refers to the family of microcontroller-integrated SoCs produced by Cypress Semiconductor, although there are other programmable SoCs that exist.
 
-#### Programmable Logic Device (PLD)
+## Programmable Logic Device (PLD)
 
 - a more generic terms that refers to an electronic component used to build reconfigurable digital circuits
 - they differ from logic gates, which have a fixed function, as PLDs don’t have functions after being manufactured.
@@ -142,32 +157,100 @@
   - It doesn’t require an external configuration ROM (needed by FPGAs) and has less internal state storage and layered logic than FPGAs. CPLDs have thousands to tens of thousands of logic gates, while FPGAs can have up to several millions.
   - They are primarily manufactured by Altera, Atmel, Cypress Semiconductor, Lattice Semiconductor, or Xilinx, and are programmed in VHDL, Verilog HDL, or Standard Test and Programming Language (JAM/STAPL).
 
-#### Electronic design automation (EDA)
+## Electronic design automation (EDA)
 
 - A category of software tools for designing electronic systems for integrated circuits (ICs) or printed circuit boards (PCBs).
 - Major companies producing EDAs are Altium (Altium Designer), Cadence Design Systems (Verilog, OrCAD), Autodesk (EAGLE), National Instruments (Multisim), and WestDev (Pulsonix). There is also KiCAD, an open-source EDA software, as well as many web-based EDA tools, some of which are web-based versions of the aforementioned EDAs.
 
-#### ODROID
+## ODROID
 
 - A series of single-board computers capable of running Android and Linux distributions (the name comes from “open” + “Android”).
 - The hardware features a SoC with a ARM CPU and an on-chip GPU. SD cards are used to store the operating system.
 - The outputs include USB 2.0, USB 3.0, HDMI, and a 3.5 mm jack. There are also lower-level output pins with general-purpose input/output (GPIO) pins supporting common protocols such as I2C. There are also some models with an 8P8C Ethernet port and an eMMC port.
 - Common models are the ODROID-C1, ODROID-C2, and the ODROID-XU4.
 
-#### Raspberry Pi
+## [Raspberry Pi](https://huegoxaga.github.io/notes/embedded/raspberry-pi.html)
 
 - A series of single-board computers developed for teaching and protityping purposes.
 - The models all featured a Broadcom SoC, with an ARM CPU and an on-chip GPU. SD cards are used to store the operating system, and the outputs include USB ports, HDMI ports, a 3.4 mm jack for audio, and lower-level GPIO pins supporting I2C and other protocols. There are also some models with an 8P8C Ethernet port and an eMMC port.
 - Common models are the Model A, Model B, and Zero.
 
-#### Arduino
+## [Arduino](<(https://huegoxaga.github.io/notes/embedded/arduino.html)>)
 
 - An open-source hardware and software company and user community that produces single-board microcontrollers and microcontroller kits.
 - Their hardware contains an Atmel 8-bit AVR microcontroller with flash memor and a single or double row of pins that can connect to add-on modules (“shields”) and can be addressable via a I2C serial bus.
 - Most models are pre-programmed with a boot loader for uploading programs to the on-chip flash memory. Some of the I/O pins can produce pulse-width modulated signals and receive analog inputs.
 - Common boards are the Arduino Pro, Arduino Mega, and Arduino Yun.
 
-#### Printed Circuit Board (PCB)
+## Printed Circuit Board (PCB)
 
 - It mechanically supports and electrically connects electrical or electronic components using conductive tracks, pads and other features etched from one or more sheet layers of copper laminated onto and/or between sheet layers of a non-conductive substrate.
 - Components are generally soldered onto the PCB to both electrically connect and mechanically fasten them to it.
+
+## Parts and Sensors
+
+### Resistor
+
+- Use as pull-up resistors - resisors between High output and input pin.
+  - connect with digital input pin to prevent floating
+- Use as pull-down resistors - resisors between Ground and input pin.
+- It is used to limit the current for other components.
+- [Click here](http://www.resistor-calculator.com) to calculate resistor info from its color code.
+
+### BreadBoard
+
+- It helps the connection using jumper wires.
+- ![breadboard1](img/breadboard1.png)
+- It connects wires internally in the following directions.
+- ![breadboard2](img/breadboard2.png)
+- The two vertical sides on top and bottom is usually used as power supplies.
+
+### Button
+
+- Clicking the button will connect the wires of its two side
+- Connect to pin of its right side and left side would work.
+- ![Button](img/button.png)
+- For buttons, use delay in a loop is used to debounce.
+  - use flag to prevent flashing when holding the button.
+
+### LED
+
+- The longer foot is the anode. It connects to the HIGH.
+- The shorter foor is the cathode. It connects to the LOW.
+- 220Ω resistor can be used to protect a LED.
+
+### Infrared Obstacle Detection Module
+
+- It has a IR Emitter. It is ab Infrared emitter LED.
+- It has a IR Receiver. Infrared receiver that receives signal transmitted by Infrared emitter.
+- Distance Adjust can be rotated to adjust detection distance.
+  - Couter clockwise decreases distance.
+  - Clockwise increases distance.
+- Vcc pin accepts 3.3 to 5 Vdc Supply Input
+- Gnd pin is Ground Input
+- Output pin - Output that goes low when obstacle is in range
+
+### Motor
+
+- When INA pin is HIGH, INB pin is LOW, it rotates clockwise. Otherwise, it rotates counter clockwise.
+- When both INA and INB is LOW, motor stops.
+- VCC and GND pin receive power input.
+
+### PIR Sensor
+
+- It can be used to detect motion.
+- 1 Vcc pin accepts 5V power, 1 GND pin.
+- 1 Output pin, Low by default, return High when motion is detected.
+
+### Buzzer
+
+- It can be used to sound the alarm
+- It needs to connect with a resistor
+
+## Shield and HATs
+
+- It is the term for an expansion board that fits on top of a development board. This is a typical used for Arduino boards
+- A "HAT" (Hardware Attached on Top) board is the equivilent term used for the Raspberry PI.
+- All of the GPIO pins will connect to the Shields or HATs and extended from them.
+  - With a Short header the GPIO pins will not be available on the Shields and HATs.
+  - Long header will make the pins available for other connection.

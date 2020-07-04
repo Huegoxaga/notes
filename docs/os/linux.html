@@ -841,6 +841,51 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../embedded/arduino.html">
+            
+                <a href="../embedded/arduino.html">
+            
+                    
+                    Arduino
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="../embedded/raspberry-pi.html">
+            
+                <a href="../embedded/raspberry-pi.html">
+            
+                    
+                    Raspberry Pi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.3" data-path="../embedded/st.html">
+            
+                <a href="../embedded/st.html">
+            
+                    
+                    STMicroelectronics
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.19" data-path="../algorithm/">
@@ -1156,20 +1201,26 @@
 <li>Both the <code>| more</code> and the <code>| less</code> command provide paging functionality in a command line environment. For example <code>help | less</code>. shows output that can be control using up and down arrow.</li>
 <li><code>| grep &lt;filterString&gt;</code> Grep will return only those lines in the file that contain the supplied string. For Example <code>cat /etc/man.config | grep MANPATH</code></li>
 <li><code>startx</code> start X Windows System GUI.</li>
-<li><code>shutdown &#x2013;h now</code> shutdown immediately.</li>
+<li><code>shutdown &#x2013;h now</code> shutdown immediately.<ul>
+<li><code>shutdown -h 12:00</code></li>
 <li><code>shutdown &#x2013;r now</code> restart immediately.</li>
+</ul>
+</li>
+<li><code>reboot</code> reboot the machine.</li>
 <li><code>appname &#x2014;version</code> check the current version for any app.</li>
 <li><code>man &lt;command name&gt;</code> the man pages for Linux commands.</li>
 <li><code>info &lt;command name&gt;</code> the info pages for certain Linux commands.</li>
 <li><code>help &lt;command name&gt;</code> To get help with built-in shell commands use the help command</li>
 <li><code>help</code> get list of built in command.</li>
 <li><code>clear</code> clear screen</li>
+<li><code>date</code> get the current time</li>
 <li><code>ls -al</code> <code>-l</code> for detail <code>-a</code> for include hidden files.<ul>
 <li><code>ls</code> If no directory name is followed, it will list all of the files in the current working directory.</li>
 <li><code>ls /etc</code> it will display all files inside the <code>etc</code> folder.</li>
 <li>add <code>\</code> before ls to see not colored outputs.</li>
 </ul>
 </li>
+<li><code>lsusb</code> check all existing USB devices.(debian-based Linux)</li>
 <li><code>cd</code> Change directory to the directory followed, if nothing followed cd to home dir.</li>
 <li><code>pwd</code> display the absolute path to the current working directory.</li>
 <li><code>touch</code> create new file</li>
@@ -1202,6 +1253,8 @@
 </ul>
 </li>
 <li><code>ifconfig</code> will display networking information about all device.</li>
+<li><code>iwconfig</code> Check which network the wireless adapter is using</li>
+<li><code>hostname</code> show hosts</li>
 <li><code>system-config-network-tui</code> starts an interactive network configuration utility.</li>
 <li><code>ifup eth0</code> set <code>eth0</code> interface up.</li>
 <li><code>ifdown eth0</code> set <code>eth0</code> interface down.</li>
@@ -1411,13 +1464,17 @@
 <li>It is located in each user&apos;s home directory.</li>
 <li>It is a shell script that runs whenever the user run bash.</li>
 </ul>
-<h3 id="rsyslog">rsyslog</h3>
+<h3 id="system-config-files">System Config Files</h3>
+<ul>
+<li>reboot the system after any changes</li>
+</ul>
+<h4 id="rsyslog">rsyslog</h4>
 <ul>
 <li>syslogd centralizes logging for many applications: Kernel messages, system error messages, login activity, etc.</li>
 <li>Typically writes log files to the <code>/var/log</code> directory</li>
 <li>When the configuration file is changed run <code>service rsyslog restart</code>.</li>
 </ul>
-<h4 id="configuration">Configuration</h4>
+<h5 id="configuration">Configuration</h5>
 <ul>
 <li>The syslogd deamon is controlled via the <code>/etc/rsyslog.conf</code> file</li>
 <li><code>rsyslog.conf</code> stores a list of events that will be logged by syslogd.</li>
@@ -1458,6 +1515,11 @@
 </ul>
 </li>
 </ul>
+<h4 id="hdcp">HDCP</h4>
+<ul>
+<li>It is confifured in the <code>/etc/dhcpcd.conf</code> file.</li>
+<li>Static IP setting can be done here.</li>
+</ul>
 <h3 id="rpm">RPM</h3>
 <ul>
 <li>It is a package manager for Red Hat based Linux.</li>
@@ -1478,8 +1540,26 @@
 </ul>
 <h3 id="apt-get">APT-GET</h3>
 <ul>
-<li>It is a package manager for debian-based Linux machine.</li>
+<li>Advanced Package Tool</li>
+<li>It is a package manager for debian-based Linux machine.<ul>
+<li>debian-based Linux uses dpkg packages with the <code>*.deb</code> extension.</li>
+</ul>
+</li>
 <li><code>apt-get install &lt;PackageName&gt;</code></li>
+<li><code>apt-get update</code> update package list</li>
+<li><code>apt-get dist-upgrade</code> will install or remove packages as necessary to complete the upgrade,</li>
+<li><code>apt upgrade</code> will automatically install but not remove packages.</li>
+<li><code>apt full-upgrade</code> performs the same function as apt-get dist-upgrade</li>
+<li><code>apt-get remove &lt;PackageName&gt;</code> uninstall a package</li>
+<li><code>apt-get purge &lt;PackageName&gt;</code> uninstall a package and remove all its config files.</li>
+<li><code>apt-get -f install</code> fix broken dependencies.</li>
+<li><code>apt-get -f clean</code> clean up download files.</li>
+<li><code>apt autoremove</code> find dangling dependencies and remove them.</li>
+<li><code>dpkg --get-selections</code> Shows all of your installed packages</li>
+</ul>
+<h3 id="wget">WGET</h3>
+<ul>
+<li><code>wget http://www.website.com/file.txt</code> Downloads the file located at <code>http://www.website.com/file.txt</code></li>
 </ul>
 <h3 id="vim">Vim</h3>
 <ul>
@@ -1494,6 +1574,10 @@
 <li>Enter <code>/keyword</code> to search the keyword in the document. It is case ssensitive</li>
 </ul>
 </li>
+</ul>
+<h3 id="nano">Nano</h3>
+<ul>
+<li><code>nano example.txt</code> Opens the file <code>example.txt</code> in the Linux text editor Nano</li>
 </ul>
 <h3 id="grep">Grep</h3>
 <ul>
@@ -1981,6 +2065,7 @@ Allow from HostIPAddress
 </ul>
 </li>
 <li>Use <a href="https://crontab.guru" target="_blank">crontab guru</a> - A crontab schedule translator to check the format.</li>
+<li><code>@reboot &lt;command&gt; &amp;</code> this will run command after reboot in the background.</li>
 </ul>
 </li>
 <li>Syntax:<ul>
@@ -2008,6 +2093,43 @@ Allow from HostIPAddress
 </li>
 </ul>
 <h3 id="systemctl">systemctl</h3>
+<h3 id="motion">Motion</h3>
+<ul>
+<li>It is a webcam server</li>
+<li>run <code>sudo apt-get install motion</code> to install</li>
+<li>run <code>sudo service motion start</code> to start the server</li>
+<li>run <code>sudo service motion stop</code> to end the server</li>
+<li>Server will be running on port <code>8081</code>.</li>
+</ul>
+<h4 id="configuration">Configuration</h4>
+<ul>
+<li><code>motion.conf</code> is the config file for the server, located at <code>/etc/motion/motion.conf</code></li>
+<li>Setting for remote camera mode<pre><code>daemon on
+stream_localhost off
+webcontrol_localhost off
+</code></pre></li>
+<li>Change the services setting file <code>motiom</code><pre><code>start_motion_daemon=yes
+</code></pre></li>
+</ul>
+<h3 id="fswebcam">fswebcam</h3>
+<ul>
+<li>A webcam controller</li>
+<li>run <code>sudo apt-get install fswebcam</code> to intall</li>
+</ul>
+<h4 id="usage">Usage</h4>
+<ul>
+<li>run <code>fswebcam image.jpg</code> to take a photo.<ul>
+<li><code>fswebcam -r 1280x720 image2.jpg</code> specify resolution</li>
+<li><code>--no-banner</code> disable banner.</li>
+</ul>
+</li>
+<li>Run the following script to take photos<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash</span>
+DATE=$(date +<span class="hljs-string">&quot;%Y-%m-%d_%H%M&quot;</span>)
+mkdir /home/pi/Downloads/photos
+fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-variable">$DATE</span>.jpg
+</code></pre>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -2051,7 +2173,7 @@ Allow from HostIPAddress
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.14.1","depth":2,"next":{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.14","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.14.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.14.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.14.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.14.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.14.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.14.7","depth":2,"path":"os.git.md","ref":"os.git.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2020-06-13T15:33:39.284Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-27T20:05:30.944Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.14.1","depth":2,"next":{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.14","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.14.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.14.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.14.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.14.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.14.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.14.7","depth":2,"path":"os.git.md","ref":"os.git.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2020-07-02T23:53:09.531Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T06:10:53.991Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

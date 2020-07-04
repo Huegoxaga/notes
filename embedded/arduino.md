@@ -2,7 +2,6 @@
 
 - It is a type of easy-to-use development boards
 - It is working under 5V power
-- Peripherals are called sheids.
 
 ## Board
 
@@ -26,6 +25,8 @@
 - It has pins that output DC power.
   - the 5V pin will output 5V current when it is connected to a digital input pin
   - the GND pin is set to groud, it outputs 0V current when it is connected to a digital input pin
+- It has no built-in pull-down resistor.
+  - Resistor has be connected manually.
 
 ## IDE
 
@@ -65,66 +66,4 @@
 - `Serial.available()` return true when there is user input.
 - `Serial.read()` get user input character.
 - `Serial.parseInt()` get user input as integer.
-
-## Components
-
-### Resistor
-
-- Use as pull-up resistors - resisors between High output and input pin.
-  - connect with digital input pin to prevent floating
-  - Arduino has built-in pull-up resistor, it will be activated using `pinMode(pinNumber, INPUT); digitalWrite(pinNumber, HIGH);` in `setup()`.
-- Use as pull-down resistors - resisors between Ground and input pin.
-  - Arduino has no built-in pull-down resistor.
-  - Resistor has be connected manually.
-- It is used to other components.
-- [Click here](http://www.resistor-calculator.com) to calculate resistor info from its color code.
-
-### BreadBoard
-
-- It helps the connection using jumper wires.
-- ![breadboard1](img/breadboard1.png)
-- It connects wires internally in the following directions.
-- ![breadboard2](img/breadboard2.png)
-- The two vertical sides on top and bottom is usually used as power supplies.
-
-### Button
-
-- Clicking the button will connect the wires of its two side
-- Connect to pin of its right side and left side would work.
-- ![Button](img/button.png)
-- When a button is used to change state the `loop()` to use `delay()` to debounce.
-  - use flag to prevent flashing when holding the button.
-
-### LED
-
-- The longer foot is the anode. It connects to the HIGH.
-- The shorter foor is the cathode. It connects to the LOW.
-- 220Ω resistor can be used to protect a LED.
-
-### Infrared Obstacle Detection Module
-
-- It has a IR Emitter. It is ab Infrared emitter LED.
-- It has a IR Receiver. Infrared receiver that receives signal transmitted by Infrared emitter.
-- Distance Adjust can be rotated to adjust detection distance.
-  - Couter clockwise decreases distance.
-  - Clockwise increases distance.
-- Vcc pin accepts 3.3 to 5 Vdc Supply Input
-- Gnd pin is Ground Input
-- Output pin - Output that goes low when obstacle is in range
-
-### Motor
-
-- When INA pin is HIGH, INB pin is LOW, it rotates clockwise. Otherwise, it rotates counter clockwise.
-- When both INA and INB is LOW, motor stops.
-- VCC and GND pin receive power input.
-
-### PIR Sensor
-
-- It can be used to detect motion.
-- 1 Vcc pin accepts 5V power, 1 GND pin.
-- 1 Output pin, Low by default, return High when motion is detected.
-
-### Buzzer
-
-- It can be used to sound the alarm
-- It needs to connect with a resistor
+- Arduino has built-in pull-up resistor, it will be activated using `pinMode(pinNumber, INPUT); digitalWrite(pinNumber, HIGH);` in `setup()`.

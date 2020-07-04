@@ -653,6 +653,10 @@ Once a value is returned from a function, it immediately stops being executed.
 
 The yield statement suspends function’s execution and sends a value back to the caller, but retains enough state to enable function to resume where it is left off. When resumed, the function continues execution immediately after the last yield run. This allows its code to produce a series of values over time, rather than computing them at once and sending them back like a list.
 
+#### pass statement
+
+The pass statement is used as a placeholder for future code. When the pass statement is executed, nothing happens, but you avoid getting an error when empty code is not allowed. Empty code is not allowed in loops, function definitions, class definitions, or in if statements.
+
 ```py
 def simpleGeneratorFun():
     yield 1

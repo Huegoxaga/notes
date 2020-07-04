@@ -841,6 +841,51 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../embedded/arduino.html">
+            
+                <a href="../embedded/arduino.html">
+            
+                    
+                    Arduino
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="../embedded/raspberry-pi.html">
+            
+                <a href="../embedded/raspberry-pi.html">
+            
+                    
+                    Raspberry Pi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.3" data-path="../embedded/st.html">
+            
+                <a href="../embedded/st.html">
+            
+                    
+                    STMicroelectronics
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.19" data-path="../algorithm/">
@@ -1187,15 +1232,16 @@
 <li><code>array = np.array([[1,2,3,4],[5,6,7,8]])</code></li>
 </ul>
 </li>
-<li>Create an array of ones</li>
+<li>Create an array of ones<ul>
 <li><code>array = np.ones((3,5))</code>, a <code>3*5</code> array with all elements as 1.</li>
+<li><code>array = np.ones_like(img, np.uint8)</code> create an array of ones with the same shape and type as <code>img</code>, with data type as <code>np.uint8</code>.(generate a white image with the same size of <code>img</code> with unsigned 8 bits integer)</li>
+<li>optionally, use <code>np.ones(img.shape, dtype=&quot;uint8&quot;)</code>.</li>
+</ul>
+</li>
 <li>Create an array of zeros<ul>
 <li><code>array = np.zeros((2,4))</code>, a <code>2*4</code> array with all elements as 0.</li>
 <li>Optionally, <code>dtype</code> can be its second argument which defines the elements data type.</li>
-</ul>
-</li>
-<li>Create an array of ones with the same shape and type as a given array.<ul>
-<li><code>array = np.ones_like(img, np.uint8)</code> create an array of ones which is the same as <code>img</code>, with data type as <code>np.uint8</code>.(generate a white image with the same size of <code>img</code>)</li>
+<li><code>array = np.zeros_like(img, np.uint8)</code> create an array of zeros with the same shape and type as <code>img</code>, with data type as <code>np.uint8</code>.(generate a black image)</li>
 </ul>
 </li>
 <li>Create an array with random values<ul>
@@ -1526,7 +1572,7 @@
 <li><code>cap.isOpened()</code>, check if the video is successfully stored in the variable</li>
 <li><code>cap.release()</code>, release the stored video after processing is done</li>
 <li><code>cv2.waitKey(delay)</code> The function waitKey waits for a any key event infinitely<ul>
-<li><code>delay</code> &#x2013; the length of time to wait in milliseconds. 0 is the special value that means &quot;forever&quot;.</li>
+<li><code>delay</code> &#x2013; the length of time to wait in milliseconds. <code>0</code>(default value) is the special value that means &quot;forever&quot;.</li>
 </ul>
 </li>
 <li><code>cv2.destroyAllWindows()</code> Exit window and destroy all windows</li>
@@ -1816,30 +1862,6 @@ cnn.add(tf.keras.layers.Dense(units=<span class="hljs-number">1</span>, activati
 </ul>
 </li>
 </ul>
-<h2 id="mrjob">mrjob</h2>
-<ul>
-<li>It is used to create MapReduce Jobs</li>
-</ul>
-<pre><code class="lang-py"><span class="hljs-keyword">from</span> mrjob.job <span class="hljs-keyword">import</span> MRJob
-<span class="hljs-keyword">from</span> mrjob.step <span class="hljs-keyword">import</span> MRStep
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RatingsBreakdown</span><span class="hljs-params">(MRJob)</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">steps</span><span class="hljs-params">(self)</span>:</span>
-        <span class="hljs-keyword">return</span> [
-            MRStep(mapper=self.mapper_get_ratings,
-                   reducer=self.reducer_count_ratings)
-        ]
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mapper_get_ratings</span><span class="hljs-params">(self, _, line)</span>:</span>
-        (userID, movieID, rating, timestamp) = line.split(<span class="hljs-string">&apos;\t&apos;</span>)
-        <span class="hljs-keyword">yield</span> rating, <span class="hljs-number">1</span>
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reducer_count_ratings</span><span class="hljs-params">(self, key, values)</span>:</span>
-        <span class="hljs-keyword">yield</span> key, sum(values)
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
-    RatingsBreakdown.run()
-</code></pre>
 
                                 
                                 </section>
@@ -1883,7 +1905,7 @@ cnn.add(tf.keras.layers.Dense(units=<span class="hljs-number">1</span>, activati
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Libraries with Anaconda","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-06-27T15:35:41.512Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-27T20:05:30.944Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Libraries with Anaconda","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-07-03T16:36:14.459Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T06:10:53.991Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -108,7 +108,7 @@
   - Check port 0 of the ITM Stimulus Ports.
   - In the SWV ITM Data Console, click start trace.
   - In the main menu bar, start to debug, and start to run the code.
-- Example code for changing register setting
+- Example code for changing register settings, The offset from the base bus memory address to each peripherals is used to located the peripherals' registers.
   ```cpp
   /**
   ******************************************************************************
@@ -137,6 +137,9 @@
   }
   ```
   - Use Window -> Show View -> SFRs to verify register settings.
+- Debug mode uses a Memory panel to read and write bits on the RAM memory while the program is running.
+- The compiler can set a optimization level that uses different strategy to convert C/C++ code into disassembly code for the MCU. Level 0 does not provide much optimization
+  - Use the volatile keyword to ask the compile to access the memory frenquently in case the value of the memory will be changed when running in high optimization mode.
 
 ### STM32CubeMX
 
@@ -146,3 +149,4 @@
   - Bus speed can be multiple by a factor, this is done by using prescaler.
   - Lastly, change values on the RCC register using code to finalize the changes.
     - code generator is available for these tasks, provided by STM32CubeMX
+  - MCO configuration is also configured through RCC register.

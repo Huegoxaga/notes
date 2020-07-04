@@ -841,6 +841,51 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../embedded/arduino.html">
+            
+                <a href="../embedded/arduino.html">
+            
+                    
+                    Arduino
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="../embedded/raspberry-pi.html">
+            
+                <a href="../embedded/raspberry-pi.html">
+            
+                    
+                    Raspberry Pi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.3" data-path="../embedded/st.html">
+            
+                <a href="../embedded/st.html">
+            
+                    
+                    STMicroelectronics
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.19" data-path="../algorithm/">
@@ -1677,12 +1722,14 @@ array.forEach(<span class="hljs-function"><span class="hljs-keyword">function</s
 });
 array.filter(i =&gt; i.id !== <span class="hljs-number">1</span>); <span class="hljs-comment">//filter an array item that has id not equal to 1.</span>
 [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map(x =&gt; <span class="hljs-number">2</span> * x); <span class="hljs-comment">//return an array of element base on an array of data.</span>
+[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map((item, index, array) =&gt; <span class="hljs-number">2</span> * x); <span class="hljs-comment">//it can takes optional parameters, index(second), and the array itself(third)</span>
 array.splice(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// delete 3 items starting at index 2.(have to call it independently and get the result after.)</span>
 array.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">total, currentValue, currentIndex, arr</span>), <span class="hljs-title">initialValue</span>)
 //<span class="hljs-title">reduce</span> <span class="hljs-title">iterate</span> <span class="hljs-title">over</span> <span class="hljs-title">each</span> <span class="hljs-title">element</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">function</span> <span class="hljs-title">and</span> <span class="hljs-title">return</span> <span class="hljs-title">a</span> <span class="hljs-title">value</span> <span class="hljs-title">that</span> <span class="hljs-title">will</span> <span class="hljs-title">be</span> <span class="hljs-title">used</span> <span class="hljs-title">by</span> <span class="hljs-title">the</span> <span class="hljs-title">next</span> <span class="hljs-title">iteration</span>.
 <span class="hljs-title">let</span> <span class="hljs-title">arrAvg</span> = <span class="hljs-title">arr</span> =&gt; <span class="hljs-title">arr</span>.<span class="hljs-title">reduce</span>(<span class="hljs-params">(a,b</span>) =&gt; <span class="hljs-title">a</span> + <span class="hljs-title">b</span>, 0) / <span class="hljs-title">arr</span>.<span class="hljs-title">length</span> //<span class="hljs-title">get</span> <span class="hljs-title">avg</span>
 <span class="hljs-title">Math</span>.<span class="hljs-title">max</span>(<span class="hljs-params">...array</span>);//<span class="hljs-title">find</span> <span class="hljs-title">the</span> <span class="hljs-title">max</span> <span class="hljs-title">value</span> <span class="hljs-title">among</span> <span class="hljs-title">array</span> <span class="hljs-title">elements</span>
 <span class="hljs-title">array</span>.<span class="hljs-title">unshift</span>(<span class="hljs-params">a,b,c</span>);//<span class="hljs-title">adds</span> <span class="hljs-title">one</span> <span class="hljs-title">or</span> <span class="hljs-title">more</span> <span class="hljs-title">items</span> <span class="hljs-title">or</span> <span class="hljs-title">elements</span> <span class="hljs-title">to</span> <span class="hljs-title">the</span> <span class="hljs-title">beginning</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">array</span> <span class="hljs-title">and</span> <span class="hljs-title">returns</span> <span class="hljs-title">the</span> <span class="hljs-title">new</span> <span class="hljs-title">length</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">array</span>.
+<span class="hljs-title">array</span>.<span class="hljs-title">slice</span>(<span class="hljs-params">1, 3</span>);//<span class="hljs-title">The</span> <span class="hljs-title">slice</span>(<span class="hljs-params"></span>) <span class="hljs-title">method</span> <span class="hljs-title">selects</span> <span class="hljs-title">the</span> <span class="hljs-title">elements</span> <span class="hljs-title">starting</span> <span class="hljs-title">at</span> <span class="hljs-title">the</span> <span class="hljs-title">given</span> <span class="hljs-title">start</span> <span class="hljs-title">argument</span>, <span class="hljs-title">and</span> <span class="hljs-title">ends</span> <span class="hljs-title">at</span>, <span class="hljs-title">but</span> <span class="hljs-title">does</span> <span class="hljs-title">not</span> <span class="hljs-title">include</span>, <span class="hljs-title">the</span> <span class="hljs-title">given</span> <span class="hljs-title">end</span> <span class="hljs-title">argument</span>.
 </span></code></pre>
 <h4 id="associative-array">Associative Array</h4>
 <p>Technically, associative array is an object. Array methods cannot be used on associative array.</p>
@@ -2197,7 +2244,7 @@ fetch(URL, options)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.4","depth":1,"next":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-06-01T19:29:58.544Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-27T20:05:30.944Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.4","depth":1,"next":{"title":"jQuery","level":"1.4.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-06-29T16:17:38.639Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T06:10:53.991Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

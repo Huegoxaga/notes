@@ -841,6 +841,51 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../embedded/arduino.html">
+            
+                <a href="../embedded/arduino.html">
+            
+                    
+                    Arduino
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="../embedded/raspberry-pi.html">
+            
+                <a href="../embedded/raspberry-pi.html">
+            
+                    
+                    Raspberry Pi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.3" data-path="../embedded/st.html">
+            
+                <a href="../embedded/st.html">
+            
+                    
+                    STMicroelectronics
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.19" data-path="../algorithm/">
@@ -1165,6 +1210,23 @@
 </li>
 </ul>
 </li>
+<li>Example code for MapReduce job in Python using <code>mrjob</code> library<pre><code class="lang-py"><span class="hljs-keyword">from</span> mrjob.job <span class="hljs-keyword">import</span> MRJob
+<span class="hljs-keyword">from</span> mrjob.step <span class="hljs-keyword">import</span> MRStep
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RatingsBreakdown</span><span class="hljs-params">(MRJob)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">steps</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> [
+            MRStep(mapper=self.mapper_get_ratings,
+                  reducer=self.reducer_count_ratings)
+        ]
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mapper_get_ratings</span><span class="hljs-params">(self, _, line)</span>:</span>
+        (userID, movieID, rating, timestamp) = line.split(<span class="hljs-string">&apos;\t&apos;</span>)
+        <span class="hljs-keyword">yield</span> rating, <span class="hljs-number">1</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reducer_count_ratings</span><span class="hljs-params">(self, key, values)</span>:</span>
+        <span class="hljs-keyword">yield</span> key, sum(values)
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+    RatingsBreakdown.run()
+</code></pre>
+</li>
 </ul>
 <h4 id="yet-another-resource-negotiator-yarn">Yet Another Resource Negotiator (YARN)</h4>
 <ul>
@@ -1182,28 +1244,85 @@
 </ul>
 <h4 id="spark">Spark</h4>
 <ul>
-<li>It runs on <code>YARN</code> or <code>MESOS</code></li>
+<li>It provides a memory based solution that can run tasks on RAM.</li>
+<li>It uses (directed acyclic graph) DAG<ul>
+<li>Each task is defined first, when it get started it will determine the best path to find and solve the task first, in order to increase the speed.</li>
+</ul>
+</li>
+<li>The spark core is a driver program to generate spark context<ul>
+<li>Spark context is used to create RDD object</li>
+<li>It transform data into a Resilient Distributed Dataset (RDD) object for fast manipulation.</li>
+<li>The driver can be used to retrive data from <code>Program Variables</code>, <code>Local files</code>, <code>HDFS</code>, <code>HIVE context</code>, <code>External database through JDBC</code>, <code>Hbase</code> etc.</li>
+</ul>
+</li>
+<li>Spark 2.0 uses Dataset which is based on RDD</li>
+<li>Spark 2.0 is enpowered by some libaries built on top of Spart Core<ul>
+<li>Sparking Streaming - It supports real time processing instead of batch processing</li>
+<li>Spark SQL - It supports SQL queries for Spark</li>
+<li>MLLib - Data mining and ML models.</li>
+<li>GraphX - Analysis data using graph theory.</li>
+</ul>
+</li>
+<li>It runs on <code>YARN</code> or <code>MESOS</code>, or it can use its own cluster manaer.</li>
 <li>It is much faster than <code>MapReduce</code></li>
 <li>It supports <code>Scala</code>, <code>Python</code> and <code>Java</code><ul>
-<li><code>Scala</code> is the recommanded language for Spark</li>
+<li>Spark is written in Scala</li>
+<li><code>Scala</code> is the recommanded language for Spark, it is faster and it saves resources.</li>
 </ul>
 </li>
 <li>It supports SQL queries, machine learning, and realtime streaming data.</li>
+<li>RDD object methods example in Python:<pre><code class="lang-py">rdd.map(<span class="hljs-keyword">lambda</span> x: x*x) <span class="hljs-comment"># Iterate through all elements of the dataset and apply the lambda</span>
+rdd.flatmap(fucntion) <span class="hljs-comment"># return dataset with combined or splited elements.</span>
+rdd.filter(function) <span class="hljs-comment"># filter</span>
+rdd.distinct() <span class="hljs-comment"># return distinct values</span>
+rdd.sample()
+rdd1.union(rdd2) <span class="hljs-comment"># combine elements</span>
+rdd1.intersection(rdd2)
+rdd1.substract(rdd2)
+rdd1.cartesian(rdd2)
+rdd.collect() <span class="hljs-comment"># Return dataset as python object</span>
+rdd.count() <span class="hljs-comment"># Count the elements in the dataset</span>
+rdd.countByValue(value) <span class="hljs-comment"># Count the occurance of a certain value</span>
+rdd.take(n) <span class="hljs-comment"># Get n elements from the dataset</span>
+rdd.top(n) <span class="hljs-comment"># Get n elements from the dataset</span>
+rdd.reduce(function) <span class="hljs-comment"># take a function to process dataset</span>
+</code></pre>
+</li>
 </ul>
 <h4 id="tez">TEZ</h4>
 <ul>
 <li>It is similar to <code>Spark</code></li>
 <li>It runs on <code>YARN</code></li>
 <li>It is another alternative to <code>MapReduce</code></li>
+<li>It uses (directed acyclic graph) DAG to speed up the jobs</li>
 </ul>
 <h4 id="pig">Pig</h4>
 <ul>
 <li>It runs on MapReduce.</li>
+<li>It can runs faster on TEZ.</li>
 <li>It allows queries using SQL-like scripting language called Pig Latin.</li>
-<li>It can runs on TEZ and complete MapRuduce jobs faster.</li>
+<li>It can translate SQL script into query jobs. Ex, Codes for MapReduce jobs if it runs on MapReduce.</li>
 <li>Pig Latin enables user defined functions.</li>
 <li>Grunt is a Pig command line tool that can run script one line at a time.<ul>
 <li>It can also run an entire script file.</li>
+</ul>
+</li>
+<li>When use Ambari console, click run on TEZ option will make the query much faster.</li>
+<li>Data needs to be loaded to create a relationship, the schema is only created during loading.<pre><code class="lang-sql">ratings = LOAD &apos;/user/maria_dev/ml-100k/u.data&apos; AS (userID:int, movieID:int, rating:int, ratingTime:int);
+metadata = LOAD &apos;/user/maria_dev/ml-100k/u.item&apos; USING PigStorage(&apos;|&apos;)
+  AS (movieID:int, movieTitle:chararray, releaseDate:chararray, videoRealese:chararray, imdblink:chararray);
+nameLookup = FOREACH metadata GENERATE movieID, movieTitle,
+  ToUnixTime(ToDate(releaseDate, &apos;dd-MMM-yyyy&apos;)) AS releaseTime;
+ratingsByMovie = GROUP ratings BY movieID;
+avgRatings = FOREACH ratingsByMovie GENERATE group as movieID, AVG(ratings.rating) as avgRating;
+fiveStarMovies = FILTER avgRatings BY avgRating &gt; 4.0;
+fiveStarsWithData = JOIN fiveStarMovies BY movieID, nameLookup BY movieID;
+oldestFiveStarMovies = ORDER fiveStarsWithData BY nameLookup::releaseTime;
+DUMP oldestFiveStarMovies;
+</code></pre>
+<ul>
+<li><code>DUMP</code> will print out the data.</li>
+<li><code>DESCRIBE</code> will show the relationship for a certain data.</li>
 </ul>
 </li>
 </ul>
@@ -1349,7 +1468,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Hadoop","level":"1.14.6","depth":2,"next":{"title":"Git","level":"1.14.7","depth":2,"path":"os.git.md","ref":"os.git.md","articles":[]},"previous":{"title":"Solution Stack","level":"1.14.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/hadoop.md","mtime":"2020-06-27T18:17:50.390Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-27T20:05:30.944Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Hadoop","level":"1.14.6","depth":2,"next":{"title":"Git","level":"1.14.7","depth":2,"path":"os.git.md","ref":"os.git.md","articles":[]},"previous":{"title":"Solution Stack","level":"1.14.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/hadoop.md","mtime":"2020-06-29T17:53:33.815Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T06:10:53.991Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

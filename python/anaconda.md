@@ -112,12 +112,13 @@
 - Create a `numpy` array of rank 2
   - `array = np.array([[1,2,3,4],[5,6,7,8]])`
 - Create an array of ones
-- `array = np.ones((3,5))`, a `3*5` array with all elements as 1.
+  - `array = np.ones((3,5))`, a `3*5` array with all elements as 1.
+  - `array = np.ones_like(img, np.uint8)` create an array of ones with the same shape and type as `img`, with data type as `np.uint8`.(generate a white image with the same size of `img` with unsigned 8 bits integer)
+  - optionally, use `np.ones(img.shape, dtype="uint8")`.
 - Create an array of zeros
   - `array = np.zeros((2,4))`, a `2*4` array with all elements as 0.
   - Optionally, `dtype` can be its second argument which defines the elements data type.
-- Create an array of ones with the same shape and type as a given array.
-  - `array = np.ones_like(img, np.uint8)` create an array of ones which is the same as `img`, with data type as `np.uint8`.(generate a white image with the same size of `img`)
+  - `array = np.zeros_like(img, np.uint8)` create an array of zeros with the same shape and type as `img`, with data type as `np.uint8`.(generate a black image)
 - Create an array with random values
   - `array = np.random.random(5)`, an array with 5 random double value in range `[0,1)`.
 - Create an array with certain constant
@@ -348,7 +349,7 @@
 - `cap.isOpened()`, check if the video is successfully stored in the variable
 - `cap.release()`, release the stored video after processing is done
 - `cv2.waitKey(delay)` The function waitKey waits for a any key event infinitely
-  - `delay` – the length of time to wait in milliseconds. 0 is the special value that means "forever".
+  - `delay` – the length of time to wait in milliseconds. `0`(default value) is the special value that means "forever".
 - `cv2.destroyAllWindows()` Exit window and destroy all windows
 - `cv2.boundingRect(points)` return the bounding rectangle `(x,y,w,h)` of a shape defined as points.
 

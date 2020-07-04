@@ -65,6 +65,9 @@
 - [Clich here](https://www.raspberrypi.org/downloads/raspberry-pi-os/) to download the OS that will be flashed to the SD card.
 - Install etcher and download the OS image in a `zip` file then use the Ethcher software to flash the OS onto the SD card.
 - Plug in the SD card, connect Raspberry Pi to a screen and input devices, then boot up the device.
+- Backup
+  - For Window machine, use the [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/) and read from the SD card to an image file.
+  - For Mac, use Disk Utility, and the Image option in the menu bar.
 
 ## Raspberry Pi OS
 
@@ -152,14 +155,18 @@
   from picamera import PiCamera
   from time import sleep
   camera = PiCamera()
-  # preview(not required for taking photos)
-  camera.start_preview() #preview can't be seen from the VNC, HDMI output is required.
-  sleep(10)
-  camera.stop_preview()
+  try:
+      # preview(not required for taking photos)
+      camera.start_preview() #preview can't be seen from the VNC, HDMI output is required.
+      sleep(10)
+      camera.stop_preview()
+      pass
+  finally:
+      camera.close()
   # take pictures
   for i in range(5):
-    sleep(5)
-    camera.capture('/home/pi/Downloads/photos/image%s.jpg' % i)
+      sleep(5)
+      camera.capture('/home/pi/Downloads/photos/image%s.jpg' % i)
   # record video
   camera.start_recording('/home/pi/Downloads/photos/video.h264')
   sleep(10)
@@ -172,9 +179,9 @@
   # effects
   camera.start_preview()
   for effect in camera.IMAGE_EFFECTS:
-    camera.image_effect = effect
-    camera.annotate_text = "Effect: %s" % effect
-    sleep(5)
+      camera.image_effect = effect
+      camera.annotate_text = "Effect: %s" % effect
+      sleep(5)
   camera.stop_preview()
   ```
 - Working with events

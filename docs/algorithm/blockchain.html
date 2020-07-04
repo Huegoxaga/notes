@@ -841,6 +841,51 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../embedded/arduino.html">
+            
+                <a href="../embedded/arduino.html">
+            
+                    
+                    Arduino
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="../embedded/raspberry-pi.html">
+            
+                <a href="../embedded/raspberry-pi.html">
+            
+                    
+                    Raspberry Pi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.3" data-path="../embedded/st.html">
+            
+                <a href="../embedded/st.html">
+            
+                    
+                    STMicroelectronics
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.19" data-path="./">
@@ -1056,11 +1101,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="block-chain">Block Chain</h1>
+                                <h1 id="blockchain">Blockchain</h1>
+<h2 id="blockchain-basics">Blockchain Basics</h2>
 <ul>
 <li>It is originated from the paper called &quot;<a href="https://www.anf.es/pdf/Haber_Stornetta.pdf" target="_blank">How to Time Stamp a Digital Document</a>&quot; written by Stuart Haber &amp; W. Scott Stornetta in 1991.</li>
 <li>It is consisted of blocks which is linked by the hash value of its data.<ul>
-<li>Block chain uses SHA-256 as its hashing algorithm</li>
+<li>Each Block chain can uses select a different hashing algorithm</li>
 <li>Each block stores a block number, some data, a hash value and a previous hash value which points to the prevous block.</li>
 <li>The hash value of a block is calculated from the block number, data and previous hash.</li>
 </ul>
@@ -1084,6 +1130,185 @@
 <li>Byzantine Generals&#x2019; Problem - An amry is consisted of many generals, each general can make a decision, the decision made by the most general will be accepted. The question is how many traitors can they have among the generals that won&apos;t affect the final decision.</li>
 </ul>
 </li>
+</ul>
+</li>
+<li>Consensus protocol is used to:<ul>
+<li>Protect the network from attacker by doing a list of check before adding new block<ul>
+<li>It uses either proof of work(POW) or proof of state(POS) protocol.</li>
+</ul>
+</li>
+<li>Solving the competing chains<ul>
+<li>Competing chains happens when two new block are mined at the same time</li>
+<li>The block that has a new block added to it first will be accepted, the other one will be invalid and called orphaned block.</li>
+<li>The group of nodes who finds a new block first proof it has more hashing(computing) power. Hence it get the reward.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="cryptocurrency">Cryptocurrency</h2>
+<ul>
+<li>The name of the cryptocurrency is the name of the a protocol it applies.<ul>
+<li>Each one of them has a corresponding coin unit.</li>
+<li>Block stores data about a series of current transactions that need to be stored. Transactions fees plus the new block&apos;s coin value will be paid to the miner.</li>
+</ul>
+</li>
+<li>It has three layers: blockchain, protocol(coin), and token.</li>
+<li>It has its own monetary policy<ul>
+<li>It can be used to replace the banking system.</li>
+<li>The Halving - the number of coins a new block contains will be halved after every certain amount of blocks are mines<ul>
+<li>After rounding, there will be a limited number of coins.</li>
+</ul>
+</li>
+<li>Block frequency is the average time it takes to mine a new block.</li>
+</ul>
+</li>
+<li>Block frequency control<ul>
+<li>The difficulty will be adjusted after every certain amount blocks are found.</li>
+<li>The initial difficulty is called the max target.</li>
+<li>The difficulty can be calculated by dividing the current targets by the max target.</li>
+<li>The difficulty will be adjusted automatically to fit the block frequency.</li>
+<li>the current target is represented by the bit field. To calculate the target value from bit. convert it to hexadecimal number and convert the first to digit of the hexadecimal number into decimal. That number represents the length in bytes of the current target value in hexadecimal. Lastly, the rest digits(starting from the 3rd digit) of the hexadecimal number converted from bit will be used as the leading values of the current target value.</li>
+</ul>
+</li>
+<li>Nonce is unsigned 32 bit number with 2^32 from 0 to around 4 billion<ul>
+<li>The largest nonce is called the max nonce</li>
+<li>The nonce range is much smaller than than the hash range(10^77 combination)</li>
+<li>An average mining machine can do 4 billion hashing in 40 second.</li>
+<li>A timestamp is added to the block data for hashing to refresh the calculation every seconds</li>
+<li>Only parts of the nonce will can be attempted in each second</li>
+</ul>
+</li>
+<li>Mining Pool<ul>
+<li>Mining pool combined individual hashing power and assign a nonce range for guessing.<ul>
+<li>The reward will be assigned is proportional to its hashing power.</li>
+<li>There is a fee for the mining pool service, everything will be managed automatically.</li>
+</ul>
+</li>
+<li>There is a transaction accelerator offered by mine pool provider. That helps the transaction get selected first.</li>
+<li>For mine pools when it has really big hashing power. If all possible nonce is attempted within 1 second. The remaining time will be used for a block with different selection of transactions.</li>
+</ul>
+</li>
+<li>Types of Mining Hardwares<ul>
+<li>CPU max 10 MH/s (Million Hashes per second)</li>
+<li>GPU max 10 GH/s</li>
+<li>ASIC over 1000 GH/s<ul>
+<li>special designed for a certain non memory based hashing algorithm, like Bitcoin.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mempool<ul>
+<li>Mempool stores all recent transactions distributed across the network</li>
+<li>Block can stores transaction records picked from mempool</li>
+<li>Transactions fee can be specified freely at the time of transactions</li>
+<li>Transactions with low fee that have not been selected by miner to store in the block will be returned.</li>
+<li>Miner picks transactions with highest fee first.</li>
+<li>Only a certain amount of transactions can be selected. The size of a block is limited.</li>
+<li>When a New transaction is made it will be added to the mempool.</li>
+<li>When the transaction is selected by a block and the block is added to the chain the transaction is confirmed and removed from the mempool.</li>
+</ul>
+</li>
+<li>The 51% attack<ul>
+<li>It happens when a large group of nodes maliciously join the mining and disconnect from the network then go back online when it has longer chain. It will make the chain people are using invalid. Fraud can happens when the new chain void some existing transaction using the old chain from outside.</li>
+<li>Generally it takes 6 or more confirmation to make a transaction valid.</li>
+</ul>
+</li>
+<li>(Unspent Transcation Outputs)UTXOs<ul>
+<li>UTXOs is the coins that send to the user which has not been sent to others.</li>
+<li>The sum of all the UTXOs amount is the user&apos;s account balance.</li>
+<li>The UTXOs amount from any transcation can be selected and sent to other users in a group.<ul>
+<li>The changes for the transcation can be obtained by sending it to the user itself.</li>
+<li>If there is still amount remaining, it will be considered as transcation fee.</li>
+</ul>
+</li>
+<li>Each transcation is protected by Public/Private Key<ul>
+<li>Each user is uniquely identified by a private key.</li>
+<li>Private key can be used to generate the public key.</li>
+<li>Each transcation contains a signiture which is signed by the users private key.</li>
+<li>The signiture is calculated using the private and the message content.</li>
+<li>Transaction will be verified by the public key attached to the message.</li>
+<li>The key info takes a large portion of the space in a block, it can be moved outside of the block with its own message services, this is called Segregated Witness (SegWit)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>A fork is a software change made to the blockchain.<ul>
+<li>Any UTXOs store before the fork will be valid for all branches.</li>
+<li>A hard fork happens when user starts to add block to blockchain using a lossened protocol. The original chain won&apos;t accept the block. It will form a new chain on its own.</li>
+<li>A soft fork happens when majority user starts to add block to blockchain using a tightened protocol. The users with the old protocol can&apos;t compete with marjority hence their blocks that doesn&apos;t obey the new protocol will become orphaned block.<ul>
+<li>It is often initiated the provider.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HD Wallet<ul>
+<li>Hierarchically Deterministic Wallets</li>
+<li>A master private key can be used to generate multiple private keys</li>
+<li>Good for enhanced security</li>
+<li>Good for organization which can distribute to employee.</li>
+<li>There is a master public key that need to be keep secret. It can access all other public key and be used by auditor.</li>
+</ul>
+</li>
+</ul>
+<h2 id="smart-contract">Smart Contract</h2>
+<ul>
+<li>It is a program that runs across the blockchian nodes.</li>
+<li>For a cryptocurrency supports smart contract, each node has:<ul>
+<li>history of all smart contracts</li>
+<li>histrory of all transcations</li>
+<li>the current state of all smart contracts</li>
+</ul>
+</li>
+<li>Decentralized Application - The frontend of smart contract.</li>
+<li>Web 3.0 utilize distributed web servers.</li>
+<li>VMs are used to encapsulate the smart contract running environment to prevent the spread of virus or infinite loops.</li>
+<li>Gas is used to pay for the execution of smart contracts throughout the blockchain.<ul>
+<li>Each type of operation consume a specified amount of gas</li>
+<li>Can&apos;t use coins because the coin value changes frequently</li>
+</ul>
+</li>
+<li>Decentralized Autonomous Organization (DAO) - an organization that runs by itself based on rules set in smart contracts.</li>
+<li>A token is a currency that is usually purchased from a startup by coins. The token can be used to purchase services from the startup.<ul>
+<li>Tokens are release during (Initial Coin Offerring)ICO</li>
+<li>The amount token release from ICO is limited.</li>
+<li>After the token has been paid for services, the token can be sell by the company again.</li>
+<li><a href="https://coinmarketcap.com" target="_blank">Click Here</a> to see a list of popular project, their business plan are written in the white paper.</li>
+</ul>
+</li>
+</ul>
+<h2 id="common-cryptocurrency-platform">Common Cryptocurrency Platform</h2>
+<ul>
+<li>Go to <a href="https://www.blockchain.com" target="_blank">Blockchain.com</a> to see more info.</li>
+</ul>
+<h4 id="bitcoin">Bitcoin</h4>
+<ul>
+<li>It uses SHA-256</li>
+<li>Works well with ASIC</li>
+<li>It can run programs written in Bitcoin Script<ul>
+<li>It is not Turing-Complete, it does not support loops</li>
+</ul>
+</li>
+<li>1MB block size</li>
+<li>Adopted SegWit on August 24th, 2017</li>
+<li>In August, 2017. Some user hard fork to BitCoinCash with 8 MB block size. While the official BitCoin still uses 1 MB.</li>
+<li>October 24th, 2017 Some user hard fork from BitCoin to prevent mining with ASIC.</li>
+<li>Transcation can be made to public key and BitCoin Address.<ul>
+<li>Bitcoin Address is the Hash code calculated from public key using SHA-256.</li>
+</ul>
+</li>
+</ul>
+<h4 id="ethereum">Ethereum</h4>
+<ul>
+<li>Its algorithm requires access of memory, it uses GPU</li>
+<li>It can run programs written in Solidity<ul>
+<li>It is Turing-Complete, it supports all basic programming syntax</li>
+</ul>
+</li>
+<li>It supports smart contract.</li>
+<li>A DAO is attacked due to error in the smart contract. In July 2017, it split into<ul>
+<li>Ethereum Classic - unchanged</li>
+<li>Ethereum - Allows to go back and fix errors in smart contract</li>
 </ul>
 </li>
 </ul>
@@ -1130,7 +1355,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Blockchain","level":"1.19.1","depth":2,"next":{"title":"Cryptography","level":"1.19.2","depth":2,"path":"theory/cryptography.md","ref":"theory/cryptography.md","articles":[]},"previous":{"title":"Algorithm","level":"1.19","depth":1,"path":"algorithm/README.md","ref":"algorithm/README.md","articles":[{"title":"Blockchain","level":"1.19.1","depth":2,"path":"algorithm/blockchain.md","ref":"algorithm/blockchain.md","articles":[]},{"title":"Cryptography","level":"1.19.2","depth":2,"path":"theory/cryptography.md","ref":"theory/cryptography.md","articles":[]},{"title":"Machine Learning","level":"1.19.3","depth":2,"path":"theory/ml.md","ref":"theory/ml.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"algorithm/blockchain.md","mtime":"2020-06-27T03:15:59.006Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-27T20:05:30.944Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Blockchain","level":"1.19.1","depth":2,"next":{"title":"Cryptography","level":"1.19.2","depth":2,"path":"theory/cryptography.md","ref":"theory/cryptography.md","articles":[]},"previous":{"title":"Algorithm","level":"1.19","depth":1,"path":"algorithm/README.md","ref":"algorithm/README.md","articles":[{"title":"Blockchain","level":"1.19.1","depth":2,"path":"algorithm/blockchain.md","ref":"algorithm/blockchain.md","articles":[]},{"title":"Cryptography","level":"1.19.2","depth":2,"path":"theory/cryptography.md","ref":"theory/cryptography.md","articles":[]},{"title":"Machine Learning","level":"1.19.3","depth":2,"path":"theory/ml.md","ref":"theory/ml.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"algorithm/blockchain.md","mtime":"2020-06-29T21:48:37.540Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T06:10:53.991Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
