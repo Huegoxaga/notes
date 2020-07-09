@@ -400,7 +400,7 @@ list.pop(index)#It returns the element according the index and remove the elemen
 - Unpacking assignment:
   - `x, y = [1, 2]` as a result `x = 1`, `y = 2`
   - `first, *rest = [1, 2, 3, 4]` as a result `first = 1, rest = [2, 3, 4]`
-- join `+`
+- join `+`, `listC =listA + listB` append `listB` to `listA`.
 - repeat `*`
 - existence(return Boolean) `in`
 - slicing - It modifies the original list.

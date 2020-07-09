@@ -342,6 +342,29 @@
   - It is extended as BlazingText as an AWS Sagemaker built-in algorithm
   - It can be a unsupervised learning algorithm using text to vector(Word2Vec)
   - It can be a supervised learning algorithm that supports multi-class, multi-label classification
+    - Multi-label can be done with `-loss one-vs-all` or `-loss ova`.
+  - Classification is achieved by
+    - A sentence/document vector is obtained by averaging the word/n-gram embeddings.
+    - For the classification task, multinomial logistic regression is used, where the sentence/document vector corresponds to the features.
+    - [Click](https://www.aclweb.org/anthology/E17-2068/) to see more.
+  - Gram
+    - Unigram - each single word is considered as one unit, for a sentence contains words `A B C`. `A`, `B`, `C` are considered.
+    - Bigram - each two words are considered as one unit, for a sentence contains words `A B C`. `AB`, `BC` are considered.
+    - N-gram - each group of consecutive N words are considered.
+      - fastText even consider n-gram for group of characters within a word("ora", "ran", "ang", "nge" when `minn` is 3) and make it different from `Word2Vec`. Hence, it works good with misspelled words.
+    - Bigram or N-gram will take the sequence of words into consideration. Unigram will not.
+  - The hierarchical softmax is a loss function that approximates the softmax with a much faster computation.
+  - Word representations - text preprocessing tool
+    - In order to compute word vectors, a large text corpus is needed.
+    - fastText provides two models for computing word representations:
+      - skipgram - It predicts the target using a random close-by word of the target word, each close-ly word are considered indiviaully.
+      - cbow ('continuous-bag-of-words') - It uses the sum of a certain range of close-by word for prediction.
+      - In practice, the skipgram models works better with subword information than cbow.
+    - The subwords are all the substrings contained in a word between the minimum size (minn) and the maximal size (maxn). By default, all the subword are between 3 and 6 characters
+    - The dimension (dim) controls the size of the vectors, the larger they are the more information they can capture but requires more data to be learned.
+    - if they are too large, they are harder and slower to train.
+    - By default, 100 dimensions are used, but any value in the 100-300 range is as popular.
+  - When dealing with languages that does not contain space in between word, word segementation is required.
 - Object2Vec
   - A bulit-in algorithm from the AWS Sagemaker
   - It utlizes average-pooled embeddings, hierarchical Convolutional Neural Networks (CNNs), as well as multi-layered Bi-Directional-Long-Short-Term-Memory (BiLSTM)-based Recurrent Neural Networks as encoders
@@ -411,7 +434,7 @@
 
 ### Image Preprocessing
 
-- The color value of the images can be rescaled from 0-255 to 0-1 to simplify the data.
+- The color value of the images can be rescaled from `0-255` to `0-1` to simplify the data.
   - The training data and testing data should use have the same recaling setting.
 - Image augumentation step alteres the images by zooming, flipping and shearing to provide variaties for training.
 
@@ -419,15 +442,33 @@
 
 ### Text data preprocessing
 
-- Bag of word - It is a way to preprocess text data by using an array of count for all possible words to record the occurrence of each word in the text data.
+- Bag of word - It is a way to preprocess text data by using an array of count for all unique words to record the occurrence of each word in the text data.
+  - The list of words are ordered by its frenquent among all words in the text data.
+  - Most frenquent words are important, words that are not frenquently seen in the text are usually names, places, holiday etc.
   - Then, the data can be fed into other algorithms. Ex, ANNs or Native Bayes for classfication.
 - Word2Vec
+  - Word2Vec are used to predict a vector representation of a word using a model trained by a text corpus
+    - text corpus is a language resource consisting of a large and structured set of texts
   - Word2vec is a group of two-layer neural networks models that are used to produce word embeddings.
     - It can be obtained using two methods: Skip Gram or Common Bag Of Words (CBOW)
     - Word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers.
     - It uses pre-trained models to convert word to vectors with several hundred dimensions.
   - Word2Vec is a text preprocessing step for downstream NLP, Sentiment analysis, named entity recognition and translation.
   - Words that are semantically similar have vectors that are closer to each other
+  - The average of vectorized words in a sentence can the be fed into logistic regression classifiers or any other models.
+- Tokenization
+  - Tokenization of raw text is a standard pre-processing step for many NLP tasks. For English, tokenization usually involves punctuation splitting and separation of some affixes like possessives.
+  - Other languages require more extensive token pre-processing, which is usually called segmentation. Some commonly used tool are shown as below: - [Stanford word segmenter](https://nlp.stanford.edu/software/segmenter.html) for Chinese and Arabic. - [Mecab](https://taku910.github.io/mecab/) for Japanese - [UETsegmenter](https://github.com/phongnt570/UETsegmenter) for Vietnamese - [Europarl](http://www.statmt.org/europarl/) for Latin, Cyrillic, Hebrew or Greek scripts - ICU tokenizer - [Click](https://arxiv.org/abs/1802.06893) to learn more
+- Text cleanup
+  - leave out all double qoutes
+  - Stop Words - are words that are not providing useful information and will be excluded from the text.
+  - Stemmer - are used to transform various forms of a word to a common one. Ex, different tense of a verb to the present tense.
+  - Replace all non alphapetic and numerial character to space.
+  - Use lower case for words
+- GloVe is another unsupervised learning algorithm for obtaining vector representations for words.
+  - It puts emphasis on the importance of word-word co-occurences to extract meaning rather than other techniques such as skip-gram or bag of words
+  - GloVe creates a global co-occurrence matrix by estimating the probability a given word will co-occur with other words.
+  - it proves to perform better than Word2vec in the word analogy tasks.
 
 ## Model Evaluation
 
@@ -462,8 +503,10 @@
   - accuracy paradox - It happens when only use accuracy rate as the reference to consider the performance of a model. because the number of the actual positive and negative results does not always be the same.
 - Error rate - wrong prediction count over the total prediction count.
 - `Precision = True Positive/(True Positive + False Positive)`
+- `Recall = True Positive/(True Positive + False Negative)`
 - F1 Score = harmonic mean of Precision and Recall = `2*Precision*Recall / (Precision + Recall)`
   - F1 Score closer to 1 is better. Closer to 0 is worse.
+- See more [here](https://en.wikipedia.org/wiki/Precision_and_recall#Recall)
 - Area Under Curve (AUC)
   - AUC is the area of a curve formed by plotting True Positive Rate against False Positive Rate at different cut-off thresholds
   - Good model have AUC closer to 1

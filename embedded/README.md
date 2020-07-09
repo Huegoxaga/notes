@@ -175,7 +175,7 @@
 - The models all featured a Broadcom SoC, with an ARM CPU and an on-chip GPU. SD cards are used to store the operating system, and the outputs include USB ports, HDMI ports, a 3.4 mm jack for audio, and lower-level GPIO pins supporting I2C and other protocols. There are also some models with an 8P8C Ethernet port and an eMMC port.
 - Common models are the Model A, Model B, and Zero.
 
-## [Arduino](<(https://huegoxaga.github.io/notes/embedded/arduino.html)>)
+## [Arduino](https://huegoxaga.github.io/notes/embedded/arduino.html)
 
 - An open-source hardware and software company and user community that produces single-board microcontrollers and microcontroller kits.
 - Their hardware contains an Atmel 8-bit AVR microcontroller with flash memor and a single or double row of pins that can connect to add-on modules (“shields”) and can be addressable via a I2C serial bus.

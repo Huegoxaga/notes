@@ -161,6 +161,11 @@
   - `-u` sort and ignore duplicated contents.
   - `-k2` sort by the second column.
 - `wc -l <file>` count the number of lines in a file.
+- `make` it will compile binary files in the current folder.
+  - `make test` verify the completed `make` process has no error.
+- `make install` it will build the binaries then copt it to a `make` managed folder which has been already added to the environment path and ready to run in the terminal.
+  - This command is provided by a package called `build-essential`
+  - Although this command does all the things `make` will do, it is recommanded to run `make` first.
 
 ### Access Control
 
@@ -374,6 +379,8 @@
 - `apt-get -f clean` clean up download files.
 - `apt autoremove` find dangling dependencies and remove them.
 - `dpkg --get-selections` Shows all of your installed packages
+- `apt-cache policy <package>` Get info about the package which will be installed.
+  - 500 and 100 are the priority numbers. 500 corresponds to installable, 100 means installed.
 
 ### WGET
 
@@ -822,3 +829,41 @@
   mkdir /home/pi/Downloads/photos
   fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/$DATE.jpg
   ```
+
+### Sed
+
+- SED command in UNIX is stands for stream editor and it can perform lot’s of function on file like, searching, find and replace, insertion or deletion.
+
+#### Usage
+
+- run `sed 's/old/new/' filename.txt` replace the first occurrence of `old` to `new` in all line.
+  - `sed 's/old/new/2' filename.txt` replace the second occurrence of `old` to `new` in all lines.
+  - `sed 's/old/new/g' filename.txt` replace all occurrence of `old` to `new` in all line.
+  - `sed 's/old/new/5g' filename.txt` replace occurrence of `old` including the 5th and all after to `new` in all line.
+  - `sed '3 s/old/new/' filename.txt` replace the first occurrence of `old` to `new` in the 3rd line.
+  - `sed '3,6 s/old/new/' filename.txt` replace the first occurrence of `old` to `new` from the 3rd line to the 6th.
+  - `sed '3,$ s/old/new/' filename.txt` replace the first occurrence of `old` to `new` from the 3rd line to the last line.
+  - `sed 's/old/new/p' filename.txt` duplicating the replaced line
+  - `sed -n 's/old/new/p' filename.txt` printing only the replaced lines
+- run `echo "Hello World" | sed 's/\(\b[A-Z]\)/\(\1\)/g'` Parenthesize first character of each word as `"(H)ello (W)orld"`.
+- run `sed '5d' filename.txt` delete the 5th line.
+  - `sed '$d' filename.txt` delete the last line.
+  - `sed '3,6d' filename.txt` delete from 3rd to 6th line.
+  - `sed '3,$d' filename.txt` delete from 3rd to the last line.
+  - `sed '/abc/d' filename.txt` delete a pattern matching line.
+
+### tr
+
+- The tr command is used for translating or deleting characters.
+- It supports a range of transformations including uppercase to lowercase, squeezing repeating characters, deleting specific characters and basic find and replace.
+
+#### Usage
+
+- `cat file.txt | tr "[a-z]" "[A-Z]"` convert all lower case to upper case.
+  - Optionally, `cat file.txt | tr "[:lower:]" "[:upper:]"`
+- `echo "Hello World" | tr [:space:] '\t'` translate white space to tab.
+- run `tr '{}' '()' filename.txt` translate braces in a file with parenthesis in a file.
+- `echo "Hello World" | tr -s [:space:] ' '` This replaces repeated instances of a character(space) to `' '`
+- `echo "Hello orld" | tr -d 'w'` delete specified characters using -d option
+  - `echo "my ID is 1234" | tr -d [:digit:]` To remove all the digits from the string.
+- `echo "my ID is 1234" | tr -cd [:digit:]` complement the selected pattern and remove all the non-digits characters from the string.

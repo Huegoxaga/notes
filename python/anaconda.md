@@ -298,22 +298,36 @@
     - `h, w = image.shape[:2]` will get the height and width of the image
     - `(B, G, R) = image[x, y]` get the `B`, `R`, `G` color values of one pixel at `(x, y)` on the image.
     - `roi = image[x : h, y : w]` get a rectangle area which starts at the top-left point `(x, y)` with height `h` and width `w`.
-- `resize = cv2.resize(image, (w, h))` resize an image.
-- `matrix = cv2.getRotationMatrix2D((x, y), angle, scale)`, Generating a rotation matrix.
-  - center – The center coordinates of the image.
-  - Angle – The angle (in degrees) by which the image should be rotated
-  - Scale – The scaling factor. Ex, `1.0` represents 1 to 1 scale.
+- resize
+  - `resize = cv2.resize(image, (w, h))` resize an image using area interpolation
+  - `scaling_cubic = cv2.resize(image, None, fx=.75, fy=.75, interpolation = cv2.INTER_CUBIC)` Scaling using cubic interpolation
+  - `scaling_linear = cv2.resize(image, None, fx=0.5, fy=0.5, interpolation = cv2.INTER_LINEAR)` Scaling using linear interpolation
+- flipping
+  - `flipping = cv2.flip(image, 1)` Horizontal flipping
+  - `flipping = cv2.flip(image, 0)` Vertical Flipping
+  - `flipping = cv2.flip(image, -1)` horizontally & vertically flipping
+- Change brightness
+  1. `matrix = np.ones(image.shape, dtype = "uint8") * 120` create an array of ones with a brightness factor `120`
+  2. `add = cv2.add(image, matrix)` add the brightness to the image.
+  3. `subtract = cv2.subtract(image, matrix)` decrease the brightness.
 - `output = img1 + img2` image can be added to output an overlaped one since they are numpy arrays.
 - `lineType`
   - `cv2.LINE_4` will be medium zigzag pixels in solid color
   - `cv2.LINE_AA` will be wide zigzag pixels in solid and light color
   - `cv2.LINE_8` will one narrow line of pixels in solid color
-- `rotated = cv2.warpAffine(image, matrix, (w, h))` perform ratation.
-  - `matrix` is the rotation matrix that will be performed.
-  - `(w, h)` defines the image size after rotation.
+- Rotation
+  - `matrix = cv2.getRotationMatrix2D((x, y), angle, scale)`, Generating a rotation matrix.
+    - center – The center coordinates of the image.
+    - Angle – The angle (in degrees) by which the image should be rotated
+    - Scale – The scaling factor. Ex, `1.0` represents 1 to 1 scale.
+  - `rotated = cv2.warpAffine(image, matrix, (w, h))` perform ratation.
+    - `matrix` is the rotation matrix that will be performed.
+    - `(w, h)` defines the image size after rotation.
 - `output = img.copy()` copy the original image
+- `cv2.circle(circle, (100, 100), 100, 255, -1)` circle
 - `rectangle = cv2.rectangle(img, (left, top), (bottom, right), (B, G, R), fillMethod)` draw rectangle box on `img`
   - `FillMethod` can be any integer value as line width for bounding box.
+  - `-1` will fill the image with bounding box.
   - `FillMethod` can be `cv2.FILLED` for a filled rectangle
 - `cv2.putText(img, 'Text Content', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 4, (255, 0, 0), 2)` add text on `img`, it uses the following arguments.
   - Image
@@ -336,18 +350,25 @@
 - `img=cv.fillPoly(img, pts, color, lineType)`, Fills the area bounded by one or more polygons.
   - `pts` can be an array of ploygons, each with an array of points. Each point is an array like `[x, y]`. Hence, `pts` holds a 3-D array.
   - `lineType` optional, type of the polygon boundaries.
-- `cv.bitwise_not(input, output, mask)` Inverts every bit of an array.
-  - `invert = cv2.bitwise_not(white,white, mask=mask)` can be used to find the invert of a mask.
-- `dst=cv.bitwise_and(input1, input2, output, mask)` computes bitwise conjunction of the two arrays. Calculates the per-element bit-wise conjunction of two arrays or an array and a scalar.
-  - `mask` optional, 8-bit single channel array, that specifies elements of the output array to be changed.
-  - It usually works with mask that output a masked image. Only the white area of a mask will be shown after this operation.
+- bitwise operation
+  - `cv.bitwise_not(input, output, mask)` Inverts every bit of an array.
+    - `invert = cv2.bitwise_not(white,white, mask=mask)` can be used to find the invert of a mask.
+  - `dst=cv.bitwise_and(input1, input2, output, mask)` computes bitwise conjunction of the two arrays. Calculates the per-element bit-wise conjunction of two arrays or an array and a scalar.
+    - `mask` optional, 8-bit single channel array, that specifies elements of the output array to be changed.
+    - It usually works with mask that output a masked image. Only the white area of a mask will be shown after this operation.
+  - `cv.bitwise_not(input)`
+  - `cv.bitwise_xor(input, output, mask)`
 - `cv2.imshow('image',img)`, showing the stored image
   - The first parameter is the title of title window.
 - `imwrite(filename, img)`, save an image to a file
-- `cap = cv2.VideoCapture(0)`, reading video directly from the webcam
-- `cap = cv2.VideoCapture('LOCATION OF THE VIDEO')`, reading a video from local storage
-- `cap.isOpened()`, check if the video is successfully stored in the variable
-- `cap.release()`, release the stored video after processing is done
+- video
+  - `cap = cv2.VideoCapture(0)`, reading video directly from the webcam
+  - `cap = cv2.VideoCapture('LOCATION OF THE VIDEO')`, reading a video from local storage
+  - `cap.isOpened()`, check if the video is successfully stored in the variable
+  - `cap.release()`, release the stored video after processing is done
+- filter
+  - `blur = cv2.blur(image,(9,9))` blur with `9X9` fiter
+  - `kernel = np.array([[-1,-1,-1], [-1,9,-1], [-1,-1,-1]])` then `sharpened = cv2.filter2D(image, -1, kernel)` sharpen the image.
 - `cv2.waitKey(delay)` The function waitKey waits for a any key event infinitely
   - `delay` – the length of time to wait in milliseconds. `0`(default value) is the special value that means "forever".
 - `cv2.destroyAllWindows()` Exit window and destroy all windows

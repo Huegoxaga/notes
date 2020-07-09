@@ -83,5 +83,8 @@
 - Install Apps with Casks with similar commands by using `brew cask`:
   - `brew cask install <AppName>` install an app
   - `brew cask list` list installed apps
+    - `brew cask list <keyword>` search app
   - `brew cast home <PackageName>` open app homepage in browser.
   - `brew cask info <AppName>` view the info for an app.
+  - `brew cask upgrade` view the info for an app.
+  - `brew cask outdated` view the info for an app.

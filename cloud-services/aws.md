@@ -320,9 +320,11 @@ It runs scripts and codes without the need to set up the server.
       - If running `pip install` locally and the package doesn't work, build Amazon Linux container using Docker or use EC2 run `pip install` and get the package for Amazon Linux.
     - In environment variable add the folder path to key `PYTHONPATH` if anything goes wrong.
 - DynamoDB can trigger Lambda function using DynamoDB stream. All records will be sent to lambda when one or more records are edited.
-- Lambda function can also be identified as `Function:Alias`
-  - By default when only use the function name, it means the lastest version(the one without any version number and alias).
+- Versioning
+  - Create a version will create a snapshot of the current function.
   - An Alias can point to one version at a time.
+  - Lambda function can now be identified by other resources as `Function:Alias`
+  - By default when only use the function name, it means the lastest version(the one without any version number and alias).
   - Updating alias to point to a new version by `aws lambda update-alias --function-name <FunctionName> --name <AliasName> --function-version <VersionNumber>`
   - A Lambda version is a readonly snapshot that is saved for other resources to trigger.
 - Updating a function with additional dependencies using AWS CLI
