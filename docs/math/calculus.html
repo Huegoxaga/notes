@@ -664,12 +664,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.7" data-path="../os.git.md">
+        <li class="chapter " data-level="1.14.7" data-path="../os/git.html">
             
-                <span>
+                <a href="../os/git.html">
             
                     
                     Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.8" data-path="../os/redis.html">
+            
+                <a href="../os/redis.html">
+            
+                    
+                    Redis
             
                 </a>
             
@@ -1043,9 +1056,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" data-path="../music/README.md">
+        <li class="chapter " data-level="1.22" data-path="../music/">
             
-                <span>
+                <a href="../music/">
             
                     
                     Music Theory
@@ -1107,7 +1120,7 @@
 <ul>
 <li>Intuitive Definitions<ul>
 <li>Definition of a Limit<ul>
-<li>Suppose <em><code>f(x)</code></em> is defined when <code>x</code> is near the number <code>a</code>. (This means that f is defined on some open interval that contains a, except possibly at a itself.) Then we write <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3DL%24" alt="$\lim_{x \to a}f(x)=L$"> and say &quot;the limit of f sxd, as x approaches a, equals L&quot; if we can make the values of <em><code>f(x)</code></em> arbitrarily close to L (as close to L as we like) by restricting x to be sufficiently close to a (on either side of a) but not equal to a.</li>
+<li>Suppose <em><code>f(x)</code></em> is defined when <code>x</code> is near the number <code>a</code>. (This means that f is defined on some open interval that contains a, except possibly at a itself.) Then we write <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3DL%24" alt="$\lim_{x \to a}f(x)=L$"> and say &quot;the limit of <code>f(x)</code>, as x approaches a, equals L&quot; if we can make the values of <em><code>f(x)</code></em> arbitrarily close to L (as close to L as we like) by restricting x to be sufficiently close to a (on either side of a) but not equal to a.</li>
 </ul>
 </li>
 <li>Definition of One-Sided Limits<ul>
@@ -1121,7 +1134,7 @@
 </ul>
 </li>
 <li>Definition of a Limit at Infinity<ul>
-<li>Let <em>f</em> be a function defined on some interval <img src="https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty" alt="$(a, \infty)$">%24&gt;). Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7Df%28x%29%3D%20L%24" alt="$\lim_{x \to \infty}f(x)= L$"> means that the values of <em>f(x)</em> can be made arbitrarily close to <em>L</em> by requiring <em>x</em> to be sufficiently large.</li>
+<li>Let <em>f</em> be a function defined on some interval <img src="https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty%29%24" alt="$(a, \infty)$">. Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7Df%28x%29%3D%20L%24" alt="$\lim_{x \to \infty}f(x)= L$"> means that the values of <em>f(x)</em> can be made arbitrarily close to <em>L</em> by requiring <em>x</em> to be sufficiently large.</li>
 <li>Let <em>f</em> be a function defined on some interval <img src="https://render.githubusercontent.com/render/math?math=%24%28a%2C%20-%5Cinfty%29%24" alt="$(a, -\infty)$">. Then <img src="https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7Df%28x%29%3D%20L%24" alt="$\lim_{x \to - \infty}f(x)= L$"> means that the values of <em>f(x)</em> can be made arbitrarily close to <em>L</em> by requiring <em>x</em> to be sufficiently large negative.</li>
 </ul>
 </li>
@@ -1252,12 +1265,17 @@
 </li>
 <li>The derivative of a function <em>f</em> at a number <em>a</em>, denoted by <img src="https://render.githubusercontent.com/render/math?math=%24f&apos;(a%29%24" alt="$f&apos;(a)$"> is <img src="https://render.githubusercontent.com/render/math?math=%24f&apos;(a%29%20%3D%20%5Clim_%7Bh%20%5Cto%200%7D%20%5Cfrac%7Bf(a%2Bh%29-f(a%29%7D%7Bh%7D%24" alt="$f&apos;(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$"><ul>
 <li>It is the function that returns the slope of the tangent as dependent variable.</li>
-<li>It can also represent the instantaneous rate of change</li>
+<li>It can also represent the instantaneous rate of change.</li>
 <li>The derivateve of a function can be also denoted as<ul>
-<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdx%7D%7Bdy%7D%24" alt="$\frac{dx}{dy}$">, known as Leibniz notation.</li>
-<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdy%7D(y%29%24" alt="$\frac{d}{dy}(y)$"></li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdy%7D%7Bdx%7D%24" alt="$\frac{dy}{dx}$">, known as Leibniz notation.<ul>
+<li>Does not have to be <code>dy</code> over <code>dx</code>, anything below is the current independent variable.</li>
+<li>The notation itself can be calculated since it represent a relationship in fraction notation. For example, <code>dy/dx = (dy/dz)/(dx/dz)</code></li>
+</ul>
+</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(x%29%24" alt="$\frac{d}{dx}(x)$"></li>
 <li><img src="https://render.githubusercontent.com/render/math?math=%24y&apos;%24" alt="$y&apos;$"></li>
 <li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cdot%7Bx%7D%24" alt="$\dot{x}$"> if <em>x</em> represents time</li>
+<li>All of the notation represents how much <code>y</code> changes when <code>x</code> changes.</li>
 </ul>
 </li>
 </ul>
@@ -1292,6 +1310,28 @@
 <li>If the graph of <em>f</em> lies above all of its tangents on an interval <em>I</em>, then it is called concave upward on <em>I</em>. If the graph of <em>f</em> lies below all of its tangents on <em>I</em>, it is called concave downward on <em>I</em>.</li>
 <li>A point <em>P</em> on a curve <em>y = f(x)</em> is called an inflection point if <em>f</em> is continuous there and the curve changes from concave upward to concave downward or from concave downward to concave upward at <em>P</em>.</li>
 <li>A function <em>F</em> is called an antiderivative of <em>f</em> on an interval <em>I</em> if <code>F&apos;(x)=f(x)</code> for all <em>x</em> in <em>I</em>.</li>
+<li>The derivative of polar functions<ul>
+<li>Polar coordinates uses the distance to origin and the angle <code>&#x3B8;</code> between the line to origin and x-axis to represent the location of a point. Instead of using <code>x</code>, <code>y</code> values in Cartesian coordinates.</li>
+<li>When converting a point from cartesian coordinates to polar coordinates, <img src="https://render.githubusercontent.com/render/math?math=%24r+%3D+%5Csqrt%7Bx%5E2%2By%5E2%7D%24" alt="$r = \sqrt{x^2+y^2}$"> and <img src="https://render.githubusercontent.com/render/math?math=%24%5Ctheta+%3D+%5Ctan%5E%7B-1%7D%7B%5Cleft%28%5Cfrac%7By%7D%7Bx%7D%5Cright+%29%7D%24" alt="$\theta = \tan^{-1}{\left(\frac{y}{x}\right )}$"></li>
+<li>When converting a point from polar coordinates to cartesian coordinates, <em><code>x = rsin&#x3B8;</code></em> and <em><code>y = rcos&#x3B8;</code></em></li>
+<li>Then function that uses <code>&#x3B8;</code> as its indenpendent variable and <code>r</code> as its dependent variable are called polar function.<ul>
+<li>Using selected <code>&#x3B8;</code> value to graph the polar function. polar function simplfy problem related to functions that have circular shape.</li>
+</ul>
+</li>
+<li>The derivative <code>dy/dx</code> of a polar function is calculated by:<ul>
+<li><code>dy/d&#x3B8;</code> can be obtained from <em><code>y = rcos&#x3B8;</code></em>, which is <img src="https://render.githubusercontent.com/render/math?math=%24r+%5Ccos%7B%5Ctheta%7D%2B+%5Cfrac%7Bdy%7D%7Bd+%5Ctheta%7D+%5Csin%7B%5Ctheta%7D%24" alt="$r \cos{\theta}+ \frac{dy}{d \theta} \sin{\theta}$">.</li>
+<li><code>dx/d&#x3B8;</code> can be obtained from <em><code>x = rsin&#x3B8;</code></em>, which is <img src="https://render.githubusercontent.com/render/math?math=%24-r+%5Csin%7B%5Ctheta%7D%2B+%5Cfrac%7Bdy%7D%7Bd+%5Ctheta%7D+%5Ccos%7B%5Ctheta%7D%24" alt="$-r \sin{\theta}+ \frac{dy}{d \theta} \cos{\theta}$">.</li>
+<li>Then, <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdy%7D%7Bdx%7D+%3D+%5Cfrac%7B%5Cfrac%7Bdy%7D%7Bd+%5Ctheta%7D%7D%7B%5Cfrac%7Bdx%7D%7Bd+%5Ctheta%7D%7D%24" alt="$\frac{dy}{dx} = \frac{\frac{dy}{d \theta}}{\frac{dx}{d \theta}}$"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Partial Derivatives<ul>
+<li>When a function has more than one independent variable, the partial derivative can be used to represent how much the dependent variable changes when one of its independent variables changes while keeping the other independent variable constant.</li>
+<li>For <code>f(x, y)</code> it can have two derivatives which are <code>&#x2202;f/&#x2202;x</code> and <code>&#x2202;f/&#x2202;y</code>.</li>
+<li>Function with multiple independent variable has a multi-demensional graph, parial derivative only looks at the rate of change between one independent variable and the dependent variable in one plane. All other independent variable will be kept in the result and the derivative function will have a reduced demension(by 1).</li>
+</ul>
+</li>
 </ul>
 <h4 id="rules">Rules</h4>
 <ul>
@@ -1364,7 +1404,14 @@ antiderivative of <em>f</em> on <em>I</em> is <em>F(x) + C</em> where <em>C</em>
 </ul>
 <h4 id="solving-methods-for-related-problem">Solving Methods for Related Problem</h4>
 <ul>
-<li>Implicit differentiation. This consists of differentiating both sides of the equation with respect to <em>x</em> and then solving the resulting equation for <em>y&apos;</em>.</li>
+<li>Chain rule applys to all variable except the one that is at the denomination in the Leibniz notation.<ul>
+<li>If <code>dx</code> is the variable that is at the denomination in the Leibniz notation and <code>y</code> is the variable that will be applied by chain rule. When the relationship between <code>y</code> and <code>x</code> is unknown, use <code>y&apos;</code> or <code>dy/dx</code> to represent the derivative of <code>y</code> in respect to <code>x</code>.</li>
+</ul>
+</li>
+<li>Implicit differentiation. This consists of differentiating both sides of the equation with respect to <em>x</em> and then solving the resulting equation for <em>y&apos;</em>.<ul>
+<li>The result should be an expression which is consisted of <em>x</em> and <em>y</em>.</li>
+</ul>
+</li>
 <li>Logarithmic differentiation - The calculation of derivatives of complicated functions involving products, quotients, or powers can often be simplified by taking logarithms. The method used in the following example is called logarithmic differentiation.</li>
 <li>linear approximation - or tangent line approximation of <em>f</em> at <em>a</em> uses the tangent line of the function at <em>a</em> to replace the original funtion, then make prediction about values that is close to <em>a</em>. As a result we have the linear approximation <em>L(x)</em> equals to <img src="https://render.githubusercontent.com/render/math?math=%24f(a%29%2Bf&apos;(a%29(x-a%29%24" alt="$f(a)+f&apos;(a)(x-a)$">.</li>
 <li>The Closed interval Method - To find the absolute maximum and minimum values of a continuous function <em>f</em> on a closed interval [<em>a, b</em>]:<ol>
@@ -1396,6 +1443,37 @@ antiderivative of <em>f</em> on <em>I</em> is <em>F(x) + C</em> where <em>C</em>
 <li>If <em>f&apos;(c)=0</em> and <em>f&apos;&apos;(c)&lt;0</em>, then <em>f</em> has a local maximum at <em>c</em>.</li>
 </ul>
 </li>
+<li>The Newton&apos;s method can be used to find the root(solution) of a high order function.<ul>
+<li>Pick a random value <img src="https://render.githubusercontent.com/render/math?math=%24x_1%24" alt="$x_1$">, then calculate <code>x - f(x)/f&apos;(x)</code>, then treat the result <img src="https://render.githubusercontent.com/render/math?math=%24x_2%24" alt="$x_2$"> as <img src="https://render.githubusercontent.com/render/math?math=%24x_1%24" alt="$x_1$"> and repeat the calculation, repeat the process then the result value will be closer and closer to the root.</li>
+<li>When the <img src="https://render.githubusercontent.com/render/math?math=%24x_n%24" alt="$x_n$"> is the root value the new result will not change since <img src="https://render.githubusercontent.com/render/math?math=%24f%28x_n%29+%3D+0%24" alt="$f(x_n) = 0$"> in this case.</li>
+<li>This method uses the fact that the intersection between the slope of a random point and x-axis is close to the root.</li>
+<li>It works no matter the starting point is at left side or right side of the root.</li>
+<li>For a function with multiple roots, <code>x</code>s from differect section should be attept for each root.</li>
+<li>Sometimes a wrong point may be picked when it is the (local) minimum/maximum point that makes <code>f&apos;(x) = 0</code>.</li>
+</ul>
+</li>
+<li>Common Polar Graphs - a flower shape with leaves growing from the origin.<ul>
+<li><code>r = a sin(k&#x3B8;)</code><ul>
+<li>When <code>k</code> is odd, <code>k</code> equals to the number of leaves. and the leaf overlap with y-axis and point upward with <code>k = 1</code>, and the one of the leaves overlap with y-axis and points downward when <code>k = 3</code>, when <code>k = 5</code> the leaf points upward and so on.</li>
+<li>When <code>k</code> is even, it has <code>2k</code> number of leaves and they spread evenly in all direction with no leaves overlap with all axis in four direction.</li>
+</ul>
+</li>
+<li><code>r = a cos(k&#x3B8;)</code><ul>
+<li>there is always one leaf on the positive direction of the x-axis.</li>
+<li>When <code>k</code> is odd, <code>k</code> equals to the number of leaves. There is alway one leaf on the positive direction of the x-axis, and all other leaves spread evenly. No leaves overlap with the other 3 direction on the axis.</li>
+<li>When <code>k</code> is even, it has <code>2k</code> number of leaves and they spread evenly in all direction with four leaves always overlap with all axis in four direction.</li>
+</ul>
+</li>
+<li><code>r = 1 + k sin&#x3B8;</code><ul>
+<li>When <code>k = 0</code> it is a circle</li>
+<li>When <code>k &gt; 0</code> it is a heart shape growing upwards as k increse and have an empty hole inside when <code>k &gt; 1</code></li>
+<li>When <code>k &lt; 0</code> it is a heart shape growing downward as k decrease and have an empty hole inside when <code>k &gt; -1</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>When solving partial derivative just treat all other variable as constant and use the same methods and rules for a regular derivative problem.</li>
+<li>Function with multiple independent variables can still be used to solve for a regular derivative for a certain independent variable, in this case other independent variable can not be treated as a constant and all rules for variables like chain rules should apply.</li>
 </ul>
 <h2 id="integral">Integral</h2>
 <h4 id="definition">Definition</h4>
@@ -1489,7 +1567,7 @@ antiderivative of <em>f</em> on <em>I</em> is <em>F(x) + C</em> where <em>C</em>
 <li><img src="https://render.githubusercontent.com/render/math?math=%24%5Cint%20%5Cfrac%7B1%7D%7B%5Csqrt%7Ba%5E2-x%5E2%7D%7D%20%5C%3B%20dx%3D%20%5Csin%5E%7B-1%7D%20%5Cleft(%5Cfrac%7Bx%7D%7Ba%7D%5Cright%29%2BC%24" alt="$\int \frac{1}{\sqrt{a^2-x^2}} ; dx= \sin^{-1} \left(\frac{x}{a}\right)+C$">, <em>a &gt; 0</em></li>
 </ul>
 </li>
-<li>The Substitution Rule If <em>u=g(s)</em> is a differentiable function whose range is an interval <em>I</em> and <em>f</em> is continuous on <em>I</em>, then <img src="https://render.githubusercontent.com/render/math?math=%24f(g(x%2929g&apos;(x%29dx%3D%5Cint%20f(u%29%20%5C%3B%20du%24" alt="$f(g(x))g&apos;(x)dx=\int f(u) ; du$"></li>
+<li>The Substitution Rule If <em>u=g(s)</em> is a differentiable function whose range is an interval <em>I</em> and <em>f</em> is continuous on <em>I</em>, then <img src="https://render.githubusercontent.com/render/math?math=%24f(g(x%29%29g&apos;(x%29dx%3D%5Cint%20f(u%29%20%5C%3B%20du%24" alt="$f(g(x))g&apos;(x)dx=\int f(u) ; du$"></li>
 <li>The Substitution Rule for Definite Integrals - If <em>g&apos;</em> is continuous on [<em>a, b</em>] and <em>f</em> is continuous on the range of <em>u = g(x)</em>, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Cint%5Eb_a%20f(g(x%29%29g&apos;(x%29dx%3D%5Cint%5E%7Bg(b%29%7D_%7Bg(a%29%7Df(u%29%20%5C%3B%20du%24" alt="$\int^b_a f(g(x))g&apos;(x)dx=\int^{g(b)}_{g(a)}f(u) ; du$"></li>
 <li>Integrals of Symmetric Functions Suppose <em>f</em> is continuous on [<em>-a, a</em>].<ul>
 <li>If f is even [<em>f(-x) = f(x)</em>], then <img src="https://render.githubusercontent.com/render/math?math=%24%5Cint%5Ea_%7B-a%7D%20f(x%29%20%5C%3B%20dx%3D2%20%5Cint%5Ea_0%20f(x%29%20%5C%3B%20dx%24" alt="$\int^a_{-a} f(x) ; dx=2 \int^a_0 f(x) ; dx$"></li>
@@ -1528,6 +1606,12 @@ antiderivative of <em>f</em> on <em>I</em> is <em>F(x) + C</em> where <em>C</em>
 </ul>
 </li>
 <li>If <em>x = f(y)</em>, uses <code>dy/dx</code>.</li>
+</ul>
+</li>
+<li>Double integral is used to calculate the area of a graph by using <code>dx</code> times <code>dy</code>. It can be expressed as <img src="https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7Bx_2%7D_%7Bx_1%7D+dx+%5Cint%5E%7By_2%7D_%7By_1%7D+dy%24" alt="$\int^{x_2}_{x_1} dx \int^{y_2}_{y_1} dy$"> or <img src="https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7By_2%7D_%7By_1%7D+%5Cint%5E%7Bx_2%7D_%7Bx_1%7D+dx+dy%24" alt="$\int^{y_2}_{y_1} \int^{x_2}_{x_1} dx dy$"> or <img src="https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7Bx_2%7D_%7Bx_1%7D+%5Cint%5E%7By_2%7D_%7By_1%7D+dy+dx%24" alt="$\int^{x_2}_{x_1} \int^{y_2}_{y_1} dy dx$">.<ul>
+<li>The first diffrential is associated with the last integral sign, The second diffrential is associated with the first integral sign,</li>
+<li><code>dy</code> can be evaluated first and the other variable <code>x</code> can be considered as constant, then the result for integral of <code>dy</code> can be subsituted by <code>x</code> then the integral of <code>dx</code> can then be evaluated.</li>
+<li>Optionally, <code>dx</code> can be evaluated first and considering <code>y</code> as constant. then subsitute <code>x</code> by expression of <code>y</code> then take the integral of <code>dy</code> and get the result.</li>
 </ul>
 </li>
 </ul>
@@ -1722,7 +1806,7 @@ antiderivative of <em>f</em> on <em>I</em> is <em>F(x) + C</em> where <em>C</em>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Calculus","level":"1.20.1","depth":2,"next":{"title":"Linear Algebra","level":"1.20.2","depth":2,"path":"math/linear-algebra.md","ref":"math/linear-algebra.md","articles":[]},"previous":{"title":"Mathematics","level":"1.20","depth":1,"path":"math/README.md","ref":"math/README.md","articles":[{"title":"Calculus","level":"1.20.1","depth":2,"path":"math/calculus.md","ref":"math/calculus.md","articles":[]},{"title":"Linear Algebra","level":"1.20.2","depth":2,"path":"math/linear-algebra.md","ref":"math/linear-algebra.md","articles":[]},{"title":"Discrete Mathematics","level":"1.20.3","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},{"title":"Probability & Statistics","level":"1.20.4","depth":2,"path":"math/probability-statistics.md","ref":"math/probability-statistics.md","articles":[]},{"title":"Maple Softwares","level":"1.20.5","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"math/calculus.md","mtime":"2020-06-25T18:11:36.510Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T06:10:53.991Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Calculus","level":"1.20.1","depth":2,"next":{"title":"Linear Algebra","level":"1.20.2","depth":2,"path":"math/linear-algebra.md","ref":"math/linear-algebra.md","articles":[]},"previous":{"title":"Mathematics","level":"1.20","depth":1,"path":"math/README.md","ref":"math/README.md","articles":[{"title":"Calculus","level":"1.20.1","depth":2,"path":"math/calculus.md","ref":"math/calculus.md","articles":[]},{"title":"Linear Algebra","level":"1.20.2","depth":2,"path":"math/linear-algebra.md","ref":"math/linear-algebra.md","articles":[]},{"title":"Discrete Mathematics","level":"1.20.3","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},{"title":"Probability & Statistics","level":"1.20.4","depth":2,"path":"math/probability-statistics.md","ref":"math/probability-statistics.md","articles":[]},{"title":"Maple Softwares","level":"1.20.5","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"math/calculus.md","mtime":"2020-07-12T23:20:49.273Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T18:35:55.346Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

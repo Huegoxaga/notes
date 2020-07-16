@@ -664,12 +664,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.7" data-path="../os.git.md">
+        <li class="chapter " data-level="1.14.7" data-path="../os/git.html">
             
-                <span>
+                <a href="../os/git.html">
             
                     
                     Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.8" data-path="../os/redis.html">
+            
+                <a href="../os/redis.html">
+            
+                    
+                    Redis
             
                 </a>
             
@@ -1043,9 +1056,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" data-path="../music/README.md">
+        <li class="chapter " data-level="1.22" data-path="../music/">
             
-                <span>
+                <a href="../music/">
             
                     
                     Music Theory
@@ -1483,7 +1496,7 @@
 <ul>
 <li>OpenCV (Open Source Computer Vision) is a computer vision library that contains various functions to perform operations on pictures or videos.</li>
 <li>It was originally developed by Intel but was later maintained by Willow Garage and is now maintained by Itseez.</li>
-<li>It has C++, C, Python and Java interfaces and supports Windows, Linux, Mac OS, iOS and Android.</li>
+<li>It has C++, C, Python and Java interfaces and supports Windows, Linux, MacOS, iOS and Android.</li>
 <li>It plays a major role in real-time operation for photos and videos.</li>
 <li>Images in openCV are 3-D numpy arrays with <code>np.uint8</code> as its elements and three color layer for blue, green and red.</li>
 <li>run <code>conda install -c menpo opencv</code> to install</li>
@@ -1501,12 +1514,24 @@
 </li>
 </ul>
 </li>
-<li><code>resize = cv2.resize(image, (w, h))</code> resize an image.</li>
-<li><code>matrix = cv2.getRotationMatrix2D((x, y), angle, scale)</code>, Generating a rotation matrix.<ul>
-<li>center &#x2013; The center coordinates of the image.</li>
-<li>Angle &#x2013; The angle (in degrees) by which the image should be rotated</li>
-<li>Scale &#x2013; The scaling factor. Ex, <code>1.0</code> represents 1 to 1 scale.</li>
+<li>resize<ul>
+<li><code>resize = cv2.resize(image, (w, h))</code> resize an image using area interpolation</li>
+<li><code>scaling_cubic = cv2.resize(image, None, fx=.75, fy=.75, interpolation = cv2.INTER_CUBIC)</code> Scaling using cubic interpolation</li>
+<li><code>scaling_linear = cv2.resize(image, None, fx=0.5, fy=0.5, interpolation = cv2.INTER_LINEAR)</code> Scaling using linear interpolation</li>
 </ul>
+</li>
+<li>flipping<ul>
+<li><code>flipping = cv2.flip(image, 1)</code> Horizontal flipping</li>
+<li><code>flipping = cv2.flip(image, 0)</code> Vertical Flipping</li>
+<li><code>flipping = cv2.flip(image, -1)</code> horizontally &amp; vertically flipping</li>
+</ul>
+</li>
+<li><code>gray = cv2.cvtColor(resize_frame, cv2.COLOR_BGR2GRAY)</code> convert image to grayscale</li>
+<li>Change brightness<ol>
+<li><code>matrix = np.ones(image.shape, dtype = &quot;uint8&quot;) * 120</code> create an array of ones with a brightness factor <code>120</code></li>
+<li><code>add = cv2.add(image, matrix)</code> add the brightness to the image.</li>
+<li><code>subtract = cv2.subtract(image, matrix)</code> decrease the brightness.</li>
+</ol>
 </li>
 <li><code>output = img1 + img2</code> image can be added to output an overlaped one since they are numpy arrays.</li>
 <li><code>lineType</code><ul>
@@ -1515,14 +1540,25 @@
 <li><code>cv2.LINE_8</code> will one narrow line of pixels in solid color</li>
 </ul>
 </li>
+<li>Rotation<ul>
+<li><code>matrix = cv2.getRotationMatrix2D((x, y), angle, scale)</code>, Generating a rotation matrix.<ul>
+<li>center &#x2013; The center coordinates of the image.</li>
+<li>Angle &#x2013; The angle (in degrees) by which the image should be rotated</li>
+<li>Scale &#x2013; The scaling factor. Ex, <code>1.0</code> represents 1 to 1 scale.</li>
+</ul>
+</li>
 <li><code>rotated = cv2.warpAffine(image, matrix, (w, h))</code> perform ratation.<ul>
 <li><code>matrix</code> is the rotation matrix that will be performed.</li>
 <li><code>(w, h)</code> defines the image size after rotation.</li>
 </ul>
 </li>
+</ul>
+</li>
 <li><code>output = img.copy()</code> copy the original image</li>
+<li><code>cv2.circle(circle, (100, 100), 100, 255, -1)</code> circle</li>
 <li><code>rectangle = cv2.rectangle(img, (left, top), (bottom, right), (B, G, R), fillMethod)</code> draw rectangle box on <code>img</code><ul>
 <li><code>FillMethod</code> can be any integer value as line width for bounding box.</li>
+<li><code>-1</code> will fill the image with bounding box.</li>
 <li><code>FillMethod</code> can be <code>cv2.FILLED</code> for a filled rectangle</li>
 </ul>
 </li>
@@ -1553,6 +1589,7 @@
 <li><code>lineType</code> optional, type of the polygon boundaries.</li>
 </ul>
 </li>
+<li>bitwise operation<ul>
 <li><code>cv.bitwise_not(input, output, mask)</code> Inverts every bit of an array.<ul>
 <li><code>invert = cv2.bitwise_not(white,white, mask=mask)</code> can be used to find the invert of a mask.</li>
 </ul>
@@ -1562,21 +1599,71 @@
 <li>It usually works with mask that output a masked image. Only the white area of a mask will be shown after this operation.</li>
 </ul>
 </li>
+<li><code>cv.bitwise_not(input)</code></li>
+<li><code>cv.bitwise_xor(input, output, mask)</code></li>
+</ul>
+</li>
 <li><code>cv2.imshow(&apos;image&apos;,img)</code>, showing the stored image<ul>
 <li>The first parameter is the title of title window.</li>
 </ul>
 </li>
 <li><code>imwrite(filename, img)</code>, save an image to a file</li>
-<li><code>cap = cv2.VideoCapture(0)</code>, reading video directly from the webcam</li>
+<li>video<ul>
+<li><code>cap = cv2.VideoCapture(0)</code>, reading video directly from the webcam<ul>
+<li>One camera will be connected by passing <code>0</code> OR <code>-1</code></li>
+<li>Second camera can be selected by passing <code>2</code></li>
+</ul>
+</li>
 <li><code>cap = cv2.VideoCapture(&apos;LOCATION OF THE VIDEO&apos;)</code>, reading a video from local storage</li>
-<li><code>cap.isOpened()</code>, check if the video is successfully stored in the variable</li>
+<li><code>cap.isOpened()</code>, check if the video is successfully stored in the variable<ul>
+<li>work well with <code>while</code> loop</li>
+<li><code>time.sleep(.05)</code> in the loop can slow down down the video process speed.</li>
+</ul>
+</li>
 <li><code>cap.release()</code>, release the stored video after processing is done</li>
+<li><code>cap.get(3)</code> check the frame width</li>
+<li><code>cap.get(4)</code> check the frame height</li>
+<li><code>`ret = cap.set(3,320)</code> modify width</li>
+<li><code>ret = cap.set(4,240)</code> modify height</li>
+<li>Initialize While Loop, read and display frames until Q key is pressed.<pre><code class="lang-py">cap = cv2.VideoCapture(<span class="hljs-number">0</span>)
+<span class="hljs-keyword">while</span>(<span class="hljs-keyword">True</span>):
+    <span class="hljs-comment"># Capture frame-by-frame</span>
+    ret, frame = cap.read()
+    <span class="hljs-comment"># Our operations on the frame come here</span>
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    <span class="hljs-comment"># Display the resulting frame</span>
+    cv2.imshow(<span class="hljs-string">&apos;frame&apos;</span>,gray)
+    <span class="hljs-keyword">if</span> cv2.waitKey(<span class="hljs-number">1</span>) &amp; <span class="hljs-number">0xFF</span> == ord(<span class="hljs-string">&apos;q&apos;</span>):
+        <span class="hljs-keyword">break</span>
+<span class="hljs-comment"># When everything done, release the capture</span>
+cap.release()
+cv2.destroyAllWindows()
+</code></pre>
+</li>
+</ul>
+</li>
+<li>filter<ul>
+<li><code>blur = cv2.blur(image,(9,9))</code> blur with <code>9X9</code> fiter</li>
+<li><code>kernel = np.array([[-1,-1,-1], [-1,9,-1], [-1,-1,-1]])</code> then <code>sharpened = cv2.filter2D(image, -1, kernel)</code> sharpen the image.</li>
+</ul>
+</li>
 <li><code>cv2.waitKey(delay)</code> The function waitKey waits for a any key event infinitely<ul>
 <li><code>delay</code> &#x2013; the length of time to wait in milliseconds. <code>0</code>(default value) is the special value that means &quot;forever&quot;.</li>
+<li>It returns the key number of the key that has been pressed</li>
 </ul>
 </li>
 <li><code>cv2.destroyAllWindows()</code> Exit window and destroy all windows</li>
 <li><code>cv2.boundingRect(points)</code> return the bounding rectangle <code>(x,y,w,h)</code> of a shape defined as points.</li>
+<li>Classifier<ul>
+<li><code>object_detect = cv2.CascadeClassifier(&apos;clssifier.xml&apos;)</code> load classifier</li>
+<li><code>cv2.CascadeClassifier.detectMultiScale(img, scaleFactor, minNeighbors)</code><ul>
+<li><code>scaleFactor</code>: Specifies the image size to be reduced.</li>
+<li><code>minNeighbors</code>: Specifies the number of neighbors each rectangle should have to retain it, Higher value results in less detections but with higher quality.</li>
+<li>It returns <code>(x,y,w,h)</code> of the bounding box</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="matplotlib">Matplotlib</h2>
 <h3 id="introduction">Introduction</h3>
@@ -1905,7 +1992,7 @@ cnn.add(tf.keras.layers.Dense(units=<span class="hljs-number">1</span>, activati
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Libraries with Anaconda","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-07-03T16:36:14.459Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T06:10:53.991Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Libraries with Anaconda","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-07-16T17:44:04.384Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T18:35:55.346Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

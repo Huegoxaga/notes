@@ -998,15 +998,16 @@ When an exception occurs, the program immediately stops.
 
 #### Error Types
 
-- ImportError: an import fails;
-- IndexError: a list is indexed with an out-of-range number;
-- NameError: an unknown variable is used;
-- SyntaxError: the code can't be parsed properly;
-- TypeError: a function is called on a value of an inappropriate type;
-- ValueError: a function is called on a value of the correct type, but with an inappropriate value.
-- KeyError: trying to index a key that isn’t part of the dictionary.
-- MemoryError: trying to create a list in a very extensive range.
-- AttributeError: Trying to access an attribute of an instance that isn't defined or call an undefined method.
+- `ImportError`: an import fails;
+- `IndexError`: a list is indexed with an out-of-range number;
+- `NameError`: an unknown variable is used;
+- `IOError`: unable to load file;
+- `SyntaxError`: the code can't be parsed properly;
+- `TypeError`: a function is called on a value of an inappropriate type;
+- `ValueError`: a function is called on a value of the correct type, but with an inappropriate value.
+- `KeyError`: trying to index a key that isn’t part of the dictionary.
+- `MemoryError`: trying to create a list in a very extensive range.
+- `AttributeError`: Trying to access an attribute of an instance that isn't defined or call an undefined method.
 
 #### Handling Error
 
@@ -1024,6 +1025,7 @@ finally: #it will run no matter what
 
 ```py
 raise ValueError("display some other details")
+raise IOError('Unable to load the file')
 ```
 
 - It can be used in except block alone to reraise errors.

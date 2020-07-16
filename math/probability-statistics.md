@@ -61,7 +61,7 @@
 - The Law of Large Numbers (LLN) says that the long-run relative frequency of repeated independent events gets closer and closer to a single value.
   - The single value is used to represent the probability of the event.
 - The probability of an event is the number of outcomes in the event divided by the total number of possible outcomes(sample space).
-  - A probability is a number between 0 and 1. For any event A, `0 ≤ P(A) ≤ 1`.
+  - A probability function `P` returns a number between 0 and 1. For any event A, `0 ≤ P(A) ≤ 1`.
 - Probability Assignment Rule:
   - The probability of the set of all possible outcomes of a trial must be 1.
   - P(S) = 1 (S represents the set of all possible outcomes.)
@@ -116,9 +116,9 @@
 
 ## Statistics
 
-### Random variable:
+### Random Variable:
 
-- It is a variable that represents the outcomes of a event that is determine by chance. There is alway P value associate with an outcome x, and x this a random variable
+- It is a variable that represents the outcomes of a event. It is the independent variable of the probability function.
 - Random variable can have three types:
   - Discrete variable: integer value, single event.
   - discrete infinite variable: multiple event.
@@ -191,7 +191,7 @@
   - report the median and IQR when the distribution is skewed. If it is symmetric we summarize the mean and standard deviation.
 - expected value
   - expected value(centre value typical value)(weighted value of the random variable)
-  - expected value=Sum(random variable `*` Probability of the variable)
+  - expected value is the sum of the product of each random variable and its corresponding probability.
   - insurance company is aimed to make the expected value 0 for their policies.
   - when the distribution is symmetrical the mean = expected value.
 - for equally likely values

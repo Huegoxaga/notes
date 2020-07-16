@@ -6,7 +6,7 @@
 
 - Intuitive Definitions
   - Definition of a Limit
-    - Suppose _`f(x)`_ is defined when `x` is near the number `a`. (This means that f is defined on some open interval that contains a, except possibly at a itself.) Then we write ![$\lim_{x \to a}f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3DL%24) and say "the limit of f sxd, as x approaches a, equals L" if we can make the values of _`f(x)`_ arbitrarily close to L (as close to L as we like) by restricting x to be sufficiently close to a (on either side of a) but not equal to a.
+    - Suppose _`f(x)`_ is defined when `x` is near the number `a`. (This means that f is defined on some open interval that contains a, except possibly at a itself.) Then we write ![$\lim_{x \to a}f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3DL%24) and say "the limit of `f(x)`, as x approaches a, equals L" if we can make the values of _`f(x)`_ arbitrarily close to L (as close to L as we like) by restricting x to be sufficiently close to a (on either side of a) but not equal to a.
   - Definition of One-Sided Limits
     - ![$\lim_{x \to a^-}f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df%28x%29%3DL%24) and say the left-hand limit of _`f(x)`_ as x approaches a [or the limit of f sxd as x approaches `a` from the left] is equal to `L` if we can make the values of _`f(x)`_ arbitrarily close to `L` by taking `x` to be sufficiently close to a with `x` less than `a`.
     - ![$\lim_{x \to a^+}f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df%28x%29%3DL%24) if we require that x be greater than a, we get "the right-hand limit of _`f(x)`_ as `x` approaches `a` is equal to `L`".
@@ -14,7 +14,7 @@
     - Let `f` be a function defined on both sides of `a`, except possibly at `a` itself. Then ![$\lim_{x \to a}f(x)= \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3D%20%5Cinfty%24) means that the values of _`f(x)`_ can be made arbitrarily large (as large as we please) by taking `x` sufficiently close to `a`, but not equal to `a`.
     - Let `f` be a function defined on both sides of `a`, except possibly at `a` itself. Then ![$\lim_{x \to a}f(x)= - \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3D%20-%20%5Cinfty%24) means that the values of _`f(x)`_ can be made arbitrarily large negative by taking `x` sufficiently close to `a`, but not equal to `a`.
   - Definition of a Limit at Infinity
-    - Let _f_ be a function defined on some interval ![$(a, \infty)$](<https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty)%24>). Then ![$\lim_{x \to \infty}f(x)= L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7Df%28x%29%3D%20L%24) means that the values of _f(x)_ can be made arbitrarily close to _L_ by requiring _x_ to be sufficiently large.
+    - Let _f_ be a function defined on some interval ![$(a, \infty)$](https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty%29%24). Then ![$\lim_{x \to \infty}f(x)= L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7Df%28x%29%3D%20L%24) means that the values of _f(x)_ can be made arbitrarily close to _L_ by requiring _x_ to be sufficiently large.
     - Let _f_ be a function defined on some interval ![$(a, -\infty)$](https://render.githubusercontent.com/render/math?math=%24%28a%2C%20-%5Cinfty%29%24). Then ![$\lim_{x \to - \infty}f(x)= L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7Df%28x%29%3D%20L%24) means that the values of _f(x)_ can be made arbitrarily close to _L_ by requiring _x_ to be sufficiently large negative.
   - Definition of an Infinite Limit at Infinity
     - Let _f_ be a function defined on some interval ![$(a, \infty)$](https://render.githubusercontent.com/render/math?math=%24%28a%2C%20%5Cinfty%29%24). Then ![$\lim_{x \to \infty}f(x)= \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7Df%28x%29%3D%20%5Cinfty%24) means that for every positive number _M_ there is a corresponding positive number _N_ such that if ![$x > N$](https://render.githubusercontent.com/render/math?math=%24x%20%3E%20N%24) then ![$f(x) > M$](https://render.githubusercontent.com/render/math?math=%24f%28x%29%20%3E%20M%24)
@@ -114,12 +114,15 @@
   - Or it can be ![$\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim_{x_2 \to x_1} \frac{f(x_2)-f(x_1)}{x_2 - x_1} $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7B%5CDelta%20x%20%5Cto%200%7D%20%5Cfrac%7B%5CDelta%20y%7D%7B%5CDelta%20x%7D%20%3D%20%5Clim_%7Bx_2%20%5Cto%20x_1%7D%20%5Cfrac%7Bf(x_2%29-f(x_1%29%7D%7Bx_2%20-%20x_1%7D%20%24)
 - The derivative of a function _f_ at a number _a_, denoted by ![$f'(a)$](https://render.githubusercontent.com/render/math?math=%24f'(a%29%24) is ![$f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$](https://render.githubusercontent.com/render/math?math=%24f'(a%29%20%3D%20%5Clim_%7Bh%20%5Cto%200%7D%20%5Cfrac%7Bf(a%2Bh%29-f(a%29%7D%7Bh%7D%24)
   - It is the function that returns the slope of the tangent as dependent variable.
-  - It can also represent the instantaneous rate of change
+  - It can also represent the instantaneous rate of change.
   - The derivateve of a function can be also denoted as
-    - ![$\frac{dx}{dy}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdx%7D%7Bdy%7D%24), known as Leibniz notation.
-    - ![$\frac{d}{dy}(y)$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdy%7D(y%29%24)
+    - ![$\frac{dy}{dx}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdy%7D%7Bdx%7D%24), known as Leibniz notation.
+      - Does not have to be `dy` over `dx`, anything below is the current independent variable.
+      - The notation itself can be calculated since it represent a relationship in fraction notation. For example, `dy/dx = (dy/dz)/(dx/dz)`
+    - ![$\frac{d}{dx}(x)$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(x%29%24)
     - ![$y'$](https://render.githubusercontent.com/render/math?math=%24y'%24)
     - ![$\dot{x}$](https://render.githubusercontent.com/render/math?math=%24%5Cdot%7Bx%7D%24) if _x_ represents time
+    - All of the notation represents how much `y` changes when `x` changes.
 - Higher Derivatives
   - The derivatives of a derivative is called the second derivative, it can be denoted as follows:
     - ![$\frac{d}{dy}\left(\frac{dy}{dx}\right)$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdy%7D%5Cleft(%5Cfrac%7Bdy%7D%7Bdx%7D%5Cright%29%24)
@@ -140,6 +143,20 @@
 - If the graph of _f_ lies above all of its tangents on an interval _I_, then it is called concave upward on _I_. If the graph of _f_ lies below all of its tangents on _I_, it is called concave downward on _I_.
 - A point _P_ on a curve _y = f(x)_ is called an inflection point if _f_ is continuous there and the curve changes from concave upward to concave downward or from concave downward to concave upward at _P_.
 - A function _F_ is called an antiderivative of _f_ on an interval _I_ if `F'(x)=f(x)` for all _x_ in _I_.
+- The derivative of polar functions
+  - Polar coordinates uses the distance to origin and the angle `θ` between the line to origin and x-axis to represent the location of a point. Instead of using `x`, `y` values in Cartesian coordinates.
+  - When converting a point from cartesian coordinates to polar coordinates, ![$r = \sqrt{x^2+y^2}$](https://render.githubusercontent.com/render/math?math=%24r+%3D+%5Csqrt%7Bx%5E2%2By%5E2%7D%24) and ![$\theta = \tan^{-1}{\left(\frac{y}{x}\right )}$](https://render.githubusercontent.com/render/math?math=%24%5Ctheta+%3D+%5Ctan%5E%7B-1%7D%7B%5Cleft%28%5Cfrac%7By%7D%7Bx%7D%5Cright+%29%7D%24)
+  - When converting a point from polar coordinates to cartesian coordinates, _`x = rsinθ`_ and _`y = rcosθ`_
+  - Then function that uses `θ` as its indenpendent variable and `r` as its dependent variable are called polar function.
+    - Using selected `θ` value to graph the polar function. polar function simplfy problem related to functions that have circular shape.
+  - The derivative `dy/dx` of a polar function is calculated by:
+    - `dy/dθ` can be obtained from _`y = rcosθ`_, which is ![$r \cos{\theta}+ \frac{dy}{d \theta} \sin{\theta}$](https://render.githubusercontent.com/render/math?math=%24r+%5Ccos%7B%5Ctheta%7D%2B+%5Cfrac%7Bdy%7D%7Bd+%5Ctheta%7D+%5Csin%7B%5Ctheta%7D%24).
+    - `dx/dθ` can be obtained from _`x = rsinθ`_, which is ![$-r \sin{\theta}+ \frac{dy}{d \theta} \cos{\theta}$](https://render.githubusercontent.com/render/math?math=%24-r+%5Csin%7B%5Ctheta%7D%2B+%5Cfrac%7Bdy%7D%7Bd+%5Ctheta%7D+%5Ccos%7B%5Ctheta%7D%24).
+    - Then, ![$\frac{dy}{dx} = \frac{\frac{dy}{d \theta}}{\frac{dx}{d \theta}}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdy%7D%7Bdx%7D+%3D+%5Cfrac%7B%5Cfrac%7Bdy%7D%7Bd+%5Ctheta%7D%7D%7B%5Cfrac%7Bdx%7D%7Bd+%5Ctheta%7D%7D%24)
+- Partial Derivatives
+  - When a function has more than one independent variable, the partial derivative can be used to represent how much the dependent variable changes when one of its independent variables changes while keeping the other independent variable constant.
+  - For `f(x, y)` it can have two derivatives which are `∂f/∂x` and `∂f/∂y`.
+  - Function with multiple independent variable has a multi-demensional graph, parial derivative only looks at the rate of change between one independent variable and the dependent variable in one plane. All other independent variable will be kept in the result and the derivative function will have a reduced demension(by 1).
 
 #### Rules
 
@@ -198,7 +215,10 @@
 
 #### Solving Methods for Related Problem
 
+- Chain rule applys to all variable except the one that is at the denomination in the Leibniz notation.
+  - If `dx` is the variable that is at the denomination in the Leibniz notation and `y` is the variable that will be applied by chain rule. When the relationship between `y` and `x` is unknown, use `y'` or `dy/dx` to represent the derivative of `y` in respect to `x`.
 - Implicit differentiation. This consists of differentiating both sides of the equation with respect to _x_ and then solving the resulting equation for _y'_.
+  - The result should be an expression which is consisted of _x_ and _y_.
 - Logarithmic differentiation - The calculation of derivatives of complicated functions involving products, quotients, or powers can often be simplified by taking logarithms. The method used in the following example is called logarithmic differentiation.
 - linear approximation - or tangent line approximation of _f_ at _a_ uses the tangent line of the function at _a_ to replace the original funtion, then make prediction about values that is close to _a_. As a result we have the linear approximation _L(x)_ equals to ![$f(a)+f'(a)(x-a)$](https://render.githubusercontent.com/render/math?math=%24f(a%29%2Bf'(a%29(x-a%29%24).
 - The Closed interval Method - To find the absolute maximum and minimum values of a continuous function _f_ on a closed interval [_a, b_]:
@@ -220,6 +240,27 @@
 - The Second Derivative Test - Suppose _f''_ is continuous near _c_.
   - If _f'(c)=0_ and _f''(c)>0_, then _f_ has a local minimum at _c_.
   - If _f'(c)=0_ and _f''(c)<0_, then _f_ has a local maximum at _c_.
+- The Newton's method can be used to find the root(solution) of a high order function.
+  - Pick a random value ![$x_1$](https://render.githubusercontent.com/render/math?math=%24x_1%24), then calculate `x - f(x)/f'(x)`, then treat the result ![$x_2$](https://render.githubusercontent.com/render/math?math=%24x_2%24) as ![$x_1$](https://render.githubusercontent.com/render/math?math=%24x_1%24) and repeat the calculation, repeat the process then the result value will be closer and closer to the root.
+  - When the ![$x_n$](https://render.githubusercontent.com/render/math?math=%24x_n%24) is the root value the new result will not change since ![$f(x_n) = 0$](https://render.githubusercontent.com/render/math?math=%24f%28x_n%29+%3D+0%24) in this case.
+  - This method uses the fact that the intersection between the slope of a random point and x-axis is close to the root.
+  - It works no matter the starting point is at left side or right side of the root.
+  - For a function with multiple roots, `x`s from differect section should be attept for each root.
+  - Sometimes a wrong point may be picked when it is the (local) minimum/maximum point that makes `f'(x) = 0`.
+- Common Polar Graphs - a flower shape with leaves growing from the origin.
+  - `r = a sin(kθ)`
+    - When `k` is odd, `k` equals to the number of leaves. and the leaf overlap with y-axis and point upward with `k = 1`, and the one of the leaves overlap with y-axis and points downward when `k = 3`, when `k = 5` the leaf points upward and so on.
+    - When `k` is even, it has `2k` number of leaves and they spread evenly in all direction with no leaves overlap with all axis in four direction.
+  - `r = a cos(kθ)`
+    - there is always one leaf on the positive direction of the x-axis.
+    - When `k` is odd, `k` equals to the number of leaves. There is alway one leaf on the positive direction of the x-axis, and all other leaves spread evenly. No leaves overlap with the other 3 direction on the axis.
+    - When `k` is even, it has `2k` number of leaves and they spread evenly in all direction with four leaves always overlap with all axis in four direction.
+  - `r = 1 + k sinθ`
+    - When `k = 0` it is a circle
+    - When `k > 0` it is a heart shape growing upwards as k increse and have an empty hole inside when `k > 1`
+    - When `k < 0` it is a heart shape growing downward as k decrease and have an empty hole inside when `k > -1`
+- When solving partial derivative just treat all other variable as constant and use the same methods and rules for a regular derivative problem.
+- Function with multiple independent variables can still be used to solve for a regular derivative for a certain independent variable, in this case other independent variable can not be treated as a constant and all rules for variables like chain rules should apply.
 
 ## Integral
 
@@ -294,7 +335,7 @@
   - ![$\int \cot x ; dx=\ln ; |\sin x| +C$](https://render.githubusercontent.com/render/math?math=%24%5Cint%20%5Ccot%20x%20%5C%3B%20dx%3D%5Cln%20%5C%3B%20%7C%5Csin%20x%7C%20%2BC%24)
   - ![$\int \frac{1}{x^2+a^2} ; dx=\frac{1}{a} \tan^{-1} \left(\frac{x}{a}\right)+C$](https://render.githubusercontent.com/render/math?math=%24%5Cint%20%5Cfrac%7B1%7D%7Bx%5E2%2Ba%5E2%7D%20%5C%3B%20dx%3D%5Cfrac%7B1%7D%7Ba%7D%20%5Ctan%5E%7B-1%7D%20%5Cleft(%5Cfrac%7Bx%7D%7Ba%7D%5Cright%29%2BC%24)
   - ![$\int \frac{1}{\sqrt{a^2-x^2}} ; dx= \sin^{-1} \left(\frac{x}{a}\right)+C$](https://render.githubusercontent.com/render/math?math=%24%5Cint%20%5Cfrac%7B1%7D%7B%5Csqrt%7Ba%5E2-x%5E2%7D%7D%20%5C%3B%20dx%3D%20%5Csin%5E%7B-1%7D%20%5Cleft(%5Cfrac%7Bx%7D%7Ba%7D%5Cright%29%2BC%24), _a > 0_
-- The Substitution Rule If _u=g(s)_ is a differentiable function whose range is an interval _I_ and _f_ is continuous on _I_, then ![$f(g(x))g'(x)dx=\int f(u) ; du$](https://render.githubusercontent.com/render/math?math=%24f(g(x%2929g'(x%29dx%3D%5Cint%20f(u%29%20%5C%3B%20du%24)
+- The Substitution Rule If _u=g(s)_ is a differentiable function whose range is an interval _I_ and _f_ is continuous on _I_, then ![$f(g(x))g'(x)dx=\int f(u) ; du$](https://render.githubusercontent.com/render/math?math=%24f(g(x%29%29g'(x%29dx%3D%5Cint%20f(u%29%20%5C%3B%20du%24)
 - The Substitution Rule for Definite Integrals - If _g'_ is continuous on [_a, b_] and _f_ is continuous on the range of _u = g(x)_, then ![$\int^b_a f(g(x))g'(x)dx=\int^{g(b)}_{g(a)}f(u) ; du$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5Eb_a%20f(g(x%29%29g'(x%29dx%3D%5Cint%5E%7Bg(b%29%7D_%7Bg(a%29%7Df(u%29%20%5C%3B%20du%24)
 - Integrals of Symmetric Functions Suppose _f_ is continuous on [_-a, a_].
   - If f is even [_f(-x) = f(x)_], then ![$\int^a_{-a} f(x) ; dx=2 \int^a_0 f(x) ; dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5Ea_%7B-a%7D%20f(x%29%20%5C%3B%20dx%3D2%20%5Cint%5Ea_0%20f(x%29%20%5C%3B%20dx%24)
@@ -323,6 +364,10 @@
     - The surface area of a cone is ![$A=\pi rl$](https://render.githubusercontent.com/render/math?math=%24A%3D%5Cpi%20rl%24), the surface area of a cone when its top is cut with side length `l` is ![$A=2 \pi rl$](https://render.githubusercontent.com/render/math?math=%24A%3D2%20%5Cpi%20rl%24)
     - when rotate about the x-axis, uses ![$S=\int^b_a 2 \pi y \sqrt{1+\left(\frac{dx}{dy}\right)^2} ; dy$](https://render.githubusercontent.com/render/math?math=%24S%3D%5Cint%5Eb_a%202%20%5Cpi%20y%20%5Csqrt%7B1%2B%5Cleft(%5Cfrac%7Bdx%7D%7Bdy%7D%5Cright%29%5E2%7D%20%5C%3B%20dy%24)
   - If _x = f(y)_, uses `dy/dx`.
+- Double integral is used to calculate the area of a graph by using `dx` times `dy`. It can be expressed as ![$\int^{x_2}_{x_1} dx \int^{y_2}_{y_1} dy$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7Bx_2%7D_%7Bx_1%7D+dx+%5Cint%5E%7By_2%7D_%7By_1%7D+dy%24) or ![$\int^{y_2}_{y_1} \int^{x_2}_{x_1} dx dy$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7By_2%7D_%7By_1%7D+%5Cint%5E%7Bx_2%7D_%7Bx_1%7D+dx+dy%24) or ![$\int^{x_2}_{x_1} \int^{y_2}_{y_1} dy dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7Bx_2%7D_%7Bx_1%7D+%5Cint%5E%7By_2%7D_%7By_1%7D+dy+dx%24).
+  - The first diffrential is associated with the last integral sign, The second diffrential is associated with the first integral sign,
+  - `dy` can be evaluated first and the other variable `x` can be considered as constant, then the result for integral of `dy` can be subsituted by `x` then the integral of `dx` can then be evaluated.
+  - Optionally, `dx` can be evaluated first and considering `y` as constant. then subsitute `x` by expression of `y` then take the integral of `dy` and get the result.
 
 ## Differential Equation
 

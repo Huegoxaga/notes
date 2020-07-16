@@ -284,7 +284,7 @@
 
 - OpenCV (Open Source Computer Vision) is a computer vision library that contains various functions to perform operations on pictures or videos.
 - It was originally developed by Intel but was later maintained by Willow Garage and is now maintained by Itseez.
-- It has C++, C, Python and Java interfaces and supports Windows, Linux, Mac OS, iOS and Android.
+- It has C++, C, Python and Java interfaces and supports Windows, Linux, MacOS, iOS and Android.
 - It plays a major role in real-time operation for photos and videos.
 - Images in openCV are 3-D numpy arrays with `np.uint8` as its elements and three color layer for blue, green and red.
 - run `conda install -c menpo opencv` to install
@@ -306,6 +306,7 @@
   - `flipping = cv2.flip(image, 1)` Horizontal flipping
   - `flipping = cv2.flip(image, 0)` Vertical Flipping
   - `flipping = cv2.flip(image, -1)` horizontally & vertically flipping
+- `gray = cv2.cvtColor(resize_frame, cv2.COLOR_BGR2GRAY)` convert image to grayscale
 - Change brightness
   1. `matrix = np.ones(image.shape, dtype = "uint8") * 120` create an array of ones with a brightness factor `120`
   2. `add = cv2.add(image, matrix)` add the brightness to the image.
@@ -363,16 +364,47 @@
 - `imwrite(filename, img)`, save an image to a file
 - video
   - `cap = cv2.VideoCapture(0)`, reading video directly from the webcam
+    - One camera will be connected by passing `0` OR `-1`
+    - Second camera can be selected by passing `2`
   - `cap = cv2.VideoCapture('LOCATION OF THE VIDEO')`, reading a video from local storage
   - `cap.isOpened()`, check if the video is successfully stored in the variable
+    - work well with `while` loop
+    - `time.sleep(.05)` in the loop can slow down down the video process speed.
   - `cap.release()`, release the stored video after processing is done
+  - `cap.get(3)` check the frame width
+  - `cap.get(4)` check the frame height
+  - ``ret = cap.set(3,320)` modify width
+  - `ret = cap.set(4,240)` modify height
+  - Initialize While Loop, read and display frames until Q key is pressed.
+    ```py
+    cap = cv2.VideoCapture(0)
+    while(True):
+        # Capture frame-by-frame
+        ret, frame = cap.read()
+        # Our operations on the frame come here
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        # Display the resulting frame
+        cv2.imshow('frame',gray)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    # When everything done, release the capture
+    cap.release()
+    cv2.destroyAllWindows()
+    ```
 - filter
   - `blur = cv2.blur(image,(9,9))` blur with `9X9` fiter
   - `kernel = np.array([[-1,-1,-1], [-1,9,-1], [-1,-1,-1]])` then `sharpened = cv2.filter2D(image, -1, kernel)` sharpen the image.
 - `cv2.waitKey(delay)` The function waitKey waits for a any key event infinitely
   - `delay` – the length of time to wait in milliseconds. `0`(default value) is the special value that means "forever".
+  - It returns the key number of the key that has been pressed
 - `cv2.destroyAllWindows()` Exit window and destroy all windows
 - `cv2.boundingRect(points)` return the bounding rectangle `(x,y,w,h)` of a shape defined as points.
+- Classifier
+  - `object_detect = cv2.CascadeClassifier('clssifier.xml')` load classifier
+  - `cv2.CascadeClassifier.detectMultiScale(img, scaleFactor, minNeighbors)`
+    - `scaleFactor`: Specifies the image size to be reduced.
+    - `minNeighbors`: Specifies the number of neighbors each rectangle should have to retain it, Higher value results in less detections but with higher quality.
+    - It returns `(x,y,w,h)` of the bounding box
 
 ## Matplotlib
 

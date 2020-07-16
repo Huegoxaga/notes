@@ -664,12 +664,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.7" data-path="../os.git.md">
+        <li class="chapter " data-level="1.14.7" data-path="git.html">
             
-                <span>
+                <a href="git.html">
             
                     
                     Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.8" data-path="redis.html">
+            
+                <a href="redis.html">
+            
+                    
+                    Redis
             
                 </a>
             
@@ -1043,9 +1056,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" data-path="../music/README.md">
+        <li class="chapter " data-level="1.22" data-path="../music/">
             
-                <span>
+                <a href="../music/">
             
                     
                     Music Theory
@@ -1306,6 +1319,15 @@
 </ul>
 </li>
 <li><code>wc -l &lt;file&gt;</code> count the number of lines in a file.</li>
+<li><code>make</code> it will compile binary files in the current folder.<ul>
+<li><code>make test</code> verify the completed <code>make</code> process has no error.</li>
+</ul>
+</li>
+<li><code>make install</code> it will build the binaries then copt it to a <code>make</code> managed folder which has been already added to the environment path and ready to run in the terminal.<ul>
+<li>This command is provided by a package called <code>build-essential</code></li>
+<li>Although this command does all the things <code>make</code> will do, it is recommanded to run <code>make</code> first.</li>
+</ul>
+</li>
 </ul>
 <h3 id="access-control">Access Control</h3>
 <ul>
@@ -1556,6 +1578,10 @@
 <li><code>apt-get -f clean</code> clean up download files.</li>
 <li><code>apt autoremove</code> find dangling dependencies and remove them.</li>
 <li><code>dpkg --get-selections</code> Shows all of your installed packages</li>
+<li><code>apt-cache policy &lt;package&gt;</code> Get info about the package which will be installed.<ul>
+<li>500 and 100 are the priority numbers. 500 corresponds to installable, 100 means installed.</li>
+</ul>
+</li>
 </ul>
 <h3 id="wget">WGET</h3>
 <ul>
@@ -2130,6 +2156,52 @@ fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-var
 </code></pre>
 </li>
 </ul>
+<h3 id="sed">Sed</h3>
+<ul>
+<li>SED command in UNIX is stands for stream editor and it can perform lot&#x2019;s of function on file like, searching, find and replace, insertion or deletion.</li>
+</ul>
+<h4 id="usage">Usage</h4>
+<ul>
+<li>run <code>sed &apos;s/old/new/&apos; filename.txt</code> replace the first occurrence of <code>old</code> to <code>new</code> in all line.<ul>
+<li><code>sed &apos;s/old/new/2&apos; filename.txt</code> replace the second occurrence of <code>old</code> to <code>new</code> in all lines.</li>
+<li><code>sed &apos;s/old/new/g&apos; filename.txt</code> replace all occurrence of <code>old</code> to <code>new</code> in all line.</li>
+<li><code>sed &apos;s/old/new/5g&apos; filename.txt</code> replace occurrence of <code>old</code> including the 5th and all after to <code>new</code> in all line.</li>
+<li><code>sed &apos;3 s/old/new/&apos; filename.txt</code> replace the first occurrence of <code>old</code> to <code>new</code> in the 3rd line.</li>
+<li><code>sed &apos;3,6 s/old/new/&apos; filename.txt</code> replace the first occurrence of <code>old</code> to <code>new</code> from the 3rd line to the 6th.</li>
+<li><code>sed &apos;3,$ s/old/new/&apos; filename.txt</code> replace the first occurrence of <code>old</code> to <code>new</code> from the 3rd line to the last line.</li>
+<li><code>sed &apos;s/old/new/p&apos; filename.txt</code> duplicating the replaced line</li>
+<li><code>sed -n &apos;s/old/new/p&apos; filename.txt</code> printing only the replaced lines</li>
+</ul>
+</li>
+<li>run <code>echo &quot;Hello World&quot; | sed &apos;s/\(\b[A-Z]\)/\(\1\)/g&apos;</code> Parenthesize first character of each word as <code>&quot;(H)ello (W)orld&quot;</code>.</li>
+<li>run <code>sed &apos;5d&apos; filename.txt</code> delete the 5th line.<ul>
+<li><code>sed &apos;$d&apos; filename.txt</code> delete the last line.</li>
+<li><code>sed &apos;3,6d&apos; filename.txt</code> delete from 3rd to 6th line.</li>
+<li><code>sed &apos;3,$d&apos; filename.txt</code> delete from 3rd to the last line.</li>
+<li><code>sed &apos;/abc/d&apos; filename.txt</code> delete a pattern matching line.</li>
+</ul>
+</li>
+</ul>
+<h3 id="tr">tr</h3>
+<ul>
+<li>The tr command is used for translating or deleting characters.</li>
+<li>It supports a range of transformations including uppercase to lowercase, squeezing repeating characters, deleting specific characters and basic find and replace.</li>
+</ul>
+<h4 id="usage">Usage</h4>
+<ul>
+<li><code>cat file.txt | tr &quot;[a-z]&quot; &quot;[A-Z]&quot;</code> convert all lower case to upper case.<ul>
+<li>Optionally, <code>cat file.txt | tr &quot;[:lower:]&quot; &quot;[:upper:]&quot;</code></li>
+</ul>
+</li>
+<li><code>echo &quot;Hello World&quot; | tr [:space:] &apos;\t&apos;</code> translate white space to tab.</li>
+<li>run <code>tr &apos;{}&apos; &apos;()&apos; filename.txt</code> translate braces in a file with parenthesis in a file.</li>
+<li><code>echo &quot;Hello World&quot; | tr -s [:space:] &apos; &apos;</code> This replaces repeated instances of a character(space) to <code>&apos; &apos;</code></li>
+<li><code>echo &quot;Hello orld&quot; | tr -d &apos;w&apos;</code> delete specified characters using -d option<ul>
+<li><code>echo &quot;my ID is 1234&quot; | tr -d [:digit:]</code> To remove all the digits from the string.</li>
+</ul>
+</li>
+<li><code>echo &quot;my ID is 1234&quot; | tr -cd [:digit:]</code> complement the selected pattern and remove all the non-digits characters from the string.</li>
+</ul>
 
                                 
                                 </section>
@@ -2173,7 +2245,7 @@ fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-var
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.14.1","depth":2,"next":{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.14","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.14.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.14.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.14.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.14.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.14.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.14.7","depth":2,"path":"os.git.md","ref":"os.git.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2020-07-02T23:53:09.531Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T06:10:53.991Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.14.1","depth":2,"next":{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.14","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.14.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.14.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.14.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.14.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.14.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.14.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.14.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2020-07-09T02:30:15.625Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T18:35:55.346Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

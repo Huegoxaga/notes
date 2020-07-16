@@ -664,12 +664,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.7" data-path="../os.git.md">
+        <li class="chapter " data-level="1.14.7" data-path="../os/git.html">
             
-                <span>
+                <a href="../os/git.html">
             
                     
                     Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.8" data-path="../os/redis.html">
+            
+                <a href="../os/redis.html">
+            
+                    
+                    Redis
             
                 </a>
             
@@ -1043,9 +1056,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" data-path="../music/README.md">
+        <li class="chapter " data-level="1.22" data-path="../music/">
             
-                <span>
+                <a href="../music/">
             
                     
                     Music Theory
@@ -1456,7 +1469,7 @@ list.pop(index)<span class="hljs-comment">#It returns the element according the 
 <li><code>first, *rest = [1, 2, 3, 4]</code> as a result <code>first = 1, rest = [2, 3, 4]</code></li>
 </ul>
 </li>
-<li>join <code>+</code></li>
+<li>join <code>+</code>, <code>listC =listA + listB</code> append <code>listB</code> to <code>listA</code>.</li>
 <li>repeat <code>*</code></li>
 <li>existence(return Boolean) <code>in</code></li>
 <li>slicing - It modifies the original list.<ul>
@@ -1976,15 +1989,16 @@ print(pizza.pineapple_allowed)
 <p>When an exception occurs, the program immediately stops.</p>
 <h4 id="error-types">Error Types</h4>
 <ul>
-<li>ImportError: an import fails;</li>
-<li>IndexError: a list is indexed with an out-of-range number;</li>
-<li>NameError: an unknown variable is used;</li>
-<li>SyntaxError: the code can&apos;t be parsed properly;</li>
-<li>TypeError: a function is called on a value of an inappropriate type;</li>
-<li>ValueError: a function is called on a value of the correct type, but with an inappropriate value.</li>
-<li>KeyError: trying to index a key that isn&#x2019;t part of the dictionary.</li>
-<li>MemoryError: trying to create a list in a very extensive range.</li>
-<li>AttributeError: Trying to access an attribute of an instance that isn&apos;t defined or call an undefined method.</li>
+<li><code>ImportError</code>: an import fails;</li>
+<li><code>IndexError</code>: a list is indexed with an out-of-range number;</li>
+<li><code>NameError</code>: an unknown variable is used;</li>
+<li><code>IOError</code>: unable to load file;</li>
+<li><code>SyntaxError</code>: the code can&apos;t be parsed properly;</li>
+<li><code>TypeError</code>: a function is called on a value of an inappropriate type;</li>
+<li><code>ValueError</code>: a function is called on a value of the correct type, but with an inappropriate value.</li>
+<li><code>KeyError</code>: trying to index a key that isn&#x2019;t part of the dictionary.</li>
+<li><code>MemoryError</code>: trying to create a list in a very extensive range.</li>
+<li><code>AttributeError</code>: Trying to access an attribute of an instance that isn&apos;t defined or call an undefined method.</li>
 </ul>
 <h4 id="handling-error">Handling Error</h4>
 <pre><code class="lang-py"><span class="hljs-keyword">try</span>: <span class="hljs-comment">#try some code</span>
@@ -1998,6 +2012,7 @@ print(pizza.pineapple_allowed)
 <li>Raise statement is used to raise an error</li>
 </ul>
 <pre><code class="lang-py"><span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;display some other details&quot;</span>)
+<span class="hljs-keyword">raise</span> IOError(<span class="hljs-string">&apos;Unable to load the file&apos;</span>)
 </code></pre>
 <ul>
 <li>It can be used in except block alone to reraise errors.</li>
@@ -2161,7 +2176,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-07-03T01:39:31.864Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T06:10:53.991Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-07-16T17:44:10.133Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T18:35:55.346Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
