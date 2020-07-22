@@ -389,10 +389,12 @@
 #### Techniques
 
 - Solving First Order Differential Equation
-  - For equations like _y' = f(t)f(y)_, use Separation of Variables - place _t_ and _dt_ on one side of the equation and _y_ and _dy_ on the other side, then take the integrate both side of the function.
-  - For linear first order differential equation, multiply both sides of the equation by an integrating factor ![$P(x)=e^{\int P(x) ; dx}$](https://render.githubusercontent.com/render/math?math=%24P(x%29%3De%5E%7B%5Cint%20P(x%29%20%5C%3B%20dx%7D%24)
+  - For equations has variable _x_, _y_ and _y'_(_dy/dx_) and has the form as _g(y)y' = f(x)_ use Separation of Variables - place _x_ and _dx_ on one side of the equation and _y_ and _dy_ on the other side, then integrate both side of the function.
+    - Separation of Variables works for all homogeneous linear first order differential equation _y' + f(x)y = 0_, integrate the both side after separation and take the power of _e_ for both side will the general solution as ![$y=c e^{- \int{f(x)dx}}$](https://render.githubusercontent.com/render/math?math=%24y%3Dc+e%5E%7B-+%5Cint%7Bf%28x%29dx%7D%7D%24).
+  - For homogeneous first order differential equations in the form as _y' = F(x/y)_ which is not separable, substitute `u = x/y` into _F(x/y)_ and form a separable expression as _u + xu' = f(u)_, because _u = y/x_ -> _y = ux_ -> _y' = u + xu'_. When _f(u)_ is solved, subsistute _y/x_ back to get the answer.
+    - The variable _y/x_ is mostly formed by dividing both side of the expression by _x_ or _x^2_.
+  - For non-homogeneous linear first order differential equation _y' + f(x)y = r(x)_, multiply both sides of the equation by an integrating factor ![$P(x)=e^{\int P(x) ; dx}$](https://render.githubusercontent.com/render/math?math=%24P(x%29%3De%5E%7B%5Cint%20P(x%29%20%5C%3B%20dx%7D%24)
   - For Non-linear first order differential equations use substitution method.
-  - For homogeneous first order differential equations in form as _y' = F(x/y)_, substitute `v = x/y` into _F(x/y)_
   - The exact differential equations - _F(x, y(x))_ can be solved if _M(x, y)dx + N(x, y)dy = 0_ where _dF/dx = M_ and _dF/dy = N_.
   - Solving Second Order Differential Equation
     - For equations like has variables _F(x, y', y'')_ it can be reduced to first order by substituting _p = dy/dx_ and _y'' = dp/dx_.
@@ -406,7 +408,15 @@
   - The elements can be described as the _nth_ term of the sequence.
   - The sequence can also be denoted by ![${a_n}$](https://render.githubusercontent.com/render/math?math=%24%5C%7Ba_n%5C%7D%24) or ![${a_n}^{\infty}_{n=1}$](https://render.githubusercontent.com/render/math?math=%24%5C%7Ba_n%5C%7D%5E%7B%5Cinfty%7D_%7Bn%3D1%7D%24)
   - Some sequences can be defined by giving a formula for the nth term.
+- Arithmetic progression - When the difference between successive terms of a sequence is always the same number, the sequence is called Arithmetic, `a1, a1+d, a1+2d, a1+3d, ...`
+  - The `nth` term of arithmetic sequence is: `an =a1 +(n-1)d` where `a1` is the first term and `d` is the difference.
+  - The sum of the first n terms of an arithmetic sequence is: `S=(2a1+(n-1)d)*n/2`, first plus last times `n` divided by `2`, where `a1` is the first term and `d` is the difference
+- Geometric Progression - When the ratio of successive terms of a sequence is always the same nonzero number, the sequence is called Geometric. `a1, a1⋅r, a1⋅r2, a1⋅r3, …`
+  - the nth term of geometric sequence is: `an = a1* r ^（ n - 1）`, where `a1` is the first term and r(`r ≠ 0`) is the common ratio
+  - the sum of the first n terms of a geometric sequence is: `Sn=a1*(1-r^n)/(1-r)`
+  - For an infinite geometric series: converges at 0 if the ratio satisfies `|r| < 1`. The sum T will be `a1/(1-r)` since `r^n -> 0`.
 - The Fibonacci sequence ![${f_n}$](https://render.githubusercontent.com/render/math?math=%24%5C%7Bf_n%5C%7D%24) is defined recursively by the conditions ![$f_1=1 ; ;;; f_2=1 ;;;; f_n=f_{n-1}+f_{n-2} ;;; n \geqslant 3$](https://render.githubusercontent.com/render/math?math=%24f_1%3D1%20%5C%3B%20%5C%3B%5C%3B%5C%3B%20f_2%3D1%20%5C%3B%5C%3B%5C%3B%5C%3B%20f_n%3Df_%7Bn-1%7D%2Bf_%7Bn-2%7D%20%5C%3B%5C%3B%5C%3B%20n%20%5Cgeqslant%203%24)
+  - Binet form of the nth Fibonacci number can be calculated using the Binet formula, ![$F_n = \frac{\phi^n - \overline{\phi}^n}{\sqrt{5}}$](https://render.githubusercontent.com/render/math?math=%24F_n+%3D+%5Cfrac%7B%5Cphi%5En+-+%5Coverline%7B%5Cphi%7D%5En%7D%7B%5Csqrt%7B5%7D%7D%24) where phi(ϕ) equals to the golden ratio ![$\phi = \frac{1+ \sqrt{5}}{2}$](https://render.githubusercontent.com/render/math?math=%24%5Cphi+%3D+%5Cfrac%7B1%2B+%5Csqrt%7B5%7D%7D%7B2%7D%24) and ![$\overline{\phi} = \frac{1- \sqrt{5}}{2}$](https://render.githubusercontent.com/render/math?math=%24%5Coverline%7B%5Cphi%7D+%3D+%5Cfrac%7B1-+%5Csqrt%7B5%7D%7D%7B2%7D%24).
 - Intuitive Definition of Sequences' Limit - A sequence ![${a_n}$](https://render.githubusercontent.com/render/math?math=%24%5C%7Ba_n%5C%7D%24) has the limit _L_ and we write ![$\lim_{n \to \infty} a_n=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20a_n%3DL%24)
   - If L exists we say the sequence converges (or is convergent). Otherwise, we say the sequence diverges (or is divergent).
 - Precise Definition of Sequences' Limit - A sequence ![${a_n}$](https://render.githubusercontent.com/render/math?math=%24%5C%7Ba_n%5C%7D%24) has the limit _L_ and we write ![$\lim_{n \to \infty} a_n=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20a_n%3DL%24) if for every ![$\epsilon > 0$](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24) there is a corresponding integer _N_ such that if _n > N_ then ![$|a_n-L| < \epsilon](https://render.githubusercontent.com/render/math?math=%24%7Ca_n-L%7C%20%3C%20%5Cepsilon)
@@ -462,6 +472,9 @@
 
 #### Methods
 
+- `N` is a Fibonacci number if and only if `5N^2 + 4` or `5N^2 – 4` is a square number of an integer.
+- the sums of diagonals of Pascal Triangle forms the Fibonacci sequence
+  - For a Pascal Triangle, row = 11^rownumber
 - Test for Divergence if ![$\lim_{n \to \infty} a_n$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20a_n%24) does not exist or if ![$\lim_{n \to \infty} a_n \neq 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20a_n%20%5Cneq%200%24), then the its series is divergent.
 - The Integral Test - Suppose _f_ is a continuous, positive, decreasing function on ![$[1, \infty)$](https://render.githubusercontent.com/render/math?math=%24%5B1%2C%20%5Cinfty%29%24) and let ![$a_n=f(n)$](https://render.githubusercontent.com/render/math?math=%24a_n%3Df(n%29%24). Then the series ![$\sum^{\infty}_{n=1} a_n$](https://render.githubusercontent.com/render/math?math=%24%5Csum%5E%7B%5Cinfty%7D_%7Bn%3D1%7D%20a_n%24) is convergent if and only if the improper integral ![$\int^{\infty}_{1} f(x) ; dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7B%5Cinfty%7D_%7B1%7D%20f(x%29%20%5C%3B%20dx%24) is convergent. Otherwise the series is divergent.
 - Remainder Estimate for the Integral Test - Suppose ![$f(k)=a_k$](https://render.githubusercontent.com/render/math?math=%24f(k%29%3Da_k%24) where _f_ is a continuous, positive, decreasing function for ![$x \geqslant n$](https://render.githubusercontent.com/render/math?math=%24x%20%5Cgeqslant%20n%24) and ![$\sum a_n$](https://render.githubusercontent.com/render/math?math=%24%5Csum%20a_n%24) an is convergent. If ![$R_n=s-s_n$](https://render.githubusercontent.com/render/math?math=%24R_n%3Ds-s_n%24), where _Sn_ is the partial(estimated) sum, then ![$\int^{\infty}_{n+1} f(x) ; dx \leqslant R_n \leqslant \int^{\infty}_{n} f(x) ; dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7B%5Cinfty%7D_%7Bn%2B1%7D%20f(x%29%20%5C%3B%20dx%20%5Cleqslant%20R_n%20%5Cleqslant%20%5Cint%5E%7B%5Cinfty%7D_%7Bn%7D%20f(x%29%20%5C%3B%20dx%24) where the remainder ![$R_n$](https://render.githubusercontent.com/render/math?math=%24R_n%24) represents the size the error. when ![$s_n$](https://render.githubusercontent.com/render/math?math=%24s_n%24), the sum of the first n terms, is used as an approximation to the total sum.

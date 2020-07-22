@@ -63,6 +63,10 @@ Provide Persistent Storage
 
 - All buckets(global) are shown in the `S3` console. However, each bucket belong to a certain region and can be replicated across multiple regions.
 - A file name is called key.
+- Object lifecycle management, it has two types:
+  - Transition actions — Define when objects transition to another storage class.
+    - There are costs associated with the lifecycle transition requests.
+  - Expiration actions — Define when objects expire. Amazon S3 deletes expired objects on your behalf.
 
 ### CLI Commands
 

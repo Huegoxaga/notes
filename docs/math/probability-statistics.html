@@ -1243,12 +1243,6 @@ And order matters<ul>
 <li>For condition possibility, events are not independent , hence they use the previous multiplication rule now has a general version: For any two events A and B, <code>P(A and B) = P(A) x P(B|A)</code> or <code>P(A and B) = P(B) x P(A|B)</code></li>
 </ul>
 </li>
-<li>Baye&#x2019;s theorem<ul>
-<li>Theorem 1 - if A must result in one of the mutually exclusive events A1,A2,A3&#x2026;An then, <code>P(A1nA2nA3) = P(A1)P(A2|A1)P(A3|A1nA2)</code></li>
-<li>Theorem 2 - <code>P(A) = P(A1)P(A|A1)+P(A2)P(A|A2)+&#x2026;.+P(An)P(A|An)</code></li>
-<li>From 1 and 2 baye&#x2019;s theorem can be derived. If A must result in one of the mutually exclusive events A1,A2,A3,Ai,...,An <code>P(Ai|A) = P(Ai)P(A|Ai)/n sigama i=1 P(Ai)P(A|A1)</code></li>
-</ul>
-</li>
 <li>Odds<ul>
 <li>Odds(in favour of) for an event <code>A = P(A)/P(not A)</code> (<code>P(A)</code> to <code>P(not A)</code>)</li>
 <li>Odds against(on) an event A = P(not A) / P(A) (<code>P(not A)</code> to <code>P(A)</code>)</li>
@@ -1284,7 +1278,7 @@ And order matters<ul>
 </li>
 </ul>
 <h2 id="statistics">Statistics</h2>
-<h3 id="random-variable">Random Variable:</h3>
+<h3 id="random-variable">Random Variable</h3>
 <ul>
 <li>It is a variable that represents the outcomes of a event. It is the independent variable of the probability function.</li>
 <li>Random variable can have three types:<ul>
@@ -1294,47 +1288,14 @@ And order matters<ul>
 </ul>
 </li>
 </ul>
-<h3 id="data-representation">Data Representation</h3>
+<h3 id="features">Features</h3>
 <ul>
-<li>Categorical data categorize data into categories and the number of data in each category can be represented by a frequency table, frequency chart, bar chart, and pie chart using number of occurrence or percentage(probability) value to represent the value.<ul>
-<li>Histogram uses adjacent bars. It is used to show the distribution of values.</li>
-<li>Pie chart has its central angle = 360 X percentage</li>
-<li>A stem-and-leaf plot shows quantitative data values in a way that sketches the distribution of the data.<ul>
-<li>first column represent the tens place as stem, leaves are the digits.</li>
-<li>&quot;back-to-back&quot; (double)stem - The stem can be in the middle with two leaves on the sides.</li>
-<li>stem and leave can also divide numbers into smaller categories.</li>
-</ul>
-</li>
-<li>A dot plot graphs a dot for each case against a single axis.</li>
-</ul>
-</li>
-</ul>
-<h3 id="probability-distribution">Probability Distribution</h3>
-<ul>
-<li>It is a chart represent chances of different random variable.<ul>
-<li>x-axis is the variable(nondiscrete is usually like time)</li>
-<li>y-axis can be the number of occurrence for the variable</li>
-<li>y-axis can be the probability of the variable(normalized)</li>
-<li>for normalized distribution chart the sum of all y-value is always 1.</li>
-<li>The curve on chart is a representation of the probability function.</li>
-</ul>
-</li>
-<li>continuous distribution can be solved by either calculus or round values into groups and use histogram.</li>
-<li>non-symmetrical graph is called a skewed diagram.(people choose to stand after a long line)<ul>
-<li>The distribution is left-skewed if the tail is longer from the left side</li>
-<li>It is called right-skewed if it is longer from the right side.</li>
-<li>The Skewness Coefficient can be found by the formula:<ul>
-<li>3(mean-median)/standard dev. For left skewed data the SC is negative, and for right-skewed data is positive.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>mean(average), <code>x(with - hat)= sum(all x)/ n</code></li>
+<li>mean(average), <img src="https://render.githubusercontent.com/render/math?math=%24%5Coverline%7Bx%7D%3D%5Cfrac%7B+%5Csum_%7Bi%3D1%7D%5En+x_i%7D%7Bn%7D%24" alt="$\overline{x}=\frac{ \sum_{i=1}^n x_i}{n}$">.</li>
 <li>median, the middle reading. for even number of data, get the average of the two data in the middle.</li>
-<li>mode , the value occurs the most.<ul>
-<li>The mode is the value that occurs the most often. If there are two different numbers that occur the most&#x200B; often, then the set is bimodal. or has M shape Three or more different items sharing the highest frequency of occurrence rarely offer useful information. Such a distribution has no mode. If each number occurs exactly&#x200B; once, then there is no mode.</li>
-<li>Unimodal &#x2013; having one mode</li>
-<li>bimodal- having two mode</li>
+<li>mode, the value occurs the most.<ul>
+<li>The mode is the value that occurs the most often. If there are two different numbers that occur the most&#x200B; often, then the set is bimodal, or has M shape. Three or more different items sharing the highest frequency of occurrence rarely offer useful information. Such a distribution has no mode. If each number occurs exactly&#x200B; once, then there is no mode.</li>
+<li>Unimodal - having one mode</li>
+<li>bimodal - having two mode</li>
 </ul>
 </li>
 <li>Spread (Variability, Dispersion) represents a numerical summary of how tightly the values are clustered around the &#x201C;center&#x201D;.</li>
@@ -1378,6 +1339,59 @@ And order matters<ul>
 </ul>
 </li>
 <li>if Q position in the middle of two numbers calculate the average.</li>
+<li>expected value<ul>
+<li>expected value(centre value typical value)(weighted value of the random variable)</li>
+<li>expected value is the sum of the product of each random variable and its corresponding probability.</li>
+<li>insurance company is aimed to make the expected value 0 for their policies.</li>
+<li>when the distribution is symmetrical the mean = expected value.</li>
+</ul>
+</li>
+<li>variance<ul>
+<li>for equally likely values <img src="https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7B+%5Csum_%7Bi%3D1%7D%5En+%28x_i-%5Coverline%7Bx%7D%29%5E2%7D%7Bn%7D%24" alt="$\frac{ \sum_{i=1}^n (x_i-\overline{x})^2}{n}$"><ul>
+<li>Use <code>n-1</code> in the denominator for sample standard deviation denoted as <code>sx</code>.</li>
+</ul>
+</li>
+<li>for values with probability distribution <img src="https://render.githubusercontent.com/render/math?math=%24%5Csum_%7Bi%3D1%7D%5En+P%28E_i%29%28x_i-E%28x%29%29%5E2%24" alt="$\sum_{i=1}^n P(E_i)(x_i-E(x))^2$"> where <code>P(Ei)</code> is the probability of <code>i</code>, and <code>E(x)</code> is the expected value.</li>
+</ul>
+</li>
+<li>standard deviation(&#x3C3;)(represent the range of x-axis)<ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24%5Csigma%3D+%5Csqrt%7Bvariance%7D%24" alt="$\sigma= \sqrt{variance}$"></li>
+</ul>
+</li>
+</ul>
+<h3 id="data-representation">Data Representation</h3>
+<ul>
+<li>Categorical data categorize data into categories and the number of data in each category can be represented by a frequency table, frequency chart, bar chart, and pie chart using number of occurrence or percentage(probability) value to represent the value.</li>
+<li>Histogram uses adjacent bars. It is used to show the distribution of values.</li>
+<li>Pie chart has its central angle = 360 X percentage</li>
+<li>A stem-and-leaf plot shows quantitative data values in a way that sketches the distribution of the data.<ul>
+<li>first column represent the tens place as stem, leaves are the digits.</li>
+<li>&quot;back-to-back&quot; (double)stem - The stem can be in the middle with two leaves on the sides.</li>
+<li>stem and leave can also divide numbers into smaller categories.</li>
+</ul>
+</li>
+<li>A dot plot graphs a dot for each case against a single axis.</li>
+<li>Probability Distribution<ul>
+<li>It is a chart represent chances of different random variable.<ul>
+<li>x-axis is the variable(nondiscrete is usually like time)</li>
+<li>y-axis can be the number of occurrence for the variable</li>
+<li>y-axis can be the probability of the variable(normalized)</li>
+<li>for normalized distribution chart the sum of all y-value is always 1.</li>
+<li>The curve on chart is a representation of the probability function.</li>
+</ul>
+</li>
+<li>continuous distribution can be solved by either calculus or round values into groups and use histogram.</li>
+<li>non-symmetrical graph is called a skewed diagram.(people choose to stand after a long line)<ul>
+<li>The distribution is left-skewed if the tail is longer from the left side</li>
+<li>It is called right-skewed if it is longer from the right side.</li>
+<li>The Skewness Coefficient can be found by the formula:<ul>
+<li><code>3(mean-median)/standard dev</code>. For left skewed data the skewness coefficient is negative, and for right-skewed data it is positive.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Box Plots<ul>
 <li>Box plots are particularly effective for comparing groups.</li>
 <li>When comparing distribution of several groups, consider the shape, centre, and spread.</li>
@@ -1393,76 +1407,68 @@ And order matters<ul>
 <li>report the median and IQR when the distribution is skewed. If it is symmetric we summarize the mean and standard deviation.</li>
 </ul>
 </li>
-<li>expected value<ul>
-<li>expected value(centre value typical value)(weighted value of the random variable)</li>
-<li>expected value is the sum of the product of each random variable and its corresponding probability.</li>
-<li>insurance company is aimed to make the expected value 0 for their policies.</li>
-<li>when the distribution is symmetrical the mean = expected value.</li>
 </ul>
-</li>
-<li>for equally likely values<ul>
-<li>variance &#xF3;^2x = sum((x-average(x))^2)/n</li>
-<li>its root is the population standard deviation</li>
-</ul>
-</li>
-<li>for values with probability distribution<ul>
-<li><code>variance = sum(Probability(x)*(x- expected value)^2)</code></li>
-</ul>
-</li>
-<li>standard deviation(sigma)(represent the range of x-axis)<ul>
-<li>sigma = sqrt(variance)</li>
-<li>variance &#xF3;^2x = &#xF3;x(sd)^2</li>
-<li>n-1 is used for sample standard deviation denoted as sx</li>
-</ul>
-</li>
-</ul>
-<h4 id="normal-distribution">normal distribution</h4>
+<h3 id="types-of-probability-distribution">Types of Probability Distribution</h3>
+<h4 id="normal-distribution">Normal Distribution</h4>
 <ul>
-<li>the normal distribution function is written as: <code>f(x) = 1/(sigma*sqrt(2*PI))*e^(-(x-u)^2/(2*sigma^2)</code>, <code>ymax = 1/(sigma*sqrt(2*PI))</code>, <code>xmiddle = u</code></li>
+<li>the normal distribution function is written as: <img src="https://render.githubusercontent.com/render/math?math=%24f%28x%29%3D%5Cfrac%7B1%7D%7B%5Csigma+%5Csqrt%7B2+%5Cpi%7D%7D+e%5E%7B%5Cfrac%7B-%28x-+%5Cmu%29%5E2%7D%7B2+%5Csigma%5E2%7D%7D%24" alt="$f(x)=\frac{1}{\sigma \sqrt{2 \pi}} e^{\frac{-(x- \mu)^2}{2 \sigma^2}}$"><ul>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24y_%7Bmax%7D%3D%5Cfrac%7B1%7D%7B%5Csigma+%5Csqrt%7B2+%5Cpi%7D%7D%24" alt="$y_{max}=\frac{1}{\sigma \sqrt{2 \pi}}$"></li>
+<li><code>&#x3BC;</code> is the x value of the highest point, when <code>&#x3BC; = 0</code>, the graph is symetrix on y-axis.</li>
+<li><code>&#x3C3;</code> determine the height of the graph. Smaller <code>&#x3C3;</code> value will result in a taller graph.</li>
+</ul>
+</li>
+<li>Characteristics<ul>
 <li>symmetric about the mean</li>
-<li>mean median mode are equal</li>
+<li>mean, median, mode are equal to <code>&#x3BC;</code>.</li>
 <li>total area under the curve is equal to one</li>
 <li>curve approaches but never touches x-axis</li>
-<li>Between u-a and u+a graph curves downward. other x value graph curves upward. u-a and u+a is the inflection point.</li>
+</ul>
+</li>
+<li>standard normal distribution<ul>
+<li>Between <code>u-a</code> and <code>u+a</code> graph curves downward. other <code>x</code> value graph curves upward. <code>u-a</code> and <code>u+a</code> is the inflection point.</li>
 <li>standard normal distribution is a normal distribution with mean = 0 and a = 1</li>
-<li>To transform values into standard normal distribution (z-score):</li>
+</ul>
+</li>
+<li>To transform values into standard normal distribution (z-score):<ul>
 <li>z also mean the number of times of the sd below or above the mean.</li>
-<li>z value = (value-mean)/standard deviation</li>
-<li>z-score is the x-axiz value of a standard normal distribution</li>
+<li><code>z-value = (value-mean)/standard deviation</code></li>
+<li>z-score is the corresponding x-axiz value of a standard normal distribution</li>
 <li>it can be calculated and used to find the performance of one data in among the sample. in the graph. the higher the better.</li>
-<li>z-score is used to find the cumulative area of the graph in the standard normal table. first column is the - base value first row is the hundredth place. Use the closest value to solve problems.<ul>
-<li>when z= -3.49 area is close to 0 when z=3.49 area is close to 1</li>
-<li>when z=0 area is 0.50</li>
+</ul>
+</li>
+<li>z-score is used to find the cumulative area of the graph in the standard normal table(Z-score table). first column is the - base value first row is the hundredth place. Use the closest value to solve problems.<ul>
+<li>when <code>z = -3.49</code> area is close to 0 when z=3.49 area is close to 1</li>
+<li>when <code>z = 0</code> area is 0.50</li>
 </ul>
 </li>
 </ul>
-<h4 id="binomial-distribution">binomial distribution</h4>
+<h4 id="binomial-distribution">Binomial Distribution</h4>
 <ul>
 <li>It is the distribution of the results of a binomial experiment.<ul>
-<li>1 n trials</li>
-<li>2 2 outcomes</li>
-<li>3 independent</li>
-<li>4 probability unchanged</li>
+<li>n trials</li>
+<li>2 outcomes</li>
+<li>independent</li>
+<li>probability unchanged</li>
+</ul>
+</li>
 <li>p is the probability of success</li>
 <li>q is the probability of failure</li>
 <li>p + q = 1</li>
-</ul>
-</li>
 <li>the possible outcomes of i success in n trials satisfy pasca triangle nth i column. the sum of nth column is 2^n(the all possible outcomes)</li>
 <li>The probability of m successes in n trials.</li>
-<li><code>Pm = nCm*p^m*(1-p)^n-m</code></li>
+<li>In the Binomial Distribution, for each possible <code>m</code> it has a <code>Pm</code> value on y-axis as <img src="https://render.githubusercontent.com/render/math?math=%24P_m+%3D+C%5Em_n+p%5Em+%281-p%29%5E%7Bn-m%7D%24" alt="$P_m = C^m_n p^m (1-p)^{n-m}$"> or <img src="https://render.githubusercontent.com/render/math?math=%24P_m+%3D+%5Cfrac%7Bn%21%7D%7Bm%21%28n-m%29%21%7D+p%5Em+q%5E%7Bn-m%7D%24" alt="$P_m = \frac{n!}{m!(n-m)!} p^m q^{n-m}$"></li>
 <li>expected value:<ul>
-<li>u = <code>n*p</code> = number of trials <code>*</code> probability of success</li>
+<li>u = <code>np</code> = <code>number of trials X probability of success</code></li>
 </ul>
 </li>
-<li><code>variance = n*p*q</code></li>
+<li><code>variance = npq</code></li>
 <li>standard deviation = sigma = sqrt(variance)</li>
 <li>for normal(gaussian) and binomial distribution<ul>
 <li>expected value in the middle, then</li>
 <li>according to the Empirical Rule:<ul>
-<li>+- 1 sigma = 68%</li>
-<li>+- 2 sigma = 95%</li>
-<li>+- 3 sigma = 99.7%</li>
+<li><code>&#xB1;1&#x3C3; = 68%</code></li>
+<li><code>&#xB1;2&#x3C3; = 95%</code></li>
+<li><code>&#xB1;3&#x3C3; = 99.7%</code></li>
 </ul>
 </li>
 </ul>
@@ -1470,12 +1476,14 @@ And order matters<ul>
 </ul>
 <h4 id="central-limit-theorem">Central Limit Theorem</h4>
 <ul>
-<li>For x number of samples taken from a population for n data in one sample.</li>
+<li>For x number of samples taken from a population for n data during one sampling.<ul>
 <li>the mean of one sample is x bar.</li>
 <li>the size of the samples is n,</li>
 <li>the sd of the sample is s</li>
-<li>sigama &#xF3; is the sd of the population</li>
-<li>Sampling Distribution It is the distribution of means for each sample.</li>
+<li>sigama &#x3C3; is the sd of the population</li>
+</ul>
+</li>
+<li>Sampling Distribution - It is the distribution of means for each sample.</li>
 <li>For large n and x from any distribution of a population:</li>
 <li>the sampling distribution is approximately Normal.</li>
 <li>the mean sampling distribution is approaching the mean of the population.</li>
@@ -1494,23 +1502,27 @@ And order matters<ul>
 <li>For small n we have:<ul>
 <li>t-distribution is a normal distribution that depends on sample size</li>
 <li>It has thicker tails when sample size is low.</li>
-<li>It uses degrees of freedom to indicate sample size.</li>
-<li>Degrees of freedom(df) = sample size - 1</li>
+<li>It uses degrees of freedom to indicate sample size.<ul>
+<li><code>Degrees of freedom(df) = sample size - 1</code></li>
 <li>For a greater df, the t-value get closer to z-value.</li>
-<li>on a t-table find the df first then find the closest t-value according the confident interval required.</li>
-<li>t-value = (sample mean - population mean)/Standard Error</li>
-<li>estimated sd of the sampling distribution is called standard error.</li>
-<li>SE(estimated sample sd) = s(sample sd)/sqrt(sample size)<ul>
+</ul>
+</li>
+<li>on a t-table find the Degrees of freedom first then find the closest t-value according the confident interval required.</li>
+<li><code>t-value = (sample mean - population mean)/Standard Error</code></li>
+<li>estimated sd of the sampling distribution is called standard error.<ul>
+<li><code>SE(estimated sample sd) = s(sample sd)/sqrt(sample size)</code></li>
 <li>this time we use sample sd to make estimation, so it is called standard error</li>
 </ul>
 </li>
-<li>confidence intervals = mean +- t value <code>*</code> standard error (similar to z-score calculation)</li>
+<li><code>confidence intervals = mean &#xB1; t-value * standard error</code> (similar to z-score calculation)<ul>
 <li>it represents the confidence of the true mean of the population would be in the interval.</li>
-<li>t value <code>*</code> standard error is also called the margin of error.</li>
+<li><code>t-value * standard error</code> is also called the margin of error.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>for infinite population at least 10 target sample in a sample set is preferred.</li>
-<li>The assumptions needed in order to use the&#x200B; Student&apos;s t-models are shown below.</li>
+<li>The assumptions needed in order to use the&#x200B; Student&apos;s t-models are shown below.<ul>
 <li>The data are independent.</li>
 <li>The data arise from a random sample or suitably randomized experiment.</li>
 <li>The sample size is no more than&#x200B; 10% of the population.</li>
@@ -1518,7 +1530,65 @@ And order matters<ul>
 <li>For small samples&#x200B; (less than&#x200B; 15), the data must closely follow a normal model.</li>
 <li>For sample sizes between 15 and 40 or&#x200B; so, the data must be unimodal and reasonably symmetric.</li>
 <li>When the sample size is larger than 40 or&#x200B; 50, the t methods are safe to use unless the data are extremely skewed.</li>
+</ul>
+</li>
 <li>To find the sample size needed for certain margin of error, according to the ME formula we need s (sd of the sample) and t-value, in this case, t-value can be replaced by z-value(0.475 or 0.025 for 95%) and s can be any sample&#x2019;s sd.</li>
+</ul>
+<h3 id="bayes-theorem">Bayes&apos; theorem</h3>
+<ul>
+<li>Theorem 1 - if A must result in one of the mutually exclusive events A1,A2,A3&#x2026;An then, <code>P(A1nA2nA3) = P(A1)P(A2|A1)P(A3|A1nA2)</code></li>
+<li>Theorem 2 - <code>P(A) = P(A1)P(A|A1)+P(A2)P(A|A2)+&#x2026;.+P(An)P(A|An)</code></li>
+<li>From 1 and 2 bayes&apos; theorem can be derived. If A must result in one of the mutually exclusive events A1,A2,A3,Ai,...,An. It has extended form as <img src="https://render.githubusercontent.com/render/math?math=P%28A_i%7CB%29+%3D+%5Cfrac%7BP%28B%7CA_i%29P%28A_i%29%7D%7B%5Csum_%7Bi%3D1%7D%5En+P%28B%7CA_i%29P%28A_i%29%7D" alt="P(A_i|B) = \frac{P(B|A_i)P(A_i)}{\sum_{i=1}^n P(B|A_i)P(A_i)}"> where <img src="https://render.githubusercontent.com/render/math?math=P%28B%29%3D+%5Csum_%7Bi%3D1%7D%5En+P%28B%7CA_i%29P%28A_i%29" alt="P(B)= \sum_{i=1}^n P(B|A_i)P(A_i)">, or in short <img src="https://render.githubusercontent.com/render/math?math=%24P%28A%7CB%29%3D+%5Cfrac%7BP%28B%7CA%29P%28A%29%7D%7BP%28B%29%7D%24" alt="$P(A|B)= \frac{P(B|A)P(A)}{P(B)}$">.</li>
+<li>True Negative and False Positive divide by the actual negative count will get the True Negative rate and False Positive rate.</li>
+<li>True Positive and False Negative divide by the actual positive count will get the True Positive rate and False Negative rate.</li>
+<li>Accuracy rate - correct prediction count over the total prediction count.</li>
+<li>Error rate - wrong prediction count over the total prediction count.</li>
+<li><code>Sensitivity of a test = true positive / all actual positive = true positive / (True Positive + False Negative))</code> Ex, Test is 95% sensitive, when 95 positive result are predicted out of 100 known positive cases. The 5 false negative are called escapes.</li>
+<li><code>Specificity of a test = true negative / all actual negative = true negative / (True Negative + False Positive))</code> Ex, Test is 95% specific, when 95 negative result are predicted out of 100 known negative cases.</li>
+<li><code>Prevalence = Actual Positive / Total</code></li>
+<li><code>Positive Predicted Value(PPV) = true positive / total positive</code></li>
+<li><code>Negative Predicted Value(NPV) = true negative / total negative</code></li>
+<li><code>Precision = True Positive/(True Positive + False Positive)</code></li>
+<li><code>Recall = True Positive/(True Positive + False Negative)</code></li>
+<li>F1 Score = harmonic mean of Precision and Recall = <code>2*Precision*Recall / (Precision + Recall)</code><ul>
+<li>F1 Score closer to 1 is better. Closer to 0 is worse.</li>
+</ul>
+</li>
+<li>See more <a href="https://en.wikipedia.org/wiki/Precision_and_recall#Recall" target="_blank">here</a></li>
+<li>Confusion Matrix can be used to determine the outcome - It is a table which has predicted result on one axis and actual result on the other axis.<ul>
+<li>True Positive - Correctly predicted a positive result.</li>
+<li>True Negative - Correctly predicted a negative result.</li>
+<li>False Positive - A false prediction which is predicted as Positive.</li>
+<li>False Negative - A false prediction which is predicted as Negative.</li>
+</ul>
+</li>
+<li>Tree Diagram can be used to determine the outcome:<ul>
+<li>Each actual result will have a branch, each branch can have all predicted result.</li>
+</ul>
+</li>
+</ul>
+<h3 id="markov-chains">Markov Chains</h3>
+<ul>
+<li>It is used predict the future state(matrix <img src="https://render.githubusercontent.com/render/math?math=%24X_1%24" alt="$X_1$">) by multiply the matrix of transition probabilities(P) by the current state(matrix <img src="https://render.githubusercontent.com/render/math?math=%24X_0%24" alt="$X_0$">).<ul>
+<li>Each current or future state has <code>N</code> elements and represented by a <code>N X 1</code> matrix. During each step, each element will transit part of it to other element or part of other element to itself.</li>
+<li>The probability matrix is a <code>N X N</code> matrix. It has element from first to last on each row from left to right, and first row represents how each element will transit to the first element, and second row represents how each element will transit to the second element and so on.<ul>
+<li>The probability matrix should be stochastic which means all element in each column will add up to 1.</li>
+</ul>
+</li>
+<li>The probability matrix should be a regular matrix which means for all P^n(n&gt;1) all its element should be greater than one.</li>
+<li>Using the transpose of all the matrix can be an alternative way to write the formula. In this case multiply the initial state by the probability matrix.<ul>
+<li>The probability matrix should be stochastic which means all element in each row will add up to 1.</li>
+</ul>
+</li>
+<li>To calculate the future state after n-steps: <img src="https://render.githubusercontent.com/render/math?math=%24X_n+%3D+P%5En+X_0%24" alt="$X_n = P^n X_0$"></li>
+<li>After certain interation the state matrix will be stable and won&apos;t change, then it is called the stable distribution matrix(<img src="https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BX%7D%24" alt="$\overline{X}$">).</li>
+<li>The <img src="https://render.githubusercontent.com/render/math?math=%24P%5En%24" alt="$P^n$"> for the stable distribution matrix is the stable probability matrix, it will keep the same when <code>n</code> is greater than a certain value, the production of stable probability matrix with any initial state will return the same stable distribution matrix.</li>
+<li>Every column of a stable probability matrix is a stable distribution matrix.</li>
+<li>When the stable probability matrix or the stable distribution matrix is found, all probability matrix from P to P^n together, are called regular markov chain.</li>
+<li>If <img src="https://render.githubusercontent.com/render/math?math=%24P+%5Coverline%7BX%7D+%3D+%5Coverline%7BX%7D%24" alt="$P \overline{X} = \overline{X}$">, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BX%7D%24" alt="$\overline{X}$"> is the stable distribution matrix and <img src="https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BP%7DX_0+%3D+%5Coverline%7BX%7D%24" alt="$\overline{P}X_0 = \overline{X}$">.</li>
+<li><img src="https://render.githubusercontent.com/render/math?math=%24P+%5Coverline%7BX%7D+%3D+%5Coverline%7BX%7D%24" alt="$P \overline{X} = \overline{X}$"> can be used to solved for stable distribution matrix based on any known probability matrix.</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -1563,7 +1633,7 @@ And order matters<ul>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Probability & Statistics","level":"1.20.4","depth":2,"next":{"title":"Maple Softwares","level":"1.20.5","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]},"previous":{"title":"Discrete Mathematics","level":"1.20.3","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"math/probability-statistics.md","mtime":"2020-07-11T15:22:34.853Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-16T18:35:55.346Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Probability & Statistics","level":"1.20.4","depth":2,"next":{"title":"Maple Softwares","level":"1.20.5","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]},"previous":{"title":"Discrete Mathematics","level":"1.20.3","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"math/probability-statistics.md","mtime":"2020-07-18T04:08:03.593Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-22T16:03:48.866Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

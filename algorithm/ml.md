@@ -486,42 +486,27 @@
 
 ### Evaluating Classification Models
 
-##### Confusion Matrix
-
-- It is a table which has predicted result on one axis and actual result on the other axis, then for a binary classification each prediction has four kinds of outcome:
-  - True Positive - Correctly predicted a positive result.
-  - True Negative - Correctly predicted a negative result.
-  - False Positive(type I error) - A false prediction which is predicted as Positive.
-  - False Negative(type II error) - A false prediction which is predicted as Negative.
-- For Multiclass classifier that has `n` classes, use confusion matrix with shape `n X n`.
-
-##### Binary Classifier Metrics
-
-- True Negative and False Positive divide by the actual negative count will get the True Negative rate and False Positive rate.
-- True Positive and False Negative divide by the actual positive count will get the True Positive rate and False Negative rate.
-- Accuracy rate - correct prediction count over the total prediction count.
+- Confusion Matrix
+  - It is a table which has predicted result on one axis and actual result on the other axis, then for a binary classification each prediction has four kinds of outcome:
+    - True Positive - Correctly predicted a positive result.
+    - True Negative - Correctly predicted a negative result.
+    - False Positive(type I error) - A false prediction which is predicted as Positive.
+    - False Negative(type II error) - A false prediction which is predicted as Negative.
+  - For Multiclass classifier that has `n` classes, use confusion matrix with shape `n X n`.
   - accuracy paradox - It happens when only use accuracy rate as the reference to consider the performance of a model. because the number of the actual positive and negative results does not always be the same.
-- Error rate - wrong prediction count over the total prediction count.
-- `Precision = True Positive/(True Positive + False Positive)`
-- `Recall = True Positive/(True Positive + False Negative)`
-- F1 Score = harmonic mean of Precision and Recall = `2*Precision*Recall / (Precision + Recall)`
-  - F1 Score closer to 1 is better. Closer to 0 is worse.
-- See more [here](https://en.wikipedia.org/wiki/Precision_and_recall#Recall)
 - Area Under Curve (AUC)
   - AUC is the area of a curve formed by plotting True Positive Rate against False Positive Rate at different cut-off thresholds
   - Good model have AUC closer to 1
   - 0.5 is considered random guess
   - Closer to 0 is unusual and it indicates model is flipping results
+- CAP
+  - The number of correct prediction is on the y-axis. The total number of prediction is on the x-axis.
+  - A a random prediction will generate a linear line.
+  - A better model will generate a curve with higher slope at the beginning
+  - There is a perfect linear model that get every prediction correct.
+  - If the area under the line for random model is `Sr` and `Sp` for the perfect model, the area under the curve for the model is `S`. The accuracy rate can be calculated with `(S-Sr)/(Sp-Sr)`.
+  - A good model can be determined by curve when the x value is in the middle of x-asix the point on the curve will have y-value at above 70% of the y-axis
 - Use one class again all other classes for multiclass classifier.
-
-##### CAP
-
-- The number of correct prediction is on the y-axis. The total number of prediction is on the x-axis.
-- A a random prediction will generate a linear line.
-- A better model will generate a curve with higher slope at the beginning
-- There is a perfect linear model that get every prediction correct.
-- If the area under the line for random model is `Sr` and `Sp` for the perfect model, the area under the curve for the model is `S`. The accuracy rate can be calculated with `(S-Sr)/(Sp-Sr)`.
-- A good model can be determined by curve when the x value is in the middle of x-asix the point on the curve will have y-value at above 70% of the y-axis
 
 ## Machine Learning Frameworks(Libraries)
 
