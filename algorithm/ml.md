@@ -331,6 +331,35 @@
     - Larger batch size requires more computational resources, and it might cause out of memory errors.
     - Smaller batch size helps preventing the weight to be found at local minima, and it will be slow.
 
+### Reinforcement Learning
+
+- It has an agent
+- The agent makes observations and takes actions within an environment.
+  - Observation is a snapshot of the environment states.
+- It receives rewards.
+- The objective of the algorithm is to maximize rewards.
+  - Rewards can be either positve or negative, only positive, or only negative. Maximize rewards is the same as minimize nagetive reward only, or maximize positive reward only, or both.
+- The algorithm the agent uses to make action is called policy.
+  - A stochasitc policy is a policy involves randomness.
+  - Policy parameter are the variables that is used to determine the action.
+  - Policy serach is the process of finding the policy parameter that will determine an action that maximize the reward.
+  - Policy space is all the possible combination of the policy parameter.
+- After make one action the agent completes one step. After complete all possible actions, the agent completes one episode.
+- Generic algorithm is a way to reduce the policy space by generating a certain amount of policy as the first generation and only keep a small portion of the policy which has the most rewards, then generated offsprings from them. Offsprings is a copy of selected policys with some random variation. Keep creating generations until a good policy is found.
+- Policy gradients(PG) evaluates the relationship between reward and policy parameters, then tweak the parameter following to the gradient towards higher rewards.
+  - Reinforce Algorithm is one type of PG, It finds the gradients of the probability for each action by leting neural network play the game several times, then compute action's advantage after several episodes. Multiply the gradient vector by the action's advantages. Lastly use the mean of all gradient vecotrs to perform gradient descent.
+- Creating an environment is the first step of RL
+  - For real world learning, simulated environment is usually used first. The advantages are fast and cheap. Here are the libraries for generating environment.
+    - Comprehensive environment generating tool: [OpenAI Gym](http://gym.openai.com/)
+    - 3D physics simulation: [PyBullet](https://pybullet.org/), [MuJoCo](http://mujoco.org/)
+- A neural network policies uses ANN with an observation(environment states) as input and the probabilities for taking each actions as output.
+  - If every aspect of the environment is described, then past actions and observations can be ignored.
+  - The action that will be taken based on the output will still be random based on the output's probabilities, it make the algorithm possible to try all actions with a certain known tendency.
+- The Credit Assignment Problem - It is used to find out the credit of each step for the final consequence.
+- The return for an action is a way to evaluate all the consequent rewards followed by an action, the reward immediately after the reward of the current action will have a discount by multiplying the discount factor(𝛾), the reward after that second action after the current action will have to multiply the discount factor square and so on, the sum of all the discounted rewards for an action is called the return.
+  - Discount Factor(𝛾) typically ranges from `0.9` to `0.99`. The smaller the factor is, the sooner the consequent actions become not important as the factor approaches `0`.
+  - The normolized returns from a large number of trails(episodes) are called the action advantage. It describes the good or bad of an action compares to all other possible actions.
+
 ## Ready-to-use Algorithms
 
 - fastText
@@ -437,6 +466,17 @@
 - The color value of the images can be rescaled from `0-255` to `0-1` to simplify the data.
   - The training data and testing data should use have the same recaling setting.
 - Image augumentation step alteres the images by zooming, flipping and shearing to provide variaties for training.
+- Labeling
+  - [LabelImg](https://github.com/tzutalin/labelImg) is a graphical image annotation tool.
+    - Annotations are saved as XML files in PASCAL VOC format, the format used by ImageNet. Besides, it also supports YOLO format.
+  - [VoTT](https://github.com/microsoft/VoTT) is an open source annotation and labeling tool for image and video assets.
+    - VoTT can be installed as a native application or run from source. VoTT is also available as a stand-alone Web application and can be used in any modern Web browser.
+    - they can be exported into a variety of formats:
+      - Azure Custom Vision Service
+      - Microsoft Cognitive Toolkit (CNTK)
+      - TensorFlow (Pascal VOC and TFRecords)
+      - VoTT (generic JSON schema)
+      - Comma Separated Values (CSV)
 
 ### Timeseries data preprocessing
 

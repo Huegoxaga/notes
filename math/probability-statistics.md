@@ -323,8 +323,11 @@
 ### Markov Chains
 
 - It is used predict the future state(matrix ![$X_1$](https://render.githubusercontent.com/render/math?math=%24X_1%24)) by multiply the matrix of transition probabilities(P) by the current state(matrix ![$X_0$](https://render.githubusercontent.com/render/math?math=%24X_0%24)).
-  - Each current or future state has `N` elements and represented by a `N X 1` matrix. During each step, each element will transit part of it to other element or part of other element to itself.
-  - The probability matrix is a `N X N` matrix. It has element from first to last on each row from left to right, and first row represents how each element will transit to the first element, and second row represents how each element will transit to the second element and so on.
+  - Each current or future state has `N` elements and represented by a `N X 1` matrix. During each step, each element will
+    - lose part of it to other element
+    - gain from other element
+    - have part of it unchanged
+  - The probability(transition) matrix is a `N X N` matrix. It has element from first to last on each row from left to right, and first row represents how each element will transit to the first element, and second row represents how each element will transit to the second element and so on.
     - The probability matrix should be stochastic which means all element in each column will add up to 1.
   - The probability matrix should be a regular matrix which means for all P^n(n>1) all its element should be greater than one.
   - Using the transpose of all the matrix can be an alternative way to write the formula. In this case multiply the initial state by the probability matrix.
@@ -332,7 +335,24 @@
   - To calculate the future state after n-steps: ![$X_n = P^n X_0$](https://render.githubusercontent.com/render/math?math=%24X_n+%3D+P%5En+X_0%24)
   - After certain interation the state matrix will be stable and won't change, then it is called the stable distribution matrix(![$\overline{X}$](https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BX%7D%24)).
   - The ![$P^n$](https://render.githubusercontent.com/render/math?math=%24P%5En%24) for the stable distribution matrix is the stable probability matrix, it will keep the same when `n` is greater than a certain value, the production of stable probability matrix with any initial state will return the same stable distribution matrix.
-  - Every column of a stable probability matrix is a stable distribution matrix.
+  - Every column(when state represented by a `N X 1` matrix) of a stable probability matrix is a stable distribution matrix.
   - When the stable probability matrix or the stable distribution matrix is found, all probability matrix from P to P^n together, are called regular markov chain.
   - If ![$P \overline{X} = \overline{X}$](https://render.githubusercontent.com/render/math?math=%24P+%5Coverline%7BX%7D+%3D+%5Coverline%7BX%7D%24), then ![$\overline{X}$](https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BX%7D%24) is the stable distribution matrix and ![$\overline{P}X_0 = \overline{X}$](https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BP%7DX_0+%3D+%5Coverline%7BX%7D%24).
   - ![$P \overline{X} = \overline{X}$](https://render.githubusercontent.com/render/math?math=%24P+%5Coverline%7BX%7D+%3D+%5Coverline%7BX%7D%24) can be used to solved for stable distribution matrix based on any known probability matrix.
+  - If a Markov chain has one more elements never lost part of it to other elements, it is called the absorbing Markov chain. When the states represented by a `N X 1` matrix:
+    - In the probability matrix, it will have one column or row with one element on the diagnal as 1 and all others as 0.
+    - For an absorbing Markov chain, the element that has 100% probability in the probability matrix must have connection with all other element.
+    - Reorder the elements in the transition matrix to make the `From` columns and `To` rows starts with the absorbing elements. Then this transition matrix is called in stardard form.(column with ones on diagnal starts from the left)
+    - In stard form the stable probability matrix for an absorbing Markov chain with one absorbing element has `1`s on the first row and rest element as `0`. The final state is `1` for the absorbing element and `0` for all others.
+    - When there are two or more absorbing states,
+      - The transition matrix can be divided by for section:
+        - Top-left is the identity matrix `I`
+        - Top-right is the `S` matrix
+        - Bottom-left is the `0` matrix with all elements as `0`
+        - Bottom-right is the `R` matrix
+      - The stable transition matrix will then be:
+        - Top-left is the identity matrix `I`
+        - Top-right equals `S` matrix multiply by the inverse of matrix `(I-R)`
+        - Bottom-left is the `0` matrix with all elements as `0`
+        - Bottom-right is the `0` matrix with all elements as `0`
+      - For absorbing Markov chains with two or more absorbing states, different initial state will have different final state.

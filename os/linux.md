@@ -69,6 +69,8 @@
   - `df -h` list file systems.
   - `lsblk` list block devices info.
   - `du -sh <folder> | sort -h` List all files inside the folder and its size in order.
+    - `--max-depth=1` specify the deepth
+- Check swap file size, `swapon`
 
 ## General Commands
 
@@ -166,6 +168,8 @@
 - `make install` it will build the binaries then copt it to a `make` managed folder which has been already added to the environment path and ready to run in the terminal.
   - This command is provided by a package called `build-essential`
   - Although this command does all the things `make` will do, it is recommanded to run `make` first.
+- `truncate -s 0 syslog` truncate text file
+- `tail -f /var/log/syslog` view log from the buttom
 
 ### Access Control
 
@@ -214,6 +218,9 @@
 - `/etc/rc0.d`~`/etc/rc9.d` folders stores links for services and whether it needs start or kill.
 - In the `rcN` folders, when a link starts with `S` it will be started in `N` run level. `K` means kill or stop the services.
 - `/etc/inittab` stores information about the name and usage of all Run Levels and the system default Run Level when start up. `id:3:initdefault` means default Run Level when boot is 3.
+- change swap service setting
+  - sudo nano /etc/dphys-swapfile
+  - restart the service by running `sudo /etc/init.d/dphys-swapfile stop` and then `sudo /etc/init.d/dphys-swapfile start`
 
 #### Related Commands
 
@@ -251,6 +258,7 @@
 #### Related Commands
 
 - `kill -l` list kill signal options.
+- `kill <PID>` kill a process
 - `kill –s <signalNumber> <PID>` kill a process with certain kill signal, the process is indicated by PID(Process ID).
 - `jobs` list all current jobs.
 - `fg <jobNumber>` bring a job to the foreground.
@@ -303,13 +311,13 @@
 
 - reboot the system after any changes
 
-#### rsyslog
+#### Logs
 
-- syslogd centralizes logging for many applications: Kernel messages, system error messages, login activity, etc.
+- `syslogd` centralizes logging for many applications: Kernel messages, system error messages, login activity, etc.
 - Typically writes log files to the `/var/log` directory
 - When the configuration file is changed run `service rsyslog restart`.
 
-##### Configuration
+##### Rsyslog Configuration
 
 - The syslogd deamon is controlled via the `/etc/rsyslog.conf` file
 - `rsyslog.conf` stores a list of events that will be logged by syslogd.
@@ -340,6 +348,11 @@
   - can be sent to a remote host `@hostname`
   - can be sent to a logged user `root,username`.
 
+##### Rsyslog Configuration
+
+- Control log size by adding rules
+- Need to be added as a scheduled task
+
 #### HDCP
 
 - It is confifured in the `/etc/dhcpcd.conf` file.
@@ -363,23 +376,27 @@
 - `yum install gcc –y` Install the C compiler.
 - `yum install kernel -y` and `yum install kernel-devel –y` install kernel development source.
 
-### APT-GET
+### APT
 
 - Advanced Package Tool
 - It is a package manager for debian-based Linux machine.
   - debian-based Linux uses dpkg packages with the `*.deb` extension.
-- `apt-get install <PackageName>`
-- `apt-get update` update package list
-- `apt-get dist-upgrade` will install or remove packages as necessary to complete the upgrade,
-- `apt upgrade` will automatically install but not remove packages.
-- `apt full-upgrade` performs the same function as apt-get dist-upgrade
-- `apt-get remove <PackageName>` uninstall a package
-- `apt-get purge <PackageName>` uninstall a package and remove all its config files.
-- `apt-get -f install` fix broken dependencies.
-- `apt-get -f clean` clean up download files.
-- `apt autoremove` find dangling dependencies and remove them.
+- `apt-get` is the older command with limited features
+  - `apt-get install <PackageName>`
+  - `apt-get update` update package list
+  - `apt-get dist-upgrade` will install or remove packages as necessary to complete the upgrade,
+  - `apt-get remove <PackageName>` uninstall a package
+  - `apt-get purge <PackageName>` uninstall a package and remove all its config files.
+  - `apt-get -f install` fix broken dependencies.
+  - `apt-get -f clean` clean up download files.
+  - `apt-cache policy <package>` Get info about the package which will be installed.
+- `apt` is the recommanded command with all features
+  - `apt install <PackageName>` install new package
+  - `apt full-upgrade` performs the same function as apt-get dist-upgrade
+  - `apt upgrade` will automatically install but not remove packages.
+  - `apt autoremove` find dangling dependencies and remove them.
+  - `apt remove <PackageName>` remove packages
 - `dpkg --get-selections` Shows all of your installed packages
-- `apt-cache policy <package>` Get info about the package which will be installed.
   - 500 and 100 are the priority numbers. 500 corresponds to installable, 100 means installed.
 
 ### WGET
@@ -422,7 +439,8 @@
 ### SCP
 
 - It is used to transfer files between local machine and remote server.
-- scp `username@serverAddress:<remote file path> <local file path> -r`, `-r`means including folders
+- `scp -r username@serverAddress:<remote file path> <local file path>`, `-r`means including folders
+- `scp -r <local file path> username@serverAddress:<remote file path>`, `-r`means including folders
 - Ex, `scp -r 000123456@exampleserver.com:/foldername/public_html/ /users/username/Downloads`
 
 ### SSH
@@ -788,7 +806,51 @@
   - `crontab -r` remove all crontab tasks
     - optionally, delete all lines in the `crontab -r`.
 
-### systemctl
+### systemd
+
+- System daemon
+- It controls units, units are scheduled actions or tasks running in the background.
+- Each unit is descripted by a unit file and stored in `/etc/systemd/system/` folder.
+- Unit files have the following extensions:
+  - `.service`: A service unit describes how to manage a service or application on the server. This will include how to start or stop the service, under which circumstances it should be automatically started, and the dependency and ordering information for related software.
+  - `.socket`: A socket unit file describes a network or IPC socket, or a FIFO buffer that systemd uses for socket-based activation. These always have an associated .service file that will be started when activity is seen on the socket that this unit defines.
+  - `.device`: A unit that describes a device that has been designated as needing systemd management by udev or the sysfs filesystem. Not all devices will have .device files. Some scenarios where .device units may be necessary are for ordering, mounting, and accessing the devices.
+  - `.mount`: This unit defines a mountpoint on the system to be managed by systemd. These are named after the mount path, with slashes changed to dashes. Entries within /etc/fstab can have units created automatically.
+  - `.automount`: An .automount unit configures a mountpoint that will be automatically mounted. These must be named after the mount point they refer to and must have a matching .mount unit to define the specifics of the mount.
+  - `.swap`: This unit describes swap space on the system. The name of these units must reflect the device or file path of the space.
+  - `.target`: A target unit is used to provide synchronization points for other units when booting up or changing states. They also can be used to bring the system to a new state. Other units specify their relation to targets to become tied to the target’s operations.
+  - `.path`: This unit defines a path that can be used for path-based activation. By default, a .service unit of the same base name will be started when the path reaches the specified state. This uses inotify to monitor the path for changes.
+  - `.timer`: A .timer unit defines a timer that will be managed by systemd, similar to a cron job for delayed or scheduled activation. A matching unit will be started when the timer is reached.
+  - `.snapshot`: A .snapshot unit is created automatically by the systemctl snapshot command. It allows you to reconstruct the current state of the system after making changes. Snapshots do not survive across sessions and are used to roll back temporary states.
+  - `.slice`: A .slice unit is associated with Linux Control Group nodes, allowing resources to be restricted or assigned to any processes associated with the slice. The name reflects its hierarchical position within the cgroup tree. Units are placed in certain slices by default depending on their type.
+  - `.scope`: Scope units are created automatically by systemd from information received from its bus interfaces. These are used to manage sets of system processes that are created externally.
+- Example unit file
+  ```config
+  [Unit]
+  Description=Example systemd service.
+  [Service]
+  Type=simple
+  ExecStart=/bin/bash /usr/bin/test_service.sh
+  [Install]
+  WantedBy=multi-user.target
+  ```
+- For a unit with unit file name `unit.service`, the following command work for both full file names or unit names.
+- `systemctl list-units` list all services and units
+- `systemctl status <unitfile>`
+- `systemctl start <unitfile>`
+- `systemctl stop <unitfile>`
+- `systemctl restart <unitfile>`
+- `systemctl disable <unitfile>`
+- `systemctl enable <unitfile>` when a service is enabled, it boots up with the server
+- `systemctl --failed` list all failed units or services
+- `systemctl is-enabled <unitfile>` check if a service is enabled.
+- `systemctl daemon-reload` reload service files after modification.
+- `systemctl reboot` reboot the machine
+- `systemctl poweroff` poweroff the machine
+- `systemctl suspend`
+- `journalctl` view all logs
+- `journalctl -b` all logs since last reboot
+- `journalctl -u <unit>` view log for a certain unit
 
 ### Motion
 
@@ -867,3 +929,9 @@
 - `echo "Hello orld" | tr -d 'w'` delete specified characters using -d option
   - `echo "my ID is 1234" | tr -d [:digit:]` To remove all the digits from the string.
 - `echo "my ID is 1234" | tr -cd [:digit:]` complement the selected pattern and remove all the non-digits characters from the string.
+
+### python
+
+- `python3 -m <module>` run module as a script using python3
+- `python3 <filename.py>` run a script using python3
+- `python3 -c "x=1+1; print(x)"` run python code separate by `;`

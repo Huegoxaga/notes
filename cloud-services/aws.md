@@ -1,6 +1,7 @@
 # AWS
 
-Amazon Web Services
+- Amazon Web Services
+- [Lucidchart](https://www.lucidchart.com/pages/) is good for drawing AWS architecture diagram.
 
 ## AWS CLI
 
@@ -297,6 +298,9 @@ It hosts and maintain SQL Database server.
 
 - When a new database is registered, be default it is set to private. It can be set to public by modifying the instance.
 - Double check VPC and SG for database created in a new region.
+- Database settings are done through `Parameter groups`. by default, The default group is used when a database is created. To use cutomized groups, create a new one and apply it to the database.
+  - `log_min_duration_statement` the minimum time for a query to be logged.
+  - `log_statement` how the queries are logged.
 
 ## CloudWatch
 
@@ -363,6 +367,7 @@ It is used to send notifications to user emails or other resources.
 - A topic can have many subscribers with differenct protocols(Email, SQS, Lambda) to receive the message.
 - Each topic has a `Publish message` button that can be used to test a message with all subscribers.
 - Each subscription can have a unique filter for all messages.
+- Selecting `Enable raw message delivery` for SQS subscription allow SNS topic send raw message which is the same format as sending SQS message directly.
 
 ## SES
 

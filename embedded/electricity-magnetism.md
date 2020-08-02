@@ -19,6 +19,7 @@
     - Charges alway distributed on the surface of a conductor.
 - Electric Field
   - A single or a group of electric charge can form a electric field around it. Any additional charge goes into the field will have a force on it.
+  - For a field diagram dot means outwards, cross means inwards. similar to an arrow.
   - The strength of a electric field(`E`) is defined as `F/Q` where `Q` is the amount of charges the change contain in Coulomb(`C`).
     - `E` is a vector as ![$\overrightarrow{E}$](https://render.githubusercontent.com/render/math?math=%24%5Coverrightarrow%7BE%7D%24) when considering the direction of it.
   - The strength of the electric field `E` also equals to `V/d` which is the potental difference divided by the distance.
@@ -26,6 +27,7 @@
   - A Uniform Electric Field has same ![$\overrightarrow{E}$](https://render.githubusercontent.com/render/math?math=%24%5Coverrightarrow%7BE%7D%24) at any point in the field.
   - Gauss's Law - It uses an area of interest to calculate electric field. The area of interest is a sphere(Gaussian Surface) around a charged object with same strength of electric field.
     - ![$\oint \overrightarrow{E} d\overrightarrow{A} =\oint EdA \cos{\theta} = \frac{Q_{ENCLOSED}}{\epsilon_0}$](https://render.githubusercontent.com/render/math?math=%24%5Coint+%5Coverrightarrow%7BE%7D+d%5Coverrightarrow%7BA%7D+%3D%5Coint+EdA+%5Ccos%7B%5Ctheta%7D+%3D+%5Cfrac%7BQ_%7BENCLOSED%7D%7D%7B%5Cepsilon_0%7D%24) where `A` is the Gaussian surface. `Q` is the total amount of charges contained in the Gaussian surface.
+    - The product `EAcosθ` also equals to the Electric Flux `ϕ`.
 - Electrical Potential
   - The potential difference between two points `ΔV` equals `W/Q` where `W` is the work that required to move the charage from one location to the other.
   - The electric potential of a charge `Q` at location that is `R` meter away is `V = kQ/R`. The potential difference from infinity to `R` meter away of the change is `V`.
@@ -50,3 +52,16 @@
   - When resistor connected in parallel, the total resistence equals to ![$R_T = \frac{1}{R_1}+ \frac{1}{R_2} + \frac{1}{R_3} + \cdots$](https://render.githubusercontent.com/render/math?math=%24R_T+%3D+%5Cfrac%7B1%7D%7BR_1%7D%2B+%5Cfrac%7B1%7D%7BR_2%7D+%2B+%5Cfrac%7B1%7D%7BR_3%7D+%2B+%5Ccdots%24)
     - The current will be split, resistor with lower resistence will have larger current. The current is determined by ![$I_{Total} \left( \frac{R_{AllOther}}{R_{Total}} \right)$](https://render.githubusercontent.com/render/math?math=%24I_%7BTotal%7D+%5Cleft%28+%5Cfrac%7BR_%7BAllOther%7D%7D%7BR_%7BTotal%7D%7D+%5Cright%29%24)
   - Ohm's Law - `I = V / R`
+- Magnetic Field
+  - The unit of magnetic field is Tesla, denoted as `T`.
+  - Charges moves in the magnetic field will have a force on it, `F=qvBsinθ` where `θ` is the angle between the moving direction of `v` and the direction of the magenetic field with strength `B`.
+    - If `v` and `B` are represented as vectors use cross product of matrix `v` times matrix `B`.
+    - The direction of the force is determines using right hand rules for positive charges and left hand rule for negative charges. Fingers allign with the direction of `v` and the hand curls to the direction of the magnetic field. the thumb will point to the direction of the force.
+    - The left or right hand rules still work when the `v` and `B` does not have 90 degrees angle, curl the hands to the direction that has the smallest angle with `v`.
+  - Moving charges will have magnetic field around it,
+    - The direction of the magnetic for positive charges can be determined using right hand rule, thumb points to the direction of the moving charges. the fingers curls towards the direction of the magnet field.
+    - Ampere's Law can be used to calculate the magnitude of the magnetic field. In general, ![$\oint \overrightarrow{B} \cdot d \overrightarrow{l} = \mu_0 I_{ENCLOSED}$](https://render.githubusercontent.com/render/math?math=%24%5Coint+%5Coverrightarrow%7BB%7D+%5Ccdot+d+%5Coverrightarrow%7Bl%7D+%3D+%5Cmu_0+I_%7BENCLOSED%7D%24) where ![$\mu_0 = 4 \pi \times 10^{-7} ; \frac{Tm}{A}$](https://render.githubusercontent.com/render/math?math=%24%5Cmu_0+%3D+4+%5Cpi+%5Ctimes+10%5E%7B-7%7D+%5C%3B+%5Cfrac%7BTm%7D%7BA%7D%24). For different sources of the field according to Ampere's law:
+      - Particles: The magnitude of the field can be ![$|\overrightarrow{B}| = \frac{\mu_{0}qv \sin{\theta}}{4 \pi r^2}$](https://render.githubusercontent.com/render/math?math=%24%7C%5Coverrightarrow%7BB%7D%7C+%3D+%5Cfrac%7B%5Cmu_%7B0%7Dqv+%5Csin%7B%5Ctheta%7D%7D%7B4+%5Cpi+r%5E2%7D%24) where `r` is the distance to the point of the magnetic field, `θ` is the angle between the magnetic field and the charges moing direction.
+        - Alpha particle: 2 protons and 2 neutrons. It has +2e charges.
+      - Wire segment: The magnitude of the field can evaluated using the Biot & Savart Law, ![$|\overrightarrow{B}| = \frac{\mu_{0}I l \sin{\theta}}{4 \pi r^2}$](https://render.githubusercontent.com/render/math?math=%24%7C%5Coverrightarrow%7BB%7D%7C+%3D+%5Cfrac%7B%5Cmu_%7B0%7DI+l+%5Csin%7B%5Ctheta%7D%7D%7B4+%5Cpi+r%5E2%7D%24) where `l` is the wire segment length and `θ` is the angle between the wire and the magnetic field.
+    - Magnetic flux `ϕ` equals the Magnetic field times area `A`.

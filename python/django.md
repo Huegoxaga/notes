@@ -180,8 +180,11 @@ def about(request):
   newobject.save() # save change to the object that is already in the database
   modelObject.id # get the object id
   modelObject.pk # get the object primary key value
+  modelObject.manyToManyField.all() # return all related fields of a many-to-many fields.
   modelObject.relatedModel_set.all() # return all assciated model of one model.
   modelObject.relatedModel_set.create(property1='value1', property2 = 'value2') # create a new related model of the model.
+  ModelClass.objects.select_related('tableA','tableB').prefetch_related('tableC').all() # Join tables for future queries. select_related is used for tables with one to one relationship, prefetch_related is used for many-to-many relationships.
+  ModelClass.objects.values('field1', 'field2') # return list of dict for certain fields
   ```
 
 ### admin.py
@@ -332,7 +335,7 @@ def about(request):
 3. Save credentials and buck name in the virtual environment's `.bash_profile` file.
 4. run `pip install boto3` and `pip install django-storages`
 5. In `settings.py` add `'storages'` and following settings.
-   ```
+   ```py
    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
@@ -494,7 +497,17 @@ def about(request):
 
 - If see `'AutoSchema' object has no attribute 'get_link' swagger` error, add `'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',` in the `settings.py`.
 
-### GeoDjango
+### Cache
+
+- import the following
+  ```py
+  from django.utils.decorators import method_decorator
+  from django.views.decorators.cache import cache_page
+  ```
+- Add decorator `@method_decorator(cache_page(time))` above each api method.
+  - Cache TTL time is in seconds.
+
+## GeoDjango
 
 - It provide data model and function for GIS supported database.
   - `PostgreSQL` uses `PostGIS` extenstion.

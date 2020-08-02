@@ -141,6 +141,10 @@
   - when `step` is missing. It is 1.
 - Create an array that has elements evenly spaced in a certain range
   - `array = np.linspace(start, end, numofvalues)`
+- Get the max element(s) for array with any demension
+  - `np.argmax(array)` the index of the max element of the entire array, the index count from left to right regardless the columns and rows.
+  - `np.argmax(array, axis=0)` the indices of the max element along each column.
+  - `np.argmax(array, axis=1)` the indices of the max element along each row.
 
 #### Access the array
 
@@ -373,8 +377,8 @@
   - `cap.release()`, release the stored video after processing is done
   - `cap.get(3)` check the frame width
   - `cap.get(4)` check the frame height
-  - ``ret = cap.set(3,320)` modify width
-  - `ret = cap.set(4,240)` modify height
+  - `ret = cap.set(3,320)` or `cap.set(cv.CV_CAP_PROP_FRAME_WIDTH, 320)` modify width
+  - `ret = cap.set(4,240)` or `cap.set(cv.CV_CAP_PROP_FRAME_HEIGHT, 240)` modify height
   - Initialize While Loop, read and display frames until Q key is pressed.
     ```py
     cap = cv2.VideoCapture(0)

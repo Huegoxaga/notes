@@ -170,6 +170,16 @@ str.isspace()
 str.isupper()
 str.find(substring) #Find the lowest index of the substring.
 str.strip(string)   #Strip all the characters in the argument of the str from the beginning and the end.
+",".join(["a","b","c"])
+#Output:’a,b,c’
+"Hello ME".replace("ME","world")
+#Output:’Hello world’
+"This is a sentence".startswith("This")
+#Output:True
+"Hello World!".endswith("world!")
+#Output:False
+"x,y,z".split(",")
+#Output:[‘x’,’y’,’z’]
 ```
 
 ##### String Function
@@ -178,21 +188,7 @@ str.strip(string)   #Strip all the characters in the argument of the str from th
 len(string)    #Return the number of characters of this string.
 ```
 
-### Type Casting
-
-Explicitly convert types.
-
-```py
-str(x)    #To  string
-int(x)    #To  integer
-float(x) #To   float
-list(x)   #To   list
-eval(x) # parse and evaluation a string to other types
-eval('[1]') #string to list
-eval('1') #string to int
-```
-
-### String Formatting
+##### String Formatting
 
 `"formatedStringUsing{}".format(x,y,z)`
 
@@ -216,20 +212,23 @@ eval('1') #string to int
 #Output:left______
 "{:>10}".format("right")
 #Output:     right
+```
 
-"""
-Other Methods
-"""
-",".join(["a","b","c"])
-#Output:’a,b,c’
-"Hello ME".replace("ME","world")
-#Output:’Hello world’
-"This is a sentence".startswith("This")
-#Output:True
-"Hello World!".endswith("world!")
-#Output:False
-"x,y,z".split(",")
-#Output:[‘x’,’y’,’z’]
+- Optionally, use `f"Formatted: {variable}:.2f"`
+  - Use `()` for expression containing variables.
+
+### Type Casting
+
+Explicitly convert types.
+
+```py
+str(x)    #To  string
+int(x)    #To  integer
+float(x) #To   float
+list(x)   #To   list
+eval(x) # parse and evaluation a string to other types
+eval('[1]') #string to list
+eval('1') #string to int
 ```
 
 ## Operators
@@ -562,6 +561,10 @@ from math import *
 from math import sqrt as square_root
 ```
 
+#### Show Version
+
+- `print(package.__version__)`
+
 #### `__name__` variable
 
 - By default `__name__` is set to `__main__`, when a module is imported it will be set to the module name.
@@ -574,49 +577,8 @@ from math import sqrt as square_root
 #### Sources of Modules
 
 1. Some of them are preinstalled in the standard Library
-
-2. Third-party Python modules.
-   They can be stored on the Python Package Index (PyPI). Here are some useful commands.
-   - `pip install <packagename>` install a package
-   - `pip install --upgrade <packagename>` update a package
-   - `pip install -r requirements.txt` install packages according the `requirements.txt`
-   - `pip uninstall <packagename>` uninstall a package
-   - `pip search <keyword>` search for a package
-   - `pip list` list packages
-   - `pip freeze` output package info file
-     - `pip freeze >requirement.txt` output package info file as txt file.
-   - `pip install -U pip` update pip
-3. Your own module.
-   Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file.
-
-### itertools modules
-
-#### Import module
-
-```py
-from itertools import *
-```
-
-#### Methods
-
-```py
-count(x) #counts up from x
-for i in count(3):
-	print(i)
-cycle(x) #infinitely iterates through an iterable (for instance a list or string).
-repeat(x) #repeats an object, either infinitely or a specific number of times(x).
-product(iterable1,iterable2) #return an object contains all possible combination product of these two iterables. (all possible iterable 1 , all possible iterable 2 )
-permutation(iterable)   #return an object contains all possible comb for the single iterable.
-```
-
-#### Functions
-
-```py
-takewhile(predicateFunc, iterables) # return object with items that only satisfy the predicate function.
-chain(x,y) #combine iterables
-accumulate(iterables)  #return a object contains a list of sum up to its position.
-list(accumulate(range(8)))
-```
+2. Third-party Python modules. Installed using libraries management tools like `pip` or `conda`
+3. Your own module. Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file.
 
 ## Lambda
 
@@ -1103,66 +1065,3 @@ finally:
 with open("localfile.txt") as newfile:
 	print(newfile.read())    #This create a temperate variable newfile within the block. It will also make sure the file closure.
 ```
-
-## Database
-
-- Python needs a driver for database connection
-- There are drivers for different database engines.
-
-### Postgres
-
-- Run `pip install psycopg2`
-- Example Usage
-
-```py
-#Import the python driver for PostgreSQL
-import psycopg2
-
-#Create a connection credentials to the PostgreSQL database
-try:
-    connection = psycopg2.connect(
-        user = "postgres",
-        password = "1234",
-        host = "localhost",
-        port = "5432",
-        database = "demo"
-    )
-
-    #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
-    cursor = connection.cursor()
-    print(connection.get_dsn_parameters(),"\n")
-
-    #Display the PostgreSQL version installed
-    cursor.execute("SELECT version();")
-    record = cursor.fetchone()
-    print("You are connected into the - " record,"\n")
-
-    #Get the column name of a table inside the database and put some values
-    pg_insert = """ INSERT INTO book (id, author, isbn, title, date_published)
-                VALUES (%s,%s,%s,%s,%s)"""
-
-    inserted_values = (1, 'Layla Nowiztki', '789-1-46-268414-1', 'How to become a professional programmer', 'January 25 2011')
-
-    #Execute the pg_insert SQL string
-    cursor.execute(pg_insert, inserted_values)
-
-    #Commit transaction and prints the result successfully
-    connection.commit()
-    count = cursor.rowcount
-    print (count, "Successfully inserted")
-
-
-#Handle the error throws by the command that is useful when using python while working with PostgreSQL
-except(Exception, psycopg2.Error) as error:
-    print("Error connecting to PostgreSQL database", error)
-    connection = None
-
-#Close the database connection
-finally:
-    if(connection != None):
-        cursor.close()
-        connection.close()
-        print("PostgreSQL connection is now closed")
-```
-
-- `inserted_values` has to be a tuple, even if it has only one parameter. For example, use `(1,)`.

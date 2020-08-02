@@ -93,7 +93,8 @@
     - try `ping raspberrypi` to get the board IP.
 - VNC Server can allows to view the GUI interface of the OS from any client
   - Enable the VNC Server in `sudo raspi-config`.
-  - [Click](https://www.realvnc.com/en/connect/download/viewer/) to download the VNC, then connect to the board to view its GUI.
+  - [Click](https://www.realvnc.com/en/connect/download/viewer/) to download the VNC, then connect to the board by entering the PI's IP in the search bar to view its GUI.
+    - Login to a VNC account for both VNC server and VNC viwer allows remote connection through cloud without using shared WiFi.
 - It has a `Thonny Python IDE` which can run and debug python progarm that interact with peripherals using peripherals's own python libraries(Ex, `GPIO` and `PiCamera`).
 - Turning the board into an Alexa device
   1. register a product in Alexa Voice Service(AVS) console

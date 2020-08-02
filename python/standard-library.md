@@ -3,6 +3,25 @@
 - All the following libraries are commonly included in Python distributions.
 - [Click here](https://docs.python.org/3.8/library/index.html) to view the complete documentation.
 
+## itertools modules
+
+### Usage
+
+```py
+from itertools import *
+count(x) #counts up from x
+for i in count(3):
+	print(i)
+cycle(x) #infinitely iterates through an iterable (for instance a list or string).
+repeat(x) #repeats an object, either infinitely or a specific number of times(x).
+product(iterable1,iterable2) #return an object contains all possible combination product of these two iterables. (all possible iterable 1 , all possible iterable 2 )
+permutation(iterable)   #return an object contains all possible comb for the single iterable.
+takewhile(predicateFunc, iterables) # return object with items that only satisfy the predicate function.
+chain(x,y) #combine iterables
+accumulate(iterables)  #return a object contains a list of sum up to its position.
+list(accumulate(range(8)))
+```
+
 ## re
 
 - It supports Regular Expression.
@@ -330,6 +349,7 @@
 - `os.path.isdir('path')` return true if it is a directory.
 - `os.path.isfile('path')` return true if it is a file.
 - `os.path.splitext('path')` return a file path and an extension of the file separately.
+- `os.system('cd ..')` run the command and return the exit status code.
 
 ## datetime
 
@@ -419,6 +439,15 @@
   - `response.json()` Get the response data as a dictionary.
   - `response.headers` get the header as a dictionary
   - It can pass parameters as `response = requests.get(url, params=parameters, headers=headers)` where `parameters` is a dictionary.
+
+## base64
+
+- Encode/Decode base64 files
+- `import base64`
+
+### Usage
+
+- `img = base64.b64decode(img)` encode decoded images file
 
 ## json
 
