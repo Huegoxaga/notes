@@ -68,10 +68,12 @@ input("Prompt: ")     #It prompts, get and returns user input as a string. The s
 ### Modules
 
 - Modules provide additional methods or functions for the programming. They are imported at the very beginning.
-- It is recognized by the keyword import.
+- It is recognized by the keyword `import`. For example, a module called `module` can imported in the following ways:
 
 ```py
-import math
+import module
+import module as md
+from module import function
 ```
 
 ## Variables
@@ -92,16 +94,16 @@ They are customized name for storing data.
 
 ## Basic Data Types
 
-#### Boolean:
+#### Boolean
 
 - True
 - False
 
-#### Integer:
+#### Integer
 
 - Whole number
 
-#### Float:
+#### Float
 
 - It can be any number with a decimal point. It is produced after any division or implicitly transfer after an operation between float and integer.
 - Computer has limited memory space for floats. Also, any zero at the end will be ignored.
@@ -605,7 +607,9 @@ functionName(variable)
 - The variable can be called.
 - function can be argument of other function.
 - Functions can have variables name starts with `*`, it enable the function to take a list of itratable variable with any length, generally it is called `*args`.
-- Functions can have variables name starts with `**`, it enable the function to take a dictionary of itratable keys and values with any length, generally it is called `**kwargs`.
+  - `func(x=3, y=4)` or `func(3, 4)` is the same as `func(*[3, 4])`
+- Functions can have variables name starts with `**`, it enable the function to take a dictionary of itratable keys and values with any length as its parameters, generally it is called `**kwargs`.
+  - `func(x=3, y=4)` or `func(3, 4)` is the same as `func(**{'x': 3, 'y': 4})`
 
 #### return statement
 

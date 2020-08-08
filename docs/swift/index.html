@@ -129,7 +129,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../python/anaconda.html">
+        <li class="chapter " data-level="1.2.2" data-path="../python/pip.html">
+            
+                <a href="../python/pip.html">
+            
+                    
+                    pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/anaconda.html">
             
                 <a href="../python/anaconda.html">
             
@@ -142,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+        <li class="chapter " data-level="1.2.4" data-path="../python/django.html">
             
                 <a href="../python/django.html">
             
@@ -896,6 +909,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.18.4" data-path="../embedded/electricity-magnetism.html">
+            
+                <a href="../embedded/electricity-magnetism.html">
+            
+                    
+                    Electricity & Magnetism
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -928,9 +954,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../theory/cryptography.md">
+        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
             
-                <span>
+                <a href="../algorithm/cryptography.html">
             
                     
                     Cryptography
@@ -941,9 +967,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../theory/ml.md">
+        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
             
-                <span>
+                <a href="../algorithm/ml.html">
             
                     
                     Machine Learning
@@ -1114,604 +1140,735 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Swift history
-launched at the Worldwide Develop Conference in 2014.
-Swift 2 was released in June, 2015 and became open source.
-Swift 3 and Xcode 8 was released in 2016, APIs were renamed, projects were rebuilt and adaption was needed.
-Swift 4 and Xcode9 was released in 2017, backward compatibility was supported.
-Swift 4.2 was released as a minor update in 2018. and later Xcode 10</p>
-<p>Swift introduction
-a &quot;fast, modern, safe, interactive&quot; language are used to replace Objective-C language.
-Swift code works side-by-side with Objective-C.
-Swift combines the best of C and Objective-C.
-Swift is a type-safe(sensitive) language, but it can deduce the data type when assign values.
-Semi-colon is fully optional in Swift, unless you wish to place several independent statements on a single line, in which case the semi-colon is required.
-one file per class.</p>
-<p>Comments
-Single line comments is //
-Multiline comment is /<em>...</em>/ it can be nested.</p>
-<p>Basic Syntax
-let keyword for constants
-var keyword for variables.</p>
-<p>Variable name rules
-Variables name can be anything including Unicode characters but no blank spaces, mathematical symbols, arrows, private-use (or invalid) Unicode code points, or line and box-drawing characters. Or duplicated name.
-Cannot starts with a number.
-Multiple variables can be declared on a single line, separated with commas
-Code   let x = 0.0, y = 0.0, z = 0.0</p>
-<p>Type annotations:
-Type is used to initialize specific types
-Code         var x: Int    //initialize an integer x.
-Or everything in one line.
-Code var red, green, blue: Double
-Swift auto deduce data type when assign a value
-Code var x=1  //x is an integer.
-Swift always chooses Double For floating point.</p>
-<p>Operators</p>
-<p>range operator (&#x2026;) left must be smaller than or equal to the right part.
-The closed range operator
-x. . .                         all numbers greater than and equals to x
-. . .x                         numbers smaller than and equals
-x. . y                        numbers in between x and y including x and y.
-The half-open range operator
-a..&lt;b b is not included</p>
-<p>Logic operator are in standard C-based format and left-associative for operator &quot;and&quot;, &quot;or&quot;.</p>
-<p>\n new line</p>
-<p>logic operator
-==  equals
-!=   not equals</p>
-<blockquote>
-<p>=
-&lt;=
-&amp;&amp; and</p>
-</blockquote>
-<p>All standard plus identity operators, === and !==, which test whether two object references both refer to the same object instance.</p>
-<p>An operator is a special symbol or phrase used to check, change, or combine values.
--Unary Operator: Has a single target (-a). A unary prefix operator is placed before the target (!b).
--Binary Operator: Has two targets (4 + 5) and is infixed, appearing between the two targets.</p>
-<p>+concatenation (no auto-casting)(cannot auto convert other types into string when connected by + )</p>
-<p>-Ternary Operator: Has three targets. Like C, Swift has one ternary operator, the ternary conditional operator (a ? b : c).</p>
-<p>question ? answer1 : answer2
-If question true return answer1 else return 2.
-Ex:  gender == 0 ? print(&quot;male&quot;) : print(&quot;female&quot;)</p>
-<p>The values targeted by operators are called operands.</p>
-<p>Operator in swift is identical with java mostly, except % is called remainder not module since different treatment for negative values.</p>
-<p>+= is also used as x = x +</p>
-<p>Types:
-Placeholder constant?????</p>
-<p>Int (auto cast from int to double in a one double and one int operation and double-int mixed array)
-Double
-Float
-Bool(true/false)
-String (it is a basic type in Swift using &quot;&quot;)</p>
-<p>empty String creation:
-Code
-var name =&quot;&quot;
-or
-var name = String()</p>
-<p>Type casting:<br>type(varname)
-Ex:   String(sum)
-or
-String([Character])</p>
-<p>String interpolation
-auto convert other types in one string
-&quot;strings (othertypes)&quot;</p>
-<p>Optional type
-Code var myCode: Int? = 404  // variable myCode is an optional integer with default value 404.
-must set type for optional types
-? means the variable can have a int value or nothing.
-! means 100% sure that it should have a value somehow before access its value.
-You set an optional variable to a valueless state by assigning it the special value nil
-An optional variable with no default value is automatically set to nil for you
-all optional type need to be checked before use or use it followed by the ? sign.</p>
-<p>coalescing operator: ??
-x ?? &quot;&quot;
-?? check if an optional type has a value and set a default value after ??.</p>
-<p>Checking optional:
-Force unwrapping
-if condition is often used. After making sure there is a value add ! after the variable, show you are sure.
-Code
-if x!=nil{
-    print(x!)
-}</p>
-<p>Optional binding (recommended way)
-It is done by making temp constant variables. Using if let statement to test if the optional var has a value.
-if let newx = x {print(newx)}   //you can use x instead of newx.
-or
-if let &#x2026;.. else</p>
-<p>as! or as? is used for downcasting a type into s subclass&#x2019;s object. use as! if it is clear the downcasting can perform correctly.</p>
-<p>for all non-optional value(no ?) they have to assign an initial value when they are created.</p>
-<p>weak var
-means it can have no value.</p>
-<p>Lazy var
-A lazy stored property&apos;s initial value is not calculated until the first time it is used.
-Only var can be lazy.</p>
-<hr>
-<p>Array
-All variables in array should be in the same type.
-It can be written as Array[T] or [T].</p>
-<p>Empty array:
-var name = <a href="">Int</a></p>
-<p>Initializer:<br>var name = Array(repeating:value, count: 4)<br>//repeating is the initial value and count is the length.</p>
-<p>Literal:<br>var name:[String] = [1,2,3,4,5]<br>or<br>var name = [1,2,3,4,5]</p>
-<p>can use + for concatenation  or  += for append
-index starts at 0<br>range operator can be used as a index</p>
-<hr>
-<p>Set
-Unordered, same type, faster than array.
-It can be written as Set<t></t></p>
-<p>Empty set:
-var name = Set<type>()</type></p>
-<p>Literal:
-var name: Set<type> = [1,2,3]
-or
-var name: Set = [1.2.3]</type></p>
-<hr>
-<p>Dictionary
-Unordered, with keys as index.
-key or value should be in same type.
-It can be written as Dictionary<keyt,valuet>   or [KeyT:ValueT]</keyt,valuet></p>
-<p>Empty:
-var name = <a href="">Type:Type</a></p>
-<p>Literal:
-var name: [Type:Type] = [1:1,2:2,3:3]<br>or<br>var name = [1:1,2:2,3:3]</p>
-<p>name[key] = value   //add new item<br>assign nil to a key value will remove this key and value pair.           </p>
-<p>x = [key1:value1, key2:value2, &#x2026;.]
-name[keyX]           returns valueX</p>
-<p>to print all items in the dictionary.
-for (key,value) in dictionaryName {
-    print((key) : (value))
-}</p>
-<p>access only key or value using for loop
-for key in name.keys{
-}</p>
-<p>for value in name.values{
+                                <h1 id="swift">Swift</h1>
+<h2 id="history">History</h2>
+<ul>
+<li>launched at the Worldwide Develop Conference in 2014.</li>
+<li>Swift 2 was released in June, 2015 and became open source.</li>
+<li>Swift 3 and Xcode 8 was released in 2016, APIs were renamed, projects were rebuilt and adaption was needed.</li>
+<li>Swift 4 and Xcode9 was released in 2017, backward compatibility was supported.</li>
+<li>Swift 4.2 was released as a minor update in 2018. and later Xcode 10</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>a &quot;fast, modern, safe, interactive&quot; language are used to replace Objective-C language.</li>
+<li>Swift code works side-by-side with Objective-C.</li>
+<li>Swift combines the best of C and Objective-C.</li>
+<li>Swift is a type-safe(sensitive) language, but it can deduce the data type when assign values.</li>
+<li>Semi-colon is fully optional in Swift, unless you wish to place several independent statements on a single line, in which case the semi-colon is required.</li>
+<li>one file per class.</li>
+</ul>
+<h3 id="variables">Variables</h3>
+<h3 id="comments">Comments</h3>
+<ul>
+<li>Single line comments is <code>//</code></li>
+<li>Multiline comment is <code>/*...*/</code> it can be nested.</li>
+</ul>
+<h3 id="variable">Variable</h3>
+<ul>
+<li>Declaration<ul>
+<li><code>let</code> keyword for constants</li>
+<li><code>var</code> keyword for variables</li>
+</ul>
+</li>
+<li>Naming Rules<ul>
+<li>Variables name can be anything including Unicode characters but no blank spaces, mathematical symbols, arrows, private-use (or invalid) Unicode code points, or line and box-drawing characters. Or duplicated name.</li>
+<li>Cannot starts with a number.</li>
+<li>Multiple variables can be declared on a single line, separated with commas, <code>let x = 0.0, y = 0.0, z = 0.0</code></li>
+</ul>
+</li>
+<li>Type Annotations<ul>
+<li>It is used to initialize specific types</li>
+<li><code>var x: Int</code>, initialize an integer <code>x</code>.</li>
+<li>Or everything in one line. <code>var red, green, blue: Double</code></li>
+<li>Swift auto deduce data type when assign a value, e.g. <code>var x=1</code>, <code>x</code> will be an integer.</li>
+<li>Swift always chooses <code>Double</code> For floating point.</li>
+</ul>
+</li>
+<li><code>print(variables)</code>, print out the value on a new line.</li>
+</ul>
+<h3 id="operators">Operators</h3>
+<ul>
+<li>An operator is a special symbol or phrase used to check, change, or combine values. The values targeted by operators are called operands. They have the following two type:<ul>
+<li>Unary Operator: Has a single target (<code>-a</code>). A unary prefix operator is placed before the target (!b).</li>
+<li>Binary Operator: Has two targets (<code>4 + 5</code>) and is infixed, appearing between the two targets.</li>
+</ul>
+</li>
+<li>Operator in swift is identical with <code>Java</code> mostly, except <code>%</code> is called <code>remainder</code> not <code>module</code> since they have different treatment for negative values.</li>
+<li>range operator<ul>
+<li>It is <code>...</code>, its left part must be smaller than or equal to the right part.</li>
+<li>The closed range operator<ul>
+<li><code>x. . .</code>, all numbers greater than and equals to x</li>
+<li><code>. . .x</code>, numbers smaller than and equals</li>
+<li><code>x. . y</code>, numbers in between x and y including x and y.</li>
+</ul>
+</li>
+<li>The half-open range operator<ul>
+<li><code>a..&lt;b</code>, <code>b</code> is not included</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Logic operator<ul>
+<li>It should be in standard C-based format and left-associative for operator &quot;and&quot;, &quot;or&quot;.</li>
+<li><code>==</code>, equals</li>
+<li><code>!=</code>, not equals</li>
+<li><code>&gt;=</code></li>
+<li><code>&lt;=</code></li>
+<li><code>&amp;&amp;</code> and</li>
+<li>All standard plus identity operators, <code>===</code> and <code>!==</code>, which test whether two object references both refer to the same object instance.</li>
+</ul>
+</li>
+<li><code>\n</code> new line</li>
+<li><code>+</code> concatenation (no auto-casting)(cannot auto convert other types into string when connected by <code>+</code>)</li>
+<li>Ternary Operator: Has three targets. Like <code>C</code>, <code>Swift</code> has one ternary operator, the ternary conditional operator (<code>a ? b : c</code>).<ul>
+<li><code>question ? answer1 : answer2</code></li>
+<li>If question true return answer1 else return 2.</li>
+<li>e.g.  <code>gender == 0 ? print(&quot;male&quot;) : print(&quot;female&quot;)</code></li>
+</ul>
+</li>
+<li><code>+=</code> is also used as <code>x = x +</code></li>
+<li>coalescing operator: <code>??</code>, e.g. <code>x ?? &quot;&quot;</code><ul>
+<li><code>??</code> check if an optional type has a value and set a default value after <code>??</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="basic-types">Basic Types</h3>
+<ul>
+<li>Placeholder constant?????</li>
+<li><code>Int</code> (auto cast from int to double in a one double and one int operation and double-int mixed array)</li>
+<li><code>Double</code></li>
+<li><code>Float</code></li>
+<li><code>Bool</code> is has <code>true</code> and <code>false</code></li>
+<li><code>String</code> - it is a basic type in Swift using <code>&quot;&quot;</code><ul>
+<li>empty String creation:<ul>
+<li>e.g. <code>var name =&quot;&quot;</code> or <code>var name = String()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Type casting<ul>
+<li><code>type(varname)</code>, e.g. <code>String(sum)</code> or <code>String([Character])</code></li>
+</ul>
+</li>
+<li>String interpolation<ul>
+<li>auto convert other types in one string</li>
+<li><code>&quot;strings \(othertypes)&quot;</code></li>
+</ul>
+</li>
+<li>Optional type<ul>
+<li><code>var myCode: Int? = 404</code>, variable <code>myCode</code> is an optional integer with default value <code>404</code>.</li>
+<li>must set type for optional types</li>
+<li><code>?</code> means the variable can have a int value or nothing.</li>
+<li><code>!</code> means 100% sure that it should have a value somehow before access its value.</li>
+<li>You set an optional variable to a valueless state by assigning it the special value nil</li>
+<li>An optional variable with no default value is automatically set to <code>nil</code> for you</li>
+<li>all optional type need to be checked before use or use it followed by the <code>?</code> sign.</li>
+</ul>
+</li>
+<li>Checking optional:<ul>
+<li>Force unwrapping - if condition is often used. After making sure there is a value add <code>!</code> after the variable, show you are sure. <code>if x!=nil{print(x!)}</code></li>
+<li>Optional binding (recommended way) - It is done by making temp constant variables. Using if let statement to test if the optional var has a value.</li>
+<li><code>if let newx = x {print(newx)}</code>, you can use <code>x</code> for print instead of <code>newx</code>. or <code>if let...else</code></li>
+</ul>
+</li>
+<li><code>as!</code> or <code>as?</code> is used for downcasting a type into s subclass&#x2019;s object. use <code>as!</code> if it is clear the downcasting can perform correctly.</li>
+<li>for all non-optional value(no <code>?</code>) they have to assign an initial value when they are created.</li>
+<li><code>weak var</code> means it can have no value.</li>
+<li><code>lazy var</code>, A lazy stored property&apos;s initial value is not calculated until the first time it is used.
+Only var can be lazy.</li>
+</ul>
+<h3 id="array">Array</h3>
+<ul>
+<li>All variables in array should be in the same type.</li>
+<li>It can be written as <code>Array[T]</code> or <code>[T]</code>.</li>
+<li>Empty array: <code>var name = [Int]()</code></li>
+<li>Initializer: <code>var name = Array(repeating:value, count: 4)</code>, repeating is the initial value and count is the length.</li>
+<li>Literal: <code>var name:[String] = [1,2,3,4,5]</code> or <code>var name = [1,2,3,4,5]</code></li>
+<li>can use <code>+</code> for concatenation or <code>+=</code> for append</li>
+<li>index starts at <code>0</code></li>
+<li>range operator can be used as an index</li>
+</ul>
+<h3 id="set">Set</h3>
+<ul>
+<li>Unordered, same type, faster than array.</li>
+<li>It can be written as <code>Set&lt;T&gt;</code></li>
+<li>Empty set: <code>var name = Set&lt;Type&gt;()</code></li>
+<li>Literal: <code>var name: Set&lt;Type&gt; = [1,2,3]</code> or <code>var name: Set = [1,2,3]</code></li>
+</ul>
+<h3 id="dictionary">Dictionary</h3>
+<ul>
+<li>Unordered, with keys as index.</li>
+<li>key or value should be in same type.</li>
+<li>It can be written as <code>Dictionary&lt;KeyT,ValueT&gt;</code> or <code>[KeyT:ValueT]</code></li>
+<li>Empty: <code>var name = [Type:Type]()</code></li>
+<li>Literal: <code>var name: [Type:Type] = [1:1,2:2,3:3]</code> or <code>var name = [1:1,2:2,3:3]</code></li>
+<li>add new item, <code>name[key] = value</code></li>
+<li>assign <code>nil</code> as a key value will remove this key and value pair.</li>
+<li><code>x = [key1:value1, key2:value2]</code>, <code>name[keyX]</code> returns valueX</li>
+<li>print all items in the dictionary. <code>for (key,value) in dictionaryName { print(\(key) : \(value))}</code></li>
+<li>access only key or value using for loop <code>for key in name.keys{}</code> and <code>for value in name.values{}</code>, keys and values are keywords for this type of accessing.</li>
+<li>Method:<ul>
+<li><code>dictionaryName.updateValue(&quot;new value&quot;, forKey: &quot;X&quot;)</code>, it updates new value and returns the old value.</li>
+<li><code>dictionaryName.removeValue(&quot;new value&quot;, forKey: &quot;X&quot;)</code>, it removes old value and returns the old value.</li>
+</ul>
+</li>
+<li><code>nil</code> is returned if no value is found when accesses dictionaries.</li>
+</ul>
+<h3 id="tuples">Tuples</h3>
+<ul>
+<li>Tuples (Type, Type) or more elements.</li>
+<li>Tuples group multiple values into a single, compound value.</li>
+<li>Initializing tuples: <code>let tuplesName = (100, &quot;OK&quot;)</code></li>
+<li>Naming tuples: <code>let (score, comment) = tuplesName</code></li>
+<li>Accessing tuples: <code>print(score)</code>, Output: 100</li>
+<li>the content is accessible using variable name and index numbers <code>let name = (x, y)</code><ul>
+<li><code>name.0</code> returns the value of <code>x</code></li>
+<li><code>name.1</code>, get <code>y</code>.</li>
+</ul>
+</li>
+<li>Can define tuples value with names using following way. <code>let name = (name1: value1, name2: value2)</code><ul>
+<li><code>name.name1</code>, get value1</li>
+<li><code>name.name2</code>, get value2</li>
+</ul>
+</li>
+<li>Decomposing Tuples<ul>
+<li><code>var person = (firstName: &quot;John&quot;, lastName: &quot;Doe&quot;)</code></li>
+<li><code>var (firstName, lastName) = person</code></li>
+<li><code>print(firstName)</code>, Output: John</li>
+</ul>
+</li>
+<li>Multiple Assignment: <code>var (x, y, z) = (1, 2, 3)</code>. It is the same as <code>var x = 1</code>, <code>var y = 2</code>, and <code>var z = 3</code>.</li>
+</ul>
+<h3 id="enumeration">Enumeration</h3>
+<ul>
+<li>Enumeration is value type(primitive variable)</li>
+<li>An enumeration defines a brand new common type for a group of related values.</li>
+<li>All the values that are defined within the enumeration.</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Name</span> </span>{
+  <span class="hljs-keyword">case</span> <span class="hljs-type">Name1</span>
+  <span class="hljs-keyword">case</span> <span class="hljs-type">Name2</span>
+  <span class="hljs-keyword">case</span> <span class="hljs-type">Name3</span>
+  <span class="hljs-keyword">case</span> <span class="hljs-type">Name4</span>
 }
-//keys and values are keywords for this type of accessing.</p>
-<p>Method:
-dictionaryName.updateValue(&quot;new value&quot;, forKey: &quot;X&quot;)
-//It updates new value and returns the old value.
-dictionaryName.removeValue(&quot;new value&quot;, forKey: &quot;X&quot;)
-//It removes old value and returns the old value.</p>
-<p>nil is returned if no value is found when accesses dictionaries.</p>
-<p>Tuples
-Tuples (Type, Type) or more elements.
-Tuples group multiple values into a single, compound value.</p>
-<p>Initializing tuples:
-let tuplesName = (100, &quot;OK&quot;)</p>
-<p>Naming tuples:
-let (score, comment) = tuplesName</p>
-<p>Accessing tuples:
-print(score)
-//Output: 100</p>
-<p>the content is accessible using variable name and index numbers
-let name = (x, y)
-name.0<br>//get x
-name.1
-//get y</p>
-<p>Can define tuples value with names using following way.
-let name = (name1: value1, name2: value2)
-name.name1<br>//get value1
-name.name2
-//get value2</p>
-<p>Decomposing Tuples
-var person = (firstName: &quot;John&quot;, lastName: &quot;Doe&quot;)
-var (firstName, lastName) = person
-print(firstName)
-//Output: John</p>
-<p>Multiple Assignment:
-var (x, y, z) = (1, 2, 3)
-//the same as
-var x = 1
-var y = 2
-var z = 3</p>
-<hr>
-<p>Enumeration
-Enumeration is value type(primitive variable)
-An enumeration defines a brand new common type for a group of related values.
-All the values that are defined within the enumeration.</p>
-<p>enum Name {
-  case Name1
-  case Name2
-  case Name3
-  case Name4
-}</p>
-<p>Or
-enum Name{
-case Name1, Name2, Name3, Name4
-}</p>
-<p>Access through Name.Name1
-.Name1 is its number.</p>
-<p>For some input if the type is already known, the name can be shorthanded to .something,</p>
-<hr>
-<p>if structures</p>
-<p>if&#x2026;.else</p>
-<p>if condition {
-} else if condition{
-}else{
-}</p>
-<p>if let can be use to check the value existence.</p>
-<p>switch structures</p>
-<p>switch value {
-case value1:</p>
-<p>case value2:</p>
-<p>case value3, value4, value5:  (can use range operators here, )</p>
-<p>default:(if nothing matches)
-in switch only the codes in one situation(first) block gets run.</p>
-<p>Where evaluate outcomes with conditions.</p>
-<p>let myPoint = (1, -1)
-switch myPoint {
-   case let (x, y) where x == y:
-      print(&quot;((x), (y)) is on the line x == y&quot;)
-   case let (x, y) where x == -y:
-     print(&quot;((x), (y)) is on the line x == -y&quot;)
-   case let (x, y):
-     print(&quot;((x), (y)) is just some arbitrary point&quot;)
-}</p>
-<p>for loop
-for i in x..y(or arrayname) {
-   print(i)
-}</p>
-<p>while loop
-while a &lt; b {
-   print(a)
-   a+=1
-}</p>
-<p>Repeat-While
-repeat {
-   x -= 1
-} while x &gt; 0
-Repeat block run at least once</p>
-<p>control transfer
-break                     //exit
-continue                //starts from begin
-fall through in switch, move the code to next case without check condition.</p>
-<p>basic statements
-print(variables)   //print with a new line.</p>
-<p>function(methods)
-every function is a type.
-if no return no -&gt; and it return a Void type.
-tuple type can be used to return two values -&gt;(a:Type, b:Type)  and retrieve by dot format
-let bounds = minMax(array: [4, -4, 1, 88, 7, 42])
-print(&quot;min is (bounds.min) and max is (bounds.max)&quot;)
-// prints &quot;min is -4 and max is 88&quot;</p>
-<p>func functionName(paraName: Type) -&gt;returnType{
-//use empty bracket if no para or comma between two or more para.
-statement
-return returnName
-}</p>
-<p>func someFunc(externalName localName: Int) {
-    //use localName here
+<span class="hljs-comment">//Or</span>
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Name</span></span>{
+<span class="hljs-keyword">case</span> <span class="hljs-type">Name1</span>, <span class="hljs-type">Name2</span>, <span class="hljs-type">Name3</span>, <span class="hljs-type">Name4</span>
 }
-external is the name outside, local name is used inside.</p>
-<p>functionName(argumentLabel paraName: value)
-argumentLabel is used when call the function with parameters like functionName(argument: 123)
-paraName is used inside the function block
-uses _ to explicit remove the argument label so you can call function without using it
-like functionName(123)</p>
-<p>Function has types like (Int, Int) -&gt; Int or () -&gt; Void
-Function with same types can be reassigned accordingly.
-var aNewFunction: (Int, Int) -&gt; Int = addInts</p>
-<p>Function type can be used as other function&#x2019;s parameters type or return type
-Or nested</p>
-<p>func chooseFunc(flag: Bool) -&gt; (Int) -&gt; Int {           //(Int) -&gt; Int here is a function type
-   func plus(input: Int) -&gt; Int { return input + 1 }
-   func minus(input: Int) -&gt; Int { return input - 1 }
-   if(flag) {
-     return plus
+</code></pre>
+<ul>
+<li>Access through <code>Name.Name1</code></li>
+<li><code>.Name1</code> is its number.</li>
+<li>For some input if the type is already known, the name can be shorthanded to <code>.something</code>,</li>
+</ul>
+<h3 id="if-structures">if structures</h3>
+<h4 id="ifelse">if&#x2026;.else</h4>
+<pre><code class="lang-swift"><span class="hljs-keyword">if</span> condition {
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> condition{
+}<span class="hljs-keyword">else</span>{
+}
+</code></pre>
+<ul>
+<li>if let can be use to check the value existence.</li>
+</ul>
+<h4 id="switch-structures">Switch Structures</h4>
+<ul>
+<li>in switch only the codes in one situation(first) block gets run.</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-keyword">switch</span> value {
+
+<span class="hljs-keyword">case</span> value1:
+
+<span class="hljs-keyword">case</span> value2:
+
+<span class="hljs-keyword">case</span> value3, value4, value5:  <span class="hljs-comment">//(can use range operators here, )</span>
+
+<span class="hljs-keyword">default</span>:<span class="hljs-comment">//(if nothing matches)</span>
+</code></pre>
+<ul>
+<li><code>where</code> evaluate outcomes with conditions.</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> myPoint = (<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>)
+<span class="hljs-keyword">switch</span> myPoint {
+   <span class="hljs-keyword">case</span> <span class="hljs-keyword">let</span> (x, y) <span class="hljs-keyword">where</span> x == y:
+      <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;(<span class="hljs-subst">\(x)</span>, <span class="hljs-subst">\(y)</span>) is on the line x == y&quot;</span>)
+   <span class="hljs-keyword">case</span> <span class="hljs-keyword">let</span> (x, y) <span class="hljs-keyword">where</span> x == -y:
+     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;(<span class="hljs-subst">\(x)</span>, <span class="hljs-subst">\(y)</span>) is on the line x == -y&quot;</span>)
+   <span class="hljs-keyword">case</span> <span class="hljs-keyword">let</span> (x, y):
+     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;(<span class="hljs-subst">\(x)</span>, <span class="hljs-subst">\(y)</span>) is just some arbitrary point&quot;</span>)
+}
+</code></pre>
+<h4 id="for-loop">for loop</h4>
+<pre><code class="lang-swift"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> x..y(or arrayname) {
+   <span class="hljs-built_in">print</span>(i)
+}
+</code></pre>
+<h4 id="while-loop">while loop</h4>
+<pre><code class="lang-swift"><span class="hljs-keyword">while</span> a &lt; b {
+   <span class="hljs-built_in">print</span>(a)
+   a+=<span class="hljs-number">1</span>
+}
+</code></pre>
+<h4 id="repeat-while">Repeat-While</h4>
+<ul>
+<li>Repeat block run at least once</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-keyword">repeat</span> {
+   x -= <span class="hljs-number">1</span>
+} <span class="hljs-keyword">while</span> x &gt; <span class="hljs-number">0</span>
+</code></pre>
+<h4 id="control-transfer">control transfer</h4>
+<ul>
+<li><code>break</code>, exit</li>
+<li><code>continue</code>, starts from begin<ul>
+<li>fall through in switch, move the code to next case without check condition.</li>
+</ul>
+</li>
+</ul>
+<h3 id="function">Function</h3>
+<ul>
+<li><code>function(methods)</code></li>
+<li>every function is a type.</li>
+<li>if no return no <code>-&gt;</code> and it return a Void type.</li>
+<li>tuple type can be used to return two <code>values -&gt;(a:Type, b:Type)</code>  and retrieve by dot format</li>
+<li>e.g. <code>let bounds = minMax(array: [4, -4, 1, 88, 7, 42])</code>, <code>print(&quot;min is \(bounds.min) and max is \(bounds.max)&quot;)</code>, Output: &quot;min is -4 and max is 88&quot;</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">functionName</span><span class="hljs-params">(paraName: <span class="hljs-keyword">Type</span>)</span></span> -&gt;returnType{
+<span class="hljs-comment">//use empty bracket if no para or comma between two or more para.</span>
+<span class="hljs-comment">//statement</span>
+<span class="hljs-keyword">return</span> returnName
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">someFunc</span><span class="hljs-params">(externalName localName: Int)</span></span> {
+    <span class="hljs-comment">//use localName here</span>
+}
+<span class="hljs-comment">//external is the name outside, local name is used inside.</span>
+</code></pre>
+<ul>
+<li><code>functionName(argumentLabel paraName: value)</code><ul>
+<li><code>argumentLabel</code> is used when call the function with parameters like <code>functionName(argument: 123)</code></li>
+<li><code>paraName</code> is used inside the function block</li>
+<li>uses <code>_</code> to explicit remove the argument label so you can call function without using it, like <code>functionName(123)</code></li>
+</ul>
+</li>
+<li>Function has types like <code>(Int, Int) -&gt; Int</code> or <code>() -&gt; Void</code></li>
+<li>Function with same types can be reassigned accordingly. <code>var aNewFunction: (Int, Int) -&gt; Int = addInts</code></li>
+<li>Function type can be used as other function&#x2019;s parameters type or return type
+Or nested.</li>
+<li>Function parameters are constants by default.</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">chooseFunc</span><span class="hljs-params">(flag: Bool)</span></span> -&gt; (<span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">Int</span> {           <span class="hljs-comment">//(Int) -&gt; Int here is a function type</span>
+   <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">plus</span><span class="hljs-params">(input: Int)</span></span> -&gt; <span class="hljs-type">Int</span> { <span class="hljs-keyword">return</span> input + <span class="hljs-number">1</span> }
+   <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">minus</span><span class="hljs-params">(input: Int)</span></span> -&gt; <span class="hljs-type">Int</span> { <span class="hljs-keyword">return</span> input - <span class="hljs-number">1</span> }
+   <span class="hljs-keyword">if</span>(flag) {
+     <span class="hljs-keyword">return</span> plus
    }
-   else {
-     return minus
+   <span class="hljs-keyword">else</span> {
+     <span class="hljs-keyword">return</span> minus
    }
-}</p>
-<p>Function calls itself is recursion</p>
-<p>func factorial(n: Int) -&gt; Int {
-  return n == 0 ? 1 : n * factorial(n: n-1)
 }
-print(factorial(n: 5)) //prints 120</p>
-<p>Function default value
-func someFunction(p1: Int = 12) {
-   // the default value of p1 is 12
+</code></pre>
+<ul>
+<li>Function calls itself is recursion</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">factorial</span><span class="hljs-params">(n: Int)</span></span> -&gt; <span class="hljs-type">Int</span> {
+  <span class="hljs-keyword">return</span> n == <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : n * factorial(n: n-<span class="hljs-number">1</span>)
 }
-someFunction(p1: 6) // p1 is 6
-someFunction() // p1 is 12
-Place parameters with default values at the end of a function&apos;s parameter list.</p>
-<p>Variadic Parameters
-Function take 0...more parameters of the same type as an array. One variadic parameter is allowed per function.
-func arithmeticMean(numbers: Double...) -&gt; Double {
-   var total: Double = 0
-   for number in numbers {
+<span class="hljs-built_in">print</span>(factorial(n: <span class="hljs-number">5</span>)) <span class="hljs-comment">//prints 120</span>
+</code></pre>
+<ul>
+<li>Function default value<ul>
+<li>Place parameters with default values at the end of a function&apos;s parameter list.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">someFunction</span><span class="hljs-params">(p1: Int = <span class="hljs-number">12</span>)</span></span> {
+   <span class="hljs-comment">// the default value of p1 is 12</span>
+}
+someFunction(p1: <span class="hljs-number">6</span>) <span class="hljs-comment">// p1 is 6</span>
+someFunction() <span class="hljs-comment">// p1 is 12</span>
+</code></pre>
+<ul>
+<li>Variadic Parameters<ul>
+<li>Function take zero or more parameters of the same type as an array. One variadic parameter is allowed per function.</li>
+<li>Placed after parameters with default value in the parameters list.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">arithmeticMean</span><span class="hljs-params">(numbers: Double...)</span></span> -&gt; <span class="hljs-type">Double</span> {
+   <span class="hljs-keyword">var</span> total: <span class="hljs-type">Double</span> = <span class="hljs-number">0</span>
+   <span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> numbers {
      total += number
    }
-   return (total / Double(numbers.count))
+   <span class="hljs-keyword">return</span> (total / <span class="hljs-type">Double</span>(numbers.<span class="hljs-built_in">count</span>))
 }
-Placed after parameters with default value in the parameters list.</p>
-<p>Function parameters are constants by default.
-inout parameters are used if changes are needed
-func swapInts(a: inout  Int, b: inout  Int) {
-   let tempA = a
+</code></pre>
+<ul>
+<li>inout parameters are used if changes are needed<ul>
+<li>Inout cannot has default value or be as a variadic</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">swapInts</span><span class="hljs-params">(a: <span class="hljs-keyword">inout</span>  Int, b: <span class="hljs-keyword">inout</span>  Int)</span></span> {
+   <span class="hljs-keyword">let</span> tempA = a
    a = b
    b = tempA
 }
-//when you call the function
-var someInt = 3
-var anotherInt = 107
+<span class="hljs-comment">//when you call the function</span>
+<span class="hljs-keyword">var</span> someInt = <span class="hljs-number">3</span>
+<span class="hljs-keyword">var</span> anotherInt = <span class="hljs-number">107</span>
 swapInts(a: &amp;someInt, b: &amp;anotherInt)
-Inout cannot has default value or be as a variadic</p>
-<p>Closure
-A Closure is a self-contained block of functionality that can be passed around and used in your code.</p>
-<p>general form:</p>
-<p>{ (parameters) -&gt; return type in
-   statements
-}</p>
-<p>can use constant parameters, variable parameters, variadic and inout parameters, but no default values.</p>
-<p>Inline Closures (like lambda in python)</p>
-<p>let names = [&quot;Cc&quot;, &quot;Aa&quot;, &quot;Ee&quot;, &quot;Bb&quot;, &quot;Dd&quot;]
-var reversed = names.sorted(by: { (s1: String, s2: String) -&gt; Bool in
-   return s1 &gt; s2
-})</p>
-<p>Or (for short)</p>
-<p>reversed = names.sorted(by: { s1, s2 in return s1 &gt; s2 } )</p>
-<p>Or if closure is a single statement it must return so, for short:</p>
-<p>reversed = names.sorted(by: { s1, s2 in s1 &gt; s2 } )</p>
-<p>Or shorthand argument names $0,$1,$2
-reversed = names.sorted(by: { $0 &gt; $1 } )</p>
-<p>Or use Operator Functions like &lt;, for string</p>
-<p>reversed = names.sorted(by: &gt;)</p>
-<p>Class
-Swift uses the word instance instead of object.</p>
-<p>Class and Structures&#x2019;s implementation and interface are created in a single file
-When a new class or structure is defined, a brand new Swift type is defined.
-Keyword struct or class
-struct Resolution {
-   var width = 0
-   var height = 0
-}</p>
-<p>class VideoMode {
-   var resolution = Resolution()//create a new instance
-   var interlaced = false
-   var frameRate = 0.0
+</code></pre>
+<h3 id="closure">Closure</h3>
+<ul>
+<li>A Closure is a self-contained block of functionality that can be passed around and used in your code.</li>
+<li>can use constant parameters, variable parameters, variadic and inout parameters, but no default values.</li>
+<li>general form:</li>
+</ul>
+<pre><code class="lang-swift">{ (parameters) -&gt; <span class="hljs-keyword">return</span> type <span class="hljs-keyword">in</span>
+   <span class="hljs-comment">//statements</span>
 }
-This is a class contains a new structure instance.</p>
-<p>Class has the same initializer syntax.
-var name = Classname()</p>
-<p>. is used to access instance&#x2019; content.</p>
-<p>Structures have memberwise initializer
-It is used to set initial values.</p>
-<p>let vga = resolution(name1: 640, name2: 480)</p>
-<p>Structures are Value Types(like primitive type in Java, value is copied no assigned to a mutual reference)
-Class is reference type.
-Constant class can change its value. It is only the reference that&#x2019;s constant.
-=== is used to check if two have same reference.
-Swift&apos;s String, Array, and Dictionary types are implemented as structures.</p>
-<p>Stored property is a constant or variable that is stored as part of an instance.</p>
-<p>class DataManager {
-   lazy var importer = DataImporter()
-   var data = <a href="">String</a>
+</code></pre>
+<ul>
+<li>Inline Closures (like lambda in python)</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> names = [<span class="hljs-string">&quot;Cc&quot;</span>, <span class="hljs-string">&quot;Aa&quot;</span>, <span class="hljs-string">&quot;Ee&quot;</span>, <span class="hljs-string">&quot;Bb&quot;</span>, <span class="hljs-string">&quot;Dd&quot;</span>]
+<span class="hljs-keyword">var</span> reversed = names.sorted(by: { (s1: <span class="hljs-type">String</span>, s2: <span class="hljs-type">String</span>) -&gt; <span class="hljs-type">Bool</span> <span class="hljs-keyword">in</span>
+   <span class="hljs-keyword">return</span> s1 &gt; s2
+})
+</code></pre>
+<ul>
+<li>Or (for short) <code>reversed = names.sorted(by: { s1, s2 in return s1 &gt; s2 } )</code></li>
+<li>Or if closure is a single statement it must return so, for short: <code>reversed = names.sorted(by: { s1, s2 in s1 &gt; s2 } )</code></li>
+<li>Or shorthand argument names <code>$0,$1,$2</code>, <code>reversed = names.sorted(by: { $0 &gt; $1 } )</code></li>
+<li>Or use Operator Functions like <code>&lt;</code>, for string, <code>reversed = names.sorted(by: &gt;)</code></li>
+</ul>
+<h3 id="class">Class</h3>
+<ul>
+<li>Swift uses the word instance instead of object.</li>
+<li>Class and Structures&#x2019;s implementation and interface are created in a single file</li>
+<li>When a new class or structure is defined, a brand new Swift type is defined.</li>
+<li>Use keyword struct or class to define a class contains a new structure instance:</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Resolution</span> </span>{
+   <span class="hljs-keyword">var</span> width = <span class="hljs-number">0</span>
+   <span class="hljs-keyword">var</span> height = <span class="hljs-number">0</span>
 }
-Computed property (getter setter)</p>
-<p>struct Point {
-   var x = 0.0, y = 0.0
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VideoMode</span> </span>{
+   <span class="hljs-keyword">var</span> resolution = <span class="hljs-type">Resolution</span>()<span class="hljs-comment">//create a new instance</span>
+   <span class="hljs-keyword">var</span> interlaced = <span class="hljs-literal">false</span>
+   <span class="hljs-keyword">var</span> frameRate = <span class="hljs-number">0.0</span>
 }
-struct Shape {
-   var origin = Point()<br>   var center: Point {
-     get {
-       return Point(x: origin.x/2 , y: origin.y/2)
+</code></pre>
+<ul>
+<li>Class has the same initializer syntax. <code>var name = Classname()</code></li>
+<li><code>.</code> is used to access instance&apos;s content.</li>
+<li>Structures have memberwise initializer<ul>
+<li>It is used to set initial values.</li>
+<li><code>let vga = resolution(name1: 640, name2: 480)</code></li>
+</ul>
+</li>
+<li>Structures are Value Types(like primitive type in Java, value is copied no assigned to a mutual reference)</li>
+<li>Class is reference type.</li>
+<li>Constant class can change its value. It is only the reference that&#x2019;s constant.</li>
+<li><code>===</code> is used to check if two have same reference.</li>
+<li>Swift&apos;s String, Array, and Dictionary types are implemented as structures.</li>
+<li>Stored property is a constant or variable that is stored as part of an instance.</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataManager</span> </span>{
+   <span class="hljs-built_in">lazy</span> <span class="hljs-keyword">var</span> importer = <span class="hljs-type">DataImporter</span>()
+   <span class="hljs-keyword">var</span> data = [<span class="hljs-type">String</span>]()
+}
+</code></pre>
+<ul>
+<li>Computed property (getter setter)</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Point</span> </span>{
+   <span class="hljs-keyword">var</span> x = <span class="hljs-number">0.0</span>, y = <span class="hljs-number">0.0</span>
+}
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Shape</span> </span>{
+   <span class="hljs-keyword">var</span> origin = <span class="hljs-type">Point</span>()   
+   <span class="hljs-keyword">var</span> center: <span class="hljs-type">Point</span> {
+     <span class="hljs-keyword">get</span> {
+       <span class="hljs-keyword">return</span> <span class="hljs-type">Point</span>(x: origin.x/<span class="hljs-number">2</span> , y: origin.y/<span class="hljs-number">2</span>)
      }
-     set(newCenter) {
-       origin.x = newCenter.x/2
-       origin.y = newCenter.y/2
+     <span class="hljs-keyword">set</span>(newCenter) {
+       origin.x = newCenter.x/<span class="hljs-number">2</span>
+       origin.y = newCenter.y/<span class="hljs-number">2</span>
      }
    }
-}</p>
-<p>Or if setter don&#x2019;t define var name newValue is used.
-struct Point {
-   var x = 0.0, y = 0.0
 }
-struct Shape {
-   var origin = Point()<br>   var center: Point {
-     get {
-      return Point(x: origin.x/2, y: origin.y/2)
+</code></pre>
+<ul>
+<li>Or if setter don&#x2019;t define var name newValue is used.</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Point</span> </span>{
+   <span class="hljs-keyword">var</span> x = <span class="hljs-number">0.0</span>, y = <span class="hljs-number">0.0</span>
+}
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Shape</span> </span>{
+   <span class="hljs-keyword">var</span> origin = <span class="hljs-type">Point</span>()   
+   <span class="hljs-keyword">var</span> center: <span class="hljs-type">Point</span> {
+     <span class="hljs-keyword">get</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-type">Point</span>(x: origin.x/<span class="hljs-number">2</span>, y: origin.y/<span class="hljs-number">2</span>)
      }
-     set {
-      origin.x = newValue.x/2
-      origin.y = newValue.y/2
+     <span class="hljs-keyword">set</span> {
+      origin.x = newValue.x/<span class="hljs-number">2</span>
+      origin.y = newValue.y/<span class="hljs-number">2</span>
      }
   }
-}</p>
-<p>Property observer
-Not work with lazy variables</p>
-<p>willSet is called just before the value is stored.</p>
+}
+</code></pre>
 <ul>
-<li>didSet is called immediately after the new value is stored.</li>
+<li>Property observer<ul>
+<li>Not work with lazy variables</li>
+<li><code>willSet</code> is called just before the value is stored.</li>
+<li><code>didSet</code> is called immediately after the new value is stored.</li>
+<li>Auto name <code>newValue</code> is no name in <code>willSet</code></li>
+<li><code>oldValue</code> is used by <code>didSet</code>.</li>
 </ul>
-<p>Auto name newValue is no name in willSet
-oldValue for didSet.</p>
-<p>class StepCounter {
- var totalSteps: Int = 0 {
-   willSet(newSteps) {
-     print(&quot;About to set totalSteps to (newSteps)&quot;)
+</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StepCounter</span> </span>{
+ <span class="hljs-keyword">var</span> totalSteps: <span class="hljs-type">Int</span> = <span class="hljs-number">0</span> {
+   <span class="hljs-keyword">willSet</span>(newSteps) {
+     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;About to set totalSteps to <span class="hljs-subst">\(newSteps)</span>&quot;</span>)
    }
-   didSet {
-     if totalSteps &gt; oldValue  {
-       print(&quot;Added (totalSteps - oldValue) steps&quot;)
+   <span class="hljs-keyword">didSet</span> {
+     <span class="hljs-keyword">if</span> totalSteps &gt; oldValue  {
+       <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Added <span class="hljs-subst">\(totalSteps - oldValue)</span> steps&quot;</span>)
      }
    }
  }
 }
-let stepCounter = StepCounter()
-stepCounter.totalSteps = 50
-// About to set totalSteps to 50
-// Added 50 steps
-stepCounter.totalSteps = 150
-// About to set totalSteps to 150
-// Added 100 steps
-stepCounter.totalSteps = 420
-// About to set totalSteps to 420
-// Added 270 steps</p>
-<p>Type property
-Static is used and it belongs to a type(like class) and access through Classname.name
-It must have a default value</p>
-<p>Methods are functions that are associated with a particular type.
-It use self like this in other languages
-func increment() {
-   self.count+=1
-}</p>
-<p>The mutating keyword is added to the method&apos;s definition so it can modify property(var or let) of a structures and enumeration type.
-struct Point {
-   var x = 0.0, y = 0.0
-   mutating func moveByX(dX: Double, dY: Double) {
+<span class="hljs-keyword">let</span> stepCounter = <span class="hljs-type">StepCounter</span>()
+stepCounter.totalSteps = <span class="hljs-number">50</span>
+<span class="hljs-comment">// About to set totalSteps to 50</span>
+<span class="hljs-comment">// Added 50 steps</span>
+stepCounter.totalSteps = <span class="hljs-number">150</span>
+<span class="hljs-comment">// About to set totalSteps to 150</span>
+<span class="hljs-comment">// Added 100 steps</span>
+stepCounter.totalSteps = <span class="hljs-number">420</span>
+<span class="hljs-comment">// About to set totalSteps to 420</span>
+<span class="hljs-comment">// Added 270 steps</span>
+</code></pre>
+<ul>
+<li>Type property<ul>
+<li><code>static</code> is used and it belongs to a type(like class) and access through Classname.name</li>
+<li>It must have a default value</li>
+</ul>
+</li>
+<li>Methods are functions that are associated with a particular type.<ul>
+<li>It use <code>self</code> like this in other languages</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">increment</span><span class="hljs-params">()</span></span> {
+   <span class="hljs-keyword">self</span>.<span class="hljs-built_in">count</span>+=<span class="hljs-number">1</span>
+}
+</code></pre>
+<ul>
+<li>The <code>mutating</code> keyword is added to the method&apos;s definition so it can modify property(var or let) of a structures and enumeration type.</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Point</span> </span>{
+   <span class="hljs-keyword">var</span> x = <span class="hljs-number">0.0</span>, y = <span class="hljs-number">0.0</span>
+   <span class="hljs-keyword">mutating</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">moveByX</span><span class="hljs-params">(dX: Double, dY: Double)</span></span> {
      x += dX
      y += dY
    }
 }
-Static method the self refer the type(class)</p>
-<p>Subscript
-subscripts, which are shortcuts for accessing the member elements of a collection, list, or sequence.</p>
-<p>struct TimesTable {
-   let multiplier: Int
-   subscript(index: Int) -&gt; Int {
-      return multiplier * index
+</code></pre>
+<ul>
+<li>Static method the <code>self</code> refer the type(class)</li>
+</ul>
+<h4 id="subscript">Subscript</h4>
+<ul>
+<li>subscripts, which are shortcuts for accessing the member elements of a collection, list, or sequence.</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TimesTable</span> </span>{
+   <span class="hljs-keyword">let</span> multiplier: <span class="hljs-type">Int</span>
+   <span class="hljs-keyword">subscript</span>(index: <span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">Int</span> {
+      <span class="hljs-keyword">return</span> multiplier * index
    }
 }
-let threeTimesTable = TimesTable(multiplier: 3)
-print(threeTimesTable[5])
-// prints &quot;15&quot;</p>
-<p>Many subscript can be made with different parameters to overload.</p>
-<p>struct Matrix {
-  let rows: Int, columns: Int
-  var grid: [Double]
-  init(rows: Int, columns: Int) {
-     self.rows = rows
-     self.columns = columns
-     grid = Array(repeating: 0.0, count: rows <em> columns)
+<span class="hljs-keyword">let</span> threeTimesTable = <span class="hljs-type">TimesTable</span>(multiplier: <span class="hljs-number">3</span>)
+<span class="hljs-built_in">print</span>(threeTimesTable[<span class="hljs-number">5</span>])
+<span class="hljs-comment">// prints &quot;15&quot;</span>
+</code></pre>
+<ul>
+<li>Many subscript can be made with different parameters to overload.</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Matrix</span> </span>{
+  <span class="hljs-keyword">let</span> rows: <span class="hljs-type">Int</span>, columns: <span class="hljs-type">Int</span>
+  <span class="hljs-keyword">var</span> grid: [<span class="hljs-type">Double</span>]
+  <span class="hljs-keyword">init</span>(rows: <span class="hljs-type">Int</span>, columns: <span class="hljs-type">Int</span>) {
+     <span class="hljs-keyword">self</span>.rows = rows
+     <span class="hljs-keyword">self</span>.columns = columns
+     grid = <span class="hljs-type">Array</span>(repeating: <span class="hljs-number">0.0</span>, <span class="hljs-built_in">count</span>: rows * columns)
   }
-  subscript(row: Int, column: Int) -&gt; Double {
-     get {
-        return grid[(row </em> columns) + column]
+  <span class="hljs-keyword">subscript</span>(row: <span class="hljs-type">Int</span>, column: <span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">Double</span> {
+     <span class="hljs-keyword">get</span> {
+        <span class="hljs-keyword">return</span> grid[(row * columns) + column]
      }
-     set {
+     <span class="hljs-keyword">set</span> {
         grid[(row * columns) + column] = newValue
      }
   }
-}</p>
-<p>var matrix = Matrix(rows: 2, columns: 2)</p>
-<p>matrix[0, 1] = 1.5
-matrix[1, 0] = 3.2</p>
-<p>in a function definition use:
-guard booleanX else {
-    //additional operation here
-    return<br>//ignore this block if the booleanX is true, run code in this block if the boolean is false. one return here if no action needed
-}</p>
-<p>Inheritance
-Only class can
-Any class that does not inherit from another class is known as a base class.
-The inheriting class is a subclass.
-the class from which it inherits from is its superclass.</p>
-<p>class Subclass: Superclass {</p>
-<p>}</p>
-<p>Subclass can have subclass with all property inhered from both parent and grand parent classes accessed directly after &quot;.&quot;</p>
-<p>Subclass can override any property it inherited. New Definition start with keyword override.
-The superclass version of a method, property, or subscript is accessed by using the super prefix.
-super.method() for methods
-super[someIndex] for subscripts
-Prevent overriding by marking it as final (such as final var, final func, final class func, and final subscript even final class).</p>
-<p>Classes and structures must set all of their stored properties to an appropriate initial value prior to creation of an instance.</p>
-<p>Initializer
-Initializer is like a constructor that sets type values
-struct Fahrenheit {
-   var temp: Double
-   init() {
-     temp = 32.0
+}
+
+<span class="hljs-keyword">var</span> matrix = <span class="hljs-type">Matrix</span>(rows: <span class="hljs-number">2</span>, columns: <span class="hljs-number">2</span>)
+
+matrix[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>] = <span class="hljs-number">1.5</span>
+matrix[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>] = <span class="hljs-number">3.2</span>
+
+- <span class="hljs-keyword">in</span> a function definition use:
+
+```swift
+<span class="hljs-keyword">guard</span> booleanX <span class="hljs-keyword">else</span> {
+  <span class="hljs-comment">//additional operation here</span>
+  <span class="hljs-keyword">return</span>
+<span class="hljs-comment">//ignore this block if the booleanX is true, run code in this block if the boolean is false. one return here if no action needed</span>
+}
+</code></pre>
+<h4 id="inheritance">Inheritance</h4>
+<ul>
+<li>Only class can have inheritance</li>
+<li>Any class that does not inherit from another class is known as a base class.</li>
+<li>The inheriting class is a subclass.</li>
+<li>the class from which it inherits from is its superclass.</li>
+<li><code>class Subclass: Superclass {}</code></li>
+<li>Subclass can have subclass with all property inhered from both parent and grand parent classes accessed directly after <code>.</code></li>
+<li>Subclass can override any property it inherited. New Definition start with keyword override.</li>
+<li>The superclass version of a method, property, or subscript is accessed by using the super prefix.<ul>
+<li><code>super.method()</code> for methods</li>
+<li><code>super[someIndex]</code> for subscripts</li>
+</ul>
+</li>
+<li>Prevent overriding by marking it as <code>final</code> (such as <code>final var</code>, <code>final func</code>, <code>final class func</code>, and <code>final subscript</code> even <code>final class</code>).</li>
+<li>Classes and structures must set all of their stored properties to an appropriate initial value prior to creation of an instance.</li>
+</ul>
+<h4 id="initializer">Initializer</h4>
+<ul>
+<li>Initializer is like a constructor that sets type values</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Fahrenheit</span> </span>{
+   <span class="hljs-keyword">var</span> temp: <span class="hljs-type">Double</span>
+   <span class="hljs-keyword">init</span>() {
+     temp = <span class="hljs-number">32.0</span>
    }
 }
-var f = Fahrenheit()</p>
-<p>It can has different initializer within same class depends on the var name
-Init can also be overridden.</p>
-<p>self means the class or struct itself.</p>
-<p>convenience init(){
-    self.init(x:1.0,y:2.0)
-}//this is used to override the default init for empty new object.
-//it is called in the following manner.
-ClassName()</p>
-<p>struct Celsius {
-  var tempInCelsius: Double
-  init(fromFahrenheit fahrenheit: Double) {
-    tempInCelsius = (fahrenheit - 32.0) / 1.8
+<span class="hljs-keyword">var</span> f = <span class="hljs-type">Fahrenheit</span>()
+</code></pre>
+<ul>
+<li>It can has different initializer within same class depends on the <code>var</code> name</li>
+<li><code>init</code> can also be overridden.</li>
+<li><code>self</code> means the class or struct itself.</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-keyword">convenience</span> <span class="hljs-keyword">init</span>(){
+    <span class="hljs-keyword">self</span>.<span class="hljs-keyword">init</span>(x:<span class="hljs-number">1.0</span>,y:<span class="hljs-number">2.0</span>)
+}<span class="hljs-comment">//this is used to override the default init for empty new object.</span>
+<span class="hljs-comment">//it is called in the following manner.</span>
+<span class="hljs-type">ClassName</span>()
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Celsius</span> </span>{
+  <span class="hljs-keyword">var</span> tempInCelsius: <span class="hljs-type">Double</span>
+  <span class="hljs-keyword">init</span>(fromFahrenheit fahrenheit: <span class="hljs-type">Double</span>) {
+    tempInCelsius = (fahrenheit - <span class="hljs-number">32.0</span>) / <span class="hljs-number">1.8</span>
   }
-  init(fromKelvin kelvin: Double) {
-    tempInCelsius = kelvin - 273.15
+  <span class="hljs-keyword">init</span>(fromKelvin kelvin: <span class="hljs-type">Double</span>) {
+    tempInCelsius = kelvin - <span class="hljs-number">273.15</span>
   }
 }
-let boilingPoint = Celsius(fromFahrenheit: 212.0)
-let freezingPoint = Celsius(fromKelvin: 273.15)</p>
-<p>There is a default memberwise initializer</p>
-<p>For structure
-struct Size {
-  var width = 0.0, height = 0.0
+<span class="hljs-keyword">let</span> boilingPoint = <span class="hljs-type">Celsius</span>(fromFahrenheit: <span class="hljs-number">212.0</span>)
+<span class="hljs-keyword">let</span> freezingPoint = <span class="hljs-type">Celsius</span>(fromKelvin: <span class="hljs-number">273.15</span>)
+</code></pre>
+<ul>
+<li>There is a default memberwise initializer</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-comment">//For structure</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Size</span> </span>{
+  <span class="hljs-keyword">var</span> width = <span class="hljs-number">0.0</span>, height = <span class="hljs-number">0.0</span>
 }
-let twoByTwo = Size(width: 2.0, height: 2.0)</p>
-<p>For class
-class Size {
-  var width:Double, height:Double
-  init(w:Double, h:Double) {
+<span class="hljs-keyword">let</span> twoByTwo = <span class="hljs-type">Size</span>(width: <span class="hljs-number">2.0</span>, height: <span class="hljs-number">2.0</span>)
+<span class="hljs-comment">//For class</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Size</span> </span>{
+  <span class="hljs-keyword">var</span> width:<span class="hljs-type">Double</span>, height:<span class="hljs-type">Double</span>
+  <span class="hljs-keyword">init</span>(w:<span class="hljs-type">Double</span>, h:<span class="hljs-type">Double</span>) {
     width = w
     height = h
   }
 }
-let twoByTwo = Size(w: 2.0, h: 2.0)</p>
-<p>Write the required modifier before the definition of a class initializer to indicate that every subclass of the class must implement that initializer:</p>
-<p>class SomeClass {
-   required init() {
-     // initializer implementation goes here
+<span class="hljs-keyword">let</span> twoByTwo = <span class="hljs-type">Size</span>(w: <span class="hljs-number">2.0</span>, h: <span class="hljs-number">2.0</span>)
+</code></pre>
+<ul>
+<li>Write the required modifier before the definition of a class initializer to indicate that every subclass of the class must implement that initializer:</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeClass</span> </span>{
+   <span class="hljs-keyword">required</span> <span class="hljs-keyword">init</span>() {
+     <span class="hljs-comment">// initializer implementation goes here</span>
    }
-}</p>
-<p>You must also insert the required modifier before every subclass init</p>
-<p>A deinitializer is called immediately before a class instance is deallocated.
-Class only
-Auto called before instance deallocation, or for superclass after subclass deinit
-Superclass inherits the deinit from subclass, and auto called all the time.
-deinit {
-   // perform the deinitialization
 }
-It is used to save resource.</p>
-<p>@Class before method declaration is used to expose the method to a certain class.</p>
-<p>Exception
-do {
-    try &#x2026;
-} catch {
-    print(error)
-}</p>
-<p>Basic Class method
-String()
-print()
-stringname.isEmpty        return Bool true if empty.
-name.hasPrefix(&quot;abc&quot;)    return Bool
-name.hasSuffix(&quot;abc&quot;)    return Bool
-stringname.uppercased()      convert whole sentence into uppercase.
+</code></pre>
+<ul>
+<li>You must also insert the required modifier before every subclass init</li>
+<li>A deinitializer is called immediately before a class instance is deallocated.<ul>
+<li>It is used to save resource.</li>
+</ul>
+</li>
+<li>Class only<ul>
+<li>Auto called before instance deallocation, or for superclass after subclass deinit</li>
+<li>Superclass inherits the deinit from subclass, and auto called all the time.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-keyword">deinit</span> {
+   <span class="hljs-comment">// perform the deinitialization</span>
+}
+</code></pre>
+<ul>
+<li><code>@Class</code> before method declaration is used to expose the method to a certain class.</li>
+</ul>
+<h3 id="exception">Exception</h3>
+<pre><code class="lang-swift"><span class="hljs-keyword">do</span> {
+    <span class="hljs-keyword">try</span> &#x2026;
+} <span class="hljs-keyword">catch</span> {
+    <span class="hljs-built_in">print</span>(error)
+}
+</code></pre>
+<h3 id="basic-class-method">Basic Class method</h3>
+<h4 id="string-methods">String Methods</h4>
+<pre><code class="lang-swift"><span class="hljs-built_in">print</span>()
+stringname.isEmpty       <span class="hljs-comment">//return Bool true if empty.</span>
+name.hasPrefix(<span class="hljs-string">&quot;abc&quot;</span>)    <span class="hljs-comment">//return Bool</span>
+name.hasSuffix(<span class="hljs-string">&quot;abc&quot;</span>)    <span class="hljs-comment">//return Bool</span>
+stringname.uppercased()  <span class="hljs-comment">//convert whole sentence into uppercase.</span>
 stringname.lowercased()
-stringname.count                  return the number of characters in Int.</p>
-<p>array
-name.count        return number of elements
-name.isEmpty      return Bool true if array length is 0.
-arrayname.append(newitem)        add new element at the end of this array.
-arrayname.count                           return array length in int
-arrayname.last               return the last element
-arrayname.lastIndex               return the index of the last element
+stringname.<span class="hljs-built_in">count</span>         <span class="hljs-comment">//return the number of characters in Int.</span>
+</code></pre>
+<h4 id="array-methods">Array Methods</h4>
+<pre><code class="lang-swift">name.<span class="hljs-built_in">count</span>               <span class="hljs-comment">//return number of elements</span>
+name.isEmpty             <span class="hljs-comment">//return Bool true if array length is 0.</span>
+arrayname.append(newitem)<span class="hljs-comment">//add new element at the end of this array.</span>
+arrayname.<span class="hljs-built_in">count</span>          <span class="hljs-comment">//return array length in int</span>
+arrayname.last           <span class="hljs-comment">//return the last element</span>
+arrayname.lastIndex      <span class="hljs-comment">//return the index of the last element</span>
 name.insert(item, at: index)
-name.remove(at:index)                 return the item
+name.remove(at:index)    <span class="hljs-comment">//return the item</span>
 name.removeLast()
 name.removeAtIndex()
 name.enumerated()
-for (index,value) in shoppingList.enumerated(){
-    print(&quot;Item (index+1): (value)&quot;)</p>
-<p>set
-count
-isEmpty
+<span class="hljs-keyword">for</span> (index,value) <span class="hljs-keyword">in</span> shoppingList.enumerated(){
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Item <span class="hljs-subst">\(index+<span class="hljs-number">1</span>)</span>: <span class="hljs-subst">\(value)</span>&quot;</span>)
+</code></pre>
+<h4 id="set-methods">Set Methods</h4>
+<pre><code class="lang-swift">name.<span class="hljs-built_in">count</span>
+name.isEmpty
 name.insert(item)
-name.remove(item)          return item or nil if item not found
+name.remove(item)         <span class="hljs-comment">//return item or nil if item not found</span>
 name.removeAll()
-name.contains(item)             return Bool if contain
- ==   for equal
+name.<span class="hljs-built_in">contains</span>(item)       <span class="hljs-comment">//return Bool if contain</span>
+<span class="hljs-comment">//==   for equal</span>
 a.intersection(b)
 a.symmetricDifference(b)
 a.union(b)
@@ -1720,14 +1877,17 @@ isSubset()
 isSuperset()
 isStrictSubset()
 isStrictSuperset()
-isDisjoint()</p>
-<p>sorted iteration
-for name in name.sorted(){
-}</p>
-<p>Dictionary
-count and isEmpty
-name.updateValue(newkey,forKey:oldkey)         update key value   returns the old kay value  or nil if not found
-name.removeValue(forKey:key)          return oldvalue or nil if not found</p>
+isDisjoint()
+<span class="hljs-comment">//sorted iteration</span>
+<span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> name.sorted(){
+}
+</code></pre>
+<h4 id="dictionary-methods">Dictionary Methods</h4>
+<pre><code class="lang-swift">name.<span class="hljs-built_in">count</span>
+name.isEmpty
+name.updateValue(newkey,forKey:oldkey)  <span class="hljs-comment">//update key value   returns the old kay value  or nil if not found</span>
+name.removeValue(forKey:key) <span class="hljs-comment">//return oldvalue or nil if not found</span>
+</code></pre>
 
                                 
                                 </section>
@@ -1771,7 +1931,7 @@ name.removeValue(forKey:key)          return oldvalue or nil if not found</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Swift","level":"1.8","depth":1,"next":{"title":"Xcode","level":"1.8.1","depth":2,"path":"swift/xcode.md","ref":"swift/xcode.md","articles":[]},"previous":{"title":"ASP.NET","level":"1.7.2","depth":2,"path":"c-sharp/asp-dot-net.md","ref":"c-sharp/asp-dot-net.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"swift/README.md","mtime":"2020-01-04T11:32:56.698Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-22T16:03:48.866Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Swift","level":"1.8","depth":1,"next":{"title":"Xcode","level":"1.8.1","depth":2,"path":"swift/xcode.md","ref":"swift/xcode.md","articles":[]},"previous":{"title":"ASP.NET","level":"1.7.2","depth":2,"path":"c-sharp/asp-dot-net.md","ref":"c-sharp/asp-dot-net.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"swift/README.md","mtime":"2020-08-02T21:25:20.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

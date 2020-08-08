@@ -68,6 +68,16 @@ Provide Persistent Storage
   - Transition actions — Define when objects transition to another storage class.
     - There are costs associated with the lifecycle transition requests.
   - Expiration actions — Define when objects expire. Amazon S3 deletes expired objects on your behalf.
+- The public object URL can be in many forms.
+  - When the region is in the default region `us-east-1`.
+    - `https://s3.amazonaws.com/bucket/key`
+    - `https://bucket.s3.amazonaws.com/key`
+  - When the bucket is not in `us-east-1`:
+    - `https://s3-region.amazonaws.com/bucket/key`
+    - `https://s3.region.amazonaws.com/bucket/key`
+    - `https://bucket.s3.amazonaws.com/key`
+    - `https://bucket.s3.region.amazonaws.com/key`
+    - `https://bucket.s3-region.amazonaws.com/key`
 
 ### CLI Commands
 
@@ -90,6 +100,7 @@ Provide Persistent Storage
 
 It provides a DNS service that translates the domain name into a designated IP address.
 
+- This service does not require region selection, all settings are global.
 - There is a 50 cents charge per month per host zone.
 - DNS Records are added in the hostzones.
 - Some domain register has free DNS services.
@@ -310,6 +321,13 @@ It generates metrics for other services.
 - Enhanced plan will provides more metrics.
 - It can be used to set rules for auto scaling policy when the values from a certain metric reach certain value.
 - Alarms can be set based on Metrics' states and values.
+- Custom Log Group can be created and log stream can be pushed to the log group.
+- Data from the log stream can be filter, collected and push to metrics based on the a predefined pattern.
+  - Pattern to match log event, `127.0.0.1 - frank [10/Oct/2000:13:25:15 -0700] "GET /apache_pb.gif HTTP/1.0" 200 1534` can be `[ip, user, username, timestamp, request, status_code = 4*, bytes]`
+  - `>`, `<` can be used on numerical values.
+  - text surrounded by `""` or `[]` are treated as one entry.
+  - Once a pattern is set cloudwatch can be generated based on it using AWS console, `CloudWatch` -> `Log Groups` -> `Create metric filter`.
+  - [Click Here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringPolicyExamples.html) to see more example.
 
 ## Lambda
 
@@ -401,6 +419,7 @@ It provides support for generating serverless APIs.
 - Custom Domain Names will attach user's own certificate to the URL and map the domain to the staged resources.
 - Custom Domain Names will need an Alias in Route 53 for its API Gateway domain name.
 - CORS can be enabled for each individual method in the `Actions` menu.
+  - `CORS` header setting will be stored in the `OPTIONS` method of the same resource.
 - If integrated with Lambda, Allow CORS in the response header in the return statement at the end.
   ```py
   'headers': {
@@ -409,6 +428,13 @@ It provides support for generating serverless APIs.
       'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
   },
   ```
+- The execution log can be enalbed in the stage setting `Logs/Tracing` Tab.
+  - The `ARN` of an `IAM` role with `AmazonAPIGatewayPushToCloudWatchLogs` Permission is required in the setting page, opened from the left pannel.
+  - It can log full requests/responses data.
+  - It can enable detailed CloudWatch metrics.
+- The access log is the custom log that can be used to store cutomized formatted log.
+  - It support log with `CLF`, `JSON`, `CSV`, and `XML` format.
+  - only the `$context` variable can be used to access requrest info.
 
 ## Sagemaker
 
@@ -622,3 +648,10 @@ Create a Skill - a skill can be created by using the following ways.
 It is used to allow devices to support Alexa.
 
 - Register a product from the developer console in order to get crendentials required by the customized Alexa Device.
+
+## Cognito
+
+- It provides authentication, authorization, and user management for your web and mobile apps. Your users can sign in directly with a user name and password, or through a third party such as Facebook, Amazon, or Google.
+- The two main components of Amazon Cognito are user pools and identity pools.
+  - User pools are user directories that provide sign-up and sign-in options for your app users.
+  - Identity pools enable you to grant your users access to other AWS services. You can use identity pools and user pools separately or together.

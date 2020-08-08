@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="anaconda.html" />
+    <link rel="next" href="pip.html" />
     
     
     <link rel="prev" href="./" />
@@ -129,7 +129,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="anaconda.html">
+        <li class="chapter " data-level="1.2.2" data-path="pip.html">
+            
+                <a href="pip.html">
+            
+                    
+                    pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="anaconda.html">
             
                 <a href="anaconda.html">
             
@@ -142,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="django.html">
+        <li class="chapter " data-level="1.2.4" data-path="django.html">
             
                 <a href="django.html">
             
@@ -896,6 +909,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.18.4" data-path="../embedded/electricity-magnetism.html">
+            
+                <a href="../embedded/electricity-magnetism.html">
+            
+                    
+                    Electricity & Magnetism
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -928,9 +954,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../theory/cryptography.md">
+        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
             
-                <span>
+                <a href="../algorithm/cryptography.html">
             
                     
                     Cryptography
@@ -941,9 +967,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../theory/ml.md">
+        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
             
-                <span>
+                <a href="../algorithm/ml.html">
             
                     
                     Machine Learning
@@ -1119,6 +1145,21 @@
 <li>All the following libraries are commonly included in Python distributions.</li>
 <li><a href="https://docs.python.org/3.8/library/index.html" target="_blank">Click here</a> to view the complete documentation.</li>
 </ul>
+<h2 id="itertools-modules">itertools modules</h2>
+<h3 id="usage">Usage</h3>
+<pre><code class="lang-py"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> *
+count(x) <span class="hljs-comment">#counts up from x</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> count(<span class="hljs-number">3</span>):
+    print(i)
+cycle(x) <span class="hljs-comment">#infinitely iterates through an iterable (for instance a list or string).</span>
+repeat(x) <span class="hljs-comment">#repeats an object, either infinitely or a specific number of times(x).</span>
+product(iterable1,iterable2) <span class="hljs-comment">#return an object contains all possible combination product of these two iterables. (all possible iterable 1 , all possible iterable 2 )</span>
+permutation(iterable)   <span class="hljs-comment">#return an object contains all possible comb for the single iterable.</span>
+takewhile(predicateFunc, iterables) <span class="hljs-comment"># return object with items that only satisfy the predicate function.</span>
+chain(x,y) <span class="hljs-comment">#combine iterables</span>
+accumulate(iterables)  <span class="hljs-comment">#return a object contains a list of sum up to its position.</span>
+list(accumulate(range(<span class="hljs-number">8</span>)))
+</code></pre>
 <h2 id="re">re</h2>
 <ul>
 <li>It supports Regular Expression.</li>
@@ -1493,6 +1534,7 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 <li><code>os.path.isdir(&apos;path&apos;)</code> return true if it is a directory.</li>
 <li><code>os.path.isfile(&apos;path&apos;)</code> return true if it is a file.</li>
 <li><code>os.path.splitext(&apos;path&apos;)</code> return a file path and an extension of the file separately.</li>
+<li><code>os.system(&apos;cd ..&apos;)</code> run the command and return the exit status code.</li>
 </ul>
 <h2 id="datetime">datetime</h2>
 <h3 id="datetimedatetime">datetime.datetime</h3>
@@ -1506,8 +1548,9 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 <li><code>time = datetime.now(timezone_object)</code> get a current datetime object for a certain timezone.</li>
 </ul>
 </li>
+<li><code>timestamp = datetime.timestamp(now)</code> current timestamp.</li>
 <li><code>datetime.now().time()</code> get a current time object.</li>
-<li><code>timeObject.strftime(&quot;%H:%M:%S&quot;)</code> return a formatted time string.</li>
+<li><code>timeObject.strftime(&quot;%m/%d/%Y, %H:%M:%S&quot;)</code> return a formatted time string.</li>
 <li>For datetime object<ul>
 <li><code>time.year</code></li>
 <li><code>time.month</code></li>
@@ -1589,6 +1632,15 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 <li>It can pass parameters as <code>response = requests.get(url, params=parameters, headers=headers)</code> where <code>parameters</code> is a dictionary.</li>
 </ul>
 </li>
+</ul>
+<h2 id="base64">base64</h2>
+<ul>
+<li>Encode/Decode base64 files</li>
+<li><code>import base64</code></li>
+</ul>
+<h3 id="usage">Usage</h3>
+<ul>
+<li><code>img = base64.b64decode(img)</code> encode decoded images file</li>
 </ul>
 <h2 id="json">json</h2>
 <ul>
@@ -1726,7 +1778,7 @@ import contextlib</p>
                 </a>
                 
                 
-                <a href="anaconda.html" class="navigation navigation-next " aria-label="Next page: Libraries with Anaconda">
+                <a href="pip.html" class="navigation navigation-next " aria-label="Next page: pip">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1737,7 +1789,7 @@ import contextlib</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"next":{"title":"Libraries with Anaconda","level":"1.2.2","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Libraries with Anaconda","level":"1.2.2","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-06-26T00:10:33.785Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-22T16:03:48.866Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"next":{"title":"pip","level":"1.2.2","depth":2,"path":"python/pip.md","ref":"python/pip.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"pip","level":"1.2.2","depth":2,"path":"python/pip.md","ref":"python/pip.md","articles":[]},{"title":"Libraries with Anaconda","level":"1.2.3","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},{"title":"Django","level":"1.2.4","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-08-06T20:36:55.900Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

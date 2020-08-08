@@ -129,7 +129,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="anaconda.html">
+        <li class="chapter " data-level="1.2.2" data-path="pip.html">
+            
+                <a href="pip.html">
+            
+                    
+                    pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="anaconda.html">
             
                 <a href="anaconda.html">
             
@@ -142,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="django.html">
+        <li class="chapter " data-level="1.2.4" data-path="django.html">
             
                 <a href="django.html">
             
@@ -896,6 +909,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.18.4" data-path="../embedded/electricity-magnetism.html">
+            
+                <a href="../embedded/electricity-magnetism.html">
+            
+                    
+                    Electricity & Magnetism
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -928,9 +954,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../theory/cryptography.md">
+        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
             
-                <span>
+                <a href="../algorithm/cryptography.html">
             
                     
                     Cryptography
@@ -941,9 +967,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../theory/ml.md">
+        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
             
-                <span>
+                <a href="../algorithm/ml.html">
             
                     
                     Machine Learning
@@ -1173,9 +1199,11 @@ input(<span class="hljs-string">&quot;Prompt: &quot;</span>)     <span class="hl
 <h3 id="modules">Modules</h3>
 <ul>
 <li>Modules provide additional methods or functions for the programming. They are imported at the very beginning.</li>
-<li>It is recognized by the keyword import.</li>
+<li>It is recognized by the keyword <code>import</code>. For example, a module called <code>module</code> can imported in the following ways:</li>
 </ul>
-<pre><code class="lang-py"><span class="hljs-keyword">import</span> math
+<pre><code class="lang-py"><span class="hljs-keyword">import</span> module
+<span class="hljs-keyword">import</span> module <span class="hljs-keyword">as</span> md
+<span class="hljs-keyword">from</span> module <span class="hljs-keyword">import</span> function
 </code></pre>
 <h2 id="variables">Variables</h2>
 <p>They are customized name for storing data.</p>
@@ -1192,16 +1220,16 @@ input(<span class="hljs-string">&quot;Prompt: &quot;</span>)     <span class="hl
 <li>Variables introduced inside functions are local(only available) to that function.</li>
 </ul>
 <h2 id="basic-data-types">Basic Data Types</h2>
-<h4 id="boolean">Boolean:</h4>
+<h4 id="boolean">Boolean</h4>
 <ul>
 <li>True</li>
 <li>False</li>
 </ul>
-<h4 id="integer">Integer:</h4>
+<h4 id="integer">Integer</h4>
 <ul>
 <li>Whole number</li>
 </ul>
-<h4 id="float">Float:</h4>
+<h4 id="float">Float</h4>
 <ul>
 <li>It can be any number with a decimal point. It is produced after any division or implicitly transfer after an operation between float and integer.</li>
 <li>Computer has limited memory space for floats. Also, any zero at the end will be ignored.</li>
@@ -1260,21 +1288,21 @@ str.isspace()
 str.isupper()
 str.find(substring) <span class="hljs-comment">#Find the lowest index of the substring.</span>
 str.strip(string)   <span class="hljs-comment">#Strip all the characters in the argument of the str from the beginning and the end.</span>
+<span class="hljs-string">&quot;,&quot;</span>.join([<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>])
+<span class="hljs-comment">#Output:&#x2019;a,b,c&#x2019;</span>
+<span class="hljs-string">&quot;Hello ME&quot;</span>.replace(<span class="hljs-string">&quot;ME&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>)
+<span class="hljs-comment">#Output:&#x2019;Hello world&#x2019;</span>
+<span class="hljs-string">&quot;This is a sentence&quot;</span>.startswith(<span class="hljs-string">&quot;This&quot;</span>)
+<span class="hljs-comment">#Output:True</span>
+<span class="hljs-string">&quot;Hello World!&quot;</span>.endswith(<span class="hljs-string">&quot;world!&quot;</span>)
+<span class="hljs-comment">#Output:False</span>
+<span class="hljs-string">&quot;x,y,z&quot;</span>.split(<span class="hljs-string">&quot;,&quot;</span>)
+<span class="hljs-comment">#Output:[&#x2018;x&#x2019;,&#x2019;y&#x2019;,&#x2019;z&#x2019;]</span>
 </code></pre>
 <h5 id="string-function">String Function</h5>
 <pre><code class="lang-py">len(string)    <span class="hljs-comment">#Return the number of characters of this string.</span>
 </code></pre>
-<h3 id="type-casting">Type Casting</h3>
-<p>Explicitly convert types.</p>
-<pre><code class="lang-py">str(x)    <span class="hljs-comment">#To  string</span>
-int(x)    <span class="hljs-comment">#To  integer</span>
-float(x) <span class="hljs-comment">#To   float</span>
-list(x)   <span class="hljs-comment">#To   list</span>
-eval(x) <span class="hljs-comment"># parse and evaluation a string to other types</span>
-eval(<span class="hljs-string">&apos;[1]&apos;</span>) <span class="hljs-comment">#string to list</span>
-eval(<span class="hljs-string">&apos;1&apos;</span>) <span class="hljs-comment">#string to int</span>
-</code></pre>
-<h3 id="string-formatting">String Formatting</h3>
+<h5 id="string-formatting">String Formatting</h5>
 <p><code>&quot;formatedStringUsing{}&quot;.format(x,y,z)</code></p>
 <ul>
 <li>String is formatted in a set of double quotation marks.</li>
@@ -1296,20 +1324,22 @@ eval(<span class="hljs-string">&apos;1&apos;</span>) <span class="hljs-comment">
 <span class="hljs-comment">#Output:left______</span>
 <span class="hljs-string">&quot;{:&gt;10}&quot;</span>.format(<span class="hljs-string">&quot;right&quot;</span>)
 <span class="hljs-comment">#Output:     right</span>
-
-<span class="hljs-string">&quot;&quot;&quot;
-Other Methods
-&quot;&quot;&quot;</span>
-<span class="hljs-string">&quot;,&quot;</span>.join([<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>])
-<span class="hljs-comment">#Output:&#x2019;a,b,c&#x2019;</span>
-<span class="hljs-string">&quot;Hello ME&quot;</span>.replace(<span class="hljs-string">&quot;ME&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>)
-<span class="hljs-comment">#Output:&#x2019;Hello world&#x2019;</span>
-<span class="hljs-string">&quot;This is a sentence&quot;</span>.startswith(<span class="hljs-string">&quot;This&quot;</span>)
-<span class="hljs-comment">#Output:True</span>
-<span class="hljs-string">&quot;Hello World!&quot;</span>.endswith(<span class="hljs-string">&quot;world!&quot;</span>)
-<span class="hljs-comment">#Output:False</span>
-<span class="hljs-string">&quot;x,y,z&quot;</span>.split(<span class="hljs-string">&quot;,&quot;</span>)
-<span class="hljs-comment">#Output:[&#x2018;x&#x2019;,&#x2019;y&#x2019;,&#x2019;z&#x2019;]</span>
+</code></pre>
+<ul>
+<li>Optionally, use <code>f&quot;Formatted: {variable}:.2f&quot;</code><ul>
+<li>Use <code>()</code> for expression containing variables.</li>
+</ul>
+</li>
+</ul>
+<h3 id="type-casting">Type Casting</h3>
+<p>Explicitly convert types.</p>
+<pre><code class="lang-py">str(x)    <span class="hljs-comment">#To  string</span>
+int(x)    <span class="hljs-comment">#To  integer</span>
+float(x) <span class="hljs-comment">#To   float</span>
+list(x)   <span class="hljs-comment">#To   list</span>
+eval(x) <span class="hljs-comment"># parse and evaluation a string to other types</span>
+eval(<span class="hljs-string">&apos;[1]&apos;</span>) <span class="hljs-comment">#string to list</span>
+eval(<span class="hljs-string">&apos;1&apos;</span>) <span class="hljs-comment">#string to int</span>
 </code></pre>
 <h2 id="operators">Operators</h2>
 <p>Operators are special symbols that placed in between objects.</p>
@@ -1606,6 +1636,10 @@ range(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>,x) 
 <span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *
 <span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> sqrt <span class="hljs-keyword">as</span> square_root
 </code></pre>
+<h4 id="show-version">Show Version</h4>
+<ul>
+<li><code>print(package.__version__)</code></li>
+</ul>
 <h4 id="name-variable"><code>__name__</code> variable</h4>
 <ul>
 <li>By default <code>__name__</code> is set to <code>__main__</code>, when a module is imported it will be set to the module name.</li>
@@ -1616,46 +1650,10 @@ range(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>,x) 
 </ul>
 <h4 id="sources-of-modules">Sources of Modules</h4>
 <ol>
-<li><p>Some of them are preinstalled in the standard Library</p>
-</li>
-<li><p>Third-party Python modules.
-They can be stored on the Python Package Index (PyPI). Here are some useful commands.</p>
-<ul>
-<li><code>pip install &lt;packagename&gt;</code> install a package</li>
-<li><code>pip install --upgrade &lt;packagename&gt;</code> update a package</li>
-<li><code>pip install -r requirements.txt</code> install packages according the <code>requirements.txt</code></li>
-<li><code>pip uninstall &lt;packagename&gt;</code> uninstall a package</li>
-<li><code>pip search &lt;keyword&gt;</code> search for a package</li>
-<li><code>pip list</code> list packages</li>
-<li><code>pip freeze</code> output package info file<ul>
-<li><code>pip freeze &gt;requirement.txt</code> output package info file as txt file.</li>
-</ul>
-</li>
-<li><code>pip install -U pip</code> update pip</li>
-</ul>
-</li>
-<li>Your own module.
-Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file.</li>
+<li>Some of them are preinstalled in the standard Library</li>
+<li>Third-party Python modules. Installed using libraries management tools like <code>pip</code> or <code>conda</code></li>
+<li>Your own module. Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file.</li>
 </ol>
-<h3 id="itertools-modules">itertools modules</h3>
-<h4 id="import-module">Import module</h4>
-<pre><code class="lang-py"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> *
-</code></pre>
-<h4 id="methods">Methods</h4>
-<pre><code class="lang-py">count(x) <span class="hljs-comment">#counts up from x</span>
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> count(<span class="hljs-number">3</span>):
-    print(i)
-cycle(x) <span class="hljs-comment">#infinitely iterates through an iterable (for instance a list or string).</span>
-repeat(x) <span class="hljs-comment">#repeats an object, either infinitely or a specific number of times(x).</span>
-product(iterable1,iterable2) <span class="hljs-comment">#return an object contains all possible combination product of these two iterables. (all possible iterable 1 , all possible iterable 2 )</span>
-permutation(iterable)   <span class="hljs-comment">#return an object contains all possible comb for the single iterable.</span>
-</code></pre>
-<h4 id="functions">Functions</h4>
-<pre><code class="lang-py">takewhile(predicateFunc, iterables) <span class="hljs-comment"># return object with items that only satisfy the predicate function.</span>
-chain(x,y) <span class="hljs-comment">#combine iterables</span>
-accumulate(iterables)  <span class="hljs-comment">#return a object contains a list of sum up to its position.</span>
-list(accumulate(range(<span class="hljs-number">8</span>)))
-</code></pre>
 <h2 id="lambda">Lambda</h2>
 <ul>
 <li>It is used to create anonymous function with has no variable name.</li>
@@ -1676,8 +1674,14 @@ functionName(variable)
 <li>functions can be assigned to a variable names.</li>
 <li>The variable can be called.</li>
 <li>function can be argument of other function.</li>
-<li>Functions can have variables name starts with <code>*</code>, it enable the function to take a list of itratable variable with any length, generally it is called <code>*args</code>.</li>
-<li>Functions can have variables name starts with <code>**</code>, it enable the function to take a dictionary of itratable keys and values with any length, generally it is called <code>**kwargs</code>.</li>
+<li>Functions can have variables name starts with <code>*</code>, it enable the function to take a list of itratable variable with any length, generally it is called <code>*args</code>.<ul>
+<li><code>func(x=3, y=4)</code> or <code>func(3, 4)</code> is the same as <code>func(*[3, 4])</code></li>
+</ul>
+</li>
+<li>Functions can have variables name starts with <code>**</code>, it enable the function to take a dictionary of itratable keys and values with any length as its parameters, generally it is called <code>**kwargs</code>.<ul>
+<li><code>func(x=3, y=4)</code> or <code>func(3, 4)</code> is the same as <code>func(**{&apos;x&apos;: 3, &apos;y&apos;: 4})</code></li>
+</ul>
+</li>
 </ul>
 <h4 id="return-statement">return statement</h4>
 <p>Once a value is returned from a function, it immediately stops being executed.</p>
@@ -2071,68 +2075,6 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
 <pre><code class="lang-py"><span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;localfile.txt&quot;</span>) <span class="hljs-keyword">as</span> newfile:
     print(newfile.read())    <span class="hljs-comment">#This create a temperate variable newfile within the block. It will also make sure the file closure.</span>
 </code></pre>
-<h2 id="database">Database</h2>
-<ul>
-<li>Python needs a driver for database connection</li>
-<li>There are drivers for different database engines.</li>
-</ul>
-<h3 id="postgres">Postgres</h3>
-<ul>
-<li>Run <code>pip install psycopg2</code></li>
-<li>Example Usage</li>
-</ul>
-<pre><code class="lang-py"><span class="hljs-comment">#Import the python driver for PostgreSQL</span>
-<span class="hljs-keyword">import</span> psycopg2
-
-<span class="hljs-comment">#Create a connection credentials to the PostgreSQL database</span>
-<span class="hljs-keyword">try</span>:
-    connection = psycopg2.connect(
-        user = <span class="hljs-string">&quot;postgres&quot;</span>,
-        password = <span class="hljs-string">&quot;1234&quot;</span>,
-        host = <span class="hljs-string">&quot;localhost&quot;</span>,
-        port = <span class="hljs-string">&quot;5432&quot;</span>,
-        database = <span class="hljs-string">&quot;demo&quot;</span>
-    )
-
-    <span class="hljs-comment">#Create a cursor connection object to a PostgreSQL instance and print the connection properties.</span>
-    cursor = connection.cursor()
-    print(connection.get_dsn_parameters(),<span class="hljs-string">&quot;\n&quot;</span>)
-
-    <span class="hljs-comment">#Display the PostgreSQL version installed</span>
-    cursor.execute(<span class="hljs-string">&quot;SELECT version();&quot;</span>)
-    record = cursor.fetchone()
-    print(<span class="hljs-string">&quot;You are connected into the - &quot;</span> record,<span class="hljs-string">&quot;\n&quot;</span>)
-
-    <span class="hljs-comment">#Get the column name of a table inside the database and put some values</span>
-    pg_insert = <span class="hljs-string">&quot;&quot;&quot; INSERT INTO book (id, author, isbn, title, date_published)
-                VALUES (%s,%s,%s,%s,%s)&quot;&quot;&quot;</span>
-
-    inserted_values = (<span class="hljs-number">1</span>, <span class="hljs-string">&apos;Layla Nowiztki&apos;</span>, <span class="hljs-string">&apos;789-1-46-268414-1&apos;</span>, <span class="hljs-string">&apos;How to become a professional programmer&apos;</span>, <span class="hljs-string">&apos;January 25 2011&apos;</span>)
-
-    <span class="hljs-comment">#Execute the pg_insert SQL string</span>
-    cursor.execute(pg_insert, inserted_values)
-
-    <span class="hljs-comment">#Commit transaction and prints the result successfully</span>
-    connection.commit()
-    count = cursor.rowcount
-    <span class="hljs-keyword">print</span> (count, <span class="hljs-string">&quot;Successfully inserted&quot;</span>)
-
-
-<span class="hljs-comment">#Handle the error throws by the command that is useful when using python while working with PostgreSQL</span>
-<span class="hljs-keyword">except</span>(Exception, psycopg2.Error) <span class="hljs-keyword">as</span> error:
-    print(<span class="hljs-string">&quot;Error connecting to PostgreSQL database&quot;</span>, error)
-    connection = <span class="hljs-keyword">None</span>
-
-<span class="hljs-comment">#Close the database connection</span>
-<span class="hljs-keyword">finally</span>:
-    <span class="hljs-keyword">if</span>(connection != <span class="hljs-keyword">None</span>):
-        cursor.close()
-        connection.close()
-        print(<span class="hljs-string">&quot;PostgreSQL connection is now closed&quot;</span>)
-</code></pre>
-<ul>
-<li><code>inserted_values</code> has to be a tuple, even if it has only one parameter. For example, use <code>(1,)</code>.</li>
-</ul>
 
                                 
                                 </section>
@@ -2176,7 +2118,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-07-16T17:44:10.133Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-22T16:03:48.866Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-08-08T03:37:32.069Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

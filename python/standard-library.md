@@ -362,8 +362,9 @@ list(accumulate(range(8)))
 - `datetime.fromtimestamp(timestamp)` convert timestamp to value to datetime string.
 - `time = datetime.now()` get a current datetime object.
   - `time = datetime.now(timezone_object)` get a current datetime object for a certain timezone.
+- `timestamp = datetime.timestamp(now)` current timestamp.
 - `datetime.now().time()` get a current time object.
-- `timeObject.strftime("%H:%M:%S")` return a formatted time string.
+- `timeObject.strftime("%m/%d/%Y, %H:%M:%S")` return a formatted time string.
 - For datetime object
   - `time.year`
   - `time.month`

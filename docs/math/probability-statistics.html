@@ -129,7 +129,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../python/anaconda.html">
+        <li class="chapter " data-level="1.2.2" data-path="../python/pip.html">
+            
+                <a href="../python/pip.html">
+            
+                    
+                    pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/anaconda.html">
             
                 <a href="../python/anaconda.html">
             
@@ -142,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+        <li class="chapter " data-level="1.2.4" data-path="../python/django.html">
             
                 <a href="../python/django.html">
             
@@ -896,6 +909,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.18.4" data-path="../embedded/electricity-magnetism.html">
+            
+                <a href="../embedded/electricity-magnetism.html">
+            
+                    
+                    Electricity & Magnetism
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -928,9 +954,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../theory/cryptography.md">
+        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
             
-                <span>
+                <a href="../algorithm/cryptography.html">
             
                     
                     Cryptography
@@ -941,9 +967,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../theory/ml.md">
+        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
             
-                <span>
+                <a href="../algorithm/ml.html">
             
                     
                     Machine Learning
@@ -1570,8 +1596,13 @@ And order matters<ul>
 <h3 id="markov-chains">Markov Chains</h3>
 <ul>
 <li>It is used predict the future state(matrix <img src="https://render.githubusercontent.com/render/math?math=%24X_1%24" alt="$X_1$">) by multiply the matrix of transition probabilities(P) by the current state(matrix <img src="https://render.githubusercontent.com/render/math?math=%24X_0%24" alt="$X_0$">).<ul>
-<li>Each current or future state has <code>N</code> elements and represented by a <code>N X 1</code> matrix. During each step, each element will transit part of it to other element or part of other element to itself.</li>
-<li>The probability matrix is a <code>N X N</code> matrix. It has element from first to last on each row from left to right, and first row represents how each element will transit to the first element, and second row represents how each element will transit to the second element and so on.<ul>
+<li>Each current or future state has <code>N</code> elements and represented by a <code>N X 1</code> matrix. During each step, each element will<ul>
+<li>lose part of it to other element</li>
+<li>gain from other element</li>
+<li>have part of it unchanged</li>
+</ul>
+</li>
+<li>The probability(transition) matrix is a <code>N X N</code> matrix. It has element from first to last on each row from left to right, and first row represents how each element will transit to the first element, and second row represents how each element will transit to the second element and so on.<ul>
 <li>The probability matrix should be stochastic which means all element in each column will add up to 1.</li>
 </ul>
 </li>
@@ -1583,10 +1614,35 @@ And order matters<ul>
 <li>To calculate the future state after n-steps: <img src="https://render.githubusercontent.com/render/math?math=%24X_n+%3D+P%5En+X_0%24" alt="$X_n = P^n X_0$"></li>
 <li>After certain interation the state matrix will be stable and won&apos;t change, then it is called the stable distribution matrix(<img src="https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BX%7D%24" alt="$\overline{X}$">).</li>
 <li>The <img src="https://render.githubusercontent.com/render/math?math=%24P%5En%24" alt="$P^n$"> for the stable distribution matrix is the stable probability matrix, it will keep the same when <code>n</code> is greater than a certain value, the production of stable probability matrix with any initial state will return the same stable distribution matrix.</li>
-<li>Every column of a stable probability matrix is a stable distribution matrix.</li>
+<li>Every column(when state represented by a <code>N X 1</code> matrix) of a stable probability matrix is a stable distribution matrix.</li>
 <li>When the stable probability matrix or the stable distribution matrix is found, all probability matrix from P to P^n together, are called regular markov chain.</li>
 <li>If <img src="https://render.githubusercontent.com/render/math?math=%24P+%5Coverline%7BX%7D+%3D+%5Coverline%7BX%7D%24" alt="$P \overline{X} = \overline{X}$">, then <img src="https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BX%7D%24" alt="$\overline{X}$"> is the stable distribution matrix and <img src="https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BP%7DX_0+%3D+%5Coverline%7BX%7D%24" alt="$\overline{P}X_0 = \overline{X}$">.</li>
 <li><img src="https://render.githubusercontent.com/render/math?math=%24P+%5Coverline%7BX%7D+%3D+%5Coverline%7BX%7D%24" alt="$P \overline{X} = \overline{X}$"> can be used to solved for stable distribution matrix based on any known probability matrix.</li>
+<li>If a Markov chain has one more elements never lost part of it to other elements, it is called the absorbing Markov chain. When the states represented by a <code>N X 1</code> matrix:<ul>
+<li>In the probability matrix, it will have one column or row with one element on the diagnal as 1 and all others as 0.</li>
+<li>For an absorbing Markov chain, the element that has 100% probability in the probability matrix must have connection with all other element.</li>
+<li>Reorder the elements in the transition matrix to make the <code>From</code> columns and <code>To</code> rows starts with the absorbing elements. Then this transition matrix is called in stardard form.(column with ones on diagnal starts from the left)</li>
+<li>In stard form the stable probability matrix for an absorbing Markov chain with one absorbing element has <code>1</code>s on the first row and rest element as <code>0</code>. The final state is <code>1</code> for the absorbing element and <code>0</code> for all others.</li>
+<li>When there are two or more absorbing states,<ul>
+<li>The transition matrix can be divided by for section:<ul>
+<li>Top-left is the identity matrix <code>I</code></li>
+<li>Top-right is the <code>S</code> matrix</li>
+<li>Bottom-left is the <code>0</code> matrix with all elements as <code>0</code></li>
+<li>Bottom-right is the <code>R</code> matrix</li>
+</ul>
+</li>
+<li>The stable transition matrix will then be:<ul>
+<li>Top-left is the identity matrix <code>I</code></li>
+<li>Top-right equals <code>S</code> matrix multiply by the inverse of matrix <code>(I-R)</code></li>
+<li>Bottom-left is the <code>0</code> matrix with all elements as <code>0</code></li>
+<li>Bottom-right is the <code>0</code> matrix with all elements as <code>0</code></li>
+</ul>
+</li>
+<li>For absorbing Markov chains with two or more absorbing states, different initial state will have different final state.</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1633,7 +1689,7 @@ And order matters<ul>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Probability & Statistics","level":"1.20.4","depth":2,"next":{"title":"Maple Softwares","level":"1.20.5","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]},"previous":{"title":"Discrete Mathematics","level":"1.20.3","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"math/probability-statistics.md","mtime":"2020-07-18T04:08:03.593Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-22T16:03:48.866Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Probability & Statistics","level":"1.20.4","depth":2,"next":{"title":"Maple Softwares","level":"1.20.5","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]},"previous":{"title":"Discrete Mathematics","level":"1.20.3","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"math/probability-statistics.md","mtime":"2020-07-22T17:46:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

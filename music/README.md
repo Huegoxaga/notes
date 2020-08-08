@@ -209,15 +209,15 @@
 - all four-part chord contains a perfect 5th.
 - Using notes in a major scale only, the following diatonic four-part chord can be found when is starts on different degree.
 
-  | Chord Name                 | Starting Degree |
-  | -------------------------- | --------------- |
-  | major 7th or major 6th     | 1st degree      |
-  | minor 7th                  | 2nd degree      |
-  | minor 7th                  | 3rd degree      |
-  | major 7th or major 6th     | 4th degree      |
-  | dominant 7th               | 5th degree      |
-  | minor 7th                  | 6th degree      |
-  | minor 7th with flatted 5th | 7th degree      |
+| Chord Name                 | Starting Degree |
+| -------------------------- | --------------- |
+| major 7th or major 6th     | 1st degree      |
+| minor 7th                  | 2nd degree      |
+| minor 7th                  | 3rd degree      |
+| major 7th or major 6th     | 4th degree      |
+| dominant 7th               | 5th degree      |
+| minor 7th                  | 6th degree      |
+| minor 7th with flatted 5th | 7th degree      |
 
 - plurality rules can be derived from the above conclusion.
 - four-part chords have a root position and 1st, 2nd, 3rd inversion.
@@ -260,7 +260,7 @@
   - Cmi7(#5)
   - Cmi7(b5) also called half diminished(C,C7), it is four-part chord that starts at the seventh degree of a major scale
 
-#### added chord
+#### Added chord
 
 - add a note form a certain interval from the root.
 

@@ -129,7 +129,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../python/anaconda.html">
+        <li class="chapter " data-level="1.2.2" data-path="../python/pip.html">
+            
+                <a href="../python/pip.html">
+            
+                    
+                    pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/anaconda.html">
             
                 <a href="../python/anaconda.html">
             
@@ -142,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+        <li class="chapter " data-level="1.2.4" data-path="../python/django.html">
             
                 <a href="../python/django.html">
             
@@ -896,6 +909,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.18.4" data-path="../embedded/electricity-magnetism.html">
+            
+                <a href="../embedded/electricity-magnetism.html">
+            
+                    
+                    Electricity & Magnetism
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -928,9 +954,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../theory/cryptography.md">
+        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
             
-                <span>
+                <a href="../algorithm/cryptography.html">
             
                     
                     Cryptography
@@ -941,9 +967,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../theory/ml.md">
+        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
             
-                <span>
+                <a href="../algorithm/ml.html">
             
                     
                     Machine Learning
@@ -1198,9 +1224,13 @@
 <li>Related Commands<ul>
 <li><code>df -h</code> list file systems.</li>
 <li><code>lsblk</code> list block devices info.</li>
-<li><code>du -sh &lt;folder&gt; | sort -h</code> List all files inside the folder and its size in order.</li>
+<li><code>du -sh &lt;folder&gt; | sort -h</code> List all files inside the folder and its size in order.<ul>
+<li><code>--max-depth=1</code> specify the deepth</li>
 </ul>
 </li>
+</ul>
+</li>
+<li>Check swap file size, <code>swapon</code></li>
 </ul>
 <h2 id="general-commands">General Commands</h2>
 <ul>
@@ -1328,6 +1358,8 @@
 <li>Although this command does all the things <code>make</code> will do, it is recommanded to run <code>make</code> first.</li>
 </ul>
 </li>
+<li><code>truncate -s 0 syslog</code> truncate text file</li>
+<li><code>tail -f /var/log/syslog</code> view log from the buttom</li>
 </ul>
 <h3 id="access-control">Access Control</h3>
 <ul>
@@ -1389,6 +1421,11 @@
 <li><code>/etc/rc0.d</code>~<code>/etc/rc9.d</code> folders stores links for services and whether it needs start or kill.</li>
 <li>In the <code>rcN</code> folders, when a link starts with <code>S</code> it will be started in <code>N</code> run level. <code>K</code> means kill or stop the services.</li>
 <li><code>/etc/inittab</code> stores information about the name and usage of all Run Levels and the system default Run Level when start up. <code>id:3:initdefault</code> means default Run Level when boot is 3.</li>
+<li>change swap service setting<ul>
+<li>sudo nano /etc/dphys-swapfile</li>
+<li>restart the service by running <code>sudo /etc/init.d/dphys-swapfile stop</code> and then <code>sudo /etc/init.d/dphys-swapfile start</code></li>
+</ul>
+</li>
 </ul>
 <h4 id="related-commands">Related Commands</h4>
 <ul>
@@ -1434,6 +1471,7 @@
 <h4 id="related-commands">Related Commands</h4>
 <ul>
 <li><code>kill -l</code> list kill signal options.</li>
+<li><code>kill &lt;PID&gt;</code> kill a process</li>
 <li><code>kill &#x2013;s &lt;signalNumber&gt; &lt;PID&gt;</code> kill a process with certain kill signal, the process is indicated by PID(Process ID).</li>
 <li><code>jobs</code> list all current jobs.</li>
 <li><code>fg &lt;jobNumber&gt;</code> bring a job to the foreground.</li>
@@ -1490,13 +1528,13 @@
 <ul>
 <li>reboot the system after any changes</li>
 </ul>
-<h4 id="rsyslog">rsyslog</h4>
+<h4 id="logs">Logs</h4>
 <ul>
-<li>syslogd centralizes logging for many applications: Kernel messages, system error messages, login activity, etc.</li>
+<li><code>syslogd</code> centralizes logging for many applications: Kernel messages, system error messages, login activity, etc.</li>
 <li>Typically writes log files to the <code>/var/log</code> directory</li>
 <li>When the configuration file is changed run <code>service rsyslog restart</code>.</li>
 </ul>
-<h5 id="configuration">Configuration</h5>
+<h5 id="rsyslog-configuration">Rsyslog Configuration</h5>
 <ul>
 <li>The syslogd deamon is controlled via the <code>/etc/rsyslog.conf</code> file</li>
 <li><code>rsyslog.conf</code> stores a list of events that will be logged by syslogd.</li>
@@ -1537,6 +1575,11 @@
 </ul>
 </li>
 </ul>
+<h5 id="rsyslog-configuration">Rsyslog Configuration</h5>
+<ul>
+<li>Control log size by adding rules</li>
+<li>Need to be added as a scheduled task</li>
+</ul>
 <h4 id="hdcp">HDCP</h4>
 <ul>
 <li>It is confifured in the <code>/etc/dhcpcd.conf</code> file.</li>
@@ -1560,25 +1603,33 @@
 <li><code>yum install gcc &#x2013;y</code> Install the C compiler.</li>
 <li><code>yum install kernel -y</code> and <code>yum install kernel-devel &#x2013;y</code> install kernel development source.</li>
 </ul>
-<h3 id="apt-get">APT-GET</h3>
+<h3 id="apt">APT</h3>
 <ul>
 <li>Advanced Package Tool</li>
 <li>It is a package manager for debian-based Linux machine.<ul>
 <li>debian-based Linux uses dpkg packages with the <code>*.deb</code> extension.</li>
 </ul>
 </li>
+<li><code>apt-get</code> is the older command with limited features<ul>
 <li><code>apt-get install &lt;PackageName&gt;</code></li>
 <li><code>apt-get update</code> update package list</li>
 <li><code>apt-get dist-upgrade</code> will install or remove packages as necessary to complete the upgrade,</li>
-<li><code>apt upgrade</code> will automatically install but not remove packages.</li>
-<li><code>apt full-upgrade</code> performs the same function as apt-get dist-upgrade</li>
 <li><code>apt-get remove &lt;PackageName&gt;</code> uninstall a package</li>
 <li><code>apt-get purge &lt;PackageName&gt;</code> uninstall a package and remove all its config files.</li>
 <li><code>apt-get -f install</code> fix broken dependencies.</li>
 <li><code>apt-get -f clean</code> clean up download files.</li>
+<li><code>apt-cache policy &lt;package&gt;</code> Get info about the package which will be installed.</li>
+</ul>
+</li>
+<li><code>apt</code> is the recommanded command with all features<ul>
+<li><code>apt install &lt;PackageName&gt;</code> install new package</li>
+<li><code>apt full-upgrade</code> performs the same function as apt-get dist-upgrade</li>
+<li><code>apt upgrade</code> will automatically install but not remove packages.</li>
 <li><code>apt autoremove</code> find dangling dependencies and remove them.</li>
-<li><code>dpkg --get-selections</code> Shows all of your installed packages</li>
-<li><code>apt-cache policy &lt;package&gt;</code> Get info about the package which will be installed.<ul>
+<li><code>apt remove &lt;PackageName&gt;</code> remove packages</li>
+</ul>
+</li>
+<li><code>dpkg --get-selections</code> Shows all of your installed packages<ul>
 <li>500 and 100 are the priority numbers. 500 corresponds to installable, 100 means installed.</li>
 </ul>
 </li>
@@ -1629,7 +1680,8 @@
 <h3 id="scp">SCP</h3>
 <ul>
 <li>It is used to transfer files between local machine and remote server.</li>
-<li>scp <code>username@serverAddress:&lt;remote file path&gt; &lt;local file path&gt; -r</code>, <code>-r</code>means including folders</li>
+<li><code>scp -r username@serverAddress:&lt;remote file path&gt; &lt;local file path&gt;</code>, <code>-r</code>means including folders</li>
+<li><code>scp -r &lt;local file path&gt; username@serverAddress:&lt;remote file path&gt;</code>, <code>-r</code>means including folders</li>
 <li>Ex, <code>scp -r 000123456@exampleserver.com:/foldername/public_html/ /users/username/Downloads</code></li>
 </ul>
 <h3 id="ssh">SSH</h3>
@@ -2118,7 +2170,53 @@ Allow from HostIPAddress
 </ul>
 </li>
 </ul>
-<h3 id="systemctl">systemctl</h3>
+<h3 id="systemd">systemd</h3>
+<ul>
+<li>System daemon</li>
+<li>It controls units, units are scheduled actions or tasks running in the background.</li>
+<li>Each unit is descripted by a unit file and stored in <code>/etc/systemd/system/</code> folder.</li>
+<li>Unit files have the following extensions:<ul>
+<li><code>.service</code>: A service unit describes how to manage a service or application on the server. This will include how to start or stop the service, under which circumstances it should be automatically started, and the dependency and ordering information for related software.</li>
+<li><code>.socket</code>: A socket unit file describes a network or IPC socket, or a FIFO buffer that systemd uses for socket-based activation. These always have an associated .service file that will be started when activity is seen on the socket that this unit defines.</li>
+<li><code>.device</code>: A unit that describes a device that has been designated as needing systemd management by udev or the sysfs filesystem. Not all devices will have .device files. Some scenarios where .device units may be necessary are for ordering, mounting, and accessing the devices.</li>
+<li><code>.mount</code>: This unit defines a mountpoint on the system to be managed by systemd. These are named after the mount path, with slashes changed to dashes. Entries within /etc/fstab can have units created automatically.</li>
+<li><code>.automount</code>: An .automount unit configures a mountpoint that will be automatically mounted. These must be named after the mount point they refer to and must have a matching .mount unit to define the specifics of the mount.</li>
+<li><code>.swap</code>: This unit describes swap space on the system. The name of these units must reflect the device or file path of the space.</li>
+<li><code>.target</code>: A target unit is used to provide synchronization points for other units when booting up or changing states. They also can be used to bring the system to a new state. Other units specify their relation to targets to become tied to the target&#x2019;s operations.</li>
+<li><code>.path</code>: This unit defines a path that can be used for path-based activation. By default, a .service unit of the same base name will be started when the path reaches the specified state. This uses inotify to monitor the path for changes.</li>
+<li><code>.timer</code>: A .timer unit defines a timer that will be managed by systemd, similar to a cron job for delayed or scheduled activation. A matching unit will be started when the timer is reached.</li>
+<li><code>.snapshot</code>: A .snapshot unit is created automatically by the systemctl snapshot command. It allows you to reconstruct the current state of the system after making changes. Snapshots do not survive across sessions and are used to roll back temporary states.</li>
+<li><code>.slice</code>: A .slice unit is associated with Linux Control Group nodes, allowing resources to be restricted or assigned to any processes associated with the slice. The name reflects its hierarchical position within the cgroup tree. Units are placed in certain slices by default depending on their type.</li>
+<li><code>.scope</code>: Scope units are created automatically by systemd from information received from its bus interfaces. These are used to manage sets of system processes that are created externally.</li>
+</ul>
+</li>
+<li>Example unit file<pre><code class="lang-config">[Unit]
+Description=Example systemd service.
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/test_service.sh
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+</li>
+<li>For a unit with unit file name <code>unit.service</code>, the following command work for both full file names or unit names.</li>
+<li><code>systemctl list-units</code> list all services and units</li>
+<li><code>systemctl status &lt;unitfile&gt;</code></li>
+<li><code>systemctl start &lt;unitfile&gt;</code></li>
+<li><code>systemctl stop &lt;unitfile&gt;</code></li>
+<li><code>systemctl restart &lt;unitfile&gt;</code></li>
+<li><code>systemctl disable &lt;unitfile&gt;</code></li>
+<li><code>systemctl enable &lt;unitfile&gt;</code> when a service is enabled, it boots up with the server</li>
+<li><code>systemctl --failed</code> list all failed units or services</li>
+<li><code>systemctl is-enabled &lt;unitfile&gt;</code> check if a service is enabled.</li>
+<li><code>systemctl daemon-reload</code> reload service files after modification.</li>
+<li><code>systemctl reboot</code> reboot the machine</li>
+<li><code>systemctl poweroff</code> poweroff the machine</li>
+<li><code>systemctl suspend</code></li>
+<li><code>journalctl</code> view all logs</li>
+<li><code>journalctl -b</code> all logs since last reboot</li>
+<li><code>journalctl -u &lt;unit&gt;</code> view log for a certain unit</li>
+</ul>
 <h3 id="motion">Motion</h3>
 <ul>
 <li>It is a webcam server</li>
@@ -2202,6 +2300,12 @@ fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-var
 </li>
 <li><code>echo &quot;my ID is 1234&quot; | tr -cd [:digit:]</code> complement the selected pattern and remove all the non-digits characters from the string.</li>
 </ul>
+<h3 id="python">python</h3>
+<ul>
+<li><code>python3 -m &lt;module&gt;</code> run module as a script using python3</li>
+<li><code>python3 &lt;filename.py&gt;</code> run a script using python3</li>
+<li><code>python3 -c &quot;x=1+1; print(x)&quot;</code> run python code separate by <code>;</code></li>
+</ul>
 
                                 
                                 </section>
@@ -2245,7 +2349,7 @@ fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-var
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.14.1","depth":2,"next":{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.14","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.14.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.14.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.14.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.14.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.14.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.14.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.14.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2020-07-09T02:30:15.625Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-22T16:03:48.866Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.14.1","depth":2,"next":{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.14","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.14.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.14.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.14.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.14.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.14.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.14.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.14.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2020-08-01T20:54:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

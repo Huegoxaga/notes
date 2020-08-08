@@ -1,6 +1,6 @@
-# Pip Libriries
+# `pip` Libriries
 
-## Pip
+## pip
 
 - They can be stored on the Python Package Index (PyPI). Here are some useful commands.
 - If both python 3 and python 2 is on the system, then running `pip` will update your library for python 2 while `pip3` will update your library for python 3.

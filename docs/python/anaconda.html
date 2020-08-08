@@ -60,7 +60,7 @@
     <link rel="next" href="django.html" />
     
     
-    <link rel="prev" href="standard-library.html" />
+    <link rel="prev" href="pip.html" />
     
 
     </head>
@@ -129,7 +129,20 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.2" data-path="anaconda.html">
+        <li class="chapter " data-level="1.2.2" data-path="pip.html">
+            
+                <a href="pip.html">
+            
+                    
+                    pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="anaconda.html">
             
                 <a href="anaconda.html">
             
@@ -142,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="django.html">
+        <li class="chapter " data-level="1.2.4" data-path="django.html">
             
                 <a href="django.html">
             
@@ -896,6 +909,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.18.4" data-path="../embedded/electricity-magnetism.html">
+            
+                <a href="../embedded/electricity-magnetism.html">
+            
+                    
+                    Electricity & Magnetism
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -928,9 +954,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../theory/cryptography.md">
+        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
             
-                <span>
+                <a href="../algorithm/cryptography.html">
             
                     
                     Cryptography
@@ -941,9 +967,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../theory/ml.md">
+        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
             
-                <span>
+                <a href="../algorithm/ml.html">
             
                     
                     Machine Learning
@@ -1297,6 +1323,12 @@
 <li><code>array = np.linspace(start, end, numofvalues)</code></li>
 </ul>
 </li>
+<li>Get the max element(s) for array with any demension<ul>
+<li><code>np.argmax(array)</code> the index of the max element of the entire array, the index count from left to right regardless the columns and rows.</li>
+<li><code>np.argmax(array, axis=0)</code> the indices of the max element along each column.</li>
+<li><code>np.argmax(array, axis=1)</code> the indices of the max element along each row.</li>
+</ul>
+</li>
 </ul>
 <h4 id="access-the-array">Access the array</h4>
 <ul>
@@ -1623,8 +1655,8 @@
 <li><code>cap.release()</code>, release the stored video after processing is done</li>
 <li><code>cap.get(3)</code> check the frame width</li>
 <li><code>cap.get(4)</code> check the frame height</li>
-<li><code>`ret = cap.set(3,320)</code> modify width</li>
-<li><code>ret = cap.set(4,240)</code> modify height</li>
+<li><code>ret = cap.set(3,320)</code> or <code>cap.set(cv.CV_CAP_PROP_FRAME_WIDTH, 320)</code> modify width</li>
+<li><code>ret = cap.set(4,240)</code> or <code>cap.set(cv.CV_CAP_PROP_FRAME_HEIGHT, 240)</code> modify height</li>
 <li>Initialize While Loop, read and display frames until Q key is pressed.<pre><code class="lang-py">cap = cv2.VideoCapture(<span class="hljs-number">0</span>)
 <span class="hljs-keyword">while</span>(<span class="hljs-keyword">True</span>):
     <span class="hljs-comment"># Capture frame-by-frame</span>
@@ -1976,7 +2008,7 @@ cnn.add(tf.keras.layers.Dense(units=<span class="hljs-number">1</span>, activati
 
             
                 
-                <a href="standard-library.html" class="navigation navigation-prev " aria-label="Previous page: Python Stardard Library">
+                <a href="pip.html" class="navigation navigation-prev " aria-label="Previous page: pip">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1992,7 +2024,7 @@ cnn.add(tf.keras.layers.Dense(units=<span class="hljs-number">1</span>, activati
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Libraries with Anaconda","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-07-16T17:44:04.384Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-22T16:03:48.866Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Libraries with Anaconda","level":"1.2.3","depth":2,"next":{"title":"Django","level":"1.2.4","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"pip","level":"1.2.2","depth":2,"path":"python/pip.md","ref":"python/pip.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/anaconda.md","mtime":"2020-07-25T16:36:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

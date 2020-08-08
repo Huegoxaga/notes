@@ -129,7 +129,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../python/anaconda.html">
+        <li class="chapter " data-level="1.2.2" data-path="../python/pip.html">
+            
+                <a href="../python/pip.html">
+            
+                    
+                    pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/anaconda.html">
             
                 <a href="../python/anaconda.html">
             
@@ -142,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+        <li class="chapter " data-level="1.2.4" data-path="../python/django.html">
             
                 <a href="../python/django.html">
             
@@ -896,6 +909,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.18.4" data-path="../embedded/electricity-magnetism.html">
+            
+                <a href="../embedded/electricity-magnetism.html">
+            
+                    
+                    Electricity & Magnetism
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -928,9 +954,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../theory/cryptography.md">
+        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
             
-                <span>
+                <a href="../algorithm/cryptography.html">
             
                     
                     Cryptography
@@ -941,9 +967,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../theory/ml.md">
+        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
             
-                <span>
+                <a href="../algorithm/ml.html">
             
                     
                     Machine Learning
@@ -1115,7 +1141,10 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="aws">AWS</h1>
-<p>Amazon Web Services</p>
+<ul>
+<li>Amazon Web Services</li>
+<li><a href="https://www.lucidchart.com/pages/" target="_blank">Lucidchart</a> is good for drawing AWS architecture diagram.</li>
+</ul>
 <h2 id="aws-cli">AWS CLI</h2>
 <p>AWS CLI provides full controls of AWS using command lines.</p>
 <h3 id="setup">Setup</h3>
@@ -1192,6 +1221,22 @@
 <li>Expiration actions &#x2014; Define when objects expire. Amazon S3 deletes expired objects on your behalf.</li>
 </ul>
 </li>
+<li>The public object URL can be in many forms.<ul>
+<li>When the region is in the default region <code>us-east-1</code>.<ul>
+<li><code>https://s3.amazonaws.com/bucket/key</code></li>
+<li><code>https://bucket.s3.amazonaws.com/key</code></li>
+</ul>
+</li>
+<li>When the bucket is not in <code>us-east-1</code>:<ul>
+<li><code>https://s3-region.amazonaws.com/bucket/key</code></li>
+<li><code>https://s3.region.amazonaws.com/bucket/key</code></li>
+<li><code>https://bucket.s3.amazonaws.com/key</code></li>
+<li><code>https://bucket.s3.region.amazonaws.com/key</code></li>
+<li><code>https://bucket.s3-region.amazonaws.com/key</code></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="cli-commands">CLI Commands</h3>
 <ul>
@@ -1223,6 +1268,7 @@
 <h2 id="route-53">Route 53</h2>
 <p>It provides a DNS service that translates the domain name into a designated IP address.</p>
 <ul>
+<li>This service does not require region selection, all settings are global.</li>
 <li>There is a 50 cents charge per month per host zone.</li>
 <li>DNS Records are added in the hostzones.</li>
 <li>Some domain register has free DNS services.</li>
@@ -1448,6 +1494,11 @@ commands:
 <ul>
 <li>When a new database is registered, be default it is set to private. It can be set to public by modifying the instance.</li>
 <li>Double check VPC and SG for database created in a new region.</li>
+<li>Database settings are done through <code>Parameter groups</code>. by default, The default group is used when a database is created. To use cutomized groups, create a new one and apply it to the database.<ul>
+<li><code>log_min_duration_statement</code> the minimum time for a query to be logged.</li>
+<li><code>log_statement</code> how the queries are logged.</li>
+</ul>
+</li>
 </ul>
 <h2 id="cloudwatch">CloudWatch</h2>
 <p>It generates metrics for other services.</p>
@@ -1456,6 +1507,15 @@ commands:
 <li>Enhanced plan will provides more metrics.</li>
 <li>It can be used to set rules for auto scaling policy when the values from a certain metric reach certain value.</li>
 <li>Alarms can be set based on Metrics&apos; states and values.</li>
+<li>Custom Log Group can be created and log stream can be pushed to the log group.</li>
+<li>Data from the log stream can be filter, collected and push to metrics based on the a predefined pattern.<ul>
+<li>Pattern to match log event, <code>127.0.0.1 - frank [10/Oct/2000:13:25:15 -0700] &quot;GET /apache_pb.gif HTTP/1.0&quot; 200 1534</code> can be <code>[ip, user, username, timestamp, request, status_code = 4*, bytes]</code></li>
+<li><code>&gt;</code>, <code>&lt;</code> can be used on numerical values.</li>
+<li>text surrounded by <code>&quot;&quot;</code> or <code>[]</code> are treated as one entry.</li>
+<li>Once a pattern is set cloudwatch can be generated based on it using AWS console, <code>CloudWatch</code> -&gt; <code>Log Groups</code> -&gt; <code>Create metric filter</code>.</li>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringPolicyExamples.html" target="_blank">Click Here</a> to see more example.</li>
+</ul>
+</li>
 </ul>
 <h2 id="lambda">Lambda</h2>
 <p>It runs scripts and codes without the need to set up the server.</p>
@@ -1526,6 +1586,7 @@ commands:
 <li>A topic can have many subscribers with differenct protocols(Email, SQS, Lambda) to receive the message.</li>
 <li>Each topic has a <code>Publish message</code> button that can be used to test a message with all subscribers.</li>
 <li>Each subscription can have a unique filter for all messages.</li>
+<li>Selecting <code>Enable raw message delivery</code> for SQS subscription allow SNS topic send raw message which is the same format as sending SQS message directly.</li>
 </ul>
 <h2 id="ses">SES</h2>
 <p>It can be used to send formatted emails from registered email addresses.</p>
@@ -1557,13 +1618,27 @@ commands:
 <li>Resources need to be deploy as stages before using.</li>
 <li>Custom Domain Names will attach user&apos;s own certificate to the URL and map the domain to the staged resources.</li>
 <li>Custom Domain Names will need an Alias in Route 53 for its API Gateway domain name.</li>
-<li>CORS can be enabled for each individual method in the <code>Actions</code> menu.</li>
+<li>CORS can be enabled for each individual method in the <code>Actions</code> menu.<ul>
+<li><code>CORS</code> header setting will be stored in the <code>OPTIONS</code> method of the same resource.</li>
+</ul>
+</li>
 <li>If integrated with Lambda, Allow CORS in the response header in the return statement at the end.<pre><code class="lang-py"><span class="hljs-string">&apos;headers&apos;</span>: {
     <span class="hljs-string">&apos;Access-Control-Allow-Headers&apos;</span>: <span class="hljs-string">&apos;Content-Type&apos;</span>,
     <span class="hljs-string">&apos;Access-Control-Allow-Origin&apos;</span>: <span class="hljs-string">&apos;*&apos;</span>,
     <span class="hljs-string">&apos;Access-Control-Allow-Methods&apos;</span>: <span class="hljs-string">&apos;OPTIONS,POST,GET&apos;</span>
 },
 </code></pre>
+</li>
+<li>The execution log can be enalbed in the stage setting <code>Logs/Tracing</code> Tab.<ul>
+<li>The <code>ARN</code> of an <code>IAM</code> role with <code>AmazonAPIGatewayPushToCloudWatchLogs</code> Permission is required in the setting page, opened from the left pannel.</li>
+<li>It can log full requests/responses data.</li>
+<li>It can enable detailed CloudWatch metrics.</li>
+</ul>
+</li>
+<li>The access log is the custom log that can be used to store cutomized formatted log.<ul>
+<li>It support log with <code>CLF</code>, <code>JSON</code>, <code>CSV</code>, and <code>XML</code> format.</li>
+<li>only the <code>$context</code> variable can be used to access requrest info.</li>
+</ul>
 </li>
 </ul>
 <h2 id="sagemaker">Sagemaker</h2>
@@ -1824,6 +1899,15 @@ commands:
 <ul>
 <li>Register a product from the developer console in order to get crendentials required by the customized Alexa Device.</li>
 </ul>
+<h2 id="cognito">Cognito</h2>
+<ul>
+<li>It provides authentication, authorization, and user management for your web and mobile apps. Your users can sign in directly with a user name and password, or through a third party such as Facebook, Amazon, or Google.</li>
+<li>The two main components of Amazon Cognito are user pools and identity pools.<ul>
+<li>User pools are user directories that provide sign-up and sign-in options for your app users.</li>
+<li>Identity pools enable you to grant your users access to other AWS services. You can use identity pools and user pools separately or together.</li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -1867,7 +1951,7 @@ commands:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.17.1","depth":2,"next":{"title":"GCP","level":"1.17.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.17","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.17.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"GCP","level":"1.17.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-07-17T19:44:22.514Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-22T16:03:48.866Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.17.1","depth":2,"next":{"title":"GCP","level":"1.17.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.17","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.17.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"GCP","level":"1.17.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-08-06T23:09:04.948Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

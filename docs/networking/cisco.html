@@ -129,7 +129,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../python/anaconda.html">
+        <li class="chapter " data-level="1.2.2" data-path="../python/pip.html">
+            
+                <a href="../python/pip.html">
+            
+                    
+                    pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../python/anaconda.html">
             
                 <a href="../python/anaconda.html">
             
@@ -142,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
+        <li class="chapter " data-level="1.2.4" data-path="../python/django.html">
             
                 <a href="../python/django.html">
             
@@ -896,6 +909,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.18.4" data-path="../embedded/electricity-magnetism.html">
+            
+                <a href="../embedded/electricity-magnetism.html">
+            
+                    
+                    Electricity & Magnetism
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -928,9 +954,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../theory/cryptography.md">
+        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
             
-                <span>
+                <a href="../algorithm/cryptography.html">
             
                     
                     Cryptography
@@ -941,9 +967,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../theory/ml.md">
+        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
             
-                <span>
+                <a href="../algorithm/ml.html">
             
                     
                     Machine Learning
@@ -1114,55 +1140,240 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>GNS is a emulator. but it cannot mimic switch as a hardware.
-Packet tracer is made by cisco for practise its is good for switch.
-Switch(config-if)# switchport mode access
-Switch(config-if)# switchport mode trunk
-Switch(config-if)# switchport mode dynamic desirable
-Switch(config-if)# switchport mode dynamic auto
-Switch(config-if)# switchport nonegotiate</p>
-<p>Switch has two mode:
-Access mode
-used to connect an end device
-Trunk mode(.1qi is the current popular encapsulation)
-used to connect another switch(extend the switch)
-Dynamic Trunking Protocol(Cisco owns)
-Desirable - starts to negotiate truck(it is not safe to have all desirable mode)
-Auto - accept truck mode.
-No Negotiate - turn DTP off</p>
-<p>Switch functions:
-Address Learning
-learning devices info through communication between devices.
-Forwarding Decision
-Cut Through
-It only check the destination info and transmit
-Store &amp; Forward
-It check the entire info and check data and transmit
-Loop avoidance
-Broadcast between two switch has two links cause loop.(Layer -2 loop)
-Spanning Tree Protocol disconnect one links if there are many backup links. enable it when that only links is broken.</p>
-<p>VLAN
+                                <h1 id="cisco">Cisco</h1>
+<h2 id="practice-tools">Practice Tools</h2>
+<ul>
+<li>Emulator run hardware image, simulator mimic the hardware behavior using software</li>
+<li><code>GNS</code> is an emulator. but it cannot mimic switch as a hardware.</li>
+<li><code>Packet Tracer</code> is a simulator made by cisco for practise. it is good for switch.</li>
+</ul>
+<h2 id="device-connection">Device Connection</h2>
+<ul>
+<li>Out of band configration provide direct access to the router motherboard. It provides the following ways to connect.<ul>
+<li>Console is used to connect to computer.(out of band access)</li>
+<li>AUX is connected to a modem, it acts as a backup method for out of band access.</li>
+<li>A mini USB port one is used for easy console connection.</li>
+</ul>
+</li>
+<li>A larger USB port is used for update,</li>
+<li>Connect with software like <code>putty</code>, <code>Tera Term</code>, <code>Secure CRT</code>, <code>Hyper Term</code>. Use the following settings.</li>
+<li>Console port connection setup:<ul>
+<li>Connection type: <code>Serial</code></li>
+<li>Speed <code>9600</code></li>
+<li>Serial line mostly <code>COM1</code>, can be found out in the device manager.</li>
+</ul>
+</li>
+<li>Telnet conncection setup<ul>
+<li>Configure interface management IP</li>
+<li>In the host machine&apos;s terminal, run <code>telnet &lt;CiscoDeviceIP&gt;</code><ul>
+<li>run <code>brew install telnet</code> to install <code>telnet</code> for Mac</li>
+</ul>
+</li>
+<li>The user can only establish one connection through one telnet port at a time.</li>
+</ul>
+</li>
+<li>SSH conncection setup<ul>
+<li>It is more secure than telnet as the traffic is encrypted</li>
+<li>Steps to setup SSH connection<ol>
+<li>setup hostname</li>
+<li>create domain name</li>
+<li>generate secure key</li>
+<li>set ssh to version 2</li>
+<li>create local user</li>
+<li>allow ssh connection for the virtual lines.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="command-line">Command Line</h2>
+<ul>
+<li>Cisco command has auto completion feature with <code>tab</code>.</li>
+<li>Commands work when the minimum required characters are entered that can be used to distinguish it with all other possible commands.</li>
+</ul>
+<h3 id="prompt">Prompt</h3>
+<ul>
+<li>The command line prompt starts with the hostname and followed by the mode indicator.</li>
+<li>Commands lines for Cisco devices can be in different modes, it is indicated by the symbols or brackets in the command prompt:<ul>
+<li><code>&gt;</code> - User EXEC Mode - Privilege Level 1</li>
+<li><code>#</code> - Privileged EXEC Mode - Privilege Level 15(highest)<ul>
+<li><code>(config)#</code> - Global Configuration Mode<ul>
+<li><code>(config-if)#</code> - Interface Configuration Mode</li>
+<li><code>(config-router)#</code> - Routing Configuration Mode</li>
+<li><code>(config-line)#</code> - Line Configuration Mode</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="commands">Commands</h3>
+<h4 id="general-commands">General Commands</h4>
+<ul>
+<li><code>?</code>, list all commands available in the current mode<ul>
+<li><code>t?</code>, list commands start with letter <code>t</code>.</li>
+<li><code>&lt;cr&gt;</code> output means blank space, so a command can be executed by hitting enter directly</li>
+</ul>
+</li>
+<li><code>enable</code>, switch mode <code>&gt;</code> to mode <code>#</code>.</li>
+<li><code>disable</code>, switch to the previous mode</li>
+<li><code>exit</code>, switch to the previous mode</li>
+<li><code>show privilege</code> show the current privilege level</li>
+<li><code>show ip interface brief</code> show a breif summary of all ip interface status in current privilege Level.<ul>
+<li>When protocol is down, it means there is no traffic at this port.</li>
+</ul>
+</li>
+<li><code>no &lt;command&gt;</code> negect or disable the command.</li>
+</ul>
+<h4 id="privileged-exec-mode">Privileged EXEC Mode</h4>
+<ul>
+<li><code>configure terminal</code>, switch from mode <code>#</code> to <code>(config)#</code> mode.</li>
+<li><code>show running-config</code> show the current configuration saved in RAM</li>
+<li><code>show startup-config</code> show the saved configuration for next startup in NVRAM</li>
+<li><code>show vlan</code> show the the ID, name, ports of all existing VLAN</li>
+<li><code>show interfaces trunck</code> show all trunk ports</li>
+<li><code>write</code> save the running config as startup configuration</li>
+<li><code>copy &lt;From&gt; &lt;To&gt;</code>(recommanded alternative for <code>write</code> command)<ul>
+<li><code>copy running-config startup-config</code> save running-config to startup-config</li>
+</ul>
+</li>
+</ul>
+<h4 id="global-configuration-commands">Global Configuration Commands</h4>
+<ul>
+<li><code>enable password &lt;password&gt;</code> setup a password when entering <code>#</code> mode.<ul>
+<li>This password is required by <code>telnet</code> connection by default.</li>
+</ul>
+</li>
+<li><code>do &lt;command&gt;</code> run <code>#</code> command in <code>(config)#</code> mode.</li>
+<li><code>ip domain-lookup</code>, enable domain-lookup for unrecognized commands by default it is on.</li>
+<li><code>ip default-gateway &lt;IP&gt;</code> setup the default gateway IP address<ul>
+<li>Router needs a default gateway to work with router.</li>
+</ul>
+</li>
+<li><code>ip domain-name example.com</code> set a domain name</li>
+<li><code>crypto key generate rsa</code> then enter the bits size for the key size to generate a key</li>
+<li><code>ip ssh version 2</code> set the ssh version to 2</li>
+<li><code>username &lt;name&gt; password &lt;password&gt;</code> create a new local user</li>
+<li><code>hostname &lt;NewName&gt;</code>, change hostname of the device</li>
+<li><code>banner motd &lt;delimittingCharacter&gt;</code>, entering the command will allow you change the login banner message, enter the same delimitting character at the end of the banner message, then hit enter to save the change.<ul>
+<li>It will be displayed before password prompt during login</li>
+</ul>
+</li>
+<li><code>interface gigabitEthernet 0/0</code>, enter the Interface Configuration Mode for gigabitEthernet Port <code>0/0</code>.<ul>
+<li>All router ports start at <code>0/0</code></li>
+<li>All switch ports start at <code>0/1</code></li>
+</ul>
+</li>
+<li><code>interface range f0/2-5</code> configure port <code>2-5</code> at once</li>
+<li><code>line console 0</code>, enter the Line Configuration Mode</li>
+<li><code>line console vty 0 15</code> enter the Line Configuration Mode for all 16 virtual lines.<ul>
+<li><code>vty 0 15</code> configuration will be broken down to <code>0 4</code> and <code>5 15</code> to support older devices with only <code>vty 0 4</code></li>
+</ul>
+</li>
+<li><code>interface vlan 1</code>(Switch Only), enter the Interface Configuration Mode for the <code>vlan 1</code><ul>
+<li>This is where the access IP address or the management IP located</li>
+</ul>
+</li>
+<li><code>router rip</code>(Router Only), enter the Routing Configuration Mode for <code>RIP</code> protocal.</li>
+<li><code>vlan 1</code>(Switch Only), create VLAN(if not exist) and enter the VLAN Configuration Mode for <code>vlan 1</code>.</li>
+</ul>
+<h5 id="interface-configuration-commands">Interface Configuration Commands</h5>
+<ul>
+<li><code>ip address 10.1.1.1 255.255.255.0</code> set management IP for the interface.</li>
+<li><code>shutdown</code> administratively shutdown a port.<ul>
+<li>open a port using negating command <code>no</code></li>
+</ul>
+</li>
+<li><code>switchport mode access</code> set port to access mode to connect the port to end device</li>
+<li><code>switchport mode trunk</code> set port to trunk mode to connection the port to another switch</li>
+<li>DTP config<ul>
+<li><code>switchport mode dynamic desirable</code></li>
+<li><code>switchport mode dynamic auto</code></li>
+<li><code>switchport nonegotiate</code></li>
+</ul>
+</li>
+<li>Assign a port to VLAN<ul>
+<li><code>switchport mode access</code> only ports in access mode can be in a VLAN</li>
+<li><code>switchport access vlan &lt;NO&gt;</code> assign the port to a VLAN<ul>
+<li>will create new VLAN if the VLAN number does not exist</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="vlan-configuration-commands">VLAN Configuration Commands</h5>
+<ul>
+<li><code>name &lt;name&gt;</code> naming the VLAN<ul>
+<li>The name is only used as a description.</li>
+</ul>
+</li>
+</ul>
+<h5 id="line-configuration-commands">Line Configuration Commands</h5>
+<ul>
+<li><code>password &lt;password&gt;</code> set login password</li>
+<li><code>login</code>, set to require login password for the current line console port</li>
+<li><code>login local</code>, enable login and use the local user password to login</li>
+<li><code>transport input &lt;option&gt;</code> setup input transmittion type, there are 4 options:<ul>
+<li><code>all</code></li>
+<li><code>none</code></li>
+<li><code>telnet</code></li>
+<li><code>ssh</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-md"><span class="hljs-section">## Switch</span>
+
+<span class="hljs-section">### Trunking</span>
+
+<span class="hljs-bullet">- </span>Trunking is a way to combine multiple switch into a bigger switch througn trunck port connection
+<span class="hljs-bullet">- </span>Switch has two mode:
+  - Access mode - used to connect an end device
+  - Trunk mode(.1q is the current popular encapsulation) - used to connect another switch(extend the switch)
+<span class="hljs-bullet">- </span>Dynamic Trunking Protocol(Cisco owns) - Controls how to establish trunk connection
+  - Desirable - starts to negotiate truck(it is not safe to have all ports in desirable mode)
+  - Auto - accept truck mode.
+  - No Negotiate - turn DTP off
+<span class="hljs-bullet">- </span>Switch functions:
+  - Address Learning - learning devices info through communication between devices.
+  - Forwarding Decision
+  - Cut Through - It only check the destination info and transmit
+  - Store &amp; Forward - It check the entire info and check data and transmit
+  - Loop avoidance
+<span class="hljs-code">    - Broadcast between two switch has two links cause loop.(Layer -2 loop)</span>
+<span class="hljs-code">    - Spanning Tree Protocol disconnect one links if there are many backup links. enable it when that only links is broken.</span>
+
+<span class="hljs-section">### VLAN</span>
+
 Divided one switch to two virtual to separate network among ports.
 it can logically group, Segment broadcast, subnet correlation.
 info from port in a VLAN has VLAN Tags, its a layer 2 feature
 port without VLAN setting belongs to native VLAN.
-when change native VLAN all switch should be changed</p>
-<p>VLAN trunking protocol (VTP)
+when change native VLAN all switch should be changed
+
+VLAN trunking protocol (VTP)
 make vlan setting among all connected switch
-uses switch setting with the highest reversion number.</p>
-<p>Server - can make a changes about VLAN</p>
-<p>Client - cannot make changes about VLAN</p>
-<p>Transparent - turn VTP off.</p>
-<p>VTP version 1/2 (2 default)
+uses switch setting with the highest reversion number.
+
+Server - can make a changes about VLAN
+
+Client - cannot make changes about VLAN
+
+Transparent - turn VTP off.
+
+VTP version 1/2 (2 default)
 VTP domain - safety setting
-VTP password</p>
-<p>VTP Pruning
+VTP password
+
+VTP Pruning
 look at VLAN and prevent not useful information travel to other switch.
-switchport trunk allowed vlan x</p>
-<p>check
+switchport trunk allowed vlan x
+
+check
 show vlan
-each vlan has its own management IP</p>
-<p>Switch security
+each vlan has its own management IP
+
+Switch security
 Allow certain Mac address or sticky it stick to the next mac address who connect it
 set max number of mac address for this port
 set violation what to do if there is a violation:
@@ -1170,13 +1381,17 @@ can choose three consequence
 protect - protect from wrong Mac device
 restrict - protect plus log the incidence using SNMP
 shutdown
-To enable port security: Switch(config-if)# switchport port-security.</p>
-<p>check
-show port-security</p>
-<p>Router
+To enable port security: Switch(config-if)# switchport port-security.
+
+check
+show port-security
+
+<span class="hljs-section">## Router</span>
+
 Router rely on software, Cisco IOS
-Has the help of hardware CEF(Cisco Express forwarding)</p>
-<p>Static
+Has the help of hardware CEF(Cisco Express forwarding)
+
+Static
 set path
 Dynamic
 auto path, using protocol and router auto communicate and route.
@@ -1188,87 +1403,93 @@ EIGRP(Cisco own) both distance and speed
 EGP
 for WAN
 BGP
-EGP</p>
-<p>RIP
+EGP
+
+RIP
 open source
 RIPv1
 classful Version(no VLSM)
 No Authentication - anyone can provide routing info
-Uses Broadcast: send broadcast routing info everywhere</p>
-<p>RIPv2
+Uses Broadcast: send broadcast routing info everywhere
+
+RIPv2
 Classless Version(supoorts VLSM)
 Adds Authentication
-Uses Multicast</p>
-<p>Update Timer default every 30 second
+Uses Multicast
+
+Update Timer default every 30 second
 Invalid Timer default 180 seconds - when no info received from certain network
 Holddown Timer default 180 after invalid timer finish
-Flush Tmer:240s starts when invalid timer starts</p>
-<p>Rip problems
-It has auto-summarzation for routing table. it cause problem.</p>
-<p>adjacent router send misleading info about info network on opposite side network, loop for large hop count.
+Flush Tmer:240s starts when invalid timer starts
+
+Rip problems
+It has auto-summarzation for routing table. it cause problem.
+
+adjacent router send misleading info about info network on opposite side network, loop for large hop count.
 Solved by:
 Split Horizon - don&#x2019;t send info to router which u learn this info earlier.
-Route poison - generate large hop count(16(not accessible)) right away</p>
-<p>Inter switch routing
-router in between two switches</p>
-<p>inter VLAN routing (router on a stick)
-Use one cable from router with 2 - sub interface setting to connect one switch&#x2019;s 2 VLAN seperately using truck mode.</p>
-<p>ACL
+Route poison - generate large hop count(16(not accessible)) right away
+
+Inter switch routing
+router in between two switches
+
+inter VLAN routing (router on a stick)
+Use one cable from router with 2 - sub interface setting to connect one switch&#x2019;s 2 VLAN seperately using truck mode.
+
+ACL
 it has permit/deny
 it can be a compares from top to down
 only a match found execute right away, no more comparison
-has a implicit deny at the end(if one user define condition is created.)</p>
-<p>Standard ACL
+has a implicit deny at the end(if one user define condition is created.)
+
+Standard ACL
 name 1-99 &amp; 1300-1999
 or name
-Based on source IP</p>
-<p>Extended ACL
+Based on source IP
+
+Extended ACL
 100-199&amp; 2000-2699
-Based on Source IP, Destination IP, protocol or port No.</p>
-<p>Wildcard mask:
-It is the inverse of subnet mask. change subnet mask&#x2019;s 1 to 0, 0 to 1</p>
-<p>Rules:
+Based on Source IP, Destination IP, protocol or port No.
+
+Wildcard mask:
+It is the inverse of subnet mask. change subnet mask&#x2019;s 1 to 0, 0 to 1
+
+Rules:
 Standard ACL applied close to Destination
-Extended ACL applied close to Source //no more two S in one statement to remember.</p>
-<p>NAT</p>
-<p>Inside Local - before transit source
+Extended ACL applied close to Source //no more two S in one statement to remember.
+
+NAT
+
+Inside Local - before transit source
 Inside Global - after transit source
 Outside Local - Destination address before transition
 Outside Global - Destination address after transition
-Outside address are usually the same.</p>
-<p>Static NAT
+Outside address are usually the same.
+
+Static NAT
 one to one transition. one public address for each device.
 Dynamic NAT
 many to many transition. inside local auto assign public IP when there is one available.
 NAT Overloading(PAT)
-many to one, one public IP address but with different random source port number. for both inside local and inside global IP address.</p>
-<p>Cisco three layer architecture
+many to one, one public IP address but with different random source port number. for both inside local and inside global IP address.
+
+Cisco three layer architecture
 access layer - connect to device
 distribution layer - building layer (connect access layer)
-core layer - connect to the outside. connected by ether Channel</p>
-<p>Ether Channel
-Combine two link to one link with double speed</p>
-<p>CDP
+core layer - connect to the outside. connected by ether Channel
+
+Ether Channel
+Combine two link to one link with double speed
+
+CDP
 Cisco Discovery Protocol
-Cisco own</p>
-<p>LLDP
+Cisco own
+
+LLDP
 Link Layer Discovery Protocol
-open source</p>
-<h1 id="router">Router</h1>
-<ul>
-<li>Out of band configration provide direct access to the router motherboard. It provides the following ways to connect.<ul>
-<li>Console is used to connect to computer.(ouf of band access)</li>
-<li>AUX is connected to a modem, it acts as a backup method for</li>
-<li>A mini USB port one is used for easy console connection.</li>
-</ul>
-</li>
-<li>A larger USB port is for update,</li>
-<li>Connect with software like <code>putty</code>, <code>Tera Term</code>, <code>Secure CRT</code>, <code>Hyper Term</code>. Use the following settings.</li>
-<li>Connection type: <code>Serial</code></li>
-<li>Speed <code>9600</code></li>
-<li>Serial line mostly <code>COM1</code></li>
-</ul>
-<p>Switch(config-if)# speed 100 (switch will restart)
+open source
+
+Switch(config-if)# speed 100 (switch will restart)
 Duplex
 full and half should coordinate.
 auto setting for fast ethane is half
@@ -1277,7 +1498,8 @@ full
 both send and receive
 half
 either send or receive
-Switch(config-if)# duplex full</p>
+Switch(config-if)# duplex full
+</code></pre>
 
                                 
                                 </section>
@@ -1321,7 +1543,7 @@ Switch(config-if)# duplex full</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cisco","level":"1.15.2","depth":2,"next":{"title":"Virtualization","level":"1.16","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.16.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.16.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]},{"title":"Kubernetes","level":"1.16.3","depth":2,"path":"virtualization/kubernetes.md","ref":"virtualization/kubernetes.md","articles":[]}]},"previous":{"title":"Security","level":"1.15.1","depth":2,"path":"networking/security.md","ref":"networking/security.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"networking/cisco.md","mtime":"2020-06-25T18:17:41.451Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-22T16:03:48.866Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Cisco","level":"1.15.2","depth":2,"next":{"title":"Virtualization","level":"1.16","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.16.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.16.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]},{"title":"Kubernetes","level":"1.16.3","depth":2,"path":"virtualization/kubernetes.md","ref":"virtualization/kubernetes.md","articles":[]}]},"previous":{"title":"Security","level":"1.15.1","depth":2,"path":"networking/security.md","ref":"networking/security.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"networking/cisco.md","mtime":"2020-08-03T20:47:58.232Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

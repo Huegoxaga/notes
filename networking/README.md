@@ -403,7 +403,7 @@ http(s)
   - Two switches connected in trunk mode will act like one combined switch.
   - There are two encapuslation protocal for trunking:
     - `802.1q` most used
-    - ISL - inter switch link
+    - `ISL` - inter switch link
 - Dynamic Trunking Protocol is a Cisco Switch protocol that controls the port to be in either access mode or trunk mode. It has the following settings:
   - `Desirable` - It will start to negotiate trunk mode connection.
   - `Auto` - It accepts trunk mode connection.
