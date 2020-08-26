@@ -4,8 +4,9 @@
 
 - Django is a Python-based free and open-source web framework
 - One Django project can have multiple Apps as web components.
-- Django uses WSGI to control the communication between the web server communicates and web applications, and how web applications can be chained together to process one request.
-  - WSGI is the Web Server Gateway Interface.
+- Web servers like `Apache` or `Nginx` are used to get browser request, requests are then forwarded to `WSGI`.
+  - Web server can enable a certain web port socket
+- `WSGI`(Web Server Gateway Interface) is used to run the Django application, send to request to the app and then get return response from the app.
 
 ## Useful Commands
 
@@ -13,7 +14,8 @@
 - `python -m django --version` check the version
 - `django-admin` show a list of sub-command
 - `django-admin startproject <project_name>` create a new project.
-- `python manage.py runserver` it will run the website and return the url of the running website. By default it is localhost:8000
+- `python manage.py runserver` it will run the website and return the url of the running website. By default it works with 127.0.0.1 on 8000 port only
+  - append the command with `0.0.0.0:8000` to runserver on all server addresses on port 8000.
 - `python manage.py startapp <appname>` create a new app inside a project.
 - `python manage.py makemigrations` update changes made on database model files for an app.
   - create files in the `app/migrations` folder for the `migrate` command to run.
@@ -22,6 +24,7 @@
 - `python manage.py migrate`
   - first migration command will create default databases.
   - `python manage.py migrate --fake <appname> <migratationID>` make certain migration, assume the database is the same as this migration file is made, reset the migration record. Migration Files after this time can be deleted.
+    - fake will not alter the database, new migrations are needed to rollback chages, then fake and delete the new and unused migration files.
   - `python manage.py migrate --fake-initial` force making initial migrate with database is already exists.
 - `python manage.py showmigrations` Check migration history.
 - `python manage.py createsuperuser` follow the promts and create admin account for the admin page.
@@ -174,17 +177,20 @@ def about(request):
   ModelClass.objects.last() # return the last object
   ModelClass.objects.all()[0:20]# return first 20 objects
   ModelClass.objects.filter(propertyname='value') # return a list of matching objects.
-  ModelClass.objects.filter(propertyname='value') # return the first matching object.
+  ModelClass.objects.filter(id__in=[1,2,3]) # return all matching id
   ModelClass.objects.get(id=1) # return the object with id 1
   newobject = ModelClass(property1='value1', property2 = 'value2') #create a new object
   newobject.save() # save change to the object that is already in the database
   modelObject.id # get the object id
   modelObject.pk # get the object primary key value
-  modelObject.manyToManyField.all() # return all related fields of a many-to-many fields.
+  modelObject.manyToManyField.all() # return all related fields of a many-to-many fields. Direct access without all() will cause "TypeError: ManyRelatedManager object is not iterable"
   modelObject.relatedModel_set.all() # return all assciated model of one model.
   modelObject.relatedModel_set.create(property1='value1', property2 = 'value2') # create a new related model of the model.
   ModelClass.objects.select_related('tableA','tableB').prefetch_related('tableC').all() # Join tables for future queries. select_related is used for tables with one to one relationship, prefetch_related is used for many-to-many relationships.
-  ModelClass.objects.values('field1', 'field2') # return list of dict for certain fields
+  ModelClass.objects.values('field1', 'field2') # return dict queryset for certain fields
+  ModelClass.objects.values_list('id', flat=True) # return a list queryset of id, if flat=False return list of tuples.
+  ModelClass.objects.annotate(raw_link=Concat(Value("https://"), F('domain'))) # create a temp field with annonted strings append from a existing field
+  list(ModelClass.objects.all()) #convert queryset into a list
   ```
 
 ### admin.py

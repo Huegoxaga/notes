@@ -6,7 +6,7 @@
 - Interpreted language has an interpreter processing the scripts at runtimes line by line, no compiling needed before execution. Cpython is the official interpreter.
 - Python 3 is the current version.
 - IDLE is the integrated development environment for Python. It is available for all platform. Python code can be executed in IDLE line by line using Python Shell(immediate mode) or written and run in source code files.
-- Source files have an extension of .py. The code is executed all at once, from top to bottom. Interpreted language doesn’t have machine code file which is created by the compiler.
+- Source files have an extension of `.py`. The code is executed all at once, from top to bottom. Interpreted language doesn’t have machine code file which is created by the compiler.
 - It is a case sensitive language.
 
 ## Basic Syntax
@@ -552,7 +552,7 @@ filter(function,iterables)
 
 - It returns a filter object that has elements removed according to the function as the first argument.
 
-## Module
+## Modules
 
 #### Ways of Importing Modules
 
@@ -580,7 +580,21 @@ from math import sqrt as square_root
 
 1. Some of them are preinstalled in the standard Library
 2. Third-party Python modules. Installed using libraries management tools like `pip` or `conda`
+   - A collection of third-party modules can be pre-installed and managed by a certain Python distribution
 3. Your own module. Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file.
+
+## Distributions
+
+### Anaconda
+
+- Most popular packages are included in one Python distribution called .
+- It manages libraries, dependencies, and environments with Conda, instead of Python Package Index (PyPI).
+
+#### Installation
+
+- [Click](https://www.anaconda.com/distribution/) to download Anaconda.
+- Follow the instructions to install. For Linux OS, [Click Here](https://docs.anaconda.com/anaconda/install/linux/).
+- Once complete, the following libraries, dependencies, and environments are ready to use.
 
 ## Lambda
 

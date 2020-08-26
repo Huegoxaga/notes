@@ -2,8 +2,7 @@
 
 - [Python](https://huegoxaga.github.io/notes/python/index.html)
   - [Python Standard Library](https://huegoxaga.github.io/notes/python/standard-library.html)
-  - [pip](https://huegoxaga.github.io/notes/python/pip.html)
-  - [Libraries with Anaconda](https://huegoxaga.github.io/notes/python/anaconda.html)
+  - [Tools & More Packages](https://huegoxaga.github.io/notes/python/tools-and-packages.html)
   - [Django](https://huegoxaga.github.io/notes/python/django.html)
 - [Java](https://huegoxaga.github.io/notes/java/index.html)
   - [JavaFX](https://huegoxaga.github.io/notes/java/javafx.html)
@@ -57,6 +56,8 @@
   - [Raspberry Pi](https://huegoxaga.github.io/notes/embedded/raspberry-pi.html)
   - [STMicroelectronics](https://huegoxaga.github.io/notes/embedded/st.html)
   - [Electricity & Magnetism](https://huegoxaga.github.io/notes/embedded/electricity-magnetism.html)
+- [GIS](https://huegoxaga.github.io/notes/gis/index.html)
+  - [ArcGIS](https://huegoxaga.github.io/notes/gis/arcgis.html)
 - [Algorithm](https://huegoxaga.github.io/notes/algorithm/index.html)
   - [Blockchain](https://huegoxaga.github.io/notes/algorithm/blockchain.html)
   - [Cryptography](https://huegoxaga.github.io/notes/algorithm/cryptography.html)

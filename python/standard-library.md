@@ -359,20 +359,20 @@ list(accumulate(range(8)))
 
 #### Usage
 
-- `datetime.fromtimestamp(timestamp)` convert timestamp to value to datetime string.
-- `time = datetime.now()` get a current datetime object.
-  - `time = datetime.now(timezone_object)` get a current datetime object for a certain timezone.
-- `timestamp = datetime.timestamp(now)` current timestamp.
+- `datetime.fromtimestamp(timestamp)` convert timestamp in second from `1970` to value to datetime object.
+- `timestamp = datetime.timestamp(datetime_obj)` convert datetime object to timestamp.
+- `datetime_obj = datetime.now()` get a current datetime object.
+  - `time = datetime.now(timezone_obj)` get a current datetime object with a certain timezone.
 - `datetime.now().time()` get a current time object.
-- `timeObject.strftime("%m/%d/%Y, %H:%M:%S")` return a formatted time string.
+- `datetime_obj.strftime("%m/%d/%Y, %H:%M:%S")` return a formatted time string.
 - For datetime object
-  - `time.year`
-  - `time.month`
-  - `time.day`
-  - `time.hour`
-  - `time.minute`
-  - `time.second`
-  - `time.microsecond`
+  - `datetime_obj.year`
+  - `datetime_obj.month`
+  - `datetime_obj.day`
+  - `datetime_obj.hour`
+  - `datetime_obj.minute`
+  - `datetime_obj.second`
+  - `datetime_obj.microsecond`
 
 ### datetime.date
 
@@ -404,6 +404,14 @@ list(accumulate(range(8)))
 
 - `myTimeZone = pytz.timezone('Country/City')`
   - `myTimeZone = pytz.timezone('America/New_York')`
+
+## gzip
+
+- It handles data compress and depress
+
+### Usage
+
+- `uncompressed_data = gzip.decompress(compressed_data)` decompress data
 
 ## uuid
 

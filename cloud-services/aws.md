@@ -126,6 +126,13 @@ It provide computing services.
 - Load balancer can assign Security Policies to certain SSL Certificates
   - A security policy is a combination of protocols and ciphers, The `ELBSecurityPolicy-2016-08` security policy has the highest compatibility.
 - For some instance types AWS sets a limit of 0 which prevent the user from running, a limit increase request should be sent in these cases.
+- Snapshots are the backup of the data on EBS volumes, whereas AMIs(image)are bootable copy of the whole EC2 instances.
+  - A snapshot is required for creating an image, when creating an image of an instance, a snapshot will be auto created. Snapshots cannot be deleted when it is used by the corresponding image.
+  - An AMI image can be copy from one region to another
+  - An AMI image can be used to launch instance directly
+- Each snapshot can have the Fast Snapshot Restore Service
+  - enable it for new and existing snapshots on a per-AZ (Availability Zone) basis, and then create new EBS volumes that deliver their maximum performance and do not need to be initialized.
+  - It costs `$0.75` per hour per zone.
 
 ## Elastic Beanstalk
 
@@ -226,7 +233,8 @@ It deploys app on EC2 and will do capacity provisioning, load balancing, scaling
     - new `config.yml` will be created in the `.elasticbeanstalk` folder, customization can be added in the file. The file will only be read during environment creation process.
   - `eb use my-env-name` setup a default env for the current git branch
   - `eb create name-env` create new env and deploy project to it.
-  - `eb status` check details.
+  - `eb status <env-name>` check details.
+  - `eb health <env-name>` check env health.
   - add app domain name in the `ALLOWED_HOSTS` in the `settings.py` file.
   - `eb deploy` to update the app.
     - Whenever changes are made to the local file, run deploy again to update.
@@ -328,6 +336,9 @@ It generates metrics for other services.
   - text surrounded by `""` or `[]` are treated as one entry.
   - Once a pattern is set cloudwatch can be generated based on it using AWS console, `CloudWatch` -> `Log Groups` -> `Create metric filter`.
   - [Click Here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringPolicyExamples.html) to see more example.
+- When exporting logs in log group to s3, each AWS can run one exporting task at a time.
+  - Multiple log groups can be exported by using regex pattern for `logGroupName` parameter
+- When publish log through `Lambda`, log stream are encoded as `base64` and compressed by `gzip`.
 
 ## Lambda
 
@@ -435,6 +446,10 @@ It provides support for generating serverless APIs.
 - The access log is the custom log that can be used to store cutomized formatted log.
   - It support log with `CLF`, `JSON`, `CSV`, and `XML` format.
   - only the `$context` variable can be used to access requrest info.
+
+## Amazon Certificate Manager
+
+- Certificates from ACM cannot be downloaded used to on the server unless it is private CAs generated from ACM.
 
 ## Sagemaker
 

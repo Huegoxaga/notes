@@ -57,11 +57,25 @@
   - `t?`, list commands start with letter `t`.
   - `<cr>` output means blank space, so a command can be executed by hitting enter directly
 - `enable`, switch mode `>` to mode `#`.
-- `disable`, switch to the previous mode
-- `exit`, switch to the previous mode
+- `disable`, `exit` or `Ctrl + Z` switch to the previous mode
 - `show privilege` show the current privilege level
+  - the privilege level ranges from 1 to 15, higher level will have more commands available.
 - `show ip interface brief` show a breif summary of all ip interface status in current privilege Level.
   - When protocol is down, it means there is no traffic at this port.
+- `ping 192.168.1.3` ping an IP address
+  - `!` means packet received, `.` means packet not received.
+- `telnet 192.168.1.3` open telnet connection
+  - `Shift + Ctrl + 6` -> `x`, go to the command for previous connection.
+- `show users` get current user connection and connection ID
+- `show version` show register info
+- `show interface f 0/0` show port details
+- `show clock` show the current time
+- `show controller Serial 0` (Router Only) show serial connection info
+- `show interface f 0/0 switchport` (Switch Only) show port access mode
+- `show vtp status` (Switch Only) show vtp info including version number
+- `show cdp neighbours detail` show others devices detail through `CDP`
+- `show sessions` get all devices logged into
+  - Hit enter to go to the last connection, Hit `Enter + 1` to go to connection with ID `1`.
 - `no <command>` negect or disable the command.
 
 #### Privileged EXEC Mode
@@ -74,11 +88,16 @@
 - `write` save the running config as startup configuration
 - `copy <From> <To>`(recommanded alternative for `write` command)
   - `copy running-config startup-config` save running-config to startup-config
+- `clear line 0` kick out other connection
+- `disconnect 1` disconnect a connection
+- `reload` or `reboot` restart the device
 
 #### Global Configuration Commands
 
 - `enable password <password>` setup a password when entering `#` mode.
-  - This password is required by `telnet` connection by default.
+  - This password is required by `vty` connection by default.
+- `enable secret <password>` setup a secret password when entering `#` mode.
+  - The password will be encrypted in the config files.
 - `do <command>` run `#` command in `(config)#` mode.
 - `ip domain-lookup`, enable domain-lookup for unrecognized commands by default it is on.
 - `ip default-gateway <IP>` setup the default gateway IP address
@@ -90,6 +109,11 @@
 - `hostname <NewName>`, change hostname of the device
 - `banner motd <delimittingCharacter>`, entering the command will allow you change the login banner message, enter the same delimitting character at the end of the banner message, then hit enter to save the change.
   - It will be displayed before password prompt during login
+- `banner login <delimittingCharacter>` (Router Only), set the login message
+- `cdp run` enable `CDP`
+  - enabled by default
+- `lldp run` enable `lldp`
+  - disabled by default
 - `interface gigabitEthernet 0/0`, enter the Interface Configuration Mode for gigabitEthernet Port `0/0`.
   - All router ports start at `0/0`
   - All switch ports start at `0/1`
@@ -101,22 +125,28 @@
   - This is where the access IP address or the management IP located
 - `router rip`(Router Only), enter the Routing Configuration Mode for `RIP` protocal.
 - `vlan 1`(Switch Only), create VLAN(if not exist) and enter the VLAN Configuration Mode for `vlan 1`.
+- `interface Loopback 0`(Router Only) enable a lookback interface and change its state to up, then enter loopback config mode
+- `interface serial 0` (Router Only) enter the serial config mode
 
 ##### Interface Configuration Commands
 
 - `ip address 10.1.1.1 255.255.255.0` set management IP for the interface.
 - `shutdown` administratively shutdown a port.
   - open a port using negating command `no`
-- `switchport mode access` set port to access mode to connect the port to end device
-- `switchport mode trunk` set port to trunk mode to connection the port to another switch
-- DTP config
-  - `switchport mode dynamic desirable`
-  - `switchport mode dynamic auto`
-  - `switchport nonegotiate`
-- Assign a port to VLAN
-  - `switchport mode access` only ports in access mode can be in a VLAN
-  - `switchport access vlan <NO>` assign the port to a VLAN
-    - will create new VLAN if the VLAN number does not exist
+- `cdp enable` enable cdp for a certain port
+- `lldp receive` allows the port to receive lldp info from other devices.
+- `lldp transmit` allows the port to receive and send lldp info with other devices.
+- Switch Only Commands
+  - `switchport mode access` set port to access mode to connect the port to end device
+  - `switchport mode trunk` set port to trunk mode to connection the port to another switch
+  - DTP config
+    - `switchport mode dynamic desirable`
+    - `switchport mode dynamic auto`
+    - `switchport nonegotiate`
+  - Assign a port to VLAN
+    - `switchport mode access` only ports in access mode can be in a VLAN
+    - `switchport access vlan <NO>` assign the port to a VLAN
+      - will create new VLAN if the VLAN number does not exist
 
 ##### VLAN Configuration Commands
 
@@ -133,6 +163,13 @@
   - `none`
   - `telnet`
   - `ssh`
+- `logging synchronous` sync command line input after interrupt by other output while typing.
+- `exec-timeout` set timeout duration.
+  - `0` means never timeout. `3 10` means `3 minutes 2 seconds`.
+
+##### Serial Configuration Commands
+
+- `clockrate 64000` config clock rate for `DCE` connection with DTE terminal.
 
 ```md
 ## Switch

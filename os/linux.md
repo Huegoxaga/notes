@@ -104,6 +104,7 @@
 - `basename <path>` return filename or directory portion of pathname
 - `mkdir <directory path(s)>` make new dir
   - create multiple new folderName separate by space.
+  - `-p` option helps create sub-directories of a directory. It will create parent directory first, if it doesn't exist. But if it already exists, then it will not print an error message and will move further to create sub-directories.
 - `cp <source> <destination> -R`, copy files for folders, `-R` include directories.
   - `cp ~/a* ~/Documents/a` copy anything begins with a to `a` folder.
 - `mv <source> <destination>` The mv command is used to move or rename files
@@ -178,9 +179,10 @@
 - `su` change to root user.
 - `su username` change to certain user.
 - `su -` change user and redirect to default home directory after changed.
+  - `Ctrl + D` go back to previous user terminal
 - `sudo <command>` run any command as root user. using user password.
   - when user password is entered, by default following sudo commands entered in 5 min, doesn't require any password.
-  - control user to use certain command without using root password in `etc/sudoers` file.
+  - control user to use certain command without using root password in `/etc/sudoers` file.
   - `visudo` this command is used to configure sudoers file, to edit it.
     1. In the template, find the command that will be made available to users or groups.
     2. uncomment the alias, if all of the command in the same category are needed for the users or groups.
@@ -189,12 +191,18 @@
   - `sudo -l` list commands that are available for the current user without using root password.
   - to enable sudo log, add `Defaults logfile=/var/log/sudulog` in sudoers, using `visudo`.
 - `useradd <newUsername>` create new user account and add the user to a new private group named as the username.
-  - After execution, new user will be added in the `etc/passwd`. It has the following info `username:passwordLink:UserID(starting from 500):GroupID::homeDirectory:defaultShell`.
+  - `useradd -d <PathToNewHomeDir> <newUsername>` set customized path for user's home directory.
+  - `-s /bin/bash` set bash as preferred shell for this user.
+  - `--gid` or `-g` or `-G` will and user to a existing group rather than creating a new group which has the same name as the username by default.
+  - `-r` or `--system` will use UID in system user range. system users are created with no expiry date.
+  - After execution, new user will be added in the `/etc/passwd`. It has the following info `username:passwordLink:UserID(starting from 500):GroupID::homeDirectory:defaultShell`.
+  - The default setting for `useradd` can be changed in the `/etc/default/useradd`, or run `useradd --D`, or `useradd --defaults`
 - `passwd <username>`, follow the prompt to enter and confirm password.
   - Password info will be stored in the `etc/shadow` file if the system use shadow password.
-  - New account without setting password is not accessible, will show `!!` in the `etc/shadow` file.
+  - New account without setting password is not accessible, will show `!!` in the `/etc/shadow` file.
 - `groupadd <groupname>` create a new group.
   - group infos are stored in the `etc/group` file.
+  - `groupadd <groupname> --system` or `groupadd <groupname> -r` Create a system group with low range(defined by `SYS_GID_MIN-SYS_GID_MAX` in `login.defs`) of GID(Group ID)
 - `usermod -G <groupname> <username>` add user to a group.
 - `chmod <permissionCode> <filePath>` change the file permission.
 - `chmod <permissionCode> <folderPath> -R` change permission for the folder and all its contents.
@@ -202,12 +210,13 @@
 - first character can be `u` for user, `g` for group, `o` for others and `a` for all users.
 - followed by `=+` add permission, `=-` remove permission.
 - followed by permission `w`, `r`, or `x`.
-- Ex, `o=-rx`, remove read and execute permission for other users.
-- Ex, `-rx`, remove read and execute permission for all users.
+- e.g. `o=-rx`, remove read and execute permission for other users.
+- e.g. `-rx`, remove read and execute permission for all users.
+- e.g. `g+w`, add the write permission for owner group.
 - `chown <username>.<groupname> <filePath>` change file or directory's ownership.
-  - `mount /dev/cdrom /media`
-- `chown <username>.<groupname> <folderPath> -R` change ownership for directory and all files under it.
-  - `umount /dev/cdrom`
+  - `chown -R <username>.<groupname> <folderPath>` change ownership for directory and all files under it.
+- `mount /dev/cdrom /media`
+- `umount /dev/cdrom`
 
 ## Tools
 
@@ -375,6 +384,16 @@
 - `yum groupinstall -y 'X Window System' 'Desktop' 'Fonts'` install X window GUI
 - `yum install gcc –y` Install the C compiler.
 - `yum install kernel -y` and `yum install kernel-devel –y` install kernel development source.
+- `yum repolist all` get all packages repo
+  - YUM Repositories are warehouses of Linux software (RPM package files)
+- `sudo yum-config-manager --enable epel` enable epel repo
+- `sudo yum-config-manager --add-repo https://www.example.com/repository.repo` add a repo
+- `yum list <package_name> --showduplicate` show all versions of a package, available in enabled repositories
+- `sudo yum install <package_name>-<version_info>` install a specific version of a package
+- `sudo yum downgrade <package_name>-<version_info>` Force Yum To Downgrade Package
+- `yum autoremove <package>` remove a package and erase all the unneeded dependencies
+  - automatically remove package dependencies, In `/etc/yum.conf`, change `directive clean_requirements_on_remove=1`.
+- `yum remove <package>` or `yum erase <package>` uninstall a package
 
 ### APT
 
@@ -391,6 +410,8 @@
   - `apt-get -f clean` clean up download files.
   - `apt-cache policy <package>` Get info about the package which will be installed.
 - `apt` is the recommanded command with all features
+  - `apt list` list all available, installed and, upgradeable packages
+    - `apt list --installed` list installed packages
   - `apt install <PackageName>` install new package
   - `apt full-upgrade` performs the same function as apt-get dist-upgrade
   - `apt upgrade` will automatically install but not remove packages.
@@ -402,6 +423,19 @@
 ### WGET
 
 - `wget http://www.website.com/file.txt` Downloads the file located at `http://www.website.com/file.txt`
+
+### TAR
+
+- `tar -cvf filename.tar <DestinationPath>` Create tar Archive File
+  - `c` – Creates a new .tar archive file.
+  - `v` – Verbosely show the .tar file progress.
+  - `f` – File name type of the archive file.
+- `tar cvzf filename.tar.gz <DestinationPath>` or `tar cvzf filename.tar.tgz <DestinationPath>` Create tar.gz Archive File
+  - `z` compressed `gzip` archive file, use the option as `z`
+- `tar cvfj filename.tar.bz2 <DestinationPath>` Create `tar.bz2` or `tar.tbz` or `tar.tb2` Archive File
+- `tar -xvf filename.tar.gz` extract
+  - `-C <<DestinationPath>>` extract to a different directory
+- `tar -tvf filename.tar` extract and list contents
 
 ### Vim
 
@@ -418,6 +452,7 @@
 ### Nano
 
 - `nano example.txt` Opens the file `example.txt` in the Linux text editor Nano
+- `Ctrl + X` to exit, hit `Y` and press `Enter` to save.
 
 ### Grep
 
@@ -473,10 +508,103 @@
 - SQL account information is stored in the tables of the mysql database. See more about account management in SQL notes.
 - The username and password in the connection string in `PHP` can be stored as text in a file in the `/etc/httpd/` folder.
 
+### nginx
+
+- It can be pronounced as Engine-X.
+- It is event-driven.
+- It can serve 4 times more static files than Apache server
+
+#### Installation
+
+- `sudo apt-get install nginx`
+
+#### Configuration
+
+- NGINX has two directories
+  - `sites-available` stores all conf files for all available sites on that particular instance.
+  - `sites-enabled` stores the symbolic link for each enabled site to the sites-available directory.
+    - Amongst all sites in the `sites-available` only the one with link to the `sites-enabled` will be available to the user.
+    - Links are created by `sudo ln -s /etc/nginx/sites-available/confg-name.conf /etc/nginx/sites-enabled/confg-name.conf`
+  - By default, In each of these two folders, there is only one conf file named default that has basic setup for NGINX.
+
+##### Work with uWSGI
+
+- `Nginx` can run with `uWSGI` and provide more control to a Python Web App.
+- `uwsgi_params` file, create a file called `mysite_nginx.conf` in the `/etc/nginx/sites-available/` directory to link request to the Nginx to uWSGI, then created link to the `sites-enabled` directory
+
+```conf
+upstream updateMe_dev {
+    server unix:/webapps/updateMe/run/uwsgi.sock;
+}
+
+server {
+    listen 80;
+    server_name your-IP-or-address-here;
+    charset utf-8;
+
+    client_max_body_size 128M;
+
+    location /static {
+    # exact path to where your static files are located on server
+    # [mostly you won't need this, as you will be using some storage service for same]
+        alias /webapps/updateMe/static_local;
+    }
+
+    location /media {
+    # exact path to where your media files are located on server
+    # [mostly you won't need this, as you will be using some storage service for same]
+        alias /webapps/updateMe/media_local;
+    }
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass updateMe_dev;
+        uwsgi_read_timeout 300s;
+        uwsgi_send_timeout 300s;
+    }
+
+    access_log /webapps/updateMe/log/dev-nginx-access.log;
+    error_log /webapps/updateMe/log/dev-nginx-error.log;
+}
+```
+
+- conf for https and redirect with private CAs
+
+```conf
+server {
+       listen 80;
+       server_name example.com www.example.com;
+       return 301 https://example.com$request_uri;
+}
+server {
+       listen 443 ssl;
+server_name example.com web.example.com;
+       # Certificate
+       ssl_certificate /etc/nginx/ssl/cbe170b66b1f2233.crt;
+
+       # Private Key
+       ssl_certificate_key /etc/nginx/ssl/generated-private-key.key;
+       location / {
+               proxy_pass http://localhost:5000;
+               proxy_set_header Host $host;
+               proxy_set_header X-Real-IP $remote_addr;
+               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+               proxy_set_header X-Forwarded-Proto $scheme;
+}
+}
+```
+
+#### Usage
+
+- `sudo /etc/init.d/nginx start` or `service nginx start` start the server
+- `sudo /etc/init.d/nginx restart` or `service nginx restart` restart the server
+- `sudo nginx -t` test the server
+
 ### httpd
 
 - The Apache Web Service.
 - It includes a patched OpenSSL module in the current version.
+- Apache uses one thread per request
 
 #### Installation
 
@@ -837,7 +965,9 @@
 - For a unit with unit file name `unit.service`, the following command work for both full file names or unit names.
 - `systemctl list-units` list all services and units
 - `systemctl status <unitfile>`
+  - same as `service <unitfile> status`
 - `systemctl start <unitfile>`
+  - same as `service <unitfile> start`
 - `systemctl stop <unitfile>`
 - `systemctl restart <unitfile>`
 - `systemctl disable <unitfile>`

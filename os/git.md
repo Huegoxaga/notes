@@ -91,6 +91,7 @@
 - `git remote add origin <URL>` Add the remote repos.
   - For Github repos, the URL is usually like, `https://github.com/AccountName/ReposName.git`
 - `git push -u origin <remoteBranch>` push to certain remote branch and set the remote branch as the remote tracking branch.
+  - create new remote branch if not exists
 - `git push` update the remote repo with its corresponding local branch.
 - `git push origin <branchName>` push to a certain remote branch.
 - `git fetch origin` git fetch is similar to pull but doesn't merge. It fetches remote updates but the local stays the same.

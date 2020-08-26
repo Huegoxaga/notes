@@ -336,15 +336,28 @@
 - It has an agent
 - The agent makes observations and takes actions within an environment.
   - Observation is a snapshot of the environment states.
+- An environment can be "solved" when an agent is built to achieve reward above a threshold.
 - It receives rewards.
 - The objective of the algorithm is to maximize rewards.
   - Rewards can be either positve or negative, only positive, or only negative. Maximize rewards is the same as minimize nagetive reward only, or maximize positive reward only, or both.
+  - The rules to get rewards need to be designed to encourage the agent to make preferred behavior and punished promptly. It is not only about the outcome, the performance need to be quantified.
+  - The punishment should not limit novel strategies which can provides creative solution to gain more rewards.
 - The algorithm the agent uses to make action is called policy.
   - A stochasitc policy is a policy involves randomness.
   - Policy parameter are the variables that is used to determine the action.
   - Policy serach is the process of finding the policy parameter that will determine an action that maximize the reward.
   - Policy space is all the possible combination of the policy parameter.
+  - Policy can be deterministic - all decision is based on a function of state.
+  - Policy can be probabilistic - some decision is made randomly by using probability function(distribution)
 - After make one action the agent completes one step. After complete all possible actions, the agent completes one episode.
+  - The set of all possible action in a certain state is called the action space.
+- Episode is consist of many state, each action will change the state from one to another.
+  - The set of all possible state is called the state space.
+  - The terminal state is a state that ends an episode.
+  - The duration of an episode is from the initial state to the terminal state.
+  - The state doesnot have to be a single observation, it can be a certain number of obeservation in a group.
+- When a task is continuous and cannot be measured in an episode, it is called a non-episodic task.(e.g. control room temperature)
+  - Most tasks can be assumed as episodic tasks.
 - Generic algorithm is a way to reduce the policy space by generating a certain amount of policy as the first generation and only keep a small portion of the policy which has the most rewards, then generated offsprings from them. Offsprings is a copy of selected policys with some random variation. Keep creating generations until a good policy is found.
 - Policy gradients(PG) evaluates the relationship between reward and policy parameters, then tweak the parameter following to the gradient towards higher rewards.
   - Reinforce Algorithm is one type of PG, It finds the gradients of the probability for each action by leting neural network play the game several times, then compute action's advantage after several episodes. Multiply the gradient vector by the action's advantages. Lastly use the mean of all gradient vecotrs to perform gradient descent.
@@ -359,6 +372,43 @@
 - The return for an action is a way to evaluate all the consequent rewards followed by an action, the reward immediately after the reward of the current action will have a discount by multiplying the discount factor(𝛾), the reward after that second action after the current action will have to multiply the discount factor square and so on, the sum of all the discounted rewards for an action is called the return.
   - Discount Factor(𝛾) typically ranges from `0.9` to `0.99`. The smaller the factor is, the sooner the consequent actions become not important as the factor approaches `0`.
   - The normolized returns from a large number of trails(episodes) are called the action advantage. It describes the good or bad of an action compares to all other possible actions.
+
+#### Explore-Exploit Dilemma
+
+- When making decision for max reward, two things need to be done.
+  - Exploration - It the process of gathering data for making decision
+  - Exploitation - Using the known info to make decision to maximize the reward
+  - These two options cannot be done at the same time, this can be called explore-exploit dilemma
+- Algorithm or methods for solving this dilemma are:
+  - A/B Testing
+    - also known as split testing, is the process of comparing two versions of a web page, email, or other marketing asset and measuring the difference in performance.
+    - The performance can be measured using
+      - click-through rate(CTR), number of click on the page divide by the number view of the page.
+      - conversion rate - the number of sales divided by the total number of visitors.
+  - Epsilon Greedy
+    - Greedy means picking the bandit with highest Maximum Likehood Estimation(MLE) win rate without considering the sample size and the confidence
+    - Epsilon is the percentage of random chioces this algorithm will make regardless the MLE
+      - `ε` is typically around `5%` to `10%`
+    - In conclusion Epsilon Greedy Algorithm uses greedy method to make decision with a percentage of random decision
+    - `ε` will decrease the reward if it is a constant even when the sample size is big enough to make correct decision. Hence, it can decay over time:
+      - `ε` can be proportional to `1/t` where `t` is the number of selection(steps)
+      - Linearlly decay with a minimum value
+      - exponential cooling
+      - one over logarithm
+  - Optimistic Initial Values
+  - UBC1(Upper Confidence Bound)
+  - Thompson Sampling(Bayesian Bandit)
+
+#### Markov Decision Processes(MDPs)
+
+- Gridworld is a simple example environment for understanding RL concepts.
+  - It is a `3 X 4` table
+  - The state is determined by the location of the agent, the top left corner is described by tuple as `(0, 0)`
+  - An agent starts at the bottom left corner, location `(2, 0)`
+  - The agent move towards all direction available one at a time.
+  - `(1, 1)` is a wall
+  - When the agent get to point `(0, 3)` it have have one reward.
+  - When the agent get to point `(1, 3)` it have lost one reward.
 
 ## Ready-to-use Algorithms
 

@@ -218,14 +218,12 @@
 
 It is used to tell if a data structure or Algorithm is good.
 
+- `Greedy` is a term to describe an algorithm that is be short-sighted, heavily working on the current problem without seeing the whole picture
 - Experimental studies, run methods, output current time before and after the operation, calculate and record the elapsed time for comparison. All irrelevant conditions are controlled.
-
   - Different elapsed time may obtained among identical tests due to background services of the testing device.
   - the biggest issue with experimental analysis is the Algorithm must be completed for testing.
   - IDEs like NetBeans contains a profiler that will indicate the amount of time spent in each function and on what lines in a function.
-
 - Counting Primitive Operations, an algorithm can be measured by counting the following primitive operations it has:
-
   - Assigning a value to a variables
   - Following an object reference
   - Performing an arithmetic operation
@@ -234,7 +232,6 @@ It is used to tell if a data structure or Algorithm is good.
   - Method overhead
     - Calling a method - allocate memory for parameters and local variables
     - Returning from a method - store the address of where control returns after the method terminates.
-
 - Asymptotic Analysis
   - A computational problem is a problem that is meant to be solved by an algorithm.
   - A computational problem is described by specifying the data to be input to the algorithm, and the output that should be produced by the algorithm

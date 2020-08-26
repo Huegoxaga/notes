@@ -28,4 +28,9 @@
     - CentOS - It is based on Red Hat Enterprise Linux
     - Fedora
   - Ubuntu Linux
+    - The LTS version number has format `YY.MM` determined bt the realse year and month.
+    - It release LTS(Long-term support) versions every 2 years in April, each one will be supported for 5 years.
+    - Every six months between LTS versions, Canonical publishes an interim release of Ubuntu. These are production-quality releases and are supported for 9 months, with sufficient time provided for users to update.
+      - Interim releases will introduce new capabilities from Canonical and upstream open source projects, they serve as a proving ground for these new capabilities.
+    - It uses `apt` for package management.
   - Debian Linux

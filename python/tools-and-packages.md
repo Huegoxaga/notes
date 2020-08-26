@@ -1,18 +1,25 @@
-# Libriries with Anaconda
+# Additional Tools & Packages
 
-## Introduction
+## Package Management Tools
 
-- Python packages make Python capable of doing many tasks.
-- Most popular packages are included in one Python distribution called Anaconda.
-- It manages libraries, dependencies, and environments with Conda, instead of Python Package Index (PyPI).
+### PIP
 
-## Installation
+- `pip` packages are stored on the Python Package Index (PyPI). Here are some useful commands.
+- If both python 3 and python 2 is on the system, then running `pip` will update your library for python 2 while `pip3` will update your library for python 3.
+- `pip install <packagename>` install a package
+  - `pip install <packagename>` is the same as `/usr/bin/python2.7 -m pip install <packagename>`
+  - `pip3 install <packagename>` is the same as `/usr/bin/python3.6 -m pip install <packagename>`
+- `pip install --upgrade <packagename>` or `pip install -U <packagename>` update a package
+- `pip install -r requirements.txt` install packages according the `requirements.txt`
+- `pip uninstall <packagename>` uninstall a package
+- `pip search <keyword>` search for a package
+- `pip list` list packages
+- `pip freeze` output package info file
+  - `pip freeze >requirement.txt` output package info file as txt file.
+- `pip list --outdated` list all outdated packages
+- Update all packages, in `requirements.txt`, change all `==` to `>=` and run `pip install -r requirements.txt --upgrade`.
 
-- [Click](https://www.anaconda.com/distribution/) to download Anaconda.
-- Follow the instructions to install.
-- Once complete, the following libraries, dependencies, and environments are ready to use.
-
-## Conda
+### Conda
 
 - It is the package manager that aimed to replace `pip`.
 - It is a virtual environment tool that can replace `virtualenv`.
@@ -30,10 +37,13 @@
 ### Commands
 
 - `anaconda-navigator` start an instance of the Anaconda Navigator
+- `conda config --add channels conda-forge`, add `conda-forge` channel to make it resourceful.
 - `conda list` list installed packages and versions installed in active environment
 - `conda list --revisions` List the history of each change to the current environment
-- `conda info` Verify conda is installed, check version number
+- `conda info` Verify `conda` is installed, check version number
+- `conda search <PackageOrLibrary> --info` check the package or library info and its required dependencies
 - `conda update conda` Update conda to the current version
+  - `conda update --all` update all packages in the current env
 - `conda install <packagename>` Install a package included in Anaconda
   - `conda install <packagename> --file filename.txt` install packages base on text file info.
   - `conda install -c <channelname> <packagename>` install a package from a certain channel
@@ -200,6 +210,7 @@
 ### Introduction
 
 - It is used to process data in tables.
+- Included in Anaconda
 - Dataframe stores data in rows and columns of a table.
 - Dataframe is a dictionary structure that has column names as the key. All data for one column is stored in a list from top to bottom as value for the key.
 - A column of data is of type series. It has a 1-D list structure.
@@ -292,6 +303,7 @@
 - It plays a major role in real-time operation for photos and videos.
 - Images in openCV are 3-D numpy arrays with `np.uint8` as its elements and three color layer for blue, green and red.
 - run `conda install -c menpo opencv` to install
+- If using pip, run `pip install opencv-python`
 
 ### Usage
 
@@ -630,3 +642,154 @@
 
 - Make prediction, `y_pred = ann.predict(X_test)`
   - separate the results in True or False using a defined metric, `y_pred = (y_pred > 0.5)`
+
+## GDAL
+
+- `conda install -c conda-forge gdal`
+- It will install `GDAL` with required`GEOS`, and `Proj`.
+
+## Postgres
+
+- It provide the required driver to connect to a `Postgres` database.
+- Run `pip install psycopg2`
+- Example Usage
+
+```py
+#Import the python driver for PostgreSQL
+import psycopg2
+
+#Create a connection credentials to the PostgreSQL database
+try:
+    connection = psycopg2.connect(
+        user = "postgres",
+        password = "1234",
+        host = "localhost",
+        port = "5432",
+        database = "demo"
+    )
+
+    #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
+    cursor = connection.cursor()
+    print(connection.get_dsn_parameters(),"\n")
+
+    #Display the PostgreSQL version installed
+    cursor.execute("SELECT version();")
+    record = cursor.fetchone()
+    print("You are connected into the - " record,"\n")
+
+    #Get the column name of a table inside the database and put some values
+    pg_insert = """ INSERT INTO book (id, author, isbn, title, date_published)
+                VALUES (%s,%s,%s,%s,%s)"""
+
+    inserted_values = (1, 'Layla Nowiztki', '789-1-46-268414-1', 'How to become a professional programmer', 'January 25 2011')
+
+    #Execute the pg_insert SQL string
+    cursor.execute(pg_insert, inserted_values)
+
+    #Commit transaction and prints the result successfully
+    connection.commit()
+    count = cursor.rowcount
+    print (count, "Successfully inserted")
+
+
+#Handle the error throws by the command that is useful when using python while working with PostgreSQL
+except(Exception, psycopg2.Error) as error:
+    print("Error connecting to PostgreSQL database", error)
+    connection = None
+
+#Close the database connection
+finally:
+    if(connection != None):
+        cursor.close()
+        connection.close()
+        print("PostgreSQL connection is now closed")
+```
+
+- `inserted_values` has to be a tuple, even if it has only one parameter. For example, use `(1,)`.
+
+## pyttsx3
+
+- Pyttsx is completely offline and works seemlesly and has multiple tts-engine support.
+- By default, the pyttsx3 library loads the best driver available in an operating system: nsss on Mac, sapi5 on Windows and espeak on Linux and any other platform.
+
+### Usage
+
+- pick voice
+  ```py
+  import pyttsx3
+  engine = pyttsx3.init()
+  voices = engine.getProperty('voices')
+  for voice in voices:
+    engine.setProperty('voice', voice.id)
+    engine.say('Nice to meet you!')
+    engine.runAndWait()
+  ```
+- female voice pick `voices[10]`, `voices[17]`
+
+## gTTS
+
+- gTTS (Google Text-to-Speech)
+- It requires internet connection.
+- It writes spoken mp3 data to a file, a file-like object (bytestring) for further audio manipulation, or stdout. Or simply pre-generate Google Translate TTS request URLs to feed to an external program.
+
+## virtualenv
+
+- run `pip` with `sudo` will install the module globally.
+- `pip install virtualenv`
+- In the project folder run `virtualenv <env_name>` create new env
+- `source <env_name>/bin/activate` activate new env
+- `deactivate` leave an env
+
+## uwsgi
+
+- The implementation of WSGI, it is used to host Python web app.
+- It is written in `C`.
+- Installation: `pip install uwsgi`
+- Or using conda, run `conda install uwsgi` with `conda-forge` channels.
+- `uwsgi --http :8000 --wsgi-file test.py`, Run uWSGI for single page python app
+  - `http :8000`: use protocol http, port 8000
+  - `wsgi-file test.py`: load the specified page file, `test.py`
+- `uwsgi --http :8000 --module wsgi.py`, Run uWSGI for Django app
+  - In order to add more functionality to `uWSGI` server. It need to run with another production web server like `Nginx` or `Apache`, configure additional server to link to the `uWSGI`.
+    - For this stack, two server will be running at the same time.
+- `uwsgi --ini mysite_uwsgi.ini` run uWSGI with `.ini` config file
+  - The above parameter can all be in included in the config file
+
+```conf
+# mysite_uwsgi.ini file
+[uwsgi]
+
+# Django-related settings
+# the base directory (full path)
+chdir           = /path/to/your/project
+# Django's wsgi file
+module          = project.wsgi
+# the virtualenv (full path)
+home            = /path/to/virtualenv
+
+# process-related settings
+# master
+master          = true
+# maximum number of worker processes
+processes       = 10
+# the socket (use the full path to be safe
+socket          = /path/to/your/project/mysite.sock
+# ... with appropriate permissions - may be needed
+# chmod-socket    = 664
+# clear environment on exit
+vacuum          = true
+```
+
+## Pillow
+
+- Image manipulation package
+- `from PIL import Image`
+
+### Usage
+
+- `image = Image.open('image.jpg')` load image
+- `exif = imWIthEXIF.info['exif']` get exif data in a dictionary
+- `image = Image.fromarray(OpenCVImage)` Convert OpenCV image onto PIL Image
+  - `OpenCvImage` is a opencv image object in a numpy array after `cvtColor()`
+- `image.save(buffer, format='JPEG', exif=imWIthEXIF.info['exif'])` save image with exif data as `jpeg`.
+  - `import io`, and `buffer = io.BytesIO()` generate memory buffer
