@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Cloud Services · GitBook</title>
+        <title>ArcGIS · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="aws.html" />
+    <link rel="next" href="../algorithm/" />
     
     
-    <link rel="prev" href="../virtualization/kubernetes.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -798,9 +798,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.17" data-path="./">
+        <li class="chapter " data-level="1.17" data-path="../cloud-services/">
             
-                <a href="./">
+                <a href="../cloud-services/">
             
                     
                     Cloud Services
@@ -812,9 +812,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.17.1" data-path="aws.html">
+        <li class="chapter " data-level="1.17.1" data-path="../cloud-services/aws.html">
             
-                <a href="aws.html">
+                <a href="../cloud-services/aws.html">
             
                     
                     AWS
@@ -825,9 +825,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.2" data-path="gcp.html">
+        <li class="chapter " data-level="1.17.2" data-path="../cloud-services/gcp.html">
             
-                <a href="gcp.html">
+                <a href="../cloud-services/gcp.html">
             
                     
                     GCP
@@ -914,9 +914,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19" data-path="../gis/">
+        <li class="chapter " data-level="1.19" data-path="./">
             
-                <a href="../gis/">
+                <a href="./">
             
                     
                     GIS
@@ -928,9 +928,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.19.1" data-path="../gis/arcgis.html">
+        <li class="chapter active" data-level="1.19.1" data-path="arcgis.html">
             
-                <a href="../gis/arcgis.html">
+                <a href="arcgis.html">
             
                     
                     ArcGIS
@@ -1144,7 +1144,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Cloud Services</a>
+        <a href=".." >ArcGIS</a>
     </h1>
 </div>
 
@@ -1159,9 +1159,75 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <ul>
-<li><a href="https://huegoxaga.github.io/notes/cloud-services/aws.html" target="_blank">AWS</a></li>
-<li><a href="https://huegoxaga.github.io/notes/cloud-services/google-cloud-platform.html" target="_blank">Google Cloud Platform</a></li>
+                                <h1 id="arcgis-platform">ArcGIS Platform</h1>
+<ul>
+<li>The premier commercial desktop GIS software platform, developed by Esri(Redlands, California)</li>
+<li>It contains many components that communicate with each other via the ArcGIS REST API and common file formats.</li>
+<li>It provides the following products.<ul>
+<li>ArcGIS Pro - a new, integrated GIS application, planned to eventually supersede ArcMap and its companion programs. ArcGIS Pro works in 2D and 3D for cartography and visualization, and includes Artificial Intelligence (AI).<ul>
+<li>It works with many additional extensions.</li>
+</ul>
+</li>
+<li>ArcMap is the application used to view, edit and query geospatial data, and create maps.</li>
+<li>ArcGIS Online - It is web app builder for GIS</li>
+<li>ArcGIS SDKs - It is the GIS SDKs and APIs for developing web apps and mobile apps.</li>
+</ul>
+</li>
+<li>Products can be sold is suites or seperately. e.g. ArcGIS Desktop contains ArcGIS Pro and ArcMap. <a href="https://www.esri.com/en-us/arcgis/products/index" target="_blank">click here</a> for details.</li>
+</ul>
+<h2 id="arcmap">ArcMap</h2>
+<h3 id="import-and-export">Import and Export</h3>
+<ul>
+<li>It can import vector data format in a shape file with <code>.shp</code> extension and display it using different projected coordinate system.<ul>
+<li>shape file are consisted of basic shapes(lines, polygon etc.) and has attribute info associated with each shape.</li>
+<li>the first shape file coordinate system decide the default coordinate system of the working layer</li>
+</ul>
+</li>
+<li>It can import <code>csv</code> file and display the coordinates(<code>X</code>, <code>Y</code>) in each record as an event layer on the map.<ul>
+<li>make sure the point uses geographic coordinates system, instead of the default.</li>
+<li>An event layer can be exported as a <code>.shp</code> file and added as a shape file layer for more functionality.</li>
+</ul>
+</li>
+</ul>
+<h3 id="queries">Queries</h3>
+<ul>
+<li>It can query shapes inside the shape file based on the relationship of the shapes using the <code>Select by Location</code> tool.<ul>
+<li>relationships of shapes from different layers can also be queried.</li>
+</ul>
+</li>
+<li>It can query shape data content by using the <code>Select by Attributes</code> tool.</li>
+<li>queries that join data based on the coordinates of the shape is called spatial join. It can be done by right click layer and choose <code>Joins and Relates</code>.<ul>
+<li>geoprocessing tool can also do spatial join.</li>
+</ul>
+</li>
+</ul>
+<h3 id="geoprocessing">Geoprocessing</h3>
+<ul>
+<li>Geoprocessing is the execution of operations on spatial data to create new information, to enhance its spatial structure, or to analyze interrelationships between existing information.<ul>
+<li>It is located on the top menu bar</li>
+<li>click <code>Search for Tools</code> for more tools.</li>
+<li>The <code>Arc Toolbox</code> includes all the available tools for geoprocessing.</li>
+<li>Tools from extensions can be found in the geoprocessing tool box.<ul>
+<li>If not found, click <code>customize</code> -&gt; <code>Extension</code> and click the checkbox for a certain extension to activate.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="geoprocessing-tools">Geoprocessing Tools</h4>
+<ul>
+<li>Clip - create a new layer from an input layer using a mask.</li>
+<li>Intersect - create a new layer that is a geometric intersection of the input layers.</li>
+<li>Union - data from input layers combined to create output layers.</li>
+<li>Merge - combine two dataset into a larger output layer.</li>
+<li>Buffer - create new features(shapes) to represents the area within a given distance of an input feature</li>
+<li>Thiessen(Voronoi) - create new features(shapes) to represent the area nearest to each input point feature</li>
+<li>Spatial Join</li>
+<li>Spatial Analyst Tools<ul>
+<li>An extension, license is required</li>
+<li>Heat Map is available in the density tool set of spatial analyst tools.</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -1190,12 +1256,12 @@
 
             
                 
-                <a href="../virtualization/kubernetes.html" class="navigation navigation-prev " aria-label="Previous page: Kubernetes">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: GIS">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="aws.html" class="navigation navigation-next " aria-label="Next page: AWS">
+                <a href="../algorithm/" class="navigation navigation-next " aria-label="Next page: Algorithm">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1206,7 +1272,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cloud Services","level":"1.17","depth":1,"next":{"title":"AWS","level":"1.17.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},"previous":{"title":"Kubernetes","level":"1.16.3","depth":2,"path":"virtualization/kubernetes.md","ref":"virtualization/kubernetes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/README.md","mtime":"2020-02-22T23:50:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T21:30:59.692Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ArcGIS","level":"1.19.1","depth":2,"next":{"title":"Algorithm","level":"1.20","depth":1,"path":"algorithm/README.md","ref":"algorithm/README.md","articles":[{"title":"Blockchain","level":"1.20.1","depth":2,"path":"algorithm/blockchain.md","ref":"algorithm/blockchain.md","articles":[]},{"title":"Cryptography","level":"1.20.2","depth":2,"path":"algorithm/cryptography.md","ref":"algorithm/cryptography.md","articles":[]},{"title":"Machine Learning","level":"1.20.3","depth":2,"path":"algorithm/ml.md","ref":"algorithm/ml.md","articles":[]}]},"previous":{"title":"GIS","level":"1.19","depth":1,"path":"gis/README.md","ref":"gis/README.md","articles":[{"title":"ArcGIS","level":"1.19.1","depth":2,"path":"gis/arcgis.md","ref":"gis/arcgis.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"gis/arcgis.md","mtime":"2020-08-27T03:04:51.148Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T21:30:59.692Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

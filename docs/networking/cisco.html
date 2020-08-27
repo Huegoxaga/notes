@@ -129,12 +129,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../python/pip.html">
+        <li class="chapter " data-level="1.2.2" data-path="../python/tools-and-packages.html">
             
-                <a href="../python/pip.html">
+                <a href="../python/tools-and-packages.html">
             
                     
-                    pip
+                    Tools & More Packages
             
                 </a>
             
@@ -142,20 +142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../python/anaconda.html">
-            
-                <a href="../python/anaconda.html">
-            
-                    
-                    Libraries with Anaconda
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="../python/django.html">
+        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
             
                 <a href="../python/django.html">
             
@@ -927,7 +914,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19" data-path="../algorithm/">
+        <li class="chapter " data-level="1.19" data-path="../gis/">
+            
+                <a href="../gis/">
+            
+                    
+                    GIS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="../gis/arcgis.html">
+            
+                <a href="../gis/arcgis.html">
+            
+                    
+                    ArcGIS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../algorithm/">
             
                 <a href="../algorithm/">
             
@@ -941,7 +960,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.19.1" data-path="../algorithm/blockchain.html">
+        <li class="chapter " data-level="1.20.1" data-path="../algorithm/blockchain.html">
             
                 <a href="../algorithm/blockchain.html">
             
@@ -954,7 +973,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
+        <li class="chapter " data-level="1.20.2" data-path="../algorithm/cryptography.html">
             
                 <a href="../algorithm/cryptography.html">
             
@@ -967,7 +986,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
+        <li class="chapter " data-level="1.20.3" data-path="../algorithm/ml.html">
             
                 <a href="../algorithm/ml.html">
             
@@ -985,7 +1004,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20" data-path="../math/">
+        <li class="chapter " data-level="1.21" data-path="../math/">
             
                 <a href="../math/">
             
@@ -999,7 +1018,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.20.1" data-path="../math/calculus.html">
+        <li class="chapter " data-level="1.21.1" data-path="../math/calculus.html">
             
                 <a href="../math/calculus.html">
             
@@ -1012,7 +1031,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.2" data-path="../math/linear-algebra.html">
+        <li class="chapter " data-level="1.21.2" data-path="../math/linear-algebra.html">
             
                 <a href="../math/linear-algebra.html">
             
@@ -1025,7 +1044,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.3" data-path="../math/discrete.html">
+        <li class="chapter " data-level="1.21.3" data-path="../math/discrete.html">
             
                 <a href="../math/discrete.html">
             
@@ -1038,7 +1057,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.4" data-path="../math/probability-statistics.html">
+        <li class="chapter " data-level="1.21.4" data-path="../math/probability-statistics.html">
             
                 <a href="../math/probability-statistics.html">
             
@@ -1051,7 +1070,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.5" data-path="../math/maple.html">
+        <li class="chapter " data-level="1.21.5" data-path="../math/maple.html">
             
                 <a href="../math/maple.html">
             
@@ -1069,7 +1088,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../graphic-design/">
+        <li class="chapter " data-level="1.22" data-path="../graphic-design/">
             
                 <a href="../graphic-design/">
             
@@ -1082,7 +1101,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" data-path="../music/">
+        <li class="chapter " data-level="1.23" data-path="../music/">
             
                 <a href="../music/">
             
@@ -1217,11 +1236,33 @@
 </ul>
 </li>
 <li><code>enable</code>, switch mode <code>&gt;</code> to mode <code>#</code>.</li>
-<li><code>disable</code>, switch to the previous mode</li>
-<li><code>exit</code>, switch to the previous mode</li>
-<li><code>show privilege</code> show the current privilege level</li>
+<li><code>disable</code>, <code>exit</code> or <code>Ctrl + Z</code> switch to the previous mode</li>
+<li><code>show privilege</code> show the current privilege level<ul>
+<li>the privilege level ranges from 1 to 15, higher level will have more commands available.</li>
+</ul>
+</li>
 <li><code>show ip interface brief</code> show a breif summary of all ip interface status in current privilege Level.<ul>
 <li>When protocol is down, it means there is no traffic at this port.</li>
+</ul>
+</li>
+<li><code>ping 192.168.1.3</code> ping an IP address<ul>
+<li><code>!</code> means packet received, <code>.</code> means packet not received.</li>
+</ul>
+</li>
+<li><code>telnet 192.168.1.3</code> open telnet connection<ul>
+<li><code>Shift + Ctrl + 6</code> -&gt; <code>x</code>, go to the command for previous connection.</li>
+</ul>
+</li>
+<li><code>show users</code> get current user connection and connection ID</li>
+<li><code>show version</code> show register info</li>
+<li><code>show interface f 0/0</code> show port details</li>
+<li><code>show clock</code> show the current time</li>
+<li><code>show controller Serial 0</code> (Router Only) show serial connection info</li>
+<li><code>show interface f 0/0 switchport</code> (Switch Only) show port access mode</li>
+<li><code>show vtp status</code> (Switch Only) show vtp info including version number</li>
+<li><code>show cdp neighbours detail</code> show others devices detail through <code>CDP</code></li>
+<li><code>show sessions</code> get all devices logged into<ul>
+<li>Hit enter to go to the last connection, Hit <code>Enter + 1</code> to go to connection with ID <code>1</code>.</li>
 </ul>
 </li>
 <li><code>no &lt;command&gt;</code> negect or disable the command.</li>
@@ -1238,11 +1279,18 @@
 <li><code>copy running-config startup-config</code> save running-config to startup-config</li>
 </ul>
 </li>
+<li><code>clear line 0</code> kick out other connection</li>
+<li><code>disconnect 1</code> disconnect a connection</li>
+<li><code>reload</code> or <code>reboot</code> restart the device</li>
 </ul>
 <h4 id="global-configuration-commands">Global Configuration Commands</h4>
 <ul>
 <li><code>enable password &lt;password&gt;</code> setup a password when entering <code>#</code> mode.<ul>
-<li>This password is required by <code>telnet</code> connection by default.</li>
+<li>This password is required by <code>vty</code> connection by default.</li>
+</ul>
+</li>
+<li><code>enable secret &lt;password&gt;</code> setup a secret password when entering <code>#</code> mode.<ul>
+<li>The password will be encrypted in the config files.</li>
 </ul>
 </li>
 <li><code>do &lt;command&gt;</code> run <code>#</code> command in <code>(config)#</code> mode.</li>
@@ -1258,6 +1306,15 @@
 <li><code>hostname &lt;NewName&gt;</code>, change hostname of the device</li>
 <li><code>banner motd &lt;delimittingCharacter&gt;</code>, entering the command will allow you change the login banner message, enter the same delimitting character at the end of the banner message, then hit enter to save the change.<ul>
 <li>It will be displayed before password prompt during login</li>
+</ul>
+</li>
+<li><code>banner login &lt;delimittingCharacter&gt;</code> (Router Only), set the login message</li>
+<li><code>cdp run</code> enable <code>CDP</code><ul>
+<li>enabled by default</li>
+</ul>
+</li>
+<li><code>lldp run</code> enable <code>lldp</code><ul>
+<li>disabled by default</li>
 </ul>
 </li>
 <li><code>interface gigabitEthernet 0/0</code>, enter the Interface Configuration Mode for gigabitEthernet Port <code>0/0</code>.<ul>
@@ -1277,6 +1334,8 @@
 </li>
 <li><code>router rip</code>(Router Only), enter the Routing Configuration Mode for <code>RIP</code> protocal.</li>
 <li><code>vlan 1</code>(Switch Only), create VLAN(if not exist) and enter the VLAN Configuration Mode for <code>vlan 1</code>.</li>
+<li><code>interface Loopback 0</code>(Router Only) enable a lookback interface and change its state to up, then enter loopback config mode</li>
+<li><code>interface serial 0</code> (Router Only) enter the serial config mode</li>
 </ul>
 <h5 id="interface-configuration-commands">Interface Configuration Commands</h5>
 <ul>
@@ -1285,6 +1344,10 @@
 <li>open a port using negating command <code>no</code></li>
 </ul>
 </li>
+<li><code>cdp enable</code> enable cdp for a certain port</li>
+<li><code>lldp receive</code> allows the port to receive lldp info from other devices.</li>
+<li><code>lldp transmit</code> allows the port to receive and send lldp info with other devices.</li>
+<li>Switch Only Commands<ul>
 <li><code>switchport mode access</code> set port to access mode to connect the port to end device</li>
 <li><code>switchport mode trunk</code> set port to trunk mode to connection the port to another switch</li>
 <li>DTP config<ul>
@@ -1297,6 +1360,8 @@
 <li><code>switchport mode access</code> only ports in access mode can be in a VLAN</li>
 <li><code>switchport access vlan &lt;NO&gt;</code> assign the port to a VLAN<ul>
 <li>will create new VLAN if the VLAN number does not exist</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1321,6 +1386,15 @@
 <li><code>ssh</code></li>
 </ul>
 </li>
+<li><code>logging synchronous</code> sync command line input after interrupt by other output while typing.</li>
+<li><code>exec-timeout</code> set timeout duration.<ul>
+<li><code>0</code> means never timeout. <code>3 10</code> means <code>3 minutes 2 seconds</code>.</li>
+</ul>
+</li>
+</ul>
+<h5 id="serial-configuration-commands">Serial Configuration Commands</h5>
+<ul>
+<li><code>clockrate 64000</code> config clock rate for <code>DCE</code> connection with DTE terminal.</li>
 </ul>
 <pre><code class="lang-md"><span class="hljs-section">## Switch</span>
 
@@ -1543,7 +1617,7 @@ Switch(config-if)# duplex full
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cisco","level":"1.15.2","depth":2,"next":{"title":"Virtualization","level":"1.16","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.16.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.16.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]},{"title":"Kubernetes","level":"1.16.3","depth":2,"path":"virtualization/kubernetes.md","ref":"virtualization/kubernetes.md","articles":[]}]},"previous":{"title":"Security","level":"1.15.1","depth":2,"path":"networking/security.md","ref":"networking/security.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"networking/cisco.md","mtime":"2020-08-03T20:47:58.232Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Cisco","level":"1.15.2","depth":2,"next":{"title":"Virtualization","level":"1.16","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.16.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.16.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]},{"title":"Kubernetes","level":"1.16.3","depth":2,"path":"virtualization/kubernetes.md","ref":"virtualization/kubernetes.md","articles":[]}]},"previous":{"title":"Security","level":"1.15.1","depth":2,"path":"networking/security.md","ref":"networking/security.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"networking/cisco.md","mtime":"2020-08-08T17:13:00.258Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T21:30:59.692Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

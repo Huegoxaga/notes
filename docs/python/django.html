@@ -60,7 +60,7 @@
     <link rel="next" href="../java/" />
     
     
-    <link rel="prev" href="anaconda.html" />
+    <link rel="prev" href="tools-and-packages.html" />
     
 
     </head>
@@ -129,12 +129,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="pip.html">
+        <li class="chapter " data-level="1.2.2" data-path="tools-and-packages.html">
             
-                <a href="pip.html">
+                <a href="tools-and-packages.html">
             
                     
-                    pip
+                    Tools & More Packages
             
                 </a>
             
@@ -142,20 +142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="anaconda.html">
-            
-                <a href="anaconda.html">
-            
-                    
-                    Libraries with Anaconda
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.2.4" data-path="django.html">
+        <li class="chapter active" data-level="1.2.3" data-path="django.html">
             
                 <a href="django.html">
             
@@ -927,7 +914,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19" data-path="../algorithm/">
+        <li class="chapter " data-level="1.19" data-path="../gis/">
+            
+                <a href="../gis/">
+            
+                    
+                    GIS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="../gis/arcgis.html">
+            
+                <a href="../gis/arcgis.html">
+            
+                    
+                    ArcGIS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../algorithm/">
             
                 <a href="../algorithm/">
             
@@ -941,7 +960,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.19.1" data-path="../algorithm/blockchain.html">
+        <li class="chapter " data-level="1.20.1" data-path="../algorithm/blockchain.html">
             
                 <a href="../algorithm/blockchain.html">
             
@@ -954,7 +973,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
+        <li class="chapter " data-level="1.20.2" data-path="../algorithm/cryptography.html">
             
                 <a href="../algorithm/cryptography.html">
             
@@ -967,7 +986,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
+        <li class="chapter " data-level="1.20.3" data-path="../algorithm/ml.html">
             
                 <a href="../algorithm/ml.html">
             
@@ -985,7 +1004,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20" data-path="../math/">
+        <li class="chapter " data-level="1.21" data-path="../math/">
             
                 <a href="../math/">
             
@@ -999,7 +1018,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.20.1" data-path="../math/calculus.html">
+        <li class="chapter " data-level="1.21.1" data-path="../math/calculus.html">
             
                 <a href="../math/calculus.html">
             
@@ -1012,7 +1031,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.2" data-path="../math/linear-algebra.html">
+        <li class="chapter " data-level="1.21.2" data-path="../math/linear-algebra.html">
             
                 <a href="../math/linear-algebra.html">
             
@@ -1025,7 +1044,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.3" data-path="../math/discrete.html">
+        <li class="chapter " data-level="1.21.3" data-path="../math/discrete.html">
             
                 <a href="../math/discrete.html">
             
@@ -1038,7 +1057,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.4" data-path="../math/probability-statistics.html">
+        <li class="chapter " data-level="1.21.4" data-path="../math/probability-statistics.html">
             
                 <a href="../math/probability-statistics.html">
             
@@ -1051,7 +1070,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.5" data-path="../math/maple.html">
+        <li class="chapter " data-level="1.21.5" data-path="../math/maple.html">
             
                 <a href="../math/maple.html">
             
@@ -1069,7 +1088,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../graphic-design/">
+        <li class="chapter " data-level="1.22" data-path="../graphic-design/">
             
                 <a href="../graphic-design/">
             
@@ -1082,7 +1101,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" data-path="../music/">
+        <li class="chapter " data-level="1.23" data-path="../music/">
             
                 <a href="../music/">
             
@@ -1145,10 +1164,11 @@
 <ul>
 <li>Django is a Python-based free and open-source web framework</li>
 <li>One Django project can have multiple Apps as web components.</li>
-<li>Django uses WSGI to control the communication between the web server communicates and web applications, and how web applications can be chained together to process one request.<ul>
-<li>WSGI is the Web Server Gateway Interface.</li>
+<li>Web servers like <code>Apache</code> or <code>Nginx</code> are used to get browser request, requests are then forwarded to <code>WSGI</code>.<ul>
+<li>Web server can enable a certain web port socket</li>
 </ul>
 </li>
+<li><code>WSGI</code>(Web Server Gateway Interface) is used to run the Django application, send to request to the app and then get return response from the app.</li>
 </ul>
 <h2 id="useful-commands">Useful Commands</h2>
 <ul>
@@ -1156,7 +1176,10 @@
 <li><code>python -m django --version</code> check the version</li>
 <li><code>django-admin</code> show a list of sub-command</li>
 <li><code>django-admin startproject &lt;project_name&gt;</code> create a new project.</li>
-<li><code>python manage.py runserver</code> it will run the website and return the url of the running website. By default it is localhost:8000</li>
+<li><code>python manage.py runserver</code> it will run the website and return the url of the running website. By default it works with 127.0.0.1 on 8000 port only<ul>
+<li>append the command with <code>0.0.0.0:8000</code> to runserver on all server addresses on port 8000.</li>
+</ul>
+</li>
 <li><code>python manage.py startapp &lt;appname&gt;</code> create a new app inside a project.</li>
 <li><code>python manage.py makemigrations</code> update changes made on database model files for an app.<ul>
 <li>create files in the <code>app/migrations</code> folder for the <code>migrate</code> command to run.</li>
@@ -1168,7 +1191,10 @@
 </li>
 <li><code>python manage.py migrate</code><ul>
 <li>first migration command will create default databases.</li>
-<li><code>python manage.py migrate --fake &lt;appname&gt; &lt;migratationID&gt;</code> make certain migration, assume the database is the same as this migration file is made, reset the migration record. Migration Files after this time can be deleted.</li>
+<li><code>python manage.py migrate --fake &lt;appname&gt; &lt;migratationID&gt;</code> make certain migration, assume the database is the same as this migration file is made, reset the migration record. Migration Files after this time can be deleted.<ul>
+<li>fake will not alter the database, new migrations are needed to rollback chages, then fake and delete the new and unused migration files.</li>
+</ul>
+</li>
 <li><code>python manage.py migrate --fake-initial</code> force making initial migrate with database is already exists.</li>
 </ul>
 </li>
@@ -1316,17 +1342,20 @@ ModelClass.objects.first() <span class="hljs-comment"># return the first object<
 ModelClass.objects.last() <span class="hljs-comment"># return the last object</span>
 ModelClass.objects.all()[<span class="hljs-number">0</span>:<span class="hljs-number">20</span>]<span class="hljs-comment"># return first 20 objects</span>
 ModelClass.objects.filter(propertyname=<span class="hljs-string">&apos;value&apos;</span>) <span class="hljs-comment"># return a list of matching objects.</span>
-ModelClass.objects.filter(propertyname=<span class="hljs-string">&apos;value&apos;</span>) <span class="hljs-comment"># return the first matching object.</span>
+ModelClass.objects.filter(id__in=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]) <span class="hljs-comment"># return all matching id</span>
 ModelClass.objects.get(id=<span class="hljs-number">1</span>) <span class="hljs-comment"># return the object with id 1</span>
 newobject = ModelClass(property1=<span class="hljs-string">&apos;value1&apos;</span>, property2 = <span class="hljs-string">&apos;value2&apos;</span>) <span class="hljs-comment">#create a new object</span>
 newobject.save() <span class="hljs-comment"># save change to the object that is already in the database</span>
 modelObject.id <span class="hljs-comment"># get the object id</span>
 modelObject.pk <span class="hljs-comment"># get the object primary key value</span>
-modelObject.manyToManyField.all() <span class="hljs-comment"># return all related fields of a many-to-many fields.</span>
+modelObject.manyToManyField.all() <span class="hljs-comment"># return all related fields of a many-to-many fields. Direct access without all() will cause &quot;TypeError: ManyRelatedManager object is not iterable&quot;</span>
 modelObject.relatedModel_set.all() <span class="hljs-comment"># return all assciated model of one model.</span>
 modelObject.relatedModel_set.create(property1=<span class="hljs-string">&apos;value1&apos;</span>, property2 = <span class="hljs-string">&apos;value2&apos;</span>) <span class="hljs-comment"># create a new related model of the model.</span>
 ModelClass.objects.select_related(<span class="hljs-string">&apos;tableA&apos;</span>,<span class="hljs-string">&apos;tableB&apos;</span>).prefetch_related(<span class="hljs-string">&apos;tableC&apos;</span>).all() <span class="hljs-comment"># Join tables for future queries. select_related is used for tables with one to one relationship, prefetch_related is used for many-to-many relationships.</span>
-ModelClass.objects.values(<span class="hljs-string">&apos;field1&apos;</span>, <span class="hljs-string">&apos;field2&apos;</span>) <span class="hljs-comment"># return list of dict for certain fields</span>
+ModelClass.objects.values(<span class="hljs-string">&apos;field1&apos;</span>, <span class="hljs-string">&apos;field2&apos;</span>) <span class="hljs-comment"># return dict queryset for certain fields</span>
+ModelClass.objects.values_list(<span class="hljs-string">&apos;id&apos;</span>, flat=<span class="hljs-keyword">True</span>) <span class="hljs-comment"># return a list queryset of id, if flat=False return list of tuples.</span>
+ModelClass.objects.annotate(raw_link=Concat(Value(<span class="hljs-string">&quot;https://&quot;</span>), F(<span class="hljs-string">&apos;domain&apos;</span>))) <span class="hljs-comment"># create a temp field with annonted strings append from a existing field</span>
+list(ModelClass.objects.all()) <span class="hljs-comment">#convert queryset into a list</span>
 </code></pre>
 </li>
 </ul>
@@ -1949,7 +1978,7 @@ __all__ = (<span class="hljs-string">&apos;celery_app&apos;</span>,)
 
             
                 
-                <a href="anaconda.html" class="navigation navigation-prev " aria-label="Previous page: Libraries with Anaconda">
+                <a href="tools-and-packages.html" class="navigation navigation-prev " aria-label="Previous page: Tools & More Packages">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1965,7 +1994,7 @@ __all__ = (<span class="hljs-string">&apos;celery_app&apos;</span>,)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Django","level":"1.2.4","depth":2,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]}]},"previous":{"title":"Libraries with Anaconda","level":"1.2.3","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/django.md","mtime":"2020-07-28T20:53:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Django","level":"1.2.3","depth":2,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]}]},"previous":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/django.md","mtime":"2020-08-22T18:06:30.463Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T21:30:59.692Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

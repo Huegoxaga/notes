@@ -14,7 +14,7 @@
 
 ### Import and Export
 
-- It can import shape file with `.shp` extension and display it using different projected coordinate system.
+- It can import vector data format in a shape file with `.shp` extension and display it using different projected coordinate system.
   - shape file are consisted of basic shapes(lines, polygon etc.) and has attribute info associated with each shape.
   - the first shape file coordinate system decide the default coordinate system of the working layer
 - It can import `csv` file and display the coordinates(`X`, `Y`) in each record as an event layer on the map.
@@ -36,6 +36,7 @@
   - click `Search for Tools` for more tools.
   - The `Arc Toolbox` includes all the available tools for geoprocessing.
   - Tools from extensions can be found in the geoprocessing tool box.
+    - If not found, click `customize` -> `Extension` and click the checkbox for a certain extension to activate.
 
 #### Geoprocessing Tools
 
@@ -46,3 +47,6 @@
 - Buffer - create new features(shapes) to represents the area within a given distance of an input feature
 - Thiessen(Voronoi) - create new features(shapes) to represent the area nearest to each input point feature
 - Spatial Join
+- Spatial Analyst Tools
+  - An extension, license is required
+  - Heat Map is available in the density tool set of spatial analyst tools.

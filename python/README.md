@@ -242,10 +242,8 @@ Operators are special symbols that placed in between objects.
 When operator are chained together, The operation order is determined from top to bottom in the following order.
 
 - String Operators:
-
   - Slicing `x[n]`
   - concatenation `+`
-
 - Arithmetic Operators:
   - exponent `**`
   - Bitwise not `~`
@@ -260,9 +258,7 @@ When operator are chained together, The operation order is determined from top t
   - Bitwise and `&`
   - Bitwise xor `^`
   - Bitwise or `|`
-
-* Relational Operators
-
+- Relational Operators
   - greater `>`
   - greater or equal `>=`
   - great `<`
@@ -271,16 +267,14 @@ When operator are chained together, The operation order is determined from top t
   - not equal `!=`
   - string membership `in`
   - refer to the same object `is`
-
-* Binary Boolean Operators
-
+- Binary Boolean Operators
   - `not`
   - `and`
   - `or`
-
-* Assignment
+- Assignment
   - It is used to assign value to a variable name. `=`
   - Multiple assignment: `x = y = 10`
+- Two or more physical lines may be joined into logical lines using backslash characters (`\`)
 
 ### Bitwise operators
 
@@ -1069,7 +1063,7 @@ for line in file:
 	print(line)      #print one line at a time
 ```
 
-# Apply Error Handling
+#### Apply Error Handling
 
 ```py
 try:

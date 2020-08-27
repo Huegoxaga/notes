@@ -129,12 +129,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../python/pip.html">
+        <li class="chapter " data-level="1.2.2" data-path="../python/tools-and-packages.html">
             
-                <a href="../python/pip.html">
+                <a href="../python/tools-and-packages.html">
             
                     
-                    pip
+                    Tools & More Packages
             
                 </a>
             
@@ -142,20 +142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../python/anaconda.html">
-            
-                <a href="../python/anaconda.html">
-            
-                    
-                    Libraries with Anaconda
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="../python/django.html">
+        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
             
                 <a href="../python/django.html">
             
@@ -927,7 +914,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19" data-path="../algorithm/">
+        <li class="chapter " data-level="1.19" data-path="../gis/">
+            
+                <a href="../gis/">
+            
+                    
+                    GIS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="../gis/arcgis.html">
+            
+                <a href="../gis/arcgis.html">
+            
+                    
+                    ArcGIS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../algorithm/">
             
                 <a href="../algorithm/">
             
@@ -941,7 +960,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.19.1" data-path="../algorithm/blockchain.html">
+        <li class="chapter " data-level="1.20.1" data-path="../algorithm/blockchain.html">
             
                 <a href="../algorithm/blockchain.html">
             
@@ -954,7 +973,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
+        <li class="chapter " data-level="1.20.2" data-path="../algorithm/cryptography.html">
             
                 <a href="../algorithm/cryptography.html">
             
@@ -967,7 +986,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
+        <li class="chapter " data-level="1.20.3" data-path="../algorithm/ml.html">
             
                 <a href="../algorithm/ml.html">
             
@@ -985,7 +1004,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20" data-path="../math/">
+        <li class="chapter " data-level="1.21" data-path="../math/">
             
                 <a href="../math/">
             
@@ -999,7 +1018,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.20.1" data-path="../math/calculus.html">
+        <li class="chapter " data-level="1.21.1" data-path="../math/calculus.html">
             
                 <a href="../math/calculus.html">
             
@@ -1012,7 +1031,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.2" data-path="../math/linear-algebra.html">
+        <li class="chapter " data-level="1.21.2" data-path="../math/linear-algebra.html">
             
                 <a href="../math/linear-algebra.html">
             
@@ -1025,7 +1044,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.3" data-path="../math/discrete.html">
+        <li class="chapter " data-level="1.21.3" data-path="../math/discrete.html">
             
                 <a href="../math/discrete.html">
             
@@ -1038,7 +1057,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.4" data-path="../math/probability-statistics.html">
+        <li class="chapter " data-level="1.21.4" data-path="../math/probability-statistics.html">
             
                 <a href="../math/probability-statistics.html">
             
@@ -1051,7 +1070,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.5" data-path="../math/maple.html">
+        <li class="chapter " data-level="1.21.5" data-path="../math/maple.html">
             
                 <a href="../math/maple.html">
             
@@ -1069,7 +1088,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../graphic-design/">
+        <li class="chapter " data-level="1.22" data-path="../graphic-design/">
             
                 <a href="../graphic-design/">
             
@@ -1082,7 +1101,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" data-path="../music/">
+        <li class="chapter " data-level="1.23" data-path="../music/">
             
                 <a href="../music/">
             
@@ -1301,6 +1320,17 @@
 </ul>
 </li>
 <li>For some instance types AWS sets a limit of 0 which prevent the user from running, a limit increase request should be sent in these cases.</li>
+<li>Snapshots are the backup of the data on EBS volumes, whereas AMIs(image)are bootable copy of the whole EC2 instances.<ul>
+<li>A snapshot is required for creating an image, when creating an image of an instance, a snapshot will be auto created. Snapshots cannot be deleted when it is used by the corresponding image.</li>
+<li>An AMI image can be copy from one region to another</li>
+<li>An AMI image can be used to launch instance directly</li>
+</ul>
+</li>
+<li>Each snapshot can have the Fast Snapshot Restore Service<ul>
+<li>enable it for new and existing snapshots on a per-AZ (Availability Zone) basis, and then create new EBS volumes that deliver their maximum performance and do not need to be initialized.</li>
+<li>It costs <code>$0.75</code> per hour per zone.</li>
+</ul>
+</li>
 </ul>
 <h2 id="elastic-beanstalk">Elastic Beanstalk</h2>
 <p>It deploys app on EC2 and will do capacity provisioning, load balancing, scaling, and application health monitoring automatically.</p>
@@ -1412,7 +1442,8 @@ aws:elasticbeanstalk:container:python:
 </li>
 <li><code>eb use my-env-name</code> setup a default env for the current git branch</li>
 <li><code>eb create name-env</code> create new env and deploy project to it.</li>
-<li><code>eb status</code> check details.</li>
+<li><code>eb status &lt;env-name&gt;</code> check details.</li>
+<li><code>eb health &lt;env-name&gt;</code> check env health.</li>
 <li>add app domain name in the <code>ALLOWED_HOSTS</code> in the <code>settings.py</code> file.</li>
 <li><code>eb deploy</code> to update the app.<ul>
 <li>Whenever changes are made to the local file, run deploy again to update.</li>
@@ -1516,6 +1547,11 @@ commands:
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringPolicyExamples.html" target="_blank">Click Here</a> to see more example.</li>
 </ul>
 </li>
+<li>When exporting logs in log group to s3, each AWS can run one exporting task at a time.<ul>
+<li>Multiple log groups can be exported by using regex pattern for <code>logGroupName</code> parameter</li>
+</ul>
+</li>
+<li>When publish log through <code>Lambda</code>, log stream are encoded as <code>base64</code> and compressed by <code>gzip</code>.</li>
 </ul>
 <h2 id="lambda">Lambda</h2>
 <p>It runs scripts and codes without the need to set up the server.</p>
@@ -1640,6 +1676,10 @@ commands:
 <li>only the <code>$context</code> variable can be used to access requrest info.</li>
 </ul>
 </li>
+</ul>
+<h2 id="amazon-certificate-manager">Amazon Certificate Manager</h2>
+<ul>
+<li>Certificates from ACM cannot be downloaded used to on the server unless it is private CAs generated from ACM.</li>
 </ul>
 <h2 id="sagemaker">Sagemaker</h2>
 <p>Fully managed Cloud based machine learning service</p>
@@ -1951,7 +1991,7 @@ commands:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.17.1","depth":2,"next":{"title":"GCP","level":"1.17.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.17","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.17.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"GCP","level":"1.17.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-08-06T23:09:04.948Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.17.1","depth":2,"next":{"title":"GCP","level":"1.17.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.17","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.17.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"GCP","level":"1.17.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-08-22T22:13:06.612Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T21:30:59.692Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

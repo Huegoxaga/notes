@@ -129,12 +129,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../python/pip.html">
+        <li class="chapter " data-level="1.2.2" data-path="../python/tools-and-packages.html">
             
-                <a href="../python/pip.html">
+                <a href="../python/tools-and-packages.html">
             
                     
-                    pip
+                    Tools & More Packages
             
                 </a>
             
@@ -142,20 +142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../python/anaconda.html">
-            
-                <a href="../python/anaconda.html">
-            
-                    
-                    Libraries with Anaconda
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="../python/django.html">
+        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
             
                 <a href="../python/django.html">
             
@@ -927,7 +914,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19" data-path="./">
+        <li class="chapter " data-level="1.19" data-path="../gis/">
+            
+                <a href="../gis/">
+            
+                    
+                    GIS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="../gis/arcgis.html">
+            
+                <a href="../gis/arcgis.html">
+            
+                    
+                    ArcGIS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="./">
             
                 <a href="./">
             
@@ -941,7 +960,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.19.1" data-path="blockchain.html">
+        <li class="chapter " data-level="1.20.1" data-path="blockchain.html">
             
                 <a href="blockchain.html">
             
@@ -954,7 +973,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="cryptography.html">
+        <li class="chapter " data-level="1.20.2" data-path="cryptography.html">
             
                 <a href="cryptography.html">
             
@@ -967,7 +986,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.19.3" data-path="ml.html">
+        <li class="chapter active" data-level="1.20.3" data-path="ml.html">
             
                 <a href="ml.html">
             
@@ -985,7 +1004,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20" data-path="../math/">
+        <li class="chapter " data-level="1.21" data-path="../math/">
             
                 <a href="../math/">
             
@@ -999,7 +1018,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.20.1" data-path="../math/calculus.html">
+        <li class="chapter " data-level="1.21.1" data-path="../math/calculus.html">
             
                 <a href="../math/calculus.html">
             
@@ -1012,7 +1031,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.2" data-path="../math/linear-algebra.html">
+        <li class="chapter " data-level="1.21.2" data-path="../math/linear-algebra.html">
             
                 <a href="../math/linear-algebra.html">
             
@@ -1025,7 +1044,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.3" data-path="../math/discrete.html">
+        <li class="chapter " data-level="1.21.3" data-path="../math/discrete.html">
             
                 <a href="../math/discrete.html">
             
@@ -1038,7 +1057,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.4" data-path="../math/probability-statistics.html">
+        <li class="chapter " data-level="1.21.4" data-path="../math/probability-statistics.html">
             
                 <a href="../math/probability-statistics.html">
             
@@ -1051,7 +1070,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.5" data-path="../math/maple.html">
+        <li class="chapter " data-level="1.21.5" data-path="../math/maple.html">
             
                 <a href="../math/maple.html">
             
@@ -1069,7 +1088,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../graphic-design/">
+        <li class="chapter " data-level="1.22" data-path="../graphic-design/">
             
                 <a href="../graphic-design/">
             
@@ -1082,7 +1101,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" data-path="../music/">
+        <li class="chapter " data-level="1.23" data-path="../music/">
             
                 <a href="../music/">
             
@@ -1648,9 +1667,12 @@
 <li>Observation is a snapshot of the environment states.</li>
 </ul>
 </li>
+<li>An environment can be &quot;solved&quot; when an agent is built to achieve reward above a threshold.</li>
 <li>It receives rewards.</li>
 <li>The objective of the algorithm is to maximize rewards.<ul>
 <li>Rewards can be either positve or negative, only positive, or only negative. Maximize rewards is the same as minimize nagetive reward only, or maximize positive reward only, or both.</li>
+<li>The rules to get rewards need to be designed to encourage the agent to make preferred behavior and punished promptly. It is not only about the outcome, the performance need to be quantified.</li>
+<li>The punishment should not limit novel strategies which can provides creative solution to gain more rewards.</li>
 </ul>
 </li>
 <li>The algorithm the agent uses to make action is called policy.<ul>
@@ -1658,9 +1680,25 @@
 <li>Policy parameter are the variables that is used to determine the action.</li>
 <li>Policy serach is the process of finding the policy parameter that will determine an action that maximize the reward.</li>
 <li>Policy space is all the possible combination of the policy parameter.</li>
+<li>Policy can be deterministic - all decision is based on a function of state.</li>
+<li>Policy can be probabilistic - some decision is made randomly by using probability function(distribution)</li>
 </ul>
 </li>
-<li>After make one action the agent completes one step. After complete all possible actions, the agent completes one episode.</li>
+<li>After make one action the agent completes one step. After complete all possible actions, the agent completes one episode.<ul>
+<li>The set of all possible action in a certain state is called the action space.</li>
+</ul>
+</li>
+<li>Episode is consist of many state, each action will change the state from one to another.<ul>
+<li>The set of all possible state is called the state space.</li>
+<li>The terminal state is a state that ends an episode.</li>
+<li>The duration of an episode is from the initial state to the terminal state.</li>
+<li>The state doesnot have to be a single observation, it can be a certain number of obeservation in a group.</li>
+</ul>
+</li>
+<li>When a task is continuous and cannot be measured in an episode, it is called a non-episodic task.(e.g. control room temperature)<ul>
+<li>Most tasks can be assumed as episodic tasks.</li>
+</ul>
+</li>
 <li>Generic algorithm is a way to reduce the policy space by generating a certain amount of policy as the first generation and only keep a small portion of the policy which has the most rewards, then generated offsprings from them. Offsprings is a copy of selected policys with some random variation. Keep creating generations until a good policy is found.</li>
 <li>Policy gradients(PG) evaluates the relationship between reward and policy parameters, then tweak the parameter following to the gradient towards higher rewards.<ul>
 <li>Reinforce Algorithm is one type of PG, It finds the gradients of the probability for each action by leting neural network play the game several times, then compute action&apos;s advantage after several episodes. Multiply the gradient vector by the action&apos;s advantages. Lastly use the mean of all gradient vecotrs to perform gradient descent.</li>
@@ -1683,6 +1721,59 @@
 <li>The return for an action is a way to evaluate all the consequent rewards followed by an action, the reward immediately after the reward of the current action will have a discount by multiplying the discount factor(&#x1D6FE;), the reward after that second action after the current action will have to multiply the discount factor square and so on, the sum of all the discounted rewards for an action is called the return.<ul>
 <li>Discount Factor(&#x1D6FE;) typically ranges from <code>0.9</code> to <code>0.99</code>. The smaller the factor is, the sooner the consequent actions become not important as the factor approaches <code>0</code>.</li>
 <li>The normolized returns from a large number of trails(episodes) are called the action advantage. It describes the good or bad of an action compares to all other possible actions.</li>
+</ul>
+</li>
+</ul>
+<h4 id="explore-exploit-dilemma">Explore-Exploit Dilemma</h4>
+<ul>
+<li>When making decision for max reward, two things need to be done.<ul>
+<li>Exploration - It the process of gathering data for making decision</li>
+<li>Exploitation - Using the known info to make decision to maximize the reward</li>
+<li>These two options cannot be done at the same time, this can be called explore-exploit dilemma</li>
+</ul>
+</li>
+<li>Algorithm or methods for solving this dilemma are:<ul>
+<li>A/B Testing<ul>
+<li>also known as split testing, is the process of comparing two versions of a web page, email, or other marketing asset and measuring the difference in performance.</li>
+<li>The performance can be measured using<ul>
+<li>click-through rate(CTR), number of click on the page divide by the number view of the page.</li>
+<li>conversion rate - the number of sales divided by the total number of visitors.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Epsilon Greedy<ul>
+<li>Greedy means picking the bandit with highest Maximum Likehood Estimation(MLE) win rate without considering the sample size and the confidence</li>
+<li>Epsilon is the percentage of random chioces this algorithm will make regardless the MLE<ul>
+<li><code>&#x3B5;</code> is typically around <code>5%</code> to <code>10%</code></li>
+</ul>
+</li>
+<li>In conclusion Epsilon Greedy Algorithm uses greedy method to make decision with a percentage of random decision</li>
+<li><code>&#x3B5;</code> will decrease the reward if it is a constant even when the sample size is big enough to make correct decision. Hence, it can decay over time:<ul>
+<li><code>&#x3B5;</code> can be proportional to <code>1/t</code> where <code>t</code> is the number of selection(steps)</li>
+<li>Linearlly decay with a minimum value</li>
+<li>exponential cooling</li>
+<li>one over logarithm</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Optimistic Initial Values</li>
+<li>UBC1(Upper Confidence Bound)</li>
+<li>Thompson Sampling(Bayesian Bandit)</li>
+</ul>
+</li>
+</ul>
+<h4 id="markov-decision-processesmdps">Markov Decision Processes(MDPs)</h4>
+<ul>
+<li>Gridworld is a simple example environment for understanding RL concepts.<ul>
+<li>It is a <code>3 X 4</code> table</li>
+<li>The state is determined by the location of the agent, the top left corner is described by tuple as <code>(0, 0)</code></li>
+<li>An agent starts at the bottom left corner, location <code>(2, 0)</code></li>
+<li>The agent move towards all direction available one at a time.</li>
+<li><code>(1, 1)</code> is a wall</li>
+<li>When the agent get to point <code>(0, 3)</code> it have have one reward.</li>
+<li>When the agent get to point <code>(1, 3)</code> it have lost one reward.</li>
 </ul>
 </li>
 </ul>
@@ -2067,7 +2158,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Machine Learning","level":"1.19.3","depth":2,"next":{"title":"Mathematics","level":"1.20","depth":1,"path":"math/README.md","ref":"math/README.md","articles":[{"title":"Calculus","level":"1.20.1","depth":2,"path":"math/calculus.md","ref":"math/calculus.md","articles":[]},{"title":"Linear Algebra","level":"1.20.2","depth":2,"path":"math/linear-algebra.md","ref":"math/linear-algebra.md","articles":[]},{"title":"Discrete Mathematics","level":"1.20.3","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},{"title":"Probability & Statistics","level":"1.20.4","depth":2,"path":"math/probability-statistics.md","ref":"math/probability-statistics.md","articles":[]},{"title":"Maple Softwares","level":"1.20.5","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]}]},"previous":{"title":"Cryptography","level":"1.19.2","depth":2,"path":"algorithm/cryptography.md","ref":"algorithm/cryptography.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"algorithm/ml.md","mtime":"2020-07-29T22:36:40.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Machine Learning","level":"1.20.3","depth":2,"next":{"title":"Mathematics","level":"1.21","depth":1,"path":"math/README.md","ref":"math/README.md","articles":[{"title":"Calculus","level":"1.21.1","depth":2,"path":"math/calculus.md","ref":"math/calculus.md","articles":[]},{"title":"Linear Algebra","level":"1.21.2","depth":2,"path":"math/linear-algebra.md","ref":"math/linear-algebra.md","articles":[]},{"title":"Discrete Mathematics","level":"1.21.3","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},{"title":"Probability & Statistics","level":"1.21.4","depth":2,"path":"math/probability-statistics.md","ref":"math/probability-statistics.md","articles":[]},{"title":"Maple Softwares","level":"1.21.5","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]}]},"previous":{"title":"Cryptography","level":"1.20.2","depth":2,"path":"algorithm/cryptography.md","ref":"algorithm/cryptography.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"algorithm/ml.md","mtime":"2020-08-09T04:34:53.942Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T21:30:59.692Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

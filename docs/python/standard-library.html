@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="pip.html" />
+    <link rel="next" href="tools-and-packages.html" />
     
     
     <link rel="prev" href="./" />
@@ -129,12 +129,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="pip.html">
+        <li class="chapter " data-level="1.2.2" data-path="tools-and-packages.html">
             
-                <a href="pip.html">
+                <a href="tools-and-packages.html">
             
                     
-                    pip
+                    Tools & More Packages
             
                 </a>
             
@@ -142,20 +142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="anaconda.html">
-            
-                <a href="anaconda.html">
-            
-                    
-                    Libraries with Anaconda
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="django.html">
+        <li class="chapter " data-level="1.2.3" data-path="django.html">
             
                 <a href="django.html">
             
@@ -927,7 +914,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19" data-path="../algorithm/">
+        <li class="chapter " data-level="1.19" data-path="../gis/">
+            
+                <a href="../gis/">
+            
+                    
+                    GIS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="../gis/arcgis.html">
+            
+                <a href="../gis/arcgis.html">
+            
+                    
+                    ArcGIS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../algorithm/">
             
                 <a href="../algorithm/">
             
@@ -941,7 +960,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.19.1" data-path="../algorithm/blockchain.html">
+        <li class="chapter " data-level="1.20.1" data-path="../algorithm/blockchain.html">
             
                 <a href="../algorithm/blockchain.html">
             
@@ -954,7 +973,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
+        <li class="chapter " data-level="1.20.2" data-path="../algorithm/cryptography.html">
             
                 <a href="../algorithm/cryptography.html">
             
@@ -967,7 +986,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
+        <li class="chapter " data-level="1.20.3" data-path="../algorithm/ml.html">
             
                 <a href="../algorithm/ml.html">
             
@@ -985,7 +1004,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20" data-path="../math/">
+        <li class="chapter " data-level="1.21" data-path="../math/">
             
                 <a href="../math/">
             
@@ -999,7 +1018,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.20.1" data-path="../math/calculus.html">
+        <li class="chapter " data-level="1.21.1" data-path="../math/calculus.html">
             
                 <a href="../math/calculus.html">
             
@@ -1012,7 +1031,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.2" data-path="../math/linear-algebra.html">
+        <li class="chapter " data-level="1.21.2" data-path="../math/linear-algebra.html">
             
                 <a href="../math/linear-algebra.html">
             
@@ -1025,7 +1044,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.3" data-path="../math/discrete.html">
+        <li class="chapter " data-level="1.21.3" data-path="../math/discrete.html">
             
                 <a href="../math/discrete.html">
             
@@ -1038,7 +1057,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.4" data-path="../math/probability-statistics.html">
+        <li class="chapter " data-level="1.21.4" data-path="../math/probability-statistics.html">
             
                 <a href="../math/probability-statistics.html">
             
@@ -1051,7 +1070,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.5" data-path="../math/maple.html">
+        <li class="chapter " data-level="1.21.5" data-path="../math/maple.html">
             
                 <a href="../math/maple.html">
             
@@ -1069,7 +1088,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../graphic-design/">
+        <li class="chapter " data-level="1.22" data-path="../graphic-design/">
             
                 <a href="../graphic-design/">
             
@@ -1082,7 +1101,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" data-path="../music/">
+        <li class="chapter " data-level="1.23" data-path="../music/">
             
                 <a href="../music/">
             
@@ -1543,22 +1562,22 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 </ul>
 <h4 id="usage">Usage</h4>
 <ul>
-<li><code>datetime.fromtimestamp(timestamp)</code> convert timestamp to value to datetime string.</li>
-<li><code>time = datetime.now()</code> get a current datetime object.<ul>
-<li><code>time = datetime.now(timezone_object)</code> get a current datetime object for a certain timezone.</li>
+<li><code>datetime.fromtimestamp(timestamp)</code> convert timestamp in second from <code>1970</code> to value to datetime object.</li>
+<li><code>timestamp = datetime.timestamp(datetime_obj)</code> convert datetime object to timestamp.</li>
+<li><code>datetime_obj = datetime.now()</code> get a current datetime object.<ul>
+<li><code>time = datetime.now(timezone_obj)</code> get a current datetime object with a certain timezone.</li>
 </ul>
 </li>
-<li><code>timestamp = datetime.timestamp(now)</code> current timestamp.</li>
 <li><code>datetime.now().time()</code> get a current time object.</li>
-<li><code>timeObject.strftime(&quot;%m/%d/%Y, %H:%M:%S&quot;)</code> return a formatted time string.</li>
+<li><code>datetime_obj.strftime(&quot;%m/%d/%Y, %H:%M:%S&quot;)</code> return a formatted time string.</li>
 <li>For datetime object<ul>
-<li><code>time.year</code></li>
-<li><code>time.month</code></li>
-<li><code>time.day</code></li>
-<li><code>time.hour</code></li>
-<li><code>time.minute</code></li>
-<li><code>time.second</code></li>
-<li><code>time.microsecond</code></li>
+<li><code>datetime_obj.year</code></li>
+<li><code>datetime_obj.month</code></li>
+<li><code>datetime_obj.day</code></li>
+<li><code>datetime_obj.hour</code></li>
+<li><code>datetime_obj.minute</code></li>
+<li><code>datetime_obj.second</code></li>
+<li><code>datetime_obj.microsecond</code></li>
 </ul>
 </li>
 </ul>
@@ -1594,6 +1613,14 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 <li><code>myTimeZone = pytz.timezone(&apos;America/New_York&apos;)</code></li>
 </ul>
 </li>
+</ul>
+<h2 id="gzip">gzip</h2>
+<ul>
+<li>It handles data compress and depress</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<ul>
+<li><code>uncompressed_data = gzip.decompress(compressed_data)</code> decompress data</li>
 </ul>
 <h2 id="uuid">uuid</h2>
 <ul>
@@ -1778,7 +1805,7 @@ import contextlib</p>
                 </a>
                 
                 
-                <a href="pip.html" class="navigation navigation-next " aria-label="Next page: pip">
+                <a href="tools-and-packages.html" class="navigation navigation-next " aria-label="Next page: Tools & More Packages">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1789,7 +1816,7 @@ import contextlib</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"next":{"title":"pip","level":"1.2.2","depth":2,"path":"python/pip.md","ref":"python/pip.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"pip","level":"1.2.2","depth":2,"path":"python/pip.md","ref":"python/pip.md","articles":[]},{"title":"Libraries with Anaconda","level":"1.2.3","depth":2,"path":"python/anaconda.md","ref":"python/anaconda.md","articles":[]},{"title":"Django","level":"1.2.4","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-08-06T20:36:55.900Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"next":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-08-13T17:06:47.304Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T21:30:59.692Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

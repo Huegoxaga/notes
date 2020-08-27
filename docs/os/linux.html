@@ -129,12 +129,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../python/pip.html">
+        <li class="chapter " data-level="1.2.2" data-path="../python/tools-and-packages.html">
             
-                <a href="../python/pip.html">
+                <a href="../python/tools-and-packages.html">
             
                     
-                    pip
+                    Tools & More Packages
             
                 </a>
             
@@ -142,20 +142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../python/anaconda.html">
-            
-                <a href="../python/anaconda.html">
-            
-                    
-                    Libraries with Anaconda
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="../python/django.html">
+        <li class="chapter " data-level="1.2.3" data-path="../python/django.html">
             
                 <a href="../python/django.html">
             
@@ -927,7 +914,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19" data-path="../algorithm/">
+        <li class="chapter " data-level="1.19" data-path="../gis/">
+            
+                <a href="../gis/">
+            
+                    
+                    GIS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="../gis/arcgis.html">
+            
+                <a href="../gis/arcgis.html">
+            
+                    
+                    ArcGIS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../algorithm/">
             
                 <a href="../algorithm/">
             
@@ -941,7 +960,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.19.1" data-path="../algorithm/blockchain.html">
+        <li class="chapter " data-level="1.20.1" data-path="../algorithm/blockchain.html">
             
                 <a href="../algorithm/blockchain.html">
             
@@ -954,7 +973,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.2" data-path="../algorithm/cryptography.html">
+        <li class="chapter " data-level="1.20.2" data-path="../algorithm/cryptography.html">
             
                 <a href="../algorithm/cryptography.html">
             
@@ -967,7 +986,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19.3" data-path="../algorithm/ml.html">
+        <li class="chapter " data-level="1.20.3" data-path="../algorithm/ml.html">
             
                 <a href="../algorithm/ml.html">
             
@@ -985,7 +1004,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20" data-path="../math/">
+        <li class="chapter " data-level="1.21" data-path="../math/">
             
                 <a href="../math/">
             
@@ -999,7 +1018,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.20.1" data-path="../math/calculus.html">
+        <li class="chapter " data-level="1.21.1" data-path="../math/calculus.html">
             
                 <a href="../math/calculus.html">
             
@@ -1012,7 +1031,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.2" data-path="../math/linear-algebra.html">
+        <li class="chapter " data-level="1.21.2" data-path="../math/linear-algebra.html">
             
                 <a href="../math/linear-algebra.html">
             
@@ -1025,7 +1044,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.3" data-path="../math/discrete.html">
+        <li class="chapter " data-level="1.21.3" data-path="../math/discrete.html">
             
                 <a href="../math/discrete.html">
             
@@ -1038,7 +1057,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.4" data-path="../math/probability-statistics.html">
+        <li class="chapter " data-level="1.21.4" data-path="../math/probability-statistics.html">
             
                 <a href="../math/probability-statistics.html">
             
@@ -1051,7 +1070,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20.5" data-path="../math/maple.html">
+        <li class="chapter " data-level="1.21.5" data-path="../math/maple.html">
             
                 <a href="../math/maple.html">
             
@@ -1069,7 +1088,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="../graphic-design/">
+        <li class="chapter " data-level="1.22" data-path="../graphic-design/">
             
                 <a href="../graphic-design/">
             
@@ -1082,7 +1101,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22" data-path="../music/">
+        <li class="chapter " data-level="1.23" data-path="../music/">
             
                 <a href="../music/">
             
@@ -1270,6 +1289,7 @@
 <li><code>basename &lt;path&gt;</code> return filename or directory portion of pathname</li>
 <li><code>mkdir &lt;directory path(s)&gt;</code> make new dir<ul>
 <li>create multiple new folderName separate by space.</li>
+<li><code>-p</code> option helps create sub-directories of a directory. It will create parent directory first, if it doesn&apos;t exist. But if it already exists, then it will not print an error message and will move further to create sub-directories.</li>
 </ul>
 </li>
 <li><code>cp &lt;source&gt; &lt;destination&gt; -R</code>, copy files for folders, <code>-R</code> include directories.<ul>
@@ -1367,10 +1387,13 @@
 <li><code>who am i</code> check current user name</li>
 <li><code>su</code> change to root user.</li>
 <li><code>su username</code> change to certain user.</li>
-<li><code>su -</code> change user and redirect to default home directory after changed.</li>
+<li><code>su -</code> change user and redirect to default home directory after changed.<ul>
+<li><code>Ctrl + D</code> go back to previous user terminal</li>
+</ul>
+</li>
 <li><code>sudo &lt;command&gt;</code> run any command as root user. using user password.<ul>
 <li>when user password is entered, by default following sudo commands entered in 5 min, doesn&apos;t require any password.</li>
-<li>control user to use certain command without using root password in <code>etc/sudoers</code> file.</li>
+<li>control user to use certain command without using root password in <code>/etc/sudoers</code> file.</li>
 <li><code>visudo</code> this command is used to configure sudoers file, to edit it.<ol>
 <li>In the template, find the command that will be made available to users or groups.</li>
 <li>uncomment the alias, if all of the command in the same category are needed for the users or groups.</li>
@@ -1383,16 +1406,22 @@
 </ul>
 </li>
 <li><code>useradd &lt;newUsername&gt;</code> create new user account and add the user to a new private group named as the username.<ul>
-<li>After execution, new user will be added in the <code>etc/passwd</code>. It has the following info <code>username:passwordLink:UserID(starting from 500):GroupID::homeDirectory:defaultShell</code>.</li>
+<li><code>useradd -d &lt;PathToNewHomeDir&gt; &lt;newUsername&gt;</code> set customized path for user&apos;s home directory.</li>
+<li><code>-s /bin/bash</code> set bash as preferred shell for this user.</li>
+<li><code>--gid</code> or <code>-g</code> or <code>-G</code> will and user to a existing group rather than creating a new group which has the same name as the username by default.</li>
+<li><code>-r</code> or <code>--system</code> will use UID in system user range. system users are created with no expiry date.</li>
+<li>After execution, new user will be added in the <code>/etc/passwd</code>. It has the following info <code>username:passwordLink:UserID(starting from 500):GroupID::homeDirectory:defaultShell</code>.</li>
+<li>The default setting for <code>useradd</code> can be changed in the <code>/etc/default/useradd</code>, or run <code>useradd --D</code>, or <code>useradd --defaults</code></li>
 </ul>
 </li>
 <li><code>passwd &lt;username&gt;</code>, follow the prompt to enter and confirm password.<ul>
 <li>Password info will be stored in the <code>etc/shadow</code> file if the system use shadow password.</li>
-<li>New account without setting password is not accessible, will show <code>!!</code> in the <code>etc/shadow</code> file.</li>
+<li>New account without setting password is not accessible, will show <code>!!</code> in the <code>/etc/shadow</code> file.</li>
 </ul>
 </li>
 <li><code>groupadd &lt;groupname&gt;</code> create a new group.<ul>
 <li>group infos are stored in the <code>etc/group</code> file.</li>
+<li><code>groupadd &lt;groupname&gt; --system</code> or <code>groupadd &lt;groupname&gt; -r</code> Create a system group with low range(defined by <code>SYS_GID_MIN-SYS_GID_MAX</code> in <code>login.defs</code>) of GID(Group ID)</li>
 </ul>
 </li>
 <li><code>usermod -G &lt;groupname&gt; &lt;username&gt;</code> add user to a group.</li>
@@ -1402,16 +1431,15 @@
 <li>first character can be <code>u</code> for user, <code>g</code> for group, <code>o</code> for others and <code>a</code> for all users.</li>
 <li>followed by <code>=+</code> add permission, <code>=-</code> remove permission.</li>
 <li>followed by permission <code>w</code>, <code>r</code>, or <code>x</code>.</li>
-<li>Ex, <code>o=-rx</code>, remove read and execute permission for other users.</li>
-<li>Ex, <code>-rx</code>, remove read and execute permission for all users.</li>
+<li>e.g. <code>o=-rx</code>, remove read and execute permission for other users.</li>
+<li>e.g. <code>-rx</code>, remove read and execute permission for all users.</li>
+<li>e.g. <code>g+w</code>, add the write permission for owner group.</li>
 <li><code>chown &lt;username&gt;.&lt;groupname&gt; &lt;filePath&gt;</code> change file or directory&apos;s ownership.<ul>
+<li><code>chown -R &lt;username&gt;.&lt;groupname&gt; &lt;folderPath&gt;</code> change ownership for directory and all files under it.</li>
+</ul>
+</li>
 <li><code>mount /dev/cdrom /media</code></li>
-</ul>
-</li>
-<li><code>chown &lt;username&gt;.&lt;groupname&gt; &lt;folderPath&gt; -R</code> change ownership for directory and all files under it.<ul>
 <li><code>umount /dev/cdrom</code></li>
-</ul>
-</li>
 </ul>
 <h2 id="tools">Tools</h2>
 <h3 id="init-and-run-level">Init and Run Level</h3>
@@ -1602,6 +1630,20 @@
 <li><code>yum groupinstall -y &apos;X Window System&apos; &apos;Desktop&apos; &apos;Fonts&apos;</code> install X window GUI</li>
 <li><code>yum install gcc &#x2013;y</code> Install the C compiler.</li>
 <li><code>yum install kernel -y</code> and <code>yum install kernel-devel &#x2013;y</code> install kernel development source.</li>
+<li><code>yum repolist all</code> get all packages repo<ul>
+<li>YUM Repositories are warehouses of Linux software (RPM package files)</li>
+</ul>
+</li>
+<li><code>sudo yum-config-manager --enable epel</code> enable epel repo</li>
+<li><code>sudo yum-config-manager --add-repo https://www.example.com/repository.repo</code> add a repo</li>
+<li><code>yum list &lt;package_name&gt; --showduplicate</code> show all versions of a package, available in enabled repositories</li>
+<li><code>sudo yum install &lt;package_name&gt;-&lt;version_info&gt;</code> install a specific version of a package</li>
+<li><code>sudo yum downgrade &lt;package_name&gt;-&lt;version_info&gt;</code> Force Yum To Downgrade Package</li>
+<li><code>yum autoremove &lt;package&gt;</code> remove a package and erase all the unneeded dependencies<ul>
+<li>automatically remove package dependencies, In <code>/etc/yum.conf</code>, change <code>directive clean_requirements_on_remove=1</code>.</li>
+</ul>
+</li>
+<li><code>yum remove &lt;package&gt;</code> or <code>yum erase &lt;package&gt;</code> uninstall a package</li>
 </ul>
 <h3 id="apt">APT</h3>
 <ul>
@@ -1622,6 +1664,10 @@
 </ul>
 </li>
 <li><code>apt</code> is the recommanded command with all features<ul>
+<li><code>apt list</code> list all available, installed and, upgradeable packages<ul>
+<li><code>apt list --installed</code> list installed packages</li>
+</ul>
+</li>
 <li><code>apt install &lt;PackageName&gt;</code> install new package</li>
 <li><code>apt full-upgrade</code> performs the same function as apt-get dist-upgrade</li>
 <li><code>apt upgrade</code> will automatically install but not remove packages.</li>
@@ -1637,6 +1683,25 @@
 <h3 id="wget">WGET</h3>
 <ul>
 <li><code>wget http://www.website.com/file.txt</code> Downloads the file located at <code>http://www.website.com/file.txt</code></li>
+</ul>
+<h3 id="tar">TAR</h3>
+<ul>
+<li><code>tar -cvf filename.tar &lt;DestinationPath&gt;</code> Create tar Archive File<ul>
+<li><code>c</code> &#x2013; Creates a new .tar archive file.</li>
+<li><code>v</code> &#x2013; Verbosely show the .tar file progress.</li>
+<li><code>f</code> &#x2013; File name type of the archive file.</li>
+</ul>
+</li>
+<li><code>tar cvzf filename.tar.gz &lt;DestinationPath&gt;</code> or <code>tar cvzf filename.tar.tgz &lt;DestinationPath&gt;</code> Create tar.gz Archive File<ul>
+<li><code>z</code> compressed <code>gzip</code> archive file, use the option as <code>z</code></li>
+</ul>
+</li>
+<li><code>tar cvfj filename.tar.bz2 &lt;DestinationPath&gt;</code> Create <code>tar.bz2</code> or <code>tar.tbz</code> or <code>tar.tb2</code> Archive File</li>
+<li><code>tar -xvf filename.tar.gz</code> extract<ul>
+<li><code>-C &lt;&lt;DestinationPath&gt;&gt;</code> extract to a different directory</li>
+</ul>
+</li>
+<li><code>tar -tvf filename.tar</code> extract and list contents</li>
 </ul>
 <h3 id="vim">Vim</h3>
 <ul>
@@ -1655,6 +1720,7 @@
 <h3 id="nano">Nano</h3>
 <ul>
 <li><code>nano example.txt</code> Opens the file <code>example.txt</code> in the Linux text editor Nano</li>
+<li><code>Ctrl + X</code> to exit, hit <code>Y</code> and press <code>Enter</code> to save.</li>
 </ul>
 <h3 id="grep">Grep</h3>
 <ul>
@@ -1714,10 +1780,104 @@
 <li>SQL account information is stored in the tables of the mysql database. See more about account management in SQL notes.</li>
 <li>The username and password in the connection string in <code>PHP</code> can be stored as text in a file in the <code>/etc/httpd/</code> folder.</li>
 </ul>
+<h3 id="nginx">nginx</h3>
+<ul>
+<li>It can be pronounced as Engine-X.</li>
+<li>It is event-driven.</li>
+<li>It can serve 4 times more static files than Apache server</li>
+</ul>
+<h4 id="installation">Installation</h4>
+<ul>
+<li><code>sudo apt-get install nginx</code></li>
+</ul>
+<h4 id="configuration">Configuration</h4>
+<ul>
+<li>NGINX has two directories<ul>
+<li><code>sites-available</code> stores all conf files for all available sites on that particular instance.</li>
+<li><code>sites-enabled</code> stores the symbolic link for each enabled site to the sites-available directory.<ul>
+<li>Amongst all sites in the <code>sites-available</code> only the one with link to the <code>sites-enabled</code> will be available to the user.</li>
+<li>Links are created by <code>sudo ln -s /etc/nginx/sites-available/confg-name.conf /etc/nginx/sites-enabled/confg-name.conf</code></li>
+</ul>
+</li>
+<li>By default, In each of these two folders, there is only one conf file named default that has basic setup for NGINX.</li>
+</ul>
+</li>
+</ul>
+<h5 id="work-with-uwsgi">Work with uWSGI</h5>
+<ul>
+<li><code>Nginx</code> can run with <code>uWSGI</code> and provide more control to a Python Web App.</li>
+<li><code>uwsgi_params</code> file, create a file called <code>mysite_nginx.conf</code> in the <code>/etc/nginx/sites-available/</code> directory to link request to the Nginx to uWSGI, then created link to the <code>sites-enabled</code> directory</li>
+</ul>
+<pre><code class="lang-conf">upstream updateMe_dev {
+    server unix:/webapps/updateMe/run/uwsgi.sock;
+}
+
+server {
+    listen 80;
+    server_name your-IP-or-address-here;
+    charset utf-8;
+
+    client_max_body_size 128M;
+
+    location /static {
+    # exact path to where your static files are located on server
+    # [mostly you won&apos;t need this, as you will be using some storage service for same]
+        alias /webapps/updateMe/static_local;
+    }
+
+    location /media {
+    # exact path to where your media files are located on server
+    # [mostly you won&apos;t need this, as you will be using some storage service for same]
+        alias /webapps/updateMe/media_local;
+    }
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass updateMe_dev;
+        uwsgi_read_timeout 300s;
+        uwsgi_send_timeout 300s;
+    }
+
+    access_log /webapps/updateMe/log/dev-nginx-access.log;
+    error_log /webapps/updateMe/log/dev-nginx-error.log;
+}
+</code></pre>
+<ul>
+<li>conf for https and redirect with private CAs</li>
+</ul>
+<pre><code class="lang-conf">server {
+       listen 80;
+       server_name example.com www.example.com;
+       return 301 https://example.com$request_uri;
+}
+server {
+       listen 443 ssl;
+server_name example.com web.example.com;
+       # Certificate
+       ssl_certificate /etc/nginx/ssl/cbe170b66b1f2233.crt;
+
+       # Private Key
+       ssl_certificate_key /etc/nginx/ssl/generated-private-key.key;
+       location / {
+               proxy_pass http://localhost:5000;
+               proxy_set_header Host $host;
+               proxy_set_header X-Real-IP $remote_addr;
+               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+               proxy_set_header X-Forwarded-Proto $scheme;
+}
+}
+</code></pre>
+<h4 id="usage">Usage</h4>
+<ul>
+<li><code>sudo /etc/init.d/nginx start</code> or <code>service nginx start</code> start the server</li>
+<li><code>sudo /etc/init.d/nginx restart</code> or <code>service nginx restart</code> restart the server</li>
+<li><code>sudo nginx -t</code> test the server</li>
+</ul>
 <h3 id="httpd">httpd</h3>
 <ul>
 <li>The Apache Web Service.</li>
 <li>It includes a patched OpenSSL module in the current version.</li>
+<li>Apache uses one thread per request</li>
 </ul>
 <h4 id="installation">Installation</h4>
 <ul>
@@ -2201,8 +2361,14 @@ WantedBy=multi-user.target
 </li>
 <li>For a unit with unit file name <code>unit.service</code>, the following command work for both full file names or unit names.</li>
 <li><code>systemctl list-units</code> list all services and units</li>
-<li><code>systemctl status &lt;unitfile&gt;</code></li>
-<li><code>systemctl start &lt;unitfile&gt;</code></li>
+<li><code>systemctl status &lt;unitfile&gt;</code><ul>
+<li>same as <code>service &lt;unitfile&gt; status</code></li>
+</ul>
+</li>
+<li><code>systemctl start &lt;unitfile&gt;</code><ul>
+<li>same as <code>service &lt;unitfile&gt; start</code></li>
+</ul>
+</li>
 <li><code>systemctl stop &lt;unitfile&gt;</code></li>
 <li><code>systemctl restart &lt;unitfile&gt;</code></li>
 <li><code>systemctl disable &lt;unitfile&gt;</code></li>
@@ -2349,7 +2515,7 @@ fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-var
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.14.1","depth":2,"next":{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.14","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.14.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.14.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.14.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.14.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.14.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.14.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.14.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2020-08-01T20:54:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-08T03:46:35.381Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.14.1","depth":2,"next":{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.14","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.14.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.14.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.14.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.14.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.14.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.14.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.14.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.14.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2020-08-22T20:57:49.453Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T21:30:59.692Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

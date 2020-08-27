@@ -185,6 +185,7 @@
   - Each command will compose one layer for the image.
   - The max number of layers is 127.
 - It supports new lines with `\`
+  - Empty continuation lines will become errors in a future release.
 - It supports comments after `#`
 
 ##### Commands
