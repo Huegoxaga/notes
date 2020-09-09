@@ -127,3 +127,60 @@ const moduleObjectName = require("filePath");
 - Methods:
   - `server.on('connection', (socket)=>{…})` add event handler for connection event.
   - `server.listen(portNumber)` make the server listen on certain port.
+
+## Mocha Testing Framework
+
+- It enable `npm test` CLI
+- It works with buildin modules `assert`
+
+### Usage
+
+- run `npm install --save mocha` to install
+- change the test value to `"mocha"` under `"script"` in the `package.json` file
+- run `npm run test` to run test using `mocha`
+  - all `*.test.js` files in the `test` folder will be executed from top to bottom, then print out result in each test method
+
+### Method
+
+- `it` method - it takes a test method name and a test method function
+- `describe` method - it takes a test case name and a group of `it` methods
+- `beforeEach` initial setup for all `it` methods placed after `beforeEach`
+- Example:
+  ```js
+  const assert = require("assert");
+  //make x global
+  let y;
+  beforeEach(() => {
+    //setup variables here
+    y = 3;
+  });
+  describe("TestCaseName", () => {
+    // add async for async functions
+    it("methodName1", async () => {
+      assert.ok(x);
+    });
+    it("methodName2", () => {
+      assert.equal(y, "2");
+    });
+  });
+  ```
+
+## web3
+
+- It is used to connect to Ethereum network
+- Almost all `web3` methods are `async`, it means methods should be followed by `.then()`or use `async/await`
+- `web3` version `>1.X.X `supports promises and async/await
+
+### Setup
+
+- run `npm install --save web3` to install
+- `const Web3 = require('web3');` to import `web3` constructor
+- `const web3 = new Web(networkName.provider());` to connect to the network using the provider provided by various network
+
+### Methods
+
+- `web3.eth.getAccounts()` get a list of all accounts
+- `result = await new web3.eth.Contract(JSON.parse(interfaceABIString)).deploy({data: bytecode, arguments: ['contract constructor initial values']}).send({ from: accountsID, gas: '1000000' });` deploy a contract and
+  - It returns the contract object with address info in `result.options.address`
+- `contractName.methods.functionName().call()` call a public contract function
+  - `.send({ from: accountID });` specify the account to make the payment when modify data

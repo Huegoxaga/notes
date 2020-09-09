@@ -71,7 +71,7 @@
 - `brew update` update all packages
 - `brew outdated` list all outdated packages
 - `brew upgrade` update outdated packages
-- `brew cleanup` clean old versions
+- `brew cleanup && brew cask cleanup` troubleshoot and clean old versions
 - `brew list` list installed packages
 - `brew install <PackageName>` install a package.
   - brew with distinguish some new package with pre-installed system package by prepending a `g` to its name. use `-with-default-names` will make them use their original names.

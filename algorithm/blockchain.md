@@ -98,6 +98,9 @@
   - Good for enhanced security
   - Good for organization which can distribute to employee.
   - There is a master public key that need to be keep secret. It can access all other public key and be used by auditor.
+- Mnemonic is a series of words used to generate a sequence of accounts and its public key and private key.
+  - It is used for the users to easily remember all the accounts it can have with few words.
+  - The mnemonic can be converted into account info by using this [tool](https://iancoleman.io/bip39/)
 
 ## Smart Contract
 
@@ -109,15 +112,21 @@
 - Decentralized Application - The frontend of smart contract.
 - Web 3.0 utilize distributed web servers.
 - VMs are used to encapsulate the smart contract running environment to prevent the spread of virus or infinite loops.
-- Gas is used to pay for the execution of smart contracts throughout the blockchain.
+- Gas is used to pay by the users for the execution of smart contract apps throughout the blockchain.
   - Each type of operation consume a specified amount of gas
-  - Can't use coins because the coin value changes frequently
+    - It is often listed in a spreadsheet, the units of gas required for operations like addition, comparision are specified
+    - storing data also requires gas
+  - Use gas instead of coins because the coin value changes frequently
+  - Gas price is the amount of coins required for each gas unit.
+  - Gas limit is the maximum amount of gas unit the contract can consume.
+    - The app will stop when it is about to consume gas beyond the limit
 - Decentralized Autonomous Organization (DAO) - an organization that runs by itself based on rules set in smart contracts.
 - A token is a currency that is usually purchased from a startup by coins. The token can be used to purchase services from the startup.
   - Tokens are release during (Initial Coin Offerring)ICO
   - The amount token release from ICO is limited.
   - After the token has been paid for services, the token can be sell by the company again.
   - [Click Here](https://coinmarketcap.com) to see a list of popular project, their business plan are written in the white paper.
+- The deployed bytecode of the smart contract is public
 
 ## Common Cryptocurrency Platform
 
@@ -142,6 +151,26 @@
 - It can run programs written in Solidity
   - It is Turing-Complete, it supports all basic programming syntax
 - It supports smart contract.
+  - `Solidity` is the programming language for writing Ethereum smart contracts.
 - A DAO is attacked due to error in the smart contract. In July 2017, it split into
   - Ethereum Classic - unchanged
   - Ethereum - Allows to go back and fix errors in smart contract
+- The name of the cryptocurrency in Ethereum is called `ether`
+  - `wei` is the smallest unit for `ether`
+  - There are many others units. A conversion tool is available [here](https://www.etherchain.org/tools/unitConverter)
+- It uses a 12 words mnemonic
+- Beside the main ethereum network, there are test networks that works with fake coins and tokens.
+  - Ropsten Test Network
+  - Kovan Test Network
+  - Rinkeby Test Network
+    - [Click here](https://faucet.rinkeby.io) and complete one of the tasks listed to get fake Rinkeby ethers.
+- [Etherscan](https://etherscan.io) can be used to view all transaction on the Ethereum network
+  - add test network name in the subdomain can show tracsactions made on test networks
+- The extension `metamask` for Google Chrome browser can be used to register and manage Ethereum account
+  - Enter a new password at the first time will generate a new account
+  - `metamsk` works with test networks, local network and custom RPC(remote network at custom address)
+    - One account can be used across all networks
+- `web3.js` is a `node.js` library that web servers use to interact with all `Ethereum` networks.
+  - `web3` establish connection with blockchain networks using a `provider` proviced by various networks
+- For any smart contract, modifying values inside the contract is a transaction and will consume ether from the user account.
+  - This action takes time to excute(around 15 seconds)

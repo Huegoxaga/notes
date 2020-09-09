@@ -33,6 +33,7 @@
 - [PHP](php/README.md)
   - [WordPress](php/wordpress.md)
 - [SQL](sql/README.md)
+- [Solidity](solidity/README.md)
 - [Operating Systems](os/README.md)
   - [Linux](os/linux.md)
   - [Bash Scripting](os/bash-scripting.md)

@@ -35,7 +35,7 @@
 
 1. Download and Install node.js from its official website
 2. Use `Visual Studio Code` with `Simple React Snippets`(enable shortcuts) and `Prettier Plugins` etc.
-3. `npx create-react-app <AppFolerName>` to create new project
+3. `npx create-react-app <AppFolerName>` to create project folder with new project files
 4. In the app folder, run `npm start` to launch development server in port `localhost: 3000`.
 5. `npm test` Launches the test runner in the interactive watch mode. See the section about running tests for more information.
 6. `npm run build` Builds the app for production to the `build` folder for hosting. It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -401,6 +401,8 @@ useEffect(() => {
     );
   }
   ```
+
+## react-admin
 
 ## Debug
 

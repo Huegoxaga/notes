@@ -157,10 +157,10 @@
 - It can runs faster on TEZ.
 - It allows queries using SQL-like scripting language called Pig Latin.
 - It can translate SQL script into query jobs. Ex, Codes for MapReduce jobs if it runs on MapReduce.
-- Pig Latin enables user defined functions.
+- Pig Latin enables user defined functions(UDF's).
 - Grunt is a Pig command line tool that can run script one line at a time.
   - It can also run an entire script file.
-- When use Ambari console, click run on TEZ option will make the query much faster.
+- Pig scrpits can be executed in the Ambari console, click run on TEZ option will make the query much faster.
 - Data needs to be loaded to create a relationship, the schema is only created during loading.
   ```sql
   ratings = LOAD '/user/maria_dev/ml-100k/u.data' AS (userID:int, movieID:int, rating:int, ratingTime:int);
@@ -180,15 +180,52 @@
 
 #### Hive
 
-- It allows queries using SQL language.
+- It allows user to query data stored in HDFS using SQL language.
 - It runs on `MapReduce` or `TEZ`
   - It works faster with `TEZ`
+- It uses `HiveQL` to query data
+  - A SQL language that is similar to `MySQL`
+- It supports `JDBC` or `ODBC` driver for connection
+- It supports Thrift server
+- It supports user defined functions
+- It is good for `OLAP` for analytics, not good for `OLTP` for transcation due to high latency
+- It does not support record level inserts, updates and deletes
+- It utilize the concept called schema on read, the schema is defined and used when reading data
+  - Traditional SQL database uses schema on write - The schema is defined before inserting data to the database
+- A view in `HiveQL` is a logical contruct that stores the relationship of the queried data without storing a copy of the data anywhere
+  - Once a view is created. It can then be queried as a newly created table
+- Login to `Ambari` and select Hive View to start to query
+  - Firstly, start with `Upload Table` from `HDFS`
+- It also works with CLI
 
 #### HBASE
 
 - It adds the functionality of a NoSQL database to the existing clusters.
-- It allows other transactional platform to access data in the NoSQL manner.
+- It allows other transactional platform to access data in a NoSQL manner.
 - It runs directly on the Filesystem.
+- It is built based a the Google's paper about BigTable
+- It provides an API for `CRUD` queries
+- It generates multple `Region Server`s as a result of auto sharding
+  - Each server contains data for a range of keys
+  - As the data grows, it will re-adapt or partiioning the keys into different servers.
+  - Client servers will connect to `Region Server` for data
+- `HMaster` server is responsible for auto-sharding, and storing schema
+- `ZooKeeper` is used to moniter the `HBase` master server
+- HBase Data Model
+  - Each record of data is stored in a row, with an unique key
+  - Each intersection of column and row is a cell
+    - Versioning can be enabled to each cell using timestamp
+    - cell value can be null and it consumes zero storage
+  - Each row can contain a small number of column families
+    - Column families can contain arbitary number of columns
+- Access HBase
+  - HBase Shell - CLI tool
+  - Java API - `HBase` is written in Java
+    - API wrappers written for Python, Scala
+  - connect to Spark, Hive, Pig
+  - Built-in RESTful API
+  - Thrift Serive
+  - Avro Service
 
 ### Add-ons Tools
 

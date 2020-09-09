@@ -84,23 +84,53 @@
 - major tetrachord is four note using `<WS><WS><HS>` interval sequence.
 - minor tetrachord is four note using `<WS><HS><WS>` interval sequence.
   - only consecutive ascending letter names should be used.
+- Harmonic intervals have two notes of the interval playing at the same.
+- Melodic intervals are when two notes play one by one in sequence.
+- A simple interval have no more than one octave in between.
+- A compound interval is a simple interval plus one octave
+  - A compound interval has the same quality as its equvilent simple interval
+- Unison intervals have one note with zero step.
 
-#### Diatonic Interval
+### Diatonic Interval
 
 - diatonic interval are those with an upper note belong to the major scale starts from the tonic note.
 - diatonic interval can be either:
   - perfect(upper notes is the 4th, 5th and 8th note of the current scale) Ex, Perfect 5th.
   - major(upper notes belongs to all others) Ex, Major 3rd.
 
-#### Chromatic Intervals
+### Chromatic Intervals
 
 - chromatic intervals are intervals that modified from diatonic in following ways.
-- Major interval - `<HS>` = minor interval
-- Major interval - `<WS>` = diminished interval
-- major interval + `<HS>` = augmented interval
-- perfect interval - `<HS>` = diminished interval
-- perfect interval + `<HS>` = augmented interval
-- Ex, C and G is a perfect 5th, C and G# is an augmented 5th.
+  - Major interval - `<HS>` = minor interval
+  - Major interval - `<WS>` = diminished interval
+  - major interval + `<HS>` = augmented interval
+  - perfect interval - `<HS>` = diminished interval
+  - perfect interval + `<HS>` = augmented interval
+  - Ex, C and G is a perfect 5th, C and G# is an augmented 5th.
+- A tritone is a diminished fourth or augmented fourth.
+  - It has three whole step in between and it cut one octave in half.
+  - It generates an unpleasant sound.
+
+### Consonance and Dissonance Intervals
+
+- Consonance Intervals has:
+  - Perfect Consonance Intervals
+    - Unison
+    - Perfect Fifth
+    - Octave
+    - Perfect Fourth
+      - When it is melodic, it is more like a consonance interval
+      - When it is harmonic, it is more like a dissonance interval
+  - Imperfect Consonance Intervals
+    - Major Third
+    - Major Sixth
+- Dissonance Intervals has:
+  - Major Second
+  - Major Seventh
+  - All other chromatic intervals
+- Resolution happens when a dissonance interval is followed by a consonance interval
+  - Maximum resolution happens when the dissonance interval resolve into its closet and most perfect consonance interval
+  - For the consonance interval used for resolution, emphasis the upper notes with additional notes one octave lower will enhance the sense of resolution
 
 ## Scales
 
@@ -110,7 +140,7 @@
 - The nth degree of a scale, is its nth note count from its key note. It is denoted by roman letter `I-VII`
 - Tonic means the first degree of a scale.
 
-#### Major Scale
+### Major Scale
 
 - Major scale has a major tetrachord as both the lower and upper tetrachord.`<WS><WS><HS><WS><WS><WS><HS>`
 - Diatonic solfeg syllables gives each degree of a **major scale** a name
@@ -122,7 +152,7 @@
   - FA and TI are very active, resolved by half-step.
 - the resolution property is the tendency of the tone which wants to move up or move down to the resting tone.
 
-#### Minor Scale
+### Minor Scale
 
 - Minor scale has a minor tetrachord as the lower tetrachord. There are three types of minor scale:
   - Melodic minor scale: - the upper tetrachord is a major tetrachord.
@@ -135,7 +165,7 @@
   - from a natural minor scale, the harmonic minor scale raises its 7th degree by half-step.
   - from a harmonic minor scale, the melodic minor scale raises its 6th degree by half-step.
 
-#### Modes
+### Modes
 
 - Also known as Modal scales
 - They are scale that start at different degree of a major scale(mostly).
@@ -145,7 +175,7 @@
 - Lettername is used to describe the starting note, with the music alphabet which indicate the degree of the relative major the starting note is on.
   - Ex, D Dorian mode is C major starts from D. C major is the relative major of D Dorian.
 
-#### the Circle of Fifths
+### the Circle of Fifths
 
 - The circle of fifths or the circle of fourths are tetrachords connected by `<WS>`s
 - the letter names of the tetrachord are used to draw the circle in sequence.

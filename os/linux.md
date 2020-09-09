@@ -979,6 +979,7 @@ server_name example.com web.example.com;
 - `systemctl poweroff` poweroff the machine
 - `systemctl suspend`
 - `journalctl` view all logs
+  - The log is stored at `/run/log/journal` directory and disappear after a reboot.
 - `journalctl -b` all logs since last reboot
 - `journalctl -u <unit>` view log for a certain unit
 

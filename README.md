@@ -32,6 +32,7 @@
 - [PHP](https://huegoxaga.github.io/notes/php/index.html)
   - [Wordpress](https://huegoxaga.github.io/notes/php/wordpress.html)
 - [SQL](https://huegoxaga.github.io/notes/sql/index.html)
+- [Solidity](https://huegoxaga.github.io/notes/solidity/index.html)
 - [Operating Systems](https://huegoxaga.github.io/notes/os/index.html)
   - [Linux](https://huegoxaga.github.io/notes/os/linux.html)
   - [Bash Scripting](https://huegoxaga.github.io/notes/os/bash-scripting.html)

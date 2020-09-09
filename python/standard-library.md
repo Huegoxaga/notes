@@ -351,6 +351,22 @@ list(accumulate(range(8)))
 - `os.path.splitext('path')` return a file path and an extension of the file separately.
 - `os.system('cd ..')` run the command and return the exit status code.
 
+## io
+
+- `import io`
+
+### Usage
+
+- `buffer = io.BytesIO()` generate memory buffer, It can be used as a file path to the memory. It is fast than storing a file on the disk for further process.
+
+## subprocess
+
+- `import subprocess`
+
+### Usage
+
+- `subprocess.run("pbcopy", universal_newlines=True, input="Hello")` add text to the clipboard.
+
 ## datetime
 
 ### datetime.datetime

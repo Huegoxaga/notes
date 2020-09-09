@@ -164,6 +164,7 @@ def about(request):
     class Student(CommonInfoAbstract):
       home_group = models.CharField(max_length=5)
     ```
+  - Adding an index for a field by using `db_index=True`
   - Model class can have a `__str__` method to define a string representation.
     ```py
     def __str__(self):
@@ -465,11 +466,13 @@ def about(request):
       ```
     - Assign the class name to the `pagination_class` variables in the each view method.
 
-### Swagger
+### Swagger Generators
 
 - It auto generate document pages for the Rest API
 
-##### Usage
+#### Django REST Swagger(Deprecated)
+
+##### Setup
 
 1. Run `pip install django-rest-swagger`
 2. Add `'rest_framework_swagger'` to `INSTALLED_APPS` in Django settings.
@@ -502,6 +505,38 @@ def about(request):
 6. Add docs string comments to provide more info in the docs page.
 
 - If see `'AutoSchema' object has no attribute 'get_link' swagger` error, add `'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',` in the `settings.py`.
+
+#### Yet another Swagger Generator
+
+##### Setup
+
+1. run `pip install drf-yasg`
+2. Add `'drf_yasg'` to `INSTALLED_APPS` in Django settings
+3. Add the following to `urls.py`
+   ```py
+   from rest_framework import permissions
+   from drf_yasg.views import get_schema_view
+   from drf_yasg import openapi
+   schema_view = get_schema_view(
+       openapi.Info(
+           title="Jaseci API",
+           default_version='v1',
+           description="Welcome to the world of Jaseci",
+           terms_of_service="https://www.jaseci.org",
+           contact=openapi.Contact(email="jason@jaseci.org"),
+           license=openapi.License(name="Awesome IP"),
+       ),
+       public=True,
+       permission_classes=(permissions.AllowAny,),
+   )
+   urlpatterns = [
+     # A JSON view of your API specification at /swagger.json plus A YAML view of your API specification at /swagger.yaml
+     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+     # A swagger-ui view of your API specification at /swagger/
+     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+     # A ReDoc view of your API specification at /redoc/
+     url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),]
+   ```
 
 ### Cache
 

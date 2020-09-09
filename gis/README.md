@@ -53,3 +53,24 @@
     - State Plane(USA)
     - National Grid of Great Britian(UK)
     - Indian Grid System(India)
+
+## GIS Data
+
+### Vector
+
+- Shapefiles
+  - The shapefile format is a geospatial vector data format for geographic information system (GIS) software.
+
+### Raster
+
+- It has a grid of cells that form a continuous surface
+- Each grid cell contains a value that represents some real-world phenomena
+- It can be catogorized as quantitative or qualitative rasters. e.g.:
+  - When the cell value is elevation, it is quantitative.
+  - When the cell value is a categorical code for land use, it is qualitative.
+- Raster Data Resoluion can be determined by the cell dimension, which is the size of land each cell represents.
+- Raster Data File includes the following formats:
+  - All image files
+  - Geo-enhanced image files(GeoTIFF, GeoJPEG)
+  - ESRI GRID, ESRI ASCII GRID
+  - Remotely sensed imagery

@@ -11,6 +11,7 @@
 
 ## Concepts
 
+- Compare with NoSQL, SQL it good at making complicated anlytics queries. NoSQL is good at getting direct or simple access to massive data
 - Column Sometimes referred to as a field, contains the same type of information for every record in table.
 - Row Sometimes referred to as a record
   Table is a collection of related rows

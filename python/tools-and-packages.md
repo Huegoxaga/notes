@@ -10,14 +10,17 @@
   - `pip install <packagename>` is the same as `/usr/bin/python2.7 -m pip install <packagename>`
   - `pip3 install <packagename>` is the same as `/usr/bin/python3.6 -m pip install <packagename>`
 - `pip install --upgrade <packagename>` or `pip install -U <packagename>` update a package
+  - `--upgrade` can be used for both downgrade or upgrade
 - `pip install -r requirements.txt` install packages according the `requirements.txt`
+- `pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U` update all packages
 - `pip uninstall <packagename>` uninstall a package
 - `pip search <keyword>` search for a package
 - `pip list` list packages
 - `pip freeze` output package info file
   - `pip freeze >requirement.txt` output package info file as txt file.
 - `pip list --outdated` list all outdated packages
-- Update all packages, in `requirements.txt`, change all `==` to `>=` and run `pip install -r requirements.txt --upgrade`.
+- Update all packages, in `requirements.txt`, change all `==` to `>=` and run `pip install -r requirements.txt --upgrade`
+- `pip show <packagename>` will display the version and location of the installed package
 
 ### Conda
 
@@ -48,6 +51,7 @@
   - `conda install <packagename> --file filename.txt` install packages base on text file info.
   - `conda install -c <channelname> <packagename>` install a package from a certain channel
 - `conda update <packagename>` Update any installed program
+  - `conda update --all` update everything
 - `conda create --name py35 python=3.5`Create a new environment named py35, install Python 3.5
   - `conda create --name bio-env <packagenametoinstall>` all in one command for creating env and instal packages.
   - Versions can be specified as the following ways.
@@ -791,5 +795,4 @@ vacuum          = true
 - `exif = imWIthEXIF.info['exif']` get exif data in a dictionary
 - `image = Image.fromarray(OpenCVImage)` Convert OpenCV image onto PIL Image
   - `OpenCvImage` is a opencv image object in a numpy array after `cvtColor()`
-- `image.save(buffer, format='JPEG', exif=imWIthEXIF.info['exif'])` save image with exif data as `jpeg`.
-  - `import io`, and `buffer = io.BytesIO()` generate memory buffer
+- `image.save(path, format='JPEG', exif=imWIthEXIF.info['exif'])` save image with exif data as `jpeg`.

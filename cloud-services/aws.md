@@ -133,6 +133,35 @@ It provide computing services.
 - Each snapshot can have the Fast Snapshot Restore Service
   - enable it for new and existing snapshots on a per-AZ (Availability Zone) basis, and then create new EBS volumes that deliver their maximum performance and do not need to be initialized.
   - It costs `$0.75` per hour per zone.
+- A CloudWatch Agent can be setup and installed on a EC2 instance to send logs to the cloudwatch, This can be achieved by completing the following steps:
+  - For Ubuntu:
+    - run `sudo curl -o /root/amazon-cloudwatch-agent.deb https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb` to download
+    - run `sudo dpkg -i -E /root/amazon-cloudwatch-agent.deb` to install
+    - run `sudo usermod -aG adm cwagent` to add the installer created user `cwagent` to the `adm` group for system logs access
+    - create and attach the EC2 Role with `CloudWatchAgentServerPolicy` policy
+    - run the setup wizard `/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard` add additional logs to publish in the wizard
+      - `StatsD` or `collectd` daemon is used to publish metrics
+        - If select `collectd`, run `sudo apt-get update && sudo apt-get install collectd` to install
+      - Optionally, the config file can be stored in the AWS Systems Manager Parameter Store (SSM)
+      - Check the config file at `/opt/aws/amazon-cloudwatch-agent/bin/config.json`
+      - In the config files the `collect_list` stores all logs that will be set to the cloudwatch, each with its corresponding log group
+      - Whenever making changes, run `service amazon-cloudwatch-agent restart` to restart the service
+      - view the cloudwatch agent log to troubleshoot at `/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log`, config file validation file is stored at `/opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log`
+    - move the generated the config file to `/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json`
+    - run `systemctl enable amazon-cloudwatch-agent.service`, `service amazon-cloudwatch-agent start` to enable and start the service
+  - If server is not hosted on AWS, `credentials` and AWS's `config` files need to be setup on the server in the `/home/cwagent/.aws/` folder, then link the files to `/opt/aws/amazon-cloudwatch-agent/etc/common-config.toml` by running `echo "[credentials]" >> /opt/aws/amazon-cloudwatch-agent/etc/common-config.toml && echo ' shared_credential_file = "/home/cwagent/.aws/credentials"' >> /opt/aws/amazon-cloudwatch-agent/etc/common-config.toml`
+    - for `credentials` add
+      ```
+      [AmazonCloudWatchAgent]
+      aws_access_key_id = 123
+      aws_secret_access_key = 123
+      ```
+    - for `config` add
+      ```
+      [AmazonCloudWatchAgent]
+      output = text
+      region = aa-bbbb-n
+      ```
 
 ## Elastic Beanstalk
 
@@ -335,10 +364,14 @@ It generates metrics for other services.
   - `>`, `<` can be used on numerical values.
   - text surrounded by `""` or `[]` are treated as one entry.
   - Once a pattern is set cloudwatch can be generated based on it using AWS console, `CloudWatch` -> `Log Groups` -> `Create metric filter`.
-  - [Click Here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringPolicyExamples.html) to see more example.
+  - [Click Here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html) to learn more about the syntax
 - When exporting logs in log group to s3, each AWS can run one exporting task at a time.
   - Multiple log groups can be exported by using regex pattern for `logGroupName` parameter
 - When publish log through `Lambda`, log stream are encoded as `base64` and compressed by `gzip`.
+- CloudWatch Logs Insights allows one to query log groups
+  - [Click Here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html) to learn more about the query syntax
+  - [Click Here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax-examples.html) for more examples
+  - The time span for the logs are set in the top menu
 
 ## Lambda
 
@@ -416,7 +449,7 @@ It can be used to send formatted emails from registered email addresses.
     }
   }
   ```
-  - `HtmlPart` - It neens a escaped json string. [Click here](https://www.freeformatter.com/json-escape.html) to use the json escape tool to convert it to string.
+  - `HtmlPart` - It takes a escaped json string. [Click here](https://www.freeformatter.com/json-escape.html) to use the json escape tool to convert it to string.
   - run `aws ses create-template --cli-input-json fileb://<filePath> --region <regionCode> --profile <profileName>` to create the template.
   - run `aws ses update-template --cli-input-json fileb://<filePath> --region <regionCode> --profile <profileName>` to update the template.
 - Use other SDK to send the email using html template or plain text.
