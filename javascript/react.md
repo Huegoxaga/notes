@@ -74,6 +74,8 @@ ReactDOM.render(
 - Based on the use of the components, they can be categorized into two type:
   - `presentational components` are concerned with how things look, they should be stateless. It has only `props` no `state`.
   - `container components` are more concerned with how things work, they are stateful. It contains many presentational components and process state data and passes props to them.
+- When importing packages, use `/` to import sepecific component file rather than using `{}` to import multiple component can reduce the bundle size
+  - Install Babel plugin([babel-plugin-import](https://github.com/ant-design/babel-plugin-import), [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports)) can safely import multiple components in one line without incresaing the bundle size
 
 ### App Component
 
@@ -388,6 +390,17 @@ useEffect(() => {
 
 - The Bootstrap for React
 - [Click](https://material-ui.com/getting-started/installation/) to see its Docs.
+- It provide a quick way to implement UI specified by Material Design
+  - Material Design is a design language(guilde) that Google developed in 2014
+  - [Click Here](https://material.io/components) to see the UI compoenents examples from Material Design
+
+### Components
+
+- Material UI provides predefined components, each with various `props` that can be used to modify the components' styles. Details are explained in the docs's API section
+- There are two CDN links for loading material components for quick prototyping
+  - one for development: https://unpkg.com/@material-ui/core@latest/umd/material-ui.development.js
+  - one for production: https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js
+- For production, it is recommended to run `npm install @material-ui/core`
 - Example
   ```js
   import React from "react";
@@ -402,7 +415,196 @@ useEffect(() => {
   }
   ```
 
-## react-admin
+#### CSS Baseline
+
+- It is used to reset the pages' css
+- `<CssBaseline />` will reset the CSS style globally
+- `<ScopedCssBaseline></ScopedCssBaseline>` will reset CSS of components wrapped inside
+
+#### Paper
+
+- It provides a backgroud for all the components inside
+- It has an `elevation` property value range from `0` to `24`(default `1`). It control the shade level below the `Paper`
+- The `square` property takes a boolean value(default) when `true` the border radius will be set to 0
+
+#### Drawer
+
+- It is a side menu
+
+#### AppBar
+
+- It is a top navigation bar
+- It works with `<ToolBar>` component
+- It has a `position` props that can be set to `static`, `fixed`
+
+#### ToolBar
+
+- It is a tool bar that can contain menu icons, search bar, text.
+- It has a `variant` props that can be set to `dense`, `regular`(default)
+
+#### Table
+
+```js
+//<TableContainer> optional, it wraps the table
+//the optional `component` props defines the table's root node component type(default `'div'`)
+<TableContainer component={Paper}>
+  // <Table> has style props minWidth: 650. it will create horizontal scroll bar when
+  width smaller than min width(There is a built in min width)
+  <Table style={{minWidth: 650}}>
+    <TableHead>
+      <TableRow>
+        <TableCell>Dessert (100g serving)</TableCell>
+        <TableCell align="right">Calories</TableCell>
+        <TableCell align="right">Fat&nbsp;(g)</TableCell>
+        <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+        <TableCell align="right">Protein&nbsp;(g)</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {rows.map((row) => (
+        <TableRow key={row.name}>
+          <TableCell component="th" scope="row">
+            {row.name}
+          </TableCell>
+          <TableCell align="right">{row.calories}</TableCell>
+          <TableCell align="right">{row.fat}</TableCell>
+          <TableCell align="right">{row.carbs}</TableCell>
+          <TableCell align="right">{row.protein}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>
+```
+
+#### Grid
+
+- It is used to control the layout of the entire web app
+- It can be either `<Grid container></Grid>` or `<Grid item></Grid>`
+- Grid item can have width from `1` to `12`. `12` takes `100%` of the width
+  - Width should be specified for a certain breakpoint. e.g. `xs=12`
+
+#### Typography
+
+- The default font is `Roboto`
+  - It requires the link to load the font, `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />`
+  - optionally, it can be installed by running `npm install fontsource-roboto` and then imported by using `import 'fontsource-roboto';`
+- `Typography` is a component and wrap around texts with `props` that controls the styles of the text
+
+#### Icons
+
+##### Standardized Material Design
+
+- Material Design has standardized over 1,100 official icons, each in five different "themes" (see below)
+- run `npm install @material-ui/icons` to install prebuilt SVG icon package
+  - The `core` package is required by the `icon` package
+- `import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';` import the selected icon component and use it directly
+- Each icon also has a "theme": `Filled` (default), `Outlined`, `Rounded`, `TwoTone` and `Sharp`. If you want to import the icon component with a theme other than default, append the theme name to the icon name directly without any space. For example `@material-ui/icons/DeleteRounded` for `Delete` icon in `Rounded` theme
+- [Click Here](https://material-ui.com/components/material-icons/) to see all icons
+
+##### SvgIcon
+
+##### Icon
+
+- The font `Icon` component has the slowest performance
+- It requires a link to the material icons font, `<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />`
+
+### Style
+
+- Each material UI component has a global class name, these names can be used to define styles
+- In `App.js` the web app can be wraped by `<Paper style={{ height: "100vh" }}> </Paper>` to provide a backgroud
+
+#### makeStyles Hook
+
+```js
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
+const useStyles = makeStyles({
+  root: {
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    border: 0,
+    borderRadius: 3,
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+  },
+});
+
+export default function Hook() {
+  const classes = useStyles();
+  return <Button className={classes.root}>Hook</Button>;
+}
+```
+
+- makeStyles can take theme as input and get theme objects values
+
+```js
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
+```
+
+#### Styled components
+
+```js
+import React from "react";
+import { styled } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
+const MyButton = styled(Button)({
+  background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+  border: 0,
+  borderRadius: 3,
+  boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+  color: "white",
+  height: 48,
+  padding: "0 30px",
+});
+
+export default function StyledComponents() {
+  return <MyButton>Styled Components</MyButton>;
+}
+```
+
+### Theme
+
+- It controls the global styles of all other components
+- [Click Here](https://material-ui.com/customization/default-theme/) to check the default styles of all components
+- Colors imported from Material UI packages include `dark`, `light`, and `main` properties
+
+#### Customize Theme
+
+- Create a theme `.js` file, define and export the new theme, everything else will still be set to default value
+- `palette: {type: 'dark'}` will set the theme to be in dark mode
+  - To allows the user to can theme mode dynamically, use a `darkMode` bool variable as `palette: {type: darkMode ? "dark" : "light"}`
+  ```js
+  import { createMuiTheme } from "@material-ui/core/styles";
+  import purple from "@material-ui/core/colors/purple";
+  import green from "@material-ui/core/colors/green";
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: purple[500],
+      },
+      secondary: {
+        main: green[500],
+      },
+    },
+  });
+  ```
+- In `App.js` wrap the component that adapts themes with the theme provider components, e.g. `<ThemeProvider theme={newTheme}> <Component /> </ThemeProvider>`
+- Similar to `useStyles()`, the `const theme = useTheme();` method will return a variable that contains all the current theme settings
 
 ## Debug
 

@@ -116,7 +116,7 @@
 
 - It is a variable that represents the outcomes of a event. It is the independent variable of the probability function.
 - Random variable can have three types:
-  - Discrete variable: integer value, single event.
+  - discrete variable: integer value, single event.
   - discrete infinite variable: multiple event.
   - continuous(nondiscrete) variable: events happens overtime.
 
@@ -215,7 +215,7 @@
   - Between `u-a` and `u+a` graph curves downward. other `x` value graph curves upward. `u-a` and `u+a` is the inflection point.
   - standard normal distribution is a normal distribution with mean = 0 and a = 1
 - To transform values into standard normal distribution (z-score):
-  - z also mean the number of times of the sd below or above the mean.
+  - z also mean the number of times of the standard deviation value below or above the mean.
   - `z-value = (value-mean)/standard deviation`
   - z-score is the corresponding x-axiz value of a standard normal distribution
   - it can be calculated and used to find the performance of one data in among the sample. in the graph. the higher the better.

@@ -401,6 +401,8 @@
 
 #### Markov Decision Processes(MDPs)
 
+- Markov Models
+  - Hidden Markov Models is used by speech recognition
 - Gridworld is a simple example environment for understanding RL concepts.
   - It is a `3 X 4` table
   - The state is determined by the location of the agent, the top left corner is described by tuple as `(0, 0)`
@@ -409,6 +411,13 @@
   - `(1, 1)` is a wall
   - When the agent get to point `(0, 3)` it have have one reward.
   - When the agent get to point `(1, 3)` it have lost one reward.
+- The Markov Property only consider the propability of the predicted state to be dependent on its previous one or two states
+  - when only one previous state is considered(bigram), this is called the first-order Markov assumption
+  - the sequence of states before the dependent states will be ignored
+- A single step of `MDP` consists of `{Current State, Action, Reward from the Action, State after the Action}` which can be represent by the tuple `{s, a, r, s'}`
+  - the environment can be represented as `p(s', r| s, a)`
+  - lowercase letter notations focus on a specific realiztion, replace the lowercase letter with uppercase plus subscribes like `t` or `t+1` to represent the random variables
+  - compare to regular Markov Chain model, `r` and `a` are extra
 
 ## Ready-to-use Algorithms
 
