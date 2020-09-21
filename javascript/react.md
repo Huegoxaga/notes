@@ -38,7 +38,7 @@
 3. `npx create-react-app <AppFolerName>` to create project folder with new project files
 4. In the app folder, run `npm start` to launch development server in port `localhost: 3000`.
 5. `npm test` Launches the test runner in the interactive watch mode. See the section about running tests for more information.
-6. `npm run build` Builds the app for production to the `build` folder for hosting. It correctly bundles React in production mode and optimizes the build for the best performance.
+6. `npm run build` Builds the app for production as static files to the `build` folder for static hosting. It correctly bundles React in production mode and optimizes the build for the best performance.
 7. run `npm run eject`, to stop using the toolchain and configure everything manually(can not recover once the command is ran).
 
 - [Click](https://create-react-app.dev/docs/getting-started) to see the full docs about this tool.
@@ -47,7 +47,9 @@
 
 - Delete the node_modules folder and any 'lock' files such as `yarn.lock` or `package-lock.json` first, then run `npm install` and `npm start`.
 
-## `index.js`
+## Project Structure
+
+### `index.js`
 
 - `index.js` is the entry point of the react app, it is used to import and associate components and `html` `DOM` elements .
 
@@ -68,6 +70,10 @@ ReactDOM.render(
 ); // This is what bible does to the jsx code after compiling.
 ```
 
+### `manifest.json`
+
+- The web app manifest is a JSON file is optional for a React App and created by CRA(create-react-app) by default
+
 ## Component
 
 - React app is made up by `components`.
@@ -81,6 +87,8 @@ ReactDOM.render(
 
 - App component(`App.js`) is the root component and it contains other customized components in a tree.
 - `app.js` usually is one component that contains all sub-components for the app then to be associated with DOM in index.js.
+- Wrap the entire App component with `<React.StrictMode></React.StrictMode>` will enable the strict mode
+  - StrictMode is a tool for highlighting potential problems in an application. It activates additional checks and warnings for its descendants.
 
 ### Customized Component
 
@@ -238,7 +246,7 @@ import {
   Link,
   NavLink,
 } from "react-router-dom";
-// BrowserRouter uses HTML5 history API to keep track of URL
+// BrowserRouter uses HTML5 history API to keep track of URL, it requires additional setup when build
 // Optionally, HashRouter uses a hash portion of the URL to keep track of URL
 <Router>
   // Router Component can only have one child component // They use Link and
@@ -263,6 +271,13 @@ import {
     <Route path="/urlparm/:varName" component={ChildComponent} />
     // In the child component accesss the variable using
     this.props.match.params.varName
+    // Switch will make will only first match will be rendered
+    <Switch>
+      // Move the root match to the last, since / will match all path
+      // It can be nested for different path depths
+      <Route exact path="/other" component={Other} />
+      <Route exact path="/" component={Home} />
+    <Switch>
   </div>
 </Router>;
 ```
@@ -293,10 +308,7 @@ constrctor(props) {
 
 #### render
 
-```js
-render() {}
-```
-
+- `render() { return (); }`
 - It is called after the constructor is called.
 - All its child component is also rendered recursively.
 
@@ -316,10 +328,12 @@ It is triggered whenever the state or props of a component changes.
 
 #### Render
 
+- `render() { return (); }`
+
 #### componentDidUpdate
 
 ```js
-componentDidUpdate(prevProps,prevState){
+componentDidUpdate(prevProps, prevState){
 	//can compare the current and prev value,
 	// can make Ajax call only when value changed.
 }
@@ -337,7 +351,8 @@ componentDidUpdate(prevProps,prevState){
 ## React Hooks
 
 - New in React version 16.8
-- It enables the use of React features in a functional component.
+- It enables the use of React features in a functional component
+- Hooks are called inside the body of a functional component
 
 ### State Hook
 
@@ -351,7 +366,7 @@ const [currentValue, setFunction] = useState(initialValue)   //array destructing
 return (
   <button conClick={() => setFunction(prevValue + 1)}>{currentValue}</button>
   //use variable prevValue to get the previous value.
-  //work with objects or arrays use: setName({…objectName, propertyName: newValue})
+  //work with objects or arrays use: setName({...objectName, propertyName: newValue})
 );
 ```
 
@@ -367,24 +382,62 @@ return (
 // Similar to componentDidMount and componentDidUpdate:
 useEffect(() => {
   console.log("rendered");
-});
+}, []);
 ```
 
 - First parameter holds a function that will be called everything the component is rendered and rerendered.
-- Second parameter holds an array of variables called dependency array. The function in the first parameter will then only be called when these variables change.
+- Second parameter holds an array of variables called dependency array. The function in the first parameter will then only be called when variables listed in the dependency array change.
   - All variables in the `useEffect()` use be added to the dependency array.
-  - When this parameter is an empty array, The function in the first parameter will be only called once when the component is mounted.
+  - When the second parameter is an empty array, `[]`, The function in the first parameter will be only called once when the component is mounted.
   - a `return() => {}` block can be added to the `useEffect()` function, code in this block will be called only once during component unmount.
 - One component can have multiple `useEffect()` function and they will be executed in order.
+- `useEffect` can have return, `return () => {}`. It will be called every time the component is unmounted
 
 ### Context Hook
 
-- Makes component share common data across pages.
+- Makes component share common data across pages
+- A component calling useContext will always re-render when the context value changes
 - In a `context.js` create the context by using `export const ContextName = createContext(initialValue)`
-  - `initialValue` can be null.
+  - `initialValue` can be null or empty
 - In `App.js` use `{%raw%}<ContextName.Provider value={{value1, value2}}> <Toolbar /> </ContextName.Provider>{%endraw%}` to create context and assign values to the context.
-- reload will clear all context.
+- reload will clear all context
 - In component class use `const {value1, value2} = useContext(ContextName);` to get values
+- Put everything together
+  ```js
+  const themes = {
+    light: {
+      foreground: "#000000",
+      background: "#eeeeee",
+    },
+    dark: {
+      foreground: "#ffffff",
+      background: "#222222",
+    },
+  };
+  const ThemeContext = React.createContext(themes.light);
+  function App() {
+    return (
+      <ThemeContext.Provider value={themes.dark}>
+        <Toolbar />
+      </ThemeContext.Provider>
+    );
+  }
+  function Toolbar(props) {
+    return (
+      <div>
+        <ThemedButton />
+      </div>
+    );
+  }
+  function ThemedButton() {
+    const theme = useContext(ThemeContext);
+    return (
+      <button style={%raw%}{{ background: theme.background, color: theme.foreground }}{%endraw%}>
+        I am styled by theme context!
+      </button>
+    );
+  }
+  ```
 
 ## Material UI
 
@@ -393,10 +446,12 @@ useEffect(() => {
 - It provide a quick way to implement UI specified by Material Design
   - Material Design is a design language(guilde) that Google developed in 2014
   - [Click Here](https://material.io/components) to see the UI compoenents examples from Material Design
+- Recommanded responsive meta tag for React app using material UI `<meta name="viewport" content="minimum-scale=1, initial-scale=1 width=device-width"/>`
 
 ### Components
 
 - Material UI provides predefined components, each with various `props` that can be used to modify the components' styles. Details are explained in the docs's API section
+- [Click Here](https://material-ui.com/components/buttons/) to read the complete docs for all Material UI Components
 - There are two CDN links for loading material components for quick prototyping
   - one for development: https://unpkg.com/@material-ui/core@latest/umd/material-ui.development.js
   - one for production: https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js
@@ -430,6 +485,28 @@ useEffect(() => {
 #### Drawer
 
 - It is a side menu
+
+#### Lists
+
+- Lists are a continuous group of text or images. They are composed of items containing primary and supplemental actions, which are represented by icons and text.
+  - The items can be any component specified in the props of the `<ListItem>` tag(like `button` in the example)
+
+```js
+<List>
+  <ListItem button>
+    <ListItemIcon>
+      <Icon />
+    </ListItemIcon>
+    <ListItemText primary="First Item" />
+  </ListItem>
+  <ListItem button>
+    <ListItemIcon>
+      <Icon />
+    </ListItemIcon>
+    <ListItemText primary="Second Item" />
+  </ListItem>
+</List>
+```
 
 #### AppBar
 
@@ -481,8 +558,13 @@ useEffect(() => {
 
 - It is used to control the layout of the entire web app
 - It can be either `<Grid container></Grid>` or `<Grid item></Grid>`
+  - Component's style property will only activated when the corresponding `container` or `item` type is specified
 - Grid item can have width from `1` to `12`. `12` takes `100%` of the width
   - Width should be specified for a certain breakpoint. e.g. `xs=12`
+
+#### Hidden
+
+- Anything inside the `<Hidden>` tag will be hidden based on the breakpoint set in the props
 
 #### Typography
 
@@ -512,7 +594,7 @@ useEffect(() => {
 ### Style
 
 - Each material UI component has a global class name, these names can be used to define styles
-- In `App.js` the web app can be wraped by `<Paper style={{ height: "100vh" }}> </Paper>` to provide a backgroud
+- In `App.js` the web app can be wraped by `{%raw%}<Paper style={{ height: "100vh" }}> </Paper>{%endraw%}` to provide a backgroud
 
 #### makeStyles Hook
 

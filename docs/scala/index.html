@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Operating Systems · GitBook</title>
+        <title>Scala · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="linux.html" />
+    <link rel="next" href="../javascript/" />
     
     
-    <link rel="prev" href="../solidity/" />
+    <link rel="prev" href="../java/android.md" />
     
 
     </head>
@@ -205,9 +205,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="../scala/">
+        <li class="chapter active" data-level="1.4" data-path="./">
             
-                <a href="../scala/">
+                <a href="./">
             
                     
                     Scala
@@ -611,9 +611,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.17" data-path="./">
+        <li class="chapter " data-level="1.17" data-path="../os/">
             
-                <a href="./">
+                <a href="../os/">
             
                     
                     Operating Systems
@@ -625,9 +625,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.17.1" data-path="linux.html">
+        <li class="chapter " data-level="1.17.1" data-path="../os/linux.html">
             
-                <a href="linux.html">
+                <a href="../os/linux.html">
             
                     
                     Linux
@@ -638,9 +638,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.2" data-path="bash-scripting.html">
+        <li class="chapter " data-level="1.17.2" data-path="../os/bash-scripting.html">
             
-                <a href="bash-scripting.html">
+                <a href="../os/bash-scripting.html">
             
                     
                     Bash Scripting
@@ -651,9 +651,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.3" data-path="regex.html">
+        <li class="chapter " data-level="1.17.3" data-path="../os/regex.html">
             
-                <a href="regex.html">
+                <a href="../os/regex.html">
             
                     
                     Regular Expression
@@ -664,9 +664,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.4" data-path="macos.html">
+        <li class="chapter " data-level="1.17.4" data-path="../os/macos.html">
             
-                <a href="macos.html">
+                <a href="../os/macos.html">
             
                     
                     MacOS
@@ -677,9 +677,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.5" data-path="solution-stack.html">
+        <li class="chapter " data-level="1.17.5" data-path="../os/solution-stack.html">
             
-                <a href="solution-stack.html">
+                <a href="../os/solution-stack.html">
             
                     
                     Solution Stack
@@ -690,9 +690,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.6" data-path="hadoop.html">
+        <li class="chapter " data-level="1.17.6" data-path="../os/hadoop.html">
             
-                <a href="hadoop.html">
+                <a href="../os/hadoop.html">
             
                     
                     Hadoop
@@ -703,9 +703,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.7" data-path="git.html">
+        <li class="chapter " data-level="1.17.7" data-path="../os/git.html">
             
-                <a href="git.html">
+                <a href="../os/git.html">
             
                     
                     Git
@@ -716,9 +716,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.8" data-path="redis.html">
+        <li class="chapter " data-level="1.17.8" data-path="../os/redis.html">
             
-                <a href="redis.html">
+                <a href="../os/redis.html">
             
                     
                     Redis
@@ -1183,7 +1183,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Operating Systems</a>
+        <a href=".." >Scala</a>
     </h1>
 </div>
 
@@ -1198,53 +1198,195 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="operating-systems">Operating Systems</h1>
-<h3 id="unix">Unix</h3>
+                                <h1 id="scala">Scala</h1>
+<h2 id="introduction">Introduction</h2>
 <ul>
-<li>UNIX is an operating system since the 1960&#x2019;s</li>
-<li>Unix is a <a href="www.unix.org">trademarked</a> name.</li>
-<li>UNIX operating system is one that<ul>
-<li>conforms to a set of standards</li>
-<li>is registered with the governing body of the trademark.</li>
-<li>If any those two requirement is not met, it can only be called Unix &apos;like&apos; OS.</li>
+<li>Scala is an acronym for Scalable Language</li>
+<li>Scala is a general-purpose programming language providing support for both object-oriented programming and functional programming</li>
+<li>The language has a strong static type system<ul>
+<li>type error can be caught by the compiler, not during runtime</li>
 </ul>
 </li>
-<li>Active Unix OS:<ul>
-<li>Hewlett Packard(HP-UX)</li>
-<li>IBM AIX</li>
-<li>IBM z/OS</li>
-<li>Oracle Solaris</li>
-<li>Apple MacOS</li>
+<li>Designed to be concise</li>
+<li>aimed to replace Java<ul>
+<li>compared to Java, Scala has the same speed, 50% less code, more flexible, less errors</li>
+<li>more object-oriented than Java</li>
 </ul>
 </li>
+<li>It runs on Java Virutal Machine</li>
+<li>It can work with Java code(Java libraries, Java Tools, Java IDEs), Scala code can also be used in a Java program</li>
+<li>developed by Martin Odersky at EPFL</li>
+<li>source files have a <code>.scala</code> extension</li>
 </ul>
-<h3 id="linux">Linux</h3>
+<h2 id="sbt">SBT</h2>
 <ul>
-<li>Linux is Unix &quot;like&quot; OS.</li>
-<li>Linux was created around 1990&apos;s</li>
-<li>Linux is a <a href="www.linuxmark.org">trademarked</a> name.</li>
-<li>Linux is the name of the OS kernel, means Linux &quot;based&quot; OS.</li>
-<li>Active Linux OS:<ul>
-<li>Google Android</li>
-<li>Oracle Linux<ul>
-<li>Red Hat Enterprise Linux</li>
-<li>CentOS - It is based on Red Hat Enterprise Linux</li>
-<li>Fedora</li>
+<li>Scala Build Tool(formerly known as Simple Build Tool)</li>
+<li>It is a CLI tool</li>
+<li>It is included in the <code>IntelliJ IDE</code></li>
+<li>A general purpose build tool written in Scala</li>
+<li>The standard build tool for compile, run, test and package Scala projects</li>
+<li>It uses Apache Ivy for dependency management</li>
+<li>It only updates on request</li>
+<li>It launches REPL(Read-Eval-Print-Loop) inside each project by runing <code>sbt console</code> command<ul>
+<li>nice to have as Scala does not use an interpreter, and Scala code need to be compiled everytime to run</li>
+<li>Will result temp variable after the execution of each line, the variable starting from <code>res0</code> to <code>res1</code>, <code>res2</code>...</li>
 </ul>
 </li>
-<li>Ubuntu Linux<ul>
-<li>The LTS version number has format <code>YY.MM</code> determined bt the realse year and month.</li>
-<li>It release LTS(Long-term support) versions every 2 years in April, each one will be supported for 5 years.</li>
-<li>Every six months between LTS versions, Canonical publishes an interim release of Ubuntu. These are production-quality releases and are supported for 9 months, with sufficient time provided for users to update.<ul>
-<li>Interim releases will introduce new capabilities from Canonical and upstream open source projects, they serve as a proving ground for these new capabilities.</li>
+</ul>
+<h2 id="ides">IDEs</h2>
+<ul>
+<li>Scala IDE for Eclipse</li>
+<li>IntelliJ IDE with Scala Plugin</li>
+<li>Netbean with Scala Plugin</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ul>
+<li>Install Java <code>SDK</code> by running <code>brew cask install java</code>, run <code>java -version</code> to check</li>
+<li>run <code>brew install scala</code> to install Scala, for other OS <a href="https://www.scala-lang.org/download/" target="_blank">click here</a></li>
+<li>run <code>brew install sbt</code> to install SBT, for other OS <a href="https://www.scala-sbt.org/download.html" target="_blank">click here</a></li>
+</ul>
+<h2 id="syntax">Syntax</h2>
+<ul>
+<li>works with or without semicolon at the end of each line</li>
+<li>Multi-expression acts like nested codes that wrapped in curly brackets, semicolon or newline is used to seperate each expression inside</li>
+<li><code>//</code> single line comment</li>
+<li><code>/* abc */</code> multi-line comment</li>
+</ul>
+<h3 id="variables">Variables</h3>
+<h4 id="data-types">Data Types</h4>
+<ul>
+<li><code>Byte</code>: 8 bit signed value. Range from -128 to 127</li>
+<li><code>Short</code>: 16 bit signed value. Range -32768 to 32767 Int : 32 bit signed value. Range -2147483648 to 2147483647</li>
+<li><code>Long</code>: 64 bit signed value. -9223372036854775808 to 9223372036854775807</li>
+<li><code>Float</code>: 32 bit IEEE 754 single-precision float</li>
+<li><code>Double</code>: 64 bit IEEE 754 double-precision float Char : 16 bit signed Unicode character. Range from U+0000 to U+FFFF</li>
+<li><code>String</code>: A sequence of Chars</li>
+<li><code>Boolean</code>: Either the literal true or the literal false</li>
+<li><code>Unit</code>: Corresponds to no value : void</li>
+<li><code>Null</code>: null or empty reference</li>
+<li><code>Nothing</code>: The subtype of every other type; includes no values Any: The supertype of any type; any object is of type</li>
+<li><code>Any</code>: Java&apos;s Object class</li>
+<li><code>AnyRef</code>: The supertype of any reference type</li>
+</ul>
+<h4 id="declear-variables">Declear variables</h4>
+<ul>
+<li><code>var x : Int = 100</code> declear mutable variables</li>
+<li><code>val y : Int = 100</code> declear immutable constant variables</li>
+<li><code>var z = false</code> Scala auto deduces the data type from the assigned value</li>
+<li><code>var m = {val a = 1; val b = 2; a + b}</code> declear <code>m</code> with nested multi-expression, the <code>m</code> value is equals the the last expression in curly brackets</li>
+<li><code>lazy var l = 20</code> declear using lazy loading, memory will be used to assigned values only when compiler has to access it</li>
+</ul>
+<h4 id="string">String</h4>
+<ul>
+<li>Concatenation - <code>&quot;Hello &quot; + &quot;World&quot;</code></li>
+<li><code>s</code> string interpolation - <code>s&quot;$variableX, $variableY&quot;</code> <code>$</code> is followed by variable name, it will replace the variable with its actual value.</li>
+<li><code>F</code> string interpolation - <code>F&quot;$variableX%s, $variableY%d&quot;</code>, this requires a type identifier which<ul>
+<li><code>%s</code> is for <code>string</code> varialbes</li>
+<li><code>%d</code> is for integer variables</li>
+<li><code>%f</code> is for double variables</li>
 </ul>
 </li>
-<li>It uses <code>apt</code> for package management.</li>
+<li><code>raw</code> interploation - <code>raw&quot;abc\n&quot;</code>, it will ignore all excape characters and print <code>abc\n</code> from the example</li>
+</ul>
+<h3 id="operators">Operators</h3>
+<ul>
+<li><code>&amp;&amp;</code>, logic <code>and</code></li>
+<li><code>||</code>, logic <code>or</code></li>
+<li><code>x+=1</code>, same as <code>x = x + 1</code></li>
+</ul>
+<h3 id="structures">Structures</h3>
+<ul>
+<li>if...else<pre><code class="lang-java"><span class="hljs-keyword">if</span>(condition){
+  <span class="hljs-comment">//code</span>
+}<span class="hljs-keyword">else</span> {
+  <span class="hljs-comment">//code</span>
+}
+</code></pre>
+</li>
+<li>If expression, <code>if(condition) value1 else value2</code> if condition it will return <code>value1</code>, else return <code>value2</code></li>
+<li>while loop, <code>while (condition) {}</code></li>
+<li>do...while loop,<pre><code class="lang-java">  do{
+    <span class="hljs-comment">//code</span>
+  } <span class="hljs-keyword">while</span>(condition)
+</code></pre>
+</li>
+<li>for...loop<pre><code class="lang-java">  <span class="hljs-keyword">for</span> (i &lt;- range){
+    println(i);
+  }
+</code></pre>
+<ul>
+<li>range can be replaced by <code>x to y</code>(the same as <code>x.to(y)</code>) for range <code>[x, y]</code>, or <code>x until y</code> for range <code>[x, y)</code></li>
+<li>range can be replaced by a list</li>
 </ul>
 </li>
-<li>Debian Linux</li>
+<li>for...loop with multiple variables, will run <code>i*j</code> times with all combination of <code>i</code> and <code>j</code><pre><code class="lang-java">  <span class="hljs-keyword">for</span> (i &lt;- rangeA; j &lt;-rangeB){
+    println(i);
+  }
+</code></pre>
+</li>
+<li>for...loop with condition, <code>for (i &lt;- 1 to 10; if i &lt; 5){}</code></li>
+<li>for...loop as expression, <code>for {i &lt;- 2 until 6; if i%2==1} yield { i*i }</code>. It returns a list of values</li>
+<li>match(switch case)<pre><code class="lang-java">variableName match {
+  <span class="hljs-keyword">case</span> value1 =&gt; println(<span class="hljs-string">&quot;match case1&quot;</span>);
+  <span class="hljs-keyword">case</span> value2 =&gt; println(<span class="hljs-string">&quot;match case2&quot;</span>);
+  <span class="hljs-keyword">case</span> value3 =&gt; println(<span class="hljs-string">&quot;match case3&quot;</span>);
+  <span class="hljs-comment">// Default case</span>
+  <span class="hljs-keyword">case</span> _ =&gt; println(<span class="hljs-string">&quot;default&quot;</span>);
+}
+</code></pre>
+<ul>
+<li>use <code>case value1 | value2 | value3</code> to match multiple values in one case</li>
 </ul>
 </li>
+<li>match as expression - returns the match value<pre><code class="lang-java">val x = variableName match {
+  <span class="hljs-keyword">case</span> value1 =&gt; println(<span class="hljs-string">&quot;match case1&quot;</span>);
+  <span class="hljs-keyword">case</span> value2 =&gt; println(<span class="hljs-string">&quot;match case2&quot;</span>);
+  <span class="hljs-keyword">case</span> value3 =&gt; println(<span class="hljs-string">&quot;match case3&quot;</span>);
+  <span class="hljs-comment">// Default case</span>
+  <span class="hljs-keyword">case</span> _ =&gt; println(<span class="hljs-string">&quot;default&quot;</span>);
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="functions">Functions</h3>
+<ul>
+<li>Define a function<pre><code class="lang-java"><span class="hljs-function">def <span class="hljs-title">add</span><span class="hljs-params">(x: Int, y: Int)</span>: Int </span>= {
+  <span class="hljs-keyword">return</span> x + y;
+}
+</code></pre>
+</li>
+<li>Define a function in short <code>def add(x: Int, y: Int): Int = { x + y; }</code> or <code>def add(x: Int, y: Int): Int = x + y;</code> or <code>def add(x: Int, y: Int) = x + y;</code></li>
+<li><code>functionName()</code> call a function</li>
+</ul>
+<h3 id="objects">Objects</h3>
+<ul>
+<li>Defined by the keyword <code>object</code>, e.g. <code>object Name{}</code>. Then functions and variables can be put inside</li>
+<li>An object can have an object</li>
+</ul>
+<h4 id="singleton-object">Singleton Object</h4>
+<ul>
+<li>It is a <code>staic</code> object, one can&apos;t create an instance of singleton object or pass parameter in the primary constructor of singleton object</li>
+<li>It provides an entry point to your program execution</li>
+<li>The method in the singleton object is globally accessible, through <code>ObjectName.methodName()</code><ul>
+<li>If the function has one argument, can use <code>ObjectName methodName parameter</code> to call</li>
+</ul>
+</li>
+<li>After the definition the Singleton Object will be initilized</li>
+<li>a singleton object can extend class and traits</li>
+<li>One source file can have multiple singleton object, but one of them must have a main method which acts as the entry point of the program<ul>
+<li>main method <code>def main(args: Array[String]) {}</code></li>
+</ul>
+</li>
+<li>The singleton object with main function usually has the same name as the file name</li>
+</ul>
+<h4 id="companion-object">Companion object</h4>
+<ul>
+<li>It is a object that has names same as a class name<ul>
+<li>object is known as the companion object and the class is known as companion class</li>
+</ul>
+</li>
+<li>A companion object is defined in the same source file in which the class is defined</li>
+<li>A companion object is allowed to access both private methods and private fields of the class</li>
 </ul>
 
                                 
@@ -1273,12 +1415,12 @@
 
             
                 
-                <a href="../solidity/" class="navigation navigation-prev " aria-label="Previous page: Solidity">
+                <a href="../java/android.md" class="navigation navigation-prev " aria-label="Previous page: Android Studio">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="linux.html" class="navigation navigation-next " aria-label="Next page: Linux">
+                <a href="../javascript/" class="navigation navigation-next " aria-label="Next page: JavaScript">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1289,7 +1431,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Operating Systems","level":"1.17","depth":1,"next":{"title":"Linux","level":"1.17.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},"previous":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/README.md","mtime":"2020-08-21T14:58:43.812Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Scala","level":"1.4","depth":1,"next":{"title":"JavaScript","level":"1.5","depth":1,"path":"javascript/README.md","ref":"javascript/README.md","articles":[{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},{"title":"React","level":"1.5.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},{"title":"Node.js","level":"1.5.4","depth":2,"path":"javascript/node-js.md","ref":"javascript/node-js.md","articles":[]},{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]}]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"scala/README.md","mtime":"2020-09-14T01:58:24.421Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

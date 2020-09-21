@@ -257,6 +257,10 @@ let obj = { a: 1, b: 2, c: 3 };
 for (let v in obj) {
   console.log(v);
 }
+//or
+for (let i in array) {
+  array[i].x = 100;
+}
 ```
 
 - it is intended for iterating over the enumerable keys of an object.
@@ -272,7 +276,7 @@ for (let val of list) {
 
 - it creates a loop iterating over iterable objects.
 
-* while loop
+- while loop
 
 ```js
 while (condition) {
@@ -460,7 +464,9 @@ const data = await promiseFunction();
 
 ##### await Keyword
 
-It allow the functions inside the async function run in order. Functions inside an async function with await keywords are mostly returning a promise.
+- It allow the functions(any statements or data assignment) inside the async function run in order.
+  - Orders will be establist among code lines with `await`
+  - Functions inside an async function with await keywords are mostly returning a promise.
 
 ```js
 async function functionName() {
@@ -539,7 +545,8 @@ let x = new Person("Jim", 1, 100);
 - `s.repeat(3);` returns a repeated string `s`, for three times.
 - `s.length` return the length of s.
 - `s.split(c)`; turn string into an array, split by character `c`.
-- `s1.includes("s2")` return bool value states if s1 includes s2.
+- `s1.includes(s2)` return bool value states if s1 includes s2.
+- `s1.equals(s2)` return true if two strings are equal
 - Template literals are a way to output variables in the string. `'Value: ${variable}'`.
 - click to see the docs for string.
 - `s.toLowerCase()`
@@ -709,12 +716,18 @@ array.filter(i => i.id !== 1); //filter an array item that has id not equal to 1
 [1, 2, 3].map(x => 2 * x); //return an array of element base on an array of data.
 [1, 2, 3].map((item, index, array) => 2 * x); //it can takes optional parameters, index(second), and the array itself(third)
 array.splice(2, 3); // delete 3 items starting at index 2.(have to call it independently and get the result after.)
+array.reverse() //reverse all elements
+array1.find(element => element > 10); //return the first element found, returns undefined if no match is found
 array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 //reduce iterate over each element of the function and return a value that will be used by the next iteration.
 let arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length //get avg
 Math.max(...array);//find the max value among array elements
 array.unshift(a,b,c);//adds one or more items or elements to the beginning of the array and returns the new length of the array.
 array.slice(1, 3);//The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
+//The only way to modify array element it to use for loop and access with index
+for (var i in array) {
+  array[i].x = 100;
+}
 ```
 
 #### Associative Array
@@ -776,6 +789,19 @@ clearInterval(intervalFunctionName); //stops the setInterval function right away
 setTimeout(functionName, milliseconds);//Executes a function, after waiting a specified number of milliseconds.
 ```
 
+#### Local Storage
+
+- `window.localStorage` - stores data with no expiration date
+- `window.sessionStorage` - stores data for one session (data is lost when the browser tab is closed)
+- `localStorage.setItem("lastname", "Smith");` or `localStorage.lastname` - store local storage data
+- `localStorage.getItem("lastname");` or `localStorage.lastname` - get local storage data
+- `localStorage.removeItem("lastname");` - remove local storage data
+- `localStorage.clear()` - clear all local storage
+- `sessionStorage.setItem("lastname", "Smith");` or `sessionStorage.lastname` - store session storage data
+- `sessionStorage.getItem("lastname");` or `sessionStorage.lastname` - get session storage data
+- `sessionStorage.removeItem("lastname");` - remove session storage data
+- `localStorage.clear()` - clear all session storage
+
 ### Date Object
 
 #### Create New Date Object
@@ -790,6 +816,7 @@ new Date(year, month, day, hours, minutes, seconds, milliseconds);
 #### Methods
 
 ```js
+Date.now(); // static method returns the number of milliseconds elapsed since January 1
 date.getFullYear(); //gets the year
 date.getMonth();
 date.getDate();
@@ -1067,7 +1094,7 @@ function success(text) {
 - In code change response.text() to response.json() to receive JSON data.
 - JavaScript Object to JSON String, `JSON.stringify(data)`
 - Decode from JSON, `JSON.parse(string)`
-- Use `eval()` method convert json to javaScript objects
+  - Using `eval()` can also convert json to javaScript objects, but It does not validate incoming data and it evaluate all string data
 
 ```js
 //Eval converts the STRING into a JavaScript Array Map

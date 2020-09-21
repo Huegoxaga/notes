@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Operating Systems · GitBook</title>
+        <title>Go Programming Language · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="linux.html" />
+    <link rel="next" href="../markup/" />
     
     
-    <link rel="prev" href="../solidity/" />
+    <link rel="prev" href="../swift/xcode.html" />
     
 
     </head>
@@ -405,9 +405,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="../go/">
+        <li class="chapter active" data-level="1.10" data-path="./">
             
-                <a href="../go/">
+                <a href="./">
             
                     
                     Go Programming Language
@@ -611,9 +611,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.17" data-path="./">
+        <li class="chapter " data-level="1.17" data-path="../os/">
             
-                <a href="./">
+                <a href="../os/">
             
                     
                     Operating Systems
@@ -625,9 +625,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.17.1" data-path="linux.html">
+        <li class="chapter " data-level="1.17.1" data-path="../os/linux.html">
             
-                <a href="linux.html">
+                <a href="../os/linux.html">
             
                     
                     Linux
@@ -638,9 +638,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.2" data-path="bash-scripting.html">
+        <li class="chapter " data-level="1.17.2" data-path="../os/bash-scripting.html">
             
-                <a href="bash-scripting.html">
+                <a href="../os/bash-scripting.html">
             
                     
                     Bash Scripting
@@ -651,9 +651,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.3" data-path="regex.html">
+        <li class="chapter " data-level="1.17.3" data-path="../os/regex.html">
             
-                <a href="regex.html">
+                <a href="../os/regex.html">
             
                     
                     Regular Expression
@@ -664,9 +664,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.4" data-path="macos.html">
+        <li class="chapter " data-level="1.17.4" data-path="../os/macos.html">
             
-                <a href="macos.html">
+                <a href="../os/macos.html">
             
                     
                     MacOS
@@ -677,9 +677,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.5" data-path="solution-stack.html">
+        <li class="chapter " data-level="1.17.5" data-path="../os/solution-stack.html">
             
-                <a href="solution-stack.html">
+                <a href="../os/solution-stack.html">
             
                     
                     Solution Stack
@@ -690,9 +690,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.6" data-path="hadoop.html">
+        <li class="chapter " data-level="1.17.6" data-path="../os/hadoop.html">
             
-                <a href="hadoop.html">
+                <a href="../os/hadoop.html">
             
                     
                     Hadoop
@@ -703,9 +703,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.7" data-path="git.html">
+        <li class="chapter " data-level="1.17.7" data-path="../os/git.html">
             
-                <a href="git.html">
+                <a href="../os/git.html">
             
                     
                     Git
@@ -716,9 +716,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17.8" data-path="redis.html">
+        <li class="chapter " data-level="1.17.8" data-path="../os/redis.html">
             
-                <a href="redis.html">
+                <a href="../os/redis.html">
             
                     
                     Redis
@@ -1183,7 +1183,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Operating Systems</a>
+        <a href=".." >Go Programming Language</a>
     </h1>
 </div>
 
@@ -1198,51 +1198,211 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="operating-systems">Operating Systems</h1>
-<h3 id="unix">Unix</h3>
+                                <h1 id="go-programming-language">Go Programming Language</h1>
+<h2 id="introduction">Introduction</h2>
 <ul>
-<li>UNIX is an operating system since the 1960&#x2019;s</li>
-<li>Unix is a <a href="www.unix.org">trademarked</a> name.</li>
-<li>UNIX operating system is one that<ul>
-<li>conforms to a set of standards</li>
-<li>is registered with the governing body of the trademark.</li>
-<li>If any those two requirement is not met, it can only be called Unix &apos;like&apos; OS.</li>
+<li>The language is often referred to as <code>Golang</code> because of the official site&apos;s domain name, <code>golang.org</code></li>
+<li>Go is an open source programming language</li>
+<li>Go is syntactically similar to <code>C</code></li>
+<li>Go is a statically(strong) typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson</li>
+<li>It enforces garbage collection</li>
+<li>It has built-in supports for concurrency</li>
+<li>Go code can be compiled to standalone binaries</li>
+<li>It has fast compile time than <code>C/C++</code></li>
+<li>Code files have <code>.go</code> extension</li>
+<li>It only uses double quotes</li>
 </ul>
-</li>
-<li>Active Unix OS:<ul>
-<li>Hewlett Packard(HP-UX)</li>
-<li>IBM AIX</li>
-<li>IBM z/OS</li>
-<li>Oracle Solaris</li>
-<li>Apple MacOS</li>
-</ul>
-</li>
-</ul>
-<h3 id="linux">Linux</h3>
+<h2 id="setup">Setup</h2>
 <ul>
-<li>Linux is Unix &quot;like&quot; OS.</li>
-<li>Linux was created around 1990&apos;s</li>
-<li>Linux is a <a href="www.linuxmark.org">trademarked</a> name.</li>
-<li>Linux is the name of the OS kernel, means Linux &quot;based&quot; OS.</li>
-<li>Active Linux OS:<ul>
-<li>Google Android</li>
-<li>Oracle Linux<ul>
-<li>Red Hat Enterprise Linux</li>
-<li>CentOS - It is based on Red Hat Enterprise Linux</li>
-<li>Fedora</li>
+<li><a href="https://golang.org/dl/" target="_blank">Click Here</a> to download<ul>
+<li>For Mac, run <code>brew install golang</code></li>
 </ul>
 </li>
-<li>Ubuntu Linux<ul>
-<li>The LTS version number has format <code>YY.MM</code> determined bt the realse year and month.</li>
-<li>It release LTS(Long-term support) versions every 2 years in April, each one will be supported for 5 years.</li>
-<li>Every six months between LTS versions, Canonical publishes an interim release of Ubuntu. These are production-quality releases and are supported for 9 months, with sufficient time provided for users to update.<ul>
-<li>Interim releases will introduce new capabilities from Canonical and upstream open source projects, they serve as a proving ground for these new capabilities.</li>
+<li>create local package folder <code>mkdir -p $HOME/&lt;go_package_path&gt;/{bin,src,pkg}</code></li>
+<li>add the following to <code>PATH</code> in dot files(<code>.bashrc</code> or <code>.zshrc</code>)<pre><code class="lang-bash"><span class="hljs-built_in">export</span> GOPATH=<span class="hljs-variable">$HOME</span>/&lt;go_package_path&gt;
+<span class="hljs-built_in">export</span> GOROOT=<span class="hljs-string">&quot;<span class="hljs-variable">$(brew --prefix golang)</span>/libexec&quot;</span>
+<span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">${GOPATH}</span>/bin:<span class="hljs-variable">${GOROOT}</span>/bin&quot;</span>
+</code></pre>
+</li>
+<li>To install additional packages run <code>go get &lt;PackageURL&gt;</code> to install, the packages will be installed at <code>$HOME/&lt;go_package_path&gt;</code></li>
+<li>In terminal, run <code>go run filename.go</code> to compile and run the go code</li>
+<li>Know more about a function or element, run <code>godoc &lt;packageName&gt; &lt;functionName&gt;</code></li>
+</ul>
+<h2 id="basics-syntax">Basics Syntax</h2>
+<ul>
+<li>Does not need to end to semicolon</li>
+<li>Compile will prompt errors for any declared packages or variables that are not in use</li>
+</ul>
+<h3 id="comment">Comment</h3>
+<ul>
+<li><code>//</code> single line comment</li>
+<li><code>/* abc */</code> multi-line comment</li>
+</ul>
+<h2 id="variables">Variables</h2>
+<h3 id="built-in-types">Built-in Types</h3>
+<pre><code class="lang-go"><span class="hljs-keyword">bool</span>
+<span class="hljs-keyword">string</span>
+<span class="hljs-keyword">int</span> <span class="hljs-comment">// 32 or 64 bits</span>
+<span class="hljs-keyword">int8</span> <span class="hljs-comment">// Signed 8-bit integers (-128 to 127)</span>
+<span class="hljs-keyword">int16</span> <span class="hljs-comment">// Signed 16-bit integers (-32768 to 32767)</span>
+<span class="hljs-keyword">int32</span> <span class="hljs-comment">// Signed 32-bit integers (-2147483648 to 2147483647)</span>
+<span class="hljs-keyword">int64</span> <span class="hljs-comment">// Signed 64-bit integers (-9223372036854775808 to 9223372036854775807)</span>
+<span class="hljs-keyword">uint</span> <span class="hljs-comment">// 32 or 64 bits</span>
+<span class="hljs-keyword">uint8</span> <span class="hljs-comment">// Unsigned 8-bit integers (0 to 255)</span>
+<span class="hljs-keyword">uint16</span> <span class="hljs-comment">// Unsigned 16-bit integers (0 to 65535)</span>
+<span class="hljs-keyword">uint32</span> <span class="hljs-comment">// Unsigned 32-bit integers (0 to 4294967295)</span>
+<span class="hljs-keyword">uint64</span> <span class="hljs-comment">// Unsigned 64-bit integers (0 to 18446744073709551615)</span>
+<span class="hljs-keyword">uintptr</span> <span class="hljs-comment">// an unsigned integer to store the uninterpreted bits of a pointer value</span>
+<span class="hljs-keyword">byte</span> <span class="hljs-comment">// alias for uint8</span>
+<span class="hljs-keyword">rune</span> <span class="hljs-comment">// alias for int32</span>
+     <span class="hljs-comment">// represents a Unicode code point</span>
+<span class="hljs-keyword">float32</span> <span class="hljs-comment">// IEEE-754 32-bit floating-point numbers</span>
+<span class="hljs-keyword">float64</span> <span class="hljs-comment">// IEEE-754 64-bit floating-point numbers</span>
+<span class="hljs-keyword">complex64</span> <span class="hljs-comment">// Complex numbers with float32 real and imaginary parts</span>
+<span class="hljs-keyword">complex128</span> <span class="hljs-comment">// Complex numbers with float64 real and imaginary parts</span>
+<span class="hljs-literal">nil</span> <span class="hljs-comment">//for null value</span>
+</code></pre>
+<ul>
+<li>The <code>int</code>, <code>uint</code>, and <code>uintptr</code> types are usually 32 bits wide on 32-bit systems and 64 bits wide on 64-bit systems</li>
+<li>use <code>int</code> unless there is a specific reason to use a sized or unsigned integer type.</li>
+</ul>
+<h3 id="declaration">Declaration</h3>
+<ul>
+<li>Declare a varialbe, <code>var name type = value</code>, e.g. <code>var x int = 3</code><ul>
+<li><code>var x,y,z int = 5</code> declare multiple variables in one line</li>
+<li>When inside a function, type is not mandatory as the compiler can deduce the type, e.g. <code>x,y := 5</code><ul>
+<li>compiler always assign a type of <code>float64</code> when type is not specifed</li>
 </ul>
 </li>
-<li>It uses <code>apt</code> for package management.</li>
 </ul>
 </li>
-<li>Debian Linux</li>
+<li>Type cannot be changed after declaration</li>
+<li>Compiler will generate an error when a variable is declared but not used in code</li>
+<li>Declare a constant, <code>const name type = value</code></li>
+<li><code>x := y</code> will declare <code>x</code> that will be exactly the same as <code>y</code>(same type and value)</li>
+<li>use <code>_</code> as placeholder for variables return from a function that will not be used, <code>x, _ := funcName()</code></li>
+</ul>
+<h3 id="conversion">Conversion</h3>
+<ul>
+<li><code>var y float64 = float64(x)</code> convert <code>x</code> to <code>float64</code> and assign it to <code>y</code></li>
+<li><code>s := string(bytesData)</code> convert bytes to string</li>
+</ul>
+<h3 id="pointers">Pointers</h3>
+<ul>
+<li><code>&amp;variableName</code> return the pointer which contains the memory address of the variable</li>
+<li><code>*addressVariable</code> access the value of the pointer</li>
+</ul>
+<h2 id="functions">Functions</h2>
+<ul>
+<li>Function has syntax as <code>func name(){}</code> or <code>func name(x typeForX, y typeForY) returnType { return z }</code><ul>
+<li><code>func name(x,y type) returnType { return z }</code> if <code>x</code> and <code>y</code> have the same data type</li>
+<li>when return multiple variables <code>func name(x,y type) (returnType1, returnType2) { return z }</code> the number return type in the bracket must match the number of variables the function returns</li>
+</ul>
+</li>
+<li><code>name()</code> will call the function</li>
+<li>Main function is the entry point of a go program, <code>func main(){}</code></li>
+<li>Function can have pointer as parameter, the value pointer points to can be changed in the function<pre><code class="lang-go"><span class="hljs-comment">// type pointer as an parameter</span>
+<span class="hljs-keyword">func</span> ptf(x *<span class="hljs-keyword">int</span>) {
+    <span class="hljs-comment">// dereferencing</span>
+    *x = <span class="hljs-number">100</span>
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="struct">Struct</h2>
+<ul>
+<li>It defines a customized class or type</li>
+</ul>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-comment">// Definition</span>
+<span class="hljs-keyword">type</span> Person <span class="hljs-keyword">struct</span> {
+  X <span class="hljs-keyword">int</span>
+  Y <span class="hljs-keyword">int</span>
+}
+<span class="hljs-keyword">func</span> main() {
+  <span class="hljs-comment">// initialize an new variable of type Person</span>
+  x := Person{name: <span class="hljs-string">&quot;Harry&quot;</span>, age: <span class="hljs-number">30</span>}
+  <span class="hljs-comment">//or</span>
+  x := Person{<span class="hljs-string">&quot;Harry&quot;</span>, <span class="hljs-number">30</span>}
+  <span class="hljs-comment">// access value of x</span>
+  fmt.Println(x.name)
+}
+</code></pre>
+<h3 id="receivers">Receivers</h3>
+<ul>
+<li>They are methods that take a type defined as struct as input arguments</li>
+<li>Value Receiver - add <code>(variableName StructType)</code> before function name in the definition, the function will not modify the original value of the variable<pre><code class="lang-go"><span class="hljs-keyword">func</span> (variableName StructType) receiverName(argumentName <span class="hljs-keyword">type</span>){
+  variableName = argumentName
+}
+</code></pre>
+</li>
+<li>Point Receiver - add <code>(variableName *StructType)</code> before function name in the definition will change the values the pointer points to, permanently</li>
+</ul>
+<h2 id="packages">Packages</h2>
+<ul>
+<li>Every Go program is a part of a package. In most cases programs start with <code>package main</code> in the very first line</li>
+<li>Go packages or libraries can be imported using keyword <code>import</code> followed by package name wrapped in a set of double qoutes.<ul>
+<li>import one package <code>import &quot;packageName&quot;</code></li>
+<li>import multiple packages<pre><code class="lang-go"><span class="hljs-keyword">import</span> (<span class="hljs-string">&quot;packA&quot;</span>
+      <span class="hljs-string">&quot;PackB&quot;</span>)
+</code></pre>
+</li>
+<li>import subpackages(a package inside a package), <code>import packageName/subpackageName</code></li>
+</ul>
+</li>
+<li>Go export any thing with Camel case(words with capitalized first letter)</li>
+<li>Unused import will generate errors</li>
+</ul>
+<h3 id="standard-libraries">Standard Libraries</h3>
+<ul>
+<li><a href="https://golang.org/pkg/#other" target="_blank">Click Here</a> to view the docs for all Go built-in packages</li>
+</ul>
+<h3 id="fmt">fmt</h3>
+<ul>
+<li><code>fmt.Println(string)</code> print string in a new line<ul>
+<li><code>fmt.Println(string, value)</code> will append the value after the string with a space in between</li>
+</ul>
+</li>
+<li><code>fmt.Fprintf(w, &quot;&lt;p&gt;%s %s&lt;/p&gt;&quot;, &quot;Hello&quot;, &quot;World&quot;)</code> write formatted strings to <code>w</code><ul>
+<li><code>%s</code> is the placeholder for strings</li>
+<li>use a set of <code>` </code> instead of <code>&quot;</code> for multiline text</li>
+</ul>
+</li>
+</ul>
+<h3 id="math">math</h3>
+<ul>
+<li><code>math.Sqrt(x)</code> square root</li>
+</ul>
+<h4 id="mathrand">math/rand</h4>
+<ul>
+<li><code>rand.Intn(x)</code> generate number in range <code>[0, x)</code>, seed has to be changed in order to generate different numbers</li>
+</ul>
+<h3 id="net">net</h3>
+<h4 id="nethttp">net/http</h4>
+<ul>
+<li><code>http.HandleFunc(&quot;/&quot;, index_handler)</code> redirect request made to root path to the <code>index_handler</code><ul>
+<li>In the following example <code>index_handler</code> directs all requests <code>*http.Request</code> as input, and takes an variable of type <code>http.ResponseWriter</code> to output.<pre><code class="lang-go"><span class="hljs-keyword">func</span> index_handler(w http.ResponseWriter, r *http.Request) {
+  <span class="hljs-comment">//write text into the response writer</span>
+  fmt.Fprintf(w, <span class="hljs-string">&quot;&lt;h1&gt;Hello World!&lt;/h1&gt;&quot;</span>)
+  fmt.Fprintf(w, <span class="hljs-string">&quot;&lt;p&gt;welcome&lt;/p&gt;&quot;</span>)
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><code>http.ListenAndServe(&quot;:8000&quot;, nil)</code> let the server listen to request at <code>localhost:8000</code></li>
+<li><code>response, error := http.Get(url)</code> send a Get request<ul>
+<li>use <code>ioutil</code> package to read data</li>
+<li>use <code>response.Body.Close()</code> to release the resource</li>
+</ul>
+</li>
+</ul>
+<h3 id="io">io</h3>
+<h4 id="ioioutil">io/ioutil</h4>
+<ul>
+<li><code>bytes, error := ioutil.ReadAll(data)</code> read data as bytes<ul>
+<li>to read bytes, use <code>string(bytes)</code> to convert it into string</li>
 </ul>
 </li>
 </ul>
@@ -1273,12 +1433,12 @@
 
             
                 
-                <a href="../solidity/" class="navigation navigation-prev " aria-label="Previous page: Solidity">
+                <a href="../swift/xcode.html" class="navigation navigation-prev " aria-label="Previous page: Xcode">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="linux.html" class="navigation navigation-next " aria-label="Next page: Linux">
+                <a href="../markup/" class="navigation navigation-next " aria-label="Next page: Markup Language">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1289,7 +1449,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Operating Systems","level":"1.17","depth":1,"next":{"title":"Linux","level":"1.17.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},"previous":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/README.md","mtime":"2020-08-21T14:58:43.812Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Go Programming Language","level":"1.10","depth":1,"next":{"title":"Markup Language","level":"1.11","depth":1,"path":"markup/README.md","ref":"markup/README.md","articles":[{"title":"HTML","level":"1.11.1","depth":2,"path":"markup/html.md","ref":"markup/html.md","articles":[]},{"title":"XML","level":"1.11.2","depth":2,"path":"markup/xml.md","ref":"markup/xml.md","articles":[]},{"title":"GFM","level":"1.11.3","depth":2,"path":"markup/gfm.md","ref":"markup/gfm.md","articles":[]},{"title":"LaTeX","level":"1.11.4","depth":2,"path":"markup/latex.md","ref":"markup/latex.md","articles":[]}]},"previous":{"title":"Xcode","level":"1.9.1","depth":2,"path":"swift/xcode.md","ref":"swift/xcode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"go/README.md","mtime":"2020-09-20T20:17:30.738Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

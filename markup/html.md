@@ -37,28 +37,36 @@ It indicates the document is a HTML file, usually placed in the very first line.
   _ `<meta name="viewport" content="width=device-width, initial-scale=.5">` zoom out by a factor of 2
   _ `<meta name="viewport" content="width=320, user-scalable=no">`zooming is disable
   _ `<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">` shrinking is disabled.
+- `<meta name="theme-color" content="#000000" />` provides an app theme color for apps works as Progressive Web Apps
+  - Progressive Web Apps are web apps that use emerging web browser APIs and features along with traditional progressive enhancement strategy to bring a native app-like user experience to cross-platform web applications
+- `<meta name="description" content="Web site created using create-react-app" />` The meta description tag in HTML is the 160 character snippet used to summarize a web page’s content.
+  - Search engines sometimes use these snippets in search results to let visitors know what a page is about before they click on it
 
 ### Link Tag
 
 - Import files use the link tag externally.
 - `<link rel="stylesheet" type="text/css" href="mystyle.css">` or `<link rel="stylesheet" href="css/example.css">` \* external style sheet link
 - `<link rel="stylesheet" type="text/css" href="print.css" media="print">` style used for printing
+- `<link rel="apple-touch-icon" href="" />` specify the path of a `57 x 57` png file when the web app is added to the home screen of an Apple device. [Click Here](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html) to see more info about Apple device web app launch screen and more
+- `<link rel="manifest" href="/manifest.webmanifest">`
+  - The purpose of the manifest is to install web applications to the homescreen of a device(it process is called supporting Progressive Web Apps), providing users with quicker access and a richer experience
+  - The web app manifest provides information about an application (such as name, author, icon, and description) in a JSON text file.
+  - The link tag loads to the `manifest.json`
 - Different stylesheets can associate with different media, in the following external CSS style:
-
-```html
-<!-- css for screen size <= 600px -->
-<link
-  rel="stylesheet"
-  media="screen and (max-width: 600px)"
-  href="smallscreen.css"
-/>
-<!-- css for screen size >= 900px -->
-<link
-  rel="stylesheet"
-  media="screen and (min-width: 900px)"
-  href="widescreen.css"
-/>
-```
+  ```html
+  <!-- css for screen size <= 600px -->
+  <link
+    rel="stylesheet"
+    media="screen and (max-width: 600px)"
+    href="smallscreen.css"
+  />
+  <!-- css for screen size >= 900px -->
+  <link
+    rel="stylesheet"
+    media="screen and (min-width: 900px)"
+    href="widescreen.css"
+  />
+  ```
 
 ### Style Tag
 
@@ -141,7 +149,7 @@ It indicates the document is a HTML file, usually placed in the very first line.
 
 #### Other Text Tags
 
-- `<pre></pre>`
+- `<pre></pre>`, it defines preformatted text. The text will be displayed exactly as written in the HTML source code
 - `<blockquote></blockquote>`
 - `<cite></cite>`
 - `<sub></sub>`

@@ -157,6 +157,14 @@ Any word wrapped with two tildes, like `~~this~~`, will appear crossed out.
   using a set of \`\`\` at the first line and the last line of the code block
 - Fenced Code blocks with syntax highlighting
 - use a language identifier after \`\`\` in the first line, language identifier including: \*
+- use the following ways to print `` ` `` inside code block
+  ````md
+  use backslash to escape when backtick is printed outside code blocks
+  Print a singe \` inside code blocks `` ` ``
+  Use higher number of \` to print more \` inside code blocks ` `` ` (print two)
+  `` text`  `` produces text\`
+  `` `text`` produces \`foo
+  ````
 
 ### Issue References
 

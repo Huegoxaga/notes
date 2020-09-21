@@ -26,7 +26,7 @@
 - `npm cache clean [<path>]` delete cache in the `_cacache` folder
 - `npm cache verify` Verify the contents of the `_cacache` folder, garbage collecting any unneeded data, and verifying the integrity of the cache index and all cached data.
 - `npm -g uninstall <package-name> --save` remove global package.
-  - `-S` or `--save` will removed packages from `package.json`.
+  - `-S` or `--save` will remove packages from `package.json`.
 
 ## Global object
 

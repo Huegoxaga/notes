@@ -127,9 +127,12 @@ It provide computing services.
   - A security policy is a combination of protocols and ciphers, The `ELBSecurityPolicy-2016-08` security policy has the highest compatibility.
 - For some instance types AWS sets a limit of 0 which prevent the user from running, a limit increase request should be sent in these cases.
 - Snapshots are the backup of the data on EBS volumes, whereas AMIs(image)are bootable copy of the whole EC2 instances.
-  - A snapshot is required for creating an image, when creating an image of an instance, a snapshot will be auto created. Snapshots cannot be deleted when it is used by the corresponding image.
+  - A snapshot is required for creating an image, when creating an image from an instance directly(select instance and create image), a snapshot will be auto created. Snapshots cannot be deleted when it is used by the corresponding image.
+    - There is a no reboot option, when creating images. It prevent the running server from rebooting. This is not recommanded for making production images
   - An AMI image can be copy from one region to another
   - An AMI image can be used to launch instance directly
+- Launch template is a copy of the entire launch configuration
+- `Launch more like this` for a instance in the console, will use the selected instance launch config to launch a new instance
 - Each snapshot can have the Fast Snapshot Restore Service
   - enable it for new and existing snapshots on a per-AZ (Availability Zone) basis, and then create new EBS volumes that deliver their maximum performance and do not need to be initialized.
   - It costs `$0.75` per hour per zone.
@@ -372,6 +375,7 @@ It generates metrics for other services.
   - [Click Here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html) to learn more about the query syntax
   - [Click Here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax-examples.html) for more examples
   - The time span for the logs are set in the top menu
+  - The concurrent queries limit is set to `10` when using AWS SDKs
 
 ## Lambda
 
@@ -380,6 +384,7 @@ It runs scripts and codes without the need to set up the server.
 - Click the Test tab to generate test cases with specific input.
 - Add proper Lambda Execution Role to allow Lambda instance to be triggered by other AWS services.
 - When SQS is the trigger, the batch means the number of SQS messages the lambda wants to receive and process during one invocation.
+- The online editor console display limited lines of output, go to CloudWatch log group to view complete logs
 - A layer is a ZIP archive that contains libraries, a custom runtime, or other dependencies which will be deployed in to the `/opt` folder of your Lambda container
   - If the zipped image size is over 50MB upload to S3 and use link to add layer.
   - The Lambda Develop package cannot be over 250MB after unzipping
