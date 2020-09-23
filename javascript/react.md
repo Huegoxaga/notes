@@ -94,6 +94,7 @@ ReactDOM.render(
 
 - The component class has a `state` property to store internal temp data.
 - It has `props` object that stores data, props are readonly. Every component has a `props` object. For data passed from outside use `props` instead of `state`.
+- If certain properties from `props` is needed, instead of passing `props` to the components, it can be convenient to use `{property1, property2}`
 - The component class has a render method that returns the component which will be associated with certain a DOM element.
 - Component can be represented by JSX file, React html-like `jsx` code in render method will be converted by babel into JavaScript code.
 - `<Component />` this is a self closing component.
@@ -239,7 +240,7 @@ export default Counter;
 - Typying new addresses and pressing enter key will reload the entire app, this is different from the SPA's way of routing pages.
 - In the app folder, run `npm install react-router-dom` to install the module.
 
-```js
+```jsx
 import {
   BrowserRouter as Router,
   Route,
@@ -249,8 +250,9 @@ import {
 // BrowserRouter uses HTML5 history API to keep track of URL, it requires additional setup when build
 // Optionally, HashRouter uses a hash portion of the URL to keep track of URL
 <Router>
-  // Router Component can only have one child component // They use Link and
-  Route Component to make routing work.
+  // Router Component can only have one child component
+  // They use Link and Route Component to make routing work.
+  // path that does not start with "/" will be a relative path
   <div>
     // create links and changed the path of the app when link is clicked.
     <Link to="/linkpage/table">About</Link>
@@ -260,6 +262,8 @@ import {
     <Route path="/linkpage/list" component={ListComp} />
     // simalar to Link component, plus any matched link will be style in a class
     called active, the active class should be defined in the css
+    // multiple path can use regex path="/(home|users|widgets)/"
+    // or use array path={["/home", "/users", "/widgets"]}
     <NavLink to="/contact">Contact</NavLink>
     // root path will always be in active class, use exact to fix this.
     <NavLink exact to="/">
@@ -274,13 +278,16 @@ import {
     // Switch will make will only first match will be rendered
     <Switch>
       // Move the root match to the last, since / will match all path
-      // It can be nested for different path depths
+      // It cannot be nested and only work for components that are one level deeper
       <Route exact path="/other" component={Other} />
       <Route exact path="/" component={Home} />
     <Switch>
   </div>
 </Router>;
 ```
+
+- Components accessed through `<Route>` will have access to `this.props.history` and can use `history.push(path)` to redirect pages
+  - When component is not included in a `Route` tag can also wants to use `history.push`, import `import { withRouter} from "react-router-dom";` and use `export default withRouter(ComponentName)` during exporting
 
 ## Life Cycle Hooks
 
@@ -439,6 +446,14 @@ useEffect(() => {
   }
   ```
 
+## google-map-react
+
+- The node package for google map component
+- [Click Here](https://www.npmjs.com/package/google-map-react) to view the package site
+- [Click Here](https://snazzymaps.com) to get more free map styles
+  - to apply for styles add map props `options= {{styles: styleObject}}`
+- The container of the map component must have a width and a height
+
 ## Material UI
 
 - The Bootstrap for React
@@ -518,6 +533,10 @@ useEffect(() => {
 
 - It is a tool bar that can contain menu icons, search bar, text.
 - It has a `variant` props that can be set to `dense`, `regular`(default)
+
+#### Menu
+
+- It has a `anchorEl` property to keep track of the event target location and use it as anchor for displaying menu
 
 #### Table
 

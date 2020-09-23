@@ -434,6 +434,7 @@ function promiseFunction() {
 ```
 
 - A function returns a promise can be assigned to a variable, the variable will have a value when the promise is resolved or rejected.
+- It can be called using `.then` and `.catch`, optionally use `await` with `try/catch` blocks
 
 ```js
 const data = await promiseFunction();
@@ -1033,6 +1034,7 @@ After the node is found, following method can be used.
     - `event.which` the button or key that was pressed.
     - `event.data` any data that was passed in when the event was bound.
     - `event.stopPropagation()` Stop the event from bubbling up to other elements.
+    - `event.currentTarget` get the current event target info including the position of the target, it is usually used to set popup anchor
 
 ### Ajax
 

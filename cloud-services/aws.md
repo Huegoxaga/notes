@@ -381,6 +381,7 @@ It generates metrics for other services.
 
 It runs scripts and codes without the need to set up the server.
 
+- `Lambda` uses `UTC` as instance local time
 - Click the Test tab to generate test cases with specific input.
 - Add proper Lambda Execution Role to allow Lambda instance to be triggered by other AWS services.
 - When SQS is the trigger, the batch means the number of SQS messages the lambda wants to receive and process during one invocation.
