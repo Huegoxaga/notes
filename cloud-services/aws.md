@@ -466,14 +466,17 @@ It provides support for generating serverless APIs.
 
 - All API methods are defined as resources.
 - Resources need to be deploy as stages before using.
-- Custom Domain Names will attach user's own certificate to the URL and map the domain to the staged resources.
-- Custom Domain Names will need an Alias in Route 53 for its API Gateway domain name.
+- Custom Domain Names
+  - Custom Domain Names will attach user's own certificate to the URL and map the domain to the staged resources.
+  - Custom Domain Names will need an Alias in Route 53 for the API Gateway domain name found in the Endpoint configuration panel after creating setup the new API Gateway domain name
+  - It takes some time for the new domain name to work
 - CORS can be enabled for each individual method in the `Actions` menu.
   - `CORS` header setting will be stored in the `OPTIONS` method of the same resource.
-- If integrated with Lambda, Allow CORS in the response header in the return statement at the end.
+  - Can allow more headers in the `Access-Control-Allow-Headers` field when edit CORS setting
+- If integrated with Lambda, response header can be added in the return statement in the following format.
   ```py
   'headers': {
-      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Headers': 'Content-Type, Cache-Control',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
   },
@@ -485,6 +488,35 @@ It provides support for generating serverless APIs.
 - The access log is the custom log that can be used to store cutomized formatted log.
   - It support log with `CLF`, `JSON`, `CSV`, and `XML` format.
   - only the `$context` variable can be used to access requrest info.
+
+## Amplify
+
+- It is used for hosting frontend apps and backend services
+
+### Amplify Console
+
+- It can be used to host Web Apps using source code from online repo provider like GitHub
+- Whenever a change is pushed the app will be auto built and updated
+- Preview can be setup, so whenever a pull request is made, one can preview the changes in a browser
+- Each GitHub branch can connect to one server
+- The Domain management setting page can create and manage domain with SSL certificate
+
+### Amplify CLI
+
+- It can be use to host both frontend and backend apps
+- setup
+  1. run `sudo npm install -g @aws-amplify/cli` to install
+  2. run `amplify configure` to create new aws crendentials for amplify CLI
+  3. run `amplify init` from the root directory of the frontend app to create new amplify project
+- run `amplify hosting add` to host frontend web app, there are two options:
+  - hosting of static website using Amazon S3 and Amazon Cloudfront directly
+  - hosting with AWS Amplify Console, there are two more options:
+    - Continuous deployment - auto built and update when every a `git push` is made
+    - Manual deployment - run `amplify publish` to deploy app from local machine
+- run `amplify console` to open Amplify Console
+- run `amplify status` check the status of running services
+- run `amplify delete` delete all the environments of the project from the cloud and wipe out all the local files created by Amplify CLI
+- run `amplify help` to see more options
 
 ## Amazon Certificate Manager
 

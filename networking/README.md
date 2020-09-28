@@ -178,6 +178,8 @@ http(s)
   - It has request methods as `POST`, `GET`, `PUT` etc.
   - `GET` request cannot have request body, the parameter can only be encoded at the end of the request url
   - Request header content type decide the content type of the request body
+    - On the server side, `Access-Control-Allow-Headers` need to be setup to allow certain headers in request.
+    - `"Cache-Control", "no-cache"`, `"Pragma", "no-cache"` can be used to disable client side broswer cache
 - It has a Authentication realms for authentication
 - HTTP Response
   - The response message contain:

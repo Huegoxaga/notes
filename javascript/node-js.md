@@ -189,3 +189,13 @@ const moduleObjectName = require("filePath");
 
 - It contains timezone database
 - [Click Here](https://momentjs.com/timezone/) to view its official website
+- [Click](https://devhints.io/moment) to know more about moment date objects date format
+- `var moment = require('moment');`
+- `var m = moment();` return current time as a moment object
+- `m.format()` return datetime in string
+- `var m = moment(timestamp);` convert timestamp to moment object
+- `m.add(1, 'day')` get tomorrow as a moment object
+- `m.subtract(2, 'days')` get the day before yesterday as a moment object
+- `m.isSame(Moment|String|Number|Date|Array);` compoare time and return a boolean value
+  - `m.isSameOrAfter('2010-10-21');` compoare time
+  - `m.isBefore('2010-10-21', 'year');` compoare year only

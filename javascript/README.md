@@ -269,7 +269,7 @@ for (let i in array) {
 
 ```js
 let list = ["x", "y", "z"];
-for (let val of list) {
+for (const val of list) {
   console.log(val);
 }
 ```
@@ -399,6 +399,8 @@ myPromise
     console.log("Rejected");
   });
 ```
+
+- When promises are decleared as a variable the code inside can only be executed once. After a result is resolved, the same result will be returned whenever the promise is called
 
 ##### Chained then Functions
 
@@ -635,7 +637,7 @@ node.style["color"] = "blue";
 node.style.color = "blue";
 ```
 
-##### Object Constructor Function.
+##### Object Constructor Function
 
 It is a good idea to capitalize the first letter of the constructor name to distinguish it from others.
 
@@ -668,6 +670,12 @@ function bornYear() {
 
 - The this keyword refers to the current object that take control of the current scope(the object in front of the curly brackets).
 - Instance variables and methods defined by this keyword will be public, if private is desired, use let keyword.
+
+##### Object Methods
+
+- `Object.values(obj1)` return all the values of the object in an array
+- `Object.keys(obj2)` return all the keys of the object in an array
+- `Object.entries(obj3)` return all the key and value pairs of the object in a 2-D array
 
 ## Built-in Objects
 
@@ -709,6 +717,7 @@ array.length; //return the length
 array.concat(a1, a2); //return the concatenated a1 and a2
 array.push("newElement"); //add new element to the end of array and return counts.
 array.includes("elementX"); //return true if array contains elementX, false if not.
+array.some(person => person.name === "Peter") //return true if the array contains an object by comparing the property value
 array.forEach(function(i) {
   //forEach iterates each element of the array as an argument of the function.
   //function code
@@ -726,8 +735,13 @@ Math.max(...array);//find the max value among array elements
 array.unshift(a,b,c);//adds one or more items or elements to the beginning of the array and returns the new length of the array.
 array.slice(1, 3);//The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
 //The only way to modify array element it to use for loop and access with index
-for (var i in array) {
+// user const to prevent out of scope warning
+for (const i in array) {
   array[i].x = 100;
+};
+//or
+for (const [i, v] of ['a', 'b', 'c'].entries()) {
+  console.log(i, v)
 }
 ```
 
@@ -779,6 +793,9 @@ window.location.replace("http://www.example.com");
 window.open("https://www.example.com");
 
 window.screen.width //Screen Width is the width of the device
+const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+//current viewport size
 
 document.write("\<h1\>abc<\\h1>");  //It is used for testing, it output text string in the HTML.
 alert("alert message goes here");//return an alert box
@@ -1198,6 +1215,7 @@ export class ClassName {
 
 - `export` keyword can be placed at the end and use curly brackets to enclosed everything needed to export.
 - When exporting arrow function, declare the function variable proper using `const`.
+  - The exported function declared as `const` will be executed when page loads
 - `as` keyword is used for alias.
   - `export { myArray, myFunction as NewName, ClassName };`
 - `export` will export the access to imported modules for the export module since the object exported will trace back to the module file.

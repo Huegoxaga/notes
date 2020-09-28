@@ -166,6 +166,7 @@ p {
     - `and` it is used to combine media types and media Features.
     - `not` not mediaType the Styling will not work on the mediaType that follows.
     - `only`
+- Dynamically change width with `calc()`. E.g. `width: calc(100% - 100px);`
 
 ## CSS Reset Rule
 

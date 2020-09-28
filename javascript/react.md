@@ -396,7 +396,6 @@ useEffect(() => {
 - Second parameter holds an array of variables called dependency array. The function in the first parameter will then only be called when variables listed in the dependency array change.
   - All variables in the `useEffect()` use be added to the dependency array.
   - When the second parameter is an empty array, `[]`, The function in the first parameter will be only called once when the component is mounted.
-  - a `return() => {}` block can be added to the `useEffect()` function, code in this block will be called only once during component unmount.
 - One component can have multiple `useEffect()` function and they will be executed in order.
 - `useEffect` can have return, `return () => {}`. It will be called every time the component is unmounted
 
@@ -576,6 +575,7 @@ useEffect(() => {
 #### Grid
 
 - It is used to control the layout of the entire web app
+- Grid is a flexbox container
 - It can be either `<Grid container></Grid>` or `<Grid item></Grid>`
   - Component's style property will only activated when the corresponding `container` or `item` type is specified
 - Grid item can have width from `1` to `12`. `12` takes `100%` of the width
@@ -631,6 +631,8 @@ const useStyles = makeStyles({
     color: "white",
     height: 48,
     padding: "0 30px",
+    //use variables
+    width: `calc(100% - ${SIDE_MENU_WIDTH}px)`,
   },
 });
 
@@ -652,6 +654,23 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+}));
+```
+
+- styles based breakpoints
+
+```js
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: "blue",
+    [theme.breakpoints.up("md")]: {
+      backgroundColor: "red",
+    },
+    //or
+    [theme.breakpoints.down("md")]: {
+      backgroundColor: "red",
+    },
   },
 }));
 ```
@@ -706,6 +725,22 @@ export default function StyledComponents() {
   ```
 - In `App.js` wrap the component that adapts themes with the theme provider components, e.g. `<ThemeProvider theme={newTheme}> <Component /> </ThemeProvider>`
 - Similar to `useStyles()`, the `const theme = useTheme();` method will return a variable that contains all the current theme settings
+
+### Related Packages
+
+#### Material Tables
+
+- It provides a pre-built table component based on Material UI
+- run `npm install material-table --save` to install
+- [Click Here](https://material-table.com/#/docs/all-props) to view all props for the table component
+
+#### Material-UI pickers
+
+- It provices a datetime picker component
+- run `npm i @material-ui/pickers` to install
+- run `npm i @date-io/date-fns@1.x date-fns` to install a date management library
+- wrap the picker component with `<MuiPickersUtilsProvider utils={DateFnsUtils}></MuiPickersUtilsProvider>`
+- [Click Here](https://material-ui-pickers.dev/api/DatePicker) to view all props for the date picker component
 
 ## Debug
 
