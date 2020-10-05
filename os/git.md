@@ -1,6 +1,8 @@
-# Git
+# Version Control Systems
 
-## Introduction
+## Git CLI
+
+### Introduction
 
 - Git is a Version Control System(VCS).
 - Git has a local and remote repository.
@@ -16,7 +18,7 @@
 - When a branch is behind the `HEAD`, it can `pull` the head and update from the `HEAD`.
 - A fast-forward is when, instead of constructing a merge commit, git just moves your branch pointer to point at the incoming commit. It happens if it detects that the current `HEAD` is an ancestor of the commit you're trying to merge.
 
-## Installation
+### Installation
 
 - linux(Debian)
   ```
@@ -29,11 +31,11 @@
 - Mac, run `brew install git`.
 - Windows, [Click](http://git-scm.com/download/win) to download the installation package.
 
-## Git Commands
+### Git Commands
 
 - [Click](https://git-scm.com/docs) to list a full list of commands.
 
-### Setup Local Repository
+#### Setup Local Repository
 
 - `git command --help` View help document.
 - `git help command` View help document.
@@ -45,7 +47,7 @@
 - `git config --list` Check all config values.
 - `touch .gitignore` Add the filename or folder addresses in the .gitignore file line by line, those files will be ignored by git.
 
-### Managing Staging Area
+#### Managing Staging Area
 
 - `git log` Show changes made to the repos.
 - `git add fileName.extension` Add the file to the staging area.
@@ -60,7 +62,7 @@
 - `git commit -m 'commit message'` Commit the files with commit message.
 - `git diff <branch1> <branch2>` View difference between branches.
 
-### Branches
+#### Branches
 
 - `git branch` lists local branches and shows the current working branch.
 - `git branch -a` lists all local and its corresponding remote tracking branches.
@@ -81,7 +83,7 @@
   - The `--no-ff` flag prevents git merge from executing a `fast-forward`
   - `--ff-only` means fast-forward only.
 
-### Working with Remote Repository
+#### Working with Remote Repository
 
 - `git log` see records and past commit id
 - `git revert <commitID>` revert back a certain commit and commit the changes.
@@ -100,3 +102,36 @@
 - `git pull` Pull the latest from the remote repos
 - `git clone URL` Clone repos into the current directory.
 - `git clone URL folderAddress` Clone repos into the certain directory.
+
+## GitHub CLI
+
+- It enables the full access to the GitHub Website using CLI
+- [Click Here](https://cli.github.com/manual/) to view the official manual
+- Installation, run `brew install gh` to install
+- add `eval "$(gh completion --shell <bash|zsh|fish|powershell>)"` in the dot file in order to setup command auto completion with tab
+- `gh` command has two level and has a `gh <FirstLevel><SecondLevel>` structure, it has the following first level command:
+- `auth` is used to manage user login, it has the following second level command
+  - `login` login to the GitHub account
+  - `logout` logout
+  - `refresh` same as logout then login
+  - `status` View authentication status
+- `repo` is used to manage repositories, it has the following second level command
+  - `create` create a repository under your account using the current directory name
+  - `create <ProjectName>` create a repository with a specific name
+  - `create <Organization>/<ProjectName>` create a repository in an organization
+    - `--private` Make the new repository private
+- `pr` is used to manage pull requests, it has the following second level command
+  - By default the command will access the pull request that belongs to the current branch, all second level command can acess a specific request by appending argument including `<RequestNumber>`, `<RequestUrl>`, `<RequestBranch>`
+  - `list` List and filter pull requests in this repository
+    - `-s open` list open request only
+  - `view` View the pull request that belongs to the current branch
+  - `status` Check the status of the pull request in the current branch
+  - `create` Create a pull request interactively
+    - `create --title "Pull request title" --body "Pull request body"`
+    - `create --web` Quickly navigate to the pull request creation page
+  - `merge` Merge a pull request
+    - `--delete-branch=false'` or `-d=false` retain the remote and local head branch after merge
+    - `-m` or `--merge` Merge the commits with the base branch
+    - `-r` or `--rebase` Rebase the commits onto the base branch
+    - `-s` or `--squash` Squash the commits into one commit and merge it into the base branch
+  - `diff` View changes in a pull request

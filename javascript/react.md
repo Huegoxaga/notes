@@ -74,23 +74,23 @@ ReactDOM.render(
 
 - The web app manifest is a JSON file is optional for a React App and created by CRA(create-react-app) by default
 
-## Component
+### Component Files
 
 - React app is made up by `components`.
 - Based on the use of the components, they can be categorized into two type:
-  - `presentational components` are concerned with how things look, they should be stateless. It has only `props` no `state`.
-  - `container components` are more concerned with how things work, they are stateful. It contains many presentational components and process state data and passes props to them.
+  - `presentational components` are concerned with how things look, they should be stateless. It has only `props` no `state`. These components can be written as functional components
+  - `container components` are more concerned with how things work, they are stateful. It contains many presentational components and process state data and passes props to them. These components can be written as class components
 - When importing packages, use `/` to import sepecific component file rather than using `{}` to import multiple component can reduce the bundle size
   - Install Babel plugin([babel-plugin-import](https://github.com/ant-design/babel-plugin-import), [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports)) can safely import multiple components in one line without incresaing the bundle size
 
-### App Component
+#### App Component
 
 - App component(`App.js`) is the root component and it contains other customized components in a tree.
 - `app.js` usually is one component that contains all sub-components for the app then to be associated with DOM in index.js.
 - Wrap the entire App component with `<React.StrictMode></React.StrictMode>` will enable the strict mode
   - StrictMode is a tool for highlighting potential problems in an application. It activates additional checks and warnings for its descendants.
 
-### Customized Component
+## Class Components
 
 - The component class has a `state` property to store internal temp data.
 - It has `props` object that stores data, props are readonly. Every component has a `props` object. For data passed from outside use `props` instead of `state`.
@@ -101,6 +101,11 @@ ReactDOM.render(
 - `<Component></Component>` it can be used to pass tags and data into its child component’s children props.
 - must have exactly one outer element to return as a component.
 - For a new customized component, create new `.jsx` files in the component folder.
+- `createRef()` create a reference to a node that specified in the `ref` property of a component.
+  - import, `import { reateRef } from "react";`
+  - then initialize, `refNode = createRef();`
+  - create reference in the component props, `<div ref={this.refNode} />`
+  - access the node by using the `current` property of the node reference, `this.textInput.current`
 
 ```js
 import React, { Component } from ‘react’;
@@ -200,7 +205,74 @@ class Counter extends Component {
 export default Counter;
 ```
 
-### Functional Component
+### Life Cycle Hooks
+
+- It works with class components
+- There are life cycle hooks for every component.
+- They are automatically called.
+- Stateless functional component has no life cycle hook.
+
+#### Mounting Phrase
+
+##### constructor
+
+```js
+constrctor(props) {
+	super(props);
+	//intialize the props and state of the instance
+	this.state = {
+	name: "world"
+	};
+}
+```
+
+- This is when the component start to render and place to the DOM
+- It is called once
+- can’t use setState, assign the state directly instead.
+
+##### render
+
+- `render() { return (); }`
+- It is called after the constructor is called.
+- All its child component is also rendered recursively.
+
+##### componentDidMount
+
+```js
+compoenetDidMount() {
+}
+```
+
+- This is after the component is rendered and placed to the DOM
+- It can be used for Ajax call, and use setState();
+
+#### Updating Phrase
+
+It is triggered whenever the state or props of a component changes.
+
+##### Render
+
+- `render() { return (); }`
+
+##### componentDidUpdate
+
+```js
+componentDidUpdate(prevProps, prevState){
+	//can compare the current and prev value,
+	// can make Ajax call only when value changed.
+}
+```
+
+- It can be used to see `prevProps` and `prevState`
+
+#### Unmounting Phrase
+
+##### componentWillUnmount
+
+- It runs when the component is about to be deleted.
+- It is a good place to do clean up.
+
+## Functional Component
 
 - when a component doesn’t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.
   ```js
@@ -215,9 +287,123 @@ export default Counter;
   }
   ```
 
-### Higher-order Component(HOC)
+### React Hooks
 
-- A higher-order component is a function that takes a component as an argument and returns a new component.
+- New in React version 16.8
+- It works with functional components. Hooks are called inside the body of a functional component
+- It enables the use of React features in a functional component
+
+#### State Hook
+
+```js
+import {useState}
+import React, {useState} from ‘react’
+
+// declare the array before return method.
+const [currentValue, setFunction] = useState(initialValue)   //array destructing
+// initialValue can be string num bool object array
+return (
+  <button conClick={() => setFunction(prevValue + 1)}>{currentValue}</button>
+  //use variable prevValue to get the previous value.
+  //work with objects or arrays use: setName({...objectName, propertyName: newValue})
+);
+```
+
+- In return method, use `setFunction(newValue)` to update the currentValue.
+- `useState()` returns an array of values, the current state value and a function that is used to update values by pass new values in it.
+- `useState()` can have an arrow function as its variable, and it will be only ran once when rander.
+- `useState()` can have an object as variable.
+- `useState()` cannot be placed inside if or loops
+
+#### Effect Hook
+
+```js
+// Similar to componentDidMount and componentDidUpdate:
+useEffect(() => {
+  console.log("rendered");
+}, []);
+```
+
+- First parameter holds a function that will be called everything the component is rendered and rerendered.
+- Second parameter holds an array of variables called dependency array. The function in the first parameter will then only be called when variables listed in the dependency array change.
+  - All variables in the `useEffect()` use be added to the dependency array.
+  - When the second parameter is an empty array, `[]`, The function in the first parameter will be only called once when the component is mounted.
+- One component can have multiple `useEffect()` function and they will be executed in order.
+- `useEffect` can have return, `return () => {}`. It will be called every time the component is unmounted
+
+#### Context Hook
+
+- Makes component share common data across pages
+- A component calling useContext will always re-render when the context value changes
+- In a `context.js` create the context by using `export const ContextName = createContext(initialValue)`
+  - `initialValue` can be null or empty
+- In `App.js` use `{%raw%}<ContextName.Provider value={{value1, value2}}> <Toolbar /> </ContextName.Provider>{%endraw%}` to create context and assign values to the context.
+- reload will clear all context
+- In component class use `const {value1, value2} = useContext(ContextName);` to get values
+- Put everything together
+  ```js
+  const themes = {
+    light: {
+      foreground: "#000000",
+      background: "#eeeeee",
+    },
+    dark: {
+      foreground: "#ffffff",
+      background: "#222222",
+    },
+  };
+  const ThemeContext = React.createContext(themes.light);
+  function App() {
+    return (
+      <ThemeContext.Provider value={themes.dark}>
+        <Toolbar />
+      </ThemeContext.Provider>
+    );
+  }
+  function Toolbar(props) {
+    return (
+      <div>
+        <ThemedButton />
+      </div>
+    );
+  }
+  function ThemedButton() {
+    const theme = useContext(ThemeContext);
+    return (
+      <button style={%raw%}{{ background: theme.background, color: theme.foreground }}{%endraw%}>
+        I am styled by theme context!
+      </button>
+    );
+  }
+  ```
+
+#### Ref Hook
+
+- Updating a `ref` object should be done only inside a useEffect (or useLayoutEffect) or inside an event handler.
+- Initialize a `ref` object, `const refContainer = useRef(initialValue);`
+
+##### Create a Node Object
+
+```js
+const node = useRef();
+
+focusNode = () => node.current.focus();
+
+return (
+  <div>
+    <input type="text" ref={node} />
+    <button onClick={focusNode}>Focus the text input</button>
+  </div>
+);
+```
+
+##### Declare a Non-react Variable
+
+- When the `.current` property of the `ref` object is assigned a value, it will not cause the component to re-render
+
+## Higher-order Component(HOC)
+
+- A higher-order component is a function that takes a child component as an argument and returns a new, complete component wrapped with the child component
 - Definition
   ```js
   import React from "react";
@@ -288,162 +474,6 @@ import {
 
 - Components accessed through `<Route>` will have access to `this.props.history` and can use `history.push(path)` to redirect pages
   - When component is not included in a `Route` tag can also wants to use `history.push`, import `import { withRouter} from "react-router-dom";` and use `export default withRouter(ComponentName)` during exporting
-
-## Life Cycle Hooks
-
-- There are life cycle hooks for every component.
-- They are automatically called.
-- Stateless functional component has no life cycle hook.
-
-### Mounting Phrase
-
-#### constructor
-
-```js
-constrctor(props) {
-	super(props);
-	//intialize the props and state of the instance
-	this.state = {
-	name: "world"
-	};
-}
-```
-
-- This is when the component start to render and place to the DOM
-- It is called once
-- can’t use setState, assign the state directly instead.
-
-#### render
-
-- `render() { return (); }`
-- It is called after the constructor is called.
-- All its child component is also rendered recursively.
-
-#### componentDidMount
-
-```js
-compoenetDidMount() {
-}
-```
-
-- This is after the component is rendered and placed to the DOM
-- It can be used for Ajax call, and use setState();
-
-### Updating Phrase
-
-It is triggered whenever the state or props of a component changes.
-
-#### Render
-
-- `render() { return (); }`
-
-#### componentDidUpdate
-
-```js
-componentDidUpdate(prevProps, prevState){
-	//can compare the current and prev value,
-	// can make Ajax call only when value changed.
-}
-```
-
-- It can be used to see `prevProps` and `prevState`
-
-### Unmounting Phrase
-
-#### componentWillUnmount
-
-- It runs when the component is about to be deleted.
-- It is a good place to do clean up.
-
-## React Hooks
-
-- New in React version 16.8
-- It enables the use of React features in a functional component
-- Hooks are called inside the body of a functional component
-
-### State Hook
-
-```js
-import {useState}
-import React, {useState} from ‘react’
-
-// declare the array before return method.
-const [currentValue, setFunction] = useState(initialValue)   //array destructing
-// initialValue can be string num bool object array
-return (
-  <button conClick={() => setFunction(prevValue + 1)}>{currentValue}</button>
-  //use variable prevValue to get the previous value.
-  //work with objects or arrays use: setName({...objectName, propertyName: newValue})
-);
-```
-
-- In return method, use `setFunction(newValue)` to update the currentValue.
-- `useState()` returns an array of values, the current state value and a function that is used to update values by pass new values in it.
-- `useState()` can have an arrow function as its variable, and it will be only ran once when rander.
-- `useState()` can have an object as variable.
-- `useState()` cannot be placed inside if or loops
-
-### Effect Hook
-
-```js
-// Similar to componentDidMount and componentDidUpdate:
-useEffect(() => {
-  console.log("rendered");
-}, []);
-```
-
-- First parameter holds a function that will be called everything the component is rendered and rerendered.
-- Second parameter holds an array of variables called dependency array. The function in the first parameter will then only be called when variables listed in the dependency array change.
-  - All variables in the `useEffect()` use be added to the dependency array.
-  - When the second parameter is an empty array, `[]`, The function in the first parameter will be only called once when the component is mounted.
-- One component can have multiple `useEffect()` function and they will be executed in order.
-- `useEffect` can have return, `return () => {}`. It will be called every time the component is unmounted
-
-### Context Hook
-
-- Makes component share common data across pages
-- A component calling useContext will always re-render when the context value changes
-- In a `context.js` create the context by using `export const ContextName = createContext(initialValue)`
-  - `initialValue` can be null or empty
-- In `App.js` use `{%raw%}<ContextName.Provider value={{value1, value2}}> <Toolbar /> </ContextName.Provider>{%endraw%}` to create context and assign values to the context.
-- reload will clear all context
-- In component class use `const {value1, value2} = useContext(ContextName);` to get values
-- Put everything together
-  ```js
-  const themes = {
-    light: {
-      foreground: "#000000",
-      background: "#eeeeee",
-    },
-    dark: {
-      foreground: "#ffffff",
-      background: "#222222",
-    },
-  };
-  const ThemeContext = React.createContext(themes.light);
-  function App() {
-    return (
-      <ThemeContext.Provider value={themes.dark}>
-        <Toolbar />
-      </ThemeContext.Provider>
-    );
-  }
-  function Toolbar(props) {
-    return (
-      <div>
-        <ThemedButton />
-      </div>
-    );
-  }
-  function ThemedButton() {
-    const theme = useContext(ThemeContext);
-    return (
-      <button style={%raw%}{{ background: theme.background, color: theme.foreground }}{%endraw%}>
-        I am styled by theme context!
-      </button>
-    );
-  }
-  ```
 
 ## google-map-react
 

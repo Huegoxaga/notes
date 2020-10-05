@@ -231,6 +231,7 @@ list(x)   #To   list
 eval(x) # parse and evaluation a string to other types
 eval('[1]') #string to list
 eval('1') #string to int
+bool(x) #  when convert string to boolean any thing other than empty string will return True
 ```
 
 ## Operators
@@ -381,7 +382,8 @@ while condition:
 
 ```py
 list.append(value)#This will append a value at its end.
-list.sort()#This will sort the object
+list.sort()#sorts the list ascending by default, has argument `reverse` which can be set to True
+list.sort(key=lambda listItem: listItem.get('group_name')) #sort based on the key value of the element
 list.remove(value)#It will remove certain value in the list regardless of its location.
 list.reverse()  #It will reverse the order, print(list.sort()) will not work
 list.insert(index, element)#It will insert an element at certain index location.
@@ -439,14 +441,14 @@ sum(list)
 
 - Membership Operator - in
   ```py
-  keyName in dictionaryName
+  keyName in dictionaryName # return a bool
   keyName not in dictionaryName
   ```
 
 #### Methods
 
 ```py
-dictionary.get(key, notification)  #It returns the key’s value and None if key is not found. or display specific notification.
+dictionary.get(key, notification)  #It returns the key’s value and None if key is not found. or display specific notification. None type can have this method without error
 dictionay.pop(key,default)  # It returns and remove the value that match the key. Return the default value if not found.
 dictionay.values() # Return a list of values.
 dictionay.keys() # Return a list of keys.

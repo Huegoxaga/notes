@@ -99,6 +99,13 @@
 - SQL is case insensitive. However uppercase is preferred for all commands.
 - SQL syntax is not sensitive to indentations.
 
+## Data Types
+
+### Postgres
+
+- It has a special array type
+- Try to avoid using datetime or time data type without timezone
+
 ## Syntax
 
 The following SQL examples work for mySQL, variation for other SQL will be noted in the bracket.

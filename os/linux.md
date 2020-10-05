@@ -423,6 +423,7 @@
 ### WGET
 
 - `wget http://www.website.com/file.txt` Downloads the file located at `http://www.website.com/file.txt`
+  - `-O <NewPath>` download to a new path
 
 ### TAR
 

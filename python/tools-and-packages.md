@@ -67,7 +67,10 @@
 - `conda list --explicit > bio-env.txt` Save environment to a text file
 - `conda env remove --name bio-env` Delete an environment and everything in it
 - `conda deactivate` Deactivate the current environment
-- `conda env create --file bio-env.txt` Create environment from a text file
+- `conda env export > environment_config_file.yml` generate dependency yaml file
+  - Package installed using `pip` will be listed one level lower under `pip:`
+- `conda create --name clone_envname --clone envname` Clone an existing environment
+- `conda env create -f bio-env.yml` Create environment from a text file
 - `conda search <keyword>` search packages
 - `conda install <packagename>` Install a new package (Jupyter Notebook) in the active environment
   - `conda install python=3.5.0` Install a certain version of python or packages for the env.

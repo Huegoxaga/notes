@@ -440,3 +440,7 @@ img {
 
 - display as a table of inline elements
 - set by using `display : inline-grid`.
+
+## Browser Compatibility
+
+- smaller font size can be displayed by `Chrome`, while `Safari` has a set minimum font size

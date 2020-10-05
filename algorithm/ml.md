@@ -249,10 +249,14 @@
       - A variant of GoogLeNet
     - [SENet](https://homl.info/senet)
       - Squeeze-and-Excitation Network
-    - You Only Look Once(YOLO)
+    - You Only Look Once(YOLO),
       - [YOLO](https://homl.info/yolo)
       - [YOLOv2](https://homl.info/yolo2)
       - [YOLOv3](https://homl.info/yolo3)
+      - The model(weight) is trained using the `darknet` framework
+        - It is written in C and CUDA
+        - [Click](https://github.com/pjreddie/darknet) to view the repo from the original auther of the `darknet`
+        - [Click](https://github.com/AlexeyAB/darknet) to view the modified version that supports Window OS
 
 ##### Recurrent Neural Networks(RNNs)
 

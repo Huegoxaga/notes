@@ -488,6 +488,7 @@ It provides support for generating serverless APIs.
 - The access log is the custom log that can be used to store cutomized formatted log.
   - It support log with `CLF`, `JSON`, `CSV`, and `XML` format.
   - only the `$context` variable can be used to access requrest info.
+- the `Lambda Proxy` need to be enabled in the `Integration Request` setting to pass URL parameters to the event argument of the associated lambda function
 
 ## Amplify
 

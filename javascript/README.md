@@ -727,6 +727,7 @@ array.filter(i => i.id !== 1); //filter an array item that has id not equal to 1
 [1, 2, 3].map((item, index, array) => 2 * x); //it can takes optional parameters, index(second), and the array itself(third)
 array.splice(2, 3); // delete 3 items starting at index 2.(have to call it independently and get the result after.)
 array.reverse() //reverse all elements
+array.sort() //sort the array
 array1.find(element => element > 10); //return the first element found, returns undefined if no match is found
 array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 //reduce iterate over each element of the function and return a value that will be used by the next iteration.
@@ -734,6 +735,7 @@ let arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length //get avg
 Math.max(...array);//find the max value among array elements
 array.unshift(a,b,c);//adds one or more items or elements to the beginning of the array and returns the new length of the array.
 array.slice(1, 3);//The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
+array.join(", ")//convert array to string, separated by ", " (The default separator is ",")
 //The only way to modify array element it to use for loop and access with index
 // user const to prevent out of scope warning
 for (const i in array) {
@@ -741,8 +743,8 @@ for (const i in array) {
 };
 //or
 for (const [i, v] of ['a', 'b', 'c'].entries()) {
-  console.log(i, v)
-}
+  console.log(i, v);
+};
 ```
 
 #### Associative Array

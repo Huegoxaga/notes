@@ -381,6 +381,8 @@ list(accumulate(range(8)))
   - `time = datetime.now(timezone_obj)` get a current datetime object with a certain timezone.
 - `datetime.now().time()` get a current time object.
 - `datetime_obj.strftime("%m/%d/%Y, %H:%M:%S")` return a formatted time string.
+- `date_object = datetime.strptime(date_string, "%d %B, %Y")` string to datetime object
+  - [Click Here](https://strftime.org) to see complete list of format code
 - For datetime object
   - `datetime_obj.year`
   - `datetime_obj.month`
@@ -389,6 +391,7 @@ list(accumulate(range(8)))
   - `datetime_obj.minute`
   - `datetime_obj.second`
   - `datetime_obj.microsecond`
+- `datetime.combine(date, start_time)` combine a date object and a time object as a datetime object
 
 ### datetime.date
 
@@ -400,6 +403,8 @@ list(accumulate(range(8)))
 
 ### datetime.timedelta
 
+- It can be used to substract or plus a time value to a datetime object
+- `timeDeltaObj = timedelta(hours=7, minutes=36)`
 - `from datetime import date, timedelta`
 - `yesterday = date.today() - timedelta(days=1)`
 

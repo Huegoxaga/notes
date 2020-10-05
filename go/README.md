@@ -91,6 +91,23 @@ nil //for null value
 - `&variableName` return the pointer which contains the memory address of the variable
 - `*addressVariable` access the value of the pointer
 
+## Array
+
+- array has type like `[5]int`
+- when an array doesn't have fixed size, it is a slice, e.g. `[]int`
+
+## Structures
+
+### Loop
+
+- `for i:=0; i<10; i++{}` the basic for loop
+- `for i<10; i++{}` if `i` is declared already
+  - optionally, `for i<10 {i++}`
+- `for {}` infinite loop
+- `for(condition) {}` like a while loop
+- `for index, element := range arrayX {}` iterate through an array
+- `break` get out of the loop `break` is immediately in
+
 ## Functions
 
 - Function has syntax as `func name(){}` or `func name(x typeForX, y typeForY) returnType { return z }`
@@ -110,6 +127,7 @@ nil //for null value
 ## Struct
 
 - It defines a customized class or type
+- Struct name has its first letter capitalized
 
 ```go
 package main
@@ -198,3 +216,9 @@ func main() {
 
 - `bytes, error := ioutil.ReadAll(data)` read data as bytes
   - to read bytes, use `string(bytes)` to convert it into string
+
+### encoding
+
+#### encoding/xml
+
+- `xml.Unmarshal(from, to)` parse xml to a struct type
