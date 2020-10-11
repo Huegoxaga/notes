@@ -1270,12 +1270,12 @@ ReactDOM.render(
 <ul>
 <li>The web app manifest is a JSON file is optional for a React App and created by CRA(create-react-app) by default</li>
 </ul>
-<h2 id="component">Component</h2>
+<h3 id="component-files">Component Files</h3>
 <ul>
 <li>React app is made up by <code>components</code>.</li>
 <li>Based on the use of the components, they can be categorized into two type:<ul>
-<li><code>presentational components</code> are concerned with how things look, they should be stateless. It has only <code>props</code> no <code>state</code>.</li>
-<li><code>container components</code> are more concerned with how things work, they are stateful. It contains many presentational components and process state data and passes props to them.</li>
+<li><code>presentational components</code> are concerned with how things look, they should be stateless. It has only <code>props</code> no <code>state</code>. These components can be written as functional components</li>
+<li><code>container components</code> are more concerned with how things work, they are stateful. It contains many presentational components and process state data and passes props to them. These components can be written as class components</li>
 </ul>
 </li>
 <li>When importing packages, use <code>/</code> to import sepecific component file rather than using <code>{}</code> to import multiple component can reduce the bundle size<ul>
@@ -1283,7 +1283,7 @@ ReactDOM.render(
 </ul>
 </li>
 </ul>
-<h3 id="app-component">App Component</h3>
+<h4 id="app-component">App Component</h4>
 <ul>
 <li>App component(<code>App.js</code>) is the root component and it contains other customized components in a tree.</li>
 <li><code>app.js</code> usually is one component that contains all sub-components for the app then to be associated with DOM in index.js.</li>
@@ -1292,16 +1292,24 @@ ReactDOM.render(
 </ul>
 </li>
 </ul>
-<h3 id="customized-component">Customized Component</h3>
+<h2 id="class-components">Class Components</h2>
 <ul>
 <li>The component class has a <code>state</code> property to store internal temp data.</li>
 <li>It has <code>props</code> object that stores data, props are readonly. Every component has a <code>props</code> object. For data passed from outside use <code>props</code> instead of <code>state</code>.</li>
+<li>If certain properties from <code>props</code> is needed, instead of passing <code>props</code> to the components, it can be convenient to use <code>{property1, property2}</code></li>
 <li>The component class has a render method that returns the component which will be associated with certain a DOM element.</li>
 <li>Component can be represented by JSX file, React html-like <code>jsx</code> code in render method will be converted by babel into JavaScript code.</li>
 <li><code>&lt;Component /&gt;</code> this is a self closing component.</li>
 <li><code>&lt;Component&gt;&lt;/Component&gt;</code> it can be used to pass tags and data into its child component&#x2019;s children props.</li>
 <li>must have exactly one outer element to return as a component.</li>
 <li>For a new customized component, create new <code>.jsx</code> files in the component folder.</li>
+<li><code>createRef()</code> create a reference to a node that specified in the <code>ref</code> property of a component.<ul>
+<li>import, <code>import { reateRef } from &quot;react&quot;;</code></li>
+<li>then initialize, <code>refNode = createRef();</code></li>
+<li>create reference in the component props, <code>&lt;div ref={this.refNode} /&gt;</code></li>
+<li>access the node by using the <code>current</code> property of the node reference, <code>this.textInput.current</code></li>
+</ul>
+</li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> &#x2018;react&#x2019;;
 <span class="hljs-comment">//import other component that will be used.</span>
@@ -1399,92 +1407,15 @@ ReactDOM.render(
 }
 export default Counter;
 </code></pre>
-<h3 id="functional-component">Functional Component</h3>
+<h3 id="life-cycle-hooks">Life Cycle Hooks</h3>
 <ul>
-<li>when a component doesn&#x2019;t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.<pre><code class="lang-js"><span class="hljs-keyword">const</span> ComponentName = (props) =&gt; {
-  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
-};
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ComponentName;
-</code></pre>
-<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Welcome</span>(<span class="hljs-params">props</span>) </span>{
-  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
-}
-</code></pre>
-</li>
-</ul>
-<h3 id="higher-order-componenthoc">Higher-order Component(HOC)</h3>
-<ul>
-<li>A higher-order component is a function that takes a component as an argument and returns a new component.</li>
-<li>Definition<pre><code class="lang-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
-<span class="hljs-keyword">const</span> higherOrderComponentFunction = (WrappedComponent) =&gt; {
-  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HOC</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-    render() {
-      <span class="hljs-comment">// passes props from WrappedComponent in this.props, then add a newProp</span>
-      <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">WrappedComponent</span> {<span class="hljs-attr">...this.props</span>} <span class="hljs-attr">newProp</span>=<span class="hljs-string">{123}</span> /&gt;</span>;
-    }
-  }
-  return HOC;
-};
-export default higherOrderComponentFunction;
-</span></code></pre>
-</li>
-<li>Invoke - <code>const SimpleHOC = higherOrderComponentFunction(MyComponent);</code></li>
-</ul>
-<h2 id="react-router">React Router</h2>
-<ul>
-<li>It works with URL links and redirection for single-page apps made by React.</li>
-<li>Typying new addresses and pressing enter key will reload the entire app, this is different from the SPA&apos;s way of routing pages.</li>
-<li>In the app folder, run <code>npm install react-router-dom</code> to install the module.</li>
-</ul>
-<pre><code class="lang-js">import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  NavLink,
-} from &quot;react-router-dom&quot;;
-// BrowserRouter uses HTML5 history API to keep track of URL, it requires additional setup when build
-// Optionally, HashRouter uses a hash portion of the URL to keep track of URL
-&lt;Router&gt;
-  // Router Component can only have one child component // They use Link and
-  Route Component to make routing work.
-  &lt;div&gt;
-    // create links and changed the path of the app when link is clicked.
-    &lt;Link to=&quot;/linkpage/table&quot;&gt;About&lt;/Link&gt;
-    &lt;Link to=&quot;/linkpage/list&quot;&gt;List&lt;/Link&gt;
-    // render certain component when the current path matchs
-    &lt;Route path=&quot;/linkpage/table&quot; component={TableComp} /&gt;
-    &lt;Route path=&quot;/linkpage/list&quot; component={ListComp} /&gt;
-    // simalar to Link component, plus any matched link will be style in a class
-    called active, the active class should be defined in the css
-    &lt;NavLink to=&quot;/contact&quot;&gt;Contact&lt;/NavLink&gt;
-    // root path will always be in active class, use exact to fix this.
-    &lt;NavLink exact to=&quot;/&quot;&gt;
-      Home
-    &lt;/NavLink&gt;
-    // use exact for root path, otherwise it always got renderred.
-    &lt;Route exact path=&quot;/&quot; component={Home} /&gt;
-    // to pass variables using in URL
-    &lt;Route path=&quot;/urlparm/:varName&quot; component={ChildComponent} /&gt;
-    // In the child component accesss the variable using
-    this.props.match.params.varName
-    // Switch will make will only first match will be rendered
-    &lt;Switch&gt;
-      // Move the root match to the last, since / will match all path
-      // It can be nested for different path depths
-      &lt;Route exact path=&quot;/other&quot; component={Other} /&gt;
-      &lt;Route exact path=&quot;/&quot; component={Home} /&gt;
-    &lt;Switch&gt;
-  &lt;/div&gt;
-&lt;/Router&gt;;
-</code></pre>
-<h2 id="life-cycle-hooks">Life Cycle Hooks</h2>
-<ul>
+<li>It works with class components</li>
 <li>There are life cycle hooks for every component.</li>
 <li>They are automatically called.</li>
 <li>Stateless functional component has no life cycle hook.</li>
 </ul>
-<h3 id="mounting-phrase">Mounting Phrase</h3>
-<h4 id="constructor">constructor</h4>
+<h4 id="mounting-phrase">Mounting Phrase</h4>
+<h5 id="constructor">constructor</h5>
 <pre><code class="lang-js">constrctor(props) {
     <span class="hljs-keyword">super</span>(props);
     <span class="hljs-comment">//intialize the props and state of the instance</span>
@@ -1498,13 +1429,13 @@ export default higherOrderComponentFunction;
 <li>It is called once</li>
 <li>can&#x2019;t use setState, assign the state directly instead.</li>
 </ul>
-<h4 id="render">render</h4>
+<h5 id="render">render</h5>
 <ul>
 <li><code>render() { return (); }</code></li>
 <li>It is called after the constructor is called.</li>
 <li>All its child component is also rendered recursively.</li>
 </ul>
-<h4 id="componentdidmount">componentDidMount</h4>
+<h5 id="componentdidmount">componentDidMount</h5>
 <pre><code class="lang-js">compoenetDidMount() {
 }
 </code></pre>
@@ -1512,13 +1443,13 @@ export default higherOrderComponentFunction;
 <li>This is after the component is rendered and placed to the DOM</li>
 <li>It can be used for Ajax call, and use setState();</li>
 </ul>
-<h3 id="updating-phrase">Updating Phrase</h3>
+<h4 id="updating-phrase">Updating Phrase</h4>
 <p>It is triggered whenever the state or props of a component changes.</p>
-<h4 id="render">Render</h4>
+<h5 id="render">Render</h5>
 <ul>
 <li><code>render() { return (); }</code></li>
 </ul>
-<h4 id="componentdidupdate">componentDidUpdate</h4>
+<h5 id="componentdidupdate">componentDidUpdate</h5>
 <pre><code class="lang-js">componentDidUpdate(prevProps, prevState){
     <span class="hljs-comment">//can compare the current and prev value,</span>
     <span class="hljs-comment">// can make Ajax call only when value changed.</span>
@@ -1527,19 +1458,32 @@ export default higherOrderComponentFunction;
 <ul>
 <li>It can be used to see <code>prevProps</code> and <code>prevState</code></li>
 </ul>
-<h3 id="unmounting-phrase">Unmounting Phrase</h3>
-<h4 id="componentwillunmount">componentWillUnmount</h4>
+<h4 id="unmounting-phrase">Unmounting Phrase</h4>
+<h5 id="componentwillunmount">componentWillUnmount</h5>
 <ul>
 <li>It runs when the component is about to be deleted.</li>
 <li>It is a good place to do clean up.</li>
 </ul>
-<h2 id="react-hooks">React Hooks</h2>
+<h2 id="functional-component">Functional Component</h2>
+<ul>
+<li>when a component doesn&#x2019;t have state data(it has everything inside the render function), it can be included inside a function, then the component is called a stateless functional component.<pre><code class="lang-js"><span class="hljs-keyword">const</span> ComponentName = (props) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+};
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ComponentName;
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Welcome</span>(<span class="hljs-params">props</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="react-hooks">React Hooks</h3>
 <ul>
 <li>New in React version 16.8</li>
+<li>It works with functional components. Hooks are called inside the body of a functional component</li>
 <li>It enables the use of React features in a functional component</li>
-<li>Hooks are called inside the body of a functional component</li>
 </ul>
-<h3 id="state-hook">State Hook</h3>
+<h4 id="state-hook">State Hook</h4>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> {useState}
 <span class="hljs-keyword">import</span> React, {useState} <span class="hljs-keyword">from</span> &#x2018;react&#x2019;
 
@@ -1559,7 +1503,7 @@ export default higherOrderComponentFunction;
 <li><code>useState()</code> can have an object as variable.</li>
 <li><code>useState()</code> cannot be placed inside if or loops</li>
 </ul>
-<h3 id="effect-hook">Effect Hook</h3>
+<h4 id="effect-hook">Effect Hook</h4>
 <pre><code class="lang-js"><span class="hljs-comment">// Similar to componentDidMount and componentDidUpdate:</span>
 useEffect(() =&gt; {
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;rendered&quot;</span>);
@@ -1570,13 +1514,12 @@ useEffect(() =&gt; {
 <li>Second parameter holds an array of variables called dependency array. The function in the first parameter will then only be called when variables listed in the dependency array change.<ul>
 <li>All variables in the <code>useEffect()</code> use be added to the dependency array.</li>
 <li>When the second parameter is an empty array, <code>[]</code>, The function in the first parameter will be only called once when the component is mounted.</li>
-<li>a <code>return() =&gt; {}</code> block can be added to the <code>useEffect()</code> function, code in this block will be called only once during component unmount.</li>
 </ul>
 </li>
 <li>One component can have multiple <code>useEffect()</code> function and they will be executed in order.</li>
 <li><code>useEffect</code> can have return, <code>return () =&gt; {}</code>. It will be called every time the component is unmounted</li>
 </ul>
-<h3 id="context-hook">Context Hook</h3>
+<h4 id="context-hook">Context Hook</h4>
 <ul>
 <li>Makes component share common data across pages</li>
 <li>A component calling useContext will always re-render when the context value changes</li>
@@ -1622,6 +1565,111 @@ function ThemedButton() {
 }
 </code></pre>
 </li>
+</ul>
+<h4 id="ref-hook">Ref Hook</h4>
+<ul>
+<li>Updating a <code>ref</code> object should be done only inside a useEffect (or useLayoutEffect) or inside an event handler.</li>
+<li>Initialize a <code>ref</code> object, <code>const refContainer = useRef(initialValue);</code></li>
+</ul>
+<h5 id="create-a-node-object">Create a Node Object</h5>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> node = useRef();
+
+focusNode = () =&gt; node.current.focus();
+
+<span class="hljs-keyword">return</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">{node}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{focusNode}</span>&gt;</span>Focus the text input<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+);
+</span></code></pre>
+<h5 id="declare-a-non-react-variable">Declare a Non-react Variable</h5>
+<ul>
+<li>When the <code>.current</code> property of the <code>ref</code> object is assigned a value, it will not cause the component to re-render</li>
+</ul>
+<h2 id="higher-order-componenthoc">Higher-order Component(HOC)</h2>
+<ul>
+<li>A higher-order component is a function that takes a child component as an argument and returns a new, complete component wrapped with the child component</li>
+<li>Definition<pre><code class="lang-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">const</span> higherOrderComponentFunction = (WrappedComponent) =&gt; {
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HOC</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    render() {
+      <span class="hljs-comment">// passes props from WrappedComponent in this.props, then add a newProp</span>
+      <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">WrappedComponent</span> {<span class="hljs-attr">...this.props</span>} <span class="hljs-attr">newProp</span>=<span class="hljs-string">{123}</span> /&gt;</span>;
+    }
+  }
+  return HOC;
+};
+export default higherOrderComponentFunction;
+</span></code></pre>
+</li>
+<li>Invoke - <code>const SimpleHOC = higherOrderComponentFunction(MyComponent);</code></li>
+</ul>
+<h2 id="react-router">React Router</h2>
+<ul>
+<li>It works with URL links and redirection for single-page apps made by React.</li>
+<li>Typying new addresses and pressing enter key will reload the entire app, this is different from the SPA&apos;s way of routing pages.</li>
+<li>In the app folder, run <code>npm install react-router-dom</code> to install the module.</li>
+</ul>
+<pre><code class="lang-jsx">import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+} from &quot;react-router-dom&quot;;
+// BrowserRouter uses HTML5 history API to keep track of URL, it requires additional setup when build
+// Optionally, HashRouter uses a hash portion of the URL to keep track of URL
+&lt;Router&gt;
+  // Router Component can only have one child component
+  // They use Link and Route Component to make routing work.
+  // path that does not start with &quot;/&quot; will be a relative path
+  &lt;div&gt;
+    // create links and changed the path of the app when link is clicked.
+    &lt;Link to=&quot;/linkpage/table&quot;&gt;About&lt;/Link&gt;
+    &lt;Link to=&quot;/linkpage/list&quot;&gt;List&lt;/Link&gt;
+    // render certain component when the current path matchs
+    &lt;Route path=&quot;/linkpage/table&quot; component={TableComp} /&gt;
+    &lt;Route path=&quot;/linkpage/list&quot; component={ListComp} /&gt;
+    // simalar to Link component, plus any matched link will be style in a class
+    called active, the active class should be defined in the css
+    // multiple path can use regex path=&quot;/(home|users|widgets)/&quot;
+    // or use array path={[&quot;/home&quot;, &quot;/users&quot;, &quot;/widgets&quot;]}
+    &lt;NavLink to=&quot;/contact&quot;&gt;Contact&lt;/NavLink&gt;
+    // root path will always be in active class, use exact to fix this.
+    &lt;NavLink exact to=&quot;/&quot;&gt;
+      Home
+    &lt;/NavLink&gt;
+    // use exact for root path, otherwise it always got renderred.
+    &lt;Route exact path=&quot;/&quot; component={Home} /&gt;
+    // to pass variables using in URL
+    &lt;Route path=&quot;/urlparm/:varName&quot; component={ChildComponent} /&gt;
+    // In the child component accesss the variable using
+    this.props.match.params.varName
+    // Switch will make will only first match will be rendered
+    &lt;Switch&gt;
+      // Move the root match to the last, since / will match all path
+      // It cannot be nested and only work for components that are one level deeper
+      &lt;Route exact path=&quot;/other&quot; component={Other} /&gt;
+      &lt;Route exact path=&quot;/&quot; component={Home} /&gt;
+    &lt;Switch&gt;
+  &lt;/div&gt;
+&lt;/Router&gt;;
+</code></pre>
+<ul>
+<li>Components accessed through <code>&lt;Route&gt;</code> will have access to <code>this.props.history</code> and can use <code>history.push(path)</code> to redirect pages<ul>
+<li>When component is not included in a <code>Route</code> tag can also wants to use <code>history.push</code>, import <code>import { withRouter} from &quot;react-router-dom&quot;;</code> and use <code>export default withRouter(ComponentName)</code> during exporting</li>
+</ul>
+</li>
+</ul>
+<h2 id="google-map-react">google-map-react</h2>
+<ul>
+<li>The node package for google map component</li>
+<li><a href="https://www.npmjs.com/package/google-map-react" target="_blank">Click Here</a> to view the package site</li>
+<li><a href="https://snazzymaps.com" target="_blank">Click Here</a> to get more free map styles<ul>
+<li>to apply for styles add map props <code>options= {{styles: styleObject}}</code></li>
+</ul>
+</li>
+<li>The container of the map component must have a width and a height</li>
 </ul>
 <h2 id="material-ui">Material UI</h2>
 <ul>
@@ -1706,6 +1754,10 @@ function ThemedButton() {
 <li>It is a tool bar that can contain menu icons, search bar, text.</li>
 <li>It has a <code>variant</code> props that can be set to <code>dense</code>, <code>regular</code>(default)</li>
 </ul>
+<h4 id="menu">Menu</h4>
+<ul>
+<li>It has a <code>anchorEl</code> property to keep track of the event target location and use it as anchor for displaying menu</li>
+</ul>
 <h4 id="table">Table</h4>
 <pre><code class="lang-js">//&lt;TableContainer&gt; optional, it wraps the table
 //the optional `component` props defines the table&apos;s root node component type(default `&apos;div&apos;`)
@@ -1741,6 +1793,7 @@ function ThemedButton() {
 <h4 id="grid">Grid</h4>
 <ul>
 <li>It is used to control the layout of the entire web app</li>
+<li>Grid is a flexbox container</li>
 <li>It can be either <code>&lt;Grid container&gt;&lt;/Grid&gt;</code> or <code>&lt;Grid item&gt;&lt;/Grid&gt;</code><ul>
 <li>Component&apos;s style property will only activated when the corresponding <code>container</code> or <code>item</code> type is specified</li>
 </ul>
@@ -1800,6 +1853,8 @@ function ThemedButton() {
     color: <span class="hljs-string">&quot;white&quot;</span>,
     height: <span class="hljs-number">48</span>,
     padding: <span class="hljs-string">&quot;0 30px&quot;</span>,
+    <span class="hljs-comment">//use variables</span>
+    width: <span class="hljs-string">`calc(100% - <span class="hljs-subst">${SIDE_MENU_WIDTH}</span>px)`</span>,
   },
 });
 
@@ -1820,6 +1875,22 @@ function ThemedButton() {
   },
   title: {
     flexGrow: <span class="hljs-number">1</span>,
+  },
+}));
+</code></pre>
+<ul>
+<li>styles based breakpoints</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> useStyles = makeStyles((theme) =&gt; ({
+  root: {
+    backgroundColor: <span class="hljs-string">&quot;blue&quot;</span>,
+    [theme.breakpoints.up(<span class="hljs-string">&quot;md&quot;</span>)]: {
+      backgroundColor: <span class="hljs-string">&quot;red&quot;</span>,
+    },
+    <span class="hljs-comment">//or</span>
+    [theme.breakpoints.down(<span class="hljs-string">&quot;md&quot;</span>)]: {
+      backgroundColor: <span class="hljs-string">&quot;red&quot;</span>,
+    },
   },
 }));
 </code></pre>
@@ -1872,6 +1943,21 @@ palette: {
 <li>In <code>App.js</code> wrap the component that adapts themes with the theme provider components, e.g. <code>&lt;ThemeProvider theme={newTheme}&gt; &lt;Component /&gt; &lt;/ThemeProvider&gt;</code></li>
 <li>Similar to <code>useStyles()</code>, the <code>const theme = useTheme();</code> method will return a variable that contains all the current theme settings</li>
 </ul>
+<h3 id="related-packages">Related Packages</h3>
+<h4 id="material-tables">Material Tables</h4>
+<ul>
+<li>It provides a pre-built table component based on Material UI</li>
+<li>run <code>npm install material-table --save</code> to install</li>
+<li><a href="https://material-table.com/#/docs/all-props" target="_blank">Click Here</a> to view all props for the table component</li>
+</ul>
+<h4 id="material-ui-pickers">Material-UI pickers</h4>
+<ul>
+<li>It provices a datetime picker component</li>
+<li>run <code>npm i @material-ui/pickers</code> to install</li>
+<li>run <code>npm i @date-io/date-fns@1.x date-fns</code> to install a date management library</li>
+<li>wrap the picker component with <code>&lt;MuiPickersUtilsProvider utils={DateFnsUtils}&gt;&lt;/MuiPickersUtilsProvider&gt;</code></li>
+<li><a href="https://material-ui-pickers.dev/api/DatePicker" target="_blank">Click Here</a> to view all props for the date picker component</li>
+</ul>
 <h2 id="debug">Debug</h2>
 <ul>
 <li>Install React Developer Tools Plugin</li>
@@ -1922,7 +2008,7 @@ palette: {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React","level":"1.5.2","depth":2,"next":{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-09-21T13:36:02.599Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React","level":"1.5.2","depth":2,"next":{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-10-11T21:39:20.822Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

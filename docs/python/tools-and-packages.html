@@ -1285,7 +1285,12 @@
 <li><code>conda list --explicit &gt; bio-env.txt</code> Save environment to a text file</li>
 <li><code>conda env remove --name bio-env</code> Delete an environment and everything in it</li>
 <li><code>conda deactivate</code> Deactivate the current environment</li>
-<li><code>conda env create --file bio-env.txt</code> Create environment from a text file</li>
+<li><code>conda env export &gt; environment_config_file.yml</code> generate dependency yaml file<ul>
+<li>Package installed using <code>pip</code> will be listed one level lower under <code>pip:</code></li>
+</ul>
+</li>
+<li><code>conda create --name clone_envname --clone envname</code> Clone an existing environment</li>
+<li><code>conda env create -f bio-env.yml</code> Create environment from a text file</li>
 <li><code>conda search &lt;keyword&gt;</code> search packages</li>
 <li><code>conda install &lt;packagename&gt;</code> Install a new package (Jupyter Notebook) in the active environment<ul>
 <li><code>conda install python=3.5.0</code> Install a certain version of python or packages for the env.</li>
@@ -1444,6 +1449,7 @@
 </ul>
 <h4 id="modify-the-array">Modify the array</h4>
 <ul>
+<li><code>array.tolist()</code>, convert to python list and all elements in basic python built-in types</li>
 <li>Modify the shape of an array<ul>
 <li><code>array.resize(newRowNum,newColumnNum)</code> The shape of the original array is changed.</li>
 <li><code>array.reshape(newRowNum,newColumnNum)</code> Returns a new shape, but the shape of the original array is kept intact.</li>
@@ -1730,6 +1736,7 @@
 </ul>
 </li>
 <li><code>cap = cv2.VideoCapture(&apos;LOCATION OF THE VIDEO&apos;)</code>, reading a video from local storage</li>
+<li><code>ret, frame = cap.read()</code>, capture one video frame by frame, if frame is read correctly <code>ret</code> is <code>True</code></li>
 <li><code>cap.isOpened()</code>, check if the video is successfully stored in the variable<ul>
 <li>work well with <code>while</code> loop</li>
 <li><code>time.sleep(.05)</code> in the loop can slow down down the video process speed.</li>
@@ -1740,7 +1747,7 @@
 <li><code>cap.get(4)</code> check the frame height</li>
 <li><code>ret = cap.set(3,320)</code> or <code>cap.set(cv.CV_CAP_PROP_FRAME_WIDTH, 320)</code> modify width</li>
 <li><code>ret = cap.set(4,240)</code> or <code>cap.set(cv.CV_CAP_PROP_FRAME_HEIGHT, 240)</code> modify height</li>
-<li>Initialize While Loop, read and display frames until Q key is pressed.<pre><code class="lang-py">cap = cv2.VideoCapture(<span class="hljs-number">0</span>)
+<li>Initialize While Loop, read and display frames until <code>Q</code> key is pressed.<pre><code class="lang-py">cap = cv2.VideoCapture(<span class="hljs-number">0</span>)
 <span class="hljs-keyword">while</span>(<span class="hljs-keyword">True</span>):
     <span class="hljs-comment"># Capture frame-by-frame</span>
     ret, frame = cap.read()
@@ -1843,6 +1850,7 @@ cv2.destroyAllWindows()
 <li><code>plt.skcd()</code> set a comic style</li>
 <li><code>plt.show()</code> show the graph</li>
 <li><code>plt.savefig(&apos;filename.png&apos;)</code> save the file in the working directory.</li>
+<li><code>plt.get_cmap(&apos;color_code&apos;)</code> return a list of colors as color map, <a href="https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html" target="_blank">Click</a> to see all options, color is in RBG and has been divided by <code>255</code></li>
 </ul>
 <h2 id="beautifulsoup">BeautifulSoup</h2>
 <h3 id="introduction">Introduction</h3>
@@ -2220,6 +2228,66 @@ vacuum          = true
 </li>
 <li><code>image.save(path, format=&apos;JPEG&apos;, exif=imWIthEXIF.info[&apos;exif&apos;])</code> save image with exif data as <code>jpeg</code>.</li>
 </ul>
+<h2 id="abseil">Abseil</h2>
+<ul>
+<li>run <code>pip install absl-py</code> to install</li>
+</ul>
+<h3 id="app">app</h3>
+<ul>
+<li>Define the entry point to the python script with flags enabled</li>
+<li>example:</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-keyword">from</span> absl <span class="hljs-keyword">import</span> app
+<span class="hljs-keyword">from</span> absl <span class="hljs-keyword">import</span> flags
+
+FLAGS = flags.FLAGS
+flags.DEFINE_string(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-keyword">None</span>, <span class="hljs-string">&quot;Your name.&quot;</span>)
+flags.DEFINE_integer(<span class="hljs-string">&quot;num_times&quot;</span>, <span class="hljs-number">1</span>,
+                     <span class="hljs-string">&quot;Number of times to print greeting.&quot;</span>)
+
+<span class="hljs-comment"># Required flag.</span>
+flags.mark_flag_as_required(<span class="hljs-string">&quot;name&quot;</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">(argv)</span>:</span>
+  <span class="hljs-keyword">del</span> argv  <span class="hljs-comment"># Unused.</span>
+  <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, FLAGS.num_times):
+    print(<span class="hljs-string">&apos;Hello, %s!&apos;</span> % FLAGS.name)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+  app.run(main)
+</code></pre>
+<h3 id="flags">flags</h3>
+<ul>
+<li><code>from absl import flags</code></li>
+<li><code>FLAGS = flags.FLAGS</code> initialize <code>FLAGS</code> object</li>
+<li><code>flags.DEFINE_string(&quot;flag_name&quot;, default_value, &quot;description&quot;)</code> define a flag that takes a string<ul>
+<li><code>flags.DEFINE_integer(&apos;age&apos;, None, &apos;Your age in years.&apos;, lower_bound=0)</code>define a flag that takes a integer</li>
+<li><code>flags.DEFINE_boolean(&apos;debug&apos;, False, &apos;Produces debugging output.&apos;)</code>define a flag that takes a boolean</li>
+<li><code>flags.DEFINE_enum(&apos;job&apos;, &apos;running&apos;, [&apos;running&apos;, &apos;stopped&apos;], &apos;Job status.&apos;)</code>define a flag that takes a enum</li>
+</ul>
+</li>
+<li><code>FLAGS.flag_name</code> access flag argument</li>
+<li><code>flags.mark_flag_as_required(&quot;flag_name&quot;)</code> set a flag as required</li>
+</ul>
+<h3 id="logging">logging</h3>
+<ul>
+<li>A logging package implemented on top of the standard <code>logging</code> module in Python</li>
+<li><code>from absl import logging</code></li>
+<li><code>logging.info(&apos;Interesting Stuff with Arguments: %d&apos;, 42)</code> create a new info level log message</li>
+<li><code>logging.set_verbosity(logging.INFO)</code> only print message with log level higher than <code>INFO</code></li>
+<li>Log level from high to low:<ul>
+<li><code>logging.FATAL</code></li>
+<li><code>logging.ERROR</code></li>
+<li><code>logging.WARNING</code></li>
+<li><code>logging.INFO</code></li>
+<li><code>logging.DEBUG</code></li>
+</ul>
+</li>
+<li><code>logging.log(logging.DEBUG, &apos;This will *not* be printed&apos;)</code> create a log with <code>DEBUG</code> level</li>
+<li><code>logging.warning(&apos;message&apos;)</code> create warning log</li>
+<li><code>logging.error(&apos;message&apos;)</code> create error log</li>
+<li><code>logging.fatal(&apos;message&apos;)</code> create fatal log, and process will exit</li>
+</ul>
 
                                 
                                 </section>
@@ -2263,7 +2331,7 @@ vacuum          = true
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2020-09-09T18:01:10.765Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2020-10-07T21:28:18.058Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

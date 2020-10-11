@@ -1229,6 +1229,7 @@
 <li><code>Injected Web3</code> can be used to get access to account through <code>metamask</code></li>
 </ul>
 </li>
+<li>It includes a debugger on the top right corner of the console panel</li>
 </ul>
 <h2 id="network-provider">Network Provider</h2>
 <h3 id="ganache">Ganache</h3>
@@ -1297,6 +1298,87 @@
 <li>In the first line of the code, the version of the solidity code in use should be specified as <code>pragma solidity ^X.X.XX;</code></li>
 <li>Each code file will define a contract. A contract is essentially a class using keyword contract.</li>
 </ul>
+<h2 id="basic-types">Basic Types</h2>
+<ul>
+<li><code>string</code>: sequence of characters</li>
+<li><code>bool</code>: <code>true</code> or <code>false</code></li>
+<li><code>int</code>(<code>int256</code>): positive and negative integer numbers<ul>
+<li><code>int8</code> - <code>int256</code>: the number indicate the number of bits this type can store</li>
+<li><code>int8</code> stores numbers from <code>-128</code> - <code>127</code></li>
+<li>solidity does not provide built-in method to generate random numbers</li>
+</ul>
+</li>
+<li><code>uint</code>(<code>uint256</code>): unsigned integer, positive numbers only<ul>
+<li><code>uint8</code> stores numbers from <code>0</code> - <code>256</code></li>
+</ul>
+</li>
+<li><code>fixed</code>: decimal numbers<ul>
+<li>for coin units <code>0.01 ether</code> will be auto converted to the equivalent amount of <code>wei</code></li>
+</ul>
+</li>
+<li><code>ufixed</code>: unsigned decimal numbers</li>
+<li><code>address</code>: store account address, has methods for sending money<ul>
+<li><code>addressX.transfer(amount)</code> transfer money from the current contract to the address in <code>wei</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="type-conversion">Type Conversion</h3>
+<ul>
+<li><code>int(value)</code> convert a value to <code>int</code></li>
+</ul>
+<h2 id="reference-types">Reference Types</h2>
+<ul>
+<li>fixed array: array with fixed length, all elements must be the same type<ul>
+<li><code>int[3]</code></li>
+</ul>
+</li>
+<li>dynamic array: array with fixed leng, all elements must be the same type<ul>
+<li><code>int[] public arrayX;</code></li>
+<li><code>arrayX = new int[](5);</code> create dynamic array with initial size 5, default value will be <code>0</code></li>
+<li><code>arrayX.push(1);</code> add a new element <code>1</code></li>
+<li><code>arrayX.length;</code> return the length of the array</li>
+<li><code>arrayX[0]</code> access the first element</li>
+<li>when solidity works with <code>ABI</code> the nested dynamic arrays are not available<ul>
+<li>string is an array of character. In this case, an array of string is also not available</li>
+<li>It will raise an <code>UnimplementedFeatureError</code></li>
+</ul>
+</li>
+<li>the default getter method for array takes an index as argument and return the value of the element</li>
+</ul>
+</li>
+<li>mapping: collection of key value pairs, keys must be of the same type, and values must be of the same type. Keys and values doesn&apos;t have to be of the same type<ul>
+<li><code>mapping(string =&gt; int) public mappingX</code></li>
+</ul>
+</li>
+<li>struct: represent an object type<ul>
+<li><code>struct Person { uint age; string name; }</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="global-variable">Global Variable</h2>
+<ul>
+<li>The variable that available for all functions</li>
+</ul>
+<h3 id="msg"><code>msg</code></h3>
+<ul>
+<li><code>msg.data</code> the data in the transcation</li>
+<li><code>msg.gas</code> the amount of gas available</li>
+<li><code>msg.sender</code> the address of the account that called the function</li>
+<li><code>msg.value</code> the amount of ether in wei that was sent along with the function call</li>
+</ul>
+<h3 id="block"><code>block</code></h3>
+<ul>
+<li><code>block.difficulty</code> the current block difficulty</li>
+</ul>
+<h3 id="now"><code>now</code></h3>
+<ul>
+<li><code>now</code> returns the current time</li>
+</ul>
+<h3 id="this"><code>this</code></h3>
+<ul>
+<li><code>this</code> is a reference to the current contract</li>
+<li><code>this.balance</code> the current balance of the current contract</li>
+</ul>
 <h2 id="contract">Contract</h2>
 <ul>
 <li>A contract can be defined using <code>contract ContractName{}</code></li>
@@ -1333,6 +1415,24 @@
 }
 </code></pre>
 </li>
+</ul>
+<h3 id="modifier">Modifier</h3>
+<ul>
+<li>it acts like a wrapped for others function to reduce duplicated codes</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function">function <span class="hljs-title">innerFunc</span><span class="hljs-params">()</span> <span class="hljs-keyword">public</span> modfierExample </span>{
+  <span class="hljs-comment">// code</span>
+}
+<span class="hljs-comment">// the _; indicate the location of the inner function code when it is wrapped in the modifier</span>
+<span class="hljs-function">modifier <span class="hljs-title">modfierExample</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-comment">// code</span>
+  _;
+}
+</code></pre>
+<h3 id="global-functions">Global Functions</h3>
+<ul>
+<li><code>require(condition);</code> is used to check if a certain condition is satisfied in a funciton. When the condition returns false the function will stop executing and return an error message says <code>VM error: revert</code>, if true the execution will continue</li>
+<li><code>sha3(valueA, valueB, valueC);</code> or <code>keccak256(valueA, valueB, valueC)</code> calculate hash bash on the input values</li>
 </ul>
 
                                 
@@ -1377,7 +1477,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Solidity","level":"1.16","depth":1,"next":{"title":"Operating Systems","level":"1.17","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.17.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.17.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.17.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]}]},"previous":{"title":"SQL","level":"1.15","depth":1,"path":"sql/README.md","ref":"sql/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"solidity/README.md","mtime":"2020-09-02T23:27:28.299Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Solidity","level":"1.16","depth":1,"next":{"title":"Operating Systems","level":"1.17","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.17.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.17.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.17.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]}]},"previous":{"title":"SQL","level":"1.15","depth":1,"path":"sql/README.md","ref":"sql/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"solidity/README.md","mtime":"2020-10-11T20:16:48.394Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

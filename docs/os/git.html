@@ -1198,8 +1198,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="git">Git</h1>
-<h2 id="introduction">Introduction</h2>
+                                <h1 id="version-control-systems">Version Control Systems</h1>
+<h2 id="git-cli">Git CLI</h2>
+<h3 id="introduction">Introduction</h3>
 <ul>
 <li>Git is a Version Control System(VCS).</li>
 <li>Git has a local and remote repository.</li>
@@ -1215,7 +1216,7 @@
 <li>When a branch is behind the <code>HEAD</code>, it can <code>pull</code> the head and update from the <code>HEAD</code>.</li>
 <li>A fast-forward is when, instead of constructing a merge commit, git just moves your branch pointer to point at the incoming commit. It happens if it detects that the current <code>HEAD</code> is an ancestor of the commit you&apos;re trying to merge.</li>
 </ul>
-<h2 id="installation">Installation</h2>
+<h3 id="installation">Installation</h3>
 <ul>
 <li>linux(Debian)<pre><code>sudo apt-get install git
 </code></pre></li>
@@ -1224,11 +1225,11 @@
 <li>Mac, run <code>brew install git</code>.</li>
 <li>Windows, <a href="http://git-scm.com/download/win" target="_blank">Click</a> to download the installation package.</li>
 </ul>
-<h2 id="git-commands">Git Commands</h2>
+<h3 id="git-commands">Git Commands</h3>
 <ul>
 <li><a href="https://git-scm.com/docs" target="_blank">Click</a> to list a full list of commands.</li>
 </ul>
-<h3 id="setup-local-repository">Setup Local Repository</h3>
+<h4 id="setup-local-repository">Setup Local Repository</h4>
 <ul>
 <li><code>git command --help</code> View help document.</li>
 <li><code>git help command</code> View help document.</li>
@@ -1240,7 +1241,7 @@
 <li><code>git config --list</code> Check all config values.</li>
 <li><code>touch .gitignore</code> Add the filename or folder addresses in the .gitignore file line by line, those files will be ignored by git.</li>
 </ul>
-<h3 id="managing-staging-area">Managing Staging Area</h3>
+<h4 id="managing-staging-area">Managing Staging Area</h4>
 <ul>
 <li><code>git log</code> Show changes made to the repos.</li>
 <li><code>git add fileName.extension</code> Add the file to the staging area.</li>
@@ -1255,7 +1256,7 @@
 <li><code>git commit -m &apos;commit message&apos;</code> Commit the files with commit message.</li>
 <li><code>git diff &lt;branch1&gt; &lt;branch2&gt;</code> View difference between branches.</li>
 </ul>
-<h3 id="branches">Branches</h3>
+<h4 id="branches">Branches</h4>
 <ul>
 <li><code>git branch</code> lists local branches and shows the current working branch.</li>
 <li><code>git branch -a</code> lists all local and its corresponding remote tracking branches.</li>
@@ -1266,6 +1267,7 @@
 <li>To sync remote branch names, delete the remote <code>&lt;oldbranch&gt;</code>, and push the <code>&lt;newbranch&gt;</code>.</li>
 </ul>
 </li>
+<li><code>git branch -M &lt;newbranch&gt;</code> create new branch then checkout to the new branch</li>
 <li><code>git branch -d branchName</code> Delete the branch locally.</li>
 <li><code>git branch --set-upstream-to &lt;remoteBranchName&gt;</code> or <code>git branch -u &lt;remoteBranchName&gt;</code> set the remote tracking branch for the local branch.</li>
 <li><code>git push origin --delete branchName</code> Delete the branch in the remote repos.</li>
@@ -1280,7 +1282,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="working-with-remote-repository">Working with Remote Repository</h3>
+<h4 id="working-with-remote-repository">Working with Remote Repository</h4>
 <ul>
 <li><code>git log</code> see records and past commit id</li>
 <li><code>git revert &lt;commitID&gt;</code> revert back a certain commit and commit the changes.</li>
@@ -1291,6 +1293,12 @@
 <li><code>git remote</code> List all the current remote repos.</li>
 <li><code>git remote add origin &lt;URL&gt;</code> Add the remote repos.<ul>
 <li>For Github repos, the URL is usually like, <code>https://github.com/AccountName/ReposName.git</code></li>
+</ul>
+</li>
+<li><code>git remote show origin</code> check the tracking config</li>
+<li><code>git remote set-url origin &lt;URL&gt;</code> update remote URL(happens when repo name changed)</li>
+<li><code>git config --get remote.origin.url</code> check the current tracking remote URL<ul>
+<li>or <code>git remote -v</code></li>
 </ul>
 </li>
 <li><code>git push -u origin &lt;remoteBranch&gt;</code> push to certain remote branch and set the remote branch as the remote tracking branch.<ul>
@@ -1307,6 +1315,74 @@
 <li><code>git pull</code> Pull the latest from the remote repos</li>
 <li><code>git clone URL</code> Clone repos into the current directory.</li>
 <li><code>git clone URL folderAddress</code> Clone repos into the certain directory.</li>
+</ul>
+<h2 id="git-large-file-storagelfs">Git Large File Storage(LFS)</h2>
+<ul>
+<li>Use Git LFS when a file has size larger than 100MB</li>
+</ul>
+<h3 id="setup">Setup</h3>
+<ul>
+<li>run <code>brew install git-lfs</code></li>
+<li>run <code>git lfs install</code> to signin</li>
+<li>run <code>git lfs track &quot;&lt;large_file&gt;&quot;</code> to let <code>lfs</code> handle large file<ul>
+<li>a record in <code>.gitattributes</code> file will be created</li>
+</ul>
+</li>
+<li>During future <code>git push</code> large files will be automatically managed by <code>lfs</code><ul>
+<li>Rollback is required when large file has already been committed to the local repo</li>
+</ul>
+</li>
+</ul>
+<h2 id="github-cli">GitHub CLI</h2>
+<ul>
+<li>It enables the full access to the GitHub Website using CLI</li>
+<li><a href="https://cli.github.com/manual/" target="_blank">Click Here</a> to view the official manual</li>
+<li>Installation, run <code>brew install gh</code> to install</li>
+<li>add <code>eval &quot;$(gh completion --shell &lt;bash|zsh|fish|powershell&gt;)&quot;</code> in the dot file in order to setup command auto completion with tab</li>
+<li><code>gh</code> command has two level and has a <code>gh &lt;FirstLevel&gt;&lt;SecondLevel&gt;</code> structure, it has the following first level command:</li>
+<li><code>auth</code> is used to manage user login, it has the following second level command<ul>
+<li><code>login</code> login to the GitHub account</li>
+<li><code>logout</code> logout</li>
+<li><code>refresh</code> same as logout then login</li>
+<li><code>status</code> View authentication status</li>
+</ul>
+</li>
+<li><code>repo</code> is used to manage repositories, it has the following second level command<ul>
+<li><code>create</code> create a repository under your account using the current directory name<ul>
+<li><code>create &lt;ProjectName&gt;</code> create a repository with a specific name</li>
+<li><code>create &lt;Organization/Username&gt;/&lt;ProjectName&gt;</code> create a repository in an organization<ul>
+<li><code>--private</code> Make the new repository private</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>clone &lt;URL&gt;</code> clone a repo</li>
+<li><code>clone &lt;Organization/Username&gt;/&lt;ProjectName&gt;</code> clone a repo</li>
+</ul>
+</li>
+<li><code>pr</code> is used to manage pull requests, it has the following second level command<ul>
+<li>By default the command will access the pull request that belongs to the current branch, all second level command can acess a specific request by appending argument including <code>&lt;RequestNumber&gt;</code>, <code>&lt;RequestUrl&gt;</code>, <code>&lt;RequestBranch&gt;</code></li>
+<li><code>list</code> List and filter pull requests in this repository<ul>
+<li><code>-s open</code> list open request only</li>
+</ul>
+</li>
+<li><code>view</code> View the pull request that belongs to the current branch</li>
+<li><code>status</code> Check the status of the pull request in the current branch</li>
+<li><code>create</code> Create a pull request interactively<ul>
+<li><code>create --title &quot;Pull request title&quot; --body &quot;Pull request body&quot;</code></li>
+<li><code>create --web</code> Quickly navigate to the pull request creation page</li>
+</ul>
+</li>
+<li><code>merge</code> Merge a pull request<ul>
+<li><code>--delete-branch=false&apos;</code> or <code>-d=false</code> retain the remote and local head branch after merge</li>
+<li><code>-m</code> or <code>--merge</code> Merge the commits with the base branch</li>
+<li><code>-r</code> or <code>--rebase</code> Rebase the commits onto the base branch</li>
+<li><code>-s</code> or <code>--squash</code> Squash the commits into one commit and merge it into the base branch</li>
+</ul>
+</li>
+<li><code>diff</code> View changes in a pull request</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -1351,7 +1427,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Git","level":"1.17.7","depth":2,"next":{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},"previous":{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/git.md","mtime":"2020-08-14T20:05:22.623Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Git","level":"1.17.7","depth":2,"next":{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},"previous":{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/git.md","mtime":"2020-10-08T21:13:09.259Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

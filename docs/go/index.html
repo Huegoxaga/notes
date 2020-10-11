@@ -1292,6 +1292,24 @@
 <li><code>&amp;variableName</code> return the pointer which contains the memory address of the variable</li>
 <li><code>*addressVariable</code> access the value of the pointer</li>
 </ul>
+<h2 id="array">Array</h2>
+<ul>
+<li>array has type like <code>[5]int</code></li>
+<li>when an array doesn&apos;t have fixed size, it is a slice, e.g. <code>[]int</code></li>
+</ul>
+<h2 id="structures">Structures</h2>
+<h3 id="loop">Loop</h3>
+<ul>
+<li><code>for i:=0; i&lt;10; i++{}</code> the basic for loop</li>
+<li><code>for i&lt;10; i++{}</code> if <code>i</code> is declared already<ul>
+<li>optionally, <code>for i&lt;10 {i++}</code></li>
+</ul>
+</li>
+<li><code>for {}</code> infinite loop</li>
+<li><code>for(condition) {}</code> like a while loop</li>
+<li><code>for index, element := range arrayX {}</code> iterate through an array</li>
+<li><code>break</code> get out of the loop <code>break</code> is immediately in</li>
+</ul>
 <h2 id="functions">Functions</h2>
 <ul>
 <li>Function has syntax as <code>func name(){}</code> or <code>func name(x typeForX, y typeForY) returnType { return z }</code><ul>
@@ -1312,6 +1330,7 @@
 <h2 id="struct">Struct</h2>
 <ul>
 <li>It defines a customized class or type</li>
+<li>Struct name has its first letter capitalized</li>
 </ul>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
@@ -1406,6 +1425,11 @@
 </ul>
 </li>
 </ul>
+<h3 id="encoding">encoding</h3>
+<h4 id="encodingxml">encoding/xml</h4>
+<ul>
+<li><code>xml.Unmarshal(from, to)</code> parse xml to a struct type</li>
+</ul>
 
                                 
                                 </section>
@@ -1449,7 +1473,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Go Programming Language","level":"1.10","depth":1,"next":{"title":"Markup Language","level":"1.11","depth":1,"path":"markup/README.md","ref":"markup/README.md","articles":[{"title":"HTML","level":"1.11.1","depth":2,"path":"markup/html.md","ref":"markup/html.md","articles":[]},{"title":"XML","level":"1.11.2","depth":2,"path":"markup/xml.md","ref":"markup/xml.md","articles":[]},{"title":"GFM","level":"1.11.3","depth":2,"path":"markup/gfm.md","ref":"markup/gfm.md","articles":[]},{"title":"LaTeX","level":"1.11.4","depth":2,"path":"markup/latex.md","ref":"markup/latex.md","articles":[]}]},"previous":{"title":"Xcode","level":"1.9.1","depth":2,"path":"swift/xcode.md","ref":"swift/xcode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"go/README.md","mtime":"2020-09-20T20:17:30.738Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Go Programming Language","level":"1.10","depth":1,"next":{"title":"Markup Language","level":"1.11","depth":1,"path":"markup/README.md","ref":"markup/README.md","articles":[{"title":"HTML","level":"1.11.1","depth":2,"path":"markup/html.md","ref":"markup/html.md","articles":[]},{"title":"XML","level":"1.11.2","depth":2,"path":"markup/xml.md","ref":"markup/xml.md","articles":[]},{"title":"GFM","level":"1.11.3","depth":2,"path":"markup/gfm.md","ref":"markup/gfm.md","articles":[]},{"title":"LaTeX","level":"1.11.4","depth":2,"path":"markup/latex.md","ref":"markup/latex.md","articles":[]}]},"previous":{"title":"Xcode","level":"1.9.1","depth":2,"path":"swift/xcode.md","ref":"swift/xcode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"go/README.md","mtime":"2020-09-29T19:04:24.839Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

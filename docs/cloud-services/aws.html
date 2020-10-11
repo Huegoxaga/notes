@@ -1642,6 +1642,7 @@ commands:
 <h2 id="lambda">Lambda</h2>
 <p>It runs scripts and codes without the need to set up the server.</p>
 <ul>
+<li><code>Lambda</code> uses <code>UTC</code> as instance local time</li>
 <li>Click the Test tab to generate test cases with specific input.</li>
 <li>Add proper Lambda Execution Role to allow Lambda instance to be triggered by other AWS services.</li>
 <li>When SQS is the trigger, the batch means the number of SQS messages the lambda wants to receive and process during one invocation.</li>
@@ -1739,14 +1740,19 @@ commands:
 <ul>
 <li>All API methods are defined as resources.</li>
 <li>Resources need to be deploy as stages before using.</li>
+<li>Custom Domain Names<ul>
 <li>Custom Domain Names will attach user&apos;s own certificate to the URL and map the domain to the staged resources.</li>
-<li>Custom Domain Names will need an Alias in Route 53 for its API Gateway domain name.</li>
-<li>CORS can be enabled for each individual method in the <code>Actions</code> menu.<ul>
-<li><code>CORS</code> header setting will be stored in the <code>OPTIONS</code> method of the same resource.</li>
+<li>Custom Domain Names will need an Alias in Route 53 for the API Gateway domain name found in the Endpoint configuration panel after creating setup the new API Gateway domain name</li>
+<li>It takes some time for the new domain name to work</li>
 </ul>
 </li>
-<li>If integrated with Lambda, Allow CORS in the response header in the return statement at the end.<pre><code class="lang-py"><span class="hljs-string">&apos;headers&apos;</span>: {
-    <span class="hljs-string">&apos;Access-Control-Allow-Headers&apos;</span>: <span class="hljs-string">&apos;Content-Type&apos;</span>,
+<li>CORS can be enabled for each individual method in the <code>Actions</code> menu.<ul>
+<li><code>CORS</code> header setting will be stored in the <code>OPTIONS</code> method of the same resource.</li>
+<li>Can allow more headers in the <code>Access-Control-Allow-Headers</code> field when edit CORS setting</li>
+</ul>
+</li>
+<li>If integrated with Lambda, response header can be added in the return statement in the following format.<pre><code class="lang-py"><span class="hljs-string">&apos;headers&apos;</span>: {
+    <span class="hljs-string">&apos;Access-Control-Allow-Headers&apos;</span>: <span class="hljs-string">&apos;Content-Type, Cache-Control&apos;</span>,
     <span class="hljs-string">&apos;Access-Control-Allow-Origin&apos;</span>: <span class="hljs-string">&apos;*&apos;</span>,
     <span class="hljs-string">&apos;Access-Control-Allow-Methods&apos;</span>: <span class="hljs-string">&apos;OPTIONS,POST,GET&apos;</span>
 },
@@ -1763,6 +1769,42 @@ commands:
 <li>only the <code>$context</code> variable can be used to access requrest info.</li>
 </ul>
 </li>
+<li>the <code>Lambda Proxy</code> need to be enabled in the <code>Integration Request</code> setting to pass URL parameters to the event argument of the associated lambda function</li>
+</ul>
+<h2 id="amplify">Amplify</h2>
+<ul>
+<li>It is used for hosting frontend apps and backend services</li>
+</ul>
+<h3 id="amplify-console">Amplify Console</h3>
+<ul>
+<li>It can be used to host Web Apps using source code from online repo provider like GitHub</li>
+<li>Whenever a change is pushed the app will be auto built and updated</li>
+<li>Preview can be setup, so whenever a pull request is made, one can preview the changes in a browser</li>
+<li>Each GitHub branch can connect to one server</li>
+<li>The Domain management setting page can create and manage domain with SSL certificate</li>
+</ul>
+<h3 id="amplify-cli">Amplify CLI</h3>
+<ul>
+<li>It can be use to host both frontend and backend apps</li>
+<li>setup<ol>
+<li>run <code>sudo npm install -g @aws-amplify/cli</code> to install</li>
+<li>run <code>amplify configure</code> to create new aws crendentials for amplify CLI</li>
+<li>run <code>amplify init</code> from the root directory of the frontend app to create new amplify project</li>
+</ol>
+</li>
+<li>run <code>amplify hosting add</code> to host frontend web app, there are two options:<ul>
+<li>hosting of static website using Amazon S3 and Amazon Cloudfront directly</li>
+<li>hosting with AWS Amplify Console, there are two more options:<ul>
+<li>Continuous deployment - auto built and update when every a <code>git push</code> is made</li>
+<li>Manual deployment - run <code>amplify publish</code> to deploy app from local machine</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>run <code>amplify console</code> to open Amplify Console</li>
+<li>run <code>amplify status</code> check the status of running services</li>
+<li>run <code>amplify delete</code> delete all the environments of the project from the cloud and wipe out all the local files created by Amplify CLI</li>
+<li>run <code>amplify help</code> to see more options</li>
 </ul>
 <h2 id="amazon-certificate-manager">Amazon Certificate Manager</h2>
 <ul>
@@ -2078,7 +2120,7 @@ commands:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.20.1","depth":2,"next":{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.20","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.20.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-09-17T16:56:36.048Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.20.1","depth":2,"next":{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.20","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.20.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-09-30T17:23:17.071Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

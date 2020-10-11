@@ -1202,14 +1202,18 @@
 <h2 id="introduction">Introduction</h2>
 <ul>
 <li>Python is a high-level, interpreted programming language.</li>
-<li>Interpreted language has an interpreter processing the scripts at runtimes line by line, no compiling needed before execution. Cpython is the official interpreter.</li>
+<li>Interpreted language has an interpreter processing the scripts at runtimes line by line from top to bottom, the compiling process is done by the interpreter during code execution<ul>
+<li><code>Cpython</code> is the official interpreter. It is written in <code>C</code> and <code>Python</code></li>
+<li>Interpreted language doesn&#x2019;t have machine code file which is created by the compiler.</li>
+</ul>
+</li>
 <li>Python 3 is the current version.</li>
-<li>IDLE is the integrated development environment for Python. It is available for all platform. Python code can be executed in IDLE line by line using Python Shell(immediate mode) or written and run in source code files.</li>
-<li>Source files have an extension of <code>.py</code>. The code is executed all at once, from top to bottom. Interpreted language doesn&#x2019;t have machine code file which is created by the compiler.</li>
+<li>IDLE is the integrated development environment for Python. It is available for all platform. Python code can be executed in IDLE line by line using Python Shell(immediate mode) or written and run in source code files and execute by running <code>python &lt;filename&gt;</code> in the terminal</li>
+<li>Source files have an extension of <code>.py</code>.</li>
 <li>It is a case sensitive language.</li>
 </ul>
 <h2 id="basic-syntax">Basic Syntax</h2>
-<p>It is generally consisted of comments, statements, methods, functions and modules.</p>
+<p>Python Syntax is generally consisted of comments, statements, methods, functions and modules.</p>
 <h3 id="comments">Comments</h3>
 <ul>
 <li>Single line comment is followed by <code>#</code>, everything after # in one line will be ignored.</li>
@@ -1256,13 +1260,8 @@ input(<span class="hljs-string">&quot;Prompt: &quot;</span>)     <span class="hl
 </code></pre>
 <h3 id="modules">Modules</h3>
 <ul>
-<li>Modules provide additional methods or functions for the programming. They are imported at the very beginning.</li>
-<li>It is recognized by the keyword <code>import</code>. For example, a module called <code>module</code> can imported in the following ways:</li>
+<li>Modules provide additional methods or functions for the programming. They are imported using keyword <code>import</code> at the very beginning.</li>
 </ul>
-<pre><code class="lang-py"><span class="hljs-keyword">import</span> module
-<span class="hljs-keyword">import</span> module <span class="hljs-keyword">as</span> md
-<span class="hljs-keyword">from</span> module <span class="hljs-keyword">import</span> function
-</code></pre>
 <h2 id="variables">Variables</h2>
 <p>They are customized name for storing data.</p>
 <h3 id="naming-conventions">Naming Conventions</h3>
@@ -1277,128 +1276,6 @@ input(<span class="hljs-string">&quot;Prompt: &quot;</span>)     <span class="hl
 <ul>
 <li>Variables introduced inside functions are local(only available) to that function.</li>
 </ul>
-<h2 id="basic-data-types">Basic Data Types</h2>
-<h4 id="boolean">Boolean</h4>
-<ul>
-<li>True</li>
-<li>False</li>
-</ul>
-<h4 id="integer">Integer</h4>
-<ul>
-<li>Whole number</li>
-</ul>
-<h4 id="float">Float</h4>
-<ul>
-<li>It can be any number with a decimal point. It is produced after any division or implicitly transfer after an operation between float and integer.</li>
-<li>Computer has limited memory space for floats. Also, any zero at the end will be ignored.</li>
-</ul>
-<blockquote>
-<h4 id="useful-math-functions">Useful Math Functions</h4>
-</blockquote>
-<pre><code class="lang-py">round(value, toHowManyDigitAfterDecimal) <span class="hljs-comment">#Rounding to specific decimal place</span>
-abs(value) <span class="hljs-comment">#Get the absolute value of a number.</span>
-</code></pre>
-<h4 id="character">Character:</h4>
-<ul>
-<li>It can be any single character.</li>
-</ul>
-<blockquote>
-<h4 id="character-conversion">Character Conversion</h4>
-</blockquote>
-<pre><code class="lang-py">ord(character)  <span class="hljs-comment">#Transforming a character to its ASCII code number. Character can be Unicode like u&#x2019;\u1234&#x2019;</span>
-chr(number)   <span class="hljs-comment"># transform ASCII (a number from 0 to 255) to character.</span>
-unichr(number)   <span class="hljs-comment"># transform UCS2 (a number from 0 to 65535) to character.</span>
-</code></pre>
-<h4 id="string">String:</h4>
-<ul>
-<li>String is like list type for character, but can not change(immutable).</li>
-<li>\ is used to escape special characters, the characters are then called escape characters. E.g. <code>&quot;abc\&quot;def\\g&quot;</code>, Output: <code>abc&quot;def\g</code></li>
-<li><code>\n</code> represents a newline.</li>
-<li><code>\t</code> represents a new tab.</li>
-</ul>
-<h5 id="string-operators">String operators</h5>
-<ul>
-<li>Concatenation uses <code>+</code>.</li>
-<li>Integer repetition uses <code>*</code>.</li>
-</ul>
-<h5 id="membership-operator">Membership Operator</h5>
-<p>It returns membership relationship between two objects as boolean.</p>
-<pre><code class="lang-py">a <span class="hljs-keyword">in</span> b
-a <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> b
-<span class="hljs-keyword">not</span> a <span class="hljs-keyword">in</span> b
-</code></pre>
-<h5 id="relational-operators">Relational operators</h5>
-<p>It can be used on strings for lexicographical(alphabetical order) comparison.</p>
-<h5 id="string-methods">String Methods</h5>
-<pre><code class="lang-py">stringX[n]  <span class="hljs-comment">#Get the character of stringX at nth index.</span>
-
-stringX[m:n]  <span class="hljs-comment">#Get the character of stringX at index from m to n-1, max or min if m or n is missing.</span>
-<span class="hljs-string">&quot;&quot;&quot;
-There could be a third parameter that represents the step.
--1 means backward from its left or right end.
-&quot;&quot;&quot;</span>
-str.upper()
-str.lower()
-str.isalpha()         <span class="hljs-comment">#Return boolean</span>
-str.isdecimal()
-str.islower()
-str.isspace()
-str.isupper()
-str.find(substring) <span class="hljs-comment">#Find the lowest index of the substring.</span>
-str.strip(string)   <span class="hljs-comment">#Strip all the characters in the argument of the str from the beginning and the end.</span>
-<span class="hljs-string">&quot;,&quot;</span>.join([<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>])
-<span class="hljs-comment">#Output:&#x2019;a,b,c&#x2019;</span>
-<span class="hljs-string">&quot;Hello ME&quot;</span>.replace(<span class="hljs-string">&quot;ME&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>)
-<span class="hljs-comment">#Output:&#x2019;Hello world&#x2019;</span>
-<span class="hljs-string">&quot;This is a sentence&quot;</span>.startswith(<span class="hljs-string">&quot;This&quot;</span>)
-<span class="hljs-comment">#Output:True</span>
-<span class="hljs-string">&quot;Hello World!&quot;</span>.endswith(<span class="hljs-string">&quot;world!&quot;</span>)
-<span class="hljs-comment">#Output:False</span>
-<span class="hljs-string">&quot;x,y,z&quot;</span>.split(<span class="hljs-string">&quot;,&quot;</span>)
-<span class="hljs-comment">#Output:[&#x2018;x&#x2019;,&#x2019;y&#x2019;,&#x2019;z&#x2019;]</span>
-</code></pre>
-<h5 id="string-function">String Function</h5>
-<pre><code class="lang-py">len(string)    <span class="hljs-comment">#Return the number of characters of this string.</span>
-</code></pre>
-<h5 id="string-formatting">String Formatting</h5>
-<p><code>&quot;formatedStringUsing{}&quot;.format(x,y,z)</code></p>
-<ul>
-<li>String is formatted in a set of double quotation marks.</li>
-<li>The location, order, and content of data is indicated by <code>{}</code>.</li>
-<li>The argument of <code>.format</code> is the value of data in the <code>{}</code>.</li>
-<li>Use double curly bracket to escape <code>{}</code></li>
-</ul>
-<pre><code class="lang-py"><span class="hljs-string">&quot;{x},{y}&quot;</span>.format(x=<span class="hljs-number">5</span>,y=<span class="hljs-number">12</span>)
-<span class="hljs-comment">#Output:5,12</span>
-<span class="hljs-string">&quot;{} {}&quot;</span>.format(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>)
-<span class="hljs-comment">#Output:100 50</span>
-<span class="hljs-string">&quot;{1}abc{0}&quot;</span>.format(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>)
-<span class="hljs-comment">#Output:50abc100</span>
-<span class="hljs-string">&quot;{:04d}&quot;</span>.format(<span class="hljs-number">1</span>)
-<span class="hljs-comment">#Output:0001</span>
-<span class="hljs-string">&quot;{:06.2f}&quot;</span>.format(<span class="hljs-number">1.2</span>)
-<span class="hljs-comment">#Output:001.20     #decimal point counts</span>
-<span class="hljs-string">&quot;{:_&lt;10}&quot;</span>.format(<span class="hljs-string">&quot;left&quot;</span>)
-<span class="hljs-comment">#Output:left______</span>
-<span class="hljs-string">&quot;{:&gt;10}&quot;</span>.format(<span class="hljs-string">&quot;right&quot;</span>)
-<span class="hljs-comment">#Output:     right</span>
-</code></pre>
-<ul>
-<li>Optionally, use <code>f&quot;Formatted: {variable}:.2f&quot;</code><ul>
-<li>Use <code>()</code> for expression containing variables.</li>
-</ul>
-</li>
-</ul>
-<h3 id="type-casting">Type Casting</h3>
-<p>Explicitly convert types.</p>
-<pre><code class="lang-py">str(x)    <span class="hljs-comment">#To  string</span>
-int(x)    <span class="hljs-comment">#To  integer</span>
-float(x) <span class="hljs-comment">#To   float</span>
-list(x)   <span class="hljs-comment">#To   list</span>
-eval(x) <span class="hljs-comment"># parse and evaluation a string to other types</span>
-eval(<span class="hljs-string">&apos;[1]&apos;</span>) <span class="hljs-comment">#string to list</span>
-eval(<span class="hljs-string">&apos;1&apos;</span>) <span class="hljs-comment">#string to int</span>
-</code></pre>
 <h2 id="operators">Operators</h2>
 <p>Operators are special symbols that placed in between objects.</p>
 <h3 id="operators-and-precedence">Operators and Precedence</h3>
@@ -1449,7 +1326,7 @@ eval(<span class="hljs-string">&apos;1&apos;</span>) <span class="hljs-comment">
 </li>
 <li>Two or more physical lines may be joined into logical lines using backslash characters (<code>\</code>)</li>
 </ul>
-<h3 id="bitwise-operators">Bitwise operators</h3>
+<h3 id="bitwise-operators">Bitwise Operators</h3>
 <p>It is performed bit by bit.</p>
 <ul>
 <li>and <code>&amp;</code></li>
@@ -1468,8 +1345,131 @@ eval(<span class="hljs-string">&apos;1&apos;</span>) <span class="hljs-comment">
 <li><code>a+=b</code> is treated as <code>a=a+b</code></li>
 <li><code>a**b**c</code> is same as <code>a**(b**c)</code>. This is called right associative.</li>
 </ul>
+<h2 id="basic-data-types">Basic Data Types</h2>
+<h3 id="boolean">Boolean</h3>
+<ul>
+<li>True</li>
+<li>False</li>
+</ul>
+<h3 id="integer">Integer</h3>
+<ul>
+<li>Whole number</li>
+</ul>
+<h3 id="float">Float</h3>
+<ul>
+<li>It can be any number with a decimal point. It is produced after any division or implicitly transfer after an operation between float and integer.</li>
+<li>Computer has limited memory space for floats. Also, any zero at the end will be ignored.</li>
+</ul>
+<blockquote>
+<h4 id="useful-math-functions">Useful Math Functions</h4>
+</blockquote>
+<pre><code class="lang-py">round(value, toHowManyDigitAfterDecimal) <span class="hljs-comment">#Rounding to specific decimal place</span>
+abs(value) <span class="hljs-comment">#Get the absolute value of a number.</span>
+</code></pre>
+<h3 id="character">Character</h3>
+<ul>
+<li>It can be any single character.</li>
+</ul>
+<blockquote>
+<h4 id="character-conversion">Character Conversion</h4>
+</blockquote>
+<pre><code class="lang-py">ord(character)  <span class="hljs-comment">#Transforming a character to its ASCII code number. Character can be Unicode like u&#x2019;\u1234&#x2019;</span>
+chr(number)   <span class="hljs-comment"># transform ASCII (a number from 0 to 255) to character.</span>
+unichr(number)   <span class="hljs-comment"># transform UCS2 (a number from 0 to 65535) to character.</span>
+</code></pre>
+<h3 id="string">String</h3>
+<ul>
+<li>String is like list type for character, but can not change(immutable).</li>
+<li>\ is used to escape special characters, the characters are then called escape characters. E.g. <code>&quot;abc\&quot;def\\g&quot;</code>, Output: <code>abc&quot;def\g</code></li>
+<li><code>\n</code> represents a newline.</li>
+<li><code>\t</code> represents a new tab.</li>
+</ul>
+<h4 id="string-operators">String Operators</h4>
+<ul>
+<li>Concatenation uses <code>+</code>.</li>
+<li>Integer repetition uses <code>*</code>.</li>
+</ul>
+<h4 id="membership-operator">Membership Operator</h4>
+<p>It returns membership relationship between two objects as boolean.</p>
+<pre><code class="lang-py">a <span class="hljs-keyword">in</span> b
+a <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> b
+<span class="hljs-keyword">not</span> a <span class="hljs-keyword">in</span> b
+</code></pre>
+<h4 id="relational-operators">Relational Operators</h4>
+<p>It can be used on strings for lexicographical(alphabetical order) comparison.</p>
+<h4 id="string-methods">String Methods</h4>
+<pre><code class="lang-py">stringX[n]  <span class="hljs-comment">#Get the character of stringX at nth index.</span>
+
+stringX[m:n]  <span class="hljs-comment">#Get the character of stringX at index from m to n-1, max or min if m or n is missing.</span>
+<span class="hljs-string">&quot;&quot;&quot;
+There could be a third parameter that represents the step.
+-1 means backward from its left or right end.
+&quot;&quot;&quot;</span>
+str.upper()
+str.lower()
+str.isalpha()         <span class="hljs-comment"># Return boolean</span>
+str.isdecimal()
+str.islower()
+str.isspace()
+str.isupper()
+str.find(substring) <span class="hljs-comment"># Find the lowest index of the substring.</span>
+str.strip(string)   <span class="hljs-comment"># Strip all the characters in the argument of the str from the beginning and the end. (if no argument, remove empty spaces by default)</span>
+<span class="hljs-string">&quot;,&quot;</span>.join([<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>])
+<span class="hljs-comment">#Output:&#x2019;a,b,c&#x2019;</span>
+<span class="hljs-string">&quot;Hello ME&quot;</span>.replace(<span class="hljs-string">&quot;ME&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>)
+<span class="hljs-comment">#Output:&#x2019;Hello world&#x2019;</span>
+<span class="hljs-string">&quot;This is a sentence&quot;</span>.startswith(<span class="hljs-string">&quot;This&quot;</span>)
+<span class="hljs-comment">#Output:True</span>
+<span class="hljs-string">&quot;Hello World!&quot;</span>.endswith(<span class="hljs-string">&quot;world!&quot;</span>)
+<span class="hljs-comment">#Output:False</span>
+<span class="hljs-string">&quot;x,y,z&quot;</span>.split(<span class="hljs-string">&quot;,&quot;</span>)
+<span class="hljs-comment">#Output:[&#x2018;x&#x2019;,&#x2019;y&#x2019;,&#x2019;z&#x2019;]</span>
+</code></pre>
+<h4 id="string-function">String Function</h4>
+<pre><code class="lang-py">len(string)    <span class="hljs-comment">#Return the number of characters of this string.</span>
+</code></pre>
+<h4 id="string-formatting">String Formatting</h4>
+<p><code>&quot;formatedStringUsing{}&quot;.format(x,y,z)</code></p>
+<ul>
+<li>String is formatted in a set of double quotation marks.</li>
+<li>The location, order, and content of data is indicated by <code>{}</code>.</li>
+<li>The argument of <code>.format</code> is the value of data in the <code>{}</code>.</li>
+<li>Use double curly bracket to escape <code>{}</code></li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-string">&quot;{x},{y}&quot;</span>.format(x=<span class="hljs-number">5</span>,y=<span class="hljs-number">12</span>)
+<span class="hljs-comment">#Output:5,12</span>
+<span class="hljs-string">&quot;{} {}&quot;</span>.format(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>)
+<span class="hljs-comment">#Output:100 50</span>
+<span class="hljs-string">&quot;{1}abc{0}&quot;</span>.format(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>)
+<span class="hljs-comment">#Output:50abc100</span>
+<span class="hljs-string">&quot;{:04d}&quot;</span>.format(<span class="hljs-number">1</span>)
+<span class="hljs-comment">#Output:0001</span>
+<span class="hljs-string">&quot;{:06.2f}&quot;</span>.format(<span class="hljs-number">1.2</span>)
+<span class="hljs-comment">#Output:001.20     #decimal point counts</span>
+<span class="hljs-string">&quot;{:_&lt;10}&quot;</span>.format(<span class="hljs-string">&quot;left&quot;</span>)
+<span class="hljs-comment">#Output:left______</span>
+<span class="hljs-string">&quot;{:&gt;10}&quot;</span>.format(<span class="hljs-string">&quot;right&quot;</span>)
+<span class="hljs-comment">#Output:     right</span>
+</code></pre>
+<ul>
+<li>Optionally, use <code>f&quot;Formatted: {variable:.2f}&quot;</code><ul>
+<li>Use <code>()</code> for expression containing variables.</li>
+</ul>
+</li>
+</ul>
+<h3 id="type-casting">Type Casting</h3>
+<p>Explicitly convert types.</p>
+<pre><code class="lang-py">str(x)    <span class="hljs-comment">#To  string</span>
+int(x)    <span class="hljs-comment">#To  integer</span>
+float(x) <span class="hljs-comment">#To   float</span>
+list(x)   <span class="hljs-comment">#To   list</span>
+eval(x) <span class="hljs-comment"># parse and evaluation a string to other types</span>
+eval(<span class="hljs-string">&apos;[1]&apos;</span>) <span class="hljs-comment">#string to list</span>
+eval(<span class="hljs-string">&apos;1&apos;</span>) <span class="hljs-comment">#string to int</span>
+bool(x) <span class="hljs-comment">#  when convert string to boolean any thing other than empty string will return True</span>
+</code></pre>
 <h2 id="basic-structures">Basic Structures</h2>
-<h4 id="if-condition">If Condition</h4>
+<h3 id="if-condition">If Condition</h3>
 <p>The execution of a certain code block is determined by conditions. Conditions are a boolean expression. When the condition is true the codes after will be executed.</p>
 <pre><code class="lang-py"><span class="hljs-keyword">if</span> condition:
     <span class="hljs-comment">#&#x2026;</span>
@@ -1480,8 +1480,9 @@ eval(<span class="hljs-string">&apos;1&apos;</span>) <span class="hljs-comment">
 </code></pre>
 <ul>
 <li>Ternary: <code>x = a if condition else b</code>.</li>
+<li>Chained Ternary: <code>x = 1 if condition1 else 2 if condition2 else 3</code>.</li>
 </ul>
-<h4 id="all-and-any">All and Any</h4>
+<h3 id="all-and-any">All and Any</h3>
 <p>It can be used to test the condition among multiple values in an object.</p>
 <pre><code class="lang-py">x = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
 <span class="hljs-keyword">if</span> all([i&lt;<span class="hljs-number">6</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> x]):
@@ -1489,12 +1490,12 @@ eval(<span class="hljs-string">&apos;1&apos;</span>) <span class="hljs-comment">
 <span class="hljs-keyword">if</span> any([i==<span class="hljs-number">5</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> x]):
     print(<span class="hljs-string">&quot;At least one 5 in the array&quot;</span>)
 </code></pre>
-<h4 id="while-condition">While Condition</h4>
+<h3 id="while-condition">While Condition</h3>
 <p>This block of code is executed when the condition is true.</p>
 <pre><code class="lang-py"><span class="hljs-keyword">while</span> condition:
     <span class="hljs-comment">#&#x2026;.</span>
 </code></pre>
-<h4 id="for-loop">For Loop</h4>
+<h3 id="for-loop">For Loop</h3>
 <ul>
 <li>Every elements of an object is assigned to the variable x.<pre><code class="lang-py"><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> objects:
   print(x)
@@ -1520,7 +1521,10 @@ print(x)
 <ul>
 <li>Flag is a condition for the loops which can be tested and modified in the loop.</li>
 <li>Sentinel value is a value in the loop condition, it is used to determine the exit of a loop.</li>
-<li>break statement in the loop can stop looping immediately.</li>
+<li>break statement in the loop can stop looping immediately.<ul>
+<li>For nested loop, the inner break only break the inner loop</li>
+</ul>
+</li>
 <li>continue statement restart the loop from the top.</li>
 </ul>
 <h2 id="list">List</h2>
@@ -1538,7 +1542,8 @@ print(list[<span class="hljs-number">1</span>][<span class="hljs-number">0</span
 </ul>
 <h4 id="list-methods">List Methods</h4>
 <pre><code class="lang-py">list.append(value)<span class="hljs-comment">#This will append a value at its end.</span>
-list.sort()<span class="hljs-comment">#This will sort the object</span>
+list.sort()<span class="hljs-comment">#sorts the list ascending by default, has argument `reverse` which can be set to True</span>
+list.sort(key=<span class="hljs-keyword">lambda</span> listItem: listItem.get(<span class="hljs-string">&apos;group_name&apos;</span>)) <span class="hljs-comment">#sort based on the key value of the element</span>
 list.remove(value)<span class="hljs-comment">#It will remove certain value in the list regardless of its location.</span>
 list.reverse()  <span class="hljs-comment">#It will reverse the order, print(list.sort()) will not work</span>
 list.insert(index, element)<span class="hljs-comment">#It will insert an element at certain index location.</span>
@@ -1578,6 +1583,7 @@ sum(list)
 <ul>
 <li>It is the shortcut for creating lists.<pre><code class="lang-py">squareList = [i**<span class="hljs-number">2</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>)]
 evenSquareList = [i**<span class="hljs-number">2</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>) <span class="hljs-keyword">if</span> i**<span class="hljs-number">2</span>%<span class="hljs-number">2</span> ==<span class="hljs-number">0</span>]
+dictListValues = [d[<span class="hljs-string">&apos;key&apos;</span>] <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> dictList]
 </code></pre>
 </li>
 </ul>
@@ -1592,13 +1598,13 @@ x[key1] = newValue
 </ul>
 <h4 id="operators">Operators</h4>
 <ul>
-<li>Membership Operator - in<pre><code class="lang-py">keyName <span class="hljs-keyword">in</span> dictionaryName
+<li>Membership Operator - in<pre><code class="lang-py">keyName <span class="hljs-keyword">in</span> dictionaryName <span class="hljs-comment"># return a bool</span>
 keyName <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> dictionaryName
 </code></pre>
 </li>
 </ul>
 <h4 id="methods">Methods</h4>
-<pre><code class="lang-py">dictionary.get(key, notification)  <span class="hljs-comment">#It returns the key&#x2019;s value and None if key is not found. or display specific notification.</span>
+<pre><code class="lang-py">dictionary.get(key, default_value)  <span class="hljs-comment">#It returns the key&#x2019;s value and None if key is not found. or display specific default value. None type can have this method without error</span>
 dictionay.pop(key,default)  <span class="hljs-comment"># It returns and remove the value that match the key. Return the default value if not found.</span>
 dictionay.values() <span class="hljs-comment"># Return a list of values.</span>
 dictionay.keys() <span class="hljs-comment"># Return a list of keys.</span>
@@ -1626,32 +1632,39 @@ dictionay.items() <span class="hljs-comment"># Return a list of dictionay elemen
 <pre><code class="lang-py"><span class="hljs-comment">#Creates an empty tuples.</span>
 x = ()
 <span class="hljs-comment">#tuples declaration 1</span>
-x = (<span class="hljs-number">8</span>,&#x2019;a&#x2019;,<span class="hljs-string">&quot;sdfs&quot;</span>,(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>))
+x = (<span class="hljs-number">8</span>,<span class="hljs-string">&apos;a&apos;</span>,<span class="hljs-string">&quot;sdfs&quot;</span>,(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>))
 <span class="hljs-comment">#tuples declaration 2</span>
-x = <span class="hljs-number">8</span>,&#x2019;a&#x2019;,<span class="hljs-string">&quot;sdfs&quot;</span>,(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)
+x = <span class="hljs-number">8</span>,<span class="hljs-string">&apos;a&apos;</span>,<span class="hljs-string">&quot;sdfs&quot;</span>,(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)
 <span class="hljs-comment">#access tuples</span>
 print(x[<span class="hljs-number">0</span>])
 <span class="hljs-comment">#Output: 8</span>
 </code></pre>
+<h3 id="methods">Methods</h3>
+<pre><code class="lang-py">a = (<span class="hljs-string">&apos;1&apos;</span>, <span class="hljs-string">&apos;2&apos;</span>, <span class="hljs-string">&apos;3&apos;</span>)
+b = (<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;c&apos;</span>)
+x = zip(a, b)
+<span class="hljs-comment"># return nested tuple that each element is a tuple with nth element of a and nth element of b</span>
+<span class="hljs-comment"># e.g. ((&apos;1&apos;, &apos;a&apos;), (&apos;2&apos;, &apos;b&apos;), (&apos;3&apos;, &apos;c&apos;))</span>
+</code></pre>
 <h2 id="set">Set</h2>
 <ul>
 <li>It is an unordered list.</li>
-<li>It is surrounded by curly bracket{}.</li>
-<li>Empty set is set(). {} is reserved for dictionary.</li>
+<li>It is surrounded by curly bracket <code>{}</code>.</li>
+<li>Empty set is <code>set()</code>. <code>{}</code> is reserved for dictionary.</li>
 </ul>
-<h4 id="operators">Operators</h4>
+<h3 id="operators">Operators</h3>
 <ul>
 <li>union <code>|</code></li>
 <li>intersection <code>&amp;</code></li>
 <li>difference <code>-</code></li>
 <li>symmetric difference: items in either set, but not both. <code>^</code></li>
 </ul>
-<h4 id="methods">Methods</h4>
+<h3 id="methods">Methods</h3>
 <pre><code class="lang-py">set.add(x)  <span class="hljs-comment">#It adds new element</span>
 set.remove(x)  <span class="hljs-comment">#It removes x from set</span>
 set.pop()  <span class="hljs-comment">#It removes a random element from the list</span>
 </code></pre>
-<h4 id="functions">Functions</h4>
+<h3 id="functions">Functions</h3>
 <pre><code class="lang-py">len(set) <span class="hljs-comment"># get length</span>
 </code></pre>
 <h2 id="other-basic-objects">Other Basic Objects</h2>
@@ -1684,25 +1697,40 @@ range(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>,x) 
 <li>It returns a filter object that has elements removed according to the function as the first argument.</li>
 </ul>
 <h2 id="modules">Modules</h2>
-<h4 id="ways-of-importing-modules">Ways of Importing Modules</h4>
-<pre><code class="lang-py"><span class="hljs-keyword">import</span> module_name
-<span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> pi, sort
-<span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *
-<span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> sqrt <span class="hljs-keyword">as</span> square_root
+<ul>
+<li>Modules can be installed using package manager</li>
+<li>Modules can be the folder name in the working directory</li>
+<li>It is recognized by the keyword <code>import</code>. For example, a module called <code>module</code> can imported in the following ways:</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-keyword">import</span> module
+<span class="hljs-keyword">import</span> module <span class="hljs-keyword">as</span> md
+<span class="hljs-keyword">from</span> module <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">from</span> module <span class="hljs-keyword">import</span> function <span class="hljs-keyword">as</span> func
+<span class="hljs-keyword">from</span> module <span class="hljs-keyword">import</span> function
+<span class="hljs-keyword">from</span> module <span class="hljs-keyword">import</span> functionA, functionB
+<span class="hljs-keyword">from</span> module <span class="hljs-keyword">import</span> (functionA, functionB)
+<span class="hljs-keyword">from</span> folder <span class="hljs-keyword">import</span> file
+<span class="hljs-keyword">from</span> folder.file <span class="hljs-keyword">import</span> function
+<span class="hljs-keyword">from</span> folder.file <span class="hljs-keyword">import</span> classA, classB
+<span class="hljs-keyword">from</span> .folder <span class="hljs-keyword">import</span> file <span class="hljs-comment"># . represent the current folder of the running python script</span>
 </code></pre>
-<h4 id="show-version">Show Version</h4>
+<h3 id="show-version">Show Version</h3>
 <ul>
 <li><code>print(package.__version__)</code></li>
 </ul>
-<h4 id="name-variable"><code>__name__</code> variable</h4>
+<h3 id="name-variable"><code>__name__</code> variable</h3>
 <ul>
-<li>By default <code>__name__</code> is set to <code>__main__</code>, when a module is imported it will be set to the module name.</li>
-<li>Use the following code if the module will be imported only but its function is not intended to run.<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>   myFunction()
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:    main()
+<li>Each python file has a <code>__name__</code> within its scope</li>
+<li>When a python script is interpreted, by default <code>__name__</code> is set to <code>__main__</code>.</li>
+<li>when a python script is imported as a module, when interpreting script that import the module, the <code>__name__</code> variable inside the module will be set to the module name.</li>
+<li>Use the following code, if <code>myFunction()</code> is not intended to run, when the script will be imported as a module.<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+  myFunction()
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&apos;__main__&apos;</span>:
+  main()
 </code></pre>
 </li>
 </ul>
-<h4 id="sources-of-modules">Sources of Modules</h4>
+<h3 id="sources-of-modules">Sources of Modules</h3>
 <ol>
 <li>Some of them are preinstalled in the standard Library</li>
 <li>Third-party Python modules. Installed using libraries management tools like <code>pip</code> or <code>conda</code><ul>
@@ -1769,7 +1797,10 @@ functionName(variable)
 <span class="hljs-comment"># output will be 1 then 2 then 3.</span>
 </code></pre>
 <h4 id="global-variable">global variable</h4>
-<p>In order to access and modify variables defined outside the function definition, Prepend the keyword <code>global</code>. For example, <code>global X = 100</code>.</p>
+<ul>
+<li>In order to access and modify variables defined outside the function definition, Prepend the keyword <code>global</code>. For example, <code>global X = 100</code>.</li>
+<li><code>global</code> is not mandatory when the name from the outside is unique</li>
+</ul>
 <h2 id="generator">Generator</h2>
 <pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">count</span><span class="hljs-params">()</span>:</span>
     i=<span class="hljs-number">5</span>
@@ -1784,7 +1815,7 @@ functionName(variable)
 <li>It is a user defined function with loop that contain yield statement to iterate multiple output by using for loop.</li>
 <li>It can be infinite.</li>
 </ul>
-<h4 id="convert-to-list">Convert to List</h4>
+<h3 id="convert-to-list">Convert to List</h3>
 <pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">number</span><span class="hljs-params">(x)</span>:</span>
     <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(x):
         <span class="hljs-keyword">if</span> i%<span class="hljs-number">2</span> ==<span class="hljs-number">0</span>:
@@ -1823,36 +1854,37 @@ print(list(number(<span class="hljs-number">11</span>)))
 <li>It is the blueprint for creating objects.</li>
 <li>An instance is an object which is being called.</li>
 </ul>
-<h4 id="object-methods">Object methods</h4>
+<h3 id="object-methods">Object methods</h3>
 <ul>
 <li>They are functions defined within the class block.</li>
 <li>It must have self as its first parameter. When calling functions, self parameter can be ignored.</li>
 </ul>
-<h4 id="init-method"><code>__init__</code> method</h4>
+<h3 id="init-method"><code>__init__</code> method</h3>
 <ul>
 <li>It is called to create object, using class name as a function</li>
 <li>It is used to set the initial environment of an object.</li>
 <li>It is also called the class constructor.</li>
 <li><code>__new__</code> method is executed before <code>__init__</code> for special cases.</li>
 </ul>
-<h4 id="instances-attributes">Instance&#x2019;s attributes</h4>
+<h3 id="instances-attributes">Instance&#x2019;s attributes</h3>
 <p>They are placed in the <code>__init__</code> method</p>
-<h4 id="class-attributes">Class attributes</h4>
+<h3 id="class-attributes">Class attributes</h3>
 <p>They are placed in the first line of the class block. and shared by all instance of the class.</p>
-<pre><code class="lang-py">class Dog:
-    legs = 4
-    def __init__(self,name,color):
+<pre><code class="lang-py"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>:</span>
+    legs = <span class="hljs-number">4</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,name,color)</span>:</span>
         self.name = name
         self.color = color
-    def bark(self):
-        print(&quot;Woof!&quot;)
-fido = Dog(&quot;Fido&quot;,&quot;brown&quot;)
-fido.bark() -&gt; Woof!
-fido.legs -&gt; Dog.legs -&gt; 4
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bark</span><span class="hljs-params">(self)</span>:</span>
+        print(<span class="hljs-string">&quot;Woof!&quot;</span>)
+fido = Dog(<span class="hljs-string">&quot;Fido&quot;</span>,<span class="hljs-string">&quot;brown&quot;</span>)
+fido.bark() <span class="hljs-comment"># Woof!</span>
+fido.legs <span class="hljs-comment"># 4, instance variable</span>
+Dog.legs <span class="hljs-comment"># 4, class variable</span>
 </code></pre>
 <ul>
-<li><code>hasattr(object, attributeName)</code> check is one object has certain attribute.<ul>
-<li>The hasattr() is called by <code>getattr()</code> to check to see if <code>AttributeError</code> is to be raised or not.</li>
+<li><code>hasattr(object, attributeName)</code> check if one object has certain attribute.<ul>
+<li>The <code>hasattr()</code> is called by <code>getattr()</code> to check to see if <code>AttributeError</code> is to be raised or not.</li>
 </ul>
 </li>
 </ul>
@@ -1861,8 +1893,8 @@ fido.legs -&gt; Dog.legs -&gt; 4
 <li>It is used to share common attributes among classes called subclasses.</li>
 <li>A class can inherit a class from the superclass by putting superclass name at the end of the class statement for the subclass.</li>
 <li>Attributes for subclass can override attributes for superclass if they have the same name.</li>
-<li>Superclass(subclass) can have superclass(subclass).</li>
-<li>super function super() refers to the parent class</li>
+<li>Superclass can have superclass, subclass can have subclass.</li>
+<li>super function <code>super()</code> refers to the parent class</li>
 </ul>
 <pre><code class="lang-py"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>:</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>
@@ -1883,20 +1915,21 @@ fido.bark()
 </code></pre>
 <h2 id="magic-methods">Magic methods</h2>
 <ul>
-<li>Magic methods has double underscores at two ends as dunders.</li>
+<li>Magic methods has double underscores at two ends called dunders.</li>
 <li>It is a special method for operator overloading(defines <code>+</code>,<code>*</code>,<code>\</code>, and<code>-</code>between objects) or others.</li>
+<li>It takes parameters <code>self</code> and <code>other</code></li>
 </ul>
 <h4 id="operators">Operators</h4>
 <ul>
-<li><code>__sub__</code> for -</li>
-<li><code>__mul__</code> for *</li>
-<li><code>__truediv__</code> for /</li>
-<li><code>__floordiv__</code> for //</li>
-<li><code>__mod__</code> for %</li>
-<li><code>__pow__</code> for **</li>
-<li><code>__and__</code> for &amp;</li>
-<li><code>__xor__</code> for ^</li>
-<li><code>__or__</code> for |</li>
+<li><code>__sub__</code> for <code>-</code></li>
+<li><code>__mul__</code> for <code>*</code></li>
+<li><code>__truediv__</code> for <code>/</code></li>
+<li><code>__floordiv__</code> for <code>//</code></li>
+<li><code>__mod__</code> for <code>%</code></li>
+<li><code>__pow__</code> for <code>**</code></li>
+<li><code>__and__</code> for <code>&amp;</code></li>
+<li><code>__xor__</code> for <code>^</code></li>
+<li><code>__or__</code> for <code>|</code></li>
 </ul>
 <pre><code class="lang-py"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector2D</span>:</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, x, y)</span>:</span>
@@ -1917,12 +1950,12 @@ print(result.y)
 </ul>
 <h4 id="comparison">Comparison</h4>
 <ul>
-<li><code>__lt__</code> for &lt;</li>
-<li><code>__le__</code> for &lt;=</li>
-<li><code>__eq__</code> for ==</li>
-<li><code>__ne__</code> for !=</li>
-<li><code>__gt__</code> for &gt;</li>
-<li><code>__ge__</code> for &gt;=</li>
+<li><code>__lt__</code> for <code>&lt;</code></li>
+<li><code>__le__</code> for <code>&lt;=</code></li>
+<li><code>__eq__</code> for <code>==</code></li>
+<li><code>__ne__</code> for <code>!=</code></li>
+<li><code>__gt__</code> for <code>&gt;</code></li>
+<li><code>__ge__</code> for <code>&gt;=</code></li>
 <li><code>__ne__</code> could be translate to <code>__eq__</code> if it has not been implemented.</li>
 </ul>
 <pre><code class="lang-py"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpecialString</span>:</span>
@@ -1941,8 +1974,8 @@ spam &gt; eggs
 </code></pre>
 <h4 id="container">Container</h4>
 <ul>
-<li><code>__len__</code> for len()</li>
-<li><code>__repr__</code> for print() with format</li>
+<li><code>__len__</code> for overriding <code>len()</code></li>
+<li><code>__repr__</code> for overriding <code>print()</code> with format</li>
 <li><code>__getitem__</code> for indexing</li>
 <li><code>__setitem__</code> for assigning to indexed values</li>
 <li><code>__delitem__</code> for deleting indexed values</li>
@@ -1975,9 +2008,9 @@ print(vague_list[<span class="hljs-number">2</span>])
 </ul>
 <h2 id="class-methods">Class Methods</h2>
 <ul>
-<li>They all have cls as the first parameter</li>
+<li>They all have <code>cls</code> as the first parameter</li>
 <li>They return new object of the newly defined class.</li>
-<li>add <code>@classmethod</code> before def statement</li>
+<li>add <code>@classmethod</code> decorator before <code>def</code> statement</li>
 </ul>
 <pre><code class="lang-py"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span>:</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, width, height)</span>:</span>
@@ -1997,9 +2030,10 @@ print(square.calculate_area())
 <h2 id="static-methods">Static Methods</h2>
 <ul>
 <li>It starts with <code>@staticmethod</code>.</li>
-<li>They don&#x2019;t take new arguments.</li>
+<li>They don&apos;t take new arguments.</li>
 <li>They are identical.</li>
 <li>They don&apos;t have self parameter.</li>
+<li>Accessed using dot after class name</li>
 </ul>
 <pre><code class="lang-py"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pizza</span>:</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, toppings)</span>:</span>
@@ -2017,7 +2051,7 @@ ingredients = [<span class="hljs-string">&quot;cheese&quot;</span>, <span class=
   pizza = Pizza(ingredients)
 </code></pre>
 <h2 id="property">Property</h2>
-<p><code>@property</code> is placed above the def statement to make the code below read-only</p>
+<p><code>@property</code> is placed above the <code>def</code> statement to make a method read-only</p>
 <pre><code class="lang-py"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pizza</span>:</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, toppings)</span>:</span>
     self.toppings = toppings
@@ -2033,7 +2067,7 @@ pizza.pineapple_allowed = <span class="hljs-keyword">True</span>
 <h2 id="setter-or-getter">Setter or Getter</h2>
 <ul>
 <li>It set or get the property&#x2019;s value.</li>
-<li>property name followed by . and setter or getter.</li>
+<li>the decorator has property name followed by <code>.</code> and <code>setter</code> or <code>getter</code>.</li>
 </ul>
 <pre><code class="lang-py"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pizza</span>:</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, toppings)</span>:</span>
@@ -2060,7 +2094,7 @@ print(pizza.pineapple_allowed)
 </code></pre>
 <h2 id="error-handling">Error Handling</h2>
 <p>When an exception occurs, the program immediately stops.</p>
-<h4 id="error-types">Error Types</h4>
+<h3 id="error-types">Error Types</h3>
 <ul>
 <li><code>ImportError</code>: an import fails;</li>
 <li><code>IndexError</code>: a list is indexed with an out-of-range number;</li>
@@ -2073,14 +2107,17 @@ print(pizza.pineapple_allowed)
 <li><code>MemoryError</code>: trying to create a list in a very extensive range.</li>
 <li><code>AttributeError</code>: Trying to access an attribute of an instance that isn&apos;t defined or call an undefined method.</li>
 </ul>
-<h4 id="handling-error">Handling Error</h4>
+<h3 id="handling-error">Handling Error</h3>
 <pre><code class="lang-py"><span class="hljs-keyword">try</span>: <span class="hljs-comment">#try some code</span>
 <span class="hljs-keyword">except</span> ZeroDivisionError: <span class="hljs-comment">#run if there is a ZeroDivisionError</span>
 <span class="hljs-keyword">except</span> (ValueError, TypeError): <span class="hljs-comment">#or two different error#</span>
 <span class="hljs-keyword">except</span>:<span class="hljs-comment">#and all other errors#</span>
+<span class="hljs-comment"># or</span>
+<span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e: <span class="hljs-comment"># work on python 3.x</span>
+    logger.error(<span class="hljs-string">&apos;Failed to upload to ftp: &apos;</span>+ str(e))
 <span class="hljs-keyword">finally</span>: <span class="hljs-comment">#it will run no matter what</span>
 </code></pre>
-<h4 id="raise-an-error">Raise an Error</h4>
+<h3 id="raise-an-error">Raise an Error</h3>
 <ul>
 <li>Raise statement is used to raise an error</li>
 </ul>
@@ -2094,7 +2131,7 @@ print(pizza.pineapple_allowed)
    print(<span class="hljs-string">&quot;An error occurred&quot;</span>)
    <span class="hljs-keyword">raise</span>
 </code></pre>
-<h4 id="assert">Assert</h4>
+<h3 id="assert">Assert</h3>
 <ul>
 <li>Assert statement is used to assume a condition then raise an error accordingly.</li>
 </ul>
@@ -2109,18 +2146,18 @@ print(pizza.pineapple_allowed)
 <span class="hljs-comment"># Result: AssertionError: Colder than absolute zero!</span>
 </code></pre>
 <h2 id="file">File</h2>
-<h4 id="open-a-file">Open a File</h4>
+<h3 id="open-a-file">Open a File</h3>
 <pre><code class="lang-py">newfile = open(<span class="hljs-string">&quot;localfile.txt&quot;</span>, <span class="hljs-string">&apos;r+&apos;</span>)
 </code></pre>
-<h4 id="file-mode">File Mode</h4>
+<h3 id="file-mode">File Mode</h3>
 <ul>
-<li><code>r</code>: read mode It is the default mode</li>
+<li><code>r</code>: read mode, it is the default mode</li>
 <li><code>w</code>: write mode that can create new files and will overwrite old content</li>
 <li><code>b</code>: binary mode for non-text files</li>
 <li><code>a</code>: append mode for adding new content to the end of the file.</li>
 <li><code>r+</code>: read and write mode</li>
 </ul>
-<h4 id="file-method">File Method</h4>
+<h3 id="file-method">File Method</h3>
 <pre><code class="lang-py">newfile.close()   <span class="hljs-comment"># close file after done manipulation.</span>
 x = newfile.read()    <span class="hljs-comment"># read all file</span>
 newfile,read(x)    <span class="hljs-comment"># read x byte</span>
@@ -2130,16 +2167,16 @@ newfile.read(negativeValue) <span class="hljs-comment">#read rest all.</span>
 newfile.readlines()    <span class="hljs-comment">#return a list of lines</span>
 newfile.write(stringS)     <span class="hljs-comment">#write content into the file and return the byte written.</span>
 </code></pre>
-<h4 id="read-file-line-by-line">Read File Line by Line</h4>
+<h3 id="read-file-line-by-line">Read File Line by Line</h3>
 <pre><code class="lang-py"><span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file:
     print(line)      <span class="hljs-comment">#print one line at a time</span>
 </code></pre>
-<h4 id="apply-error-handling">Apply Error Handling</h4>
+<h3 id="apply-error-handling">Apply Error Handling</h3>
 <pre><code class="lang-py"><span class="hljs-keyword">try</span>:
     newfile = open(<span class="hljs-string">&quot;localfile.txt&quot;</span>)
     print(newfile.read())
 <span class="hljs-keyword">finally</span>:
-    f.close()
+    newfile.close()
 </code></pre>
 <pre><code class="lang-py"><span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;localfile.txt&quot;</span>) <span class="hljs-keyword">as</span> newfile:
     print(newfile.read())    <span class="hljs-comment">#This create a temperate variable newfile within the block. It will also make sure the file closure.</span>
@@ -2187,7 +2224,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-08-27T19:48:01.370Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-10-10T21:56:13.180Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -23,6 +23,7 @@
   - blue boxes will output values, multiple output values will have indices starting at 0.
 - It can interact with deployed contracts by selecting the `Injected Web3` option, then input the contract address in the `AtAddress` box
   - `Injected Web3` can be used to get access to account through `metamask`
+- It includes a debugger on the top right corner of the console panel
 
 ## Network Provider
 
@@ -92,6 +93,69 @@
 - In the first line of the code, the version of the solidity code in use should be specified as `pragma solidity ^X.X.XX;`
 - Each code file will define a contract. A contract is essentially a class using keyword contract.
 
+## Basic Types
+
+- `string`: sequence of characters
+- `bool`: `true` or `false`
+- `int`(`int256`): positive and negative integer numbers
+  - `int8` - `int256`: the number indicate the number of bits this type can store
+  - `int8` stores numbers from `-128` - `127`
+  - solidity does not provide built-in method to generate random numbers
+- `uint`(`uint256`): unsigned integer, positive numbers only
+  - `uint8` stores numbers from `0` - `256`
+- `fixed`: decimal numbers
+  - for coin units `0.01 ether` will be auto converted to the equivalent amount of `wei`
+- `ufixed`: unsigned decimal numbers
+- `address`: store account address, has methods for sending money
+  - `addressX.transfer(amount)` transfer money from the current contract to the address in `wei`
+
+### Type Conversion
+
+- `int(value)` convert a value to `int`
+
+## Reference Types
+
+- fixed array: array with fixed length, all elements must be the same type
+  - `int[3]`
+- dynamic array: array with fixed leng, all elements must be the same type
+  - `int[] public arrayX;`
+  - `arrayX = new int[](5);` create dynamic array with initial size 5, default value will be `0`
+  - `arrayX.push(1);` add a new element `1`
+  - `arrayX.length;` return the length of the array
+  - `arrayX[0]` access the first element
+  - when solidity works with `ABI` the nested dynamic arrays are not available
+    - string is an array of character. In this case, an array of string is also not available
+    - It will raise an `UnimplementedFeatureError`
+  - the default getter method for array takes an index as argument and return the value of the element
+- mapping: collection of key value pairs, keys must be of the same type, and values must be of the same type. Keys and values doesn't have to be of the same type
+  - `mapping(string => int) public mappingX`
+- struct: represent an object type
+  - `struct Person { uint age; string name; }`
+
+## Global Variable
+
+- The variable that available for all functions
+
+### `msg`
+
+- `msg.data` the data in the transcation
+- `msg.gas` the amount of gas available
+- `msg.sender` the address of the account that called the function
+- `msg.value` the amount of ether in wei that was sent along with the function call
+
+### `block`
+
+- `block.difficulty` the current block difficulty
+
+### `now`
+
+- `now` returns the current time
+
+### `this`
+
+- `this` is a reference to the current contract
+- `this.balance` the current balance of the current contract
+
 ## Contract
 
 - A contract can be defined using `contract ContractName{}`
@@ -124,3 +188,23 @@
       variable = initialVariable
   }
   ```
+
+### Modifier
+
+- it acts like a wrapped for others function to reduce duplicated codes
+
+```java
+function innerFunc() public modfierExample {
+  // code
+}
+// the _; indicate the location of the inner function code when it is wrapped in the modifier
+modifier modfierExample() {
+  // code
+  _;
+}
+```
+
+### Global Functions
+
+- `require(condition);` is used to check if a certain condition is satisfied in a funciton. When the condition returns false the function will stop executing and return an error message says `VM error: revert`, if true the execution will continue
+- `sha3(valueA, valueB, valueC);` or `keccak256(valueA, valueB, valueC)` calculate hash bash on the input values

@@ -480,7 +480,7 @@ import {
 - The node package for google map component
 - [Click Here](https://www.npmjs.com/package/google-map-react) to view the package site
 - [Click Here](https://snazzymaps.com) to get more free map styles
-  - to apply for styles add map props `options= {{styles: styleObject}}`
+  - to apply for styles add map props `{%raw%}options= {{styles: styleObject}}{%endraw%}`
 - The container of the map component must have a width and a height
 
 ## Material UI

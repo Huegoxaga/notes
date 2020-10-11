@@ -55,7 +55,7 @@
 - `Short`: 16 bit signed value. Range -32768 to 32767 Int : 32 bit signed value. Range -2147483648 to 2147483647
 - `Long`: 64 bit signed value. -9223372036854775808 to 9223372036854775807
 - `Float`: 32 bit IEEE 754 single-precision float
-- `Double`: 64 bit IEEE 754 double-precision float Char : 16 bit signed Unicode character. Range from U+0000 to U+FFFF
+- `Double`: 64 bit IEEE 754 double-precision float Char : 16 bit signed Unicode character. Range from `U+0000` to `U+FFFF`
 - `String`: A sequence of Chars
 - `Boolean`: Either the literal true or the literal false
 - `Unit`: Corresponds to no value : void
@@ -71,6 +71,10 @@
 - `var z = false` Scala auto deduces the data type from the assigned value
 - `var m = {val a = 1; val b = 2; a + b}` declear `m` with nested multi-expression, the `m` value is equals the the last expression in curly brackets
 - `lazy var l = 20` declear using lazy loading, memory will be used to assigned values only when compiler has to access it
+
+#### Integer
+
+- `3.max(4)` return the maximum number
 
 #### String
 
@@ -151,9 +155,26 @@
   def add(x: Int, y: Int): Int = {
     return x + y;
   }
+  // function with default values, they will be used when no argument is given
+  def add(x: Int = 20, y: Int = 30): Int = {
+    return x + y;
+  }
+  // function without return value
+  def add(x: Int = 20, y: Int = 30): Unit {
+    println(x + y);
+  }
+  //use operator as function names
+  def +(x: Int = 20, y: Int = 30): Int = {
+    return x + y;
+  }
   ```
 - Define a function in short `def add(x: Int, y: Int): Int = { x + y; }` or `def add(x: Int, y: Int): Int = x + y;` or `def add(x: Int, y: Int) = x + y;`
+- Function in Scala is a class instance it can be assigned to a variable and it can be called anonymous functions, `var add = (x : Int, y : Int) -> x + y;`, then use `add(20, 40)` to call the function
+  - A new variable can be used to redefine a function with default values and `_` wildcard placeholder, then only the `_` variables are required when calling these partially applied function
+    - `var addY = add(20, _: Int)`, then use `addY(30)` to call
 - `functionName()` call a function
+- higher order function takes a function as argument wrap it with some code it defined, then return a new function, `def math(x: Double, y: Double, f: (Double, Double) => Double): Double = f(x, y);`, then use `math(2, 3, (x, y)=> x + y);` to call
+  - optionally use wild card when calling: `math(2, 3, _+_);`
 
 ### Objects
 

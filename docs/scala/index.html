@@ -1259,7 +1259,7 @@
 <li><code>Short</code>: 16 bit signed value. Range -32768 to 32767 Int : 32 bit signed value. Range -2147483648 to 2147483647</li>
 <li><code>Long</code>: 64 bit signed value. -9223372036854775808 to 9223372036854775807</li>
 <li><code>Float</code>: 32 bit IEEE 754 single-precision float</li>
-<li><code>Double</code>: 64 bit IEEE 754 double-precision float Char : 16 bit signed Unicode character. Range from U+0000 to U+FFFF</li>
+<li><code>Double</code>: 64 bit IEEE 754 double-precision float Char : 16 bit signed Unicode character. Range from <code>U+0000</code> to <code>U+FFFF</code></li>
 <li><code>String</code>: A sequence of Chars</li>
 <li><code>Boolean</code>: Either the literal true or the literal false</li>
 <li><code>Unit</code>: Corresponds to no value : void</li>
@@ -1275,6 +1275,10 @@
 <li><code>var z = false</code> Scala auto deduces the data type from the assigned value</li>
 <li><code>var m = {val a = 1; val b = 2; a + b}</code> declear <code>m</code> with nested multi-expression, the <code>m</code> value is equals the the last expression in curly brackets</li>
 <li><code>lazy var l = 20</code> declear using lazy loading, memory will be used to assigned values only when compiler has to access it</li>
+</ul>
+<h4 id="integer">Integer</h4>
+<ul>
+<li><code>3.max(4)</code> return the maximum number</li>
 </ul>
 <h4 id="string">String</h4>
 <ul>
@@ -1353,10 +1357,33 @@
 <li>Define a function<pre><code class="lang-java"><span class="hljs-function">def <span class="hljs-title">add</span><span class="hljs-params">(x: Int, y: Int)</span>: Int </span>= {
   <span class="hljs-keyword">return</span> x + y;
 }
+<span class="hljs-comment">// function with default values, they will be used when no argument is given</span>
+<span class="hljs-function">def <span class="hljs-title">add</span><span class="hljs-params">(x: Int = <span class="hljs-number">20</span>, y: Int = <span class="hljs-number">30</span>)</span>: Int </span>= {
+  <span class="hljs-keyword">return</span> x + y;
+}
+<span class="hljs-comment">// function without return value</span>
+<span class="hljs-function">def <span class="hljs-title">add</span><span class="hljs-params">(x: Int = <span class="hljs-number">20</span>, y: Int = <span class="hljs-number">30</span>)</span>: Unit </span>{
+  println(x + y);
+}
+<span class="hljs-comment">//use operator as function names</span>
+def +(x: Int = <span class="hljs-number">20</span>, y: Int = <span class="hljs-number">30</span>): Int = {
+  <span class="hljs-keyword">return</span> x + y;
+}
 </code></pre>
 </li>
 <li>Define a function in short <code>def add(x: Int, y: Int): Int = { x + y; }</code> or <code>def add(x: Int, y: Int): Int = x + y;</code> or <code>def add(x: Int, y: Int) = x + y;</code></li>
+<li>Function in Scala is a class instance it can be assigned to a variable and it can be called anonymous functions, <code>var add = (x : Int, y : Int) -&gt; x + y;</code>, then use <code>add(20, 40)</code> to call the function<ul>
+<li>A new variable can be used to redefine a function with default values and <code>_</code> wildcard placeholder, then only the <code>_</code> variables are required when calling these partially applied function<ul>
+<li><code>var addY = add(20, _: Int)</code>, then use <code>addY(30)</code> to call</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><code>functionName()</code> call a function</li>
+<li>higher order function takes a function as argument wrap it with some code it defined, then return a new function, <code>def math(x: Double, y: Double, f: (Double, Double) =&gt; Double): Double = f(x, y);</code>, then use <code>math(2, 3, (x, y)=&gt; x + y);</code> to call<ul>
+<li>optionally use wild card when calling: <code>math(2, 3, _+_);</code></li>
+</ul>
+</li>
 </ul>
 <h3 id="objects">Objects</h3>
 <ul>
@@ -1431,7 +1458,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Scala","level":"1.4","depth":1,"next":{"title":"JavaScript","level":"1.5","depth":1,"path":"javascript/README.md","ref":"javascript/README.md","articles":[{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},{"title":"React","level":"1.5.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},{"title":"Node.js","level":"1.5.4","depth":2,"path":"javascript/node-js.md","ref":"javascript/node-js.md","articles":[]},{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]}]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"scala/README.md","mtime":"2020-09-14T01:58:24.421Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Scala","level":"1.4","depth":1,"next":{"title":"JavaScript","level":"1.5","depth":1,"path":"javascript/README.md","ref":"javascript/README.md","articles":[{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},{"title":"React","level":"1.5.2","depth":2,"path":"javascript/react.md","ref":"javascript/react.md","articles":[]},{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},{"title":"Node.js","level":"1.5.4","depth":2,"path":"javascript/node-js.md","ref":"javascript/node-js.md","articles":[]},{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]}]},"previous":{"title":"Android Studio","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"scala/README.md","mtime":"2020-10-11T21:34:42.416Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

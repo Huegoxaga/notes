@@ -71,6 +71,7 @@
 - `git branch -m <oldbranch> <newbranch>` rename a local branch.
   - If the current working branch is the `<oldbrach>`, run `git branch -m <newbranch>` to rename.
   - To sync remote branch names, delete the remote `<oldbranch>`, and push the `<newbranch>`.
+- `git branch -M <newbranch>` create new branch then checkout to the new branch
 - `git branch -d branchName` Delete the branch locally.
 - `git branch --set-upstream-to <remoteBranchName>` or `git branch -u <remoteBranchName>` set the remote tracking branch for the local branch.
 - `git push origin --delete branchName` Delete the branch in the remote repos.
@@ -92,6 +93,10 @@
 - `git remote` List all the current remote repos.
 - `git remote add origin <URL>` Add the remote repos.
   - For Github repos, the URL is usually like, `https://github.com/AccountName/ReposName.git`
+- `git remote show origin` check the tracking config
+- `git remote set-url origin <URL>` update remote URL(happens when repo name changed)
+- `git config --get remote.origin.url` check the current tracking remote URL
+  - or `git remote -v`
 - `git push -u origin <remoteBranch>` push to certain remote branch and set the remote branch as the remote tracking branch.
   - create new remote branch if not exists
 - `git push` update the remote repo with its corresponding local branch.
@@ -102,6 +107,19 @@
 - `git pull` Pull the latest from the remote repos
 - `git clone URL` Clone repos into the current directory.
 - `git clone URL folderAddress` Clone repos into the certain directory.
+
+## Git Large File Storage(LFS)
+
+- Use Git LFS when a file has size larger than 100MB
+
+### Setup
+
+- run `brew install git-lfs`
+- run `git lfs install` to signin
+- run `git lfs track "<large_file>"` to let `lfs` handle large file
+  - a record in `.gitattributes` file will be created
+- During future `git push` large files will be automatically managed by `lfs`
+  - Rollback is required when large file has already been committed to the local repo
 
 ## GitHub CLI
 
@@ -117,9 +135,11 @@
   - `status` View authentication status
 - `repo` is used to manage repositories, it has the following second level command
   - `create` create a repository under your account using the current directory name
-  - `create <ProjectName>` create a repository with a specific name
-  - `create <Organization>/<ProjectName>` create a repository in an organization
-    - `--private` Make the new repository private
+    - `create <ProjectName>` create a repository with a specific name
+    - `create <Organization/Username>/<ProjectName>` create a repository in an organization
+      - `--private` Make the new repository private
+  - `clone <URL>` clone a repo
+  - `clone <Organization/Username>/<ProjectName>` clone a repo
 - `pr` is used to manage pull requests, it has the following second level command
   - By default the command will access the pull request that belongs to the current branch, all second level command can acess a specific request by appending argument including `<RequestNumber>`, `<RequestUrl>`, `<RequestBranch>`
   - `list` List and filter pull requests in this repository

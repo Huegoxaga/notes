@@ -1441,7 +1441,7 @@ pushpin <span class="hljs-keyword">instanceof</span> Microsoft.Maps.Pushpin; <sp
 </li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">let</span> list = [<span class="hljs-string">&quot;x&quot;</span>, <span class="hljs-string">&quot;y&quot;</span>, <span class="hljs-string">&quot;z&quot;</span>];
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> val <span class="hljs-keyword">of</span> list) {
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> val <span class="hljs-keyword">of</span> list) {
   <span class="hljs-built_in">console</span>.log(val);
 }
 </code></pre>
@@ -1554,6 +1554,9 @@ myPromise
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Rejected&quot;</span>);
   });
 </code></pre>
+<ul>
+<li>When promises are decleared as a variable the code inside can only be executed once. After a result is resolved, the same result will be returned whenever the promise is called</li>
+</ul>
 <h5 id="chained-then-functions">Chained then Functions</h5>
 <p><code>.then()</code> can be chained the latter then function has access to the data returned by previous then function.</p>
 <pre><code class="lang-js">myPromise
@@ -1581,6 +1584,7 @@ myPromise
 </code></pre>
 <ul>
 <li>A function returns a promise can be assigned to a variable, the variable will have a value when the promise is resolved or rejected.</li>
+<li>It can be called using <code>.then</code> and <code>.catch</code>, optionally use <code>await</code> with <code>try/catch</code> blocks</li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> promiseFunction();
 </code></pre>
@@ -1764,7 +1768,7 @@ time.nextWeek();
 <pre><code class="lang-js">node.style[<span class="hljs-string">&quot;color&quot;</span>] = <span class="hljs-string">&quot;blue&quot;</span>;
 node.style.color = <span class="hljs-string">&quot;blue&quot;</span>;
 </code></pre>
-<h5 id="object-constructor-function">Object Constructor Function.</h5>
+<h5 id="object-constructor-function">Object Constructor Function</h5>
 <p>It is a good idea to capitalize the first letter of the constructor name to distinguish it from others.</p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>{
   <span class="hljs-keyword">this</span>.name = name;
@@ -1792,6 +1796,12 @@ p.changeName(<span class="hljs-string">&quot;John&quot;</span>);
 <ul>
 <li>The this keyword refers to the current object that take control of the current scope(the object in front of the curly brackets).</li>
 <li>Instance variables and methods defined by this keyword will be public, if private is desired, use let keyword.</li>
+</ul>
+<h5 id="object-methods">Object Methods</h5>
+<ul>
+<li><code>Object.values(obj1)</code> return all the values of the object in an array</li>
+<li><code>Object.keys(obj2)</code> return all the keys of the object in an array</li>
+<li><code>Object.entries(obj3)</code> return all the key and value pairs of the object in a 2-D array</li>
 </ul>
 <h2 id="built-in-objects">Built-in Objects</h2>
 <h3 id="arrays">Arrays</h3>
@@ -1824,6 +1834,7 @@ courses[<span class="hljs-number">3</span>] = <span class="hljs-string">&quot;C+
 array.concat(a1, a2); <span class="hljs-comment">//return the concatenated a1 and a2</span>
 array.push(<span class="hljs-string">&quot;newElement&quot;</span>); <span class="hljs-comment">//add new element to the end of array and return counts.</span>
 array.includes(<span class="hljs-string">&quot;elementX&quot;</span>); <span class="hljs-comment">//return true if array contains elementX, false if not.</span>
+array.some(person =&gt; person.name === <span class="hljs-string">&quot;Peter&quot;</span>) <span class="hljs-comment">//return true if the array contains an object by comparing the property value</span>
 array.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i</span>) </span>{
   <span class="hljs-comment">//forEach iterates each element of the array as an argument of the function.</span>
   <span class="hljs-comment">//function code</span>
@@ -1833,6 +1844,7 @@ array.filter(i =&gt; i.id !== <span class="hljs-number">1</span>); <span class="
 [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map((item, index, array) =&gt; <span class="hljs-number">2</span> * x); <span class="hljs-comment">//it can takes optional parameters, index(second), and the array itself(third)</span>
 array.splice(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// delete 3 items starting at index 2.(have to call it independently and get the result after.)</span>
 array.reverse() <span class="hljs-comment">//reverse all elements</span>
+array.sort() <span class="hljs-comment">//sort the array</span>
 array1.find(element =&gt; element &gt; <span class="hljs-number">10</span>); <span class="hljs-comment">//return the first element found, returns undefined if no match is found</span>
 array.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">total, currentValue, currentIndex, arr</span>), <span class="hljs-title">initialValue</span>)
 //<span class="hljs-title">reduce</span> <span class="hljs-title">iterate</span> <span class="hljs-title">over</span> <span class="hljs-title">each</span> <span class="hljs-title">element</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">function</span> <span class="hljs-title">and</span> <span class="hljs-title">return</span> <span class="hljs-title">a</span> <span class="hljs-title">value</span> <span class="hljs-title">that</span> <span class="hljs-title">will</span> <span class="hljs-title">be</span> <span class="hljs-title">used</span> <span class="hljs-title">by</span> <span class="hljs-title">the</span> <span class="hljs-title">next</span> <span class="hljs-title">iteration</span>.
@@ -1840,10 +1852,16 @@ array.reduce(<span class="hljs-function"><span class="hljs-keyword">function</sp
 <span class="hljs-title">Math</span>.<span class="hljs-title">max</span>(<span class="hljs-params">...array</span>);//<span class="hljs-title">find</span> <span class="hljs-title">the</span> <span class="hljs-title">max</span> <span class="hljs-title">value</span> <span class="hljs-title">among</span> <span class="hljs-title">array</span> <span class="hljs-title">elements</span>
 <span class="hljs-title">array</span>.<span class="hljs-title">unshift</span>(<span class="hljs-params">a,b,c</span>);//<span class="hljs-title">adds</span> <span class="hljs-title">one</span> <span class="hljs-title">or</span> <span class="hljs-title">more</span> <span class="hljs-title">items</span> <span class="hljs-title">or</span> <span class="hljs-title">elements</span> <span class="hljs-title">to</span> <span class="hljs-title">the</span> <span class="hljs-title">beginning</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">array</span> <span class="hljs-title">and</span> <span class="hljs-title">returns</span> <span class="hljs-title">the</span> <span class="hljs-title">new</span> <span class="hljs-title">length</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">array</span>.
 <span class="hljs-title">array</span>.<span class="hljs-title">slice</span>(<span class="hljs-params">1, 3</span>);//<span class="hljs-title">The</span> <span class="hljs-title">slice</span>(<span class="hljs-params"></span>) <span class="hljs-title">method</span> <span class="hljs-title">selects</span> <span class="hljs-title">the</span> <span class="hljs-title">elements</span> <span class="hljs-title">starting</span> <span class="hljs-title">at</span> <span class="hljs-title">the</span> <span class="hljs-title">given</span> <span class="hljs-title">start</span> <span class="hljs-title">argument</span>, <span class="hljs-title">and</span> <span class="hljs-title">ends</span> <span class="hljs-title">at</span>, <span class="hljs-title">but</span> <span class="hljs-title">does</span> <span class="hljs-title">not</span> <span class="hljs-title">include</span>, <span class="hljs-title">the</span> <span class="hljs-title">given</span> <span class="hljs-title">end</span> <span class="hljs-title">argument</span>.
+<span class="hljs-title">array</span>.<span class="hljs-title">join</span>(<span class="hljs-params">&quot;, &quot;</span>)//<span class="hljs-title">convert</span> <span class="hljs-title">array</span> <span class="hljs-title">to</span> <span class="hljs-title">string</span>, <span class="hljs-title">separated</span> <span class="hljs-title">by</span> &quot;, &quot; (<span class="hljs-params">The default separator is &quot;,&quot;</span>)
 //<span class="hljs-title">The</span> <span class="hljs-title">only</span> <span class="hljs-title">way</span> <span class="hljs-title">to</span> <span class="hljs-title">modify</span> <span class="hljs-title">array</span> <span class="hljs-title">element</span> <span class="hljs-title">it</span> <span class="hljs-title">to</span> <span class="hljs-title">use</span> <span class="hljs-title">for</span> <span class="hljs-title">loop</span> <span class="hljs-title">and</span> <span class="hljs-title">access</span> <span class="hljs-title">with</span> <span class="hljs-title">index</span>
-<span class="hljs-title">for</span> (<span class="hljs-params">var i in array</span>) </span>{
+// <span class="hljs-title">user</span> <span class="hljs-title">const</span> <span class="hljs-title">to</span> <span class="hljs-title">prevent</span> <span class="hljs-title">out</span> <span class="hljs-title">of</span> <span class="hljs-title">scope</span> <span class="hljs-title">warning</span>
+<span class="hljs-title">for</span> (<span class="hljs-params">const i in array</span>) </span>{
   array[i].x = <span class="hljs-number">100</span>;
-}
+};
+<span class="hljs-comment">//or</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [i, v] <span class="hljs-keyword">of</span> [<span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>, <span class="hljs-string">&apos;c&apos;</span>].entries()) {
+  <span class="hljs-built_in">console</span>.log(i, v);
+};
 </code></pre>
 <h4 id="associative-array">Associative Array</h4>
 <p>Technically, associative array is an object. Array methods cannot be used on associative array.</p>
@@ -1883,6 +1901,9 @@ Window.localStorage object.
 <span class="hljs-built_in">window</span>.open(<span class="hljs-string">&quot;https://www.example.com&quot;</span>);
 
 <span class="hljs-built_in">window</span>.screen.width <span class="hljs-comment">//Screen Width is the width of the device</span>
+<span class="hljs-keyword">const</span> vw = <span class="hljs-built_in">Math</span>.max(<span class="hljs-built_in">document</span>.documentElement.clientWidth || <span class="hljs-number">0</span>, <span class="hljs-built_in">window</span>.innerWidth || <span class="hljs-number">0</span>)
+<span class="hljs-keyword">const</span> vh = <span class="hljs-built_in">Math</span>.max(<span class="hljs-built_in">document</span>.documentElement.clientHeight || <span class="hljs-number">0</span>, <span class="hljs-built_in">window</span>.innerHeight || <span class="hljs-number">0</span>)
+<span class="hljs-comment">//current viewport size</span>
 
 <span class="hljs-built_in">document</span>.write(<span class="hljs-string">&quot;\&lt;h1\&gt;abc&lt;\\h1&gt;&quot;</span>);  <span class="hljs-comment">//It is used for testing, it output text string in the HTML.</span>
 alert(<span class="hljs-string">&quot;alert message goes here&quot;</span>);<span class="hljs-comment">//return an alert box</span>
@@ -2145,6 +2166,7 @@ x.onclick = <span class="hljs-function"><span class="hljs-keyword">function</spa
 <li><code>event.which</code> the button or key that was pressed.</li>
 <li><code>event.data</code> any data that was passed in when the event was bound.</li>
 <li><code>event.stopPropagation()</code> Stop the event from bubbling up to other elements.</li>
+<li><code>event.currentTarget</code> get the current event target info including the position of the target, it is usually used to set popup anchor</li>
 </ul>
 </li>
 </ul>
@@ -2309,7 +2331,10 @@ fetch(URL, options)
 </code></pre>
 <ul>
 <li><code>export</code> keyword can be placed at the end and use curly brackets to enclosed everything needed to export.</li>
-<li>When exporting arrow function, declare the function variable proper using <code>const</code>.</li>
+<li>When exporting arrow function, declare the function variable proper using <code>const</code>.<ul>
+<li>The exported function declared as <code>const</code> will be executed when page loads</li>
+</ul>
+</li>
 <li><code>as</code> keyword is used for alias.<ul>
 <li><code>export { myArray, myFunction as NewName, ClassName };</code></li>
 </ul>
@@ -2374,7 +2399,7 @@ fetch(URL, options)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.5","depth":1,"next":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Scala","level":"1.4","depth":1,"path":"scala/README.md","ref":"scala/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-09-17T20:44:24.220Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.5","depth":1,"next":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Scala","level":"1.4","depth":1,"path":"scala/README.md","ref":"scala/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-10-05T17:43:23.536Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

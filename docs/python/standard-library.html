@@ -1625,6 +1625,10 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 </li>
 <li><code>datetime.now().time()</code> get a current time object.</li>
 <li><code>datetime_obj.strftime(&quot;%m/%d/%Y, %H:%M:%S&quot;)</code> return a formatted time string.</li>
+<li><code>date_object = datetime.strptime(date_string, &quot;%d %B, %Y&quot;)</code> string to datetime object<ul>
+<li><a href="https://strftime.org" target="_blank">Click Here</a> to see complete list of format code</li>
+</ul>
+</li>
 <li>For datetime object<ul>
 <li><code>datetime_obj.year</code></li>
 <li><code>datetime_obj.month</code></li>
@@ -1635,6 +1639,7 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 <li><code>datetime_obj.microsecond</code></li>
 </ul>
 </li>
+<li><code>datetime.combine(date, start_time)</code> combine a date object and a time object as a datetime object</li>
 </ul>
 <h3 id="datetimedate">datetime.date</h3>
 <ul>
@@ -1646,6 +1651,8 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 </ul>
 <h3 id="datetimetimedelta">datetime.timedelta</h3>
 <ul>
+<li>It can be used to substract or plus a time value to a datetime object</li>
+<li><code>timeDeltaObj = timedelta(hours=7, minutes=36)</code></li>
 <li><code>from datetime import date, timedelta</code></li>
 <li><code>yesterday = date.today() - timedelta(days=1)</code></li>
 </ul>
@@ -1733,6 +1740,8 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 <ul>
 <li><code>json.loads(jsonObject.decode(&apos;utf-8&apos;))</code> It converts a string into a python object. Typically, it decodes a json object from a string.</li>
 <li><code>json.dumps(x)</code> converts a python object like a list or a dictionary into a string.</li>
+<li>use <code>with open(FLAGS.json) as f:</code>, then <code>data = json.load(f)</code> to load <code>.json</code> file into a dictionary</li>
+<li>use <code>with open(&apos;person.txt&apos;, &apos;w&apos;) as json_file:</code>, then <code>json.dump(person_dict, json_file)</code> to write the dictionary to a <code>.json</code> file</li>
 </ul>
 <h2 id="unittest">unittest</h2>
 <ul>
@@ -1871,7 +1880,7 @@ import contextlib</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"next":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-08-28T14:33:55.060Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"next":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-10-06T22:04:38.162Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -103,6 +103,8 @@
 #### Related Solving Methods
 
 - use _f_ over the recipical of _g_ for Indeterminate products, in order to use the L'Hospital's Rule.
+- solving the the limit of one polynomial over another, divide everything by the highest power of the variable
+- Based on the geometric properties and the squeeze theorem, ![$\lim_{x \to \infty}\frac{\sin{\theta}}{\theta}= 1$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx+%5Cto+%5Cinfty%7D%5Cfrac%7B%5Csin%7B%5Ctheta%7D%7D%7B%5Ctheta%7D%3D+1%24) and ![$\lim_{x \to \infty}\frac{\cos{\theta}}{\theta}= 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx+%5Cto+%5Cinfty%7D%5Cfrac%7B%5Ccos%7B%5Ctheta%7D%7D%7B%5Ctheta%7D%3D+0%24).
 
 ## Derivatives
 
@@ -176,7 +178,6 @@
   - ![$\frac{d}{dx} (\sin x)=\cos x$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Csin%20x%29%3D%5Ccos%20x%24)
   - ![$\frac{d}{dx} (\cos x)=-\sin x$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccos%20x%29%3D-%5Csin%20x%24)
   - ![$\frac{d}{dx} (\tan x)=\sec^2 x$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ctan%20x%29%3D%5Csec%5E2%20x%24)
-  - ![$\frac{d}{dx} (\csc x)=-\csc x \cot x$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccsc%20x%29%3D-%5Ccsc%20x%20%5Ccot%20x%24)
   - ![$\frac{d}{dx} (\csc x)=-\csc x : \cot x$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccsc%20x%29%3D-%5Ccsc%20x%20%5C%3A%20%5Ccot%20x%24)
   - ![$\frac{d}{dx} (\sec x)=\sec x : \tan x$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Csec%20x%29%3D%5Csec%20x%20%5C%3A%20%5Ctan%20x%24)
   - ![$\frac{d}{dx} (\cot x)=-\csc^2 x$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Ccot%20x%29%3D-%5Ccsc%5E2%20x%24)

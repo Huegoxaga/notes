@@ -1423,8 +1423,18 @@ http(s)</p>
 <ul>
 <li>It uses port 80.</li>
 <li>HTTP is called a stateless protocol because each command is executed independently, without any knowledge of the commands that came before it.</li>
-<li>It has request methods as</li>
+<li>HTTP Request<ul>
+<li>It has request methods as <code>POST</code>, <code>GET</code>, <code>PUT</code> etc.</li>
+<li><code>GET</code> request cannot have request body, the parameter can only be encoded at the end of the request url</li>
+<li>Request header content type decide the content type of the request body<ul>
+<li>On the server side, <code>Access-Control-Allow-Headers</code> need to be setup to allow certain headers in request.</li>
+<li><code>&quot;Cache-Control&quot;, &quot;no-cache&quot;</code>, <code>&quot;Pragma&quot;, &quot;no-cache&quot;</code> can be used to disable client side broswer cache</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>It has a Authentication realms for authentication</li>
+<li>HTTP Response<ul>
 <li>The response message contain:<ul>
 <li>a status line which includes the status code and reason message (e.g., HTTP/1.1 200 OK, which indicates that the client&apos;s request succeeded)</li>
 <li>response header fields (e.g., Content-Type: text/html)</li>
@@ -1507,6 +1517,8 @@ http(s)</p>
 <li>510 Not Extended</li>
 <li>511 Network Authentication Required</li>
 <li>599 Network Connect Timeout Error</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1905,7 +1917,7 @@ Network firewalls cannot provide protection from traffic generated within a trus
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Networking","level":"1.18","depth":1,"next":{"title":"Security","level":"1.18.1","depth":2,"path":"networking/security.md","ref":"networking/security.md","articles":[]},"previous":{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"networking/README.md","mtime":"2020-08-03T20:05:16.785Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T13:36:06.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Networking","level":"1.18","depth":1,"next":{"title":"Security","level":"1.18.1","depth":2,"path":"networking/security.md","ref":"networking/security.md","articles":[]},"previous":{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"networking/README.md","mtime":"2020-09-23T17:41:00.095Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

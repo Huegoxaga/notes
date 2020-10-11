@@ -182,6 +182,7 @@
 
 #### Modify the array
 
+- `array.tolist()`, convert to python list and all elements in basic python built-in types
 - Modify the shape of an array
   - `array.resize(newRowNum,newColumnNum)` The shape of the original array is changed.
   - `array.reshape(newRowNum,newColumnNum)` Returns a new shape, but the shape of the original array is kept intact.
@@ -390,6 +391,7 @@
     - One camera will be connected by passing `0` OR `-1`
     - Second camera can be selected by passing `2`
   - `cap = cv2.VideoCapture('LOCATION OF THE VIDEO')`, reading a video from local storage
+  - `ret, frame = cap.read()`, capture one video frame by frame, if frame is read correctly `ret` is `True`
   - `cap.isOpened()`, check if the video is successfully stored in the variable
     - work well with `while` loop
     - `time.sleep(.05)` in the loop can slow down down the video process speed.
@@ -398,7 +400,7 @@
   - `cap.get(4)` check the frame height
   - `ret = cap.set(3,320)` or `cap.set(cv.CV_CAP_PROP_FRAME_WIDTH, 320)` modify width
   - `ret = cap.set(4,240)` or `cap.set(cv.CV_CAP_PROP_FRAME_HEIGHT, 240)` modify height
-  - Initialize While Loop, read and display frames until Q key is pressed.
+  - Initialize While Loop, read and display frames until `Q` key is pressed.
     ```py
     cap = cv2.VideoCapture(0)
     while(True):
@@ -479,6 +481,7 @@
 - `plt.skcd()` set a comic style
 - `plt.show()` show the graph
 - `plt.savefig('filename.png')` save the file in the working directory.
+- `plt.get_cmap('color_code')` return a list of colors as color map, [Click](https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html) to see all options, color is in RBG and has been divided by `255`
 
 ## BeautifulSoup
 
@@ -799,3 +802,61 @@ vacuum          = true
 - `image = Image.fromarray(OpenCVImage)` Convert OpenCV image onto PIL Image
   - `OpenCvImage` is a opencv image object in a numpy array after `cvtColor()`
 - `image.save(path, format='JPEG', exif=imWIthEXIF.info['exif'])` save image with exif data as `jpeg`.
+
+## Abseil
+
+- run `pip install absl-py` to install
+
+### app
+
+- Define the entry point to the python script with flags enabled
+- example:
+
+```py
+from absl import app
+from absl import flags
+
+FLAGS = flags.FLAGS
+flags.DEFINE_string("name", None, "Your name.")
+flags.DEFINE_integer("num_times", 1,
+                     "Number of times to print greeting.")
+
+# Required flag.
+flags.mark_flag_as_required("name")
+
+def main(argv):
+  del argv  # Unused.
+  for i in range(0, FLAGS.num_times):
+    print('Hello, %s!' % FLAGS.name)
+
+if __name__ == '__main__':
+  app.run(main)
+```
+
+### flags
+
+- `from absl import flags`
+- `FLAGS = flags.FLAGS` initialize `FLAGS` object
+- `flags.DEFINE_string("flag_name", default_value, "description")` define a flag that takes a string
+  - `flags.DEFINE_integer('age', None, 'Your age in years.', lower_bound=0)`define a flag that takes a integer
+  - `flags.DEFINE_boolean('debug', False, 'Produces debugging output.')`define a flag that takes a boolean
+  - `flags.DEFINE_enum('job', 'running', ['running', 'stopped'], 'Job status.')`define a flag that takes a enum
+- `FLAGS.flag_name` access flag argument
+- `flags.mark_flag_as_required("flag_name")` set a flag as required
+
+### logging
+
+- A logging package implemented on top of the standard `logging` module in Python
+- `from absl import logging`
+- `logging.info('Interesting Stuff with Arguments: %d', 42)` create a new info level log message
+- `logging.set_verbosity(logging.INFO)` only print message with log level higher than `INFO`
+- Log level from high to low:
+  - `logging.FATAL`
+  - `logging.ERROR`
+  - `logging.WARNING`
+  - `logging.INFO`
+  - `logging.DEBUG`
+- `logging.log(logging.DEBUG, 'This will *not* be printed')` create a log with `DEBUG` level
+- `logging.warning('message')` create warning log
+- `logging.error('message')` create error log
+- `logging.fatal('message')` create fatal log, and process will exit

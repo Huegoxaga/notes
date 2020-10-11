@@ -3,15 +3,17 @@
 ## Introduction
 
 - Python is a high-level, interpreted programming language.
-- Interpreted language has an interpreter processing the scripts at runtimes line by line, no compiling needed before execution. Cpython is the official interpreter.
+- Interpreted language has an interpreter processing the scripts at runtimes line by line from top to bottom, the compiling process is done by the interpreter during code execution
+  - `Cpython` is the official interpreter. It is written in `C` and `Python`
+  - Interpreted language doesn’t have machine code file which is created by the compiler.
 - Python 3 is the current version.
-- IDLE is the integrated development environment for Python. It is available for all platform. Python code can be executed in IDLE line by line using Python Shell(immediate mode) or written and run in source code files.
-- Source files have an extension of `.py`. The code is executed all at once, from top to bottom. Interpreted language doesn’t have machine code file which is created by the compiler.
+- IDLE is the integrated development environment for Python. It is available for all platform. Python code can be executed in IDLE line by line using Python Shell(immediate mode) or written and run in source code files and execute by running `python <filename>` in the terminal
+- Source files have an extension of `.py`.
 - It is a case sensitive language.
 
 ## Basic Syntax
 
-It is generally consisted of comments, statements, methods, functions and modules.
+Python Syntax is generally consisted of comments, statements, methods, functions and modules.
 
 ### Comments
 
@@ -67,14 +69,7 @@ input("Prompt: ")     #It prompts, get and returns user input as a string. The s
 
 ### Modules
 
-- Modules provide additional methods or functions for the programming. They are imported at the very beginning.
-- It is recognized by the keyword `import`. For example, a module called `module` can imported in the following ways:
-
-```py
-import module
-import module as md
-from module import function
-```
+- Modules provide additional methods or functions for the programming. They are imported using keyword `import` at the very beginning.
 
 ## Variables
 
@@ -91,148 +86,6 @@ They are customized name for storing data.
 ### Variable Scope
 
 - Variables introduced inside functions are local(only available) to that function.
-
-## Basic Data Types
-
-#### Boolean
-
-- True
-- False
-
-#### Integer
-
-- Whole number
-
-#### Float
-
-- It can be any number with a decimal point. It is produced after any division or implicitly transfer after an operation between float and integer.
-- Computer has limited memory space for floats. Also, any zero at the end will be ignored.
-
-> #### Useful Math Functions
-
-```py
-round(value, toHowManyDigitAfterDecimal) #Rounding to specific decimal place
-abs(value) #Get the absolute value of a number.
-```
-
-#### Character:
-
-- It can be any single character.
-
-> #### Character Conversion
-
-```py
-ord(character)  #Transforming a character to its ASCII code number. Character can be Unicode like u’\u1234’
-chr(number)   # transform ASCII (a number from 0 to 255) to character.
-unichr(number)   # transform UCS2 (a number from 0 to 65535) to character.
-```
-
-#### String:
-
-- String is like list type for character, but can not change(immutable).
-- \ is used to escape special characters, the characters are then called escape characters. E.g. `"abc\"def\\g"`, Output: `abc"def\g`
-- `\n` represents a newline.
-- `\t` represents a new tab.
-
-##### String operators
-
-- Concatenation uses `+`.
-- Integer repetition uses `*`.
-
-##### Membership Operator
-
-It returns membership relationship between two objects as boolean.
-
-```py
-a in b
-a not in b
-not a in b
-```
-
-##### Relational operators
-
-It can be used on strings for lexicographical(alphabetical order) comparison.
-
-##### String Methods
-
-```py
-stringX[n]  #Get the character of stringX at nth index.
-
-stringX[m:n]  #Get the character of stringX at index from m to n-1, max or min if m or n is missing.
-"""
-There could be a third parameter that represents the step.
--1 means backward from its left or right end.
-"""
-str.upper()
-str.lower()
-str.isalpha()         #Return boolean
-str.isdecimal()
-str.islower()
-str.isspace()
-str.isupper()
-str.find(substring) #Find the lowest index of the substring.
-str.strip(string)   #Strip all the characters in the argument of the str from the beginning and the end.
-",".join(["a","b","c"])
-#Output:’a,b,c’
-"Hello ME".replace("ME","world")
-#Output:’Hello world’
-"This is a sentence".startswith("This")
-#Output:True
-"Hello World!".endswith("world!")
-#Output:False
-"x,y,z".split(",")
-#Output:[‘x’,’y’,’z’]
-```
-
-##### String Function
-
-```py
-len(string)    #Return the number of characters of this string.
-```
-
-##### String Formatting
-
-`"formatedStringUsing{}".format(x,y,z)`
-
-- String is formatted in a set of double quotation marks.
-- The location, order, and content of data is indicated by `{}`.
-- The argument of `.format` is the value of data in the `{}`.
-- Use double curly bracket to escape `{}`
-
-```py
-"{x},{y}".format(x=5,y=12)
-#Output:5,12
-"{} {}".format(100,50)
-#Output:100 50
-"{1}abc{0}".format(100,50)
-#Output:50abc100
-"{:04d}".format(1)
-#Output:0001
-"{:06.2f}".format(1.2)
-#Output:001.20     #decimal point counts
-"{:_<10}".format("left")
-#Output:left______
-"{:>10}".format("right")
-#Output:     right
-```
-
-- Optionally, use `f"Formatted: {variable}:.2f"`
-  - Use `()` for expression containing variables.
-
-### Type Casting
-
-Explicitly convert types.
-
-```py
-str(x)    #To  string
-int(x)    #To  integer
-float(x) #To   float
-list(x)   #To   list
-eval(x) # parse and evaluation a string to other types
-eval('[1]') #string to list
-eval('1') #string to int
-bool(x) #  when convert string to boolean any thing other than empty string will return True
-```
 
 ## Operators
 
@@ -277,7 +130,7 @@ When operator are chained together, The operation order is determined from top t
   - Multiple assignment: `x = y = 10`
 - Two or more physical lines may be joined into logical lines using backslash characters (`\`)
 
-### Bitwise operators
+### Bitwise Operators
 
 It is performed bit by bit.
 
@@ -297,9 +150,151 @@ a=1101101
 - `a+=b` is treated as `a=a+b`
 - `a**b**c` is same as `a**(b**c)`. This is called right associative.
 
+## Basic Data Types
+
+### Boolean
+
+- True
+- False
+
+### Integer
+
+- Whole number
+
+### Float
+
+- It can be any number with a decimal point. It is produced after any division or implicitly transfer after an operation between float and integer.
+- Computer has limited memory space for floats. Also, any zero at the end will be ignored.
+
+> #### Useful Math Functions
+
+```py
+round(value, toHowManyDigitAfterDecimal) #Rounding to specific decimal place
+abs(value) #Get the absolute value of a number.
+```
+
+### Character
+
+- It can be any single character.
+
+> #### Character Conversion
+
+```py
+ord(character)  #Transforming a character to its ASCII code number. Character can be Unicode like u’\u1234’
+chr(number)   # transform ASCII (a number from 0 to 255) to character.
+unichr(number)   # transform UCS2 (a number from 0 to 65535) to character.
+```
+
+### String
+
+- String is like list type for character, but can not change(immutable).
+- \ is used to escape special characters, the characters are then called escape characters. E.g. `"abc\"def\\g"`, Output: `abc"def\g`
+- `\n` represents a newline.
+- `\t` represents a new tab.
+
+#### String Operators
+
+- Concatenation uses `+`.
+- Integer repetition uses `*`.
+
+#### Membership Operator
+
+It returns membership relationship between two objects as boolean.
+
+```py
+a in b
+a not in b
+not a in b
+```
+
+#### Relational Operators
+
+It can be used on strings for lexicographical(alphabetical order) comparison.
+
+#### String Methods
+
+```py
+stringX[n]  #Get the character of stringX at nth index.
+
+stringX[m:n]  #Get the character of stringX at index from m to n-1, max or min if m or n is missing.
+"""
+There could be a third parameter that represents the step.
+-1 means backward from its left or right end.
+"""
+str.upper()
+str.lower()
+str.isalpha()         # Return boolean
+str.isdecimal()
+str.islower()
+str.isspace()
+str.isupper()
+str.find(substring) # Find the lowest index of the substring.
+str.strip(string)   # Strip all the characters in the argument of the str from the beginning and the end. (if no argument, remove empty spaces by default)
+",".join(["a","b","c"])
+#Output:’a,b,c’
+"Hello ME".replace("ME","world")
+#Output:’Hello world’
+"This is a sentence".startswith("This")
+#Output:True
+"Hello World!".endswith("world!")
+#Output:False
+"x,y,z".split(",")
+#Output:[‘x’,’y’,’z’]
+```
+
+#### String Function
+
+```py
+len(string)    #Return the number of characters of this string.
+```
+
+#### String Formatting
+
+`"formatedStringUsing{}".format(x,y,z)`
+
+- String is formatted in a set of double quotation marks.
+- The location, order, and content of data is indicated by `{}`.
+- The argument of `.format` is the value of data in the `{}`.
+- Use double curly bracket to escape `{}`
+
+```py
+"{x},{y}".format(x=5,y=12)
+#Output:5,12
+"{} {}".format(100,50)
+#Output:100 50
+"{1}abc{0}".format(100,50)
+#Output:50abc100
+"{:04d}".format(1)
+#Output:0001
+"{:06.2f}".format(1.2)
+#Output:001.20     #decimal point counts
+"{:_<10}".format("left")
+#Output:left______
+"{:>10}".format("right")
+#Output:     right
+```
+
+- Optionally, use `f"Formatted: {variable:.2f}"`
+  - Use `()` for expression containing variables.
+
+### Type Casting
+
+Explicitly convert types.
+
+```py
+str(x)    #To  string
+int(x)    #To  integer
+float(x) #To   float
+list(x)   #To   list
+eval(x) # parse and evaluation a string to other types
+eval('[1]') #string to list
+eval('1') #string to int
+bool(x) #  when convert string to boolean any thing other than empty string will return True
+```
+
 ## Basic Structures
 
-#### If Condition
+### If Condition
 
 The execution of a certain code block is determined by conditions. Conditions are a boolean expression. When the condition is true the codes after will be executed.
 
@@ -313,8 +308,9 @@ else:
 ```
 
 - Ternary: `x = a if condition else b`.
+- Chained Ternary: `x = 1 if condition1 else 2 if condition2 else 3`.
 
-#### All and Any
+### All and Any
 
 It can be used to test the condition among multiple values in an object.
 
@@ -326,7 +322,7 @@ if any([i==5 for i in x]):
 	print("At least one 5 in the array")
 ```
 
-#### While Condition
+### While Condition
 
 This block of code is executed when the condition is true.
 
@@ -335,7 +331,7 @@ while condition:
 	#….
 ```
 
-#### For Loop
+### For Loop
 
 - Every elements of an object is assigned to the variable x.
   ```py
@@ -361,6 +357,7 @@ while condition:
 - Flag is a condition for the loops which can be tested and modified in the loop.
 - Sentinel value is a value in the loop condition, it is used to determine the exit of a loop.
 - break statement in the loop can stop looping immediately.
+  - For nested loop, the inner break only break the inner loop
 - continue statement restart the loop from the top.
 
 ## List
@@ -425,6 +422,7 @@ sum(list)
   ```py
   squareList = [i**2 for i in range(5)]
   evenSquareList = [i**2 for i in range(10) if i**2%2 ==0]
+  dictListValues = [d['key'] for d in dictList]
   ```
 
 ## Dictionary
@@ -448,7 +446,7 @@ sum(list)
 #### Methods
 
 ```py
-dictionary.get(key, notification)  #It returns the key’s value and None if key is not found. or display specific notification. None type can have this method without error
+dictionary.get(key, default_value)  #It returns the key’s value and None if key is not found. or display specific default value. None type can have this method without error
 dictionay.pop(key,default)  # It returns and remove the value that match the key. Return the default value if not found.
 dictionay.values() # Return a list of values.
 dictionay.keys() # Return a list of keys.
@@ -477,28 +475,38 @@ dictionay.items() # Return a list of dictionay elements.
 #Creates an empty tuples.
 x = ()
 #tuples declaration 1
-x = (8,’a’,"sdfs",(2,4))
+x = (8,'a',"sdfs",(2,4))
 #tuples declaration 2
-x = 8,’a’,"sdfs",(2,4)
+x = 8,'a',"sdfs",(2,4)
 #access tuples
 print(x[0])
 #Output: 8
 ```
 
+### Methods
+
+```py
+a = ('1', '2', '3')
+b = ('a', 'b', 'c')
+x = zip(a, b)
+# return nested tuple that each element is a tuple with nth element of a and nth element of b
+# e.g. (('1', 'a'), ('2', 'b'), ('3', 'c'))
+```
+
 ## Set
 
 - It is an unordered list.
-- It is surrounded by curly bracket{}.
-- Empty set is set(). {} is reserved for dictionary.
+- It is surrounded by curly bracket `{}`.
+- Empty set is `set()`. `{}` is reserved for dictionary.
 
-#### Operators
+### Operators
 
 - union `|`
 - intersection `&`
 - difference `-`
 - symmetric difference: items in either set, but not both. `^`
 
-#### Methods
+### Methods
 
 ```py
 set.add(x)  #It adds new element
@@ -506,7 +514,7 @@ set.remove(x)  #It removes x from set
 set.pop()  #It removes a random element from the list
 ```
 
-#### Functions
+### Functions
 
 ```py
 len(set) # get length
@@ -550,29 +558,42 @@ filter(function,iterables)
 
 ## Modules
 
-#### Ways of Importing Modules
+- Modules can be installed using package manager
+- Modules can be the folder name in the working directory
+- It is recognized by the keyword `import`. For example, a module called `module` can imported in the following ways:
 
 ```py
-import module_name
-from math import pi, sort
-from math import *
-from math import sqrt as square_root
+import module
+import module as md
+from module import *
+from module import function as func
+from module import function
+from module import functionA, functionB
+from module import (functionA, functionB)
+from folder import file
+from folder.file import function
+from folder.file import classA, classB
+from .folder import file # . represent the current folder of the running python script
 ```
 
-#### Show Version
+### Show Version
 
 - `print(package.__version__)`
 
-#### `__name__` variable
+### `__name__` variable
 
-- By default `__name__` is set to `__main__`, when a module is imported it will be set to the module name.
-- Use the following code if the module will be imported only but its function is not intended to run.
+- Each python file has a `__name__` within its scope
+- When a python script is interpreted, by default `__name__` is set to `__main__`.
+- when a python script is imported as a module, when interpreting script that import the module, the `__name__` variable inside the module will be set to the module name.
+- Use the following code, if `myFunction()` is not intended to run, when the script will be imported as a module.
   ```py
-  def main():   myFunction()
-  if __name__ == '__main__':    main()
+  def main():
+    myFunction()
+  if __name__ == '__main__':
+    main()
   ```
 
-#### Sources of Modules
+### Sources of Modules
 
 1. Some of them are preinstalled in the standard Library
 2. Third-party Python modules. Installed using libraries management tools like `pip` or `conda`
@@ -647,7 +668,8 @@ for value in simpleGeneratorFun():
 
 #### global variable
 
-In order to access and modify variables defined outside the function definition, Prepend the keyword `global`. For example, `global X = 100`.
+- In order to access and modify variables defined outside the function definition, Prepend the keyword `global`. For example, `global X = 100`.
+- `global` is not mandatory when the name from the outside is unique
 
 ## Generator
 
@@ -665,7 +687,7 @@ for i in count():
 - It is a user defined function with loop that contain yield statement to iterate multiple output by using for loop.
 - It can be infinite.
 
-#### Convert to List
+### Convert to List
 
 ```py
 def number(x):
@@ -714,23 +736,23 @@ def factorial(x):
 - It is the blueprint for creating objects.
 - An instance is an object which is being called.
 
-#### Object methods
+### Object methods
 
 - They are functions defined within the class block.
 - It must have self as its first parameter. When calling functions, self parameter can be ignored.
 
-#### `__init__` method
+### `__init__` method
 
 - It is called to create object, using class name as a function
 - It is used to set the initial environment of an object.
 - It is also called the class constructor.
 - `__new__` method is executed before `__init__` for special cases.
 
-#### Instance’s attributes
+### Instance’s attributes
 
 They are placed in the `__init__` method
 
-#### Class attributes
+### Class attributes
 
 They are placed in the first line of the class block. and shared by all instance of the class.
 
@@ -743,20 +765,21 @@ class Dog:
 	def bark(self):
 		print("Woof!")
 fido = Dog("Fido","brown")
-fido.bark() -> Woof!
-fido.legs -> Dog.legs -> 4
+fido.bark() # Woof!
+fido.legs # 4, instance variable
+Dog.legs # 4, class variable
 ```
 
-- `hasattr(object, attributeName)` check is one object has certain attribute.
-  - The hasattr() is called by `getattr()` to check to see if `AttributeError` is to be raised or not.
+- `hasattr(object, attributeName)` check if one object has certain attribute.
+  - The `hasattr()` is called by `getattr()` to check to see if `AttributeError` is to be raised or not.
 
 ## Superclass
 
 - It is used to share common attributes among classes called subclasses.
 - A class can inherit a class from the superclass by putting superclass name at the end of the class statement for the subclass.
 - Attributes for subclass can override attributes for superclass if they have the same name.
-- Superclass(subclass) can have superclass(subclass).
-- super function super() refers to the parent class
+- Superclass can have superclass, subclass can have subclass.
+- super function `super()` refers to the parent class
 
 ```py
 class Animal:
@@ -779,20 +802,21 @@ fido.bark()
 
 ## Magic methods
 
-- Magic methods has double underscores at two ends as dunders.
+- Magic methods has double underscores at two ends called dunders.
 - It is a special method for operator overloading(defines `+`,`*`,`\`, and`-`between objects) or others.
+- It takes parameters `self` and `other`
 
 #### Operators
 
-- `__sub__` for -
-- `__mul__` for \*
-- `__truediv__` for /
-- `__floordiv__` for //
-- `__mod__` for %
-- `__pow__` for \*\*
-- `__and__` for &
-- `__xor__` for ^
-- `__or__` for |
+- `__sub__` for `-`
+- `__mul__` for `*`
+- `__truediv__` for `/`
+- `__floordiv__` for `//`
+- `__mod__` for `%`
+- `__pow__` for `**`
+- `__and__` for `&`
+- `__xor__` for `^`
+- `__or__` for `|`
 
 ```py
 class Vector2D:
@@ -814,12 +838,12 @@ print(result.y)
 
 #### Comparison
 
-- `__lt__` for <
-- `__le__` for <=
-- `__eq__` for ==
-- `__ne__` for !=
-- `__gt__` for >
-- `__ge__` for >=
+- `__lt__` for `<`
+- `__le__` for `<=`
+- `__eq__` for `==`
+- `__ne__` for `!=`
+- `__gt__` for `>`
+- `__ge__` for `>=`
 - `__ne__` could be translate to `__eq__` if it has not been implemented.
 
 ```py
@@ -840,8 +864,8 @@ spam > eggs
 
 #### Container
 
-- `__len__` for len()
-- `__repr__` for print() with format
+- `__len__` for overriding `len()`
+- `__repr__` for overriding `print()` with format
 - `__getitem__` for indexing
 - `__setitem__` for assigning to indexed values
 - `__delitem__` for deleting indexed values
@@ -875,9 +899,9 @@ print(vague_list[2])
 
 ## Class Methods
 
-- They all have cls as the first parameter
+- They all have `cls` as the first parameter
 - They return new object of the newly defined class.
-- add `@classmethod` before def statement
+- add `@classmethod` decorator before `def` statement
 
 ```py
 class Rectangle:
@@ -899,9 +923,10 @@ print(square.calculate_area())
 ## Static Methods
 
 - It starts with `@staticmethod`.
-- They don’t take new arguments.
+- They don't take new arguments.
 - They are identical.
 - They don't have self parameter.
+- Accessed using dot after class name
 
 ```py
 class Pizza:
@@ -922,7 +947,7 @@ if all(Pizza.validate_topping(i) for i in ingredients):
 
 ## Property
 
-`@property` is placed above the def statement to make the code below read-only
+`@property` is placed above the `def` statement to make a method read-only
 
 ```py
 class Pizza:
@@ -941,7 +966,7 @@ pizza.pineapple_allowed = True
 ## Setter or Getter
 
 - It set or get the property’s value.
-- property name followed by . and setter or getter.
+- the decorator has property name followed by `.` and `setter` or `getter`.
 
 ```py
 class Pizza:
@@ -972,7 +997,7 @@ print(pizza.pineapple_allowed)
 
 When an exception occurs, the program immediately stops.
 
-#### Error Types
+### Error Types
 
 - `ImportError`: an import fails;
 - `IndexError`: a list is indexed with an out-of-range number;
@@ -985,17 +1010,20 @@ When an exception occurs, the program immediately stops.
 - `MemoryError`: trying to create a list in a very extensive range.
 - `AttributeError`: Trying to access an attribute of an instance that isn't defined or call an undefined method.
 
-#### Handling Error
+### Handling Error
 
 ```py
 try: #try some code
 except ZeroDivisionError: #run if there is a ZeroDivisionError
 except (ValueError, TypeError): #or two different error#
 except:#and all other errors#
+# or
+except Exception as e: # work on python 3.x
+    logger.error('Failed to upload to ftp: '+ str(e))
 finally: #it will run no matter what
 ```
 
-#### Raise an Error
+### Raise an Error
 
 - Raise statement is used to raise an error
 
@@ -1012,7 +1040,7 @@ except:
    raise
 ```
 
-#### Assert
+### Assert
 
 - Assert statement is used to assume a condition then raise an error accordingly.
 
@@ -1031,21 +1059,21 @@ assert (temp >= 0), "Colder than absolute zero!"
 
 ## File
 
-#### Open a File
+### Open a File
 
 ```py
 newfile = open("localfile.txt", 'r+')
 ```
 
-#### File Mode
+### File Mode
 
-- `r`: read mode It is the default mode
+- `r`: read mode, it is the default mode
 - `w`: write mode that can create new files and will overwrite old content
 - `b`: binary mode for non-text files
 - `a`: append mode for adding new content to the end of the file.
 - `r+`: read and write mode
 
-#### File Method
+### File Method
 
 ```py
 newfile.close()   # close file after done manipulation.
@@ -1058,21 +1086,21 @@ newfile.readlines()    #return a list of lines
 newfile.write(stringS)     #write content into the file and return the byte written.
 ```
 
-#### Read File Line by Line
+### Read File Line by Line
 
 ```py
 for line in file:
 	print(line)      #print one line at a time
 ```
 
-#### Apply Error Handling
+### Apply Error Handling
 
 ```py
 try:
 	newfile = open("localfile.txt")
 	print(newfile.read())
 finally:
-	f.close()
+	newfile.close()
 ```
 
 ```py

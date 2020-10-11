@@ -103,8 +103,7 @@
 
 ### Postgres
 
-- It has a special array type
-- Try to avoid using datetime or time data type without timezone
+- Array is supported for all types
 
 ## Syntax
 
