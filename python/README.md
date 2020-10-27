@@ -240,6 +240,8 @@ str.strip(string)   # Strip all the characters in the argument of the str from t
 #Output:False
 "x,y,z".split(",")
 #Output:[‘x’,’y’,’z’]
+"test.jpg".endswith('.jpg', '.jpeg')
+#Return True if a string ends with a string in the argument
 ```
 
 #### String Function
@@ -641,6 +643,7 @@ functionName(variable)
   - `func(x=3, y=4)` or `func(3, 4)` is the same as `func(*[3, 4])`
 - Functions can have variables name starts with `**`, it enable the function to take a dictionary of itratable keys and values with any length as its parameters, generally it is called `**kwargs`.
   - `func(x=3, y=4)` or `func(3, 4)` is the same as `func(**{'x': 3, 'y': 4})`
+  - Always put the `**` argument as the last parameter, `func(x=3, **kwargs)`, key `x` will be added to the `kwargs` dictionary
 
 #### return statement
 

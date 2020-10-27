@@ -56,6 +56,11 @@
 - run `xcode-select --print-path` to find out what version of Xcode is being used by the tools
 - run `sudo xcode-select -switch /Applications/Xcode8.3.3/Xcode.app` set the default version of Xcode to use for the command-line tools.
 
+### iCloud
+
+- add `.nosync` after file or folder name will stop syncing the file to iCloud
+  - `.nosync` can be added directly before or after the file's extension. e.g. `movie.nosync.avi` or `movie.avi.nosync`
+
 ### Homebrew
 
 - It is the package management tool for macOS.

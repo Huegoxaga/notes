@@ -64,6 +64,9 @@ Provide Persistent Storage
 
 - All buckets(global) are shown in the `S3` console. However, each bucket belong to a certain region and can be replicated across multiple regions.
 - A file name is called key.
+- For an object from a private bucket, a presigned url can be generated to grant a temp access
+  - the default expiration period is 3600 seconds
+  - Using presigned url version `s3v4`, the longest expiration time can be 7 days
 - Object lifecycle management, it has two types:
   - Transition actions — Define when objects transition to another storage class.
     - There are costs associated with the lifecycle transition requests.

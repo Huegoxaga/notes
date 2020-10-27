@@ -24,7 +24,7 @@
 - `python manage.py migrate`
   - first migration command will create default databases.
   - `python manage.py migrate --fake <appname> <migratationID>` make certain migration, assume the database is the same as this migration file is made, reset the migration record. Migration Files after this time can be deleted.
-    - fake will not alter the database, new migrations are needed to rollback chages, then fake and delete the new and unused migration files.
+    - fake will not alter the database, new migrations are needed to rollback changes, then fake and delete the new and unused migration files.
   - `python manage.py migrate --fake-initial` force making initial migrate with database is already exists.
 - `python manage.py showmigrations` Check migration history.
 - `python manage.py createsuperuser` follow the promts and create admin account for the admin page.
@@ -182,6 +182,7 @@ def about(request):
   ModelClass.objects.get(id=1) # return the object with id 1
   newobject = ModelClass(property1='value1', property2 = 'value2') #create a new object
   newobject.save() # save change to the object that is already in the database
+  newobject.delete() # delete the object
   modelObject.id # get the object id
   modelObject.pk # get the object primary key value
   modelObject.manyToManyField.all() # return all related fields of a many-to-many fields. Direct access without all() will cause "TypeError: ManyRelatedManager object is not iterable"

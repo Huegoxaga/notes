@@ -102,7 +102,7 @@ ReactDOM.render(
 - must have exactly one outer element to return as a component.
 - For a new customized component, create new `.jsx` files in the component folder.
 - `createRef()` create a reference to a node that specified in the `ref` property of a component.
-  - import, `import { reateRef } from "react";`
+  - import, `import { createRef } from "react";`
   - then initialize, `refNode = createRef();`
   - create reference in the component props, `<div ref={this.refNode} />`
   - access the node by using the `current` property of the node reference, `this.textInput.current`
@@ -330,6 +330,18 @@ useEffect(() => {
   - When the second parameter is an empty array, `[]`, The function in the first parameter will be only called once when the component is mounted.
 - One component can have multiple `useEffect()` function and they will be executed in order.
 - `useEffect` can have return, `return () => {}`. It will be called every time the component is unmounted
+- Use the following way to clean a promise inside `useEffect()` hook. Clean up is required if use view another page before the first page is fully loaded.
+  ```js
+  React.useEffect(() => {
+    let isSubscribed = true;
+    fetchDATA().then((data) => {
+      if (isSubscribed) {
+        setData(data);
+      }
+    });
+    return () => (isSubscribed = false);
+  }, []);
+  ```
 
 #### Context Hook
 
