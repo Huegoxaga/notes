@@ -491,6 +491,53 @@ list(accumulate(range(8)))
 - use `with open(FLAGS.json) as f:`, then `data = json.load(f)` to load `.json` file into a dictionary
 - use `with open('person.txt', 'w') as json_file:`, then `json.dump(person_dict, json_file)` to write the dictionary to a `.json` file
 
+## csv
+
+- It process `csv` files
+- `import csv`
+
+### Usage
+
+- read a `csv` file as arrays, `delimiter` has a default which is `,`,
+  ```py
+  import csv
+  with open('example.csv', 'r',) as file:
+      #read csv as arrays
+      reader = csv.reader(file, delimiter = '\t')
+      for row in reader:
+          print(row)
+  ```
+- read a `csv` file as dictionaries, `delimiter` has a default which is `,`,
+  ```py
+  import csv
+  with open('example.csv', 'r',) as file:
+      #read csv as dictionaries
+      csv_file = csv.DictReader(file)
+      for row in csv_file:
+        print(dict(row))
+  ```
+- write a `csv` file with arrays, `delimiter` has a default which is `,`
+  ```py
+  import csv
+  with open('protagonist.csv', 'w', newline='') as file:
+      writer = csv.writer(file, delimiter = '\t')
+      # write one row with 1-D array
+      writer.writerow(["header_one", "header_two", "header_three"])
+      writer.writerow(["first_row_a", "first_row_b", "first_row_c"])
+      writer.writerow(["second_row_a", "second_row_b", "second_row_c"])
+      # write multiply rows with 2-D array
+      writer.writerows([["third_row_a", "third_row_b", "third_row_c"],["fourth_row_a", "fourth_row_b", "fourth_row_c"]])
+  ```
+- write a `csv` with dictionaries
+  ```py
+  import csv
+  with open('protagonist.csv', 'w', newline='') as file:
+      fieldnames = ['header_one', 'header_two', 'header_three']
+      writer = csv.DictWriter(file, fieldnames=fieldnames)
+      writer.writeheader()
+      writer.writerow({'header_one': 'first_row_a', 'header_two': 'first_row_b', 'header_three': 'first_row_c'})
+  ```
+
 ## unittest
 
 - It is used to do unit testing.

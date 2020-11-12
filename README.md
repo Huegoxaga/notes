@@ -71,5 +71,6 @@
   - [Discrete Mathematics](https://huegoxaga.github.io/notes/math/discrete.html)
   - [Probability & Statistics](https://huegoxaga.github.io/notes/math/probability-statistics.html)
   - [Maple Softwares](https://huegoxaga.github.io/notes/math/maple.html)
-- [Graphic Design](https://huegoxaga.github.io/notes/graphic-design/index.html)
+- [Graphic Design](https://huegoxaga.github.io/notes/media/graphics-design.html)
+- [Video Processing Tools](https://huegoxaga.github.io/notes/media/video-processing.html)
 - [Music Theory](https://huegoxaga.github.io/notes/music/index.html)

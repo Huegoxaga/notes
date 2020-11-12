@@ -1,6 +1,6 @@
 # MacOS
 
-### Zsh
+### zsh
 
 - `Zsh` is the macOS default shell for its terminal. It is similar to `bash` but has the following difference.
 - set `Zsh` as the default shell, run `chsh -s /bin/zsh` then restart the terminal.

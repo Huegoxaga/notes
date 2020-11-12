@@ -183,6 +183,7 @@ def about(request):
   newobject = ModelClass(property1='value1', property2 = 'value2') #create a new object
   newobject.save() # save change to the object that is already in the database
   newobject.delete() # delete the object
+  querySet.delete() # delete all objects in the query set
   modelObject.id # get the object id
   modelObject.pk # get the object primary key value
   modelObject.manyToManyField.all() # return all related fields of a many-to-many fields. Direct access without all() will cause "TypeError: ManyRelatedManager object is not iterable"

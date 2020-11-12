@@ -72,5 +72,6 @@
   - [Discrete Mathematics](math/discrete.md)
   - [Probability & Statistics](math/probability-statistics.md)
   - [Maple Softwares](math/maple.md)
-- [Graphic Design](graphic-design/README.md)
+- [Graphic Design](media/graphics-design.md)
+- [Video Processing Tools](media/media-processing.md)
 - [Music Theory](music/README.md)

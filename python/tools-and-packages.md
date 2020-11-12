@@ -348,11 +348,19 @@
   - `rotated = cv2.warpAffine(image, matrix, (w, h))` perform ratation.
     - `matrix` is the rotation matrix that will be performed.
     - `(w, h)` defines the image size after rotation.
+  - or, `img = cv2.rotate(img, cv2.ROTATE_180)`
+    - `cv2.ROTATE_90_COUNTERCLOCKWISE`
+    - `cv2.ROTATE_90_CLOCKWISE`
+- blurring
+  - blur = cv.GaussianBlur(img,(sizeX,sizeY),0)
+    - `0` is the standard deviation in the `X` and `Y` directions
+    - `sizeX` is a positive and odd number, represents the width of the kernel
+    - `sizeY` is a positive and odd number, represents the height of the kernel
 - `output = img.copy()` copy the original image
 - `cv2.circle(circle, (100, 100), 100, 255, -1)` circle
 - `rectangle = cv2.rectangle(img, (left, top), (bottom, right), (B, G, R), fillMethod)` draw rectangle box on `img`
   - `FillMethod` can be any integer value as line width for bounding box.
-  - `-1` will fill the image with bounding box.
+  - `-1` will fill the image with bounding box, positive integer numbers indicates the width of the rectanglar bounding box
   - `FillMethod` can be `cv2.FILLED` for a filled rectangle
 - `cv2.putText(img, 'Text Content', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 4, (255, 0, 0), 2)` add text on `img`, it uses the following arguments.
   - Image
@@ -802,6 +810,33 @@ vacuum          = true
 - `image = Image.fromarray(OpenCVImage)` Convert OpenCV image onto PIL Image
   - `OpenCvImage` is a opencv image object in a numpy array after `cvtColor()`
 - `image.save(path, format='JPEG', exif=imWIthEXIF.info['exif'])` save image with exif data as `jpeg`.
+- read image with EXIF data using PIL/Pillow, `imgWithEXIF = Image.open(file_path)`, then `exif_data = imgWithEXIF._getexif()`
+- convert exif to readable dictionary
+  ```py
+  from PIL.ExifTags import TAGS
+      exif = {
+          TAGS[k]: v
+          for k, v in exif_data.items()
+          if k in TAGS
+      }
+      print(TAGS)
+      print(exif)
+  ```
+- Generate new metadata
+  ```py
+  from PIL import Image, TiffTags
+  from PIL.TiffImagePlugin import ImageFileDirectory_v2
+  import io
+  ifd = ImageFileDirectory_v2()
+  for k, v in exif_data.items():
+      if k in TAGS and k != 34853:
+          ifd[k] = v
+          # print(TiffTags.lookup(k))
+          # print(v)
+  out = io.BytesIO()
+  ifd.save(out)
+  new_exif = b"Exif\x00\x00" + out.getvalue()
+  ```
 
 ## Abseil
 

@@ -43,7 +43,7 @@
 
 - [Click](https://create-react-app.dev/docs/getting-started) to see the full docs about this tool.
 
-### Run Existing Project
+### Run Existing Project for Development
 
 - Delete the node_modules folder and any 'lock' files such as `yarn.lock` or `package-lock.json` first, then run `npm install` and `npm start`.
 
@@ -73,6 +73,10 @@ ReactDOM.render(
 ### `manifest.json`
 
 - The web app manifest is a JSON file is optional for a React App and created by CRA(create-react-app) by default
+
+### `package.json`
+
+- add a `proxy` value can enable proxy, this only has effect in development (with npm start)
 
 ### Component Files
 
