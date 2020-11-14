@@ -71,11 +71,22 @@
   - Drag a `Measures` data to `Columns` and a `Dimensions` data to `Rows` can generate a horizontal bar chart
   - Drag a `Dimensions` data to `Rows` and a `Measures` data to `Marks` can generate a table
   - Drag a `Date` data to `Columns` and a `Measures` data to `Rows` can generate a line chart
+- Addition Data can be dragged to the Marks section and add additional info to the graph
+  - Drag `Measures` to `Color`, higher values will have a darker color
+  - Drag `Measures` to `Label`, the values will be printed on the graph
+- Data selected for `Columns` and `Rows` can be swapped by click the `swap` icon in the tool bar
+  - or press `Ctrl + W`
 - Multiple fields can be dragged to `Rows` or `Columns`
 - Fields from the left column can be dragged and combined into a hirearchy, name the hirearchy the the field in the input on the right will have a plus icon
 - Date data type is a hirearchy by default
+  - It can have `Year`, `Quater`, `Month`, `Date` by default
+  - Graph is discrete by default, click the drop-down to select the continuous graph
 - Data can be reformatted by opening the drop-down from the field name after dragging, and selecting the desired format
   - Changing font size and color by select `format..` in the drop-down
 - When connected to a database, `Live` option will update data in sheet dynamically and `Extract` option will take a snapshot of the data table
   - Right click the data source icon in the left panel and select `Refresh` to reload data when using `Live` option
   - Right click the data source icon in the left panel and select `Extract -> Refresh` to reload data when using `Extract` option
+- Click the sort icon beside the text for each axis on the graph to sort
+  - Sort icons can be clicked three times, they will sort in ascending order, descending order, and cancel sort
+- Select selected data field in the `Columns` or `Rows`, then click the sort button to sort
+- Use the data field drop-down in the `Columns` or `Rows`, the click sort to do advanced sort
