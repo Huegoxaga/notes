@@ -2,7 +2,7 @@
 
 ## Arithmetic
 
-## Roman Numeral System
+### Roman Numeral System
 
 - Roman Numeral System uses the following character to represent numbers:
   - `I`(1)
@@ -20,7 +20,7 @@
   - There can be one, two or three of the same digits that are smaller written after a bigger digit, in which case their value will be added together and added again to the bigger digit. For example: there can only be `CM=900`, but there can be `MCCC=1300`.
   - There cannot be more than one digit written together from the second row of digits above (`V`, `L`, `D`).
 
-## Significant Digits
+### Significant Digits
 
 - `~` is used to on a `0` to represent significant digits.
 - Accuracy is represented by the number of significant digits.
@@ -43,7 +43,7 @@
 | deca   | da    | 10^1  | ten      |
 |        | 10^0  | one   |          |
 
-## Number Theory
+### Number Theory
 
 - Number theory is the branch of mathematics concerned with the integers.
 - A **prime number** is an integer greater than 1 whose only positive divisors are 1 and itself.
@@ -54,11 +54,11 @@
 - Prime factorization - Prime factorization of a number is to find a product of primes with the same value
   - Ex, ![$28050 = 2\times3\times5^2\times11\times17$](https://render.githubusercontent.com/render/math?math=%2428050%20%3D%202%5Ctimes3%5Ctimes5%5E2%5Ctimes11%5Ctimes17%24) (this is the format for prime factorization result)
 
-> ##### The Fundamental Theorem of Arithmetic
+> #### The Fundamental Theorem of Arithmetic
 >
 > Every integer greater than 1 is either prime or can be expressed as a product of primes in a unique order in which the factors occur.
 
-### Divisibility Rules
+#### Divisibility Rules
 
 - Divisibility rule for 2: All even numbers are divisible by 2;
 - Divisibility rule for 3: A number, n, is divisible by 3 if and only if the sum of its digits is divisible by 3;
@@ -72,7 +72,7 @@
 - Divisibility rule for 10: A number, n, is divisible by 10 if and only if the number finishes at 0;
 - Divisibility rule for 11: A number, n, is divisible by 11 if and only if the alternating sum(put - and + in between )(order doesn’t matter) of its digits is divisible by 11; when find the divisibility rule of a large number, try the condition that satisfied all the rules for its biggest factor found above.
 
-### GCF & LCM
+#### GCF & LCM
 
 - A Greatest Common Factor, GCF, of two (or more) numbers is the biggest number that we can divide with (is a factor of) both numbers.
   - It can be express as ![$A \cap B$](https://render.githubusercontent.com/render/math?math=%24A%20%5Ccap%20B%24), when A and B are the set of factors of the two numbers.
@@ -88,7 +88,7 @@
     5. ![$9520 = 9 \times 1020 + 340 $](https://render.githubusercontent.com/render/math?math=%249520%20%3D%209%20%5Ctimes%201020%20%2B%20340%20%24)
     6. ![$1020 = 3 \times 340 + 0$](https://render.githubusercontent.com/render/math?math=%241020%20%3D%203%20%5Ctimes%20340%20%2B%200%24)
 
-### Number Systems
+#### Number Systems
 
 - It is used to represent numbers. It can be one of the follows:
   - Decimal - A decimal number system is consisted of `1` and `9`.
@@ -126,5 +126,29 @@
 ## Algebra
 
 ### Vector
+
+- Vectors has both magnitude and direction
+  - Magnitude can never be negative
+  - A scalar only represents magnitude, and it can be negative
+- A vector from point `P` points to `Q` can be denoted as a letter with hat ![$\vec{v}$](https://render.githubusercontent.com/render/math?math=%24%5Cvec%7Bv%7D%24) or a bold letter ![$\mathbf{v}$](https://render.githubusercontent.com/render/math?math=%24%5Cmathbf%7Bv%7D%24), or other notations like ![$\overrightarrow{PQ}=v_{x}\hat{x}+v_{y}\hat{y}=v_{x}\hat{i}+v_{y}\hat{j}=v_{1}\hat{i}+v_{2}\hat{j}=v_{1}\hat{x}+v_{2}\hat{y}=\langle v_{x},v_{y} \rangle=\langle v_{1},v_{2} \rangle$](https://render.githubusercontent.com/render/math?math=%24%5Coverrightarrow%7BPQ%7D%3Dv_%7Bx%7D%5Chat%7Bx%7D%2Bv_%7By%7D%5Chat%7By%7D%3Dv_%7Bx%7D%5Chat%7Bi%7D%2Bv_%7By%7D%5Chat%7Bj%7D%3Dv_%7B1%7D%5Chat%7Bi%7D%2Bv_%7B2%7D%5Chat%7Bj%7D%3Dv_%7B1%7D%5Chat%7Bx%7D%2Bv_%7B2%7D%5Chat%7By%7D%3D%5Clangle+v_%7Bx%7D%2Cv_%7By%7D+%5Crangle%3D%5Clangle+v_%7B1%7D%2Cv_%7B2%7D+%5Crangle%24)
+  - A 2-D vector is represented by two components
+- The magnitude of a vector equals ![$|\hat{v}|=\sqrt{v_x^2+v^2_y}$](https://render.githubusercontent.com/render/math?math=%24%7C%5Chat%7Bv%7D%7C%3D%5Csqrt%7Bv_x%5E2%2Bv%5E2_y%7D%24)
+- When the magitude and direction of a vector are known, its two components can be obtained by using `cos` and `sin`
+- When multiply a vector with a scalar, ![$c\hat{v}=c(x_x\hat{i}+y_y\hat{j})=cx_x\hat{i}+cy_y\hat{j}$](https://render.githubusercontent.com/render/math?math=%24c%5Chat%7Bv%7D%3Dc%28x_x%5Chat%7Bi%7D%2By_y%5Chat%7Bj%7D%29%3Dcx_x%5Chat%7Bi%7D%2Bcy_y%5Chat%7Bj%7D%24)
+- A unit vector has magnitude that always equals to `1`, it is used to indicate direction
+  - The unit vector of any given vector is ![$\frac{\hat{v}}{|v|}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7B%5Chat%7Bv%7D%7D%7B%7Cv%7C%7D%24)
+- Vectors can be added using the triangle rule(left), and the parallelogram rule(right)
+  - ![b-vector-addition](img/b-vector-addition.png)
+  - If the components of a vector are known, simply add them together
+- One vector subtract one other vector is the same as add the other vector with opposite direction, or it can be directly subtracted using the following rule
+  - ![b-vector-subtraction](img/b-vector-subtraction.png)
+  - If the components of a vector are known, simply subtract them separately
+- A dot product of two vectors is, ![$\vec{A}\vec{B}=|\vec{A}||\vec{B}|\cos{\theta}$](https://render.githubusercontent.com/render/math?math=%24%5Cvec%7BA%7D%5Cvec%7BB%7D%3D%7C%5Cvec%7BA%7D%7C%7C%5Cvec%7BB%7D%7C%5Ccos%7B%5Ctheta%7D%24) where `θ` is the angle between the two vectors
+  - It returns a scalar that describes the magnitude and how close the vectors are
+  - When the angle is smaller than `±90+360n` degrees the result is positive
+  - It returns 0, the the angle is `90+360n` degress
+  - It returns a negative values the angle is greater than `±90+360n` degrees
+  - When the components of the vectors are known, dot product is the sum of the product of the `x` component of the two vectors and the `y` component of the two vectors
+  - Based on the above properties, the angle between two vectors can be found when the components of them and the magnitude of them are known, ![$\cos{\theta}=\frac{A_x B_x + A_y B_y}{|\vec{A}||\vec{B}|}$](https://render.githubusercontent.com/render/math?math=%24%5Ccos%7B%5Ctheta%7D%3D%5Cfrac%7BA_x+B_x+%2B+A_y+B_y%7D%7B%7C%5Cvec%7BA%7D%7C%7C%5Cvec%7BB%7D%7C%7D%24)
 
 ## Geometry
