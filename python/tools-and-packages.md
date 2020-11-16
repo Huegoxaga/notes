@@ -77,6 +77,8 @@
 - `conda install --name <env-name> <packagename>` Install a new package in a different environment.
 - `conda update <packagename>` Update a package in the current environment
 - `conda remove --name bio-env toolz boltons` Remove one or more packages (toolz, boltons) from a specific environment (bio-env)
+- `conda clean --all` clean duplicated unused cache packages, index cache, lock files
+- `conda clean -f` Remove all writable package caches. This option is not included with the --all flag. WARNING: This will break environments with packages installed using symlinks back to the package cache.
 - `which -a python` Show the locations of all versions of Python that are currently in the path
   - The first version of Python in the list will be executed.
 

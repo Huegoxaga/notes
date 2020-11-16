@@ -729,6 +729,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.17.9" data-path="../os/media.html">
+            
+                <a href="../os/media.html">
+            
+                    
+                    Media
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1057,7 +1070,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.24.1" data-path="../math/calculus.html">
+        <li class="chapter " data-level="1.24.1" data-path="../math/basic.html">
+            
+                <a href="../math/basic.html">
+            
+                    
+                    Basic Math
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.2" data-path="../math/calculus.html">
             
                 <a href="../math/calculus.html">
             
@@ -1070,7 +1096,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.2" data-path="../math/linear-algebra.html">
+        <li class="chapter " data-level="1.24.3" data-path="../math/linear-algebra.html">
             
                 <a href="../math/linear-algebra.html">
             
@@ -1083,7 +1109,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.3" data-path="../math/discrete.html">
+        <li class="chapter " data-level="1.24.4" data-path="../math/discrete.html">
             
                 <a href="../math/discrete.html">
             
@@ -1096,7 +1122,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.4" data-path="../math/probability-statistics.html">
+        <li class="chapter " data-level="1.24.5" data-path="../math/probability-statistics.html">
             
                 <a href="../math/probability-statistics.html">
             
@@ -1109,7 +1135,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.5" data-path="../math/maple.html">
+        <li class="chapter " data-level="1.24.6" data-path="../math/maple.html">
             
                 <a href="../math/maple.html">
             
@@ -1127,9 +1153,23 @@
             
         </li>
     
-        <li class="chapter " data-level="1.25" data-path="../graphic-design/">
+        <li class="chapter " data-level="1.25" data-path="../visualization/">
             
-                <a href="../graphic-design/">
+                <a href="../visualization/">
+            
+                    
+                    Visualization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.25.1" data-path="../visualization/graphic-design.html">
+            
+                <a href="../visualization/graphic-design.html">
             
                     
                     Graphic Design
@@ -1140,9 +1180,54 @@
             
         </li>
     
+        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-vision.html">
+            
+                <a href="../visualization/computer-vision.html">
+            
+                    
+                    Computer Vision
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.3" data-path="../visualization/tableau.html">
+            
+                <a href="../visualization/tableau.html">
+            
+                    
+                    Tableau
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
         <li class="chapter " data-level="1.26" data-path="../music/">
             
                 <a href="../music/">
+            
+                    
+                    Music
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.26.1" data-path="../music/theory.html">
+            
+                <a href="../music/theory.html">
             
                     
                     Music Theory
@@ -1150,6 +1235,24 @@
                 </a>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.2" data-path="../music/logic-pro.html">
+            
+                <a href="../music/logic-pro.html">
+            
+                    
+                    Logic Pro
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -1242,7 +1345,7 @@
 <li><p><a href="https://create-react-app.dev/docs/getting-started" target="_blank">Click</a> to see the full docs about this tool.</p>
 </li>
 </ol>
-<h3 id="run-existing-project">Run Existing Project</h3>
+<h3 id="run-existing-project-for-development">Run Existing Project for Development</h3>
 <ul>
 <li>Delete the node_modules folder and any &apos;lock&apos; files such as <code>yarn.lock</code> or <code>package-lock.json</code> first, then run <code>npm install</code> and <code>npm start</code>.</li>
 </ul>
@@ -1269,6 +1372,10 @@ ReactDOM.render(
 <h3 id="manifestjson"><code>manifest.json</code></h3>
 <ul>
 <li>The web app manifest is a JSON file is optional for a React App and created by CRA(create-react-app) by default</li>
+</ul>
+<h3 id="packagejson"><code>package.json</code></h3>
+<ul>
+<li>add a <code>proxy</code> value can enable proxy, this only has effect in development (with npm start)</li>
 </ul>
 <h3 id="component-files">Component Files</h3>
 <ul>
@@ -1304,7 +1411,7 @@ ReactDOM.render(
 <li>must have exactly one outer element to return as a component.</li>
 <li>For a new customized component, create new <code>.jsx</code> files in the component folder.</li>
 <li><code>createRef()</code> create a reference to a node that specified in the <code>ref</code> property of a component.<ul>
-<li>import, <code>import { reateRef } from &quot;react&quot;;</code></li>
+<li>import, <code>import { createRef } from &quot;react&quot;;</code></li>
 <li>then initialize, <code>refNode = createRef();</code></li>
 <li>create reference in the component props, <code>&lt;div ref={this.refNode} /&gt;</code></li>
 <li>access the node by using the <code>current</code> property of the node reference, <code>this.textInput.current</code></li>
@@ -1518,6 +1625,17 @@ useEffect(() =&gt; {
 </li>
 <li>One component can have multiple <code>useEffect()</code> function and they will be executed in order.</li>
 <li><code>useEffect</code> can have return, <code>return () =&gt; {}</code>. It will be called every time the component is unmounted</li>
+<li>Use the following way to clean a promise inside <code>useEffect()</code> hook. Clean up is required if use view another page before the first page is fully loaded.<pre><code class="lang-js">React.useEffect(() =&gt; {
+  <span class="hljs-keyword">let</span> isSubscribed = <span class="hljs-literal">true</span>;
+  fetchDATA().then((data) =&gt; {
+    <span class="hljs-keyword">if</span> (isSubscribed) {
+      setData(data);
+    }
+  });
+  <span class="hljs-keyword">return</span> () =&gt; (isSubscribed = <span class="hljs-literal">false</span>);
+}, []);
+</code></pre>
+</li>
 </ul>
 <h4 id="context-hook">Context Hook</h4>
 <ul>
@@ -2008,7 +2126,7 @@ palette: {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React","level":"1.5.2","depth":2,"next":{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-10-11T21:39:20.822Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React","level":"1.5.2","depth":2,"next":{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-10-31T18:05:38.283Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-16T00:47:09.645Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

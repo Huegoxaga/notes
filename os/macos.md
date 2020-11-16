@@ -85,11 +85,24 @@
 - `brew tap <RepoName>` include an external repo. If a certain formulae is not found using `brew search`. The package can then be installed using `brew install`.
 - `brew doctor` run self diagnoses
 - `brew info <PackageName>` view the info for a package.
+- `brew deps --tree --installed` show installed packages and all their dependencies in tree
+- `brew leaves` List installed formulae that are not dependencies of another installed formula
 - Install Apps with Casks with similar commands by using `brew cask`:
   - `brew cask install <AppName>` install an app
+    - `brew install --appdir="/<PathToAppFolder>" <AppName>` specify the app folder
   - `brew cask list` list installed apps
     - `brew cask list <keyword>` search app
   - `brew cast home <PackageName>` open app homepage in browser.
   - `brew cask info <AppName>` view the info for an app.
   - `brew cask upgrade` view the info for an app.
   - `brew cask outdated` view the info for an app.
+
+### Disk Cleanup
+
+- Remove Wechat account folder at `/Users/<username>/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/`, then clear cache in app setting
+- Remove Webex support folders `WebEx Meetings` and `WebEx Folder` at `/Users/<username>/Library/Application Support/`
+- VS Code delete `Cache` and `CacheData` folders at `/Users/<username>/Library/Application Support/Code`, then in app command input enter `Clear Editor History`
+- Clear VirtualBox log in `/Users/<username>/Library/VirtualBox` folder
+- Clean conda package caches, run `conda clean -f && conda clean -a`
+- Homebrew clean up`brew cleanup && brew cask cleanup`
+- Clean up npm cache `npm cache clean --force`

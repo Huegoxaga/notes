@@ -2,7 +2,7 @@
 
 ## Limit
 
-#### Definition
+### Definition
 
 - Intuitive Definitions
   - Definition of a Limit
@@ -52,7 +52,7 @@
   - So, ![$e = \lim_{x \to 0} (1+x)^{\frac{1}{x}}$](https://render.githubusercontent.com/render/math?math=%24e%20%3D%20%5Clim_%7Bx%20%5Cto%200%7D%20(1%2Bx%29%5E%7B%5Cfrac%7B1%7D%7Bx%7D%7D%24) or ![$e = \lim_{x \to \infty} \left(1+ \frac{1}{n}\right)^n$](https://render.githubusercontent.com/render/math?math=%24e%20%3D%20%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%20%5Cleft(1%2B%20%5Cfrac%7B1%7D%7Bn%7D%5Cright%29%5En%24)
 - L'Hospital's Rule - Suppose _f_ and _t_ are differentiable and ![$g'(x) \neq 0$](https://render.githubusercontent.com/render/math?math=%24g'(x%29%20%5Cneq%200%24) on an open interval _I_ that contains _a_ (except possibly at _a_). Suppose that ![$\lim_{x \to a}f(x) = 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3D%200%24) and ![$\lim_{x \to a}g(x) = 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%20%3D%200%24) or that ![$\lim_{x \to a}f(x) = \pm \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3D%20%5Cpm%20%5Cinfty%24) and ![$\lim_{x \to a}g(x) = \pm \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%20%3D%20%5Cpm%20%5Cinfty%24) In other words, we have an indeterminate form of type `0/0` or ![$\infty / \infty$](https://render.githubusercontent.com/render/math?math=%24%5Cinfty%20%2F%20%5Cinfty%24). Then ![$\lim_{x \to a} \frac{f(x)}{g(x)}=\lim_{x \to a} \frac{f'(x)}{g'(x)}$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf(x%29%7D%7Bg(x%29%7D%3D%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf'(x%29%7D%7Bg'(x%29%7D%24) if the limit on the right side exists (or is opposite/negative inifinity)
 
-#### Laws
+### Laws
 
 - Limit Laws, Suppose that `c` is a constant and the limits ![$\lim_{x \to a} f(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29%24) and ![$\lim_{x \to a} g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20g(x%29%24) exist. Then:
   - ![$\lim_{x \to a} [f(x)+g(x)]=\lim_{x \to a} f(x)+\lim_{x \to a} g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bf(x%29%2Bg(x%29%5D%3D%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29%2B%5Clim_%7Bx%20%5Cto%20a%7D%20g(x%29%24) Sum Law
@@ -67,12 +67,12 @@
   - ![$\lim_{x \to a} \sqrt[n]{x}=\sqrt[n]{a} $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Csqrt%5Bn%5D%7Bx%7D%3D%5Csqrt%5Bn%5D%7Ba%7D%20%24) where `n` is a positive integer (If `n` is even, we assume that `a > 0`.)
   - ![$\lim_{x \to a} \sqrt[n]{f(x)}=\sqrt[n]{\lim_{x \to a} f(x)} $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Csqrt%5Bn%5D%7Bf(x%29%7D%3D%5Csqrt%5Bn%5D%7B%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29%7D%20%24) where `n` is a positive integer. If `n` is even, we assume that ![$\lim_{x \to a}f(x) > 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3E%200%24). Root Law
 
-#### Properties
+### Properties
 
 - Direct Substitution Property If _`f`_ is a polynomial or a rational function and _`a`_ is in the domain of _`f`_ , then ![$\lim_{x \to a}f(x) = f(a)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3D%20f(a%29%24)
 - If ![$f(x)=g(x)$](https://render.githubusercontent.com/render/math?math=%24f(x%29%3Dg(x%29%24) when ![$x \neq a$](https://render.githubusercontent.com/render/math?math=%24x%20%5Cneq%20a%24), then ![$\lim_{x \to a}f(x) = \lim_{x \to a}g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3D%20%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%24) provided the limits exist.
 
-#### Theorem
+### Theorem
 
 - ![$\lim_{x \to a}f(x) = L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3D%20L%24) if and only if ![$\lim_{x \to a_-}f(x) = L = \lim_{x \to a_+}f(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a_-%7Df(x%29%20%3D%20L%20%3D%20%5Clim_%7Bx%20%5Cto%20a_%2B%7Df(x%29%24)
 - If ![$f(x) \leqslant g(x)$](https://render.githubusercontent.com/render/math?math=%24f(x%29%20%5Cleqslant%20g(x%29%24) where _`x`_ is near _`a`_ (except possibly at _`a`_) and the limits of _`f`_ and _`g`_ both exist as _`x`_ approaches _`a`_, then ![$\lim_{x \to a}f(x) \leqslant \lim_{x \to a}g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%5Cleqslant%20%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%24)
@@ -100,7 +100,7 @@
 - The Intermediate Value Theorem - Suppose that _f_ is continuous on the closed interval ![$[a,b]$](https://render.githubusercontent.com/render/math?math=%24%5Ba%2Cb%5D%24) and let _N_ be any number between _f(a)_ and _f(b)_ , where ![$f(a) \neq f(b)$](https://render.githubusercontent.com/render/math?math=%24f(a%29%20%5Cneq%20f(b%29%24). Then there exists _a_ number _c_ in ![$(a,b)$](https://render.githubusercontent.com/render/math?math=%24(a%2Cb%29%24) such that _f(c) = N_.
 - If ![$r > 0$](https://render.githubusercontent.com/render/math?math=%24r%20%3E%200%24) is a rational number, then ![$\lim_{x \to \infty}\frac{1}{x^r}= 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%5Cfrac%7B1%7D%7Bx%5Er%7D%3D%200%24) If ![$r > 0$](https://render.githubusercontent.com/render/math?math=%24r%20%3E%200%24) is a rational number such that ![$x^r$](https://render.githubusercontent.com/render/math?math=%24x%5Er%24) is defined for all _x_, then ![$\lim_{x \to - \infty}\frac{1}{x^r}= 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7D%5Cfrac%7B1%7D%7Bx%5Er%7D%3D%200%24)
 
-#### Related Solving Methods
+### Related Solving Methods
 
 - use _f_ over the recipical of _g_ for Indeterminate products, in order to use the L'Hospital's Rule.
 - solving the the limit of one polynomial over another, divide everything by the highest power of the variable
@@ -111,7 +111,7 @@
 
 ## Derivatives
 
-#### Definition
+### Definition
 
 - Tangent Line - The tangent line to the curve ![$y = f(x)$](https://render.githubusercontent.com/render/math?math=%24y%20%3D%20f(x%29%24)
   - at the point ![$P(a, f(a))$](https://render.githubusercontent.com/render/math?math=%24P(a%2C%20f(a%29%29%24) is the line through _P_ with slope ![$m = \lim_{x \to a} \frac{f(x)-f(a)}{x-a}$](https://render.githubusercontent.com/render/math?math=%24m%20%3D%20%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf(x%29-f(a%29%7D%7Bx-a%7D%24) provided that this limit exists.
@@ -163,7 +163,7 @@
   - For `f(x, y)` it can have two derivatives which are `∂f/∂x` and `∂f/∂y`.
   - Function with multiple independent variable has a multi-demensional graph, parial derivative only looks at the rate of change between one independent variable and the dependent variable in one plane. All other independent variable will be kept in the result and the derivative function will have a reduced demension(by 1).
 
-#### Rules
+### Rules
 
 - Derivative of a Constant Function ![$\frac{d}{dx}(c)=0$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(c%29%3D0%24)
 - The Power Rule - ![$\frac{d}{dx}(x^n)=nx^{n-1}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(x%5En%29%3Dnx%5E%7Bn-1%7D%24)
@@ -175,7 +175,7 @@
 - The Quotient Rule - If _f_ and _g_ are differentiable, then ![$\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x) \frac{d}{dx}[f(x)]-f(x) \frac{d}{dx}[g(x)]}{[g(x)]^2}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Cleft%5B%5Cfrac%7Bf(x%29%7D%7Bg(x%29%7D%5Cright%5D%3D%5Cfrac%7Bg(x%29%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x%29%5D-f(x%29%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bg(x%29%5D%7D%7B%5Bg(x%29%5D%5E2%7D%24)
 - The Chain Rule - If _g_ is differentiable at _x_ and _f_ is differentiable at _g(x)_, then the composite function ![$F=f \circ g$](https://render.githubusercontent.com/render/math?math=%24F%3Df%20%5Ccirc%20g%24) defined by ![$F(x)=f(g(x))$](https://render.githubusercontent.com/render/math?math=%24F(x%29%3Df(g(x%29%29%24)is differentiable at _x_ and _F'_ is given by the product ![$F'(x)=f'(g(x%29%29 \cdot g'(x%29$](https://render.githubusercontent.com/render/math?math=%24F'(x%29%3Df'(g(x%29%29%20%5Ccdot%20g'(x%29%24) In Leibniz notation, if _y = f(u)_ and _u = g(x)_ are both differentiable functions, then ![$\frac{dy}{dx}= \frac{dy}{du} \frac{du}{dx}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdy%7D%7Bdx%7D%3D%20%5Cfrac%7Bdy%7D%7Bdu%7D%20%5Cfrac%7Bdu%7D%7Bdx%7D%24)
 
-#### Derivatives of Common Functions
+### Derivatives of Common Functions
 
 - Derivatives of Trigonometric Functions
   - ![$\frac{d}{dx} (\sin x)=\cos x$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%20(%5Csin%20x%29%3D%5Ccos%20x%24)
@@ -197,7 +197,7 @@
 - Derivatives of Hyperbolic Functions
 - Derivatives of Inverse Hyperbolic Functions
 
-#### Theorem
+### Theorem
 
 - If _f_ is differentiable at _a_, then _f_ is continuous at _a_.
 - The only solutions of the differential equation _dy/dt=ky_ where _k_ is a constant, are the exponential functions ![$y(t) = y(0)e^{kt}$](https://render.githubusercontent.com/render/math?math=%24y(t%29%20%3D%20y(0%29e%5E%7Bkt%7D%24)
@@ -217,7 +217,7 @@
 - If _F_ is an antiderivative of _f_ on an interval _I_, then the most general
   antiderivative of _f_ on _I_ is _F(x) + C_ where _C_ is an arbitrary constant.
 
-#### Solving Methods for Related Problem
+### Solving Methods for Related Problem
 
 - Chain rule applys to all variable except the one that is at the denomination in the Leibniz notation.
   - If `dx` is the variable that is at the denomination in the Leibniz notation and `y` is the variable that will be applied by chain rule. When the relationship between `y` and `x` is unknown, use `y'` or `dy/dx` to represent the derivative of `y` in respect to `x`.
@@ -268,7 +268,7 @@
 
 ## Integral
 
-#### Definition
+### Definition
 
 - The area _A_ of the region _S_ that lies under the graph of the continuous function _f_ is the limit of the sum of the areas of approximating rectangles:
   - ![$A=\lim_{n \to \infty} R_n= \lim_{n \to \infty}[f(x_1) \Delta x+f(x_2) \Delta x+ \ldots +f(x_n) \Delta x]$](https://render.githubusercontent.com/render/math?math=%24A%3D%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20R_n%3D%20%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%5Bf(x_1%29%20%5CDelta%20x%2Bf(x_2%29%20%5CDelta%20x%2B%20%5Cldots%20%2Bf(x_n%29%20%5CDelta%20x%5D%24)
@@ -290,7 +290,7 @@
   - The improper integral is called convergent if the corresponding limit exists and divergent if the limit does not exist.
   - If _f_ has a discontinuity at _c_, where _a < c < b_ and both integrals are convergent, then we define ![$\int^b_a f(x) ; dx=\int^c_a f(x) ; dx + \int^b_c f(x) ; dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5Eb_a%20f(x%29%20%5C%3B%20dx%3D%5Cint%5Ec_a%20f(x%29%20%5C%3B%20dx%20%2B%20%5Cint%5Eb_c%20f(x%29%20%5C%3B%20dx%24)
 
-#### Theorem
+### Theorem
 
 - If _f_ is continuous on [_a, b_], or if _f_ has only a finite number of jump discontinuities, then f is integrable on [_a, b_]; that is, the definite integral ![$\int^b_a f(x) ; dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5Eb_a%20f(x%29%20%5C%3B%20dx%24) exists.
 - If _f_ is integrable on [_a, b_], then ![$\int^b_a f(x) ; dx=\lim_{n \to \infty} \sum_{i=1}^n f(x_i) \Delta x$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5Eb_a%20f(x%29%20%5C%3B%20dx%3D%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20%5Csum_%7Bi%3D1%7D%5En%20f(x_i%29%20%5CDelta%20x%24) where ![$\Delta x= \frac{b-a}{n}$](https://render.githubusercontent.com/render/math?math=%24%5CDelta%20x%3D%20%5Cfrac%7Bb-a%7D%7Bn%7D%24) and ![$x_i=a+i \Delta x$](https://render.githubusercontent.com/render/math?math=%24x_i%3Da%2Bi%20%5CDelta%20x%24)
@@ -303,7 +303,7 @@
   - If ![$\int^{\infty}_a f(x) ; dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7B%5Cinfty%7D_a%20f(x%29%20%5C%3B%20dx%24) is convergent, then ![$\int^{\infty}_a g(x) ; dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7B%5Cinfty%7D_a%20g(x%29%20%5C%3B%20dx%24) is convergent.
   - If ![$\int^{\infty}_a g(x) ; dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7B%5Cinfty%7D_a%20g(x%29%20%5C%3B%20dx%24) is divergent, then ![$\int^{\infty}_a f(x) ; dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5E%7B%5Cinfty%7D_a%20f(x%29%20%5C%3B%20dx%24) is divergent.
 
-#### Properties
+### Properties
 
 - Properties of the Definite Integral
   - ![$\int^a_b f(x) ; dx=- \int^b_a f(x) ; dx$](https://render.githubusercontent.com/render/math?math=%24%5Cint%5Ea_b%20f(x%29%20%5C%3B%20dx%3D-%20%5Cint%5Eb_a%20f(x%29%20%5C%3B%20dx%24)
@@ -353,7 +353,7 @@
   - the errors in the Midpoint Rules is ![$|E_M| \leqslant \frac{K(b-a)^3}{24n^2}$](https://render.githubusercontent.com/render/math?math=%24%7CE_M%7C%20%5Cleqslant%20%5Cfrac%7BK(b-a%29%5E3%7D%7B24n%5E2%7D%24)
 - Error Bound for simpson’s rule - If ![$\left| f^{(4)}x \right| \leqslant K$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%7C%20f%5E%7B(4%29%7Dx%20%5Cright%7C%20%5Cleqslant%20K%24) for ![$a \leqslant x \leqslant b$](https://render.githubusercontent.com/render/math?math=%24a%20%5Cleqslant%20x%20%5Cleqslant%20b%24) ![$|E_S| \leqslant \frac{K(b-a)^5}{180n^4}$](https://render.githubusercontent.com/render/math?math=%24%7CE_S%7C%20%5Cleqslant%20%5Cfrac%7BK(b-a%29%5E5%7D%7B180n%5E4%7D%24)
 
-#### Techniques
+### Techniques
 
 - The area _A_ of the region bounded by the curves _y = f(x)_, _y = g(x)_, and the lines _x = a_, _x = b_, where _f_ and _g_ are continuous and ![$f(x) \geqslant g(x)$](https://render.githubusercontent.com/render/math?math=%24f(x%29%20%5Cgeqslant%20g(x%29%24) for all _x_ in [_a, b_], is ![$A = \int^b_a [f(x) - g(x)] ; dx$](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20%5Cint%5Eb_a%20%5Bf(x%29%20-%20g(x%29%5D%20%5C%3B%20dx%24)
 - Generally, the area between the curves _y = f(x)_, _y = g(x)_, and the lines _x = a_, _x = b_ is ![$A = \int^b_a |f(x) - g(x)| ; dx$](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20%5Cint%5Eb_a%20%7Cf(x%29%20-%20g(x%29%7C%20%5C%3B%20dx%24)
@@ -378,7 +378,7 @@
 
 ## Differential Equation
 
-#### Definition
+### Definition
 
 - First Order Differential Equation - it is an equation that contains both the function itself and its derivates. For example, ![$\frac{dx}{dt}=x^2 t$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdx%7D%7Bdt%7D%3Dx%5E2%20t%24) where _x = f(t)_. Then, solve for the function _f(t)_
 - Second Order Differential Equation - it is an equation that contains both the function itself and its first and second derivates. For example, ![$\frac{d^2y}{dx^2}-2 \frac{dy}{dx}+8y=0$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%5E2y%7D%7Bdx%5E2%7D-2%20%5Cfrac%7Bdy%7D%7Bdx%7D%2B8y%3D0%24) or it can be _y'-2y'+8y = 0_ where _y = f(x)_. Then, solve for the function _f(x)_
@@ -393,7 +393,7 @@
   - Linear second order differential equation become homogeneous when _S(x)_ is zero
   - non-homogeneous when _S(x)_ is not zero, _S(x)_ can be called the driven function.
 
-#### Techniques
+### Techniques
 
 - Solving First Order Differential Equation
   - For equations has variable _x_, _y_ and _y'_(_dy/dx_) and has the form as _g(y)y' = f(x)_ use Separation of Variables - place _x_ and _dx_ on one side of the equation and _y_ and _dy_ on the other side, then integrate both side of the function.
@@ -409,7 +409,7 @@
 
 ## Infinite Sequences and Series
 
-#### Definition
+### Definition
 
 - A sequence can be thought of as a list of numbers written in a definite order: ![$a_1,a_2,a_3,a_4, \ldots, a_n, \ldots$](https://render.githubusercontent.com/render/math?math=%24a_1%2Ca_2%2Ca_3%2Ca_4%2C%20%5Cldots%2C%20a_n%2C%20%5Cldots%24)
   - The elements can be described as the _nth_ term of the sequence.
@@ -444,14 +444,14 @@
 - The Binomial Series - If _k_ is any real number and _|x| < 1_, then ![$(1+x)^k = \sum^{\infty}_{n=0} \left( \begin{array}{c} k \ n \end{array} \right) x^n=1+kx+ \frac{k(k-1)}{2!} x^2+ \frac{k(k-1)(k-2)}{3!}x^3+ \cdots$](https://render.githubusercontent.com/render/math?math=%24(1%2Bx%29%5Ek%20%3D%20%5Csum%5E%7B%5Cinfty%7D_%7Bn%3D0%7D%20%5Cleft(%20%5Cbegin%7Barray%7D%7Bc%7D%20k%20%5C%5C%20n%20%5Cend%7Barray%7D%20%5Cright%29%20x%5En%3D1%2Bkx%2B%20%5Cfrac%7Bk(k-1%29%7D%7B2!%7D%20x%5E2%2B%20%5Cfrac%7Bk(k-1%29(k-2%29%7D%7B3!%7Dx%5E3%2B%20%5Ccdots%24)
 - P768
 
-#### Properties
+### Properties
 
 - Limit Laws for Sequences
   - P697
 - The geometric series ![$\sum^{\infty}_{n=1} ar^{n-1}=a+ar+ar^2+ \cdots$](https://render.githubusercontent.com/render/math?math=%24%5Csum%5E%7B%5Cinfty%7D_%7Bn%3D1%7D%20ar%5E%7Bn-1%7D%3Da%2Bar%2Bar%5E2%2B%20%5Ccdots%24) is convergent if _|r| < 1_ and its sum is ![$\frac{a}{1-r}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Ba%7D%7B1-r%7D%24), if ![$\left|r \right| \geqslant 1$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%7Cr%20%5Cright%7C%20%5Cgeqslant%201%24), the geometric series is divergent.
 - The p-series ![$\sum^{\infty}_{n=1} \frac{1}{n^p}](https://render.githubusercontent.com/render/math?math=%24%5Csum%5E%7B%5Cinfty%7D_%7Bn%3D1%7D%20%5Cfrac%7B1%7D%7Bn%5Ep%7D) is convergent if _p > 1_ and divergent if ![$p \leqslant 1$](https://render.githubusercontent.com/render/math?math=%24p%20%5Cleqslant%201%24)
 
-## Theorem
+### Theorem
 
 - If ![$\lim_{n \to \infty} f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20f(x%29%3DL%24) ![$f(n)=a_n$](https://render.githubusercontent.com/render/math?math=%24f(n%29%3Da_n%24) when _n_ is an integer, then ![$\lim_{n \to \infty} a_n=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20a_n%3DL%24)
 - If ![$\lim_{n \to \infty} \left|a_n \right|=0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20%5Cleft%7Ca_n%20%5Cright%7C%3D0%24), then ![$\lim_{n \to \infty} a_n=0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20a_n%3D0%24)
@@ -477,7 +477,7 @@
     - When _a = 0_ it becomes Maclaurin series. ![$f(x)= \sum^{\infty}_{n=0} \frac{f^{(n)}(0)}{n!} x^n$](https://render.githubusercontent.com/render/math?math=%24f(x%29%3D%20%5Csum%5E%7B%5Cinfty%7D_%7Bn%3D0%7D%20%5Cfrac%7Bf%5E%7B(n%29%7D(0%29%7D%7Bn!%7D%20x%5En%24)
 - If ![$f(x)=T_n(x)+R_n(x)$](https://render.githubusercontent.com/render/math?math=%24f(x%29%3DT_n(x%29%2BR_n(x%29%24), where ![$T_n$](https://render.githubusercontent.com/render/math?math=%24T_n%24) is the nth-degree Taylor polynomial of _f_ at _a_ and ![$\lim_{n \to \infty} R_n(x) = 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bn%20%5Cto%20%5Cinfty%7D%20R_n(x%29%20%3D%200%24) for _|x - a| < R_, then _f_ is equal to the sum of its Taylor series on the interval _|x - a| < R_.
 
-#### Methods
+### Methods
 
 - `N` is a Fibonacci number if and only if `5N^2 + 4` or `5N^2 – 4` is a square number of an integer.
 - the sums of diagonals of Pascal Triangle forms the Fibonacci sequence

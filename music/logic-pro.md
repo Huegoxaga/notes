@@ -61,11 +61,15 @@
 - The Inspector panel is used to change track property
 - It is located on the left side, press `I` to open and close
   - Press `Help` icon on top-left corner will display quick help at the top of the inspector panel when hovering the mouse over buttons and panels
+- In the region panel, following effects can be added between all regions
+  - cross fade
 
 ### Track Header
 
-- Clicking on the `M`(Mute) icon to mute
-- Clicking `S`(Solo) icon to mute all other tracks
+- Clicking on the `M`(Mute) icon or press `M` key to mute
+  - `Control + M` will mute one clip
+- Clicking `S`(Solo) icon, or Press `S` key to mute all other tracks
+  - `Control + S` will solo one clip
 - Clicking on the `R`(Record Enable) icon to enable the recording for this track
 - Clicking on the `I`(Input Monioring) icon to output the input audio to the monitor speaker
 - Volumn control controls the input channel volumn of this track
@@ -132,6 +136,9 @@
 - Press `R` button to start recording
 - Press `Space` to stop recording, press again to play the recording, press again the reset the play head
 - Press `C` to enable/disable loop playback, select a track section and press `Command` + `U` will enable loop on this section
+- Hold `Command` and click the sound track section to activate the skip cycle mode.
+  - the section's cycle bar will turn dark and the section will be skipped when playing in the future
+  - `Command` and click again to deactivate
 - Press `Command` + `Z` to undo recording
 
 ### Edit Tracks
@@ -152,11 +159,42 @@
     - Select the looped sound and press `Control + L` to convert loops to real copys
   - Select track sound and press `Command + R` to create a separated and duplicate recording after the selected one
 - Snap mode can be selected in the track tool bar
-  - Turn off snap mode to move tracks freely
+  - Turn off snap mode to move tracks freely, or `Command + G`
+  - Different snap mode can snap the pointer to different grid when dragging tracks
+- Drag mode has:
+  - `X-Fade` - Do x-fade when overlap
+  - `no overlap`
+- Select a drummer sound track section, in its setting panel, check `follow` beside `Kick & Snare` and select a track to let the drumer follow the kick and snare base on a certain audio recording
 - Click Tools are used when mouse is clicked on the sound track
   - Click tools can be set for left click and `Command + Click` in the track tool bar
-  - Using pointer tool, `Control + Shift + Drag` from inner part to edge part will create a fade
-- Select a drummer sound track section, in its setting panel, check `follow` beside `Kick & Snare` and select a track to let the drumer follow the kick and snare base on a certain audio recording
+  - Right click can be set as another tool in `Preference->General..`, `Right Mouse Button` in the `Edit` tab
+    - Make the Tool changes dynamically based a the click region(upper/lower part) on the track by selecting the click zone options
+  - Press `T` to access all tools directly
+  - Pointer Tool - Selection
+    - Drag the track to move it
+    - select and press `delete` to remove a clip
+    - Drag from the track edge to trim the track
+    - Hold option and drag the track to create a copy
+    - `Control + Shift + Drag` from inner part to edge part will create a fade
+      - The boundary of the fade region can be dragged and modified
+      - Right click the fade region for more options
+        - It supports tempo changes during fade
+      - Drag the boundary inside of an adjacent clip will create cross fade
+        - croos fade helps create a smooth transition between two clips
+        - select multiple clips can create cross fade for all of them
+  - Eraser Tool - Delete sections
+  - Text Tool - Change section names
+  - Scissors Tool- Split section into two based on the snap setting
+    - Hold `option` and use scissors tool to split one region into multiple sections
+  - Glue Tool - combine all selected sections into one
+    - select section and press `J`(join function) will join all section into a separate audio file
+  - Solo Tool - play selected region
+  - Mute Tool - mute selected region
+  - Zoom Tool - zooming
+  - Fade Tool - fading
+    - The same as `Control + Shift + Drag` when using pointer tool
+  - Marquee Tool - selection regions within a clip
+    - use pointer tool to select small region to trim it into a separate region
 
 ## Export the Project
 

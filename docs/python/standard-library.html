@@ -729,6 +729,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.17.9" data-path="../os/media.html">
+            
+                <a href="../os/media.html">
+            
+                    
+                    Media
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1057,7 +1070,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.24.1" data-path="../math/calculus.html">
+        <li class="chapter " data-level="1.24.1" data-path="../math/basic.html">
+            
+                <a href="../math/basic.html">
+            
+                    
+                    Basic Math
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.2" data-path="../math/calculus.html">
             
                 <a href="../math/calculus.html">
             
@@ -1070,7 +1096,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.2" data-path="../math/linear-algebra.html">
+        <li class="chapter " data-level="1.24.3" data-path="../math/linear-algebra.html">
             
                 <a href="../math/linear-algebra.html">
             
@@ -1083,7 +1109,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.3" data-path="../math/discrete.html">
+        <li class="chapter " data-level="1.24.4" data-path="../math/discrete.html">
             
                 <a href="../math/discrete.html">
             
@@ -1096,7 +1122,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.4" data-path="../math/probability-statistics.html">
+        <li class="chapter " data-level="1.24.5" data-path="../math/probability-statistics.html">
             
                 <a href="../math/probability-statistics.html">
             
@@ -1109,7 +1135,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.5" data-path="../math/maple.html">
+        <li class="chapter " data-level="1.24.6" data-path="../math/maple.html">
             
                 <a href="../math/maple.html">
             
@@ -1127,9 +1153,23 @@
             
         </li>
     
-        <li class="chapter " data-level="1.25" data-path="../graphic-design/">
+        <li class="chapter " data-level="1.25" data-path="../visualization/">
             
-                <a href="../graphic-design/">
+                <a href="../visualization/">
+            
+                    
+                    Visualization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.25.1" data-path="../visualization/graphic-design.html">
+            
+                <a href="../visualization/graphic-design.html">
             
                     
                     Graphic Design
@@ -1140,9 +1180,54 @@
             
         </li>
     
+        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-vision.html">
+            
+                <a href="../visualization/computer-vision.html">
+            
+                    
+                    Computer Vision
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.3" data-path="../visualization/tableau.html">
+            
+                <a href="../visualization/tableau.html">
+            
+                    
+                    Tableau
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
         <li class="chapter " data-level="1.26" data-path="../music/">
             
                 <a href="../music/">
+            
+                    
+                    Music
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.26.1" data-path="../music/theory.html">
+            
+                <a href="../music/theory.html">
             
                     
                     Music Theory
@@ -1150,6 +1235,24 @@
                 </a>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.2" data-path="../music/logic-pro.html">
+            
+                <a href="../music/logic-pro.html">
+            
+                    
+                    Logic Pro
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -1743,6 +1846,49 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 <li>use <code>with open(FLAGS.json) as f:</code>, then <code>data = json.load(f)</code> to load <code>.json</code> file into a dictionary</li>
 <li>use <code>with open(&apos;person.txt&apos;, &apos;w&apos;) as json_file:</code>, then <code>json.dump(person_dict, json_file)</code> to write the dictionary to a <code>.json</code> file</li>
 </ul>
+<h2 id="csv">csv</h2>
+<ul>
+<li>It process <code>csv</code> files</li>
+<li><code>import csv</code></li>
+</ul>
+<h3 id="usage">Usage</h3>
+<ul>
+<li>read a <code>csv</code> file as arrays, <code>delimiter</code> has a default which is <code>,</code>,<pre><code class="lang-py"><span class="hljs-keyword">import</span> csv
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">&apos;example.csv&apos;</span>, <span class="hljs-string">&apos;r&apos;</span>,) <span class="hljs-keyword">as</span> file:
+    <span class="hljs-comment">#read csv as arrays</span>
+    reader = csv.reader(file, delimiter = <span class="hljs-string">&apos;\t&apos;</span>)
+    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> reader:
+        print(row)
+</code></pre>
+</li>
+<li>read a <code>csv</code> file as dictionaries, <code>delimiter</code> has a default which is <code>,</code>,<pre><code class="lang-py"><span class="hljs-keyword">import</span> csv
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">&apos;example.csv&apos;</span>, <span class="hljs-string">&apos;r&apos;</span>,) <span class="hljs-keyword">as</span> file:
+    <span class="hljs-comment">#read csv as dictionaries</span>
+    csv_file = csv.DictReader(file)
+    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> csv_file:
+      print(dict(row))
+</code></pre>
+</li>
+<li>write a <code>csv</code> file with arrays, <code>delimiter</code> has a default which is <code>,</code><pre><code class="lang-py"><span class="hljs-keyword">import</span> csv
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">&apos;protagonist.csv&apos;</span>, <span class="hljs-string">&apos;w&apos;</span>, newline=<span class="hljs-string">&apos;&apos;</span>) <span class="hljs-keyword">as</span> file:
+    writer = csv.writer(file, delimiter = <span class="hljs-string">&apos;\t&apos;</span>)
+    <span class="hljs-comment"># write one row with 1-D array</span>
+    writer.writerow([<span class="hljs-string">&quot;header_one&quot;</span>, <span class="hljs-string">&quot;header_two&quot;</span>, <span class="hljs-string">&quot;header_three&quot;</span>])
+    writer.writerow([<span class="hljs-string">&quot;first_row_a&quot;</span>, <span class="hljs-string">&quot;first_row_b&quot;</span>, <span class="hljs-string">&quot;first_row_c&quot;</span>])
+    writer.writerow([<span class="hljs-string">&quot;second_row_a&quot;</span>, <span class="hljs-string">&quot;second_row_b&quot;</span>, <span class="hljs-string">&quot;second_row_c&quot;</span>])
+    <span class="hljs-comment"># write multiply rows with 2-D array</span>
+    writer.writerows([[<span class="hljs-string">&quot;third_row_a&quot;</span>, <span class="hljs-string">&quot;third_row_b&quot;</span>, <span class="hljs-string">&quot;third_row_c&quot;</span>],[<span class="hljs-string">&quot;fourth_row_a&quot;</span>, <span class="hljs-string">&quot;fourth_row_b&quot;</span>, <span class="hljs-string">&quot;fourth_row_c&quot;</span>]])
+</code></pre>
+</li>
+<li>write a <code>csv</code> with dictionaries<pre><code class="lang-py"><span class="hljs-keyword">import</span> csv
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">&apos;protagonist.csv&apos;</span>, <span class="hljs-string">&apos;w&apos;</span>, newline=<span class="hljs-string">&apos;&apos;</span>) <span class="hljs-keyword">as</span> file:
+    fieldnames = [<span class="hljs-string">&apos;header_one&apos;</span>, <span class="hljs-string">&apos;header_two&apos;</span>, <span class="hljs-string">&apos;header_three&apos;</span>]
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerow({<span class="hljs-string">&apos;header_one&apos;</span>: <span class="hljs-string">&apos;first_row_a&apos;</span>, <span class="hljs-string">&apos;header_two&apos;</span>: <span class="hljs-string">&apos;first_row_b&apos;</span>, <span class="hljs-string">&apos;header_three&apos;</span>: <span class="hljs-string">&apos;first_row_c&apos;</span>})
+</code></pre>
+</li>
+</ul>
 <h2 id="unittest">unittest</h2>
 <ul>
 <li>It is used to do unit testing.</li>
@@ -1880,7 +2026,7 @@ import contextlib</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"next":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-10-06T22:04:38.162Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"next":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-11-08T23:37:00.936Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-16T00:47:09.645Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

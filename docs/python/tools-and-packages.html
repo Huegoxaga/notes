@@ -729,6 +729,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.17.9" data-path="../os/media.html">
+            
+                <a href="../os/media.html">
+            
+                    
+                    Media
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1057,7 +1070,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.24.1" data-path="../math/calculus.html">
+        <li class="chapter " data-level="1.24.1" data-path="../math/basic.html">
+            
+                <a href="../math/basic.html">
+            
+                    
+                    Basic Math
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.2" data-path="../math/calculus.html">
             
                 <a href="../math/calculus.html">
             
@@ -1070,7 +1096,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.2" data-path="../math/linear-algebra.html">
+        <li class="chapter " data-level="1.24.3" data-path="../math/linear-algebra.html">
             
                 <a href="../math/linear-algebra.html">
             
@@ -1083,7 +1109,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.3" data-path="../math/discrete.html">
+        <li class="chapter " data-level="1.24.4" data-path="../math/discrete.html">
             
                 <a href="../math/discrete.html">
             
@@ -1096,7 +1122,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.4" data-path="../math/probability-statistics.html">
+        <li class="chapter " data-level="1.24.5" data-path="../math/probability-statistics.html">
             
                 <a href="../math/probability-statistics.html">
             
@@ -1109,7 +1135,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.5" data-path="../math/maple.html">
+        <li class="chapter " data-level="1.24.6" data-path="../math/maple.html">
             
                 <a href="../math/maple.html">
             
@@ -1127,9 +1153,23 @@
             
         </li>
     
-        <li class="chapter " data-level="1.25" data-path="../graphic-design/">
+        <li class="chapter " data-level="1.25" data-path="../visualization/">
             
-                <a href="../graphic-design/">
+                <a href="../visualization/">
+            
+                    
+                    Visualization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.25.1" data-path="../visualization/graphic-design.html">
+            
+                <a href="../visualization/graphic-design.html">
             
                     
                     Graphic Design
@@ -1140,9 +1180,54 @@
             
         </li>
     
+        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-vision.html">
+            
+                <a href="../visualization/computer-vision.html">
+            
+                    
+                    Computer Vision
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.3" data-path="../visualization/tableau.html">
+            
+                <a href="../visualization/tableau.html">
+            
+                    
+                    Tableau
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
         <li class="chapter " data-level="1.26" data-path="../music/">
             
                 <a href="../music/">
+            
+                    
+                    Music
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.26.1" data-path="../music/theory.html">
+            
+                <a href="../music/theory.html">
             
                     
                     Music Theory
@@ -1150,6 +1235,24 @@
                 </a>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.2" data-path="../music/logic-pro.html">
+            
+                <a href="../music/logic-pro.html">
+            
+                    
+                    Logic Pro
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -1299,6 +1402,8 @@
 <li><code>conda install --name &lt;env-name&gt; &lt;packagename&gt;</code> Install a new package in a different environment.</li>
 <li><code>conda update &lt;packagename&gt;</code> Update a package in the current environment</li>
 <li><code>conda remove --name bio-env toolz boltons</code> Remove one or more packages (toolz, boltons) from a specific environment (bio-env)</li>
+<li><code>conda clean --all</code> clean duplicated unused cache packages, index cache, lock files</li>
+<li><code>conda clean -f</code> Remove all writable package caches. This option is not included with the --all flag. WARNING: This will break environments with packages installed using symlinks back to the package cache.</li>
 <li><code>which -a python</code> Show the locations of all versions of Python that are currently in the path<ul>
 <li>The first version of Python in the list will be executed.</li>
 </ul>
@@ -1673,13 +1778,27 @@
 <li><code>(w, h)</code> defines the image size after rotation.</li>
 </ul>
 </li>
+<li>or, <code>img = cv2.rotate(img, cv2.ROTATE_180)</code><ul>
+<li><code>cv2.ROTATE_90_COUNTERCLOCKWISE</code></li>
+<li><code>cv2.ROTATE_90_CLOCKWISE</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>blurring<ul>
+<li>blur = cv.GaussianBlur(img,(sizeX,sizeY),0)<ul>
+<li><code>0</code> is the standard deviation in the <code>X</code> and <code>Y</code> directions</li>
+<li><code>sizeX</code> is a positive and odd number, represents the width of the kernel</li>
+<li><code>sizeY</code> is a positive and odd number, represents the height of the kernel</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><code>output = img.copy()</code> copy the original image</li>
 <li><code>cv2.circle(circle, (100, 100), 100, 255, -1)</code> circle</li>
 <li><code>rectangle = cv2.rectangle(img, (left, top), (bottom, right), (B, G, R), fillMethod)</code> draw rectangle box on <code>img</code><ul>
 <li><code>FillMethod</code> can be any integer value as line width for bounding box.</li>
-<li><code>-1</code> will fill the image with bounding box.</li>
+<li><code>-1</code> will fill the image with bounding box, positive integer numbers indicates the width of the rectanglar bounding box</li>
 <li><code>FillMethod</code> can be <code>cv2.FILLED</code> for a filled rectangle</li>
 </ul>
 </li>
@@ -2227,6 +2346,31 @@ vacuum          = true
 </ul>
 </li>
 <li><code>image.save(path, format=&apos;JPEG&apos;, exif=imWIthEXIF.info[&apos;exif&apos;])</code> save image with exif data as <code>jpeg</code>.</li>
+<li>read image with EXIF data using PIL/Pillow, <code>imgWithEXIF = Image.open(file_path)</code>, then <code>exif_data = imgWithEXIF._getexif()</code></li>
+<li>convert exif to readable dictionary<pre><code class="lang-py"><span class="hljs-keyword">from</span> PIL.ExifTags <span class="hljs-keyword">import</span> TAGS
+    exif = {
+        TAGS[k]: v
+        <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> exif_data.items()
+        <span class="hljs-keyword">if</span> k <span class="hljs-keyword">in</span> TAGS
+    }
+    print(TAGS)
+    print(exif)
+</code></pre>
+</li>
+<li>Generate new metadata<pre><code class="lang-py"><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image, TiffTags
+<span class="hljs-keyword">from</span> PIL.TiffImagePlugin <span class="hljs-keyword">import</span> ImageFileDirectory_v2
+<span class="hljs-keyword">import</span> io
+ifd = ImageFileDirectory_v2()
+<span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> exif_data.items():
+    <span class="hljs-keyword">if</span> k <span class="hljs-keyword">in</span> TAGS <span class="hljs-keyword">and</span> k != <span class="hljs-number">34853</span>:
+        ifd[k] = v
+        <span class="hljs-comment"># print(TiffTags.lookup(k))</span>
+        <span class="hljs-comment"># print(v)</span>
+out = io.BytesIO()
+ifd.save(out)
+new_exif = <span class="hljs-string">b&quot;Exif\x00\x00&quot;</span> + out.getvalue()
+</code></pre>
+</li>
 </ul>
 <h2 id="abseil">Abseil</h2>
 <ul>
@@ -2331,7 +2475,7 @@ flags.mark_flag_as_required(<span class="hljs-string">&quot;name&quot;</span>)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2020-10-07T21:28:18.058Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2020-11-15T04:23:30.162Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-16T00:47:09.645Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

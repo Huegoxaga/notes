@@ -729,6 +729,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.17.9" data-path="media.html">
+            
+                <a href="media.html">
+            
+                    
+                    Media
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1057,7 +1070,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.24.1" data-path="../math/calculus.html">
+        <li class="chapter " data-level="1.24.1" data-path="../math/basic.html">
+            
+                <a href="../math/basic.html">
+            
+                    
+                    Basic Math
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.2" data-path="../math/calculus.html">
             
                 <a href="../math/calculus.html">
             
@@ -1070,7 +1096,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.2" data-path="../math/linear-algebra.html">
+        <li class="chapter " data-level="1.24.3" data-path="../math/linear-algebra.html">
             
                 <a href="../math/linear-algebra.html">
             
@@ -1083,7 +1109,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.3" data-path="../math/discrete.html">
+        <li class="chapter " data-level="1.24.4" data-path="../math/discrete.html">
             
                 <a href="../math/discrete.html">
             
@@ -1096,7 +1122,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.4" data-path="../math/probability-statistics.html">
+        <li class="chapter " data-level="1.24.5" data-path="../math/probability-statistics.html">
             
                 <a href="../math/probability-statistics.html">
             
@@ -1109,7 +1135,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.24.5" data-path="../math/maple.html">
+        <li class="chapter " data-level="1.24.6" data-path="../math/maple.html">
             
                 <a href="../math/maple.html">
             
@@ -1127,9 +1153,23 @@
             
         </li>
     
-        <li class="chapter " data-level="1.25" data-path="../graphic-design/">
+        <li class="chapter " data-level="1.25" data-path="../visualization/">
             
-                <a href="../graphic-design/">
+                <a href="../visualization/">
+            
+                    
+                    Visualization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.25.1" data-path="../visualization/graphic-design.html">
+            
+                <a href="../visualization/graphic-design.html">
             
                     
                     Graphic Design
@@ -1140,9 +1180,54 @@
             
         </li>
     
+        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-vision.html">
+            
+                <a href="../visualization/computer-vision.html">
+            
+                    
+                    Computer Vision
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.3" data-path="../visualization/tableau.html">
+            
+                <a href="../visualization/tableau.html">
+            
+                    
+                    Tableau
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
         <li class="chapter " data-level="1.26" data-path="../music/">
             
                 <a href="../music/">
+            
+                    
+                    Music
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.26.1" data-path="../music/theory.html">
+            
+                <a href="../music/theory.html">
             
                     
                     Music Theory
@@ -1150,6 +1235,24 @@
                 </a>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.2" data-path="../music/logic-pro.html">
+            
+                <a href="../music/logic-pro.html">
+            
+                    
+                    Logic Pro
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -1199,7 +1302,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="macos">MacOS</h1>
-<h3 id="zsh">Zsh</h3>
+<h3 id="zsh">zsh</h3>
 <ul>
 <li><code>Zsh</code> is the macOS default shell for its terminal. It is similar to <code>bash</code> but has the following difference.</li>
 <li>set <code>Zsh</code> as the default shell, run <code>chsh -s /bin/zsh</code> then restart the terminal.</li>
@@ -1274,6 +1377,13 @@
 <li>run <code>xcode-select --print-path</code> to find out what version of Xcode is being used by the tools</li>
 <li>run <code>sudo xcode-select -switch /Applications/Xcode8.3.3/Xcode.app</code> set the default version of Xcode to use for the command-line tools.</li>
 </ul>
+<h3 id="icloud">iCloud</h3>
+<ul>
+<li>add <code>.nosync</code> after file or folder name will stop syncing the file to iCloud<ul>
+<li><code>.nosync</code> can be added directly before or after the file&apos;s extension. e.g. <code>movie.nosync.avi</code> or <code>movie.avi.nosync</code></li>
+</ul>
+</li>
+</ul>
 <h3 id="homebrew">Homebrew</h3>
 <ul>
 <li>It is the package management tool for macOS.<ul>
@@ -1306,8 +1416,13 @@
 <li><code>brew tap &lt;RepoName&gt;</code> include an external repo. If a certain formulae is not found using <code>brew search</code>. The package can then be installed using <code>brew install</code>.</li>
 <li><code>brew doctor</code> run self diagnoses</li>
 <li><code>brew info &lt;PackageName&gt;</code> view the info for a package.</li>
+<li><code>brew deps --tree --installed</code> show installed packages and all their dependencies in tree</li>
+<li><code>brew leaves</code> List installed formulae that are not dependencies of another installed formula</li>
 <li>Install Apps with Casks with similar commands by using <code>brew cask</code>:<ul>
-<li><code>brew cask install &lt;AppName&gt;</code> install an app</li>
+<li><code>brew cask install &lt;AppName&gt;</code> install an app<ul>
+<li><code>brew install --appdir=&quot;/&lt;PathToAppFolder&gt;&quot; &lt;AppName&gt;</code> specify the app folder</li>
+</ul>
+</li>
 <li><code>brew cask list</code> list installed apps<ul>
 <li><code>brew cask list &lt;keyword&gt;</code> search app</li>
 </ul>
@@ -1318,6 +1433,16 @@
 <li><code>brew cask outdated</code> view the info for an app.</li>
 </ul>
 </li>
+</ul>
+<h3 id="disk-cleanup">Disk Cleanup</h3>
+<ul>
+<li>Remove Wechat account folder at <code>/Users/&lt;username&gt;/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/</code>, then clear cache in app setting</li>
+<li>Remove Webex support folders <code>WebEx Meetings</code> and <code>WebEx Folder</code> at <code>/Users/&lt;username&gt;/Library/Application Support/</code></li>
+<li>VS Code delete <code>Cache</code> and <code>CacheData</code> folders at <code>/Users/&lt;username&gt;/Library/Application Support/Code</code>, then in app command input enter <code>Clear Editor History</code></li>
+<li>Clear VirtualBox log in <code>/Users/&lt;username&gt;/Library/VirtualBox</code> folder</li>
+<li>Clean conda package caches, run <code>conda clean -f &amp;&amp; conda clean -a</code></li>
+<li>Homebrew clean up<code>brew cleanup &amp;&amp; brew cask cleanup</code></li>
+<li>Clean up npm cache <code>npm cache clean --force</code></li>
 </ul>
 
                                 
@@ -1362,7 +1487,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"MacOS","level":"1.17.4","depth":2,"next":{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},"previous":{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/macos.md","mtime":"2020-08-29T14:30:55.920Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-11T21:41:09.043Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MacOS","level":"1.17.4","depth":2,"next":{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},"previous":{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/macos.md","mtime":"2020-11-15T04:34:46.955Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-16T00:47:09.645Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,8 +1,12 @@
 # Media
 
-## Common Media Format
+## Media Format
 
-### Image
+### Raster Image
+
+### 2D Vector
+
+### 3D Vector
 
 ### Audio
 
