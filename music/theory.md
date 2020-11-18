@@ -191,7 +191,7 @@
 - Arpeggios - play a chord one by one from low to high or high to low.
 - Voice leading occurs on the top notes of each chord
 
-#### Triad
+### Triad
 
 - It is a chord consisting of three notes
 - root - the note on the first degree of the scale
@@ -223,7 +223,7 @@
 - Diminished chords don’t have this property since it has a one to one relationship with every major scale.
 - Triads can also add octaves for any one of the three notes, it will still be a triad and its quality will stay the same.
 
-#### Four-part Chord
+### Four-part Chord
 
 - It has four notes, also known as seventh chord
 
@@ -252,7 +252,7 @@
 - plurality rules can be derived from the above conclusion.
 - four-part chords have a root position and 1st, 2nd, 3rd inversion.
 
-#### Five-part Chord
+### Five-part Chord
 
 - It has five notes, also known as ninth chord
 
@@ -264,7 +264,7 @@
 | major 9th              | major 7th + major 9th interval    | `Cma9` or `CMaj9`, `Cmaj9`, `CMa7(9)`, `CM9`, `CΔ9` |
 | major six nine         | major 6th + major 9th             | `C69` or `CMa69`, `6(add9)`, `M69`, `CΔ69`          |
 
-#### Suspended chord
+### Suspended chord
 
 - generally refer to a replacement of the 3rd of a chord.
 - perfect 4th interval is the default interval to replace the original chord.
@@ -273,7 +273,7 @@
   - `Cmi sus` or `Cmisus4` - C suspended minor triad
   - `C7sus` or `C7 sus4`, `Csus7` - C suspended dominant seventh
 
-#### Altered chord
+### Altered chord
 
 - deals with the fifth of a chord, either flat or sharp.
 - lower 5th of a C major triad become C(b5) - C major triad with flatted 5th
@@ -290,7 +290,7 @@
   - Cmi7(#5)
   - Cmi7(b5) also called half diminished(C,C7), it is four-part chord that starts at the seventh degree of a major scale
 
-#### Added chord
+### Added chord
 
 - add a note form a certain interval from the root.
 
@@ -307,7 +307,7 @@
 - chord symbol `Cadd9(omit3)` or `Cadd9(no3)`, `Csus2` , `C2`
   - It is equivalent to `Cma9` remove 3rd and 7rd, so it sounds very non-definitive.
 
-#### Chord Progression
+### Chord Progression
 
 - are the repeated flow of chord in a piece of music, represented by a series of degrees of the root for the chord in a certain scale. all of the notes are picked from the scale.
 - Ex, In C major scale, II is a minor triad.
@@ -327,3 +327,154 @@
   - Arpeggios - Using Arpeggios instead of Scale or combine them together.
   - Chords - Using chords cooresponding to the left hand.
   - Chromaticism - Using the notes that is half step higher or lower to decorate the initial starting notes.
+
+## Music Genres
+
+- Genre is the classification of something based on certain key characteristics
+- Sub-genres are a bit more specific
+- Style are the detailed characteristics that are brought by the individuals creating the work
+
+### Classical Music
+
+### Popular Music
+
+#### Blues
+
+- Blues is a music genre and musical form which was originated in the Deep South of the United States around the 1860s by African-Americans from roots in African musical traditions, African-American work songs, and spirituals
+- There are basically only 3 harmonic chords played in Blues music
+  - Tonic(I) – 1st note of the scale
+  - Subdominant(VI) – 4th note of the scale
+  - Dominant(V) – 5th note of the scale
+- Blues uses a basic 12 bar progression in most songs, `I - I - I - I - IV - IV - I - I - V - V - I - I`
+- Blues music is focused more on vocals and having a singer carry the song with one or two instruments accompanying in the background
+- Blues scales are frequently used
+- Blues music is generally more "emotional" and expressive than Jazz
+- Improvisation is done mostly by the singer and not the other instruments
+
+#### Country
+
+#### Electronic Music
+
+- Electronic music is music that employs electronic musical instruments, digital instruments or circuitry-based music technology
+- Electronic Instrument - A distinction can be made between sound produced using electromechanical means (electroacoustic music) and that produced using electronics only
+  - Electromechanical instruments have mechanical elements that produce the sound, then further work with electric elements, such as magnetic pickups, power amplifiers and loudspeakers
+    - telharmonium(Dynamophone) - electrical organ, the first electromechanical musical instrument
+    - Hammond organ - electrical organ
+    - electric piano
+    - electric guitar
+  - Pure electronic instruments do not have vibrating strings, hammers or other sound-producing mechanisms
+    - theremin - is an electronic musical instrument controlled without physical contact by the thereminist (performer). It is named after its inventor, Leon Theremin, who patented the device in 1928
+    - synthesizer - it is an electronic musical instrument that generates audio signals. Synthesizers generate audio through methods including subtractive synthesis, additive synthesis, and frequency modulation synthesis. These sounds may be shaped and modulated by components such as filters, envelopes, and low-frequency oscillators, a synthesizer can be:
+      - played with keyboards
+      - controlled by sequencers - a device or application software that can record, edit, or play back music
+      - controlled by software
+      - played with other instruments via MIDI
+        - MIDI is a technical standard for connecting electronic musical instruments
+        - Data transmitted by MIDI is attached with a channel info from 1 to 16, only devices or functions mapped with a certain channel will read data related to that channel, so MIDI cable can contain information for a max of 16 instruments
+        - MIDI transmit five types of message
+          - Channel Voice transmit real-time performance data over a single channel, it has:
+            - `note-on` messages contain
+              - a MIDI note number(0-127) - 128 values assign to notes from C1 to G9
+              - a velocity value(1-127) - indicates how forcefully the note was played
+              - the channel number
+            - `note-off` messages that end a note
+            - program change messages that change a device's patch
+            - controller change messages that allow adjustment of an instrument's parameters.
+          - Channel Mode
+          - System Common
+          - System Real-Time
+          - System Exclusive
+    - computer
+- Electronic Dance Music(EDM)
+  - It is a broad range of percussive electronic music genres made largely for nightclubs, raves and festivals, any electronic genre that can be used for dance belongs to this category
+  - Four-on-the-floor (or four-to-the-floor) is a rhythm pattern used primarily in EDM. It is a steady, uniformly accented beat in 4/4 time in which the bass drum is hit on every beat (1, 2, 3, 4) in common time
+- A rave (from the verb: to rave) is an organised dance party(event) at a warehouse, forest, cave or other private property or public space, typically featuring performances by DJs, playing a seamless flow of electronic dance music.
+  - Any music played at rave can be called rave music
+
+##### Disco
+
+- Most disco songs have a 8th note (quaver) or 16th note (semi-quaver) hi-hat pattern with an open hi-hat on the off-beat, and a heavy, syncopated bass line
+- The basic tempo of disco is approximately 120 beats per minute, 4/4 time signature and four-on-the floor rhythms
+- Disco also often, but not always, contains String sections, Horns, Electric rhythm guitars
+
+##### House
+
+- House is a genre of electronic dance music characterized by deep bass rhythms, piano or synthesizer melodies, and soul-music singing, sometimes with elements of rap music.
+- It has a fast tempo of around 120 to 130 beats per minute
+- Similar to disco, four-on-the-floor is usually used
+- the bass drum is sounded on beats one and three, and the snare drum, claps, or other higher-pitched percussion on beats two and four
+  - The drum beats in house music are almost always provided by an electronic drum machine, often a Roland TR-808, TR-909, or a TR-707 rather than by a live drummer
+  - Claps, shakers, snare drum, or hi-hat sounds are often used to add syncopation
+    - Syncopation is a musical term meaning a variety of rhythms played together to make a piece of music, making part or all of a tune or piece of music off-beat
+- the name house music originated from a Chicago club called the Warehouse, which existed from 1977 to 1983
+- Subgenres
+  - Acid House - The style is defined primarily by the "squelching" sounds and deep basslines of the Roland TB-303 electronic bass synthesizer-sequencer
+    - It is the first genre of music to be played at the earliest raves
+  - Ambient house - it was first emerged in the late 1980s, combining elements of acid house and ambient music
+    - chill-out music is a form of music that originated from ambient house, before `Café Del Mar` expands Chill-out into a new distinct form of music
+
+##### Ambient
+
+- Ambient music is a genre of music that emphasizes tone and atmosphere over traditional musical structure or rhythm, often with the help of electrnoic instruments, e.g. use synthesizer to make windy sound
+
+#### Hip hop
+
+#### Jazz
+
+- It is originated in the African-American communities of New Orleans, United States, in the late 19th and early 20th centuries
+- Jazz is closely related and influenced by Blues
+- There are unlimited numbers of chords and chord progressions in Jazz music
+- Jazz uses a lot of 7th chords and other structures that aren’t common in Blues and other types of music
+- Jazz incorporates a lot of popular music - using it as a base to improvise from
+- There is more focus on technical playing than emotional expression
+- Although singers do perform with jazz groups, Jazz is mostly instrumental music and allows for every musician to improvise and play off of the other musicians in the group
+
+##### Ragtime
+
+- It is a musical style that enjoyed its peak popularity between 1895 and 1919
+- Jazz is influenced by it
+- The style has its origins in African-American communities in cities such as St. Louis
+- The name ragtime refers to the "ragged", or off-the-beat, syncopated rhythms of ragtime. To rag a piece of music is to play with its rhythms, to make them jazzier. This is one of the most important characteristics of ragtime
+- Ragtime also imposes a march style
+- Ragtime originated as an instrumental form, often played on banjo or piano
+- Cakewalk is a pre-ragtime dance form popular until about 1904. The music is intended to be representative of an African-American dance contest in which the prize is a cake. Many early rags are cakewalks.
+
+#### Pop
+
+#### R&B
+
+#### Rock
+
+##### Heavy Metal
+
+## Music Structure
+
+### Elements
+
+- Introduction - Instrumental, from the very begining to the start of the vocal part
+- Verse - Vocal, from the begining of the lyrics to the chorus
+- Pre-chorus - optional, Transition from the verse to the chorus
+- Chorus(refrain) - Vocal, the main melody, the high pitch part, the core section where the main idea and expression are delievered
+- Post-chorus - optional, occurs right after the chorus
+- Bridge - Transition, variation betwenn chorus
+  - middle eight is a common type of bridge refers to a section of a song with a significantly different melody and lyrics, usually placed once after the second chorus in a song
+  - It involves a circle of fifths series of dominant seventh chords
+- Instrumental solo - often found after the middle chorus part
+- Conclusion(outro) - Instrumental, the ending
+
+### Forms
+
+- 32-bar form(`AABA` form) - it has four sections, most often eight measures long each, `A`s are verses, `B` is the `Bridge`
+  - All `A` sections does not need to be the same
+- Bar form - it has an `AAB` pattern
+- Ternary form - it has an `ABA` pattern
+  - Verse–chorus form can be a type of `ABA` form when `B` section is the chorus
+    - contrasting verse–chorus form - Songs that have entirely different melodies for verse and chorus
+    - simple verse–chorus form - Songs that use the same harmony (chords) for the verse and chorus
+    - Simple verse form - Songs which feature only a repeated verse, or songs without the chorus
+- Strophic form - `AAA` form
+- `ABAB` form
+- `ABABCB` form - verse-chorus-verse-chorus-bridge-chorus
+- `ABABCAB` form - verse-chorus-verse-chorus-bridge-verse-chorus
+- Twelve-bar blues form - a form based a 12 chord progression
+- Compound forms

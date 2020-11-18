@@ -12,16 +12,23 @@
   - Audio Interface is required for audio input from electric instruments or vocal sounds from microphones
   - Using the built-in speakers together with the built-in microphone can cause feedback, Connect headphones or choose a different audio device to avoid it
 - From the top menu, `Preferences` -> `Advanced Tools...`, enable all advanced tools
+- Right click the control bar and select cutomize to add frequently used tool icons
 
-## Create a New Project
+## Creating Projects
 
 - Press `Shift` + `Command` + `N` to create a new empty project
-
-### Create from Template
-
 - Press `Command` + `N` to create a new project from template
 
-## Create a Track
+### Project Setup
+
+- The project interface will be shown after the first track is created
+- `LCD` display in the centre of the top control bar can be used to setup project tempo and time signature
+  - Open the drop-down and select `Custom` to display more info
+- Adjust the master volumn on the top control bar
+- `Shift + Option + A` opens the MIDI assignment window, that can be used for MIDI input setup
+  - Select `Learn Mode` and make software control changes, then the type of control will be recogized for external device assignment
+
+### Create Tracks
 
 - A track need to be created once a project is created
 - Options
@@ -37,26 +44,20 @@
 - When the project is opened, a track can be created by clicking the plus button(`Option + Command + N`) above the track headers
 - Tracks can be duplicated by selecting and clicking on the duplicate button above the track headers
 - Double clicking on the empty space below track header to duplicate a selected track
-- Clicking on the Global Track icon above track headers to add `Arrangement` info, `Maker` notes, Time `Signature`, `Tempo` as a global track on top of all tracks
+- Clicking on the Global Track icon above track headers, or press `G` key to open `Arrangement` info, section `Marker`, Time `Signature`, `Tempo` panel and click `+` icon to insert them as a global track on top of all tracks
 - Press `O` to open the Apple Loop Browser, to filter on the top and click to preview loops, then drag the loop to an empty track area to create loop track
   - Loops with green icons are MIDI loops
   - Loops with blue icons are audio loops
   - Loops with yellow icons are drum loops
+- Press `Option + C` or go menu bar `View -> Show Color` to color the selected tracks
 
-## Project Setup
-
-- The project interface will be shown after the first track is created
-- `LCD` display in the centre of the top control bar can be used to setup project tempo and time signature
-  - Open the drop-down and select `Custom` to display more info
-- Adjust the master volumn on the top control bar
-
-## Save a Project
+### Save a Project
 
 - A project can be saved as a single package or a project folder
 - Only Audio Files are required to be copied
   - All project related files need to be copied when the project will be moved to another computer
 
-## Work with Tracks
+## Project Interface
 
 - The Inspector panel is used to change track property
 - It is located on the left side, press `I` to open and close
@@ -91,30 +92,10 @@
 - Many preset settings for guitar and bass are moved to the `Legency` category if using audio track type to record guiter and bass
 - Preset setting uses plug-ins to add a post-effect to the recording, it can be changed anytime after the recording
 
-#### Channel Strip Plug-in
+## Recording
 
-- They can be turn off by clicking the power button or select `No Plug-in` in the drop-down
-- Tuner - helps tune the input instrument for audio tracks, or select the `fork` icon on the top control panel
-- MIDI FX - helps create MIDI effect using one of the following plug-in:
-  - Arpeggiator - helps generate arpeggios based on the base note
-- Audio FX - helps create audio effect
-  - EQ - when activate, it will display a small EQ graph in the strip that indicates the current setting
-    - It controls the magnitude of sounds in different frequency
-    - Select the top drop-down to choose preset EQ settings, then tweak based on the result
-  - Amp Designer - change amp setting for guitar or bass audio track
-    - Drag the point in front of the speaker diagram to change the position of the recording mic
-    - In the drop-down below to change the model/amp/cabinet/mic type
-  - Pedalboard - change the tone by changing the pedalbaord setting for guitar and bass
-
-#### Mixer
-
-- Mixer enables the adjustment and control of all channel strip from different track in one place
-- Press `X` to open the Mixer panel, or `Command + 2` to open a separate mixer window
-- Plug-in setting can be copied from one track to another in the mixer panel, by holding `option` key and dragging the plug-in to another track
-
-### Record and Play Tracks
-
-- Use lower buffer size in Audio setting to reduce recording latency
+- Use lower buffer size in Audio setting to reduce latency in the recorded track
+  - Turn on the low latency mode to reduce the latency further by clicking the low lantency icon on the control bar
   - Lower buffer size consume more CPU power which is not suitable for computing intensive tasks
 - In the recording preference, select 24-bit resolution for better quality and lower noise, unless storage is a concern
   - uncheck will result in a 16-bit resolution
@@ -135,13 +116,25 @@
 - One instrument can be recorded two times with each track pan to left max and right max to create high quality stereo tracks
 - Press `R` button to start recording
 - Press `Space` to stop recording, press again to play the recording, press again the reset the play head
+  - use `<` and `>` key or `Shift + <` and `Shift + <`(1 bar at a time) to move the play head
+- Press `K` to open and record with the typing keyboard, it is a software typing keyboard
 - Press `C` to enable/disable loop playback, select a track section and press `Command` + `U` will enable loop on this section
 - Hold `Command` and click the sound track section to activate the skip cycle mode.
   - the section's cycle bar will turn dark and the section will be skipped when playing in the future
   - `Command` and click again to deactivate
 - Press `Command` + `Z` to undo recording
+- The `Catch Playhead` switch is located on the tool bar, at the left of the `Pointer Tool` icon
+- Select a track then press `A` to enable automation mode, it can be used to record volumn changes, pedal board changes etc
+  - click on the track and drag the volumn line to add dynamic volumn control
+  - use the drop-down in the track header below the automation track switch to select the type of control that be to be recorded
+  - The changes can be made using mouse or external MIDI controller during recording
+  - In the track header, four automation modes are available:
+    - Read - only read data
+    - Touch - write data, cut of the changes when not receiving signal
+    - Latch - write data, hold the changes when note receiving signal
+    - Write - similar to Latch but overwrite all other automation signal
 
-### Edit Tracks
+## Editing
 
 - Zoom
   - `Command + Arrows` key to zoom the tracks
@@ -165,6 +158,8 @@
   - `X-Fade` - Do x-fade when overlap
   - `no overlap`
 - Select a drummer sound track section, in its setting panel, check `follow` beside `Kick & Snare` and select a track to let the drumer follow the kick and snare base on a certain audio recording
+- Right click a drummer region and select `Convert -> Convert to MIDI Region` for detailed editing
+- Right click on empty track can create a MIDI region, so it can be edited using the Piano Roll Editor
 - Click Tools are used when mouse is clicked on the sound track
   - Click tools can be set for left click and `Command + Click` in the track tool bar
   - Right click can be set as another tool in `Preference->General..`, `Right Mouse Button` in the `Edit` tab
@@ -188,6 +183,7 @@
     - Hold `option` and use scissors tool to split one region into multiple sections
   - Glue Tool - combine all selected sections into one
     - select section and press `J`(join function) will join all section into a separate audio file
+    - `Command + J` will join all selected tracks into a single separate file
   - Solo Tool - play selected region
   - Mute Tool - mute selected region
   - Zoom Tool - zooming
@@ -195,6 +191,121 @@
     - The same as `Control + Shift + Drag` when using pointer tool
   - Marquee Tool - selection regions within a clip
     - use pointer tool to select small region to trim it into a separate region
+- Flex time tool - it is used to adjust the timing(quantize) of the audio recording grid by grid
+  - Click the Flex time icon on the tool bar or press `Command + F` to display the Flex time icon on the track header for each track, then click on the flex time icon on the track header to enable flex time for that track
+  - Select the apropriate flex mode on the track header
+    - Polyphonic - for instrument play more than one note at the same time
+    - Monophonic - for instrument play one note at a time, use polyphonic when the result doesnot sound good
+    - Rhythmic - for percussion instruments
+    - Slicing - for drums
+    - Speed - for special effect
+    - Tempophone - for special effect
+    - Flex Pitch - it is used to adjust to pitch or vocal recording, once select double clicking the region to open the track editing panel at the bottom
+      - Select all and scale quantize the voice onto a selected scale using the quantize tool on the left panel
+      - Slide the pitch correction slider up to increase the correction level
+      - Double click the yellow timeline to play
+      - There are six properties the tool can tune by dragging one of the six dots around the pitch bar
+        - Fine Pitch(upper middle dot) is the pitch of the voice in cent(one cent in 1% of a semitone)
+        - Vibrato(lower middle dot) is the variance of the pitch in percentage
+        - Front Pitch Drift(upper left dot)
+        - End Pitch Drift(upper right dot)
+      - toning will reduce the tonal quality
+      - Use scissors tool to cut a note into two
+      - Use glue tool to join separate notes into one
+      - The length of each note can also be adjusted by dragging
+  - make sure the `complex` checkbox under the track option in the inspector is checked for a better result
+  - brighter color grid means the time is compressed, grey section means time is stretched, original color means the time length is close to its original
+  - The program will auto detect the beat on the audio track and display a flex time marker on the transient for on each grid
+  - Select the audio track and use the quantize tool to adjust the timing for each grid
+  - drag the flex marker to adjust manually
+  - click on the sound wave to create the flex marker
+  - Drag the Eraser Tool or click the delete icon above the flex marker to delete the flex marker
+  - Use join track to render flex edit in place
+    - For a track with single region using bounce tool or create a small region to join at the end, then delete it
+  - Disable flex time when done
+- Increase the buffer size to max and turn off the low latency mode before vocal editing to improve performance
+- Tracks from one instrument can be copied and pasted to another
+  - Drum Track will be converted if it is being pasted into a MIDI track
+- Select multiple tracks, press `Command + Shift + D` or `Track -> Create Track Stack...` from the top menu bar, then select create `Summing Stack` to add effects to multiple stacks
+  - Summing Stack has all the feature as an individual track, e.g. mixing
+
+### Piano Roll Editor
+
+- It is used to edit MIDI region
+- It can be opened by press `P`, or double click on the MIDI region to open the editor at the bottom
+  - `Command + 4` to open it in a separate window
+- It has seperate mouse tools
+  - Pointer tool can be used to drag notes around
+    - Use `Option + Arrow` can move selected notes around
+    - Use `Option + Shift + Arrow` can move notes by one octave
+  - Pencil tool can be used to insert notes by clicking on the desired location
+  - Brush tool can insert multiple notes by dragging the mouse across
+  - Velocity tool can be used to adjust the velocity of selected notes by dragging up or down
+    - When select multiple notes the velocity increase based on its original value
+    - Hold `option` key then drag the mouse to make all notes change with the same velocity value
+    - Notes with higher velocity will be more red
+    - Velocity slider on the left panel set a `1-127` value for each notes
+    - Velocity stores a certain quality of the note and it is used to adjust the volumn most of the time
+    - when recording using MIDI keyboard, it is related to the input speed
+- To quantize a recorded track, `command + A` to select all notes, and click `Q` icon in the Time quantize tool on the left panel after select the correct base note length
+- `Edit -> Trim -> Note end to Following Notes(Force Legato)` or press `Shift + \` to extend all notes and fill the gap until a note reaches the next one
+- On the top tool bar of the editor, click the MIDI in icon, then MIDI input from connected MIDI device or software keyboard will be recorded in the editor
+  - Click the MIDI out button to mute during note editing
+- From the top menu bar, `Window->Show Step Input Keyboard` or press `Option+Command+K` to open the Step Input Keyborad, then multiple note can be entered for one step at a time
+  - Set the step interval by clicking the coresponding note type
+  - play head will proceed to the right after each input
+
+### Score Editor
+
+### Step Editor
+
+## Mixing & Mastering
+
+### Plug-ins
+
+- They are located in the channel strip
+- They can be turn off by clicking the power button or select `No Plug-in` in the drop-down
+- Plug-in effects are added to the sound in order, from top to bottom
+- Tuner - helps tune the input instrument for audio tracks, or select the `fork` icon on the top control panel
+- MIDI FX - helps create MIDI effect using one of the following plug-in:
+  - Arpeggiator - helps generate arpeggios based on the base note
+- Audio FX - helps create audio effect
+  - EQ - when activate, it will display a small EQ graph in the strip that indicates the current setting
+    - The channel EQ has 8 filters to change the sound, each fileter is represented in different color
+    - It controls the magnitude of sounds in different frequency
+    - Select the top drop-down to choose preset EQ settings, then tweak based on the result
+  - Amp Designer - change amp setting for guitar or bass audio track
+    - Drag the point in front of the speaker diagram to change the position of the recording mic
+    - In the drop-down below to change the model/amp/cabinet/mic type
+  - Pedalboard - change the tone by changing the pedalbaord setting for guitar and bass
+- Click the empty space below to add more effect plugins
+
+### Mixer
+
+- Use Mixer to do mixing after the tracks are fully edited
+  - Check the `Mix->Pre-Fader Metering` to see the input level on the meter before it reaches to the fader volumn control
+  - Before the mixing, increase the buffer size to biggest to increase performance
+  - For each channel, mixing includes:
+    - adjusting `EQ`, increase or decrease the output for different instrument at different frequency based on its tone and focus
+    - adding `Compressor`, `Envoloper`
+    - Adjust `Pedal`, `Amplifier`, `Exciter` for guitar and bass
+    - adding `reverb` and/or `delay` and/or `spreader` each by send a channel strip signal to a new bus, add effects on that channel with small volumn as a reverb/delay sound source from a room
+      - right click the new channel strip for the new bus, then generate a track for further processing, e.g. creating track stack or record automation controls
+      - different tracks can send signals to the same new bus to get the same effect
+    - Adding `Multipressor` for harmony vocal track stack, to control volumn based on pitch
+    - Adjust pan
+    - Control volumn that allows the master output keeps around at least 6dB below the cliping level(red line)
+    - Adding or adjust the volumn automation
+- Use Mixer to do mastering after mixing - mastering focuses on overall control of the stereo out, it includes:
+  - Adding overall `EQ`, e.g. using `Linear Phase EQ` to cut low and boost high(not too much)
+  - Adding `MultiPressor`
+  - Adding `Limiter` and then `Meter`
+  - Readjust by monitoring with other output devices for final output, then ready for bouncing
+- Click the drum plugin and select multi-output and click the plus buttom below the meter to add multiple channels to take input from different part of the drum, then the sound from each part can be modified separately by using plugins
+  - to add overall effect, create a track stack
+- Mixer enables the adjustment and control of all channel strips from different track in one place
+- Press `X` to open the Mixer panel, or `Command + 2` to open a separate mixer window
+- Plug-in setting can be copied from one track to another in the mixer panel, by holding `option` key and dragging the plug-in to another track
 
 ## Export the Project
 
@@ -202,6 +313,9 @@
 - One or more desired output format can be selected
   - PCM - uncompressed
     - File Type: Split will separate the audio into left and right file, interleaved will combine those into one file
-    - Dither is used to reduce background noise by adding a random noise
-- `Realtime` Mode will bounce the music during playback, it is more accurate
-- `Offine` Mode will be faster
+    - many music streaming platform only support `16bit` bit depth and `44100` sample rate
+    - Dither is used to reduce background noise by adding a random noise, it is used when boucing bit depth is lower(16bit) than the recording bit depth(24bit)
+- Bounce Mode
+  - `Realtime` Mode will bounce the music during playback, it is more accurate
+  - `Offine` Mode will be faster
+- `Normalize` is used to prevent cliping when the mastering step is skipped

@@ -437,7 +437,7 @@ sum(list)
   ```
 - To add a new key/value pair to a dictionay, simply assign the value to a new key.
 
-#### Operators
+### Operators
 
 - Membership Operator - in
   ```py
@@ -445,7 +445,7 @@ sum(list)
   keyName not in dictionaryName
   ```
 
-#### Methods
+### Methods
 
 ```py
 dictionary.get(key, default_value)  #It returns the key’s value and None if key is not found. or display specific default value. None type can have this method without error
@@ -455,7 +455,7 @@ dictionay.keys() # Return a list of keys.
 dictionay.items() # Return a list of dictionay elements.
 ```
 
-#### Iteration
+### Iteration
 
 - Generate a dictionary from a list of tuples `damage_rate = {xVar: yVar for (xVar, yVar) in tupleList}`.
 - Generate a dictionary from a list of objects `city_dict = {x.id: x.name for x in objectList}}`.
@@ -464,6 +464,25 @@ dictionay.items() # Return a list of dictionay elements.
   for k, v in dict.items():
         print(k,v)
   ```
+
+### Subclass
+
+#### OrderedDict
+
+- A special dictonary that remembers the order entries were added
+
+```py
+from collections import OrderedDict
+
+od = OrderedDict()
+od['a'] = 1
+od['b'] = 2
+od['c'] = 3
+od['d'] = 4
+
+for key, value in od.items():
+    print(key, value)
+```
 
 ## Tuples
 
