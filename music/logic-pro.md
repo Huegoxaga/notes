@@ -41,11 +41,12 @@
   - External MIDI - sound from libraries based on external MIDI device input
   - Drummer - built-in drummer software
   - Guitar or Bass - sound from guitar processed by built-in amplifier libraries
+- Audio track is in blue, drum track is yellow, MIDI track is green
 - When the project is opened, a track can be created by clicking the plus button(`Option + Command + N`) above the track headers
 - Tracks can be duplicated by selecting and clicking on the duplicate button above the track headers
 - Double clicking on the empty space below track header to duplicate a selected track
 - Clicking on the Global Track icon above track headers, or press `G` key to open `Arrangement` info, section `Marker`, Time `Signature`, `Tempo` panel and click `+` icon to insert them as a global track on top of all tracks
-- Press `O` to open the Apple Loop Browser, to filter on the top and click to preview loops, then drag the loop to an empty track area to create loop track
+- Press `O` to open the Apple Loop Browser, to filter(based on instuments, genres, moods) on the top and click to preview loops, then drag the loop to an empty track area to create loop track
   - Loops with green icons are MIDI loops
   - Loops with blue icons are audio loops
   - Loops with yellow icons are drum loops
@@ -279,6 +280,21 @@
     - In the drop-down below to change the model/amp/cabinet/mic type
   - Pedalboard - change the tone by changing the pedalbaord setting for guitar and bass
 - Click the empty space below to add more effect plugins
+
+#### Third Party Plugins
+
+- They can be install be move the `.vst` file to the `/Library/Audio/Plug-Ins/VST` folder and `.component` file to the `/Library/Audio/Plug-Ins/vst/Components` folder in `Library/Plug-ins` folder
+  - If download `.dmg` files install them directly
+  - Go to `Preference -> Plugin Manager...` from the top menu to view plugin status
+  - Restart `Logic Pro` to load the new plugin
+- Lists of third party plugins
+  - [U-HE TYRELLN6](https://splice.com/plugins/1837-tyrell-n6-vst-au-by-u-he) - Synthesizer
+  - [iZotope Vinyl](https://www.izotope.com/en/products/vinyl.html) - simulator adds the dust, scratches, warp, and mechanical noise
+  - [Camel Crusher](https://www.audiopluginsforfree.com/camelcrusher/) - compressor that add distortion
+  - [Melda Bundle](https://www.meldaproduction.com/MFreeFXBundle) - plugin bundle
+  - [Iowa Alto Flute](https://vst4free.com/plugin/2327/) - sampled alto flute from the University of Iowa Electronic Music Studios
+  - [Span Voxengo](https://www.voxengo.com/product/span/) - spectrum analyzer
+  - [LoadMax](https://loudmax.blogspot.com) - It is a Look-Ahead Brickwall Loudness Maximizer Plugin with a clean transparent sound. It is designed to retain the original character of the music as much as possible even at high compression levels
 
 ### Mixer
 

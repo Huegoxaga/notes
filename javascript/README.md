@@ -628,13 +628,20 @@ time.nextWeek();
 console.log(time.day); // Output: 17
 ```
 
-##### Accessing Object Properties
+##### Access Object Properties
 
 Objects are like associative arrays, instance variable and method can all be accessed by the named index. They can also be accessed using the dot format.
 
 ```js
 node.style["color"] = "blue";
 node.style.color = "blue";
+```
+
+##### Delete Object Properties
+
+```js
+delete node.style["color"];
+delete node.style.color;
 ```
 
 ##### Object Constructor Function
@@ -1128,7 +1135,6 @@ var jsObj = eval("(" + JSONString + ")");
 - Modern browsers support a global navigator object and the navigator object contains a navigator.geolocation property.
 - To calculate the distance between two coordinates use `haversine()` function.
   - run `npm i haversine`.
-  -
 
 #### getCurrentPosition Method
 

@@ -106,3 +106,80 @@
 - Clean conda package caches, run `conda clean -f && conda clean -a`
 - Homebrew clean up`brew cleanup && brew cask cleanup`
 - Clean up npm cache `npm cache clean --force`
+
+### Troubleshoot
+
+#### Check Apple Service Status
+
+- [Apple System Status Page](https://www.apple.com/uk/support/systemstatus/)
+- [Apple System Status Page for Developers](https://developer.apple.com/system-status/)
+
+#### Reset SMC
+
+- System Management Controller(SMC) manages the following low level settings, even when the power is off:
+  - Responding to presses of the power button
+  - Responding to the display lid opening and closing on Mac notebooks
+  - Battery management
+  - Thermal management
+  - SMS (Sudden Motion Sensor)
+  - Ambient light sensing
+  - Keyboard backlighting
+  - Status indicator light (SIL) management
+  - Battery status indicator lights
+  - Selecting an external (instead of internal) video source for some iMac displays
+- Currupt setting will cause bugs like fans that run constantly even when CPU usage isn’t high
+- Reset step for laptop:
+  1. Unplug the power, then shut down your Mac.
+  2. Hold the left `Shift+Control+Option` keys down, then press and hold the power button down. Keep all four buttons pressed down for ten seconds, then let go.
+  3. Plug the power cable back in, then turn on the Mac
+- Reset step for Desktop Mac:
+  1. Shut down your Mac, then unplug the power cable
+  2. Wait 15 seconds
+  3. Plug the power cord back in, then turn on the Mac
+
+#### Reset NVRAM or PRAM
+
+- NVRAM (nonvolatile random-access memory) is a small amount of memory that your Mac uses to store certain settings and access them quickly. PRAM (Parameter RAM) stores similar information
+- It stores setting info like sound volume, display resolution, startup-disk selection, time zone, and recent kernel panic information
+- corrupted NVRAM may prevent macOS from starting
+- Settings can be viewed from `Applications > Utilities`, type `nvram -xp`, then press `Enter`
+- Steps to reset NVRAM or PRAM:
+  1. Shut down the Mac, then turn it on and immediately press and hold `Option + Command + P + R`
+  2. release the keys after the second startup sound or logo appears and disappears for the second time
+
+#### Boot to Safe Mode
+
+- When Mac failed to boot up, try safe mode
+  - When it happens during system upgrade, hold power key to turn it off
+- Safe mode will perform the following during boot up:
+  - Verifies your startup disk and attempts necessary repair directory issues
+  - Loads kernel extensions required
+  - Prevents automatic opening of startup and login items
+  - Disables user-installed fonts
+  - Deletes font, kernel, and other system cache files
+- Steps to enter safe mode:
+  - Start up an Intel-based Mac in safe mode
+    - shut down Mac, then wait 10 seconds.
+    - press power button, then immediately press and hold the `Shift` key.
+    - Release the `Shift` key when the login window apprears
+  - Start up a Mac with Apple silicon in safe mode
+    - shut down Mac, then wait 10 seconds.
+    - Press and hold the power button until the startup disks and Options appear.
+    - Press and hold the Shift key, then click Continue in Safe Mode.
+- Verify Safe Mode:
+  - hold down the Option key and choose `Apple menu -> System Information`, see Boot Mode `Safe` in the Software section
+- Leave Safe Mode, restart the machine normally
+
+#### Enter Recovery Mode
+
+- Recovery Mode provides the following features without boot up macOS:
+  - `Restore from Time Machine`: Restore your files from a Time Machine backup
+  - `Reinstall macOS`: Download and reinstall the Mac operating system
+  - `Safari` (or Get Help Online): Use Safari to browse the web and find help for your Mac. Links to Apple's support website are included. Browser plug-ins and extensions are disabled
+  - `Disk Utility`: Use Disk Utility to repair your disk or erase your disk or other storage device
+    - Erase hard drive here, before reinstall macOS
+  - Additional utilities are available from the Utilities menu in the menu bar, including `Startup Security Utility` (or Firmware Password Utility), and `Terminal`
+- Turn on your Mac and immediately press and hold these two keys: Command (⌘) and R. Release the keys when you see an Apple logo, spinning globe
+  - admin password is required to continue
+  - spinning globe appears only when Mac can't start up from its built-in macOS Recovery system
+  - To enter Internet Recovery Mode manully, use Key combo `Option-Command-R` or `Shift-Option-Command-R`

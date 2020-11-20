@@ -388,6 +388,7 @@
 - Electronic Dance Music(EDM)
   - It is a broad range of percussive electronic music genres made largely for nightclubs, raves and festivals, any electronic genre that can be used for dance belongs to this category
   - Four-on-the-floor (or four-to-the-floor) is a rhythm pattern used primarily in EDM. It is a steady, uniformly accented beat in 4/4 time in which the bass drum is hit on every beat (1, 2, 3, 4) in common time
+  - A drop or beat drop in music, made popular by electronic dance music (EDM) styles, is a point in a music track where a sudden change of rhythm or bass line occurs, which is preceded by a build-up section and break(a section where one or more instrucmnet stop playing).
 - A rave (from the verb: to rave) is an organised dance party(event) at a warehouse, forest, cave or other private property or public space, typically featuring performances by DJs, playing a seamless flow of electronic dance music.
   - Any music played at rave can be called rave music
 
@@ -412,12 +413,18 @@
     - It is the first genre of music to be played at the earliest raves
   - Ambient house - it was first emerged in the late 1980s, combining elements of acid house and ambient music
     - chill-out music is a form of music that originated from ambient house, before `Café Del Mar` expands Chill-out into a new distinct form of music
+  - Deep House - originated in the 1980s, initially fusing elements of Chicago house with 1980s jazz-funk and touches of soul music
+    - tempos typically from 110 to 125 BPM, muted basslines, spacious use of percussion elements (typically using a Roland TR-909 drum machine),soft keyboard sounds (pads), use of advanced chord structures, ambient mixes, and soulful, predominantly female vocals
+    - Tropical house, also known as trop house, is a subgenre of deep house, with elements of dancehall and Balearic house
+      - tropical house can be described as having a more uplifting and relaxing sound. The tempo of tropical house songs is a little slower than deep house (100-115 bpm). Tropical house does not use the pumping compression effect of "big room" electro house. It usually includes tropical instruments such as steel drums, marimba, guitar, saxophone or even pan flute, and can sometimes use dembow rhythm patterns often attributed to genres such as dancehall and reggaeton
 
 ##### Ambient
 
 - Ambient music is a genre of music that emphasizes tone and atmosphere over traditional musical structure or rhythm, often with the help of electrnoic instruments, e.g. use synthesizer to make windy sound
 
 #### Hip hop
+
+- 808 is the common nickname for the Roland TR-808 Rhythm Composer, an electronic drum machine from the 1980s popular in hip-hop music
 
 #### Jazz
 
