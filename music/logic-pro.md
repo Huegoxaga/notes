@@ -46,6 +46,7 @@
 - Tracks can be duplicated by selecting and clicking on the duplicate button above the track headers
 - Double clicking on the empty space below track header to duplicate a selected track
 - Clicking on the Global Track icon above track headers, or press `G` key to open `Arrangement` info, section `Marker`, Time `Signature`, `Tempo` panel and click `+` icon to insert them as a global track on top of all tracks
+  - The Global `Tempo` track can be used to speed up or slow down the project overtime
 - Press `O` to open the Apple Loop Browser, to filter(based on instuments, genres, moods) on the top and click to preview loops, then drag the loop to an empty track area to create loop track
   - Loops with green icons are MIDI loops
   - Loops with blue icons are audio loops
@@ -143,8 +144,10 @@
   - `Z` auto zoom
   - Hold `Command` resize all track header to the same size
 - Select a track header and press `delete` to delete
-- MIDI tracks can be quantized by selecting `Quantize` option in the `Region` section on the Inspector Panel
+- Tracks can be quantized by selecting `Quantize` option or change pitch or add fade in or fade out(more) in the `Region` section on the Inspector Panel
   - Quantization adjust the note length to fit the specified unit note length
+  - Audio track need to enable `Flex Time` first
+  - Drag the content under `Transpose` and `Fine Tune` to change the pitch
 - One of the following panel can be opened at the bottom for selected track
   - Press `B` to open the Smart Control panel
   - Press `E` to open the Editor panel
@@ -152,6 +155,10 @@
   - Recordings or Loops be extends by dragging its left border
     - Select the looped sound and press `Control + L` to convert loops to real copys
   - Select track sound and press `Command + R` to create a separated and duplicate recording after the selected one
+- Track pitch change be changed in the following ways
+  - Drag tempo value under `LED` section
+  - Drag the tempo value in the `Global Track`'s tempo track
+  - Press `D` to open the list editor and change tempo in the `Tempo` panel
 - Snap mode can be selected in the track tool bar
   - Turn off snap mode to move tracks freely, or `Command + G`
   - Different snap mode can snap the pointer to different grid when dragging tracks
@@ -195,6 +202,7 @@
 - Flex time tool - it is used to adjust the timing(quantize) of the audio recording grid by grid
   - Click the Flex time icon on the tool bar or press `Command + F` to display the Flex time icon on the track header for each track, then click on the flex time icon on the track header to enable flex time for that track
   - Select the apropriate flex mode on the track header
+    - Automatic - not recommanded, sometimes will have bad results
     - Polyphonic - for instrument play more than one note at the same time
     - Monophonic - for instrument play one note at a time, use polyphonic when the result doesnot sound good
     - Rhythmic - for percussion instruments
@@ -229,6 +237,15 @@
   - Drum Track will be converted if it is being pasted into a MIDI track
 - Select multiple tracks, press `Command + Shift + D` or `Track -> Create Track Stack...` from the top menu bar, then select create `Summing Stack` to add effects to multiple stacks
   - Summing Stack has all the feature as an individual track, e.g. mixing
+
+### Audio Editor
+
+- Select Audio region and press `E` to open the editor
+
+#### File View
+
+- Function Drop-down
+  - Select `Reverse` to reverse the file
 
 ### Piano Roll Editor
 
@@ -335,3 +352,87 @@
   - `Realtime` Mode will bounce the music during playback, it is more accurate
   - `Offine` Mode will be faster
 - `Normalize` is used to prevent cliping when the mastering step is skipped
+
+## Devices
+
+### Mic
+
+- Microphones have comparatively small output voltages, on the order of thousandths of a volt (0.001V) ranging up to tenths of a volt (0.1V).
+  - dynamic and ribbon mics are usually low-output Mics
+  - Condenser mics are usually high-output Mics
+- Preamp, amp or audio interface can be used to boost mic level output to line level
+- Mics use balanced(grounded) `XLR` cable
+
+### Electric Instruments
+
+- Electronic Instrument - A distinction can be made between sound produced using electromechanical means (electroacoustic music) and that produced using electronics only
+  - Electromechanical instruments have mechanical elements that produce the sound, then further work with electric elements, such as magnetic pickups, power amplifiers and loudspeakers
+    - telharmonium(Dynamophone) - electrical organ, the first electromechanical musical instrument
+    - Hammond organ - electrical organ
+    - electric piano
+    - electric guitar
+  - Pure electronic instruments do not have vibrating strings, hammers or other sound-producing mechanisms
+    - theremin - is an electronic musical instrument controlled without physical contact by the thereminist (performer). It is named after its inventor, Leon Theremin, who patented the device in 1928
+    - synthesizer - it is an electronic musical instrument that generates audio signals. Synthesizers generate audio through methods including subtractive synthesis, additive synthesis, and frequency modulation synthesis. These sounds may be shaped and modulated by components such as filters, envelopes, and low-frequency oscillators, a synthesizer can be:
+      - played with keyboards
+      - controlled by sequencers - a device or application software that can record, edit, or play back music
+      - controlled by software
+      - played with other instruments via MIDI
+    - computer
+- A electric instrument will output either digital signal through MIDI port or analog singal through instrument level output port
+
+#### MIDI
+
+- MIDI is a technical standard for connecting electronic musical instruments
+- Data transmitted by MIDI is attached with a channel info from 1 to 16, only devices or functions mapped with a certain channel will read data related to that channel, so MIDI cable can contain information for a max of 16 instruments
+- MIDI transmit five types of message
+  - Channel Voice transmit real-time performance data over a single channel, it has:
+    - `note-on` messages contain
+      - a MIDI note number(0-127) - 128 values assign to notes from C1 to G9
+      - a velocity value(1-127) - indicates how forcefully the note was played
+      - the channel number
+    - `note-off` messages that end a note
+    - program change messages that change a device's patch
+    - controller change messages that allow adjustment of an instrument's parameters.
+  - Channel Mode
+  - System Common
+  - System Real-Time
+  - System Exclusive
+
+#### Instrument Level Output
+
+- The output voltage is lower than line input and higher than mic input
+- A preamplifier or audio interface is required to bring the signal up to line level
+  - A DI box can be used to convert instrument level down to mic level
+- It uses unbalanced `1/4` inch or `1/8` inch `TR`(tip and sleeve) cable
+
+### Preamplifier
+
+- Line level connectors have balanced `TRS`(Tip, Ring, Sleeve) connectors with two black rings or unbalanced `TS`(Tip, Sleeve) connectors with one black ring
+- Line level connectors have `1/8` inch connector and `1/4` inch connector
+- It outputs line level signal to amplifier
+  - Consumer line level is rated around -10dBV e.g. a CD player uses this signal to power the headphone
+  - Professional line level is rated around +4 dBu and can be found in equipment like mixing desks, preamplifiers, and signal processing equipment
+
+### Amplifier
+
+- It takes input from preamplifier or sometimes includes the function of a preamp, then it powers the speaker with speaker level output
+
+## Tools
+
+### Spleeter
+
+- Spleeter is Deezer source separation library with pretrained models written in Python and uses Tensorflow. It makes it easy to train source separation model (assuming you have a dataset of isolated sources), and provides already trained state of the art model for performing various flavour of separation :
+  - Vocals (singing voice) / accompaniment separation (2 stems)
+  - Vocals / drums / bass / other separation (4 stems)
+    - 2 stems and 4 stems models have high performances on the musdb dataset
+  - Vocals / drums / bass / piano / other separation (5 stems)
+- Installation
+  ```sh
+  # install using conda
+  conda install -c conda-forge spleeter
+  # download an example audio file (if you don't have wget, use another tool for downloading)
+  wget https://github.com/deezer/spleeter/raw/master/audio_example.mp3
+  # separate the example audio into two components
+  spleeter separate -i audio_example.mp3 -p spleeter:2stems -o output
+  ```

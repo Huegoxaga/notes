@@ -46,6 +46,7 @@
 - `conda info` Verify `conda` is installed, check version number
 - `conda search <PackageOrLibrary> --info` check the package or library info and its required dependencies
 - `conda update conda` Update conda to the current version
+  - `conda update -n base -c defaults conda` update base conda
   - `conda update --all` update all packages in the current env
 - `conda install <packagename>` Install a package included in Anaconda
   - `conda install <packagename> --file filename.txt` install packages base on text file info.

@@ -244,7 +244,7 @@ http(s)
       - 451 Unavailable For Legal Reasons
       - 499 Client Closed Request
     - 5×× Server Error
-      - 500 Internal Server Error
+      - 500 Internal Server Error(backend program has unhandled exceptions)
       - 501 Not Implemented
       - 502 Bad Gateway
       - 503 Service Unavailable

@@ -39,7 +39,7 @@
 ## youtube-dl
 
 - It is a CLI tool for downloading youtube videos
-- run `youtube-dl <URL>` to download the video in highest quality by default
+- run `youtube-dl "<URL>"` to download the video in highest quality by default
 
 ## Mediainfo
 
