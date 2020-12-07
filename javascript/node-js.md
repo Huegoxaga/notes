@@ -186,10 +186,10 @@ const moduleObjectName = require("filePath");
 - `contractName.methods.functionName().call()` call a public contract function
   - `.send({ from: accountID });` specify the account to make the payment when modify data
 
-## moment-timezone
+## moment
 
-- It contains timezone database
-- [Click Here](https://momentjs.com/timezone/) to view its official website
+- It parse and manipulate time data
+- [Click Here](https://momentjs.com/) to view its official website
 - [Click](https://devhints.io/moment) to know more about moment date objects date format
 - `var moment = require('moment');`
 - `var m = moment();` return current time as a moment object
@@ -200,3 +200,9 @@ const moduleObjectName = require("filePath");
 - `m.isSame(Moment|String|Number|Date|Array);` compoare time and return a boolean value
   - `m.isSameOrAfter('2010-10-21');` compoare time
   - `m.isBefore('2010-10-21', 'year');` compoare year only
+
+### moment-timezone
+
+- It is a package that contains the moment package, plus timezone database
+- [Click Here](https://momentjs.com/timezone/) to view its official website
+- After installation, `require('moment-timezone')` will have the momnet object with timezone feature enabled

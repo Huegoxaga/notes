@@ -1316,16 +1316,27 @@
 </ul>
 </li>
 <li>From the top menu, <code>Preferences</code> -&gt; <code>Advanced Tools...</code>, enable all advanced tools</li>
+<li>Right click the control bar and select cutomize to add frequently used tool icons</li>
 </ul>
-<h2 id="create-a-new-project">Create a New Project</h2>
+<h2 id="creating-projects">Creating Projects</h2>
 <ul>
 <li>Press <code>Shift</code> + <code>Command</code> + <code>N</code> to create a new empty project</li>
-</ul>
-<h3 id="create-from-template">Create from Template</h3>
-<ul>
 <li>Press <code>Command</code> + <code>N</code> to create a new project from template</li>
 </ul>
-<h2 id="create-a-track">Create a Track</h2>
+<h3 id="project-setup">Project Setup</h3>
+<ul>
+<li>The project interface will be shown after the first track is created</li>
+<li><code>LCD</code> display in the centre of the top control bar can be used to setup project tempo and time signature<ul>
+<li>Open the drop-down and select <code>Custom</code> to display more info</li>
+</ul>
+</li>
+<li>Adjust the master volumn on the top control bar</li>
+<li><code>Shift + Option + A</code> opens the MIDI assignment window, that can be used for MIDI input setup<ul>
+<li>Select <code>Learn Mode</code> and make software control changes, then the type of control will be recogized for external device assignment</li>
+</ul>
+</li>
+</ul>
+<h3 id="create-tracks">Create Tracks</h3>
 <ul>
 <li>A track need to be created once a project is created</li>
 <li>Options<ul>
@@ -1342,27 +1353,23 @@
 <li>Guitar or Bass - sound from guitar processed by built-in amplifier libraries</li>
 </ul>
 </li>
+<li>Audio track is in blue, drum track is yellow, MIDI track is green</li>
 <li>When the project is opened, a track can be created by clicking the plus button(<code>Option + Command + N</code>) above the track headers</li>
 <li>Tracks can be duplicated by selecting and clicking on the duplicate button above the track headers</li>
 <li>Double clicking on the empty space below track header to duplicate a selected track</li>
-<li>Clicking on the Global Track icon above track headers to add <code>Arrangement</code> info, <code>Maker</code> notes, Time <code>Signature</code>, <code>Tempo</code> as a global track on top of all tracks</li>
-<li>Press <code>O</code> to open the Apple Loop Browser, to filter on the top and click to preview loops, then drag the loop to an empty track area to create loop track<ul>
+<li>Clicking on the Global Track icon above track headers, or press <code>G</code> key to open <code>Arrangement</code> info, section <code>Marker</code>, Time <code>Signature</code>, <code>Tempo</code> panel and click <code>+</code> icon to insert them as a global track on top of all tracks<ul>
+<li>The Global <code>Tempo</code> track can be used to speed up or slow down the project overtime</li>
+</ul>
+</li>
+<li>Press <code>O</code> to open the Apple Loop Browser, to filter(based on instuments, genres, moods) on the top and click to preview loops, then drag the loop to an empty track area to create loop track<ul>
 <li>Loops with green icons are MIDI loops</li>
 <li>Loops with blue icons are audio loops</li>
 <li>Loops with yellow icons are drum loops</li>
 </ul>
 </li>
+<li>Press <code>Option + C</code> or go menu bar <code>View -&gt; Show Color</code> to color the selected tracks</li>
 </ul>
-<h2 id="project-setup">Project Setup</h2>
-<ul>
-<li>The project interface will be shown after the first track is created</li>
-<li><code>LCD</code> display in the centre of the top control bar can be used to setup project tempo and time signature<ul>
-<li>Open the drop-down and select <code>Custom</code> to display more info</li>
-</ul>
-</li>
-<li>Adjust the master volumn on the top control bar</li>
-</ul>
-<h2 id="save-a-project">Save a Project</h2>
+<h3 id="save-a-project">Save a Project</h3>
 <ul>
 <li>A project can be saved as a single package or a project folder</li>
 <li>Only Audio Files are required to be copied<ul>
@@ -1370,7 +1377,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="work-with-tracks">Work with Tracks</h2>
+<h2 id="project-interface">Project Interface</h2>
 <ul>
 <li>The Inspector panel is used to change track property</li>
 <li>It is located on the left side, press <code>I</code> to open and close<ul>
@@ -1415,38 +1422,10 @@
 <li>Many preset settings for guitar and bass are moved to the <code>Legency</code> category if using audio track type to record guiter and bass</li>
 <li>Preset setting uses plug-ins to add a post-effect to the recording, it can be changed anytime after the recording</li>
 </ul>
-<h4 id="channel-strip-plug-in">Channel Strip Plug-in</h4>
+<h2 id="recording">Recording</h2>
 <ul>
-<li>They can be turn off by clicking the power button or select <code>No Plug-in</code> in the drop-down</li>
-<li>Tuner - helps tune the input instrument for audio tracks, or select the <code>fork</code> icon on the top control panel</li>
-<li>MIDI FX - helps create MIDI effect using one of the following plug-in:<ul>
-<li>Arpeggiator - helps generate arpeggios based on the base note</li>
-</ul>
-</li>
-<li>Audio FX - helps create audio effect<ul>
-<li>EQ - when activate, it will display a small EQ graph in the strip that indicates the current setting<ul>
-<li>It controls the magnitude of sounds in different frequency</li>
-<li>Select the top drop-down to choose preset EQ settings, then tweak based on the result</li>
-</ul>
-</li>
-<li>Amp Designer - change amp setting for guitar or bass audio track<ul>
-<li>Drag the point in front of the speaker diagram to change the position of the recording mic</li>
-<li>In the drop-down below to change the model/amp/cabinet/mic type</li>
-</ul>
-</li>
-<li>Pedalboard - change the tone by changing the pedalbaord setting for guitar and bass</li>
-</ul>
-</li>
-</ul>
-<h4 id="mixer">Mixer</h4>
-<ul>
-<li>Mixer enables the adjustment and control of all channel strip from different track in one place</li>
-<li>Press <code>X</code> to open the Mixer panel, or <code>Command + 2</code> to open a separate mixer window</li>
-<li>Plug-in setting can be copied from one track to another in the mixer panel, by holding <code>option</code> key and dragging the plug-in to another track</li>
-</ul>
-<h3 id="record-and-play-tracks">Record and Play Tracks</h3>
-<ul>
-<li>Use lower buffer size in Audio setting to reduce recording latency<ul>
+<li>Use lower buffer size in Audio setting to reduce latency in the recorded track<ul>
+<li>Turn on the low latency mode to reduce the latency further by clicking the low lantency icon on the control bar</li>
 <li>Lower buffer size consume more CPU power which is not suitable for computing intensive tasks</li>
 </ul>
 </li>
@@ -1474,7 +1453,11 @@
 <li>In the audio interface setting use instrument level input when connecting with an electrical instrument with Direct Injection or Direct Input (DI)</li>
 <li>One instrument can be recorded two times with each track pan to left max and right max to create high quality stereo tracks</li>
 <li>Press <code>R</code> button to start recording</li>
-<li>Press <code>Space</code> to stop recording, press again to play the recording, press again the reset the play head</li>
+<li>Press <code>Space</code> to stop recording, press again to play the recording, press again the reset the play head<ul>
+<li>use <code>&lt;</code> and <code>&gt;</code> key or <code>Shift + &lt;</code> and <code>Shift + &lt;</code>(1 bar at a time) to move the play head</li>
+</ul>
+</li>
+<li>Press <code>K</code> to open and record with the typing keyboard, it is a software typing keyboard</li>
 <li>Press <code>C</code> to enable/disable loop playback, select a track section and press <code>Command</code> + <code>U</code> will enable loop on this section</li>
 <li>Hold <code>Command</code> and click the sound track section to activate the skip cycle mode.<ul>
 <li>the section&apos;s cycle bar will turn dark and the section will be skipped when playing in the future</li>
@@ -1482,8 +1465,22 @@
 </ul>
 </li>
 <li>Press <code>Command</code> + <code>Z</code> to undo recording</li>
+<li>The <code>Catch Playhead</code> switch is located on the tool bar, at the left of the <code>Pointer Tool</code> icon</li>
+<li>Select a track then press <code>A</code> to enable automation mode, it can be used to record volumn changes, pedal board changes etc<ul>
+<li>click on the track and drag the volumn line to add dynamic volumn control</li>
+<li>use the drop-down in the track header below the automation track switch to select the type of control that be to be recorded</li>
+<li>The changes can be made using mouse or external MIDI controller during recording</li>
+<li>In the track header, four automation modes are available:<ul>
+<li>Read - only read data</li>
+<li>Touch - write data, cut of the changes when not receiving signal</li>
+<li>Latch - write data, hold the changes when note receiving signal</li>
+<li>Write - similar to Latch but overwrite all other automation signal</li>
 </ul>
-<h3 id="edit-tracks">Edit Tracks</h3>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="editing">Editing</h2>
 <ul>
 <li>Zoom<ul>
 <li><code>Command + Arrows</code> key to zoom the tracks</li>
@@ -1493,8 +1490,10 @@
 </ul>
 </li>
 <li>Select a track header and press <code>delete</code> to delete</li>
-<li>MIDI tracks can be quantized by selecting <code>Quantize</code> option in the <code>Region</code> section on the Inspector Panel<ul>
+<li>Tracks can be quantized by selecting <code>Quantize</code> option or change pitch or add fade in or fade out(more) in the <code>Region</code> section on the Inspector Panel<ul>
 <li>Quantization adjust the note length to fit the specified unit note length</li>
+<li>Audio track need to enable <code>Flex Time</code> first</li>
+<li>Drag the content under <code>Transpose</code> and <code>Fine Tune</code> to change the pitch</li>
 </ul>
 </li>
 <li>One of the following panel can be opened at the bottom for selected track<ul>
@@ -1510,6 +1509,12 @@
 <li>Select track sound and press <code>Command + R</code> to create a separated and duplicate recording after the selected one</li>
 </ul>
 </li>
+<li>Track pitch change be changed in the following ways<ul>
+<li>Drag tempo value under <code>LED</code> section</li>
+<li>Drag the tempo value in the <code>Global Track</code>&apos;s tempo track</li>
+<li>Press <code>D</code> to open the list editor and change tempo in the <code>Tempo</code> panel</li>
+</ul>
+</li>
 <li>Snap mode can be selected in the track tool bar<ul>
 <li>Turn off snap mode to move tracks freely, or <code>Command + G</code></li>
 <li>Different snap mode can snap the pointer to different grid when dragging tracks</li>
@@ -1521,6 +1526,8 @@
 </ul>
 </li>
 <li>Select a drummer sound track section, in its setting panel, check <code>follow</code> beside <code>Kick &amp; Snare</code> and select a track to let the drumer follow the kick and snare base on a certain audio recording</li>
+<li>Right click a drummer region and select <code>Convert -&gt; Convert to MIDI Region</code> for detailed editing</li>
+<li>Right click on empty track can create a MIDI region, so it can be edited using the Piano Roll Editor</li>
 <li>Click Tools are used when mouse is clicked on the sound track<ul>
 <li>Click tools can be set for left click and <code>Command + Click</code> in the track tool bar</li>
 <li>Right click can be set as another tool in <code>Preference-&gt;General..</code>, <code>Right Mouse Button</code> in the <code>Edit</code> tab<ul>
@@ -1556,6 +1563,7 @@
 </li>
 <li>Glue Tool - combine all selected sections into one<ul>
 <li>select section and press <code>J</code>(join function) will join all section into a separate audio file</li>
+<li><code>Command + J</code> will join all selected tracks into a single separate file</li>
 </ul>
 </li>
 <li>Solo Tool - play selected region</li>
@@ -1571,6 +1579,193 @@
 </li>
 </ul>
 </li>
+<li>Flex time tool - it is used to adjust the timing(quantize) of the audio recording grid by grid<ul>
+<li>Click the Flex time icon on the tool bar or press <code>Command + F</code> to display the Flex time icon on the track header for each track, then click on the flex time icon on the track header to enable flex time for that track</li>
+<li>Select the apropriate flex mode on the track header<ul>
+<li>Automatic - not recommanded, sometimes will have bad results</li>
+<li>Polyphonic - for instrument play more than one note at the same time</li>
+<li>Monophonic - for instrument play one note at a time, use polyphonic when the result doesnot sound good</li>
+<li>Rhythmic - for percussion instruments</li>
+<li>Slicing - for drums</li>
+<li>Speed - for special effect</li>
+<li>Tempophone - for special effect</li>
+<li>Flex Pitch - it is used to adjust to pitch or vocal recording, once select double clicking the region to open the track editing panel at the bottom<ul>
+<li>Select all and scale quantize the voice onto a selected scale using the quantize tool on the left panel</li>
+<li>Slide the pitch correction slider up to increase the correction level</li>
+<li>Double click the yellow timeline to play</li>
+<li>There are six properties the tool can tune by dragging one of the six dots around the pitch bar<ul>
+<li>Fine Pitch(upper middle dot) is the pitch of the voice in cent(one cent in 1% of a semitone)</li>
+<li>Vibrato(lower middle dot) is the variance of the pitch in percentage</li>
+<li>Front Pitch Drift(upper left dot)</li>
+<li>End Pitch Drift(upper right dot)</li>
+</ul>
+</li>
+<li>toning will reduce the tonal quality</li>
+<li>Use scissors tool to cut a note into two</li>
+<li>Use glue tool to join separate notes into one</li>
+<li>The length of each note can also be adjusted by dragging</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>make sure the <code>complex</code> checkbox under the track option in the inspector is checked for a better result</li>
+<li>brighter color grid means the time is compressed, grey section means time is stretched, original color means the time length is close to its original</li>
+<li>The program will auto detect the beat on the audio track and display a flex time marker on the transient for on each grid</li>
+<li>Select the audio track and use the quantize tool to adjust the timing for each grid</li>
+<li>drag the flex marker to adjust manually</li>
+<li>click on the sound wave to create the flex marker</li>
+<li>Drag the Eraser Tool or click the delete icon above the flex marker to delete the flex marker</li>
+<li>Use join track to render flex edit in place<ul>
+<li>For a track with single region using bounce tool or create a small region to join at the end, then delete it</li>
+</ul>
+</li>
+<li>Disable flex time when done</li>
+</ul>
+</li>
+<li>Increase the buffer size to max and turn off the low latency mode before vocal editing to improve performance</li>
+<li>Tracks from one instrument can be copied and pasted to another<ul>
+<li>Drum Track will be converted if it is being pasted into a MIDI track</li>
+</ul>
+</li>
+<li>Select multiple tracks, press <code>Command + Shift + D</code> or <code>Track -&gt; Create Track Stack...</code> from the top menu bar, then select create <code>Summing Stack</code> to add effects to multiple stacks<ul>
+<li>Summing Stack has all the feature as an individual track, e.g. mixing</li>
+</ul>
+</li>
+</ul>
+<h3 id="audio-editor">Audio Editor</h3>
+<ul>
+<li>Select Audio region and press <code>E</code> to open the editor</li>
+</ul>
+<h4 id="file-view">File View</h4>
+<ul>
+<li>Function Drop-down<ul>
+<li>Select <code>Reverse</code> to reverse the file</li>
+</ul>
+</li>
+</ul>
+<h3 id="piano-roll-editor">Piano Roll Editor</h3>
+<ul>
+<li>It is used to edit MIDI region</li>
+<li>It can be opened by press <code>P</code>, or double click on the MIDI region to open the editor at the bottom<ul>
+<li><code>Command + 4</code> to open it in a separate window</li>
+</ul>
+</li>
+<li>It has seperate mouse tools<ul>
+<li>Pointer tool can be used to drag notes around<ul>
+<li>Use <code>Option + Arrow</code> can move selected notes around</li>
+<li>Use <code>Option + Shift + Arrow</code> can move notes by one octave</li>
+</ul>
+</li>
+<li>Pencil tool can be used to insert notes by clicking on the desired location</li>
+<li>Brush tool can insert multiple notes by dragging the mouse across</li>
+<li>Velocity tool can be used to adjust the velocity of selected notes by dragging up or down<ul>
+<li>When select multiple notes the velocity increase based on its original value</li>
+<li>Hold <code>option</code> key then drag the mouse to make all notes change with the same velocity value</li>
+<li>Notes with higher velocity will be more red</li>
+<li>Velocity slider on the left panel set a <code>1-127</code> value for each notes</li>
+<li>Velocity stores a certain quality of the note and it is used to adjust the volumn most of the time</li>
+<li>when recording using MIDI keyboard, it is related to the input speed</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>To quantize a recorded track, <code>command + A</code> to select all notes, and click <code>Q</code> icon in the Time quantize tool on the left panel after select the correct base note length</li>
+<li><code>Edit -&gt; Trim -&gt; Note end to Following Notes(Force Legato)</code> or press <code>Shift + \</code> to extend all notes and fill the gap until a note reaches the next one</li>
+<li>On the top tool bar of the editor, click the MIDI in icon, then MIDI input from connected MIDI device or software keyboard will be recorded in the editor<ul>
+<li>Click the MIDI out button to mute during note editing</li>
+</ul>
+</li>
+<li>From the top menu bar, <code>Window-&gt;Show Step Input Keyboard</code> or press <code>Option+Command+K</code> to open the Step Input Keyborad, then multiple note can be entered for one step at a time<ul>
+<li>Set the step interval by clicking the coresponding note type</li>
+<li>play head will proceed to the right after each input</li>
+</ul>
+</li>
+</ul>
+<h3 id="score-editor">Score Editor</h3>
+<h3 id="step-editor">Step Editor</h3>
+<h2 id="mixing--mastering">Mixing &amp; Mastering</h2>
+<h3 id="plug-ins">Plug-ins</h3>
+<ul>
+<li>They are located in the channel strip</li>
+<li>They can be turn off by clicking the power button or select <code>No Plug-in</code> in the drop-down</li>
+<li>Plug-in effects are added to the sound in order, from top to bottom</li>
+<li>Tuner - helps tune the input instrument for audio tracks, or select the <code>fork</code> icon on the top control panel</li>
+<li>MIDI FX - helps create MIDI effect using one of the following plug-in:<ul>
+<li>Arpeggiator - helps generate arpeggios based on the base note</li>
+</ul>
+</li>
+<li>Audio FX - helps create audio effect<ul>
+<li>EQ - when activate, it will display a small EQ graph in the strip that indicates the current setting<ul>
+<li>The channel EQ has 8 filters to change the sound, each fileter is represented in different color</li>
+<li>It controls the magnitude of sounds in different frequency</li>
+<li>Select the top drop-down to choose preset EQ settings, then tweak based on the result</li>
+</ul>
+</li>
+<li>Amp Designer - change amp setting for guitar or bass audio track<ul>
+<li>Drag the point in front of the speaker diagram to change the position of the recording mic</li>
+<li>In the drop-down below to change the model/amp/cabinet/mic type</li>
+</ul>
+</li>
+<li>Pedalboard - change the tone by changing the pedalbaord setting for guitar and bass</li>
+</ul>
+</li>
+<li>Click the empty space below to add more effect plugins</li>
+</ul>
+<h4 id="third-party-plugins">Third Party Plugins</h4>
+<ul>
+<li>They can be install be move the <code>.vst</code> file to the <code>/Library/Audio/Plug-Ins/VST</code> folder and <code>.component</code> file to the <code>/Library/Audio/Plug-Ins/vst/Components</code> folder in <code>Library/Plug-ins</code> folder<ul>
+<li>If download <code>.dmg</code> files install them directly</li>
+<li>Go to <code>Preference -&gt; Plugin Manager...</code> from the top menu to view plugin status</li>
+<li>Restart <code>Logic Pro</code> to load the new plugin</li>
+</ul>
+</li>
+<li>Lists of third party plugins<ul>
+<li><a href="https://splice.com/plugins/1837-tyrell-n6-vst-au-by-u-he" target="_blank">U-HE TYRELLN6</a> - Synthesizer</li>
+<li><a href="https://www.izotope.com/en/products/vinyl.html" target="_blank">iZotope Vinyl</a> - simulator adds the dust, scratches, warp, and mechanical noise</li>
+<li><a href="https://www.audiopluginsforfree.com/camelcrusher/" target="_blank">Camel Crusher</a> - compressor that add distortion</li>
+<li><a href="https://www.meldaproduction.com/MFreeFXBundle" target="_blank">Melda Bundle</a> - plugin bundle</li>
+<li><a href="https://vst4free.com/plugin/2327/" target="_blank">Iowa Alto Flute</a> - sampled alto flute from the University of Iowa Electronic Music Studios</li>
+<li><a href="https://www.voxengo.com/product/span/" target="_blank">Span Voxengo</a> - spectrum analyzer</li>
+<li><a href="https://loudmax.blogspot.com" target="_blank">LoadMax</a> - It is a Look-Ahead Brickwall Loudness Maximizer Plugin with a clean transparent sound. It is designed to retain the original character of the music as much as possible even at high compression levels</li>
+</ul>
+</li>
+</ul>
+<h3 id="mixer">Mixer</h3>
+<ul>
+<li>Use Mixer to do mixing after the tracks are fully edited<ul>
+<li>Check the <code>Mix-&gt;Pre-Fader Metering</code> to see the input level on the meter before it reaches to the fader volumn control</li>
+<li>Before the mixing, increase the buffer size to biggest to increase performance</li>
+<li>For each channel, mixing includes:<ul>
+<li>adjusting <code>EQ</code>, increase or decrease the output for different instrument at different frequency based on its tone and focus</li>
+<li>adding <code>Compressor</code>, <code>Envoloper</code></li>
+<li>Adjust <code>Pedal</code>, <code>Amplifier</code>, <code>Exciter</code> for guitar and bass</li>
+<li>adding <code>reverb</code> and/or <code>delay</code> and/or <code>spreader</code> each by send a channel strip signal to a new bus, add effects on that channel with small volumn as a reverb/delay sound source from a room<ul>
+<li>right click the new channel strip for the new bus, then generate a track for further processing, e.g. creating track stack or record automation controls</li>
+<li>different tracks can send signals to the same new bus to get the same effect</li>
+</ul>
+</li>
+<li>Adding <code>Multipressor</code> for harmony vocal track stack, to control volumn based on pitch</li>
+<li>Adjust pan</li>
+<li>Control volumn that allows the master output keeps around at least 6dB below the cliping level(red line)</li>
+<li>Adding or adjust the volumn automation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Use Mixer to do mastering after mixing - mastering focuses on overall control of the stereo out, it includes:<ul>
+<li>Adding overall <code>EQ</code>, e.g. using <code>Linear Phase EQ</code> to cut low and boost high(not too much)</li>
+<li>Adding <code>MultiPressor</code></li>
+<li>Adding <code>Limiter</code> and then <code>Meter</code></li>
+<li>Readjust by monitoring with other output devices for final output, then ready for bouncing</li>
+</ul>
+</li>
+<li>Click the drum plugin and select multi-output and click the plus buttom below the meter to add multiple channels to take input from different part of the drum, then the sound from each part can be modified separately by using plugins<ul>
+<li>to add overall effect, create a track stack</li>
+</ul>
+</li>
+<li>Mixer enables the adjustment and control of all channel strips from different track in one place</li>
+<li>Press <code>X</code> to open the Mixer panel, or <code>Command + 2</code> to open a separate mixer window</li>
+<li>Plug-in setting can be copied from one track to another in the mixer panel, by holding <code>option</code> key and dragging the plug-in to another track</li>
 </ul>
 <h2 id="export-the-project">Export the Project</h2>
 <ul>
@@ -1578,13 +1773,123 @@
 <li>One or more desired output format can be selected<ul>
 <li>PCM - uncompressed<ul>
 <li>File Type: Split will separate the audio into left and right file, interleaved will combine those into one file</li>
-<li>Dither is used to reduce background noise by adding a random noise</li>
+<li>many music streaming platform only support <code>16bit</code> bit depth and <code>44100</code> sample rate</li>
+<li>Dither is used to reduce background noise by adding a random noise, it is used when boucing bit depth is lower(16bit) than the recording bit depth(24bit)</li>
 </ul>
 </li>
 </ul>
 </li>
+<li>Bounce Mode<ul>
 <li><code>Realtime</code> Mode will bounce the music during playback, it is more accurate</li>
 <li><code>Offine</code> Mode will be faster</li>
+</ul>
+</li>
+<li><code>Normalize</code> is used to prevent cliping when the mastering step is skipped</li>
+</ul>
+<h2 id="devices">Devices</h2>
+<h3 id="mic">Mic</h3>
+<ul>
+<li>Microphones have comparatively small output voltages, on the order of thousandths of a volt (0.001V) ranging up to tenths of a volt (0.1V).<ul>
+<li>dynamic and ribbon mics are usually low-output Mics</li>
+<li>Condenser mics are usually high-output Mics</li>
+</ul>
+</li>
+<li>Preamp, amp or audio interface can be used to boost mic level output to line level</li>
+<li>Mics use balanced(grounded) <code>XLR</code> cable</li>
+</ul>
+<h3 id="electric-instruments">Electric Instruments</h3>
+<ul>
+<li>Electronic Instrument - A distinction can be made between sound produced using electromechanical means (electroacoustic music) and that produced using electronics only<ul>
+<li>Electromechanical instruments have mechanical elements that produce the sound, then further work with electric elements, such as magnetic pickups, power amplifiers and loudspeakers<ul>
+<li>telharmonium(Dynamophone) - electrical organ, the first electromechanical musical instrument</li>
+<li>Hammond organ - electrical organ</li>
+<li>electric piano</li>
+<li>electric guitar</li>
+</ul>
+</li>
+<li>Pure electronic instruments do not have vibrating strings, hammers or other sound-producing mechanisms<ul>
+<li>theremin - is an electronic musical instrument controlled without physical contact by the thereminist (performer). It is named after its inventor, Leon Theremin, who patented the device in 1928</li>
+<li>synthesizer - it is an electronic musical instrument that generates audio signals. Synthesizers generate audio through methods including subtractive synthesis, additive synthesis, and frequency modulation synthesis. These sounds may be shaped and modulated by components such as filters, envelopes, and low-frequency oscillators, a synthesizer can be:<ul>
+<li>played with keyboards</li>
+<li>controlled by sequencers - a device or application software that can record, edit, or play back music</li>
+<li>controlled by software</li>
+<li>played with other instruments via MIDI</li>
+</ul>
+</li>
+<li>computer</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>A electric instrument will output either digital signal through MIDI port or analog singal through instrument level output port</li>
+</ul>
+<h4 id="midi">MIDI</h4>
+<ul>
+<li>MIDI is a technical standard for connecting electronic musical instruments</li>
+<li>Data transmitted by MIDI is attached with a channel info from 1 to 16, only devices or functions mapped with a certain channel will read data related to that channel, so MIDI cable can contain information for a max of 16 instruments</li>
+<li>MIDI transmit five types of message<ul>
+<li>Channel Voice transmit real-time performance data over a single channel, it has:<ul>
+<li><code>note-on</code> messages contain<ul>
+<li>a MIDI note number(0-127) - 128 values assign to notes from C1 to G9</li>
+<li>a velocity value(1-127) - indicates how forcefully the note was played</li>
+<li>the channel number</li>
+</ul>
+</li>
+<li><code>note-off</code> messages that end a note</li>
+<li>program change messages that change a device&apos;s patch</li>
+<li>controller change messages that allow adjustment of an instrument&apos;s parameters.</li>
+</ul>
+</li>
+<li>Channel Mode</li>
+<li>System Common</li>
+<li>System Real-Time</li>
+<li>System Exclusive</li>
+</ul>
+</li>
+</ul>
+<h4 id="instrument-level-output">Instrument Level Output</h4>
+<ul>
+<li>The output voltage is lower than line input and higher than mic input</li>
+<li>A preamplifier or audio interface is required to bring the signal up to line level<ul>
+<li>A DI box can be used to convert instrument level down to mic level</li>
+</ul>
+</li>
+<li>It uses unbalanced <code>1/4</code> inch or <code>1/8</code> inch <code>TR</code>(tip and sleeve) cable</li>
+</ul>
+<h3 id="preamplifier">Preamplifier</h3>
+<ul>
+<li>Line level connectors have balanced <code>TRS</code>(Tip, Ring, Sleeve) connectors with two black rings or unbalanced <code>TS</code>(Tip, Sleeve) connectors with one black ring</li>
+<li>Line level connectors have <code>1/8</code> inch connector and <code>1/4</code> inch connector</li>
+<li>It outputs line level signal to amplifier<ul>
+<li>Consumer line level is rated around -10dBV e.g. a CD player uses this signal to power the headphone</li>
+<li>Professional line level is rated around +4 dBu and can be found in equipment like mixing desks, preamplifiers, and signal processing equipment</li>
+</ul>
+</li>
+</ul>
+<h3 id="amplifier">Amplifier</h3>
+<ul>
+<li>It takes input from preamplifier or sometimes includes the function of a preamp, then it powers the speaker with speaker level output</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<h3 id="spleeter">Spleeter</h3>
+<ul>
+<li>Spleeter is Deezer source separation library with pretrained models written in Python and uses Tensorflow. It makes it easy to train source separation model (assuming you have a dataset of isolated sources), and provides already trained state of the art model for performing various flavour of separation :<ul>
+<li>Vocals (singing voice) / accompaniment separation (2 stems)</li>
+<li>Vocals / drums / bass / other separation (4 stems)<ul>
+<li>2 stems and 4 stems models have high performances on the musdb dataset</li>
+</ul>
+</li>
+<li>Vocals / drums / bass / piano / other separation (5 stems)</li>
+</ul>
+</li>
+<li>Installation<pre><code class="lang-sh"><span class="hljs-comment"># install using conda</span>
+conda install -c conda-forge spleeter
+<span class="hljs-comment"># download an example audio file (if you don&apos;t have wget, use another tool for downloading)</span>
+wget https://github.com/deezer/spleeter/raw/master/audio_example.mp3
+<span class="hljs-comment"># separate the example audio into two components</span>
+spleeter separate -i audio_example.mp3 -p spleeter:2stems -o output
+</code></pre>
+</li>
 </ul>
 
                                 
@@ -1625,7 +1930,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Logic Pro","level":"1.26.2","depth":2,"previous":{"title":"Music Theory","level":"1.26.1","depth":2,"path":"music/theory.md","ref":"music/theory.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"music/logic-pro.md","mtime":"2020-11-15T18:13:54.569Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-16T00:47:09.645Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Logic Pro","level":"1.26.2","depth":2,"previous":{"title":"Music Theory","level":"1.26.1","depth":2,"path":"music/theory.md","ref":"music/theory.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"music/logic-pro.md","mtime":"2020-12-01T02:41:20.471Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T20:59:12.500Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

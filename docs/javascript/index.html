@@ -1866,10 +1866,14 @@ circle.getArea = <span class="hljs-function"><span class="hljs-keyword">function
 time.nextWeek();
 <span class="hljs-built_in">console</span>.log(time.day); <span class="hljs-comment">// Output: 17</span>
 </code></pre>
-<h5 id="accessing-object-properties">Accessing Object Properties</h5>
+<h5 id="access-object-properties">Access Object Properties</h5>
 <p>Objects are like associative arrays, instance variable and method can all be accessed by the named index. They can also be accessed using the dot format.</p>
 <pre><code class="lang-js">node.style[<span class="hljs-string">&quot;color&quot;</span>] = <span class="hljs-string">&quot;blue&quot;</span>;
 node.style.color = <span class="hljs-string">&quot;blue&quot;</span>;
+</code></pre>
+<h5 id="delete-object-properties">Delete Object Properties</h5>
+<pre><code class="lang-js"><span class="hljs-keyword">delete</span> node.style[<span class="hljs-string">&quot;color&quot;</span>];
+<span class="hljs-keyword">delete</span> node.style.color;
 </code></pre>
 <h5 id="object-constructor-function">Object Constructor Function</h5>
 <p>It is a good idea to capitalize the first letter of the constructor name to distinguish it from others.</p>
@@ -2344,8 +2348,7 @@ fetch(URL, options)
 <li>The HTML Geolocation API is used to locate a user&apos;s position.</li>
 <li>Modern browsers support a global navigator object and the navigator object contains a navigator.geolocation property.</li>
 <li>To calculate the distance between two coordinates use <code>haversine()</code> function.<ul>
-<li>run <code>npm i haversine</code>.
--</li>
+<li>run <code>npm i haversine</code>.</li>
 </ul>
 </li>
 </ul>
@@ -2502,7 +2505,7 @@ fetch(URL, options)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.5","depth":1,"next":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Scala","level":"1.4","depth":1,"path":"scala/README.md","ref":"scala/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-10-05T17:43:23.536Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-16T00:47:09.645Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.5","depth":1,"next":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Scala","level":"1.4","depth":1,"path":"scala/README.md","ref":"scala/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-11-20T18:09:53.434Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T20:59:12.500Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

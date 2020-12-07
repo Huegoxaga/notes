@@ -61,9 +61,14 @@
   - For notes with the same pitch, the rhythm of the two will be added up and treated as one note.
   - For notes with the different pitches, there will make continuous sound.
 - A number like 3, 5 , 7 underneath a group of notes will generally add an extra note in the original rhythmic gap.
+- A swing rhythm used in Jazz music changes a duple into triple then omits the middle beat
+  - A non-swing rhythm is called a straight rhythm
+- Bossa Nova Rhythm are straight rhythm that groups up-beat and down-beat into an alternative of 3 and 4 beats, or 2 and 3 beats
+  - It is often used in Latin music
 - A rest defines the length of silence.
 - See the charts for all notes and rests
   - ![Notes and Rests](img/notes.jpg)
+- A crushed note is playing a note and immediately follow it up with another note by cutting it very short, without letting it play for a normal duration
 
 ## Amplitude
 
@@ -109,6 +114,7 @@
   - Ex, C and G is a perfect 5th, C and G# is an augmented 5th.
 - A tritone is a diminished fourth or augmented fourth.
   - It has three whole step in between and it cut one octave in half.
+  - It has six half steps
   - It generates an unpleasant sound.
 
 ### Consonance and Dissonance Intervals
@@ -174,6 +180,15 @@
   - Ionian, Dorian, Phrygian, Lydian, Mixolydian, Aeolian, Locrian.
 - Lettername is used to describe the starting note, with the music alphabet which indicate the degree of the relative major the starting note is on.
   - Ex, D Dorian mode is C major starts from D. C major is the relative major of D Dorian.
+
+### Minor Pentatonic Scale
+
+- can be used in Jazz improvision
+- `<Mi3><HS><HS><Mi3>`
+
+### Blues Scale
+
+- It is minor pentatonic scale with a tritone note from root
 
 ### the Circle of Fifths
 
@@ -311,11 +326,11 @@
 
 - are the repeated flow of chord in a piece of music, represented by a series of degrees of the root for the chord in a certain scale. all of the notes are picked from the scale.
 - Ex, In C major scale, II is a minor triad.
-- Ex, II-V-I progression is used in many music
+- Ex, II-V-I progression is used in many music(especially Jazz)
 - four-part chords have typical chord progression like `II-V-I`, `Dmi7-G7-Cma7`
 - Using a four-part chord doesn’t mean that all the notes are used. The 3rd and 7th are the signature for the chord. among all the variation the top notes can be used to represent this progression like 7 - 3 - 7 voicing or 3 - 7 - 3 voicing.
 - using five-part chord can add some complex to the original chord progression.
-- Shell voicing - All combination of of the two notes, one from 3rd or minor 3rd and one from 7th or dominant 7th can define the quality of the chord and hence it can be called the shell of the chord.
+- Shell voicing - All combination of the two notes, one from 3rd or minor 3rd and one from 7th or dominant 7th can define the quality of the chord and hence it can be called the shell of the chord.
 - Non-chord tones are notes that does not belongs to the current chord.
 
 ## Improvision

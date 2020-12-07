@@ -1701,21 +1701,21 @@ x[key1] = newValue
 </li>
 <li>To add a new key/value pair to a dictionay, simply assign the value to a new key.</li>
 </ul>
-<h4 id="operators">Operators</h4>
+<h3 id="operators">Operators</h3>
 <ul>
 <li>Membership Operator - in<pre><code class="lang-py">keyName <span class="hljs-keyword">in</span> dictionaryName <span class="hljs-comment"># return a bool</span>
 keyName <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> dictionaryName
 </code></pre>
 </li>
 </ul>
-<h4 id="methods">Methods</h4>
+<h3 id="methods">Methods</h3>
 <pre><code class="lang-py">dictionary.get(key, default_value)  <span class="hljs-comment">#It returns the key&#x2019;s value and None if key is not found. or display specific default value. None type can have this method without error</span>
 dictionay.pop(key,default)  <span class="hljs-comment"># It returns and remove the value that match the key. Return the default value if not found.</span>
 dictionay.values() <span class="hljs-comment"># Return a list of values.</span>
 dictionay.keys() <span class="hljs-comment"># Return a list of keys.</span>
 dictionay.items() <span class="hljs-comment"># Return a list of dictionay elements.</span>
 </code></pre>
-<h4 id="iteration">Iteration</h4>
+<h3 id="iteration">Iteration</h3>
 <ul>
 <li>Generate a dictionary from a list of tuples <code>damage_rate = {xVar: yVar for (xVar, yVar) in tupleList}</code>.</li>
 <li>Generate a dictionary from a list of objects <code>city_dict = {x.id: x.name for x in objectList}}</code>.</li>
@@ -1724,6 +1724,22 @@ dictionay.items() <span class="hljs-comment"># Return a list of dictionay elemen
 </code></pre>
 </li>
 </ul>
+<h3 id="subclass">Subclass</h3>
+<h4 id="ordereddict">OrderedDict</h4>
+<ul>
+<li>A special dictonary that remembers the order entries were added</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> OrderedDict
+
+od = OrderedDict()
+od[<span class="hljs-string">&apos;a&apos;</span>] = <span class="hljs-number">1</span>
+od[<span class="hljs-string">&apos;b&apos;</span>] = <span class="hljs-number">2</span>
+od[<span class="hljs-string">&apos;c&apos;</span>] = <span class="hljs-number">3</span>
+od[<span class="hljs-string">&apos;d&apos;</span>] = <span class="hljs-number">4</span>
+
+<span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> od.items():
+    print(key, value)
+</code></pre>
 <h2 id="tuples">Tuples</h2>
 <ul>
 <li>It is an immutable list with or without parentheses(use comma for separation).</li>
@@ -2330,7 +2346,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-10-27T14:33:39.259Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-16T00:47:09.645Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-11-20T18:09:53.472Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T20:59:12.500Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

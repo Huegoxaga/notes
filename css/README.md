@@ -292,6 +292,13 @@ img {
 - The display property specifies the display behavior
 - a HTML tag inside its body tag can be either block element or inline element by default.
 
+### Hide Elements
+
+- set display property to `none`
+  - when set to `none` the element is ignored by the browser and the spacing of the element is lost
+- set visibility property from `visible` to `hidden`
+  - when set to `hidden`, the space of the element is reserved
+
 ### Block Elements
 
 - A block-level element always starts on a new line and takes up the full width available (stretches out to the left and right as far as it can)

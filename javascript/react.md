@@ -679,15 +679,21 @@ const useStyles = makeStyles({
     padding: "0 30px",
     //use variables
     width: `calc(100% - ${SIDE_MENU_WIDTH}px)`,
+    // css when mouse hover over the element
+    "&:hover": {
+      background: "#f00",
+      border: "1px solid black",
+    },
   },
 });
 
 export default function Hook() {
-  const classes = useStyles();
+  const classes = useStyles(variable);
   return <Button className={classes.root}>Hook</Button>;
 }
 ```
 
+- pass a variable into `useStyles()`, so CSS properties can be set based on that variable in``makeSytles`, e.g. `color: variable => (variable ? 'black' : 'red')`
 - makeStyles can take theme as input and get theme objects values
 
 ```js

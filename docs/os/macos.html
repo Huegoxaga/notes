@@ -1444,6 +1444,108 @@
 <li>Homebrew clean up<code>brew cleanup &amp;&amp; brew cask cleanup</code></li>
 <li>Clean up npm cache <code>npm cache clean --force</code></li>
 </ul>
+<h3 id="troubleshoot">Troubleshoot</h3>
+<h4 id="check-apple-service-status">Check Apple Service Status</h4>
+<ul>
+<li><a href="https://www.apple.com/uk/support/systemstatus/" target="_blank">Apple System Status Page</a></li>
+<li><a href="https://developer.apple.com/system-status/" target="_blank">Apple System Status Page for Developers</a></li>
+</ul>
+<h4 id="reset-smc">Reset SMC</h4>
+<ul>
+<li>System Management Controller(SMC) manages the following low level settings, even when the power is off:<ul>
+<li>Responding to presses of the power button</li>
+<li>Responding to the display lid opening and closing on Mac notebooks</li>
+<li>Battery management</li>
+<li>Thermal management</li>
+<li>SMS (Sudden Motion Sensor)</li>
+<li>Ambient light sensing</li>
+<li>Keyboard backlighting</li>
+<li>Status indicator light (SIL) management</li>
+<li>Battery status indicator lights</li>
+<li>Selecting an external (instead of internal) video source for some iMac displays</li>
+</ul>
+</li>
+<li>Currupt setting will cause bugs like fans that run constantly even when CPU usage isn&#x2019;t high</li>
+<li>Reset step for laptop:<ol>
+<li>Unplug the power, then shut down your Mac.</li>
+<li>Hold the left <code>Shift+Control+Option</code> keys down, then press and hold the power button down. Keep all four buttons pressed down for ten seconds, then let go.</li>
+<li>Plug the power cable back in, then turn on the Mac</li>
+</ol>
+</li>
+<li>Reset step for Desktop Mac:<ol>
+<li>Shut down your Mac, then unplug the power cable</li>
+<li>Wait 15 seconds</li>
+<li>Plug the power cord back in, then turn on the Mac</li>
+</ol>
+</li>
+</ul>
+<h4 id="reset-nvram-or-pram">Reset NVRAM or PRAM</h4>
+<ul>
+<li>NVRAM (nonvolatile random-access memory) is a small amount of memory that your Mac uses to store certain settings and access them quickly. PRAM (Parameter RAM) stores similar information</li>
+<li>It stores setting info like sound volume, display resolution, startup-disk selection, time zone, and recent kernel panic information</li>
+<li>corrupted NVRAM may prevent macOS from starting</li>
+<li>Settings can be viewed from <code>Applications &gt; Utilities</code>, type <code>nvram -xp</code>, then press <code>Enter</code></li>
+<li>Steps to reset NVRAM or PRAM:<ol>
+<li>Shut down the Mac, then turn it on and immediately press and hold <code>Option + Command + P + R</code></li>
+<li>release the keys after the second startup sound or logo appears and disappears for the second time</li>
+</ol>
+</li>
+</ul>
+<h4 id="boot-to-safe-mode">Boot to Safe Mode</h4>
+<ul>
+<li>When Mac failed to boot up, try safe mode<ul>
+<li>When it happens during system upgrade, hold power key to turn it off</li>
+</ul>
+</li>
+<li>Safe mode will perform the following during boot up:<ul>
+<li>Verifies your startup disk and attempts necessary repair directory issues</li>
+<li>Loads kernel extensions required</li>
+<li>Prevents automatic opening of startup and login items</li>
+<li>Disables user-installed fonts</li>
+<li>Deletes font, kernel, and other system cache files</li>
+</ul>
+</li>
+<li>Steps to enter safe mode:<ul>
+<li>Start up an Intel-based Mac in safe mode<ul>
+<li>shut down Mac, then wait 10 seconds.</li>
+<li>press power button, then immediately press and hold the <code>Shift</code> key.</li>
+<li>Release the <code>Shift</code> key when the login window apprears</li>
+</ul>
+</li>
+<li>Start up a Mac with Apple silicon in safe mode<ul>
+<li>shut down Mac, then wait 10 seconds.</li>
+<li>Press and hold the power button until the startup disks and Options appear.</li>
+<li>Press and hold the Shift key, then click Continue in Safe Mode.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Verify Safe Mode:<ul>
+<li>hold down the Option key and choose <code>Apple menu -&gt; System Information</code>, see Boot Mode <code>Safe</code> in the Software section</li>
+</ul>
+</li>
+<li>Leave Safe Mode, restart the machine normally</li>
+</ul>
+<h4 id="enter-recovery-mode">Enter Recovery Mode</h4>
+<ul>
+<li>Recovery Mode provides the following features without boot up macOS:<ul>
+<li><code>Restore from Time Machine</code>: Restore your files from a Time Machine backup</li>
+<li><code>Reinstall macOS</code>: Download and reinstall the Mac operating system</li>
+<li><code>Safari</code> (or Get Help Online): Use Safari to browse the web and find help for your Mac. Links to Apple&apos;s support website are included. Browser plug-ins and extensions are disabled</li>
+<li><code>Disk Utility</code>: Use Disk Utility to repair your disk or erase your disk or other storage device<ul>
+<li>Erase hard drive here, before reinstall macOS</li>
+</ul>
+</li>
+<li>Additional utilities are available from the Utilities menu in the menu bar, including <code>Startup Security Utility</code> (or Firmware Password Utility), and <code>Terminal</code></li>
+</ul>
+</li>
+<li>Turn on your Mac and immediately press and hold these two keys: Command (&#x2318;) and R. Release the keys when you see an Apple logo, spinning globe<ul>
+<li>admin password is required to continue</li>
+<li>spinning globe appears only when Mac can&apos;t start up from its built-in macOS Recovery system</li>
+<li>To enter Internet Recovery Mode manully, use Key combo <code>Option-Command-R</code> or <code>Shift-Option-Command-R</code></li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -1487,7 +1589,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"MacOS","level":"1.17.4","depth":2,"next":{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},"previous":{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/macos.md","mtime":"2020-11-15T04:34:46.955Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-16T00:47:09.645Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MacOS","level":"1.17.4","depth":2,"next":{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},"previous":{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/macos.md","mtime":"2020-11-20T18:09:53.468Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T20:59:12.500Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

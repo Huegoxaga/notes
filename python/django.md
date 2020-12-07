@@ -194,6 +194,26 @@ def about(request):
   ModelClass.objects.values_list('id', flat=True) # return a list queryset of id, if flat=False return list of tuples.
   ModelClass.objects.annotate(raw_link=Concat(Value("https://"), F('domain'))) # create a temp field with annonted strings append from a existing field
   list(ModelClass.objects.all()) #convert queryset into a list
+  # Aggregate PostgreSQL fields into an array
+  TestModel.objects.aggregate(result=ArrayAgg('field1'))
+  # Aggregate two output fields
+  TestModel.objects.aggregate(avgx=RegrAvgX(y='field3', x='field2'), avgy=RegrAvgY(y='field3', x='field2')) # Output: {'avgx': 2, 'avgy': 13}
+  # Annotate subquery - requires a specified OuterRef index when using subquery
+  user_emails = OrganisationUser.objects.order_by().filter(
+      organization_id=OuterRef('id'),
+      user__is_active=True,
+      user__daily_recharge_digest_mail_opt_in=True,
+  ).values('organization_id').annotate(
+      emails=ArrayAgg('user__email', distinct=True),
+  ).values('emails')
+  organisations_with_user_emails = Organisation.objects.annotate(
+      emails=Subquery(
+          user_emails,
+          output_field=ArrayField(base_field=CharField()),
+      ),
+  )
+  # Subquery returns only one row
+  Subquery(newest.values('email')[:1])
   ```
 
 ### admin.py
