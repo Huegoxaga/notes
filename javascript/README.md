@@ -118,7 +118,10 @@ let keyword is recommended for variable declaration.
 
 ##### const
 
-`const` variables have the same scope as variables declared using let. it declares constants.
+- `const` variables have the same scope as variables declared using let. it declares constants.
+- The property of a `const` object can be change but it cannot be change to reference to the new object.
+  - The values inside the const array can be change, it can add new items to const arrays but it cannot reference to a new array.
+- Re-declaring of a `const` variable inside different block scope is allowed.
 
 ##### Undeclared Variables
 
@@ -729,7 +732,8 @@ array.forEach(function(i) {
   //forEach iterates each element of the array as an argument of the function.
   //function code
 });
-array.filter(i => i.id !== 1); //filter an array item that has id not equal to 1.
+array = [...array] //clone an array(change its reference)
+array.filter(i => i.id === 1); //retern a filtered array that doesnot have items that has id equal to 1.
 [1, 2, 3].map(x => 2 * x); //return an array of element base on an array of data.
 [1, 2, 3].map((item, index, array) => 2 * x); //it can takes optional parameters, index(second), and the array itself(third)
 array.splice(2, 3); // delete 3 items starting at index 2.(have to call it independently and get the result after.)
@@ -742,6 +746,7 @@ let arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length //get avg
 Math.max(...array);//find the max value among array elements
 array.unshift(a,b,c);//adds one or more items or elements to the beginning of the array and returns the new length of the array.
 array.slice(1, 3);//The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
+newArray = array.slice() //will also clone the array with a new reference
 array.join(", ")//convert array to string, separated by ", " (The default separator is ",")
 //The only way to modify array element it to use for loop and access with index
 // user const to prevent out of scope warning

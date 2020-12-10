@@ -314,10 +314,12 @@ return (
 ```
 
 - In return method, use `setFunction(newValue)` to update the currentValue.
+  - It can also be `setFunction(prevValue => newValue)`, the arrow function take the original value and return a new value
 - `useState()` returns an array of values, the current state value and a function that is used to update values by pass new values in it.
 - `useState()` can have an arrow function as its variable, and it will be only ran once when rander.
 - `useState()` can have an object as variable.
 - `useState()` cannot be placed inside if or loops
+- When updating values for reference type values, make sure the reference(memeory address) of the values are changed, or React won't update its related component
 
 #### Effect Hook
 
@@ -330,7 +332,7 @@ useEffect(() => {
 
 - First parameter holds a function that will be called everything the component is rendered and rerendered.
 - Second parameter holds an array of variables called dependency array. The function in the first parameter will then only be called when variables listed in the dependency array change.
-  - All variables in the `useEffect()` use be added to the dependency array.
+  - All variables in the `useEffect()` are supposed be added to the dependency array, remove the entire dependency array will have the same effect
   - When the second parameter is an empty array, `[]`, The function in the first parameter will be only called once when the component is mounted.
 - One component can have multiple `useEffect()` function and they will be executed in order.
 - `useEffect` can have return, `return () => {}`. It will be called every time the component is unmounted
@@ -637,6 +639,10 @@ import {
   - It requires the link to load the font, `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />`
   - optionally, it can be installed by running `npm install fontsource-roboto` and then imported by using `import 'fontsource-roboto';`
 - `Typography` is a component and wrap around texts with `props` that controls the styles of the text
+
+#### Menu
+
+- Add `getContentAnchorEl={null}` to its props, so it won't block the menu button
 
 #### Icons
 

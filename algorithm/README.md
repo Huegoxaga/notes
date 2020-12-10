@@ -436,3 +436,38 @@ int partition(int A[ ], int start, int end)
   return endOfLeftList;
 }
 ```
+
+### Assignment Algorithm
+
+#### Hungarian(Munkres Assignment) Algorithm
+
+- It is used to find the smallest sum of elements from a square matrix, when only one element can be selected from each row and column
+- Using brutal force will result a time complexity of `O(n!)`
+- Hungarian Algorithm helps to speed up with a time complexity of `O(n^3)`
+- Steps:
+  1. Substract the smallest element of each row from all elements of each row
+  2. Substract the smallest element of each column from all elements of each column
+  3. Connect all the zeros using minimum numbers of lines, where `n` lines should be used for a `n X n` matrix
+     - If lines used is smaller than `n`, substract all unconnected elements by the smallest one of them, then add the number to the intersection of the lines, then go back to step `3`, as a result the line number will increase by one, if `n` is still small repeat this additional step again
+     - This additional step can be repeated as many as `n` times when `n` is initially `1`, and causing the final highest time complexity of this algorithm is equals `n`(line number) multiply by `n^2`(element scaning in this step), which is `O(n^3)`
+  4. Find one zero in each row and column, and use the original element that located the zero's position to do the sum, then obtain the final result
+- For solving problems involves non-square matrix, fit it with the smallest square matric and fill the missing elements with zeros, and discard the assignment for these position in the final step
+
+### Distance and Similarity Calculation
+
+#### Euclidean Distance
+
+- It Calculates the straight distance from one point to another using Pythagorean' theorem
+- In a Euclidean space, find the square root of the sum of square of all difference along all axes
+- It is a dissimilarity function
+
+#### Manhattan Distance
+
+- It calculates the sum of the distances along the axes, e.g. from point A to point B on a map is 4 block east and 2 block north, with a total of 6 blocks
+- Find the sum of the absolute difference along all axes
+- It is a dissimilarity function
+
+#### Cosine Similarity
+
+- It calculates how similar two vectors are, by geting the cosine value of the two vectors using the dot product formula, which is dividing the dot product by the product of their magnitude
+- It is a similarity function
