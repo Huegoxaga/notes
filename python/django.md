@@ -119,6 +119,7 @@ def about(request):
 
 - This is the data model for the project.
 - Each class is corresponding to a database table.
+
   ```py
   from django.db import models
   from django.utils import timezone
@@ -135,6 +136,10 @@ def about(request):
       date_posted = models.DateTimeField(default=timezone.now, unique=True)
       # set foreign key in the user table, delete all associated posts when user object is deleted.
       author = models.ForeignKey(User, on_delete=models.CASCADE)
+      # Many to Many field, related_name field can be used to reverse lookup
+      # Filter function has reversed fields available using the all lower-case model class name
+      related_posts = models.ManyToManyField(User,blank=True,null=True, related_name='other_posts')
+
       # Meta provides additional info for the Model
       class Meta:
         # add check constrains
@@ -152,6 +157,7 @@ def about(request):
         get_latest_by = "order_date"
         ordering = ['-pub_date', 'author']
   ```
+
   - `on.delete` has the following options:
     - `models.CASCADE` delete all associated records.
     - `models.PROTECT` prevent deletion
@@ -170,6 +176,7 @@ def about(request):
     def __str__(self):
         return self.title
     ```
+
 - Whenever a file import the data model. It will have access to the data from the database.
   ```py
   from .models import ModelClass
@@ -425,6 +432,13 @@ def about(request):
         if data['start'] > data['finish']:
             raise serializers.ValidationError("finish must occur after start")
         return data
+  ```
+  - Override the `to_representation()` method can change the final output of the serializer
+  ```py
+  def to_representation(self, obj):
+    data = super().to_representation(obj)
+    # manipulate data['cashflows'] to group by month
+    return data
   ```
 - In `views.py` defines the behavior of the certain path, when either a POST(update) request or GET(read) request is sent.
   ```py

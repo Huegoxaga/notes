@@ -1180,12 +1180,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-vision.html">
+        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-graphics.html">
             
-                <a href="../visualization/computer-vision.html">
+                <a href="../visualization/computer-graphics.html">
             
                     
-                    Computer Vision
+                    Computer Graphics
             
                 </a>
             
@@ -1415,7 +1415,14 @@
 <p><code>let</code> declares local variables that only available in the current block of code.
 let keyword is recommended for variable declaration.</p>
 <h5 id="const">const</h5>
-<p><code>const</code> variables have the same scope as variables declared using let. it declares constants.</p>
+<ul>
+<li><code>const</code> variables have the same scope as variables declared using let. it declares constants.</li>
+<li>The property of a <code>const</code> object can be change but it cannot be change to reference to the new object.<ul>
+<li>The values inside the const array can be change, it can add new items to const arrays but it cannot reference to a new array.</li>
+</ul>
+</li>
+<li>Re-declaring of a <code>const</code> variable inside different block scope is allowed.</li>
+</ul>
 <h5 id="undeclared-variables">Undeclared Variables</h5>
 <p>If no keyword is used when declaration. these variables are global by default.</p>
 <pre><code class="lang-js">x = <span class="hljs-number">10</span>; <span class="hljs-comment">//x is global.</span>
@@ -1946,7 +1953,8 @@ array.forEach(<span class="hljs-function"><span class="hljs-keyword">function</s
   <span class="hljs-comment">//forEach iterates each element of the array as an argument of the function.</span>
   <span class="hljs-comment">//function code</span>
 });
-array.filter(i =&gt; i.id !== <span class="hljs-number">1</span>); <span class="hljs-comment">//filter an array item that has id not equal to 1.</span>
+array = [...array] <span class="hljs-comment">//clone an array(change its reference)</span>
+array.filter(i =&gt; i.id === <span class="hljs-number">1</span>); <span class="hljs-comment">//retern a filtered array that doesnot have items that has id equal to 1.</span>
 [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map(x =&gt; <span class="hljs-number">2</span> * x); <span class="hljs-comment">//return an array of element base on an array of data.</span>
 [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map((item, index, array) =&gt; <span class="hljs-number">2</span> * x); <span class="hljs-comment">//it can takes optional parameters, index(second), and the array itself(third)</span>
 array.splice(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// delete 3 items starting at index 2.(have to call it independently and get the result after.)</span>
@@ -1959,6 +1967,7 @@ array.reduce(<span class="hljs-function"><span class="hljs-keyword">function</sp
 <span class="hljs-title">Math</span>.<span class="hljs-title">max</span>(<span class="hljs-params">...array</span>);//<span class="hljs-title">find</span> <span class="hljs-title">the</span> <span class="hljs-title">max</span> <span class="hljs-title">value</span> <span class="hljs-title">among</span> <span class="hljs-title">array</span> <span class="hljs-title">elements</span>
 <span class="hljs-title">array</span>.<span class="hljs-title">unshift</span>(<span class="hljs-params">a,b,c</span>);//<span class="hljs-title">adds</span> <span class="hljs-title">one</span> <span class="hljs-title">or</span> <span class="hljs-title">more</span> <span class="hljs-title">items</span> <span class="hljs-title">or</span> <span class="hljs-title">elements</span> <span class="hljs-title">to</span> <span class="hljs-title">the</span> <span class="hljs-title">beginning</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">array</span> <span class="hljs-title">and</span> <span class="hljs-title">returns</span> <span class="hljs-title">the</span> <span class="hljs-title">new</span> <span class="hljs-title">length</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">array</span>.
 <span class="hljs-title">array</span>.<span class="hljs-title">slice</span>(<span class="hljs-params">1, 3</span>);//<span class="hljs-title">The</span> <span class="hljs-title">slice</span>(<span class="hljs-params"></span>) <span class="hljs-title">method</span> <span class="hljs-title">selects</span> <span class="hljs-title">the</span> <span class="hljs-title">elements</span> <span class="hljs-title">starting</span> <span class="hljs-title">at</span> <span class="hljs-title">the</span> <span class="hljs-title">given</span> <span class="hljs-title">start</span> <span class="hljs-title">argument</span>, <span class="hljs-title">and</span> <span class="hljs-title">ends</span> <span class="hljs-title">at</span>, <span class="hljs-title">but</span> <span class="hljs-title">does</span> <span class="hljs-title">not</span> <span class="hljs-title">include</span>, <span class="hljs-title">the</span> <span class="hljs-title">given</span> <span class="hljs-title">end</span> <span class="hljs-title">argument</span>.
+<span class="hljs-title">newArray</span> = <span class="hljs-title">array</span>.<span class="hljs-title">slice</span>(<span class="hljs-params"></span>) //<span class="hljs-title">will</span> <span class="hljs-title">also</span> <span class="hljs-title">clone</span> <span class="hljs-title">the</span> <span class="hljs-title">array</span> <span class="hljs-title">with</span> <span class="hljs-title">a</span> <span class="hljs-title">new</span> <span class="hljs-title">reference</span>
 <span class="hljs-title">array</span>.<span class="hljs-title">join</span>(<span class="hljs-params">&quot;, &quot;</span>)//<span class="hljs-title">convert</span> <span class="hljs-title">array</span> <span class="hljs-title">to</span> <span class="hljs-title">string</span>, <span class="hljs-title">separated</span> <span class="hljs-title">by</span> &quot;, &quot; (<span class="hljs-params">The default separator is &quot;,&quot;</span>)
 //<span class="hljs-title">The</span> <span class="hljs-title">only</span> <span class="hljs-title">way</span> <span class="hljs-title">to</span> <span class="hljs-title">modify</span> <span class="hljs-title">array</span> <span class="hljs-title">element</span> <span class="hljs-title">it</span> <span class="hljs-title">to</span> <span class="hljs-title">use</span> <span class="hljs-title">for</span> <span class="hljs-title">loop</span> <span class="hljs-title">and</span> <span class="hljs-title">access</span> <span class="hljs-title">with</span> <span class="hljs-title">index</span>
 // <span class="hljs-title">user</span> <span class="hljs-title">const</span> <span class="hljs-title">to</span> <span class="hljs-title">prevent</span> <span class="hljs-title">out</span> <span class="hljs-title">of</span> <span class="hljs-title">scope</span> <span class="hljs-title">warning</span>
@@ -2505,7 +2514,7 @@ fetch(URL, options)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.5","depth":1,"next":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Scala","level":"1.4","depth":1,"path":"scala/README.md","ref":"scala/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-11-20T18:09:53.434Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T20:59:12.500Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JavaScript","level":"1.5","depth":1,"next":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"previous":{"title":"Scala","level":"1.4","depth":1,"path":"scala/README.md","ref":"scala/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/README.md","mtime":"2020-12-10T15:02:39.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

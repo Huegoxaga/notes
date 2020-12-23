@@ -1180,12 +1180,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-vision.html">
+        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-graphics.html">
             
-                <a href="../visualization/computer-vision.html">
+                <a href="../visualization/computer-graphics.html">
             
                     
-                    Computer Vision
+                    Computer Graphics
             
                 </a>
             
@@ -1604,11 +1604,15 @@ export default Counter;
 );
 </code></pre>
 <ul>
-<li>In return method, use <code>setFunction(newValue)</code> to update the currentValue.</li>
+<li>In return method, use <code>setFunction(newValue)</code> to update the currentValue.<ul>
+<li>It can also be <code>setFunction(prevValue =&gt; newValue)</code>, the arrow function take the original value and return a new value</li>
+</ul>
+</li>
 <li><code>useState()</code> returns an array of values, the current state value and a function that is used to update values by pass new values in it.</li>
 <li><code>useState()</code> can have an arrow function as its variable, and it will be only ran once when rander.</li>
 <li><code>useState()</code> can have an object as variable.</li>
 <li><code>useState()</code> cannot be placed inside if or loops</li>
+<li>When updating values for reference type values, make sure the reference(memeory address) of the values are changed, or React won&apos;t update its related component</li>
 </ul>
 <h4 id="effect-hook">Effect Hook</h4>
 <pre><code class="lang-js"><span class="hljs-comment">// Similar to componentDidMount and componentDidUpdate:</span>
@@ -1619,7 +1623,7 @@ useEffect(() =&gt; {
 <ul>
 <li>First parameter holds a function that will be called everything the component is rendered and rerendered.</li>
 <li>Second parameter holds an array of variables called dependency array. The function in the first parameter will then only be called when variables listed in the dependency array change.<ul>
-<li>All variables in the <code>useEffect()</code> use be added to the dependency array.</li>
+<li>All variables in the <code>useEffect()</code> are supposed be added to the dependency array, remove the entire dependency array will have the same effect</li>
 <li>When the second parameter is an empty array, <code>[]</code>, The function in the first parameter will be only called once when the component is mounted.</li>
 </ul>
 </li>
@@ -1934,6 +1938,10 @@ export default higherOrderComponentFunction;
 </li>
 <li><code>Typography</code> is a component and wrap around texts with <code>props</code> that controls the styles of the text</li>
 </ul>
+<h4 id="menu">Menu</h4>
+<ul>
+<li>Add <code>getContentAnchorEl={null}</code> to its props, so it won&apos;t block the menu button</li>
+</ul>
 <h4 id="icons">Icons</h4>
 <h5 id="standardized-material-design">Standardized Material Design</h5>
 <ul>
@@ -2132,7 +2140,7 @@ palette: {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React","level":"1.5.2","depth":2,"next":{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-12-03T16:49:13.241Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T20:59:12.500Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React","level":"1.5.2","depth":2,"next":{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"previous":{"title":"jQuery","level":"1.5.1","depth":2,"path":"javascript/jquery.md","ref":"javascript/jquery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/react.md","mtime":"2020-12-10T17:58:50.680Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

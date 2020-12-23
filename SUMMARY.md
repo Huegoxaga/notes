@@ -76,7 +76,7 @@
   - [Maple Softwares](math/maple.md)
 - [Visualization](visualization/README.md)
   - [Graphic Design](visualization/graphic-design.md)
-  - [Computer Vision](visualization/computer-vision.md)
+  - [Computer Graphics](visualization/computer-graphics.md)
   - [Tableau](visualization/tableau.md)
 - [Music](music/README.md)
   - [Music Theory](music/theory.md)

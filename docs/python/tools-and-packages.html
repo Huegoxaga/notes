@@ -1180,12 +1180,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-vision.html">
+        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-graphics.html">
             
-                <a href="../visualization/computer-vision.html">
+                <a href="../visualization/computer-graphics.html">
             
                     
-                    Computer Vision
+                    Computer Graphics
             
                 </a>
             
@@ -1317,6 +1317,10 @@
 </ul>
 </li>
 <li><code>pip install -r requirements.txt</code> install packages according the <code>requirements.txt</code></li>
+<li><code>pip install -e .</code> will install the current package directory as a module for the current environment<ul>
+<li><code>-e</code> flag will make any changes made to the package immediately effective for all other code using it in the current environment</li>
+</ul>
+</li>
 <li><code>pip list --outdated --format=freeze | grep -v &apos;^\-e&apos; | cut -d = -f 1 | xargs -n1 pip install -U</code> update all packages</li>
 <li><code>pip uninstall &lt;packagename&gt;</code> uninstall a package</li>
 <li><code>pip search &lt;keyword&gt;</code> search for a package</li>
@@ -1361,10 +1365,15 @@
 <li><code>conda update conda</code> Update conda to the current version<ul>
 <li><code>conda update -n base -c defaults conda</code> update base conda</li>
 <li><code>conda update --all</code> update all packages in the current env</li>
+<li><code>conda env update --file local.yml</code> update based on <code>yml</code><ul>
+<li><code>-- prune</code> remove installed packages that are not listed in the <code>yml</code></li>
+<li><code>--name &lt;env_name&gt;</code> to update a specified environment</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><code>conda install &lt;packagename&gt;</code> Install a package included in Anaconda<ul>
-<li><code>conda install &lt;packagename&gt; --file filename.txt</code> install packages base on text file info.</li>
+<li><code>conda install --file filename.txt</code> install packages base on text file info.</li>
 <li><code>conda install -c &lt;channelname&gt; &lt;packagename&gt;</code> install a package from a certain channel</li>
 </ul>
 </li>
@@ -1655,7 +1664,9 @@
 </li>
 <li><code>df.rename(columns={&apos;ColNameA&apos;: &apos;ColNameB&apos;, &apos;NewColNameA&apos;: &apos;NewColNameB&apos;}, inplace=True)</code> rename certain column field names.</li>
 <li><code>df.drop(columns=[&apos;ColA&apos;, &apos;ColB&apos;], inplace=True)</code> delete certain columns.</li>
-<li><code>df.iloc[0]</code> <code>iloc</code> return data based on integer location. In the example returns the first row .<ul>
+<li><code>df.explode(&apos;ColName&apos;)</code> explode value lists into rows</li>
+<li><code>df = pd.json_normalize(df)</code> pull dictionary values out into columns</li>
+<li><code>df.iloc[0]</code> <code>iloc</code> return data based on integer location. In the example returns the first row<ul>
 <li><code>df.iloc[rowIndex, colIndex]</code> return data from certain row and column.</li>
 <li><code>df.iloc[[0,1]]</code> returns the first and second row as dataframe.</li>
 <li><code>df.iloc[0:5]</code> returns the first 5 rows using slicing.</li>
@@ -1684,6 +1695,7 @@
 <li><code>df.sort_index(inplace=True)</code> sort index in descending order and replace the original dataframe.</li>
 </ul>
 </li>
+<li><code>df.sort_values(&quot;ColName&quot;, axis = 0, ascending = True)</code> Sort based on values in a column</li>
 <li><code>ft = (df[&apos;colName&apos;] == &apos;Value&apos;)</code> It return a series of boolean values. True means a match is found. False means the column value and the filter value does not match.<ul>
 <li>filter is a key word that can not be used.</li>
 <li>To access all the match values, run <code>df[ft]</code></li>
@@ -2476,7 +2488,7 @@ flags.mark_flag_as_required(<span class="hljs-string">&quot;name&quot;</span>)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2020-11-21T21:43:46.438Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T20:59:12.500Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2020-12-22T00:01:21.786Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

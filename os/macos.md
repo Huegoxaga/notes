@@ -26,7 +26,7 @@
 
 ### System-wide setting
 
-##### power settings
+#### Power Settings
 
 - run `pmset -g` list power settings for current power source.
 - `hibernatemode`:
@@ -43,6 +43,18 @@
   - `-c`, charger
   - `-u`, UPS
   - `-a`, all
+
+#### Dock Settings
+
+- `defaults write com.apple.dock autohide -bool true` turn off autohide
+  - Or, press `Cmd+Alt+D`
+  - By default, `defaults write com.apple.dock autohide -bool false`
+- `defaults write com.apple.dock autohide-delay -float 1000` turn on autohide delay
+  - By default, `defaults delete com.apple.dock autohide-delay`
+- `defaults write com.apple.dock no-bouncing -bool TRUE` turn off the app icon's bouncing animation
+  - By default, `defaults write com.apple.dock no-bouncing -bool FALSE`
+- `defaults write com.apple.dock tilesize -float 1` change the dock size to 1 pixel
+- Run `killall Dock` to restart the dock and load the new settings
 
 ### Xcode Command Line Tools
 

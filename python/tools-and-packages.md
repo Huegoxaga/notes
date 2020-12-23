@@ -12,6 +12,8 @@
 - `pip install --upgrade <packagename>` or `pip install -U <packagename>` update a package
   - `--upgrade` can be used for both downgrade or upgrade
 - `pip install -r requirements.txt` install packages according the `requirements.txt`
+- `pip install -e .` will install the current package directory as a module for the current environment
+  - `-e` flag will make any changes made to the package immediately effective for all other code using it in the current environment
 - `pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U` update all packages
 - `pip uninstall <packagename>` uninstall a package
 - `pip search <keyword>` search for a package
@@ -48,8 +50,11 @@
 - `conda update conda` Update conda to the current version
   - `conda update -n base -c defaults conda` update base conda
   - `conda update --all` update all packages in the current env
+  - `conda env update --file local.yml` update based on `yml`
+    - `-- prune` remove installed packages that are not listed in the `yml`
+    - `--name <env_name>` to update a specified environment
 - `conda install <packagename>` Install a package included in Anaconda
-  - `conda install <packagename> --file filename.txt` install packages base on text file info.
+  - `conda install --file filename.txt` install packages base on text file info.
   - `conda install -c <channelname> <packagename>` install a package from a certain channel
 - `conda update <packagename>` Update any installed program
   - `conda update --all` update everything
@@ -258,7 +263,9 @@
   - `df.columns = df.columns.str.replace(' ', '_')` change all space in the column name to `_`.
 - `df.rename(columns={'ColNameA': 'ColNameB', 'NewColNameA': 'NewColNameB'}, inplace=True)` rename certain column field names.
 - `df.drop(columns=['ColA', 'ColB'], inplace=True)` delete certain columns.
-- `df.iloc[0]` `iloc` return data based on integer location. In the example returns the first row .
+- `df.explode('ColName')` explode value lists into rows
+- `df = pd.json_normalize(df)` pull dictionary values out into columns
+- `df.iloc[0]` `iloc` return data based on integer location. In the example returns the first row
   - `df.iloc[rowIndex, colIndex]` return data from certain row and column.
   - `df.iloc[[0,1]]` returns the first and second row as dataframe.
   - `df.iloc[0:5]` returns the first 5 rows using slicing.
@@ -279,6 +286,7 @@
 - `df.sort_index()` sort index in descending order.
   - `df.sort_index(ascending=False)` sort index in ascending order.
   - `df.sort_index(inplace=True)` sort index in descending order and replace the original dataframe.
+- `df.sort_values("ColName", axis = 0, ascending = True)` Sort based on values in a column
 - `ft = (df['colName'] == 'Value')` It return a series of boolean values. True means a match is found. False means the column value and the filter value does not match.
   - filter is a key word that can not be used.
   - To access all the match values, run `df[ft]`

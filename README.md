@@ -75,7 +75,7 @@
   - [Maple Softwares](https://huegoxaga.github.io/notes/math/maple.html)
 - [Visualization](https://huegoxaga.github.io/notes/visualization/index.html)
   - [Graphic Design](https://huegoxaga.github.io/notes/visualization/graphic-design.html)
-  - [Computer Vision](https://huegoxaga.github.io/notes/visualization/computer-vision.html)
+  - [Computer Graphics](https://huegoxaga.github.io/notes/visualization/computer-graphics.html)
   - [Tableau](https://huegoxaga.github.io/notes/visualization/tableau.html)
 - [Music](https://huegoxaga.github.io/notes/music/index.html)
   - [Music Theory](https://huegoxaga.github.io/notes/music/theory.html)

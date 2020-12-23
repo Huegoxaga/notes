@@ -1180,12 +1180,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-vision.html">
+        <li class="chapter " data-level="1.25.2" data-path="../visualization/computer-graphics.html">
             
-                <a href="../visualization/computer-vision.html">
+                <a href="../visualization/computer-graphics.html">
             
                     
-                    Computer Vision
+                    Computer Graphics
             
                 </a>
             
@@ -1821,7 +1821,10 @@ range(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>,x) 
 <ul>
 <li>Modules can be installed using package manager</li>
 <li>Modules can be the folder name in the working directory</li>
-<li>It is recognized by the keyword <code>import</code>. For example, a module called <code>module</code> can imported in the following ways:</li>
+<li>It is recognized by the keyword <code>import</code>. For example, a module called <code>module</code> can imported in the following ways<ul>
+<li>Two modules cannot import each other, there will be a circular import, except will be raised</li>
+</ul>
+</li>
 </ul>
 <pre><code class="lang-py"><span class="hljs-keyword">import</span> module
 <span class="hljs-keyword">import</span> module <span class="hljs-keyword">as</span> md
@@ -2346,7 +2349,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-11-20T18:09:53.472Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T20:59:12.500Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-12-16T04:41:06.465Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

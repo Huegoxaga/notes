@@ -581,7 +581,8 @@ filter(function,iterables)
 
 - Modules can be installed using package manager
 - Modules can be the folder name in the working directory
-- It is recognized by the keyword `import`. For example, a module called `module` can imported in the following ways:
+- It is recognized by the keyword `import`. For example, a module called `module` can imported in the following ways
+  - Two modules cannot import each other, there will be a circular import, except will be raised
 
 ```py
 import module
