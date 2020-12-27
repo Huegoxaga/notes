@@ -56,6 +56,7 @@
 - `conda install <packagename>` Install a package included in Anaconda
   - `conda install --file filename.txt` install packages base on text file info.
   - `conda install -c <channelname> <packagename>` install a package from a certain channel
+    - some package might be available in a certain channel, to search all the channels for a package, [Open](https://anaconda.org) the offcial website and type the package name in the search bar and find the package under the channel that has the most download number to install
 - `conda update <packagename>` Update any installed program
   - `conda update --all` update everything
 - `conda create --name py35 python=3.5`Create a new environment named py35, install Python 3.5
@@ -906,3 +907,204 @@ if __name__ == '__main__':
 - `logging.warning('message')` create warning log
 - `logging.error('message')` create error log
 - `logging.fatal('message')` create fatal log, and process will exit
+
+## PyGame
+
+- It is a free and open-source cross-platform library for the development of multimedia applications like video games using Python
+- run `pip install pygame` to install the latest version, or run `conda install -c cogsci pygame` to install with conda
+- [Click Here](https://www.pygame.org/docs/) to view its official docs
+
+### Initialize PyGame Window
+
+```py
+import pygame
+#Init PyGame, enable various PyGame commands
+pygame.init()
+# defines the game surface, canvas or display
+gameDisplay = pygame.display.set_mode((800,600))
+# set the title of the window
+pygame.display.set_caption('Welcome to PyGame')
+# Init game clock
+clock = pygame.time.Clock()
+# Set and display program icon
+gameIcon = pygame.image.load('logo.png')
+pygame.display.set_icon(gameIcon)
+
+crashed = False
+
+while not crashed:
+    # Running game will keep posting an event
+    for event in pygame.event.get():
+        # Read the event until there is a quit singal
+        if event.type == pygame.QUIT:
+            crashed = True
+        print(event)
+
+    # Update the entire surface
+    pygame.display.update() # same as pygame.display.flip(). However, update() can hold parameters that only update a certain area
+    # Set FPS rate for the update
+    clock.tick(60)
+    # use pygame.time.wait(10) to pause each loop if clock object is not used
+# end PyGame instance
+pygame.quit()
+# Exit Python App
+quit()
+```
+
+### User Input
+
+#### Keyboard Input
+
+- event object contains user input during each frame inside the event for loop
+- Getting key input:
+  ```py
+  if event.type == pygame.KEYDOWN:
+    if event.key == pygame.K_LEFT:
+        # when user press left key, change variables here
+        pass
+    elif event.key == pygame.K_RIGHT:
+        # when user press right key, change variables here
+        pass
+  if event.type == pygame.KEYUP:
+    if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+        # when user release left, or right key, reset variables here
+        pass
+  ```
+
+#### Mouse Input
+
+- Inside the `while not creashed` loop, `mouse = pygame.mouse.get_pos()` return the current mouse position as a tuple, `(x, y)`
+- also, `click = pygame.mouse.get_pressed()` return the current mouse click status as a tuple, `(x, y, z)`
+  - `x` is 1, while left clicking. `x` returns to `0` as soon as it is released
+  - `y` is 1, while scroll wheel is being clicked
+  - `z` is 1, while right clicking
+
+### Display Content
+
+- The following code works inside `while not crashed` loop before `display.update()` to display content
+- Content will be drawn on the surface one by one for each frame update
+- `gameDisplay.fill((0,0,0))` fill a black background
+- `gameDisplay.blit(image, (0,0))` draw image at top left corner
+  - `image = pygame.image.load('temp.png')` create image object before `while not crashed` loop
+- Display text:
+  ```py
+  # init font and font size
+  largeText = pygame.font.Font('freesansbold.ttf',100)
+  # Or use system font font = pygame.font.SysFont(None, 100)
+  # define text and color
+  textSurface = font.render("Welcome to PyGame", True, (0,0,0))
+  # get the rectangle shape around the text
+  TextRect = textSurface.get_rect()
+  # define text position
+  TextRect.center = (200,300)
+  #display text
+  gameDisplay.blit(textSurface, TextRect)
+  ```
+- `pygame.draw.rect(gameDisplay, color, [x, y, w, h])` draw a rectangle
+- `pixAr = pygame.PixelArray(gameDisplay)`, `pixAr[100][50] = (0, 0, 0)` assign black color to pixel located at `(100, 50)`
+- `pygame.draw.line(gameDisplay, color, (x1,y1), (x2,y2), width)` draw a line
+- `pygame.draw.circle(gameDisplay, color, (x, y), radius)` draw a circle
+- `pygame.draw.polygon(gameDisplay, color, ((x1,y1),(x2,y2),(x3,y3),(x4,y4),(x5,y5)))` draw a polygon
+
+### Sound
+
+- `sound1 = pygame.mixer.Sound("sound_file.wav")` load sound
+- `pygame.mixer.Sound.play(sound1)` play a sound object
+- `pygame.mixer.music.load("backgroud_music.mp3")` load a background music
+- `pygame.mixer.music.play(2)` play the music twice
+  - `play(-1)` will keep playing the music repeatly
+- `pygame.mixer.music.pause()` pause the music
+- `pygame.mixer.music.unpause()` unpause the music
+- `pygame.mixer.music.stop()` stop playing the background music
+
+### Work with PyOpenGL
+
+- `from pygame.locals import *` package is required
+- Use `pygame.display.set_mode((w,h), DOUBLEBUF|OPENGL)` to enable `OPENGL` mode and set double buffer
+- Define initial perspective and translation setting before while loop
+- Put the render function inside while loop
+
+## cx_Frezze
+
+- It is a set of scripts and modules for freezing Python scripts into executable.
+- It is cross-platform and should work on any platform that Python itself works on.
+  - It can convert python projects into a stand-alone project folder, `.exe` for Windows, or `.app` for Mac
+- run `conda install -c conda-forge cx_freeze` to install
+- [Click Here](https://cx-freeze.readthedocs.io/en/latest/) to see ites official docs
+
+### setup.py
+
+- Instruction on how and what to convert are stated in the `setup.py` file
+  ```py
+  from cx_Freeze import setup, Executable
+  setup(name = "projectName" ,
+    version = "0.1" ,
+    description = "" ,
+    options={"build_exe": {"packages":["pygame"], "include_files":["1.png", "2.png"]}},
+    executables = [Executable("project1.py")])
+  ```
+- run `python setup.py build` to build the project into a build folder
+- run `python setup.py bdist_msi` to generate the installer for Windows
+- run `python setup.py bdist_dmg` to generate the installer for Mac
+
+## Scared
+
+- Sacred is a tool to configure, organize, log and reproduce computational experiments
+  - An experiment is a complete run of a set of python scripts using a certain set of parameters to start with
+- It can:
+  - keep track of all the parameters of a experiment
+  - easily run a experiment for different settings
+  - save configurations for individual runs in files or a database
+  - reproduce the results
+- [Click Here](https://sacred.readthedocs.io/en/latest/index.html) to view its official docs
+
+## PyOpenGL
+
+- PyOpenGL is the most common cross platform Python binding to OpenGL and related APIs
+  - OpenGL is the premier environment for developing portable, interactive 2D and 3D graphics applications
+- run `pip install PyOpenGL PyOpenGL_accelerate` to install, or `conda install -c conda-forge pyopengl`
+- Import basic methods and classes using `from OpenGL.GL import *`
+- Import advanced utility functions using `from OpenGL.GLU`
+
+### GLUT
+
+- The OpenGL Utility Toolkit is a library of utilities for OpenGL programs, which primarily perform system-level I/O with the host operating system
+- It can be used to preview the object in a application window
+- Window Setup:
+  - `glutInit()` Initialize a glut instance which makes the window customizable
+  - `glutInitDisplayMode(GLUT_RGBA)` Set the display mode to be colored
+  - `glutInitWindowSize(500, 500)` Set the width and height of your window
+  - `glutInitWindowPosition(0, 0)` Set the position at which this windows should appear
+  - `wind = glutCreateWindow("OpenGL Coding Practice")` Set window title
+  - `glutDisplayFunc(render)` Tell OpenGL to call the `render` function continuously
+  - `glutIdleFunc(render)` Draw any graphics or shapes in the render function at all times
+  - `glutMainLoop()` Keeps the window created above displaying/running in a loop
+
+### Rendering
+
+- Define a render function that contains objects to be drawn on the display
+- Start the render function with `glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)`, in order to clear the color and depth buffer for each frame, then insert the defined shapes
+- Use `glLoadIdentity()` to reset all shapes to its original matrices
+- Use `glutSwapBuffers()` to swap glut buffers in the end
+- `glViewport(0, 0, 500, 500)`
+- `glMatrixMode(GL_PROJECTION)`
+- `glOrtho(0.0, 500, 0.0, 500, 0.0, 1.0)`
+- `glMatrixMode (GL_MODELVIEW)`
+
+### Shapes
+
+- Shapes are defined between `glBegin(SHAPE_TYPE)` and `glEnd()`
+- When using `GL_LINES` as shape type, defines two vertex endpoint using `glVertex3fv((x, y, z))`
+- When using `GL_QUADS` as shape type, defines four vertex corner using `glVertex2f(x, y)` to represent bottom left, bottom right, top right, top left points
+
+### Shape Properties
+
+- `gluPerspective(45, (800/600), 0.1, 50.0)` set Perspective properties
+  - Set field of view in degree to `45`
+  - Set the aspect ratio using width over height
+  - Set the near clipping range to `0.1`
+  - Set the far clipping range to `50.0`
+- `glTranslatef(x, y, z)` set the translation matrix along `x`, `y`, `z` axes
+  - negative `z` value move object towards into the screen
+- `glRotatef(degree, x, y, z)` rotates the object in degrees
+- `glColor3f(1.0, 0.0, 3.0)` set color

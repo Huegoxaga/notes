@@ -184,7 +184,12 @@ http(s)
 - HTTP Response
   - The response message contain:
     - a status line which includes the status code and reason message (e.g., HTTP/1.1 200 OK, which indicates that the client's request succeeded)
-    - response header fields (e.g., Content-Type: text/html)
+    - response header fields
+      - Content-Type:
+        - `text/html`
+        - `image/jpeg` request url can be used to retrive or download image
+          - images can be based64 encode strings, with request parameter `isBase64Encoded` set to `True`
+        - [Click Here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) to see a list of common content type
     - an empty line
     - an optional message body
   - The response status codes are
@@ -257,7 +262,7 @@ http(s)
       - 511 Network Authentication Required
       - 599 Network Connect Timeout Error
 - The URL will be encoded using the `UTF-8` encoding scheme
-  - `+` means a space only in `application/x-www-form-urlencoded` content, such as the query part of a URL.
+  - `+` means a space only in `application/x-www-form-urlencoded` content, such as the query part of a URL
 - A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood and a server is aware using specific methods and headers.
 - A simple request does not use reflight check, itmeets all the following conditions:
   - One of the allowed methods:

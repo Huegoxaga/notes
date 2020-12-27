@@ -541,6 +541,25 @@ set.pop()  #It removes a random element from the list
 len(set) # get length
 ```
 
+## Bytes
+
+- It stores a serials of byte, each byte contains 8 bits of information
+  - when print bytes object, it will be display as `b'\x00\x00`
+  - each byte is valid from `\x00` to `\xFF`
+- Bytes objects are immutable, it cannot be changed after creation
+
+### Bytes Methods
+
+- `empty_bytes = bytes(2)` create a bytes object that has 8 empty bytes
+- `new_bytes = bytes(b'\xAA\xBB')` create a bytes object from bytes value
+
+## Bytes Array
+
+- It is similar to Bytes object but it is mutable
+- Using index to access and modify byte data inside
+  - `new_bytes_array = bytearray(b'\x00\xFF')`, then `new_bytes_array[1] = 0`, `new_bytes_array` will then contain bytes data `b'\x00\x00'`
+- All methods used by list, also works for bytearray, e.g. `new_bytes_array.append(255)`, will update the `new_bytes_array` with bytes value `b'\x00\x00\xFF'`
+
 ## Other Basic Objects
 
 ### Range Object

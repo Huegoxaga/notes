@@ -492,6 +492,7 @@ It provides support for generating serverless APIs.
   - It support log with `CLF`, `JSON`, `CSV`, and `XML` format.
   - only the `$context` variable can be used to access requrest info.
 - the `Lambda Proxy` need to be enabled in the `Integration Request` setting to pass URL parameters to the event argument of the associated lambda function
+- In the API setting, add specific content type or `*/*` in `Binary Media Types` to enable other content types like `image/jpeg` in the response header
 
 ## Amplify
 

@@ -354,10 +354,21 @@ list(accumulate(range(8)))
 ## io
 
 - `import io`
+- `file = io.open("temp.jpg", "rb", buffering = 0)` read and stream file from its path as `FileIO` object
+  - `file.read()` returns the file's bytes value
 
-### Usage
+### StringIO
 
-- `buffer = io.BytesIO()` generate memory buffer, It can be used as a file path to the memory. It is fast than storing a file on the disk for further process.
+- `from io import StringIO`
+- `file = StringIO("Hello")` It loads a string as a file object and store it in memory
+  - `file.write(" world!")`, `print(file.read())` file can be processed and read as file object without storing the file into the local file system
+- `file.getvalue()` returns the entire content of the file
+
+### BytesIO
+
+- It generates memory buffer, It can be used as a file path to the memory. It is fast than storing a file on the disk for further process.
+- `from io import BytesIO`
+- `buffer = BytesIO(b"Hello \x00\x01")` It saves some bytes value as a file object and store it in memory
 
 ## subprocess
 
@@ -477,7 +488,9 @@ list(accumulate(range(8)))
 
 ### Usage
 
-- `img = base64.b64decode(img)` encode decoded images file
+- `img = base64.b64decode(img)` decoded base64 images file
+- `img = base64.b64encode(bytes)` encode bytes object
+  - use `img.decode('utf-8')` to decode it as string in the body of a HTTP response
 
 ## json
 
