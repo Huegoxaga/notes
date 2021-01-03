@@ -12,6 +12,7 @@
 - `pip install --upgrade <packagename>` or `pip install -U <packagename>` update a package
   - `--upgrade` can be used for both downgrade or upgrade
 - `pip install -r requirements.txt` install packages according the `requirements.txt`
+  - All packages listed will be installed once, but some packages in the requirement depend on others. Comment out those packages in the `requirements.txt` and install the required packages first
 - `pip install -e .` will install the current package directory as a module for the current environment
   - `-e` flag will make any changes made to the package immediately effective for all other code using it in the current environment
 - `pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U` update all packages
@@ -29,14 +30,18 @@
 - It is the package manager that aimed to replace `pip`.
 - It is a virtual environment tool that can replace `virtualenv`.
 - [Click here](https://docs.conda.io/projects/conda/en/latest/commands.html) for complete command reference.
+- By default anaconda is installed under a user's folder and it is only available for one user, [Click Here](https://docs.anaconda.com/anaconda/install/multi-user/) to see how to perform a multi-user installation
 - Environments separate projects to run with certain packages and python version installed in this environment.
   - The `base` environment is the default environment that has up-to-date python and all anaconda packages installed inside.
+  - Packages installed in `base` will share with other environment as alias
 - Packages and Environments can be controlled using a GUI tool called Anaconda Navigator.
 - If conda cannot find a certain package use `pip` to install.
   - It is better to create a conda environment to isolate any changes pip makes
+  - Make sure the `pip` in use is from the `conda` environment
+    - run `which pip` to check
   - the packages installed by `pip` won't be managed by the Conda package manager, they will still be managed by the Anaconda environment
     - Any packaged installed by `pip` can be found using `conda list`. However, conda won't track all changes made by `pip`.
-    - conda env will export or create environments based on a file with conda and pip requirements.
+    - conda env can export or create environments based on a file with conda and pip requirements.
 - Remember to restart all terminals when installation or changes are made.
 
 ### Commands
@@ -59,7 +64,7 @@
     - some package might be available in a certain channel, to search all the channels for a package, [Open](https://anaconda.org) the offcial website and type the package name in the search bar and find the package under the channel that has the most download number to install
 - `conda update <packagename>` Update any installed program
   - `conda update --all` update everything
-- `conda create --name py35 python=3.5`Create a new environment named py35, install Python 3.5
+- `conda create --name py35 python=3.5` Create a new environment named py35, install Python 3.5
   - `conda create --name bio-env <packagenametoinstall>` all in one command for creating env and instal packages.
   - Versions can be specified as the following ways.
   - `numpy=1.11` all its subversion are included like `1.11.0` and `1.11.1`
@@ -1103,8 +1108,15 @@ quit()
   - Set field of view in degree to `45`
   - Set the aspect ratio using width over height
   - Set the near clipping range to `0.1`
+    - Shapes are only display behind this imaginary near clipping plane
   - Set the far clipping range to `50.0`
+    - Shapes are only display in front of this imaginary far clipping plane
 - `glTranslatef(x, y, z)` set the translation matrix along `x`, `y`, `z` axes
   - negative `z` value move object towards into the screen
 - `glRotatef(degree, x, y, z)` rotates the object in degrees
 - `glColor3f(1.0, 0.0, 3.0)` set color
+- `glGetDoublev(GL_MODELVIEW_MATRIX)` returns previous and current camera coordinates
+
+## PyTorch
+
+- To auto enable GPU when available set global variable `DEVICE = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')`, then replace all `.cuda()` with `.to(DEVICE)`

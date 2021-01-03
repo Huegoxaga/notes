@@ -45,6 +45,8 @@
 - `git config --global user.name 'name'` setup git username(required).
 - `git config --global user.email 'email'` setup git user's email information(required).
 - `git config --list` Check all config values.
+- `git gc` cleanup unnecessary files and optimize the local repository in the `.git` folder
+- `git clean -f` Remove untracked files from the working tree
 - `touch .gitignore` Add the filename or folder addresses in the .gitignore file line by line, those files will be ignored by git.
 
 #### Managing Staging Area

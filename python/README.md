@@ -294,6 +294,11 @@ eval('1') #string to int
 bool(x) #  when convert string to boolean any thing other than empty string will return True
 ```
 
+### Type Validation
+
+- `isinstance(x, list)` returns `True` is `x` is a list
+- `type(x)` returns the type object of `x`
+
 ## Basic Structures
 
 ### If Condition
@@ -615,6 +620,7 @@ from folder import file
 from folder.file import function
 from folder.file import classA, classB
 from .folder import file # . represent the current folder of the running python script
+from ..folder import file # .. represent the parent folder of the running python script
 ```
 
 ### Show Version
@@ -712,6 +718,17 @@ for value in simpleGeneratorFun():
 
 - In order to access and modify variables defined outside the function definition, Prepend the keyword `global`. For example, `global X = 100`.
 - `global` is not mandatory when the name from the outside is unique
+
+#### Types Hints
+
+One can specify expected input and return types and raise errors when type does not match, The Python runtime does not enforce function and variable type annotations
+
+```py
+def example(l: list, index: int = 0) -> int:
+    if not isinstance(l, list):
+        raise TypeError
+    return l[index]
+```
 
 ## Generator
 

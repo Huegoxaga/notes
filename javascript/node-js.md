@@ -18,11 +18,14 @@
 - It is the package manager for `node.js`.
 - `npm install -g npm` update npm.
   - `npm install -g npm@latest` update the npm to the last version.
-- `npm install -g package-name` -g means install globally.
+- `npm install -g <package-name>` -g means install globally.
 - `npm install` install packages listed in `package.json` file.
 - `npm update` update packages listed in `package.json` file and update the `package.json` file.
-- `npm list` list install package in the project folder.
-- `npm list -g --depth=0` list all globally installed package, only show the root folder name.
+- `npm list` see the installed non-global libraries for the current location
+- `npm list -g --depth=0` list all globally installed package, only show the root folder name
+- `npm root -g` returns the path to the node modules folder
+  - use `npm root -g` to return the path to global modules
+  - Set environment variable `NODE_PATH` to change the global module folder location
 - `npm cache clean --force` delete cache in the `_cacache` folder
   - No recommanded, only do it to free storage space
 - `npm cache verify` Verify the contents of the `_cacache` folder, garbage collecting any unneeded data, and verifying the integrity of the cache index and all cached data.

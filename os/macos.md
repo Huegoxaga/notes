@@ -63,10 +63,11 @@
   - Command from the tools will be available at `/usr/bin`
 - run `xcode-select --install` to install
 - Located in `/Library/Developer/CommandLineTools`
+  - run `sudo rm -rf /Library/Developer/CommandLineTools`, then `sudo xcode-select --install` to update, if update option does not show up in System Preferences
 - Xcode includes this command-line tools. If it is installed on your system separately, uninstall the command-line tools.
   - Delete the `CommandLineTools` folder to uninstall the command line tools.
 - run `xcode-select --print-path` to find out what version of Xcode is being used by the tools
-- run `sudo xcode-select -switch /Applications/Xcode8.3.3/Xcode.app` set the default version of Xcode to use for the command-line tools.
+- run `sudo xcode-select -switch /Applications/XcodeX.X.X/Xcode.app` set the default version of Xcode to use for the command-line tools.
 
 ### iCloud
 
@@ -82,32 +83,29 @@
 - Uninstall homebrew by running `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"`.
   - This will remove all the packages installed by homebrew as well.
 - In Homebrew, a Formulae is a package which can be a command line tool. A Cask is an GUI App.
-  - Installed command tools are located in the `/usr/local/Cellar` folder, they will have alias in the `/user/local/bin` folder.
+  - Installed command tools are located in the `/usr/local/Cellar` folder, they will have alias in the `/user/local/opt` folder.
+    - run `brew --prefix <package>` to get the path of a package
   - Installed Apps are located in the `/Applications/`folder, they will have alias in the `/usr/local/Caskroom` with additional metadata.
 - `brew search` list all packages available from homebrew.
 - `brew update` update all packages
-- `brew outdated` list all outdated packages
-- `brew upgrade` update outdated packages
-- `brew cleanup && brew cask cleanup` troubleshoot and clean old versions
-- `brew list` list installed packages
+- `brew outdated` list all outdated packages and apps
+- `brew upgrade` update outdated packages and apps
+- `brew cleanup` troubleshoot and clean old versions
+- `brew list` list installed packages and apps
 - `brew install <PackageName>` install a package.
   - brew with distinguish some new package with pre-installed system package by prepending a `g` to its name. use `-with-default-names` will make them use their original names.
 - `brew uninstall <PackageName>` uninstall a package.
-- `brew home <PackageName>` open package homepage in browser.
+- `brew home <PackageName>` open package or app homepage in browser.
 - `brew tap <RepoName>` include an external repo. If a certain formulae is not found using `brew search`. The package can then be installed using `brew install`.
+  - `brew update-reset` reset tap records, or delete the `Taps` folder records will be auto installed when needed
+  - Taps are local copy of Git repos for Formulae and/or commands, located at `/usr/local/Homebrew/Library/Taps/homebrew/`
 - `brew doctor` run self diagnoses
-- `brew info <PackageName>` view the info for a package.
+- `brew info <PackageName>` view the info for a package or app
 - `brew deps --tree --installed` show installed packages and all their dependencies in tree
 - `brew leaves` List installed formulae that are not dependencies of another installed formula
 - Install Apps with Casks with similar commands by using `brew cask`:
   - `brew cask install <AppName>` install an app
     - `brew install --appdir="/<PathToAppFolder>" <AppName>` specify the app folder
-  - `brew cask list` list installed apps
-    - `brew cask list <keyword>` search app
-  - `brew cast home <PackageName>` open app homepage in browser.
-  - `brew cask info <AppName>` view the info for an app.
-  - `brew cask upgrade` view the info for an app.
-  - `brew cask outdated` view the info for an app.
 
 ### Disk Cleanup
 
@@ -116,7 +114,7 @@
 - VS Code delete `Cache` and `CacheData` folders at `/Users/<username>/Library/Application Support/Code`, then in app command input enter `Clear Editor History`
 - Clear VirtualBox log in `/Users/<username>/Library/VirtualBox` folder
 - Clean conda package caches, run `conda clean -f && conda clean -a`
-- Homebrew clean up`brew cleanup && brew cask cleanup`
+- Homebrew clean up`brew cleanup`
 - Clean up npm cache `npm cache clean --force`
 
 ### Troubleshoot
