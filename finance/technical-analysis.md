@@ -4,3 +4,71 @@
 - It works for all tradable instrucments which have prices fluctuated overtime
 - Technical Analysis only focuses on the actual price movement, any consideration other than the price movement like financial reports and news are part of the fundamental analysis
 - It is a type of quantitaive analysis, a part of fundamental analysis that doesn't rely on numbers are qualitative analysis
+- The Underlying Assumptions of Technical Analysis
+  - The market discounts everything - The final price of an aset on the market has taken everything into consideration including market psychology(Efficient Markets Hypothesis)
+  - Price moves in trends - A price trend can always be identifid in a efficient and transparent market
+  - History tends to repeat itself - the standing point of chart patterns analysis
+- Types of charts
+  - Line charts - it plots the closing price over time
+    - A local maxima is called a peak, a local minima is called a trough
+  - Bar charts - it plots a bar for the price action of each day, the highest daily price is at top of the bar and lowest daily price at the bottom of the bar, the bar is also colored in green and red to show the overall rise and fall
+    - Daily bar charts - it indicates the opening price on the left on the bar and closing price on the right
+  - Candlesticks charts - it plots bars which demostrate prices bounded by the opening and closing prices and use extended lines(called shadows) to show the highest and lowest prices for a selected time frame
+    - time frame can be any time intervals based on the platform software
+    - Doji candles are candles that describe the same open and closing prices
+    - When it has no upper and lower shadow it is called Marubozu candles
+  - Heikin Ashi charts - similar to Candlesticks but it uses the midpoint of the previous candle body as open value and use the average of open-high-low-close (OHLC) of the current period as close value
+    - It is the refined version of Candlesticks charts that filters out noises
+- There are different types of trading each with different focuses on the time frame:
+  - Intraday Trading - Hold trades for few minutes to few hours but not overnight
+    - Scalping - Hold trades for only few seconds or few minutes
+  - Positional Trading - Holds trades overnight from a few days to few months
+    - Intermediate - Hold trades for few weeks to few months but less than one year
+    - Short Term(Swing Trading) - Hold trades for few days to few weeks
+  - Long Term investment(Long-term Positional Trading) - Hold trades for more than one year
+- Online analysis platform like [TradingView](https://www.tradingview.com) is a popular choice for technical analysis
+
+## Trend Analysis
+
+- The trend of the price shows the relationship of demand of supply, the trend only changes when an external force is applied
+- Trend can be:
+  - Uptrend - the overall price has higher highs, and higher lows
+  - Downtrend - the overal price has lower lows, and lower highs
+  - Sideways trend - a horizontal trend during the transition period between uptrends and downtrends
+- The prices alway fluctuate within a trend, short term trading can take advantages of this property
+- A trend that last for 5 to 20 years is called a secular trend
+- Trends can be categorized by time frame
+  - Major trend - long-term trend
+  - Intermediate trend - 1 to 3 months trend within the major trend
+  - Minor trend - trend within one month with the intermediate trend
+- Stages are determined by the transation of trends
+  - Stage 1 - The sideways trend after a downtrend
+    - it is a consolidation phase that can be called a accumulation phase when price increases slowly
+  - Stage 2 - The uptrend after stage 1
+  - Excess Phase - sometimes exists in between stage 2 and stage 3, this price suddenly rises and it is a sign of stage 3
+    - Exhaustion Phase always follows the excess phase, is a sudden price drop after the excess phase
+    - Excess Phase and Exhaustion Phase together, are sometimes recognized as two main parts of a stage 3
+  - Stage 3 - The sideways trend after an uptrend
+    - It's a consolidation phase that can be a accumulation phase if price goes up or distribution phase if price goes down
+  - Stage 4 - The downtrend after stage 3
+- Trendline is one of the most important tools in technical analysis
+  - Join all troughs will create the trend line for an uptrend(also known as support), and join the peaks for a downtrend(also known as resistance)
+    - Support or resistance are dynamic for uptrend and downtrend, when it is horizontal(sideways trendlines) it is a static support or resistance
+    - Sometimes resistance can changed to a support level when price goes up, or vice versa
+    - the faster the prices change the more likely the prices will break the trendlines
+    - Volumn spikes drive the price to break the trendlines
+  - When the price is crossing the trendline, a trend is changing
+    - it can change back to the same trend but with a different slope
+  - Main Trand line with longer time frame can be intersected by an internal trendline with a shorter time frame
+  - It is better to use logrithmic scale for the y-asix to draw the trend line
+    - the space between larger numbers are smaller
+  - The points used to draw trendlines should be evenly spaced
+  - The local maxima can be indicated by a hanging man pattern which is a red bar with long lower shadow that is at least two times the length of its body and no or small upper shadow in the candlesticks chart
+  - The local minima can be indicated by a hammer man pattern which is a green bar with long lower shadow that is at least two times the length of its body and no or small upper shadow in the candlesticks chart
+    - When it is a doji candle, it is called the dragonfly candle
+  - The local maxima can be indicated by a shooting star pattern which is a red bar with long upper shadow that is at least two times the length of its body and no or small lower shadow in the candlesticks chart, it ususlly follows a green bar
+    - When it is a doji candle, it is called the gravestone candle
+  - Marubozu shows confidence in growth when green and decrease when red
+- Fibonacci retracement
+
+## Indicators

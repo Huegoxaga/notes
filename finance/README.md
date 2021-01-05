@@ -61,6 +61,7 @@
     - Weighted by market cap
     - recognized as a great representation of the US technology market
   - S&P/TSX Composite Index - it represents roughly 70% of the total market capitalization on the Toronto Stock Exchange (TSX) with about 250 companies included in it
+- Volumn describes the number of shares that changed hands during a specific time span
 - Valuation Ratios
   - Price to Earnings(P/E) is the ratio for valuing a company that measures its current share price relative to its per-share earnings (EPS)
     - A lower `P/E` ratio means the stock price is undervalued
