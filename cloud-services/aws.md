@@ -491,8 +491,12 @@ It provides support for generating serverless APIs.
 - The access log is the custom log that can be used to store cutomized formatted log.
   - It support log with `CLF`, `JSON`, `CSV`, and `XML` format.
   - only the `$context` variable can be used to access requrest info.
-- the `Lambda Proxy` need to be enabled in the `Integration Request` setting to pass URL parameters to the event argument of the associated lambda function
-- In the API setting, add specific content type or `*/*` in `Binary Media Types` to enable other content types like `image/jpeg` in the response header
+- Request made to API Gateway can be handled with or without the proxy, when work with Lambda, the easiest way is to enable the proxy in the `Integration Request` setting to pass URL parameters to the event argument of the associated lambda function. Otherwise, detailed setting in mapping templates is needed for for response or request with a certain `Content-Type` header
+  - Convert to binary or text will also change the response header, use passthrough if no conversion is needed
+  - mapping templates for request is used for handle/reformat response input for integration
+    - integration is an AWS service that handles the request and prepare response content(e.g. Lambda)
+  - mapping templates for request is used for handle/reformat response output from integration
+- In the API setting, add specific content type or `image/*` or `*/*` in `Binary Media Types`, then whenever a header `Content-Type` or `Accept` match is found, the body will be converted to binary using base64 encoding
 
 ## Amplify
 
