@@ -103,9 +103,9 @@
 - `brew info <PackageName>` view the info for a package or app
 - `brew deps --tree --installed` show installed packages and all their dependencies in tree
 - `brew leaves` List installed formulae that are not dependencies of another installed formula
-- Install Apps with Casks with similar commands by using `brew cask`:
-  - `brew cask install <AppName>` install an app
-    - `brew install --appdir="/<PathToAppFolder>" <AppName>` specify the app folder
+- For all the above command use `--cask` for cask only, use `--formula` for formulas only
+  - `brew cask` is deprecated
+- `brew install --appdir="/<PathToAppFolder>" <AppName>` specify the app folder
 
 ### Disk Cleanup
 

@@ -15,6 +15,14 @@
 - Java guarantees "Write Once, Run Anywhere."
 - All programs in Java is object-oriented.
 
+## Setup
+
+- run `/usr/libexec/java_home -V` to see the location of java
+- run `/usr/libexec/java_home -v11` to see the location of a specific java version installed in the system
+- run `export JAVA_HOME=<JAVA_LIB_LOCATION>` assign the Java location to the envirionment variable to let the system work on a specific Java version,
+  - change and reload the dot file for a permanent change
+- The system Java wrappers can't find the Java library if it is not installed inside the system default folder, create a symbolic link into the `JavaVirtualMachines` so the `java_home` command can find it
+
 ## IDE
 
 There are many great IDE for Java.

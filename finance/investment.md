@@ -228,6 +228,10 @@
     - It can also act as a support and resistent level
   - It only provides valuable information when martket is in trend
   - The intersections between moving average charts for various length of time frame can be used to indicate turning points
+  - Different trading types use different period:
+    - Long Term Investor - uses 200, 100, 50 periods
+    - Positional Trader - uses 50, 21, 14 periods
+    - Intraday Trader - uses 14, 7, 3 periods
 - Moving Average Convergence/Divergence(MACD) - indicates changes in trend
   - It is also recognized as a momentum oscillator
   - It shows the postive or negative difference between a "fast" (short period) EMA, and a "slow" (longer period) EMA, in a bar chart
@@ -245,6 +249,31 @@
   - Whenever two lines falls below 20, it a signal of oversold. When two lines goes above 80, it is a signal of overbought
   - Sharpe bottom and broad top represents an uptrend and vice versa
   - Short-term market players tend to choose low settings for all variables, and vice versa
+
+##### Fibanacci Retracement
+
+- It is used to predict support level in a clear uptrend or downtrend
+- The ratio of the adjecent number in a fibonacci series will approach to the golden ratio(`1.618`)
+- The ratio used in the Fibanacci retracement tools are:
+  - `0`
+  - `0.236`, which is from `0.618-0.382`
+  - `0.328`, which is from `1 - 0.618` or `0.618 * 0.618`
+  - `0.5`, one half
+  - `0.618`, which is the inverse of a golden ratio `1/1.618`, it is called the golden mean `0.618`
+  - `0.786`, which is the square root of `0.618`
+  - `0.88`
+  - `1`
+  - Extension Level 1 - `1.272`, which is the square root of `1.618`
+  - Extension Level 2 - `2.618`, which is from `1.618 * 1.618`
+  - Extension Level 3 - `4.236`, which is from `2.618 * 1.618`
+- The ratio should be drawn between the peak and trough(a swing) from `1` to `0`
+  - `1` should be at the trough for an uptrend
+  - `1` should be at the peak for an downtrend
+  - Usually, draw from left to right when using analysis platform softwares
+- After drawing the scale, each ratio level can be treated as potential support level, since buyers tend to trade when those level are reached
+- Draw the scale in a reverse order(from right to left) to use the extension levels, extension levels indicates the target prices(the next peak in an uptrend or the next trough in a downtrend)
+- It is suggest to apply the scale on the current swing(the lastest known swing), and analysis on higher timeframe
+  - When new swing forms draw the new scale on the new swing
 
 ## Risks
 

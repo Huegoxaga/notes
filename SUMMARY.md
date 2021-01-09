@@ -21,7 +21,7 @@
   - [.NET](c-sharp/dot-net.md)
   - [ASP.NET](c-sharp/asp-dot-net.md)
 - [Swift](swift/README.md)
-  - [Xcode](swift/xcode.md)
+  - [iOS Development](swift/xcode.md)
 - [Go Programming Language](go/README.md)
 - [Markup Language](markup/README.md)
   - [HTML](markup/html.md)

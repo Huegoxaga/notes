@@ -20,7 +20,7 @@
   - [.NET](https://huegoxaga.github.io/notes/c-sharp/dot-net.html)
   - [ASP.NET](https://huegoxaga.github.io/notes/c-sharp/asp-dot-net.html)
 - [Swift](https://huegoxaga.github.io/notes/swift/index.html)
-  - [Xcode](https://huegoxaga.github.io/notes/swift/xcode.html)
+  - [iOS Development](https://huegoxaga.github.io/notes/swift/xcode.html)
 - [Go Programming Language](https://huegoxaga.github.io/notes/go/index.html)
 - [Markup Language](https://huegoxaga.github.io/notes/markup/index.html)
   - [HTML](https://huegoxaga.github.io/notes/markup/html.html)

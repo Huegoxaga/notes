@@ -1,4 +1,4 @@
-# Xcode
+# iOS Development
 
 ## Design Concepts
 
@@ -30,7 +30,7 @@
 - show `Asset.xcassets` folder contain set list where you drag image and icon file for importing. And every files will be shown in the set viewer at the centre. file version will be handle automatically. double click can open file. Xcode accept raster and vector image.
 - right click folder can create new group. group name Model(data model) View(custom class) Controller(view controllers) and StoryBoard are recommended to group swift controller files.
 - right click can create new files into the folder. cocoa template is often used for custom class.
-when create custom new class, the class type should be set accordingly.
+  when create custom new class, the class type should be set accordingly.
 - custom view class has the following function.
 - making connection between object in storyboard and class Object, setting object upon declaration and appearance of the object.
 - view controller class has the following function.
@@ -46,9 +46,9 @@ when create custom new class, the class type should be set accordingly.
 - hide/show `command + option + 0`
 - `command + option + (1-6)` select tabs
 - Identity inspector: shows associated swift file for each View Controller and object.
-It has User defined runtime attribute editor can insert the code in didSet method here and set its value.
+  It has User defined runtime attribute editor can insert the code in didSet method here and set its value.
 - attributes inspector: stuff like change objects color. "+" button can be used to set properties(or hide by checking the Hidden checkbox) for specific screen size. preserve vector option can be used in the attributes inspector when select the image in the assets folds, in order to make vector image has the best quality. initial view controller is the first view to load, can be change in attributes inspector, shown a big arrow on the left, It also has clip to bounds option. change object’s title,
-hide navigation bar on swipe(once for all) , change controller size, large navi bar etc.
+  hide navigation bar on swipe(once for all) , change controller size, large navi bar etc.
 - connection inspector: show all the connection between actions and function calls
 - size inspector: shows constrains, change view size, object size.
 
@@ -77,7 +77,7 @@ hide navigation bar on swipe(once for all) , change controller size, large navi 
 ### Interface builder
 
 - `Main.storyboard` bring the editing area into a visual editor for storyboard called Interface builder.
--It has a object library `Shift+Command+L`
+  -It has a object library `Shift+Command+L`
 - `shift + right` click show all options for an accurate selection to find an item.
 - objects can be dragged directly in to the view.
 - `Command + =` for auto resize objects.
@@ -86,7 +86,7 @@ hide navigation bar on swipe(once for all) , change controller size, large navi 
 - right click empty space can zoom out to have an overview of the storyboards.
 - Controllers in one storyboard can be refactored to a new storyboard. As a result, the controller are moved from the old to the new storyboard. The reference of these storyboard for the controllers will be shown as the storyboard reference. It is done by selecting the controllers and clicking the Refactor to Storyboard editor menu, then renaming the new storyboard.(double-clicking the reference will show the corresponding storyboard.)
 - Changes made on LaunchScreen StoryBoard will only be effective after reinstallation of the App.
-LaunchScreen.storyboard is the launch screen for your app. It can not have a controller file for customization, it can be frozen for certain time using Thread.sleep method in AppDelegate file.
+  LaunchScreen.storyboard is the launch screen for your app. It can not have a controller file for customization, it can be frozen for certain time using Thread.sleep method in AppDelegate file.
 
 ### Document Outline
 
@@ -106,7 +106,7 @@ LaunchScreen.storyboard is the launch screen for your app. It can not have a con
   - located in the bottom bar
   - choose live preview device
 - show current size class
-- Auto layout bar  
+- Auto layout bar
   - can be done by control-drag between two objects, drag to the constrain you aim at. can be done in doc outline panel.
   - constrain to margin means safe area excluding the status bar
   - located at right side of the config bar
@@ -168,7 +168,7 @@ LaunchScreen.storyboard is the launch screen for your app. It can not have a con
   - It is called every time the view is presented.
 - `NSException` might means `IBOutlet` is not properly connected.
 - didSet block
-  - didSet block can contain setting for objects right after the declaration.  
+  - didSet block can contain setting for objects right after the declaration.
 
 ```swift
 @IBOutlet var newObject: UIType! {
@@ -378,7 +378,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for:indexPath)
 //dequeueReusableCell is a function that load and relocate new cells when swipe.
 //Configure the cell here…
-cell.textLabel?.text = dataArray[indexPath.row]  
+cell.textLabel?.text = dataArray[indexPath.row]
  cell.imageView?.image = UIImage(named: "imageNameInAssets")
 //textLabel and imageView? are optional in the default TabelViewCell class.
     return cell
@@ -389,7 +389,7 @@ cell.textLabel?.text = dataArray[indexPath.row]
 
 ```swift
 tableview.backgroundView = imageName
-tableView.backgroundView?.isHidden = true  
+tableView.backgroundView?.isHidden = true
 //the background image’s constrains are set as usual.
 //set and hide temperate empty table background.
 //unhide can be set in the numberOfSection method (it is called when the table is configured) using if statement, along with the separator style setting.
@@ -426,7 +426,7 @@ headerView.backgroundView?.backgroundColor = UI Color(red: 236.0/255.0, green: 2
 
 ```swift
 override func numberOfSections(in tableview: UITableView) -> Int {
-return 1  
+return 1
 } //remove this method will set the number of section to default value as 1.
 ```
 
@@ -514,7 +514,7 @@ tableView.endUpdates() //the code in between will take effect immediately.
 #### TableViewCell
 
 - customized cell in a table required the creation of a new class file as a subclass of UITableViewCell.
-In the controller, the dequeueReusableCell class return type need to specify as the new cell class type, using `as!`.
+  In the controller, the dequeueReusableCell class return type need to specify as the new cell class type, using `as!`.
 - self sizing cell is enabled after defining its layout constrains.
 - to enable self sizing, in the `ViewDidLoad` method add:
   - `tableView.estimatedRowHeight = 100.0`
@@ -1080,16 +1080,16 @@ override var prefersStatusBarHidden: Bool {
   - in the application(didFinish) method in the AppDelegate
   - `UIApplication.shared.statusBarStyle = .lightContent(deprecated)`
   - Then, Opt out the View navigation controller-based status bar appearance in the `Info.plist` file
-  Key name: `View controller-based status bar appearance`, Value `NO`. This disable the control for status bar in each view controller.
+    Key name: `View controller-based status bar appearance`, Value `NO`. This disable the control for status bar in each view controller.
 - Hide status bar on launch screen
-in plist file add `Status bar is initially hidden - Yes`
+  in plist file add `Status bar is initially hidden - Yes`
 
 ### Navigation Controller
 
 - It is the page title and back buttons on the top part of the app
 - Navigation Item is an object that used to customize navigation bar for certain controller.
 - Navigation Item can have bar item and titles for this controller.
-without navigation item all navigation bars are control by the common parent navigation controller.
+  without navigation item all navigation bars are control by the common parent navigation controller.
 - In order to embed any controller into navigation controller: Edit->Embed in->Navigation controller.
 - `control + drag` for a root view controller relationship is the same as the embed in relationship.
 - Any view controller can have its own navigation controller with different design by embedding its own navigation controller.
@@ -1101,7 +1101,7 @@ without navigation item all navigation bars are control by the common parent nav
 - In view will appear method
 
 ```swift
-navigationController?.hidesBarsOnSwipe = true  
+navigationController?.hidesBarsOnSwipe = true
  //enable hide on swipe feature for specific navigation bar.
 navigationController?.setNavigationBarHidden(false, animated: true)
 //unhide the navigation bar.
@@ -1114,7 +1114,7 @@ navigationItem.hidesBackButton = true
 - For global change in application(didFinishLaunch) method in AppDelegate file:
 
 ```swift
-//change the back bottom of the navigation bar  
+//change the back bottom of the navigation bar
 UINavigationBar.appearance( ).backIndicatorImage = someImage
 UINavigationBar.appearance( ).backIndicatorTransitionMaskImage = someImage
 UINavigationBar.appearance().backgroundColor = UIColor()
@@ -1158,7 +1158,7 @@ navigationController?.navigationBar.tintColor = .white
 - segue is the transition between scenes.
 - control drag form an object in one scene to another scene will establish segue(segue control the transit setup between views.).(doc outline mode will also do). then add segue an identifier. segue will copy the navigation bar from previous page.
 - `prepare()` this method is called before segue in triggered. It can be used to pass data between two scene.
-in the first controller implement prepare method as following:
+  in the first controller implement prepare method as following:
 
 ```swift
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -1179,7 +1179,7 @@ performSegue(withIdentifier: "abc", sender: sender)
 ```
 
 - unwind segue is used to go back to previous view. (or any other parent with unwind func)
-to enable unwind segue, in the previous view controller add:
+  to enable unwind segue, in the previous view controller add:
 
 ```swift
 @IBAction func methodName(segue: UIStoryboardSegue) {
