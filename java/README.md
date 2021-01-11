@@ -22,6 +22,10 @@
 - run `export JAVA_HOME=<JAVA_LIB_LOCATION>` assign the Java location to the envirionment variable to let the system work on a specific Java version,
   - change and reload the dot file for a permanent change
 - The system Java wrappers can't find the Java library if it is not installed inside the system default folder, create a symbolic link into the `JavaVirtualMachines` so the `java_home` command can find it
+- To complete remove java, run the following command after removing the content inside the Java home folder
+  - `sudo rm -rf "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin"`
+  - `sudo rm -rf "/Library/PreferencePanes/JavaControlPanel.prefPane"`
+  - `sudo rm -rf "~/Library/Application Support/Java"`
 
 ## IDE
 

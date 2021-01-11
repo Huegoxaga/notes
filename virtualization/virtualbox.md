@@ -29,6 +29,7 @@
 - Snapshot makes the original disk image read-only, changes will be recorded on the differencing disk file.
 - Full clone copies the entire disk image. Linked clone create the current image a snapshot.
 - All disk files and snapshot can be viewed in the `File/Virtual Media Manager`.
+  - A hard disk image can be set to immutable, then virtual machine gets reset after every shutdown
 - Each VM icon has a change view button on the right, click it to see snapshots or logs.
 - Use Device/USB menu to mount USB device to the guest OS.
 

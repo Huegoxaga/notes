@@ -26,6 +26,27 @@
     - Accounting policies that require significant management judgment
     - Forward-looking expenditures and divestitures
   - In the United States, The FCC requires that the management discuss trends and identify significant events and uncertainties for publicly traded companies
+- Framework(Steps) for Financial Statement Analysis:
+  1. State the objective and context prior to undertaking an analysis
+     - determine what are the questions that the analysis seeks to answer
+     - The form in which this information needs to be presented
+     - what resources and how much time are available to perform the analysis
+  2. Gathers the data required to answer the specific questions
+     - acquire the company's financial statements
+     - acquire other relevant data on its industry and the economy
+     - interview the company's management suppliers and customers and visit companies sites to obtain a qualitative understanding of the company's business competitive stance and future directions
+  3. Process the data into meaningful metrics for analysis.
+     - Make appropriate adjustments to the financial statements to facilitate comparison against other companies or the industry average
+     - Calculate the company ratios and prepare exhibits such as graphs and common size balance sheets
+  4. Analyze and interpret the output
+     - seeks to answer the questions stated in the first step with the supporting information
+     - decides what conclusions or recommendations the information supports
+  5. Prepare a report
+     - Highlight the conclusions or recommendations with the supporting information
+       - report and its dissemination comply with the code and standards that relate to investment analysis and recommendations
+         - A critical part of this standard is to distinguish clearly between opinions and facts.
+  6. Update the analysis
+     - Periodic reviews and updates by repeat the entire process from step 1
 - All of the following report can provide useful information for analysis. However, an analyst should also review pertinent information on economic conditions and the company's industry and compare the company to its competitors, this information can be acquired from:
   - Trade Journals
   - Statistical Reporting Services

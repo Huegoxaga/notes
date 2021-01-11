@@ -32,6 +32,9 @@
   - Small Cap: Less than `$2` billion
 - The potential value of the company can be determined from its earning, public companies are required to report their earnings four times a year
 - A stockbroker or broker buys and sells stocks at the direction of clients. Most buy and sell orders are now made through online discount brokers
+- Broker provides two main types of account
+  - Cash account - requires that all transactions must be made with available cash or long positions
+  - Margin accounts - allow investors to borrow money against the value of the securities in their account
 - Supply and demand in the market determine stock price, every time the stock is traded, the price changes
 - The profit of trading stocks is from buy at low and sell to high
 - Short selling is a way to make profit when stock price drops, the investor borrows shares from a brokers' client and sell it to a new client at a high price, when price drops the investor purchase new shares from the market at a low price then return the shares to its original holder
@@ -99,12 +102,86 @@
   - Interest coverage ratio can be calculated by dividing a company's earnings before interest and taxes (EBIT) by its interest expense
     - Lower than 1.0 is not good
 
-### Bonds
+### Fixed Income Securities
 
-- Purchasing bond is lending money to a company (or municipal), and they must pay it back with interest
-- Interest payments are called coupons payments and typically issued semi-annually
+- a fixed income security is an instrument that allows a borrower to borrow money from a lender
+- The most common type of fixed income security is a bond, sometimes two terms are used interchangeably
+- a bond is a contractual agreement between the bond issuer and the bond holders
 - Bonds can be purchased from a broker
 - Index
+
+#### Bonds Features
+
+##### Issuer
+
+- The government sector issues government bonds
+  - supranational entities - government related organizations that operate globally(e.g. The World Bank and the International Monetary Fund(IMF))
+  - sovereign nation governments - A country that issues bonds to fund some of their budget(e.g. U.S. Treasury bonds)
+  - non sovereign governments - government entities that are not national governments(e.g. City of Toronto, the state of California)
+  - Quasi-government - government related organizations that secure their own funding outside of government budget(e.g. the Federal National Mortgage Association in the US(Fannie Mae corporate))
+- The corporate sector issues corporate bonds
+  - some issued by financial companies such as banks and insurance companies
+  - some issued by non-financial companies
+- The structured finance sector issues asset backed securities from special legal entities that securitize assets
+
+##### Maturity
+
+- Total borrowing time length
+- Maturity date is the date on which the principal is to be repaid once a bond has been issued
+- terms to maturity can be as short as one day or as long as thirty years or more
+  - money market securities bonds has original maturities of one year or less
+  - capital market securities has original maturities of more than one year
+  - perpetual bonds don't have a maturity date
+- The time remaining until maturity is referred to as the term to maturity or tenor of a bond, it make periodic interest payments but do not promise to repay the principal amount
+
+##### Par value
+
+- the principal amount that will be repaid at maturity
+- It is also referred to as the face value, maturity value, redemption value or principal value of a bond
+- bonds prices are commonly quoted as a percentage of par(e.g. bonds qouted as 105 has price which is 105% of the par value)
+- a bond that is selling for more than its par value is said to be trading at a premium to par
+- a bond that is selling at less than its par value is said to be trading at a discount to par
+- a bond that is selling for exactly its par value is said to be trading at par
+
+##### Coupon Rate
+
+- it is the annual percentage of its par value that will be paid to bond holders
+
+##### Frequency
+
+- the frequency the payment is made, calculated from the annual coupon rate
+- There are bonds which make annually, semi-annually, quarterly payments or even monthly payments
+- The most common is semi-annual payments
+
+##### Currency denomination
+
+- Sometimes borrowers from countries with volatile currencies issue bonds denominated in U.S. dollars
+  - U.S. dollar denominated bonds - Both the coupon payments and par value are in U.S. dollars
+  - Dual-currency bond makes coupon interest payments in one currency and the principal repayments at maturity in another currency
+  - Currency option bond gives bond holders a hoice of which two currencies they would like to receive their payments in
+
+#### Law & Tax
+
+- The legal regulatory and tax considerations that apply to the contract between the issuer and the bond holders
+
+#### Contingency Provisions
+
+- the contingency provisions that may affect the bonds scheduled cash flows
+  - These contingency provisions are stated options in the contract
+  - they give the issuer or the bondholders certain rights regarding the disposal or redemption of the bond
+
+#### Yield of a Bond
+
+- The price of a bond may fluctuate after it is issued at issuance
+- the price of the bond would go back to its par value at maturity
+- current yield - the bonds annual coupon divided by the current bonds price
+- yield to maturity - an estimate of the annual return when investors hold it until maturity
+  - it is the internal rate of return on bonds expected cash flows
+  - yield to maturity is inversely related to the purchasing bonds price the higher the bonds price the lower its yield to maturity and vice versa
+
+#### Coupon Structures
+
+- a plain vanilla bond where coupon is paid regularly and the full par value returned on maturity
 
 ### Mutual Funds
 

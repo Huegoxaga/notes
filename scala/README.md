@@ -36,7 +36,7 @@
 
 ## Installation
 
-- Install Java `SDK` by running `brew cask install java`, run `java -version` to check
+- Install Java `SDK` by running `brew install java --cask`, run `java -version` to check
 - run `brew install scala` to install Scala, for other OS [click here](https://www.scala-lang.org/download/)
 - run `brew install sbt` to install SBT, for other OS [click here](https://www.scala-sbt.org/download.html)
 

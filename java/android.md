@@ -1,9 +1,11 @@
-# Andriod Development with Java
+# Android Development with Java
 
 ## Introduction
 
-- Andriod Studio is the IDE for Andriod App Development
-- Andriod SDK is provided by various versions of SKD platforms. Each marjor platform version has a name. E.g. `Andriod 10.9` is called `Q`.
+- Android is a mobile operation system based on a modified version of the Linux Kernel
+- Linux OS defines the basic file system, I/O, and low level hardware interface for mobile devices and Android provides the user interface or service level access
+- Android Studio is the IDE for Android App Development
+- Android SDK is provided by various versions of SKD platforms. Each marjor platform version has a name. E.g. `Android 10.9` is called `Q`.
 - Each SDK platform version is associated with an API level, API level is used to determined the apps compatibility.
 
 ## Setup
@@ -11,10 +13,11 @@
 ### Installation
 
 - [Download](https://www.oracle.com/ca-en/java/technologies/javase-downloads.html) and install the lastest Java SE Development Kit.
-  - For Mac using Brew, run `brew cask install java` and run `brew cask info java` to verify.
+  - For Mac using Brew, run `brew install java --cask ` and run `brew info java --cask` to verify.
 - [Download](https://developer.android.com/studio) and install Android Studio.
-  - For Mac, run `brew cask install android-studio`.
-- Install the preferred SDK platform for the devices to use when testing in SDK Manager.
+  - For Mac, run `brew install android-studio --cask`.
+- Install the preferred SDK platform for the devices to use when testing in SDK Manager
+- On machines running macOS Big Sur, Android Studio 4.1 might freeze when you open a dialog, run `defaults write com.google.android.studio AppleWindowTabbingMode manual` to fix this issue
 
 ### Open a Project
 
@@ -22,7 +25,7 @@
   - Select `start a new project`.
   - Select the `Empty Activity` template(recommanded)
   - The package name is the unique identifier of the app. Usually it is the organization or personal domain name in reverse order.
-  - The minimum API level controls the minimum SDK platform version that the app will support.
+  - The minimum API level controls the minimum SDK platform version that the app will support
 - Open an existing project
   - In the welcome page, select and open the existing project folder
   - Open the existing project's gradle file with Andriod Studio.
@@ -44,9 +47,11 @@ Setup version control
 
 - Install the required images in the SDK manager
   - If the host machine has an Intel CPU, install the `Intel X86` images.
-    - Install the `Intel X86 Emulator Accelerator` for a faster performance
-  - If the host machine has an Intel CPU, install the `ARM` images for some older versions of the SDK platforms.
-- Open Andriod Virtual Device(AVD) Manager and configure and create a new virtual device with preferred image files.
+    - Install the `Intel X86 Emulator Accelerator` in the SDK Tools page for a faster performance
+    - `Google APIs Intel X86` includes Google APIs in the image
+  - If the host machine has an ARM CPU, install the `ARM` images for some older versions of the SDK platforms
+- Open Andriod Virtual Device(AVD) Manager and configure and create a new virtual device with image files that run the same version as the development SDK
+  - Cold Boot is a Boot Option that will clear the device memory, it is better for debug but it will be slower than Quick Boot
 
 #### GenyMotion
 
