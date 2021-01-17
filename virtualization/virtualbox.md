@@ -15,7 +15,8 @@
 - Intel and AMD implement deferent technologies for hardware virtualization
   - On Intel CPU’s look for VT-x
   - On AMD’s look for AMD-V.
-- Virtual machines can easily be imported and exported using the industry-standard Open Virtualization Format (OVF) with `.ova` extension.
+- Virtual machines can easily be imported and exported using the industry-standard Open Virtualization Format (OVF) with `.ova` extension
+  - `OVF` file can be extracted into a virtual disk image file and an `ovf` file contains the machine settings using various extracting tools
 - Alternative Front Ends, it has both GUI and Command line control.
 
 ## Files
@@ -60,8 +61,8 @@
 
 ## GUI
 
-- [Download](https://www.virtualbox.org/wiki/Downloads) link.
-- It is straight forward.
+- [Download Link](https://www.virtualbox.org/wiki/Downloads)
+- After installing the downloaded software, install the extension pack for additional features
 
 ## Command Line Interface
 

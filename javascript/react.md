@@ -320,6 +320,7 @@ return (
 - `useState()` can have an object as variable.
 - `useState()` cannot be placed inside if or loops
 - When updating values for reference type values, make sure the reference(memeory address) of the values are changed, or React won't update its related component
+- When update the key attribute of any component using state variables, the component will be re-rendered
 
 #### Effect Hook
 

@@ -199,7 +199,110 @@
   - Unhedge - The price of the fund is reflected by both the tracked security values and currency exchange rate
     - It allows the investor to invest in currency exchange market at the same time, can increase diversity
 
-### Alternative Investments
+### Derivatives
+
+- Derivatives are a type of securities that derive values from underlyings like assets or securites
+  - In reality, the underlying of a derivative can be any know assets like interest rate, foreign currency exchange rates, market indices or other derivatives, or even weather condition
+- Derivatives can be `Exchange-Traded` - traded over a central exchange backed by a clearing house
+  - Trade with the clearinghouse
+  - clearinghouse enforces rules like margins
+  - It uses standardized contracts with standard rules and requirement, it is regulated, and generally safer
+  - Trades are easy to reverse(quit) or reduce(quit parially), since they can be transferred to others in the market easily
+- Derivatives can be traded `Over-the-Counter (OTC)` - traded by dealers without a central location
+  - Trade directly with the counterparty
+  - It uses custom negotiated contracts, it is mostly unregulated, and exposed to default risk
+    - Default risk it the risk that either party default(fail to comply) from the agreement
+- Derivatives can be classified according to the nature of the contract
+  - Forward commitment - A contract where the parties are required to perform some action at a given
+  - Contingent claim - consists of a payoff which is only claimable if a particular event happens before the expiry of the contract
+- `Hedge` - utilize derivatives to reduce risks
+- `Spectating` - utilize derivatives to gain capital
+
+#### Types of Derivatives
+
+##### Forwards
+
+- They are traded Over-the-Counter
+- They are forward commitment derivatives
+- At the initiation of a forward contract, one party agrees buy an asset from another party on a specified settlement date in the future at a given price(`Forward Price`)
+- It requires no payment by either party at initiation
+- `Spot Price` is the current market price of the asset
+- `Forward Price` is based on the spot price adjusted according by the cost of carry of the asset
+- When the contract is initiated the forward price become the `Contract Price`
+- Buyer is called the `Long`
+- Seller is called the `Short`
+- The expected future price is the future spot price adjected by the cost of carrying
+  - Overall, long has advantage when expected future price rise and vice versa
+- Forward contract specified what happen on the settlement date
+  - `Cash Settled Forward Contract`(`Contract for Differences`, `Non-deliverable Forwards`) - When spot price on the settlement date is higher, long pays short the differece only without actually purchasing underlying assets and vice versa
+  - `Deliverable Forward` - The short is required to deliver the underlying asset to the long at the contract price no matter what the current spot price is
+
+##### Futures
+
+- Similar to `Forwards`, but Exchange-Traded
+- Futures also have some additional terms
+- They are forward commitment derivatives
+- `Open Interest` - the total number of outstanding contracts that are held by market participants at the end of the day
+  - open interest increases when traders enter a new long and short positions and decreases when traders exit existing positions
+  - open interest is a measure of the flow of money into the futures market
+  - Some speculators look for trading signals based on the open interest for a particular asset
+- `Settlement Price` - an average of the prices of the trades during the last period of trading called the closing period
+  - it reduces the opportunity of traders to manipulate the settlement price
+  - the settlement price is used to calculate the daily gain or loss at the end of each trading day
+  - on its final day of trading. The settlement price is equal to the spot price of the underlying asset
+- `Margin` - a deposit from long and short to guarantee that all parties will honor their obligations
+  - an initial deposit is known as the initial margin the initial margin per contract is relatively low as compared to the size of the contract
+  - this margin is deposited in the traders margin account after the futures contract is obtained
+  - Changes in the price of the futures contract result in daily gains or losses they are credited to or subtracted from the margin account of the contract holder
+    - This is called the marking to market process
+  - the maintenance margin is the minimum amount of margin that must be maintained in the margin account, it is less than the initial margin amount
+  - if the balance in the account falls below the maintenance margin, additional funds must be deposited to bring the margin balance back up to the initial margin amount
+  - Note that this is different from the case of an equity account which requires investors only to bring the margin back up to the maintenance margin amount
+
+##### Swaps
+
+- They are traded Over-the-Counter
+- They are forward commitment derivatives
+- Swaps can be viewed as a series of forwards
+- a swap is defined as a contract whereby two parties agree to exchange a series of payments on periodic settlement dates over a certain time period
+  - e.g. two parties swap the interest payment of a loan with the same pricipal amount, it is called the plain vanilla interest rate swap(a floating rate payer switch with a fixed rate payer)
+  - Others swap can be currency sway or equity swap
+  - the common pricipals are called the notional principal
+- The contract ends on the expiry date which is usually the date of the last payments to be made
+- Each settlement date the difference of period payment is calculated so that only one payment is made
+
+##### Options
+
+- They are Exchange-Traded
+- on the settlement date, the long the right to buy but not the obligation to buy at a given price for options
+  - This price is known as the exercise price or strike price
+- To obtain this right an option premium need to be paid, long buys this right from short
+- Call option - The long will have the option to buy, short have to sell if long exercises for a specified time period
+  - The option Buyer is called the long call, the option seller is called the short call
+- Put option - The long will have the option to sell, short have to buy if long exercises for a specified time period
+  - The option buyer is called the long put, the option seller is called the short put
+- American options may be exercised at any given time up to and including the contracts expiration date,
+  - a quick way to remember, `A`(American) stands for `Anytime`
+- European options can only be exercised on the contracts expiration date
+  - a quick way to remember, `E`(European) stands for `Expiration`
+- Contingent claim derivatives can be defined as an option with payoff
+  - The payoff here is the profit of the long
+  - a event is when the market price of the asset is higher than the exercise price
+
+##### Credit Derivatives
+
+- They are Exchange-Traded
+- They are Contingent claim derivatives
+  - The payoff here is a payout that compensates the owner in the event of a downgrade or default by a named borrower
+- `Credit Default Swap`(CDE)
+  - It is a type of credit derivatives
+  - an insurance contract against default, a bond holder pays regular premiums to a credit protection seller if the bond issuer defaults the bond holder receives a payout that can compensate for some of the financial loss from the default
+- `Credit Spread Option` - the underlying is the credit spread on a bond
+  - It is a type of credit derivatives
+  - `Credit Spread` is the bonds yield spread relative to a benchmark
+  - a bond holder typically pays a premium to buy this call option to be compensated if the bonds credit quality decreases
+  - The bond holder chooses the strike level of the option, when a bond is credit quality decreases its yield spread will increase
+  - on the expiration of the call option if the yield spread is above the strike the bond holder will collect to pay off based on the difference this pay off compensates the bond holder for the drop in market price of the bond
 
 ## Portfolio Management
 
@@ -213,6 +316,290 @@
   - select stocks that varies in types like growth stock and income stock, and location
   - select stocks from different stock exchange
   - select stocks from different sector
+
+### Financial Reporting Analysis
+
+- Financial Reporting Analysis is a process of forming expectations about the company's ability to earn profits and generate cashflow in the future by examining its financial report, prior to make financial decisions
+- Financial reports are published at a regular intervals based on the applicable regulatory requirements
+- Footnotes are required for any type of financial reports, it provides additional information about the items presented, for example:
+  - Basis of preparation
+    - Clarification of the fiscal period covered
+    - The inclusion of consolidated entities
+    - The accounting methods
+    - The significant accounting standards and estimates
+    - Assumptions and estimates used
+  - Additional material information
+    - Business acquisitions or disposals
+    - Legal actions
+    - Employee benefit plans
+    - Contingencies and commitments
+    - Significant customers
+    - Sales to related parties
+    - Segments of the firm
+- Managements Discussion and Analysis(MD&A) can also be an addition section
+  - It can includes discussion about
+    - The nature of the business
+    - Past performance
+    - Future outlook
+    - Effects of inflation and changing prices
+    - Off-balance sheet obligations and contractual obligations, such as purchase commitments
+    - Accounting policies that require significant management judgment
+    - the likely impact of implementing recently issued accounting standards that includes
+      - discussion about whether the new standards are applied
+      - The material effects on the financial statements or state that they are still evaluating the effects of the new standards
+    - Forward-looking expenditures and divestitures
+  - In the United States, The FCC requires that the management discuss trends and identify significant events and uncertainties for publicly traded companies
+- Framework(Steps) for Financial Statement Analysis:
+  1. State the objective and context prior to undertaking an analysis
+     - determine what are the questions that the analysis seeks to answer
+     - The form in which this information needs to be presented
+     - what resources and how much time are available to perform the analysis
+  2. Gathers the data required to answer the specific questions
+     - acquire the company's financial statements
+     - acquire other relevant data on its industry and the economy
+     - interview the company's management suppliers and customers and visit companies sites to obtain a qualitative understanding of the company's business competitive stance and future directions
+  3. Process the data into meaningful metrics for analysis.
+     - Make appropriate adjustments to the financial statements to facilitate comparison against other companies or the industry average
+     - Calculate the company ratios and prepare exhibits such as graphs and common size balance sheets
+  4. Analyze and interpret the output
+     - seeks to answer the questions stated in the first step with the supporting information
+     - decides what conclusions or recommendations the information supports
+  5. Prepare a report
+     - Highlight the conclusions or recommendations with the supporting information
+       - report and its dissemination comply with the code and standards that relate to investment analysis and recommendations
+         - A critical part of this standard is to distinguish clearly between opinions and facts.
+  6. Update the analysis
+     - Periodic reviews and updates by repeat the entire process from step 1
+- All of the following report can provide useful information for analysis. However, an analyst should also review pertinent information on economic conditions and the company's industry and compare the company to its competitors, this information can be acquired from:
+  - Trade Journals
+  - Statistical Reporting Services
+  - Government Agencies
+
+#### Standards Setting Bodies
+
+- Standards setting bodies are professional not for profit organizations that establish financial reporting standards
+- Desirable attributes of standard setting bodies:
+  - all parties involved in the standard settings process should observe high professional standards
+    - including standards of ethics and confidentiality
+  - have adequate authority resources and competencies to fulfill its responsibilities
+  - Have clear and consistent standard-setting processes
+  - Guided by a well-articulated framework with a clearly stated objective
+  - operate independently seeking and considering input from stakeholders but making decisions that are consistent with the stated objective of the framework
+  - The decision setting process should not be compromised by pressure from external forces. It should also not be influenced self or special interests.
+  - Decisions and resulting standards should be made in the public interest.
+- the `International Accounting Standards Board (IASB)` sets Financial Reporting Standards that have been adopted in many countries
+  - A standards setting body
+  - Widely adopted outside the U.S
+  - The `IASB` establishes the `International Financial Reporting Standards (IFRS)` a standard widely followed by firms outside of the US
+  - `IASB` replaced `International Accounting Standards Committee (IASC)` in
+    - `IASC` issued the `International Accounting Standard (IAS)`. While some rules from `IAS` is still in use, `IASB` replace some of `IAS` by `IFRS`
+- `Financial Accounting Standards Board (FASB)`
+  - A standards setting body
+  - Widely adopted in the U.S
+  - `FASB` establishes the generally accepted accounting principles, known as `US GAAP`
+
+#### Financial Reporting Standards
+
+- Standard setters are working to achieve convergence of financial reporting standards
+- To keep up to date on the evolving standards an analyst can monitor professional journals and the `IASB` and `FASB` websites, or position papers on financial reporting issues through the CFA Institute Center for Financial marketing integrity
+
+##### IFRS
+
+- it is a framework is the base of `IASB`'s standards and their requirements for financial statements.
+- `IASB` set its standards in the `Conceptual Framework(2010) for Financial Reporting`
+  - The framework is designed to assist:
+    - standard setters in developing and reviewing standards
+    - preparers of financial statements in applying standards and in dealing with issues not specifically covered by standards
+    - auditors in forming an opinion on financial statements
+    - users in interpreting financial statement information
+  - The core of the conceptual framework is the objective to provide financial information about the reporting entity that is useful to existing and potential investors, lenders and other creditors, in making decisions about providing resources to the entity includes:
+    - the entities financial position
+    - financial performance
+    - company's cash flow
+  - The framework defines usefulness, the information is useful if:
+    - it is Relevant - information should have predictive, value confirmatory value or both
+      - Materiality is an aspect of relevance.
+    - it has been faithfully represented. Such information is complete neutral and free from error.
+  - There are four characteristics that enhance relevance and faithful representation
+    - compatibility - the financial statement presentation is consistent among firms and across time periods
+    - verifiability - independent observers will arrive at similar conclusions if they use the same methods
+    - timeliness - the information is available to decision makers before it becomes stale
+    - understandability - users should be able to readily understand the information the statements present
+  - The framework defines the reporting elements that should be included
+    - financial position mearsuring elements
+      - assets
+        - resources controlled as a result of past transactions.
+        - expected to provide future economic benefits
+      - liabilities
+        - a result of past events
+        - expected to require an outflow of economic resources in the future
+      - owners equity
+        - Equity is the owner's residual interest in the assets After deducting the liabilities
+    - performance measuring elements
+      - income
+        - an increase in economic benefits, either increasing assets or decreasing liabilities in a way that increases owners equity, includes `comprehensive income`, `revenues`, and `gains`
+      - expenses
+        - decreasing assets or increasing liabilities in a way that decreases owners equity
+        - `losses` are to be included in expenses
+  - the framework also states that an item should be recognized in the balance sheet or
+    income statement if a future economic benefit from the item is probable and the items value or cost can be measured reliably
+    - the amounts at which such items are to be reported depend on the measurement base
+      - measurement bases include historical cost a motorized cost current cost realizable value present value and fair value
+  - the framework states two important underlying assumptions in financial statements
+    - accrual accounting - financial statements should reflect transactions at the time they actually occur not necessarily when cash is paid
+    - growing concern - assumes the company will continue to exist for the forseeable future
+      - If this is not the case then presenting the company's financial position fairly requires a number of adjustments. For example it's inventory or other assets may only be worth their liquidation values
+  - The framework defines constraint
+    - the cost of providing the information
+      - optimally benefits derived from the information should exceed the costs.
+      - The aim is to achieve a balance between costs and benefits
+    - non quantifiable information like reputation brand loyalty and innovation cannot be captured directly in financial statements
+  - The framework does not address the contents of the financial statements
+- The `IAS No.1` defines details like which financial statements are required, Their general features and their structure and content, as:
+  - Required financial statements
+    - balance sheet
+    - statement of comprehensive income
+      - It can be presented as a single statements or separately as an income statement and a statement of comprehensive income
+    - statement of changes in owners equity
+    - statement of cash flows
+    - notes, summarising accounting policies and disclosing other items
+  - General features
+    - fair presentation - faithfully representing the effects of the entity's transactions and events
+    - going concern basis - the financial statements are based on the assumption that the firm will continue to exist
+    - accrual basis - it is used to prepare the financial statements other than the statement of cash flows
+    - materiality - the financial statements should be free of misstatements or omissions like good influence the decisions of relevant parties, aggregation of similar items and separation of dissimilar items
+    - No offsetting - No offsetting of assets against liabilities or income against expenses unless a specific standard permits or requires it.
+    - Frequency of Reporting - frequency must be at least annually
+    - comparative information for prior periods should be included unless a specified standard states otherwise
+    - consistency - between periods in how items are presented and classified with prior period amounts disclosed for comparison
+  - Structure and Content
+    - classified balance sheet showing current and non-current assets and liabilities
+    - Minimum information is required on the face of each financial statement
+      - For example the face of the balance sheet must show specific items such as cash and cash equivalents, plant property and equipment and inventories
+    - Minimum specified no disclosures - The standard specifies disclosures about information to be presented in the footnotes
+    - This information must be provided in a systematic manner and cross referenced from the face of the financial statements
+    - Comparative information for prior period should be included unless a specified standard states otherwise
+
+##### US GAAP
+
+- Many aspects of `IFRS` and `US GAAP` have converged over the past decade
+- Compare to `IFRS`, `US GAAP` has the following difference:
+  - only revenue and expenses are listed as elements related to performance
+  - `US GAAP` defines an asset as a resource for which a future economic benefit is expected to flow.
+    - The `FASB` defines it simply as a future economic benefit(probable)
+  - `US GAAP` allow the upward valuation of most assets, but `FASB` doesn't
+  - still disagree on the best treatment of certain items or issues
+    - certain business groups place pressures to block any changes in accounting practices that may not be in their best interest
+- In many cases however a company will present a reconciliation statement showing what its financial results would have been under an alternative reporting system
+
+#### Regulatory Authorities
+
+- Regulatory Authorities are governmental entities that have the legal authority to enforce financial reporting requirements
+  - `U.S. Securities and Exchange Commission (SEC)` enforce the standards in the U.S.
+    - The `SEC` no longer requires `IFRS` reporting firms to reconcile their financial statements to `US GAAP`
+    - It requires the listed companies to file standardized forms regularly.
+      - form `S-1` a registration statement filed prior to the sale of new securities to the public
+      - Form `10-K` which is a required annual filing similar to that which a firm typically provides in its annual report to shareholders
+        - The forms `40-F` and `20-F` are the equivalent `10-K` for Canadian and other foregin issuer respectively
+      - Form `10-Q` which U.S. firms are required to file quarterly with updated financial statements which need not be audited
+        - Non-US companies are typically required to file the equivalent forms `6-K` semiannually
+      - form `DEF-14A` is to be filed when a company prepares a proxy statement for its shareholders prior to the annual meeting or other shareholder vote
+      - form `8-K` is to be filed to disclose material events like significant asset acquisition or disposal and changes in management
+      - form `144` is a notification to the `SEC` when a company issues securities to certain qualified buyers
+      - form `3,4,5` include the beneficial ownership of securities by a companie's offices and directors
+  - `European Securities and Markets Authority (ESMA)` - a European Union financial regulatory agency and European Supervisory Authority, located in Paris
+- The `SEC` and `ESMA` are members of the International Organisation of Securities Commissions (`OICV-IOSCO`)
+  - `OICV-IOSCO` is not a regulatory authority but its members regulate a significant portion of the world's financial capital markets
+  - has a goal of uniform financial regulations across countries
+- According to IFCO the three objectives of financial market regulation are:
+  - Protect investors
+  - Ensure the fairness efficiency and transparency of markets
+  - Reduce systematic risk
+
+##### International Financial Reporting Standards
+
+#### Balance Sheet
+
+- a snapshot of the firm's financial position
+- It has three components:
+  - Assets - resources owned by the company(e.g. Equipment, Cash)
+  - Liability - amount borrowed from others
+  - Owner's Equity - it equals `Assets - Liability`
+
+#### Income Statement
+
+- It accounts the net income of a company for a certain period
+- `Net Income = Revenue - Expenses + Other Income`
+  - `Revenue` - inflows from delivering or producing goods and services and other activities
+  - `Expenses` - outflows in the processes of running operations that generates revenue including depreciation of assets and concurrence of liabilities
+  - `Other Income` - inflows that is not from the ordinary course of the business
+
+#### Comprehensive Income Statement
+
+- It accounts the gains and losses that are excluded from the income statement, e.g.
+  - Unrealized gains on losses on investments that are classified as available for
+    sale
+  - Foreign currency translation gains or losses
+  - Pension plan gains or losses
+- Optionally, comprehensive income statement can combine with net income statement as a `Total Comprehensive Income Statement`
+
+#### Changes in Equity
+
+- `Net Changes in Equity` is the amount of the changes in Owner's Equity between two balance sheet from one period to its next
+- `Net Changes in Equity = Total Comprehensive Income - Changes in Equity`
+- It explains the changes in equity
+  - e.g. the shareholder transactions like dividend payout
+
+#### Statement of Cashflows
+
+- A disclosure of the sources and uses of cash, and the net cashflow should matches the changes in balance cash on the balance sheet from one period to the next, it evaluates company's liquidity
+- Net cashflows are consisted of three sections:
+  - Operation Cashflows - activities cashs related to the transactions occurred during normal business
+  - Investments Cashflows - activities related to the purchase and sell of long-term assets
+  - Financing Cashflows - activities related to obtaining or repaying captial
+
+#### Auditor's Reports
+
+- an audit is an independent review of a firms financial statements
+  - The objective of an audit is to enable the auditor to provide an opinion on the fairness and reliability of the financial statements
+  - The auditor examines the company's accounting and internal control systems confirms assets and liabilities and determines that there are no material errors in the financial statements.
+- An audit will be completed by an independent certified public accountant, appointed by the board of directors
+- The standard auditor's opinion contains three key elements:
+  - They are the financial statements are prepared by the management and are its responsibility
+  - Generally accepted auditing standards were followed, thus providing reasonable assurance that the financial statements contained no material errors
+  - An opinion will be given from the audit on whether the statements were prepared in accordance with accepted accounting principles, the opinion can be
+    - `Unqualified Opinion` - If the statements are free from material omissions and errors
+    - `Qualified Opinion` - If the statements make exceptions to the accounting principles
+    - `Adverse Opinion` - If the statements are materially nonconforming with accouting standards
+    - `Disclaimer of Opinion` - If the auditor is unable to express an opinion
+    - Opinion on the `Internal Control System` is requied in the US
+      - `Internal Control System` - It's the processes by which the company ensures that it presents accurate financial statements
+      - The managements of US public companies are deemed responsible for the effectiveness of internal control for the company, they should:
+        - Evaluate the effectiveness of the internal controls
+        - Provide a report on internal control
+
+#### Other Reports
+
+##### Interim Reports
+
+- It provides updated information on the company's performance and financial position since the last annual report
+- It is published either semi-annually or quarterly depending on the applicable regulatory requirements
+- Interim reports generally present the basic financial statements and condense notes but are not audited
+
+##### Proxy Statements
+
+- They are issued to shareholders when there are matters that require a shareholder vote
+- These statements are a good source of information about the election of board members, compensation, management qualifications, and the issuance of stock options
+
+##### Corporate Reports & Press Releases
+
+- They are released by management and are often viewed as public relations or sales materials
+- Not all of the material is independently reviewed by outside auditors
+
+##### Earnings Guidance
+
+- They are published slightly ahead of the actual release of the financial statements
+- They are usually less useful than other reports
 
 ### Technical Analysis
 
@@ -352,7 +739,7 @@
 - It is suggest to apply the scale on the current swing(the lastest known swing), and analysis on higher timeframe
   - When new swing forms draw the new scale on the new swing
 
-## Risks
+### Risks
 
 - All investment associates with some risks
 - Generally higher risks yields more profit

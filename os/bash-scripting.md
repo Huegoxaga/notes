@@ -39,8 +39,16 @@
 - Three or more commands can be chained with the above operators.
 - `commandA ; commandB` Run all commands in one lines.
 - `echo "ABC" >> filepath` use redirection operator to write `STDOUT` string to a file at once.
+  - `>` is similar to `>>` but `>>` will append content to the file if the file exists, while `>` will overwrite the existing file completely
 - `commandA >> filepath` write the `STDOUT` of a command to a file continuously.
 - `command < filepath` send the file data to the command.
+- File descriptor 0 is the standard input (stdin)
+- File descriptor 1 is the standard output (stdout)
+- File descriptor 2 is the standard error (stderr)
+- `/dev/null` is a special device that discards everything that is written to it
+  - `command 2> /dev/null` discard all error messages
+- `2>&1` combine `stderr` and `stdout` into the `stdout` stream for further manipulation
+  - `1` will includes all the `2` messages afterwards
 - `command 2> output.txt` The standard error stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, it gets overwritten.
 - `command 2>> output.txt` The standard error stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, the new data will get appended to the end of the file.
 - `command &> output.txt`Both the standard output and standard error stream will be redirected to the file only, nothing will be visible in the terminal. If the file already exists, it gets overwritten.

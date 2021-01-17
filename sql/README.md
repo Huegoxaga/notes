@@ -93,11 +93,35 @@
     - UPDATE
     - DELETE
 - Depending on the database vendor, data can be case sensitive `'M' <> 'm'`
+  - Data in Oracle database is case sensitive
+- SQL is not case sensitive
+  - Convention is to capitalize keywords and use lower case for tables, columns, etc
+- SQL ignores whitespace
+  - Convention is to capitalize keywords and place each clause on its own line
 - For Character and string data single quotes are recommended and generally used.
-- Convention is to capitalize keywords and place each clause on its own line
 - multiple queries or commands can be entered at the same time and separate by ; at end of each line.
 - SQL is case insensitive. However uppercase is preferred for all commands.
 - SQL syntax is not sensitive to indentations.
+- `dual` is a “dummy” table in Oracle that has 1 row and 1 column
+  – Used whenever a single value is needed
+
+## GUI Tools
+
+- It is used as the "frontend" of database server for development purpose
+
+### SQL Developer
+
+- SET command
+  - it only effect the current session
+    - To set all sessions, a connection startup script can be created and set in `Tools / Preferences...`
+  - `SET PAGESIZE 1000` set output page size for text output
+    - default is `14`
+- `Run Statement` - runs the current statement and presents the query result in a grid
+- `Run Script` - runs the whole script and presents the script output as text
+- If a section of the script is highlighted and `Run Statement` or `Run Script` is pressed, only the highlighted section will run
+  - This is a good way to test a subquery to ensure that it’s working as expected
+- `History` - returns all previously ran commands
+  – Double-clicking one of them brings them back into the Worksheet tab where they can be run again or edited
 
 ## Data Types
 
@@ -146,17 +170,49 @@ SELECT column_list
 FROM table_name
 ```
 
-- SELECT can be followed by a column function.
-  - AVG–Computes the average value of the column
-  - COUNT–Counts the number of rows
-  - MAX–Determines the maximum value
-  - MIN–Determines the minimum value
-  - SUM–Totals the numeric values
+- SELECT can be followed by a aggregating function
+  - Aggregating functions will ignore columns with NULL values
+  - AVG – Computes the average value of the column
+  - COUNT – Counts the number of rows
+  - MAX – Determines the maximum value
+  - MIN – Determines the minimum value
+  - SUM – Totals the numeric values
 
 ```sql
 SELECT COUNT(*)FROM patients
 SELECT AVG(patient_weight)FROM patients
 SELECT MIN(last_name)FROM patients
+```
+
+- Coalesce - takes any number of columns name and returns the first value that is not null
+
+```sql
+SELECT first_name, last_name, COALESCE(allergies, 'No known allergies')FROM patients
+-- For each returning records, When allergies has a value it will return the value
+-- If allergies is NULL, it will return 'No known allergies'
+```
+
+- Case Function - Case function allows boolean logic in a SQL statement
+- If no conditions are true and there is no else clause, null is returned
+
+```sql
+SELECT first_name, last_name,
+  CASE WHEN patient_height > 170 THEN 'Tall'
+  WHEN patient_height > 120 THEN 'Average'
+  ELSE 'Short'
+  END
+FROM patients
+```
+
+- Case function can be aliased as a column to enhance readability
+
+```sql
+SELECT first_name, last_name,
+  CASE WHEN patient_height > 170 THEN 'Tall'
+  WHEN patient_height > 120 THEN 'Average'
+  ELSE 'Short'
+  END height
+FROM patients
 ```
 
 - Columns have fully qualified names as tablename.columnname is acceptable. It is used to distinguish same columns names from different tables.
@@ -238,21 +294,36 @@ WHERE City IN ('New York', 'Los Angeles', 'Chicago');
 ```
 
 - The NOT IN operator allows you to exclude a list of specific values from the result set. Result set must included in bracket, even there is only one element in it. result set can be a column returned from other SELECT query.
-- EXISTS returns true if a subquery contains any rows.
+
+- `ANY` and `SOME` checks whether any value in the list makes the condition true
+- `ALL` checks to ensure that all values in the list are true
 
 ```sql
+SELECT first_name, last_name, patient_height
+FROM patients
+WHERE gender = 'M'
+AND patient_height > ALL (
+  SELECT patient_height
+  FROM patients
+  WHERE gender = 'F')
+```
+
+- EXISTS returns true if a subquery contains any rows.
+- `IS` can be used with `NULL`. or `IS NOT NULL`
+  - `WHERE column = NULL` will not return anything
+  - `NULL + 5` will return `NULL`
+
+```sql
+-- This select all row of patients tables that exist in the unit_dose_orders table
 SELECT first_name, last_name
 FROM patients
 WHERE EXISTS (SELECT * FROM unit_dose_orders WHERE unit_dose_orders.patient_id = patients.patient_id)
-(This select all row of patients tables that exist in the unit_dose_orders table.)
-
 SELECT *
 FROM vendors
 WHERE NOT EXISTS (SELECT * FROM purchase_orders WHERE purchase_orders.vendor_id = vendors.vendor_id)
-(This select all row of patients tables that don’t exist in the unit_dose_orders table.)
+-- This select all row of patients tables that don’t exist in the unit_dose_orders table
 SELECT * FROM patients
 WHERE allergies IS NULL;
-IS can be used with NULL. or IS NOT NULL
 ```
 
 - AND and OR can be used to connects conditions for WHERE statement.
@@ -263,7 +334,9 @@ IS can be used with NULL. or IS NOT NULL
 SELECT CONCAT(FirstName, ', ' , City) FROM customers;
 ```
 
-- AS is used for a column name change(Alias).
+- `AS` is used for a column name change(Alias)
+- `AS` is optional
+- Use double qoute for alias name to reserves capitalization, e.g. `AS "Name"`(works when database support case sensitive data)
 
 ```sql
 SELECT CONCAT(FirstName,', ', City) AS new_column
@@ -283,6 +356,9 @@ FROM employees;
 ```sql
 SELECT FirstName, UPPER(LastName) AS LastName
 FROM employees;
+SELECT FirstName, LastName AS LastName
+FROM employees
+WHERE LOWER(LastName) like 'smi%';;
 ```
 
 - GROUP BY
@@ -299,6 +375,9 @@ GROUP BY province_id, city
 
 - HAVING
 
+- It is like another WHERE clause for grouped columns.
+- Used with GROUP BY
+
 ```sql
 SELECT nursing_unit_id, COUNT(*)
 FROM admissions
@@ -306,8 +385,6 @@ GROUP BY nursing_unit_id
 HAVING COUNT(*) >= 340
 ```
 
-- It is like another WHERE clause for grouped columns.
-- Used with GROUP BY
 - Subqueries is a query that has queries inside.
   - the inner query is processed first.
   - Enclose the subquery in parentheses.
@@ -333,6 +410,14 @@ HAVING COUNT(*) >= 340
   WHERE beds >(SELECT AVG(beds)FROM nursing_units))
   GROUP BY nursing_unit_id
   ```
+  - Subquery as a Table
+  ```sql
+  SELECT * FROM (
+    SELECT province_id, city, COUNT(*) citycount
+    FROM patients
+    GROUP BY province_id, city)
+    WHERE city LIKE 'H%'
+  ```
 - The like keyword can be used to specify a pattern, pattern is represented by:
   - `_` any value.
   - `%` any group of values
@@ -340,9 +425,9 @@ HAVING COUNT(*) >= 340
 ```sql
 SELECT * FROM employees
 WHERE FirstName LIKE 'A%';
-This choose any text begin with A.
 ```
 
+- This choose any text begin with `A`.
 - NOT LIKE picks anything that not in this pattern.
 
 ### Built-in Function
@@ -493,84 +578,121 @@ This choose any text begin with A.
   - TODATETIMEOFFSET
   - YEAR
 
-### Join(regular)
+### Join
 
-Rows returned only if they exist in both tables
+- Table names can use nickname, set after `FROM` clause, e.g. `FROM tablename alias`
+- Columns that appear in multiple tables must be table prefixed(ususally use alias for short) to prevent ambiguity
+  - `alias.*` means all columns from table `alias`
+- MySQL only supports some basic join types like inner and outer
 
-1. use SELECT…..WHERE Col1 = Col2
+#### Inner Join
 
-SELECT customers.ID, customers.Name, orders.Name, orders.Amount
-FROM customers, orders
-WHERE customers.ID=orders.Customer_ID
-ORDER BY customers.ID;
+- Rows returned only if they exist in both tables
+- `INNER` in the query is optional
+  ```sql
+  SELECT column
+  FROM firsttable
+  INNER JOIN secondtable
+  ON firsttable.column = secondtable.column
+  ```
+- Select all columns from both tables, Join on purchase order id
+  ```sql
+  SELECT *
+  FROM purchase_orders
+  JOIN purchase_order_lines
+  ON purchase_orders.purchase_order_id = purchase_order_lines.purchase_order_id
+  ```
+- Optionally, the old pre ANSI 92 syntax
+  ```sql
+  SELECT ct.ID, ct.Name, ord.Name, ord.Amount
+  FROM customers AS ct, orders AS ord
+  WHERE ct.ID=ord.Customer_ID
+  ORDER BY ct.ID;
+  ```
 
-Table names can use nickname, set in from clause
+#### Outer Join
 
-SELECT ct.ID, ct.Name, ord.Name, ord.Amount
-FROM customers AS ct, orders AS ord
-WHERE ct.ID=ord.Customer_ID
-ORDER BY ct.ID;
+- It can be either `LEFT OUTER JOIN` or `RIGHT OUTER JOIN`
+- Keyword `OUTTER` is optional
+- The `LEFT OUTTER JOIN` returns all rows from the first table, even if there are no matches in the right table
+- The `RIGHT OUTTER JOIN` returns all rows from the second table, even if there are no matches in the right table
+  ```sql
+  SELECT table1.column1, table2.column2
+  FROM table1 LEFT OUTER JOIN table2
+  ON table1.column_name = table2.column_name;
+  ```
+- If no match is found for a particular row, NULL is returned
+- Excluding records that both tables have
+  ```sql
+  SELECT *
+  FROM tableA A
+  LEFT JOIN tableB B ON A.key = B.key
+  WHERE B.key IS NULL
+  ```
+- Optionally, old syntax for left outer join
+  ```sql
+  SELECT s.item_id, p.item_id, quantity_sold, quantity_purchased
+  FROM sales s, purchases p
+  WHERE s.item_id = p.item_id(+)
+  ```
 
--AS can be omitted sometimes, like in SSMS.
-SELECT ct.\* ord.Name, ord.Amount
-FROM customers ct, orders ord
-WHERE ct.ID=ord.Customer_ID
-ORDER BY ct.ID;
+#### Natural Join
 
-ct.\* means all columns from table ct.
+- The database will decide which columns from both tables are used to join, based on the names and data types
+- Table prefixes are not required
+  ```sql
+  SELECT patient_id, nursing_unit_id, room, bed
+  FROM patients
+  NATURAL JOIN admissions
+  ```
 
-2. use join…on
+#### Full Outer Join
 
-SELECT column(s)
-FROM firsttable
-JOIN secondtable
-ON firsttable.column = secondtable.column
+- All rows returned from both tables
+- Missing values returned as NULL
+  ```sql
+  SELECT s.item_id, p.item_id, quantity_sold, quantity_purchased
+  FROM sales s
+  FULL OUTER JOIN purchases p ON s.item_id = p.item_id
+  ```
+- To exclude records that both tables have
+  ```sql
+  SELECT *
+  FROM tableA A
+  FULL OUTER JOIN tableB B
+  ON A.key = B.key
+  WHERE A.key IS NULL OR B.key IS NULL
+  ```
 
-example:
-SELECT \*
-FROM purchase_orders
-JOIN purchase_order_lines
-ON purchase_orders.purchase_order_id = purchase_order_lines.purchase_order_id
+#### Cross Join
 
-Select all columns from both tables
-Join on purchase order number
+- Each row from left table is joined with each row from right table
+- If `table_a` has `x` rows, `table_b` has `y` rows. the cross join of them has `x` multiply by `y` rows.
+  ```sql
+  SELECT p.product_id, sold, purchased
+  FROM sales_lines s
+  CROSS JOIN purchase_lines p
+  ```
+- optionally, cross join can be expressed as:
+  ```sql
+  SELECT ct.ID, ct.Name, ord.Name, ord.Amount
+  FROM customers ct, orders ord
+  ```
 
-It is also called inner join
+#### Self Join
 
-SELECT column_name(s)
-FROM table1 INNER JOIN table2
-ON table1.column_name=table2.column_name;
+- A table Join on itself using any types of join
+  ```sql
+  SELECT e1.employee_id, e1.first_name, e1.last_name, e1.department, e1.title, e1.supervisor, e2.employee_id, e2.first_name, e2.last_name
+  FROM employees e1
+  LEFT JOIN employees e2 - - if not using LEFT, somebody will be missing.
+  ON e1.supervisor = e2.employee_id
+  ORDER BY e1.department, e1.employee_id
+  ```
 
-The LEFT JOIN returns all rows from the left table, even if there are no matches in the right table.
-SELECT table1.column1, table2.column2...
-FROM table1 LEFT OUTER JOIN table2
-ON table1.column_name = table2.column_name;
+#### Join Multiple Tables
 
-If no match is found for a particular row, NULL is returned.
-
-The RIGHT JOIN returns all rows from the right table, even if there are no matches in the left table.
-
-MySQL only support above types of join.
-OUTER keywords can be optional.
-There are many other types of join.
-full outer join
-All rows returned from both tables
-Missing values returned as NULL
-
-cross join
-Each row from left table is joined with each row from right table
-if table_a has x rows, table_b has y rows. the cross join of them has x multiply by y rows.
-
-SELECT p.product_id, sold, purchased
-FROM sales_lines s
-CROSS JOIN purchase_lines p
-
-or (inner join using where = syntax and remove the where clause)
-SELECT ct.ID, ct.Name, ord.Name, ord.Amount
-FROM customers ct, orders ord
-
-Example for join 3 tables
-
+```sql
 SELECT first_name, last_name, medication_description, dosage
 FROM patients p
 JOIN unit_dose_orders u
@@ -578,13 +700,9 @@ ON p.patient_id = u.patient_id
 JOIN medications m
 ON u.medication_id = m.medication_id
 ORDER BY last_name, first_name, medication_description
+```
 
-Joining a Table with Itself
-SELECT e1.employee_id, e1.first_name, e1.last_name, e1.department, e1.title, e1.supervisor, e2.employee_id, e2.first_name, e2.last_name
-FROM employees e1
-LEFT JOIN employees e2 - - if not using LEFT, somebody will be missing.
-ON e1.supervisor = e2.employee_id
-ORDER BY e1.department, e1.employee_id
+#### Union
 
 UNION combines multiple datasets into a single dataset, removes any existing duplicates.
 UNION ALL (faster) does not remove duplicate rows

@@ -881,8 +881,8 @@ try{
 
 - `java.util.Random;`
 - `Random name = new Random();`
-- `name.nextInt(x);` generate x different int from 0
-- `name.nextDouble(x);` generate double int from 0-(x-1)
+- `name.nextInt(x);` generate int from 0 to `x-1`
+- `name.nextDouble(x);` generate double from 0 to `x-1`
 - `name.nextBoolean(x);`
 
 ### Math class

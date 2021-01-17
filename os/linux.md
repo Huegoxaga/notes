@@ -71,6 +71,7 @@
   - `du -sh <folder> | sort -h` List all files inside the folder and its size in order.
     - `--max-depth=1` specify the deepth
 - Check swap file size, `swapon`
+- The `var` folder is used by the OS to write runtime data
 
 ## General Commands
 
@@ -97,6 +98,7 @@
   - `ls` If no directory name is followed, it will list all of the files in the current working directory.
   - `ls /etc` it will display all files inside the `etc` folder.
   - add `\` before ls to see not colored outputs.
+  - `-h` changes the output to be more human readable
 - `lsusb` check all existing USB devices.(debian-based Linux)
 - `cd` Change directory to the directory followed, if nothing followed cd to home dir.
 - `pwd` display the absolute path to the current working directory.
@@ -106,10 +108,12 @@
   - create multiple new folderName separate by space.
   - `-p` option helps create sub-directories of a directory. It will create parent directory first, if it doesn't exist. But if it already exists, then it will not print an error message and will move further to create sub-directories.
 - `cp <source> <destination> -R`, copy files for folders, `-R` include directories.
-  - `cp ~/a* ~/Documents/a` copy anything begins with a to `a` folder.
+  - `cp ~/a* ~/Documents/a` copy anything begins with a to `a` folder
+  - `cp <fileA> <fileB> <Destination>` copy multiple files into one folder
+  - `-p` preserve the attributes like modification time, access time, file flags, file mode of each source file in the copying process
 - `mv <source> <destination>` The mv command is used to move or rename files
 - `rm <PathToFile>` remove files
-  - `-r` includes folders
+  - `-r` or `-R` includes folders, recursively
   - `-f` forcibly delete files without asking
 - `rmdir` remove empty directories
 - `find <fromFolderPath> -type f -iname "*.txt" 2> /dev/null`
@@ -171,6 +175,12 @@
   - Although this command does all the things `make` will do, it is recommanded to run `make` first.
 - `truncate -s 0 syslog` truncate text file
 - `tail -f /var/log/syslog` view log from the buttom
+  - The `-f` option causes tail to not stop when end of file is reached, but
+    rather to wait for additional data to be appended to the input
+  - `tail -3 /var/log/syslog` view last 3 lines of the log
+  - `tail /var/log/syslog` view last 10 lines of the log, by default
+- `head -3 /var/log/syslog` view first 3 lines of the log
+  - `head /var/log/syslog` view first 10 lines of the log, by default
 
 ### Access Control
 

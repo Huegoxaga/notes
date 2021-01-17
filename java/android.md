@@ -6,7 +6,8 @@
 - Linux OS defines the basic file system, I/O, and low level hardware interface for mobile devices and Android provides the user interface or service level access
 - Android Studio is the IDE for Android App Development
 - Android SDK is provided by various versions of SKD platforms. Each marjor platform version has a name. E.g. `Android 10.9` is called `Q`.
-- Each SDK platform version is associated with an API level, API level is used to determined the apps compatibility.
+- Each SDK platform version is associated with an API level, API level is used to determined the apps compatibility
+  - Forward compatibility or upward compatibility is guaranteed (lower level app works on all newer API level platform
 
 ## Setup
 
@@ -25,7 +26,6 @@
   - Select `start a new project`.
   - Select the `Empty Activity` template(recommanded)
   - The package name is the unique identifier of the app. Usually it is the organization or personal domain name in reverse order.
-  - The minimum API level controls the minimum SDK platform version that the app will support
 - Open an existing project
   - In the welcome page, select and open the existing project folder
   - Open the existing project's gradle file with Andriod Studio.
@@ -33,13 +33,11 @@
 
 ### Configuration
 
-In the preference menu:
-
-- Change color and font size
-- Enable auto import
-- And prefix for Java name convention
-
-Setup version control
+- In the preference menu, one can:
+  - Change color and font size
+  - Enable auto import
+  - And prefix for Java name convention
+  - Setup version control
 
 ### Run Apps
 
@@ -69,23 +67,119 @@ Setup version control
   - `USB debugging` option in the `Developer options` menu should be checked in order to run app on a real device for testing.
   - Click the play button in Andriod Studio and select the connected real device to build and run the app during development.
 
-## Project Structure
+## Coding
+
+- In an Android app, Java code is used to construct logic, XML is used to describe the layout and preference, Gradle is used to manage dependencies
+- An Android project folder has a `java` folder, :
+- `XML` Structure
+  - `XML` files may start with `<?xml version="1.0" encoding="utf-8"?>` on the first line to describe the file version and encoding startard
+  - Then the `XML` file has the other element that supplies information, different element name provides different information
+    - E.g. `manifest` element is the parent element for the manifest file, a layout type element is the parent element for the layout file etc.
+  - All elements have attributes like in `namespace:property="value"` format, where all parent element in the `XML` file starts with namespace `xmlns` (XML NameSpace)
+    - e.g. `xmlnm:android="http://schemas.android.com/apk/res/android"
+  - Once a property is defined in the parent element, it can be used as a namespace to access and define its properties
+  - Certain element might have other attributes
+  - Like any markup language, the element can be self closing or it can surround another element
+  - It can contain variables or reference that start with `@` symbol
+
+### `java` folder
+
+- It can access variables or reference that imported from `R`
+- Values from `strings.xml` can be loaded using `getString()`, e.g. `String name = getString(R.string.name)`
+- `onCreate()` is called once during app launch or after orientation of the app is changed
+  - All code for initialization and should be placed here
+- A handler can be written in the acivity class as a separate method as `public void handlerName(View view) {}`
+  - It must return `void`(or have no return) and it must take a single argument of type `View`
+  - The handler can be assigned to a widget in the attribute panel of the layout desinger
+
+#### View object
+
+- View object class represents the basic building block for user interface components. A View occupies a rectangular area on the screen and is responsiblefor drawing and event handling. View is the base class for widgets, which are used to create interactive UI components (buttons, text fields, etc.)
+- View objects can be obtained using `findViewById` with element id, `View myView = findViewById(R.id.elementID)`
+  - returns `null` if element ID is not found in the layout xml
+
+#### TextView
+
+- it is a object class inherits all the methods of the View Object. It provides a basic element for display to the user
+- `TextView myTextView = findViewById(R.id.elementID)`
+- `myTextView.setText("Hello")`, set text
+
+#### EditText
+
+- it is a object class that inherits the methods of the TextView object. It provides an element that allows input.
+- `EditText myEditText = findViewById(R.id.elementID)`
+- `myEditText.getText().toString()`, returns the string value of the current edittext input box
+  - `getText()` returns a `Editable` instance can be converted to string using `toString()`
 
 ### `manifests` folder
 
 #### `AndroidManifest.xml`
 
-- It contains the general information about the project
-  - path to icons and round icons folders
-  - the launch activity
+- Every app project must have an `AndroidManifest.xml` file at the root of the `manifests` folder
+- It contains the essential information about the project
+  - The app's package name, which usually matches your code's namespace.
+    - The Android build tools use this to determine the location of code entities when building your project
+  - The components of the app, which include all activities, services, broadcast receivers, and content providers.
+    - Each component must define basic properties such as the name of its Kotlin or Java class
+  - The permissions that the app needs in order to access protected parts of thesystem or other apps
+  - The hardware and software features the app requires, which affects which devices can install the app from Google Play
+
+##### Application Element
+
+- `android:allowBackupWhether="true"` to allow the application to participate in the backup and restore infrastructure.
+  - If this attribute is set to `"false"`, no backup or restore of the applicationwill ever be performed
+- `android:icon="@mipmap/ic_launcher"` path to the icons folders
+  - the `"@"` syntax provides an XML reference to an internal resource
+- `android:roundIcon="@mipmap/ic_launcher_round"` path to the round icons folders
+- `android:theme` A reference to a style resource defining a default theme for all activities in the application
+  - A style is a collection of attributes that specify the appearance for a single View.
+  - A theme is a collection of attributes that's applied to an entire app, activity, or view hierarchy
+  - Themes can also apply styles to non-view elements, such as the status bar and window background
+
+##### Activity Element
+
+- declares an activity (an Activity subclass) that implements part of the application's visual user interface
+- All activities must be represented by `<activity>` elements in the manifest file
+- Any that are not declared there will not be seen by the system and will never be run
+- `android:name=".MainActivity"` The name attribute defines the class that implements the activity
 
 ### `res` folder
 
-- It contains all the app resources.
-- Right click `res` folder and open the `Image Asset`, this tool can be used to generate icons for the app.
-- The image files spec can be found [here](https://developer.android.com/training/multiscreen/screendensities).
-- Images can be resize and organize by the [Java Final Resizer](https://github.com/asystat/Final-Android-Resizer).
-  - When images have been resized, copy and paste the output image directly to the `res` folder.
+- It contains all the app resources
+
+#### `layout` folder
+
+- A `XML` layout file uses the following layout type as parent element to define layouts
+- Element will be moved to top left corner if no layout constraint is defined
+- Common attributes
+  - `android:background=“#ffffff”` set the background
+  - `android:layout_width`, `android:layout_height` the width and height of the layout container, its value can be:
+    - `"match_parent"` set it to be the same as its parent
+    - `"wrap_content"` set it to be the same as its content
+  - `android:id="@+id/key"` set element id as `key`, it is used as reference to the element by the Java code
+- Common elements
+  - `<Button />`
+    - `android:text="Hello"`
+    - `android:textColor="#fff"`
+
+##### Layout Types
+
+- `<LinearLayout>`
+  - It defines layout container that can grow in two direction, either vertical or horizontal
+  - `android:orientation` can be either `"vertical"` or `"horizontal"`
+- `<RelativeLayout>`
+  - It defines elements relative to others(legacy)
+  - `android:layout_centerHorizontal="true"`, `android:layout_centerVertical="true"`, `android:layout_centerInParent="true"` for centering elements
+- `<ConstraintLayout>`
+  - It defines elements relative to others
+
+##### Elements
+
+- PlainText
+  - `backgroudTint` controlls the underline color
+- EditText
+  - Used to get user input, can have different types, e.g. `android:inputType="number"` for input number only
+    - can drag different types of EditText from the palette
 
 #### `drawable` folder
 
@@ -94,7 +188,112 @@ Setup version control
 #### `minmap` folder
 
 - It stores the app icon file
-
+- The image files spec can be found [here](https://developer.android.com/training/multiscreen/screendensities).
 - It can has two folder one contains square app icons, the other one contains round app icons.
+- Images can be resize and organize by the [Java Final Resizer](https://github.com/asystat/Final-Android-Resizer).
+  - When images have been resized, copy and paste the output image directly to the `res` folder
+
+#### `values` folder
+
+##### `themes/themes.xml`
+
+- change the parent attribute of the style element to change the app bar style
+- `colorPrimary` controls the app bar color
+- `colorPrimaryVariant` controls the status bar color
+
+##### `strings.xml`
+
+- It stores all the hardcoded strings
+- The file has parent element `<resources></resources>`
+- It consisted of multiple sting records as `<string name="key">value</string>`
+- It can be used in Java code as `R.string.string_name`
+- It can be used in XML code or the layout attribute panel as `@string/string_name`
+
+## Gradle Scripts
+
+- Each app is associated with a group of gradle scripts
+- Gradle is an advanced build toolkit, to automate and manage the build process, while allowing you to define flexible custom build configurations
+- Gradle and the Android plugin run independent of Android Studio. This means Android apps can be built either from within Android Studio or use the command lineon your machine, or on machines where Android Studio is not installed (such as continuous integration servers)
+- Android studio will automatically manage the dependencies
+  - sometimes we will need to tweak dependencies to ensure that certain widgets are working
+  - Build errors that complain about missing components are sometimes the result of missing dependencies
 
 ## Android Studio IDE
+
+- Ultimately, all editors will change either the `.xml` code or the `.java` code
+- Differenct code uses different editor
+- To format code, press `Command+Option+L` on Mac, `CTRL+ALT+L` on Windows
+
+### Java Editor
+
+- press `option + Enter` to auto import library
+
+### XML Editor
+
+- Hold `Alt` or `Option` and click on namespace name to auto import
+- Changes made to the `XML` layout file will be immeditately rendered in the preview of the Design Editor
+- Right click `res` folder and open the `Image Asset`, this tool can be used to generate icons for the app
+
+### Layout Editor
+
+- The Layout Editor enables you to quickly build layouts by dragging UI elements into a visual design editor instead of writing layout XML by hand
+- The Layout Editor appears when opening an `XML` layout file
+- It works well with `ConstraintLayout`
+
+#### Palette
+
+- Contains various views and view groups that you can drag into your layout.
+
+#### Component Tree
+
+- Shows the hierarchy of components in your layout.
+
+#### Toolbar
+
+- Click these buttons to configure your layout appearance in the editor and change layout attributes.
+- Infer Constraint button can auto create relative constraint
+- There is a `Clear All Constraints` button
+- Use `eye` tool to select `Show All constraints`
+
+#### Design Editor
+
+- Edit layout in Design view, Blueprint view, or both
+- The design editor can preview your layout on different Android devices and versions, and you can dynamically resize the layout to be sure it works well on different screen sizes
+- Element and layout can be dragged into the Design Editor from the palette or component tree
+- After dragging `ImageView` into the layout select the image in the resources directory to import
+  - The `tools:srcCompat` attr sets the image for the editor,
+
+#### Blueprint View
+
+- It is good for construct constraints for layout
+- Drag the point on an element to other reference to establish constraints
+- `WM` wiggle lines means match constraints, flexiable
+- `>>` lines means Wrap Content
+- `|--|` lines means fixed
+- `WM-|->` lines means flexiale constraint with a fixed minimum constraint
+- If a element is surrounded by match constraints, it will be centered
+
+#### Attributes
+
+- Controls for the selected view's attributes
+- Layout elements and be controlled and set by using the right attributes panel
+- The constraint widget in the attributes tool will allow you to enter specific numbers
+- Right click to show other reference like a baseline of an element and drag it around to create constraint
+- View id can be changed at the top
+- It can be used to assign handler to an action of an element
+
+#### View mode
+
+- View layout in either Code code mode icon, Design design mode icon, or Split split mode icon modes. Split mode shows both the Code and Design windows at the same time.
+
+#### Zoom and pan controls
+
+- Control the preview size and position within the editor.
+
+## Debug
+
+- Click the bug icon to debug the app and see error messages in the Logcat console at the bottom
+
+## Exporting Projects
+
+- a `.zip` file of the project can be created using the option under `Manage IDE Settings --> Export to Zip File...`
