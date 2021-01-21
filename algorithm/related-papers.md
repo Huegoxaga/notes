@@ -17,6 +17,8 @@
 
 ### Natural Language Processing
 
+- The [ACL Anthology](https://www.aclweb.org/anthology/) hosts papers on the study of computational linguistics and natural language processing
+
 #### Word Representations
 
 ##### fastText

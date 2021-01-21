@@ -1,11 +1,12 @@
 # Finance
 
-- Finance, as a discipline, is derived from economics; it involves assessing money, banking, credit, investments, and other aspects of the financial systems
-- Finance is a interdisciplinary topic derived from the following concepts
-  - Time Value of Money
-  - Statistics
+- Finance, as a discipline, derived from ecomonics; it involves assessing money, banking, credit, investments, and other aspects of the financial systems
 
-## Time Value of Money
+## Quantitative Methods
+
+- The following topics form the basis of quantitative methods in Finance
+
+### Time Value of Money
 
 - The time value of money (TVM) is the concept that money you have now is worth more than the identical sum in the future due to its potential earning capacity, the time value can be:
   - Present value(PV) is the current value before making the investment
@@ -61,7 +62,7 @@
     - It is the geometric mean of the change factors of all HPR values
   - For all of the above calculation for return, a nagative HPR means losses, and a positive HPR means gains
 
-## Statistics Concepts
+### Statistics Concepts
 
 - Types of scales for statistic meaturement
   - Nominal Scale - A property of the data is categorized by name

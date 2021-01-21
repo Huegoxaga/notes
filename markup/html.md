@@ -167,12 +167,15 @@ It indicates the document is a HTML file, usually placed in the very first line.
 - `<a href="URL">Link-text goes here</a>`
 - `<a href="mailto:emailaddress">Text</a>` email link
 - `<a href="URL" target="_blank">Link-text goes here</a>` openlink in new tab
+  - use attribute `rel="noreferrer noopener"` in order to conceal infomation during redirection and add a layer of security
+- `<a href="URL" download="filename">Link-text goes here</a>` The download attribute specifies that the target will be downloaded when a user clicks on the hyperlink
+  - The optional value of the download attribute will be the new name of the file after it is downloaded
+  - `<a href="URL" download>Link-text goes here</a>` If the value is omitted, the original filename is used
 - Anchor Links
-
-```html
-<h1 id="tips">Tips Section</h1>
-<a href="#tips">Jump to the Tips Section</a>
-```
+  ```html
+  <h1 id="tips">Tips Section</h1>
+  <a href="#tips">Jump to the Tips Section</a>
+  ```
 
 #### Lists
 

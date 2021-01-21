@@ -126,7 +126,8 @@
 
 ##### Maturity
 
-- Total borrowing time length
+- maturity date of a bond is the date on which the principal is to be repaid once a bond has been issued
+- the term to maturity (tenor) - The time remaining until maturity date
 - Maturity date is the date on which the principal is to be repaid once a bond has been issued
 - terms to maturity can be as short as one day or as long as thirty years or more
   - money market securities bonds has original maturities of one year or less

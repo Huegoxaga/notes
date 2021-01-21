@@ -131,7 +131,7 @@
 
 ## Syntax
 
-The following SQL examples work for mySQL, variation for other SQL will be noted in the bracket.
+The following SQL examples work for mySQL, variation for other SQL will be noted
 
 - Check server version
 
@@ -161,15 +161,13 @@ SHOW COLUMNS FROM tablename
 
 ### SELECT
 
-- The SELECT statement is used to query data from a database. Query results are stored in a table called result-set.
-- A SELECT statement retrieves zero or more rows from one or more database tables.
-- FROM is required expect for SQL Server.
-
-```sql
-SELECT column_list
-FROM table_name
-```
-
+- The `SELECT` statement is used to query data from a database. Query results are stored in a table called result-set.
+- A `SELECT` statement retrieves zero or more rows from one or more database tables.
+- `FROM` is required expect for SQL Server.
+  ```sql
+  SELECT column_list
+  FROM table_name
+  ```
 - SELECT can be followed by a aggregating function
   - Aggregating functions will ignore columns with NULL values
   - AVG – Computes the average value of the column
@@ -177,90 +175,74 @@ FROM table_name
   - MAX – Determines the maximum value
   - MIN – Determines the minimum value
   - SUM – Totals the numeric values
-
-```sql
-SELECT COUNT(*)FROM patients
-SELECT AVG(patient_weight)FROM patients
-SELECT MIN(last_name)FROM patients
-```
-
-- Coalesce - takes any number of columns name and returns the first value that is not null
-
-```sql
-SELECT first_name, last_name, COALESCE(allergies, 'No known allergies')FROM patients
--- For each returning records, When allergies has a value it will return the value
--- If allergies is NULL, it will return 'No known allergies'
-```
-
+    ```sql
+    SELECT COUNT(*)FROM patients
+    SELECT AVG(patient_weight)FROM patients
+    SELECT MIN(last_name)FROM patients
+    ```
+- Coalesce - takes any number of columns name and returns the first value that is not null, it is used to set a default value if returns null
+  ```sql
+  SELECT first_name, last_name, COALESCE(allergies, 'No known allergies')FROM patients
+  -- For each returning records, When allergies has a value it will return the value
+  -- If allergies is NULL, it will return 'No known allergies'
+  ```
 - Case Function - Case function allows boolean logic in a SQL statement
 - If no conditions are true and there is no else clause, null is returned
-
-```sql
-SELECT first_name, last_name,
-  CASE WHEN patient_height > 170 THEN 'Tall'
-  WHEN patient_height > 120 THEN 'Average'
-  ELSE 'Short'
-  END
-FROM patients
-```
-
+  ```sql
+  SELECT first_name, last_name,
+    CASE WHEN patient_height > 170 THEN 'Tall'
+    WHEN patient_height > 120 THEN 'Average'
+    ELSE 'Short'
+    END
+  FROM patients
+  ```
 - Case function can be aliased as a column to enhance readability
-
-```sql
-SELECT first_name, last_name,
-  CASE WHEN patient_height > 170 THEN 'Tall'
-  WHEN patient_height > 120 THEN 'Average'
-  ELSE 'Short'
-  END height
-FROM patients
-```
-
-- Columns have fully qualified names as tablename.columnname is acceptable. It is used to distinguish same columns names from different tables.
+  ```sql
+  SELECT first_name, last_name,
+    CASE WHEN patient_height > 170 THEN 'Tall'
+    WHEN patient_height > 120 THEN 'Average'
+    ELSE 'Short'
+    END height
+  FROM patients
+  ```
+- Columns have fully qualified names as `tablename.columnname` is acceptable. It is used to distinguish same columns names from different tables.
 - Multiple columns can be queried in one command separated by commas.
 - `*` represent all.
 - `DISTINCT` qualifier return unique value of columns
-
-```sql
-SELECT DISTINCT column_name1, column_name2
-FROM table_name;
-```
-
+  ```sql
+  SELECT DISTINCT column_name1, column_name2
+  FROM table_name;
+  ```
 - `LIMIT` keyword shows only specific number of d rows.
-
-```sql
-SELECT ID, FirstName, LastName, City
-FROM customers LIMIT 5;
-```
-
-```sql
-Select 4 start after 3rd(counting from zero)
-SELECT ID, FirstName, LastName, City
- FROM customers LIMIT 3, 4;
-```
-
+  ```sql
+  SELECT ID, FirstName, LastName, City
+  FROM customers LIMIT 5;
+  ```
+  ```sql
+  Select 4 start after 3rd(counting from zero)
+  SELECT ID, FirstName, LastName, City
+  FROM customers LIMIT 3, 4;
+  ```
 - Im SQL Server use TOP, The TOP clause sets a maximum number of rows that can be retrieved
-
-```sql
-SELECT TOP 5 *
-FROM patients;
-and
-SELECT TOP 5 PERCENT *
-FROM patients;
-```
-
-- ORDER BY is used with SELECT to sort the returned data.
+  ```sql
+  SELECT TOP 5 *
+  FROM patients;
+  and
+  SELECT TOP 5 PERCENT *
+  FROM patients;
+  ```
+- ORDER BY is used with `SELECT` to sort the returned data.
+  - By default the order is `ASC`, use `DESC` to get results in descending order
 - Can order by multiple columns separate by commas. Sort the first column first then second.
-
-```sql
-SELECT * FROM customers
-ORDER BY FirstName;
-Default uses ascending order.
-Or use
-ORDER BY Salary DESC(ASC)
-```
-
+  ```sql
+  SELECT * FROM customers
+  ORDER BY FirstName;
+  Default uses ascending order.
+  Or use
+  ORDER BY Salary DESC
+  ```
 - Where keyword is used to add conditions.
-  - Predicates are used in the WHERE clause to specify conditions, Basic Predicate:
+  - Predicates are used in the `WHERE` clause to specify conditions, Basic Predicate:
     - `=, <>, <, >, <=, >=`
     - BETWEEN Predicate
     - EXISTS Predicate
@@ -278,113 +260,90 @@ ORDER BY Salary DESC(ASC)
   (Boundaries are included)
   ```
 - Single quotation marks (') is used for text.
-
-```sql
-SELECT ID, FirstName, LastName, City
-FROM customers
-WHERE City = 'New York';
-```
-
-- ‘ can also be the escape characters. Ex: Can''t
+  ```sql
+  SELECT ID, FirstName, LastName, City
+  FROM customers
+  WHERE City = 'New York';
+  ```
+- single qoute can also be the escape characters. Ex: Can''t
 - `IN` keyword includes all satisfied columns.
-
-```sql
-SELECT * FROM customers
-WHERE City IN ('New York', 'Los Angeles', 'Chicago');
-```
-
-- The NOT IN operator allows you to exclude a list of specific values from the result set. Result set must included in bracket, even there is only one element in it. result set can be a column returned from other SELECT query.
-
+  ```sql
+  SELECT * FROM customers
+  WHERE City IN ('New York', 'Los Angeles', 'Chicago');
+  ```
+- The `NOT IN` operator allows you to exclude a list of specific values from the result set. Result set must included in bracket, even there is only one element in it. result set can be a column returned from other SELECT query.
 - `ANY` and `SOME` checks whether any value in the list makes the condition true
 - `ALL` checks to ensure that all values in the list are true
-
-```sql
-SELECT first_name, last_name, patient_height
-FROM patients
-WHERE gender = 'M'
-AND patient_height > ALL (
-  SELECT patient_height
+  ```sql
+  SELECT first_name, last_name, patient_height
   FROM patients
-  WHERE gender = 'F')
-```
-
+  WHERE gender = 'M'
+  AND patient_height > ALL (
+    SELECT patient_height
+    FROM patients
+    WHERE gender = 'F')
+  ```
 - EXISTS returns true if a subquery contains any rows.
 - `IS` can be used with `NULL`. or `IS NOT NULL`
   - `WHERE column = NULL` will not return anything
   - `NULL + 5` will return `NULL`
-
-```sql
--- This select all row of patients tables that exist in the unit_dose_orders table
-SELECT first_name, last_name
-FROM patients
-WHERE EXISTS (SELECT * FROM unit_dose_orders WHERE unit_dose_orders.patient_id = patients.patient_id)
-SELECT *
-FROM vendors
-WHERE NOT EXISTS (SELECT * FROM purchase_orders WHERE purchase_orders.vendor_id = vendors.vendor_id)
--- This select all row of patients tables that don’t exist in the unit_dose_orders table
-SELECT * FROM patients
-WHERE allergies IS NULL;
-```
-
-- AND and OR can be used to connects conditions for WHERE statement.
-- Concat combine two column in a format
+    ```sql
+    -- This select all row of patients tables that exist in the unit_dose_orders table
+    SELECT first_name, last_name
+    FROM patients
+    WHERE EXISTS (SELECT * FROM unit_dose_orders WHERE unit_dose_orders.patient_id = patients.patient_id)
+    SELECT *
+    FROM vendors
+    WHERE NOT EXISTS (SELECT * FROM purchase_orders WHERE purchase_orders.vendor_id = vendors.vendor_id)
+    -- This select all row of patients tables that don’t exist in the unit_dose_orders table
+    SELECT * FROM patients
+    WHERE allergies IS NULL;
+    ```
+- `AND` and `OR` can be used to connects conditions for WHERE statement.
+- `CONCAT` combines two column in a format
   - A concatenation results in a new column. The default column name will be the CONCAT
-
-```sql
-SELECT CONCAT(FirstName, ', ' , City) FROM customers;
-```
-
+    ```sql
+    SELECT CONCAT(FirstName, ', ' , City) FROM customers;
+    ```
 - `AS` is used for a column name change(Alias)
 - `AS` is optional
 - Use double qoute for alias name to reserves capitalization, e.g. `AS "Name"`(works when database support case sensitive data)
-
-```sql
-SELECT CONCAT(FirstName,', ', City) AS new_column
-FROM customers;
-```
-
+  ```sql
+  SELECT CONCAT(FirstName,', ', City) AS new_column
+  FROM customers;
+  ```
 - Arithmetic operator can also be used in query.
-
-```sql
-SELECT ID, FirstName, LastName, Salary+500 AS Salary
-FROM employees;
-```
-
+  ```sql
+  SELECT ID, FirstName, LastName, Salary+500 AS Salary
+  FROM employees;
+  ```
 - Upper and lower function change upper lower cases.
-  - - Only affects on letters with default name Upper.
-
-```sql
-SELECT FirstName, UPPER(LastName) AS LastName
-FROM employees;
-SELECT FirstName, LastName AS LastName
-FROM employees
-WHERE LOWER(LastName) like 'smi%';;
-```
-
+  ```sql
+  SELECT FirstName, UPPER(LastName) AS LastName
+  FROM employees;
+  SELECT FirstName, LastName AS LastName
+  FROM employees
+  WHERE LOWER(LastName) like 'smi%';;
+  ```
 - GROUP BY
   - It can be used to deal with results of the column that has different rows.
   - GROUP BY must be used in conjunction with an aggregating function
   - Does not sort automatically, still need ORDER BY for sort
   - Multiple groupings are allowed
-
-```sql
-SELECT province_id, city, COUNT(*)
-FROM patients
-GROUP BY province_id, city
-```
-
+    ```sql
+    SELECT province_id, city, COUNT(*)
+    FROM patients
+    GROUP BY province_id, city
+    ```
 - HAVING
-
-- It is like another WHERE clause for grouped columns.
-- Used with GROUP BY
-
-```sql
-SELECT nursing_unit_id, COUNT(*)
-FROM admissions
-GROUP BY nursing_unit_id
-HAVING COUNT(*) >= 340
-```
-
+  - It is like another WHERE clause for grouped columns.
+  - Used with GROUP BY
+  ```sql
+  SELECT nursing_unit_id, COUNT(*)
+  FROM admissions
+  GROUP BY nursing_unit_id
+  HAVING COUNT(*) >= 340
+  ```
 - Subqueries is a query that has queries inside.
   - the inner query is processed first.
   - Enclose the subquery in parentheses.
@@ -421,14 +380,24 @@ HAVING COUNT(*) >= 340
 - The like keyword can be used to specify a pattern, pattern is represented by:
   - `_` any value.
   - `%` any group of values
-
-```sql
-SELECT * FROM employees
-WHERE FirstName LIKE 'A%';
-```
-
+  ```sql
+  SELECT * FROM employees
+  WHERE FirstName LIKE 'A%';
+  ```
 - This choose any text begin with `A`.
 - NOT LIKE picks anything that not in this pattern.
+- Clauses in SELECT should follow orders as `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`
+
+### Union
+
+- `UNION` combines two or more `SELECT` statements with same type of columns(data type), removes any existing duplicates
+  - If one column can’t match the data type, use null instead
+  ```sql
+  SELECT FirstName, LastName, Company FROM businessContacts
+  UNION
+  SELECT FirstName, LastName, NULL FROM otherContacts;
+  ```
+- `UNION ALL` works faster, and it does not remove duplicate rows
 
 ### Built-in Function
 
@@ -702,124 +671,151 @@ ON u.medication_id = m.medication_id
 ORDER BY last_name, first_name, medication_description
 ```
 
-#### Union
+### View
 
-UNION combines multiple datasets into a single dataset, removes any existing duplicates.
-UNION ALL (faster) does not remove duplicate rows
-Union combines two or more select statements with same type of columns(data type) in order. If one column can’t match use null instead.
+- `VIEW` is a virtual table that is based on the result-set of an SQL statement
+- The View result set is not permanently stored in the database, but generated and executed each time it is used
+- It cannot use ORDER BY
+- Create a view
+  ```sql
+  CREATE VIEW current_patients
+  AS
+  SELECT a.patient_id, first_name, last_name, nursing_unit_id, room
+  FROM patients p
+  JOIN admissions a
+  ON p.patient_id = a.patient_id
+  WHERE discharge_date IS NULL
+  ```
+- Once generated, View can be later query as a normal table
+  ```sql
+  SELECT *
+  FROM current_patients
+  ```
+- A view always shows up-to-date data.
+- When use `SUBSTRING()` function in a view columns names must have alias(new name after AS)
+- Update view
+  ```sql
+  CREATE OR REPLACE VIEW view_name AS
+  SELECT column_name(s)
+  FROM table_name
+  WHERE condition;
+  ```
+  - `REPLACE` is used to replace the view, if it has already been created,
+- Delete View
+  ```sql
+  Delete view,
+  DROP VIEW List;
+  ```
 
-SELECT FirstName, LastName, Company FROM businessContacts
-UNION
-SELECT FirstName, LastName, NULL FROM otherContacts;
+### Insert
 
-Order of Clauses in SELECT
+- Insert a single row to the database
+  ```sql
+  INSERT INTO table_name
+  VALUES (value1, value2, value3);
+  ```
+  ```sql
+  INSERT INTO dental_services
+  VALUES(101, 'Tricky Extraction', 'E', NULL, 0);
+  ```
+- New row will be added at the bottom. Order is important.
+- Must include a value for columns that have no default values or don’t allow null.
+- `PK` value can be omitted, identity property will be used.
+- Alternatively, you can specify the table's column names, then it is also possible to insert data into specific columns
+  ```sql
+  INSERT INTO table_name (column2, column4)
+  VALUES (value2, value4);
+  ```
+  ```sql
+  INSERT INTO dental_services
+  (service_id, service_description, service_type, hourly_rate, sales_ytd)
+  VALUES(302, 'Temporary Filling', 'F', 100, 0)
+  ```
+- When omit one column, its value will be set to NULL.
+- Multiple rows of value can be inserted in one statement after `VALUE` separated by comma.
+  ```sql
+  INSERT INTO dental_services
+  (service_id, service_description, service_type, hourly_rate, sales_ytd)
+  VALUES(302, 'Temporary Filling', 'F', 100, 0),(303,'Temp','T',230.0)
+  ```
+- One can insert multiple rows
+  ```sql
+  INSERT INTO tablename[(column1, column2, column3, column4)]
+  SELECT statement
+  ```
+  ```sql
+  INSERT INTO dental_service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
+  SELECT service_id, service_description, service_type, hourly_rate, sales_ytd
+  FROM dental_services
+  ```
+  ```sql
+  INSERT INTO dental_service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
+  SELECT *
+  FROM dental*services
+  WHERE sales_ytd >= 500
+  ```
+  ```sql
+  INSERT INTO dental_service_archives
+  SELECT *
+  FROM dental_services
+  ```
+  - if column names are not specified, all columns must have values
+  ```sql
+  INSERT INTO dental_service_archives(service_id, service_description)
+  SELECT service_id, service_description
+  FROM dental_services
+  ```
+  - omitted column will be null
 
-SELECT list_of_columns
-FROM list_of_tables
-WHERE list of conditions
-GROUP BY list_of_expressions
-HAVING condition
-ORDER BY expressions
+### Update
 
-Insert into keyword:
-INSERT INTO table_name
-VALUES (value1, value2, value3,…);
+- Update a single row
+  ```sql
+  UPDATE departments
+  SET manager_first_name = 'Bob', manager_last_name = 'Loblaw'
+  WHERE department_id = 5
+  ```
+- select multi rows and apply updates using formula
+  ```sql
+  UPDATE items
+  SET item_cost = item_cost * 1.1
+  WHERE primary_vendor_id = 5
+  ```
+- Updating A Single Row With A Subquery
+  ```sql
+  UPDATE purchase_orders
+  SET total_amount = (SELECT SUM(quantity * unit_cost)FROM purchase_order_linesWHERE purchase_order_id = 10)
+  WHERE purchase_order_id = 1
+  ```
+- If the WHERE clause is omitted, all records in the table will be updated
 
-INSERT INTO dental_services
-VALUES(101, 'Tricky Extraction', 'E', NULL, 0)
-New row will be added at the bottom. Order is important.
-Must include a value for columns that have no default values or don’t allow null.
-PK value can be omitted, identity property will be used.
-Alternatively, you can specify the table's column names(so you can use your own order for columns, not the default)
-INSERT INTO table_name (column1, column2, column3, ...,columnN)  
-VALUES (value1, value2, value3,...valueN);
+### Delete
 
-INSERT INTO dental_services
-(service_id, service_description, service_type, hourly_rate, sales_ytd)
-VALUES(302, 'Temporary Filling', 'F', 100, 0)
+- The `DELETE` statement removes the data from the table permanently.
+- Delete a single row
+  ```sql
+  DELETE FROM dental_services
+  WHERE service_id = 301
+  ```
+- `FROM` is optional
+- Deletion can fail if the PK has a reference to other table.
+- Delete multiple rows.
+  ```sql
+  DELETE FROM sales
+  WHERE amount >= 100
+  ```
+- If `WHERE` clause is omitted, all records in the table will be deleted
+  - `DELETE table_name;`
 
-When omit one column its value will be set to NULL.
+### Create Table
 
-It is also possible to insert data into specific columns only.
-
-Multiple rows of value can be inserted in one statement.
-after VALUE separated by comma.
-
-INSERT INTO dental_services
-(service_id, service_description, service_type, hourly_rate, sales_ytd)
-VALUES(302, 'Temporary Filling', 'F', 100, 0),(303,'Temp','T',230.0)
-
-One can insert multiple rows
-INSERT INTO tablename[(column1, column2, column3, column4)]
-SELECT statement
-
-INSERT INTO dental*service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
-SELECT service_id, service_description, service_type, hourly_rate, sales_ytd
-FROM dental_services
-or
-INSERT INTO dental_service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
-SELECT *
-FROM dental*services
-WHERE sales_ytd >= 500
-or
-INSERT INTO dental_service_archives
-SELECT *
-FROM dental_services  
-(all column must have values.and in order)
-
-INSERT INTO dental_service_archives(service_id, service_description)
-SELECT service_id, service_description
-FROM dental_services
-(omitted column will be null)
-
-Update
-UPDATE table_name
-SET column1=value1, column2=value2, ...
-WHERE condition;
-
-UPDATE departments
-SET manager_first_name = 'Bob', manager_last_name = ‘Loblaw'
-WHERE department_id = 5
-
-UPDATE items
-SET item_cost = item_cost \* 1.1
-WHERE primary_vendor_id = 5
-(select multi rows and apply updates using formula)
-
-UPDATE purchase_orders
-SET total_amount = (SELECT SUM(quantity \* unit_cost)FROM purchase_order_linesWHERE purchase_order_id = 10)
-WHERE purchase_order_id = 1
-(Updating A Single Row With A Subquery)
-
-If the WHERE clause is omitted, all records in the table will be updated!
-
-Delete
-DELETE FROM table_name
-WHERE condition;
-
-DELETE FROM dental_services
-WHERE service_id = 301
-Deletion can fail if the PK has a reference to other table.
-
-DELETE FROM sales
-WHERE amount >= 100
-Delete multiple rows.
-
-If you omit the WHERE clause, all records in the table will be deleted!
-The DELETE statement removes the data from the table permanently.
-
-A single database can house hundreds of tables
-
-CREATE TABLE
-
-CREATE TABLE table_name
-(
-column_name1 data_type(size),
-column_name2 data_type(size),
-column_name3 data_type(size),
-....
-columnN data_type(size)
-);
+- A single database can house hundreds of tables
+  ```sql
+  CREATE TABLE table_name
+  (column_name1 data_type(size),
+  column_name2 data_type(size),
+  column_name3 data_type(size));
+  ```
 
 Numeric
 
@@ -997,30 +993,6 @@ Ex:
 CREATE INDEX STJ_patients_last_name
 ON patients
 (last_name ASC)
-
-View
-In SQL, a VIEW is a virtual table that is based on the result-set of an SQL statement.
-It cannot use ORDER BY
-
-CREATE VIEW view_name AS
-SELECT column_name(s)
-FROM table_name
-WHERE condition
-GROUP BY column_name;
-
-Once generated, View can be later query as a normal table.
-A view always shows up-to-date data.
-When use substring in a view columns names must have alias(new name after AS)
-
-Update view
-
-CREATE OR REPLACE VIEW view_name AS
-SELECT column_name(s)
-FROM table_name
-WHERE condition;
-
-Delete view,
-DROP VIEW List;
 
 Stored Procedures
 Pieces of executable code stored in the database (small programs)  

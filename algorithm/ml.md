@@ -545,6 +545,8 @@
 
 ### Text data preprocessing
 
+- one-hot vectors - a way to represent a word in a set vocabulary by an vector (array), each word in the vocabulary is associated with one index and the word is represented by an array that has `1` on the correponding index and everywhere else is `0`
+  - The demesion of the vector equals the number words in the vocabulary
 - Bag of word - It is a way to preprocess text data by using an array of count for all unique words to record the occurrence of each word in the text data.
   - The list of words are ordered by its frenquent among all words in the text data.
   - Most frenquent words are important, words that are not frenquently seen in the text are usually names, places, holiday etc.
