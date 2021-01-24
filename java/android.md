@@ -81,35 +81,97 @@
   - Certain element might have other attributes
   - Like any markup language, the element can be self closing or it can surround another element
   - It can contain variables or reference that start with `@` symbol
+  - Inline comment: `<!-- Comment -->`
 
 ### `java` folder
 
 - It can access variables or reference that imported from `R`
 - Values from `strings.xml` can be loaded using `getString()`, e.g. `String name = getString(R.string.name)`
+  - use `getResources().getStringArray(R.array.weekdays);` to load arrays
 - `onCreate()` is called once during app launch or after orientation of the app is changed
   - All code for initialization and should be placed here
+  - Variables can be declared at the top inside the class as `private ClassName var;`, but they need to be initialized inside `onCreate()`
 - A handler can be written in the acivity class as a separate method as `public void handlerName(View view) {}`
   - It must return `void`(or have no return) and it must take a single argument of type `View`
   - The handler can be assigned to a widget in the attribute panel of the layout desinger
+- Activities Lifecycles
+  - In an android app, each page is called an activity
+  - The main activity is the first screen to appear when the user launches the app
+  - Each activity is only loosely bound to the other activities
+  - Only one activity can have focus and be responding to events from the user such as touch events
+  - Each activity is a customized class in the Java code
+  - like programming paradigms in which apps are launched with a main() method, the
+  - Android system initiates code in an Activity instance by invoking specific callback methods that correspond to specific stages of its lifecycle, in a order from top to bottom:
+    - `onCreate()` - invoked when the app is initiately loaded or rotated, it can be used to do initialization
+    - `onStart()` - invoked after `onCreate()` or `onRestart()`, right before the activity become visible
+    - `onResume()` - invoked after `onStart()` or `onPause()`, right after the activity become visible
+    - `onPause()` - invoked when the activity is partially hidden, hidden, or goes out of focus, it can be used to save user data
+      - invoke `onResume()` if user returns to the activity before it is completely hidden
+    - `onStop()` - invoked after the new activity is completely alive
+      - `onRestart()` - invoked when user navigates back to the activity after `onStop()` is called before destroyed by the system
+    - `onDestroy()` stopping the app or activity being destroyed by the system
+      - This method is not guaranteed to be called, it highly rely on the decision of the system(e.g. low memory)
+  - Navigate from one activity to another is actually add a new activity to the top of a stack,
+    - all activities in the stack is stored in the memory
+    - the phone’s back button can return to the previous activity with `onResume()`, the top activity might be destroyed if memory is low
+- Event Handler:
+  - `onClick()`, this handler can be overridden and get the trigger widget(widget that is being clicked) from the argument. it takes any view objects. e.g. `public void onClick(View view) {}`
+    - use `Button bview = (Button) view;` to access the button object that is being clicked
+- Optionally, Implement various listeners and bind then to local handler function, instead of using layout attribute seting
+  - `implements View.OnClickListener` for the activity class, then find the button `Button bview = findViewById(R.id.button1);`, and bind local handler to the button's `OnClickListener`, `bview.setOnClickListener(this);`
+  - Listeners interface:
+    - `View.OnClickListener` has the `onClick()` method
+    - `AdapterView.OnItemSelectedListener` has the `onItemSelected()` method
+  - Optionally use, `widgetObject.listener(this::handlerMethod)` to bind in the `onCreate()` method without implement the linstener interface for the activity class
+    - It works when listener interface requires overriding one method
+  - `this::handlerMethod` can be replace by anonymous classes as
+    ```java
+    buttonView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+    Log.d(tag,"Button Pressed"); }
+    });
+    ```
+    - Anonymous classes protect the privacy of the method minimizing the class interface, but does not help with readability
 
 #### View object
 
 - View object class represents the basic building block for user interface components. A View occupies a rectangular area on the screen and is responsiblefor drawing and event handling. View is the base class for widgets, which are used to create interactive UI components (buttons, text fields, etc.)
-- View objects can be obtained using `findViewById` with element id, `View myView = findViewById(R.id.elementID)`
+- View objects can be obtained using `findViewById` with element id, `View myView = (View) findViewById(R.id.elementID)`
   - returns `null` if element ID is not found in the layout xml
+  - Explicit Casting is optional
+- Use `view.getId()` to get the id of any view object
+
+#### Intent object
+
+- It is used to naigate between activities
+- `Intent switch2Activity2 = new Intent(MainActivity.this, MainActivity2.class);` declares new intent, it takes the class of each imported activity files as arguments
+- `startActivity(switch2Activity2);` navigate to the second activity
+- `switch2Activity2.putExtra("data", "Hello");` use intent to store string into varialbe name `"data"`
+- In any `onCreate()` method, use `Intent intent = getIntent();` to access the intent that started it
+- Use `String i = intent.getStringExtra("data");` to get values stored in intent
 
 #### TextView
 
 - it is a object class inherits all the methods of the View Object. It provides a basic element for display to the user
-- `TextView myTextView = findViewById(R.id.elementID)`
+- `TextView myTextView = (TextView) findViewById(R.id.elementID)`
 - `myTextView.setText("Hello")`, set text
 
 #### EditText
 
 - it is a object class that inherits the methods of the TextView object. It provides an element that allows input.
-- `EditText myEditText = findViewById(R.id.elementID)`
+- `EditText myEditText = (EditText) findViewById(R.id.elementID)`
 - `myEditText.getText().toString()`, returns the string value of the current edittext input box
   - `getText()` returns a `Editable` instance can be converted to string using `toString()`
+
+#### Spinner
+
+- `Spinner mySpinner = findViewById(R.id.spinner);`
+- Spinner requires to override two different methods
+  - `onItemSelected(AdapterView<?> parent, View view, int position, long id)` Callback method to be invoked when a new item in this view has been selected. It is not called if there is no change in selection
+  - `onNothingSelected(AdapterView<?> parent)` Callback method to be invoked when the selection disappears from this view or when the adapter becomes empty
+- `mySpinner.setSelection(0, false);` set the first selection as default
+  - Set a selection before setting listener, to prevent "ghost" selection on start
 
 ### `manifests` folder
 
@@ -142,6 +204,7 @@
 - All activities must be represented by `<activity>` elements in the manifest file
 - Any that are not declared there will not be seen by the system and will never be run
 - `android:name=".MainActivity"` The name attribute defines the class that implements the activity
+- `<intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>` It declares main activity
 
 ### `res` folder
 
@@ -180,6 +243,9 @@
 - EditText
   - Used to get user input, can have different types, e.g. `android:inputType="number"` for input number only
     - can drag different types of EditText from the palette
+- Spinner
+  - spinner can present a collection of menu items
+  - It takes an array as entries
 
 #### `drawable` folder
 
@@ -206,6 +272,7 @@
 - It stores all the hardcoded strings
 - The file has parent element `<resources></resources>`
 - It consisted of multiple sting records as `<string name="key">value</string>`
+- It can stores arrays as `<string-array name="key"><item>A</item><item>B</item><item>C</item></string-array>`
 - It can be used in Java code as `R.string.string_name`
 - It can be used in XML code or the layout attribute panel as `@string/string_name`
 
@@ -223,6 +290,10 @@
 - Ultimately, all editors will change either the `.xml` code or the `.java` code
 - Differenct code uses different editor
 - To format code, press `Command+Option+L` on Mac, `CTRL+ALT+L` on Windows
+
+### App Directory
+
+- Right click on the root of the app tree and create a new `Empty Activity`
 
 ### Java Editor
 
@@ -272,6 +343,9 @@
 - `|--|` lines means fixed
 - `WM-|->` lines means flexiale constraint with a fixed minimum constraint
 - If a element is surrounded by match constraints, it will be centered
+- A group of widgets can be chained(evenly spaced) or aligned in the right click menu
+- A guideline can be added from the top menu bar, it can be used as reference when setting up constraints for widgets
+  - guideline can be constrained by a fixed amount to the top or the bottom and also as a percentage
 
 #### Attributes
 
@@ -280,6 +354,7 @@
 - The constraint widget in the attributes tool will allow you to enter specific numbers
 - Right click to show other reference like a baseline of an element and drag it around to create constraint
 - View id can be changed at the top
+  - It has to be unique
 - It can be used to assign handler to an action of an element
 
 #### View mode
@@ -293,6 +368,8 @@
 ## Debug
 
 - Click the bug icon to debug the app and see error messages in the Logcat console at the bottom
+- User `Log.d()` to print output and view them in Logcat tab at the bottom of android studio
+  - Usually and tag can be used to filter the logs, `final static String tag = "==LIFECYCLE==";` , `Log.d(tag, "Debug");`
 
 ## Exporting Projects
 
