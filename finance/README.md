@@ -46,7 +46,7 @@
      - This process is efficient only if market information is accurate.
      - The regulators and standard setting bodies have the responsibility to ensure that financial information is accurately reported in the most useful manner
 
-#### Best Condition of the Financial System
+#### Best Condition for the Financial System
 
 - The financial system is best at fulfilling these roles when
   - The markets are liquid
@@ -479,11 +479,12 @@
 
 ### Commodities
 
-- Energy products
-- Industrial metals,
-- Precious metals,
-- Agricultural products
-- Carbon credits
+- Examples
+  - Energy products
+  - Industrial metals
+  - Precious metals
+  - Agricultural products
+  - Carbon credits
 - Spot commodity markets, trade commodities for immediate delivery, whereas the forward and futures markets trade commodities for future delivery.
 - The producers and processors of commodity products are the primary users of the spot commodity markets
   as they are best able to take or make immediate deliveries.

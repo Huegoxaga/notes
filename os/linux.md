@@ -66,9 +66,10 @@
   - A permission code can be calculated, using `r`=4, `w`=2, `x`=1, `-`=0, and and them together.
   - For example, `400` means only user has read permission, so the file is private.
 - Related Commands
-  - `df -h` list file systems.
+  - `df -h` list file systems
+  - Calculation based on `1 kilobyte = 1024 bytes`
   - `lsblk` list block devices info.
-  - `du -sh <folder> | sort -h` List all files inside the folder and its size in order.
+  - `du -sh <folder> | sort -h` List all files inside the folder and its size in order
     - `--max-depth=1` specify the deepth
 - Check swap file size, `swapon`
 - The `var` folder is used by the OS to write runtime data
@@ -83,9 +84,14 @@
 - Both the `| more` and the `| less` command provide paging functionality in a command line environment. For example `help | less`. shows output that can be control using up and down arrow.
 - `| grep <filterString>` Grep will return only those lines in the file that contain the supplied string. For Example `cat /etc/man.config | grep MANPATH`
 - `startx` start X Windows System GUI.
-- `shutdown –h now` shutdown immediately.
-  - `shutdown -h 12:00`
-  - `shutdown –r now` restart immediately.
+- `shutdown` command arranges for the system to be brought down in a safe way. All logged-in users are notified that the system is going down and, within the last five minutes of shutdown time, new logins are prevented
+  - `shutdown –h now` shutdown immediately
+  - `shutdown -h 13:00` schedule system shutdown at 1 P.M:
+    - `-h` Requests that the system be either halted or powered off after it has been brought down, with the choice as to which left up to the system
+  - `shutdown +10` shutdown in 10 minutes from now
+  - `shutdown –r now` restart immediately
+  - `shutdown +10 "Updating"` shutdown in 10 minutes with boardcast message
+  - `shutdown -c "Canceled"` cancel scheduled shutdown
 - `reboot` reboot the machine.
 - `appname —version` check the current version for any app.
 - `man <command name>` the man pages for Linux commands.
@@ -121,6 +127,14 @@
   - `-type d` is used to locates only directories
   - `-iname` for any case of the file or directory name (case insensitive)
   - `2> /dev/null` Do not display any access error message
+  - `-perm 777` find based on permissions
+  - `-size -10k` find files that are less than 10 kilobytes, use `+10k` for greater than
+    - `b` - 512-byte blocks (this is the default if no suffix is used)
+    - `c` - bytes
+    - `w` - two-byte words
+    - `k` - Kilobytes
+    - `M` - Megabytes
+    - `G` - Gigabytes
 - `route -n` for checking jumps info.
 - `ifconfig eth0` will display networking information about the device named `eth0`.
   - `eth0` the number is the order in which the card has been detected, starting with a zero
@@ -167,7 +181,6 @@
   - `-n` sort contents numerically.
   - `-u` sort and ignore duplicated contents.
   - `-k2` sort by the second column.
-- `wc -l <file>` count the number of lines in a file.
 - `make` it will compile binary files in the current folder.
   - `make test` verify the completed `make` process has no error.
 - `make install` it will build the binaries then copt it to a `make` managed folder which has been already added to the environment path and ready to run in the terminal.
@@ -181,6 +194,20 @@
   - `tail /var/log/syslog` view last 10 lines of the log, by default
 - `head -3 /var/log/syslog` view first 3 lines of the log
   - `head /var/log/syslog` view first 10 lines of the log, by default
+- `wc <textFile>` return the file line count, word count, and byte count
+  - `-l` count the number of lines in a file
+  - `<command> | wc -l` count lines of output from a command using pipe
+- `cut -b 1,2,3 <file.txt>` returns the first, second, third bytes of each line
+  - Tabs and backspaces are treated like as a character of 1 byte
+  - `-b -3` from the first bype to the third
+  - `-c` cut columns
+  - `cut -d " " -f 1 <file.txt>` return the first fields of each line using an empty space as delimiters
+  - `--output-delimiter='%'` replace the delimiter with `%`
+- `sort`
+  - `-n` (numeric) numeric sort option
+  - `-k` sort by key or column index
+  - `r` reverse order
+  - `f` case insensititve
 
 ### Access Control
 
@@ -201,6 +228,7 @@
   - `sudo -l` list commands that are available for the current user without using root password.
   - to enable sudo log, add `Defaults logfile=/var/log/sudulog` in sudoers, using `visudo`.
 - `useradd <newUsername>` create new user account and add the user to a new private group named as the username.
+  - `/etc/skel/` (skel is derived from the “skeleton”) is used as a home directory template for a new users, dot files with default setting can be placed here, so it can be used for all new users
   - `useradd -d <PathToNewHomeDir> <newUsername>` set customized path for user's home directory.
   - `-s /bin/bash` set bash as preferred shell for this user.
   - `--gid` or `-g` or `-G` will and user to a existing group rather than creating a new group which has the same name as the username by default.
@@ -214,6 +242,7 @@
   - group infos are stored in the `etc/group` file.
   - `groupadd <groupname> --system` or `groupadd <groupname> -r` Create a system group with low range(defined by `SYS_GID_MIN-SYS_GID_MAX` in `login.defs`) of GID(Group ID)
 - `usermod -G <groupname> <username>` add user to a group.
+  - or `adduser <username> <groupname>` for Debian
 - `chmod <permissionCode> <filePath>` change the file permission.
 - `chmod <permissionCode> <folderPath> -R` change permission for the folder and all its contents.
 - a permission formula can be used to replace the code.
@@ -411,6 +440,7 @@
 - It is a package manager for debian-based Linux machine.
   - debian-based Linux uses dpkg packages with the `*.deb` extension.
 - `apt-get` is the older command with limited features
+  - `-y`, `--yes`, `--assume-yes`, Automatic yes to prompts
   - `apt-get install <PackageName>`
   - `apt-get update` update package list
   - `apt-get dist-upgrade` will install or remove packages as necessary to complete the upgrade,
@@ -428,7 +458,12 @@
   - `apt autoremove` find dangling dependencies and remove them.
   - `apt remove <PackageName>` remove packages
 - `dpkg --get-selections` Shows all of your installed packages
-  - 500 and 100 are the priority numbers. 500 corresponds to installable, 100 means installed.
+  - 500 and 100 are the priority numbers. 500 corresponds to installable, 100 means installed
+- Useful packages:
+  - `dkms` dkms is a framework which allows kernel modules to be dynamically built for each kernel on your system in a simplified and organized fashion
+  - `build-essential` This package contains an informational list of packages which are considered essential for building Debian packages
+  - `module-assistant` command-line tool for handling module-source packages that have been prepared for the Debian distribution
+    - `m-a prepare` Tries to determine the name of the required linux-headers package, installs it if needed and creates the `/usr/src/linux` symlink if needed
 
 ### WGET
 
@@ -453,17 +488,135 @@
 - `vi`, open vim.
 - `vi filename.txt`, open a file with vi.
 - Vi has insert mode, press i to enter insert mode, press Esc to exit.
-- When out of insert mode, the following command works.
+- When out of insert mode, the following command works
+  - press `esc` to exit from the edit mode and enter the command mode
+  - `/<regex>` search content based on the regular expression pattern
+    - use `\` to escape spacial characters
+  - `:s/<regex>/<newString>/` replace the first regex pattern with a new string on the current line
+  - `:s/<regex>/<newString>/g` replace the all regex pattern with a new string on the current line
+  - `:%s/<regex>/<newString>/` replace the first regex pattern with a new string found from the entire text
+  - `:%s/<regex>/<newString>/g` replace the all regex pattern with a new string found from the entire text
+    - `/` can be any character
+    - `&` can be used to represents the found text in `<newString>`
+  - `:w !wc` returns word count
+  - `:n` go to next file
+    - happens when multiple files are opened by using `vi <fileA> <fileB>`
+  - `:N` go to previous file
+  - `cw` can enter edit mode after selected word is deleted
+  - `cc` can enter edit mode after selected line is deleted
+  - `<ctrl> + g` Display current line number and file information
+  - `G`(`Shift + G`) Go to last line
+  - `nG` Line `n` of file
+  - `!!` filter and expose the current line to the shell command after it
+    - `2!!` current line and the next line
+    - `!}` filters the next paragraph
+    - `!{` filters the previous paragraph
+    - work with commands like `fmt`, `tr`, `grep`, `sed`, `swk`
+  - `x` delete current character
+  - line range works with `s`, `d`, `y`, `c`, `!`, `>`, and other command
+    - `:5,10 d` delete line `5` to `10`
+  - `yy` copy a line to the vi buffer
+  - `p` paste content from the buffer after cursor
+  - `P` paste content from the buffer before cursor
+  - `dw` delete current word, move the cursor to the beginning of the next word
+  - `de` delete current word, move the cursor to the end of the deleted word
+  - `dd` delete current line
+    - deleted content will be stored in the buffer
+  - Most comannds can follow a number, e.g. `6dd` delete 6 current lines
+  - `1G` First line of file
+  - `^` or `0` go to the beginning of the current line
+  - Use `b` to move back one word
+    - `3b` move back three word
+  - Use `w` to move forward one word
+    - `3w` move forward three word
+  - `e` move the cursor to the last character of the current word
+  - `h` Left one character
+  - `j` Down one line
+  - `k` Up one line
+  - `l` Right one character (lowercase L)
+  - `)` Forward a sentence
+  - `(` Backward a sentence
+  - `}` Forward a paragraph
+  - `{` Backward a paragraph
   - `:w filename.txt` save as `filename.txt` in the current folder.
   - `:wq` or `ZZ`, save and quit.
   - `:q!` quit without save.
   - `:r <file>` insert file after current line.
+  - `r` or `s` replace the current character with the next entered character
+    - `r` leaves you in command mode. Others: insert mode
+  - `a` append next entered characters in edit mode
+  - `f` find the next entered character
   - Enter `/keyword` to search the keyword in the document. It is case ssensitive
+- Enter `:<command>` after open text with vim to change setting
+  - `syntax on` Vim syntax highlighting
+  - `set nocompatible` required for plugins
+  - `set number` line number
+  - `set showmode`
+  - `set cursorline` highlight the line where the cursor is
+  - `set showcmd` show the command in the bottom bar
+  - `set insearch` start highlighting as soon as you start typing for search
+  - `set hlsearch` highlight the search results.
+  - `set tabstop=4` Set the size of the Tab. Note that this option will only change the visual appearance of Tab, not the actual character
+  - `set shiftwidth=4`
+  - `set textwidth=80`
+  - `set autoindent`: New lines inherit the indentation of previous lines.
+  - `set expandtab`: Convert tabs to spaces.
+  - `set filetype indent on`: Enable indentation rules that are file-type specific.
+  - `set shiftround`: When shifting lines, round the indentation to the nearest multiple of "shiftwidth."
+  - `set shiftwidth=4`: When shifting, indent using four spaces.
+  - `set smarttab`: Insert “tabstop” number of spaces when the “tab” key is pressed.
+  - `set tabstop=4`: Indent using four spaces.
+  - `set hlsearch`: Enable search highlighting.
+  - `set ignorecase`: Ignore case when searching.
+  - `set incsearch`: Incremental search that shows partial matches.
+  - `set smartcase`: Automatically switch search to case-sensitive when search query contains an uppercase letter.
+  - `set complete-=i`: Limit the files searched for auto-completes.
+  - `set lazyredraw`: Don’t update screen during macro and script execution.
+  - `set display+=lastline`: Always try to show a paragraph’s last line.
+  - `set encoding=utf-8`: Use an encoding that supports unicode.
+  - `set linebreak`: Avoid wrapping a line in the middle of a word.
+  - `set scrolloff=1`: The number of screen lines to keep above and below the cursor.
+  - `set sidescrolloff=5`: The number of screen columns to keep to the left and right of the cursor.
+  - `set wrap`: Enable line wrapping.
+  - `set laststatus=2`: Always display the status bar.
+  - `set ruler`: Always show cursor position.
+  - `set wildmenu`: Display command line’s tab complete options as a menu.
+  - `set tabpagemax=50`: Maximum number of tab pages that can be opened from the command line.
+  - `set colorscheme wombat256mod`: Change color scheme.
+  - `set cursorline`: Highlight the line currently under cursor.
+  - `set relativenumber`: Show line number on the current line and relative numbers on all other lines.
+  - `set noerrorbells`: Disable beep on errors.
+  - `set visualbell`: Flash the screen instead of beeping on errors.
+  - `set mouse=a`: Enable mouse for scrolling and resizing.
+  - `set title`: Set the window’s title, reflecting the file currently being edited.
+  - `set background=dark`: Use colors that suit a dark background.
+  - `set foldmethod=indent`: Fold based on indention levels.
+  - `set foldnestmax=3`: Only fold up to three nested levels.
+  - `set nofoldenable`: Disable folding by default.
+  - `set autoread`: Automatically re-read files if unmodified inside Vim.
+  - `set backspace=indent,eol,start`: Allow backspacing over indention, line breaks and insertion start.
+  - `set backupdir=~/.cache/vim`: Directory to store backup files.
+  - `set confirm`: Display a confirmation dialog when closing an unsaved file.
+  - `set dir=~/.cache/vim`: Directory to store swap files.
+  - `set formatoptions+=j`: Delete comment characters when joining lines.
+  - `set hidden`: Hide files in the background instead of closing them.
+  - `set history=1000`: Increase the undo limit.
+  - `set nomodeline`: Ignore file’s mode lines; use vimrc configurations instead.
+  - `set noswapfile`: Disable swap files.
+  - `set nrformats-=octal`: Interpret octal as decimal when incrementing numbers.
+  - `set shell`: The shell used to execute commands.
+  - `set spell`: Enable spellchecking.
+  - `set wildignore+=.pyc,.swp`: Ignore files matching these patterns when opening files based on a glob pattern.
+- `~/.vimrc` settings in this file will be loaded when vim is started
 
 ### Nano
 
 - `nano example.txt` Opens the file `example.txt` in the Linux text editor Nano
 - `Ctrl + X` to exit, hit `Y` and press `Enter` to save.
+
+### Gufw
+
+- A firewall
 
 ### Grep
 
@@ -478,6 +631,7 @@
   - `-B 4` 4 lines before the match
   - `-A 2` 2 lines after the match
   - `-C 3` 3 lines before and after the match
+- `grep -F <String>` Interpret pattern as a set of fixed strings, not a regular expression pattern (i.e. force grep to behave as fgrep)
 - For example:
   - `grep "Hello" ./*.txt` search `Hello` in all `txt` files in the current directory.
   - `grep "...-...-...." contacts.txt` search phone numbers

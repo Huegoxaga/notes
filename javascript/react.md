@@ -315,6 +315,7 @@ return (
 
 - In return method, use `setFunction(newValue)` to update the currentValue.
   - It can also be `setFunction(prevValue => newValue)`, the arrow function take the original value and return a new value
+  - For example, `setCountDown((i) => (i === 0 ? (i = 5) : i - 1));`
 - `useState()` returns an array of values, the current state value and a function that is used to update values by pass new values in it.
 - `useState()` can have an arrow function as its variable, and it will be only ran once when rander.
 - `useState()` can have an object as variable.
@@ -347,6 +348,15 @@ useEffect(() => {
       }
     });
     return () => (isSubscribed = false);
+  }, []);
+  ```
+- useEffect run in a set interval
+  ```js
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("This will run every second!");
+    }, 1000);
+    return () => clearInterval(interval);
   }, []);
   ```
 
@@ -695,7 +705,7 @@ const useStyles = makeStyles({
 });
 
 export default function Hook() {
-  const classes = useStyles(variable);
+  const classes = useStyles({ variable });
   return <Button className={classes.root}>Hook</Button>;
 }
 ```

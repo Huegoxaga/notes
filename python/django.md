@@ -574,6 +574,43 @@ def about(request):
      url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),]
    ```
 
+##### Usage
+
+- Add comment for methods defined in class view
+  ```py
+  from drf_yasg.utils import swagger_auto_schema
+  class ExampleAPIView(ListAPIView):
+      permission_classes = (IsAuthenticated,)
+      serializer_class = YourSerializerClass
+      pagination_class = YourPaginationClass
+      queryset = ModelName.objects.all()
+      @swagger_auto_schema(tags=['API Category Title'], operation_id="Method Title", operation_description="Method Description", query_serializer=YourQuerySerializer, responses={
+                  '200': ResponseModelSerializer(many=True),
+                  '400': "Bad Request"
+              },)
+      def get(self, request, *args, **kwargs):
+        pass
+      @swagger_auto_schema(tags=['API Category Title'], operation_id="Method Title", operation_description="Method Description", reques_body=YourRequestSerializer, responses={
+                  '200': ResponseModelSerializer(many=True),
+                  '400': "Bad Request"
+              },)
+      def post(self, request, *args, **kwargs):
+        pass
+  ```
+- Add comment for inherited View
+  ```py
+  from django.utils.decorators import method_decorator
+  from drf_yasg.utils import swagger_auto_schema
+  @method_decorator(name='post', decorator=swagger_auto_schema(
+      tags=['API Category Title'],
+      operation_id="Method Title",
+  ))
+  class YourAPIView(PredefinedAPIView):
+      pass
+  ```
+- Add comment for a serializer fields, `name = serializers.BooleanField(required=False, help_text="description")`
+- Add comment for a model fields, `field_name = models.FloatField(default=0, help_text="Field Description", verbose_name="Title")`
+
 ### Cache
 
 - import the following
@@ -631,6 +668,23 @@ def about(request):
   5. add or update new tasks added in the `settings.py` by running command `python manage.py crontab add`
      - run `python manage.py crontab show` to show the list of tasks.
      - run `python manage.py crontab remove` to remove all registered tasks.
+
+## Django Extension
+
+- Provide additional tools for the Django project
+
+### Setup
+
+- run `pip install django-extensions` to install
+- add `django_extensions` to `INSTALLED_APPS`
+
+### Graph Models
+
+- Choose and install diagram generators, `Graphviz` or `Dotplus`
+  - `pip install pydotplus` if choose `Dotplus`
+- Run `python manage.py graph_models -o <filename>.png`
+  - `-a` create diagrams for all apps in the project
+  - `-g` group by apps
 
 ## Celery
 

@@ -49,7 +49,7 @@
   - can be used to find match only at the beginning of the string(anchor).
     - `/^A/` it will match the leading `A` in a given string.
     - In a pattern, nothing should be entered before the beginning anchor.
-- `$` can be used to find match only at the beginning of the string(anchor).
+- `$` can be used to find match only at the end of the string(anchor).
   - `/A$/` it will match the trailing `A` in a given string.
   - In a pattern, nothing should be entered after the end anchor.
 - `.` It matches any single character.
@@ -68,6 +68,7 @@
 - `+` A quantifier that matches one or more character before it in the pattern.
   - `/[0-9]+/` returns any group of numbers.
 - `()` grouping, a pattern surrounded by `()` can be used by another pattern as sub-pattern.
+  - In extended `Regex`, `(o{2})\1` is the same as `o{2}o{2}`
 - `[]` It creates character classes(character sets).
   - The occurrence of any one of the characters list inside `[]` will result a match for one character in a given string.
     - `/[Gg]r[ea]y/` will match `Grey`, `Gray`, `grey`, `gray`.

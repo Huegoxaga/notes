@@ -17,7 +17,7 @@
   - On AMD’s look for AMD-V.
 - Virtual machines can easily be imported and exported using the industry-standard Open Virtualization Format (OVF) with `.ova` extension
   - `OVF` file can be extracted into a virtual disk image file and an `ovf` file contains the machine settings using various extracting tools
-- Alternative Front Ends, it has both GUI and Command line control.
+- Alternative Front Ends, it has both GUI and Command line control
 
 ## Files
 
@@ -26,13 +26,13 @@
 
 ## Usage
 
-- Host Key stop the VM intercept key press and mouse click inside the VM window, by default it is the right control key.
-- Snapshot makes the original disk image read-only, changes will be recorded on the differencing disk file.
-- Full clone copies the entire disk image. Linked clone create the current image a snapshot.
-- All disk files and snapshot can be viewed in the `File/Virtual Media Manager`.
+- Host Key stop the VM intercept key press and mouse click inside the VM window, by default it is the right control key
+- Snapshot makes the original disk image read-only, changes will be recorded on the differencing disk file
+- Full clone copies the entire disk image. Linked clone create the current image a snapshot
+- All disk files and snapshot can be viewed in the `File/Virtual Media Manager`
   - A hard disk image can be set to immutable, then virtual machine gets reset after every shutdown
-- Each VM icon has a change view button on the right, click it to see snapshots or logs.
-- Use Device/USB menu to mount USB device to the guest OS.
+- Each VM icon has a change view button on the right, click it to see snapshots or logs
+- Use Device/USB menu to mount USB device to the guest OS
 
 ## Add-ons
 
@@ -42,18 +42,31 @@
   - Shared Folders
   - 3D graphics accelerators
   - Automatic video resolution (window resizing)
+  - Shared clipboard
+  - Time synchronization
   - It enables auto capture of mouse pointer when its inside virtual machine window.
 - Installation
-  1. Select the Devices menu option and 'Install Guest Additions...'
+  1. Select the Devices menu option and `Install Guest Additions...`
   2. This will result in the VBoxAdditions image (iso) being mounted in the CD-ROM drive.
-  3. Run the drive.
-- enables shared folders.
-  1. select Devices/Shared Folders/Shared folder settings.. from the VirtualBox menu. This should open the Shared Folders window.
-  2. select add a folder as the share folder from the host machine in the setting.
-  3. Select the ‘Make Permanent’ and Auto-mount options. This will ensure this folder is always available as a shared folder for this Virtual Machine.
-  4. In guest OS, open a terminal window.
+  3. Run the drive
+- enables shared folders
+  1. select `Devices/Shared Folders/Shared folder settings...` from the VirtualBox menu. This should open the Shared Folders window
+  2. select add a folder as the share folder from the host machine in the setting
+  3. Select the 'Make Permanent' and Auto-mount options. This will ensure this folder is always available as a shared folder for this Virtual Machine
+  4. In guest OS, open a terminal window
   5. Create a directory that will become the mount point
   6. run `mount –t vboxsf foldername <folderpath>`
+
+### VirtualBox Extension Pack
+
+- It provodes support for:
+  - The virtual USB 2.0 (EHCI) device
+  - The virtual USB 3.0 (xHCI) device
+  - VirtualBox Remote Desktop Protocol (VRDP) support
+  - Host webcam passthrough
+  - Intel PXE boot ROM.
+  - Disk image encryption with AES algorithm
+  - Cloud integration features
 
 ## Configuration file
 
@@ -70,7 +83,7 @@
 - For Windows, add the virtualBox installation path to the Environment's Path.
 - It is a command-line interface to VirtualBox
 - It exposes all the features of the virtualization engine, even those that may not yet be accessible from the GUI.
-- Typical syntax vboxmanage <subcommand> <VMname>
+- Typical syntax vboxmanage `<subcommand> <VMname>`
 - [Click](https://www.virtualbox.org/manual/UserManual.html#vboxmanage-intro) to see a full list of commands.
 
 ### Useful Commands
@@ -84,15 +97,16 @@
 
 ### Virtual Network Adapters
 
-Bridged
+#### Bridged
 
 - Configured with an IPv4/IPv6 address, just like a real physical network
   adapter
 - Can communicate on the network, just like any other physical network
   device
 - Can communicate out to the Internet
-  NAT
-  (Network Address Translation)
+
+#### NAT (Network Address Translation)
+
 - Configured with a special reserved IPv4/IPv6 address
 - Can communicate with other devices beyond the Host OS, including the
   Internet

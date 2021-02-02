@@ -82,6 +82,9 @@
   - Like any markup language, the element can be self closing or it can surround another element
   - It can contain variables or reference that start with `@` symbol
   - Inline comment: `<!-- Comment -->`
+- The system performs basic scaling and resizing to adapt your user interface to different screens by using `dp` units, aka density-independent pixels
+  - conversion of dp units to screen pixels `px = dp * (dpi / 160)`
+  - Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size), in (inches), and mm (millimeters)
 
 ### `java` folder
 
@@ -91,48 +94,95 @@
 - `onCreate()` is called once during app launch or after orientation of the app is changed
   - All code for initialization and should be placed here
   - Variables can be declared at the top inside the class as `private ClassName var;`, but they need to be initialized inside `onCreate()`
-- A handler can be written in the acivity class as a separate method as `public void handlerName(View view) {}`
-  - It must return `void`(or have no return) and it must take a single argument of type `View`
-  - The handler can be assigned to a widget in the attribute panel of the layout desinger
-- Activities Lifecycles
-  - In an android app, each page is called an activity
-  - The main activity is the first screen to appear when the user launches the app
-  - Each activity is only loosely bound to the other activities
-  - Only one activity can have focus and be responding to events from the user such as touch events
-  - Each activity is a customized class in the Java code
-  - like programming paradigms in which apps are launched with a main() method, the
-  - Android system initiates code in an Activity instance by invoking specific callback methods that correspond to specific stages of its lifecycle, in a order from top to bottom:
-    - `onCreate()` - invoked when the app is initiately loaded or rotated, it can be used to do initialization
-    - `onStart()` - invoked after `onCreate()` or `onRestart()`, right before the activity become visible
-    - `onResume()` - invoked after `onStart()` or `onPause()`, right after the activity become visible
-    - `onPause()` - invoked when the activity is partially hidden, hidden, or goes out of focus, it can be used to save user data
-      - invoke `onResume()` if user returns to the activity before it is completely hidden
-    - `onStop()` - invoked after the new activity is completely alive
-      - `onRestart()` - invoked when user navigates back to the activity after `onStop()` is called before destroyed by the system
-    - `onDestroy()` stopping the app or activity being destroyed by the system
-      - This method is not guaranteed to be called, it highly rely on the decision of the system(e.g. low memory)
-  - Navigate from one activity to another is actually add a new activity to the top of a stack,
-    - all activities in the stack is stored in the memory
-    - the phone’s back button can return to the previous activity with `onResume()`, the top activity might be destroyed if memory is low
-- Event Handler:
-  - `onClick()`, this handler can be overridden and get the trigger widget(widget that is being clicked) from the argument. it takes any view objects. e.g. `public void onClick(View view) {}`
-    - use `Button bview = (Button) view;` to access the button object that is being clicked
-- Optionally, Implement various listeners and bind then to local handler function, instead of using layout attribute seting
+
+#### Activities
+
+- In an android app, each page is called an activity
+- The main activity is the first screen to appear when the user launches the app
+- Each activity is only loosely bound to the other activities
+- Only one activity can have focus and be responding to events from the user such as touch events
+- Each activity is a customized class in the Java code
+- like programming paradigms in which apps are launched with a main() method, the
+- Android system initiates code in an Activity instance by invoking specific callback methods that correspond to specific stages of its lifecycle, in a order from top to bottom:
+  - `onCreate()` - invoked when the app is initiately loaded or rotated, it can be used to do initialization
+  - `onStart()` - invoked after `onCreate()` or `onRestart()`, right before the activity become visible
+  - `onResume()` - invoked after `onStart()` or `onPause()`, right after the activity become visible
+  - `onPause()` - invoked when the activity is partially hidden, hidden, or goes out of focus, it can be used to save user data
+    - invoke `onResume()` if user returns to the activity before it is completely hidden
+  - `onStop()` - invoked after the new activity is completely back to alive
+    - `onRestart()` - invoked when user navigates back to the activity after `onStop()` is called before destroyed by the system
+  - `onDestroy()` stopping the app or activity being destroyed by the system
+    - This method is not guaranteed to be called, it highly rely on the decision of the system(e.g. low memory)
+- Navigate from one activity to another is actually add a new activity to the top of a stack,
+  - all activities in the stack is stored in the memory
+  - the phone’s back button can return to the previous activity with `onResume()`, the top activity might be destroyed if memory is low
+
+#### Event Handler
+
+- `onClick()`, this handler can be overridden and get the trigger widget(widget that is being clicked) from the argument. it takes any view objects. e.g. `public void onClick(View view) {}`
+  - use `Button bview = (Button) view;` to access the button object that is being clicked
+- Optionally, Implement various listeners and bind then to local handler function, instead of using layout attribute setting
   - `implements View.OnClickListener` for the activity class, then find the button `Button bview = findViewById(R.id.button1);`, and bind local handler to the button's `OnClickListener`, `bview.setOnClickListener(this);`
   - Listeners interface:
     - `View.OnClickListener` has the `onClick()` method
     - `AdapterView.OnItemSelectedListener` has the `onItemSelected()` method
-  - Optionally use, `widgetObject.listener(this::handlerMethod)` to bind in the `onCreate()` method without implement the linstener interface for the activity class
+  - Optionally use, `widgetObject.listenerType(this::handlerMethod)` to bind in the `onCreate()` method without implement the linstener interface for the activity class
     - It works when listener interface requires overriding one method
   - `this::handlerMethod` can be replace by anonymous classes as
     ```java
     buttonView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-    Log.d(tag,"Button Pressed"); }
+      @Override
+      public void onClick(View view) {
+        Log.d(tag,"Button Pressed");
+      }
     });
     ```
     - Anonymous classes protect the privacy of the method minimizing the class interface, but does not help with readability
+  - A handler can be written in the acivity class as a separate method as `public void handlerName(View view) {}`
+  - It must return `void`(or have no return) and it must take a single argument of type `View`
+  - The handler can be assigned to a widget in the attribute panel of the layout desinger
+
+#### Fragments
+
+- One or more layout classes can be added to an activity as a sub view
+- The same code can be designed to work on two devices with different fragment layouts
+- Widgets inside fragment can be access after `onStart()`
+- Fragments have a lifecycle similar to the activity lifecycle
+  - fragment is created within the `setContentView()` of the activity class, if it it dragged into the main activity `xml`
+  - fragment resumes after the parent activity is resumed
+  - fragment will be destroyed when the activity is destroyed
+- Before creation `onCreate()` is called
+- During initialization `onCreateView()`, `onViewCreated()` are called in sequence
+- After creation `onViewStateRestored()` is called
+- After started `onStart()` is called
+- Before fragment become active `onResume()` is called
+- When fragment or parent activity loses focus, `onPause()` is called
+- After completely back to alive `onStop()` is called
+- After stopping, `onSaveInstanceState()` is called
+- Before destroy `onDestoryView()` is called
+- During destroy `onDestroy()` is called
+
+##### Fragment Manager
+
+- FragmentManager is the class responsible for performing actions on your app's fragments
+- At runtime, A FragmentManager can add, remove, replace, and perform other actions with fragments in response to user interaction
+- Each action is called a transcation and multiple transctions can have a single committed
+- final call on each FragmentTransaction must commit the transaction
+- For example:
+  ```java
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    FragmentManager fm = getSupportFragmentManager();
+    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+    // Create a new instance of our Fragment class
+    Fragment myFragment1 = new BlankFragment();
+    // replace the fragment instance into a frame (viewgroup) in our layout.
+    fragmentTransaction.replace(R.id.frame2, myFragment1);
+    fragmentTransaction.commit();
+  }
+  ```
 
 #### View object
 
@@ -141,6 +191,7 @@
   - returns `null` if element ID is not found in the layout xml
   - Explicit Casting is optional
 - Use `view.getId()` to get the id of any view object
+- `view.setImageResource(R.drawable.image_name);` change image
 
 #### Intent object
 
@@ -150,6 +201,57 @@
 - `switch2Activity2.putExtra("data", "Hello");` use intent to store string into varialbe name `"data"`
 - In any `onCreate()` method, use `Intent intent = getIntent();` to access the intent that started it
 - Use `String i = intent.getStringExtra("data");` to get values stored in intent
+
+#### Application Context
+
+- The Context class provides an interface to global information about an application environment
+- This is an abstract class whose implementation is provided by the Android system
+- It allows access to application-specific resources and classes, as well as up-calls for application-level operations such as launching activities, broadcasting and receiving intents, etc
+
+##### Shared Preferences
+
+- The Shared Preferences file is accessed through the application context
+- It collects data which can be used to store state information about an application that persists between application restarts
+- Shared Preferences provides an interface for accessing and modifying preference data returned by `getSharedPreferences()`
+- For any particular set of preferences, there is a single instance of this class that all clients share.
+  Modifications to the preferences must go through an Editor object to ensure the preference values remain in a consistent state and control when they are committed to storage
+- Objects that are returned from the various get methods must be treated as immutable by the application
+- This class provides strong consistency guarantees.
+  - It uses expensive operations which might slow down an app
+- load our app state when the app starts up, and save the state when it pauses
+- The getSharedPreferences method retrieves and hold the contents of the preferences file, returning a SharedPreferences through which you can retrieve and modify its values
+  - Only one instance of the SharedPreferences object is returned to any callers for the same name, meaning they will see each other's edits as soon as they are made.
+- If the preferences directory does not already exist, it will be created when this method is called
+- Fetch the string that stored our saved state from the `onResume()` state, just before the app becomes active
+  ```java
+  @Override
+  public void onResume(){
+    super.onResume();
+    SharedPreferences sharedPreferences = this.getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE);
+    // There are also getAll(), getInt(), getFloat(), getBoolean(), getLong(), getStringSet(), contains("TAG")
+    String switchText = sharedPreferences.getString("TAG", "default value");
+  ```
+- Save the app state as soon as we go into the `onPause()` state
+  ```java
+  @Override
+  public void onPause() {
+    super.onPause();
+    SharedPreferences.Editor editor = sharedPreferences.edit();
+    // There are also putInt(), putFloat(), putBoolean(), putLong(), putStringSet(), remove("TAG"), clear()
+    editor.putString("TAG", "new_value");
+    editor.apply();
+  }
+  ```
+
+#### Formatter
+
+##### Simple Date Format
+
+```java
+SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+Date date = new Date();
+String formattedText = "Formatted as: " + formatter.format(date);
+```
 
 #### TextView
 
@@ -172,6 +274,30 @@
   - `onNothingSelected(AdapterView<?> parent)` Callback method to be invoked when the selection disappears from this view or when the adapter becomes empty
 - `mySpinner.setSelection(0, false);` set the first selection as default
   - Set a selection before setting listener, to prevent "ghost" selection on start
+
+#### Button
+
+- Example Handler for Switch as onClick attribute:
+  ```java
+  public void handlerName(View view) {
+    Button bview = (Button) view;
+    bview.getId()
+  }
+  ```
+
+#### Switch
+
+- The switch class inherits from the button class
+- It also has an onClick attribute in XML which can be used to specify a handler
+- Example Handler for Switch as onClick attribute:
+  ```java
+  public void handlerName(View view) {
+    Switch sview = (Switch) view;
+    if (sview.isChecked()) {
+      switchText = "ON @ " + formatter.format(date);;
+    }
+  }
+  ```
 
 ### `manifests` folder
 
@@ -230,11 +356,14 @@
 - `<LinearLayout>`
   - It defines layout container that can grow in two direction, either vertical or horizontal
   - `android:orientation` can be either `"vertical"` or `"horizontal"`
+  - `android:layout_weight` controls how much space it takes
+    - set `android:layout_height`(when vertical) or `android:layout_height`(when horizontal) to `0dp` and `android:layout_weight` to `1` can make all component evenly distributes with zero space in between
 - `<RelativeLayout>`
   - It defines elements relative to others(legacy)
   - `android:layout_centerHorizontal="true"`, `android:layout_centerVertical="true"`, `android:layout_centerInParent="true"` for centering elements
 - `<ConstraintLayout>`
   - It defines elements relative to others
+- `<FrameLayout>` it is designed to block out an area on the screen
 
 ##### Elements
 
@@ -246,10 +375,27 @@
 - Spinner
   - spinner can present a collection of menu items
   - It takes an array as entries
+- Switch
+  - The switch has a default state, the attribute is named "checked", set it to true.
 
 #### `drawable` folder
 
 - It stores all images for the app
+- To use a bitmap file, copy a file into this directory
+- There are also XML formats that specify drawable resources
+- It can be accessed by Java code using `R.drawable.image_name`
+- Images can be defined using `XML` as well,`app > res > drawable` and right-click, select`New > Drawable resource file`, and add vector definition like the following:
+  ```xml
+  <selector xmlns:android="http://schemas.android.com/apk/res/android"> <item>
+      <shape> <gradient
+          android:startColor="#89cbee" android:endColor="#004F81" android:angle="270" />
+          <stroke
+              android:width="1dp" android:color="#4aa5d4" />
+          <corners android:radius="7dp" />
+          <padding android:left="10dp" android:top="10dp" android:right="10dp" android:bottom="10dp" />
+      </shape> </item>
+  </selector>
+  ```
 
 #### `minmap` folder
 
@@ -266,6 +412,7 @@
 - change the parent attribute of the style element to change the app bar style
 - `colorPrimary` controls the app bar color
 - `colorPrimaryVariant` controls the status bar color
+- The background color of some widgets is controlled by the theme type
 
 ##### `strings.xml`
 
@@ -294,6 +441,8 @@
 ### App Directory
 
 - Right click on the root of the app tree and create a new `Empty Activity`
+- Right click on the project file tree, select `New Fragment`, and `Blank` fragment
+  - This will create a new layout file and it will also create a Java file with some fundamental fragment methods
 
 ### Java Editor
 
@@ -307,17 +456,19 @@
 
 ### Layout Editor
 
-- The Layout Editor enables you to quickly build layouts by dragging UI elements into a visual design editor instead of writing layout XML by hand
+- The Layout Editor enables you to quickly build layouts by dragging UI elements around a visual design editor instead of writing layout XML by hand
 - The Layout Editor appears when opening an `XML` layout file
-- It works well with `ConstraintLayout`
 
 #### Palette
 
-- Contains various views and view groups that you can drag into your layout.
+- Contains various views and view groups that you can drag into your layout
+- After files for fragment is created, the layout widget is available under `Common Views` and is ready to be dragged into the layout editor
 
 #### Component Tree
 
-- Shows the hierarchy of components in your layout.
+- Shows the hierarchy of components in your layout
+- Right click a layout element inside the component tree, `Convert view...` can convert between different layout types
+- Right click on `LinearLayout` in the component tree, from the first item select `convert orientation` to vonvert layout between vertical and horizontal(default)
 
 #### Toolbar
 
