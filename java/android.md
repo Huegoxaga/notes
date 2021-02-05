@@ -148,19 +148,19 @@
 - The same code can be designed to work on two devices with different fragment layouts
 - Widgets inside fragment can be access after `onStart()`
 - Fragments have a lifecycle similar to the activity lifecycle
-  - fragment is created within the `setContentView()` of the activity class, if it it dragged into the main activity `xml`
+  - fragment is created within the `setContentView()` of the activity class, if it is dragged into the main activity `xml`
   - fragment resumes after the parent activity is resumed
   - fragment will be destroyed when the activity is destroyed
-- Before creation `onCreate()` is called
-- During initialization `onCreateView()`, `onViewCreated()` are called in sequence
-- After creation `onViewStateRestored()` is called
-- After started `onStart()` is called
-- Before fragment become active `onResume()` is called
-- When fragment or parent activity loses focus, `onPause()` is called
-- After completely back to alive `onStop()` is called
-- After stopping, `onSaveInstanceState()` is called
-- Before destroy `onDestoryView()` is called
-- During destroy `onDestroy()` is called
+  - Before creation `onCreate()` is called
+  - During initialization `onCreateView()`, `onViewCreated()` are called in sequence
+  - After creation `onViewStateRestored()` is called
+  - After started `onStart()` is called
+  - Before fragment become active `onResume()` is called
+  - When fragment or parent activity loses focus, `onPause()` is called
+  - After completely back to alive `onStop()` is called
+  - After stopping, `onSaveInstanceState()` is called
+  - Before destroy `onDestoryView()` is called
+  - During destroy `onDestroy()` is called
 
 ##### Fragment Manager
 
@@ -181,6 +181,38 @@
     // replace the fragment instance into a frame (viewgroup) in our layout.
     fragmentTransaction.replace(R.id.frame2, myFragment1);
     fragmentTransaction.commit();
+  }
+  ```
+- Fragment constructor - can be used to pass view into framgment class when initialized with fragment manager. For example when use fragment manager in the main acticity, declare fragment as `Fragment myFragment1 = new BlankFragment(findViewById(R.id.textview));`
+  ```java
+  // Define constructor inside fragment class
+  public BlankFragment(TextView tview) {
+  this.tview = tview;
+  }
+  // then tview.findViewById() can be accessed globally in the fragment class
+  ```
+
+##### Event Handlers for Widgets inside a Fragment
+
+- Binding Listener in fragment class, in `onCreateView()` fragment view is returned from the inflater
+  ```java
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View fragView = inflater.inflate(R.layout.fragment_blank, container, false);
+    Switch sview = fragView.findViewById(R.id.switch1);
+    sview.setOnClickListener(this::handlerName);
+    return fragView;
+  }
+  ```
+- Binding Listener in main class's `onCreate()` method if the fragment is embedded directly in the XML instead of using fragment manager
+  ```java
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    View fragView = findViewById(R.id.fragment);
+    Switch sview = fragView.findViewById(R.id.switch1);
+    sview.setOnClickListener(this::onSwitch);
   }
   ```
 

@@ -635,6 +635,15 @@
 - For example:
   - `grep "Hello" ./*.txt` search `Hello` in all `txt` files in the current directory.
   - `grep "...-...-...." contacts.txt` search phone numbers
+- `grep "[[:digit:]]" <file.txt>`, Match all digits using the Posix style
+  - POSIX Expressions:
+    - `[[:alnum:]]` - alphanumeric characters
+    - `[[:alpha:]]` - alphabetic characters
+    - `[[:blank:]]` - space, tab characters
+    - `[[:digit:]]` - digit characters
+    - `[[:lower:]]` - lower case alphabetic characters
+    - `[[:space:]]` - space characters, tab, newline, vertical tab, form feed, carriage return and space
+    - `[[:upper:]]` - upper case alphabetic characters
 
 ### SCP
 

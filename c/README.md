@@ -3,7 +3,47 @@
 ## Introduction
 
 - It is a low-level language that relates closely to the way machines work
-- It is used to write operating systems and other languages.
+- It is used to write operating systems and other languages
+- The C programming language was initially developed in AT&T labs by Professor Brian W. Kernighan and Dennis Ritchie, known as `K&R C`
+- During the year 1970, `C` programming became very popular but without any serious startdardization to the language
+- The non-official standard was called `K&R C`, which led to many ambiguities among different compiler programmers, and that led to non-portable codes
+  - `K&R C` was the first non-official `C` standard
+- In 1989 American National Standard Institute designed and approved first official `C` standard called `X3.159-1989`, and in 1990 it was approved by ISO as an international standard for C programming language: `ISO/IEC 9899:1990`
+  - This is also called `ANSI C` or `C89` or `C90` standard in short
+- The language underwent few more changes (addition of new features, syntaxes, data types, etc.) and newly updated standard released in 1999 under the ISO tag `ISO/IEC 9899:1999`
+  - It is also called `C99` standard in short
+- `C11` is an informal name for `ISO/IEC 9899:2011`, which is a new standard approved in December 2011. `C11` supersedes the C99 standard
+- Official standards have backward compatibility
+
+## Compiler
+
+- MacOS can use `GCC` compiler
+- Windows machine uses WinGW to compile
+- run `brew install gcc` to install
+- run `gcc <filename>` to compile
+- Native compilation compile code for execution on the same machine:
+- Cross compiler compiling code from one machine for another machine:
+- Compiler can generates the following intermediate files
+  - Preprocessed file, `.i` - a complete version of the source code include imported source code
+  - Assembly instruction file, `.s` - parses and converts pre-processed file into assembly language
+  - Machine Code file, `.o` - converts assembly language into opcodes
+  - `.elf` - linker merges multiple `.o` files and `.a` files from imported library to form a executable file used for debugging
+  - `.bin`, `.exe` or `.hex` - post process `.elf` file into pure binary for production
+    - use tools like `objcopy`
+
+### Compiler Flags
+
+- `-save-temps` Save intermediate compilation results
+- `-std` Compiling standard
+  - `gnu11` - ISO C11 + gnu extension
+  - `gnu99` - ISO C99 + gnu extension
+  - `gnu90` - ISO C90 + gnu extension
+
+## IDE
+
+### Online IDE
+
+- [OnlineGBD](https://www.onlinegdb.com) is a convenient online IDE for practicing and debugging C Code
 
 ## Syntax
 
@@ -25,8 +65,8 @@
     return 0;
   }
   ```
-  - main function return 0 to the calling process after execution.
-  - 0 means the program executed successfully, other number indicates the program has failed.
+  - main function return `0` to the calling process after execution.
+  - `0` means the program executed successfully, other number indicates the program has failed.
 
 ## Data Types
 
@@ -106,7 +146,7 @@
 
 ## Operators
 
-#### Arithmetic Operators
+### Arithmetic Operators
 
 - `+` addition
 - `-` subtraction
@@ -118,13 +158,26 @@
 - C may not evaluate a numeric expression from left to right among operators with the same precedence.
 - Using parentheses `( )` to indicate which operations are to be performed first.
 
-#### Assignment Operators
+### Bitwise Operators
+
+- `|` or
+- `&` and
+- `>>` right shift, move all values to the right to a certain position and fill the left with `0`
+  - bit extraction uses right shift then use a mask to get the portion needed
+- `<<` left shift
+- `~` not
+- `^` xor
+
+### Assignment Operators
 
 - Apply numerical operation with itself by using the following:
   - `+=`
   - `-=`
   - `*=`
   - `/=`
+  - `|=` can be used to add bit to an existing value
+  - `&=` can be used to reset bit to an existing value with a mask
+    - a mask has the reset position as `0` and all other positions as `1`
 - Increment and Decrement
   - increment operator `++`
   - decrement operator `--`
@@ -657,11 +710,14 @@
   - printf(“formatted string with format specifier (%d)”,variablesXToReplace%d);, Formatted output
   - Escape sequences begin with a backslash `\`:
     - `\n` new line
-    - `\t` horizontal tab
+    - `\t` horizontal tab, four white spaces
     - `\\` backslash
     - `\b` backspace
+    - `\r` carriage return, move cursor back to the beginning of the line and start to replace existing characters
+    - `\v` vertical tab
     - `\'` single quote
     - `\"` double quote
+    - `\0` null
   - `%[-][width].[precision]conversion_character`, Format specifier for printf
     - The optional `-` specifies left alignment of the data in the string.
     - The optional width gives the minimum number of characters for the data.

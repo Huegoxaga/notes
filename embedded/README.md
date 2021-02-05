@@ -36,8 +36,8 @@
   - AVR Microcontroller - AVR stands for Alf and Vegard's RISC Processor. It was the modified Harvard architecture machine.
   - MSP Microcontroller - MSP stands for Mixed Signal Processor. It’s the family from Texas Instruments.
 - Memory architecture of microcontroller are two types, they are namely:
-  - Harvard Memory Architecture Microcontroller: The point when a microcontroller unit has a dissimilar memory address space for the program and data memory, the microcontroller has Harvard memory architecture in the processor.
-  - Princeton Memory Architecture Microcontroller: The point when a microcontroller has a common memory address for the program memory and data memory, the microcontroller has Princeton memory architecture in the processor.
+  - Harvard Memory Architecture Microcontroller: The point when a microcontroller unit has a separate memory address space for the program and data memory, the microcontroller has Harvard memory architecture in the processor.
+  - Von Neumann (a.k.a. Princeton) Memory Architecture Microcontroller: The point when a microcontroller has a common memory address for the program memory and data memory, the microcontroller has Princeton memory architecture in the processor.
 - Classification According to Instruction Set
   - CISC: CISC is a Complex Instruction Set Computer. It allows the programmer to use one instruction in place of many simpler instructions.
   - RISC: The RISC is stands for Reduced Instruction set Computer, this type of instruction sets reduces the design of microprocessor for industry standards. It allows each instruction to operate on any register or use any addressing mode and simultaneous access of program and data.
@@ -45,37 +45,58 @@
   - Embedded memory microcontroller
   - External memory microcontroller
 - Useful Documents
-  - Each MCU has a dataset and a user manual
+  - Each MCU has:
+    - dataset
+    - user manual
   - Each development board has a schematics, user manual and specification.
 - Memory Map
   - A processor in a MCU can be described by its width of the system bus.
-    - 8 bits,it can provide 2^8 memory address on the system bus. from
+    - 8 bits, it can provide 2^8 memory address on the system bus. from `0x00` to `0xff`
     - 16 bits, it can provide 2^16 memory address on the system bus, from `0x0000` to `0xffff`
     - 32 bits, it can provide 2^32 memory address(4G) on the system bus, from `0x0000_0000` to `0xffff_ffff`
   - `0x` is a prefix that saying the number followed is a hexadecimal number.
-  - `_` or a space is used to increase readability.
-  - Different peripherals is assigned with different range of the the memory address.
+  - `_` or a space is used to increase readability
+  - Different peripherals is assigned with different range of the the memory address
+  - Each Memory address are used to transmit data or set register value on that address
+    - A register stores certain settings for peripherals, specified in the manual
   - Detailed boundaries are stated on the reference manual.
   - The relationship between the range and the assigned peripheral is called a memory map.
 - Types of memory
-  - ROM(Flash memory)
-    - It is the program memory, stores the logic(instruction) of the program
-    - stores constants data
-    - stores vector tables
-    - Data in the FLASH memory is accessed through the Flash controller
-  - SRAM
-    - It stores variables, it can also stores instructions.
-    - It is the data memory
+  - Non-volatile - persist after reboot
+  - It is the program memory or code memory, stores the logic(instruction) of the program
+  - stores constants data
+  - stores vector tables
+  - Types:
+    - ROM(Read Only Memory)
+      - MPROM (Mask Programmable Read-Only Memory) - data can be writen only once
+      - EPROM (Erasable programmable read-only memory) - data can be erased after dissambling and exposing to ultraviolet light
+      - EEPROM (Electrically erasable programmable read-only memory) - data can be erased after changing voltage
+    - Flash memory
+      - Most popular
+      - Data in the FLASH memory is accessed through the Flash controller
+    - OTP (One time programmable)
+    - FRAM (Ferroelectric random-access memory) - high speed, low power but expensive
+- Volatile - clear after reboot
+  - It is the data memory
+  - It stores temp data, comsumed during run-time
+  - It stores variables, it can also stores instructions.
+  - Types:
+    - SRAM
 - Bus Interfaces
   - It is depicted by the MCU block diagrams.
   - Bus interfaces are the communication pathes between processors and peripherals.
   - It allows data from multiple data sources goes into the processor concurrently. The number of concurrent data trasmittion equals the number of buses.
   - There are three types of bus coming out of a processor with Advanced High-performance Bus (AHB) - Full speed, also known as HCLK speed
-    - ICode Bus - Instruction Bus - get program instruction from FLASH memory
-    - DCode Bus - Data Bus - get data and debug from FLASH memory
-    - S-Bus - Connect to SRAM and other peripherals,
+    - ICode Bus - Instruction Bus
+      - Connected to the Flash memory through the Flash controller
+      - get program instruction from Flash memory
+    - DCode Bus - Data Bus
+      - Connected to the Flash memory through the Flash controller
+      - get constant data and debug from FLASH memory
+    - S-Bus - Connect to SRAM and other peripherals
       - it can also fetch data and instruction from SRAM, it is not connected to the Flash memory.
-      - its memory address boundary includes addresses for I-Bus and D-Bus.
+      - I-Bus and D-Bus uses a subset of the memory addresses of the S-Bus
+        - When data is referenced to a memory within I-Bus and D-Bus range, it will not be transmitted through S-Bus
       - All the peripherals will use S-Bus to access the processor.
       - S-Bus will be split into two AHB
         - AHB2 is used for external interfaces like USB and camera which require high I/O
@@ -92,14 +113,16 @@
   - All the peripherals are syncronized by clocks.
   - It determine the SYSCLK, SYSCLK is the main clock for the MCU
   - The clock is depicted by the clock tree in the mannul
-  - The higher frenquency the clock has the higher power comsumption the board will have.
+  - The higher frenquency the clock has the higher power comsumption the board will have
+  - Clock enables data transmit through a pin with 1 or 0 signals over time
   - There are several clock resources:
     - The Cystal Oscillator (external to MCU) it is the high speed external(HSE) clock
       - Have the option to use on board external clock(Crystal mode)
       - Have the option to install own external clock or use dubeg board's clock (External mode)
     - The RC Oscillator (internal to MCU) it is the high speed internal(HSI) clock
-    - Phase Locked Group (PLL) (internal to MCU) is uses HSE or HSI to boost the systen clock speed much higher.
-  - All peripherals need to enable the peripheral clock before using or configuring it. It is done by changing values in the registers.
+    - Phase Locked Group (PLL) (internal to MCU) uses HSE or HSI to boost the systen clock speed much higher
+  - All peripherals need to enable the peripheral clock before using or configuring it. It is done by changing values in the clock registers
+  - Clock Registers falls within the range called RCC (Reset and Clock Control)
   - The register memoery location is the base address plus the offset stated in the manual
   - MCO is the Microcontroller output signal, the signal can be configured to output to a certain pin for measurement, performed by a USB logic analyzer or a digital oscilloscope. The signal can also act as an external clock for other MCU.
     - 2 pins are connected for measurement, one is the output pin, one is the Ground on the borad.
@@ -107,7 +130,8 @@
   - Exceptions include 15 system exceptions and 240 interrupts(external exceptions)
 - GPIO(General Purpose Input Output)
   - It has ports, like port A, port B, port C.
-  - Each port has multiple pins. Each pin can take 1 bit data(either 1 or 0 at a time) in the memory addresses.
+  - Each port has multiple pins. Each pin can take 1 bit data(either 1 or 0 at a time) in the memory addresses
+  - Address mapping for port registers are divided based on categories like mode, input data, output data etc. Each category has a groups addresses, each corresponding to a specific pin in this port
   - Each GPIO pin is connected to an input buffer and output buffer on the enable line.
     - The enable line can be configured by the GPIO registers.
   - For MCU, The actually pin number for a pin from a certain port is listed in the pin and ball definition table or the MCU schematic.
@@ -119,6 +143,7 @@
 
 ## Microprocessor
 
+- It can be used to run an OS
 - A microprocessor is a device that incorporates the functions of a CPU on a single IC (or a few). It is a clock-driven, register-based digital integrated circuit
 - It accepts binary data as input, processes it according to an instruction set stored in its memory, and provides output.
 - Different instrument sets determine the different architectures of microprocessors

@@ -438,7 +438,8 @@ It is used to send notifications to user emails or other resources.
 - A topic can have many subscribers with differenct protocols(Email, SQS, Lambda) to receive the message.
 - Each topic has a `Publish message` button that can be used to test a message with all subscribers.
 - Each subscription can have a unique filter for all messages.
-- Selecting `Enable raw message delivery` for SQS subscription allow SNS topic send raw message which is the same format as sending SQS message directly.
+- Selecting `Enable raw message delivery` for SQS subscription allow SNS topic to send a duplicated message body that can be used directly as an object
+  - When disable raw message only one message is sent and the content inside the `body` field need to be loaded as object from string before accessing
 
 ## SES
 

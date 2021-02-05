@@ -62,6 +62,8 @@
   - can be found at `/Library/Developer/CommandLineTools/usr/bin`
   - Command from the tools will be available at `/usr/bin`
 - run `xcode-select --install` to install
+  - Reinstall this tool when see `invalid active developer path (/Library/Developer/CommandLineTools)` error after OS update
+  - `xcode-select --reset` if install command not working
 - Located in `/Library/Developer/CommandLineTools`
   - run `sudo rm -rf /Library/Developer/CommandLineTools`, then `sudo xcode-select --install` to update, if update option does not show up in System Preferences
 - Xcode includes this command-line tools. If it is installed on your system separately, uninstall the command-line tools.
@@ -78,7 +80,8 @@
 
 - It is the package management tool for macOS.
   - It provides many up-to-date GNU software that can replace the default Unix BSD software.
-- Homebrew require `Xcode Command Line Tools`.
+- Homebrew requires `Xcode Command Line Tools`
+- Go to [Homebrew Site](https://brew.sh) and search for the package name for installation
 - Install homebrew by running `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`.
 - Uninstall homebrew by running `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"`.
   - This will remove all the packages installed by homebrew as well.

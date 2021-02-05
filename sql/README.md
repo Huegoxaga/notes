@@ -105,12 +105,13 @@
 - `dual` is a “dummy” table in Oracle that has 1 row and 1 column
   – Used whenever a single value is needed
 
-## GUI Tools
+## Database Tools
 
-- It is used as the "frontend" of database server for development purpose
+- Tools for connecting to the database server for testing and maintainance purpose
 
 ### SQL Developer
 
+- Used for Oracle Database
 - SET command
   - it only effect the current session
     - To set all sessions, a connection startup script can be created and set in `Tools / Preferences...`
@@ -122,42 +123,200 @@
   - This is a good way to test a subquery to ensure that it’s working as expected
 - `History` - returns all previously ran commands
   – Double-clicking one of them brings them back into the Worksheet tab where they can be run again or edited
+- Enable line numbers - right-click the line gutter (left margin of the code editor) and select Toggle Line Numbers
+
+### SQL Command Line
+
+- Available on all installs of Oracle, known as `SQL*Plus`
+- If something is wrong with database, may be only tool that allows database access
+- For mac, to install
+- It can run any `PL/SQL` query
+  - SQL statements must be terminated by `;`
+- run `sqlplus` to open the tool
+  - or, `sqlplus <user>/<password> as <role>`
+  - or, `sqlplus <user>/<password>`
+  - Will be prompted for credentials
+- Useful command:
+  - `show user`
+  - `help`
+  - `connect` (prompted for credentials)
+    - or `connect <user>/<password> as <role>`
+  - `disconnect`
+  - `/` to rerun previous SQL command
+  - `help index` see a list of `SQL*Plus` commands
+  - `help <command>` see help for a certain command
+  - `@<filename>.sql` run a `sql` script
+  - `quit`
+
+### pgAdmin
+
+- A web app for managing Postgres database
 
 ## Data Types
 
-### Postgres
+### General Data Types
+
+#### Numeric
+
+- int(can have no length),can be signed or unsigned.
+- FLOAT(optional display length,decimal place) cannot be unsigned.
+- DOUBLE(optional display length,decimal place) cannot be unsigned.
+
+#### Date and Time
+
+- DATE - A date in YYYY-MM-DD format.
+- DATETIME - A date and time combination in YYYY-MM-DD HH:MM:SS format.
+- TIMESTAMP - A timestamp, calculated from midnight, January 1, 1970
+- TIME - Stores the time in HH:MM:SS format.
+
+#### String Type
+
+- CHAR(M) - Fixed-length character string. Size is specified in parenthesis. Max 255 bytes
+- VARCHAR(M) - Variable-length character string. Max size is specified in parenthesis
+- BLOB - "Binary Large Objects" and are used to store large amounts of binary data, such as images or other types of files.
+- TEXT - Large amount of text data.
+- The size parameter specifies the maximum length of the table's column.
+
+### SQL Server Data Type
+
+#### Exact Numerics
+
+- bigint
+- bit
+- decimal
+- int
+- money
+- numeric
+- smallint
+- smallmoney
+- tinyint
+
+#### Approximate Numerics
+
+- float
+- real
+
+#### Date and Time
+
+- date
+- datetime2
+- datetime
+- datetimeoffset
+- smalldatetime
+- time
+
+#### Character Strings
+
+- char
+- text
+- varchar
+
+#### Unicode Character Strings
+
+- nchar
+- ntext
+- nvarchar
+
+#### Binary Strings
+
+- binary
+- image
+- varbinary
+
+#### Other Data Types
+
+- Cursor
+- hierarchyid
+- sql_variant
+- table
+- timestamp
+- uniqueidentifier
+- xml
+
+### Postgres Data Types
 
 - Array is supported for all types
 
-## Syntax
+### Oracle Data Types
 
-The following SQL examples work for mySQL, variation for other SQL will be noted
+- VARCHAR2(maximum length)
+  – Variable length character data
+  – Maximum length up to 32,767 bytes
+  – Maximum length of a database column is 4,000 bytes
+  – NVARCHAR2 Unicode version of VARCHAR2
+  – For Oracle databases: VARCHAR is synonymous with VARCHAR2; to avoid possible changes in behavior, always use VARCHAR2 to store variable-length character strings
+- CHAR(max)
+  – Fixed length character data, blank padded if necessary
+  – Optional maximum length up to 32,767 bytes
+  – Maximum length of a database column is 2,000 byte
+  – Defaults to 1 byte
+  – NCHAR Unicode version of CHAR
+- NUMBER[(precision, scale)]
+  – Fixed or floating point number of almost any size
+  – Precision is total number of digits
+  – Scale determines where rounding occurs
+  – If scale is omitted, it is 0 and value becomes integer (default)
+  – Maximum precision is 38 digits–Scale can be from 0 to 127
+- BINARY_INTEGER
+  - Stores signed integer values
+  - Compares to NUMBER, but takes up less space and is faster in calculations
+  - -2,147,483,747 to 2,147,483,747
+- DATE
+  - Stores fixed length date values
+  - January 1, 4712 BC to December 31, 9999 AD
+    – Start date based on Julian Day Number used in astronomy
+  - When stored in a database column, date values include the time of day in seconds since midnight
+- TIMESTAMP
+  - Extension of DATE type
+  - Stores fixed length date values with precision down to a fraction of a second, with up to 9 places after the decimal (default is 6)
+  - Example: 28-SEP-1966 09.51.44.000000 AM
+- BOOLEAN
+  - Stores the value TRUE or FALSE as well as NULL
+  - PL/SQL only, database tables don't support this type
+- LONG
+  - Stores variable length character strings
+  - LONG is like VARCHAR2, but it’s maximum length is 2GB
+- LONG RAW
+  - Stores raw binary up to 2GB
+- LOB
+  - Large OBject
+  - 4 types: BLOB, CLOB , NCLOB and BFILE
+  - Stores binary objects such as image or video files up to 4GB
+  - BLOBs and CLOBs are functionally equivalent
+  - LOB types stored in the database, BFILE stored outside the database
+  - NCLOB Unicode version of CLOB
+- ROWID
+  - Internally, every Oracle table has a ROWID pseudocolumn, which stores binary values called ROWIDs
+  - ROWIDs uniquely identify rows (within a table) and provide the fastest way to access particular rows
+  - Use the ROWID data type to store ROWIDs in a readable format
+- ROWNUM
+  - ROWNUM is a pseudocolumn that indicates the order of the row within the result set
+  - Determined before ORDER BY
+  - Can be used to approximate SQL Server's TOP clause
 
-- Check server version
+## SQL Syntax
 
-```sql
-select @@version
-```
+### Get Database Info
 
-- the command lists the databases managed by the server.
-
-```sql
-SHOW DATABASES MySQL
-.databases in SQL Server
-```
-
-- display all of the tables in the currently selected database.
-
-```sql
-SHOW TABLES MySQL
-.tables in SQL Server
-```
-
-- displays information about the columns in a given table.
-
-```sql
-SHOW COLUMNS FROM tablename
-```
+- The following SQL examples work for mySQL, variation for other SQL will be noted
+  - Check server version
+    ```sql
+    select @@version
+    ```
+  - the command lists the databases managed by the server.
+    ```sql
+    SHOW DATABASES MySQL
+    .databases in SQL Server
+    ```
+  - display all of the tables in the currently selected database.
+    ```sql
+    SHOW TABLES MySQL
+    .tables in SQL Server
+    ```
+  - displays information about the columns in a given table.
+    ```sql
+    SHOW COLUMNS FROM tablename
+    ```
 
 ### SELECT
 
@@ -807,6 +966,28 @@ ORDER BY last_name, first_name, medication_description
 - If `WHERE` clause is omitted, all records in the table will be deleted
   - `DELETE table_name;`
 
+### Constraints
+
+- During table creation, specify column level constraint(s) after the data type of that column.
+- NULL
+  - All data types support the concept of NULL
+  - NULL is the absence of a value, it is unknown
+  - For a numeric column NULL is not 0
+  - For a string column NULL is not ''
+- Primary Key
+  - Define it as a primary key
+  - PRIMARY KEY (UserID)
+- Not Null
+  name varchar(100) NOT NULL
+- Unique
+- Default
+  - Default value will set for the new column, if not default value then all null.
+- Check
+  - Determines whether the value is valid or not from a logical expression.
+- Auto increment
+  - the starting value for AUTO_INCREMENT is 1, and it will increment by 1 for each new record.
+  - UserID int NOT NULL AUTO_INCREMENT
+
 ### Create Table
 
 - A single database can house hundreds of tables
@@ -816,198 +997,637 @@ ORDER BY last_name, first_name, medication_description
   column_name2 data_type(size),
   column_name3 data_type(size));
   ```
+- Create Table with Constraints
+  ```sql
+  CREATE TABLE Users
+  (
+  UserID int,
+  FirstName varchar(100),
+  LastName varchar(100),
+  City varchar(100),
+  PRIMARY KEY(UserID)
+  );
+  ```
+  ```sql
+  CREATE TABLE employees
+  (employee_id INT NOT NULL,
+  employee_name VARCHAR(50) NOT NULL,
+  department_id INT,
+  job_id CHAR(3),
+  birth_date DATE,
+  gender CHAR(1),
+  salary DECIMAL(8, 2),
+  CONSTRAINT PK_employees PRIMARY KEY(employee_id),
+  CONSTRAINT CK_gender CHECK(gender IN ('M', 'F')),
+  CONSTRAINT CK_salary CHECK(salary >= 0),
+  CONSTRAINT FK_employees_department_id_departments FOREIGN KEY(department_id) REFERENCES departments(department_id))
+  ```
+- Table Creation Example with IDENTITY and Constraints Specified Inline
+  ```sql
+  CREATE TABLE employees_with_identity
+  (employee_id INT IDENTITY PRIMARY KEY,
+  employee_name VARCHAR(50) NOT NULL,
+  department_id INT FOREIGN KEY REFERENCES departments(department_id),
+  job_id CHAR(3),
+  birth_date DATE,
+  gender CHAR(1) CHECK(gender IN ('M', 'F')),
+  salary DECIMAL(8, 2) CHECK(salary >= 0))
+  ```
+- Other Examples:
+  ```sql
+  CREATE TABLE TableName (
+  ColumnName1 DataType[(size)][not null] [DEFAULT value],
+  ColumnName2 DataType[(size)][not null] [DEFAULT value],
+  [CONSTRAINT CK_ConstraintName
+  CHECK (ConstraintCheckCondition),]
+      CONSTRAINT PK_ConstraintName
+                PRIMARY KEY(ColumnName[, ColumnName]
+  [,CONSTRAINT FK_ConstraintName
+  FOREIGN KEY (ColumnName)
+  REFERENCES TableName (ColumnName)
+  ON DELETE RESTRICT
+  ON UPDATE RESTRICT]
+  )
+  ```
 
-Numeric
+### Create Index
 
-int(can have no length),can be signed or unsigned.
-FLOAT(optional display length,decimal place) cannot be unsigned.
-DOUBLE(optional display length,decimal place) cannot be unsigned.
-Date and Time
-DATE - A date in YYYY-MM-DD format.
-DATETIME - A date and time combination in YYYY-MM-DD HH:MM:SS format.
-TIMESTAMP - A timestamp, calculated from midnight, January 1, 1970
-TIME - Stores the time in HH:MM:SS format.
+- Create an index
+  ```sql
+  Create [UNIQUE][clustered] INDEX index_name
+  ON table_name
+  (column_name1 [ ASC/DESC ].
+  ...
+  column_nameN [ ASC/DESC ]
+  ```
+- Ex:
+  ```sql
+  CREATE INDEX STJ_patients_last_name
+  ON patients
+  (last_name ASC)
+  ```
 
-String Type
-CHAR(M) - Fixed-length character string. Size is specified in parenthesis. Max 255 bytes.
-VARCHAR(M) - Variable-length character string. Max size is specified in parenthesis.
-BLOB - "Binary Large Objects" and are used to store large amounts of binary data, such as images or other types of files.
-TEXT - Large amount of text data.
+### Sequences
 
-The size parameter specifies the maximum length of the table's column.
+- A Sequence is a database object used to generate unique numbers
+- CURRVAL returns the current value of the sequence
+- NEXTVAL returns the next value of the sequence
+- Create a sequence, `CREATE SEQUENCE sequence_name [INCREMENT BY value]`
+- Access a Sequence, `sequence_name.CURRVAL`, or `sequence_name.NEXTVAL`
+  - `INSERT INTO tableName VALUES(sequence_name.NEXTVAL);`
 
-Data Types for SQL Server
+### Alter Table
 
-Exact Numerics
-bigint
-bit
-decimal
-int
-money
-numeric
-smallint
-smallmoney
-tinyint
+- The ALTER TABLE command is used to add, delete, or modify columns and their constraints in an existing table
+- Add new columns
+  ```sql
+  ALTER TABLE People
+  ADD DateOfBirth;
+  ```
+- Delete columns
+  ```sql
+  ALTER TABLE People
+  DROP COLUMN DateOfBirth;
+  ```
+- Delete entire table, `DROP TABLE People;`
+- Rename columns
+  ```sql
+  ALTER TABLE People
+  CHANGE FirstName name varchar(100);
+  ```
+- Rename tables, `RENAME TABLE People TO Users;`
 
-Approximate Numerics
-float
-real
-Date and Time
-date
-datetime2
-datetime
-datetimeoffset
-smalldatetime
-time
+## SQL Script
 
-Character Strings
-char
-text
-varchar
-Unicode Character Strings
-nchar
-ntext
-nvarchar
-Binary Strings
-binary
-image
-varbinary
-Other Data Types
-Cursor
-hierarchyid
-sql_variant
-table
-timestamp
-uniqueidentifier
-xml
+- the script put multiple SQL statement together one by one in a file.
+- the script file has an extension of `.sql`
+- each statement requires `;` in the end
+- Excel can build inserts statements
+- When work with scripts in database management software always select the correct table or database before execution
+- Syntax
+  - lexical units:
+    - Identifiers – begin with a letter and may be up to 30 characters long
+    - Reserved words – such as SELECT, BEGIN, END
+    - Delimiters – characters with special meaning, such as `+` `-` `'` `>` `(` `:=` `||` `/*` `--` etc.
+    - Literals – such as `123`, `'Hello World'`, `FALSE`
+    - Comments – single line comments `--` or mutli-line comments `/* */`
+  - Scope And Labels
+    - Variables and other structures are scoped local to their block
+    - Labels are enclosed in `<< label >>`
+    - Labels can be added to the top of any blocks to improve readability and to qualify identifiers
+    - The name of the block must precede the first line of executable code (BEGIN or DECLARE)
+- A group of sql command is called a batch in sql script.
+- `BEGIN`, `END`, is used to enclose a block of PL, like `{}`
 
-NULL
-All data types support the concept of NULL
-NULL is the absence of a value, it is unknown
-For a numeric column NULL is not 0
-For a string column NULL is not ''
+### Useful Command
 
-Primary key keyword
-Define it as a primary key
+- Oracle
+  - `SET SERVEROUTPUT ON;` enable output
+  - `CLEAR SCREEN;` clears the output window
+  - `SET VERIFY OFF` suppress new and old impact of substitution variable
+  - `SET NLS_DATE_FORMAT = 'DD-MON-YYYY` set the date input format
+  - `ALTER SESSION` only make changes to the current session
+    - The statement stays in effect until you disconnect from the database
+    - `ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY`
+- MySQL
+  - GO statements is used at the end of each batch, no `;` followed. It can be followed by an integer that repeats the batch for certain time. When a batch fails other batches will still be executed.
+  - Some `CREATE` and `INSERT` statements require that they are the first statement in a batch.
+  - `SET` commands can be used to change session settings.
+  - Examples SQL Server:
+    ```sql
+    -- Suppress INSERT, UPDATE and DELETE completion messages
+    SET NOCOUNT ON
+    -- Set date format to YYYY-MM-DD
+    SET DATEFORMAT ymd;
+    -- Make the master database the current database
+    USE master
+    -- If database co859 exists, drop it
+    IF EXISTS (SELECT * FROM sysdatabases WHERE name = 'co859')
+    DROP DATABASE co859;
+    GO
+    -- Print statement in the script print string in console, when it is executed. For Microsoft SQL manegement output setting need to be changed to text.
+    PRINT 'Verification'
+    -- Create the co859 database
+    CREATE DATABASE co859;
+    GO
+    -- Make the co859 database the current database
+    USE co859;
+    ```
+  - SET DATEFORMAT format, format can be:
+    - dmy (Preferred in much of the world)
+    - mdy (Preferred in USA)
+    - ymd (Unambiguous, best choice, SQL Server default)
+    - ydm (Should be avoided)
+    - myd (Should be avoided)
+    - dym (Should be avoided)
+  - CREATE User statement creates a new entry in the user table that has no privileges.
+  - GRANT is then used to control the access and privileges the user has
+    - `GRANT Create ON <Database> TO <Source>`
+  - Sources can be
+    - `smith@localhost` – this account will be granted access only when accessing the data locally, not remotely
+    - `RSingh@'192.168.1.%'` – this account will be granted access only when accessing the data from a host with an IP address that begins with `192.168.1`
+    - `DNguyen` – this account will be granted access from any host, local or not (translates to DNguyen@’%’)
+  - `create database databaseName` create a new database.
+  - `grant select on databaseName.* to userName@localhost identified by 'newPassword'` create new database user with local connection and only be allowed to select records.
+  - `use databaseName` set the database as default database.
+  - `describe tableName;` view details about certain table.
+  - `exit;` exit the mysql interface.
 
-CREATE TABLE Users
-(
-UserID int,
-FirstName varchar(100),
-LastName varchar(100),
-City varchar(100),
-PRIMARY KEY(UserID)
-);
+### Procedural Language
 
-SQL Constraints
-Not null
-name varchar(100) NOT NULL
+- Many of the procedure languages supports variables, conditions, loops and exceptions
+- It adds logic to the SQL scripts
+- Each database vendor extends SQL with procedural code:
+  - Microsoft uses T-SQL
+  - Oracle uses Procedural Language SQL (PL/SQL)
+    - Based on Ada
+  - IBM uses SQL Procedural Language (SQL PL)
+  - MySQL uses SQL/Persistent Stored Module (SQL/PSM)
+- Data Definition Language (CREATE, DROP, ALTER, etc.) is not valid in PL/SQL
+- DML (INSERT, UPDATE, DELETE) and SELECT are valid in PL/SQL
 
-Unique
-Primary key
-Default
-Check
-Determines whether the value is valid or not from a logical expression.
+### Oracle Scripts
 
-During table creation, specify column level constraint(s) after the data type of that column.
+#### Functions
 
-Auto increment
-the starting value for AUTO_INCREMENT is 1, and it will increment by 1 for each new record.
+- TO_CHAR
+  - TO_CHAR converts its arguments into a VARCHAR2 with optional formatting
+  - TO_CHAR(value[, format_mask])
+    - `TO_CHAR(AVG(cost), '$9,999.99')`
+    - `TO_CHAR(SYSDATE, 'DD-MONTH-YYYY`
+    - `TO_CHAR(SYSDATE, 'HH:MI:SS')`
+    - `TO_CHAR(SYSDATE, 'FMDD-MONTH-YYYY')`
+      - `FM` - Fill mode controls blank padding and leading zero suppression
+    - `TO_CHAR(12345.678, '099,999)`
+  - TO_CHAR(character)
+  - TO_CHAR(datetime)
+  - TO_CHAR(number)
 
-UserID int NOT NULL AUTO_INCREMENT,
-PRIMARY KEY (UserID)
+#### Procedural Code Blocks
 
-The ALTER TABLE command is used to add, delete, or modify columns constraints in an existing table.
+- The basic unit of organization in `PL` is the block
+- `PL` blocks can be named or anonymous
+- Named blocks can be stored in the database
+- Blocks can be nested
+- Structure
+  ```sql
+  DECLARE
+    -- Declaration statements
+    -- Declear Types
+    v_first_name VARCHAR2(35);
+    -- Use column's data type to declear
+    v_last_name students.last_name%TYPE;
+    --  Declear constant types and assign value
+    id CONSTANT NUMBER := 7;
+  BEGIN
+    -- Mandatory, Executable statements
+    -- Use || between variable names for formatted output
+    SELECT first_name||' '||last_name
+    INTO v_first_name, v_last_name
+    FROM students
+    WHERE student_id = id;
+    -- OUTPUT
+    BMS_OUTPUT.PUT_LINE ('Student name: '||first_name ||' '|| last_name);
+  EXCEPTION
+    -- Exception-handling statements
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ('No student is found');
+  END;
+  ```
 
-Add new columns
-ALTER TABLE People ADD DateOfBirth date;
-Default value will set for the new column, if not default value then all null.
+#### Substitution Variables
 
-Delete columns
-ALTER TABLE People
-DROP COLUMN DateOfBirth;
+- Substitution variables get processed at run time
+- Substitution Variables, prompt for input after execution, `i_student_id NUMBER := &input_student_id;`
+- If a substitution variable appears more than once and `&` is used, substitution is prompted for each time
+  - Use `&&` to prompt only once
+- When prompting to fill a text variable, enclose substitution variable in quotes, `name VARCHAR2(5) := '&input_name';`
 
-Delete entire table
-DROP TABLE People;
+#### Conditional Structure
 
-Rename columns
+- IF
+  ```sql
+  DECLARE
+    v_num1 NUMBER := 5;
+    v_num2 NUMBER := 3;
+    v_temp NUMBER;
+  BEGIN
+  -- if v_num1 is greater than v_num2 rearrange their values
+    IF v_num1 > v_num2 THEN
+      v_temp := v_num1;
+      v_num1 := v_num2;
+      v_num2 := v_temp;
+    END IF;
+    -- display the values of v_num1 and v_num2
+    DBMS_OUTPUT.PUT_LINE ('v_num1 = '||v_num1);
+    DBMS_OUTPUT.PUT_LINE ('v_num2 = '||v_num2);
+  END;
+  ```
+- IF/ELSE statements
+  ```sql
+  DECLARE
+    v_num NUMBER := &sv_user_num;
+  BEGIN
+    -- test if the number provided by the user is even
+    IF MOD(v_num,2) = 0  THEN
+      DBMS_OUTPUT.PUT_LINE (v_num||' is even number');
+    ELSE
+      DBMS_OUTPUT.PUT_LINE (v_num||' is odd number');
+    END IF;
+    DBMS_OUTPUT.PUT_LINE ('Done');
+  END;
+  ```
+- ELSIF statements
+  ```sql
+  DECLARE
+    v_num NUMBER := &sv_num;
+  BEGIN
+    IF v_num < 0 THEN
+      DBMS_OUTPUT.PUT_LINE (v_num||' is a negative number');
+    ELSIF v_num = 0 THEN
+      DBMS_OUTPUT.PUT_LINE (v_num||' is equal to zero');
+    ELSE
+      DBMS_OUTPUT.PUT_LINE (v_num||' is a positive number');
+    END IF;
+  END;
+  ```
+- Nested If statements
+  ```sql
+  DECLARE
+    v_num1 NUMBER := &sv_num1;
+    v_num2 NUMBER := &sv_num2;
+    v_total NUMBER;
+  BEGIN
+    IF v_num1 > v_num2 THEN
+      DBMS_OUTPUT.PUT_LINE ('IF part of the outer IF');
+      v_total := v_num1 - v_num2;
+    ELSE
+      DBMS_OUTPUT.PUT_LINE ('ELSE part of the outer IF');
+      v_total := v_num1 + v_num2;
+      IF v_total < 0 THEN
+        DBMS_OUTPUT.PUT_LINE ('Inner IF');
+        v_total := v_total * (-1);
+      END IF;
+    END IF;
+    DBMS_OUTPUT.PUT_LINE ('v_total = '||v_total);
+  END;
+  ```
+- Conditions with Logical Operators
+  ```sql
+  DECLARE
+    v_letter CHAR(1) := '&sv_letter';
+  BEGIN
+    IF (v_letter >= 'A' AND v_letter <= 'Z')
+    OR (v_letter >= 'a' AND v_letter <= 'z')
+    THEN
+      DBMS_OUTPUT.PUT_LINE ('This is a letter');
+    ELSE
+      DBMS_OUTPUT.PUT_LINE ('This is not a letter');
+      IF v_letter BETWEEN '0' AND '9' THEN
+        DBMS_OUTPUT.PUT_LINE ('This is a number');
+      ELSE
+        DBMS_OUTPUT.PUT_LINE ('This is not a number');
+      END IF;
+    END IF;
+  END;
+  ```
+- CASE statements
+  - CASE statements with selector after `CASE`
+    ```sql
+    DECLARE
+      v_num NUMBER := &sv_user_num;
+      v_num_flag NUMBER;
+    BEGIN
+      v_num_flag := MOD(v_num,2);
+      -- test if the number provided by the user is even
+      CASE v_num_flag
+        WHEN 0 THEN
+          DBMS_OUTPUT.PUT_LINE (v_num||' is even number');
+        ELSE
+          DBMS_OUTPUT.PUT_LINE (v_num||' is odd number');
+      END CASE;
+      DBMS_OUTPUT.PUT_LINE ('Done');
+    END;
+    ```
+  - CASE statements without selector after `CASE`
+    ```sql
+    DECLARE
+      v_student_id   NUMBER := 102;
+      v_section_id   NUMBER := 89;
+      v_final_grade  NUMBER;
+      v_letter_grade CHAR(1);
+    BEGIN
+      SELECT final_grade
+      INTO v_final_grade
+      FROM enrollment
+      WHERE student_id = v_student_id
+      AND section_id = v_section_id;
+      CASE
+        WHEN v_final_grade >= 90 THEN v_letter_grade := 'A';
+        WHEN v_final_grade >= 80 THEN v_letter_grade := 'B';
+        WHEN v_final_grade >= 70 THEN v_letter_grade := 'C';
+        WHEN v_final_grade >= 60 THEN v_letter_grade := 'D';
+        ELSE v_letter_grade := 'F';
+      END CASE;
+      DBMS_OUTPUT.PUT_LINE ('Letter grade is: '||v_letter_grade);
+    END;
+    ```
+  - Case Expression
+    ```sql
+    v_result :=
+      CASE v_num_flag
+        WHEN 0 THEN v_num||' is even number'
+        ELSE v_num||' is odd number'
+      END;
+    ```
+  - CASE Expression in a SQL Statement
+    ```sql
+    SELECT course_no, description,
+      CASE
+        WHEN prerequisite IS NULL THEN
+          'No prerequisite course required'
+        ELSE TO_CHAR(prerequisite)
+      -- Optional label
+      END prerequisite
+    INTO v_course_no, v_description, v_prereq
+    FROM course
+    WHERE course_no = 20;
+    ```
+  - Case statement can be nested
+- NULLIF
+  - NULLIF compares two expressions, if they are equal, it returns NULL
+  - Otherwise it returns the value of the first expression
+  ```sql
+  DECLARE
+    v_num NUMBER := &sv_user_num;
+    v_remainder NUMBER;
+  BEGIN
+    -- calculate the remainder and if it is zero return NULL
+    v_remainder := NULLIF(MOD(v_num,2),0);
+    DBMS_OUTPUT.PUT_LINE ('v_remainder: '||v_remainder);
+  END;
+  ```
+- Simple Loop
+  - Example
+  ```sql
+  DECLARE
+    v_counter NUMBER := 0;
+  BEGIN
+    LOOP
+      DBMS_OUTPUT.PUT_LINE ('v_counter = '||v_counter);
+      EXIT;
+    END LOOP;
+  END;
+  ```
+  - Simple LOOP with EXIT Condition
+  ```sql
+  DECLARE
+    v_counter BINARY_INTEGER := 0;
+  BEGIN
+    LOOP
+      -- increment loop counter by one
+      v_counter := v_counter + 1;
+      DBMS_OUTPUT.PUT_LINE ('v_counter = '||v_counter);
+      -- if EXIT condition yields TRUE exit the loop
+      IF v_counter = 5 THEN
+        EXIT;
+      END IF;
+    END LOOP;
+  END;
+  ```
+  - Simple LOOP with EXIT WHEN Condition
+  ```sql
+  DECLARE
+    v_course course.course_no%TYPE := 430;
+    v_instructor_id instructor.instructor_id%TYPE := 102;
+    v_sec_num section.section_no%TYPE := 0;
+  BEGIN
+    LOOP
+      -- increment section number by one
+      v_sec_num := v_sec_num + 1;
+      INSERT INTO section
+        (section_id, course_no, section_no, instructor_id, created_date, created_by, modified_date, modified_by)
+      VALUES
+        (section_id_seq.NEXTVAL, v_course, v_sec_num, v_instructor_id, SYSDATE, USER, SYSDATE, USER);
+      -- if number of sections added is four exit the loop
+      EXIT WHEN v_sec_num = 4;
+    END LOOP;
+    COMMIT;
+  END;
+  ```
+- WHILE Loop
+  ```sql
+  DECLARE
+    v_counter NUMBER := 1;
+  BEGIN
+    WHILE v_counter < 5 LOOP
+      DBMS_OUTPUT.PUT_LINE ('v_counter = '||v_counter);
+      -- decrement the value of v_counter by one
+      v_counter := v_counter - 1;
+    END LOOP;
+  END;
+  ```
+- FOR LOOP
+  ```sql
+  BEGIN
+    FOR v_counter IN 1..5 LOOP
+      -- By Default, Loop will only increment (or decrement) by 1
+      DBMS_OUTPUT.PUT_LINE ('v_counter = '|| v_counter);
+    END LOOP;
+  END;
+  ```
+- Numeric FOR LOOP IN REVERSE
+  ```sql
+  BEGIN
+    FOR v_counter IN REVERSE 1..5 LOOP
+      DBMS_OUTPUT.PUT_LINE ('v_counter = '||v_counter);
+    END LOOP;
+  END;
+  ```
+- BREAK
+  - It is used to break the loop.
+- CONTINUE - Used to advance to the next iteration of a loop
+  ```sql
+  DECLARE
+    v_counter NUMBER := 0;
+  BEGIN
+    LOOP
+      DBMS_OUTPUT.PUT_LINE ('v_counter = '||v_counter);
+      CONTINUE;
+      v_counter := v_counter + 1;
+      EXIT WHEN v_counter = 5;
+    END LOOP;
+  END;
+  ```
 
-ALTER TABLE People
-CHANGE FirstName name varchar(100);
+#### Exception Handling
 
-Rename tables
-RENAME TABLE People TO Users;
+- Catch Errors based on Built-in Exception types
+  ```sql
+  EXCEPTION
+    WHEN ZERO_DIVIDE THEN
+      DBMS_OUTPUT.PUT_LINE ('A number cannot be divided by zero.');
+    WHEN VALUE_ERROR THEN
+      DBMS_OUTPUT.PUT_LINE ('An error has occurred');
+    WHEN NO_DATA_FOUND THEN
+      DBMS_OUTPUT.PUT_LINE ('There is no such student');
+    WHEN TOO_MANY_ROWS THEN
+      DBMS_OUTPUT.PUT_LINE ('TOO_MANY_ROWS');
+    WHEN PROGRAM_ERROR OR DUP_VALUE_ON_INDEX THEN
+      DBMS_OUTPUT.PUT_LINE ('PROGRAM_ERROR or DUP_VALUE_ON_INDEX');
+    -- Handle any exceptions
+    WHEN OTHERS THEN
+      DBMS_OUTPUT.PUT_LINE ('An error has occurred');
+  ```
+- EXCEPTION block works below inner blocks as well
+- only 1 exception can be raised per block, until handled
+- User-Defined Exceptions
+  ```sql
+  DECLARE
+    v_student_id STUDENT.STUDENT_ID%TYPE := &sv_student_id;
+    v_total_courses NUMBER;
+    e_invalid_id EXCEPTION;
+  BEGIN
+    IF v_student_id < 0 THEN
+      RAISE e_invalid_id;
+    END IF;
+    DBMS_OUTPUT.PUT_LINE ('No exception has been raised');
+  EXCEPTION
+    WHEN e_invalid_id THEN
+      DBMS_OUTPUT.PUT_LINE ('An id cannot be negative');
+  END;
+  ```
+- Reraise Exceptions
+  ```sql
+  WHEN exception THEN
+        RAISE;
+  ```
+- RAISE_APPLICATION_ERROR - RAISE_APPLICATION_ERROR gives an error more of an Oracle look and feel
+  , `RAISE_APPLICATION_ERROR(error_number, error_message[, keep_errors])`
+  - `error_number`: -20,999 to -20,000
+  - `error_message`: up to 2,048 characters
+  - `keep_errors`: boolean
+  - If TRUE, new error is added to error stack
+  - If FALSE (default), new error replaces error stack
+  - Example
+  ```sql
+  DECLARE
+    v_student_id STUDENT.STUDENT_ID%TYPE := &sv_student_id;
+    v_total_courses NUMBER;
+  BEGIN
+    IF v_student_id < 0 THEN
+      RAISE_APPLICATION_ERROR (-20000, 'An id cannot be negative');
+    END IF;
+  END;
+  ```
+  ```sql
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+      RAISE_APPLICATION_ERROR (-20001, 'This ID is invalid');
+  ```
+- EXCEPTION_INIT Pragma
+  - The exception handler only works with named errors
+  - Not all Oracle errors have names
+  - The EXCEPTION_INIT Pragma (compiler directive) allows association between an Oracle error number and a user defined error
+  ```sql
+  DECLARE
+    v_zip ZIPCODE.ZIP%TYPE := '&sv_zip';
+    e_child_exists EXCEPTION;
+    PRAGMA EXCEPTION_INIT(e_child_exists, -2292);
+  ```
+- SQLCODE and SQLERRM
+  - SQLCODE returns Oracle error number
+  - SQLERRM returns error message, maximum length 512 bytes
+  - Used with WHEN OTHERS exception handler
+  - Example
+    ```sql
+    EXCEPTION
+      WHEN OTHERS THEN
+        v_err_code := SQLCODE;
+        v_err_msg  := SUBSTR(SQLERRM, 1, 200);
+        DBMS_OUTPUT.PUT_LINE ('Error code: '||v_err_code);
+        DBMS_OUTPUT.PUT_LINE ('Error message: '||v_err_msg);
+    ```
 
-For SQL Server:
+#### Transcation
 
-CREATE TABLE TableName (
-ColumnName1 DataType[(size)][not null] [DEFAULT value],
-ColumnName2 DataType[(size)][not null] [DEFAULT value],
+- some units of work (transactions) will change multiple tables
+- Database not considered in a consistent state unless all or none of the changes are processed together
+- Changes made by one database user are not visible to other users until committed
+- `COMMIT` makes events within a transaction permanent
+- `ROLLBACK` erases events within a transaction
+- `SAVEPOINT` marks a place in a transaction to where a partial rollback may be made
+  ```sql
+  BEGIN
+    INSERT INTO student
+    (student_id, last_name, zip, registration_date, created_by, created_date, modified_by, modified_date)
+    VALUES(student_id_seq.NEXTVAL, 'Tashi', 10015, '1-JAN-2019', 'STUDENTA', '1-JAN-2019', 'STUDENTA', '1-JAN-2019');
+    SAVEPOINT A;
+    INSERT INTO student
+    (student_id, last_name, zip, registration_date, created_by, created_date, modified_by, modified_date)
+    VALUES(student_id_seq.NEXTVAL, 'Sonam', 10015, '1-JAN-2019', 'STUDENTB', '1-JAN-2019', 'STUDENTB', '1-JAN-2019');
+    SAVEPOINT B;
+    INSERT INTO student
+    (student_id, last_name, zip, registration_date, created_by, created_date, modified_by, modified_date)
+    VALUES(student_id_seq.NEXTVAL, 'Norbu', 10015, '1-JAN-2019', 'STUDENTB', '1-JAN-2019', 'STUDENTB', '1-JAN-2019');
+    SAVEPOINT C;
+    ROLLBACK TO B;
+  END;
+  ```
 
-[CONSTRAINT CK_ConstraintName
-CHECK (ConstraintCheckCondition),]
+### MySQL Scripts
 
-    CONSTRAINT PK_ConstraintName
-               PRIMARY KEY(ColumnName[, ColumnName]
+#### System Stored Procedures
 
-[,CONSTRAINT FK_ConstraintName
-FOREIGN KEY (ColumnName)
-REFERENCES TableName (ColumnName)
-ON DELETE RESTRICT
-ON UPDATE RESTRICT]
-)
+- Pieces of executable code stored in the database (small programs)
+- Stored procedures require procedural code
+- For MySQL
+  - System Stored Procedures are pre-defined stored procedures with name:
+    - `sp_help <column_name>` see help about a column
+    - `sp_server_info` see info about the server
+  - Procedures are stored in the data dictionary `sys.procedures`, `sys.sql_modules`
 
-Example:
-
-CREATE TABLE employees
-(employee_id INT NOT NULL,
-employee_name VARCHAR(50) NOT NULL,
-department_id INT,
-job_id CHAR(3),
-birth_date DATE,
-gender CHAR(1),
-salary DECIMAL(8, 2),
-CONSTRAINT PK_employees PRIMARY KEY(employee_id),
-CONSTRAINT CK_gender CHECK(gender IN ('M', 'F')),
-CONSTRAINT CK_salary CHECK(salary >= 0),
-CONSTRAINT FK_employees_department_id_departments FOREIGN KEY(department_id) REFERENCES departments(department_id))
-
-Table Creation Example with IDENTITY and Constraints Specified Inline
-CREATE TABLE employees_with_identity
-(employee_id INT IDENTITY PRIMARY KEY,
-employee_name VARCHAR(50) NOT NULL,
-department_id INT FOREIGN KEY REFERENCES departments(department_id),
-job_id CHAR(3),
-birth_date DATE,
-gender CHAR(1) CHECK(gender IN ('M', 'F')),
-salary DECIMAL(8, 2) CHECK(salary >= 0))
-
-Create an index
-Create [UNIQUE][clustered] INDEX index_name
-ON table_name
-(column_name1 [ ASC/DESC ].
-...
-column_nameN [ ASC/DESC ]
-
-Ex:
-CREATE INDEX STJ_patients_last_name
-ON patients
-(last_name ASC)
-
-Stored Procedures
-Pieces of executable code stored in the database (small programs)  
-Stored procedures require procedural code  
-Each database vendor extends SQL with procedural code  
-Microsoft uses T-SQL  
-Oracle uses Procedural Language SQL (PL/SQL)  
-IBM uses SQL Procedural Language (SQL PL)  
-MySQL uses SQL/Persistent Stored Module (SQL/PSM)
-System Stored Procedures are pre-defined stored procedures with name:
-sp_help ‘column_name' —see help about a column
-sp_server_info — see info about the server.
-Procedures are stored in the data dictionary sys.procedures, sys.sql_modules.
-
-Create Procedure
+#### Create Procedures
 
 ```sql
 CREATE PROCEDURE procedure_name
@@ -1027,7 +1647,7 @@ UPDATE items
 	WHERE primary_vendor_id = @vendor_id;
 ```
 
-Alter a Procedure
+#### Alter a Procedure
 
 ```sql
 ALTER PROCEDURE procedure_name
@@ -1037,351 +1657,251 @@ AS
 …SQL COMMAND WITH @param1, @param2…
 ```
 
-Delete a Procedure
+#### Delete a Procedure
 
 ```sql
 DROP PROCEDURE procedure_name;
 ```
 
-Run Procedure
+#### Run Procedure
 
-```sql
-EXEC sp_help
-EXEC procedure_name ‘column_name’;
-```
+- use `EXEC` to run procedures
+  ```sql
+  EXEC sp_help
+  EXEC procedure_name 'column_name';
+  ```
+- Can accept command line parameters, separated by commas
+- functions are not accepted, new variables need to be declared to store values from function. `EXEC procedure_name @param1=‘value1’, @param2=‘value2’;`
+- Parameters can be positional or named, `EXEC procedure_name value1 value2;`
+- SET, It is used to assign value.
+  ```sql
+  SET @variable_name = value;
+  SET @variable_name = NULL;
+  SET @variable_name = <SQL Command that return a single value>
+  ```
 
-Can accept command line parameters, separated by commas
-functions are not accepted, new variables need to be declared to store values from function.
-EXEC procedure_name @param1=‘value1’, @param2=‘value2’;
+#### Conditional Structure
 
-Parameters can be positional or named  
-EXEC procedure_name value1 value2;
+- IF
+  ```sql
+  IF @ref_error = 1
+  SET @error_msg = 'NOT FOUND';
+  ```
+- IF/ELSE statements
+  ```sql
+  IF @ref_error = 0
+    SET @error_msg = 'FOUND';
+  ELSE
+    SET @error_msg = 'NOT FOUND';
+  ```
+- CASE statements
+  ```sql
+  CASE @evaluation
+  WHEN 100
+    THEN UPDATE employees SET salary = salary * 1.3;
+  WHEN 90
+    THEN UPDATE employees SET salary = salary * 1.2;
+  WHEN 80
+    THEN UPDATE employees SET salary = salary * 1.1;
+  ELSE UPDATE employees SET salary = salary * 1.05;
+  END
+  ```
+  ```sql
+  CASE
+  WHEN @evaluation = 100
+    THEN UPDATE employees SET salary = salary * 1.3;
+  WHEN @evaluation =  90
+    THEN UPDATE employees SET salary = salary * 1.2;
+  WHEN @evaluation =  80
+    THEN UPDATE employees SET salary = salary * 1.1;
+  ELSE UPDATE employees SET salary = salary * 1.05;
+  END
+  ```
+- WHILE Loop
+  ```sql
+  WHILE @@FETCH_STATUS = 0
+  BEGIN
+    <loop processing>
+  END
+  ```
+- BREAK
+  - It is used to break the loop.
+- CONTINUE
+  - Used to advance to the next iteration of a loop.
 
-BEGIN-END
-Used to enclose a block of statements, like {}.
+#### Cursor
 
-```sql
-BEGIN
-	SET…
-	SET…
-END
-Declare
-Declare local variables
-DECLARE @variable_name DATATYPE;
-```
+- Used to access a SELECT result set one row at a time
+- Steps to use a cursor
+  1. DECLARE a cursor with a SELECT statement
+  2. OPEN the cursor
+  - This executes the SELECT statement and populates the cursor
+  3. FETCH one row at a time from the result set INTO variables
+  - Each column fetched must have a correlating variable
+  - Perform whatever processing desired for each row
+  4. CLOSE the cursor
+  5. DEALLOCATE the cursor
+- Example
+  ```sql
+  ALTER PROCEDURE update_items_item_cost
+    @increase DECIMAL(3, 2),
+    @vendor_id INT,
+    @update INT = 0, -- If @update = 1, perform update, else show what would be updated
+    @number_of_records INT OUTPUT
+  AS
+    DECLARE items_cursor CURSOR
+      FOR SELECT item_cost
+          FROM items
+          WHERE primary_vendor_id = @vendor_id
+      FOR UPDATE;
+    DECLARE @item_cost DECIMAL(9, 2);
+  BEGIN
+    IF @update = 1
+    BEGIN
+      SET @number_of_records = 0;
+      OPEN items_cursor;
+      FETCH NEXT FROM items_cursor
+        INTO @item_cost;
+      WHILE @@FETCH_STATUS = 0
+      BEGIN
+        SET @item_cost = @item_cost * (1 + @increase);
+        UPDATE items
+          SET item_cost = @item_cost
+          WHERE CURRENT OF items_cursor;
+        SET @number_of_records = @number_of_records + 1;
+        FETCH NEXT FROM items_cursor
+          INTO @item_cost;
+      END
+    CLOSE items_cursor;
+    END
+    ELSE -- No Update
+      SELECT item_id, vendor_name, item_cost AS [existing_cost], item_cost * (1 + @increase) AS [proposed_cost]
+      FROM items
+      JOIN vendors
+      ON primary_vendor_id = vendors.vendor_id
+      WHERE primary_vendor_id = @vendor_id;
+    DEALLOCATE items_cursor;
+  END
+  PRINT '**********Before Update**********'
+  SELECT * FROM items WHERE primary_vendor_id = 1;
+  -- Need to declare a variable to receive output
+  DECLARE @num_of_rows INT;
+  PRINT '**********No Update**********'
+  EXEC update_items_item_cost @increase=0.25, @vendor_id=1, @update=0, @number_of_records=@num_of_rows OUTPUT;
+  SELECT @num_of_rows AS [number_of_rows];
+  PRINT '**********After No Update**********'
+  SELECT * FROM items WHERE primary_vendor_id = 1;
+  PRINT '**********Update**********'
+  EXEC update_items_item_cost @increase=0.25, @vendor_id=1, @update=1, @number_of_records=@num_of_rows OUTPUT;
+  SELECT @num_of_rows AS [number_of_rows];
+  PRINT '**********After Update**********'
+  SELECT * FROM items WHERE primary_vendor_id = 1;
+  ```
+- `@@FETCH_STATUS`, Returns the status of the last cursor FETCH statement
+  - 0 = The FETCH statement was successful
+  - -1 = The FETCH statement failed or the row was beyond the result set
+  - -2 = The row fetched is missing
 
-SET
-It is used to assign value.
+#### Trigger
 
-```sql
-SET @variable_name = value;
-SET @variable_name = NULL;
-SET @variable_name = …SQL Command that return a single value…
-```
+- A trigger is a special stored procedure attached to a specific table.
+- It is Event-driven, it is "Fired" automatically in response to event
+- Can't pass values into a trigger, values can be declared inside a trigger.
+- Example
+  ```sql
+  CREATE TRIGGER employees_insert
+  ON employees
+  AFTER INSERT, UPDATE #triggered by both insert and update operation
+  AS
+  UPDATE company_stats
+  SET number_of_employees = number_of_employees + 1;
+  ```
+- During trigger execution, two special tables are used: deleted and inserted
+- SQL Server automatically creates and manages these tables
+- They have identical schema to the table being modified
+  ```sql
+  CREATE TRIGGER trigger_name
+    ON table_name
+    AFTER UPDATE
+  AS
+    DECLARE @new_data MONEY;
+    DECLARE @old_data MONEY;
+  BEGIN
+    SET @newData = (SELECT columnName FROM inserted);
+    SET @oldData = (SELECT columnName FROM deleted);
+    IF @new_data > (@old_data * 1.5)
+      ROLLBACK TRANSACTION;     - - cancel update
+  END
+  ```
+- Improvement for updating multiple records
+  ```sql
+    ALTER TRIGGER employees_update
+    ON employees
+    AFTER UPDATE
+    AS
+    BEGIN
+    IF EXISTS (SELECT i.salary FROM inserted i
+    JOIN deleted d
+    ON i.employee_id = d.employee_id
+    WHERE i.salary > (d.salary * 1.5))
+    ROLLBACK TRANSACTION;
+    END
+  ```
+- Trigger with Cursor
+  ```sql
+  ALTER TRIGGER employees_update
+    ON employees
+    AFTER UPDATE
+  AS
+    DECLARE employees_cursor CURSOR
+      FOR SELECT i.salary, d.salary
+        FROM inserted i
+        JOIN deleted d
+        ON i.employee_id = d.employee_id;
+    DECLARE @new_salary MONEY;
+    DECLARE @old_salary MONEY;
+  BEGIN
+    OPEN employees_cursor;
+    FETCH NEXT FROM employees_cursor
+      INTO @new_salary, @old_salary;
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+      IF @new_salary > @old_salary * 1.5
+      BEGIN
+        ROLLBACK TRANSACTION;
+        BREAK;
+      END
+      FETCH NEXT FROM employees_cursor
+        INTO @new_salary, @old_salary;
+    END
+    CLOSE employees_cursor;
+  END
+  ```
+- To delete an existing trigger use: `DROP TRIGGER Trigger_Name`
+- Every CREATE TRIGGER statement generates entries
+  - For SQL Server
+    - sys.triggers
+    - sys.trigger_events
+    - sys.events
+    - sys.sql_modules
 
-IF
+#### Transcation
 
-```sql
-IF @ref_error = 1
-SET @error_msg = 'NOT FOUND';
-```
-
-IF/ELSE statements
-
-```sql
-IF @ref_error = 0
-	SET @error_msg = 'FOUND';
-ELSE
-	SET @error_msg = 'NOT FOUND';
-```
-
-CASE statements
-
-```sql
-CASE @evaluation
-WHEN 100
-	THEN UPDATE employees SET salary = salary * 1.3;
-WHEN 90
-	THEN UPDATE employees SET salary = salary * 1.2;
-WHEN 80
-	THEN UPDATE employees SET salary = salary * 1.1;
-ELSE UPDATE employees SET salary = salary * 1.05;
-END
-```
-
-Or
-
-```sql
-CASE
-WHEN @evaluation = 100
-	THEN UPDATE employees SET salary = salary * 1.3;
-WHEN @evaluation =  90
-	THEN UPDATE employees SET salary = salary * 1.2;
-WHEN @evaluation =  80
-	THEN UPDATE employees SET salary = salary * 1.1;
-ELSE UPDATE employees SET salary = salary * 1.05;
-END
-```
-
-WHILE Loop
-
-```sql
-WHILE @@FETCH_STATUS = 0
-BEGIN
-	 <loop processing>
-END
-```
-
-BREAK
-it is used to break the loop.
-
-CONTINUE
-Used to advance to the next iteration of a WHILE loop.
-
-Cursor
-Used to access a SELECT result set one row at a time
-Steps to use a cursor  
-DECLARE a cursor with a SELECT statement  
-OPEN the cursor  
-This executes the SELECT statement and populates the cursor  
-FETCH one row at a time from the result set INTO variables  
-Each column fetched must have a correlating variable  
-Perform whatever processing desired for each row  
-CLOSE the cursor  
-DEALLOCATE the cursor
-
-Example:
-
-```sql
-ALTER PROCEDURE update_items_item_cost
-  @increase DECIMAL(3, 2),
-  @vendor_id INT,
-  @update INT = 0, -- If @update = 1, perform update, else show what would be updated
-  @number_of_records INT OUTPUT
-AS
-  DECLARE items_cursor CURSOR
-    FOR SELECT item_cost
-        FROM items
-        WHERE primary_vendor_id = @vendor_id
-    FOR UPDATE;
-  DECLARE @item_cost DECIMAL(9, 2);
-BEGIN
-  IF @update = 1
-  BEGIN
-    SET @number_of_records = 0;
-    OPEN items_cursor;
-    FETCH NEXT FROM items_cursor
-      INTO @item_cost;
-    WHILE @@FETCH_STATUS = 0
-    BEGIN
-      SET @item_cost = @item_cost * (1 + @increase);
-      UPDATE items
-        SET item_cost = @item_cost
-        WHERE CURRENT OF items_cursor;
-      SET @number_of_records = @number_of_records + 1;
-      FETCH NEXT FROM items_cursor
-        INTO @item_cost;
-    END
-  CLOSE items_cursor;
-  END
-  ELSE -- No Update
-    SELECT item_id, vendor_name, item_cost AS [existing_cost], item_cost * (1 + @increase) AS [proposed_cost]
-    FROM items
-    JOIN vendors
-    ON primary_vendor_id = vendors.vendor_id
-    WHERE primary_vendor_id = @vendor_id;
-  DEALLOCATE items_cursor;
-END
-
-PRINT '**********Before Update**********'
-SELECT * FROM items WHERE primary_vendor_id = 1;
-
--- Need to declare a variable to receive output
-DECLARE @num_of_rows INT;
-
-PRINT '**********No Update**********'
-EXEC update_items_item_cost @increase=0.25, @vendor_id=1, @update=0, @number_of_records=@num_of_rows OUTPUT;
-SELECT @num_of_rows AS [number_of_rows];
-
-PRINT '**********After No Update**********'
-SELECT * FROM items WHERE primary_vendor_id = 1;
-
-PRINT '**********Update**********'
-EXEC update_items_item_cost @increase=0.25, @vendor_id=1, @update=1, @number_of_records=@num_of_rows OUTPUT;
-SELECT @num_of_rows AS [number_of_rows];
-
-PRINT '**********After Update**********'
-SELECT * FROM items WHERE primary_vendor_id = 1;
-```
-
-@@FETCH_STATUS
-Returns the status of the last cursor FETCH statement  
-0 = The FETCH statement was successful  
--1 = The FETCH statement failed or the row was beyond the result set  
--2 = The row fetched is missing
-
-Trigger
-A trigger is a special stored procedure attached to a specific table.
-
-It is Event-driven, it is "Fired" automatically in response to event
-
-Can’t pass values into a trigger, values can be declared inside a trigger.
-
-CREATE TRIGGER employees_insert  
- ON employees  
- AFTER INSERT, UPDATE #triggered by both insert and update operation
-AS  
- UPDATE company_stats  
- SET number_of_employees = number_of_employees + 1;
-
-During trigger execution, two special tables are used: deleted and inserted  
-SQL Server automatically creates and manages these tables  
-They have identical schema to the table being modified
-
-```sql
-CREATE TRIGGER trigger_name
-	ON table_name
-	AFTER UPDATE
-AS
-	DECLARE @new_data MONEY;
-	DECLARE @old_data MONEY;
-BEGIN
-	SET @newData = (SELECT columnName FROM inserted);
-	SET @oldData = (SELECT columnName FROM deleted);
-	IF @new_data > (@old_data * 1.5)
-		ROLLBACK TRANSACTION;     - - cancel update
-END
-```
-
-Improvement for updating multiple records
-
-ALTER TRIGGER employees_update  
- ON employees  
- AFTER UPDATE  
-AS  
-BEGIN  
- IF EXISTS (SELECT i.salary FROM inserted i  
- JOIN deleted d  
- ON i.employee_id = d.employee_id  
- WHERE i.salary > (d.salary \* 1.5))  
- ROLLBACK TRANSACTION;  
-END
-
-Trigger with Cursor
-
-```sql
-ALTER TRIGGER employees_update
-	ON employees
-	AFTER UPDATE
-AS
-	DECLARE employees_cursor CURSOR
-		FOR SELECT i.salary, d.salary
-			FROM inserted i
-			JOIN deleted d
-			ON i.employee_id = d.employee_id;
-	DECLARE @new_salary MONEY;
-	DECLARE @old_salary MONEY;
-BEGIN
-	OPEN employees_cursor;
-  FETCH NEXT FROM employees_cursor
-		INTO @new_salary, @old_salary;
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-		IF @new_salary > @old_salary * 1.5
-		BEGIN
-			ROLLBACK TRANSACTION;
-			BREAK;
-		END
-		FETCH NEXT FROM employees_cursor
-			INTO @new_salary, @old_salary;
-	END
-	CLOSE employees_cursor;
-END
-```
-
-To delete an existing trigger use:  
-DROP TRIGGER Trigger_Name
-
-Every CREATE TRIGGER statement generates entries in  
-sys.triggers  
-sys.trigger_events  
-sys.events  
-sys.sql_modules
-
-TRANSCATION
-ROLLBACK
-
-SELECT _ FROM physicians WHERE physician_id = 2;SELECT _ FROM patients WHERE patient*id = 1251;BEGIN TRANSACTION;UPDATE physicians SET specialty = 'Hematology' WHERE physician_id = 2;UPDATE patients SET allergies = 'Almonds' WHERE patient_id = 1251;SELECT * FROM physicians WHERE physician*id = 2;SELECT * FROM patients WHERE patient*id = 1251;ROLLBACK TRANSACTION;SELECT * FROM physicians WHERE physician*id = 2;SELECT * FROM patients WHERE patient_id = 1251;
-
-Commit
-SELECT _ FROM physicians WHERE physician_id = 2;SELECT _ FROM patients WHERE patient*id = 1251;BEGIN TRANSACTION T1;UPDATE physicians SET specialty = 'Hematology' WHERE physician_id = 2;UPDATE patients SET allergies = 'Almonds' WHERE patient_id = 1251;SELECT * FROM physicians WHERE physician*id = 2;SELECT * FROM patients WHERE patient*id = 1251;COMMIT TRANSACTION T1;SELECT * FROM physicians WHERE physician*id = 2;SELECT * FROM patients WHERE patient_id = 1251;
-
-SQL Script
-the script put multiple SQL statement together one by one in a file.
-the script file has an extension of .sql
-each statement requires; in the end
-Excel can build inserts statements
-When work with scripts in database management software always select the correct table or database before execution.
-
-Script file comments
-Single line comments begin with `--`
-Multi line comments are bounded with `/* */`
-
-A group of sql command is called a batch in sql script.
-
-GO statements is used at the end of each batch, no ; followed. It can be followed by an integer that repeats the batch for certain time. When a batch fails other batches will still be executed.
-
-Some CREATE and INSERT statements require that they are the first statement in a batch.
-
-SET commands can be used to change session settings.
-SET NOCOUNT ON
-Suppress INSERT, UPDATE and DELETE completion messages
-SET DATEFORMAT ymd
-Sets the date format to YYYY-MM-D
-
-SET Examples:
-
-SET NOCOUNT ON
-
--- Set date format to year, month, day
-SET DATEFORMAT ymd;
-
--- Make the master database the current database
-USE master
-
--- If database co859 exists, drop it
-IF EXISTS (SELECT \* FROM sysdatabases WHERE name = 'co859')
-DROP DATABASE co859;
-GO
-
-PRINT ‘Verification';
-//Print statement in the script print string in console, when it is executed. For Microsoft SQL manegement output setting need to be changed to text.
-
-SET DATEFORMAT format
-format can be:
-dmy (Preferred in much of the world)
-mdy (Preferred in USA)
-ymd (Unambiguous, best choice, SQL Server default)
-ydm (Should be avoided)
-myd (Should be avoided)
-dym (Should be avoided)
-
--- Create the co859 database
-CREATE DATABASE co859;
-GO
-
--- Make the co859 database the current database
-USE co859;
-
-CREATE User statement creates a new entry in the user table that has no privileges. GRANT is then used to control the access and privileges the user has
-
-smith@localhost – this account will be granted access only when accessing the data locally, not remotelyRSingh@’192.168.1.%’ –this account will be granted access only when accessing the data from a host with an IP address that begins with 192.168.1DNguyen –this account will be granted access from any host, local or not (translates to DNguyen@’%’)
-
-GRANT Create ON _._ TO PZhang@localhost
-GRANT Create ON Mydata.\* TO PZhang@’192.168.1.%’
-
-- `create database databaseName` create a new database.
-- `grant select on databaseName.* to userName@localhost identified by 'newPassword'` create new database user with local connection and only be allowed to select records.
-- `use databaseName` set the database as default database.
-- `describe tableName;` view details about certain table.
-- `exit;` exit the mysql interface.
+- `COMMIT` makes events within a transaction permanent
+  ```sql
+  BEGIN TRANSACTION T1;
+  UPDATE physicians SET specialty = 'Hematology' WHERE physician_id = 2;
+  UPDATE patients SET allergies = 'Almonds' WHERE patient_id = 1251;
+  SELECT * FROM physicians WHERE physician*id = 2;
+  SELECT * FROM patients WHERE patient*id = 1251;
+  COMMIT TRANSACTION T1;
+  ```
+- `ROLLBACK` erases events within a transaction
+  ```sql
+  BEGIN TRANSACTION;
+  UPDATE physicians SET specialty = 'Hematology' WHERE physician_id = 2;
+  UPDATE patients SET allergies = 'Almonds' WHERE patient_id = 1251;
+  SELECT * FROM physicians WHERE physician*id = 2;SELECT * FROM patients WHERE patient*id = 1251;
+  ROLLBACK TRANSACTION;
+  ```
+- `SAVEPOINT` marks a place in a transaction to where a partial rollback may be made
