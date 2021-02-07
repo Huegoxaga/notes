@@ -290,9 +290,12 @@
       - output gate - uses a copy of the current long term state to generate the short term state.
 - Gated Recurrent Networks(GRUs)
   - A refined and simplified version of the LSTM.
-- A Seq2Seq model can be a RNN model that takes a sequence of items (words, letters, time series, etc) and outputs another sequence of items.
+- A `Seq2Seq` model can be a RNN model that takes a sequence of items (words, letters, time series, etc) and outputs another sequence of items.
+  - The use case is translation between two languages
   - A typical sequence to sequence model has two parts – an encoder and a decoder. Both the parts are practically two different neural network models combined into one giant network.
   - The task of an encoder network is to understand the input sequence, and create a smaller dimensional representation of it. This representation is then forwarded to a decoder network which generates a sequence of its own that represents the output.
+  - The attention mechanism add weights to each work from the input sequence for encoder to improve the accuracy
+    - Transformer is an application of the attention mechanism without using RNNs to record the order of words, it uses positional encoding instead
 - Amazon SageMaker Sequence to Sequence
   - A supervised learning algorithm for convert sequence of tokens
   - the input is a sequence of tokens (for example, text, audio) and the output generated is another sequence of tokens.
@@ -427,36 +430,27 @@
 
 - fastText
   - It is used for text data
-  - fastText is a library for learning of word embeddings and text classification created by Facebook's AI Research (FAIR) lab.
+  - fastText is a library for learning of word embeddings and text classification created by Facebook's AI Research (FAIR) lab
   - It is implemented through python ML library `Gensim`
-  - Facebook makes available pretrained models for 294 languages.
-  - fastText uses a neural network for word embedding.
+  - Facebook makes available pretrained models for 294 languages
+  - It provides a python libaray and a command line tool for word representation and classification related tasks
+  - It is written in `C++` and supports multiprocessing during training
   - It is extended as BlazingText as an AWS Sagemaker built-in algorithm
-  - It can be a unsupervised learning algorithm using text to vector(Word2Vec)
-  - It can be a supervised learning algorithm that supports multi-class, multi-label classification
-    - Multi-label can be done with `-loss one-vs-all` or `-loss ova`.
+  - It implements an unsupervised learning algorithm using text to vector(Word2Vec)
+  - It implements a supervised learning algorithm that supports multi-class, multi-label classification
+    - Multi-label can be done by using independent binary classifiers for each label with command `-loss one-vs-all` or `-loss ova`
   - Classification is achieved by
-    - A sentence/document vector is obtained by averaging the word/n-gram embeddings.
-    - For the classification task, multinomial logistic regression is used, where the sentence/document vector corresponds to the features.
-    - [Click](https://www.aclweb.org/anthology/E17-2068/) to see more.
+    - To predict a label for a sentence, a vector representation of the sentence is obtained by averaging the word embeddings vector results for each word in the sentence
+    - Then, use linear classifier(multinomial logistic regression) to predict the label based on the vector value
   - Gram
     - Unigram - each single word is considered as one unit, for a sentence contains words `A B C`. `A`, `B`, `C` are considered.
     - Bigram - each two words are considered as one unit, for a sentence contains words `A B C`. `AB`, `BC` are considered.
     - N-gram - each group of consecutive N words are considered.
       - fastText even consider n-gram for group of characters within a word("ora", "ran", "ang", "nge" when `minn` is 3) and make it different from `Word2Vec`. Hence, it works good with misspelled words.
+      - Default `minn` is 3, `maxn` is 6
     - Bigram or N-gram will take the sequence of words into consideration. Unigram will not.
-  - The hierarchical softmax is a loss function that approximates the softmax with a much faster computation.
-  - Word representations - text preprocessing tool
-    - In order to compute word vectors, a large text corpus is needed.
-    - fastText provides two models for computing word representations:
-      - skipgram - It predicts the target using a random close-by word of the target word, each close-ly word are considered indiviaully.
-      - cbow ('continuous-bag-of-words') - It uses the sum of a certain range of close-by word for prediction.
-      - In practice, the skipgram models works better with subword information than cbow.
-    - The subwords are all the substrings contained in a word between the minimum size (minn) and the maximal size (maxn). By default, all the subword are between 3 and 6 characters
-    - The dimension (dim) controls the size of the vectors, the larger they are the more information they can capture but requires more data to be learned.
-    - if they are too large, they are harder and slower to train.
-    - By default, 100 dimensions are used, but any value in the 100-300 range is as popular.
-  - When dealing with languages that does not contain space in between word, word segementation is required.
+  - The hierarchical softmax is a loss function that approximates the softmax with a much faster computation
+  - When dealing with languages that does not contain space in between word, word segementation is required
 - Object2Vec
   - A bulit-in algorithm from the AWS Sagemaker
   - It utlizes average-pooled embeddings, hierarchical Convolutional Neural Networks (CNNs), as well as multi-layered Bi-Directional-Long-Short-Term-Memory (BiLSTM)-based Recurrent Neural Networks as encoders
@@ -545,6 +539,26 @@
 
 ### Text data preprocessing
 
+#### Normalization
+
+- Clean text
+- leave out all double qoutes
+- Stop Words - are words that are not providing useful information and will be excluded from the text.
+- Stemmer - are used to transform various forms of a word to a common one. Ex, different tense of a verb to the present tense.
+- Replace all non alphapetic and numerial character to space.
+- Use lower case for words
+- Example command for a quick cleanup, `cat <filemane>.txt | sed -e "s/\([.\!?,'/()]\)/ \1 /g" | tr "[:upper:]" "[:lower:]" > <filemane>.preprocessed.txt`
+
+#### Tokenization
+
+- Tokenization of raw text is a standard pre-processing step for many NLP tasks. For English, tokenization usually involves punctuation splitting and separation of some affixes like possessives
+  - Break a sentense apart based on punctuations and possessives
+- Other languages require more extensive token pre-processing, which is usually called segmentation.
+  - Break a sentense apart based on words, when a word in a language can be various number of characters without spacing and punctuations
+  - Some commonly used tool are shown as below: - [Stanford word segmenter](https://nlp.stanford.edu/software/segmenter.html) for Chinese and Arabic. - [Mecab](https://taku910.github.io/mecab/) for Japanese - [UETsegmenter](https://github.com/phongnt570/UETsegmenter) for Vietnamese - [Europarl](http://www.statmt.org/europarl/) for Latin, Cyrillic, Hebrew or Greek scripts - ICU tokenizer - [Click](https://arxiv.org/abs/1802.06893) to learn more
+
+#### Word Representations
+
 - one-hot vectors - a way to represent a word in a set vocabulary by an vector (array), each word in the vocabulary is associated with one index and the word is represented by an array that has `1` on the correponding index and everywhere else is `0`
   - The demesion of the vector equals the number words in the vocabulary
 - Bag of word - It is a way to preprocess text data by using an array of count for all unique words to record the occurrence of each word in the text data.
@@ -553,23 +567,25 @@
   - Then, the data can be fed into other algorithms. Ex, ANNs or Native Bayes for classfication.
 - Word2Vec
   - Word2Vec are used to predict a vector representation of a word using a model trained by a text corpus
+    - It is a word embedding(representation) method, word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers.
+    - it converts every word in a large text corpus into a vector
     - text corpus is a language resource consisting of a large and structured set of texts
-  - Word2vec is a group of two-layer neural networks models that are used to produce word embeddings.
-    - It can be obtained using two methods: Skip Gram or Common Bag Of Words (CBOW)
-    - Word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers.
-    - It uses pre-trained models to convert word to vectors with several hundred dimensions.
+    - It can predict any word if all its subwords presented in the training text corpus
+      - Subwords are groups of letter within a word
+  - Word2vec is a group of two-layer neural networks models that are used to produce word embeddings
+    - It can be obtained using two methods: Skip Gram or `CBOW`
+      - skipgram - It predicts the target using a random close by word of the target word, each close-by word are considered indiviaully
+      - cbow `(continuous(common)-bag-of-words)` - It uses the sum of a certain range of close-by word for prediction
+      - In practice, the skipgram models works better with subword information than cbow
+      - CBOW is faster and has better representations for more frequent words
+  - It has the following parameters:
+    - The subwords are all the substrings contained in a word between the minimum size (minn) and the maximal size (maxn). Usually, all the subword are between 3 and 6 characters
+    - The dimension (dim) controls the size of the vectors, the larger they are the more information they can capture but requires more data to be learned
+      - any value in the 100-300 range is as popular
+      - if they are too large, they are harder and slower to train
   - Word2Vec is a text preprocessing step for downstream NLP, Sentiment analysis, named entity recognition and translation.
   - Words that are semantically similar have vectors that are closer to each other
-  - The average of vectorized words in a sentence can the be fed into logistic regression classifiers or any other models.
-- Tokenization
-  - Tokenization of raw text is a standard pre-processing step for many NLP tasks. For English, tokenization usually involves punctuation splitting and separation of some affixes like possessives.
-  - Other languages require more extensive token pre-processing, which is usually called segmentation. Some commonly used tool are shown as below: - [Stanford word segmenter](https://nlp.stanford.edu/software/segmenter.html) for Chinese and Arabic. - [Mecab](https://taku910.github.io/mecab/) for Japanese - [UETsegmenter](https://github.com/phongnt570/UETsegmenter) for Vietnamese - [Europarl](http://www.statmt.org/europarl/) for Latin, Cyrillic, Hebrew or Greek scripts - ICU tokenizer - [Click](https://arxiv.org/abs/1802.06893) to learn more
-- Text cleanup
-  - leave out all double qoutes
-  - Stop Words - are words that are not providing useful information and will be excluded from the text.
-  - Stemmer - are used to transform various forms of a word to a common one. Ex, different tense of a verb to the present tense.
-  - Replace all non alphapetic and numerial character to space.
-  - Use lower case for words
+  - The average of vectorized words in a sentence can the be fed into logistic regression classifiers or any other models
 - GloVe is another unsupervised learning algorithm for obtaining vector representations for words.
   - It puts emphasis on the importance of word-word co-occurences to extract meaning rather than other techniques such as skip-gram or bag of words
   - GloVe creates a global co-occurrence matrix by estimating the probability a given word will co-occur with other words.

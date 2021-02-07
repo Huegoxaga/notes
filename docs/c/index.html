@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1305,7 +1337,58 @@
 <h2 id="introduction">Introduction</h2>
 <ul>
 <li>It is a low-level language that relates closely to the way machines work</li>
-<li>It is used to write operating systems and other languages.</li>
+<li>It is used to write operating systems and other languages</li>
+<li>The C programming language was initially developed in AT&amp;T labs by Professor Brian W. Kernighan and Dennis Ritchie, known as <code>K&amp;R C</code></li>
+<li>During the year 1970, <code>C</code> programming became very popular but without any serious startdardization to the language</li>
+<li>The non-official standard was called <code>K&amp;R C</code>, which led to many ambiguities among different compiler programmers, and that led to non-portable codes<ul>
+<li><code>K&amp;R C</code> was the first non-official <code>C</code> standard</li>
+</ul>
+</li>
+<li>In 1989 American National Standard Institute designed and approved first official <code>C</code> standard called <code>X3.159-1989</code>, and in 1990 it was approved by ISO as an international standard for C programming language: <code>ISO/IEC 9899:1990</code><ul>
+<li>This is also called <code>ANSI C</code> or <code>C89</code> or <code>C90</code> standard in short</li>
+</ul>
+</li>
+<li>The language underwent few more changes (addition of new features, syntaxes, data types, etc.) and newly updated standard released in 1999 under the ISO tag <code>ISO/IEC 9899:1999</code><ul>
+<li>It is also called <code>C99</code> standard in short</li>
+</ul>
+</li>
+<li><code>C11</code> is an informal name for <code>ISO/IEC 9899:2011</code>, which is a new standard approved in December 2011. <code>C11</code> supersedes the C99 standard</li>
+<li>Official standards have backward compatibility</li>
+</ul>
+<h2 id="compiler">Compiler</h2>
+<ul>
+<li>MacOS can use <code>GCC</code> compiler</li>
+<li>Windows machine uses WinGW to compile</li>
+<li>run <code>brew install gcc</code> to install</li>
+<li>run <code>gcc &lt;filename&gt;</code> to compile</li>
+<li>Native compilation compile code for execution on the same machine:</li>
+<li>Cross compiler compiling code from one machine for another machine:</li>
+<li>Compiler can generates the following intermediate files<ul>
+<li>Preprocessed file, <code>.i</code> - a complete version of the source code include imported source code</li>
+<li>Assembly instruction file, <code>.s</code> - parses and converts pre-processed file into assembly language</li>
+<li>Machine Code file, <code>.o</code> - converts assembly language into opcodes</li>
+<li><code>.elf</code> - linker merges multiple <code>.o</code> files and <code>.a</code> files from imported library to form a executable file used for debugging</li>
+<li><code>.bin</code>, <code>.exe</code> or <code>.hex</code> - post process <code>.elf</code> file into pure binary for production<ul>
+<li>use tools like <code>objcopy</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="compiler-flags">Compiler Flags</h3>
+<ul>
+<li><code>-save-temps</code> Save intermediate compilation results</li>
+<li><code>-std</code> Compiling standard<ul>
+<li><code>gnu11</code> - ISO C11 + gnu extension</li>
+<li><code>gnu99</code> - ISO C99 + gnu extension</li>
+<li><code>gnu90</code> - ISO C90 + gnu extension</li>
+</ul>
+</li>
+</ul>
+<h2 id="ide">IDE</h2>
+<h3 id="online-ide">Online IDE</h3>
+<ul>
+<li><a href="https://www.onlinegdb.com" target="_blank">OnlineGBD</a> is a convenient online IDE for practicing and debugging C Code</li>
 </ul>
 <h2 id="syntax">Syntax</h2>
 <ul>
@@ -1327,8 +1410,8 @@
 }
 </code></pre>
 <ul>
-<li>main function return 0 to the calling process after execution.</li>
-<li>0 means the program executed successfully, other number indicates the program has failed.</li>
+<li>main function return <code>0</code> to the calling process after execution.</li>
+<li><code>0</code> means the program executed successfully, other number indicates the program has failed.</li>
 </ul>
 </li>
 </ul>
@@ -1393,6 +1476,7 @@ C has no Boolean Type.</p>
 <li>In a function declaration, pass in variable as constant can make sure its value is unchanged.</li>
 </ul>
 </li>
+<li>A <code>volatile</code> keyword declares variables which will not be optimized by the compiler, the compiled code will always do what the instruction code ask to do, even if the logic is redundant</li>
 </ul>
 <h2 id="array">Array</h2>
 <ul>
@@ -1437,7 +1521,7 @@ C has no Boolean Type.</p>
 </li>
 </ul>
 <h2 id="operators">Operators</h2>
-<h4 id="arithmetic-operators">Arithmetic Operators</h4>
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
 <ul>
 <li><code>+</code> addition</li>
 <li><code>-</code> subtraction</li>
@@ -1453,13 +1537,37 @@ C has no Boolean Type.</p>
 <li>C may not evaluate a numeric expression from left to right among operators with the same precedence.</li>
 <li>Using parentheses <code>( )</code> to indicate which operations are to be performed first.</li>
 </ul>
-<h4 id="assignment-operators">Assignment Operators</h4>
+<h3 id="bitwise-operators">Bitwise Operators</h3>
+<ul>
+<li><code>|</code> or</li>
+<li><code>&amp;</code> and</li>
+<li><code>&gt;&gt;</code> right shift, move all values to the right to a certain position and fill the left with <code>0</code></li>
+<li><code>&lt;&lt;</code> left shift</li>
+<li><code>~</code> not</li>
+<li><code>^</code> xor</li>
+<li>Changing values on bits involves using the above oprator with a mask<ul>
+<li>A mask has either <code>0</code> or <code>1</code> on a certain position</li>
+</ul>
+</li>
+<li>bit extraction uses right shift then use a mask to get the portion needed</li>
+<li>left shift to a number of position with a target value can quickly generate a mask<ul>
+<li>use <code>~</code> accordingly to generate mask with most value as <code>1</code></li>
+</ul>
+</li>
+<li>When overwrite a value to a certain position use <code>&amp;</code> and a mask to reset all values in that position to zero, then use <code>|</code> to write new value to it</li>
+</ul>
+<h3 id="assignment-operators">Assignment Operators</h3>
 <ul>
 <li>Apply numerical operation with itself by using the following:<ul>
 <li><code>+=</code></li>
 <li><code>-=</code></li>
 <li><code>*=</code></li>
 <li><code>/=</code></li>
+<li><code>|=</code> can be used to add bit to an existing value</li>
+<li><code>&amp;=</code> can be used to reset bit to an existing value with a mask<ul>
+<li>a mask has the reset position as <code>0</code> and all other positions as <code>1</code></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Increment and Decrement<ul>
@@ -2044,11 +2152,14 @@ ptr-&gt;int_num = <span class="hljs-number">10</span>;
 <li>printf(&#x201C;formatted string with format specifier (%d)&#x201D;,variablesXToReplace%d);, Formatted output</li>
 <li>Escape sequences begin with a backslash <code>\</code>:<ul>
 <li><code>\n</code> new line</li>
-<li><code>\t</code> horizontal tab</li>
+<li><code>\t</code> horizontal tab, four white spaces</li>
 <li><code>\\</code> backslash</li>
 <li><code>\b</code> backspace</li>
+<li><code>\r</code> carriage return, move cursor back to the beginning of the line and start to replace existing characters</li>
+<li><code>\v</code> vertical tab</li>
 <li><code>\&apos;</code> single quote</li>
 <li><code>\&quot;</code> double quote</li>
+<li><code>\0</code> null</li>
 </ul>
 </li>
 <li><code>%[-][width].[precision]conversion_character</code>, Format specifier for printf<ul>
@@ -2580,7 +2691,7 @@ fptr = fopen(<span class="hljs-string">&quot;nonexistantfile.txt&quot;</span>, <
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C","level":"1.6","depth":1,"next":{"title":"C++","level":"1.7","depth":1,"path":"cpp/README.md","ref":"cpp/README.md","articles":[]},"previous":{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c/README.md","mtime":"2020-11-20T18:09:53.101Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C","level":"1.6","depth":1,"next":{"title":"C++","level":"1.7","depth":1,"path":"cpp/README.md","ref":"cpp/README.md","articles":[]},"previous":{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c/README.md","mtime":"2021-02-06T19:53:37.026Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="android.md">
+        <li class="chapter " data-level="1.3.2" data-path="android.html">
             
-                <span>
+                <a href="android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1316,6 +1348,22 @@
 <li><code>*.war</code> is for Java Web Application.</li>
 <li>Java guarantees &quot;Write Once, Run Anywhere.&quot;</li>
 <li>All programs in Java is object-oriented.</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ul>
+<li>run <code>/usr/libexec/java_home -V</code> to see the location of java</li>
+<li>run <code>/usr/libexec/java_home -v11</code> to see the location of a specific java version installed in the system</li>
+<li>run <code>export JAVA_HOME=&lt;JAVA_LIB_LOCATION&gt;</code> assign the Java location to the envirionment variable to let the system work on a specific Java version,<ul>
+<li>change and reload the dot file for a permanent change</li>
+</ul>
+</li>
+<li>The system Java wrappers can&apos;t find the Java library if it is not installed inside the system default folder, create a symbolic link into the <code>JavaVirtualMachines</code> so the <code>java_home</code> command can find it</li>
+<li>To complete remove java, run the following command after removing the content inside the Java home folder<ul>
+<li><code>sudo rm -rf &quot;/Library/Internet Plug-Ins/JavaAppletPlugin.plugin&quot;</code></li>
+<li><code>sudo rm -rf &quot;/Library/PreferencePanes/JavaControlPanel.prefPane&quot;</code></li>
+<li><code>sudo rm -rf &quot;~/Library/Application Support/Java&quot;</code></li>
+</ul>
+</li>
 </ul>
 <h2 id="ide">IDE</h2>
 <p>There are many great IDE for Java.</p>
@@ -2139,8 +2187,8 @@ For custom exception super() in constructor is for getMessage().</li>
 <ul>
 <li><code>java.util.Random;</code></li>
 <li><code>Random name = new Random();</code></li>
-<li><code>name.nextInt(x);</code> generate x different int from 0</li>
-<li><code>name.nextDouble(x);</code> generate double int from 0-(x-1)</li>
+<li><code>name.nextInt(x);</code> generate int from 0 to <code>x-1</code></li>
+<li><code>name.nextDouble(x);</code> generate double from 0 to <code>x-1</code></li>
 <li><code>name.nextBoolean(x);</code></li>
 </ul>
 <h3 id="math-class">Math class</h3>
@@ -2714,7 +2762,7 @@ Thread t = <span class="hljs-keyword">new</span> Thread(() -&gt; animate(gc));
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.3","depth":1,"next":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"previous":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/README.md","mtime":"2020-11-20T18:09:53.431Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.3","depth":1,"next":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"previous":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/README.md","mtime":"2021-01-16T04:39:49.417Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

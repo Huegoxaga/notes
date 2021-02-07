@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1316,7 +1348,10 @@
 <li><code>--upgrade</code> can be used for both downgrade or upgrade</li>
 </ul>
 </li>
-<li><code>pip install -r requirements.txt</code> install packages according the <code>requirements.txt</code></li>
+<li><code>pip install -r requirements.txt</code> install packages according the <code>requirements.txt</code><ul>
+<li>All packages listed will be installed once, but some packages in the requirement depend on others. Comment out those packages in the <code>requirements.txt</code> and install the required packages first</li>
+</ul>
+</li>
 <li><code>pip install -e .</code> will install the current package directory as a module for the current environment<ul>
 <li><code>-e</code> flag will make any changes made to the package immediately effective for all other code using it in the current environment</li>
 </ul>
@@ -1338,16 +1373,22 @@
 <li>It is the package manager that aimed to replace <code>pip</code>.</li>
 <li>It is a virtual environment tool that can replace <code>virtualenv</code>.</li>
 <li><a href="https://docs.conda.io/projects/conda/en/latest/commands.html" target="_blank">Click here</a> for complete command reference.</li>
+<li>By default anaconda is installed under a user&apos;s folder and it is only available for one user, <a href="https://docs.anaconda.com/anaconda/install/multi-user/" target="_blank">Click Here</a> to see how to perform a multi-user installation</li>
 <li>Environments separate projects to run with certain packages and python version installed in this environment.<ul>
 <li>The <code>base</code> environment is the default environment that has up-to-date python and all anaconda packages installed inside.</li>
+<li>Packages installed in <code>base</code> will share with other environment as alias</li>
 </ul>
 </li>
 <li>Packages and Environments can be controlled using a GUI tool called Anaconda Navigator.</li>
 <li>If conda cannot find a certain package use <code>pip</code> to install.<ul>
 <li>It is better to create a conda environment to isolate any changes pip makes</li>
+<li>Make sure the <code>pip</code> in use is from the <code>conda</code> environment<ul>
+<li>run <code>which pip</code> to check</li>
+</ul>
+</li>
 <li>the packages installed by <code>pip</code> won&apos;t be managed by the Conda package manager, they will still be managed by the Anaconda environment<ul>
 <li>Any packaged installed by <code>pip</code> can be found using <code>conda list</code>. However, conda won&apos;t track all changes made by <code>pip</code>.</li>
-<li>conda env will export or create environments based on a file with conda and pip requirements.</li>
+<li>conda env can export or create environments based on a file with conda and pip requirements.</li>
 </ul>
 </li>
 </ul>
@@ -1374,14 +1415,17 @@
 </li>
 <li><code>conda install &lt;packagename&gt;</code> Install a package included in Anaconda<ul>
 <li><code>conda install --file filename.txt</code> install packages base on text file info.</li>
-<li><code>conda install -c &lt;channelname&gt; &lt;packagename&gt;</code> install a package from a certain channel</li>
+<li><code>conda install -c &lt;channelname&gt; &lt;packagename&gt;</code> install a package from a certain channel<ul>
+<li>some package might be available in a certain channel, to search all the channels for a package, <a href="https://anaconda.org" target="_blank">Open</a> the offcial website and type the package name in the search bar and find the package under the channel that has the most download number to install</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><code>conda update &lt;packagename&gt;</code> Update any installed program<ul>
 <li><code>conda update --all</code> update everything</li>
 </ul>
 </li>
-<li><code>conda create --name py35 python=3.5</code>Create a new environment named py35, install Python 3.5<ul>
+<li><code>conda create --name py35 python=3.5</code> Create a new environment named py35, install Python 3.5<ul>
 <li><code>conda create --name bio-env &lt;packagenametoinstall&gt;</code> all in one command for creating env and instal packages.</li>
 <li>Versions can be specified as the following ways.</li>
 <li><code>numpy=1.11</code> all its subversion are included like <code>1.11.0</code> and <code>1.11.1</code></li>
@@ -2445,6 +2489,231 @@ flags.mark_flag_as_required(<span class="hljs-string">&quot;name&quot;</span>)
 <li><code>logging.error(&apos;message&apos;)</code> create error log</li>
 <li><code>logging.fatal(&apos;message&apos;)</code> create fatal log, and process will exit</li>
 </ul>
+<h2 id="pygame">PyGame</h2>
+<ul>
+<li>It is a free and open-source cross-platform library for the development of multimedia applications like video games using Python</li>
+<li>run <code>pip install pygame</code> to install the latest version, or run <code>conda install -c cogsci pygame</code> to install with conda</li>
+<li><a href="https://www.pygame.org/docs/" target="_blank">Click Here</a> to view its official docs</li>
+</ul>
+<h3 id="initialize-pygame-window">Initialize PyGame Window</h3>
+<pre><code class="lang-py"><span class="hljs-keyword">import</span> pygame
+<span class="hljs-comment">#Init PyGame, enable various PyGame commands</span>
+pygame.init()
+<span class="hljs-comment"># defines the game surface, canvas or display</span>
+gameDisplay = pygame.display.set_mode((<span class="hljs-number">800</span>,<span class="hljs-number">600</span>))
+<span class="hljs-comment"># set the title of the window</span>
+pygame.display.set_caption(<span class="hljs-string">&apos;Welcome to PyGame&apos;</span>)
+<span class="hljs-comment"># Init game clock</span>
+clock = pygame.time.Clock()
+<span class="hljs-comment"># Set and display program icon</span>
+gameIcon = pygame.image.load(<span class="hljs-string">&apos;logo.png&apos;</span>)
+pygame.display.set_icon(gameIcon)
+
+crashed = <span class="hljs-keyword">False</span>
+
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> crashed:
+    <span class="hljs-comment"># Running game will keep posting an event</span>
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+        <span class="hljs-comment"># Read the event until there is a quit singal</span>
+        <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+            crashed = <span class="hljs-keyword">True</span>
+        print(event)
+
+    <span class="hljs-comment"># Update the entire surface</span>
+    pygame.display.update() <span class="hljs-comment"># same as pygame.display.flip(). However, update() can hold parameters that only update a certain area</span>
+    <span class="hljs-comment"># Set FPS rate for the update</span>
+    clock.tick(<span class="hljs-number">60</span>)
+    <span class="hljs-comment"># use pygame.time.wait(10) to pause each loop if clock object is not used</span>
+<span class="hljs-comment"># end PyGame instance</span>
+pygame.quit()
+<span class="hljs-comment"># Exit Python App</span>
+quit()
+</code></pre>
+<h3 id="user-input">User Input</h3>
+<h4 id="keyboard-input">Keyboard Input</h4>
+<ul>
+<li>event object contains user input during each frame inside the event for loop</li>
+<li>Getting key input:<pre><code class="lang-py"><span class="hljs-keyword">if</span> event.type == pygame.KEYDOWN:
+  <span class="hljs-keyword">if</span> event.key == pygame.K_LEFT:
+      <span class="hljs-comment"># when user press left key, change variables here</span>
+      <span class="hljs-keyword">pass</span>
+  <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT:
+      <span class="hljs-comment"># when user press right key, change variables here</span>
+      <span class="hljs-keyword">pass</span>
+<span class="hljs-keyword">if</span> event.type == pygame.KEYUP:
+  <span class="hljs-keyword">if</span> event.key == pygame.K_LEFT <span class="hljs-keyword">or</span> event.key == pygame.K_RIGHT:
+      <span class="hljs-comment"># when user release left, or right key, reset variables here</span>
+      <span class="hljs-keyword">pass</span>
+</code></pre>
+</li>
+</ul>
+<h4 id="mouse-input">Mouse Input</h4>
+<ul>
+<li>Inside the <code>while not creashed</code> loop, <code>mouse = pygame.mouse.get_pos()</code> return the current mouse position as a tuple, <code>(x, y)</code></li>
+<li>also, <code>click = pygame.mouse.get_pressed()</code> return the current mouse click status as a tuple, <code>(x, y, z)</code><ul>
+<li><code>x</code> is 1, while left clicking. <code>x</code> returns to <code>0</code> as soon as it is released</li>
+<li><code>y</code> is 1, while scroll wheel is being clicked</li>
+<li><code>z</code> is 1, while right clicking</li>
+</ul>
+</li>
+</ul>
+<h3 id="display-content">Display Content</h3>
+<ul>
+<li>The following code works inside <code>while not crashed</code> loop before <code>display.update()</code> to display content</li>
+<li>Content will be drawn on the surface one by one for each frame update</li>
+<li><code>gameDisplay.fill((0,0,0))</code> fill a black background</li>
+<li><code>gameDisplay.blit(image, (0,0))</code> draw image at top left corner<ul>
+<li><code>image = pygame.image.load(&apos;temp.png&apos;)</code> create image object before <code>while not crashed</code> loop</li>
+</ul>
+</li>
+<li>Display text:<pre><code class="lang-py"><span class="hljs-comment"># init font and font size</span>
+largeText = pygame.font.Font(<span class="hljs-string">&apos;freesansbold.ttf&apos;</span>,<span class="hljs-number">100</span>)
+<span class="hljs-comment"># Or use system font font = pygame.font.SysFont(None, 100)</span>
+<span class="hljs-comment"># define text and color</span>
+textSurface = font.render(<span class="hljs-string">&quot;Welcome to PyGame&quot;</span>, <span class="hljs-keyword">True</span>, (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+<span class="hljs-comment"># get the rectangle shape around the text</span>
+TextRect = textSurface.get_rect()
+<span class="hljs-comment"># define text position</span>
+TextRect.center = (<span class="hljs-number">200</span>,<span class="hljs-number">300</span>)
+<span class="hljs-comment">#display text</span>
+gameDisplay.blit(textSurface, TextRect)
+</code></pre>
+</li>
+<li><code>pygame.draw.rect(gameDisplay, color, [x, y, w, h])</code> draw a rectangle</li>
+<li><code>pixAr = pygame.PixelArray(gameDisplay)</code>, <code>pixAr[100][50] = (0, 0, 0)</code> assign black color to pixel located at <code>(100, 50)</code></li>
+<li><code>pygame.draw.line(gameDisplay, color, (x1,y1), (x2,y2), width)</code> draw a line</li>
+<li><code>pygame.draw.circle(gameDisplay, color, (x, y), radius)</code> draw a circle</li>
+<li><code>pygame.draw.polygon(gameDisplay, color, ((x1,y1),(x2,y2),(x3,y3),(x4,y4),(x5,y5)))</code> draw a polygon</li>
+</ul>
+<h3 id="sound">Sound</h3>
+<ul>
+<li><code>sound1 = pygame.mixer.Sound(&quot;sound_file.wav&quot;)</code> load sound</li>
+<li><code>pygame.mixer.Sound.play(sound1)</code> play a sound object</li>
+<li><code>pygame.mixer.music.load(&quot;backgroud_music.mp3&quot;)</code> load a background music</li>
+<li><code>pygame.mixer.music.play(2)</code> play the music twice<ul>
+<li><code>play(-1)</code> will keep playing the music repeatly</li>
+</ul>
+</li>
+<li><code>pygame.mixer.music.pause()</code> pause the music</li>
+<li><code>pygame.mixer.music.unpause()</code> unpause the music</li>
+<li><code>pygame.mixer.music.stop()</code> stop playing the background music</li>
+</ul>
+<h3 id="work-with-pyopengl">Work with PyOpenGL</h3>
+<ul>
+<li><code>from pygame.locals import *</code> package is required</li>
+<li>Use <code>pygame.display.set_mode((w,h), DOUBLEBUF|OPENGL)</code> to enable <code>OPENGL</code> mode and set double buffer</li>
+<li>Define initial perspective and translation setting before while loop</li>
+<li>Put the render function inside while loop</li>
+</ul>
+<h2 id="cxfrezze">cx_Frezze</h2>
+<ul>
+<li>It is a set of scripts and modules for freezing Python scripts into executable.</li>
+<li>It is cross-platform and should work on any platform that Python itself works on.<ul>
+<li>It can convert python projects into a stand-alone project folder, <code>.exe</code> for Windows, or <code>.app</code> for Mac</li>
+</ul>
+</li>
+<li>run <code>conda install -c conda-forge cx_freeze</code> to install</li>
+<li><a href="https://cx-freeze.readthedocs.io/en/latest/" target="_blank">Click Here</a> to see ites official docs</li>
+</ul>
+<h3 id="setuppy">setup.py</h3>
+<ul>
+<li>Instruction on how and what to convert are stated in the <code>setup.py</code> file<pre><code class="lang-py"><span class="hljs-keyword">from</span> cx_Freeze <span class="hljs-keyword">import</span> setup, Executable
+setup(name = <span class="hljs-string">&quot;projectName&quot;</span> ,
+  version = <span class="hljs-string">&quot;0.1&quot;</span> ,
+  description = <span class="hljs-string">&quot;&quot;</span> ,
+  options={<span class="hljs-string">&quot;build_exe&quot;</span>: {<span class="hljs-string">&quot;packages&quot;</span>:[<span class="hljs-string">&quot;pygame&quot;</span>], <span class="hljs-string">&quot;include_files&quot;</span>:[<span class="hljs-string">&quot;1.png&quot;</span>, <span class="hljs-string">&quot;2.png&quot;</span>]}},
+  executables = [Executable(<span class="hljs-string">&quot;project1.py&quot;</span>)])
+</code></pre>
+</li>
+<li>run <code>python setup.py build</code> to build the project into a build folder</li>
+<li>run <code>python setup.py bdist_msi</code> to generate the installer for Windows</li>
+<li>run <code>python setup.py bdist_dmg</code> to generate the installer for Mac</li>
+</ul>
+<h2 id="scared">Scared</h2>
+<ul>
+<li>Sacred is a tool to configure, organize, log and reproduce computational experiments<ul>
+<li>An experiment is a complete run of a set of python scripts using a certain set of parameters to start with</li>
+</ul>
+</li>
+<li>It can:<ul>
+<li>keep track of all the parameters of a experiment</li>
+<li>easily run a experiment for different settings</li>
+<li>save configurations for individual runs in files or a database</li>
+<li>reproduce the results</li>
+</ul>
+</li>
+<li><a href="https://sacred.readthedocs.io/en/latest/index.html" target="_blank">Click Here</a> to view its official docs</li>
+</ul>
+<h2 id="pyopengl">PyOpenGL</h2>
+<ul>
+<li>PyOpenGL is the most common cross platform Python binding to OpenGL and related APIs<ul>
+<li>OpenGL is the premier environment for developing portable, interactive 2D and 3D graphics applications</li>
+</ul>
+</li>
+<li>run <code>pip install PyOpenGL PyOpenGL_accelerate</code> to install, or <code>conda install -c conda-forge pyopengl</code></li>
+<li>Import basic methods and classes using <code>from OpenGL.GL import *</code></li>
+<li>Import advanced utility functions using <code>from OpenGL.GLU</code></li>
+</ul>
+<h3 id="glut">GLUT</h3>
+<ul>
+<li>The OpenGL Utility Toolkit is a library of utilities for OpenGL programs, which primarily perform system-level I/O with the host operating system</li>
+<li>It can be used to preview the object in a application window</li>
+<li>Window Setup:<ul>
+<li><code>glutInit()</code> Initialize a glut instance which makes the window customizable</li>
+<li><code>glutInitDisplayMode(GLUT_RGBA)</code> Set the display mode to be colored</li>
+<li><code>glutInitWindowSize(500, 500)</code> Set the width and height of your window</li>
+<li><code>glutInitWindowPosition(0, 0)</code> Set the position at which this windows should appear</li>
+<li><code>wind = glutCreateWindow(&quot;OpenGL Coding Practice&quot;)</code> Set window title</li>
+<li><code>glutDisplayFunc(render)</code> Tell OpenGL to call the <code>render</code> function continuously</li>
+<li><code>glutIdleFunc(render)</code> Draw any graphics or shapes in the render function at all times</li>
+<li><code>glutMainLoop()</code> Keeps the window created above displaying/running in a loop</li>
+</ul>
+</li>
+</ul>
+<h3 id="rendering">Rendering</h3>
+<ul>
+<li>Define a render function that contains objects to be drawn on the display</li>
+<li>Start the render function with <code>glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)</code>, in order to clear the color and depth buffer for each frame, then insert the defined shapes</li>
+<li>Use <code>glLoadIdentity()</code> to reset all shapes to its original matrices</li>
+<li>Use <code>glutSwapBuffers()</code> to swap glut buffers in the end</li>
+<li><code>glViewport(0, 0, 500, 500)</code></li>
+<li><code>glMatrixMode(GL_PROJECTION)</code></li>
+<li><code>glOrtho(0.0, 500, 0.0, 500, 0.0, 1.0)</code></li>
+<li><code>glMatrixMode (GL_MODELVIEW)</code></li>
+</ul>
+<h3 id="shapes">Shapes</h3>
+<ul>
+<li>Shapes are defined between <code>glBegin(SHAPE_TYPE)</code> and <code>glEnd()</code></li>
+<li>When using <code>GL_LINES</code> as shape type, defines two vertex endpoint using <code>glVertex3fv((x, y, z))</code></li>
+<li>When using <code>GL_QUADS</code> as shape type, defines four vertex corner using <code>glVertex2f(x, y)</code> to represent bottom left, bottom right, top right, top left points</li>
+</ul>
+<h3 id="shape-properties">Shape Properties</h3>
+<ul>
+<li><code>gluPerspective(45, (800/600), 0.1, 50.0)</code> set Perspective properties<ul>
+<li>Set field of view in degree to <code>45</code></li>
+<li>Set the aspect ratio using width over height</li>
+<li>Set the near clipping range to <code>0.1</code><ul>
+<li>Shapes are only display behind this imaginary near clipping plane</li>
+</ul>
+</li>
+<li>Set the far clipping range to <code>50.0</code><ul>
+<li>Shapes are only display in front of this imaginary far clipping plane</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>glTranslatef(x, y, z)</code> set the translation matrix along <code>x</code>, <code>y</code>, <code>z</code> axes<ul>
+<li>negative <code>z</code> value move object towards into the screen</li>
+</ul>
+</li>
+<li><code>glRotatef(degree, x, y, z)</code> rotates the object in degrees</li>
+<li><code>glColor3f(1.0, 0.0, 3.0)</code> set color</li>
+<li><code>glGetDoublev(GL_MODELVIEW_MATRIX)</code> returns previous and current camera coordinates</li>
+</ul>
+<h2 id="pytorch">PyTorch</h2>
+<ul>
+<li>To auto enable GPU when available set global variable <code>DEVICE = torch.device(&apos;cuda:0&apos; if torch.cuda.is_available() else &apos;cpu&apos;)</code>, then replace all <code>.cuda()</code> with <code>.to(DEVICE)</code></li>
+</ul>
 
                                 
                                 </section>
@@ -2488,7 +2757,7 @@ flags.mark_flag_as_required(<span class="hljs-string">&quot;name&quot;</span>)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2020-12-22T00:01:21.786Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2020-12-29T03:27:56.192Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

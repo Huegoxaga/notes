@@ -110,6 +110,7 @@
     - `#define` is a macro identifer that replace all `PI` in the code with its value before compiling.
     - This way of definine constants saves memory.
   - In a function declaration, pass in variable as constant can make sure its value is unchanged.
+- A `volatile` keyword declares variables which will not be optimized by the compiler, the compiled code will always do what the instruction code ask to do, even if the logic is redundant
 
 ## Array
 
@@ -163,10 +164,15 @@
 - `|` or
 - `&` and
 - `>>` right shift, move all values to the right to a certain position and fill the left with `0`
-  - bit extraction uses right shift then use a mask to get the portion needed
 - `<<` left shift
 - `~` not
 - `^` xor
+- Changing values on bits involves using the above oprator with a mask
+  - A mask has either `0` or `1` on a certain position
+- bit extraction uses right shift then use a mask to get the portion needed
+- left shift to a number of position with a target value can quickly generate a mask
+  - use `~` accordingly to generate mask with most value as `1`
+- When overwrite a value to a certain position use `&` and a mask to reset all values in that position to zero, then use `|` to write new value to it
 
 ### Assignment Operators
 

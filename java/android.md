@@ -85,6 +85,7 @@
 - The system performs basic scaling and resizing to adapt your user interface to different screens by using `dp` units, aka density-independent pixels
   - conversion of dp units to screen pixels `px = dp * (dpi / 160)`
   - Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size), in (inches), and mm (millimeters)
+- Avoid casting as much as possible
 
 ### `java` folder
 
@@ -223,6 +224,7 @@
   - returns `null` if element ID is not found in the layout xml
   - Explicit Casting is optional
 - Use `view.getId()` to get the id of any view object
+  - Is it good for comparison, e.g. `view.getId() == R.id.button`
 - `view.setImageResource(R.drawable.image_name);` change image
 
 #### Intent object
@@ -231,8 +233,36 @@
 - `Intent switch2Activity2 = new Intent(MainActivity.this, MainActivity2.class);` declares new intent, it takes the class of each imported activity files as arguments
 - `startActivity(switch2Activity2);` navigate to the second activity
 - `switch2Activity2.putExtra("data", "Hello");` use intent to store string into varialbe name `"data"`
+  - The variable name can be a constant from `Intent` class, e.g. `Intent.EXTRA_TEXT`
 - In any `onCreate()` method, use `Intent intent = getIntent();` to access the intent that started it
+  - Use `if (getIntent()!=null && getIntent().hasExtra("DataName")) {}` to get if the intent has the data
 - Use `String i = intent.getStringExtra("data");` to get values stored in intent
+- Use `startActivityForResult(intent, requestCode);` to pass data, request code to the other activity
+  - requestCode should be greater or equal than `0`
+- `onActivityResult()` is called when returning from another activity with request/result code and intent object with data
+  ```java
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    // Get data from return intent
+    data.getIntExtra("DEMO_DATA", 0));
+  }
+  ```
+  - `resultCode` can be `RESULT_OK` or `RESULT_CANCELED`
+- Example handler for return button from the other activity class which initiate the return
+  ```java
+  public void onClickClose(View view) {
+    Log.d(tag, "onClickClose()");
+    Intent returnIntent = new Intent();
+    returnIntent.putExtra("DEMO_DATA", 99);
+    // set result code and returning intent with data
+    setResult(RESULT_OK, returnIntent);
+    finish();
+    }
+  ```
+  - The result code will be `RESULT_CANCELED` if the activity explicitly returned that, didn't return any result, or crashed during its operation
+    - Using back button will get `RESULT_CANCELED` as well
+  - `onResume()` will be called after
 
 #### Application Context
 

@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1573,6 +1605,11 @@ eval(<span class="hljs-string">&apos;[1]&apos;</span>) <span class="hljs-comment
 eval(<span class="hljs-string">&apos;1&apos;</span>) <span class="hljs-comment">#string to int</span>
 bool(x) <span class="hljs-comment">#  when convert string to boolean any thing other than empty string will return True</span>
 </code></pre>
+<h3 id="type-validation">Type Validation</h3>
+<ul>
+<li><code>isinstance(x, list)</code> returns <code>True</code> is <code>x</code> is a list</li>
+<li><code>type(x)</code> returns the type object of <code>x</code></li>
+</ul>
 <h2 id="basic-structures">Basic Structures</h2>
 <h3 id="if-condition">If Condition</h3>
 <p>The execution of a certain code block is determined by conditions. Conditions are a boolean expression. When the condition is true the codes after will be executed.</p>
@@ -1788,6 +1825,29 @@ set.pop()  <span class="hljs-comment">#It removes a random element from the list
 <h3 id="functions">Functions</h3>
 <pre><code class="lang-py">len(set) <span class="hljs-comment"># get length</span>
 </code></pre>
+<h2 id="bytes">Bytes</h2>
+<ul>
+<li>It stores a serials of byte, each byte contains 8 bits of information<ul>
+<li>when print bytes object, it will be display as <code>b&apos;\x00\x00</code></li>
+<li>each byte is valid from <code>\x00</code> to <code>\xFF</code></li>
+</ul>
+</li>
+<li>Bytes objects are immutable, it cannot be changed after creation</li>
+</ul>
+<h3 id="bytes-methods">Bytes Methods</h3>
+<ul>
+<li><code>empty_bytes = bytes(2)</code> create a bytes object that has 8 empty bytes</li>
+<li><code>new_bytes = bytes(b&apos;\xAA\xBB&apos;)</code> create a bytes object from bytes value</li>
+</ul>
+<h2 id="bytes-array">Bytes Array</h2>
+<ul>
+<li>It is similar to Bytes object but it is mutable</li>
+<li>Using index to access and modify byte data inside<ul>
+<li><code>new_bytes_array = bytearray(b&apos;\x00\xFF&apos;)</code>, then <code>new_bytes_array[1] = 0</code>, <code>new_bytes_array</code> will then contain bytes data <code>b&apos;\x00\x00&apos;</code></li>
+</ul>
+</li>
+<li>All methods used by list, also works for bytearray, e.g. <code>new_bytes_array.append(255)</code>, will update the <code>new_bytes_array</code> with bytes value <code>b&apos;\x00\x00\xFF&apos;</code></li>
+</ul>
 <h2 id="other-basic-objects">Other Basic Objects</h2>
 <h3 id="range-object">Range Object</h3>
 <ul>
@@ -1837,6 +1897,7 @@ range(<span class="hljs-number">5</span>,<span class="hljs-number">20</span>,x) 
 <span class="hljs-keyword">from</span> folder.file <span class="hljs-keyword">import</span> function
 <span class="hljs-keyword">from</span> folder.file <span class="hljs-keyword">import</span> classA, classB
 <span class="hljs-keyword">from</span> .folder <span class="hljs-keyword">import</span> file <span class="hljs-comment"># . represent the current folder of the running python script</span>
+<span class="hljs-keyword">from</span> ..folder <span class="hljs-keyword">import</span> file <span class="hljs-comment"># .. represent the parent folder of the running python script</span>
 </code></pre>
 <h3 id="show-version">Show Version</h3>
 <ul>
@@ -1926,6 +1987,13 @@ functionName(variable)
 <li>In order to access and modify variables defined outside the function definition, Prepend the keyword <code>global</code>. For example, <code>global X = 100</code>.</li>
 <li><code>global</code> is not mandatory when the name from the outside is unique</li>
 </ul>
+<h4 id="types-hints">Types Hints</h4>
+<p>One can specify expected input and return types and raise errors when type does not match, The Python runtime does not enforce function and variable type annotations</p>
+<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">example</span><span class="hljs-params">(l: list, index: int = <span class="hljs-number">0</span>)</span> -&gt; int:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> isinstance(l, list):
+        <span class="hljs-keyword">raise</span> TypeError
+    <span class="hljs-keyword">return</span> l[index]
+</code></pre>
 <h2 id="generator">Generator</h2>
 <pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">count</span><span class="hljs-params">()</span>:</span>
     i=<span class="hljs-number">5</span>
@@ -2349,7 +2417,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-12-16T04:41:06.465Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2020-12-29T03:34:47.698Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

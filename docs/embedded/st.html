@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1306,13 +1338,17 @@
 <li>STMicroelectronics is a French-Italian multinational electronics and semiconductor manufacturer headquartered in Geneva, Switzerland.</li>
 <li>It produces various MCU and related development boards.</li>
 </ul>
-<h2 id="mcus">MCUs</h2>
+<h2 id="products">Products</h2>
+<h3 id="microcontrollers--microprocessors">Microcontrollers &amp; Microprocessors</h3>
+<h4 id="stm32-32-bit-arm-cortex-mcus">STM32 32-bit Arm Cortex MCUs</h4>
 <ul>
 <li>The STM32 family of 32-bit microcontrollers based on the Arm&#xAE; Cortex&#xAE;-M processor is designed to offer new degrees of freedom to MCU users.<ul>
 <li><a href="https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html" target="_blank">Click here</a> to see of MCUs in the STM32 family.</li>
-<li>STM32F4x series has high performance and supports Graphical User Interface, it supports almost all peripherals.</li>
 </ul>
 </li>
+<li>STM32F4x series has high performance and supports Graphical User Interface, it supports almost all peripherals</li>
+<li>STM32F0x series is good for beginners</li>
+<li>Different series uses different Arm&#xAE; Cortex Core from M0 to M7</li>
 </ul>
 <h2 id="processor">Processor</h2>
 <h3 id="arm-cortex-m">ARM Cortex-M</h3>
@@ -1345,7 +1381,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="boards">Boards</h2>
+<h2 id="development-boards">Development Boards</h2>
 <h3 id="discovery-boards">Discovery Boards</h3>
 <ul>
 <li>STM32 Discovery kits are a cheap and complete solution for the evaluation of the outstanding capabilities of STM32 MCUs and MPUs.</li>
@@ -1362,46 +1398,99 @@
 <li>The STM32 Nucleo boards integrate an ST-Link debugger/programmer, so there is no need for a separate probe.</li>
 <li>It supports virtual comm port, it works directly when connect through USB.</li>
 <li>Nucleo has three types<ul>
-<li>Nucleo-32 include Arduino Nano connectors</li>
-<li>Nucleo-64 include Arduino Uno rev3 &amp; ST morpho connectors</li>
-<li>Nucleo-144 include SWDST Zio expansion connector, ARDUINO&#xAE; Uno, V3ST morpho expansion connector</li>
+<li>Nucleo-32, it has 32 pins include Arduino Nano connectors</li>
+<li>Nucleo-64, it has 64 pins include Arduino Uno rev3 &amp; ST morpho connectors</li>
+<li>Nucleo-144, it has 144 pins include SWDST Zio expansion connector, ARDUINO&#xAE; Uno, V3ST morpho expansion connector</li>
 </ul>
 </li>
 <li>STM32F446RE is the model that uses STM32F4x MCU</li>
 </ul>
-<h2 id="ide">IDE</h2>
-<h3 id="stm32cubeide">STM32CubeIDE</h3>
+<h2 id="stm32cubeide">STM32CubeIDE</h2>
 <ul>
 <li>The official IDE for STM32 that supports multi-OS.</li>
 <li>It is Eclipse-based which has full compiling and debugging function.</li>
 <li><a href="https://www.st.com/en/development-tools/stm32cubeide.html" target="_blank">Click here</a> and select the OS for download.<ul>
 <li>For Linux, run the script it provides using <code>sudo</code>.</li>
 <li>Drivers for the debugger will be automatically installed with IDE</li>
+<li>The installation come with a GCC compiler for ARM processors<ul>
+<li>GCC compiler for host machine needs to be installed separately(WinGW for Windows, GCC for Mac/Linux(<code>brew install gcc</code>))</li>
 </ul>
 </li>
-<li>Floating Point Unit(FPU) should be disable if not in use.<ul>
+</ul>
+</li>
+<li>Floating Point Unit(FPU) should be disable if not in use, otherwise, there will be an warning message during compilation<ul>
 <li>Right click project in left navi panel and select properties, the select setting from the left, in MCU setting set Floating-point unit to None, set Floating-point ABI to software implementation.</li>
 </ul>
 </li>
-<li>One workspace can have many different projects.</li>
-<li>The board in use need to be selected when creating new project.<ul>
-<li>Select MCU only when using customized board.</li>
+</ul>
+<h3 id="project-creation">Project Creation</h3>
+<ul>
+<li>One workspace can have many different projects<ul>
+<li>It is defined as a folder</li>
+<li>When import other projects select copy project into workplace will copy the project files into the workplace folder</li>
+<li>Use <code>File &gt; Switch Workplace &gt; Others</code> to switch into a new workplace</li>
+<li>Use <code>File &gt; New &gt; STM32 Project</code> to create a MCU project</li>
+<li>Use <code>File &gt; New &gt; New C/C++ Project</code> to create a c project for host machine</li>
+<li>When create new project, a compiler toolchain should be selected, the selection is determined by the machine that will be running the project<ul>
+<li>Use <code>MacOS GCC</code> if the project code will be running on the MacOS host machine</li>
+<li>Use <code>WinGW GCC</code> for a Windows host</li>
+<li>Use <code>Cross GCC</code> host machine compiler compiles code for MCU or other machine</li>
+<li>Use <code>MCU ARM GCC</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The board in use need to be selected when creating new MCU project</li>
+<li>When peripheral configuration using <code>STM32CubeMX</code> is not needed, set <code>Targeted Project Type</code> to <code>None</code><ul>
+<li>Use <code>Board Selector</code> for STM produced development boards</li>
+<li>Select <code>MCU/MPU Selector</code> only when using customized boards</li>
 </ul>
 </li>
 <li>A project can use either <code>C</code> or <code>C++</code> as its development language.</li>
-<li>When peripheral configuration using STM32CubeMX is not needed, set targeted project type to None.</li>
-<li><code>Src</code> folder keeps all the <code>.c</code> source file, <code>Inc</code> folder keeps all the <code>.h</code> header files.</li>
-<li>Right click the project name in the left navi panel and click build project to compile the code</li>
-<li>To rebuild the project, clean project first, the build the project again.</li>
-<li>Right click the project select <code>Debug As</code>, select the <code>STM32</code> board to download the code onto the debugger on the board.<ul>
-<li>This will switch the IDE and the board into debugger mode.</li>
+<li><code>HAL</code> is the official library used by <code>STM32</code><ul>
+<li>Same code can works on various <code>STM32</code> hardwares</li>
 </ul>
 </li>
+<li><code>Src</code> folder keeps all the <code>.c</code> source file, <code>Inc</code> folder keeps all the <code>.h</code> header files.</li>
+<li>The infinite while loop inside <code>main.c</code> contains the actually code for running for the embedded device</li>
+</ul>
+<h3 id="run-code">Run Code</h3>
+<ul>
+<li>Right click the project name in the left navi panel and click build project to compile the code</li>
+<li>To rebuild the project, clean project first, the build the project again.</li>
+<li>For <code>C/C++</code> project, open the compiled file directly to execute</li>
+<li>For MCU project, right click the project select <code>Debug As</code>, select the <code>STM32</code> board to download the code onto the debugger on the board.<ul>
+<li>This will switch the IDE and the board into debugger perspective.</li>
+</ul>
+</li>
+<li>Click the play button in the debugger mode to run the app</li>
+<li>Click the pause button and double click on the line number to create breakpoint, click resume so the code will stop at the breakpoint<ul>
+<li>double click on the line number again to remove the breakpoint</li>
+</ul>
+</li>
+<li>Click step into button to run the code line by line and go into a function</li>
+<li>Click step return button the run a function</li>
+<li>Click step over to run a function without step into the function</li>
+<li>Click the stop button to return to the code editing perspective</li>
+<li>Startup file copy initialized variables from code memory to SRAM memory</li>
+</ul>
+<h3 id="debug">Debug</h3>
+<ul>
+<li>When a debug process failed to start, go to debug perspective and right click the previous debug session click <code>Terminate and Remove</code></li>
 <li>A debugger configuration is needed during the first launch.<ul>
 <li>enable the serial wire viwer(SWV) in the Debugger Tab</li>
 </ul>
 </li>
-<li>To enaable <code>printf()</code>. Add the following code to the beginning of <code>syscalls.c</code><pre><code class="lang-cpp"><span class="hljs-comment">/////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
+<li>To enable <code>printf()</code> with <code>OpenOCD</code><ul>
+<li>Select <code>OpenOCD</code> as the debug probe in the debugger config</li>
+<li>Add <code>monitor arm semihosting enable</code> in the startup tab&apos;s <code>Run Commands</code> input box</li>
+<li>Right click on project, <code>Properties &gt; C/C++ Build &gt; Settings &gt; Tool Settings &gt; MCU GCC Linker &gt; Miscellaneous</code>, in <code>Other Flags</code> add <code>-specs=rdimon.specs -lc -lrdimon</code></li>
+<li>Right before any <code>printf()</code> add <code>initialise_monitor_handles();</code>, also add <code>extern void initialise_monitor_handles(void);</code> on top</li>
+<li>Exclude <code>syscalls.c</code> from build by right click this file and select <code>Exclude resource from build</code> in the <code>C/C++ Build</code> setting</li>
+<li>String should end with <code>\n</code> when using this method</li>
+</ul>
+</li>
+<li>To enable <code>printf()</code> with <code>SWV</code>. Add the following code to the beginning of <code>syscalls.c</code><pre><code class="lang-cpp"><span class="hljs-comment">/////////////////////////////////////////////////////////////////////////////////////////////////////////</span>
 <span class="hljs-comment">//                    Implementation of printf like feature using ARM Cortex M3/M4/ ITM functionality</span>
 <span class="hljs-comment">//                    This function will not work for ARM Cortex M0/M0+</span>
 <span class="hljs-comment">//                    If you are using Cortex M0, then you can use semihosting feature of openOCD</span>
@@ -1424,13 +1513,14 @@
 }
 </code></pre>
 <ul>
-<li>Change the content of the <code>_write</code> function to <code>ITM_SendChar(*ptr++);</code>, <code>_write</code> function is what the stanard library function <code>printf()</code> calls at a lower level.</li>
-<li>Make sure <code>SWV</code> is enabled in the debug config.</li>
-<li>Open Window -&gt; show View -&gt; SWV -&gt; SWV ITM Data Console.</li>
+<li>Change the content of the <code>_write</code> function to <code>ITM_SendChar(*ptr++);</code>, <code>_write</code> function is what the stanard library function <code>printf()</code> calls at a lower level</li>
+<li>Use <code>ST-Link</code> as the debug probe</li>
+<li>Make sure <code>SWV</code> is enabled in the debug config</li>
+<li>Open <code>Window -&gt; show View -&gt; SWV -&gt; SWV ITM Data Console</code></li>
 <li>Click configure trace button at the top right of the SWV ITM Data Console</li>
-<li>Check port 0 of the ITM Stimulus Ports.</li>
+<li>Check port <code>0</code> of the ITM Stimulus Ports.</li>
 <li>In the SWV ITM Data Console, click start trace.</li>
-<li>In the main menu bar, start to debug, and start to run the code.</li>
+<li>In the main menu bar, start to debug, and start to run the code</li>
 </ul>
 </li>
 <li>Example code for changing register settings, The offset from the base bus memory address to each peripherals is used to located the peripherals&apos; registers.<pre><code class="lang-cpp"><span class="hljs-comment">/**
@@ -1464,22 +1554,48 @@
 </ul>
 </li>
 <li>Debug mode uses a Memory panel to read and write bits on the RAM memory while the program is running.</li>
-<li>The compiler can set a optimization level that uses different strategy to convert C/C++ code into disassembly code for the MCU. Level 0 does not provide much optimization<ul>
-<li>Use the volatile keyword to ask the compile to access the memory frenquently in case the value of the memory will be changed when running in high optimization mode.</li>
+<li>Right click project and in build setting, compiler optimization panel, change the optimization level for the project<ul>
+<li><code>L0</code> will disable any optimization</li>
+<li>Always use <code>uint8_t volatile *pReg</code> to acesss the register memory to avoid bug caused by unexpected optimization</li>
+</ul>
+</li>
+<li>Add include path in the project compiler setting to import newly created header files in the project folder</li>
+<li>The memory browser window can be used to search for the data store in different memory address<ul>
+<li>right click inside the panel and select column, cell size and radix to change the output data format</li>
 </ul>
 </li>
 </ul>
 <h3 id="stm32cubemx">STM32CubeMX</h3>
 <ul>
 <li>It makes hardware configuration easy with GUI interfaces</li>
-<li>Clock Config<ul>
+<li>It has been integrated with the IDE<ul>
+<li>Click the <code>.ioc</code> file to open this tool</li>
+</ul>
+</li>
+<li>Pinout Config Tab<ul>
+<li>In the microcontroller pinout view, select pin to assign function to it</li>
+</ul>
+</li>
+<li>Clock Config Tab<ul>
 <li>In RCC section of the Pin configuration page, select the Crystal mode can enable the option for on-board HSE</li>
 <li>Bus speed can be multiple by a factor, this is done by using prescaler.</li>
 <li>Lastly, change values on the RCC register using code to finalize the changes.<ul>
 <li>code generator is available for these tasks, provided by STM32CubeMX</li>
 </ul>
 </li>
-<li>MCO configuration is also configured through RCC register.</li>
+<li>MCO configuration is also configured through RCC register</li>
+</ul>
+</li>
+<li>Project Manager Tab<ul>
+<li>Allow to change the project settings</li>
+</ul>
+</li>
+<li>Tools Tab<ul>
+<li>Current calculator</li>
+</ul>
+</li>
+<li>After completing the setup, click file save to generate and update code for the changed settings<ul>
+<li>Code written outside code <code>BEGIN - END</code> comment blocks will be deleted during code generation</li>
 </ul>
 </li>
 </ul>
@@ -1526,7 +1642,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"next":{"title":"Electricity & Magnetism","level":"1.21.4","depth":2,"path":"embedded/electricity-magnetism.md","ref":"embedded/electricity-magnetism.md","articles":[]},"previous":{"title":"Raspberry Pi","level":"1.21.2","depth":2,"path":"embedded/raspberry-pi.md","ref":"embedded/raspberry-pi.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/st.md","mtime":"2020-11-20T18:09:53.425Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"next":{"title":"Electricity & Magnetism","level":"1.21.4","depth":2,"path":"embedded/electricity-magnetism.md","ref":"embedded/electricity-magnetism.md","articles":[]},"previous":{"title":"Raspberry Pi","level":"1.21.2","depth":2,"path":"embedded/raspberry-pi.md","ref":"embedded/raspberry-pi.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/st.md","mtime":"2021-02-06T20:09:29.700Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

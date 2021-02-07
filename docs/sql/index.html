@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1430,106 +1462,344 @@ Cardinality can be used to represent the Entity relationship(one to one, one to 
 </li>
 </ul>
 </li>
-<li>Depending on the database vendor, data can be case sensitive <code>&apos;M&apos; &lt;&gt; &apos;m&apos;</code></li>
-<li>For Character and string data single quotes are recommended and generally used.</li>
+<li>Depending on the database vendor, data can be case sensitive <code>&apos;M&apos; &lt;&gt; &apos;m&apos;</code><ul>
+<li>Data in Oracle database is case sensitive</li>
+</ul>
+</li>
+<li>SQL is not case sensitive<ul>
+<li>Convention is to capitalize keywords and use lower case for tables, columns, etc</li>
+</ul>
+</li>
+<li>SQL ignores whitespace<ul>
 <li>Convention is to capitalize keywords and place each clause on its own line</li>
+</ul>
+</li>
+<li>For Character and string data single quotes are recommended and generally used.</li>
 <li>multiple queries or commands can be entered at the same time and separate by ; at end of each line.</li>
 <li>SQL is case insensitive. However uppercase is preferred for all commands.</li>
 <li>SQL syntax is not sensitive to indentations.</li>
+<li><code>dual</code> is a &#x201C;dummy&#x201D; table in Oracle that has 1 row and 1 column
+&#x2013; Used whenever a single value is needed</li>
 </ul>
-<h2 id="data-types">Data Types</h2>
-<h3 id="postgres">Postgres</h3>
+<h2 id="database-tools">Database Tools</h2>
 <ul>
-<li>Array is supported for all types</li>
+<li>Tools for connecting to the database server for testing and maintainance purpose</li>
 </ul>
-<h2 id="syntax">Syntax</h2>
-<p>The following SQL examples work for mySQL, variation for other SQL will be noted in the bracket.</p>
+<h3 id="sql-developer">SQL Developer</h3>
 <ul>
-<li>Check server version</li>
+<li>Used for Oracle Database</li>
+<li>SET command<ul>
+<li>it only effect the current session<ul>
+<li>To set all sessions, a connection startup script can be created and set in <code>Tools / Preferences...</code></li>
 </ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">select</span> @@<span class="hljs-keyword">version</span>
-</code></pre>
-<ul>
-<li>the command lists the databases managed by the server.</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">DATABASES</span> MySQL
-.<span class="hljs-keyword">databases</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">SQL</span> <span class="hljs-keyword">Server</span>
-</code></pre>
-<ul>
-<li>display all of the tables in the currently selected database.</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">TABLES</span> MySQL
-.<span class="hljs-keyword">tables</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">SQL</span> <span class="hljs-keyword">Server</span>
-</code></pre>
-<ul>
-<li>displays information about the columns in a given table.</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">COLUMNS</span> <span class="hljs-keyword">FROM</span> tablename
-</code></pre>
-<h3 id="select">SELECT</h3>
-<ul>
-<li>The SELECT statement is used to query data from a database. Query results are stored in a table called result-set.</li>
-<li>A SELECT statement retrieves zero or more rows from one or more database tables.</li>
-<li>FROM is required expect for SQL Server.</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> column_list
-<span class="hljs-keyword">FROM</span> table_name
-</code></pre>
-<ul>
-<li>SELECT can be followed by a column function.<ul>
-<li>AVG&#x2013;Computes the average value of the column</li>
-<li>COUNT&#x2013;Counts the number of rows</li>
-<li>MAX&#x2013;Determines the maximum value</li>
-<li>MIN&#x2013;Determines the minimum value</li>
-<li>SUM&#x2013;Totals the numeric values</li>
+</li>
+<li><code>SET PAGESIZE 1000</code> set output page size for text output<ul>
+<li>default is <code>14</code></li>
 </ul>
 </li>
 </ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*)<span class="hljs-keyword">FROM</span> patients
+</li>
+<li><code>Run Statement</code> - runs the current statement and presents the query result in a grid</li>
+<li><code>Run Script</code> - runs the whole script and presents the script output as text</li>
+<li>If a section of the script is highlighted and <code>Run Statement</code> or <code>Run Script</code> is pressed, only the highlighted section will run<ul>
+<li>This is a good way to test a subquery to ensure that it&#x2019;s working as expected</li>
+</ul>
+</li>
+<li><code>History</code> - returns all previously ran commands
+&#x2013; Double-clicking one of them brings them back into the Worksheet tab where they can be run again or edited</li>
+<li>Enable line numbers - right-click the line gutter (left margin of the code editor) and select Toggle Line Numbers</li>
+</ul>
+<h3 id="sql-command-line">SQL Command Line</h3>
+<ul>
+<li>Available on all installs of Oracle, known as <code>SQL*Plus</code></li>
+<li>If something is wrong with database, may be only tool that allows database access</li>
+<li>For mac, to install</li>
+<li>It can run any <code>PL/SQL</code> query<ul>
+<li>SQL statements must be terminated by <code>;</code></li>
+</ul>
+</li>
+<li>run <code>sqlplus</code> to open the tool<ul>
+<li>or, <code>sqlplus &lt;user&gt;/&lt;password&gt; as &lt;role&gt;</code></li>
+<li>or, <code>sqlplus &lt;user&gt;/&lt;password&gt;</code></li>
+<li>Will be prompted for credentials</li>
+</ul>
+</li>
+<li>Useful command:<ul>
+<li><code>show user</code></li>
+<li><code>help</code></li>
+<li><code>connect</code> (prompted for credentials)<ul>
+<li>or <code>connect &lt;user&gt;/&lt;password&gt; as &lt;role&gt;</code></li>
+</ul>
+</li>
+<li><code>disconnect</code></li>
+<li><code>/</code> to rerun previous SQL command</li>
+<li><code>help index</code> see a list of <code>SQL*Plus</code> commands</li>
+<li><code>help &lt;command&gt;</code> see help for a certain command</li>
+<li><code>@&lt;filename&gt;.sql</code> run a <code>sql</code> script</li>
+<li><code>quit</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="pgadmin">pgAdmin</h3>
+<ul>
+<li>A web app for managing Postgres database</li>
+</ul>
+<h2 id="data-types">Data Types</h2>
+<h3 id="general-data-types">General Data Types</h3>
+<h4 id="numeric">Numeric</h4>
+<ul>
+<li>int(can have no length),can be signed or unsigned.</li>
+<li>FLOAT(optional display length,decimal place) cannot be unsigned.</li>
+<li>DOUBLE(optional display length,decimal place) cannot be unsigned.</li>
+</ul>
+<h4 id="date-and-time">Date and Time</h4>
+<ul>
+<li>DATE - A date in YYYY-MM-DD format.</li>
+<li>DATETIME - A date and time combination in YYYY-MM-DD HH:MM:SS format.</li>
+<li>TIMESTAMP - A timestamp, calculated from midnight, January 1, 1970</li>
+<li>TIME - Stores the time in HH:MM:SS format.</li>
+</ul>
+<h4 id="string-type">String Type</h4>
+<ul>
+<li>CHAR(M) - Fixed-length character string. Size is specified in parenthesis. Max 255 bytes</li>
+<li>VARCHAR(M) - Variable-length character string. Max size is specified in parenthesis</li>
+<li>BLOB - &quot;Binary Large Objects&quot; and are used to store large amounts of binary data, such as images or other types of files.</li>
+<li>TEXT - Large amount of text data.</li>
+<li>The size parameter specifies the maximum length of the table&apos;s column.</li>
+</ul>
+<h3 id="sql-server-data-type">SQL Server Data Type</h3>
+<h4 id="exact-numerics">Exact Numerics</h4>
+<ul>
+<li>bigint</li>
+<li>bit</li>
+<li>decimal</li>
+<li>int</li>
+<li>money</li>
+<li>numeric</li>
+<li>smallint</li>
+<li>smallmoney</li>
+<li>tinyint</li>
+</ul>
+<h4 id="approximate-numerics">Approximate Numerics</h4>
+<ul>
+<li>float</li>
+<li>real</li>
+</ul>
+<h4 id="date-and-time">Date and Time</h4>
+<ul>
+<li>date</li>
+<li>datetime2</li>
+<li>datetime</li>
+<li>datetimeoffset</li>
+<li>smalldatetime</li>
+<li>time</li>
+</ul>
+<h4 id="character-strings">Character Strings</h4>
+<ul>
+<li>char</li>
+<li>text</li>
+<li>varchar</li>
+</ul>
+<h4 id="unicode-character-strings">Unicode Character Strings</h4>
+<ul>
+<li>nchar</li>
+<li>ntext</li>
+<li>nvarchar</li>
+</ul>
+<h4 id="binary-strings">Binary Strings</h4>
+<ul>
+<li>binary</li>
+<li>image</li>
+<li>varbinary</li>
+</ul>
+<h4 id="other-data-types">Other Data Types</h4>
+<ul>
+<li>Cursor</li>
+<li>hierarchyid</li>
+<li>sql_variant</li>
+<li>table</li>
+<li>timestamp</li>
+<li>uniqueidentifier</li>
+<li>xml</li>
+</ul>
+<h3 id="postgres-data-types">Postgres Data Types</h3>
+<ul>
+<li>Array is supported for all types</li>
+</ul>
+<h3 id="oracle-data-types">Oracle Data Types</h3>
+<ul>
+<li>VARCHAR2(maximum length)
+&#x2013; Variable length character data
+&#x2013; Maximum length up to 32,767 bytes
+&#x2013; Maximum length of a database column is 4,000 bytes
+&#x2013; NVARCHAR2 Unicode version of VARCHAR2
+&#x2013; For Oracle databases: VARCHAR is synonymous with VARCHAR2; to avoid possible changes in behavior, always use VARCHAR2 to store variable-length character strings</li>
+<li>CHAR(max)
+&#x2013; Fixed length character data, blank padded if necessary
+&#x2013; Optional maximum length up to 32,767 bytes
+&#x2013; Maximum length of a database column is 2,000 byte
+&#x2013; Defaults to 1 byte
+&#x2013; NCHAR Unicode version of CHAR</li>
+<li>NUMBER[(precision, scale)]
+&#x2013; Fixed or floating point number of almost any size
+&#x2013; Precision is total number of digits
+&#x2013; Scale determines where rounding occurs
+&#x2013; If scale is omitted, it is 0 and value becomes integer (default)
+&#x2013; Maximum precision is 38 digits&#x2013;Scale can be from 0 to 127</li>
+<li>BINARY_INTEGER<ul>
+<li>Stores signed integer values</li>
+<li>Compares to NUMBER, but takes up less space and is faster in calculations</li>
+<li>-2,147,483,747 to 2,147,483,747</li>
+</ul>
+</li>
+<li>DATE<ul>
+<li>Stores fixed length date values</li>
+<li>January 1, 4712 BC to December 31, 9999 AD
+&#x2013; Start date based on Julian Day Number used in astronomy</li>
+<li>When stored in a database column, date values include the time of day in seconds since midnight</li>
+</ul>
+</li>
+<li>TIMESTAMP<ul>
+<li>Extension of DATE type</li>
+<li>Stores fixed length date values with precision down to a fraction of a second, with up to 9 places after the decimal (default is 6)</li>
+<li>Example: 28-SEP-1966 09.51.44.000000 AM</li>
+</ul>
+</li>
+<li>BOOLEAN<ul>
+<li>Stores the value TRUE or FALSE as well as NULL</li>
+<li>PL/SQL only, database tables don&apos;t support this type</li>
+</ul>
+</li>
+<li>LONG<ul>
+<li>Stores variable length character strings</li>
+<li>LONG is like VARCHAR2, but it&#x2019;s maximum length is 2GB</li>
+</ul>
+</li>
+<li>LONG RAW<ul>
+<li>Stores raw binary up to 2GB</li>
+</ul>
+</li>
+<li>LOB<ul>
+<li>Large OBject</li>
+<li>4 types: BLOB, CLOB , NCLOB and BFILE</li>
+<li>Stores binary objects such as image or video files up to 4GB</li>
+<li>BLOBs and CLOBs are functionally equivalent</li>
+<li>LOB types stored in the database, BFILE stored outside the database</li>
+<li>NCLOB Unicode version of CLOB</li>
+</ul>
+</li>
+<li>ROWID<ul>
+<li>Internally, every Oracle table has a ROWID pseudocolumn, which stores binary values called ROWIDs</li>
+<li>ROWIDs uniquely identify rows (within a table) and provide the fastest way to access particular rows</li>
+<li>Use the ROWID data type to store ROWIDs in a readable format</li>
+</ul>
+</li>
+<li>ROWNUM<ul>
+<li>ROWNUM is a pseudocolumn that indicates the order of the row within the result set</li>
+<li>Determined before ORDER BY</li>
+<li>Can be used to approximate SQL Server&apos;s TOP clause</li>
+</ul>
+</li>
+</ul>
+<h2 id="sql-syntax">SQL Syntax</h2>
+<h3 id="get-database-info">Get Database Info</h3>
+<ul>
+<li>The following SQL examples work for mySQL, variation for other SQL will be noted<ul>
+<li>Check server version<pre><code class="lang-sql"><span class="hljs-keyword">select</span> @@<span class="hljs-keyword">version</span>
+</code></pre>
+</li>
+<li>the command lists the databases managed by the server.<pre><code class="lang-sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">DATABASES</span> MySQL
+.<span class="hljs-keyword">databases</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">SQL</span> <span class="hljs-keyword">Server</span>
+</code></pre>
+</li>
+<li>display all of the tables in the currently selected database.<pre><code class="lang-sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">TABLES</span> MySQL
+.<span class="hljs-keyword">tables</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">SQL</span> <span class="hljs-keyword">Server</span>
+</code></pre>
+</li>
+<li>displays information about the columns in a given table.<pre><code class="lang-sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">COLUMNS</span> <span class="hljs-keyword">FROM</span> tablename
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="select">SELECT</h3>
+<ul>
+<li>The <code>SELECT</code> statement is used to query data from a database. Query results are stored in a table called result-set.</li>
+<li>A <code>SELECT</code> statement retrieves zero or more rows from one or more database tables.</li>
+<li><code>FROM</code> is required expect for SQL Server.<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> column_list
+<span class="hljs-keyword">FROM</span> table_name
+</code></pre>
+</li>
+<li>SELECT can be followed by a aggregating function<ul>
+<li>Aggregating functions will ignore columns with NULL values</li>
+<li>AVG &#x2013; Computes the average value of the column</li>
+<li>COUNT &#x2013; Counts the number of rows</li>
+<li>MAX &#x2013; Determines the maximum value</li>
+<li>MIN &#x2013; Determines the minimum value</li>
+<li>SUM &#x2013; Totals the numeric values<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*)<span class="hljs-keyword">FROM</span> patients
 <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(patient_weight)<span class="hljs-keyword">FROM</span> patients
 <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">MIN</span>(last_name)<span class="hljs-keyword">FROM</span> patients
 </code></pre>
-<ul>
-<li>Columns have fully qualified names as tablename.columnname is acceptable. It is used to distinguish same columns names from different tables.</li>
+</li>
+</ul>
+</li>
+<li>Coalesce - takes any number of columns name and returns the first value that is not null, it is used to set a default value if returns null<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> first_name, last_name, <span class="hljs-keyword">COALESCE</span>(allergies, <span class="hljs-string">&apos;No known allergies&apos;</span>)<span class="hljs-keyword">FROM</span> patients
+<span class="hljs-comment">-- For each returning records, When allergies has a value it will return the value</span>
+<span class="hljs-comment">-- If allergies is NULL, it will return &apos;No known allergies&apos;</span>
+</code></pre>
+</li>
+<li>Case Function - Case function allows boolean logic in a SQL statement</li>
+<li>If no conditions are true and there is no else clause, null is returned<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> first_name, last_name,
+  <span class="hljs-keyword">CASE</span> <span class="hljs-keyword">WHEN</span> patient_height &gt; <span class="hljs-number">170</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&apos;Tall&apos;</span>
+  <span class="hljs-keyword">WHEN</span> patient_height &gt; <span class="hljs-number">120</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&apos;Average&apos;</span>
+  <span class="hljs-keyword">ELSE</span> <span class="hljs-string">&apos;Short&apos;</span>
+  <span class="hljs-keyword">END</span>
+<span class="hljs-keyword">FROM</span> patients
+</code></pre>
+</li>
+<li>Case function can be aliased as a column to enhance readability<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> first_name, last_name,
+  <span class="hljs-keyword">CASE</span> <span class="hljs-keyword">WHEN</span> patient_height &gt; <span class="hljs-number">170</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&apos;Tall&apos;</span>
+  <span class="hljs-keyword">WHEN</span> patient_height &gt; <span class="hljs-number">120</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&apos;Average&apos;</span>
+  <span class="hljs-keyword">ELSE</span> <span class="hljs-string">&apos;Short&apos;</span>
+  <span class="hljs-keyword">END</span> height
+<span class="hljs-keyword">FROM</span> patients
+</code></pre>
+</li>
+<li>Columns have fully qualified names as <code>tablename.columnname</code> is acceptable. It is used to distinguish same columns names from different tables.</li>
 <li>Multiple columns can be queried in one command separated by commas.</li>
 <li><code>*</code> represent all.</li>
-<li><code>DISTINCT</code> qualifier return unique value of columns</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> column_name1, column_name2
+<li><code>DISTINCT</code> qualifier return unique value of columns<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> column_name1, column_name2
 <span class="hljs-keyword">FROM</span> table_name;
 </code></pre>
-<ul>
-<li><code>LIMIT</code> keyword shows only specific number of d rows.</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ID</span>, FirstName, LastName, City
+</li>
+<li><code>LIMIT</code> keyword shows only specific number of d rows.<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ID</span>, FirstName, LastName, City
 <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">5</span>;
 </code></pre>
 <pre><code class="lang-sql"><span class="hljs-keyword">Select</span> <span class="hljs-number">4</span> <span class="hljs-keyword">start</span> <span class="hljs-keyword">after</span> <span class="hljs-number">3</span>rd(counting <span class="hljs-keyword">from</span> zero)
 <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ID</span>, FirstName, LastName, City
- <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">3</span>, <span class="hljs-number">4</span>;
+<span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">3</span>, <span class="hljs-number">4</span>;
 </code></pre>
-<ul>
-<li>Im SQL Server use TOP, The TOP clause sets a maximum number of rows that can be retrieved</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> TOP <span class="hljs-number">5</span> *
+</li>
+<li>Im SQL Server use TOP, The TOP clause sets a maximum number of rows that can be retrieved<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> TOP <span class="hljs-number">5</span> *
 <span class="hljs-keyword">FROM</span> patients;
 and
 <span class="hljs-keyword">SELECT</span> TOP <span class="hljs-number">5</span> <span class="hljs-keyword">PERCENT</span> *
 <span class="hljs-keyword">FROM</span> patients;
 </code></pre>
-<ul>
-<li>ORDER BY is used with SELECT to sort the returned data.</li>
-<li>Can order by multiple columns separate by commas. Sort the first column first then second.</li>
+</li>
+<li>ORDER BY is used with <code>SELECT</code> to sort the returned data.<ul>
+<li>By default the order is <code>ASC</code>, use <code>DESC</code> to get results in descending order</li>
 </ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> customers
+</li>
+<li>Can order by multiple columns separate by commas. Sort the first column first then second.<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> customers
 <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> FirstName;
 Default uses ascending order.
 Or <span class="hljs-keyword">use</span>
-<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Salary <span class="hljs-keyword">DESC</span>(<span class="hljs-keyword">ASC</span>)
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Salary <span class="hljs-keyword">DESC</span>
 </code></pre>
-<ul>
+</li>
 <li>Where keyword is used to add conditions.<ul>
-<li>Predicates are used in the WHERE clause to specify conditions, Basic Predicate:<ul>
+<li>Predicates are used in the <code>WHERE</code> clause to specify conditions, Basic Predicate:<ul>
 <li><code>=, &lt;&gt;, &lt;, &gt;, &lt;=, &gt;=</code></li>
 <li>BETWEEN Predicate</li>
 <li>EXISTS Predicate</li>
@@ -1549,93 +1819,89 @@ between. for example ID=5 and ID=10)
 </li>
 </ul>
 </li>
-<li>Single quotation marks (&apos;) is used for text.</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ID</span>, FirstName, LastName, City
+<li>Single quotation marks (&apos;) is used for text.<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ID</span>, FirstName, LastName, City
 <span class="hljs-keyword">FROM</span> customers
 <span class="hljs-keyword">WHERE</span> City = <span class="hljs-string">&apos;New York&apos;</span>;
 </code></pre>
-<ul>
-<li>&#x2018; can also be the escape characters. Ex: Can&apos;&apos;t</li>
-<li><code>IN</code> keyword includes all satisfied columns.</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> customers
+</li>
+<li>single qoute can also be the escape characters. Ex: Can&apos;&apos;t</li>
+<li><code>IN</code> keyword includes all satisfied columns.<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> customers
 <span class="hljs-keyword">WHERE</span> City <span class="hljs-keyword">IN</span> (<span class="hljs-string">&apos;New York&apos;</span>, <span class="hljs-string">&apos;Los Angeles&apos;</span>, <span class="hljs-string">&apos;Chicago&apos;</span>);
 </code></pre>
-<ul>
-<li>The NOT IN operator allows you to exclude a list of specific values from the result set. Result set must included in bracket, even there is only one element in it. result set can be a column returned from other SELECT query.</li>
+</li>
+<li>The <code>NOT IN</code> operator allows you to exclude a list of specific values from the result set. Result set must included in bracket, even there is only one element in it. result set can be a column returned from other SELECT query.</li>
+<li><code>ANY</code> and <code>SOME</code> checks whether any value in the list makes the condition true</li>
+<li><code>ALL</code> checks to ensure that all values in the list are true<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> first_name, last_name, patient_height
+<span class="hljs-keyword">FROM</span> patients
+<span class="hljs-keyword">WHERE</span> gender = <span class="hljs-string">&apos;M&apos;</span>
+<span class="hljs-keyword">AND</span> patient_height &gt; ALL (
+  <span class="hljs-keyword">SELECT</span> patient_height
+  <span class="hljs-keyword">FROM</span> patients
+  <span class="hljs-keyword">WHERE</span> gender = <span class="hljs-string">&apos;F&apos;</span>)
+</code></pre>
+</li>
 <li>EXISTS returns true if a subquery contains any rows.</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> first_name, last_name
+<li><code>IS</code> can be used with <code>NULL</code>. or <code>IS NOT NULL</code><ul>
+<li><code>WHERE column = NULL</code> will not return anything</li>
+<li><code>NULL + 5</code> will return <code>NULL</code><pre><code class="lang-sql"><span class="hljs-comment">-- This select all row of patients tables that exist in the unit_dose_orders table</span>
+<span class="hljs-keyword">SELECT</span> first_name, last_name
 <span class="hljs-keyword">FROM</span> patients
 <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">EXISTS</span> (<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> unit_dose_orders <span class="hljs-keyword">WHERE</span> unit_dose_orders.patient_id = patients.patient_id)
-(This <span class="hljs-keyword">select</span> all <span class="hljs-keyword">row</span> <span class="hljs-keyword">of</span> patients <span class="hljs-keyword">tables</span> that exist <span class="hljs-keyword">in</span> the unit_dose_orders <span class="hljs-keyword">table</span>.)
-
 <span class="hljs-keyword">SELECT</span> *
 <span class="hljs-keyword">FROM</span> vendors
 <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> (<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> purchase_orders <span class="hljs-keyword">WHERE</span> purchase_orders.vendor_id = vendors.vendor_id)
-(This <span class="hljs-keyword">select</span> all <span class="hljs-keyword">row</span> <span class="hljs-keyword">of</span> patients <span class="hljs-keyword">tables</span> that don&#x2019;t exist <span class="hljs-keyword">in</span> the unit_dose_orders <span class="hljs-keyword">table</span>.)
+<span class="hljs-comment">-- This select all row of patients tables that don&#x2019;t exist in the unit_dose_orders table</span>
 <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> patients
 <span class="hljs-keyword">WHERE</span> allergies <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>;
-IS can be used with NULL. or IS NOT NULL
 </code></pre>
-<ul>
-<li>AND and OR can be used to connects conditions for WHERE statement.</li>
-<li>Concat combine two column in a format<ul>
-<li>A concatenation results in a new column. The default column name will be the CONCAT</li>
-</ul>
 </li>
 </ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">CONCAT</span>(FirstName, <span class="hljs-string">&apos;, &apos;</span> , City) <span class="hljs-keyword">FROM</span> customers;
+</li>
+<li><code>AND</code> and <code>OR</code> can be used to connects conditions for WHERE statement.</li>
+<li><code>CONCAT</code> combines two column in a format<ul>
+<li>A concatenation results in a new column. The default column name will be the CONCAT<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">CONCAT</span>(FirstName, <span class="hljs-string">&apos;, &apos;</span> , City) <span class="hljs-keyword">FROM</span> customers;
 </code></pre>
-<ul>
-<li>AS is used for a column name change(Alias).</li>
+</li>
 </ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">CONCAT</span>(FirstName,<span class="hljs-string">&apos;, &apos;</span>, City) <span class="hljs-keyword">AS</span> new_column
+</li>
+<li><code>AS</code> is used for a column name change(Alias)</li>
+<li><code>AS</code> is optional</li>
+<li>Use double qoute for alias name to reserves capitalization, e.g. <code>AS &quot;Name&quot;</code>(works when database support case sensitive data)<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">CONCAT</span>(FirstName,<span class="hljs-string">&apos;, &apos;</span>, City) <span class="hljs-keyword">AS</span> new_column
 <span class="hljs-keyword">FROM</span> customers;
 </code></pre>
-<ul>
-<li>Arithmetic operator can also be used in query.</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ID</span>, FirstName, LastName, Salary+<span class="hljs-number">500</span> <span class="hljs-keyword">AS</span> Salary
+</li>
+<li>Arithmetic operator can also be used in query.<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ID</span>, FirstName, LastName, Salary+<span class="hljs-number">500</span> <span class="hljs-keyword">AS</span> Salary
 <span class="hljs-keyword">FROM</span> employees;
 </code></pre>
-<ul>
-<li>Upper and lower function change upper lower cases.<ul>
-<li><ul>
-<li>Only affects on letters with default name Upper.</li>
-</ul>
 </li>
-</ul>
-</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> FirstName, <span class="hljs-keyword">UPPER</span>(LastName) <span class="hljs-keyword">AS</span> LastName
+<li>Upper and lower function change upper lower cases.<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> FirstName, <span class="hljs-keyword">UPPER</span>(LastName) <span class="hljs-keyword">AS</span> LastName
 <span class="hljs-keyword">FROM</span> employees;
+<span class="hljs-keyword">SELECT</span> FirstName, LastName <span class="hljs-keyword">AS</span> LastName
+<span class="hljs-keyword">FROM</span> employees
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">LOWER</span>(LastName) <span class="hljs-keyword">like</span> <span class="hljs-string">&apos;smi%&apos;</span>;;
 </code></pre>
-<ul>
+</li>
 <li>GROUP BY<ul>
 <li>It can be used to deal with results of the column that has different rows.</li>
 <li>GROUP BY must be used in conjunction with an aggregating function</li>
 <li>Does not sort automatically, still need ORDER BY for sort</li>
-<li>Multiple groupings are allowed</li>
-</ul>
-</li>
-</ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> province_id, city, <span class="hljs-keyword">COUNT</span>(*)
+<li>Multiple groupings are allowed<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> province_id, city, <span class="hljs-keyword">COUNT</span>(*)
 <span class="hljs-keyword">FROM</span> patients
 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> province_id, city
 </code></pre>
-<ul>
-<li>HAVING</li>
+</li>
 </ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> nursing_unit_id, <span class="hljs-keyword">COUNT</span>(*)
+</li>
+<li>HAVING<ul>
+<li>It is like another WHERE clause for grouped columns.</li>
+<li>Used with GROUP BY<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> nursing_unit_id, <span class="hljs-keyword">COUNT</span>(*)
 <span class="hljs-keyword">FROM</span> admissions
 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> nursing_unit_id
 <span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">COUNT</span>(*) &gt;= <span class="hljs-number">340</span>
 </code></pre>
-<ul>
-<li>It is like another WHERE clause for grouped columns.</li>
-<li>Used with GROUP BY</li>
+</li>
+</ul>
+</li>
 <li>Subqueries is a query that has queries inside.<ul>
 <li>the inner query is processed first.</li>
 <li>Enclose the subquery in parentheses.</li>
@@ -1658,20 +1924,38 @@ IS can be used with NULL. or IS NOT NULL
 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> nursing_unit_id
 </code></pre>
 </li>
+<li>Subquery as a Table<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> (
+<span class="hljs-keyword">SELECT</span> province_id, city, <span class="hljs-keyword">COUNT</span>(*) citycount
+<span class="hljs-keyword">FROM</span> patients
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> province_id, city)
+<span class="hljs-keyword">WHERE</span> city <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&apos;H%&apos;</span>
+</code></pre>
+</li>
 </ul>
 </li>
 <li>The like keyword can be used to specify a pattern, pattern is represented by:<ul>
 <li><code>_</code> any value.</li>
-<li><code>%</code> any group of values</li>
-</ul>
+<li><code>%</code> any group of values<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees
+<span class="hljs-keyword">WHERE</span> FirstName <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&apos;A%&apos;</span>;
+</code></pre>
 </li>
 </ul>
-<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employees
-<span class="hljs-keyword">WHERE</span> FirstName <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&apos;A%&apos;</span>;
-This choose any text <span class="hljs-keyword">begin</span> <span class="hljs-keyword">with</span> A.
-</code></pre>
-<ul>
+</li>
+<li>This choose any text begin with <code>A</code>.</li>
 <li>NOT LIKE picks anything that not in this pattern.</li>
+<li>Clauses in SELECT should follow orders as <code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>HAVING</code>, <code>ORDER BY</code></li>
+</ul>
+<h3 id="union">Union</h3>
+<ul>
+<li><code>UNION</code> combines two or more <code>SELECT</code> statements with same type of columns(data type), removes any existing duplicates<ul>
+<li>If one column can&#x2019;t match the data type, use null instead<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> FirstName, LastName, Company <span class="hljs-keyword">FROM</span> businessContacts
+<span class="hljs-keyword">UNION</span>
+<span class="hljs-keyword">SELECT</span> FirstName, LastName, <span class="hljs-literal">NULL</span> <span class="hljs-keyword">FROM</span> otherContacts;
+</code></pre>
+</li>
+</ul>
+</li>
+<li><code>UNION ALL</code> works faster, and it does not remove duplicate rows</li>
 </ul>
 <h3 id="built-in-function">Built-in Function</h3>
 <ul>
@@ -1819,337 +2103,923 @@ This choose any text <span class="hljs-keyword">begin</span> <span class="hljs-k
 </ul>
 </li>
 </ul>
-<h3 id="joinregular">Join(regular)</h3>
-<p>Rows returned only if they exist in both tables</p>
-<ol>
-<li>use SELECT&#x2026;..WHERE Col1 = Col2</li>
-</ol>
-<p>SELECT customers.ID, customers.Name, orders.Name, orders.Amount
-FROM customers, orders
-WHERE customers.ID=orders.Customer_ID
-ORDER BY customers.ID;</p>
-<p>Table names can use nickname, set in from clause</p>
-<p>SELECT ct.ID, ct.Name, ord.Name, ord.Amount
-FROM customers AS ct, orders AS ord
-WHERE ct.ID=ord.Customer_ID
-ORDER BY ct.ID;</p>
-<p>-AS can be omitted sometimes, like in SSMS.
-SELECT ct.* ord.Name, ord.Amount
-FROM customers ct, orders ord
-WHERE ct.ID=ord.Customer_ID
-ORDER BY ct.ID;</p>
-<p>ct.* means all columns from table ct.</p>
-<ol>
-<li>use join&#x2026;on</li>
-</ol>
-<p>SELECT column(s)
-FROM firsttable
-JOIN secondtable
-ON firsttable.column = secondtable.column</p>
-<p>example:
-SELECT *
-FROM purchase_orders
-JOIN purchase_order_lines
-ON purchase_orders.purchase_order_id = purchase_order_lines.purchase_order_id</p>
-<p>Select all columns from both tables
-Join on purchase order number</p>
-<p>It is also called inner join</p>
-<p>SELECT column_name(s)
-FROM table1 INNER JOIN table2
-ON table1.column_name=table2.column_name;</p>
-<p>The LEFT JOIN returns all rows from the left table, even if there are no matches in the right table.
-SELECT table1.column1, table2.column2...
-FROM table1 LEFT OUTER JOIN table2
-ON table1.column_name = table2.column_name;</p>
-<p>If no match is found for a particular row, NULL is returned.</p>
-<p>The RIGHT JOIN returns all rows from the right table, even if there are no matches in the left table.</p>
-<p>MySQL only support above types of join.
-OUTER keywords can be optional.
-There are many other types of join.
-full outer join
-All rows returned from both tables
-Missing values returned as NULL</p>
-<p>cross join
-Each row from left table is joined with each row from right table
-if table_a has x rows, table_b has y rows. the cross join of them has x multiply by y rows.</p>
-<p>SELECT p.product_id, sold, purchased
-FROM sales_lines s
-CROSS JOIN purchase_lines p</p>
-<p>or (inner join using where = syntax and remove the where clause)
-SELECT ct.ID, ct.Name, ord.Name, ord.Amount
-FROM customers ct, orders ord</p>
-<p>Example for join 3 tables</p>
-<p>SELECT first_name, last_name, medication_description, dosage
-FROM patients p
-JOIN unit_dose_orders u
-ON p.patient_id = u.patient_id
-JOIN medications m
-ON u.medication_id = m.medication_id
-ORDER BY last_name, first_name, medication_description</p>
-<p>Joining a Table with Itself
-SELECT e1.employee_id, e1.first_name, e1.last_name, e1.department, e1.title, e1.supervisor, e2.employee_id, e2.first_name, e2.last_name
-FROM employees e1
-LEFT JOIN employees e2 - - if not using LEFT, somebody will be missing.
-ON e1.supervisor = e2.employee_id
-ORDER BY e1.department, e1.employee_id</p>
-<p>UNION combines multiple datasets into a single dataset, removes any existing duplicates.
-UNION ALL (faster) does not remove duplicate rows
-Union combines two or more select statements with same type of columns(data type) in order. If one column can&#x2019;t match use null instead.</p>
-<p>SELECT FirstName, LastName, Company FROM businessContacts
-UNION
-SELECT FirstName, LastName, NULL FROM otherContacts;</p>
-<p>Order of Clauses in SELECT</p>
-<p>SELECT list_of_columns
-FROM list_of_tables
-WHERE list of conditions
-GROUP BY list_of_expressions
-HAVING condition
-ORDER BY expressions</p>
-<p>Insert into keyword:
-INSERT INTO table_name
-VALUES (value1, value2, value3,&#x2026;);</p>
-<p>INSERT INTO dental_services
-VALUES(101, &apos;Tricky Extraction&apos;, &apos;E&apos;, NULL, 0)
-New row will be added at the bottom. Order is important.
-Must include a value for columns that have no default values or don&#x2019;t allow null.
-PK value can be omitted, identity property will be used.
-Alternatively, you can specify the table&apos;s column names(so you can use your own order for columns, not the default)
-INSERT INTO table_name (column1, column2, column3, ...,columnN)<br>VALUES (value1, value2, value3,...valueN);</p>
-<p>INSERT INTO dental_services
+<h3 id="join">Join</h3>
+<ul>
+<li>Table names can use nickname, set after <code>FROM</code> clause, e.g. <code>FROM tablename alias</code></li>
+<li>Columns that appear in multiple tables must be table prefixed(ususally use alias for short) to prevent ambiguity<ul>
+<li><code>alias.*</code> means all columns from table <code>alias</code></li>
+</ul>
+</li>
+<li>MySQL only supports some basic join types like inner and outer</li>
+</ul>
+<h4 id="inner-join">Inner Join</h4>
+<ul>
+<li>Rows returned only if they exist in both tables</li>
+<li><code>INNER</code> in the query is optional<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">column</span>
+<span class="hljs-keyword">FROM</span> firsttable
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> secondtable
+<span class="hljs-keyword">ON</span> firsttable.<span class="hljs-keyword">column</span> = secondtable.<span class="hljs-keyword">column</span>
+</code></pre>
+</li>
+<li>Select all columns from both tables, Join on purchase order id<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> purchase_orders
+<span class="hljs-keyword">JOIN</span> purchase_order_lines
+<span class="hljs-keyword">ON</span> purchase_orders.purchase_order_id = purchase_order_lines.purchase_order_id
+</code></pre>
+</li>
+<li>Optionally, the old pre ANSI 92 syntax<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> ct.<span class="hljs-keyword">ID</span>, ct.<span class="hljs-keyword">Name</span>, <span class="hljs-keyword">ord</span>.<span class="hljs-keyword">Name</span>, <span class="hljs-keyword">ord</span>.Amount
+<span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">AS</span> ct, orders <span class="hljs-keyword">AS</span> <span class="hljs-keyword">ord</span>
+<span class="hljs-keyword">WHERE</span> ct.<span class="hljs-keyword">ID</span>=<span class="hljs-keyword">ord</span>.Customer_ID
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> ct.<span class="hljs-keyword">ID</span>;
+</code></pre>
+</li>
+</ul>
+<h4 id="outer-join">Outer Join</h4>
+<ul>
+<li>It can be either <code>LEFT OUTER JOIN</code> or <code>RIGHT OUTER JOIN</code></li>
+<li>Keyword <code>OUTTER</code> is optional</li>
+<li>The <code>LEFT OUTTER JOIN</code> returns all rows from the first table, even if there are no matches in the right table</li>
+<li>The <code>RIGHT OUTTER JOIN</code> returns all rows from the second table, even if there are no matches in the right table<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> table1.column1, table2.column2
+<span class="hljs-keyword">FROM</span> table1 <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> table2
+<span class="hljs-keyword">ON</span> table1.column_name = table2.column_name;
+</code></pre>
+</li>
+<li>If no match is found for a particular row, NULL is returned</li>
+<li>Excluding records that both tables have<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> tableA A
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> tableB B <span class="hljs-keyword">ON</span> A.<span class="hljs-keyword">key</span> = B.<span class="hljs-keyword">key</span>
+<span class="hljs-keyword">WHERE</span> B.<span class="hljs-keyword">key</span> <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>
+</code></pre>
+</li>
+<li>Optionally, old syntax for left outer join<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> s.item_id, p.item_id, quantity_sold, quantity_purchased
+<span class="hljs-keyword">FROM</span> sales s, purchases p
+<span class="hljs-keyword">WHERE</span> s.item_id = p.item_id(+)
+</code></pre>
+</li>
+</ul>
+<h4 id="natural-join">Natural Join</h4>
+<ul>
+<li>The database will decide which columns from both tables are used to join, based on the names and data types</li>
+<li>Table prefixes are not required<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> patient_id, nursing_unit_id, room, bed
+<span class="hljs-keyword">FROM</span> patients
+<span class="hljs-keyword">NATURAL</span> <span class="hljs-keyword">JOIN</span> admissions
+</code></pre>
+</li>
+</ul>
+<h4 id="full-outer-join">Full Outer Join</h4>
+<ul>
+<li>All rows returned from both tables</li>
+<li>Missing values returned as NULL<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> s.item_id, p.item_id, quantity_sold, quantity_purchased
+<span class="hljs-keyword">FROM</span> sales s
+<span class="hljs-keyword">FULL</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> purchases p <span class="hljs-keyword">ON</span> s.item_id = p.item_id
+</code></pre>
+</li>
+<li>To exclude records that both tables have<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> tableA A
+<span class="hljs-keyword">FULL</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> tableB B
+<span class="hljs-keyword">ON</span> A.<span class="hljs-keyword">key</span> = B.<span class="hljs-keyword">key</span>
+<span class="hljs-keyword">WHERE</span> A.<span class="hljs-keyword">key</span> <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">OR</span> B.<span class="hljs-keyword">key</span> <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>
+</code></pre>
+</li>
+</ul>
+<h4 id="cross-join">Cross Join</h4>
+<ul>
+<li>Each row from left table is joined with each row from right table</li>
+<li>If <code>table_a</code> has <code>x</code> rows, <code>table_b</code> has <code>y</code> rows. the cross join of them has <code>x</code> multiply by <code>y</code> rows.<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> p.product_id, sold, purchased
+<span class="hljs-keyword">FROM</span> sales_lines s
+<span class="hljs-keyword">CROSS</span> <span class="hljs-keyword">JOIN</span> purchase_lines p
+</code></pre>
+</li>
+<li>optionally, cross join can be expressed as:<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> ct.<span class="hljs-keyword">ID</span>, ct.<span class="hljs-keyword">Name</span>, <span class="hljs-keyword">ord</span>.<span class="hljs-keyword">Name</span>, <span class="hljs-keyword">ord</span>.Amount
+<span class="hljs-keyword">FROM</span> customers ct, orders <span class="hljs-keyword">ord</span>
+</code></pre>
+</li>
+</ul>
+<h4 id="self-join">Self Join</h4>
+<ul>
+<li>A table Join on itself using any types of join<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> e1.employee_id, e1.first_name, e1.last_name, e1.department, e1.title, e1.supervisor, e2.employee_id, e2.first_name, e2.last_name
+<span class="hljs-keyword">FROM</span> employees e1
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> employees e2 - - <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">using</span> <span class="hljs-keyword">LEFT</span>, somebody will be <span class="hljs-keyword">missing</span>.
+<span class="hljs-keyword">ON</span> e1.supervisor = e2.employee_id
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> e1.department, e1.employee_id
+</code></pre>
+</li>
+</ul>
+<h4 id="join-multiple-tables">Join Multiple Tables</h4>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> first_name, last_name, medication_description, dosage
+<span class="hljs-keyword">FROM</span> patients p
+<span class="hljs-keyword">JOIN</span> unit_dose_orders u
+<span class="hljs-keyword">ON</span> p.patient_id = u.patient_id
+<span class="hljs-keyword">JOIN</span> medications m
+<span class="hljs-keyword">ON</span> u.medication_id = m.medication_id
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> last_name, first_name, medication_description
+</code></pre>
+<h3 id="view">View</h3>
+<ul>
+<li><code>VIEW</code> is a virtual table that is based on the result-set of an SQL statement</li>
+<li>The View result set is not permanently stored in the database, but generated and executed each time it is used</li>
+<li>It cannot use ORDER BY</li>
+<li>Create a view<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> current_patients
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> a.patient_id, first_name, last_name, nursing_unit_id, room
+<span class="hljs-keyword">FROM</span> patients p
+<span class="hljs-keyword">JOIN</span> admissions a
+<span class="hljs-keyword">ON</span> p.patient_id = a.patient_id
+<span class="hljs-keyword">WHERE</span> discharge_date <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>
+</code></pre>
+</li>
+<li>Once generated, View can be later query as a normal table<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> current_patients
+</code></pre>
+</li>
+<li>A view always shows up-to-date data.</li>
+<li>When use <code>SUBSTRING()</code> function in a view columns names must have alias(new name after AS)</li>
+<li>Update view<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">VIEW</span> view_name <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> column_name(s)
+<span class="hljs-keyword">FROM</span> table_name
+<span class="hljs-keyword">WHERE</span> condition;
+</code></pre>
+<ul>
+<li><code>REPLACE</code> is used to replace the view, if it has already been created,</li>
+</ul>
+</li>
+<li>Delete View<pre><code class="lang-sql"><span class="hljs-keyword">Delete</span> <span class="hljs-keyword">view</span>,
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">VIEW</span> <span class="hljs-keyword">List</span>;
+</code></pre>
+</li>
+</ul>
+<h3 id="insert">Insert</h3>
+<ul>
+<li>Insert a single row to the database<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> table_name
+<span class="hljs-keyword">VALUES</span> (value1, value2, value3);
+</code></pre>
+<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> dental_services
+<span class="hljs-keyword">VALUES</span>(<span class="hljs-number">101</span>, <span class="hljs-string">&apos;Tricky Extraction&apos;</span>, <span class="hljs-string">&apos;E&apos;</span>, <span class="hljs-literal">NULL</span>, <span class="hljs-number">0</span>);
+</code></pre>
+</li>
+<li>New row will be added at the bottom. Order is important.</li>
+<li>Must include a value for columns that have no default values or don&#x2019;t allow null.</li>
+<li><code>PK</code> value can be omitted, identity property will be used.</li>
+<li>Alternatively, you can specify the table&apos;s column names, then it is also possible to insert data into specific columns<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> table_name (column2, column4)
+<span class="hljs-keyword">VALUES</span> (value2, value4);
+</code></pre>
+<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> dental_services
 (service_id, service_description, service_type, hourly_rate, sales_ytd)
-VALUES(302, &apos;Temporary Filling&apos;, &apos;F&apos;, 100, 0)</p>
-<p>When omit one column its value will be set to NULL.</p>
-<p>It is also possible to insert data into specific columns only.</p>
-<p>Multiple rows of value can be inserted in one statement.
-after VALUE separated by comma.</p>
-<p>INSERT INTO dental_services
+<span class="hljs-keyword">VALUES</span>(<span class="hljs-number">302</span>, <span class="hljs-string">&apos;Temporary Filling&apos;</span>, <span class="hljs-string">&apos;F&apos;</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>)
+</code></pre>
+</li>
+<li>When omit one column, its value will be set to NULL.</li>
+<li>Multiple rows of value can be inserted in one statement after <code>VALUE</code> separated by comma.<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> dental_services
 (service_id, service_description, service_type, hourly_rate, sales_ytd)
-VALUES(302, &apos;Temporary Filling&apos;, &apos;F&apos;, 100, 0),(303,&apos;Temp&apos;,&apos;T&apos;,230.0)</p>
-<p>One can insert multiple rows
-INSERT INTO tablename[(column1, column2, column3, column4)]
-SELECT statement</p>
-<p>INSERT INTO dental<em>service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
-SELECT service_id, service_description, service_type, hourly_rate, sales_ytd
-FROM dental_services
-or
-INSERT INTO dental_service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
-SELECT </em>
-FROM dental<em>services
-WHERE sales_ytd &gt;= 500
-or
-INSERT INTO dental_service_archives
-SELECT </em>
-FROM dental_services<br>(all column must have values.and in order)</p>
-<p>INSERT INTO dental_service_archives(service_id, service_description)
-SELECT service_id, service_description
-FROM dental_services
-(omitted column will be null)</p>
-<p>Update
-UPDATE table_name
-SET column1=value1, column2=value2, ...
-WHERE condition;</p>
-<p>UPDATE departments
-SET manager_first_name = &apos;Bob&apos;, manager_last_name = &#x2018;Loblaw&apos;
-WHERE department_id = 5</p>
-<p>UPDATE items
-SET item_cost = item_cost * 1.1
-WHERE primary_vendor_id = 5
-(select multi rows and apply updates using formula)</p>
-<p>UPDATE purchase_orders
-SET total_amount = (SELECT SUM(quantity * unit_cost)FROM purchase_order_linesWHERE purchase_order_id = 10)
-WHERE purchase_order_id = 1
-(Updating A Single Row With A Subquery)</p>
-<p>If the WHERE clause is omitted, all records in the table will be updated!</p>
-<p>Delete
-DELETE FROM table_name
-WHERE condition;</p>
-<p>DELETE FROM dental_services
-WHERE service_id = 301
-Deletion can fail if the PK has a reference to other table.</p>
-<p>DELETE FROM sales
-WHERE amount &gt;= 100
-Delete multiple rows.</p>
-<p>If you omit the WHERE clause, all records in the table will be deleted!
-The DELETE statement removes the data from the table permanently.</p>
-<p>A single database can house hundreds of tables</p>
-<p>CREATE TABLE</p>
-<p>CREATE TABLE table_name
+<span class="hljs-keyword">VALUES</span>(<span class="hljs-number">302</span>, <span class="hljs-string">&apos;Temporary Filling&apos;</span>, <span class="hljs-string">&apos;F&apos;</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>),(<span class="hljs-number">303</span>,<span class="hljs-string">&apos;Temp&apos;</span>,<span class="hljs-string">&apos;T&apos;</span>,<span class="hljs-number">230.0</span>)
+</code></pre>
+</li>
+<li>One can insert multiple rows<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> tablename[(column1, column2, column3, column4)]
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">statement</span>
+</code></pre>
+<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> dental_service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
+<span class="hljs-keyword">SELECT</span> service_id, service_description, service_type, hourly_rate, sales_ytd
+<span class="hljs-keyword">FROM</span> dental_services
+</code></pre>
+<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> dental_service_archives(service_id, service_description, service_type, hourly_rate, sales_ytd)
+<span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> dental*services
+<span class="hljs-keyword">WHERE</span> sales_ytd &gt;= <span class="hljs-number">500</span>
+</code></pre>
+<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> dental_service_archives
+<span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> dental_services
+</code></pre>
+<ul>
+<li>if column names are not specified, all columns must have values<pre><code class="lang-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> dental_service_archives(service_id, service_description)
+<span class="hljs-keyword">SELECT</span> service_id, service_description
+<span class="hljs-keyword">FROM</span> dental_services
+</code></pre>
+</li>
+<li>omitted column will be null</li>
+</ul>
+</li>
+</ul>
+<h3 id="update">Update</h3>
+<ul>
+<li>Update a single row<pre><code class="lang-sql"><span class="hljs-keyword">UPDATE</span> departments
+<span class="hljs-keyword">SET</span> manager_first_name = <span class="hljs-string">&apos;Bob&apos;</span>, manager_last_name = <span class="hljs-string">&apos;Loblaw&apos;</span>
+<span class="hljs-keyword">WHERE</span> department_id = <span class="hljs-number">5</span>
+</code></pre>
+</li>
+<li>select multi rows and apply updates using formula<pre><code class="lang-sql"><span class="hljs-keyword">UPDATE</span> items
+<span class="hljs-keyword">SET</span> item_cost = item_cost * <span class="hljs-number">1.1</span>
+<span class="hljs-keyword">WHERE</span> primary_vendor_id = <span class="hljs-number">5</span>
+</code></pre>
+</li>
+<li>Updating A Single Row With A Subquery<pre><code class="lang-sql"><span class="hljs-keyword">UPDATE</span> purchase_orders
+<span class="hljs-keyword">SET</span> total_amount = (<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SUM</span>(quantity * unit_cost)<span class="hljs-keyword">FROM</span> purchase_order_linesWHERE purchase_order_id = <span class="hljs-number">10</span>)
+<span class="hljs-keyword">WHERE</span> purchase_order_id = <span class="hljs-number">1</span>
+</code></pre>
+</li>
+<li>If the WHERE clause is omitted, all records in the table will be updated</li>
+</ul>
+<h3 id="delete">Delete</h3>
+<ul>
+<li>The <code>DELETE</code> statement removes the data from the table permanently.</li>
+<li>Delete a single row<pre><code class="lang-sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> dental_services
+<span class="hljs-keyword">WHERE</span> service_id = <span class="hljs-number">301</span>
+</code></pre>
+</li>
+<li><code>FROM</code> is optional</li>
+<li>Deletion can fail if the PK has a reference to other table.</li>
+<li>Delete multiple rows.<pre><code class="lang-sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> sales
+<span class="hljs-keyword">WHERE</span> amount &gt;= <span class="hljs-number">100</span>
+</code></pre>
+</li>
+<li>If <code>WHERE</code> clause is omitted, all records in the table will be deleted<ul>
+<li><code>DELETE table_name;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="constraints">Constraints</h3>
+<ul>
+<li>During table creation, specify column level constraint(s) after the data type of that column.</li>
+<li>NULL<ul>
+<li>All data types support the concept of NULL</li>
+<li>NULL is the absence of a value, it is unknown</li>
+<li>For a numeric column NULL is not 0</li>
+<li>For a string column NULL is not &apos;&apos;</li>
+</ul>
+</li>
+<li>Primary Key<ul>
+<li>Define it as a primary key</li>
+<li>PRIMARY KEY (UserID)</li>
+</ul>
+</li>
+<li>Not Null
+name varchar(100) NOT NULL</li>
+<li>Unique</li>
+<li>Default<ul>
+<li>Default value will set for the new column, if not default value then all null.</li>
+</ul>
+</li>
+<li>Check<ul>
+<li>Determines whether the value is valid or not from a logical expression.</li>
+</ul>
+</li>
+<li>Auto increment<ul>
+<li>the starting value for AUTO_INCREMENT is 1, and it will increment by 1 for each new record.</li>
+<li>UserID int NOT NULL AUTO_INCREMENT</li>
+</ul>
+</li>
+</ul>
+<h3 id="create-table">Create Table</h3>
+<ul>
+<li>A single database can house hundreds of tables<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> table_name
+(column_name1 data_type(<span class="hljs-keyword">size</span>),
+column_name2 data_type(<span class="hljs-keyword">size</span>),
+column_name3 data_type(<span class="hljs-keyword">size</span>));
+</code></pre>
+</li>
+<li>Create Table with Constraints<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">Users</span>
 (
-column_name1 data_type(size),
-column_name2 data_type(size),
-column_name3 data_type(size),
-....
-columnN data_type(size)
-);</p>
-<p>Numeric</p>
-<p>int(can have no length),can be signed or unsigned.
-FLOAT(optional display length,decimal place) cannot be unsigned.
-DOUBLE(optional display length,decimal place) cannot be unsigned.
-Date and Time
-DATE - A date in YYYY-MM-DD format.
-DATETIME - A date and time combination in YYYY-MM-DD HH:MM:SS format.
-TIMESTAMP - A timestamp, calculated from midnight, January 1, 1970
-TIME - Stores the time in HH:MM:SS format.</p>
-<p>String Type
-CHAR(M) - Fixed-length character string. Size is specified in parenthesis. Max 255 bytes.
-VARCHAR(M) - Variable-length character string. Max size is specified in parenthesis.
-BLOB - &quot;Binary Large Objects&quot; and are used to store large amounts of binary data, such as images or other types of files.
-TEXT - Large amount of text data.</p>
-<p>The size parameter specifies the maximum length of the table&apos;s column.</p>
-<p>Data Types for SQL Server</p>
-<p>Exact Numerics
-bigint
-bit
-decimal
-int
-money
-numeric
-smallint
-smallmoney
-tinyint</p>
-<p>Approximate Numerics
-float
-real
-Date and Time
-date
-datetime2
-datetime
-datetimeoffset
-smalldatetime
-time</p>
-<p>Character Strings
-char
-text
-varchar
-Unicode Character Strings
-nchar
-ntext
-nvarchar
-Binary Strings
-binary
-image
-varbinary
-Other Data Types
-Cursor
-hierarchyid
-sql_variant
-table
-timestamp
-uniqueidentifier
-xml</p>
-<p>NULL
-All data types support the concept of NULL
-NULL is the absence of a value, it is unknown
-For a numeric column NULL is not 0
-For a string column NULL is not &apos;&apos;</p>
-<p>Primary key keyword
-Define it as a primary key</p>
-<p>CREATE TABLE Users
-(
-UserID int,
-FirstName varchar(100),
-LastName varchar(100),
-City varchar(100),
-PRIMARY KEY(UserID)
-);</p>
-<p>SQL Constraints
-Not null
-name varchar(100) NOT NULL</p>
-<p>Unique
-Primary key
-Default
-Check
-Determines whether the value is valid or not from a logical expression.</p>
-<p>During table creation, specify column level constraint(s) after the data type of that column.</p>
-<p>Auto increment
-the starting value for AUTO_INCREMENT is 1, and it will increment by 1 for each new record.</p>
-<p>UserID int NOT NULL AUTO_INCREMENT,
-PRIMARY KEY (UserID)</p>
-<p>The ALTER TABLE command is used to add, delete, or modify columns constraints in an existing table.</p>
-<p>Add new columns
-ALTER TABLE People ADD DateOfBirth date;
-Default value will set for the new column, if not default value then all null.</p>
-<p>Delete columns
-ALTER TABLE People
-DROP COLUMN DateOfBirth;</p>
-<p>Delete entire table
-DROP TABLE People;</p>
-<p>Rename columns</p>
-<p>ALTER TABLE People
-CHANGE FirstName name varchar(100);</p>
-<p>Rename tables
-RENAME TABLE People TO Users;</p>
-<p>For SQL Server:</p>
-<p>CREATE TABLE TableName (
-ColumnName1 DataType[(size)][not null] [DEFAULT value],
-ColumnName2 DataType[(size)][not null] [DEFAULT value],</p>
-<p>[CONSTRAINT CK_ConstraintName
-CHECK (ConstraintCheckCondition),]</p>
-<pre><code>CONSTRAINT PK_ConstraintName
-           PRIMARY KEY(ColumnName[, ColumnName]
-</code></pre><p>[,CONSTRAINT FK_ConstraintName
-FOREIGN KEY (ColumnName)
-REFERENCES TableName (ColumnName)
-ON DELETE RESTRICT
-ON UPDATE RESTRICT]
-)</p>
-<p>Example:</p>
-<p>CREATE TABLE employees
-(employee_id INT NOT NULL,
-employee_name VARCHAR(50) NOT NULL,
-department_id INT,
-job_id CHAR(3),
-birth_date DATE,
-gender CHAR(1),
-salary DECIMAL(8, 2),
-CONSTRAINT PK_employees PRIMARY KEY(employee_id),
-CONSTRAINT CK_gender CHECK(gender IN (&apos;M&apos;, &apos;F&apos;)),
-CONSTRAINT CK_salary CHECK(salary &gt;= 0),
-CONSTRAINT FK_employees_department_id_departments FOREIGN KEY(department_id) REFERENCES departments(department_id))</p>
-<p>Table Creation Example with IDENTITY and Constraints Specified Inline
-CREATE TABLE employees_with_identity
-(employee_id INT IDENTITY PRIMARY KEY,
-employee_name VARCHAR(50) NOT NULL,
-department_id INT FOREIGN KEY REFERENCES departments(department_id),
-job_id CHAR(3),
-birth_date DATE,
-gender CHAR(1) CHECK(gender IN (&apos;M&apos;, &apos;F&apos;)),
-salary DECIMAL(8, 2) CHECK(salary &gt;= 0))</p>
-<p>Create an index
-Create [UNIQUE][clustered] INDEX index_name
-ON table_name
-(column_name1 [ ASC/DESC ].
+UserID <span class="hljs-built_in">int</span>,
+FirstName <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>),
+LastName <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>),
+City <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>),
+PRIMARY <span class="hljs-keyword">KEY</span>(UserID)
+);
+</code></pre>
+<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> employees
+(employee_id <span class="hljs-built_in">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+employee_name <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+department_id <span class="hljs-built_in">INT</span>,
+job_id <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">3</span>),
+birth_date <span class="hljs-built_in">DATE</span>,
+gender <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">1</span>),
+salary <span class="hljs-built_in">DECIMAL</span>(<span class="hljs-number">8</span>, <span class="hljs-number">2</span>),
+<span class="hljs-keyword">CONSTRAINT</span> PK_employees PRIMARY <span class="hljs-keyword">KEY</span>(employee_id),
+<span class="hljs-keyword">CONSTRAINT</span> CK_gender <span class="hljs-keyword">CHECK</span>(gender <span class="hljs-keyword">IN</span> (<span class="hljs-string">&apos;M&apos;</span>, <span class="hljs-string">&apos;F&apos;</span>)),
+<span class="hljs-keyword">CONSTRAINT</span> CK_salary <span class="hljs-keyword">CHECK</span>(salary &gt;= <span class="hljs-number">0</span>),
+<span class="hljs-keyword">CONSTRAINT</span> FK_employees_department_id_departments FOREIGN <span class="hljs-keyword">KEY</span>(department_id) <span class="hljs-keyword">REFERENCES</span> departments(department_id))
+</code></pre>
+</li>
+<li>Table Creation Example with IDENTITY and Constraints Specified Inline<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> employees_with_identity
+(employee_id <span class="hljs-built_in">INT</span> <span class="hljs-keyword">IDENTITY</span> PRIMARY <span class="hljs-keyword">KEY</span>,
+employee_name <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+department_id <span class="hljs-built_in">INT</span> FOREIGN <span class="hljs-keyword">KEY</span> <span class="hljs-keyword">REFERENCES</span> departments(department_id),
+job_id <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">3</span>),
+birth_date <span class="hljs-built_in">DATE</span>,
+gender <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">CHECK</span>(gender <span class="hljs-keyword">IN</span> (<span class="hljs-string">&apos;M&apos;</span>, <span class="hljs-string">&apos;F&apos;</span>)),
+salary <span class="hljs-built_in">DECIMAL</span>(<span class="hljs-number">8</span>, <span class="hljs-number">2</span>) <span class="hljs-keyword">CHECK</span>(salary &gt;= <span class="hljs-number">0</span>))
+</code></pre>
+</li>
+<li>Other Examples:<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> TableName (
+ColumnName1 DataType[(<span class="hljs-keyword">size</span>)][<span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>] [<span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">value</span>],
+ColumnName2 DataType[(<span class="hljs-keyword">size</span>)][<span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>] [<span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">value</span>],
+[<span class="hljs-keyword">CONSTRAINT</span> CK_ConstraintName
+<span class="hljs-keyword">CHECK</span> (ConstraintCheckCondition),]
+    <span class="hljs-keyword">CONSTRAINT</span> PK_ConstraintName
+              PRIMARY <span class="hljs-keyword">KEY</span>(ColumnName[, ColumnName]
+[,<span class="hljs-keyword">CONSTRAINT</span> FK_ConstraintName
+FOREIGN <span class="hljs-keyword">KEY</span> (ColumnName)
+<span class="hljs-keyword">REFERENCES</span> TableName (ColumnName)
+<span class="hljs-keyword">ON</span> <span class="hljs-keyword">DELETE</span> RESTRICT
+<span class="hljs-keyword">ON</span> <span class="hljs-keyword">UPDATE</span> RESTRICT]
+)
+</code></pre>
+</li>
+</ul>
+<h3 id="create-index">Create Index</h3>
+<ul>
+<li>Create an index<pre><code class="lang-sql"><span class="hljs-keyword">Create</span> [<span class="hljs-keyword">UNIQUE</span>][clustered] <span class="hljs-keyword">INDEX</span> index_name
+<span class="hljs-keyword">ON</span> table_name
+(column_name1 [ <span class="hljs-keyword">ASC</span>/<span class="hljs-keyword">DESC</span> ].
 ...
-column_nameN [ ASC/DESC ]</p>
-<p>Ex:
-CREATE INDEX STJ_patients_last_name
-ON patients
-(last_name ASC)</p>
-<p>View
-In SQL, a VIEW is a virtual table that is based on the result-set of an SQL statement.
-It cannot use ORDER BY</p>
-<p>CREATE VIEW view_name AS
-SELECT column_name(s)
-FROM table_name
-WHERE condition
-GROUP BY column_name;</p>
-<p>Once generated, View can be later query as a normal table.
-A view always shows up-to-date data.
-When use substring in a view columns names must have alias(new name after AS)</p>
-<p>Update view</p>
-<p>CREATE OR REPLACE VIEW view_name AS
-SELECT column_name(s)
-FROM table_name
-WHERE condition;</p>
-<p>Delete view,
-DROP VIEW List;</p>
-<p>Stored Procedures
-Pieces of executable code stored in the database (small programs)<br>Stored procedures require procedural code<br>Each database vendor extends SQL with procedural code<br>Microsoft uses T-SQL<br>Oracle uses Procedural Language SQL (PL/SQL)<br>IBM uses SQL Procedural Language (SQL PL)<br>MySQL uses SQL/Persistent Stored Module (SQL/PSM)
-System Stored Procedures are pre-defined stored procedures with name:
-sp_help &#x2018;column_name&apos; &#x2014;see help about a column
-sp_server_info &#x2014; see info about the server.
-Procedures are stored in the data dictionary sys.procedures, sys.sql_modules.</p>
-<p>Create Procedure</p>
+column_nameN [ <span class="hljs-keyword">ASC</span>/<span class="hljs-keyword">DESC</span> ]
+</code></pre>
+</li>
+<li>Ex:<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">INDEX</span> STJ_patients_last_name
+<span class="hljs-keyword">ON</span> patients
+(last_name <span class="hljs-keyword">ASC</span>)
+</code></pre>
+</li>
+</ul>
+<h3 id="sequences">Sequences</h3>
+<ul>
+<li>A Sequence is a database object used to generate unique numbers</li>
+<li>CURRVAL returns the current value of the sequence</li>
+<li>NEXTVAL returns the next value of the sequence</li>
+<li>Create a sequence, <code>CREATE SEQUENCE sequence_name [INCREMENT BY value]</code></li>
+<li>Access a Sequence, <code>sequence_name.CURRVAL</code>, or <code>sequence_name.NEXTVAL</code><ul>
+<li><code>INSERT INTO tableName VALUES(sequence_name.NEXTVAL);</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="alter-table">Alter Table</h3>
+<ul>
+<li>The ALTER TABLE command is used to add, delete, or modify columns and their constraints in an existing table</li>
+<li>Add new columns<pre><code class="lang-sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> People
+<span class="hljs-keyword">ADD</span> DateOfBirth;
+</code></pre>
+</li>
+<li>Delete columns<pre><code class="lang-sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> People
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">COLUMN</span> DateOfBirth;
+</code></pre>
+</li>
+<li>Delete entire table, <code>DROP TABLE People;</code></li>
+<li>Rename columns<pre><code class="lang-sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> People
+<span class="hljs-keyword">CHANGE</span> FirstName <span class="hljs-keyword">name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>);
+</code></pre>
+</li>
+<li>Rename tables, <code>RENAME TABLE People TO Users;</code></li>
+</ul>
+<h2 id="sql-script">SQL Script</h2>
+<ul>
+<li>the script put multiple SQL statement together one by one in a file.</li>
+<li>the script file has an extension of <code>.sql</code></li>
+<li>each statement requires <code>;</code> in the end</li>
+<li>Excel can build inserts statements</li>
+<li>When work with scripts in database management software always select the correct table or database before execution</li>
+<li>Syntax<ul>
+<li>lexical units:<ul>
+<li>Identifiers &#x2013; begin with a letter and may be up to 30 characters long</li>
+<li>Reserved words &#x2013; such as SELECT, BEGIN, END</li>
+<li>Delimiters &#x2013; characters with special meaning, such as <code>+</code> <code>-</code> <code>&apos;</code> <code>&gt;</code> <code>(</code> <code>:=</code> <code>||</code> <code>/*</code> <code>--</code> etc.</li>
+<li>Literals &#x2013; such as <code>123</code>, <code>&apos;Hello World&apos;</code>, <code>FALSE</code></li>
+<li>Comments &#x2013; single line comments <code>--</code> or mutli-line comments <code>/* */</code></li>
+</ul>
+</li>
+<li>Scope And Labels<ul>
+<li>Variables and other structures are scoped local to their block</li>
+<li>Labels are enclosed in <code>&lt;&lt; label &gt;&gt;</code></li>
+<li>Labels can be added to the top of any blocks to improve readability and to qualify identifiers</li>
+<li>The name of the block must precede the first line of executable code (BEGIN or DECLARE)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>A group of sql command is called a batch in sql script.</li>
+<li><code>BEGIN</code>, <code>END</code>, is used to enclose a block of PL, like <code>{}</code></li>
+</ul>
+<h3 id="useful-command">Useful Command</h3>
+<ul>
+<li>Oracle<ul>
+<li><code>SET SERVEROUTPUT ON;</code> enable output</li>
+<li><code>CLEAR SCREEN;</code> clears the output window</li>
+<li><code>SET VERIFY OFF</code> suppress new and old impact of substitution variable</li>
+<li><code>SET NLS_DATE_FORMAT = &apos;DD-MON-YYYY</code> set the date input format</li>
+<li><code>ALTER SESSION</code> only make changes to the current session<ul>
+<li>The statement stays in effect until you disconnect from the database</li>
+<li><code>ALTER SESSION SET NLS_DATE_FORMAT = &apos;DD-MON-YYYY</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>MySQL<ul>
+<li>GO statements is used at the end of each batch, no <code>;</code> followed. It can be followed by an integer that repeats the batch for certain time. When a batch fails other batches will still be executed.</li>
+<li>Some <code>CREATE</code> and <code>INSERT</code> statements require that they are the first statement in a batch.</li>
+<li><code>SET</code> commands can be used to change session settings.</li>
+<li>Examples SQL Server:<pre><code class="lang-sql"><span class="hljs-comment">-- Suppress INSERT, UPDATE and DELETE completion messages</span>
+<span class="hljs-keyword">SET</span> NOCOUNT <span class="hljs-keyword">ON</span>
+<span class="hljs-comment">-- Set date format to YYYY-MM-DD</span>
+<span class="hljs-keyword">SET</span> DATEFORMAT ymd;
+<span class="hljs-comment">-- Make the master database the current database</span>
+<span class="hljs-keyword">USE</span> <span class="hljs-keyword">master</span>
+<span class="hljs-comment">-- If database co859 exists, drop it</span>
+<span class="hljs-keyword">IF</span> <span class="hljs-keyword">EXISTS</span> (<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> sysdatabases <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> = <span class="hljs-string">&apos;co859&apos;</span>)
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">DATABASE</span> co859;
+GO
+<span class="hljs-comment">-- Print statement in the script print string in console, when it is executed. For Microsoft SQL manegement output setting need to be changed to text.</span>
+PRINT &apos;Verification&apos;
+<span class="hljs-comment">-- Create the co859 database</span>
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> co859;
+GO
+<span class="hljs-comment">-- Make the co859 database the current database</span>
+<span class="hljs-keyword">USE</span> co859;
+</code></pre>
+</li>
+<li>SET DATEFORMAT format, format can be:<ul>
+<li>dmy (Preferred in much of the world)</li>
+<li>mdy (Preferred in USA)</li>
+<li>ymd (Unambiguous, best choice, SQL Server default)</li>
+<li>ydm (Should be avoided)</li>
+<li>myd (Should be avoided)</li>
+<li>dym (Should be avoided)</li>
+</ul>
+</li>
+<li>CREATE User statement creates a new entry in the user table that has no privileges.</li>
+<li>GRANT is then used to control the access and privileges the user has<ul>
+<li><code>GRANT Create ON &lt;Database&gt; TO &lt;Source&gt;</code></li>
+</ul>
+</li>
+<li>Sources can be<ul>
+<li><code>smith@localhost</code> &#x2013; this account will be granted access only when accessing the data locally, not remotely</li>
+<li><code>RSingh@&apos;192.168.1.%&apos;</code> &#x2013; this account will be granted access only when accessing the data from a host with an IP address that begins with <code>192.168.1</code></li>
+<li><code>DNguyen</code> &#x2013; this account will be granted access from any host, local or not (translates to DNguyen@&#x2019;%&#x2019;)</li>
+</ul>
+</li>
+<li><code>create database databaseName</code> create a new database.</li>
+<li><code>grant select on databaseName.* to userName@localhost identified by &apos;newPassword&apos;</code> create new database user with local connection and only be allowed to select records.</li>
+<li><code>use databaseName</code> set the database as default database.</li>
+<li><code>describe tableName;</code> view details about certain table.</li>
+<li><code>exit;</code> exit the mysql interface.</li>
+</ul>
+</li>
+</ul>
+<h3 id="procedural-language">Procedural Language</h3>
+<ul>
+<li>Many of the procedure languages supports variables, conditions, loops and exceptions</li>
+<li>It adds logic to the SQL scripts</li>
+<li>Each database vendor extends SQL with procedural code:<ul>
+<li>Microsoft uses T-SQL</li>
+<li>Oracle uses Procedural Language SQL (PL/SQL)<ul>
+<li>Based on Ada</li>
+</ul>
+</li>
+<li>IBM uses SQL Procedural Language (SQL PL)</li>
+<li>MySQL uses SQL/Persistent Stored Module (SQL/PSM)</li>
+</ul>
+</li>
+<li>Data Definition Language (CREATE, DROP, ALTER, etc.) is not valid in PL/SQL</li>
+<li>DML (INSERT, UPDATE, DELETE) and SELECT are valid in PL/SQL</li>
+</ul>
+<h3 id="oracle-scripts">Oracle Scripts</h3>
+<h4 id="functions">Functions</h4>
+<ul>
+<li>TO_CHAR<ul>
+<li>TO_CHAR converts its arguments into a VARCHAR2 with optional formatting</li>
+<li>TO_CHAR(value[, format_mask])<ul>
+<li><code>TO_CHAR(AVG(cost), &apos;$9,999.99&apos;)</code></li>
+<li><code>TO_CHAR(SYSDATE, &apos;DD-MONTH-YYYY</code></li>
+<li><code>TO_CHAR(SYSDATE, &apos;HH:MI:SS&apos;)</code></li>
+<li><code>TO_CHAR(SYSDATE, &apos;FMDD-MONTH-YYYY&apos;)</code><ul>
+<li><code>FM</code> - Fill mode controls blank padding and leading zero suppression</li>
+</ul>
+</li>
+<li><code>TO_CHAR(12345.678, &apos;099,999)</code></li>
+</ul>
+</li>
+<li>TO_CHAR(character)</li>
+<li>TO_CHAR(datetime)</li>
+<li>TO_CHAR(number)</li>
+</ul>
+</li>
+</ul>
+<h4 id="procedural-code-blocks">Procedural Code Blocks</h4>
+<ul>
+<li>The basic unit of organization in <code>PL</code> is the block</li>
+<li><code>PL</code> blocks can be named or anonymous</li>
+<li>Named blocks can be stored in the database</li>
+<li>Blocks can be nested</li>
+<li>Structure<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  <span class="hljs-comment">-- Declaration statements</span>
+  <span class="hljs-comment">-- Declear Types</span>
+  v_first_name VARCHAR2(<span class="hljs-number">35</span>);
+  <span class="hljs-comment">-- Use column&apos;s data type to declear</span>
+  v_last_name students.last_name%TYPE;
+  <span class="hljs-comment">--  Declear constant types and assign value</span>
+  id CONSTANT NUMBER := 7;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-comment">-- Mandatory, Executable statements</span>
+  <span class="hljs-comment">-- Use || between variable names for formatted output</span>
+  <span class="hljs-keyword">SELECT</span> first_name||<span class="hljs-string">&apos; &apos;</span>||last_name
+  <span class="hljs-keyword">INTO</span> v_first_name, v_last_name
+  <span class="hljs-keyword">FROM</span> students
+  <span class="hljs-keyword">WHERE</span> student_id = <span class="hljs-keyword">id</span>;
+  <span class="hljs-comment">-- OUTPUT</span>
+  BMS_OUTPUT.PUT_LINE (&apos;Student name: &apos;||first_name ||&apos; &apos;|| last_name);
+EXCEPTION
+  <span class="hljs-comment">-- Exception-handling statements</span>
+  WHEN NO_DATA_FOUND THEN
+      DBMS_OUTPUT.PUT_LINE (&apos;No student is found&apos;);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+</ul>
+<h4 id="substitution-variables">Substitution Variables</h4>
+<ul>
+<li>Substitution variables get processed at run time</li>
+<li>Substitution Variables, prompt for input after execution, <code>i_student_id NUMBER := &amp;input_student_id;</code></li>
+<li>If a substitution variable appears more than once and <code>&amp;</code> is used, substitution is prompted for each time<ul>
+<li>Use <code>&amp;&amp;</code> to prompt only once</li>
+</ul>
+</li>
+<li>When prompting to fill a text variable, enclose substitution variable in quotes, <code>name VARCHAR2(5) := &apos;&amp;input_name&apos;;</code></li>
+</ul>
+<h4 id="conditional-structure">Conditional Structure</h4>
+<ul>
+<li>IF<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_num1 <span class="hljs-built_in">NUMBER</span> := <span class="hljs-number">5</span>;
+  v_num2 NUMBER := 3;
+  v_temp NUMBER;
+<span class="hljs-keyword">BEGIN</span>
+<span class="hljs-comment">-- if v_num1 is greater than v_num2 rearrange their values</span>
+  <span class="hljs-keyword">IF</span> v_num1 &gt; v_num2 <span class="hljs-keyword">THEN</span>
+    v_temp := v_num1;
+    v_num1 := v_num2;
+    v_num2 := v_temp;
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+  <span class="hljs-comment">-- display the values of v_num1 and v_num2</span>
+  DBMS_OUTPUT.PUT_LINE (&apos;v_num1 = &apos;||v_num1);
+  DBMS_OUTPUT.PUT_LINE (&apos;v_num2 = &apos;||v_num2);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>IF/ELSE statements<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_num <span class="hljs-built_in">NUMBER</span> := &amp;sv_user_num;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-comment">-- test if the number provided by the user is even</span>
+  <span class="hljs-keyword">IF</span> <span class="hljs-keyword">MOD</span>(v_num,<span class="hljs-number">2</span>) = <span class="hljs-number">0</span>  <span class="hljs-keyword">THEN</span>
+    DBMS_OUTPUT.PUT_LINE (v_num||<span class="hljs-string">&apos; is even number&apos;</span>);
+  ELSE
+    DBMS_OUTPUT.PUT_LINE (v_num||&apos; is odd number&apos;);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+  DBMS_OUTPUT.PUT_LINE (&apos;Done&apos;);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>ELSIF statements<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_num <span class="hljs-built_in">NUMBER</span> := &amp;sv_num;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">IF</span> v_num &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span>
+    DBMS_OUTPUT.PUT_LINE (v_num||<span class="hljs-string">&apos; is a negative number&apos;</span>);
+  ELSIF v_num = 0 THEN
+    DBMS_OUTPUT.PUT_LINE (v_num||&apos; is equal to zero&apos;);
+  ELSE
+    DBMS_OUTPUT.PUT_LINE (v_num||&apos; is a positive number&apos;);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>Nested If statements<pre><code class="lang-sql">DECLARE
+  v_num1 NUMBER := &amp;sv_num1;
+  v_num2 NUMBER := &amp;sv_num2;
+  v_total NUMBER;
+BEGIN
+  IF v_num1 &gt; v_num2 THEN
+    DBMS_OUTPUT.PUT_LINE (&apos;IF part of the outer IF&apos;);
+    v_total := v_num1 - v_num2;
+  ELSE
+    DBMS_OUTPUT.PUT_LINE (&apos;ELSE part of the outer IF&apos;);
+    v_total := v_num1 + v_num2;
+    IF v_total &lt; 0 THEN
+      DBMS_OUTPUT.PUT_LINE (&apos;Inner IF&apos;);
+      v_total := v_total * (-1);
+    END IF;
+  END IF;
+  DBMS_OUTPUT.PUT_LINE (&apos;v_total = &apos;||v_total);
+END;
+</code></pre>
+</li>
+<li>Conditions with Logical Operators<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_letter <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">1</span>) := <span class="hljs-string">&apos;&amp;sv_letter&apos;</span>;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">IF</span> (v_letter &gt;= <span class="hljs-string">&apos;A&apos;</span> <span class="hljs-keyword">AND</span> v_letter &lt;= <span class="hljs-string">&apos;Z&apos;</span>)
+  <span class="hljs-keyword">OR</span> (v_letter &gt;= <span class="hljs-string">&apos;a&apos;</span> <span class="hljs-keyword">AND</span> v_letter &lt;= <span class="hljs-string">&apos;z&apos;</span>)
+  <span class="hljs-keyword">THEN</span>
+    DBMS_OUTPUT.PUT_LINE (<span class="hljs-string">&apos;This is a letter&apos;</span>);
+  ELSE
+    DBMS_OUTPUT.PUT_LINE (&apos;This is not a letter&apos;);
+    IF v_letter BETWEEN &apos;0&apos; AND &apos;9&apos; THEN
+      DBMS_OUTPUT.PUT_LINE (&apos;This is a number&apos;);
+    ELSE
+      DBMS_OUTPUT.PUT_LINE (&apos;This is not a number&apos;);
+    <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>CASE statements<ul>
+<li>CASE statements with selector after <code>CASE</code><pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_num <span class="hljs-built_in">NUMBER</span> := &amp;sv_user_num;
+  v_num_flag NUMBER;
+<span class="hljs-keyword">BEGIN</span>
+  v_num_flag := <span class="hljs-keyword">MOD</span>(v_num,<span class="hljs-number">2</span>);
+  <span class="hljs-comment">-- test if the number provided by the user is even</span>
+  CASE v_num_flag
+    WHEN 0 THEN
+      DBMS_OUTPUT.PUT_LINE (v_num||&apos; is even number&apos;);
+    ELSE
+      DBMS_OUTPUT.PUT_LINE (v_num||&apos; is odd number&apos;);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">CASE</span>;
+  DBMS_OUTPUT.PUT_LINE (&apos;Done&apos;);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>CASE statements without selector after <code>CASE</code><pre><code class="lang-sql">DECLARE
+  v_student_id   NUMBER := 102;
+  v_section_id   NUMBER := 89;
+  v_final_grade  NUMBER;
+  v_letter_grade CHAR(1);
+BEGIN
+  SELECT final_grade
+  INTO v_final_grade
+  FROM enrollment
+  WHERE student_id = v_student_id
+  AND section_id = v_section_id;
+  CASE
+    WHEN v_final_grade &gt;= 90 THEN v_letter_grade := &apos;A&apos;;
+    WHEN v_final_grade &gt;= 80 THEN v_letter_grade := &apos;B&apos;;
+    WHEN v_final_grade &gt;= 70 THEN v_letter_grade := &apos;C&apos;;
+    WHEN v_final_grade &gt;= 60 THEN v_letter_grade := &apos;D&apos;;
+    ELSE v_letter_grade := &apos;F&apos;;
+  END CASE;
+  DBMS_OUTPUT.PUT_LINE (&apos;Letter grade is: &apos;||v_letter_grade);
+END;
+</code></pre>
+</li>
+<li>Case Expression<pre><code class="lang-sql">v_result :=
+  CASE v_num_flag
+    WHEN 0 THEN v_num||&apos; is even number&apos;
+    ELSE v_num||&apos; is odd number&apos;
+  <span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>CASE Expression in a SQL Statement<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> course_no, description,
+  <span class="hljs-keyword">CASE</span>
+    <span class="hljs-keyword">WHEN</span> prerequisite <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">THEN</span>
+      <span class="hljs-string">&apos;No prerequisite course required&apos;</span>
+    <span class="hljs-keyword">ELSE</span> TO_CHAR(prerequisite)
+  <span class="hljs-comment">-- Optional label</span>
+  <span class="hljs-keyword">END</span> prerequisite
+<span class="hljs-keyword">INTO</span> v_course_no, v_description, v_prereq
+<span class="hljs-keyword">FROM</span> course
+<span class="hljs-keyword">WHERE</span> course_no = <span class="hljs-number">20</span>;
+</code></pre>
+</li>
+<li>Case statement can be nested</li>
+</ul>
+</li>
+<li>NULLIF<ul>
+<li>NULLIF compares two expressions, if they are equal, it returns NULL</li>
+<li>Otherwise it returns the value of the first expression<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+v_num <span class="hljs-built_in">NUMBER</span> := &amp;sv_user_num;
+v_remainder NUMBER;
+<span class="hljs-keyword">BEGIN</span>
+<span class="hljs-comment">-- calculate the remainder and if it is zero return NULL</span>
+v_remainder := <span class="hljs-keyword">NULLIF</span>(<span class="hljs-keyword">MOD</span>(v_num,<span class="hljs-number">2</span>),<span class="hljs-number">0</span>);
+DBMS_OUTPUT.PUT_LINE (&apos;v_remainder: &apos;||v_remainder);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Simple Loop<ul>
+<li>Example<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+v_counter <span class="hljs-built_in">NUMBER</span> := <span class="hljs-number">0</span>;
+<span class="hljs-keyword">BEGIN</span>
+<span class="hljs-keyword">LOOP</span>
+  DBMS_OUTPUT.PUT_LINE (<span class="hljs-string">&apos;v_counter = &apos;</span>||v_counter);
+  EXIT;
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>Simple LOOP with EXIT Condition<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+v_counter BINARY_INTEGER := <span class="hljs-number">0</span>;
+<span class="hljs-keyword">BEGIN</span>
+<span class="hljs-keyword">LOOP</span>
+  <span class="hljs-comment">-- increment loop counter by one</span>
+  v_counter := v_counter + <span class="hljs-number">1</span>;
+  DBMS_OUTPUT.PUT_LINE (&apos;v_counter = &apos;||v_counter);
+  <span class="hljs-comment">-- if EXIT condition yields TRUE exit the loop</span>
+  IF v_counter = 5 THEN
+    EXIT;
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>Simple LOOP with EXIT WHEN Condition<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+v_course course.course_no%<span class="hljs-keyword">TYPE</span> := <span class="hljs-number">430</span>;
+v_instructor_id instructor.instructor_id%TYPE := 102;
+v_sec_num section.section_no%TYPE := 0;
+<span class="hljs-keyword">BEGIN</span>
+<span class="hljs-keyword">LOOP</span>
+  <span class="hljs-comment">-- increment section number by one</span>
+  v_sec_num := v_sec_num + <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> <span class="hljs-keyword">section</span>
+    (section_id, course_no, section_no, instructor_id, created_date, created_by, modified_date, modified_by)
+  <span class="hljs-keyword">VALUES</span>
+    (section_id_seq.<span class="hljs-keyword">NEXTVAL</span>, v_course, v_sec_num, v_instructor_id, <span class="hljs-keyword">SYSDATE</span>, <span class="hljs-keyword">USER</span>, <span class="hljs-keyword">SYSDATE</span>, <span class="hljs-keyword">USER</span>);
+  <span class="hljs-comment">-- if number of sections added is four exit the loop</span>
+  EXIT WHEN v_sec_num = 4;
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">COMMIT</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>WHILE Loop<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_counter <span class="hljs-built_in">NUMBER</span> := <span class="hljs-number">1</span>;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">WHILE</span> v_counter &lt; <span class="hljs-number">5</span> <span class="hljs-keyword">LOOP</span>
+    DBMS_OUTPUT.PUT_LINE (<span class="hljs-string">&apos;v_counter = &apos;</span>||v_counter);
+    <span class="hljs-comment">-- decrement the value of v_counter by one</span>
+    v_counter := v_counter - 1;
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>FOR LOOP<pre><code class="lang-sql"><span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">FOR</span> v_counter <span class="hljs-keyword">IN</span> <span class="hljs-number">1.</span><span class="hljs-number">.5</span> <span class="hljs-keyword">LOOP</span>
+    <span class="hljs-comment">-- By Default, Loop will only increment (or decrement) by 1</span>
+    DBMS_OUTPUT.PUT_LINE (<span class="hljs-string">&apos;v_counter = &apos;</span>|| v_counter);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>Numeric FOR LOOP IN REVERSE<pre><code class="lang-sql"><span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">FOR</span> v_counter <span class="hljs-keyword">IN</span> <span class="hljs-keyword">REVERSE</span> <span class="hljs-number">1.</span><span class="hljs-number">.5</span> <span class="hljs-keyword">LOOP</span>
+    DBMS_OUTPUT.PUT_LINE (<span class="hljs-string">&apos;v_counter = &apos;</span>||v_counter);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>BREAK<ul>
+<li>It is used to break the loop.</li>
+</ul>
+</li>
+<li>CONTINUE - Used to advance to the next iteration of a loop<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_counter <span class="hljs-built_in">NUMBER</span> := <span class="hljs-number">0</span>;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">LOOP</span>
+    DBMS_OUTPUT.PUT_LINE (<span class="hljs-string">&apos;v_counter = &apos;</span>||v_counter);
+    CONTINUE;
+    v_counter := v_counter + 1;
+    EXIT WHEN v_counter = 5;
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+</ul>
+<h4 id="exception-handling">Exception Handling</h4>
+<ul>
+<li>Catch Errors based on Built-in Exception types<pre><code class="lang-sql">EXCEPTION
+  WHEN ZERO_DIVIDE THEN
+    DBMS_OUTPUT.PUT_LINE (&apos;A number cannot be divided by zero.&apos;);
+  WHEN VALUE_ERROR THEN
+    DBMS_OUTPUT.PUT_LINE (&apos;An error has occurred&apos;);
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.PUT_LINE (&apos;There is no such student&apos;);
+  WHEN TOO_MANY_ROWS THEN
+    DBMS_OUTPUT.PUT_LINE (&apos;TOO_MANY_ROWS&apos;);
+  WHEN PROGRAM_ERROR OR DUP_VALUE_ON_INDEX THEN
+    DBMS_OUTPUT.PUT_LINE (&apos;PROGRAM_ERROR or DUP_VALUE_ON_INDEX&apos;);
+  <span class="hljs-comment">-- Handle any exceptions</span>
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE (&apos;An error has occurred&apos;);
+</code></pre>
+</li>
+<li>EXCEPTION block works below inner blocks as well</li>
+<li>only 1 exception can be raised per block, until handled</li>
+<li>User-Defined Exceptions<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_student_id STUDENT.STUDENT_ID%<span class="hljs-keyword">TYPE</span> := &amp;sv_student_id;
+  v_total_courses NUMBER;
+  e_invalid_id EXCEPTION;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">IF</span> v_student_id &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span>
+    <span class="hljs-keyword">RAISE</span> e_invalid_id;
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+  DBMS_OUTPUT.PUT_LINE (&apos;No exception has been raised&apos;);
+EXCEPTION
+  WHEN e_invalid_id THEN
+    DBMS_OUTPUT.PUT_LINE (&apos;An id cannot be negative&apos;);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>Reraise Exceptions<pre><code class="lang-sql">WHEN exception THEN
+      RAISE;
+</code></pre>
+</li>
+<li>RAISE_APPLICATION_ERROR - RAISE_APPLICATION_ERROR gives an error more of an Oracle look and feel
+, <code>RAISE_APPLICATION_ERROR(error_number, error_message[, keep_errors])</code><ul>
+<li><code>error_number</code>: -20,999 to -20,000</li>
+<li><code>error_message</code>: up to 2,048 characters</li>
+<li><code>keep_errors</code>: boolean</li>
+<li>If TRUE, new error is added to error stack</li>
+<li>If FALSE (default), new error replaces error stack</li>
+<li>Example<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+v_student_id STUDENT.STUDENT_ID%<span class="hljs-keyword">TYPE</span> := &amp;sv_student_id;
+v_total_courses NUMBER;
+<span class="hljs-keyword">BEGIN</span>
+<span class="hljs-keyword">IF</span> v_student_id &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span>
+  RAISE_APPLICATION_ERROR (<span class="hljs-number">-20000</span>, <span class="hljs-string">&apos;An id cannot be negative&apos;</span>);
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+<pre><code class="lang-sql">EXCEPTION
+WHEN NO_DATA_FOUND THEN
+  RAISE_APPLICATION_ERROR (-20001, &apos;This ID is invalid&apos;);
+</code></pre>
+</li>
+</ul>
+</li>
+<li>EXCEPTION_INIT Pragma<ul>
+<li>The exception handler only works with named errors</li>
+<li>Not all Oracle errors have names</li>
+<li>The EXCEPTION_INIT Pragma (compiler directive) allows association between an Oracle error number and a user defined error<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+v_zip ZIPCODE.ZIP%<span class="hljs-keyword">TYPE</span> := <span class="hljs-string">&apos;&amp;sv_zip&apos;</span>;
+e_child_exists EXCEPTION;
+<span class="hljs-keyword">PRAGMA</span> EXCEPTION_INIT(e_child_exists, <span class="hljs-number">-2292</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+<li>SQLCODE and SQLERRM<ul>
+<li>SQLCODE returns Oracle error number</li>
+<li>SQLERRM returns error message, maximum length 512 bytes</li>
+<li>Used with WHEN OTHERS exception handler</li>
+<li>Example<pre><code class="lang-sql">EXCEPTION
+  WHEN OTHERS THEN
+    v_err_code := SQLCODE;
+    v_err_msg  := SUBSTR(SQLERRM, 1, 200);
+    DBMS_OUTPUT.PUT_LINE (&apos;Error code: &apos;||v_err_code);
+    DBMS_OUTPUT.PUT_LINE (&apos;Error message: &apos;||v_err_msg);
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="transcation">Transcation</h4>
+<ul>
+<li>some units of work (transactions) will change multiple tables</li>
+<li>Database not considered in a consistent state unless all or none of the changes are processed together</li>
+<li>Changes made by one database user are not visible to other users until committed</li>
+<li><code>COMMIT</code> makes events within a transaction permanent</li>
+<li><code>ROLLBACK</code> erases events within a transaction</li>
+<li><code>SAVEPOINT</code> marks a place in a transaction to where a partial rollback may be made<pre><code class="lang-sql"><span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> student
+  (student_id, last_name, zip, registration_date, created_by, created_date, modified_by, modified_date)
+  <span class="hljs-keyword">VALUES</span>(student_id_seq.<span class="hljs-keyword">NEXTVAL</span>, <span class="hljs-string">&apos;Tashi&apos;</span>, <span class="hljs-number">10015</span>, <span class="hljs-string">&apos;1-JAN-2019&apos;</span>, <span class="hljs-string">&apos;STUDENTA&apos;</span>, <span class="hljs-string">&apos;1-JAN-2019&apos;</span>, <span class="hljs-string">&apos;STUDENTA&apos;</span>, <span class="hljs-string">&apos;1-JAN-2019&apos;</span>);
+  <span class="hljs-keyword">SAVEPOINT</span> A;
+  <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> student
+  (student_id, last_name, zip, registration_date, created_by, created_date, modified_by, modified_date)
+  <span class="hljs-keyword">VALUES</span>(student_id_seq.<span class="hljs-keyword">NEXTVAL</span>, <span class="hljs-string">&apos;Sonam&apos;</span>, <span class="hljs-number">10015</span>, <span class="hljs-string">&apos;1-JAN-2019&apos;</span>, <span class="hljs-string">&apos;STUDENTB&apos;</span>, <span class="hljs-string">&apos;1-JAN-2019&apos;</span>, <span class="hljs-string">&apos;STUDENTB&apos;</span>, <span class="hljs-string">&apos;1-JAN-2019&apos;</span>);
+  <span class="hljs-keyword">SAVEPOINT</span> B;
+  <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> student
+  (student_id, last_name, zip, registration_date, created_by, created_date, modified_by, modified_date)
+  <span class="hljs-keyword">VALUES</span>(student_id_seq.<span class="hljs-keyword">NEXTVAL</span>, <span class="hljs-string">&apos;Norbu&apos;</span>, <span class="hljs-number">10015</span>, <span class="hljs-string">&apos;1-JAN-2019&apos;</span>, <span class="hljs-string">&apos;STUDENTB&apos;</span>, <span class="hljs-string">&apos;1-JAN-2019&apos;</span>, <span class="hljs-string">&apos;STUDENTB&apos;</span>, <span class="hljs-string">&apos;1-JAN-2019&apos;</span>);
+  <span class="hljs-keyword">SAVEPOINT</span> C;
+  <span class="hljs-keyword">ROLLBACK</span> <span class="hljs-keyword">TO</span> B;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+</ul>
+<h3 id="mysql-scripts">MySQL Scripts</h3>
+<h4 id="system-stored-procedures">System Stored Procedures</h4>
+<ul>
+<li>Pieces of executable code stored in the database (small programs)</li>
+<li>Stored procedures require procedural code</li>
+<li>For MySQL<ul>
+<li>System Stored Procedures are pre-defined stored procedures with name:<ul>
+<li><code>sp_help &lt;column_name&gt;</code> see help about a column</li>
+<li><code>sp_server_info</code> see info about the server</li>
+</ul>
+</li>
+<li>Procedures are stored in the data dictionary <code>sys.procedures</code>, <code>sys.sql_modules</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="create-procedures">Create Procedures</h4>
 <pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> procedure_name
     @param1 DATATYPE,
     @param2 DATATYPE
@@ -2164,87 +3034,94 @@ Procedures are stored in the data dictionary sys.procedures, sys.sql_modules.</p
     <span class="hljs-keyword">SET</span> item_cost = item_cost * (<span class="hljs-number">1</span> + @increase)
     <span class="hljs-keyword">WHERE</span> primary_vendor_id = @vendor_id;
 </code></pre>
-<p>Alter a Procedure</p>
+<h4 id="alter-a-procedure">Alter a Procedure</h4>
 <pre><code class="lang-sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">PROCEDURE</span> procedure_name
     @param1 DATATYPE,
     @param2 DATATYPE
 <span class="hljs-keyword">AS</span>
 &#x2026;<span class="hljs-keyword">SQL</span> COMMAND <span class="hljs-keyword">WITH</span> @param1, @param2&#x2026;
 </code></pre>
-<p>Delete a Procedure</p>
+<h4 id="delete-a-procedure">Delete a Procedure</h4>
 <pre><code class="lang-sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">PROCEDURE</span> procedure_name;
 </code></pre>
-<p>Run Procedure</p>
-<pre><code class="lang-sql">EXEC sp_help
-EXEC procedure_name &#x2018;column_name&#x2019;;
+<h4 id="run-procedure">Run Procedure</h4>
+<ul>
+<li>use <code>EXEC</code> to run procedures<pre><code class="lang-sql">EXEC sp_help
+EXEC procedure_name &apos;column_name&apos;;
 </code></pre>
-<p>Can accept command line parameters, separated by commas
-functions are not accepted, new variables need to be declared to store values from function.
-EXEC procedure_name @param1=&#x2018;value1&#x2019;, @param2=&#x2018;value2&#x2019;;</p>
-<p>Parameters can be positional or named<br>EXEC procedure_name value1 value2;</p>
-<p>BEGIN-END
-Used to enclose a block of statements, like {}.</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">BEGIN</span>
-    <span class="hljs-keyword">SET</span>&#x2026;
-    <span class="hljs-keyword">SET</span>&#x2026;
-<span class="hljs-keyword">END</span>
-<span class="hljs-keyword">Declare</span>
-<span class="hljs-keyword">Declare</span> <span class="hljs-keyword">local</span> <span class="hljs-keyword">variables</span>
-<span class="hljs-keyword">DECLARE</span> @variable_name DATATYPE;
-</code></pre>
-<p>SET
-It is used to assign value.</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">SET</span> @variable_name = <span class="hljs-keyword">value</span>;
+</li>
+<li>Can accept command line parameters, separated by commas</li>
+<li>functions are not accepted, new variables need to be declared to store values from function. <code>EXEC procedure_name @param1=&#x2018;value1&#x2019;, @param2=&#x2018;value2&#x2019;;</code></li>
+<li>Parameters can be positional or named, <code>EXEC procedure_name value1 value2;</code></li>
+<li>SET, It is used to assign value.<pre><code class="lang-sql"><span class="hljs-keyword">SET</span> @variable_name = <span class="hljs-keyword">value</span>;
 <span class="hljs-keyword">SET</span> @variable_name = <span class="hljs-literal">NULL</span>;
-<span class="hljs-keyword">SET</span> @variable_name = &#x2026;<span class="hljs-keyword">SQL</span> Command that <span class="hljs-keyword">return</span> a single <span class="hljs-keyword">value</span>&#x2026;
+<span class="hljs-keyword">SET</span> @variable_name = &lt;<span class="hljs-keyword">SQL</span> Command that <span class="hljs-keyword">return</span> a single <span class="hljs-keyword">value</span>&gt;
 </code></pre>
-<p>IF</p>
-<pre><code class="lang-sql">IF @ref_error = 1
+</li>
+</ul>
+<h4 id="conditional-structure">Conditional Structure</h4>
+<ul>
+<li>IF<pre><code class="lang-sql">IF @ref_error = 1
 <span class="hljs-keyword">SET</span> @error_msg = <span class="hljs-string">&apos;NOT FOUND&apos;</span>;
 </code></pre>
-<p>IF/ELSE statements</p>
-<pre><code class="lang-sql">IF @ref_error = 0
-    <span class="hljs-keyword">SET</span> @error_msg = <span class="hljs-string">&apos;FOUND&apos;</span>;
+</li>
+<li>IF/ELSE statements<pre><code class="lang-sql">IF @ref_error = 0
+  <span class="hljs-keyword">SET</span> @error_msg = <span class="hljs-string">&apos;FOUND&apos;</span>;
 ELSE
-    <span class="hljs-keyword">SET</span> @error_msg = <span class="hljs-string">&apos;NOT FOUND&apos;</span>;
+  <span class="hljs-keyword">SET</span> @error_msg = <span class="hljs-string">&apos;NOT FOUND&apos;</span>;
 </code></pre>
-<p>CASE statements</p>
-<pre><code class="lang-sql">CASE @evaluation
+</li>
+<li>CASE statements<pre><code class="lang-sql">CASE @evaluation
 WHEN 100
-    THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.3</span>;
+  THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.3</span>;
 WHEN 90
-    THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.2</span>;
+  THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.2</span>;
 WHEN 80
-    THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.1</span>;
+  THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.1</span>;
 ELSE <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.05</span>;
 <span class="hljs-keyword">END</span>
 </code></pre>
-<p>Or</p>
 <pre><code class="lang-sql">CASE
 WHEN @evaluation = 100
-    THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.3</span>;
+  THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.3</span>;
 WHEN @evaluation =  90
-    THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.2</span>;
+  THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.2</span>;
 WHEN @evaluation =  80
-    THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.1</span>;
+  THEN <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.1</span>;
 ELSE <span class="hljs-keyword">UPDATE</span> employees <span class="hljs-keyword">SET</span> salary = salary * <span class="hljs-number">1.05</span>;
 <span class="hljs-keyword">END</span>
 </code></pre>
-<p>WHILE Loop</p>
-<pre><code class="lang-sql">WHILE @@FETCH_STATUS = 0
+</li>
+<li>WHILE Loop<pre><code class="lang-sql">WHILE @@FETCH_STATUS = 0
 <span class="hljs-keyword">BEGIN</span>
-     &lt;<span class="hljs-keyword">loop</span> processing&gt;
+  &lt;<span class="hljs-keyword">loop</span> processing&gt;
 <span class="hljs-keyword">END</span>
 </code></pre>
-<p>BREAK
-it is used to break the loop.</p>
-<p>CONTINUE
-Used to advance to the next iteration of a WHILE loop.</p>
-<p>Cursor
-Used to access a SELECT result set one row at a time
-Steps to use a cursor<br>DECLARE a cursor with a SELECT statement<br>OPEN the cursor<br>This executes the SELECT statement and populates the cursor<br>FETCH one row at a time from the result set INTO variables<br>Each column fetched must have a correlating variable<br>Perform whatever processing desired for each row<br>CLOSE the cursor<br>DEALLOCATE the cursor</p>
-<p>Example:</p>
-<pre><code class="lang-sql">ALTER PROCEDURE update_items_item_cost
+</li>
+<li>BREAK<ul>
+<li>It is used to break the loop.</li>
+</ul>
+</li>
+<li>CONTINUE<ul>
+<li>Used to advance to the next iteration of a loop.</li>
+</ul>
+</li>
+</ul>
+<h4 id="cursor">Cursor</h4>
+<ul>
+<li>Used to access a SELECT result set one row at a time</li>
+<li>Steps to use a cursor<ol>
+<li>DECLARE a cursor with a SELECT statement</li>
+<li>OPEN the cursor</li>
+<li>This executes the SELECT statement and populates the cursor</li>
+<li>FETCH one row at a time from the result set INTO variables</li>
+<li>Each column fetched must have a correlating variable</li>
+<li>Perform whatever processing desired for each row</li>
+<li>CLOSE the cursor</li>
+<li>DEALLOCATE the cursor</li>
+</ol>
+</li>
+<li>Example<pre><code class="lang-sql">ALTER PROCEDURE update_items_item_cost
   @increase DECIMAL(3, 2),
   @vendor_id INT,
   @update INT = 0, -- If @update = 1, perform update, else show what would be updated
@@ -2283,139 +3160,130 @@ BEGIN
     WHERE primary_vendor_id = @vendor_id;
   DEALLOCATE items_cursor;
 END
-
 PRINT &apos;**********Before Update**********&apos;
 SELECT * FROM items WHERE primary_vendor_id = 1;
-
 -- Need to declare a variable to receive output
 DECLARE @num_of_rows INT;
-
 PRINT &apos;**********No Update**********&apos;
 EXEC update_items_item_cost @increase=0.25, @vendor_id=1, @update=0, @number_of_records=@num_of_rows OUTPUT;
 SELECT @num_of_rows AS [number_of_rows];
-
 PRINT &apos;**********After No Update**********&apos;
 SELECT * FROM items WHERE primary_vendor_id = 1;
-
 PRINT &apos;**********Update**********&apos;
 EXEC update_items_item_cost @increase=0.25, @vendor_id=1, @update=1, @number_of_records=@num_of_rows OUTPUT;
 SELECT @num_of_rows AS [number_of_rows];
-
 PRINT &apos;**********After Update**********&apos;
 SELECT * FROM items WHERE primary_vendor_id = 1;
 </code></pre>
-<p>@@FETCH_STATUS
-Returns the status of the last cursor FETCH statement<br>0 = The FETCH statement was successful<br>-1 = The FETCH statement failed or the row was beyond the result set<br>-2 = The row fetched is missing</p>
-<p>Trigger
-A trigger is a special stored procedure attached to a specific table.</p>
-<p>It is Event-driven, it is &quot;Fired&quot; automatically in response to event</p>
-<p>Can&#x2019;t pass values into a trigger, values can be declared inside a trigger.</p>
-<p>CREATE TRIGGER employees_insert<br> ON employees<br> AFTER INSERT, UPDATE #triggered by both insert and update operation
-AS<br> UPDATE company_stats<br> SET number_of_employees = number_of_employees + 1;</p>
-<p>During trigger execution, two special tables are used: deleted and inserted<br>SQL Server automatically creates and manages these tables<br>They have identical schema to the table being modified</p>
-<pre><code class="lang-sql">CREATE TRIGGER trigger_name
-    ON table_name
-    AFTER UPDATE
+</li>
+<li><code>@@FETCH_STATUS</code>, Returns the status of the last cursor FETCH statement<ul>
+<li>0 = The FETCH statement was successful</li>
+<li>-1 = The FETCH statement failed or the row was beyond the result set</li>
+<li>-2 = The row fetched is missing</li>
+</ul>
+</li>
+</ul>
+<h4 id="trigger">Trigger</h4>
+<ul>
+<li>A trigger is a special stored procedure attached to a specific table.</li>
+<li>It is Event-driven, it is &quot;Fired&quot; automatically in response to event</li>
+<li>Can&apos;t pass values into a trigger, values can be declared inside a trigger.</li>
+<li>Example<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> employees_insert
+<span class="hljs-keyword">ON</span> employees
+<span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">INSERT</span>, <span class="hljs-keyword">UPDATE</span> #triggered <span class="hljs-keyword">by</span> <span class="hljs-keyword">both</span> <span class="hljs-keyword">insert</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">update</span> operation
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">UPDATE</span> company_stats
+<span class="hljs-keyword">SET</span> number_of_employees = number_of_employees + <span class="hljs-number">1</span>;
+</code></pre>
+</li>
+<li>During trigger execution, two special tables are used: deleted and inserted</li>
+<li>SQL Server automatically creates and manages these tables</li>
+<li>They have identical schema to the table being modified<pre><code class="lang-sql">CREATE TRIGGER trigger_name
+  ON table_name
+  AFTER UPDATE
 AS
-    DECLARE @new_data MONEY;
-    DECLARE @old_data MONEY;
+  DECLARE @new_data MONEY;
+  DECLARE @old_data MONEY;
 BEGIN
-    SET @newData = (SELECT columnName FROM inserted);
-    SET @oldData = (SELECT columnName FROM deleted);
-    IF @new_data &gt; (@old_data * 1.5)
-        ROLLBACK TRANSACTION;     - - cancel update
+  SET @newData = (SELECT columnName FROM inserted);
+  SET @oldData = (SELECT columnName FROM deleted);
+  IF @new_data &gt; (@old_data * 1.5)
+    ROLLBACK TRANSACTION;     - - cancel update
 END
 </code></pre>
-<p>Improvement for updating multiple records</p>
-<p>ALTER TRIGGER employees_update<br> ON employees<br> AFTER UPDATE<br>AS<br>BEGIN<br> IF EXISTS (SELECT i.salary FROM inserted i<br> JOIN deleted d<br> ON i.employee_id = d.employee_id<br> WHERE i.salary &gt; (d.salary * 1.5))<br> ROLLBACK TRANSACTION;<br>END</p>
-<p>Trigger with Cursor</p>
-<pre><code class="lang-sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TRIGGER</span> employees_update
-    <span class="hljs-keyword">ON</span> employees
-    <span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">UPDATE</span>
+</li>
+<li>Improvement for updating multiple records<pre><code class="lang-sql">  <span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TRIGGER</span> employees_update
+  <span class="hljs-keyword">ON</span> employees
+  <span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">UPDATE</span>
+  <span class="hljs-keyword">AS</span>
+  <span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">IF</span> <span class="hljs-keyword">EXISTS</span> (<span class="hljs-keyword">SELECT</span> i.salary <span class="hljs-keyword">FROM</span> inserted i
+  <span class="hljs-keyword">JOIN</span> deleted d
+  <span class="hljs-keyword">ON</span> i.employee_id = d.employee_id
+  <span class="hljs-keyword">WHERE</span> i.salary &gt; (d.salary * <span class="hljs-number">1.5</span>))
+  <span class="hljs-keyword">ROLLBACK</span> <span class="hljs-keyword">TRANSACTION</span>;
+  <span class="hljs-keyword">END</span>
+</code></pre>
+</li>
+<li>Trigger with Cursor<pre><code class="lang-sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TRIGGER</span> employees_update
+  <span class="hljs-keyword">ON</span> employees
+  <span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">UPDATE</span>
 <span class="hljs-keyword">AS</span>
-    <span class="hljs-keyword">DECLARE</span> employees_cursor <span class="hljs-keyword">CURSOR</span>
-        <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">SELECT</span> i.salary, d.salary
-            <span class="hljs-keyword">FROM</span> inserted i
-            <span class="hljs-keyword">JOIN</span> deleted d
-            <span class="hljs-keyword">ON</span> i.employee_id = d.employee_id;
-    <span class="hljs-keyword">DECLARE</span> @new_salary MONEY;
-    <span class="hljs-keyword">DECLARE</span> @old_salary MONEY;
+  <span class="hljs-keyword">DECLARE</span> employees_cursor <span class="hljs-keyword">CURSOR</span>
+    <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">SELECT</span> i.salary, d.salary
+      <span class="hljs-keyword">FROM</span> inserted i
+      <span class="hljs-keyword">JOIN</span> deleted d
+      <span class="hljs-keyword">ON</span> i.employee_id = d.employee_id;
+  <span class="hljs-keyword">DECLARE</span> @new_salary MONEY;
+  <span class="hljs-keyword">DECLARE</span> @old_salary MONEY;
 <span class="hljs-keyword">BEGIN</span>
-    <span class="hljs-keyword">OPEN</span> employees_cursor;
+  <span class="hljs-keyword">OPEN</span> employees_cursor;
   FETCH NEXT FROM employees_cursor
-        INTO @new_salary, @old_salary;
-    WHILE @@FETCH_STATUS = 0
+    INTO @new_salary, @old_salary;
+  WHILE @@FETCH_STATUS = 0
+  <span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">IF</span> @new_salary &gt; @old_salary * <span class="hljs-number">1.5</span>
     <span class="hljs-keyword">BEGIN</span>
-        <span class="hljs-keyword">IF</span> @new_salary &gt; @old_salary * <span class="hljs-number">1.5</span>
-        <span class="hljs-keyword">BEGIN</span>
-            <span class="hljs-keyword">ROLLBACK</span> <span class="hljs-keyword">TRANSACTION</span>;
-            BREAK;
-        <span class="hljs-keyword">END</span>
-        <span class="hljs-keyword">FETCH</span> <span class="hljs-keyword">NEXT</span> <span class="hljs-keyword">FROM</span> employees_cursor
-            <span class="hljs-keyword">INTO</span> @new_salary, @old_salary;
+      <span class="hljs-keyword">ROLLBACK</span> <span class="hljs-keyword">TRANSACTION</span>;
+      BREAK;
     <span class="hljs-keyword">END</span>
-    <span class="hljs-keyword">CLOSE</span> employees_cursor;
+    <span class="hljs-keyword">FETCH</span> <span class="hljs-keyword">NEXT</span> <span class="hljs-keyword">FROM</span> employees_cursor
+      <span class="hljs-keyword">INTO</span> @new_salary, @old_salary;
+  <span class="hljs-keyword">END</span>
+  <span class="hljs-keyword">CLOSE</span> employees_cursor;
 <span class="hljs-keyword">END</span>
 </code></pre>
-<p>To delete an existing trigger use:<br>DROP TRIGGER Trigger_Name</p>
-<p>Every CREATE TRIGGER statement generates entries in<br>sys.triggers<br>sys.trigger_events<br>sys.events<br>sys.sql_modules</p>
-<p>TRANSCATION
-ROLLBACK</p>
-<p>SELECT <em> FROM physicians WHERE physician_id = 2;SELECT </em> FROM patients WHERE patient<em>id = 1251;BEGIN TRANSACTION;UPDATE physicians SET specialty = &apos;Hematology&apos; WHERE physician_id = 2;UPDATE patients SET allergies = &apos;Almonds&apos; WHERE patient_id = 1251;SELECT </em> FROM physicians WHERE physician<em>id = 2;SELECT </em> FROM patients WHERE patient<em>id = 1251;ROLLBACK TRANSACTION;SELECT </em> FROM physicians WHERE physician<em>id = 2;SELECT </em> FROM patients WHERE patient_id = 1251;</p>
-<p>Commit
-SELECT <em> FROM physicians WHERE physician_id = 2;SELECT </em> FROM patients WHERE patient<em>id = 1251;BEGIN TRANSACTION T1;UPDATE physicians SET specialty = &apos;Hematology&apos; WHERE physician_id = 2;UPDATE patients SET allergies = &apos;Almonds&apos; WHERE patient_id = 1251;SELECT </em> FROM physicians WHERE physician<em>id = 2;SELECT </em> FROM patients WHERE patient<em>id = 1251;COMMIT TRANSACTION T1;SELECT </em> FROM physicians WHERE physician<em>id = 2;SELECT </em> FROM patients WHERE patient_id = 1251;</p>
-<p>SQL Script
-the script put multiple SQL statement together one by one in a file.
-the script file has an extension of .sql
-each statement requires; in the end
-Excel can build inserts statements
-When work with scripts in database management software always select the correct table or database before execution.</p>
-<p>Script file comments
-Single line comments begin with <code>--</code>
-Multi line comments are bounded with <code>/* */</code></p>
-<p>A group of sql command is called a batch in sql script.</p>
-<p>GO statements is used at the end of each batch, no ; followed. It can be followed by an integer that repeats the batch for certain time. When a batch fails other batches will still be executed.</p>
-<p>Some CREATE and INSERT statements require that they are the first statement in a batch.</p>
-<p>SET commands can be used to change session settings.
-SET NOCOUNT ON
-Suppress INSERT, UPDATE and DELETE completion messages
-SET DATEFORMAT ymd
-Sets the date format to YYYY-MM-D</p>
-<p>SET Examples:</p>
-<p>SET NOCOUNT ON</p>
-<p>-- Set date format to year, month, day
-SET DATEFORMAT ymd;</p>
-<p>-- Make the master database the current database
-USE master</p>
-<p>-- If database co859 exists, drop it
-IF EXISTS (SELECT * FROM sysdatabases WHERE name = &apos;co859&apos;)
-DROP DATABASE co859;
-GO</p>
-<p>PRINT &#x2018;Verification&apos;;
-//Print statement in the script print string in console, when it is executed. For Microsoft SQL manegement output setting need to be changed to text.</p>
-<p>SET DATEFORMAT format
-format can be:
-dmy (Preferred in much of the world)
-mdy (Preferred in USA)
-ymd (Unambiguous, best choice, SQL Server default)
-ydm (Should be avoided)
-myd (Should be avoided)
-dym (Should be avoided)</p>
-<p>-- Create the co859 database
-CREATE DATABASE co859;
-GO</p>
-<p>-- Make the co859 database the current database
-USE co859;</p>
-<p>CREATE User statement creates a new entry in the user table that has no privileges. GRANT is then used to control the access and privileges the user has</p>
-<p>smith@localhost &#x2013; this account will be granted access only when accessing the data locally, not remotely&#xF07D;RSingh@&#x2019;192.168.1.%&#x2019; &#x2013;this account will be granted access only when accessing the data from a host with an IP address that begins with 192.168.1&#xF07D;DNguyen &#x2013;this account will be granted access from any host, local or not (translates to DNguyen@&#x2019;%&#x2019;)</p>
-<p>GRANT Create ON <em>.</em> TO PZhang@localhost
-GRANT Create ON Mydata.* TO PZhang@&#x2019;192.168.1.%&#x2019;</p>
+</li>
+<li>To delete an existing trigger use: <code>DROP TRIGGER Trigger_Name</code></li>
+<li>Every CREATE TRIGGER statement generates entries<ul>
+<li>For SQL Server<ul>
+<li>sys.triggers</li>
+<li>sys.trigger_events</li>
+<li>sys.events</li>
+<li>sys.sql_modules</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="transcation">Transcation</h4>
 <ul>
-<li><code>create database databaseName</code> create a new database.</li>
-<li><code>grant select on databaseName.* to userName@localhost identified by &apos;newPassword&apos;</code> create new database user with local connection and only be allowed to select records.</li>
-<li><code>use databaseName</code> set the database as default database.</li>
-<li><code>describe tableName;</code> view details about certain table.</li>
-<li><code>exit;</code> exit the mysql interface.</li>
+<li><code>COMMIT</code> makes events within a transaction permanent<pre><code class="lang-sql"><span class="hljs-keyword">BEGIN</span> <span class="hljs-keyword">TRANSACTION</span> T1;
+<span class="hljs-keyword">UPDATE</span> physicians <span class="hljs-keyword">SET</span> specialty = <span class="hljs-string">&apos;Hematology&apos;</span> <span class="hljs-keyword">WHERE</span> physician_id = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">UPDATE</span> patients <span class="hljs-keyword">SET</span> allergies = <span class="hljs-string">&apos;Almonds&apos;</span> <span class="hljs-keyword">WHERE</span> patient_id = <span class="hljs-number">1251</span>;
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> physicians <span class="hljs-keyword">WHERE</span> physician*<span class="hljs-keyword">id</span> = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> patients <span class="hljs-keyword">WHERE</span> patient*<span class="hljs-keyword">id</span> = <span class="hljs-number">1251</span>;
+<span class="hljs-keyword">COMMIT</span> <span class="hljs-keyword">TRANSACTION</span> T1;
+</code></pre>
+</li>
+<li><code>ROLLBACK</code> erases events within a transaction<pre><code class="lang-sql"><span class="hljs-keyword">BEGIN</span> <span class="hljs-keyword">TRANSACTION</span>;
+<span class="hljs-keyword">UPDATE</span> physicians <span class="hljs-keyword">SET</span> specialty = <span class="hljs-string">&apos;Hematology&apos;</span> <span class="hljs-keyword">WHERE</span> physician_id = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">UPDATE</span> patients <span class="hljs-keyword">SET</span> allergies = <span class="hljs-string">&apos;Almonds&apos;</span> <span class="hljs-keyword">WHERE</span> patient_id = <span class="hljs-number">1251</span>;
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> physicians <span class="hljs-keyword">WHERE</span> physician*<span class="hljs-keyword">id</span> = <span class="hljs-number">2</span>;<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> patients <span class="hljs-keyword">WHERE</span> patient*<span class="hljs-keyword">id</span> = <span class="hljs-number">1251</span>;
+<span class="hljs-keyword">ROLLBACK</span> <span class="hljs-keyword">TRANSACTION</span>;
+</code></pre>
+</li>
+<li><code>SAVEPOINT</code> marks a place in a transaction to where a partial rollback may be made</li>
 </ul>
 
                                 
@@ -2460,7 +3328,7 @@ GRANT Create ON Mydata.* TO PZhang@&#x2019;192.168.1.%&#x2019;</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.15","depth":1,"next":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"previous":{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sql/README.md","mtime":"2020-11-20T18:09:53.477Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.15","depth":1,"next":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"previous":{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sql/README.md","mtime":"2021-02-04T00:43:30.575Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

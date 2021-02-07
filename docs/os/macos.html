@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1386,14 +1418,21 @@
 <li>Command from the tools will be available at <code>/usr/bin</code></li>
 </ul>
 </li>
-<li>run <code>xcode-select --install</code> to install</li>
-<li>Located in <code>/Library/Developer/CommandLineTools</code></li>
+<li>run <code>xcode-select --install</code> to install<ul>
+<li>Reinstall this tool when see <code>invalid active developer path (/Library/Developer/CommandLineTools)</code> error after OS update</li>
+<li><code>xcode-select --reset</code> if install command not working</li>
+</ul>
+</li>
+<li>Located in <code>/Library/Developer/CommandLineTools</code><ul>
+<li>run <code>sudo rm -rf /Library/Developer/CommandLineTools</code>, then <code>sudo xcode-select --install</code> to update, if update option does not show up in System Preferences</li>
+</ul>
+</li>
 <li>Xcode includes this command-line tools. If it is installed on your system separately, uninstall the command-line tools.<ul>
 <li>Delete the <code>CommandLineTools</code> folder to uninstall the command line tools.</li>
 </ul>
 </li>
 <li>run <code>xcode-select --print-path</code> to find out what version of Xcode is being used by the tools</li>
-<li>run <code>sudo xcode-select -switch /Applications/Xcode8.3.3/Xcode.app</code> set the default version of Xcode to use for the command-line tools.</li>
+<li>run <code>sudo xcode-select -switch /Applications/XcodeX.X.X/Xcode.app</code> set the default version of Xcode to use for the command-line tools.</li>
 </ul>
 <h3 id="icloud">iCloud</h3>
 <ul>
@@ -1408,49 +1447,47 @@
 <li>It provides many up-to-date GNU software that can replace the default Unix BSD software.</li>
 </ul>
 </li>
-<li>Homebrew require <code>Xcode Command Line Tools</code>.</li>
+<li>Homebrew requires <code>Xcode Command Line Tools</code></li>
+<li>Go to <a href="https://brew.sh" target="_blank">Homebrew Site</a> and search for the package name for installation</li>
 <li>Install homebrew by running <code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</code>.</li>
 <li>Uninstall homebrew by running <code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)&quot;</code>.<ul>
 <li>This will remove all the packages installed by homebrew as well.</li>
 </ul>
 </li>
 <li>In Homebrew, a Formulae is a package which can be a command line tool. A Cask is an GUI App.<ul>
-<li>Installed command tools are located in the <code>/usr/local/Cellar</code> folder, they will have alias in the <code>/user/local/bin</code> folder.</li>
+<li>Installed command tools are located in the <code>/usr/local/Cellar</code> folder, they will have alias in the <code>/user/local/opt</code> folder.<ul>
+<li>run <code>brew --prefix &lt;package&gt;</code> to get the path of a package</li>
+</ul>
+</li>
 <li>Installed Apps are located in the <code>/Applications/</code>folder, they will have alias in the <code>/usr/local/Caskroom</code> with additional metadata.</li>
 </ul>
 </li>
 <li><code>brew search</code> list all packages available from homebrew.</li>
 <li><code>brew update</code> update all packages</li>
-<li><code>brew outdated</code> list all outdated packages</li>
-<li><code>brew upgrade</code> update outdated packages</li>
-<li><code>brew cleanup &amp;&amp; brew cask cleanup</code> troubleshoot and clean old versions</li>
-<li><code>brew list</code> list installed packages</li>
+<li><code>brew outdated</code> list all outdated packages and apps</li>
+<li><code>brew upgrade</code> update outdated packages and apps</li>
+<li><code>brew cleanup</code> troubleshoot and clean old versions</li>
+<li><code>brew list</code> list installed packages and apps</li>
 <li><code>brew install &lt;PackageName&gt;</code> install a package.<ul>
 <li>brew with distinguish some new package with pre-installed system package by prepending a <code>g</code> to its name. use <code>-with-default-names</code> will make them use their original names.</li>
 </ul>
 </li>
 <li><code>brew uninstall &lt;PackageName&gt;</code> uninstall a package.</li>
-<li><code>brew home &lt;PackageName&gt;</code> open package homepage in browser.</li>
-<li><code>brew tap &lt;RepoName&gt;</code> include an external repo. If a certain formulae is not found using <code>brew search</code>. The package can then be installed using <code>brew install</code>.</li>
+<li><code>brew home &lt;PackageName&gt;</code> open package or app homepage in browser.</li>
+<li><code>brew tap &lt;RepoName&gt;</code> include an external repo. If a certain formulae is not found using <code>brew search</code>. The package can then be installed using <code>brew install</code>.<ul>
+<li><code>brew update-reset</code> reset tap records, or delete the <code>Taps</code> folder records will be auto installed when needed</li>
+<li>Taps are local copy of Git repos for Formulae and/or commands, located at <code>/usr/local/Homebrew/Library/Taps/homebrew/</code></li>
+</ul>
+</li>
 <li><code>brew doctor</code> run self diagnoses</li>
-<li><code>brew info &lt;PackageName&gt;</code> view the info for a package.</li>
+<li><code>brew info &lt;PackageName&gt;</code> view the info for a package or app</li>
 <li><code>brew deps --tree --installed</code> show installed packages and all their dependencies in tree</li>
 <li><code>brew leaves</code> List installed formulae that are not dependencies of another installed formula</li>
-<li>Install Apps with Casks with similar commands by using <code>brew cask</code>:<ul>
-<li><code>brew cask install &lt;AppName&gt;</code> install an app<ul>
+<li>For all the above command use <code>--cask</code> for cask only, use <code>--formula</code> for formulas only<ul>
+<li><code>brew cask</code> is deprecated</li>
+</ul>
+</li>
 <li><code>brew install --appdir=&quot;/&lt;PathToAppFolder&gt;&quot; &lt;AppName&gt;</code> specify the app folder</li>
-</ul>
-</li>
-<li><code>brew cask list</code> list installed apps<ul>
-<li><code>brew cask list &lt;keyword&gt;</code> search app</li>
-</ul>
-</li>
-<li><code>brew cast home &lt;PackageName&gt;</code> open app homepage in browser.</li>
-<li><code>brew cask info &lt;AppName&gt;</code> view the info for an app.</li>
-<li><code>brew cask upgrade</code> view the info for an app.</li>
-<li><code>brew cask outdated</code> view the info for an app.</li>
-</ul>
-</li>
 </ul>
 <h3 id="disk-cleanup">Disk Cleanup</h3>
 <ul>
@@ -1459,7 +1496,7 @@
 <li>VS Code delete <code>Cache</code> and <code>CacheData</code> folders at <code>/Users/&lt;username&gt;/Library/Application Support/Code</code>, then in app command input enter <code>Clear Editor History</code></li>
 <li>Clear VirtualBox log in <code>/Users/&lt;username&gt;/Library/VirtualBox</code> folder</li>
 <li>Clean conda package caches, run <code>conda clean -f &amp;&amp; conda clean -a</code></li>
-<li>Homebrew clean up<code>brew cleanup &amp;&amp; brew cask cleanup</code></li>
+<li>Homebrew clean up<code>brew cleanup</code></li>
 <li>Clean up npm cache <code>npm cache clean --force</code></li>
 </ul>
 <h3 id="troubleshoot">Troubleshoot</h3>
@@ -1607,7 +1644,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"MacOS","level":"1.17.4","depth":2,"next":{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},"previous":{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/macos.md","mtime":"2020-12-15T14:22:03.383Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MacOS","level":"1.17.4","depth":2,"next":{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},"previous":{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/macos.md","mtime":"2021-02-04T22:21:25.777Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

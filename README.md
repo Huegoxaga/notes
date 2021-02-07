@@ -6,7 +6,7 @@
   - [Django](https://huegoxaga.github.io/notes/python/django.html)
 - [Java](https://huegoxaga.github.io/notes/java/index.html)
   - [JavaFX](https://huegoxaga.github.io/notes/java/javafx.html)
-  - [Android Studio](https://huegoxaga.github.io/notes/java/android.html)
+  - [Android Development](https://huegoxaga.github.io/notes/java/android.html)
 - [Scala](https://huegoxaga.github.io/notes/scala/index.html)
 - [JavaScript](https://huegoxaga.github.io/notes/javascript/index.html)
   - [jQuery](https://huegoxaga.github.io/notes/javascript/jquery.html)

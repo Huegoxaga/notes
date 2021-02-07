@@ -58,7 +58,13 @@
   - `_` or a space is used to increase readability
   - Different peripherals is assigned with different range of the the memory address
   - Each Memory address are used to transmit data or set register value on that address
-    - A register stores certain settings for peripherals, specified in the manual
+    - A register stores a bit value, the bits data corresponding to settings for peripherals, specified in the manual
+    - Bit value size varys based on the MCU spec
+    - The reset value is the value used for each bit position after reset
+    - Reserved position usually all have the reset value
+    - Address offset value is used to getting the register address from the base address, `Base + Offset = Register Address`
+    - In the manual every consecutive four bit position represent a value from `0` to `F` for the register
+    - Some register are used to read data at its address location in loop
   - Detailed boundaries are stated on the reference manual.
   - The relationship between the range and the assigned peripheral is called a memory map.
 - Types of memory

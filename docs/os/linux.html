@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1383,15 +1415,17 @@
 </ul>
 </li>
 <li>Related Commands<ul>
-<li><code>df -h</code> list file systems.</li>
+<li><code>df -h</code> list file systems</li>
+<li>Calculation based on <code>1 kilobyte = 1024 bytes</code></li>
 <li><code>lsblk</code> list block devices info.</li>
-<li><code>du -sh &lt;folder&gt; | sort -h</code> List all files inside the folder and its size in order.<ul>
+<li><code>du -sh &lt;folder&gt; | sort -h</code> List all files inside the folder and its size in order<ul>
 <li><code>--max-depth=1</code> specify the deepth</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>Check swap file size, <code>swapon</code></li>
+<li>The <code>var</code> folder is used by the OS to write runtime data</li>
 </ul>
 <h2 id="general-commands">General Commands</h2>
 <ul>
@@ -1405,9 +1439,16 @@
 <li>Both the <code>| more</code> and the <code>| less</code> command provide paging functionality in a command line environment. For example <code>help | less</code>. shows output that can be control using up and down arrow.</li>
 <li><code>| grep &lt;filterString&gt;</code> Grep will return only those lines in the file that contain the supplied string. For Example <code>cat /etc/man.config | grep MANPATH</code></li>
 <li><code>startx</code> start X Windows System GUI.</li>
-<li><code>shutdown &#x2013;h now</code> shutdown immediately.<ul>
-<li><code>shutdown -h 12:00</code></li>
-<li><code>shutdown &#x2013;r now</code> restart immediately.</li>
+<li><code>shutdown</code> command arranges for the system to be brought down in a safe way. All logged-in users are notified that the system is going down and, within the last five minutes of shutdown time, new logins are prevented<ul>
+<li><code>shutdown &#x2013;h now</code> shutdown immediately</li>
+<li><code>shutdown -h 13:00</code> schedule system shutdown at 1 P.M:<ul>
+<li><code>-h</code> Requests that the system be either halted or powered off after it has been brought down, with the choice as to which left up to the system</li>
+</ul>
+</li>
+<li><code>shutdown +10</code> shutdown in 10 minutes from now</li>
+<li><code>shutdown &#x2013;r now</code> restart immediately</li>
+<li><code>shutdown +10 &quot;Updating&quot;</code> shutdown in 10 minutes with boardcast message</li>
+<li><code>shutdown -c &quot;Canceled&quot;</code> cancel scheduled shutdown</li>
 </ul>
 </li>
 <li><code>reboot</code> reboot the machine.</li>
@@ -1422,6 +1463,7 @@
 <li><code>ls</code> If no directory name is followed, it will list all of the files in the current working directory.</li>
 <li><code>ls /etc</code> it will display all files inside the <code>etc</code> folder.</li>
 <li>add <code>\</code> before ls to see not colored outputs.</li>
+<li><code>-h</code> changes the output to be more human readable</li>
 </ul>
 </li>
 <li><code>lsusb</code> check all existing USB devices.(debian-based Linux)</li>
@@ -1435,12 +1477,14 @@
 </ul>
 </li>
 <li><code>cp &lt;source&gt; &lt;destination&gt; -R</code>, copy files for folders, <code>-R</code> include directories.<ul>
-<li><code>cp ~/a* ~/Documents/a</code> copy anything begins with a to <code>a</code> folder.</li>
+<li><code>cp ~/a* ~/Documents/a</code> copy anything begins with a to <code>a</code> folder</li>
+<li><code>cp &lt;fileA&gt; &lt;fileB&gt; &lt;Destination&gt;</code> copy multiple files into one folder</li>
+<li><code>-p</code> preserve the attributes like modification time, access time, file flags, file mode of each source file in the copying process</li>
 </ul>
 </li>
 <li><code>mv &lt;source&gt; &lt;destination&gt;</code> The mv command is used to move or rename files</li>
 <li><code>rm &lt;PathToFile&gt;</code> remove files<ul>
-<li><code>-r</code> includes folders</li>
+<li><code>-r</code> or <code>-R</code> includes folders, recursively</li>
 <li><code>-f</code> forcibly delete files without asking</li>
 </ul>
 </li>
@@ -1450,6 +1494,16 @@
 <li><code>-type d</code> is used to locates only directories</li>
 <li><code>-iname</code> for any case of the file or directory name (case insensitive)</li>
 <li><code>2&gt; /dev/null</code> Do not display any access error message</li>
+<li><code>-perm 777</code> find based on permissions</li>
+<li><code>-size -10k</code> find files that are less than 10 kilobytes, use <code>+10k</code> for greater than<ul>
+<li><code>b</code> - 512-byte blocks (this is the default if no suffix is used)</li>
+<li><code>c</code> - bytes</li>
+<li><code>w</code> - two-byte words</li>
+<li><code>k</code> - Kilobytes</li>
+<li><code>M</code> - Megabytes</li>
+<li><code>G</code> - Gigabytes</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><code>route -n</code> for checking jumps info.</li>
@@ -1510,7 +1564,6 @@
 <li><code>-k2</code> sort by the second column.</li>
 </ul>
 </li>
-<li><code>wc -l &lt;file&gt;</code> count the number of lines in a file.</li>
 <li><code>make</code> it will compile binary files in the current folder.<ul>
 <li><code>make test</code> verify the completed <code>make</code> process has no error.</li>
 </ul>
@@ -1521,7 +1574,37 @@
 </ul>
 </li>
 <li><code>truncate -s 0 syslog</code> truncate text file</li>
-<li><code>tail -f /var/log/syslog</code> view log from the buttom</li>
+<li><code>tail -f /var/log/syslog</code> view log from the buttom<ul>
+<li>The <code>-f</code> option causes tail to not stop when end of file is reached, but
+rather to wait for additional data to be appended to the input</li>
+<li><code>tail -3 /var/log/syslog</code> view last 3 lines of the log</li>
+<li><code>tail /var/log/syslog</code> view last 10 lines of the log, by default</li>
+</ul>
+</li>
+<li><code>head -3 /var/log/syslog</code> view first 3 lines of the log<ul>
+<li><code>head /var/log/syslog</code> view first 10 lines of the log, by default</li>
+</ul>
+</li>
+<li><code>wc &lt;textFile&gt;</code> return the file line count, word count, and byte count<ul>
+<li><code>-l</code> count the number of lines in a file</li>
+<li><code>&lt;command&gt; | wc -l</code> count lines of output from a command using pipe</li>
+</ul>
+</li>
+<li><code>cut -b 1,2,3 &lt;file.txt&gt;</code> returns the first, second, third bytes of each line<ul>
+<li>Tabs and backspaces are treated like as a character of 1 byte</li>
+<li><code>-b -3</code> from the first bype to the third</li>
+<li><code>-c</code> cut columns</li>
+<li><code>cut -d &quot; &quot; -f 1 &lt;file.txt&gt;</code> return the first fields of each line using an empty space as delimiters</li>
+<li><code>--output-delimiter=&apos;%&apos;</code> replace the delimiter with <code>%</code></li>
+</ul>
+</li>
+<li><code>sort</code><ul>
+<li><code>-n</code> (numeric) numeric sort option</li>
+<li><code>-k</code> sort by key or column index</li>
+<li><code>r</code> reverse order</li>
+<li><code>f</code> case insensititve</li>
+</ul>
+</li>
 </ul>
 <h3 id="access-control">Access Control</h3>
 <ul>
@@ -1548,6 +1631,7 @@
 </ul>
 </li>
 <li><code>useradd &lt;newUsername&gt;</code> create new user account and add the user to a new private group named as the username.<ul>
+<li><code>/etc/skel/</code> (skel is derived from the &#x201C;skeleton&#x201D;) is used as a home directory template for a new users, dot files with default setting can be placed here, so it can be used for all new users</li>
 <li><code>useradd -d &lt;PathToNewHomeDir&gt; &lt;newUsername&gt;</code> set customized path for user&apos;s home directory.</li>
 <li><code>-s /bin/bash</code> set bash as preferred shell for this user.</li>
 <li><code>--gid</code> or <code>-g</code> or <code>-G</code> will and user to a existing group rather than creating a new group which has the same name as the username by default.</li>
@@ -1566,7 +1650,10 @@
 <li><code>groupadd &lt;groupname&gt; --system</code> or <code>groupadd &lt;groupname&gt; -r</code> Create a system group with low range(defined by <code>SYS_GID_MIN-SYS_GID_MAX</code> in <code>login.defs</code>) of GID(Group ID)</li>
 </ul>
 </li>
-<li><code>usermod -G &lt;groupname&gt; &lt;username&gt;</code> add user to a group.</li>
+<li><code>usermod -G &lt;groupname&gt; &lt;username&gt;</code> add user to a group.<ul>
+<li>or <code>adduser &lt;username&gt; &lt;groupname&gt;</code> for Debian</li>
+</ul>
+</li>
 <li><code>chmod &lt;permissionCode&gt; &lt;filePath&gt;</code> change the file permission.</li>
 <li><code>chmod &lt;permissionCode&gt; &lt;folderPath&gt; -R</code> change permission for the folder and all its contents.</li>
 <li>a permission formula can be used to replace the code.</li>
@@ -1795,6 +1882,7 @@
 </ul>
 </li>
 <li><code>apt-get</code> is the older command with limited features<ul>
+<li><code>-y</code>, <code>--yes</code>, <code>--assume-yes</code>, Automatic yes to prompts</li>
 <li><code>apt-get install &lt;PackageName&gt;</code></li>
 <li><code>apt-get update</code> update package list</li>
 <li><code>apt-get dist-upgrade</code> will install or remove packages as necessary to complete the upgrade,</li>
@@ -1818,7 +1906,16 @@
 </ul>
 </li>
 <li><code>dpkg --get-selections</code> Shows all of your installed packages<ul>
-<li>500 and 100 are the priority numbers. 500 corresponds to installable, 100 means installed.</li>
+<li>500 and 100 are the priority numbers. 500 corresponds to installable, 100 means installed</li>
+</ul>
+</li>
+<li>Useful packages:<ul>
+<li><code>dkms</code> dkms is a framework which allows kernel modules to be dynamically built for each kernel on your system in a simplified and organized fashion</li>
+<li><code>build-essential</code> This package contains an informational list of packages which are considered essential for building Debian packages</li>
+<li><code>module-assistant</code> command-line tool for handling module-source packages that have been prepared for the Debian distribution<ul>
+<li><code>m-a prepare</code> Tries to determine the name of the required linux-headers package, installs it if needed and creates the <code>/usr/src/linux</code> symlink if needed</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1853,19 +1950,157 @@
 <li><code>vi</code>, open vim.</li>
 <li><code>vi filename.txt</code>, open a file with vi.</li>
 <li>Vi has insert mode, press i to enter insert mode, press Esc to exit.</li>
-<li>When out of insert mode, the following command works.<ul>
+<li>When out of insert mode, the following command works<ul>
+<li>press <code>esc</code> to exit from the edit mode and enter the command mode</li>
+<li><code>/&lt;regex&gt;</code> search content based on the regular expression pattern<ul>
+<li>use <code>\</code> to escape spacial characters</li>
+</ul>
+</li>
+<li><code>:s/&lt;regex&gt;/&lt;newString&gt;/</code> replace the first regex pattern with a new string on the current line</li>
+<li><code>:s/&lt;regex&gt;/&lt;newString&gt;/g</code> replace the all regex pattern with a new string on the current line</li>
+<li><code>:%s/&lt;regex&gt;/&lt;newString&gt;/</code> replace the first regex pattern with a new string found from the entire text</li>
+<li><code>:%s/&lt;regex&gt;/&lt;newString&gt;/g</code> replace the all regex pattern with a new string found from the entire text<ul>
+<li><code>/</code> can be any character</li>
+<li><code>&amp;</code> can be used to represents the found text in <code>&lt;newString&gt;</code></li>
+</ul>
+</li>
+<li><code>:w !wc</code> returns word count</li>
+<li><code>:n</code> go to next file<ul>
+<li>happens when multiple files are opened by using <code>vi &lt;fileA&gt; &lt;fileB&gt;</code></li>
+</ul>
+</li>
+<li><code>:N</code> go to previous file</li>
+<li><code>cw</code> can enter edit mode after selected word is deleted</li>
+<li><code>cc</code> can enter edit mode after selected line is deleted</li>
+<li><code>&lt;ctrl&gt; + g</code> Display current line number and file information</li>
+<li><code>G</code>(<code>Shift + G</code>) Go to last line</li>
+<li><code>nG</code> Line <code>n</code> of file</li>
+<li><code>!!</code> filter and expose the current line to the shell command after it<ul>
+<li><code>2!!</code> current line and the next line</li>
+<li><code>!}</code> filters the next paragraph</li>
+<li><code>!{</code> filters the previous paragraph</li>
+<li>work with commands like <code>fmt</code>, <code>tr</code>, <code>grep</code>, <code>sed</code>, <code>swk</code></li>
+</ul>
+</li>
+<li><code>x</code> delete current character</li>
+<li>line range works with <code>s</code>, <code>d</code>, <code>y</code>, <code>c</code>, <code>!</code>, <code>&gt;</code>, and other command<ul>
+<li><code>:5,10 d</code> delete line <code>5</code> to <code>10</code></li>
+</ul>
+</li>
+<li><code>yy</code> copy a line to the vi buffer</li>
+<li><code>p</code> paste content from the buffer after cursor</li>
+<li><code>P</code> paste content from the buffer before cursor</li>
+<li><code>dw</code> delete current word, move the cursor to the beginning of the next word</li>
+<li><code>de</code> delete current word, move the cursor to the end of the deleted word</li>
+<li><code>dd</code> delete current line<ul>
+<li>deleted content will be stored in the buffer</li>
+</ul>
+</li>
+<li>Most comannds can follow a number, e.g. <code>6dd</code> delete 6 current lines</li>
+<li><code>1G</code> First line of file</li>
+<li><code>^</code> or <code>0</code> go to the beginning of the current line</li>
+<li>Use <code>b</code> to move back one word<ul>
+<li><code>3b</code> move back three word</li>
+</ul>
+</li>
+<li>Use <code>w</code> to move forward one word<ul>
+<li><code>3w</code> move forward three word</li>
+</ul>
+</li>
+<li><code>e</code> move the cursor to the last character of the current word</li>
+<li><code>h</code> Left one character</li>
+<li><code>j</code> Down one line</li>
+<li><code>k</code> Up one line</li>
+<li><code>l</code> Right one character (lowercase L)</li>
+<li><code>)</code> Forward a sentence</li>
+<li><code>(</code> Backward a sentence</li>
+<li><code>}</code> Forward a paragraph</li>
+<li><code>{</code> Backward a paragraph</li>
 <li><code>:w filename.txt</code> save as <code>filename.txt</code> in the current folder.</li>
 <li><code>:wq</code> or <code>ZZ</code>, save and quit.</li>
 <li><code>:q!</code> quit without save.</li>
 <li><code>:r &lt;file&gt;</code> insert file after current line.</li>
+<li><code>r</code> or <code>s</code> replace the current character with the next entered character<ul>
+<li><code>r</code> leaves you in command mode. Others: insert mode</li>
+</ul>
+</li>
+<li><code>a</code> append next entered characters in edit mode</li>
+<li><code>f</code> find the next entered character</li>
 <li>Enter <code>/keyword</code> to search the keyword in the document. It is case ssensitive</li>
 </ul>
 </li>
+<li>Enter <code>:&lt;command&gt;</code> after open text with vim to change setting<ul>
+<li><code>syntax on</code> Vim syntax highlighting</li>
+<li><code>set nocompatible</code> required for plugins</li>
+<li><code>set number</code> line number</li>
+<li><code>set showmode</code></li>
+<li><code>set cursorline</code> highlight the line where the cursor is</li>
+<li><code>set showcmd</code> show the command in the bottom bar</li>
+<li><code>set insearch</code> start highlighting as soon as you start typing for search</li>
+<li><code>set hlsearch</code> highlight the search results.</li>
+<li><code>set tabstop=4</code> Set the size of the Tab. Note that this option will only change the visual appearance of Tab, not the actual character</li>
+<li><code>set shiftwidth=4</code></li>
+<li><code>set textwidth=80</code></li>
+<li><code>set autoindent</code>: New lines inherit the indentation of previous lines.</li>
+<li><code>set expandtab</code>: Convert tabs to spaces.</li>
+<li><code>set filetype indent on</code>: Enable indentation rules that are file-type specific.</li>
+<li><code>set shiftround</code>: When shifting lines, round the indentation to the nearest multiple of &quot;shiftwidth.&quot;</li>
+<li><code>set shiftwidth=4</code>: When shifting, indent using four spaces.</li>
+<li><code>set smarttab</code>: Insert &#x201C;tabstop&#x201D; number of spaces when the &#x201C;tab&#x201D; key is pressed.</li>
+<li><code>set tabstop=4</code>: Indent using four spaces.</li>
+<li><code>set hlsearch</code>: Enable search highlighting.</li>
+<li><code>set ignorecase</code>: Ignore case when searching.</li>
+<li><code>set incsearch</code>: Incremental search that shows partial matches.</li>
+<li><code>set smartcase</code>: Automatically switch search to case-sensitive when search query contains an uppercase letter.</li>
+<li><code>set complete-=i</code>: Limit the files searched for auto-completes.</li>
+<li><code>set lazyredraw</code>: Don&#x2019;t update screen during macro and script execution.</li>
+<li><code>set display+=lastline</code>: Always try to show a paragraph&#x2019;s last line.</li>
+<li><code>set encoding=utf-8</code>: Use an encoding that supports unicode.</li>
+<li><code>set linebreak</code>: Avoid wrapping a line in the middle of a word.</li>
+<li><code>set scrolloff=1</code>: The number of screen lines to keep above and below the cursor.</li>
+<li><code>set sidescrolloff=5</code>: The number of screen columns to keep to the left and right of the cursor.</li>
+<li><code>set wrap</code>: Enable line wrapping.</li>
+<li><code>set laststatus=2</code>: Always display the status bar.</li>
+<li><code>set ruler</code>: Always show cursor position.</li>
+<li><code>set wildmenu</code>: Display command line&#x2019;s tab complete options as a menu.</li>
+<li><code>set tabpagemax=50</code>: Maximum number of tab pages that can be opened from the command line.</li>
+<li><code>set colorscheme wombat256mod</code>: Change color scheme.</li>
+<li><code>set cursorline</code>: Highlight the line currently under cursor.</li>
+<li><code>set relativenumber</code>: Show line number on the current line and relative numbers on all other lines.</li>
+<li><code>set noerrorbells</code>: Disable beep on errors.</li>
+<li><code>set visualbell</code>: Flash the screen instead of beeping on errors.</li>
+<li><code>set mouse=a</code>: Enable mouse for scrolling and resizing.</li>
+<li><code>set title</code>: Set the window&#x2019;s title, reflecting the file currently being edited.</li>
+<li><code>set background=dark</code>: Use colors that suit a dark background.</li>
+<li><code>set foldmethod=indent</code>: Fold based on indention levels.</li>
+<li><code>set foldnestmax=3</code>: Only fold up to three nested levels.</li>
+<li><code>set nofoldenable</code>: Disable folding by default.</li>
+<li><code>set autoread</code>: Automatically re-read files if unmodified inside Vim.</li>
+<li><code>set backspace=indent,eol,start</code>: Allow backspacing over indention, line breaks and insertion start.</li>
+<li><code>set backupdir=~/.cache/vim</code>: Directory to store backup files.</li>
+<li><code>set confirm</code>: Display a confirmation dialog when closing an unsaved file.</li>
+<li><code>set dir=~/.cache/vim</code>: Directory to store swap files.</li>
+<li><code>set formatoptions+=j</code>: Delete comment characters when joining lines.</li>
+<li><code>set hidden</code>: Hide files in the background instead of closing them.</li>
+<li><code>set history=1000</code>: Increase the undo limit.</li>
+<li><code>set nomodeline</code>: Ignore file&#x2019;s mode lines; use vimrc configurations instead.</li>
+<li><code>set noswapfile</code>: Disable swap files.</li>
+<li><code>set nrformats-=octal</code>: Interpret octal as decimal when incrementing numbers.</li>
+<li><code>set shell</code>: The shell used to execute commands.</li>
+<li><code>set spell</code>: Enable spellchecking.</li>
+<li><code>set wildignore+=.pyc,.swp</code>: Ignore files matching these patterns when opening files based on a glob pattern.</li>
+</ul>
+</li>
+<li><code>~/.vimrc</code> settings in this file will be loaded when vim is started</li>
 </ul>
 <h3 id="nano">Nano</h3>
 <ul>
 <li><code>nano example.txt</code> Opens the file <code>example.txt</code> in the Linux text editor Nano</li>
 <li><code>Ctrl + X</code> to exit, hit <code>Y</code> and press <code>Enter</code> to save.</li>
+</ul>
+<h3 id="gufw">Gufw</h3>
+<ul>
+<li>A firewall</li>
 </ul>
 <h3 id="grep">Grep</h3>
 <ul>
@@ -1882,9 +2117,23 @@
 <li><code>-C 3</code> 3 lines before and after the match</li>
 </ul>
 </li>
+<li><code>grep -F &lt;String&gt;</code> Interpret pattern as a set of fixed strings, not a regular expression pattern (i.e. force grep to behave as fgrep)</li>
 <li>For example:<ul>
 <li><code>grep &quot;Hello&quot; ./*.txt</code> search <code>Hello</code> in all <code>txt</code> files in the current directory.</li>
 <li><code>grep &quot;...-...-....&quot; contacts.txt</code> search phone numbers</li>
+</ul>
+</li>
+<li><code>grep &quot;[[:digit:]]&quot; &lt;file.txt&gt;</code>, Match all digits using the Posix style<ul>
+<li>POSIX Expressions:<ul>
+<li><code>[[:alnum:]]</code> - alphanumeric characters</li>
+<li><code>[[:alpha:]]</code> - alphabetic characters</li>
+<li><code>[[:blank:]]</code> - space, tab characters</li>
+<li><code>[[:digit:]]</code> - digit characters</li>
+<li><code>[[:lower:]]</code> - lower case alphabetic characters</li>
+<li><code>[[:space:]]</code> - space characters, tab, newline, vertical tab, form feed, carriage return and space</li>
+<li><code>[[:upper:]]</code> - upper case alphabetic characters</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2663,7 +2912,7 @@ fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-var
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.17.1","depth":2,"next":{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.17","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.17.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.17.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.17.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},{"title":"Media","level":"1.17.9","depth":2,"path":"os/media.md","ref":"os/media.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2020-11-20T18:09:53.467Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.17.1","depth":2,"next":{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.17","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.17.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.17.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.17.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},{"title":"Media","level":"1.17.9","depth":2,"path":"os/media.md","ref":"os/media.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2021-02-03T21:49:13.619Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

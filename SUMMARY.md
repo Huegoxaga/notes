@@ -7,7 +7,7 @@
   - [Django](python/django.md)
 - [Java](java/README.md)
   - [JavaFX](java/javafx.md)
-  - [Android Studio](java/android.md)
+  - [Android Development](java/android.md)
 - [Scala](scala/README.md)
 - [JavaScript](javascript/README.md)
   - [jQuery](javascript/jquery.md)

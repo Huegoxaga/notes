@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1321,8 +1353,11 @@
 <li>On AMD&#x2019;s look for AMD-V.</li>
 </ul>
 </li>
-<li>Virtual machines can easily be imported and exported using the industry-standard Open Virtualization Format (OVF) with <code>.ova</code> extension.</li>
-<li>Alternative Front Ends, it has both GUI and Command line control.</li>
+<li>Virtual machines can easily be imported and exported using the industry-standard Open Virtualization Format (OVF) with <code>.ova</code> extension<ul>
+<li><code>OVF</code> file can be extracted into a virtual disk image file and an <code>ovf</code> file contains the machine settings using various extracting tools</li>
+</ul>
+</li>
+<li>Alternative Front Ends, it has both GUI and Command line control</li>
 </ul>
 <h2 id="files">Files</h2>
 <ul>
@@ -1331,12 +1366,15 @@
 </ul>
 <h2 id="usage">Usage</h2>
 <ul>
-<li>Host Key stop the VM intercept key press and mouse click inside the VM window, by default it is the right control key.</li>
-<li>Snapshot makes the original disk image read-only, changes will be recorded on the differencing disk file.</li>
-<li>Full clone copies the entire disk image. Linked clone create the current image a snapshot.</li>
-<li>All disk files and snapshot can be viewed in the <code>File/Virtual Media Manager</code>.</li>
-<li>Each VM icon has a change view button on the right, click it to see snapshots or logs.</li>
-<li>Use Device/USB menu to mount USB device to the guest OS.</li>
+<li>Host Key stop the VM intercept key press and mouse click inside the VM window, by default it is the right control key</li>
+<li>Snapshot makes the original disk image read-only, changes will be recorded on the differencing disk file</li>
+<li>Full clone copies the entire disk image. Linked clone create the current image a snapshot</li>
+<li>All disk files and snapshot can be viewed in the <code>File/Virtual Media Manager</code><ul>
+<li>A hard disk image can be set to immutable, then virtual machine gets reset after every shutdown</li>
+</ul>
+</li>
+<li>Each VM icon has a change view button on the right, click it to see snapshots or logs</li>
+<li>Use Device/USB menu to mount USB device to the guest OS</li>
 </ul>
 <h2 id="add-ons">Add-ons</h2>
 <h3 id="guest-additions">Guest Additions</h3>
@@ -1345,23 +1383,38 @@
 <li>Shared Folders</li>
 <li>3D graphics accelerators</li>
 <li>Automatic video resolution (window resizing)</li>
+<li>Shared clipboard</li>
+<li>Time synchronization</li>
 <li>It enables auto capture of mouse pointer when its inside virtual machine window.</li>
 </ul>
 </li>
 <li>Installation<ol>
-<li>Select the Devices menu option and &apos;Install Guest Additions...&apos;</li>
+<li>Select the Devices menu option and <code>Install Guest Additions...</code></li>
 <li>This will result in the VBoxAdditions image (iso) being mounted in the CD-ROM drive.</li>
-<li>Run the drive.</li>
+<li>Run the drive</li>
 </ol>
 </li>
-<li>enables shared folders.<ol>
-<li>select Devices/Shared Folders/Shared folder settings.. from the VirtualBox menu. This should open the Shared Folders window.</li>
-<li>select add a folder as the share folder from the host machine in the setting.</li>
-<li>Select the &#x2018;Make Permanent&#x2019; and Auto-mount options. This will ensure this folder is always available as a shared folder for this Virtual Machine.</li>
-<li>In guest OS, open a terminal window.</li>
+<li>enables shared folders<ol>
+<li>select <code>Devices/Shared Folders/Shared folder settings...</code> from the VirtualBox menu. This should open the Shared Folders window</li>
+<li>select add a folder as the share folder from the host machine in the setting</li>
+<li>Select the &apos;Make Permanent&apos; and Auto-mount options. This will ensure this folder is always available as a shared folder for this Virtual Machine</li>
+<li>In guest OS, open a terminal window</li>
 <li>Create a directory that will become the mount point</li>
 <li>run <code>mount &#x2013;t vboxsf foldername &lt;folderpath&gt;</code></li>
 </ol>
+</li>
+</ul>
+<h3 id="virtualbox-extension-pack">VirtualBox Extension Pack</h3>
+<ul>
+<li>It provodes support for:<ul>
+<li>The virtual USB 2.0 (EHCI) device</li>
+<li>The virtual USB 3.0 (xHCI) device</li>
+<li>VirtualBox Remote Desktop Protocol (VRDP) support</li>
+<li>Host webcam passthrough</li>
+<li>Intel PXE boot ROM.</li>
+<li>Disk image encryption with AES algorithm</li>
+<li>Cloud integration features</li>
+</ul>
 </li>
 </ul>
 <h2 id="configuration-file">Configuration file</h2>
@@ -1370,8 +1423,8 @@
 </ul>
 <h2 id="gui">GUI</h2>
 <ul>
-<li><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Download</a> link.</li>
-<li>It is straight forward.</li>
+<li><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Download Link</a></li>
+<li>After installing the downloaded software, install the extension pack for additional features</li>
 </ul>
 <h2 id="command-line-interface">Command Line Interface</h2>
 <ul>
@@ -1379,7 +1432,7 @@
 <li>For Windows, add the virtualBox installation path to the Environment&apos;s Path.</li>
 <li>It is a command-line interface to VirtualBox</li>
 <li>It exposes all the features of the virtualization engine, even those that may not yet be accessible from the GUI.</li>
-<li>Typical syntax vboxmanage <subcommand> <vmname></vmname></subcommand></li>
+<li>Typical syntax vboxmanage <code>&lt;subcommand&gt; &lt;VMname&gt;</code></li>
 <li><a href="https://www.virtualbox.org/manual/UserManual.html#vboxmanage-intro" target="_blank">Click</a> to see a full list of commands.</li>
 </ul>
 <h3 id="useful-commands">Useful Commands</h3>
@@ -1391,15 +1444,16 @@
 </ul>
 <h2 id="network">Network</h2>
 <h3 id="virtual-network-adapters">Virtual Network Adapters</h3>
-<p>Bridged</p>
+<h4 id="bridged">Bridged</h4>
 <ul>
 <li>Configured with an IPv4/IPv6 address, just like a real physical network
 adapter</li>
 <li>Can communicate on the network, just like any other physical network
 device</li>
-<li>Can communicate out to the Internet
-NAT
-(Network Address Translation)</li>
+<li>Can communicate out to the Internet</li>
+</ul>
+<h4 id="nat-network-address-translation">NAT (Network Address Translation)</h4>
+<ul>
 <li>Configured with a special reserved IPv4/IPv6 address</li>
 <li>Can communicate with other devices beyond the Host OS, including the
 Internet</li>
@@ -1468,7 +1522,7 @@ Cannot communicate beyond the Host OS, including the Internet</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"VirtualBox","level":"1.19.1","depth":2,"next":{"title":"Docker","level":"1.19.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]},"previous":{"title":"Virtualization","level":"1.19","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.19.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.19.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]},{"title":"Kubernetes","level":"1.19.3","depth":2,"path":"virtualization/kubernetes.md","ref":"virtualization/kubernetes.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"virtualization/virtualbox.md","mtime":"2020-11-20T18:09:53.483Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"VirtualBox","level":"1.19.1","depth":2,"next":{"title":"Docker","level":"1.19.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]},"previous":{"title":"Virtualization","level":"1.19","depth":1,"path":"virtualization/README.md","ref":"virtualization/README.md","articles":[{"title":"VirtualBox","level":"1.19.1","depth":2,"path":"virtualization/virtualbox.md","ref":"virtualization/virtualbox.md","articles":[]},{"title":"Docker","level":"1.19.2","depth":2,"path":"virtualization/docker.md","ref":"virtualization/docker.md","articles":[]},{"title":"Kubernetes","level":"1.19.3","depth":2,"path":"virtualization/kubernetes.md","ref":"virtualization/kubernetes.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"virtualization/virtualbox.md","mtime":"2021-01-25T18:29:45.103Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

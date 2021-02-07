@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1353,8 +1385,8 @@
 </ul>
 </li>
 <li>Memory architecture of microcontroller are two types, they are namely:<ul>
-<li>Harvard Memory Architecture Microcontroller: The point when a microcontroller unit has a dissimilar memory address space for the program and data memory, the microcontroller has Harvard memory architecture in the processor.</li>
-<li>Princeton Memory Architecture Microcontroller: The point when a microcontroller has a common memory address for the program memory and data memory, the microcontroller has Princeton memory architecture in the processor.</li>
+<li>Harvard Memory Architecture Microcontroller: The point when a microcontroller unit has a separate memory address space for the program and data memory, the microcontroller has Harvard memory architecture in the processor.</li>
+<li>Von Neumann (a.k.a. Princeton) Memory Architecture Microcontroller: The point when a microcontroller has a common memory address for the program memory and data memory, the microcontroller has Princeton memory architecture in the processor.</li>
 </ul>
 </li>
 <li>Classification According to Instruction Set<ul>
@@ -1368,35 +1400,67 @@
 </ul>
 </li>
 <li>Useful Documents<ul>
-<li>Each MCU has a dataset and a user manual</li>
+<li>Each MCU has:<ul>
+<li>dataset</li>
+<li>user manual</li>
+</ul>
+</li>
 <li>Each development board has a schematics, user manual and specification.</li>
 </ul>
 </li>
 <li>Memory Map<ul>
 <li>A processor in a MCU can be described by its width of the system bus.<ul>
-<li>8 bits,it can provide 2^8 memory address on the system bus. from</li>
+<li>8 bits, it can provide 2^8 memory address on the system bus. from <code>0x00</code> to <code>0xff</code></li>
 <li>16 bits, it can provide 2^16 memory address on the system bus, from <code>0x0000</code> to <code>0xffff</code></li>
 <li>32 bits, it can provide 2^32 memory address(4G) on the system bus, from <code>0x0000_0000</code> to <code>0xffff_ffff</code></li>
 </ul>
 </li>
 <li><code>0x</code> is a prefix that saying the number followed is a hexadecimal number.</li>
-<li><code>_</code> or a space is used to increase readability.</li>
-<li>Different peripherals is assigned with different range of the the memory address.</li>
+<li><code>_</code> or a space is used to increase readability</li>
+<li>Different peripherals is assigned with different range of the the memory address</li>
+<li>Each Memory address are used to transmit data or set register value on that address<ul>
+<li>A register stores a bit value, the bits data corresponding to settings for peripherals, specified in the manual</li>
+<li>Bit value size varys based on the MCU spec</li>
+<li>The reset value is the value used for each bit position after reset</li>
+<li>Reserved position usually all have the reset value</li>
+<li>Address offset value is used to getting the register address from the base address, <code>Base + Offset = Register Address</code></li>
+<li>In the manual every consecutive four bit position represent a value from <code>0</code> to <code>F</code> for the register</li>
+<li>Some register are used to read data at its address location in loop</li>
+</ul>
+</li>
 <li>Detailed boundaries are stated on the reference manual.</li>
 <li>The relationship between the range and the assigned peripheral is called a memory map.</li>
 </ul>
 </li>
 <li>Types of memory<ul>
-<li>ROM(Flash memory)<ul>
-<li>It is the program memory, stores the logic(instruction) of the program</li>
+<li>Non-volatile - persist after reboot</li>
+<li>It is the program memory or code memory, stores the logic(instruction) of the program</li>
 <li>stores constants data</li>
 <li>stores vector tables</li>
+<li>Types:<ul>
+<li>ROM(Read Only Memory)<ul>
+<li>MPROM (Mask Programmable Read-Only Memory) - data can be writen only once</li>
+<li>EPROM (Erasable programmable read-only memory) - data can be erased after dissambling and exposing to ultraviolet light</li>
+<li>EEPROM (Electrically erasable programmable read-only memory) - data can be erased after changing voltage</li>
+</ul>
+</li>
+<li>Flash memory<ul>
+<li>Most popular</li>
 <li>Data in the FLASH memory is accessed through the Flash controller</li>
 </ul>
 </li>
-<li>SRAM<ul>
-<li>It stores variables, it can also stores instructions.</li>
+<li>OTP (One time programmable)</li>
+<li>FRAM (Ferroelectric random-access memory) - high speed, low power but expensive</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Volatile - clear after reboot<ul>
 <li>It is the data memory</li>
+<li>It stores temp data, comsumed during run-time</li>
+<li>It stores variables, it can also stores instructions.</li>
+<li>Types:<ul>
+<li>SRAM</li>
 </ul>
 </li>
 </ul>
@@ -1406,11 +1470,22 @@
 <li>Bus interfaces are the communication pathes between processors and peripherals.</li>
 <li>It allows data from multiple data sources goes into the processor concurrently. The number of concurrent data trasmittion equals the number of buses.</li>
 <li>There are three types of bus coming out of a processor with Advanced High-performance Bus (AHB) - Full speed, also known as HCLK speed<ul>
-<li>ICode Bus - Instruction Bus - get program instruction from FLASH memory</li>
-<li>DCode Bus - Data Bus - get data and debug from FLASH memory</li>
-<li>S-Bus - Connect to SRAM and other peripherals,<ul>
+<li>ICode Bus - Instruction Bus<ul>
+<li>Connected to the Flash memory through the Flash controller</li>
+<li>get program instruction from Flash memory</li>
+</ul>
+</li>
+<li>DCode Bus - Data Bus<ul>
+<li>Connected to the Flash memory through the Flash controller</li>
+<li>get constant data and debug from FLASH memory</li>
+</ul>
+</li>
+<li>S-Bus - Connect to SRAM and other peripherals<ul>
 <li>it can also fetch data and instruction from SRAM, it is not connected to the Flash memory.</li>
-<li>its memory address boundary includes addresses for I-Bus and D-Bus.</li>
+<li>I-Bus and D-Bus uses a subset of the memory addresses of the S-Bus<ul>
+<li>When data is referenced to a memory within I-Bus and D-Bus range, it will not be transmitted through S-Bus</li>
+</ul>
+</li>
 <li>All the peripherals will use S-Bus to access the processor.</li>
 <li>S-Bus will be split into two AHB<ul>
 <li>AHB2 is used for external interfaces like USB and camera which require high I/O</li>
@@ -1439,7 +1514,8 @@
 <li>All the peripherals are syncronized by clocks.</li>
 <li>It determine the SYSCLK, SYSCLK is the main clock for the MCU</li>
 <li>The clock is depicted by the clock tree in the mannul</li>
-<li>The higher frenquency the clock has the higher power comsumption the board will have.</li>
+<li>The higher frenquency the clock has the higher power comsumption the board will have</li>
+<li>Clock enables data transmit through a pin with 1 or 0 signals over time</li>
 <li>There are several clock resources:<ul>
 <li>The Cystal Oscillator (external to MCU) it is the high speed external(HSE) clock<ul>
 <li>Have the option to use on board external clock(Crystal mode)</li>
@@ -1447,10 +1523,11 @@
 </ul>
 </li>
 <li>The RC Oscillator (internal to MCU) it is the high speed internal(HSI) clock</li>
-<li>Phase Locked Group (PLL) (internal to MCU) is uses HSE or HSI to boost the systen clock speed much higher.</li>
+<li>Phase Locked Group (PLL) (internal to MCU) uses HSE or HSI to boost the systen clock speed much higher</li>
 </ul>
 </li>
-<li>All peripherals need to enable the peripheral clock before using or configuring it. It is done by changing values in the registers.</li>
+<li>All peripherals need to enable the peripheral clock before using or configuring it. It is done by changing values in the clock registers</li>
+<li>Clock Registers falls within the range called RCC (Reset and Clock Control)</li>
 <li>The register memoery location is the base address plus the offset stated in the manual</li>
 <li>MCO is the Microcontroller output signal, the signal can be configured to output to a certain pin for measurement, performed by a USB logic analyzer or a digital oscilloscope. The signal can also act as an external clock for other MCU.<ul>
 <li>2 pins are connected for measurement, one is the output pin, one is the Ground on the borad.</li>
@@ -1464,7 +1541,8 @@
 </li>
 <li>GPIO(General Purpose Input Output)<ul>
 <li>It has ports, like port A, port B, port C.</li>
-<li>Each port has multiple pins. Each pin can take 1 bit data(either 1 or 0 at a time) in the memory addresses.</li>
+<li>Each port has multiple pins. Each pin can take 1 bit data(either 1 or 0 at a time) in the memory addresses</li>
+<li>Address mapping for port registers are divided based on categories like mode, input data, output data etc. Each category has a groups addresses, each corresponding to a specific pin in this port</li>
 <li>Each GPIO pin is connected to an input buffer and output buffer on the enable line.<ul>
 <li>The enable line can be configured by the GPIO registers.</li>
 </ul>
@@ -1486,6 +1564,7 @@
 </ul>
 <h2 id="microprocessor">Microprocessor</h2>
 <ul>
+<li>It can be used to run an OS</li>
 <li>A microprocessor is a device that incorporates the functions of a CPU on a single IC (or a few). It is a clock-driven, register-based digital integrated circuit</li>
 <li>It accepts binary data as input, processes it according to an instruction set stored in its memory, and provides output.</li>
 <li>Different instrument sets determine the different architectures of microprocessors<ul>
@@ -1682,7 +1761,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Embedded Systems","level":"1.21","depth":1,"next":{"title":"Arduino","level":"1.21.1","depth":2,"path":"embedded/arduino.md","ref":"embedded/arduino.md","articles":[]},"previous":{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/README.md","mtime":"2020-11-20T18:09:53.414Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Embedded Systems","level":"1.21","depth":1,"next":{"title":"Arduino","level":"1.21.1","depth":2,"path":"embedded/arduino.md","ref":"embedded/arduino.md","articles":[]},"previous":{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/README.md","mtime":"2021-02-06T19:55:55.181Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

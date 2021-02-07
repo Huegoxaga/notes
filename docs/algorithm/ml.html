@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1737,9 +1769,14 @@
 <li>A refined and simplified version of the LSTM.</li>
 </ul>
 </li>
-<li>A Seq2Seq model can be a RNN model that takes a sequence of items (words, letters, time series, etc) and outputs another sequence of items.<ul>
+<li>A <code>Seq2Seq</code> model can be a RNN model that takes a sequence of items (words, letters, time series, etc) and outputs another sequence of items.<ul>
+<li>The use case is translation between two languages</li>
 <li>A typical sequence to sequence model has two parts &#x2013; an encoder and a decoder. Both the parts are practically two different neural network models combined into one giant network.</li>
 <li>The task of an encoder network is to understand the input sequence, and create a smaller dimensional representation of it. This representation is then forwarded to a decoder network which generates a sequence of its own that represents the output.</li>
+<li>The attention mechanism add weights to each work from the input sequence for encoder to improve the accuracy<ul>
+<li>Transformer is an application of the attention mechanism without using RNNs to record the order of words, it uses positional encoding instead</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Amazon SageMaker Sequence to Sequence<ul>
@@ -1944,20 +1981,20 @@
 <ul>
 <li>fastText<ul>
 <li>It is used for text data</li>
-<li>fastText is a library for learning of word embeddings and text classification created by Facebook&apos;s AI Research (FAIR) lab.</li>
+<li>fastText is a library for learning of word embeddings and text classification created by Facebook&apos;s AI Research (FAIR) lab</li>
 <li>It is implemented through python ML library <code>Gensim</code></li>
-<li>Facebook makes available pretrained models for 294 languages.</li>
-<li>fastText uses a neural network for word embedding.</li>
+<li>Facebook makes available pretrained models for 294 languages</li>
+<li>It provides a python libaray and a command line tool for word representation and classification related tasks</li>
+<li>It is written in <code>C++</code> and supports multiprocessing during training</li>
 <li>It is extended as BlazingText as an AWS Sagemaker built-in algorithm</li>
-<li>It can be a unsupervised learning algorithm using text to vector(Word2Vec)</li>
-<li>It can be a supervised learning algorithm that supports multi-class, multi-label classification<ul>
-<li>Multi-label can be done with <code>-loss one-vs-all</code> or <code>-loss ova</code>.</li>
+<li>It implements an unsupervised learning algorithm using text to vector(Word2Vec)</li>
+<li>It implements a supervised learning algorithm that supports multi-class, multi-label classification<ul>
+<li>Multi-label can be done by using independent binary classifiers for each label with command <code>-loss one-vs-all</code> or <code>-loss ova</code></li>
 </ul>
 </li>
 <li>Classification is achieved by<ul>
-<li>A sentence/document vector is obtained by averaging the word/n-gram embeddings.</li>
-<li>For the classification task, multinomial logistic regression is used, where the sentence/document vector corresponds to the features.</li>
-<li><a href="https://www.aclweb.org/anthology/E17-2068/" target="_blank">Click</a> to see more.</li>
+<li>To predict a label for a sentence, a vector representation of the sentence is obtained by averaging the word embeddings vector results for each word in the sentence</li>
+<li>Then, use linear classifier(multinomial logistic regression) to predict the label based on the vector value</li>
 </ul>
 </li>
 <li>Gram<ul>
@@ -1965,27 +2002,14 @@
 <li>Bigram - each two words are considered as one unit, for a sentence contains words <code>A B C</code>. <code>AB</code>, <code>BC</code> are considered.</li>
 <li>N-gram - each group of consecutive N words are considered.<ul>
 <li>fastText even consider n-gram for group of characters within a word(&quot;ora&quot;, &quot;ran&quot;, &quot;ang&quot;, &quot;nge&quot; when <code>minn</code> is 3) and make it different from <code>Word2Vec</code>. Hence, it works good with misspelled words.</li>
+<li>Default <code>minn</code> is 3, <code>maxn</code> is 6</li>
 </ul>
 </li>
 <li>Bigram or N-gram will take the sequence of words into consideration. Unigram will not.</li>
 </ul>
 </li>
-<li>The hierarchical softmax is a loss function that approximates the softmax with a much faster computation.</li>
-<li>Word representations - text preprocessing tool<ul>
-<li>In order to compute word vectors, a large text corpus is needed.</li>
-<li>fastText provides two models for computing word representations:<ul>
-<li>skipgram - It predicts the target using a random close-by word of the target word, each close-ly word are considered indiviaully.</li>
-<li>cbow (&apos;continuous-bag-of-words&apos;) - It uses the sum of a certain range of close-by word for prediction.</li>
-<li>In practice, the skipgram models works better with subword information than cbow.</li>
-</ul>
-</li>
-<li>The subwords are all the substrings contained in a word between the minimum size (minn) and the maximal size (maxn). By default, all the subword are between 3 and 6 characters</li>
-<li>The dimension (dim) controls the size of the vectors, the larger they are the more information they can capture but requires more data to be learned.</li>
-<li>if they are too large, they are harder and slower to train.</li>
-<li>By default, 100 dimensions are used, but any value in the 100-300 range is as popular.</li>
-</ul>
-</li>
-<li>When dealing with languages that does not contain space in between word, word segementation is required.</li>
+<li>The hierarchical softmax is a loss function that approximates the softmax with a much faster computation</li>
+<li>When dealing with languages that does not contain space in between word, word segementation is required</li>
 </ul>
 </li>
 <li>Object2Vec<ul>
@@ -2109,7 +2133,34 @@
 </ul>
 <h3 id="timeseries-data-preprocessing">Timeseries data preprocessing</h3>
 <h3 id="text-data-preprocessing">Text data preprocessing</h3>
+<h4 id="normalization">Normalization</h4>
 <ul>
+<li>Clean text</li>
+<li>leave out all double qoutes</li>
+<li>Stop Words - are words that are not providing useful information and will be excluded from the text.</li>
+<li>Stemmer - are used to transform various forms of a word to a common one. Ex, different tense of a verb to the present tense.</li>
+<li>Replace all non alphapetic and numerial character to space.</li>
+<li>Use lower case for words</li>
+<li>Example command for a quick cleanup, <code>cat &lt;filemane&gt;.txt | sed -e &quot;s/\([.\!?,&apos;/()]\)/ \1 /g&quot; | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot; &gt; &lt;filemane&gt;.preprocessed.txt</code></li>
+</ul>
+<h4 id="tokenization">Tokenization</h4>
+<ul>
+<li>Tokenization of raw text is a standard pre-processing step for many NLP tasks. For English, tokenization usually involves punctuation splitting and separation of some affixes like possessives<ul>
+<li>Break a sentense apart based on punctuations and possessives</li>
+</ul>
+</li>
+<li>Other languages require more extensive token pre-processing, which is usually called segmentation.<ul>
+<li>Break a sentense apart based on words, when a word in a language can be various number of characters without spacing and punctuations</li>
+<li>Some commonly used tool are shown as below: - <a href="https://nlp.stanford.edu/software/segmenter.html" target="_blank">Stanford word segmenter</a> for Chinese and Arabic. - <a href="https://taku910.github.io/mecab/" target="_blank">Mecab</a> for Japanese - <a href="https://github.com/phongnt570/UETsegmenter" target="_blank">UETsegmenter</a> for Vietnamese - <a href="http://www.statmt.org/europarl/" target="_blank">Europarl</a> for Latin, Cyrillic, Hebrew or Greek scripts - ICU tokenizer - <a href="https://arxiv.org/abs/1802.06893" target="_blank">Click</a> to learn more</li>
+</ul>
+</li>
+</ul>
+<h4 id="word-representations">Word Representations</h4>
+<ul>
+<li>one-hot vectors - a way to represent a word in a set vocabulary by an vector (array), each word in the vocabulary is associated with one index and the word is represented by an array that has <code>1</code> on the correponding index and everywhere else is <code>0</code><ul>
+<li>The demesion of the vector equals the number words in the vocabulary</li>
+</ul>
+</li>
 <li>Bag of word - It is a way to preprocess text data by using an array of count for all unique words to record the occurrence of each word in the text data.<ul>
 <li>The list of words are ordered by its frenquent among all words in the text data.</li>
 <li>Most frenquent words are important, words that are not frenquently seen in the text are usually names, places, holiday etc.</li>
@@ -2118,31 +2169,37 @@
 </li>
 <li>Word2Vec<ul>
 <li>Word2Vec are used to predict a vector representation of a word using a model trained by a text corpus<ul>
+<li>It is a word embedding(representation) method, word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers.</li>
+<li>it converts every word in a large text corpus into a vector</li>
 <li>text corpus is a language resource consisting of a large and structured set of texts</li>
+<li>It can predict any word if all its subwords presented in the training text corpus<ul>
+<li>Subwords are groups of letter within a word</li>
 </ul>
 </li>
-<li>Word2vec is a group of two-layer neural networks models that are used to produce word embeddings.<ul>
-<li>It can be obtained using two methods: Skip Gram or Common Bag Of Words (CBOW)</li>
-<li>Word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers.</li>
-<li>It uses pre-trained models to convert word to vectors with several hundred dimensions.</li>
+</ul>
+</li>
+<li>Word2vec is a group of two-layer neural networks models that are used to produce word embeddings<ul>
+<li>It can be obtained using two methods: Skip Gram or <code>CBOW</code><ul>
+<li>skipgram - It predicts the target using a random close by word of the target word, each close-by word are considered indiviaully</li>
+<li>cbow <code>(continuous(common)-bag-of-words)</code> - It uses the sum of a certain range of close-by word for prediction</li>
+<li>In practice, the skipgram models works better with subword information than cbow</li>
+<li>CBOW is faster and has better representations for more frequent words</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>It has the following parameters:<ul>
+<li>The subwords are all the substrings contained in a word between the minimum size (minn) and the maximal size (maxn). Usually, all the subword are between 3 and 6 characters</li>
+<li>The dimension (dim) controls the size of the vectors, the larger they are the more information they can capture but requires more data to be learned<ul>
+<li>any value in the 100-300 range is as popular</li>
+<li>if they are too large, they are harder and slower to train</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Word2Vec is a text preprocessing step for downstream NLP, Sentiment analysis, named entity recognition and translation.</li>
 <li>Words that are semantically similar have vectors that are closer to each other</li>
-<li>The average of vectorized words in a sentence can the be fed into logistic regression classifiers or any other models.</li>
-</ul>
-</li>
-<li>Tokenization<ul>
-<li>Tokenization of raw text is a standard pre-processing step for many NLP tasks. For English, tokenization usually involves punctuation splitting and separation of some affixes like possessives.</li>
-<li>Other languages require more extensive token pre-processing, which is usually called segmentation. Some commonly used tool are shown as below: - <a href="https://nlp.stanford.edu/software/segmenter.html" target="_blank">Stanford word segmenter</a> for Chinese and Arabic. - <a href="https://taku910.github.io/mecab/" target="_blank">Mecab</a> for Japanese - <a href="https://github.com/phongnt570/UETsegmenter" target="_blank">UETsegmenter</a> for Vietnamese - <a href="http://www.statmt.org/europarl/" target="_blank">Europarl</a> for Latin, Cyrillic, Hebrew or Greek scripts - ICU tokenizer - <a href="https://arxiv.org/abs/1802.06893" target="_blank">Click</a> to learn more</li>
-</ul>
-</li>
-<li>Text cleanup<ul>
-<li>leave out all double qoutes</li>
-<li>Stop Words - are words that are not providing useful information and will be excluded from the text.</li>
-<li>Stemmer - are used to transform various forms of a word to a common one. Ex, different tense of a verb to the present tense.</li>
-<li>Replace all non alphapetic and numerial character to space.</li>
-<li>Use lower case for words</li>
+<li>The average of vectorized words in a sentence can the be fed into logistic regression classifiers or any other models</li>
 </ul>
 </li>
 <li>GloVe is another unsupervised learning algorithm for obtaining vector representations for words.<ul>
@@ -2321,7 +2378,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Machine Learning","level":"1.23.3","depth":2,"next":{"title":"Mathematics","level":"1.24","depth":1,"path":"math/README.md","ref":"math/README.md","articles":[{"title":"Basic Math","level":"1.24.1","depth":2,"path":"math/basic.md","ref":"math/basic.md","articles":[]},{"title":"Calculus","level":"1.24.2","depth":2,"path":"math/calculus.md","ref":"math/calculus.md","articles":[]},{"title":"Linear Algebra","level":"1.24.3","depth":2,"path":"math/linear-algebra.md","ref":"math/linear-algebra.md","articles":[]},{"title":"Discrete Mathematics","level":"1.24.4","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},{"title":"Probability & Statistics","level":"1.24.5","depth":2,"path":"math/probability-statistics.md","ref":"math/probability-statistics.md","articles":[]},{"title":"Maple Softwares","level":"1.24.6","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]}]},"previous":{"title":"Cryptography","level":"1.23.2","depth":2,"path":"algorithm/cryptography.md","ref":"algorithm/cryptography.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"algorithm/ml.md","mtime":"2020-11-20T18:09:53.099Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Machine Learning","level":"1.23.3","depth":2,"next":{"title":"Mathematics","level":"1.24","depth":1,"path":"math/README.md","ref":"math/README.md","articles":[{"title":"Basic Math","level":"1.24.1","depth":2,"path":"math/basic.md","ref":"math/basic.md","articles":[]},{"title":"Calculus","level":"1.24.2","depth":2,"path":"math/calculus.md","ref":"math/calculus.md","articles":[]},{"title":"Linear Algebra","level":"1.24.3","depth":2,"path":"math/linear-algebra.md","ref":"math/linear-algebra.md","articles":[]},{"title":"Discrete Mathematics","level":"1.24.4","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},{"title":"Probability & Statistics","level":"1.24.5","depth":2,"path":"math/probability-statistics.md","ref":"math/probability-statistics.md","articles":[]},{"title":"Maple Softwares","level":"1.24.6","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]}]},"previous":{"title":"Cryptography","level":"1.23.2","depth":2,"path":"algorithm/cryptography.md","ref":"algorithm/cryptography.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"algorithm/ml.md","mtime":"2021-02-07T21:11:48.785Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

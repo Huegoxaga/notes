@@ -185,8 +185,10 @@
   ```
   - Use Window -> Show View -> SFRs to verify register settings.
 - Debug mode uses a Memory panel to read and write bits on the RAM memory while the program is running.
-- The compiler can set a optimization level that uses different strategy to convert C/C++ code into disassembly code for the MCU. Level 0 does not provide much optimization
-  - Use the volatile keyword to ask the compile to access the memory frenquently in case the value of the memory will be changed when running in high optimization mode.
+- Right click project and in build setting, compiler optimization panel, change the optimization level for the project
+  - `L0` will disable any optimization
+  - Always use `uint8_t volatile *pReg` to acesss the register memory to avoid bug caused by unexpected optimization
+- Add include path in the project compiler setting to import newly created header files in the project folder
 - The memory browser window can be used to search for the data store in different memory address
   - right click inside the panel and select column, cell size and radix to change the output data format
 

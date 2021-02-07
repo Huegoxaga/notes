@@ -21,8 +21,23 @@
 
 #### Word Representations
 
+##### Word2Vec
+
+- [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/abs/1301.3781)
+- [Distributed Representations of Words and Phrases and their Compositionality](https://arxiv.org/abs/1310.4546)
+- [word2vec Explained: deriving Mikolov et al.'s negative-sampling word-embedding method](https://arxiv.org/abs/1402.3722)
+
 ##### fastText
 
 - [Bag of Tricks for Efficient Text Classification](https://arxiv.org/abs/1607.01759)
 - [Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606)
 - [FastText.zip: Compressing text classification models](https://arxiv.org/abs/1612.03651)
+
+##### Attention
+
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+- [Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/abs/1508.04025)
+
+##### Transformer
+
+- [BERT](https://arxiv.org/abs/1810.04805)

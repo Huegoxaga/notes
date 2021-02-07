@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1323,11 +1355,16 @@
 <li><code>npm install -g npm@latest</code> update the npm to the last version.</li>
 </ul>
 </li>
-<li><code>npm install -g package-name</code> -g means install globally.</li>
+<li><code>npm install -g &lt;package-name&gt;</code> -g means install globally.</li>
 <li><code>npm install</code> install packages listed in <code>package.json</code> file.</li>
 <li><code>npm update</code> update packages listed in <code>package.json</code> file and update the <code>package.json</code> file.</li>
-<li><code>npm list</code> list install package in the project folder.</li>
-<li><code>npm list -g --depth=0</code> list all globally installed package, only show the root folder name.</li>
+<li><code>npm list</code> see the installed non-global libraries for the current location</li>
+<li><code>npm list -g --depth=0</code> list all globally installed package, only show the root folder name</li>
+<li><code>npm root -g</code> returns the path to the node modules folder<ul>
+<li>use <code>npm root -g</code> to return the path to global modules</li>
+<li>Set environment variable <code>NODE_PATH</code> to change the global module folder location</li>
+</ul>
+</li>
 <li><code>npm cache clean --force</code> delete cache in the <code>_cacache</code> folder<ul>
 <li>No recommanded, only do it to free storage space</li>
 </ul>
@@ -1575,7 +1612,7 @@ describe(<span class="hljs-string">&quot;TestCaseName&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Node.js","level":"1.5.4","depth":2,"next":{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]},"previous":{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/node-js.md","mtime":"2020-12-02T19:33:09.610Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Node.js","level":"1.5.4","depth":2,"next":{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]},"previous":{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/node-js.md","mtime":"2020-12-27T20:51:37.145Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -187,12 +187,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../java/android.md">
+        <li class="chapter " data-level="1.3.2" data-path="../java/android.html">
             
-                <span>
+                <a href="../java/android.html">
             
                     
-                    Android Studio
+                    Android Development
             
                 </a>
             
@@ -392,7 +392,7 @@
                 <a href="../swift/xcode.html">
             
                     
-                    Xcode
+                    iOS Development
             
                 </a>
             
@@ -1256,6 +1256,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.27" data-path="../finance/">
+            
+                <a href="../finance/">
+            
+                    
+                    Finance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../finance/investment.md">
+            
+                <span>
+            
+                    
+                    Financial Investment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1818,7 +1850,10 @@ commands:
 <li>A topic can have many subscribers with differenct protocols(Email, SQS, Lambda) to receive the message.</li>
 <li>Each topic has a <code>Publish message</code> button that can be used to test a message with all subscribers.</li>
 <li>Each subscription can have a unique filter for all messages.</li>
-<li>Selecting <code>Enable raw message delivery</code> for SQS subscription allow SNS topic send raw message which is the same format as sending SQS message directly.</li>
+<li>Selecting <code>Enable raw message delivery</code> for SQS subscription allow SNS topic to send a duplicated message body that can be used directly as an object<ul>
+<li>When disable raw message only one message is sent and the content inside the <code>body</code> field need to be loaded as object from string before accessing</li>
+</ul>
+</li>
 </ul>
 <h2 id="ses">SES</h2>
 <p>It can be used to send formatted emails from registered email addresses.</p>
@@ -1877,7 +1912,16 @@ commands:
 <li>only the <code>$context</code> variable can be used to access requrest info.</li>
 </ul>
 </li>
-<li>the <code>Lambda Proxy</code> need to be enabled in the <code>Integration Request</code> setting to pass URL parameters to the event argument of the associated lambda function</li>
+<li>Request made to API Gateway can be handled with or without the proxy, when work with Lambda, the easiest way is to enable the proxy in the <code>Integration Request</code> setting to pass URL parameters to the event argument of the associated lambda function. Otherwise, detailed setting in mapping templates is needed for for response or request with a certain <code>Content-Type</code> header<ul>
+<li>Convert to binary or text will also change the response header, use passthrough if no conversion is needed</li>
+<li>mapping templates for request is used for handle/reformat response input for integration<ul>
+<li>integration is an AWS service that handles the request and prepare response content(e.g. Lambda)</li>
+</ul>
+</li>
+<li>mapping templates for request is used for handle/reformat response output from integration</li>
+</ul>
+</li>
+<li>In the API setting, add specific content type or <code>image/*</code> or <code>*/*</code> in <code>Binary Media Types</code>, then whenever a header <code>Content-Type</code> or <code>Accept</code> match is found, the body will be converted to binary using base64 encoding</li>
 </ul>
 <h2 id="amplify">Amplify</h2>
 <ul>
@@ -2228,7 +2272,7 @@ commands:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.20.1","depth":2,"next":{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.20","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.20.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2020-11-20T18:09:53.102Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T22:34:29.595Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.20.1","depth":2,"next":{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.20","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.20.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2021-02-04T18:17:49.473Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:02:54.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
