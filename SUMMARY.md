@@ -82,4 +82,4 @@
   - [Music Theory](music/theory.md)
   - [Logic Pro](music/logic-pro.md)
 - [Finance](finance/README.md)
-  - [Financial Investment](finance/investment.md)
+  - [Related Concepts](finance/related-concepts.md)
