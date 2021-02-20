@@ -47,17 +47,18 @@
 
 ## Syntax
 
+- It is consisted of functions
 - Each statement must end with a semicolon.
 - The C programming language is case-sensitive,
 - Single-line comments `//`
-  - It is introduced in `C++` and adopted by some of the C compiler.
+  - It is introduced in `C++` and adopted by some of the `C` compiler.
 - Multi-line comments
   ```c
   /*
    * Multi-line comments
    */
   ```
-- `#include <stdio.h>`, this is the header file included files that imports function.
+- `#include <stdio.h>`, make functions from the `stdio` library available in `main()`
 - main function is the entry point of the program
   ```c++
   int main() {
@@ -66,14 +67,14 @@
   }
   ```
   - main function return `0` to the calling process after execution.
-  - `0` means the program executed successfully, other number indicates the program has failed.
+  - `0` means the program executed successfully, other number indicates the program didn't execute successfully.
 
 ## Data Types
 
-- int: integer, a whole number.
-- float: floating point, a number with a fractional part.
-- double: double-precision floating point value.
-- char: single character.
+- `int`: integer, a whole number.
+- `float`: floating point, a number with a fractional part.
+- `double`: double-precision floating point value.
+- `char`: single character.
   - A string is stored in a char array.
   - A character, such as `'b'`, is indicated by single quotation marks and cannot be treated as a string.
 
@@ -84,11 +85,11 @@
 
 - `sizeof(typename)` can be used to show the memory required by each type
   - The storage space required by each type varies by platform
-  - returns number of bytes required by a certain type.
+  - returns number of bytes required by a certain type
   - Ex, `sizeof(int)`
 - Type casting
   - Implicit Type Conversion
-    - compiler automatically convert types in the same numerical operation.
+    - compiler automatically convert types in the same numerical operation
   - Explice Type Conversion
     - use `(typeName)variablesName;`
     - `(float) 1 / 2;`
@@ -96,7 +97,7 @@
 ## Variables
 
 - Variable name must begin with either a letter or an underscore and can be composed of letters, digits, and the underscore character.
-- Popular naming conventions is using lowercase letters with an underscore to separate words (snake_case).
+- Popular naming conventions is using lowercase letters with an underscore to separate words (`snake_case`).
 - Variables must be declared as a data type
   - `int my_var;`
   - `int a, b;` declares multiple variables at once.
@@ -244,7 +245,7 @@
   - `!` not
   - A compound Boolean expression is evaluated from left to right.
   - precedence, `!` > `&&` > `||`
-  - Use () to change precedence
+  - Use `()` to change precedence
 - While loop
   ```c++
   while (expression) {
@@ -286,8 +287,8 @@
 
 ## Function
 
-- Declarations usually appear above the main() function.
-- Function definitions usually appear after the main() function.
+- Declarations usually appear above the `main()` function, or in the header files
+- Function definitions usually appear after the `main()` function, or in the source files
   ```c++
   #include <stdio.h>
   /* declaration */
@@ -306,13 +307,13 @@
     return(y);
   }
   ```
-- A function is not required to return a value, in this case use void.
+- A function is not required to return a value, it will return `void` if not stated
 - Variables declared outside all functions are global to the entire program.
 - Function destroys its local variables and parameters upon exiting.
-- Exit command
-  - exit command immediately stops the execution of a program and sends an exit code back to the calling process.
+- `exit` function
+  - `exit()` immediately stops the execution of a program and sends an exit code back to the calling process.
   - it closes any open file connections and processes.
-  - return any value through an exit statement, but 0 for success and -1 for failure are typical. The predefined stdlib.h macros EXIT_SUCCESS and EXIT_FAILURE are also commonly used. Ex, `exit(EXIT_FAILURE);`
+  - return any value through an exit statement, but `0` for success and `-1` for failure are typical. The predefined `stdlib.h` macros `EXIT_SUCCESS` and `EXIT_FAILURE` are also commonly used. Ex, `exit(EXIT_FAILURE);`
 - Static variables
   - It is declared in a function.
   - It has a local scope but are not destroyed when a function is exited.
@@ -374,7 +375,7 @@
 - Address Arithmetic, for pointer `x`:
   - `x+1` or `x++` returns the memory location for the next element.
   - `x-1` or `x--` returns the memory location for the previous element.
-  - If pointer point to an integer (4 bytes) `x++` will make the hexadecimal value goes up by 4.
+  - If pointer point to an integer (4 bytes) `x++` will make the memory address value goes up by 4.
   - pointer addresses can also be compared by using `>`, `==` etc.
 - Using pointer as parameters of a function to change the actual variables' values.
   ```c++
@@ -589,18 +590,21 @@
 ## Preprocessor
 
 - The C preprocessor uses the `#` directives to make substitutions in program source code before compilation.
-- `#` must be the character on each line. There can be any amount of white space before `#` , between the `#` and the directive.
+- `#` must be the first character on each line. There can be any amount of white space before `#` , between the `#` and the directive.
 - No semicolons needed for the directives
 
-#### `#include` Directives
+### `#include` Directives
 
 - It is used to include header files.
-- A header file declares a collection of functions and macros for a library,
-- The `#include` directive expects brackets `<>` around the header filename if the file should be searched for in the compiler include paths. `#include <stdio.h>`
+  - A header file declares a collection of functions and macros for a library
+- The compile will replace the `#include` line by all the content of the included header file
+- If any of the function declaration are used in `main()`, the compiler will find the implementation of the function in the source file in project folder or libraries
+- If the `#include` directive is followed by header filename surrounded by brackets `<>`, the file will be searched for in the compiler include paths. `#include <stdio.h>`
+  - The list of directories for header files is often referred to as the include path
+  - The list of directories for libraries as the library search path or link path
 - A user-defined header file is also given the `.h` extension, but is referred to with quotation marks, as in `"myutil.h"`. When quotation marks are used, the file is searched for in the source code directory. `#include "myutil.h"`
-- Some developers use `.hpp` extension for header files.
 
-#### `#define` Directives
+### `#define` Directives
 
 - define directive is used to create object-like macros for constants based on values or expressions. `#define PI 3.14`
 - It can also create function-like macros with arguments that will be replaced by the preprocessor. `#define AREA(r) (PI*r*r)`
@@ -621,11 +625,11 @@
   - `__LINE__` it shows The current line number as an int value
   - `__STDC__` 1 its 1.
 
-#### `#undef` Directives
+### `#undef` Directives
 
 - It it used to undefining macros.
 
-#### Directives for Conditional Compilation
+### Directives for Conditional Compilation
 
 - Conditional Compilation of macros, it works with `#define`
   - `#ifdef`, check if a certain macros is defined.
@@ -672,15 +676,15 @@
   #endif
   ```
 
-#### `#pragma` Directives
+### `#pragma` Directives
 
 - Implementation and compiler specific.
 
-#### Directives for Errors
+### Directives for Errors
 
 - `#error`, `#warning` Output an error or warning message An error halts compilation.
 
-#### Preprocessor Operators
+### Preprocessor Operators
 
 - stringification operator
   - The `#` macro operator, also known as the stringizing operator. It tells the preprocessor to convert a parameter to a string constant.

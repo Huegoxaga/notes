@@ -464,6 +464,169 @@
 
 ## Alternative
 
+- Alternative investment does anything that traditional investment donesn't focus on
+  - Traditional investment focuses on stocks and bonds investment
+  - The investment structure for traditional investments tends to be straightforward between the issuer and investor
+- Alternative investment portfolios can often include derivatives and illiquid assets such as real estate
+- Alternative investment utilzes leverage and employ short positions
+  - leverage - borrow money to invest, in order to amplify returns
+- Compare with traditional investments, alternative investments have higher management fees on average and often with additional incentive fees based on performance
+- alternative investments have low returns correlations with traditional investments
+- the assets held and the portfolio as a whole are generally less liquid than traditional investments
+- They have more specialization by investment managers
+- They have less regulation and transparency
+- They have different legal issues and tax treatments and more problematic and less available historical return and volatility data
+- a common structure (hedge funds and private equity funds) is a partnership where the fund is the general partner and the investor is a limited partner
+- The purpose of alternative investment - adding assets with low correlation of returns with a portfolio can have the effect of reducing the overall portfolio risk
+- Risk measures like standard deviation that used for traditional assets may not be adequate to capture the risk characteristics of alternative investments when considering potential portfolio
+  combinations
+- Historical downside frequencies and worst return in a month may be included in the analysis besides low return correlation historical returns for alternative investments have been higher on average than for traditional investments.
+- Adding alternative investments to the portfolio may increase expected returns
+  - alternative investments are less efficiently priced than traditional assets. This provides opportunities for skilled managers to outperform.
+  - alternative investments gives higher returns as a compensation for being illiquid
+  - alternative investments often use leverage which has the effect of increasing the risk and returns
+- alternative investments have higher historical returns than traditional investments can be biased to the most common biases
+  - survivorship bias - refers to the upward bias of returns if only the data for surviving firms is included
+  - backfill bias - backfill bias can be introduced when new funds are added to a benchmark index, since funds that are newly added to an index tend to be those that have outperformed better than average, including their returns for prior years tends to bias the index returns upward
+
+### Hedge Fund
+
+- Hedge funds are private investment vehicles that manage portfolios of securities and derivative positions using a variety of strategies:
+  - long and short positions
+  - highly leveraged
+  - independent of broad market performance
+- they do not necessarily hedge risk as the name might imply, and they tend to take on higher risks in the pursuit of generating high returns
+- Characteristics:
+  - aggressively managed portfolio
+  - across asset classes
+  - across regions
+  - highly leveraged
+  - long/short positions
+  - uses of derivatives
+- complex nature of fund transactions leads managers to trade through prime brokers who provide many services including custodial services, administrative services, money lending, securities lending for short sales and trading services
+  - hedge fund managers can negotiate various service parameters with the prime brokers such as margin requirements
+- Return objectives can be:
+  - absolute basis, for example 15 percent per annum
+  - relative basis - against a specific benchmark, for example beating the S&P 500 by 5 percent
+- it is usually set up as a limited partnership with the investors as the limited partners, and the management firm as the general partner
+- a hedge fund partnership may be limited to just a prescribed number of investors
+  - possess adequate wealth
+  - sufficient liquidity
+  - acceptable degree of investment sophistication
+- the management firm typically receives both a management fee based on the value of the portfolio and an incentive fee based on fund returns
+- hedge fund investments are less liquid than traditional investments
+  - lockup period - investors are required to keep their money in the hedge fund for a minimum period before they are allowed to make redemptions
+  - investors may be required to give notice of their intent to redeem the notice period is typically 30 to 90 days in length and the investors may be charged a fee to redeem the shares
+- a fund of hedge funds is an investment company that invests in hedge funds giving investors diversification among hedge fund strategies
+  - it allows smaller investors to access hedge funds in which they may not be able to invest directly
+  - it charges an additional layer of fees beyond the fees charged by the individual hedge funds in the portfolio
+- Hedge funds can be classified according to the strategies that the fund manager employs
+  - event driven strategies
+    - seek to profit from short term events typically raised on a corporate restructuring or corporate acquisition
+    - Hedge funds typically profit from such opportunities through long and short positions in common and preferred stocks as well as debt securities and options of the companies involved
+    - event driven strategies can be further sub categorized as follows:
+      - Merger Arbitrage is the strategy of selling short the shares of an acquiring firm and buying the shares of the firm being acquired
+        - An acquisition is when one company purchases most or all of another company's shares to gain control of that company with or without the target company's approval
+        - The hedge fund manager seeks to profit from the deal spread which reflects the uncertainty of the deal closing.
+          - It could also be that the manager expects the acquirer to ultimately overpay for the acquisition and its share price suffer
+        - The primary risk in this strategy is that the announced acquisition does not occur
+      - Distressed/Restructuring is the strategy of buying the securities of firms in financial distress or close to bankruptcy
+        - If the hedge fund manager feels that the distressed firm is likely to be successfully restructured he/she buys the company's shares hoping that the share price will recover
+        - When the prospects of the company will worsen resulting in a widening spread between the riskier and less risky securities of the company
+          - fund manager might long the senior debt and short junior debt or buy preferred stock and short common stock
+      - Activist shareholder is the strategy of influencing a company's policies with a goal of increasing the company's value
+        - If the hedge fund manager finds a promising firm he'll buy sufficient shares in public market, then he will have the rights to influence on the firm's policies and uses strategies to help the company grow
+      - special situations is the strategy of investing in the securities of firms that are currently engaged in restructuring activities like
+        - issuing or repurchasing securities
+        - spinning off divisions
+        - selling assets
+        - distributing capital
+  - relative value strategies
+    - it involves buying a security and selling short a related security with the goal of profiting when a perceived pricing discrepancy between the two is resolved.
+    - the strategy is to exploit pricing discrepancies between two or more related securities, includes:
+      - Fixed income convertible arbitrage - exploit pricing discrepancies between convertible bonds and the common stock of the issuing companies
+      - Fixed income asset backed to exploit pricing discrepancies among various mortgage backed securities or asset backed securities.
+      - Fixed Income general to exploit pricing discrepancies between fixed income securities of various types.
+      - Volatility to exploit pricing discrepancies arising from differences between returns volatility implied by options prices and manager expectations of future volatility
+      - Multi strategy which is to exploit pricing discrepancies among securities across asset classes and markets other than those already mentioned
+  - macro strategies
+    - it is based on global economic trends and events.
+    - The hedge fund manager may take long or short positions in equities, fixed income, currencies, or commodities based on his view on overall market direction for each of these asset classes
+      strategies are said to have a top down approach as the investment decisions are made at the macro level
+  - equity hedge strategies
+    - it employs a bottom up approach where investment decisions are made according to the views on individual securities
+    - Hedge fund managers apply their views on individual companies through long or short positions in publicly traded equities and equity derivative securities.
+    - Examples of equity hedge strategies include
+      - Market neutral where technical or fundamental analysis is used to select undervalued equities to be held long and to select overvalued equities to be sold short
+        - the long and short positions are taken in approximately equal amounts to profit from their relative price movements with minimal exposure to market risk
+      - Quantitative directional is the use of just technical analysis to long equity securities believed to be undervalued and short securities believed to be overvalued
+        - Unlike market neutral the managers do not strive to make the long and short positions equal
+      - Fundamental growth is the use of fundamental analysis to find high growth companies. Hedge fund managers seek to identify and buy equities of companies that are expected to sustain relatively high rates of capital appreciation
+      - Fundamental value is also the use of fundamental analysis to buy equity shares. But instead of focusing on high growth companies, fundamental value managers look out for undervalued companies to invest in
+      - Short bias is the strategy of using technical or fundamental analysis to take predominantly short positions in overvalued equities. The hedge funds may possibly enter into smaller long positions with the market exposure is overall negative
+- Most hedge funds tend to specialize in a specific strategy at first. Over time some may develop or add additional areas of expertise becoming multi-strategy funds.
+
+### Private Equity Funds
+
+- Private equity funds invest in the equity of companies that are not publicly traded or in publicly traded firms that the fund intends to take private
+  - The majority of private equity funds are `leveraged buyout funds`
+    - leveraged buyout funds - use borrowed money to purchase equity in established companies with solid customer bases proven products and high quality management
+  - Some private equity funds are venture capitals which typically invest in or provide financing to startups or young companies with high growth potential
+
+### Real Estate Investments
+
+- Real estate investments can be
+  - direct investments in residential or commercial properties
+  - indirect investments through real estate backed debt, including:
+    - private commercial real estate equity or debt
+    - real estate investment trusts (REITs)
+    - mortgage backed securities (MBS)
+- Real assets includes
+  - real estate
+  - sometimes mix with equipment and infrastructure
+- Traditionally held by firms for their use in day to day operations
+- real assets are increasingly held by institutional investors
+- Institutional investors can invest in real assets directly or indirectly through an investment vehicle
+  - Advantages of direct investment
+    - direct income
+    - tax advantages
+    - diversification benefits
+  - Disadvantages of direct investment
+    - substantial management costs
+    - require substantial due diligence
+    - There are also illiquid as the investment size can be large and the pool of investors is limited
+  - Indirect investments can buy through vehicles such as real estate investment, trust master, limited partnership or stock of firms that have large ownership of real assets. The investor owns an interest in these vehicles, which hold the assets directly in direct ownership. Interests are typically more liquid than ownership of the assets themselves
+
+### Commodities
+
+- Commodities investments maybe in physical products such as grains metals and crude oil
+- to gain exposure to changes in commodities prices:
+  - investors can own physical commodities, commodities derivatives, or the shares of commodity producing firms
+- to gain exposure to the returns on various commodity indices:
+  - investors can hold derivatives contracts that are expected to track a specific commodity index
+- Examples
+  - Energy products
+  - Industrial metals
+  - Precious metals
+  - Agricultural products
+  - Carbon credits
+- Spot commodity markets, trade commodities for immediate delivery, whereas the forward and futures markets trade commodities for future delivery.
+- The producers and processors of commodity products are the primary users of the spot commodity markets
+  as they are best able to take or make immediate deliveries.
+- Many producers employ financial analysts to help them analyze commodity market conditions so that they can best manage their inventories to hedge their operational risks and to speculate on future price changes.
+- Many of the producers and consumers of commodities take opposite sides in futures and forward contracts to hedge against change in price in the future.
+
+### Infrastructure
+
+- Infrastructure refers to long lived assets that provide public services.
+- These include economic infrastructure assets such as airports, utility grids, and social infrastructure assets such as schools and hospitals
+- Investors may directly invest into individual products or gain exposure indirectly through
+  - shares of companies
+  - exchange traded funds
+  - private equity funds
+  - listed funds
+  - unlisted mutual funds
+
 ### Currencies
 
 - Currencies are monies issued by national monetary authorities,
@@ -477,37 +640,17 @@
 - Now exchange of currencies does not need to be transacted immediately. Two parties can agree on a fixed rate to exchange out on a date in the future
   - This can be arranged by means of a contract
 
-### Commodities
+### Others
 
-- Examples
-  - Energy products
-  - Industrial metals
-  - Precious metals
-  - Agricultural products
-  - Carbon credits
-- Spot commodity markets, trade commodities for immediate delivery, whereas the forward and futures markets trade commodities for future delivery.
-- The producers and processors of commodity products are the primary users of the spot commodity markets
-  as they are best able to take or make immediate deliveries.
-- Many producers employ financial analysts to help them analyze commodity market conditions so that they can best manage their inventories to hedge their operational risks and to speculate on future price changes.
-- Many of the producers and consumers of commodities take opposite sides in futures and forward contracts to hedge against change in price in the future.
-
-### Real Assets
-
-- Real assets includes
-  - real estate
-  - equipment and infrastructure
-- Traditionally held by firms for their use in day to day operations
-- real assets are increasingly held by institutional investors
-- Institutional investors can invest in real assets directly or indirectly through an investment vehicle
-  - Advantages of direct investment
-    - direct income
-    - tax advantages
-    - diversification benefits
-  - Disadvantages of direct investment
-    - substantial management costs
-    - require substantial due diligence
-    - There are also illiquid as the investment size can be large and the pool of investors is limited
-  - Indirect investments can buy through vehicles such as real estate investment, trust master, limited partnership or stock of firms that have large ownership of real assets. The investor owns an interest in these vehicles, which hold the assets directly in direct ownership. Interests are typically more liquid than ownership of the assets themselves
+- This category includes investment in
+  - tangible collectible assets
+    - fine wines
+    - stamps
+    - automobiles
+    - antique furniture
+    - art
+  - intangible assets
+    - patents
 
 ## Portfolio Management
 

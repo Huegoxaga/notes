@@ -76,7 +76,7 @@
   - Then the `XML` file has the other element that supplies information, different element name provides different information
     - E.g. `manifest` element is the parent element for the manifest file, a layout type element is the parent element for the layout file etc.
   - All elements have attributes like in `namespace:property="value"` format, where all parent element in the `XML` file starts with namespace `xmlns` (XML NameSpace)
-    - e.g. `xmlnm:android="http://schemas.android.com/apk/res/android"
+    - e.g. `xmlnm:android="http://schemas.android.com/apk/res/android"`
   - Once a property is defined in the parent element, it can be used as a namespace to access and define its properties
   - Certain element might have other attributes
   - Like any markup language, the element can be self closing or it can surround another element
@@ -84,7 +84,7 @@
   - Inline comment: `<!-- Comment -->`
 - The system performs basic scaling and resizing to adapt your user interface to different screens by using `dp` units, aka density-independent pixels
   - conversion of dp units to screen pixels `px = dp * (dpi / 160)`
-  - Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size), in (inches), and mm (millimeters)
+  - Available units are: `px` (pixels), `dp` (density-independent pixels), `sp` (scaled pixels based on preferred font size), `in` (inches), and `mm` (millimeters)
 - Avoid casting as much as possible
 
 ### `java` folder
@@ -229,14 +229,15 @@
 
 #### Intent object
 
-- It is used to naigate between activities
+- It is used to navigate between activities
 - `Intent switch2Activity2 = new Intent(MainActivity.this, MainActivity2.class);` declares new intent, it takes the class of each imported activity files as arguments
 - `startActivity(switch2Activity2);` navigate to the second activity
 - `switch2Activity2.putExtra("data", "Hello");` use intent to store string into varialbe name `"data"`
   - The variable name can be a constant from `Intent` class, e.g. `Intent.EXTRA_TEXT`
 - In any `onCreate()` method, use `Intent intent = getIntent();` to access the intent that started it
   - Use `if (getIntent()!=null && getIntent().hasExtra("DataName")) {}` to get if the intent has the data
-- Use `String i = intent.getStringExtra("data");` to get values stored in intent
+- Use `String i = intent.getStringExtra("data");` to get a string value stored in intent
+  - Use `intent.getIntExtra("increment", defaultValue);` and `intent.getBooleanExtra("reset", defaultValue);` or other data types
 - Use `startActivityForResult(intent, requestCode);` to pass data, request code to the other activity
   - requestCode should be greater or equal than `0`
 - `onActivityResult()` is called when returning from another activity with request/result code and intent object with data
@@ -286,10 +287,11 @@
 - If the preferences directory does not already exist, it will be created when this method is called
 - Fetch the string that stored our saved state from the `onResume()` state, just before the app becomes active
   ```java
+  private SharedPreferences sharedPreferences;
   @Override
   public void onResume(){
     super.onResume();
-    SharedPreferences sharedPreferences = this.getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE);
+    sharedPreferences = this.getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE);
     // There are also getAll(), getInt(), getFloat(), getBoolean(), getLong(), getStringSet(), contains("TAG")
     String switchText = sharedPreferences.getString("TAG", "default value");
   ```
@@ -350,6 +352,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
 #### Switch
 
 - The switch class inherits from the button class
+- use `switchObj.setChecked(false);` to set switch state
 - It also has an onClick attribute in XML which can be used to specify a handler
 - Example Handler for Switch as onClick attribute:
   ```java
@@ -412,6 +415,11 @@ String formattedText = "Formatted as: " + formatter.format(date);
   - `<Button />`
     - `android:text="Hello"`
     - `android:textColor="#fff"`
+- Namespaces
+  - `xmlns` it defines base namespace Uniform Resource Indicator(URI) path for other namespaces
+  - `app` namespace that can access to `parent` element
+  - `android` namespace includes all other attributes in the attribute panel
+  - `tools` namespace for some design-time features
 
 ##### Layout Types
 
@@ -425,7 +433,9 @@ String formattedText = "Formatted as: " + formatter.format(date);
   - `android:layout_centerHorizontal="true"`, `android:layout_centerVertical="true"`, `android:layout_centerInParent="true"` for centering elements
 - `<ConstraintLayout>`
   - It defines elements relative to others
+  - Move a vertically or horizontally centered element will introduce bias
 - `<FrameLayout>` it is designed to block out an area on the screen
+- Layouts have a `tools:context` attribute which is used to specify the assicoate class name for the editor
 
 ##### Elements
 
@@ -480,7 +490,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
 
 - It stores all the hardcoded strings
 - The file has parent element `<resources></resources>`
-- It consisted of multiple sting records as `<string name="key">value</string>`
+- It consisted of multiple string records as `<string name="key">value</string>`
 - It can stores arrays as `<string-array name="key"><item>A</item><item>B</item><item>C</item></string-array>`
 - It can be used in Java code as `R.string.string_name`
 - It can be used in XML code or the layout attribute panel as `@string/string_name`
@@ -567,7 +577,8 @@ String formattedText = "Formatted as: " + formatter.format(date);
 - The constraint widget in the attributes tool will allow you to enter specific numbers
 - Right click to show other reference like a baseline of an element and drag it around to create constraint
 - View id can be changed at the top
-  - It has to be unique
+  - It needs to be unique
+  - When use attribute panel to change element keys using refactor, all existing key value in the project will be replaced, use `.xml` editor if only want to change the key for selected object
 - It can be used to assign handler to an action of an element
 
 #### View mode

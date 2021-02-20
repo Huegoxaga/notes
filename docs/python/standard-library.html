@@ -1370,7 +1370,7 @@ list(accumulate(range(<span class="hljs-number">8</span>)))
 <li><code>substring</code> can be replaced by a regular expression pattern.</li>
 </ul>
 </li>
-<li>Sub-patterns surrounded by <code>()</code> in the regex pattern is called groups.<ul>
+<li>Sub-patterns surrounded by <code>()</code> in the regex pattern is called groups. e.g. <code>re.compile(r&apos;(\d\d\d)-(\d\d\d)-(\d\d\d\d)&apos;)</code><ul>
 <li>The result of the first group can be accessed by using <code>result.group(1)</code></li>
 <li>The result of the second group can be accessed by using <code>result.group(2)</code></li>
 <li>The result of all groups can be accessed by using <code>result.group()</code></li>
@@ -1437,6 +1437,14 @@ list(accumulate(range(<span class="hljs-number">8</span>)))
 <li><code>r.status</code> get returning status code</li>
 <li><code>r.data</code> get response as a byte string</li>
 <li><code>r.headers</code> get header info as a dictionary</li>
+</ul>
+<h2 id="webbrowser">webbrowser</h2>
+<ul>
+<li><code>import webbrowser</code></li>
+</ul>
+<h4 id="usage">Usage</h4>
+<ul>
+<li><code>webbrowser.open(&quot;https://www.google.com/&quot;)</code> open a web page in OS default broswer</li>
 </ul>
 <h2 id="csv">csv</h2>
 <ul>
@@ -1751,6 +1759,18 @@ print([res.get() <span class="hljs-keyword">for</span> res <span class="hljs-key
 <li>It generates memory buffer, It can be used as a file path to the memory. It is fast than storing a file on the disk for further process.</li>
 <li><code>from io import BytesIO</code></li>
 <li><code>buffer = BytesIO(b&quot;Hello \x00\x01&quot;)</code> It saves some bytes value as a file object and store it in memory</li>
+</ul>
+<h2 id="sys">sys</h2>
+<ul>
+<li>System-specific parameters and functions</li>
+<li><code>import sys</code></li>
+</ul>
+<h4 id="usage">Usage</h4>
+<ul>
+<li><code>sys.argv</code> get a list of command line parameters<ul>
+<li><code>argv[0]</code> will always be the script name</li>
+</ul>
+</li>
 </ul>
 <h2 id="subprocess">subprocess</h2>
 <ul>
@@ -2077,7 +2097,7 @@ import contextlib</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"next":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2020-12-25T05:59:53.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:21:34.828Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"next":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"previous":{"title":"Python","level":"1.2","depth":1,"path":"python/README.md","ref":"python/README.md","articles":[{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/standard-library.md","mtime":"2021-02-11T01:01:10.518Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

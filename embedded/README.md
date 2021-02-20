@@ -147,6 +147,39 @@
 - Alternate function mapping is a table which explain the alternative functionalities of a MCU pin.
   - Each pin of each port can be mapped to a certain function selected from a group, each function is corresponding to a certain functionality, listed in the table.
 
+### Communication Protocols
+
+#### Controller Area Network (CAN) Bus
+
+- It was originally developed by German company Robert Bosch for automotive industry in late 1980's
+- Features:
+  - Multi-master, broadcast type of bus
+    - a node can be added to the bus at any time (hot-plugging)
+    - no difference between master and node, all parts can listen and broadcast signals when connected to the CAN bus
+    - If any device broadcast logic `1` signal into the bus, the entire bus signal at this moment is logic `1`
+  - cheap to implement
+  - work in tough environment
+  - high data tramsmission speed, up to `1 MBit/Second`
+  - Good error handling and error confinement abilities
+  - Automatic re-transmission of faulty messages
+  - Automatically disconnect faulty physical nodes
+  - Functional addressing - data messages do not contain source or destination addresses, only indentifiers relating to their function and/or priority
+  - It uses differiential signals rather than single-ended digital singals
+    - single-ended digital singals use high voltage to represent logic `1`, and low or ground to represent logic `0`
+    - differiential signals use the difference of the two input to transmit signals
+      - When difference is big (usally one is at full vcc, one is at 30% vcc), it transmit logic `0` and is in dominant state
+      - When difference is small or no difference (usually both voltage are at half of vcc), it transmit logic `1` and is in recessive state
+- Parts:
+  - CAN node:
+    - MCU - used for processing signals and connected to CAN controller
+    - CAN controller - connected to the MCU and has to pins connected to CAN Transceiver which are `CAN_RX` for receiving digital signals and `CAN_TX` for transmitting digital signals
+    - CAN Transceiver - Convert single-ended digital signals from CAN controller into differiential signals and output as `CANH` high voltage signal and `CANL` low voltage signal
+    - CAN Bus Cable - It has a `CANH` line and a `CANL` line, each end of these two lines are connected through a 150 ohm resistor
+      - It is a single line of twisted-pair cable
+      - It can be shielded or unshielded
+      - Singals are balanced and has field-cancelling effects, it will have a low noise emission
+      - These two resistors are called the terminating resistors
+
 ## Microprocessor
 
 - It can be used to run an OS

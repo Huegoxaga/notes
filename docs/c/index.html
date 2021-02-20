@@ -1392,10 +1392,11 @@
 </ul>
 <h2 id="syntax">Syntax</h2>
 <ul>
+<li>It is consisted of functions</li>
 <li>Each statement must end with a semicolon.</li>
 <li>The C programming language is case-sensitive,</li>
 <li>Single-line comments <code>//</code><ul>
-<li>It is introduced in <code>C++</code> and adopted by some of the C compiler.</li>
+<li>It is introduced in <code>C++</code> and adopted by some of the <code>C</code> compiler.</li>
 </ul>
 </li>
 <li>Multi-line comments<pre><code class="lang-c"><span class="hljs-comment">/*
@@ -1403,7 +1404,7 @@
  */</span>
 </code></pre>
 </li>
-<li><code>#include &lt;stdio.h&gt;</code>, this is the header file included files that imports function.</li>
+<li><code>#include &lt;stdio.h&gt;</code>, make functions from the <code>stdio</code> library available in <code>main()</code></li>
 <li>main function is the entry point of the program<pre><code class="lang-c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
   <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello, World!\n&quot;</span>);
   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
@@ -1411,16 +1412,16 @@
 </code></pre>
 <ul>
 <li>main function return <code>0</code> to the calling process after execution.</li>
-<li><code>0</code> means the program executed successfully, other number indicates the program has failed.</li>
+<li><code>0</code> means the program executed successfully, other number indicates the program didn&apos;t execute successfully.</li>
 </ul>
 </li>
 </ul>
 <h2 id="data-types">Data Types</h2>
 <ul>
-<li>int: integer, a whole number.</li>
-<li>float: floating point, a number with a fractional part.</li>
-<li>double: double-precision floating point value.</li>
-<li>char: single character.<ul>
+<li><code>int</code>: integer, a whole number.</li>
+<li><code>float</code>: floating point, a number with a fractional part.</li>
+<li><code>double</code>: double-precision floating point value.</li>
+<li><code>char</code>: single character.<ul>
 <li>A string is stored in a char array.</li>
 <li>A character, such as <code>&apos;b&apos;</code>, is indicated by single quotation marks and cannot be treated as a string.</li>
 </ul>
@@ -1434,13 +1435,13 @@ C has no Boolean Type.</p>
 <ul>
 <li><code>sizeof(typename)</code> can be used to show the memory required by each type<ul>
 <li>The storage space required by each type varies by platform</li>
-<li>returns number of bytes required by a certain type.</li>
+<li>returns number of bytes required by a certain type</li>
 <li>Ex, <code>sizeof(int)</code></li>
 </ul>
 </li>
 <li>Type casting<ul>
 <li>Implicit Type Conversion<ul>
-<li>compiler automatically convert types in the same numerical operation.</li>
+<li>compiler automatically convert types in the same numerical operation</li>
 </ul>
 </li>
 <li>Explice Type Conversion<ul>
@@ -1454,7 +1455,7 @@ C has no Boolean Type.</p>
 <h2 id="variables">Variables</h2>
 <ul>
 <li>Variable name must begin with either a letter or an underscore and can be composed of letters, digits, and the underscore character.</li>
-<li>Popular naming conventions is using lowercase letters with an underscore to separate words (snake_case).</li>
+<li>Popular naming conventions is using lowercase letters with an underscore to separate words (<code>snake_case</code>).</li>
 <li>Variables must be declared as a data type<ul>
 <li><code>int my_var;</code></li>
 <li><code>int a, b;</code> declares multiple variables at once.</li>
@@ -1640,7 +1641,7 @@ C has no Boolean Type.</p>
 <li><code>!</code> not</li>
 <li>A compound Boolean expression is evaluated from left to right.</li>
 <li>precedence, <code>!</code> &gt; <code>&amp;&amp;</code> &gt; <code>||</code></li>
-<li>Use () to change precedence</li>
+<li>Use <code>()</code> to change precedence</li>
 </ul>
 </li>
 <li>While loop<pre><code class="lang-c++"><span class="hljs-keyword">while</span> (expression) {
@@ -1681,8 +1682,8 @@ C has no Boolean Type.</p>
 </ul>
 <h2 id="function">Function</h2>
 <ul>
-<li>Declarations usually appear above the main() function.</li>
-<li>Function definitions usually appear after the main() function.<pre><code class="lang-c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<li>Declarations usually appear above the <code>main()</code> function, or in the header files</li>
+<li>Function definitions usually appear after the <code>main()</code> function, or in the source files<pre><code class="lang-c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-comment">/* declaration */</span>
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">square</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span></span>;
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
@@ -1700,13 +1701,13 @@ C has no Boolean Type.</p>
 }
 </code></pre>
 </li>
-<li>A function is not required to return a value, in this case use void.</li>
+<li>A function is not required to return a value, it will return <code>void</code> if not stated</li>
 <li>Variables declared outside all functions are global to the entire program.</li>
 <li>Function destroys its local variables and parameters upon exiting.</li>
-<li>Exit command<ul>
-<li>exit command immediately stops the execution of a program and sends an exit code back to the calling process.</li>
+<li><code>exit</code> function<ul>
+<li><code>exit()</code> immediately stops the execution of a program and sends an exit code back to the calling process.</li>
 <li>it closes any open file connections and processes.</li>
-<li>return any value through an exit statement, but 0 for success and -1 for failure are typical. The predefined stdlib.h macros EXIT_SUCCESS and EXIT_FAILURE are also commonly used. Ex, <code>exit(EXIT_FAILURE);</code></li>
+<li>return any value through an exit statement, but <code>0</code> for success and <code>-1</code> for failure are typical. The predefined <code>stdlib.h</code> macros <code>EXIT_SUCCESS</code> and <code>EXIT_FAILURE</code> are also commonly used. Ex, <code>exit(EXIT_FAILURE);</code></li>
 </ul>
 </li>
 <li>Static variables<ul>
@@ -1783,7 +1784,7 @@ ptr = &amp;p;
 <li>Address Arithmetic, for pointer <code>x</code>:<ul>
 <li><code>x+1</code> or <code>x++</code> returns the memory location for the next element.</li>
 <li><code>x-1</code> or <code>x--</code> returns the memory location for the previous element.</li>
-<li>If pointer point to an integer (4 bytes) <code>x++</code> will make the hexadecimal value goes up by 4.</li>
+<li>If pointer point to an integer (4 bytes) <code>x++</code> will make the memory address value goes up by 4.</li>
 <li>pointer addresses can also be compared by using <code>&gt;</code>, <code>==</code> etc.</li>
 </ul>
 </li>
@@ -2021,18 +2022,25 @@ ptr-&gt;int_num = <span class="hljs-number">10</span>;
 <h2 id="preprocessor">Preprocessor</h2>
 <ul>
 <li>The C preprocessor uses the <code>#</code> directives to make substitutions in program source code before compilation.</li>
-<li><code>#</code> must be the character on each line. There can be any amount of white space before <code>#</code> , between the <code>#</code> and the directive.</li>
+<li><code>#</code> must be the first character on each line. There can be any amount of white space before <code>#</code> , between the <code>#</code> and the directive.</li>
 <li>No semicolons needed for the directives</li>
 </ul>
-<h4 id="include-directives"><code>#include</code> Directives</h4>
+<h3 id="include-directives"><code>#include</code> Directives</h3>
 <ul>
-<li>It is used to include header files.</li>
-<li>A header file declares a collection of functions and macros for a library,</li>
-<li>The <code>#include</code> directive expects brackets <code>&lt;&gt;</code> around the header filename if the file should be searched for in the compiler include paths. <code>#include &lt;stdio.h&gt;</code></li>
-<li>A user-defined header file is also given the <code>.h</code> extension, but is referred to with quotation marks, as in <code>&quot;myutil.h&quot;</code>. When quotation marks are used, the file is searched for in the source code directory. <code>#include &quot;myutil.h&quot;</code></li>
-<li>Some developers use <code>.hpp</code> extension for header files.</li>
+<li>It is used to include header files.<ul>
+<li>A header file declares a collection of functions and macros for a library</li>
 </ul>
-<h4 id="define-directives"><code>#define</code> Directives</h4>
+</li>
+<li>The compile will replace the <code>#include</code> line by all the content of the included header file</li>
+<li>If any of the function declaration are used in <code>main()</code>, the compiler will find the implementation of the function in the source file in project folder or libraries</li>
+<li>If the <code>#include</code> directive is followed by header filename surrounded by brackets <code>&lt;&gt;</code>, the file will be searched for in the compiler include paths. <code>#include &lt;stdio.h&gt;</code><ul>
+<li>The list of directories for header files is often referred to as the include path</li>
+<li>The list of directories for libraries as the library search path or link path</li>
+</ul>
+</li>
+<li>A user-defined header file is also given the <code>.h</code> extension, but is referred to with quotation marks, as in <code>&quot;myutil.h&quot;</code>. When quotation marks are used, the file is searched for in the source code directory. <code>#include &quot;myutil.h&quot;</code></li>
+</ul>
+<h3 id="define-directives"><code>#define</code> Directives</h3>
 <ul>
 <li>define directive is used to create object-like macros for constants based on values or expressions. <code>#define PI 3.14</code></li>
 <li>It can also create function-like macros with arguments that will be replaced by the preprocessor. <code>#define AREA(r) (PI*r*r)</code></li>
@@ -2054,11 +2062,11 @@ ptr-&gt;int_num = <span class="hljs-number">10</span>;
 </ul>
 </li>
 </ul>
-<h4 id="undef-directives"><code>#undef</code> Directives</h4>
+<h3 id="undef-directives"><code>#undef</code> Directives</h3>
 <ul>
 <li>It it used to undefining macros.</li>
 </ul>
-<h4 id="directives-for-conditional-compilation">Directives for Conditional Compilation</h4>
+<h3 id="directives-for-conditional-compilation">Directives for Conditional Compilation</h3>
 <ul>
 <li>Conditional Compilation of macros, it works with <code>#define</code><ul>
 <li><code>#ifdef</code>, check if a certain macros is defined.</li>
@@ -2106,15 +2114,15 @@ ptr-&gt;int_num = <span class="hljs-number">10</span>;
 </code></pre>
 </li>
 </ul>
-<h4 id="pragma-directives"><code>#pragma</code> Directives</h4>
+<h3 id="pragma-directives"><code>#pragma</code> Directives</h3>
 <ul>
 <li>Implementation and compiler specific.</li>
 </ul>
-<h4 id="directives-for-errors">Directives for Errors</h4>
+<h3 id="directives-for-errors">Directives for Errors</h3>
 <ul>
 <li><code>#error</code>, <code>#warning</code> Output an error or warning message An error halts compilation.</li>
 </ul>
-<h4 id="preprocessor-operators">Preprocessor Operators</h4>
+<h3 id="preprocessor-operators">Preprocessor Operators</h3>
 <ul>
 <li>stringification operator<ul>
 <li>The <code>#</code> macro operator, also known as the stringizing operator. It tells the preprocessor to convert a parameter to a string constant.<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> TO_STR(x) #x</span>
@@ -2691,7 +2699,7 @@ fptr = fopen(<span class="hljs-string">&quot;nonexistantfile.txt&quot;</span>, <
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C","level":"1.6","depth":1,"next":{"title":"C++","level":"1.7","depth":1,"path":"cpp/README.md","ref":"cpp/README.md","articles":[]},"previous":{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c/README.md","mtime":"2021-02-06T19:53:37.026Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:21:34.828Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C","level":"1.6","depth":1,"next":{"title":"C++","level":"1.7","depth":1,"path":"cpp/README.md","ref":"cpp/README.md","articles":[]},"previous":{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c/README.md","mtime":"2021-02-14T19:30:26.372Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

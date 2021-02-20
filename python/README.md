@@ -458,6 +458,7 @@ dictionay.pop(key,default)  # It returns and remove the value that match the key
 dictionay.values() # Return a list of values.
 dictionay.keys() # Return a list of keys.
 dictionay.items() # Return a list of dictionay elements.
+dictionay.clear() # empties the dictionary
 ```
 
 ### Iteration

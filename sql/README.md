@@ -293,6 +293,21 @@
   - ROWNUM is a pseudocolumn that indicates the order of the row within the result set
   - Determined before ORDER BY
   - Can be used to approximate SQL Server's TOP clause
+- ROWTYPE
+  - A list column types from a table
+  - `rowtypeName tableName%ROWTYPE;`
+- RECORD
+  - user defined list of column types
+  ```sql
+  DECLARE
+    type books is record
+        (title varchar(50),
+        author varchar(50),
+        subject varchar(100),
+        book_id number);
+    book1 books;
+    book2 books;
+  ```
 
 ## SQL Syntax
 
@@ -345,6 +360,7 @@
   -- For each returning records, When allergies has a value it will return the value
   -- If allergies is NULL, it will return 'No known allergies'
   ```
+- NVL function: if the first argument is NULL, return the second argument
 - Case Function - Case function allows boolean logic in a SQL statement
 - If no conditions are true and there is no else clause, null is returned
   ```sql
@@ -1588,6 +1604,56 @@ ORDER BY last_name, first_name, medication_description
         DBMS_OUTPUT.PUT_LINE ('Error code: '||v_err_code);
         DBMS_OUTPUT.PUT_LINE ('Error message: '||v_err_msg);
     ```
+
+#### Cursor
+
+- When Oracle processes a SQL statement, it creates an area of memory known as the context area
+- Implicit Cursor - SQL engin utlize cursors internally to complete tasks
+- Explicit Cursor
+  - Declare the cursor (SELECT statement)
+  - Open the cursor
+  - Fetch the cursor (one row at a time, usually in a loop)
+  - Perform desired processing
+  - Close the cursor
+  ```sql
+  DECLARE
+    CURSOR c_zip IS
+      SELECT *
+        FROM zipcode;
+    vr_zip c_zip%ROWTYPE;
+  BEGIN
+    OPEN c_zip;
+    LOOP
+      FETCH c_zip INTO vr_zip;
+      EXIT WHEN c_zip%NOTFOUND;
+      DBMS_OUTPUT.PUT_LINE(vr_zip.zip||' '||vr_zip.city||' '||vr_zip.state);
+    END LOOP;
+  END;
+  ```
+- Cursor Attributes
+  - `%NOTFOUND` – Boolean that returns TRUE if previous FETCH did not return a row
+  - `%FOUND` – Boolean that returns TRUE if previous FETCH returned a row
+  - `%ROWCOUNT` – Number of records fetched from a cursor at that point in time
+  - `%ISOPEN` – Boolean that returns TRUE if the cursor is open
+  - Attributes are appended to name of cursor, ex. `c_zip%ROWCOUNT`
+  - For implicit cursor, use `SQL%ROWCOUNT`
+- Cursor FOR Loops
+  ```sql
+  CREATE TABLE table_log (description VARCHAR2(250));
+  DECLARE
+    CURSOR c_student IS
+      SELECT student_id, last_name, first_name
+        FROM student
+        WHERE student_id < 110;
+  BEGIN
+    FOR r_student IN c_student
+    LOOP
+      INSERT INTO table_log
+        VALUES(r_student.last_name);
+    END LOOP;
+  END;
+  ```
+  - Cursor FOR Loops can be nested
 
 #### Transcation
 

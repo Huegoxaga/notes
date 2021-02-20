@@ -1432,7 +1432,7 @@
 </ul>
 </li>
 <li>All elements have attributes like in <code>namespace:property=&quot;value&quot;</code> format, where all parent element in the <code>XML</code> file starts with namespace <code>xmlns</code> (XML NameSpace)<ul>
-<li>e.g. `xmlnm:android=&quot;<a href="http://schemas.android.com/apk/res/android" target="_blank">http://schemas.android.com/apk/res/android</a>&quot;</li>
+<li>e.g. <code>xmlnm:android=&quot;http://schemas.android.com/apk/res/android&quot;</code></li>
 </ul>
 </li>
 <li>Once a property is defined in the parent element, it can be used as a namespace to access and define its properties</li>
@@ -1444,7 +1444,7 @@
 </li>
 <li>The system performs basic scaling and resizing to adapt your user interface to different screens by using <code>dp</code> units, aka density-independent pixels<ul>
 <li>conversion of dp units to screen pixels <code>px = dp * (dpi / 160)</code></li>
-<li>Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size), in (inches), and mm (millimeters)</li>
+<li>Available units are: <code>px</code> (pixels), <code>dp</code> (density-independent pixels), <code>sp</code> (scaled pixels based on preferred font size), <code>in</code> (inches), and <code>mm</code> (millimeters)</li>
 </ul>
 </li>
 <li>Avoid casting as much as possible</li>
@@ -1616,7 +1616,7 @@
 </ul>
 <h4 id="intent-object">Intent object</h4>
 <ul>
-<li>It is used to naigate between activities</li>
+<li>It is used to navigate between activities</li>
 <li><code>Intent switch2Activity2 = new Intent(MainActivity.this, MainActivity2.class);</code> declares new intent, it takes the class of each imported activity files as arguments</li>
 <li><code>startActivity(switch2Activity2);</code> navigate to the second activity</li>
 <li><code>switch2Activity2.putExtra(&quot;data&quot;, &quot;Hello&quot;);</code> use intent to store string into varialbe name <code>&quot;data&quot;</code><ul>
@@ -1627,7 +1627,10 @@
 <li>Use <code>if (getIntent()!=null &amp;&amp; getIntent().hasExtra(&quot;DataName&quot;)) {}</code> to get if the intent has the data</li>
 </ul>
 </li>
-<li>Use <code>String i = intent.getStringExtra(&quot;data&quot;);</code> to get values stored in intent</li>
+<li>Use <code>String i = intent.getStringExtra(&quot;data&quot;);</code> to get a string value stored in intent<ul>
+<li>Use <code>intent.getIntExtra(&quot;increment&quot;, defaultValue);</code> and <code>intent.getBooleanExtra(&quot;reset&quot;, defaultValue);</code> or other data types</li>
+</ul>
+</li>
 <li>Use <code>startActivityForResult(intent, requestCode);</code> to pass data, request code to the other activity<ul>
 <li>requestCode should be greater or equal than <code>0</code></li>
 </ul>
@@ -1685,10 +1688,11 @@ Modifications to the preferences must go through an Editor object to ensure the 
 </ul>
 </li>
 <li>If the preferences directory does not already exist, it will be created when this method is called</li>
-<li>Fetch the string that stored our saved state from the <code>onResume()</code> state, just before the app becomes active<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<li>Fetch the string that stored our saved state from the <code>onResume()</code> state, just before the app becomes active<pre><code class="lang-java"><span class="hljs-keyword">private</span> SharedPreferences sharedPreferences;
+<span class="hljs-meta">@Override</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onResume</span><span class="hljs-params">()</span></span>{
   <span class="hljs-keyword">super</span>.onResume();
-  SharedPreferences sharedPreferences = <span class="hljs-keyword">this</span>.getSharedPreferences(<span class="hljs-string">&quot;PREFERENCE_NAME&quot;</span>, Context.MODE_PRIVATE);
+  sharedPreferences = <span class="hljs-keyword">this</span>.getSharedPreferences(<span class="hljs-string">&quot;PREFERENCE_NAME&quot;</span>, Context.MODE_PRIVATE);
   <span class="hljs-comment">// There are also getAll(), getInt(), getFloat(), getBoolean(), getLong(), getStringSet(), contains(&quot;TAG&quot;)</span>
   String switchText = sharedPreferences.getString(<span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot;default value&quot;</span>);
 </code></pre>
@@ -1750,6 +1754,7 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 <h4 id="switch">Switch</h4>
 <ul>
 <li>The switch class inherits from the button class</li>
+<li>use <code>switchObj.setChecked(false);</code> to set switch state</li>
 <li>It also has an onClick attribute in XML which can be used to specify a handler</li>
 <li>Example Handler for Switch as onClick attribute:<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handlerName</span><span class="hljs-params">(View view)</span> </span>{
   Switch sview = (Switch) view;
@@ -1830,6 +1835,13 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 </li>
 </ul>
 </li>
+<li>Namespaces<ul>
+<li><code>xmlns</code> it defines base namespace Uniform Resource Indicator(URI) path for other namespaces</li>
+<li><code>app</code> namespace that can access to <code>parent</code> element</li>
+<li><code>android</code> namespace includes all other attributes in the attribute panel</li>
+<li><code>tools</code> namespace for some design-time features</li>
+</ul>
+</li>
 </ul>
 <h5 id="layout-types">Layout Types</h5>
 <ul>
@@ -1849,9 +1861,11 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 </li>
 <li><code>&lt;ConstraintLayout&gt;</code><ul>
 <li>It defines elements relative to others</li>
+<li>Move a vertically or horizontally centered element will introduce bias</li>
 </ul>
 </li>
 <li><code>&lt;FrameLayout&gt;</code> it is designed to block out an area on the screen</li>
+<li>Layouts have a <code>tools:context</code> attribute which is used to specify the assicoate class name for the editor</li>
 </ul>
 <h5 id="elements">Elements</h5>
 <ul>
@@ -1916,7 +1930,7 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 <ul>
 <li>It stores all the hardcoded strings</li>
 <li>The file has parent element <code>&lt;resources&gt;&lt;/resources&gt;</code></li>
-<li>It consisted of multiple sting records as <code>&lt;string name=&quot;key&quot;&gt;value&lt;/string&gt;</code></li>
+<li>It consisted of multiple string records as <code>&lt;string name=&quot;key&quot;&gt;value&lt;/string&gt;</code></li>
 <li>It can stores arrays as <code>&lt;string-array name=&quot;key&quot;&gt;&lt;item&gt;A&lt;/item&gt;&lt;item&gt;B&lt;/item&gt;&lt;item&gt;C&lt;/item&gt;&lt;/string-array&gt;</code></li>
 <li>It can be used in Java code as <code>R.string.string_name</code></li>
 <li>It can be used in XML code or the layout attribute panel as <code>@string/string_name</code></li>
@@ -2011,7 +2025,8 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 <li>The constraint widget in the attributes tool will allow you to enter specific numbers</li>
 <li>Right click to show other reference like a baseline of an element and drag it around to create constraint</li>
 <li>View id can be changed at the top<ul>
-<li>It has to be unique</li>
+<li>It needs to be unique</li>
+<li>When use attribute panel to change element keys using refactor, all existing key value in the project will be replaced, use <code>.xml</code> editor if only want to change the key for selected object</li>
 </ul>
 </li>
 <li>It can be used to assign handler to an action of an element</li>
@@ -2079,7 +2094,7 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Android Development","level":"1.3.2","depth":2,"next":{"title":"Scala","level":"1.4","depth":1,"path":"scala/README.md","ref":"scala/README.md","articles":[]},"previous":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/android.md","mtime":"2021-02-06T17:47:15.336Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:21:34.828Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Android Development","level":"1.3.2","depth":2,"next":{"title":"Scala","level":"1.4","depth":1,"path":"scala/README.md","ref":"scala/README.md","articles":[]},"previous":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/android.md","mtime":"2021-02-17T23:45:06.064Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

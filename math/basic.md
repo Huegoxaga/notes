@@ -92,9 +92,11 @@
 
 - It is used to represent numbers. It can be one of the follows:
   - Decimal - A decimal number system is consisted of `1` and `9`.
-  - Binary - A binary number system is consisted of `1` and `0`.
+  - Binary - A binary number system is consisted of `1` and `0`
+    - one binary number has the size of one bit
   - Octor - A octor number system is consisted of `0` - `7`.
-  - Hex - A hux number is system consisted of `1` to `9`, then `A` to `F`.
+  - Hex - A hex number is system consisted of `1` to `9`, then `A` to `F`.
+    - one hex number has the size of one byte
 - Convert from other number system to decimal number system
   - for left side before ‘.’ sign
     - from left to right digit one by one, add the number and times the number that can be represent in one digit in the corresponding system(binary 2, oct 8 hex 16) , operation ends with adding the last digit.

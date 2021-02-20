@@ -196,6 +196,7 @@ def about(request):
   modelObject.manyToManyField.all() # return all related fields of a many-to-many fields. Direct access without all() will cause "TypeError: ManyRelatedManager object is not iterable"
   modelObject.relatedModel_set.all() # return all assciated model of one model.
   modelObject.relatedModel_set.create(property1='value1', property2 = 'value2') # create a new related model of the model.
+  ModelClass.objects.all().order_by('-column') # use - for descending order
   ModelClass.objects.select_related('tableA','tableB').prefetch_related('tableC').all() # Join tables for future queries. select_related is used for tables with one to one relationship, prefetch_related is used for many-to-many relationships.
   ModelClass.objects.values('field1', 'field2') # return dict queryset for certain fields
   ModelClass.objects.values_list('id', flat=True) # return a list queryset of id, if flat=False return list of tuples.
@@ -467,6 +468,7 @@ def about(request):
   ```
   - When serializer has `create()` or `update()` methods. `serializer.save(data=data)` method will run `create()`. `serializer.save(existingObject, data=data)` will run `update()`.
   - When serializer has `validate()`, `serializer.is_valid()` will run validation. Then use `serializer.error()` to return errors.
+  - `request.user` returns the current user object who initiate the request based on the credential
 - In `urls.py` add the view method that returning data as view to path, `path('api/', views.SampleView.as_view()),`
 - Pagination
   - Set Pagination globally in `settings.py`

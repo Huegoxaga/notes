@@ -636,6 +636,7 @@ public:
     - This prevents a header file from being included more than once within one file.
   - `#include "MyClass.h"`
     - double quotes are used to include customized header file
+    - Some developers use `.hpp` extension for header files
 - `MyClass::MyClass()` means MyClass class has a contractor function, then write the constructor definition in the corresponding code blocks
 
 #### Class Object

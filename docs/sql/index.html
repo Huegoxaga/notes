@@ -1700,6 +1700,24 @@ Cardinality can be used to represent the Entity relationship(one to one, one to 
 <li>Can be used to approximate SQL Server&apos;s TOP clause</li>
 </ul>
 </li>
+<li>ROWTYPE<ul>
+<li>A list column types from a table</li>
+<li><code>rowtypeName tableName%ROWTYPE;</code></li>
+</ul>
+</li>
+<li>RECORD<ul>
+<li>user defined list of column types<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<span class="hljs-keyword">type</span> books <span class="hljs-keyword">is</span> <span class="hljs-built_in">record</span>
+    (title <span class="hljs-built_in">varchar</span>(<span class="hljs-number">50</span>),
+    author <span class="hljs-built_in">varchar</span>(<span class="hljs-number">50</span>),
+    subject <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>),
+    book_id <span class="hljs-built_in">number</span>);
+book1 books;
+book2 books;
+</code></pre>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="sql-syntax">SQL Syntax</h2>
 <h3 id="get-database-info">Get Database Info</h3>
@@ -1748,6 +1766,7 @@ Cardinality can be used to represent the Entity relationship(one to one, one to 
 <span class="hljs-comment">-- If allergies is NULL, it will return &apos;No known allergies&apos;</span>
 </code></pre>
 </li>
+<li>NVL function: if the first argument is NULL, return the second argument</li>
 <li>Case Function - Case function allows boolean logic in a SQL statement</li>
 <li>If no conditions are true and there is no else clause, null is returned<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> first_name, last_name,
   <span class="hljs-keyword">CASE</span> <span class="hljs-keyword">WHEN</span> patient_height &gt; <span class="hljs-number">170</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&apos;Tall&apos;</span>
@@ -2979,6 +2998,60 @@ e_child_exists EXCEPTION;
 </ul>
 </li>
 </ul>
+<h4 id="cursor">Cursor</h4>
+<ul>
+<li>When Oracle processes a SQL statement, it creates an area of memory known as the context area</li>
+<li>Implicit Cursor - SQL engin utlize cursors internally to complete tasks</li>
+<li>Explicit Cursor<ul>
+<li>Declare the cursor (SELECT statement)</li>
+<li>Open the cursor</li>
+<li>Fetch the cursor (one row at a time, usually in a loop)</li>
+<li>Perform desired processing</li>
+<li>Close the cursor<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<span class="hljs-keyword">CURSOR</span> c_zip <span class="hljs-keyword">IS</span>
+  <span class="hljs-keyword">SELECT</span> *
+    <span class="hljs-keyword">FROM</span> zipcode;
+vr_zip c_zip%ROWTYPE;
+<span class="hljs-keyword">BEGIN</span>
+<span class="hljs-keyword">OPEN</span> c_zip;
+LOOP
+  FETCH c_zip INTO vr_zip;
+  EXIT WHEN c_zip%NOTFOUND;
+  DBMS_OUTPUT.PUT_LINE(vr_zip.zip||&apos; &apos;||vr_zip.city||&apos; &apos;||vr_zip.state);
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Cursor Attributes<ul>
+<li><code>%NOTFOUND</code> &#x2013; Boolean that returns TRUE if previous FETCH did not return a row</li>
+<li><code>%FOUND</code> &#x2013; Boolean that returns TRUE if previous FETCH returned a row</li>
+<li><code>%ROWCOUNT</code> &#x2013; Number of records fetched from a cursor at that point in time</li>
+<li><code>%ISOPEN</code> &#x2013; Boolean that returns TRUE if the cursor is open</li>
+<li>Attributes are appended to name of cursor, ex. <code>c_zip%ROWCOUNT</code></li>
+<li>For implicit cursor, use <code>SQL%ROWCOUNT</code></li>
+</ul>
+</li>
+<li>Cursor FOR Loops<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> table_log (description VARCHAR2(<span class="hljs-number">250</span>));
+<span class="hljs-keyword">DECLARE</span>
+  <span class="hljs-keyword">CURSOR</span> c_student <span class="hljs-keyword">IS</span>
+    <span class="hljs-keyword">SELECT</span> student_id, last_name, first_name
+      <span class="hljs-keyword">FROM</span> student
+      <span class="hljs-keyword">WHERE</span> student_id &lt; <span class="hljs-number">110</span>;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">FOR</span> r_student <span class="hljs-keyword">IN</span> c_student
+  <span class="hljs-keyword">LOOP</span>
+    <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> table_log
+      <span class="hljs-keyword">VALUES</span>(r_student.last_name);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+<ul>
+<li>Cursor FOR Loops can be nested</li>
+</ul>
+</li>
+</ul>
 <h4 id="transcation">Transcation</h4>
 <ul>
 <li>some units of work (transactions) will change multiple tables</li>
@@ -3328,7 +3401,7 @@ END
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.15","depth":1,"next":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"previous":{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sql/README.md","mtime":"2021-02-04T00:43:30.575Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T22:21:34.828Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.15","depth":1,"next":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"previous":{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sql/README.md","mtime":"2021-02-11T00:22:58.090Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

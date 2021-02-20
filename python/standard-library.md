@@ -35,7 +35,7 @@ list(accumulate(range(8)))
   - The pattern string is not surrounded by `/`. Ex, `r"gr[ae]y"`.
 - `result = re.search(substring, string)` search if the `string` contains `substring`, and report the start index and end index if found.
   - `substring` can be replaced by a regular expression pattern.
-- Sub-patterns surrounded by `()` in the regex pattern is called groups.
+- Sub-patterns surrounded by `()` in the regex pattern is called groups. e.g. `re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')`
   - The result of the first group can be accessed by using `result.group(1)`
   - The result of the second group can be accessed by using `result.group(2)`
   - The result of all groups can be accessed by using `result.group()`
@@ -88,6 +88,14 @@ list(accumulate(range(8)))
 - `r.status` get returning status code
 - `r.data` get response as a byte string
 - `r.headers` get header info as a dictionary
+
+## webbrowser
+
+- `import webbrowser`
+
+#### Usage
+
+- `webbrowser.open("https://www.google.com/")` open a web page in OS default broswer
 
 ## csv
 
@@ -369,6 +377,16 @@ list(accumulate(range(8)))
 - It generates memory buffer, It can be used as a file path to the memory. It is fast than storing a file on the disk for further process.
 - `from io import BytesIO`
 - `buffer = BytesIO(b"Hello \x00\x01")` It saves some bytes value as a file object and store it in memory
+
+## sys
+
+- System-specific parameters and functions
+- `import sys`
+
+#### Usage
+
+- `sys.argv` get a list of command line parameters
+  - `argv[0]` will always be the script name
 
 ## subprocess
 
