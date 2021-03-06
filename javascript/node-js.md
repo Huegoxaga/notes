@@ -65,20 +65,40 @@
 
 ### Export Modules
 
-A module object has to be exported for other module to use:
+- The `module.exports` is a special object which is included in every JavaScript file in the Node.js application by default. The module is a variable that represents the current module, and exports is an object that will be exposed as a module
+- A module object has to be exported for other module to use:
 
 ```js
-const module,exports.objectExportName = objectName;
+const getName = () => {
+  return 'Tom';
+};
+exports.getAge = () => {
+  return 18;
+};
+exports.getName = getName;
+const exports.NAME = 'Tom';
+// can also export class with default values in the constructor
+// Optionally use the exports property of a module object
+module.exports = {
+  functionName: () => {
+    return '123';
+  },
+  variableName: '123',
+};
+module.exports = {
+    firstName: 'James',
+    lastName: 'Bond'
+}
+module.exports = functionName
 ```
-
-- To export a function: `module.exports = functionName`
 
 ### Import Modules
 
-A module has to import an exported module object before using it:
+- A module has to import an exported module object before using it
+- `require("filePath")` will return the exports object of the target file
 
 ```js
-const moduleObjectName = require("filePath");
+const { NAME, getName, getAge } = require("filePath");
 ```
 
 - extenstion is not required in the filePath
@@ -96,6 +116,8 @@ const moduleObjectName = require("filePath");
 - `require('path');`
 - Methods:
   - `.parse(variableName)` It returns the path of the file containing the variable as the argument.
+  - `.extname(filename)` get the file extension with the dot
+  - `.join(dir, filename)` join path with `/`
 
 ### OS Module
 
@@ -110,6 +132,8 @@ const moduleObjectName = require("filePath");
 - Methods:
   - `.readdir(folderPath,callBack);` return an array of string for fileNames
   - `.readdirSync(folderPath);` return an array of string for fileNames
+  - `.readFileSync(filePath)` load file into file object
+  - `const writeStream = fs.createWriteStream(targetFilePath);`, `await awaitWriteStream(file.pipe(writeStream));` write file to `targetFilePath` using write stream
 
 ### Events module
 

@@ -27,7 +27,8 @@
 1. Install node latest stable version [here](https://nodejs.org/en/)
 2. run `npm i -g @angular/cli` to instal Angular CLI. Prepend `sudo` for Mac.
 3. In the project folder create run: `ng new project-name` to create a new project.
-4. run `ng serve` to serve the website on `localhost:4200`
+4. run `ng serve` or `npm start` to serve the website on `localhost:4200`
+   - run `npm install` for install dependencies for imported projects
 
 ## Angular Web App Structure
 
@@ -60,13 +61,13 @@ import { ComponentComponentName } from "./component-name/component-name.componen
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentName //register the customized component in the app module.
+    ComponentName, //register the customized component in the app module.
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
-    ServiceName //register a dependency for all service in use.
+    ServiceName, //register a dependency for all service in use.
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -91,7 +92,7 @@ Each component is related to the following files.
   @Component({
     selector: "app-component-name", // define the name of the component tag in app component html file.
     templateUrl: "./component-name.component.html", //link to the layout of the component.
-    styleUrls: ["./component-name.component.css"] //link to the style sheet of the component.
+    styleUrls: ["./component-name.component.css"], //link to the style sheet of the component.
   })
   export class ComponentTestComponent implements OnInit {
     dataName = 100; //Declare any data here for template file to use.
@@ -136,7 +137,7 @@ In project folder, run: `ng g s service-name`.
 ```typescript
 import { Injectable } from "@angular/core";
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ServiceNameService {
   anyFunction() {

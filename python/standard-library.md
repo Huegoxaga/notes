@@ -352,6 +352,7 @@ list(accumulate(range(8)))
 - `os.path.join('folderPath','file')` return a path as `folderPath/file`
 - `os.path.basename('path')` return file name of the path.
 - `os.path.dirname('path')` return directory name of the path.
+  - `dirname = os.path.dirname(__file__)` get the dirname of the current file
 - `os.path.split('path')` return path name and file name separately.
 - `os.path.exist('path')` return true if file exists.
 - `os.path.isdir('path')` return true if it is a directory.
@@ -420,7 +421,6 @@ list(accumulate(range(8)))
   - `datetime_obj.minute`
   - `datetime_obj.second`
   - `datetime_obj.microsecond`
-- `datetime.combine(date, start_time)` combine a date object and a time object as a datetime object
 
 ### datetime.date
 
@@ -444,6 +444,9 @@ list(accumulate(range(8)))
 ### Usage
 
 - `time.localtime()` get local time.
+- `datetime.combine(date, start_time)` combine a date object and a time object as a datetime object
+  - the first second of today, `datetime.combine(date.today(), datetime.min.time()`
+  - the last second of today, `datetime.combine(date.today(), datetime.max.time()`
 
 ## pytz
 

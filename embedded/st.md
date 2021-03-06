@@ -59,6 +59,7 @@
   - Nucleo-64, it has 64 pins include Arduino Uno rev3 & ST morpho connectors
   - Nucleo-144, it has 144 pins include SWDST Zio expansion connector, ARDUINO® Uno, V3ST morpho expansion connector
 - STM32F446RE is the model that uses STM32F4x MCU
+- The Mbed site for the nucleo boards offers great pinout diagrams
 
 ## STM32CubeIDE
 
@@ -92,6 +93,7 @@
 - A project can use either `C` or `C++` as its development language.
 - `HAL` is the official library used by `STM32`
   - Same code can works on various `STM32` hardwares
+  - For detail search MCU model with the keyword `HAL` and read the docs in the PDF from the search result
 - `Src` folder keeps all the `.c` source file, `Inc` folder keeps all the `.h` header files.
 - The infinite while loop inside `main.c` contains the actually code for running for the embedded device
 
@@ -155,6 +157,15 @@
   - Check port `0` of the ITM Stimulus Ports.
   - In the SWV ITM Data Console, click start trace.
   - In the main menu bar, start to debug, and start to run the code
+- Enable a `USART` connection in asyn mode to get serial output from the board
+  - The `IDE` will install a virtual `COMM` port. For windows machine use device manager to find it. For others, look for the `dev/tty*` device file
+  - Use a serial terminal program and connect to the port with baud rate specified in the UART config code will establish the connection
+  - `#include <string.h>`, and define a buffer as `uint8_t buf[12];` in user code begin 1 section in main function, and put the following code inside `while(1)` loop to test the connection
+    ```c
+    strcpy((char*)buf, "Test\r\n");
+    HAL_UART_Transmit(&huart2, buf, strlen((char*)buf), HAL_MAX_DELAY);
+    HAL_Delay(500);
+    ```
 - Example code for changing register settings, The offset from the base bus memory address to each peripherals is used to located the peripherals' registers.
   ```cpp
   /**
@@ -191,14 +202,21 @@
 - Add include path in the project compiler setting to import newly created header files in the project folder
 - The memory browser window can be used to search for the data store in different memory address
   - right click inside the panel and select column, cell size and radix to change the output data format
+- When connect to multiple devices specify the ST-Link S/N for each device in the debug configuration
 
 ### STM32CubeMX
 
 - It makes hardware configuration easy with GUI interfaces
 - It has been integrated with the IDE
   - Click the `.ioc` file to open this tool
+- Project code will be reset and new code will be generated after clicking the save button if configuration are changed here
 - Pinout Config Tab
   - In the microcontroller pinout view, select pin to assign function to it
+  - There are pins that are enabled if initiating all peripherals option is selected when project starts
+    - It will also setup a `UART` connection for console output
+  - In the left panel, enable the connectivity that will be used by the project
+    - For SPI connection, select a connection mode to enable. Select the Hardware NSS Signal and the MCU will controls the `CS` line automatically. Also change the prescaler in the parameter settings for a desired clock rate
+      - Use GPIO output mode for `CS` line when controling it manually
 - Clock Config Tab
   - In RCC section of the Pin configuration page, select the Crystal mode can enable the option for on-board HSE
   - Bus speed can be multiple by a factor, this is done by using prescaler.

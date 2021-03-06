@@ -95,6 +95,10 @@
 - `onCreate()` is called once during app launch or after orientation of the app is changed
   - All code for initialization and should be placed here
   - Variables can be declared at the top inside the class as `private ClassName var;`, but they need to be initialized inside `onCreate()`
+- Explicitly ask for permissions(API Levels >=23) `ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.PERMISSION_TYPE}, 1);`
+  - For security reason, multiple popups are not allowed
+  - The security issue involves attempting to confuse a user by asking for permissions, but hiding the exact message with another overlay
+- Inflater should be used when loading a layout during runtime
 
 #### Activities
 
@@ -181,9 +185,14 @@
     Fragment myFragment1 = new BlankFragment();
     // replace the fragment instance into a frame (viewgroup) in our layout.
     fragmentTransaction.replace(R.id.frame2, myFragment1);
+    // Remove a fragment
+    // fragmentTransaction.remove(R.id.frame2);
     fragmentTransaction.commit();
   }
   ```
+- Main Activity can get `getSupportFragmentManager()` when it extends the `AppCompatActivity` interface
+  - `AppCompatActivity` extends `FragmentActivity`
+  - optionally, `getFragmentManager()` method is available for fragment classes and is part of an older API, and deprecated in API level 28
 - Fragment constructor - can be used to pass view into framgment class when initialized with fragment manager. For example when use fragment manager in the main acticity, declare fragment as `Fragment myFragment1 = new BlankFragment(findViewById(R.id.textview));`
   ```java
   // Define constructor inside fragment class
@@ -192,6 +201,9 @@
   }
   // then tview.findViewById() can be accessed globally in the fragment class
   ```
+- `getActivity()` can also be used to get reference of a widget from parent activity
+  - From the fragments uses `Switch actSw = getActivity().findViewById(R.id.switch1);`
+  - It was added in API level 11, but then deprecated in API level 28
 
 ##### Event Handlers for Widgets inside a Fragment
 
@@ -217,6 +229,48 @@
   }
   ```
 
+##### DialogFragment
+
+- It is a type of Fragment that works as a dialog
+- All element should be `wrap_content` and with min width, `match_parent` won't work for dialog fragments
+- Android Studio does not have create DialogFragment option, create an Empty Fragment and replace the class with the following
+  ```java
+  /**
+  * For a Dialog we must extend the DialogFragment Class
+  * We implement OnClickListener to handle button click events
+  */
+  public class CustomDialog extends DialogFragment implements View.OnClickListener {
+    public CustomDialog() {
+      // Required empty public constructor
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+      // Inflate the layout for this fragment
+      // We saved the inflated layout in our myview variable
+      View myview = inflater.inflate(R.layout.fragment_custom, container, false);
+      // Attach the OnClickListener to the button
+      Button button = myview.findViewById(R.id.dialogbutton);
+      button.setOnClickListener(this);
+      return myview;
+    }
+    @Override
+    public void onClick(View v) {
+      // Get the string out of our Edit field
+      // getView() will return the view of the current Fragment
+      EditText editInput = getView().findViewById(R.id.dialogedit);
+      String myInput = editInput.getText().toString();
+      // get the main activity object
+      MainActivity main = (MainActivity) getActivity();
+      // call a method in the main activity class
+      main.sendInput(myInput);
+      // Dismiss will close the dialog
+      dismiss();
+      }
+    }
+  ```
+- In the example `sendInput` is a user defined method in the main class as `public void sendInput(String in) { }`
+- Use `CustomDialog myDialog = new CustomDialog();`, `myDialog.show(getSupportFragmentManager(),null);` to initiate and show the dialog in main class
+
 #### View object
 
 - View object class represents the basic building block for user interface components. A View occupies a rectangular area on the screen and is responsiblefor drawing and event handling. View is the base class for widgets, which are used to create interactive UI components (buttons, text fields, etc.)
@@ -226,6 +280,9 @@
 - Use `view.getId()` to get the id of any view object
   - Is it good for comparison, e.g. `view.getId() == R.id.button`
 - `view.setImageResource(R.drawable.image_name);` change image
+- `view.setVisibility(View.GONE);` hide the view, and it doesn't take any space for layout purposes
+- `view.setVisibility(View.INVISIBLE);` hide the view, but it still takes up space for layout purposes
+- `view.setVisibility(View.VISIBLE);` show the view
 
 #### Intent object
 
@@ -364,6 +421,64 @@ String formattedText = "Formatted as: " + formatter.format(date);
   }
   ```
 
+#### Toast
+
+- A toast is a view containing a quick little message for the user. it appears as a floating view over the application. It will never receive focus
+- `Toast.makeText(this, "Basic Toast", Toast.LENGTH_LONG).show();`
+  - `Toast.LENGTH_LONG` specifies the amount of time the message is visible
+- Use Toast to show a view during runtime
+  ```java
+  // To show a toast with a custom layout - need to inflate the layout
+  LayoutInflater myinflator = getLayoutInflater();
+  View customtoast = myinflator.inflate(R.layout.customlayout, null);
+  // Now build the Toast - adjust settings
+  Toast myToast = new Toast(this);
+  // set the view duration
+  myToast.setDuration(Toast.LENGTH_LONG);
+  // position the toast at the top of the screen
+  myToast.setGravity(Gravity.TOP, 0, 0);
+  // set connect the custom layout (deprecated in API Level 30)
+  myToast.setView( customtoast );
+  // And finally show it
+  myToast.show();
+  ```
+
+#### Snackbar
+
+- It has some properties similar to toasts
+
+#### MyReceiver
+
+- Receive broadcast information as subscriber
+- Works in the background, as long as the permission is granted
+  ```java
+  public class MyReceiver extends BroadcastReceiver {
+  public static String tag = "==MyReceiver==";
+  @Override
+  public void onReceive(Context context, Intent intent) {
+    Log.d(tag, "onReceive"); }
+    // get an array of messages if subscribe SMS
+    SmsMessage[] messages = getMessagesFromIntent(intent);
+    // Get the sender from the first message block
+    String sender = messages[0].getOriginatingAddress();
+    // Get the first message body text -
+    String msg = messages[0].getMessageBody();
+    // Launch main activity when a message is received
+    Intent myIntent = new Intent(context, MainActivity.class);
+    myIntent.putExtra(MSG, msg);
+    // Set the New Activity Flags
+    myIntent.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_NEW_TASK);
+    context.startActivity(myIntent);
+    // Use getIntent(); in MainActivity to get data in putExtra()
+  }
+  ```
+- Intent Flags
+  - `FLAG_ACTIVITY_NEW_TASK` (must have)
+    - This activity becomes the start of a new task on history stack.
+  - `FLAG_ACTIVITY_CLEAR_TOP`
+    - If the activity being launched is already running in the current task, then instead of launching a new instance of that activity, all of the other activities on top of it will be closed and this Intent will be delivered to the (now on top) old activity as a new Intent.
+  - `FLAG_ACTIVITY_CLEAR_TASK` If set in an Intent passed to Context#startActivity, this flag will cause any existing task that would be associated with the activity to be cleared before the activity is started. This way, when you load that `FLAG_ACTIVITY_NEW_TASK`, and you hit the back button, you won't end up back at a login or sign up screen. That'd be a little awkward for our users if they were already logged in and hit it by accident.
+
 ### `manifests` folder
 
 #### `AndroidManifest.xml`
@@ -376,6 +491,8 @@ String formattedText = "Formatted as: " + formatter.format(date);
     - Each component must define basic properties such as the name of its Kotlin or Java class
   - The permissions that the app needs in order to access protected parts of thesystem or other apps
   - The hardware and software features the app requires, which affects which devices can install the app from Google Play
+- Permissions are added here and users will be asked to grant these permission when the app is first launched, they should be added at the top
+  - `<uses-permission android:name="android.permission.RECEIVE_SMS" />` permission to read new SMS messages
 
 ##### Application Element
 
@@ -388,6 +505,18 @@ String formattedText = "Formatted as: " + formatter.format(date);
   - A style is a collection of attributes that specify the appearance for a single View.
   - A theme is a collection of attributes that's applied to an entire app, activity, or view hierarchy
   - Themes can also apply styles to non-view elements, such as the status bar and window background
+- declaration for the broadcast receiver, this example will invoke the `MyReceiver` class in the app, whenever a message is received
+  ```xml
+  <receiver
+    android:name=".MyReceiver"
+    android:enabled="true"
+    android:exported="true">
+    <intent-filter>
+      <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+    </intent-filter>
+  </receiver>
+  ```
+  - This info is registered through the Android OS, it will be executed even the app is not running
 
 ##### Activity Element
 
@@ -405,6 +534,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
 
 - A `XML` layout file uses the following layout type as parent element to define layouts
 - Element will be moved to top left corner if no layout constraint is defined
+- All the definition are about the single element it belongs to
 - Common attributes
   - `android:background=“#ffffff”` set the background
   - `android:layout_width`, `android:layout_height` the width and height of the layout container, its value can be:
@@ -435,6 +565,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
   - It defines elements relative to others
   - Move a vertically or horizontally centered element will introduce bias
 - `<FrameLayout>` it is designed to block out an area on the screen
+  - Attribute `layout_gravity` can quickly align content relative to its parent, to `start`(left), `center`, or `end`(right)
 - Layouts have a `tools:context` attribute which is used to specify the assicoate class name for the editor
 
 ##### Elements
@@ -485,6 +616,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
 - `colorPrimary` controls the app bar color
 - `colorPrimaryVariant` controls the status bar color
 - The background color of some widgets is controlled by the theme type
+  - Use theme `Theme.MaterialComponents.DayNight.DarkActionBar.Bridge` to change the button background color
 
 ##### `strings.xml`
 

@@ -72,9 +72,14 @@
 ## Data Types
 
 - `int`: integer, a whole number.
+  - `0x` represents the number followed is hexadecimal
+  - `0b` represents the number followed is binary
+  - `uint8_t` - unsigned 8-bit integer
 - `float`: floating point, a number with a fractional part.
 - `double`: double-precision floating point value.
 - `char`: single character.
+  - It is signed
+  - It has 1 byte storage size with value range from -128 to 127
   - A string is stored in a char array.
   - A character, such as `'b'`, is indicated by single quotation marks and cannot be treated as a string.
 
@@ -765,11 +770,12 @@
 - `putf()`
 - `sprintf()` creates formatted strings. auto convert data types for output string.
   ```c++
-  char info[100];
+  char output[100];
   char dept[ ] = "HR";
   int emp = 75;
-  sprintf(info, "The %s dept has %d employees.", dept, emp);
+  sprintf(output, "The %s dept has %d employees.", dept, emp);
   ```
+  - It returns the output string length
 
 ##### Input
 

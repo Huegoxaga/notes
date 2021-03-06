@@ -1555,16 +1555,28 @@ ORDER BY last_name, first_name, medication_description
   ```
 - Reraise Exceptions
   ```sql
-  WHEN exception THEN
+  -- outer block
+  DECLARE   e_exception EXCEPTION;
+  BEGIN
+    -- inner block
+    BEGIN
+      RAISE e_exception;
+    EXCEPTION
+      WHEN e_exception THEN
         RAISE;
+    END;
+  EXCEPTION
+    WHEN e_exception THEN
+      DBMS_OUTPUT.PUT_LINE ('An error has occurred');
+  END;
   ```
-- RAISE_APPLICATION_ERROR - RAISE_APPLICATION_ERROR gives an error more of an Oracle look and feel
+- RAISE_APPLICATION_ERROR gives an error more of an Oracle look and feel
   , `RAISE_APPLICATION_ERROR(error_number, error_message[, keep_errors])`
   - `error_number`: -20,999 to -20,000
   - `error_message`: up to 2,048 characters
   - `keep_errors`: boolean
-  - If TRUE, new error is added to error stack
-  - If FALSE (default), new error replaces error stack
+    - If TRUE, new error is added to error stack
+    - If FALSE (default), new error replaces error stack
   - Example
   ```sql
   DECLARE
@@ -1584,7 +1596,7 @@ ORDER BY last_name, first_name, medication_description
 - EXCEPTION_INIT Pragma
   - The exception handler only works with named errors
   - Not all Oracle errors have names
-  - The EXCEPTION_INIT Pragma (compiler directive) allows association between an Oracle error number and a user defined error
+  - The EXCEPTION_INIT Pragma (compiler directive) adds an Oracle error number to the user defined error
   ```sql
   DECLARE
     v_zip ZIPCODE.ZIP%TYPE := '&sv_zip';

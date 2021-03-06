@@ -134,6 +134,10 @@
     - 2 pins are connected for measurement, one is the output pin, one is the Ground on the borad.
 - An Vector tables is a table of pointers which points to exception handlers.
   - Exceptions include 15 system exceptions and 240 interrupts(external exceptions)
+- Interrupt is an event that will break the current flow of the program
+  - Generally, interrupt is a subset of excenption
+  - They are hardware driven singals
+  - It helps program to run in a non-blocking manner
 - GPIO(General Purpose Input Output)
   - It has ports, like port A, port B, port C.
   - Each port has multiple pins. Each pin can take 1 bit data(either 1 or 0 at a time) in the memory addresses
@@ -148,6 +152,42 @@
   - Each pin of each port can be mapped to a certain function selected from a group, each function is corresponding to a certain functionality, listed in the table.
 
 ### Communication Protocols
+
+#### Inter-Integrated Circuit (I²C)
+
+- Developed by Philips Semiconductor, known today as NXP Semiconductors
+- Perfect for talk to sensors or EEPROM
+
+#### Serial Peripheral Interface (SPI)
+
+- It is a synchronous communication protocol
+  - synchronous communication has a separate clock line and can run at any speed
+  - The speed limitation is from the part spec and singal integrity issues due to line length and other singal' interfance
+  - 1 - 10 Mbits per second usually works on SPI connection
+- It is developed by Motorola in the 1980s
+- It is a de facto standard, it means there is no formal standard for this protocol
+- The communication is initiated by a master device, with the following 4 lines connected to the slave device:
+  - `SCK`, `CLK`, `SCK` - clock line
+  - `SDO`, `MOSI`, `COPI` - Data output for the master, connected to the `SDI` of the slave device
+  - `SDI`, `MISO`, `CIPO` - Data input for the master, connected to the `SDO` of the slave device
+  - `CS`, or `SS`, or `CS` - chip select
+    - when multiple slaves are connected to the master, slaves device can all share the save `SCK`, `SDO`, `SDI` port on the master but each slave has to have a separate `CS` connection with the master
+    - chip select lines are actively low, which means they are high by default and low only when the master is talking to the corresponding slave
+  - Alternatively, 3 lines can be used when `SDO` and `SDI` shares one line, as a result it will only be a half-duplex communication
+  - A daisy chain configuration is a type of connection that all slaves shares the `SCK` and `CS` while the `SDO` of slave A connected to the `SDI` of slave B, where only the first slave connects to the `SDO` of the master and the last slave connects to the `SDI` of the master
+- It uses separated lines for data I/O, so it is a full-duplex communication protocol
+- The master device pulse the clock singal when the `CS` line is low, the clock has the following settings:
+  - The clock polarity (CPOL) can be
+    - `0` - clock pulses idles low
+    - `1` - clock pulses idles high
+  - The clock phase (CPHA)
+    - `0` - I/O lines are sampled on the rising edge of clock pulses
+    - `1` - I/O lines are sampled on the falling edge of clock pulses
+  - SPI has four modes, based on the `CPOL` and `CPHA` values:
+    - Mode 0: `CPOL` is 0, and `CPHA` is 0 (most supported)
+    - Mode 1: `CPOL` is 0, and `CPHA` is 1
+    - Mode 2: `CPOL` is 1, and `CPHA` is 0
+    - Mode 3: `CPOL` is 1, and `CPHA` is 1
 
 #### Controller Area Network (CAN) Bus
 
@@ -310,6 +350,13 @@
 
 - It can be used to sound the alarm
 - It needs to connect with a resistor
+
+### EEPROM
+
+- Usually it cannot read and write at the same time
+- It has a max clock speed
+- It has a hold pin and write protect pin, and VCC that need to be connected to high
+- It takes instructions command as bits, instructions are enable/disable write operation, write and read data from memory on a certain address value and read and write the status register
 
 ## Shield and HATs
 

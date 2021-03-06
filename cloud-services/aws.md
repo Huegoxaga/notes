@@ -169,6 +169,10 @@ It provide computing services.
       region = aa-bbbb-n
       ```
 
+### Security Group
+
+- If ISP assigns IPv6 address to the local network, policy should include IPv6 address, e.g. `::/0` when applying allow any
+
 ## Elastic Beanstalk
 
 It deploys app on EC2 and will do capacity provisioning, load balancing, scaling, and application health monitoring automatically.
@@ -502,10 +506,26 @@ It provides support for generating serverless APIs.
 ## Amplify
 
 - It is used for hosting frontend apps and backend services
+- The backend app in amplify is a group of utility functions used to connect to serviceless cloud services, in a frontend web app project
 
 ### Amplify Console
 
-- It can be used to host Web Apps using source code from online repo provider like GitHub
+- It can be used to host full-stack Web Apps
+- It comes with a npm package that has many easy to use react component
+  - It includes a `withAuthenticator()` HOC components that will bring up the login page when the web app start to render the wrapped component without being authenticated
+    - Only works when Amplify `Auth` is setup for the backend app
+  - run `npm i @aws-amplify/ui-react` to install
+
+#### Hosting Backend
+
+- [Sandbox environments](https://sandbox.amplifyapp.com/getting-started) can be used to generate a local Amplify full-stack project for testing purpose
+  - It can be deployed onto AWS Cloud anytime later
+- Alternatively, login the AWS console and directly deploy a new backend app on the cloud, the use `Admin UI` to setup the backend
+  - A frontend app can be asscociated with the backend later
+
+#### Hosting Web App
+
+- It uss source code from online repo provider like GitHub
 - Whenever a change is pushed the app will be auto built and updated
 - Preview can be setup, so whenever a pull request is made, one can preview the changes in a browser
 - Each GitHub branch can connect to one server
@@ -513,16 +533,24 @@ It provides support for generating serverless APIs.
 
 ### Amplify CLI
 
-- It can be use to host both frontend and backend apps
+- It is an alternative to the `Admin UI`
 - setup
   1. run `sudo npm install -g @aws-amplify/cli` to install
   2. run `amplify configure` to create new aws crendentials for amplify CLI
   3. run `amplify init` from the root directory of the frontend app to create new amplify project
+     - This command will create an empty full-stack project with selected framework
 - run `amplify hosting add` to host frontend web app, there are two options:
   - hosting of static website using Amazon S3 and Amazon Cloudfront directly
   - hosting with AWS Amplify Console, there are two more options:
     - Continuous deployment - auto built and update when every a `git push` is made
     - Manual deployment - run `amplify publish` to deploy app from local machine
+- run `amplify add auth` to create the authentication resources for the app
+- run `amplify add api` to create `REST` or `GraphQL` APIs
+  - `GraphQL` allows user to request the exact information they need usually with a graphical tool
+    - `REST` only rests information with a pre-defined format
+  - It uses `DynamoDB`, `S3`, `Aurora MySQL`(`GraphQL`) as data sources
+  - `GraphQL` APIs are implemented by `AWS AppSync` (a managed GraphQL service)
+  - `REST` APIs are implemented by `API Gateway`
 - run `amplify console` to open Amplify Console
 - run `amplify status` check the status of running services
 - run `amplify delete` delete all the environments of the project from the cloud and wipe out all the local files created by Amplify CLI

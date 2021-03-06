@@ -42,7 +42,7 @@
   - `.` is the current directory
   - `..` is the previous directory
   - `~` is the home directory
-  - `*` means all
+  - `*` matches all non-dot-files
 - absolute path starts with `/` from root folder.
 - In Linux, files that start with a dot ( . ) are considered hidden files
 - Linux System has the following files structure.
@@ -162,6 +162,8 @@
 - `sleep <numberOfSecond>` pause the shell for a certain number of seconds.
 - `mount <deviceTypeLocation> <folderPath>` mount a device to a folder.
 - `mount <deviceTypeLocation>`. unmount a device.
+  - `/etc/fstab` is a list of filesystems to be mounted at boot time
+  - `/etc/mtab` is a list of currently mounted filesystems
 - `source <FileName>`, it can be used to load any functions file into the current shell script or a command prompt. It read and executes commands from given FILENAME.
 - `alias` it will list all the alias the shell current have.
   - To add new alias temperately run `alias shortcut="fullCommand"`
@@ -195,7 +197,10 @@
 - `head -3 /var/log/syslog` view first 3 lines of the log
   - `head /var/log/syslog` view first 10 lines of the log, by default
 - `wc <textFile>` return the file line count, word count, and byte count
-  - `-l` count the number of lines in a file
+  - `-c` byte count
+  - `-l` line count
+  - `-m` character count
+  - `-w` word count
   - `<command> | wc -l` count lines of output from a command using pipe
 - `cut -b 1,2,3 <file.txt>` returns the first, second, third bytes of each line
   - Tabs and backspaces are treated like as a character of 1 byte
@@ -443,7 +448,8 @@
   - `-y`, `--yes`, `--assume-yes`, Automatic yes to prompts
   - `apt-get install <PackageName>`
   - `apt-get update` update package list
-  - `apt-get dist-upgrade` will install or remove packages as necessary to complete the upgrade,
+  - `apt-get dist-upgrade` will install or remove packages as necessary to complete the upgrade
+    - `apt-get upgrade` will only install upgrade and possibly fail due to conflicts
   - `apt-get remove <PackageName>` uninstall a package
   - `apt-get purge <PackageName>` uninstall a package and remove all its config files.
   - `apt-get -f install` fix broken dependencies.
@@ -1240,3 +1246,7 @@ server_name example.com web.example.com;
 - `python3 -m <module>` run module as a script using python3
 - `python3 <filename.py>` run a script using python3
 - `python3 -c "x=1+1; print(x)"` run python code separate by `;`
+
+### screen
+
+- `screen /dev/tty.devicename <BaudRate>` start serial terminal session

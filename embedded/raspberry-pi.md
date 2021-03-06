@@ -29,7 +29,7 @@
 - All current models uses micro SD card.
   - Most OS requires 8GB SD card. Windows 10 IoT Core requires class 10 card.
   - [Click here](https://elinux.org/RPi_SD_cards) to verify the SD card compatibility
-- Raspberry Pi uses 5V DC power supply, but thecurrent capacity varies based on model types. [Click](https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md) to see the required power supply
+- Raspberry Pi uses 5V DC power supply, but the current capacity varies based on model types. [Click](https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md) to see the required power supply
   - A stable power supply will help the board and SD card healthy
 - Raspberry Pi Zero
   - It has camera connector for 1.3 version only. with a 0.5mm cable.
@@ -59,11 +59,11 @@
 
 ## Setup
 
-- Ether is a great tool to flash SD cards.
+- Etcher is a great tool to flash SD cards.
   - [Click here](https://www.balena.io/etcher/) to download
   - Optionally, use the official tool [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to download and flash SD card with one click.
 - [Clich here](https://www.raspberrypi.org/downloads/raspberry-pi-os/) to download the OS that will be flashed to the SD card.
-- Install etcher and download the OS image in a `zip` file then use the Ethcher software to flash the OS onto the SD card.
+- Install etcher and download the OS image in a `zip` file then use the Etcher software to flash the OS onto the SD card.
 - Plug in the SD card, connect Raspberry Pi to a screen and input devices, then boot up the device.
 - Backup
   - For Window machine, use the [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/) and read from the SD card to an image file.
@@ -75,7 +75,7 @@
   - The settings are always available in system config GUI or CLI.
   - The initial username is `pi`, password is `raspberry`
 - Enable the peripherals of the board in the interfaces page of the Raspberry Pi Configuration menu.
-  - Raspberry Pi Camera is enabled here after plug it in.
+  - Raspberry Pi Camera can be enabled here
 - When the board has no input and output devices connected, it is in a headless mode. Follow the step to configure the board in headless mode.
   - After flash the SD card, add the `wpa_supplicant.conf` file for WiFi setup to the SD card root folder with the following content.
     ```
@@ -93,7 +93,7 @@
     - try `ping raspberrypi` to get the board IP.
 - VNC Server can allows to view the GUI interface of the OS from any client
   - Enable the VNC Server in `sudo raspi-config`.
-  - [Click](https://www.realvnc.com/en/connect/download/viewer/) to download the VNC, then connect to the board by entering the PI's IP in the search bar to view its GUI.
+  - [Click](https://www.realvnc.com/en/connect/download/viewer/) to download the VNC on remote machine, then connect to the board by entering the PI's IP in the search bar to view its GUI.
     - Login to a VNC account for both VNC server and VNC viwer allows remote connection through cloud without using shared WiFi.
 - It has a `Thonny Python IDE` which can run and debug python progarm that interact with peripherals using peripherals's own python libraries(Ex, `GPIO` and `PiCamera`).
 - Turning the board into an Alexa device
@@ -129,7 +129,7 @@
 
 - GPIO can be controled in various language.
 
-### Python Library
+#### Python Library
 
 - Example I/O
   ```py
