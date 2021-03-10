@@ -233,3 +233,11 @@ const { NAME, getName, getAge } = require("filePath");
 - It is a package that contains the moment package, plus timezone database
 - [Click Here](https://momentjs.com/timezone/) to view its official website
 - After installation, `require('moment-timezone')` will have the momnet object with timezone feature enabled
+
+## pm2
+
+- Production manager 2 runs the npm app in the backgroud on a server
+- `npm install pm2 -g` install
+- In project folder `sudo pm2 start app.js` run the app
+- `sudo pm2 startup` automatically start the app after reboot
+- `pm2 list` or `pm2 show app` check the current running apps

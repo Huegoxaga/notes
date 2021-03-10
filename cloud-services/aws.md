@@ -511,10 +511,6 @@ It provides support for generating serverless APIs.
 ### Amplify Console
 
 - It can be used to host full-stack Web Apps
-- It comes with a npm package that has many easy to use react component
-  - It includes a `withAuthenticator()` HOC components that will bring up the login page when the web app start to render the wrapped component without being authenticated
-    - Only works when Amplify `Auth` is setup for the backend app
-  - run `npm i @aws-amplify/ui-react` to install
 
 #### Hosting Backend
 
@@ -530,6 +526,14 @@ It provides support for generating serverless APIs.
 - Preview can be setup, so whenever a pull request is made, one can preview the changes in a browser
 - Each GitHub branch can connect to one server
 - The Domain management setting page can create and manage domain with SSL certificate
+- The GitHub repo needs to have the third party accession restriction disabled in the setting before connecting to Ampliify, otherwise it won't be shown in the repo list
+
+### Amplify React
+
+- It comes with a npm package that has many easy to use react component
+  - It includes a `withAuthenticator()` HOC components that will bring up the login page when the web app start to render the wrapped component without being authenticated
+    - Only works when Amplify `Auth` is setup for the backend app
+  - run `npm i @aws-amplify/ui-react` to install
 
 ### Amplify CLI
 

@@ -613,6 +613,12 @@ def about(request):
 - Add comment for a serializer fields, `name = serializers.BooleanField(required=False, help_text="description")`
 - Add comment for a model fields, `field_name = models.FloatField(default=0, help_text="Field Description", verbose_name="Title")`
 
+#### RapiPDF
+
+- It can be used to generate docs and export docs as PDF
+- It takes the json format docs link as input
+- [Click here](https://mrin9.github.io/RapiPdf/) for more details
+
 ### Cache
 
 - import the following

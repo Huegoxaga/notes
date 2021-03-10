@@ -50,6 +50,9 @@
   - If the host machine has an ARM CPU, install the `ARM` images for some older versions of the SDK platforms
 - Open Andriod Virtual Device(AVD) Manager and configure and create a new virtual device with image files that run the same version as the development SDK
   - Cold Boot is a Boot Option that will clear the device memory, it is better for debug but it will be slower than Quick Boot
+- Emulator side menu
+  - rotate the device
+  - change the device location
 
 #### GenyMotion
 
@@ -90,12 +93,30 @@
 ### `java` folder
 
 - It can access variables or reference that imported from `R`
-- Values from `strings.xml` can be loaded using `getString()`, e.g. `String name = getString(R.string.name)`
+- Values from `strings.xml` can be loaded using `getString()`, e.g. `String name = getString(R.string.name)` or `getString(R.string.hello, "Variable One", "Variable Two");`
   - use `getResources().getStringArray(R.array.weekdays);` to load arrays
 - `onCreate()` is called once during app launch or after orientation of the app is changed
   - All code for initialization and should be placed here
   - Variables can be declared at the top inside the class as `private ClassName var;`, but they need to be initialized inside `onCreate()`
-- Explicitly ask for permissions(API Levels >=23) `ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.PERMISSION_TYPE}, 1);`
+- check and ask for permissions
+  ```java
+  if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS != PackageManager.PERMISSION_GRANTED) {
+    ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.RECEIVE_SMS}, 1);
+  }
+  ```
+  - The request is asynchronous, so you can't confirm immediately whether or not it was granted, therefore a callback can be used
+  - The `1` in the `requestPermissions()` parameter is the result code reported to permission result callback, should be >= 0
+  - `onRequestPermissionsResult()` will be invoked whenever a permission is granted
+  ```java
+    @Overridepublic void onRequestPermissionsResult(int resultCode, String permissions[], int[] results ) {
+    switch (resultCode) {
+      case 1:
+        if (results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED) {
+          // initialize permission dependent service here
+        }
+    }
+  }
+  ```
   - For security reason, multiple popups are not allowed
   - The security issue involves attempting to confuse a user by asking for permissions, but hiding the exact message with another overlay
 - Inflater should be used when loading a layout during runtime
@@ -105,6 +126,7 @@
 - In an android app, each page is called an activity
 - The main activity is the first screen to appear when the user launches the app
 - Each activity is only loosely bound to the other activities
+- It extends from Context class
 - Only one activity can have focus and be responding to events from the user such as touch events
 - Each activity is a customized class in the Java code
 - like programming paradigms in which apps are launched with a main() method, the
@@ -121,6 +143,7 @@
 - Navigate from one activity to another is actually add a new activity to the top of a stack,
   - all activities in the stack is stored in the memory
   - the phone’s back button can return to the previous activity with `onResume()`, the top activity might be destroyed if memory is low
+- If this activity has no `setContentView()` and ends with `finish()` it will not inflate any layout
 
 #### Event Handler
 
@@ -442,12 +465,28 @@ String formattedText = "Formatted as: " + formatter.format(date);
   // And finally show it
   myToast.show();
   ```
+- When only Context is provided use `getSystemService()` to get the layout inflater
+  ```java
+  // To show a toast with a custom layout - need to inflate the layoutLayout
+  LayoutInflater myLayout = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+  View customtoast = myLayout.inflate(R.layout.message_output_layout, null);
+  // Now build the Toast - adjust settings
+  Toast myToast = new Toast(context);
+  // set the view duration
+  myToast.setDuration(Toast.LENGTH_LONG);
+  // position the toast at the center of the screen
+  myToast.setGravity(Gravity.CENTER, 0, 0);
+  // set connect the custom layout (deprecated)
+  myToast.setView(customtoast);
+  // And finally show it
+  myToast.show();
+  ```
 
 #### Snackbar
 
 - It has some properties similar to toasts
 
-#### MyReceiver
+#### Broadcast Receiver
 
 - Receive broadcast information as subscriber
 - Works in the background, as long as the permission is granted
@@ -466,7 +505,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
     // Launch main activity when a message is received
     Intent myIntent = new Intent(context, MainActivity.class);
     myIntent.putExtra(MSG, msg);
-    // Set the New Activity Flags
+    // Set one or more New Activity Flags
     myIntent.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_NEW_TASK);
     context.startActivity(myIntent);
     // Use getIntent(); in MainActivity to get data in putExtra()
@@ -478,6 +517,112 @@ String formattedText = "Formatted as: " + formatter.format(date);
   - `FLAG_ACTIVITY_CLEAR_TOP`
     - If the activity being launched is already running in the current task, then instead of launching a new instance of that activity, all of the other activities on top of it will be closed and this Intent will be delivered to the (now on top) old activity as a new Intent.
   - `FLAG_ACTIVITY_CLEAR_TASK` If set in an Intent passed to Context#startActivity, this flag will cause any existing task that would be associated with the activity to be cleared before the activity is started. This way, when you load that `FLAG_ACTIVITY_NEW_TASK`, and you hit the back button, you won't end up back at a login or sign up screen. That'd be a little awkward for our users if they were already logged in and hit it by accident.
+
+#### Location Manager
+
+- Add permission in manifest and initialize in `onRequestPermissionsResult()` in main if permission is granted
+  ```java
+  @Overridepublic void onRequestPermissionsResult(int resultCode, String permissions[], int[] results ) {
+    Log.d(TAG, "onRequestPermissionsResult");
+    switch (resultCode) {
+      case 1:
+        if (results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED) {
+          LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+          // update every 5 seconds
+          lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000, 0, this);
+          lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,5000, 0, this);
+        }
+    }
+  }
+  ```
+- Implementing the Location Listener
+  ```java
+  @Override
+  public void onStatusChanged(String provider, int status, Bundle extras) {
+    // get invoked once provider is changed to enabled or disabled
+  }
+  @Override
+  public void onProviderEnabled(String provider) {
+    // get invoked once provider is changed to enabled
+  }
+  @Override
+  public void onProviderDisabled(String provider) {
+    // get invoked once provider is changed to disabled
+  }
+  @Override
+  public void onLocationChanged(Location location) {
+    // Location Changed
+    double loclat = location.getLatitude();
+    double loclong = location.getLongitude();
+    Toast.makeText(this, loclat + " : " + loclong, Toast.LENGTH_LONG).show();
+    Log.d(TAG, "onRequestPermissionsResult");}
+  ```
+
+#### ListView
+
+- Use ListView to display a string of array into a list
+  ```java
+  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myStringList);
+  // get the number of elements
+  Log.d(TAG, "adapter getCount() = " + adapter.getCount());
+  ListView randList = findViewById(R.id.listView);
+  // associate an adapter with the list
+  randList.setAdapter(adapter);
+  ```
+- Predefined list item layout:
+  - `android.R.layout.simple_list_item_1`
+  - `android.R.layout.simple_list_item_2`
+  - `android.R.layout.two_line_list_item`
+- To handle items click, register the listener `randList.setOnItemClickListener(this::onItemClick);`, then define `public void onItemClick(AdapterView parent, View v, int position, long id) {}`
+
+#### AsyncTask
+
+- It is good for running short operations in the background in a non-blocking manner
+- It also forces serialization, so that only one AsyncTask runs at a time
+- AsyncTask class definition
+  ```java
+  public class TestAsyncTask extends AsyncTask<String, Void, String> {
+    public static final String TAG = "==TestAsynchTask==";
+    /**
+    * Called as soon as asynch tasks starts.
+    */
+    @Override
+    protected void onPreExecute() {
+      super.onPreExecute();
+      Log.d(TAG,"onPreExectue");
+    }
+    /**
+    * Called when asynch task finishes. Prints the result.
+    * @param result string passed in from background task.
+    */
+    @Override
+    protected void onPostExecute(String result) {
+      super.onPostExecute(result);
+      Log.d(TAG, result);
+    }
+    /**
+    * Runs in a nonblocking background thread for you.
+    * @param string parameters passed in from execute
+    * @return value sent back to onPostExecute()
+    */
+    @Override
+    protected String doInBackground(String... strings) {
+      MainActivity.taskFunction("Asynch", strings[0]);
+      String result = "Finished Job\n";
+      for (String s : strings) {
+        result += s + "\n";
+      }
+      return result;
+    }
+  }
+  ```
+- Run async task in `MainActivity.java`
+  ```java
+    // Start Async Background Thread, pass parameters
+    TestAsyncTask dl = new TestAsyncTask();
+    dl.execute("parameterA", "parameterB", "parameterC");
+  }
+  ```
 
 ### `manifests` folder
 
@@ -491,8 +636,14 @@ String formattedText = "Formatted as: " + formatter.format(date);
     - Each component must define basic properties such as the name of its Kotlin or Java class
   - The permissions that the app needs in order to access protected parts of thesystem or other apps
   - The hardware and software features the app requires, which affects which devices can install the app from Google Play
-- Permissions are added here and users will be asked to grant these permission when the app is first launched, they should be added at the top
-  - `<uses-permission android:name="android.permission.RECEIVE_SMS" />` permission to read new SMS messages
+- Permissions are added here and users will be asked to grant these permission when the app is first launched, they should be added at the top inside `<manifest></manifest>`
+  - Normal permissions: allow access to data and actions that extend beyond your app's sandbox. However, the data and actions present very little risk to the user's privacy, and the operation of other apps.
+    - `<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />`
+    - `<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />`
+  - Runtime permissions: also known as dangerous permissions, give your app additional access to restricted data, and they allow your app to perform restricted actions that more substantially affect the system and other apps. Therefore, you need to request runtime permissions in your app before you can access the restricted data or perform restricted actions.
+    - `<uses-permission android:name="android.permission.RECEIVE_SMS" />` permission to read new SMS messages
+  - Special permissions: Special permissions correspond to particular app operations. Only the platform and OEMs can define special permissions. Additionally, the platform and OEMs usually define special permissions when they want to protect access to particularlypowerful actions, such as drawing over other apps.
+    - `<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />` Screen Overlay Permission, allows the app draw over another one without the screen overlay warning
 
 ##### Application Element
 
@@ -517,6 +668,8 @@ String formattedText = "Formatted as: " + formatter.format(date);
   </receiver>
   ```
   - This info is registered through the Android OS, it will be executed even the app is not running
+  - In Android 7.0 (API level 24) picture and video broadcasts were removed to improve general performance
+  - In Android 8.0you cannot use the manifest to declare a receiver for most implicit broadcasts (broadcasts that don't target your app specifically).
 
 ##### Activity Element
 
@@ -623,6 +776,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
 - It stores all the hardcoded strings
 - The file has parent element `<resources></resources>`
 - It consisted of multiple string records as `<string name="key">value</string>`
+  - It can hold formatted string with variable specified in java code, `<string name="hello">Fragment %1$s The Switch is %2$s</string>`
 - It can stores arrays as `<string-array name="key"><item>A</item><item>B</item><item>C</item></string-array>`
 - It can be used in Java code as `R.string.string_name`
 - It can be used in XML code or the layout attribute panel as `@string/string_name`

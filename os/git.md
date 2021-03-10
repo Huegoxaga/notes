@@ -75,16 +75,25 @@
   - To sync remote branch names, delete the remote `<oldbranch>`, and push the `<newbranch>`.
 - `git branch -M <newbranch>` create new branch then checkout to the new branch
 - `git branch -d branchName` Delete the branch locally.
+- `git push -d origin <BranchName>` Delete remote branch
 - `git branch --set-upstream-to <remoteBranchName>` or `git branch -u <remoteBranchName>` set the remote tracking branch for the local branch.
 - `git push origin --delete branchName` Delete the branch in the remote repos.
 - `git checkout branchName` Switch branch.
 - `git checkout -b branchName` create a new branch and switch to that branch.
+- `git fetch origin && git checkout -b remoteBranchName origin/remoteBranchName` add a new remote branch to local
 - `git merge` Combines remote tracking branch into current local branch.
 - `git merge branchName` Merge certain branch to the current branch, when done input commit message.
 - `git merge origin/remoteBranch --no-commit --no-ff` Merge certain remote branch to the current branch, when done input commit message.
   - When making pull request that will not be able to auto-merged, merge code locally then push it, then auto merge for the pull request will be enabled.
+    - When merge a branch into master, checkout the this branch run `git merge master`, then checkout to master run `git merge --no-ff --no-commit <BranchName>` then commit and push
   - The `--no-ff` flag prevents git merge from executing a `fast-forward`
+    - `fast-forward` will replace the header pointer without creating new commit if no changes are made
   - `--ff-only` means fast-forward only.
+- `git rebase` similar to merge but keep all the commit records of the merging branch into the master branch after it is merged, example usage:
+  1. `git checkout branch`
+  2. `git rebase master`
+  3. `git checkout master`
+  4. `git merge branch`
 
 #### Working with Remote Repository
 
