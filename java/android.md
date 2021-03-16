@@ -144,6 +144,7 @@
   - all activities in the stack is stored in the memory
   - the phone’s back button can return to the previous activity with `onResume()`, the top activity might be destroyed if memory is low
 - If this activity has no `setContentView()` and ends with `finish()` it will not inflate any layout
+- Declare `private static Activity currentActivity = null;` in the activity class and assign `currentActivity = this;` in the `onCreate()` method so the current state of the acivity can be accessed by other classes at runtime
 
 #### Event Handler
 
@@ -623,6 +624,198 @@ String formattedText = "Formatted as: " + formatter.format(date);
     dl.execute("parameterA", "parameterB", "parameterC");
   }
   ```
+- Example async task for download data from APIs
+  ```java
+  public class DownloadAsyncTask extends AsyncTask<String, Void, String> {
+    public static final String TAG = "==MainActivity==";
+    /**
+      * Download data from the supplied URL, catch exceptions
+      * @param params - first parameter is the URL
+      * @return a string that concatenates all of the output together, null on failure
+      */
+    @Override
+    protected String doInBackground(String... params) {
+      Log.d(TAG, "Starting Background Task");
+      StringBuilder results = new StringBuilder();
+      try {
+        URL url = new URL(params[0]);
+        String line = null;
+        // Open the Connection - GET is the default setRequestMethod
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        // Read the response
+        int statusCode = conn.getResponseCode();
+        if (statusCode == 200) {
+          InputStream inputStream = new BufferedInputStream(conn.getInputStream());                BufferedReader bufferedReader =new BufferedReader(new InputStreamReader(inputStream,"UTF-8"));while ((line = bufferedReader.readLine()) != null) {
+            results.append(line);
+            }
+          }
+          Log.d(TAG, "Data received = " + results.length());
+          Log.d(TAG, "Response Code: " + statusCode);
+        } catch (IOException ex) {
+          Log.d(TAG, "Caught Exception: " + ex);
+        }
+        return results.toString();
+      }
+      /**
+        * called after doInBackground completes
+        * After download has completed associate, parse results, update view
+        * @param result - do nothing if results == null
+        */
+      protected void onPostExecute(String result) {
+        FairList fairlist = null;
+        if (result == null) {
+          Log.d(TAG, "no results");
+        } else {
+          Gson gson = new Gson();
+          fairlist = gson.fromJson(result, FairList.class);
+        }
+        // fetch the current activity so we can lookup the ListView
+        Activity currentActivity = MainActivity.getCurrentActivity();
+        ListView lv = currentActivity.findViewById(R.id.listView);
+        if (fairlist != null) {
+          // if we populated fairlist then connect the adapter
+          ArrayAdapter<Projects> adapter =new ArrayAdapter<Projects> (currentActivity, android.R.layout.simple_list_item_1, fairlist);
+          lv.setAdapter(adapter);
+        } else {
+          // clear the list
+          lv.setAdapter(null);
+        }
+      }
+  ```
+
+#### SQLiteOpenHelper
+
+- A helper class to define, create, and update database schema with version management
+  ```java
+  public class MyDbHelper extends SQLiteOpenHelper {
+    public static final String DATABASE_NAME = "MyDatabase.db";
+    // version number of the database (starting at 1); if the database is older, onUpgrade(SQLiteDatabase, int, int) will be used to upgrade the database; if the database is newer, onDowngrade(SQLiteDatabase, int, int) will be used to downgrade the database.
+    public static final int DATABASE_VERSION = 1;
+    // This is the SQL Statement that will be executed to create the table and columns
+    // "_id" is recommended to be a standard first column and primary key
+    private static final String SQL_CREATE ="CREATE TABLE mytable ( _id INTEGER PRIMARY KEY, title TEXT,  subtitle TEXT) ";
+    public MyDbHelper(Context context) {
+      // the third parameter is SQLiteDatabase.CursorFactory: to use for creating cursor objects, or null for the default This value may be null.
+      super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+      db.execSQL(SQL_CREATE);
+    }
+      @Override
+    public void onOpen(SQLiteDatabase db) {
+      // invoked when getWriteableDatabase() is called for the first time
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+      // This is only called if the DATABASE_VERSION changes
+      // Possible actions - delete table (ie DROP TABLE IF EXISTS mytable), then call onCreate
+    }
+  }
+  ```
+- In main activity class, create a global instance of our SQL Helper class, `MyDbHelper mydbhelp = new MyDbHelper(this);`, then get an instance of the database using the helper `classSQLiteDatabase db = mydbhelp.getWritableDatabase();` before starting accessing the database
+  - call `mydbhelp.close()` when done
+- The database is not actually created or opened until one of `getWritableDatabase()` or `getReadableDatabase()` is called
+- The `db` object of the `classSQLiteDatabase` instance can do
+  - `long newrowID = db.insert("mytable",null, values);`
+    - values is a `ContentValues` class object, each one represents a record with multiple columndata
+    ```java
+    ContentValues values = new ContentValues();
+    values.put("title", title.getText().toString());
+    values.put("subtitle", subtitle.getText().toString());
+    ```
+    - the second parameter expects a list of the column names for insert, when `null` all column will be changed in the update
+  - `int i = db.update(mydbhelp.TABLE_NAME,contentValues, mydbhelp._ID + " = " + _id, null);`
+  - `db.delete(mydbhelp.TABLE_NAME, mydbhelp._ID + "=" + _id, null);}`
+- Cursor - represents the entire result set of the query
+  - Once the query is fetched a call to `cursor.moveToFirst()` is made, calling moveToFirst() does two things:
+    - It allows us to test whether the query returned an empty set (by testing the return value)
+    - It moves the cursor to the first result (when the set is not empty)
+  ```java
+  public Cursor fetch() {
+    String[] columns = new String[] {
+      mydbhelp._ID, mydbhelp.SUBJECT, mydbhelp.DESC
+    };Cursor cursor = db.query(mydbhelp.TABLE_NAME, columns,null, null, null, null, null);
+    if (cursor != null) {
+      cursor.moveToFirst();
+      }
+      return cursor;
+    }
+  ```
+  - Read cursor in main activity
+  ```java
+  public class ListActivity extends AppCompatActivity {
+    // Create a global instance of our SQL Helper class
+    MyDbHelper mydbhelp = new MyDbHelper(this);
+    /**
+      * onCreate - get an instance of our database, use a cursor to display the values
+      * @param savedInstanceState (default)
+      */@Overrideprotected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_list);
+      // Get an instance of the database using our helper
+      classSQLiteDatabase db = mydbhelp.getReadableDatabase();
+      // A projection defines what fields we want to retrieve.
+      String[] projection = { "_id, title, subtitle" };
+      // db.query will retreive the data and return a Cursor to access itCursor
+      mycursor = db.query("mytable", projection, null,null, null, null, null);
+      String results = "";
+      // Loop through our returned results from the
+      startwhile(mycursor.moveToNext()) {
+        String title = mycursor.getString( mycursor.getColumnIndex("title") );
+        String subtitle = mycursor.getString( mycursor.getColumnIndex("subtitle") );
+        long itemID = mycursor.getLong( mycursor.getColumnIndex("_id") );
+        // We could add our results to an array, or process them here if we wantresults += itemID + " " + title + " " + subtitle + "\n";  // XXX hackish}
+        // Close the cursor when we're donemy
+        cursor.close();
+        // Show our
+        resultsTextView output = (TextView) findViewById(R.id.outputtext);
+        output.setText(results); // XXX TODO fix this
+        }
+      }
+    }
+  ```
+  - For `db.query()`, `mycursor = db.query("mytable", columns, whereClause, whereArgs, groupBy, having, orderBy);`
+    - for where clause include `?` for things that are dynamic
+    - `whereArgs` assign values in `?` used in the `whereClause` in the order they appear
+    - For example:
+    ```java
+    String[] tableColumns = new String[] {"column1","(SELECT max(column1) FROM table2) AS max"};
+    String whereClause = "column1 = ? OR column1 = ?";
+    String[] whereArgs = new String[] {"value1","value2"};
+    String orderBy = "column1";
+    Cursor c = sqLiteDatabase.query("table1", tableColumns,whereClause, whereArgs, null, null, orderBy);
+    int idx = c.getColumnIndex("max");
+    ```
+
+##### Cursor
+
+#### Useful Libraries
+
+##### GSON
+
+- Gson (also known as Google Gson) is an open-source Java library to serialize anddeserialize Java objects to (and from) JSON
+- add `implementation 'com.google.code.gson:gson:2.8.6'` explicitly to `gradle.build` file at the application level in the dependencies section before use
+- Right click the folder that contains the java files you are working with and create new java class files each with the following classes
+- To use GSON declare a data model
+  ```java
+  public class Projects {
+    public String   _id;
+    public String   Year;
+    public String   ProjectNum;
+    public String   Title;
+    @Override
+    public String toString() {
+      return Year + " " + ProjectNum + " " + Title;
+    }
+  }
+  ```
+- Declare a data model list
+  ```java
+  public class FairList extends ArrayList<Projects> {
+    private static final long serialVersionUID = 1L;
+  }
+  ```
 
 ### `manifests` folder
 
@@ -637,10 +830,12 @@ String formattedText = "Formatted as: " + formatter.format(date);
   - The permissions that the app needs in order to access protected parts of thesystem or other apps
   - The hardware and software features the app requires, which affects which devices can install the app from Google Play
 - Permissions are added here and users will be asked to grant these permission when the app is first launched, they should be added at the top inside `<manifest></manifest>`
-  - Normal permissions: allow access to data and actions that extend beyond your app's sandbox. However, the data and actions present very little risk to the user's privacy, and the operation of other apps.
+  - Normal permissions: allow access to data and actions that extend beyond your app's sandbox. However, the data and actions present very little risk to the user's privacy, and the operation of other apps. It doesn't require any special dialogs to ask for permission
+    - `<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />`
+    - `<uses-permission android:name="android.permission.INTERNET" />`
+  - Runtime permissions: also known as dangerous permissions, give your app additional access to restricted data, and they allow your app to perform restricted actions that more substantially affect the system and other apps. Therefore, you need to request runtime permissions in your app before you can access the restricted data or perform restricted actions.
     - `<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />`
     - `<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />`
-  - Runtime permissions: also known as dangerous permissions, give your app additional access to restricted data, and they allow your app to perform restricted actions that more substantially affect the system and other apps. Therefore, you need to request runtime permissions in your app before you can access the restricted data or perform restricted actions.
     - `<uses-permission android:name="android.permission.RECEIVE_SMS" />` permission to read new SMS messages
   - Special permissions: Special permissions correspond to particular app operations. Only the platform and OEMs can define special permissions. Additionally, the platform and OEMs usually define special permissions when they want to protect access to particularlypowerful actions, such as drawing over other apps.
     - `<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />` Screen Overlay Permission, allows the app draw over another one without the screen overlay warning
@@ -711,8 +906,8 @@ String formattedText = "Formatted as: " + formatter.format(date);
   - `android:orientation` can be either `"vertical"` or `"horizontal"`
   - `android:layout_weight` controls how much space it takes
     - set `android:layout_height`(when vertical) or `android:layout_height`(when horizontal) to `0dp` and `android:layout_weight` to `1` can make all component evenly distributes with zero space in between
-- `<RelativeLayout>`
-  - It defines elements relative to others(legacy)
+- `<RelativeLayout>` (legacy)
+  - It defines elements relative to sibling elements (such as to the left-of or below another view) or parents (such as aligned to the bottom, left or center)
   - `android:layout_centerHorizontal="true"`, `android:layout_centerVertical="true"`, `android:layout_centerInParent="true"` for centering elements
 - `<ConstraintLayout>`
   - It defines elements relative to others

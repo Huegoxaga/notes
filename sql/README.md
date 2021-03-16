@@ -1225,6 +1225,7 @@ ORDER BY last_name, first_name, medication_description
 - `PL` blocks can be named or anonymous
 - Named blocks can be stored in the database
 - Blocks can be nested
+- END block types need to have `;`
 - Structure
   ```sql
   DECLARE
@@ -1237,13 +1238,13 @@ ORDER BY last_name, first_name, medication_description
     id CONSTANT NUMBER := 7;
   BEGIN
     -- Mandatory, Executable statements
-    -- Use || between variable names for formatted output
-    SELECT first_name||' '||last_name
+    -- Use || between variable names and strings
+    SELECT first_name, last_name
     INTO v_first_name, v_last_name
-    FROM students
+    FROM student
     WHERE student_id = id;
     -- OUTPUT
-    BMS_OUTPUT.PUT_LINE ('Student name: '||first_name ||' '|| last_name);
+    DBMS_OUTPUT.PUT_LINE ('Student name: '||first_name ||' '|| last_name);
   EXCEPTION
     -- Exception-handling statements
     WHEN NO_DATA_FOUND THEN
@@ -1254,7 +1255,7 @@ ORDER BY last_name, first_name, medication_description
 #### Substitution Variables
 
 - Substitution variables get processed at run time
-- Substitution Variables, prompt for input after execution, `i_student_id NUMBER := &input_student_id;`
+- Substitution Variables, prompt for input in a pop-up after execution, `i_student_id NUMBER := &input_student_id;`
 - If a substitution variable appears more than once and `&` is used, substitution is prompted for each time
   - Use `&&` to prompt only once
 - When prompting to fill a text variable, enclose substitution variable in quotes, `name VARCHAR2(5) := '&input_name';`
@@ -1264,8 +1265,8 @@ ORDER BY last_name, first_name, medication_description
 - IF
   ```sql
   DECLARE
-    v_num1 NUMBER := 5;
-    v_num2 NUMBER := 3;
+    v_num1 NUMBER := &first_number;
+    v_num2 NUMBER := &second_number;
     v_temp NUMBER;
   BEGIN
   -- if v_num1 is greater than v_num2 rearrange their values
@@ -1478,8 +1479,7 @@ ORDER BY last_name, first_name, medication_description
   BEGIN
     WHILE v_counter < 5 LOOP
       DBMS_OUTPUT.PUT_LINE ('v_counter = '||v_counter);
-      -- decrement the value of v_counter by one
-      v_counter := v_counter - 1;
+      v_counter := v_counter + 1;
     END LOOP;
   END;
   ```
@@ -1500,8 +1500,6 @@ ORDER BY last_name, first_name, medication_description
     END LOOP;
   END;
   ```
-- BREAK
-  - It is used to break the loop.
 - CONTINUE - Used to advance to the next iteration of a loop
   ```sql
   DECLARE
@@ -1553,10 +1551,10 @@ ORDER BY last_name, first_name, medication_description
       DBMS_OUTPUT.PUT_LINE ('An id cannot be negative');
   END;
   ```
-- Reraise Exceptions
+- Reraise Exceptions - raise twice, new error replace old in the output
   ```sql
   -- outer block
-  DECLARE   e_exception EXCEPTION;
+  DECLARE e_exception EXCEPTION;
   BEGIN
     -- inner block
     BEGIN
@@ -1570,7 +1568,7 @@ ORDER BY last_name, first_name, medication_description
       DBMS_OUTPUT.PUT_LINE ('An error has occurred');
   END;
   ```
-- RAISE_APPLICATION_ERROR gives an error more of an Oracle look and feel
+- RAISE_APPLICATION_ERROR gives an error with more of an Oracle look and feel
   , `RAISE_APPLICATION_ERROR(error_number, error_message[, keep_errors])`
   - `error_number`: -20,999 to -20,000
   - `error_message`: up to 2,048 characters
@@ -1621,7 +1619,8 @@ ORDER BY last_name, first_name, medication_description
 
 - When Oracle processes a SQL statement, it creates an area of memory known as the context area
 - Implicit Cursor - SQL engin utlize cursors internally to complete tasks
-- Explicit Cursor
+- Explicit Cursor - It returns an array of records with defines row element types
+- To use a cursor, one needs to:
   - Declare the cursor (SELECT statement)
   - Open the cursor
   - Fetch the cursor (one row at a time, usually in a loop)
@@ -1647,6 +1646,13 @@ ORDER BY last_name, first_name, medication_description
   - `%FOUND` – Boolean that returns TRUE if previous FETCH returned a row
   - `%ROWCOUNT` – Number of records fetched from a cursor at that point in time
   - `%ISOPEN` – Boolean that returns TRUE if the cursor is open
+  ```sql
+  EXCEPTION
+    WHEN OTHERS THEN
+      IF c_student%ISOPEN THEN
+        CLOSE c_student;
+      END IF;
+  ```
   - Attributes are appended to name of cursor, ex. `c_zip%ROWCOUNT`
   - For implicit cursor, use `SQL%ROWCOUNT`
 - Cursor FOR Loops
@@ -1656,16 +1662,70 @@ ORDER BY last_name, first_name, medication_description
     CURSOR c_student IS
       SELECT student_id, last_name, first_name
         FROM student
-        WHERE student_id < 110;
+        WHERE rownum <= 5;
   BEGIN
-    FOR r_student IN c_student
-    LOOP
+    FOR r_student IN c_student LOOP
       INSERT INTO table_log
         VALUES(r_student.last_name);
     END LOOP;
   END;
   ```
+  - `ROWNUM` in cursor definition returns a number indicating the order in which a row was selected from a table
+  - Cursor FOR loops handle opening, fetching and closing cursors implicitly
   - Cursor FOR Loops can be nested
+  - Cursor can have variables in its definition, the value of the variable will be accessed before acessing the cursor
+- Cursors with Parameters
+  - Like passing a parameter to a method
+  - Different values can be provided at run time
+  ```sql
+  DECLARE
+    CURSOR c_zip(p_state IN zipcode.state%TYPE) IS
+      SELECT zip, city, state
+        FROM zipcode
+        WHERE state = p_state;
+  BEGIN
+    FOR r_zip IN c_zip('NJ') LOOP
+      DBMS_OUTPUT.PUT_LINE(r_zip.city||' '||r_zip.zip);
+    END LOOP;
+  END;
+  ```
+  - Cursor can have multiple parameters and separated by comma, `CURSOR c_grade(i_section_id IN section.section_id%TYPE, i_student_id IN student.student_id%TYPE) IS`
+- Cursors for update
+  - When cursors are used to update, `FOR UPDATE` keyword is required in declaration
+  ```sql
+  DECLARE
+    CURSOR c_course IS
+      SELECT course_no, cost
+        FROM course FOR UPDATE;
+  BEGIN
+    FOR r_course IN c_course LOOP
+      IF r_course.cost < 2500 THEN
+        UPDATE course
+          SET cost = r_course.cost + 10
+          WHERE course_no = r_course.course_no;
+      END IF;
+    END LOOP;
+  END;
+  ```
+- `FOR UPDATE` only locks a certain row during operation
+- `WHERE CURRENT OF` lock and return the current row from the cursor during update
+  ```sql
+  DECLARE
+    CURSOR c_stud_zip IS
+      SELECT s.student_id, z.city
+        FROM student s
+        JOIN zipcode z ON s.zip = z.zip
+        WHERE z.city = 'Brooklyn'
+        FOR UPDATE OF phone;
+  BEGIN
+    FOR r_stud_zip IN c_stud_zip LOOP
+    DBMS_OUTPUT.PUT_LINE(r_stud_zip.student_id);
+      UPDATE student
+        SET phone = '718'||SUBSTR(phone,4)
+        WHERE CURRENT OF c_stud_zip;  E
+    ND LOOP;
+  END;
+  ```
 
 #### Transcation
 

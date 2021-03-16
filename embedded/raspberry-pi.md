@@ -9,11 +9,11 @@
 
 - Linux distribution Raspberry Pi OS (previously called Raspbian) is the official OS for Raspberry Pi.
   - It is based on Debian Buster
-  - The `with ecommended software` version comes pre-installed with plenty of software for education, programming and general use. It has Python, Scratch, Sonic Pi, Java and more.
+  - The `with recommended software` version comes pre-installed with plenty of software for education, programming and general use. It has Python, Scratch, Sonic Pi, Java and more.
   - the `with Desktop` version provides a desktop GUI.
   - the `lite` version contains the minimal image
   - Don't be confused with `Debian with Raspberry Pi Desktop`, It is an OS for PC or Mac, not Raspberry Pi.
-- New Out Of Box Software (NOOBS) is an easy operating system installation manager for the Raspberry Pi.
+- New Out Of Box Software (`NOOBS`) is an easy operating system installation manager for the Raspberry Pi.
 - It can even install Windows 10 IoT Core which allows it to run on Windows
 - It can run Andriod OS using Android Things platform.
 - After downloading the image the unzip error is caused by the uncompatibility of the WinRAR of Windows. Use `7-Zip` instead
@@ -81,13 +81,22 @@
     ```
     ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
     update_config=1
-    country=<<TWOLETTERCOUNTRYCODE>>
+    country=<TWOLETTERCOUNTRYCODE>
     network={
-        ssid="SSID"
-        psk="PassWord"
+      ssid="SSID"
+      psk="PassWord"
+      key_mgmt=WPA-PSK
+      priority=1
+    }
+    network={
+      ssid="MY_SSID2"
+      psk="MY_PASSWORD2"
+      key_mgmt=WPA-PSK
+      priority=2
     }
     ```
     - [Click](https://www.nationsonline.org/oneworld/country_code_list.htm) to find the country code.
+    - The SSID needs to be broadcast for connection
   - Create an empty file with name `ssh`.
   - Insert the SD card and boot up Raspberry Pi, then SSH to board.
     - try `ping raspberrypi` to get the board IP.
@@ -123,11 +132,11 @@
 ### CLI
 
 - run `sudo raspi-config` will open a GUI in the terminal to make board configuration.
-- run `omxplayer <VideoPath>` to play videos using the pre=installed video player.
+- run `omxplayer <VideoPath>` to play videos using the pre-installed video player.
 
 ### Libraries for Raspberry Pi
 
-- GPIO can be controled in various language.
+- GPIO can be controlled in various language
 
 #### Python Library
 

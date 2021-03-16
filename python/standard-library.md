@@ -351,7 +351,7 @@ list(accumulate(range(8)))
   - `os.environ.get('ValueName')` get certain environment value.
 - `os.path.join('folderPath','file')` return a path as `folderPath/file`
 - `os.path.basename('path')` return file name of the path.
-- `os.path.dirname('path')` return directory name of the path.
+- `os.path.dirname('path')` return parent directory name of the path.
   - `dirname = os.path.dirname(__file__)` get the dirname of the current file
 - `os.path.split('path')` return path name and file name separately.
 - `os.path.exist('path')` return true if file exists.

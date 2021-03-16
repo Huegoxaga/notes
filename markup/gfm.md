@@ -158,13 +158,13 @@ Any word wrapped with two tildes, like `~~this~~`, will appear crossed out.
 - Fenced Code blocks with syntax highlighting
 - use a language identifier after \`\`\` in the first line, language identifier including: \*
 - use the following ways to print `` ` `` inside code block
-  ````md
+  ```md
   use backslash to escape when backtick is printed outside code blocks
   Print a singe \` inside code blocks `` ` ``
   Use higher number of \` to print more \` inside code blocks ` `` ` (print two)
   `` text`  `` produces text\`
   `` `text`` produces \`foo
-  ````
+  ```
 
 ### Issue References
 
@@ -270,3 +270,9 @@ Use a keyword `raw` and `endraw` surrounded by `{`(outter) and `%`(inner) as htm
 - add the generated webpages files in the GitHub Repo
 - in Settings, find GitHub Pages Section and Set the folder location for hosting.
 - The Theme if for `.md` pages.
+
+## Export as PDF
+
+- Install [Calibre](https://calibre-ebook.com/download)
+- run `PATH=$PATH:/Applications/calibre.app/Contents/MacOS/`
+- run `gitbook pdf`

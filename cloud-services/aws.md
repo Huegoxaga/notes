@@ -527,6 +527,8 @@ It provides support for generating serverless APIs.
 - Each GitHub branch can connect to one server
 - The Domain management setting page can create and manage domain with SSL certificate
 - The GitHub repo needs to have the third party accession restriction disabled in the setting before connecting to Ampliify, otherwise it won't be shown in the repo list
+- The GitHub account authticated must have admin access the to repo for deployment
+  - On the repo main page admin account has the settings button
 
 ### Amplify React
 
