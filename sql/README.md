@@ -360,7 +360,7 @@
   -- For each returning records, When allergies has a value it will return the value
   -- If allergies is NULL, it will return 'No known allergies'
   ```
-- NVL function: if the first argument is NULL, return the second argument
+- `NVL()` function: if the first argument is NULL, return the second argument
 - Case Function - Case function allows boolean logic in a SQL statement
 - If no conditions are true and there is no else clause, null is returned
   ```sql
@@ -1140,7 +1140,7 @@ ORDER BY last_name, first_name, medication_description
 - Oracle
   - `SET SERVEROUTPUT ON;` enable output
   - `CLEAR SCREEN;` clears the output window
-  - `SET VERIFY OFF` suppress new and old impact of substitution variable
+  - `SET VERIFY OFF;` suppress new and old impact of substitution variable
   - `SET NLS_DATE_FORMAT = 'DD-MON-YYYY` set the date input format
   - `ALTER SESSION` only make changes to the current session
     - The statement stays in effect until you disconnect from the database
@@ -1215,9 +1215,11 @@ ORDER BY last_name, first_name, medication_description
     - `TO_CHAR(SYSDATE, 'FMDD-MONTH-YYYY')`
       - `FM` - Fill mode controls blank padding and leading zero suppression
     - `TO_CHAR(12345.678, '099,999)`
+    - `TRIM(TO_CHAR(v_total, '$999G999G999D99'))`
   - TO_CHAR(character)
   - TO_CHAR(datetime)
   - TO_CHAR(number)
+- TO_DATE(SYSDATE), convert `SYSDATE` to `DATE`
 
 #### Procedural Code Blocks
 
@@ -1232,7 +1234,7 @@ ORDER BY last_name, first_name, medication_description
     -- Declaration statements
     -- Declear Types
     v_first_name VARCHAR2(35);
-    -- Use column's data type to declear
+    -- Use column's data type to declear (anchored variable declaration)
     v_last_name students.last_name%TYPE;
     --  Declear constant types and assign value
     id CONSTANT NUMBER := 7;

@@ -46,7 +46,7 @@
 
 ### Setup
 
-- Steps:
+- First boot up:
   1.  Download the Jetpack image for the specific module
   2.  Flash the image into the SD card
       - Recommanded tool: Ethcher
@@ -55,3 +55,6 @@
 - If the module has less than 4 GB memory, create a swap file
 - Use serial connection for headless mode
 - For models with both USB and DC power supply, use the on borad jumper properly if DC power supply is preferred
+- Setup swap file if device has less than 4GB memory:
+  - run `sudo systemctl disable nvzramconfig` before creating swap file
+  - use path `/mnt/4GB.swap` for swap file

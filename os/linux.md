@@ -73,6 +73,18 @@
     - `--max-depth=1` specify the deepth
 - Check swap file size, `swapon`
 - The `var` folder is used by the OS to write runtime data
+- `free -m` check free memory and swap file size
+- Steps to setup swap file
+  1. `sudo dd if=/dev/zero of=/swapfile bs=128M count=32` create a `128M * 32` size swap file at `/swapfile`, the `128MB` is the block size which need to be smaller than the physical memory size
+     - optionally, use `sudo fallocate -l 4G /swapfile` to preallocate 4GB space to swap file
+  2. `sudo chmod 600 /swapfile`, change swap file permission
+  3. `sudo mkswap /swapfile`, Set up a Linux swap area
+  4. `sudo swapon /swapfile`, Make the swap file available for immediate use by adding the swap file to swap space
+  5. `sudo swapon -s`, Verify that the procedure was successful
+  6. `sudo vi /etc/fstab`, add line `/swapfile swap swap defaults 0 0` to enable the swap file at boot time
+- `sudo growpart /dev/<volumn> <partNO>` extend the size of a volumn to use new spaces from its newly added partition
+  - Partition number starts from `1` in the `lsblk` list
+  - The volumn can not be full when running this command
 
 ## General Commands
 
@@ -729,8 +741,8 @@ server {
     # [mostly you won't need this, as you will be using some storage service for same]
         alias /webapps/updateMe/static_local;
     }
-
-    location /media {
+    # when any request that begins with /api/ will be redirect by the following rule
+    location ^~ /api/ {
     # exact path to where your media files are located on server
     # [mostly you won't need this, as you will be using some storage service for same]
         alias /webapps/updateMe/media_local;
@@ -1025,6 +1037,11 @@ server_name example.com web.example.com;
 - run `openssl req -new -x509 -days 365 -key server.ca.key -out 192.168.100.100.crt` and will create a self-signed x509 Certificate, valid for one year (365 days) in the current directory. Signed with private key `server.ca.key`. will be prompted to enter the pass phrase to access the private key.
   - the certificate file will be `192.168.100.100.crt`
   - Users will be prompted to enter the Distinguished Name. For some of the field enter `.` can leave it blank.
+
+### certbot
+
+- Certbot is a free, open source software tool for automatically using Let’s Encrypt certificates on manually-administrated websites to enable HTTPS
+- [Click Here](https://certbot.eff.org/instructions) for details
 
 ### zip
 

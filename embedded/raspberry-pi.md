@@ -200,29 +200,32 @@
   import time #Use time library
   pirPin = 7  # pin 7 is connected to output from the PIR motion sensor, 5V to pin 2, GND to pin 6
   buzzerPin = 11  # pin 11 is connected to the +ve buzzer pin; -ve connected to pin 9 GND
-  GPIO.setmode(GPIO.BOARD)  # Numbers GPIOs by physical location
+  GPIO.setmode(GPIO.BOARD)  # Numbers GPIOs by physical location, when USB ports at bottom, pin 1 is at top left, pin 2 is at top right, pin 3 is at second row at left, etc.
+  GPIO.setmode(GPIO.BCM)  # Numbers GPIOs by BCM, e.g. 4 for GPIO4 pin
   GPIO.setup(pirPin, GPIO.IN); #set the pirPin as input
   GPIO.setup(buzzerPin, GPIO.OUT); #set the buzzer pin as output
   GPIO.output(buzzerPin, GPIO.LOW) #initially turn off the buzzer
+  GPIO.setup(pirPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN); #set the pirPin as input with pull up resistor
+  GPIO.setup(pirPin, GPIO.IN, pull_up_down=GPIO.PUD_UP); #set the pirPin as input with pull down resistor
   #define alarm events
   def soundAlarm(pirPin):
-  #sound alarm (for 2 seconds )
-  print("Sound Alarm")
-  GPIO.output(buzzerPin, GPIO.HIGH)  # Turn buzzer on
-  time.sleep(2) # Pause for 2 seconds
-  turnOffAlarm()  # Turn buzzer off
+    #sound alarm (for 2 seconds )
+    print("Sound Alarm")
+    GPIO.output(buzzerPin, GPIO.HIGH)  # Turn buzzer on
+    time.sleep(2) # Pause for 2 seconds
+    turnOffAlarm()  # Turn buzzer off
   def turnOffAlarm():
-  #turn off alarm
-  GPIO.output(buzzerPin, GPIO.LOW)  # Turn buzzer off
-  #adding a callback function when the pir sensor output rises when motion is detected
-  GPIO.add_event_detect(pirPin, GPIO.RISING, callback=soundAlarm);
-  #try catch block to perform GPIO cleanup
+    #turn off alarm
+    GPIO.output(buzzerPin, GPIO.LOW)  # Turn buzzer off
+    #adding a callback function when the pir sensor output rises when motion is detected
+    GPIO.add_event_detect(pirPin, GPIO.RISING, callback=soundAlarm);
+    #try catch block to perform GPIO cleanup
   try:
-  while True:
-      pass
+    while True:
+        pass
   except KeyboardInterrupt:
-  print("You ended the program")
+    print("Ctrl+C Pressed")
   finally:
-  #clean up the GPIO pins
-  GPIO.cleanup()
+    #clean up the GPIO pins
+    GPIO.cleanup()
   ```

@@ -493,7 +493,7 @@ public class Test
 - it states the attributes and methods belong to the class and share by all objects under the class.
 - Instance variables belong to the object. no object, no instance variables.
 - static method and variables are created at compile time.
-- When outside the class, always access static variables and methods using the class name, not an object variable.
+- It can be accessed outside the class, always access static variables and methods using the class name, not an object variable.
 - static method has access on only static variables. Unless initialize new variables inside static methods.
 
 ```java
@@ -1173,6 +1173,7 @@ Integer x = new integer(1);
 
 ```java
 ArrayList x = new ArrayList();
+ArrayList<String> myStringList = new ArrayList<String>();
 ```
 
 - create arraylist for String with 10 entries.

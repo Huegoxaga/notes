@@ -239,3 +239,4 @@
 - Copyright free Image on pixabay.com
 - To make logos using logomakr.com
 - More templates on tyler.com
+- Android Mockup Design Tool `https://www.mockplus.com/blog/post/android-mockup`

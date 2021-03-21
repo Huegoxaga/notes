@@ -100,7 +100,7 @@
   - Variables can be declared at the top inside the class as `private ClassName var;`, but they need to be initialized inside `onCreate()`
 - check and ask for permissions
   ```java
-  if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS != PackageManager.PERMISSION_GRANTED) {
+  if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
     ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.RECEIVE_SMS}, 1);
   }
   ```
@@ -108,7 +108,8 @@
   - The `1` in the `requestPermissions()` parameter is the result code reported to permission result callback, should be >= 0
   - `onRequestPermissionsResult()` will be invoked whenever a permission is granted
   ```java
-    @Overridepublic void onRequestPermissionsResult(int resultCode, String permissions[], int[] results ) {
+    @Override
+    public void onRequestPermissionsResult(int resultCode, String permissions[], int[] results ) {
     switch (resultCode) {
       case 1:
         if (results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED) {
@@ -144,7 +145,7 @@
   - all activities in the stack is stored in the memory
   - the phone’s back button can return to the previous activity with `onResume()`, the top activity might be destroyed if memory is low
 - If this activity has no `setContentView()` and ends with `finish()` it will not inflate any layout
-- Declare `private static Activity currentActivity = null;` in the activity class and assign `currentActivity = this;` in the `onCreate()` method so the current state of the acivity can be accessed by other classes at runtime
+- Declare `private static Activity currentActivity = null;` in the activity class and assign `currentActivity = this;` in the `onCreate()` method so the current state of the acivity can be accessed by other classes using a public getter at runtime
 
 #### Event Handler
 
@@ -691,9 +692,13 @@ String formattedText = "Formatted as: " + formatter.format(date);
     public static final String DATABASE_NAME = "MyDatabase.db";
     // version number of the database (starting at 1); if the database is older, onUpgrade(SQLiteDatabase, int, int) will be used to upgrade the database; if the database is newer, onDowngrade(SQLiteDatabase, int, int) will be used to downgrade the database.
     public static final int DATABASE_VERSION = 1;
+    public static final String MYTABLE = "mytable";
+    public static final String ID = "_id";
+    public static final String TITLE = "title";
+    public static final String SUBTITLE = "subtitle";
     // This is the SQL Statement that will be executed to create the table and columns
     // "_id" is recommended to be a standard first column and primary key
-    private static final String SQL_CREATE ="CREATE TABLE mytable ( _id INTEGER PRIMARY KEY, title TEXT,  subtitle TEXT) ";
+    private static final String SQL_CREATE = "CREATE TABLE " + MYTABLE + " ( " + ID + " INTEGER PRIMARY KEY, " + TITLE + " TEXT, " + SUBTITLE + " TEXT) ";
     public MyDbHelper(Context context) {
       // the third parameter is SQLiteDatabase.CursorFactory: to use for creating cursor objects, or null for the default This value may be null.
       super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -713,8 +718,8 @@ String formattedText = "Formatted as: " + formatter.format(date);
     }
   }
   ```
-- In main activity class, create a global instance of our SQL Helper class, `MyDbHelper mydbhelp = new MyDbHelper(this);`, then get an instance of the database using the helper `classSQLiteDatabase db = mydbhelp.getWritableDatabase();` before starting accessing the database
-  - call `mydbhelp.close()` when done
+- In main activity class, create a global instance of our SQL Helper class, `MyDbHelper mydbhelp = new MyDbHelper(this);`, then get an instance of the database using the helper `SQLiteDatabase db = mydbhelp.getWritableDatabase();` before starting accessing the database(e.g. inside a button handler function)
+  - call `mydbhelp.close()` when done, usually in `onDestroy()`
 - The database is not actually created or opened until one of `getWritableDatabase()` or `getReadableDatabase()` is called
 - The `db` object of the `classSQLiteDatabase` instance can do
   - `long newrowID = db.insert("mytable",null, values);`
@@ -733,9 +738,8 @@ String formattedText = "Formatted as: " + formatter.format(date);
     - It moves the cursor to the first result (when the set is not empty)
   ```java
   public Cursor fetch() {
-    String[] columns = new String[] {
-      mydbhelp._ID, mydbhelp.SUBJECT, mydbhelp.DESC
-    };Cursor cursor = db.query(mydbhelp.TABLE_NAME, columns,null, null, null, null, null);
+    String[] columns = new String[] { mydbhelp._ID, mydbhelp.SUBJECT, mydbhelp.DESC};
+    Cursor cursor = db.query(mydbhelp.TABLE_NAME, columns, null, null, null, null, null);
     if (cursor != null) {
       cursor.moveToFirst();
       }
@@ -750,28 +754,31 @@ String formattedText = "Formatted as: " + formatter.format(date);
     /**
       * onCreate - get an instance of our database, use a cursor to display the values
       * @param savedInstanceState (default)
-      */@Overrideprotected void onCreate(Bundle savedInstanceState) {
+      */
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_list);
       // Get an instance of the database using our helper
-      classSQLiteDatabase db = mydbhelp.getReadableDatabase();
+      SQLiteDatabase db = mydbhelp.getReadableDatabase();
       // A projection defines what fields we want to retrieve.
-      String[] projection = { "_id, title, subtitle" };
+      String[] projection = { "_id", "title", "subtitle"};
       // db.query will retreive the data and return a Cursor to access itCursor
-      mycursor = db.query("mytable", projection, null,null, null, null, null);
+      Cursor mycursor = db.query("mytable", projection, null,null, null, null, null);
       String results = "";
       // Loop through our returned results from the
-      startwhile(mycursor.moveToNext()) {
+      while(mycursor.moveToNext()) {
         String title = mycursor.getString( mycursor.getColumnIndex("title") );
         String subtitle = mycursor.getString( mycursor.getColumnIndex("subtitle") );
         long itemID = mycursor.getLong( mycursor.getColumnIndex("_id") );
-        // We could add our results to an array, or process them here if we wantresults += itemID + " " + title + " " + subtitle + "\n";  // XXX hackish}
-        // Close the cursor when we're donemy
-        cursor.close();
-        // Show our
-        resultsTextView output = (TextView) findViewById(R.id.outputtext);
-        output.setText(results); // XXX TODO fix this
+        // We could add our results to an array, or process them here if we want
+        results += itemID + " " + title + " " + subtitle + "\n";
         }
+        // Close the cursor when we're done
+        mycursor.close();
+        // Show our
+        TextView output = (TextView) findViewById(R.id.outputtext);
+        output.setText(results); // XXX TODO fix this
       }
     }
   ```
@@ -784,9 +791,21 @@ String formattedText = "Formatted as: " + formatter.format(date);
     String whereClause = "column1 = ? OR column1 = ?";
     String[] whereArgs = new String[] {"value1","value2"};
     String orderBy = "column1";
-    Cursor c = sqLiteDatabase.query("table1", tableColumns,whereClause, whereArgs, null, null, orderBy);
+    Cursor c = sqLiteDatabase.query("table1", tableColumns, whereClause, whereArgs, null, null, orderBy);
     int idx = c.getColumnIndex("max");
     ```
+  - Use SimpleCursorAdapter for ListView
+    ```java
+    SQLiteDatabase db = mydbhelp.getReadableDatabase();
+    String[] columns = {MySQLHelper.ID, MySQLHelper.PRODUCT, MySQLHelper.SERIAL};
+    Cursor mycursor = db.query(MySQLHelper.MYTABLE, columns, null, null, null, null, null);
+    SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item, mycursor, new String[]{MySQLHelper.PRODUCT, MySQLHelper.SERIAL}, new int[]{android.R.id.text1, android.R.id.text2});
+    ListView productList = findViewById(R.id.product_list);
+    productList.setAdapter(adapter);
+    productList.setOnItemClickListener(this::onItemClick);
+    mycursor.close();
+    ```
+    - The integer array in the SimpleCursorAdapter constructor corresponding to the textview widget id in the chosen layout from the second parameter
 
 ##### Cursor
 

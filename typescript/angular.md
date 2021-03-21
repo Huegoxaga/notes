@@ -29,6 +29,9 @@
 3. In the project folder create run: `ng new project-name` to create a new project.
 4. run `ng serve` or `npm start` to serve the website on `localhost:4200`
    - run `npm install` for install dependencies for imported projects
+   - A local `@angular/cli` package will be installed for the project, its version should match global
+5. run `ng build --prod --build-optimizer` to build and deploy the project
+   - This will generate the `/www` folder inside current project folder
 
 ## Angular Web App Structure
 

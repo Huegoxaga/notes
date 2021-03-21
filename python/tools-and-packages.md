@@ -324,6 +324,7 @@
 
 - OpenCV (Open Source Computer Vision) is a computer vision library that contains various functions to perform operations on pictures or videos.
 - It was originally developed by Intel but was later maintained by Willow Garage and is now maintained by Itseez.
+- It will use CPU when installed with `pip` or `conda`, to enable GPU compte, compile the source code of Opencv with Nvidia GPU, CUDA, and cuDNN by using tools like CMake and Visual Studio which uses c++’s GCC compiler
 - It has C++, C, Python and Java interfaces and supports Windows, Linux, MacOS, iOS and Android.
 - It plays a major role in real-time operation for photos and videos.
 - Images in openCV are 3-D numpy arrays with `np.uint8` as its elements and three color layer for blue, green and red.
@@ -446,6 +447,7 @@
   - `kernel = np.array([[-1,-1,-1], [-1,9,-1], [-1,-1,-1]])` then `sharpened = cv2.filter2D(image, -1, kernel)` sharpen the image.
 - `cv2.waitKey(delay)` The function waitKey waits for a any key event infinitely
   - `delay` – the length of time to wait in milliseconds. `0`(default value) is the special value that means "forever".
+  - For realtime video output, `0` delay will have a black screen
   - It returns the key number of the key that has been pressed
 - `cv2.destroyAllWindows()` Exit window and destroy all windows
 - `cv2.boundingRect(points)` return the bounding rectangle `(x,y,w,h)` of a shape defined as points.
@@ -773,6 +775,9 @@ finally:
 - `pip install virtualenv`
 - In the project folder run `virtualenv <env_name>` create new env
 - `source <env_name>/bin/activate` activate new env
+- When in a virtual environment all packages will be installed in it, if `pip install` always install package into global, check the environment path in the `activate` file
+  - use `which pip` to check the path of the `pip` command
+  - the Shebang of `pip` or `pip3` file should indicate the corresponding python command path
 - `deactivate` leave an env
 
 ## uwsgi
