@@ -1343,13 +1343,13 @@
 <ul>
 <li>Linux distribution Raspberry Pi OS (previously called Raspbian) is the official OS for Raspberry Pi.<ul>
 <li>It is based on Debian Buster</li>
-<li>The <code>with ecommended software</code> version comes pre-installed with plenty of software for education, programming and general use. It has Python, Scratch, Sonic Pi, Java and more.</li>
+<li>The <code>with recommended software</code> version comes pre-installed with plenty of software for education, programming and general use. It has Python, Scratch, Sonic Pi, Java and more.</li>
 <li>the <code>with Desktop</code> version provides a desktop GUI.</li>
 <li>the <code>lite</code> version contains the minimal image</li>
 <li>Don&apos;t be confused with <code>Debian with Raspberry Pi Desktop</code>, It is an OS for PC or Mac, not Raspberry Pi.</li>
 </ul>
 </li>
-<li>New Out Of Box Software (NOOBS) is an easy operating system installation manager for the Raspberry Pi.</li>
+<li>New Out Of Box Software (<code>NOOBS</code>) is an easy operating system installation manager for the Raspberry Pi.</li>
 <li>It can even install Windows 10 IoT Core which allows it to run on Windows</li>
 <li>It can run Andriod OS using Android Things platform.</li>
 <li>After downloading the image the unzip error is caused by the uncompatibility of the WinRAR of Windows. Use <code>7-Zip</code> instead</li>
@@ -1369,7 +1369,7 @@
 <li><a href="https://elinux.org/RPi_SD_cards" target="_blank">Click here</a> to verify the SD card compatibility</li>
 </ul>
 </li>
-<li>Raspberry Pi uses 5V DC power supply, but thecurrent capacity varies based on model types. <a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md" target="_blank">Click</a> to see the required power supply<ul>
+<li>Raspberry Pi uses 5V DC power supply, but the current capacity varies based on model types. <a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/power/README.md" target="_blank">Click</a> to see the required power supply<ul>
 <li>A stable power supply will help the board and SD card healthy</li>
 </ul>
 </li>
@@ -1411,13 +1411,13 @@
 </ul>
 <h2 id="setup">Setup</h2>
 <ul>
-<li>Ether is a great tool to flash SD cards.<ul>
+<li>Etcher is a great tool to flash SD cards.<ul>
 <li><a href="https://www.balena.io/etcher/" target="_blank">Click here</a> to download</li>
 <li>Optionally, use the official tool <a href="https://www.raspberrypi.org/downloads/" target="_blank">Raspberry Pi Imager</a> to download and flash SD card with one click.</li>
 </ul>
 </li>
 <li><a href="https://www.raspberrypi.org/downloads/raspberry-pi-os/" target="_blank">Clich here</a> to download the OS that will be flashed to the SD card.</li>
-<li>Install etcher and download the OS image in a <code>zip</code> file then use the Ethcher software to flash the OS onto the SD card.</li>
+<li>Install etcher and download the OS image in a <code>zip</code> file then use the Etcher software to flash the OS onto the SD card.</li>
 <li>Plug in the SD card, connect Raspberry Pi to a screen and input devices, then boot up the device.</li>
 <li>Backup<ul>
 <li>For Window machine, use the <a href="https://sourceforge.net/projects/win32diskimager/" target="_blank">Win32 Disk Imager</a> and read from the SD card to an image file.</li>
@@ -1433,19 +1433,28 @@
 </ul>
 </li>
 <li>Enable the peripherals of the board in the interfaces page of the Raspberry Pi Configuration menu.<ul>
-<li>Raspberry Pi Camera is enabled here after plug it in.</li>
+<li>Raspberry Pi Camera can be enabled here</li>
 </ul>
 </li>
 <li>When the board has no input and output devices connected, it is in a headless mode. Follow the step to configure the board in headless mode.<ul>
 <li>After flash the SD card, add the <code>wpa_supplicant.conf</code> file for WiFi setup to the SD card root folder with the following content.<pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
-country=&lt;&lt;TWOLETTERCOUNTRYCODE&gt;&gt;
+country=&lt;TWOLETTERCOUNTRYCODE&gt;
 network={
-    ssid=&quot;SSID&quot;
-    psk=&quot;PassWord&quot;
+  ssid=&quot;SSID&quot;
+  psk=&quot;PassWord&quot;
+  key_mgmt=WPA-PSK
+  priority=1
+}
+network={
+  ssid=&quot;MY_SSID2&quot;
+  psk=&quot;MY_PASSWORD2&quot;
+  key_mgmt=WPA-PSK
+  priority=2
 }
 </code></pre><ul>
 <li><a href="https://www.nationsonline.org/oneworld/country_code_list.htm" target="_blank">Click</a> to find the country code.</li>
+<li>The SSID needs to be broadcast for connection</li>
 </ul>
 </li>
 <li>Create an empty file with name <code>ssh</code>.</li>
@@ -1457,7 +1466,7 @@ network={
 </li>
 <li>VNC Server can allows to view the GUI interface of the OS from any client<ul>
 <li>Enable the VNC Server in <code>sudo raspi-config</code>.</li>
-<li><a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank">Click</a> to download the VNC, then connect to the board by entering the PI&apos;s IP in the search bar to view its GUI.<ul>
+<li><a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank">Click</a> to download the VNC on remote machine, then connect to the board by entering the PI&apos;s IP in the search bar to view its GUI.<ul>
 <li>Login to a VNC account for both VNC server and VNC viwer allows remote connection through cloud without using shared WiFi.</li>
 </ul>
 </li>
@@ -1499,13 +1508,13 @@ network={
 <h3 id="cli">CLI</h3>
 <ul>
 <li>run <code>sudo raspi-config</code> will open a GUI in the terminal to make board configuration.</li>
-<li>run <code>omxplayer &lt;VideoPath&gt;</code> to play videos using the pre=installed video player.</li>
+<li>run <code>omxplayer &lt;VideoPath&gt;</code> to play videos using the pre-installed video player.</li>
 </ul>
 <h3 id="libraries-for-raspberry-pi">Libraries for Raspberry Pi</h3>
 <ul>
-<li>GPIO can be controled in various language.</li>
+<li>GPIO can be controlled in various language</li>
 </ul>
-<h3 id="python-library">Python Library</h3>
+<h4 id="python-library">Python Library</h4>
 <ul>
 <li>Example I/O<pre><code class="lang-py"><span class="hljs-keyword">import</span> RPi.GPIO <span class="hljs-keyword">as</span> GPIO <span class="hljs-comment">#Use GPIO library</span>
 <span class="hljs-keyword">import</span> time <span class="hljs-comment">#Use time library</span>
@@ -1563,31 +1572,34 @@ camera.stop_preview()
 <span class="hljs-keyword">import</span> time <span class="hljs-comment">#Use time library</span>
 pirPin = <span class="hljs-number">7</span>  <span class="hljs-comment"># pin 7 is connected to output from the PIR motion sensor, 5V to pin 2, GND to pin 6</span>
 buzzerPin = <span class="hljs-number">11</span>  <span class="hljs-comment"># pin 11 is connected to the +ve buzzer pin; -ve connected to pin 9 GND</span>
-GPIO.setmode(GPIO.BOARD)  <span class="hljs-comment"># Numbers GPIOs by physical location</span>
+GPIO.setmode(GPIO.BOARD)  <span class="hljs-comment"># Numbers GPIOs by physical location, when USB ports at bottom, pin 1 is at top left, pin 2 is at top right, pin 3 is at second row at left, etc.</span>
+GPIO.setmode(GPIO.BCM)  <span class="hljs-comment"># Numbers GPIOs by BCM, e.g. 4 for GPIO4 pin</span>
 GPIO.setup(pirPin, GPIO.IN); <span class="hljs-comment">#set the pirPin as input</span>
 GPIO.setup(buzzerPin, GPIO.OUT); <span class="hljs-comment">#set the buzzer pin as output</span>
 GPIO.output(buzzerPin, GPIO.LOW) <span class="hljs-comment">#initially turn off the buzzer</span>
+GPIO.setup(pirPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN); <span class="hljs-comment">#set the pirPin as input with pull up resistor</span>
+GPIO.setup(pirPin, GPIO.IN, pull_up_down=GPIO.PUD_UP); <span class="hljs-comment">#set the pirPin as input with pull down resistor</span>
 <span class="hljs-comment">#define alarm events</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">soundAlarm</span><span class="hljs-params">(pirPin)</span>:</span>
-<span class="hljs-comment">#sound alarm (for 2 seconds )</span>
-print(<span class="hljs-string">&quot;Sound Alarm&quot;</span>)
-GPIO.output(buzzerPin, GPIO.HIGH)  <span class="hljs-comment"># Turn buzzer on</span>
-time.sleep(<span class="hljs-number">2</span>) <span class="hljs-comment"># Pause for 2 seconds</span>
-turnOffAlarm()  <span class="hljs-comment"># Turn buzzer off</span>
+  <span class="hljs-comment">#sound alarm (for 2 seconds )</span>
+  print(<span class="hljs-string">&quot;Sound Alarm&quot;</span>)
+  GPIO.output(buzzerPin, GPIO.HIGH)  <span class="hljs-comment"># Turn buzzer on</span>
+  time.sleep(<span class="hljs-number">2</span>) <span class="hljs-comment"># Pause for 2 seconds</span>
+  turnOffAlarm()  <span class="hljs-comment"># Turn buzzer off</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">turnOffAlarm</span><span class="hljs-params">()</span>:</span>
-<span class="hljs-comment">#turn off alarm</span>
-GPIO.output(buzzerPin, GPIO.LOW)  <span class="hljs-comment"># Turn buzzer off</span>
-<span class="hljs-comment">#adding a callback function when the pir sensor output rises when motion is detected</span>
-GPIO.add_event_detect(pirPin, GPIO.RISING, callback=soundAlarm);
-<span class="hljs-comment">#try catch block to perform GPIO cleanup</span>
+  <span class="hljs-comment">#turn off alarm</span>
+  GPIO.output(buzzerPin, GPIO.LOW)  <span class="hljs-comment"># Turn buzzer off</span>
+  <span class="hljs-comment">#adding a callback function when the pir sensor output rises when motion is detected</span>
+  GPIO.add_event_detect(pirPin, GPIO.RISING, callback=soundAlarm);
+  <span class="hljs-comment">#try catch block to perform GPIO cleanup</span>
 <span class="hljs-keyword">try</span>:
-<span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
-    <span class="hljs-keyword">pass</span>
+  <span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+      <span class="hljs-keyword">pass</span>
 <span class="hljs-keyword">except</span> KeyboardInterrupt:
-print(<span class="hljs-string">&quot;You ended the program&quot;</span>)
+  print(<span class="hljs-string">&quot;Ctrl+C Pressed&quot;</span>)
 <span class="hljs-keyword">finally</span>:
-<span class="hljs-comment">#clean up the GPIO pins</span>
-GPIO.cleanup()
+  <span class="hljs-comment">#clean up the GPIO pins</span>
+  GPIO.cleanup()
 </code></pre>
 </li>
 </ul>
@@ -1634,7 +1646,7 @@ GPIO.cleanup()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Raspberry Pi","level":"1.21.2","depth":2,"next":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"path":"embedded/st.md","ref":"embedded/st.md","articles":[]},"previous":{"title":"Arduino","level":"1.21.1","depth":2,"path":"embedded/arduino.md","ref":"embedded/arduino.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/raspberry-pi.md","mtime":"2020-11-20T18:09:53.424Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Raspberry Pi","level":"1.21.2","depth":2,"next":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"path":"embedded/st.md","ref":"embedded/st.md","articles":[]},"previous":{"title":"Arduino","level":"1.21.1","depth":2,"path":"embedded/arduino.md","ref":"embedded/arduino.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/raspberry-pi.md","mtime":"2021-03-21T14:49:27.784Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

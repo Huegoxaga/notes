@@ -1383,7 +1383,7 @@
 <li><code>.</code> is the current directory</li>
 <li><code>..</code> is the previous directory</li>
 <li><code>~</code> is the home directory</li>
-<li><code>*</code> means all</li>
+<li><code>*</code> matches all non-dot-files</li>
 </ul>
 </li>
 <li>absolute path starts with <code>/</code> from root folder.</li>
@@ -1426,6 +1426,27 @@
 </li>
 <li>Check swap file size, <code>swapon</code></li>
 <li>The <code>var</code> folder is used by the OS to write runtime data</li>
+<li><code>free -m</code> check free memory and swap file size</li>
+<li>Steps to setup swap file<ol>
+<li><code>sudo dd if=/dev/zero of=/swapfile bs=128M count=32</code> create a <code>128M * 32</code> size swap file at <code>/swapfile</code>, the <code>128MB</code> is the block size which need to be smaller than the physical memory size<ul>
+<li>optionally, use <code>sudo fallocate -l 4G /swapfile</code> to preallocate 4GB space to swap file</li>
+</ul>
+</li>
+<li><code>sudo chmod 600 /swapfile</code>, change swap file permission</li>
+<li><code>sudo mkswap /swapfile</code>, Set up a Linux swap area</li>
+<li><code>sudo swapon /swapfile</code>, Make the swap file available for immediate use by adding the swap file to swap space</li>
+<li><code>sudo swapon -s</code>, Verify that the procedure was successful<ul>
+<li>swap priority is a value between -1 and 32767. Higher numbers indicate higher priority</li>
+</ul>
+</li>
+<li><code>sudo vi /etc/fstab</code>, add line <code>/swapfile swap swap defaults 0 0</code> to enable the swap file at boot time</li>
+</ol>
+</li>
+<li><code>sudo growpart /dev/&lt;volumn&gt; &lt;partNO&gt;</code> extend the size of a volumn to use new spaces from its newly added partition<ul>
+<li>Partition number starts from <code>1</code> in the <code>lsblk</code> list</li>
+<li>The volumn can not be full when running this command</li>
+</ul>
+</li>
 </ul>
 <h2 id="general-commands">General Commands</h2>
 <ul>
@@ -1538,7 +1559,11 @@
 <li><code>exit</code> exit the shell.</li>
 <li><code>sleep &lt;numberOfSecond&gt;</code> pause the shell for a certain number of seconds.</li>
 <li><code>mount &lt;deviceTypeLocation&gt; &lt;folderPath&gt;</code> mount a device to a folder.</li>
-<li><code>mount &lt;deviceTypeLocation&gt;</code>. unmount a device.</li>
+<li><code>mount &lt;deviceTypeLocation&gt;</code>. unmount a device.<ul>
+<li><code>/etc/fstab</code> is a list of filesystems to be mounted at boot time</li>
+<li><code>/etc/mtab</code> is a list of currently mounted filesystems</li>
+</ul>
+</li>
 <li><code>source &lt;FileName&gt;</code>, it can be used to load any functions file into the current shell script or a command prompt. It read and executes commands from given FILENAME.</li>
 <li><code>alias</code> it will list all the alias the shell current have.<ul>
 <li>To add new alias temperately run <code>alias shortcut=&quot;fullCommand&quot;</code></li>
@@ -1586,7 +1611,10 @@ rather to wait for additional data to be appended to the input</li>
 </ul>
 </li>
 <li><code>wc &lt;textFile&gt;</code> return the file line count, word count, and byte count<ul>
-<li><code>-l</code> count the number of lines in a file</li>
+<li><code>-c</code> byte count</li>
+<li><code>-l</code> line count</li>
+<li><code>-m</code> character count</li>
+<li><code>-w</code> word count</li>
 <li><code>&lt;command&gt; | wc -l</code> count lines of output from a command using pipe</li>
 </ul>
 </li>
@@ -1735,18 +1763,45 @@ rather to wait for additional data to be appended to the input</li>
 <li><code>&lt;command&gt; &amp;</code> start a process and make it a background job.</li>
 <li><code>bg</code> stop a foreground job first, then use this command to send it to the background.</li>
 </ul>
-<h3 id="environment-variables">Environment Variables</h3>
-<h4 id="path">PATH</h4>
+<h3 id="shell-variables">Shell Variables</h3>
 <ul>
-<li>Every a command is run, it will search for the path of the commands according to the directories stored in the PATH variable.</li>
-<li>It will search from left to right.</li>
-<li>Change the PATH Variable<ul>
-<li>The PATH variable can be changed temperately be run <code>PATH=$PATH:/other/dir</code> to append a new directory or run <code>PATH=/other/dir:$PATH</code> to prepend.</li>
-<li>It can be changed in the users <code>bash_profile</code> file. It will work for certain user only.</li>
-<li>To change the PATH variable for the entire system. Modifying the <code>etc/profile</code> file.</li>
-<li>Scripts in <code>etc/profile.d</code> are also responsible for changing the system environment.</li>
+<li>Shell variables are variables that apply only to the current shell instance. Each shell such as zsh and bash, has its own set of internal shell variables.</li>
+<li>There are also shell functions that can be invoked</li>
+<li><code>set</code> &#x2013; The command sets or unsets shell variables. When used without an argument it will print a list of all variables including shell functions.</li>
+<li><code>unset</code> &#x2013; The command deletes a certain shell variable with argument, or all without arguments</li>
+<li><code>MY_VAR=&apos;Value&apos;</code> set a shell variable</li>
+<li><code>echo $&lt;VARIABLE&gt;</code> print a shell veriables</li>
+</ul>
+<h3 id="environment-variables">Environment Variables</h3>
+<ul>
+<li>Environment variables are variables that are available system-wide and are inherited by all spawned child processes and shells.<ul>
+<li>All environment variables are shell variables, not all shell variables are environment variables</li>
 </ul>
 </li>
+<li>The names of the variables are case-sensitive. By convention, environment variables should have UPPER CASE names</li>
+<li>When assigning multiple values to the variable they must be separated by the colon <code>:</code> character</li>
+<li>There is no space around the equals <code>=</code> symbol</li>
+<li><code>env</code> &#x2013; The command allows you to run another program in a custom environment without modifying the current one. When used without an argument it will print a list of the current environment variables.</li>
+<li><code>printenv</code> &#x2013; The command prints all or the specified environment variables, e.g. <code>printenv HOME</code></li>
+<li><code>export &lt;VARIABLE_NAME&gt;</code> &#x2013; The command sets shell variable as an environment variable<ul>
+<li><code>export NEW_VAR=&quot;New Value&quot;</code> set a new environment variable in a single line</li>
+</ul>
+</li>
+<li>Persistent Environment Variables<ul>
+<li><code>/etc/environment</code> - Use this file to set up system-wide environment variables. Variables in this file are set with this format <code>KEY=value</code> on each line</li>
+<li><code>/etc/profile</code> - Variables set in this file are loaded whenever a bash login shell is entered. Use <code>export</code> command in each line for this file, <code>export JAVA_HOME=&quot;/path/to/java/home&quot;</code><ul>
+<li>Scripts in <code>etc/profile.d</code> are also responsible for changing the system environment</li>
+</ul>
+</li>
+<li>Dot files - are per-user shell specific configuration files, <code>export</code> commands are required on each line</li>
+</ul>
+</li>
+</ul>
+<h4 id="path">PATH</h4>
+<ul>
+<li>Whenever a command is run, it will search for the path of the commands according to the directories stored in the PATH variable.</li>
+<li>It will search from left to right.</li>
+<li>The PATH variable can be changed temperately be run <code>PATH=$PATH:/other/dir</code> to append a new directory or run <code>PATH=/other/dir:$PATH</code> to prepend.</li>
 </ul>
 <h4 id="ps1">PS1</h4>
 <ul>
@@ -1885,7 +1940,10 @@ rather to wait for additional data to be appended to the input</li>
 <li><code>-y</code>, <code>--yes</code>, <code>--assume-yes</code>, Automatic yes to prompts</li>
 <li><code>apt-get install &lt;PackageName&gt;</code></li>
 <li><code>apt-get update</code> update package list</li>
-<li><code>apt-get dist-upgrade</code> will install or remove packages as necessary to complete the upgrade,</li>
+<li><code>apt-get dist-upgrade</code> will install or remove packages as necessary to complete the upgrade<ul>
+<li><code>apt-get upgrade</code> will only install upgrade and possibly fail due to conflicts</li>
+</ul>
+</li>
 <li><code>apt-get remove &lt;PackageName&gt;</code> uninstall a package</li>
 <li><code>apt-get purge &lt;PackageName&gt;</code> uninstall a package and remove all its config files.</li>
 <li><code>apt-get -f install</code> fix broken dependencies.</li>
@@ -2149,6 +2207,25 @@ rather to wait for additional data to be appended to the input</li>
 <li>It is used to log in remote servers.</li>
 <li>Ex, <code>ssh -i ~/.ssh/&quot;WordPress Key.pem&quot; ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com</code></li>
 </ul>
+<h3 id="sftp">sFTP</h3>
+<ul>
+<li>Access remote file system over SSH protocol on standard port 22 by default</li>
+<li>Establish connection <code>sftp &lt;hostname&gt;@&lt;IP&gt;</code></li>
+<li><code>?</code> or <code>help</code> for help</li>
+<li><code>lpwd</code> to check the current working directory on host machine</li>
+<li><code>pwd</code> to check the current working directory on remote machine</li>
+<li><code>lls</code> list files on host</li>
+<li><code>ls</code> list files on remote</li>
+<li><code>put &lt;LocalFile&gt;</code> put file from host to remote from <code>lpwd</code> to <code>pwd</code></li>
+<li><code>mput *</code> upload multiple files</li>
+<li><code>get &lt;RemoteFile&gt;</code> download file from remote to host</li>
+<li><code>mget &lt;RemoteFile1&gt; &lt;RemoteFile2&gt;</code> download multiple files</li>
+<li><code>cd</code> switch dir on remote</li>
+<li><code>lcd</code> switch dir on local</li>
+<li><code>mkdir</code> create dir on remote</li>
+<li><code>lmkdir</code> create dir on local</li>
+<li><code>rm</code> and <code>rmdir</code> remove files and dir on remote</li>
+</ul>
 <h3 id="curl">CURL</h3>
 <ul>
 <li>curl is a command line tool to transfer data to or from a server, using any of the supported protocols (HTTP, FTP, IMAP, POP3, SCP, SFTP, SMTP, TFTP, TELNET, LDAP or FILE)</li>
@@ -2196,71 +2273,76 @@ rather to wait for additional data to be appended to the input</li>
 <li>By default, In each of these two folders, there is only one conf file named default that has basic setup for NGINX.</li>
 </ul>
 </li>
+<li>run <code>sudo nginx -t</code> to validate config script</li>
 </ul>
 <h5 id="work-with-uwsgi">Work with uWSGI</h5>
 <ul>
 <li><code>Nginx</code> can run with <code>uWSGI</code> and provide more control to a Python Web App.</li>
-<li><code>uwsgi_params</code> file, create a file called <code>mysite_nginx.conf</code> in the <code>/etc/nginx/sites-available/</code> directory to link request to the Nginx to uWSGI, then created link to the <code>sites-enabled</code> directory</li>
-</ul>
-<pre><code class="lang-conf">upstream updateMe_dev {
+<li><code>uwsgi_params</code> file, create a file called <code>mysite_nginx.conf</code> in the <code>/etc/nginx/sites-available/</code> directory to link request to the Nginx to uWSGI, then created link to the <code>sites-enabled</code> directory<pre><code class="lang-conf">upstream updateMe_dev {
     server unix:/webapps/updateMe/run/uwsgi.sock;
 }
-
 server {
     listen 80;
     server_name your-IP-or-address-here;
     charset utf-8;
-
     client_max_body_size 128M;
-
     location /static {
     # exact path to where your static files are located on server
     # [mostly you won&apos;t need this, as you will be using some storage service for same]
         alias /webapps/updateMe/static_local;
     }
-
-    location /media {
+    # when any request that begins with /api/ will be redirect by the following rule
+    location ^~ /api/ {
     # exact path to where your media files are located on server
     # [mostly you won&apos;t need this, as you will be using some storage service for same]
         alias /webapps/updateMe/media_local;
     }
-
     location / {
         include uwsgi_params;
         uwsgi_pass updateMe_dev;
         uwsgi_read_timeout 300s;
         uwsgi_send_timeout 300s;
     }
-
     access_log /webapps/updateMe/log/dev-nginx-access.log;
     error_log /webapps/updateMe/log/dev-nginx-error.log;
 }
 </code></pre>
-<ul>
-<li>conf for https and redirect with private CAs</li>
-</ul>
-<pre><code class="lang-conf">server {
-       listen 80;
-       server_name example.com www.example.com;
-       return 301 https://example.com$request_uri;
-}
-server {
-       listen 443 ssl;
-server_name example.com web.example.com;
-       # Certificate
-       ssl_certificate /etc/nginx/ssl/cbe170b66b1f2233.crt;
-
-       # Private Key
-       ssl_certificate_key /etc/nginx/ssl/generated-private-key.key;
-       location / {
-               proxy_pass http://localhost:5000;
-               proxy_set_header Host $host;
-               proxy_set_header X-Real-IP $remote_addr;
-               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-               proxy_set_header X-Forwarded-Proto $scheme;
-}
+</li>
+<li>configuration for redirect<pre><code class="lang-conf">server {
+      listen 80;
+      listen [::]:80 ;
+      server_name example.com www.example.com;
+      return 301 https://example.com$request_uri;
 }
 </code></pre>
+</li>
+<li>configuration for ssl private certificate from private CAs<pre><code class="lang-conf">server {
+      listen 443 ssl;
+      listen [::]:443 ssl ipv6only=on;
+      server_name example.com web.example.com;
+      # Certificate
+      ssl_certificate /etc/nginx/ssl/cbe170b66b1f2233.crt;
+      # Private Key
+      ssl_certificate_key /etc/nginx/ssl/generated-private-key.key;
+      location / {
+              proxy_pass http://localhost:5000;
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+      }
+}
+</code></pre>
+</li>
+<li>configuration for ssl certificate from public CAs<pre><code class="lang-conf">  listen [::]:443 ssl ipv6only=on;
+  listen 443 ssl;
+  ssl_certificate &lt;Path_To_PEM&gt;;
+  ssl_certificate_key &lt;Path_To_PEM&gt;;
+  include &lt;Path_To_CONF&gt;;
+  ssl_dhparam &lt;Path_To_PEM&gt;;
+</code></pre>
+</li>
+</ul>
 <h4 id="usage">Usage</h4>
 <ul>
 <li><code>sudo /etc/init.d/nginx start</code> or <code>service nginx start</code> start the server</li>
@@ -2600,6 +2682,12 @@ Allow from HostIPAddress
 </ul>
 </li>
 </ul>
+<h3 id="certbot">certbot</h3>
+<ul>
+<li>Certbot is a free, open source software tool for automatically using Let&#x2019;s Encrypt certificates on manually-administrated websites to enable HTTPS</li>
+<li><a href="https://certbot.eff.org/instructions" target="_blank">Click Here</a> for details</li>
+<li>Use <code>sudo certbot --nginx -d www.example.com,example.com</code> to create the certificate for multiple domains</li>
+</ul>
 <h3 id="zip">zip</h3>
 <ul>
 <li><code>zip myfile.zip filename.txt</code> zip a file<ul>
@@ -2869,6 +2957,13 @@ fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-var
 <li><code>python3 &lt;filename.py&gt;</code> run a script using python3</li>
 <li><code>python3 -c &quot;x=1+1; print(x)&quot;</code> run python code separate by <code>;</code></li>
 </ul>
+<h3 id="screen">screen</h3>
+<ul>
+<li><code>screen /dev/tty.devicename &lt;BaudRate&gt;</code> start serial terminal session<ul>
+<li><code>ls /dev/tty.*</code> to find all connected serial devices</li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -2912,7 +3007,7 @@ fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-var
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.17.1","depth":2,"next":{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.17","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.17.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.17.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.17.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},{"title":"Media","level":"1.17.9","depth":2,"path":"os/media.md","ref":"os/media.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2021-02-03T21:49:13.619Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.17.1","depth":2,"next":{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.17","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.17.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.17.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.17.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},{"title":"Media","level":"1.17.9","depth":2,"path":"os/media.md","ref":"os/media.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2021-03-26T15:27:48.287Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

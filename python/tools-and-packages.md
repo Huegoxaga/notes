@@ -94,7 +94,7 @@
 - `which -a python` Show the locations of all versions of Python that are currently in the path
   - The first version of Python in the list will be executed.
 
-## Jupyter NoteBook
+## Jupyter
 
 ### Introduction
 
@@ -107,15 +107,27 @@
 - The `.ipynb` file source code is JSON data about cell objects.
 - The `JupyterLab` is the newest product of the Jupyter Project.
   - [Click](https://jupyterlab.readthedocs.io/en/latest/index.html) to see details.
-  - To Download JupyterLab, run command `conda install -c conda-forge jupyterlab`.
-  - To Run JupyterLab, run command `jupyter lab`.
 
 ### Usage
 
+- The environment will be hosted as a web app and can be accessed by a browser
+  - `Google Chrome` is recommended
+
+#### Jupyter Notebook
+
 - [Click](https://jupyter.readthedocs.io/en/latest/index.html) to see the docs for Jupyter
-- Run command `jupyter notebook` in the project folder to start a server and open the notebook in the browser.
+- Run command `jupyter notebook` in the project folder to start a server and open the notebook in the browser
 - It supports LaTeX code in markdown cell, inside `$$` block.
 - `Shift + Enter` to run code block in the cell.
+- The kernel for each running notebook is a separate process that runs the user code
+  - The kernel starts automatically when the notebook is opened from the file browser
+  - The kernel menu on the main menu bar includes commands to shutdown or restart the kernel
+
+#### Jupyter Lab
+
+- To Download JupyterLab, run command `conda install -c conda-forge jupyterlab`.
+- To Run JupyterLab, run command `jupyter lab`.
+- One can move any cell to new window tabs in the main work area by right-clicking the cell and selecting "Create New View for Output"
 
 ## NumPy
 
@@ -205,8 +217,10 @@
   - `array.ravel()` or `np.ravel(array)` returns a flattened array.
 - Transpose an array
   - `np.transpose(array)` or `array.transpose()` the row and column numbers of an element are switched.
+- `np.vstack((arrayA,arrayB))` Stack a tuple of arrays into one array vertically (increase demension)
+- `np.vstack((arrayA,arrayB))` Stack a tuple of arrays into one array horizontically (keep the same demension)
 
-#### Doing calculations
+#### Calculations
 
 - Arithmetic Functions
   - It works between two arrays.
@@ -818,6 +832,10 @@ socket          = /path/to/your/project/mysite.sock
 # chmod-socket    = 664
 # clear environment on exit
 vacuum          = true
+# Set environment variables
+# qoutes are not required for string values
+env             = KEY1=value
+env             = KEY2=value
 ```
 
 ## Pillow

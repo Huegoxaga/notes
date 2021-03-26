@@ -1363,7 +1363,15 @@
 <li>Install node latest stable version <a href="https://nodejs.org/en/" target="_blank">here</a></li>
 <li>run <code>npm i -g @angular/cli</code> to instal Angular CLI. Prepend <code>sudo</code> for Mac.</li>
 <li>In the project folder create run: <code>ng new project-name</code> to create a new project.</li>
-<li>run <code>ng serve</code> to serve the website on <code>localhost:4200</code></li>
+<li>run <code>ng serve</code> or <code>npm start</code> to serve the website on <code>localhost:4200</code><ul>
+<li>run <code>npm install</code> for install dependencies for imported projects</li>
+<li>A local <code>@angular/cli</code> package will be installed for the project, its version should match global</li>
+</ul>
+</li>
+<li>run <code>ng build --prod --build-optimizer</code> to build and deploy the project<ul>
+<li>This will generate the <code>/www</code> folder inside current project folder</li>
+</ul>
+</li>
 </ol>
 <h2 id="angular-web-app-structure">Angular Web App Structure</h2>
 <ul>
@@ -1399,13 +1407,13 @@
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentName <span class="hljs-comment">//register the customized component in the app module.</span>
+    ComponentName, <span class="hljs-comment">//register the customized component in the app module.</span>
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
-    ServiceName <span class="hljs-comment">//register a dependency for all service in use.</span>
+    ServiceName, <span class="hljs-comment">//register a dependency for all service in use.</span>
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule {}
 </code></pre>
@@ -1424,7 +1432,7 @@
 @Component({
   selector: <span class="hljs-string">&quot;app-component-name&quot;</span>, <span class="hljs-comment">// define the name of the component tag in app component html file.</span>
   templateUrl: <span class="hljs-string">&quot;./component-name.component.html&quot;</span>, <span class="hljs-comment">//link to the layout of the component.</span>
-  styleUrls: [<span class="hljs-string">&quot;./component-name.component.css&quot;</span>] <span class="hljs-comment">//link to the style sheet of the component.</span>
+  styleUrls: [<span class="hljs-string">&quot;./component-name.component.css&quot;</span>], <span class="hljs-comment">//link to the style sheet of the component.</span>
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ComponentTestComponent <span class="hljs-keyword">implements</span> OnInit {
   dataName = <span class="hljs-number">100</span>; <span class="hljs-comment">//Declare any data here for template file to use.</span>
@@ -1466,7 +1474,7 @@
 </ul>
 <pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Injectable } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
 @Injectable({
-  providedIn: <span class="hljs-string">&quot;root&quot;</span>
+  providedIn: <span class="hljs-string">&quot;root&quot;</span>,
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ServiceNameService {
   anyFunction() {
@@ -1521,7 +1529,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Angular","level":"1.13.1","depth":2,"next":{"title":"PHP","level":"1.14","depth":1,"path":"php/README.md","ref":"php/README.md","articles":[{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]}]},"previous":{"title":"TypeScript","level":"1.13","depth":1,"path":"typescript/README.md","ref":"typescript/README.md","articles":[{"title":"Angular","level":"1.13.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"typescript/angular.md","mtime":"2020-11-20T18:09:53.481Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Angular","level":"1.13.1","depth":2,"next":{"title":"PHP","level":"1.14","depth":1,"path":"php/README.md","ref":"php/README.md","articles":[{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]}]},"previous":{"title":"TypeScript","level":"1.13","depth":1,"path":"typescript/README.md","ref":"typescript/README.md","articles":[{"title":"Angular","level":"1.13.1","depth":2,"path":"typescript/angular.md","ref":"typescript/angular.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"typescript/angular.md","mtime":"2021-03-18T22:54:25.778Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

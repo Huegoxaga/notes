@@ -1408,15 +1408,38 @@
 <li><code>module</code> is a reference to the current module</li>
 </ul>
 <h3 id="export-modules">Export Modules</h3>
-<p>A module object has to be exported for other module to use:</p>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> <span class="hljs-built_in">module</span>,exports.objectExportName = objectName;
-</code></pre>
 <ul>
-<li>To export a function: <code>module.exports = functionName</code></li>
+<li>The <code>module.exports</code> is a special object which is included in every JavaScript file in the Node.js application by default. The module is a variable that represents the current module, and exports is an object that will be exposed as a module</li>
+<li>A module object has to be exported for other module to use:</li>
 </ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> getName = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;Tom&apos;</span>;
+};
+exports.getAge = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-number">18</span>;
+};
+exports.getName = getName;
+<span class="hljs-keyword">const</span> exports.NAME = <span class="hljs-string">&apos;Tom&apos;</span>;
+<span class="hljs-comment">// can also export class with default values in the constructor</span>
+<span class="hljs-comment">// Optionally use the exports property of a module object</span>
+<span class="hljs-built_in">module</span>.exports = {
+  functionName: () =&gt; {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;123&apos;</span>;
+  },
+  variableName: <span class="hljs-string">&apos;123&apos;</span>,
+};
+<span class="hljs-built_in">module</span>.exports = {
+    firstName: <span class="hljs-string">&apos;James&apos;</span>,
+    lastName: <span class="hljs-string">&apos;Bond&apos;</span>
+}
+<span class="hljs-built_in">module</span>.exports = functionName
+</code></pre>
 <h3 id="import-modules">Import Modules</h3>
-<p>A module has to import an exported module object before using it:</p>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> moduleObjectName = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;filePath&quot;</span>);
+<ul>
+<li>A module has to import an exported module object before using it</li>
+<li><code>require(&quot;filePath&quot;)</code> will return the exports object of the target file</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { NAME, getName, getAge } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;filePath&quot;</span>);
 </code></pre>
 <ul>
 <li>extenstion is not required in the filePath</li>
@@ -1434,6 +1457,8 @@
 <li><code>require(&apos;path&apos;);</code></li>
 <li>Methods:<ul>
 <li><code>.parse(variableName)</code> It returns the path of the file containing the variable as the argument.</li>
+<li><code>.extname(filename)</code> get the file extension with the dot</li>
+<li><code>.join(dir, filename)</code> join path with <code>/</code></li>
 </ul>
 </li>
 </ul>
@@ -1452,6 +1477,8 @@
 <li>Methods:<ul>
 <li><code>.readdir(folderPath,callBack);</code> return an array of string for fileNames</li>
 <li><code>.readdirSync(folderPath);</code> return an array of string for fileNames</li>
+<li><code>.readFileSync(filePath)</code> load file into file object</li>
+<li><code>const writeStream = fs.createWriteStream(targetFilePath);</code>, <code>await awaitWriteStream(file.pipe(writeStream));</code> write file to <code>targetFilePath</code> using write stream</li>
 </ul>
 </li>
 </ul>
@@ -1569,6 +1596,14 @@ describe(<span class="hljs-string">&quot;TestCaseName&quot;</span>, () =&gt; {
 <li><a href="https://momentjs.com/timezone/" target="_blank">Click Here</a> to view its official website</li>
 <li>After installation, <code>require(&apos;moment-timezone&apos;)</code> will have the momnet object with timezone feature enabled</li>
 </ul>
+<h2 id="pm2">pm2</h2>
+<ul>
+<li>Production manager 2 runs the npm app in the backgroud on a server</li>
+<li><code>npm install pm2 -g</code> install</li>
+<li>In project folder <code>sudo pm2 start app.js</code> run the app</li>
+<li><code>sudo pm2 startup</code> automatically start the app after reboot</li>
+<li><code>pm2 list</code> or <code>pm2 show app</code> check the current running apps</li>
+</ul>
 
                                 
                                 </section>
@@ -1612,7 +1647,7 @@ describe(<span class="hljs-string">&quot;TestCaseName&quot;</span>, () =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Node.js","level":"1.5.4","depth":2,"next":{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]},"previous":{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/node-js.md","mtime":"2020-12-27T20:51:37.145Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Node.js","level":"1.5.4","depth":2,"next":{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]},"previous":{"title":"React Native","level":"1.5.3","depth":2,"path":"javascript/react-native.md","ref":"javascript/react-native.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"javascript/node-js.md","mtime":"2021-03-08T17:11:34.338Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

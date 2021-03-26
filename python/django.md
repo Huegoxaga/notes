@@ -7,6 +7,7 @@
 - Web servers like `Apache` or `Nginx` are used to get browser request, requests are then forwarded to `WSGI`.
   - Web server can enable a certain web port socket
 - `WSGI`(Web Server Gateway Interface) is used to run the Django application, send to request to the app and then get return response from the app.
+- `ASGI` (Asynchronous Server Gateway Interface) it provides an upgrade to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.
 
 ## Useful Commands
 
@@ -16,6 +17,7 @@
 - `django-admin startproject <project_name>` create a new project.
 - `python manage.py runserver` it will run the website and return the url of the running website. By default it works with 127.0.0.1 on 8000 port only
   - append the command with `0.0.0.0:8000` to runserver on all server addresses on port 8000.
+  - append the port number as `python manage.py runserver 8001` to run the project on a certain port
 - `python manage.py startapp <appname>` create a new app inside a project.
 - `python manage.py makemigrations` update changes made on database model files for an app.
   - create files in the `app/migrations` folder for the `migrate` command to run.

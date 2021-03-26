@@ -1404,6 +1404,7 @@
 </ul>
 </li>
 <li>STM32F446RE is the model that uses STM32F4x MCU</li>
+<li>The Mbed site for the nucleo boards offers great pinout diagrams</li>
 </ul>
 <h2 id="stm32cubeide">STM32CubeIDE</h2>
 <ul>
@@ -1449,6 +1450,7 @@
 <li>A project can use either <code>C</code> or <code>C++</code> as its development language.</li>
 <li><code>HAL</code> is the official library used by <code>STM32</code><ul>
 <li>Same code can works on various <code>STM32</code> hardwares</li>
+<li>For detail search MCU model with the keyword <code>HAL</code> and read the docs in the PDF from the search result</li>
 </ul>
 </li>
 <li><code>Src</code> folder keeps all the <code>.c</code> source file, <code>Inc</code> folder keeps all the <code>.h</code> header files.</li>
@@ -1523,6 +1525,16 @@
 <li>In the main menu bar, start to debug, and start to run the code</li>
 </ul>
 </li>
+<li>Enable a <code>USART</code> connection in asyn mode to get serial output from the board<ul>
+<li>The <code>IDE</code> will install a virtual <code>COMM</code> port. For windows machine use device manager to find it. For others, look for the <code>dev/tty*</code> device file</li>
+<li>Use a serial terminal program and connect to the port with baud rate specified in the UART config code will establish the connection</li>
+<li><code>#include &lt;string.h&gt;</code>, and define a buffer as <code>uint8_t buf[12];</code> in user code begin 1 section in main function, and put the following code inside <code>while(1)</code> loop to test the connection<pre><code class="lang-c"><span class="hljs-built_in">strcpy</span>((<span class="hljs-keyword">char</span>*)buf, <span class="hljs-string">&quot;Test\r\n&quot;</span>);
+HAL_UART_Transmit(&amp;huart2, buf, <span class="hljs-built_in">strlen</span>((<span class="hljs-keyword">char</span>*)buf), HAL_MAX_DELAY);
+HAL_Delay(<span class="hljs-number">500</span>);
+</code></pre>
+</li>
+</ul>
+</li>
 <li>Example code for changing register settings, The offset from the base bus memory address to each peripherals is used to located the peripherals&apos; registers.<pre><code class="lang-cpp"><span class="hljs-comment">/**
 ******************************************************************************
 * @file    main.c
@@ -1564,6 +1576,7 @@
 <li>right click inside the panel and select column, cell size and radix to change the output data format</li>
 </ul>
 </li>
+<li>When connect to multiple devices specify the ST-Link S/N for each device in the debug configuration</li>
 </ul>
 <h3 id="stm32cubemx">STM32CubeMX</h3>
 <ul>
@@ -1572,8 +1585,20 @@
 <li>Click the <code>.ioc</code> file to open this tool</li>
 </ul>
 </li>
+<li>Project code will be reset and new code will be generated after clicking the save button if configuration are changed here</li>
 <li>Pinout Config Tab<ul>
 <li>In the microcontroller pinout view, select pin to assign function to it</li>
+<li>There are pins that are enabled if initiating all peripherals option is selected when project starts<ul>
+<li>It will also setup a <code>UART</code> connection for console output</li>
+</ul>
+</li>
+<li>In the left panel, enable the connectivity that will be used by the project<ul>
+<li>For SPI connection, select a connection mode to enable. Select the Hardware NSS Signal and the MCU will controls the <code>CS</code> line automatically. Also change the prescaler in the parameter settings for a desired clock rate<ul>
+<li>Use GPIO output mode for <code>CS</code> line when controling it manually</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Clock Config Tab<ul>
@@ -1642,7 +1667,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"next":{"title":"Electricity & Magnetism","level":"1.21.4","depth":2,"path":"embedded/electricity-magnetism.md","ref":"embedded/electricity-magnetism.md","articles":[]},"previous":{"title":"Raspberry Pi","level":"1.21.2","depth":2,"path":"embedded/raspberry-pi.md","ref":"embedded/raspberry-pi.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/st.md","mtime":"2021-02-06T20:09:29.700Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"next":{"title":"Electricity & Magnetism","level":"1.21.4","depth":2,"path":"embedded/electricity-magnetism.md","ref":"embedded/electricity-magnetism.md","articles":[]},"previous":{"title":"Raspberry Pi","level":"1.21.2","depth":2,"path":"embedded/raspberry-pi.md","ref":"embedded/raspberry-pi.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/st.md","mtime":"2021-03-06T01:33:19.661Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

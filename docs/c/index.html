@@ -1418,10 +1418,17 @@
 </ul>
 <h2 id="data-types">Data Types</h2>
 <ul>
-<li><code>int</code>: integer, a whole number.</li>
+<li><code>int</code>: integer, a whole number.<ul>
+<li><code>0x</code> represents the number followed is hexadecimal</li>
+<li><code>0b</code> represents the number followed is binary</li>
+<li><code>uint8_t</code> - unsigned 8-bit integer</li>
+</ul>
+</li>
 <li><code>float</code>: floating point, a number with a fractional part.</li>
 <li><code>double</code>: double-precision floating point value.</li>
 <li><code>char</code>: single character.<ul>
+<li>It is signed</li>
+<li>It has 1 byte storage size with value range from -128 to 127</li>
 <li>A string is stored in a char array.</li>
 <li>A character, such as <code>&apos;b&apos;</code>, is indicated by single quotation marks and cannot be treated as a string.</li>
 </ul>
@@ -2216,11 +2223,14 @@ ptr-&gt;int_num = <span class="hljs-number">10</span>;
 </ul>
 </li>
 <li><code>putf()</code></li>
-<li><code>sprintf()</code> creates formatted strings. auto convert data types for output string.<pre><code class="lang-c++"><span class="hljs-keyword">char</span> info[<span class="hljs-number">100</span>];
+<li><code>sprintf()</code> creates formatted strings. auto convert data types for output string.<pre><code class="lang-c++"><span class="hljs-keyword">char</span> output[<span class="hljs-number">100</span>];
 <span class="hljs-keyword">char</span> dept[ ] = <span class="hljs-string">&quot;HR&quot;</span>;
 <span class="hljs-keyword">int</span> emp = <span class="hljs-number">75</span>;
-<span class="hljs-built_in">sprintf</span>(info, <span class="hljs-string">&quot;The %s dept has %d employees.&quot;</span>, dept, emp);
+<span class="hljs-built_in">sprintf</span>(output, <span class="hljs-string">&quot;The %s dept has %d employees.&quot;</span>, dept, emp);
 </code></pre>
+<ul>
+<li>It returns the output string length</li>
+</ul>
 </li>
 </ul>
 <h5 id="input">Input</h5>
@@ -2699,7 +2709,7 @@ fptr = fopen(<span class="hljs-string">&quot;nonexistantfile.txt&quot;</span>, <
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C","level":"1.6","depth":1,"next":{"title":"C++","level":"1.7","depth":1,"path":"cpp/README.md","ref":"cpp/README.md","articles":[]},"previous":{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c/README.md","mtime":"2021-02-14T19:30:26.372Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C","level":"1.6","depth":1,"next":{"title":"C++","level":"1.7","depth":1,"path":"cpp/README.md","ref":"cpp/README.md","articles":[]},"previous":{"title":"Wechat Mini Program","level":"1.5.5","depth":2,"path":"javascript/wechat-mini-program.md","ref":"javascript/wechat-mini-program.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c/README.md","mtime":"2021-03-06T22:02:57.686Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

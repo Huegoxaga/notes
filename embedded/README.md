@@ -220,6 +220,12 @@
       - Singals are balanced and has field-cancelling effects, it will have a low noise emission
       - These two resistors are called the terminating resistors
 
+##### Dev Tools
+
+- [CAN BUS Analyzer Tool](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/APGDT002) by Microchip, a hardware that be used to simulate and monitor CAN messages
+  - The official driver supports Window only, use [socketcan driver](https://github.com/GENIVI/CANdevStudio#quick-start) for Linux
+  - [CANdevStudio](https://github.com/GENIVI/CANdevStudio#quick-start) provides a GUI for CAN development
+
 ## Microprocessor
 
 - It can be used to run an OS

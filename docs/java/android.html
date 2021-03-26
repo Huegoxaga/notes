@@ -1400,6 +1400,11 @@
 <li>Cold Boot is a Boot Option that will clear the device memory, it is better for debug but it will be slower than Quick Boot</li>
 </ul>
 </li>
+<li>Emulator side menu<ul>
+<li>rotate the device</li>
+<li>change the device location</li>
+</ul>
+</li>
 </ul>
 <h4 id="genymotion">GenyMotion</h4>
 <ul>
@@ -1452,7 +1457,7 @@
 <h3 id="java-folder"><code>java</code> folder</h3>
 <ul>
 <li>It can access variables or reference that imported from <code>R</code></li>
-<li>Values from <code>strings.xml</code> can be loaded using <code>getString()</code>, e.g. <code>String name = getString(R.string.name)</code><ul>
+<li>Values from <code>strings.xml</code> can be loaded using <code>getString()</code>, e.g. <code>String name = getString(R.string.name)</code> or <code>getString(R.string.hello, &quot;Variable One&quot;, &quot;Variable Two&quot;);</code><ul>
 <li>use <code>getResources().getStringArray(R.array.weekdays);</code> to load arrays</li>
 </ul>
 </li>
@@ -1461,12 +1466,36 @@
 <li>Variables can be declared at the top inside the class as <code>private ClassName var;</code>, but they need to be initialized inside <code>onCreate()</code></li>
 </ul>
 </li>
+<li>check and ask for permissions<pre><code class="lang-java"><span class="hljs-keyword">if</span> (ActivityCompat.checkSelfPermission(<span class="hljs-keyword">this</span>, Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
+  ActivityCompat.requestPermissions(<span class="hljs-keyword">this</span>,<span class="hljs-keyword">new</span> String[]{Manifest.permission.RECEIVE_SMS}, <span class="hljs-number">1</span>);
+}
+</code></pre>
+<ul>
+<li>The request is asynchronous, so you can&apos;t confirm immediately whether or not it was granted, therefore a callback can be used</li>
+<li>The <code>1</code> in the <code>requestPermissions()</code> parameter is the result code reported to permission result callback, should be &gt;= 0</li>
+<li><code>onRequestPermissionsResult()</code> will be invoked whenever a permission is granted<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onRequestPermissionsResult</span><span class="hljs-params">(<span class="hljs-keyword">int</span> resultCode, String permissions[], <span class="hljs-keyword">int</span>[] results )</span> </span>{
+<span class="hljs-keyword">switch</span> (resultCode) {
+  <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+    <span class="hljs-keyword">if</span> (results.length &gt; <span class="hljs-number">0</span> &amp;&amp; results[<span class="hljs-number">0</span>] == PackageManager.PERMISSION_GRANTED) {
+      <span class="hljs-comment">// initialize permission dependent service here</span>
+    }
+}
+}
+</code></pre>
+</li>
+<li>For security reason, multiple popups are not allowed</li>
+<li>The security issue involves attempting to confuse a user by asking for permissions, but hiding the exact message with another overlay</li>
+</ul>
+</li>
+<li>Inflater should be used when loading a layout during runtime</li>
 </ul>
 <h4 id="activities">Activities</h4>
 <ul>
 <li>In an android app, each page is called an activity</li>
 <li>The main activity is the first screen to appear when the user launches the app</li>
 <li>Each activity is only loosely bound to the other activities</li>
+<li>It extends from Context class</li>
 <li>Only one activity can have focus and be responding to events from the user such as touch events</li>
 <li>Each activity is a customized class in the Java code</li>
 <li>like programming paradigms in which apps are launched with a main() method, the</li>
@@ -1493,6 +1522,8 @@
 <li>the phone&#x2019;s back button can return to the previous activity with <code>onResume()</code>, the top activity might be destroyed if memory is low</li>
 </ul>
 </li>
+<li>If this activity has no <code>setContentView()</code> and ends with <code>finish()</code> it will not inflate any layout</li>
+<li>Declare <code>private static Activity currentActivity = null;</code> in the activity class and assign <code>currentActivity = this;</code> in the <code>onCreate()</code> method so the current state of the acivity can be accessed by other classes using a public getter at runtime</li>
 </ul>
 <h4 id="event-handler">Event Handler</h4>
 <ul>
@@ -1566,9 +1597,16 @@
   Fragment myFragment1 = <span class="hljs-keyword">new</span> BlankFragment();
   <span class="hljs-comment">// replace the fragment instance into a frame (viewgroup) in our layout.</span>
   fragmentTransaction.replace(R.id.frame2, myFragment1);
+  <span class="hljs-comment">// Remove a fragment</span>
+  <span class="hljs-comment">// fragmentTransaction.remove(R.id.frame2);</span>
   fragmentTransaction.commit();
 }
 </code></pre>
+</li>
+<li>Main Activity can get <code>getSupportFragmentManager()</code> when it extends the <code>AppCompatActivity</code> interface<ul>
+<li><code>AppCompatActivity</code> extends <code>FragmentActivity</code></li>
+<li>optionally, <code>getFragmentManager()</code> method is available for fragment classes and is part of an older API, and deprecated in API level 28</li>
+</ul>
 </li>
 <li>Fragment constructor - can be used to pass view into framgment class when initialized with fragment manager. For example when use fragment manager in the main acticity, declare fragment as <code>Fragment myFragment1 = new BlankFragment(findViewById(R.id.textview));</code><pre><code class="lang-java"><span class="hljs-comment">// Define constructor inside fragment class</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BlankFragment</span><span class="hljs-params">(TextView tview)</span> </span>{
@@ -1576,6 +1614,11 @@
 }
 <span class="hljs-comment">// then tview.findViewById() can be accessed globally in the fragment class</span>
 </code></pre>
+</li>
+<li><code>getActivity()</code> can also be used to get reference of a widget from parent activity<ul>
+<li>From the fragments uses <code>Switch actSw = getActivity().findViewById(R.id.switch1);</code></li>
+<li>It was added in API level 11, but then deprecated in API level 28</li>
+</ul>
 </li>
 </ul>
 <h5 id="event-handlers-for-widgets-inside-a-fragment">Event Handlers for Widgets inside a Fragment</h5>
@@ -1600,6 +1643,47 @@
 </code></pre>
 </li>
 </ul>
+<h5 id="dialogfragment">DialogFragment</h5>
+<ul>
+<li>It is a type of Fragment that works as a dialog</li>
+<li>All element should be <code>wrap_content</code> and with min width, <code>match_parent</code> won&apos;t work for dialog fragments</li>
+<li>Android Studio does not have create DialogFragment option, create an Empty Fragment and replace the class with the following<pre><code class="lang-java"><span class="hljs-comment">/**
+* For a Dialog we must extend the DialogFragment Class
+* We implement OnClickListener to handle button click events
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomDialog</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DialogFragment</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">View</span>.<span class="hljs-title">OnClickListener</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CustomDialog</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// Required empty public constructor</span>
+  }
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> View <span class="hljs-title">onCreateView</span><span class="hljs-params">(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)</span> </span>{
+    <span class="hljs-comment">// Inflate the layout for this fragment</span>
+    <span class="hljs-comment">// We saved the inflated layout in our myview variable</span>
+    View myview = inflater.inflate(R.layout.fragment_custom, container, <span class="hljs-keyword">false</span>);
+    <span class="hljs-comment">// Attach the OnClickListener to the button</span>
+    Button button = myview.findViewById(R.id.dialogbutton);
+    button.setOnClickListener(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">return</span> myview;
+  }
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>{
+    <span class="hljs-comment">// Get the string out of our Edit field</span>
+    <span class="hljs-comment">// getView() will return the view of the current Fragment</span>
+    EditText editInput = getView().findViewById(R.id.dialogedit);
+    String myInput = editInput.getText().toString();
+    <span class="hljs-comment">// get the main activity object</span>
+    MainActivity main = (MainActivity) getActivity();
+    <span class="hljs-comment">// call a method in the main activity class</span>
+    main.sendInput(myInput);
+    <span class="hljs-comment">// Dismiss will close the dialog</span>
+    dismiss();
+    }
+  }
+</code></pre>
+</li>
+<li>In the example <code>sendInput</code> is a user defined method in the main class as <code>public void sendInput(String in) { }</code></li>
+<li>Use <code>CustomDialog myDialog = new CustomDialog();</code>, <code>myDialog.show(getSupportFragmentManager(),null);</code> to initiate and show the dialog in main class</li>
+</ul>
 <h4 id="view-object">View object</h4>
 <ul>
 <li>View object class represents the basic building block for user interface components. A View occupies a rectangular area on the screen and is responsiblefor drawing and event handling. View is the base class for widgets, which are used to create interactive UI components (buttons, text fields, etc.)</li>
@@ -1613,6 +1697,9 @@
 </ul>
 </li>
 <li><code>view.setImageResource(R.drawable.image_name);</code> change image</li>
+<li><code>view.setVisibility(View.GONE);</code> hide the view, and it doesn&apos;t take any space for layout purposes</li>
+<li><code>view.setVisibility(View.INVISIBLE);</code> hide the view, but it still takes up space for layout purposes</li>
+<li><code>view.setVisibility(View.VISIBLE);</code> show the view</li>
 </ul>
 <h4 id="intent-object">Intent object</h4>
 <ul>
@@ -1765,6 +1852,401 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 </code></pre>
 </li>
 </ul>
+<h4 id="toast">Toast</h4>
+<ul>
+<li>A toast is a view containing a quick little message for the user. it appears as a floating view over the application. It will never receive focus</li>
+<li><code>Toast.makeText(this, &quot;Basic Toast&quot;, Toast.LENGTH_LONG).show();</code><ul>
+<li><code>Toast.LENGTH_LONG</code> specifies the amount of time the message is visible</li>
+</ul>
+</li>
+<li>Use Toast to show a view during runtime<pre><code class="lang-java"><span class="hljs-comment">// To show a toast with a custom layout - need to inflate the layout</span>
+LayoutInflater myinflator = getLayoutInflater();
+View customtoast = myinflator.inflate(R.layout.customlayout, <span class="hljs-keyword">null</span>);
+<span class="hljs-comment">// Now build the Toast - adjust settings</span>
+Toast myToast = <span class="hljs-keyword">new</span> Toast(<span class="hljs-keyword">this</span>);
+<span class="hljs-comment">// set the view duration</span>
+myToast.setDuration(Toast.LENGTH_LONG);
+<span class="hljs-comment">// position the toast at the top of the screen</span>
+myToast.setGravity(Gravity.TOP, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+<span class="hljs-comment">// set connect the custom layout (deprecated in API Level 30)</span>
+myToast.setView( customtoast );
+<span class="hljs-comment">// And finally show it</span>
+myToast.show();
+</code></pre>
+</li>
+<li>When only Context is provided use <code>getSystemService()</code> to get the layout inflater<pre><code class="lang-java"><span class="hljs-comment">// To show a toast with a custom layout - need to inflate the layoutLayout</span>
+LayoutInflater myLayout = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+View customtoast = myLayout.inflate(R.layout.message_output_layout, <span class="hljs-keyword">null</span>);
+<span class="hljs-comment">// Now build the Toast - adjust settings</span>
+Toast myToast = <span class="hljs-keyword">new</span> Toast(context);
+<span class="hljs-comment">// set the view duration</span>
+myToast.setDuration(Toast.LENGTH_LONG);
+<span class="hljs-comment">// position the toast at the center of the screen</span>
+myToast.setGravity(Gravity.CENTER, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+<span class="hljs-comment">// set connect the custom layout (deprecated)</span>
+myToast.setView(customtoast);
+<span class="hljs-comment">// And finally show it</span>
+myToast.show();
+</code></pre>
+</li>
+</ul>
+<h4 id="snackbar">Snackbar</h4>
+<ul>
+<li>It has some properties similar to toasts</li>
+</ul>
+<h4 id="broadcast-receiver">Broadcast Receiver</h4>
+<ul>
+<li>Receive broadcast information as subscriber</li>
+<li>Works in the background, as long as the permission is granted<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyReceiver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BroadcastReceiver</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String tag = <span class="hljs-string">&quot;==MyReceiver==&quot;</span>;
+<span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onReceive</span><span class="hljs-params">(Context context, Intent intent)</span> </span>{
+  Log.d(tag, <span class="hljs-string">&quot;onReceive&quot;</span>); }
+  <span class="hljs-comment">// get an array of messages if subscribe SMS</span>
+  SmsMessage[] messages = getMessagesFromIntent(intent);
+  <span class="hljs-comment">// Get the sender from the first message block</span>
+  String sender = messages[<span class="hljs-number">0</span>].getOriginatingAddress();
+  <span class="hljs-comment">// Get the first message body text -</span>
+  String msg = messages[<span class="hljs-number">0</span>].getMessageBody();
+  <span class="hljs-comment">// Launch main activity when a message is received</span>
+  Intent myIntent = <span class="hljs-keyword">new</span> Intent(context, MainActivity.class);
+  myIntent.putExtra(MSG, msg);
+  <span class="hljs-comment">// Set one or more New Activity Flags</span>
+  myIntent.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP |  Intent.FLAG_ACTIVITY_NEW_TASK);
+  context.startActivity(myIntent);
+  <span class="hljs-comment">// Use getIntent(); in MainActivity to get data in putExtra()</span>
+}
+</code></pre>
+</li>
+<li>Intent Flags<ul>
+<li><code>FLAG_ACTIVITY_NEW_TASK</code> (must have)<ul>
+<li>This activity becomes the start of a new task on history stack.</li>
+</ul>
+</li>
+<li><code>FLAG_ACTIVITY_CLEAR_TOP</code><ul>
+<li>If the activity being launched is already running in the current task, then instead of launching a new instance of that activity, all of the other activities on top of it will be closed and this Intent will be delivered to the (now on top) old activity as a new Intent.</li>
+</ul>
+</li>
+<li><code>FLAG_ACTIVITY_CLEAR_TASK</code> If set in an Intent passed to Context#startActivity, this flag will cause any existing task that would be associated with the activity to be cleared before the activity is started. This way, when you load that <code>FLAG_ACTIVITY_NEW_TASK</code>, and you hit the back button, you won&apos;t end up back at a login or sign up screen. That&apos;d be a little awkward for our users if they were already logged in and hit it by accident.</li>
+</ul>
+</li>
+</ul>
+<h4 id="location-manager">Location Manager</h4>
+<ul>
+<li>Add permission in manifest and initialize in <code>onRequestPermissionsResult()</code> in main if permission is granted<pre><code class="lang-java"><span class="hljs-meta">@Overridepublic</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">onRequestPermissionsResult</span><span class="hljs-params">(<span class="hljs-keyword">int</span> resultCode, String permissions[], <span class="hljs-keyword">int</span>[] results )</span> </span>{
+  Log.d(TAG, <span class="hljs-string">&quot;onRequestPermissionsResult&quot;</span>);
+  <span class="hljs-keyword">switch</span> (resultCode) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+      <span class="hljs-keyword">if</span> (results.length &gt; <span class="hljs-number">0</span> &amp;&amp; results[<span class="hljs-number">0</span>] == PackageManager.PERMISSION_GRANTED) {
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        <span class="hljs-comment">// update every 5 seconds</span>
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,<span class="hljs-number">5000</span>, <span class="hljs-number">0</span>, <span class="hljs-keyword">this</span>);
+        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,<span class="hljs-number">5000</span>, <span class="hljs-number">0</span>, <span class="hljs-keyword">this</span>);
+      }
+  }
+}
+</code></pre>
+</li>
+<li>Implementing the Location Listener<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onStatusChanged</span><span class="hljs-params">(String provider, <span class="hljs-keyword">int</span> status, Bundle extras)</span> </span>{
+  <span class="hljs-comment">// get invoked once provider is changed to enabled or disabled</span>
+}
+<span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onProviderEnabled</span><span class="hljs-params">(String provider)</span> </span>{
+  <span class="hljs-comment">// get invoked once provider is changed to enabled</span>
+}
+<span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onProviderDisabled</span><span class="hljs-params">(String provider)</span> </span>{
+  <span class="hljs-comment">// get invoked once provider is changed to disabled</span>
+}
+<span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLocationChanged</span><span class="hljs-params">(Location location)</span> </span>{
+  <span class="hljs-comment">// Location Changed</span>
+  <span class="hljs-keyword">double</span> loclat = location.getLatitude();
+  <span class="hljs-keyword">double</span> loclong = location.getLongitude();
+  Toast.makeText(<span class="hljs-keyword">this</span>, loclat + <span class="hljs-string">&quot; : &quot;</span> + loclong, Toast.LENGTH_LONG).show();
+  Log.d(TAG, <span class="hljs-string">&quot;onRequestPermissionsResult&quot;</span>);}
+</code></pre>
+</li>
+</ul>
+<h4 id="listview">ListView</h4>
+<ul>
+<li>Use ListView to display a string of array into a list<pre><code class="lang-java">ArrayAdapter&lt;String&gt; adapter = <span class="hljs-keyword">new</span> ArrayAdapter&lt;String&gt;(<span class="hljs-keyword">this</span>, android.R.layout.simple_list_item_1, myStringList);
+<span class="hljs-comment">// get the number of elements</span>
+Log.d(TAG, <span class="hljs-string">&quot;adapter getCount() = &quot;</span> + adapter.getCount());
+ListView randList = findViewById(R.id.listView);
+<span class="hljs-comment">// associate an adapter with the list</span>
+randList.setAdapter(adapter);
+</code></pre>
+</li>
+<li>Predefined list item layout:<ul>
+<li><code>android.R.layout.simple_list_item_1</code></li>
+<li><code>android.R.layout.simple_list_item_2</code></li>
+<li><code>android.R.layout.two_line_list_item</code></li>
+</ul>
+</li>
+<li>To handle items click, register the listener <code>randList.setOnItemClickListener(this::onItemClick);</code>, then define <code>public void onItemClick(AdapterView parent, View v, int position, long id) {}</code></li>
+</ul>
+<h4 id="asynctask">AsyncTask</h4>
+<ul>
+<li>It is good for running short operations in the background in a non-blocking manner</li>
+<li>It also forces serialization, so that only one AsyncTask runs at a time</li>
+<li>AsyncTask class definition<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestAsyncTask</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AsyncTask</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Void</span>, <span class="hljs-title">String</span>&gt; </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String TAG = <span class="hljs-string">&quot;==TestAsynchTask==&quot;</span>;
+  <span class="hljs-comment">/**
+  * Called as soon as asynch tasks starts.
+  */</span>
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPreExecute</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">super</span>.onPreExecute();
+    Log.d(TAG,<span class="hljs-string">&quot;onPreExectue&quot;</span>);
+  }
+  <span class="hljs-comment">/**
+  * Called when asynch task finishes. Prints the result.
+  * <span class="hljs-doctag">@param</span> result string passed in from background task.
+  */</span>
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPostExecute</span><span class="hljs-params">(String result)</span> </span>{
+    <span class="hljs-keyword">super</span>.onPostExecute(result);
+    Log.d(TAG, result);
+  }
+  <span class="hljs-comment">/**
+  * Runs in a nonblocking background thread for you.
+  * <span class="hljs-doctag">@param</span> string parameters passed in from execute
+  * <span class="hljs-doctag">@return</span> value sent back to onPostExecute()
+  */</span>
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">doInBackground</span><span class="hljs-params">(String... strings)</span> </span>{
+    MainActivity.taskFunction(<span class="hljs-string">&quot;Asynch&quot;</span>, strings[<span class="hljs-number">0</span>]);
+    String result = <span class="hljs-string">&quot;Finished Job\n&quot;</span>;
+    <span class="hljs-keyword">for</span> (String s : strings) {
+      result += s + <span class="hljs-string">&quot;\n&quot;</span>;
+    }
+    <span class="hljs-keyword">return</span> result;
+  }
+}
+</code></pre>
+</li>
+<li>Run async task in <code>MainActivity.java</code><pre><code class="lang-java">  <span class="hljs-comment">// Start Async Background Thread, pass parameters</span>
+  TestAsyncTask dl = <span class="hljs-keyword">new</span> TestAsyncTask();
+  dl.execute(<span class="hljs-string">&quot;parameterA&quot;</span>, <span class="hljs-string">&quot;parameterB&quot;</span>, <span class="hljs-string">&quot;parameterC&quot;</span>);
+}
+</code></pre>
+</li>
+<li>Example async task for download data from APIs<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DownloadAsyncTask</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AsyncTask</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Void</span>, <span class="hljs-title">String</span>&gt; </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String TAG = <span class="hljs-string">&quot;==MainActivity==&quot;</span>;
+  <span class="hljs-comment">/**
+    * Download data from the supplied URL, catch exceptions
+    * <span class="hljs-doctag">@param</span> params - first parameter is the URL
+    * <span class="hljs-doctag">@return</span> a string that concatenates all of the output together, null on failure
+    */</span>
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">doInBackground</span><span class="hljs-params">(String... params)</span> </span>{
+    Log.d(TAG, <span class="hljs-string">&quot;Starting Background Task&quot;</span>);
+    StringBuilder results = <span class="hljs-keyword">new</span> StringBuilder();
+    <span class="hljs-keyword">try</span> {
+      URL url = <span class="hljs-keyword">new</span> URL(params[<span class="hljs-number">0</span>]);
+      String line = <span class="hljs-keyword">null</span>;
+      <span class="hljs-comment">// Open the Connection - GET is the default setRequestMethod</span>
+      HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+      <span class="hljs-comment">// Read the response</span>
+      <span class="hljs-keyword">int</span> statusCode = conn.getResponseCode();
+      <span class="hljs-keyword">if</span> (statusCode == <span class="hljs-number">200</span>) {
+        InputStream inputStream = <span class="hljs-keyword">new</span> BufferedInputStream(conn.getInputStream());                BufferedReader bufferedReader =<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(inputStream,<span class="hljs-string">&quot;UTF-8&quot;</span>));<span class="hljs-keyword">while</span> ((line = bufferedReader.readLine()) != <span class="hljs-keyword">null</span>) {
+          results.append(line);
+          }
+        }
+        Log.d(TAG, <span class="hljs-string">&quot;Data received = &quot;</span> + results.length());
+        Log.d(TAG, <span class="hljs-string">&quot;Response Code: &quot;</span> + statusCode);
+      } <span class="hljs-keyword">catch</span> (IOException ex) {
+        Log.d(TAG, <span class="hljs-string">&quot;Caught Exception: &quot;</span> + ex);
+      }
+      <span class="hljs-keyword">return</span> results.toString();
+    }
+    <span class="hljs-comment">/**
+      * called after doInBackground completes
+      * After download has completed associate, parse results, update view
+      * <span class="hljs-doctag">@param</span> result - do nothing if results == null
+      */</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPostExecute</span><span class="hljs-params">(String result)</span> </span>{
+      FairList fairlist = <span class="hljs-keyword">null</span>;
+      <span class="hljs-keyword">if</span> (result == <span class="hljs-keyword">null</span>) {
+        Log.d(TAG, <span class="hljs-string">&quot;no results&quot;</span>);
+      } <span class="hljs-keyword">else</span> {
+        Gson gson = <span class="hljs-keyword">new</span> Gson();
+        fairlist = gson.fromJson(result, FairList.class);
+      }
+      <span class="hljs-comment">// fetch the current activity so we can lookup the ListView</span>
+      Activity currentActivity = MainActivity.getCurrentActivity();
+      ListView lv = currentActivity.findViewById(R.id.listView);
+      <span class="hljs-keyword">if</span> (fairlist != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-comment">// if we populated fairlist then connect the adapter</span>
+        ArrayAdapter&lt;Projects&gt; adapter =<span class="hljs-keyword">new</span> ArrayAdapter&lt;Projects&gt; (currentActivity, android.R.layout.simple_list_item_1, fairlist);
+        lv.setAdapter(adapter);
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// clear the list</span>
+        lv.setAdapter(<span class="hljs-keyword">null</span>);
+      }
+    }
+</code></pre>
+</li>
+</ul>
+<h4 id="sqliteopenhelper">SQLiteOpenHelper</h4>
+<ul>
+<li>A helper class to define, create, and update database schema with version management<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyDbHelper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SQLiteOpenHelper</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DATABASE_NAME = <span class="hljs-string">&quot;MyDatabase.db&quot;</span>;
+  <span class="hljs-comment">// version number of the database (starting at 1); if the database is older, onUpgrade(SQLiteDatabase, int, int) will be used to upgrade the database; if the database is newer, onDowngrade(SQLiteDatabase, int, int) will be used to downgrade the database.</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> DATABASE_VERSION = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String MYTABLE = <span class="hljs-string">&quot;mytable&quot;</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String ID = <span class="hljs-string">&quot;_id&quot;</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String TITLE = <span class="hljs-string">&quot;title&quot;</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String SUBTITLE = <span class="hljs-string">&quot;subtitle&quot;</span>;
+  <span class="hljs-comment">// This is the SQL Statement that will be executed to create the table and columns</span>
+  <span class="hljs-comment">// &quot;_id&quot; is recommended to be a standard first column and primary key</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String SQL_CREATE = <span class="hljs-string">&quot;CREATE TABLE &quot;</span> + MYTABLE + <span class="hljs-string">&quot; ( &quot;</span> + ID + <span class="hljs-string">&quot; INTEGER PRIMARY KEY, &quot;</span> + TITLE + <span class="hljs-string">&quot; TEXT, &quot;</span> + SUBTITLE + <span class="hljs-string">&quot; TEXT) &quot;</span>;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyDbHelper</span><span class="hljs-params">(Context context)</span> </span>{
+    <span class="hljs-comment">// the third parameter is SQLiteDatabase.CursorFactory: to use for creating cursor objects, or null for the default This value may be null.</span>
+    <span class="hljs-keyword">super</span>(context, DATABASE_NAME, <span class="hljs-keyword">null</span>, DATABASE_VERSION);
+  }
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(SQLiteDatabase db)</span> </span>{
+    db.execSQL(SQL_CREATE);
+  }
+    <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onOpen</span><span class="hljs-params">(SQLiteDatabase db)</span> </span>{
+    <span class="hljs-comment">// invoked when getWriteableDatabase() is called for the first time</span>
+  }
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onUpgrade</span><span class="hljs-params">(SQLiteDatabase db, <span class="hljs-keyword">int</span> oldVersion, <span class="hljs-keyword">int</span> newVersion)</span> </span>{
+    <span class="hljs-comment">// This is only called if the DATABASE_VERSION changes</span>
+    <span class="hljs-comment">// Possible actions - delete table (ie DROP TABLE IF EXISTS mytable), then call onCreate</span>
+  }
+}
+</code></pre>
+</li>
+<li>In main activity class, create a global instance of our SQL Helper class, <code>MyDbHelper mydbhelp = new MyDbHelper(this);</code>, then get an instance of the database using the helper <code>SQLiteDatabase db = mydbhelp.getWritableDatabase();</code> before starting accessing the database(e.g. inside a button handler function)<ul>
+<li>call <code>mydbhelp.close()</code> when done, usually in <code>onDestroy()</code></li>
+</ul>
+</li>
+<li>The database is not actually created or opened until one of <code>getWritableDatabase()</code> or <code>getReadableDatabase()</code> is called</li>
+<li>The <code>db</code> object of the <code>classSQLiteDatabase</code> instance can do<ul>
+<li><code>long newrowID = db.insert(&quot;mytable&quot;,null, values);</code><ul>
+<li>values is a <code>ContentValues</code> class object, each one represents a record with multiple columndata<pre><code class="lang-java">ContentValues values = <span class="hljs-keyword">new</span> ContentValues();
+values.put(<span class="hljs-string">&quot;title&quot;</span>, title.getText().toString());
+values.put(<span class="hljs-string">&quot;subtitle&quot;</span>, subtitle.getText().toString());
+</code></pre>
+</li>
+<li>the second parameter expects a list of the column names for insert, when <code>null</code> all column will be changed in the update</li>
+</ul>
+</li>
+<li><code>int i = db.update(mydbhelp.TABLE_NAME,contentValues, mydbhelp._ID + &quot; = &quot; + _id, null);</code></li>
+<li><code>db.delete(mydbhelp.TABLE_NAME, mydbhelp._ID + &quot;=&quot; + _id, null);}</code></li>
+</ul>
+</li>
+<li>Cursor - represents the entire result set of the query<ul>
+<li>Once the query is fetched a call to <code>cursor.moveToFirst()</code> is made, calling moveToFirst() does two things:<ul>
+<li>It allows us to test whether the query returned an empty set (by testing the return value)</li>
+<li>It moves the cursor to the first result (when the set is not empty)<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> Cursor <span class="hljs-title">fetch</span><span class="hljs-params">()</span> </span>{
+String[] columns = <span class="hljs-keyword">new</span> String[] { mydbhelp._ID, mydbhelp.SUBJECT, mydbhelp.DESC};
+Cursor cursor = db.query(mydbhelp.TABLE_NAME, columns, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
+<span class="hljs-keyword">if</span> (cursor != <span class="hljs-keyword">null</span>) {
+cursor.moveToFirst();
+}
+<span class="hljs-keyword">return</span> cursor;
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Read cursor in main activity<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>{
+<span class="hljs-comment">// Create a global instance of our SQL Helper class</span>
+MyDbHelper mydbhelp = <span class="hljs-keyword">new</span> MyDbHelper(<span class="hljs-keyword">this</span>);
+<span class="hljs-comment">/**
+  * onCreate - get an instance of our database, use a cursor to display the values
+  * <span class="hljs-doctag">@param</span> savedInstanceState (default)
+  */</span>
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+  <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_list);
+  <span class="hljs-comment">// Get an instance of the database using our helper</span>
+  SQLiteDatabase db = mydbhelp.getReadableDatabase();
+  <span class="hljs-comment">// A projection defines what fields we want to retrieve.</span>
+  String[] projection = { <span class="hljs-string">&quot;_id&quot;</span>, <span class="hljs-string">&quot;title&quot;</span>, <span class="hljs-string">&quot;subtitle&quot;</span>};
+  <span class="hljs-comment">// db.query will retreive the data and return a Cursor to access itCursor</span>
+  Cursor mycursor = db.query(<span class="hljs-string">&quot;mytable&quot;</span>, projection, <span class="hljs-keyword">null</span>,<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
+  String results = <span class="hljs-string">&quot;&quot;</span>;
+  <span class="hljs-comment">// Loop through our returned results from the</span>
+  <span class="hljs-keyword">while</span>(mycursor.moveToNext()) {
+    String title = mycursor.getString( mycursor.getColumnIndex(<span class="hljs-string">&quot;title&quot;</span>) );
+    String subtitle = mycursor.getString( mycursor.getColumnIndex(<span class="hljs-string">&quot;subtitle&quot;</span>) );
+    <span class="hljs-keyword">long</span> itemID = mycursor.getLong( mycursor.getColumnIndex(<span class="hljs-string">&quot;_id&quot;</span>) );
+    <span class="hljs-comment">// We could add our results to an array, or process them here if we want</span>
+    results += itemID + <span class="hljs-string">&quot; &quot;</span> + title + <span class="hljs-string">&quot; &quot;</span> + subtitle + <span class="hljs-string">&quot;\n&quot;</span>;
+    }
+    <span class="hljs-comment">// Close the cursor when we&apos;re done</span>
+    mycursor.close();
+    <span class="hljs-comment">// Show our</span>
+    TextView output = (TextView) findViewById(R.id.outputtext);
+    output.setText(results); <span class="hljs-comment">// XXX TODO fix this</span>
+  }
+}
+</code></pre>
+</li>
+<li>For <code>db.query()</code>, <code>mycursor = db.query(&quot;mytable&quot;, columns, whereClause, whereArgs, groupBy, having, orderBy);</code><ul>
+<li>for where clause include <code>?</code> for things that are dynamic</li>
+<li><code>whereArgs</code> assign values in <code>?</code> used in the <code>whereClause</code> in the order they appear</li>
+<li>For example:<pre><code class="lang-java">String[] tableColumns = <span class="hljs-keyword">new</span> String[] {<span class="hljs-string">&quot;column1&quot;</span>,<span class="hljs-string">&quot;(SELECT max(column1) FROM table2) AS max&quot;</span>};
+String whereClause = <span class="hljs-string">&quot;column1 = ? OR column1 = ?&quot;</span>;
+String[] whereArgs = <span class="hljs-keyword">new</span> String[] {<span class="hljs-string">&quot;value1&quot;</span>,<span class="hljs-string">&quot;value2&quot;</span>};
+String orderBy = <span class="hljs-string">&quot;column1&quot;</span>;
+Cursor c = sqLiteDatabase.query(<span class="hljs-string">&quot;table1&quot;</span>, tableColumns, whereClause, whereArgs, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, orderBy);
+<span class="hljs-keyword">int</span> idx = c.getColumnIndex(<span class="hljs-string">&quot;max&quot;</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Use SimpleCursorAdapter for ListView<pre><code class="lang-java">SQLiteDatabase db = mydbhelp.getReadableDatabase();
+String[] columns = {MySQLHelper.ID, MySQLHelper.PRODUCT, MySQLHelper.SERIAL};
+Cursor mycursor = db.query(MySQLHelper.MYTABLE, columns, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
+SimpleCursorAdapter adapter = <span class="hljs-keyword">new</span> SimpleCursorAdapter(<span class="hljs-keyword">this</span>, android.R.layout.two_line_list_item, mycursor, <span class="hljs-keyword">new</span> String[]{MySQLHelper.PRODUCT, MySQLHelper.SERIAL}, <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]{android.R.id.text1, android.R.id.text2});
+ListView productList = findViewById(R.id.product_list);
+productList.setAdapter(adapter);
+productList.setOnItemClickListener(<span class="hljs-keyword">this</span>::onItemClick);
+mycursor.close();
+</code></pre>
+<ul>
+<li>The integer array in the SimpleCursorAdapter constructor corresponding to the textview widget id in the chosen layout from the second parameter</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="cursor">Cursor</h5>
+<h4 id="useful-libraries">Useful Libraries</h4>
+<h5 id="gson">GSON</h5>
+<ul>
+<li>Gson (also known as Google Gson) is an open-source Java library to serialize anddeserialize Java objects to (and from) JSON</li>
+<li>add <code>implementation &apos;com.google.code.gson:gson:2.8.6&apos;</code> explicitly to <code>gradle.build</code> file at the application level in the dependencies section before use</li>
+<li>Right click the folder that contains the java files you are working with and create new java class files each with the following classes</li>
+<li>To use GSON declare a data model<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Projects</span> </span>{
+  <span class="hljs-keyword">public</span> String   _id;
+  <span class="hljs-keyword">public</span> String   Year;
+  <span class="hljs-keyword">public</span> String   ProjectNum;
+  <span class="hljs-keyword">public</span> String   Title;
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> Year + <span class="hljs-string">&quot; &quot;</span> + ProjectNum + <span class="hljs-string">&quot; &quot;</span> + Title;
+  }
+}
+</code></pre>
+</li>
+<li>Declare a data model list<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FairList</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ArrayList</span>&lt;<span class="hljs-title">Projects</span>&gt; </span>{
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">1L</span>;
+}
+</code></pre>
+</li>
+</ul>
 <h3 id="manifests-folder"><code>manifests</code> folder</h3>
 <h4 id="androidmanifestxml"><code>AndroidManifest.xml</code></h4>
 <ul>
@@ -1780,6 +2262,24 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 </li>
 <li>The permissions that the app needs in order to access protected parts of thesystem or other apps</li>
 <li>The hardware and software features the app requires, which affects which devices can install the app from Google Play</li>
+</ul>
+</li>
+<li>Permissions are added here and users will be asked to grant these permission when the app is first launched, they should be added at the top inside <code>&lt;manifest&gt;&lt;/manifest&gt;</code><ul>
+<li>Normal permissions: allow access to data and actions that extend beyond your app&apos;s sandbox. However, the data and actions present very little risk to the user&apos;s privacy, and the operation of other apps. It doesn&apos;t require any special dialogs to ask for permission<ul>
+<li><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;</code></li>
+<li><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</code></li>
+</ul>
+</li>
+<li>Runtime permissions: also known as dangerous permissions, give your app additional access to restricted data, and they allow your app to perform restricted actions that more substantially affect the system and other apps. Therefore, you need to request runtime permissions in your app before you can access the restricted data or perform restricted actions.<ul>
+<li><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;</code></li>
+<li><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_COARSE_LOCATION&quot; /&gt;</code></li>
+<li><code>&lt;uses-permission android:name=&quot;android.permission.RECEIVE_SMS&quot; /&gt;</code> permission to read new SMS messages</li>
+</ul>
+</li>
+<li>Special permissions: Special permissions correspond to particular app operations. Only the platform and OEMs can define special permissions. Additionally, the platform and OEMs usually define special permissions when they want to protect access to particularlypowerful actions, such as drawing over other apps.<ul>
+<li><code>&lt;uses-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot; /&gt;</code> Screen Overlay Permission, allows the app draw over another one without the screen overlay warning</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1800,6 +2300,21 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 <li>Themes can also apply styles to non-view elements, such as the status bar and window background</li>
 </ul>
 </li>
+<li>declaration for the broadcast receiver, this example will invoke the <code>MyReceiver</code> class in the app, whenever a message is received<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">receiver</span>
+  <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.MyReceiver&quot;</span>
+  <span class="hljs-attr">android:enabled</span>=<span class="hljs-string">&quot;true&quot;</span>
+  <span class="hljs-attr">android:exported</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.provider.Telephony.SMS_RECEIVED&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">receiver</span>&gt;</span>
+</code></pre>
+<ul>
+<li>This info is registered through the Android OS, it will be executed even the app is not running</li>
+<li>In Android 7.0 (API level 24) picture and video broadcasts were removed to improve general performance</li>
+<li>In Android 8.0you cannot use the manifest to declare a receiver for most implicit broadcasts (broadcasts that don&apos;t target your app specifically).</li>
+</ul>
+</li>
 </ul>
 <h5 id="activity-element">Activity Element</h5>
 <ul>
@@ -1817,6 +2332,7 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 <ul>
 <li>A <code>XML</code> layout file uses the following layout type as parent element to define layouts</li>
 <li>Element will be moved to top left corner if no layout constraint is defined</li>
+<li>All the definition are about the single element it belongs to</li>
 <li>Common attributes<ul>
 <li><code>android:background=&#x201C;#ffffff&#x201D;</code> set the background</li>
 <li><code>android:layout_width</code>, <code>android:layout_height</code> the width and height of the layout container, its value can be:<ul>
@@ -1854,8 +2370,8 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 </li>
 </ul>
 </li>
-<li><code>&lt;RelativeLayout&gt;</code><ul>
-<li>It defines elements relative to others(legacy)</li>
+<li><code>&lt;RelativeLayout&gt;</code> (legacy)<ul>
+<li>It defines elements relative to sibling elements (such as to the left-of or below another view) or parents (such as aligned to the bottom, left or center)</li>
 <li><code>android:layout_centerHorizontal=&quot;true&quot;</code>, <code>android:layout_centerVertical=&quot;true&quot;</code>, <code>android:layout_centerInParent=&quot;true&quot;</code> for centering elements</li>
 </ul>
 </li>
@@ -1864,7 +2380,10 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 <li>Move a vertically or horizontally centered element will introduce bias</li>
 </ul>
 </li>
-<li><code>&lt;FrameLayout&gt;</code> it is designed to block out an area on the screen</li>
+<li><code>&lt;FrameLayout&gt;</code> it is designed to block out an area on the screen<ul>
+<li>Attribute <code>layout_gravity</code> can quickly align content relative to its parent, to <code>start</code>(left), <code>center</code>, or <code>end</code>(right)</li>
+</ul>
+</li>
 <li>Layouts have a <code>tools:context</code> attribute which is used to specify the assicoate class name for the editor</li>
 </ul>
 <h5 id="elements">Elements</h5>
@@ -1924,13 +2443,19 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
 <li>change the parent attribute of the style element to change the app bar style</li>
 <li><code>colorPrimary</code> controls the app bar color</li>
 <li><code>colorPrimaryVariant</code> controls the status bar color</li>
-<li>The background color of some widgets is controlled by the theme type</li>
+<li>The background color of some widgets is controlled by the theme type<ul>
+<li>Use theme <code>Theme.MaterialComponents.DayNight.DarkActionBar.Bridge</code> to change the button background color</li>
+</ul>
+</li>
 </ul>
 <h5 id="stringsxml"><code>strings.xml</code></h5>
 <ul>
 <li>It stores all the hardcoded strings</li>
 <li>The file has parent element <code>&lt;resources&gt;&lt;/resources&gt;</code></li>
-<li>It consisted of multiple string records as <code>&lt;string name=&quot;key&quot;&gt;value&lt;/string&gt;</code></li>
+<li>It consisted of multiple string records as <code>&lt;string name=&quot;key&quot;&gt;value&lt;/string&gt;</code><ul>
+<li>It can hold formatted string with variable specified in java code, <code>&lt;string name=&quot;hello&quot;&gt;Fragment %1$s The Switch is %2$s&lt;/string&gt;</code></li>
+</ul>
+</li>
 <li>It can stores arrays as <code>&lt;string-array name=&quot;key&quot;&gt;&lt;item&gt;A&lt;/item&gt;&lt;item&gt;B&lt;/item&gt;&lt;item&gt;C&lt;/item&gt;&lt;/string-array&gt;</code></li>
 <li>It can be used in Java code as <code>R.string.string_name</code></li>
 <li>It can be used in XML code or the layout attribute panel as <code>@string/string_name</code></li>
@@ -2094,7 +2619,7 @@ String formattedText = <span class="hljs-string">&quot;Formatted as: &quot;</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Android Development","level":"1.3.2","depth":2,"next":{"title":"Scala","level":"1.4","depth":1,"path":"scala/README.md","ref":"scala/README.md","articles":[]},"previous":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/android.md","mtime":"2021-02-17T23:45:06.064Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Android Development","level":"1.3.2","depth":2,"next":{"title":"Scala","level":"1.4","depth":1,"path":"scala/README.md","ref":"scala/README.md","articles":[]},"previous":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/android.md","mtime":"2021-03-19T17:14:23.838Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

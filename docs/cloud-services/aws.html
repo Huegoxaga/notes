@@ -1551,6 +1551,10 @@ region = aa-bbbb-n
 </ul>
 </li>
 </ul>
+<h3 id="security-group">Security Group</h3>
+<ul>
+<li>If ISP assigns IPv6 address to the local network, policy should include IPv6 address, e.g. <code>::/0</code> when applying allow any</li>
+</ul>
 <h2 id="elastic-beanstalk">Elastic Beanstalk</h2>
 <p>It deploys app on EC2 and will do capacity provisioning, load balancing, scaling, and application health monitoring automatically.</p>
 <ul>
@@ -1926,22 +1930,57 @@ commands:
 <h2 id="amplify">Amplify</h2>
 <ul>
 <li>It is used for hosting frontend apps and backend services</li>
+<li>The backend app in amplify is a group of utility functions used to connect to serviceless cloud services, in a frontend web app project</li>
 </ul>
 <h3 id="amplify-console">Amplify Console</h3>
 <ul>
-<li>It can be used to host Web Apps using source code from online repo provider like GitHub</li>
+<li>It can be used to host full-stack Web Apps</li>
+</ul>
+<h4 id="hosting-backend">Hosting Backend</h4>
+<ul>
+<li><a href="https://sandbox.amplifyapp.com/getting-started" target="_blank">Sandbox environments</a> can be used to generate a local Amplify full-stack project for testing purpose<ul>
+<li>It can be deployed onto AWS Cloud anytime later</li>
+</ul>
+</li>
+<li>Alternatively, login the AWS console and directly deploy a new backend app on the cloud, the use <code>Admin UI</code> to setup the backend<ul>
+<li>A frontend app can be asscociated with the backend later</li>
+</ul>
+</li>
+</ul>
+<h4 id="hosting-web-app">Hosting Web App</h4>
+<ul>
+<li>It uss source code from online repo provider like GitHub</li>
 <li>Whenever a change is pushed the app will be auto built and updated</li>
 <li>Preview can be setup, so whenever a pull request is made, one can preview the changes in a browser</li>
 <li>Each GitHub branch can connect to one server</li>
 <li>The Domain management setting page can create and manage domain with SSL certificate</li>
+<li>The GitHub repo needs to have the third party accession restriction disabled in the setting before connecting to Ampliify, otherwise it won&apos;t be shown in the repo list</li>
+<li>The GitHub account authticated must have admin access the to repo for deployment<ul>
+<li>On the repo main page admin account has the settings button</li>
+</ul>
+</li>
+</ul>
+<h3 id="amplify-react">Amplify React</h3>
+<ul>
+<li>It comes with a npm package that has many easy to use react component<ul>
+<li>It includes a <code>withAuthenticator()</code> HOC components that will bring up the login page when the web app start to render the wrapped component without being authenticated<ul>
+<li>Only works when Amplify <code>Auth</code> is setup for the backend app</li>
+</ul>
+</li>
+<li>run <code>npm i @aws-amplify/ui-react</code> to install</li>
+</ul>
+</li>
 </ul>
 <h3 id="amplify-cli">Amplify CLI</h3>
 <ul>
-<li>It can be use to host both frontend and backend apps</li>
+<li>It is an alternative to the <code>Admin UI</code></li>
 <li>setup<ol>
 <li>run <code>sudo npm install -g @aws-amplify/cli</code> to install</li>
 <li>run <code>amplify configure</code> to create new aws crendentials for amplify CLI</li>
-<li>run <code>amplify init</code> from the root directory of the frontend app to create new amplify project</li>
+<li>run <code>amplify init</code> from the root directory of the frontend app to create new amplify project<ul>
+<li>This command will create an empty full-stack project with selected framework</li>
+</ul>
+</li>
 </ol>
 </li>
 <li>run <code>amplify hosting add</code> to host frontend web app, there are two options:<ul>
@@ -1951,6 +1990,17 @@ commands:
 <li>Manual deployment - run <code>amplify publish</code> to deploy app from local machine</li>
 </ul>
 </li>
+</ul>
+</li>
+<li>run <code>amplify add auth</code> to create the authentication resources for the app</li>
+<li>run <code>amplify add api</code> to create <code>REST</code> or <code>GraphQL</code> APIs<ul>
+<li><code>GraphQL</code> allows user to request the exact information they need usually with a graphical tool<ul>
+<li><code>REST</code> only rests information with a pre-defined format</li>
+</ul>
+</li>
+<li>It uses <code>DynamoDB</code>, <code>S3</code>, <code>Aurora MySQL</code>(<code>GraphQL</code>) as data sources</li>
+<li><code>GraphQL</code> APIs are implemented by <code>AWS AppSync</code> (a managed GraphQL service)</li>
+<li><code>REST</code> APIs are implemented by <code>API Gateway</code></li>
 </ul>
 </li>
 <li>run <code>amplify console</code> to open Amplify Console</li>
@@ -2272,7 +2322,7 @@ commands:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.20.1","depth":2,"next":{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.20","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.20.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2021-02-04T18:17:49.473Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWS","level":"1.20.1","depth":2,"next":{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]},"previous":{"title":"Cloud Services","level":"1.20","depth":1,"path":"cloud-services/README.md","ref":"cloud-services/README.md","articles":[{"title":"AWS","level":"1.20.1","depth":2,"path":"cloud-services/aws.md","ref":"cloud-services/aws.md","articles":[]},{"title":"GCP","level":"1.20.2","depth":2,"path":"cloud-services/gcp.md","ref":"cloud-services/gcp.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud-services/aws.md","mtime":"2021-03-13T17:02:30.811Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

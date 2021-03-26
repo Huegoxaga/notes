@@ -110,7 +110,13 @@
   - `brew cask` is deprecated
 - `brew install --appdir="/<PathToAppFolder>" <AppName>` specify the app folder
 
-### Disk Cleanup
+### Disk Management
+
+- When erease external disks with `Disk Utility`, format it in `exFAT` format with `Master Boot Record` scheme allows it to be readable by both Mac and Window hosts
+  - `GUID Partition Map` is the new Mac scheme
+  - `Apple Partition Map` is the old Mac scheme
+
+#### Clean up
 
 - Remove Wechat account folder at `/Users/<username>/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/`, then clear cache in app setting
 - Remove Webex support folders `WebEx Meetings` and `WebEx Folder` at `/Users/<username>/Library/Application Support/`

@@ -1343,6 +1343,7 @@
 </ul>
 </li>
 <li><code>WSGI</code>(Web Server Gateway Interface) is used to run the Django application, send to request to the app and then get return response from the app.</li>
+<li><code>ASGI</code> (Asynchronous Server Gateway Interface) it provides an upgrade to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.</li>
 </ul>
 <h2 id="useful-commands">Useful Commands</h2>
 <ul>
@@ -1352,6 +1353,7 @@
 <li><code>django-admin startproject &lt;project_name&gt;</code> create a new project.</li>
 <li><code>python manage.py runserver</code> it will run the website and return the url of the running website. By default it works with 127.0.0.1 on 8000 port only<ul>
 <li>append the command with <code>0.0.0.0:8000</code> to runserver on all server addresses on port 8000.</li>
+<li>append the port number as <code>python manage.py runserver 8001</code> to run the project on a certain port</li>
 </ul>
 </li>
 <li><code>python manage.py startapp &lt;appname&gt;</code> create a new app inside a project.</li>
@@ -1943,6 +1945,12 @@ urlpatterns = [
 <li>Add comment for a serializer fields, <code>name = serializers.BooleanField(required=False, help_text=&quot;description&quot;)</code></li>
 <li>Add comment for a model fields, <code>field_name = models.FloatField(default=0, help_text=&quot;Field Description&quot;, verbose_name=&quot;Title&quot;)</code></li>
 </ul>
+<h4 id="rapipdf">RapiPDF</h4>
+<ul>
+<li>It can be used to generate docs and export docs as PDF</li>
+<li>It takes the json format docs link as input</li>
+<li><a href="https://mrin9.github.io/RapiPdf/" target="_blank">Click here</a> for more details</li>
+</ul>
 <h3 id="cache">Cache</h3>
 <ul>
 <li>import the following<pre><code class="lang-py"><span class="hljs-keyword">from</span> django.utils.decorators <span class="hljs-keyword">import</span> method_decorator
@@ -2292,7 +2300,7 @@ __all__ = (<span class="hljs-string">&apos;celery_app&apos;</span>,)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Django","level":"1.2.3","depth":2,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},{"title":"Android Development","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]}]},"previous":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/django.md","mtime":"2021-02-09T03:48:27.200Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Django","level":"1.2.3","depth":2,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},{"title":"Android Development","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]}]},"previous":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/django.md","mtime":"2021-03-26T14:32:02.596Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

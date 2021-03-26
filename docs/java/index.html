@@ -1820,7 +1820,7 @@ b.whatShape();
 <li>it states the attributes and methods belong to the class and share by all objects under the class.</li>
 <li>Instance variables belong to the object. no object, no instance variables.</li>
 <li>static method and variables are created at compile time.</li>
-<li>When outside the class, always access static variables and methods using the class name, not an object variable.</li>
+<li>It can be accessed outside the class, always access static variables and methods using the class name, not an object variable.</li>
 <li>static method has access on only static variables. Unless initialize new variables inside static methods.</li>
 </ul>
 <pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
@@ -2463,6 +2463,7 @@ newArray[<span class="hljs-number">2</span>] = <span class="hljs-number">10</spa
 </code></pre>
 <h3 id="create-arraylist-object">create arraylist object</h3>
 <pre><code class="lang-java">ArrayList x = <span class="hljs-keyword">new</span> ArrayList();
+ArrayList&lt;String&gt; myStringList = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
 </code></pre>
 <ul>
 <li>create arraylist for String with 10 entries.</li>
@@ -2762,7 +2763,7 @@ Thread t = <span class="hljs-keyword">new</span> Thread(() -&gt; animate(gc));
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.3","depth":1,"next":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"previous":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/README.md","mtime":"2021-01-16T04:39:49.417Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.3","depth":1,"next":{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},"previous":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java/README.md","mtime":"2021-03-19T19:35:43.421Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

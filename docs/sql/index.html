@@ -1766,7 +1766,7 @@ book2 books;
 <span class="hljs-comment">-- If allergies is NULL, it will return &apos;No known allergies&apos;</span>
 </code></pre>
 </li>
-<li>NVL function: if the first argument is NULL, return the second argument</li>
+<li><code>NVL()</code> function: if the first argument is NULL, return the second argument</li>
 <li>Case Function - Case function allows boolean logic in a SQL statement</li>
 <li>If no conditions are true and there is no else clause, null is returned<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> first_name, last_name,
   <span class="hljs-keyword">CASE</span> <span class="hljs-keyword">WHEN</span> patient_height &gt; <span class="hljs-number">170</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&apos;Tall&apos;</span>
@@ -2522,7 +2522,7 @@ column_nameN [ <span class="hljs-keyword">ASC</span>/<span class="hljs-keyword">
 <li>Oracle<ul>
 <li><code>SET SERVEROUTPUT ON;</code> enable output</li>
 <li><code>CLEAR SCREEN;</code> clears the output window</li>
-<li><code>SET VERIFY OFF</code> suppress new and old impact of substitution variable</li>
+<li><code>SET VERIFY OFF;</code> suppress new and old impact of substitution variable</li>
 <li><code>SET NLS_DATE_FORMAT = &apos;DD-MON-YYYY</code> set the date input format</li>
 <li><code>ALTER SESSION</code> only make changes to the current session<ul>
 <li>The statement stays in effect until you disconnect from the database</li>
@@ -2613,6 +2613,7 @@ GO
 </ul>
 </li>
 <li><code>TO_CHAR(12345.678, &apos;099,999)</code></li>
+<li><code>TRIM(TO_CHAR(v_total, &apos;$999G999G999D99&apos;))</code></li>
 </ul>
 </li>
 <li>TO_CHAR(character)</li>
@@ -2620,6 +2621,7 @@ GO
 <li>TO_CHAR(number)</li>
 </ul>
 </li>
+<li>TO_DATE(SYSDATE), convert <code>SYSDATE</code> to <code>DATE</code></li>
 </ul>
 <h4 id="procedural-code-blocks">Procedural Code Blocks</h4>
 <ul>
@@ -2627,23 +2629,24 @@ GO
 <li><code>PL</code> blocks can be named or anonymous</li>
 <li>Named blocks can be stored in the database</li>
 <li>Blocks can be nested</li>
+<li>END block types need to have <code>;</code></li>
 <li>Structure<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
   <span class="hljs-comment">-- Declaration statements</span>
   <span class="hljs-comment">-- Declear Types</span>
   v_first_name VARCHAR2(<span class="hljs-number">35</span>);
-  <span class="hljs-comment">-- Use column&apos;s data type to declear</span>
+  <span class="hljs-comment">-- Use column&apos;s data type to declear (anchored variable declaration)</span>
   v_last_name students.last_name%TYPE;
   <span class="hljs-comment">--  Declear constant types and assign value</span>
   id CONSTANT NUMBER := 7;
 <span class="hljs-keyword">BEGIN</span>
   <span class="hljs-comment">-- Mandatory, Executable statements</span>
-  <span class="hljs-comment">-- Use || between variable names for formatted output</span>
-  <span class="hljs-keyword">SELECT</span> first_name||<span class="hljs-string">&apos; &apos;</span>||last_name
+  <span class="hljs-comment">-- Use || between variable names and strings</span>
+  <span class="hljs-keyword">SELECT</span> first_name, last_name
   <span class="hljs-keyword">INTO</span> v_first_name, v_last_name
-  <span class="hljs-keyword">FROM</span> students
+  <span class="hljs-keyword">FROM</span> student
   <span class="hljs-keyword">WHERE</span> student_id = <span class="hljs-keyword">id</span>;
   <span class="hljs-comment">-- OUTPUT</span>
-  BMS_OUTPUT.PUT_LINE (&apos;Student name: &apos;||first_name ||&apos; &apos;|| last_name);
+  DBMS_OUTPUT.PUT_LINE (&apos;Student name: &apos;||first_name ||&apos; &apos;|| last_name);
 EXCEPTION
   <span class="hljs-comment">-- Exception-handling statements</span>
   WHEN NO_DATA_FOUND THEN
@@ -2655,7 +2658,7 @@ EXCEPTION
 <h4 id="substitution-variables">Substitution Variables</h4>
 <ul>
 <li>Substitution variables get processed at run time</li>
-<li>Substitution Variables, prompt for input after execution, <code>i_student_id NUMBER := &amp;input_student_id;</code></li>
+<li>Substitution Variables, prompt for input in a pop-up after execution, <code>i_student_id NUMBER := &amp;input_student_id;</code></li>
 <li>If a substitution variable appears more than once and <code>&amp;</code> is used, substitution is prompted for each time<ul>
 <li>Use <code>&amp;&amp;</code> to prompt only once</li>
 </ul>
@@ -2665,8 +2668,8 @@ EXCEPTION
 <h4 id="conditional-structure">Conditional Structure</h4>
 <ul>
 <li>IF<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
-  v_num1 <span class="hljs-built_in">NUMBER</span> := <span class="hljs-number">5</span>;
-  v_num2 NUMBER := 3;
+  v_num1 <span class="hljs-built_in">NUMBER</span> := &amp;first_number;
+  v_num2 NUMBER := &amp;second_number;
   v_temp NUMBER;
 <span class="hljs-keyword">BEGIN</span>
 <span class="hljs-comment">-- if v_num1 is greater than v_num2 rearrange their values</span>
@@ -2872,8 +2875,7 @@ v_sec_num section.section_no%TYPE := 0;
 <span class="hljs-keyword">BEGIN</span>
   <span class="hljs-keyword">WHILE</span> v_counter &lt; <span class="hljs-number">5</span> <span class="hljs-keyword">LOOP</span>
     DBMS_OUTPUT.PUT_LINE (<span class="hljs-string">&apos;v_counter = &apos;</span>||v_counter);
-    <span class="hljs-comment">-- decrement the value of v_counter by one</span>
-    v_counter := v_counter - 1;
+    v_counter := v_counter + 1;
   <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
 <span class="hljs-keyword">END</span>;
 </code></pre>
@@ -2892,10 +2894,6 @@ v_sec_num section.section_no%TYPE := 0;
   <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
 <span class="hljs-keyword">END</span>;
 </code></pre>
-</li>
-<li>BREAK<ul>
-<li>It is used to break the loop.</li>
-</ul>
 </li>
 <li>CONTINUE - Used to advance to the next iteration of a loop<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
   v_counter <span class="hljs-built_in">NUMBER</span> := <span class="hljs-number">0</span>;
@@ -2945,17 +2943,31 @@ EXCEPTION
 <span class="hljs-keyword">END</span>;
 </code></pre>
 </li>
-<li>Reraise Exceptions<pre><code class="lang-sql">WHEN exception THEN
+<li>Reraise Exceptions - raise twice, new error replace old in the output<pre><code class="lang-sql"><span class="hljs-comment">-- outer block</span>
+<span class="hljs-keyword">DECLARE</span> e_exception <span class="hljs-keyword">EXCEPTION</span>;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-comment">-- inner block</span>
+  <span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">RAISE</span> e_exception;
+  EXCEPTION
+    WHEN e_exception THEN
       RAISE;
+  <span class="hljs-keyword">END</span>;
+EXCEPTION
+  WHEN e_exception THEN
+    DBMS_OUTPUT.PUT_LINE (&apos;An error has occurred&apos;);
+<span class="hljs-keyword">END</span>;
 </code></pre>
 </li>
-<li>RAISE_APPLICATION_ERROR - RAISE_APPLICATION_ERROR gives an error more of an Oracle look and feel
+<li>RAISE_APPLICATION_ERROR gives an error with more of an Oracle look and feel
 , <code>RAISE_APPLICATION_ERROR(error_number, error_message[, keep_errors])</code><ul>
 <li><code>error_number</code>: -20,999 to -20,000</li>
 <li><code>error_message</code>: up to 2,048 characters</li>
-<li><code>keep_errors</code>: boolean</li>
+<li><code>keep_errors</code>: boolean<ul>
 <li>If TRUE, new error is added to error stack</li>
 <li>If FALSE (default), new error replaces error stack</li>
+</ul>
+</li>
 <li>Example<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
 v_student_id STUDENT.STUDENT_ID%<span class="hljs-keyword">TYPE</span> := &amp;sv_student_id;
 v_total_courses NUMBER;
@@ -2975,7 +2987,7 @@ WHEN NO_DATA_FOUND THEN
 <li>EXCEPTION_INIT Pragma<ul>
 <li>The exception handler only works with named errors</li>
 <li>Not all Oracle errors have names</li>
-<li>The EXCEPTION_INIT Pragma (compiler directive) allows association between an Oracle error number and a user defined error<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<li>The EXCEPTION_INIT Pragma (compiler directive) adds an Oracle error number to the user defined error<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
 v_zip ZIPCODE.ZIP%<span class="hljs-keyword">TYPE</span> := <span class="hljs-string">&apos;&amp;sv_zip&apos;</span>;
 e_child_exists EXCEPTION;
 <span class="hljs-keyword">PRAGMA</span> EXCEPTION_INIT(e_child_exists, <span class="hljs-number">-2292</span>);
@@ -3002,7 +3014,8 @@ e_child_exists EXCEPTION;
 <ul>
 <li>When Oracle processes a SQL statement, it creates an area of memory known as the context area</li>
 <li>Implicit Cursor - SQL engin utlize cursors internally to complete tasks</li>
-<li>Explicit Cursor<ul>
+<li>Explicit Cursor - It returns an array of records with defines row element types</li>
+<li>To use a cursor, one needs to:<ul>
 <li>Declare the cursor (SELECT statement)</li>
 <li>Open the cursor</li>
 <li>Fetch the cursor (one row at a time, usually in a loop)</li>
@@ -3028,7 +3041,13 @@ LOOP
 <li><code>%NOTFOUND</code> &#x2013; Boolean that returns TRUE if previous FETCH did not return a row</li>
 <li><code>%FOUND</code> &#x2013; Boolean that returns TRUE if previous FETCH returned a row</li>
 <li><code>%ROWCOUNT</code> &#x2013; Number of records fetched from a cursor at that point in time</li>
-<li><code>%ISOPEN</code> &#x2013; Boolean that returns TRUE if the cursor is open</li>
+<li><code>%ISOPEN</code> &#x2013; Boolean that returns TRUE if the cursor is open<pre><code class="lang-sql">EXCEPTION
+WHEN OTHERS THEN
+  IF c_student%ISOPEN THEN
+    CLOSE c_student;
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+</code></pre>
+</li>
 <li>Attributes are appended to name of cursor, ex. <code>c_zip%ROWCOUNT</code></li>
 <li>For implicit cursor, use <code>SQL%ROWCOUNT</code></li>
 </ul>
@@ -3038,18 +3057,73 @@ LOOP
   <span class="hljs-keyword">CURSOR</span> c_student <span class="hljs-keyword">IS</span>
     <span class="hljs-keyword">SELECT</span> student_id, last_name, first_name
       <span class="hljs-keyword">FROM</span> student
-      <span class="hljs-keyword">WHERE</span> student_id &lt; <span class="hljs-number">110</span>;
+      <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">rownum</span> &lt;= <span class="hljs-number">5</span>;
 <span class="hljs-keyword">BEGIN</span>
-  <span class="hljs-keyword">FOR</span> r_student <span class="hljs-keyword">IN</span> c_student
-  <span class="hljs-keyword">LOOP</span>
+  <span class="hljs-keyword">FOR</span> r_student <span class="hljs-keyword">IN</span> c_student <span class="hljs-keyword">LOOP</span>
     <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> table_log
       <span class="hljs-keyword">VALUES</span>(r_student.last_name);
   <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
 <span class="hljs-keyword">END</span>;
 </code></pre>
 <ul>
+<li><code>ROWNUM</code> in cursor definition returns a number indicating the order in which a row was selected from a table</li>
+<li>Cursor FOR loops handle opening, fetching and closing cursors implicitly</li>
 <li>Cursor FOR Loops can be nested</li>
+<li>Cursor can have variables in its definition, the value of the variable will be accessed before acessing the cursor</li>
 </ul>
+</li>
+<li>Cursors with Parameters<ul>
+<li>Like passing a parameter to a method</li>
+<li>Different values can be provided at run time<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<span class="hljs-keyword">CURSOR</span> c_zip(p_state <span class="hljs-keyword">IN</span> zipcode.state%<span class="hljs-keyword">TYPE</span>) <span class="hljs-keyword">IS</span>
+  <span class="hljs-keyword">SELECT</span> zip, city, state
+    <span class="hljs-keyword">FROM</span> zipcode
+    <span class="hljs-keyword">WHERE</span> state = p_state;
+<span class="hljs-keyword">BEGIN</span>
+<span class="hljs-keyword">FOR</span> r_zip <span class="hljs-keyword">IN</span> c_zip(<span class="hljs-string">&apos;NJ&apos;</span>) <span class="hljs-keyword">LOOP</span>
+  DBMS_OUTPUT.PUT_LINE(r_zip.city||<span class="hljs-string">&apos; &apos;</span>||r_zip.zip);
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>Cursor can have multiple parameters and separated by comma, <code>CURSOR c_grade(i_section_id IN section.section_id%TYPE, i_student_id IN student.student_id%TYPE) IS</code></li>
+</ul>
+</li>
+<li>Cursors for update<ul>
+<li>When cursors are used to update, <code>FOR UPDATE</code> keyword is required in declaration<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<span class="hljs-keyword">CURSOR</span> c_course <span class="hljs-keyword">IS</span>
+  <span class="hljs-keyword">SELECT</span> course_no, <span class="hljs-keyword">cost</span>
+    <span class="hljs-keyword">FROM</span> course <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">UPDATE</span>;
+<span class="hljs-keyword">BEGIN</span>
+<span class="hljs-keyword">FOR</span> r_course <span class="hljs-keyword">IN</span> c_course <span class="hljs-keyword">LOOP</span>
+  <span class="hljs-keyword">IF</span> r_course.<span class="hljs-keyword">cost</span> &lt; <span class="hljs-number">2500</span> <span class="hljs-keyword">THEN</span>
+    <span class="hljs-keyword">UPDATE</span> course
+      <span class="hljs-keyword">SET</span> <span class="hljs-keyword">cost</span> = r_course.<span class="hljs-keyword">cost</span> + <span class="hljs-number">10</span>
+      <span class="hljs-keyword">WHERE</span> course_no = r_course.course_no;
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+</ul>
+</li>
+<li><code>FOR UPDATE</code> only locks a certain row during operation</li>
+<li><code>WHERE CURRENT OF</code> lock and return the current row from the cursor during update<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  <span class="hljs-keyword">CURSOR</span> c_stud_zip <span class="hljs-keyword">IS</span>
+    <span class="hljs-keyword">SELECT</span> s.student_id, z.city
+      <span class="hljs-keyword">FROM</span> student s
+      <span class="hljs-keyword">JOIN</span> zipcode z <span class="hljs-keyword">ON</span> s.zip = z.zip
+      <span class="hljs-keyword">WHERE</span> z.city = <span class="hljs-string">&apos;Brooklyn&apos;</span>
+      <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> phone;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">FOR</span> r_stud_zip <span class="hljs-keyword">IN</span> c_stud_zip <span class="hljs-keyword">LOOP</span>
+  DBMS_OUTPUT.PUT_LINE(r_stud_zip.student_id);
+    <span class="hljs-keyword">UPDATE</span> student
+      <span class="hljs-keyword">SET</span> phone = <span class="hljs-string">&apos;718&apos;</span>||<span class="hljs-keyword">SUBSTR</span>(phone,<span class="hljs-number">4</span>)
+      <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">CURRENT</span> <span class="hljs-keyword">OF</span> c_stud_zip;  E
+  ND LOOP;
+<span class="hljs-keyword">END</span>;
+</code></pre>
 </li>
 </ul>
 <h4 id="transcation">Transcation</h4>
@@ -3401,7 +3475,7 @@ END
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.15","depth":1,"next":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"previous":{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sql/README.md","mtime":"2021-02-11T00:22:58.090Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.15","depth":1,"next":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"previous":{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sql/README.md","mtime":"2021-03-18T16:43:05.733Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -120,6 +120,10 @@
 - Tag an Image
   - run `docker tag <IMAGE_ID> <accountname>/<repo>:<tag>`
     - account and repo name should all be lowercase.
+- Save image as a tar `docker save -o <path for generated tar file> <image name>`
+  - or, `docker save <image name> > <path for generated tar file>`
+  - Then, the image can be saved as tar or moved to other OS
+- Unpack image tar for use `docker load -i <path to image tar file>`
 
 ### Remove Images
 

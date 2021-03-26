@@ -1406,17 +1406,32 @@
 </li>
 <li><code>git branch -M &lt;newbranch&gt;</code> create new branch then checkout to the new branch</li>
 <li><code>git branch -d branchName</code> Delete the branch locally.</li>
+<li><code>git push -d origin &lt;BranchName&gt;</code> Delete remote branch</li>
 <li><code>git branch --set-upstream-to &lt;remoteBranchName&gt;</code> or <code>git branch -u &lt;remoteBranchName&gt;</code> set the remote tracking branch for the local branch.</li>
 <li><code>git push origin --delete branchName</code> Delete the branch in the remote repos.</li>
 <li><code>git checkout branchName</code> Switch branch.</li>
 <li><code>git checkout -b branchName</code> create a new branch and switch to that branch.</li>
+<li><code>git fetch origin &amp;&amp; git checkout -b remoteBranchName origin/remoteBranchName</code> add a new remote branch to local</li>
 <li><code>git merge</code> Combines remote tracking branch into current local branch.</li>
 <li><code>git merge branchName</code> Merge certain branch to the current branch, when done input commit message.</li>
 <li><code>git merge origin/remoteBranch --no-commit --no-ff</code> Merge certain remote branch to the current branch, when done input commit message.<ul>
-<li>When making pull request that will not be able to auto-merged, merge code locally then push it, then auto merge for the pull request will be enabled.</li>
-<li>The <code>--no-ff</code> flag prevents git merge from executing a <code>fast-forward</code></li>
+<li>When making pull request that will not be able to auto-merged, merge code locally then push it, then auto merge for the pull request will be enabled.<ul>
+<li>When merge a branch into master, checkout the this branch run <code>git merge master</code>, then checkout to master run <code>git merge --no-ff --no-commit &lt;BranchName&gt;</code> then commit and push</li>
+</ul>
+</li>
+<li>The <code>--no-ff</code> flag prevents git merge from executing a <code>fast-forward</code><ul>
+<li><code>fast-forward</code> will replace the header pointer without creating new commit if no changes are made</li>
+</ul>
+</li>
 <li><code>--ff-only</code> means fast-forward only.</li>
 </ul>
+</li>
+<li><code>git rebase</code> similar to merge but keep all the commit records of the merging branch into the master branch after it is merged, example usage:<ol>
+<li><code>git checkout branch</code></li>
+<li><code>git rebase master</code></li>
+<li><code>git checkout master</code></li>
+<li><code>git merge branch</code></li>
+</ol>
 </li>
 </ul>
 <h4 id="working-with-remote-repository">Working with Remote Repository</h4>
@@ -1564,7 +1579,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Git","level":"1.17.7","depth":2,"next":{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},"previous":{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/git.md","mtime":"2020-12-27T21:41:11.946Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Git","level":"1.17.7","depth":2,"next":{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},"previous":{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/git.md","mtime":"2021-03-08T18:52:57.572Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

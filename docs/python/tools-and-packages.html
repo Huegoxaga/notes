@@ -1463,7 +1463,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="jupyter-notebook">Jupyter NoteBook</h2>
+<h2 id="jupyter">Jupyter</h2>
 <h3 id="introduction">Introduction</h3>
 <ul>
 <li>It is upgraded from <code>IPython</code>.<ul>
@@ -1477,17 +1477,33 @@
 <li>The <code>.ipynb</code> file source code is JSON data about cell objects.</li>
 <li>The <code>JupyterLab</code> is the newest product of the Jupyter Project.<ul>
 <li><a href="https://jupyterlab.readthedocs.io/en/latest/index.html" target="_blank">Click</a> to see details.</li>
-<li>To Download JupyterLab, run command <code>conda install -c conda-forge jupyterlab</code>.</li>
-<li>To Run JupyterLab, run command <code>jupyter lab</code>.</li>
 </ul>
 </li>
 </ul>
 <h3 id="usage">Usage</h3>
 <ul>
+<li>The environment will be hosted as a web app and can be accessed by a browser<ul>
+<li><code>Google Chrome</code> is recommended</li>
+</ul>
+</li>
+</ul>
+<h4 id="jupyter-notebook">Jupyter Notebook</h4>
+<ul>
 <li><a href="https://jupyter.readthedocs.io/en/latest/index.html" target="_blank">Click</a> to see the docs for Jupyter</li>
-<li>Run command <code>jupyter notebook</code> in the project folder to start a server and open the notebook in the browser.</li>
+<li>Run command <code>jupyter notebook</code> in the project folder to start a server and open the notebook in the browser</li>
 <li>It supports LaTeX code in markdown cell, inside <code>$$</code> block.</li>
 <li><code>Shift + Enter</code> to run code block in the cell.</li>
+<li>The kernel for each running notebook is a separate process that runs the user code<ul>
+<li>The kernel starts automatically when the notebook is opened from the file browser</li>
+<li>The kernel menu on the main menu bar includes commands to shutdown or restart the kernel</li>
+</ul>
+</li>
+</ul>
+<h4 id="jupyter-lab">Jupyter Lab</h4>
+<ul>
+<li>To Download JupyterLab, run command <code>conda install -c conda-forge jupyterlab</code>.</li>
+<li>To Run JupyterLab, run command <code>jupyter lab</code>.</li>
+<li>One can move any cell to new window tabs in the main work area by right-clicking the cell and selecting &quot;Create New View for Output&quot;</li>
 </ul>
 <h2 id="numpy">NumPy</h2>
 <h3 id="introduction">Introduction</h3>
@@ -1623,8 +1639,10 @@
 <li><code>np.transpose(array)</code> or <code>array.transpose()</code> the row and column numbers of an element are switched.</li>
 </ul>
 </li>
+<li><code>np.vstack((arrayA,arrayB))</code> Stack a tuple of arrays into one array vertically (increase demension)</li>
+<li><code>np.vstack((arrayA,arrayB))</code> Stack a tuple of arrays into one array horizontically (keep the same demension)</li>
 </ul>
-<h4 id="doing-calculations">Doing calculations</h4>
+<h4 id="calculations">Calculations</h4>
 <ul>
 <li>Arithmetic Functions<ul>
 <li>It works between two arrays.</li>
@@ -1778,6 +1796,7 @@
 <ul>
 <li>OpenCV (Open Source Computer Vision) is a computer vision library that contains various functions to perform operations on pictures or videos.</li>
 <li>It was originally developed by Intel but was later maintained by Willow Garage and is now maintained by Itseez.</li>
+<li>It will use CPU when installed with <code>pip</code> or <code>conda</code>, to enable GPU compte, compile the source code of Opencv with Nvidia GPU, CUDA, and cuDNN by using tools like CMake and Visual Studio which uses c++&#x2019;s GCC compiler</li>
 <li>It has C++, C, Python and Java interfaces and supports Windows, Linux, MacOS, iOS and Android.</li>
 <li>It plays a major role in real-time operation for photos and videos.</li>
 <li>Images in openCV are 3-D numpy arrays with <code>np.uint8</code> as its elements and three color layer for blue, green and red.</li>
@@ -1947,6 +1966,7 @@ cv2.destroyAllWindows()
 </li>
 <li><code>cv2.waitKey(delay)</code> The function waitKey waits for a any key event infinitely<ul>
 <li><code>delay</code> &#x2013; the length of time to wait in milliseconds. <code>0</code>(default value) is the special value that means &quot;forever&quot;.</li>
+<li>For realtime video output, <code>0</code> delay will have a black screen</li>
 <li>It returns the key number of the key that has been pressed</li>
 </ul>
 </li>
@@ -2341,6 +2361,11 @@ voices = engine.getProperty(<span class="hljs-string">&apos;voices&apos;</span>)
 <li><code>pip install virtualenv</code></li>
 <li>In the project folder run <code>virtualenv &lt;env_name&gt;</code> create new env</li>
 <li><code>source &lt;env_name&gt;/bin/activate</code> activate new env</li>
+<li>When in a virtual environment all packages will be installed in it, if <code>pip install</code> always install package into global, check the environment path in the <code>activate</code> file<ul>
+<li>use <code>which pip</code> to check the path of the <code>pip</code> command</li>
+<li>the Shebang of <code>pip</code> or <code>pip3</code> file should indicate the corresponding python command path</li>
+</ul>
+</li>
 <li><code>deactivate</code> leave an env</li>
 </ul>
 <h2 id="uwsgi">uwsgi</h2>
@@ -2388,6 +2413,10 @@ socket          = /path/to/your/project/mysite.sock
 # chmod-socket    = 664
 # clear environment on exit
 vacuum          = true
+# Set environment variables
+# qoutes are not required for string values
+env             = KEY1=value
+env             = KEY2=value
 </code></pre>
 <h2 id="pillow">Pillow</h2>
 <ul>
@@ -2757,7 +2786,7 @@ setup(name = <span class="hljs-string">&quot;projectName&quot;</span> ,
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2020-12-29T03:27:56.192Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T23:41:57.838Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2021-03-26T17:17:09.776Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -81,6 +81,7 @@
   3. `sudo mkswap /swapfile`, Set up a Linux swap area
   4. `sudo swapon /swapfile`, Make the swap file available for immediate use by adding the swap file to swap space
   5. `sudo swapon -s`, Verify that the procedure was successful
+     - swap priority is a value between -1 and 32767. Higher numbers indicate higher priority
   6. `sudo vi /etc/fstab`, add line `/swapfile swap swap defaults 0 0` to enable the swap file at boot time
 - `sudo growpart /dev/<volumn> <partNO>` extend the size of a volumn to use new spaces from its newly added partition
   - Partition number starts from `1` in the `lsblk` list
@@ -330,17 +331,37 @@
 - `<command> &` start a process and make it a background job.
 - `bg` stop a foreground job first, then use this command to send it to the background.
 
+### Shell Variables
+
+- Shell variables are variables that apply only to the current shell instance. Each shell such as zsh and bash, has its own set of internal shell variables.
+- There are also shell functions that can be invoked
+- `set` – The command sets or unsets shell variables. When used without an argument it will print a list of all variables including shell functions.
+- `unset` – The command deletes a certain shell variable with argument, or all without arguments
+- `MY_VAR='Value'` set a shell variable
+- `echo $<VARIABLE>` print a shell veriables
+
 ### Environment Variables
+
+- Environment variables are variables that are available system-wide and are inherited by all spawned child processes and shells.
+  - All environment variables are shell variables, not all shell variables are environment variables
+- The names of the variables are case-sensitive. By convention, environment variables should have UPPER CASE names
+- When assigning multiple values to the variable they must be separated by the colon `:` character
+- There is no space around the equals `=` symbol
+- `env` – The command allows you to run another program in a custom environment without modifying the current one. When used without an argument it will print a list of the current environment variables.
+- `printenv` – The command prints all or the specified environment variables, e.g. `printenv HOME`
+- `export <VARIABLE_NAME>` – The command sets shell variable as an environment variable
+  - `export NEW_VAR="New Value"` set a new environment variable in a single line
+- Persistent Environment Variables
+  - `/etc/environment` - Use this file to set up system-wide environment variables. Variables in this file are set with this format `KEY=value` on each line
+  - `/etc/profile` - Variables set in this file are loaded whenever a bash login shell is entered. Use `export` command in each line for this file, `export JAVA_HOME="/path/to/java/home"`
+    - Scripts in `etc/profile.d` are also responsible for changing the system environment
+  - Dot files - are per-user shell specific configuration files, `export` commands are required on each line
 
 #### PATH
 
-- Every a command is run, it will search for the path of the commands according to the directories stored in the PATH variable.
+- Whenever a command is run, it will search for the path of the commands according to the directories stored in the PATH variable.
 - It will search from left to right.
-- Change the PATH Variable
-  - The PATH variable can be changed temperately be run `PATH=$PATH:/other/dir` to append a new directory or run `PATH=/other/dir:$PATH` to prepend.
-  - It can be changed in the users `bash_profile` file. It will work for certain user only.
-  - To change the PATH variable for the entire system. Modifying the `etc/profile` file.
-  - Scripts in `etc/profile.d` are also responsible for changing the system environment.
+- The PATH variable can be changed temperately be run `PATH=$PATH:/other/dir` to append a new directory or run `PATH=/other/dir:$PATH` to prepend.
 
 #### PS1
 
@@ -675,6 +696,25 @@
 - It is used to log in remote servers.
 - Ex, `ssh -i ~/.ssh/"WordPress Key.pem" ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com`
 
+### sFTP
+
+- Access remote file system over SSH protocol on standard port 22 by default
+- Establish connection `sftp <hostname>@<IP>`
+- `?` or `help` for help
+- `lpwd` to check the current working directory on host machine
+- `pwd` to check the current working directory on remote machine
+- `lls` list files on host
+- `ls` list files on remote
+- `put <LocalFile>` put file from host to remote from `lpwd` to `pwd`
+- `mput *` upload multiple files
+- `get <RemoteFile>` download file from remote to host
+- `mget <RemoteFile1> <RemoteFile2>` download multiple files
+- `cd` switch dir on remote
+- `lcd` switch dir on local
+- `mkdir` create dir on remote
+- `lmkdir` create dir on local
+- `rm` and `rmdir` remove files and dir on remote
+
 ### CURL
 
 - curl is a command line tool to transfer data to or from a server, using any of the supported protocols (HTTP, FTP, IMAP, POP3, SCP, SFTP, SMTP, TFTP, TELNET, LDAP or FILE)
@@ -718,73 +758,79 @@
     - Amongst all sites in the `sites-available` only the one with link to the `sites-enabled` will be available to the user.
     - Links are created by `sudo ln -s /etc/nginx/sites-available/confg-name.conf /etc/nginx/sites-enabled/confg-name.conf`
   - By default, In each of these two folders, there is only one conf file named default that has basic setup for NGINX.
+- run `sudo nginx -t` to validate config script
 
 ##### Work with uWSGI
 
 - `Nginx` can run with `uWSGI` and provide more control to a Python Web App.
 - `uwsgi_params` file, create a file called `mysite_nginx.conf` in the `/etc/nginx/sites-available/` directory to link request to the Nginx to uWSGI, then created link to the `sites-enabled` directory
-
-```conf
-upstream updateMe_dev {
-    server unix:/webapps/updateMe/run/uwsgi.sock;
-}
-
-server {
-    listen 80;
-    server_name your-IP-or-address-here;
-    charset utf-8;
-
-    client_max_body_size 128M;
-
-    location /static {
-    # exact path to where your static files are located on server
-    # [mostly you won't need this, as you will be using some storage service for same]
-        alias /webapps/updateMe/static_local;
-    }
-    # when any request that begins with /api/ will be redirect by the following rule
-    location ^~ /api/ {
-    # exact path to where your media files are located on server
-    # [mostly you won't need this, as you will be using some storage service for same]
-        alias /webapps/updateMe/media_local;
-    }
-
-    location / {
-        include uwsgi_params;
-        uwsgi_pass updateMe_dev;
-        uwsgi_read_timeout 300s;
-        uwsgi_send_timeout 300s;
-    }
-
-    access_log /webapps/updateMe/log/dev-nginx-access.log;
-    error_log /webapps/updateMe/log/dev-nginx-error.log;
-}
-```
-
-- conf for https and redirect with private CAs
-
-```conf
-server {
-       listen 80;
-       server_name example.com www.example.com;
-       return 301 https://example.com$request_uri;
-}
-server {
-       listen 443 ssl;
-server_name example.com web.example.com;
-       # Certificate
-       ssl_certificate /etc/nginx/ssl/cbe170b66b1f2233.crt;
-
-       # Private Key
-       ssl_certificate_key /etc/nginx/ssl/generated-private-key.key;
-       location / {
-               proxy_pass http://localhost:5000;
-               proxy_set_header Host $host;
-               proxy_set_header X-Real-IP $remote_addr;
-               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-               proxy_set_header X-Forwarded-Proto $scheme;
-}
-}
-```
+  ```conf
+  upstream updateMe_dev {
+      server unix:/webapps/updateMe/run/uwsgi.sock;
+  }
+  server {
+      listen 80;
+      server_name your-IP-or-address-here;
+      charset utf-8;
+      client_max_body_size 128M;
+      location /static {
+      # exact path to where your static files are located on server
+      # [mostly you won't need this, as you will be using some storage service for same]
+          alias /webapps/updateMe/static_local;
+      }
+      # when any request that begins with /api/ will be redirect by the following rule
+      location ^~ /api/ {
+      # exact path to where your media files are located on server
+      # [mostly you won't need this, as you will be using some storage service for same]
+          alias /webapps/updateMe/media_local;
+      }
+      location / {
+          include uwsgi_params;
+          uwsgi_pass updateMe_dev;
+          uwsgi_read_timeout 300s;
+          uwsgi_send_timeout 300s;
+      }
+      access_log /webapps/updateMe/log/dev-nginx-access.log;
+      error_log /webapps/updateMe/log/dev-nginx-error.log;
+  }
+  ```
+- configuration for redirect
+  ```conf
+  server {
+        listen 80;
+        listen [::]:80 ;
+        server_name example.com www.example.com;
+        return 301 https://example.com$request_uri;
+  }
+  ```
+- configuration for ssl private certificate from private CAs
+  ```conf
+  server {
+        listen 443 ssl;
+        listen [::]:443 ssl ipv6only=on;
+        server_name example.com web.example.com;
+        # Certificate
+        ssl_certificate /etc/nginx/ssl/cbe170b66b1f2233.crt;
+        # Private Key
+        ssl_certificate_key /etc/nginx/ssl/generated-private-key.key;
+        location / {
+                proxy_pass http://localhost:5000;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+        }
+  }
+  ```
+- configuration for ssl certificate from public CAs
+  ```conf
+    listen [::]:443 ssl ipv6only=on;
+    listen 443 ssl;
+    ssl_certificate <Path_To_PEM>;
+    ssl_certificate_key <Path_To_PEM>;
+    include <Path_To_CONF>;
+    ssl_dhparam <Path_To_PEM>;
+  ```
 
 #### Usage
 
@@ -1042,6 +1088,7 @@ server_name example.com web.example.com;
 
 - Certbot is a free, open source software tool for automatically using Let’s Encrypt certificates on manually-administrated websites to enable HTTPS
 - [Click Here](https://certbot.eff.org/instructions) for details
+- Use `sudo certbot --nginx -d www.example.com,example.com` to create the certificate for multiple domains
 
 ### zip
 
@@ -1267,3 +1314,4 @@ server_name example.com web.example.com;
 ### screen
 
 - `screen /dev/tty.devicename <BaudRate>` start serial terminal session
+  - `ls /dev/tty.*` to find all connected serial devices

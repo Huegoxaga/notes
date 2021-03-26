@@ -347,8 +347,11 @@ list(accumulate(range(8)))
   for root, dirs, files in os.walk('path'):
     print(root, dirs, files)
   ```
-- `os.environ` return all environment variables in a dictionary.
+- `os.environ` return all environment variables in a dictionary
+  - To access `os.environ`, treat it as a dictionary
   - `os.environ.get('ValueName')` get certain environment value.
+  - `os.environ['KEY'] = 'Value'` set a environment variable
+  - `os.environ.clear()` clear all environment variables
 - `os.path.join('folderPath','file')` return a path as `folderPath/file`
 - `os.path.basename('path')` return file name of the path.
 - `os.path.dirname('path')` return parent directory name of the path.
