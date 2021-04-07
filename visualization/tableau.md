@@ -36,15 +36,23 @@
 
 ## Tableau Desktop
 
+- It is used to generate graphs on worksheets from data source
+- Multiple worksheets can be used to create a dashboard
+- Multiple dashboard and worksheets can be used to create a story
+
 ### Connect to a Data Source
 
 - Click the `Add Database` button or `Connect to Data` button to connect
 - Data is added by either importing files or connecting to a database
+- Connection to Google Analytics 4 is currently not supported, universal analytics from GA is supported
 
 ### Create Worksheet
 
 - Once data source is connected, Click view icon beside each sheet name to view in a separate window
 - Once data source is connected, each table can be opened as a sheet(Worksheet) by dragging it to the right, then click `Sheet` button on the button navi bar to open the sheet
+- First row from the data source is usually the field names
+  - Select multiple column titles and right click to pivot
+  - Assign the proper data type to each column title
 - Drag two table to the right to inner join two tables
 - Double click column name to rename
 - Click the drop-down for each field on the right to hide/unhide column, reset column name, copy，or split data in each row to two columns

@@ -850,7 +850,12 @@ ORDER BY last_name, first_name, medication_description
 
 - `VIEW` is a virtual table that is based on the result-set of an SQL statement
 - The View result set is not permanently stored in the database, but generated and executed each time it is used
-- It cannot use ORDER BY
+- A `VIEW` can be modified by an `UPDATE`, `INSERT` or `DELETE` provided it doesn’t use any of the following
+  - Set operations (UNION, UNION ALL, INTERSECT, MINUS)
+  - Group functions (AVG, COUNT, MAX, MIN, SUM)–GROUP BY or HAVING clauses
+  - CONNECT BY or START WITH clauses
+  - DISTINCT operator–ROWNUM pseudocolumn
+- For Oracle use `GRANT CREATE VIEW TO tableA;` to grant permission
 - Create a view
   ```sql
   CREATE VIEW current_patients
@@ -1754,6 +1759,320 @@ ORDER BY last_name, first_name, medication_description
     ROLLBACK TO B;
   END;
   ```
+
+#### Procedure
+
+- A procedure is a named PL/SQL block
+- Procedures have names and may be called from a SQL prompt, other procedures, triggers or scheduling utilities
+- Procedures may accept and return parameters
+- If procedure doesn't compile, inspect the Compiler Log or use the show error command `SHOW ERROR;`
+- Example
+  ```sql
+  CREATE OR REPLACE PROCEDURE Discount
+  AS
+    CURSOR c_group_discount
+    IS
+      SELECT distinct s.course_no, c.description
+        FROM section s, enrollment e, course c
+        WHERE s.section_id = e.section_id
+        AND c.course_no = s.course_no
+        GROUP BY s.course_no, c.description,
+                e.section_id, s.section_id
+        HAVING COUNT(*) >= 8;
+  BEGIN
+    FOR r_group_discount IN c_group_discount LOOP
+      UPDATE course
+        SET cost = cost * .95
+        WHERE course_no = r_group_discount.course_no;
+      DBMS_OUTPUT.PUT_LINE
+        ('A 5% discount has been given to '||
+        r_group_discount.course_no||' '||
+        r_group_discount.description);
+    END LOOP;
+  END;
+  ```
+- Execute Procedure
+  ```sql
+  BEGIN
+    Discount;
+  END
+  ```
+  - Interactively in SQL Developer, use `EXECUTE Discount;`, and `EXEC Discount;`
+- Query existing procedure
+  ```sql
+  SELECT object_name, object_type, status
+    FROM user_objects
+    WHERE object_name = 'DISCOUNT';
+  ```
+- Procedure parameter modes:
+  - `IN` - Passes a value into the programConstants, literals, expressions, cannot be changed with the program. Read-only value
+  - `OUT` - Passes a value back from the program, cannot assign default values, must be a variable, a value is assigned only if the program is successful. Write-only value
+  - `IN OUT` - Passes value in and also sends values back. Must be a variable
+- Procedure parameter example
+  ```sql
+  CREATE OR REPLACE PROCEDURE find_sname
+    (i_student_id IN NUMBER,
+    o_first_name OUT VARCHAR2,
+    o_last_name OUT VARCHAR2)
+  AS
+  BEGIN
+    SELECT first_name, last_name
+      INTO o_first_name, o_last_name
+      FROM student
+      WHERE student_id = i_student_id;
+  EXCEPTION
+    WHEN OTHERS THEN
+      DBMS_OUTPUT.PUT_LINE('Error in finding student_id: '||i_student_id);
+  END find_sname;
+  ```
+- Calling with Positional Parameters
+  ```sql
+  DECLARE
+    v_first student.first_name%TYPE;
+    v_last student.last_name%TYPE;
+  BEGIN
+    find_sname (105, v_first, v_last);
+    DBMS_OUTPUT.PUT_LINE(v_first ||' '|| v_last);
+  END;
+  ```
+- Calling with Named Parameters
+  ```sql
+  DECLARE
+    v_id student.student_id%TYPE := 110;
+    v_first student.first_name%TYPE;
+    v_last student.last_name%TYPE;
+  BEGIN
+    find_sname (o_first_name => v_first,
+                o_last_name => v_last,
+                i_student_id => v_id);
+    DBMS_OUTPUT.PUT_LINE(v_first ||' '|| v_last);
+  END;
+  ```
+- For debugging, login as `SYS` and issue following commands, `GRANT DEBUG CONNECT SESSION TO student;`, `GRANT DEBUG ANY PROCEDURE TO student;` and perform the following steps:
+  1. Expand Procedures in explorer
+  2. Right click desired procedure and select Edit…
+  3. Compile for Debug by clicking dropdown of gears icon
+  4. Add breakpoints as desired by clicking in gutter
+  5. Click Debug icon to run
+  6. Edit created anonymous block for input parameters as necessary
+  7. Step through code
+
+#### EXECUTE IMMEDIATE
+
+- It is a statement that allows the execution of a sql statement or block stroed in a string
+- It allows for creating SQL statements on the fly and executing them
+- It allows things that wouldn’t normally be permissible in a PL/SQL block, such as DDL
+- Syntax
+  ```sql
+    EXECUTE IMMEDIATE dynamic_SQL_string
+    [INTO defined_variable1, defined_variable2, ...]
+    [USING [IN | OUT | IN OUT] bind_argument1, bind_argument2,
+    ...][{RETURNING | RETURN} field1, field2, ... INTO bind_argument1,
+    bind_argument2, ...]
+  ```
+  - dynamic_SQL_string may be a SQL statement or a PL/SQL block
+  - The INTO clause contains the list of predefined variables that hold values returned by the SELECT statement, when it returns a single row
+  - The USING clause contains a list of bind arguments passed to the SQL statement or PL/SQL block
+  - IN, OUT and IN OUT are modes for bind arguments, IN is default
+  - RETURNING INTO or RETURN clause contains a list of bind arguments that store values returned by the dynamic SQL or PL/SQL block
+  - RETURNING INTO has similar argument modes to USING, OUT is default
+- Example
+  ```sql
+  DECLARE
+    sql_stmt VARCHAR2(100);
+    plsql_block VARCHAR2(300);
+    v_zip VARCHAR2(5) := '11106';
+    v_total_students NUMBER;
+    v_new_zip VARCHAR2(5);
+    v_student_id NUMBER := 151;
+  BEGIN
+    -- Create table MY_STUDENT
+    sql_stmt := 'CREATE TABLE my_student '||
+                'AS SELECT * FROM student WHERE zip = '||v_zip;
+    EXECUTE IMMEDIATE sql_stmt;
+    -- Select total number of records from MY_STUDENT table
+    -- and display results on the screen
+    EXECUTE IMMEDIATE 'SELECT COUNT(*) FROM my_student' INTO v_total_students;
+    DBMS_OUTPUT.PUT_LINE ('Students added: '||v_total_students);
+    -- Select current date and display it on the screen
+    plsql_block := 'DECLARE ' ||
+                  '  v_date DATE; ' ||
+                  'BEGIN ' ||
+                  '  SELECT SYSDATE INTO v_date FROM DUAL; '||
+                  '  DBMS_OUTPUT.PUT_LINE (TO_CHAR(v_date, ''DD-MON-YYYY''));'||
+                  'END;';
+    EXECUTE IMMEDIATE plsql_block;
+    -- Update record in MY_STUDENT table
+    sql_stmt := 'UPDATE my_student SET zip = 11105 WHERE student_id = :1 '||
+                'RETURNING zip INTO :2';
+    EXECUTE IMMEDIATE sql_stmt USING v_student_id RETURNING INTO v_new_zip;
+    DBMS_OUTPUT.PUT_LINE ('New zip code: '||v_new_zip);
+  END;
+  ```
+- DDL statements cannot accept bind arguments, Names of schema objects cannot be passed as bind arguments, Both of these problems are solved by concatenation
+  - Dynamic SQL statements should not be terminated with a semicolon (`;`)
+  - Dynamic PL/SQL blocks should not be terminated with a slash (`/`)
+- Passing NULL
+  ```sql
+  DECLARE
+    sql_stmt VARCHAR2(100);
+    v_null VARCHAR2(1);
+  BEGIN
+    sql_stmt := 'UPDATE course'||
+                ' SET prerequisite = :some_value';
+    EXECUTE IMMEDIATE sql_stmt
+    USING v_null;
+  END;
+  ```
+
+#### OPEN-FOR, FETCH and CLOSE
+
+- They are statements for multi-row queries
+- Very similar to cursors
+  ```sql
+  DECLARE
+    -- REF CURSOR declares a cursor type
+    TYPE student_cur_type IS REF CURSOR;
+    -- student_cur is an instance of the new type
+    student_cur student_cur_type;
+    v_zip VARCHAR2(5) := '&sv_zip';
+    v_first_name VARCHAR2(25);
+    v_last_name VARCHAR2(25);
+  BEGIN
+    OPEN student_cur FOR
+      'SELECT first_name, last_name FROM student '|| 'WHERE zip = :1'
+    USING v_zip;
+    LOOP
+      FETCH student_cur INTO v_first_name, v_last_name;
+      EXIT WHEN student_cur%NOTFOUND;
+      DBMS_OUTPUT.PUT_LINE ('First Name: '||v_first_name);
+      DBMS_OUTPUT.PUT_LINE ('Last Name: '||v_last_name);
+    END LOOP;
+    CLOSE student_cur;
+  EXCEPTION
+    WHEN OTHERS THEN
+      IF student_cur%ISOPEN THEN
+        CLOSE student_cur;
+      END IF;
+      DBMS_OUTPUT.PUT_LINE ('ERROR: '|| SUBSTR(SQLERRM, 1, 200));
+  END;
+  ```
+
+#### Trigger
+
+- A database trigger is a named PL/SQL block
+- Triggers are "special" procedures
+- Triggers may not use transaction control statements: COMMIT, SAVEPOINT or ROLLBACK with the exception of an autonomous transaction
+- Triggers execute automatically (or are fired) in response to an event
+- During the execution of the trigger, there are pseudorecords `:NEW` and `:OLD`, they can be used to access the new and old values, it has the type `triggering_table%TYPE`
+  - Delete event has a old record
+  - Insert event has a new record
+  - Update event has both new and old record
+- Debug trigger in SQL Develop
+  1. In the Connections navigator, expand the student connection, then expand the Triggers folder, select the student_bi trigger
+  2. Click the gears icon to compile the trigger
+  3. The same error messages appear and the line of code in error is highlighted
+  4. Fix the error and compile
+- BEFORE Trigger
+  ```sql
+  CREATE OR REPLACE TRIGGER student_bi
+  BEFORE INSERT ON student
+  FOR EACH ROW
+  DECLARE
+    v_student_id STUDENT.STUDENT_ID%TYPE;
+  BEGIN
+    SELECT STUDENT_ID_SEQ.NEXTVAL
+      INTO v_student_id
+      FROM dual;
+    :NEW.student_id    := v_student_id;
+    :NEW.created_by    := USER;
+    :NEW.created_date  := SYSDATE;
+    :NEW.modified_by   := USER;
+    :NEW.modified_date := SYSDATE;
+  END;
+  ```
+- After Trigger
+  ```sql
+  CREATE OR REPLACE TRIGGER employees_au
+  AFTER UPDATE ON employees
+  FOR EACH ROW
+  DECLARE
+    v_diff NUMBER;
+  BEGIN
+    v_diff := :NEW.salary - :OLD.salary;
+    IF v_diff > 250 THEN
+      INSERT INTO salary_log (employee_id, salary_date, description)
+        VALUES(:NEW.employee_id, SYSDATE, 'Raise of more than $250');
+    END IF;
+  END;
+  ```
+- A row trigger will fire the same number of times as rows that have been affected. Whereas a statement trigger will only fire once, regardless of how many rows have been affected
+  - Row trigger is enabled by adding the `FOR EACH ROW` keyword
+- `INSERTING`, `UPDATING` and `DELETING` are boolean functions that evaluate to `TRUE` depending on which DML statement invoked the trigger
+  ```sql
+  CREATE OR REPLACE TRIGGER instructor_aud
+  AFTER UPDATE OR DELETE ON INSTRUCTOR
+  DECLARE
+    v_type VARCHAR2(10);
+  BEGIN
+    IF UPDATING THEN
+      v_type := 'UPDATE';
+    ELSIF DELETING THEN
+      v_type := 'DELETE';
+    END IF;
+    UPDATE statistics SET transaction_user = USER, transaction_date = SYSDATE
+      WHERE table_name = 'INSTRUCTOR' AND transaction_name = v_type;
+    IF SQL%NOTFOUND THEN
+      INSERT INTO statistics
+      VALUES ('INSTRUCTOR', v_type, USER, SYSDATE);
+    END IF;
+  END;
+  ```
+- COMMIT
+  ```sql
+  CREATE OR REPLACE TRIGGER instructor_aud
+  AFTER UPDATE OR DELETE ON INSTRUCTOR
+  DECLARE
+    v_type VARCHAR2(10);
+    PRAGMA AUTONOMOUS_TRANSACTION;
+  BEGIN
+    IF UPDATING THEN
+      v_type := 'UPDATE';
+    ELSIF DELETING THEN
+      v_type := 'DELETE';
+    END IF;
+    UPDATE statistics SET transaction_user = USER, transaction_date = SYSDATE
+      WHERE table_name = 'INSTRUCTOR' AND transaction_name = v_type;
+    IF SQL%NOTFOUND THEN
+      INSERT INTO statistics VALUES ('INSTRUCTOR', v_type, USER, SYSDATE);
+    END IF;
+    COMMIT;
+  END;
+  ```
+  - `ROLLBACK;` can be executed after the trigger is activated
+- Raise error can cancel the trigger
+  ```sql
+  CREATE OR REPLACE TRIGGER instructor_biud
+  BEFORE INSERT OR UPDATE OR DELETE ON INSTRUCTOR
+  DECLARE
+    v_day VARCHAR2(10);
+  BEGIN
+    v_day := RTRIM(TO_CHAR(SYSDATE, 'DAY'));
+    IF v_day LIKE ('T%') THEN
+      RAISE_APPLICATION_ERROR(-20000, 'A table cannot be modified during off hours');
+    END IF;
+  END;
+  ```
+- An `INSTEAD OF` trigger can operate against a view
+  ```sql
+  CREATE OR REPLACE TRIGGER instructor_summary_del
+  INSTEAD OF DELETE ON instructor_summary_view
+  FOR EACH ROW
+  BEGIN
+    DELETE FROM instructor WHERE instructor_id = :OLD.INSTRUCTOR_ID;
+  END;
+  ```
+- `DROP TRIGGER instructor_biud;` delete a trigger
 
 ### MySQL Scripts
 

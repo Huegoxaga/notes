@@ -120,10 +120,10 @@
   - enable the serial wire viwer(SWV) in the Debugger Tab
 - To enable `printf()` with `OpenOCD`
   - Select `OpenOCD` as the debug probe in the debugger config
-  - Add `monitor arm semihosting enable` in the startup tab's `Run Commands` input box
+  - In debugger config, add `monitor arm semihosting enable` in the startup tab's `Run Commands` input box
   - Right click on project, `Properties > C/C++ Build > Settings > Tool Settings > MCU GCC Linker > Miscellaneous`, in `Other Flags` add `-specs=rdimon.specs -lc -lrdimon`
   - Right before any `printf()` add `initialise_monitor_handles();`, also add `extern void initialise_monitor_handles(void);` on top
-  - Exclude `syscalls.c` from build by right click this file and select `Exclude resource from build` in the `C/C++ Build` setting
+  - Exclude `syscalls.c` from build by right click this file and select `Exclude resource from build` under the `Resourse Configuration` option
   - String should end with `\n` when using this method
 - To enable `printf()` with `SWV`. Add the following code to the beginning of `syscalls.c`
   ```cpp
@@ -203,6 +203,7 @@
 - The memory browser window can be used to search for the data store in different memory address
   - right click inside the panel and select column, cell size and radix to change the output data format
 - When connect to multiple devices specify the ST-Link S/N for each device in the debug configuration
+- Use `Project Propoerties` -> `C/C++ General` -> `Paths and Symbols`'s `Includes` and `Source Location` tabs to specify the folder path of all the `.h` and `.c` files for build
 
 ### STM32CubeMX
 

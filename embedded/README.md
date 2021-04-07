@@ -135,9 +135,10 @@
 - An Vector tables is a table of pointers which points to exception handlers.
   - Exceptions include 15 system exceptions and 240 interrupts(external exceptions)
 - Interrupt is an event that will break the current flow of the program
-  - Generally, interrupt is a subset of excenption
+  - Generally, interrupt is a subset of exception
   - They are hardware driven singals
-  - It helps program to run in a non-blocking manner
+  - Interrupt can be followed by a callback function to handle the singal
+  - Interrupt with callback helps program to run in a non-blocking manner
 - GPIO(General Purpose Input Output)
   - It has ports, like port A, port B, port C.
   - Each port has multiple pins. Each pin can take 1 bit data(either 1 or 0 at a time) in the memory addresses
@@ -188,6 +189,7 @@
     - Mode 1: `CPOL` is 0, and `CPHA` is 1
     - Mode 2: `CPOL` is 1, and `CPHA` is 0
     - Mode 3: `CPOL` is 1, and `CPHA` is 1
+  - Master and slave nodes are better to be grounded and connected to the same power supply to get accurate data
 
 #### Controller Area Network (CAN) Bus
 

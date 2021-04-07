@@ -26,7 +26,7 @@
     - NVIDIA Virtual Compute Server
     - Cloud platforms instance which using NVIDIA hardware
     - NVIDIA IoT devices (Autonomous Machines)
-- NVIDIA Metropolis Project focuses on building tools to empower NVIDIA IoT with AI, It includes:
+- NVIDIA Metropolis Project focuses on building tools to empower NVIDIA IoT with AI, It includes (see all available docs at [here](https://docs.nvidia.com/metropolis/)):
   - Transfer Learning Toolkit - it includes production quality pre-trained models and deploy as is or apply minimal fine-tuning for various computer vision and conversational AI use-cases
   - DeepStream SDK - it delivers a complete streaming analytics toolkit for AI-based multi-sensor processing, video, audio and image understanding
 - NVIDA's GPU Technology Conference (GTC) is a popular annual event in the GPU computing industry
@@ -55,17 +55,20 @@
 - Use serial connection with `115200` Baudrate for headless mode
 - Jetson Nano Developer Kit doesn't come with WiFi module, use USB WiFi adapter instead
 - When in `USB Device Mode` without network connection, the Jetson device can be accessed through `ssh`, `scp`, `sftp` using IP address `192.168.55.1` pre-configured with `l4tbr0` interface
-- For models with both USB and DC power supply, use the on borad jumper properly if DC power supply is preferred
+- For models with both USB and DC power supply, put a jumper on J48 properly if DC power supply is preferred
 - A 4GB swap file is recommended
   - run `sudo systemctl disable nvzramconfig` before creating swap file
   - use path `/mnt/4GB.swap` for swap file
-- For remote host identity changed warning, run `ssh-keygen -R HOSTNAME.local`
+- For remote host identity changed warning, run `ssh-keygen -R <RemoteAddress>`
 - To clock control
   - `sudo /usr/bin/jetson_clocks --show` to see the current status
   - `sudo /usr/bin/jetson_clocks --fan` To run the fan at max speed
   - `sudo /usr/bin/jetson_clocks --store` export clock setting to `~/l4t_dfs.conf`
   - `sudo /usr/bin/jetson_clocks --restore` restore clock setting from `~/l4t_dfs.conf`
 - [Click](https://developer.nvidia.com/embedded/learn/tutorials/vnc-setup) to see steps for configuring VNC server
+- Backup
+  - Clone the entire SD drive, `sudo dd if=/dev/sdc conv=sync,noerror bs=4096 | gzip -c > ~/backup_image.img.gz`
+  - Restore the entire SD drive, `gunzip -c ~/backup_image.img.gz | dd of=/dev/sdc bs=4096`
 
 #### CLI
 
@@ -74,6 +77,8 @@
   - Each mode has different energy usage and performance scenarios
   - `sudo nvpmodel -m <modeID>`
   - `sudo nvpmodel -q –verbose` query which mode is currently being used
+  - `cat /etc/nvpmodel.conf` to see all the modes available
+    - For Jetson Nano mode `1` is 10W mode with Barrel jack 5V 4A power supplies, `2` is 5W mode with Micro USB power supplies
 - `cat nv_tegra_release` check the current version of the `L4T`
 - nmcli
   - `nmcli d` list all network interface
@@ -86,3 +91,21 @@
   - `sudo nmcli c mod <CONNECTION_NAME> ipv4.method manual` Disable DHCP and use static IP
   - `sudo nmcli c mod <CONNECTION_NAME> ipv4.dns "<DNS_SERVER_IP1>,<DNS_SERVER_IP2>"` set DNS server
   - `sudo nmcli c up <CONNECTION_NAME>` save changes
+- `tegrastats` - shows details on temperature and power usage.
+
+### SDKs
+
+#### Deapstream
+
+- It defines an extensible video processing pipeline that can be used to perform inference, object tracking and reporting
+- Hardware Accelerated GStreamer plugins - GStreamer is a framework for creating streaming media applications
+  - `Gst-nvinfer` implements TensorRT-based inferencing
+  - `Gst-nvstreammux` - Batch streams before sending for AI inference, manage metadata for video stream
+  - `Gst-nvvideo4linux2` - Decode video streams using the hardware accelerated decoder (NVDEC); Encode RAW data in I420 format to H264 or H265 output video stream using hardware accelerated encoder (NVENC).
+  - `Gst-nvvideoconvert` - Perform video color format conversion. The first Gst-nvvideoconvert plugin before Gst-nvdsosd plugin converts stream data from I420 to RGBA and the second Gst-nvvideoconvert plugin after Gst-nvdsosd plugin converts data from RGBA to I420.
+  - `Gst-nvdsosd` - Draw bounding boxes, text, and region of interest (ROI) polygons.
+  - `Gst-nvtracker` - Track object between frames.
+  - `Gst-nvmultistreamtiler` - Composite a 2D tile from batched buffers.
+  - `Gst-nvv4l2decoder` - Decode a video stream.
+  - `Gst-Nvv4l2h264enc` - Encode a video stream.
+  - `Gst-NvArgusCameraSrc` - Provide options to control ISP properties using the Argus API.

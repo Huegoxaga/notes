@@ -105,28 +105,27 @@
 - It has an extension as `.ipynb`.
 - Blocks of codes or markdown are contained in separate cells.
 - The `.ipynb` file source code is JSON data about cell objects.
-- The `JupyterLab` is the newest product of the Jupyter Project.
-  - [Click](https://jupyterlab.readthedocs.io/en/latest/index.html) to see details.
-
-### Usage
-
-- The environment will be hosted as a web app and can be accessed by a browser
-  - `Google Chrome` is recommended
-
-#### Jupyter Notebook
-
-- [Click](https://jupyter.readthedocs.io/en/latest/index.html) to see the docs for Jupyter
-- Run command `jupyter notebook` in the project folder to start a server and open the notebook in the browser
-- It supports LaTeX code in markdown cell, inside `$$` block.
-- `Shift + Enter` to run code block in the cell.
 - The kernel for each running notebook is a separate process that runs the user code
   - The kernel starts automatically when the notebook is opened from the file browser
   - The kernel menu on the main menu bar includes commands to shutdown or restart the kernel
+- Jupyter Notebook
+  - Run command `jupyter notebook` in the project folder to start a server and open the notebook in the browser
+  - [Click](https://jupyter.readthedocs.io/en/latest/index.html) to see the docs for Jupyter Notebook
+- The `JupyterLab` is the newest product of the Jupyter Project.
+  - [Click](https://jupyterlab.readthedocs.io/en/latest/index.html) to see details.
+  - To Download JupyterLab, run command `conda install -c conda-forge jupyterlab`.
+  - To Run JupyterLab, run command `jupyter lab`.
 
-#### Jupyter Lab
+### Usage
 
-- To Download JupyterLab, run command `conda install -c conda-forge jupyterlab`.
-- To Run JupyterLab, run command `jupyter lab`.
+- Once it starts running, The environment will be hosted as a web app and can be accessed by a browser
+  - `Google Chrome` is recommended
+- `Shift + Enter` to run code block in the cell.
+- It supports LaTeX code in markdown cell, inside `$$` block.
+- In a cell, use `!` followed by terminal command using a new shell session
+  - optionally, use `$$bash` as the first line of a cell for Mac, use `$$cmd` as the first line of a cell for Mac
+- Using `cd` or `%cd` in a cell will ask IPython to change its own working directory. This will persist for the duration of your IPython session
+  - it still has no effect on the shell you launched IPython from
 - One can move any cell to new window tabs in the main work area by right-clicking the cell and selecting "Create New View for Output"
 
 ## NumPy

@@ -240,4 +240,4 @@ const { NAME, getName, getAge } = require("filePath");
 - `npm install pm2 -g` install
 - In project folder `sudo pm2 start app.js` run the app
 - `sudo pm2 startup` automatically start the app after reboot
-- `pm2 list` or `pm2 show app` check the current running apps
+- `sudo pm2 list` or `sudo pm2 show app` check the current running apps

@@ -21,6 +21,7 @@
 - `python manage.py startapp <appname>` create a new app inside a project.
 - `python manage.py makemigrations` update changes made on database model files for an app.
   - create files in the `app/migrations` folder for the `migrate` command to run.
+  - run `python manage.py makemigrations <appname>` for migrating a certain app
   - run `python manage.py sqlmigrate <appname> <migrationID>` to see the SQL code that will be run on the database when executing migrate command.
     - Migration ID is the number in the file names in the `app/migration` folder.
 - `python manage.py migrate`
@@ -138,7 +139,7 @@ def about(request):
       date_posted = models.DateTimeField(default=timezone.now, unique=True)
       # set foreign key in the user table, delete all associated posts when user object is deleted.
       author = models.ForeignKey(User, on_delete=models.CASCADE)
-      # Many to Many field, related_name field can be used to reverse lookup
+      # related_name field can be used to reverse lookup
       # Filter function has reversed fields available using the all lower-case model class name
       related_posts = models.ManyToManyField(User,blank=True,null=True, related_name='other_posts')
 
@@ -158,14 +159,18 @@ def about(request):
         # set order when query
         get_latest_by = "order_date"
         ordering = ['-pub_date', 'author']
+        unique_together = ["sno", "cno"]
   ```
 
+  - `null` is database-related. Defines if a given database column will accept null values or not
+  - `blank` is validation-related. It will be used during forms validation, when calling `form.is_valid()`
   - `on.delete` has the following options:
     - `models.CASCADE` delete all associated records.
     - `models.PROTECT` prevent deletion
     - `models.SET_NULL`
     - `models.SET_DEFAULT` only default value it set.
     - `models.SET('value')` set to certain value.
+  - `models.ForeignKey('self')` if using a resursive FK relationship
   - When a class is defined as `abstract=True` in `Meta` options. Its fields can be reused by pass the Class Name in other class definition.
     ```py
     # The student table will have all fields from the CommonInfoAbstract class
@@ -188,6 +193,7 @@ def about(request):
   ModelClass.objects.all()[0:20]# return first 20 objects
   ModelClass.objects.filter(propertyname='value') # return a list of matching objects.
   ModelClass.objects.filter(id__in=[1,2,3]) # return all matching id
+  ModelClass.objects.get(propertyname='value') # get a single record
   ModelClass.objects.get(id=1) # return the object with id 1
   newobject = ModelClass(property1='value1', property2 = 'value2') #create a new object
   newobject.save() # save change to the object that is already in the database
@@ -197,12 +203,17 @@ def about(request):
   modelObject.pk # get the object primary key value
   modelObject.manyToManyField.all() # return all related fields of a many-to-many fields. Direct access without all() will cause "TypeError: ManyRelatedManager object is not iterable"
   modelObject.relatedModel_set.all() # return all assciated model of one model.
-  modelObject.relatedModel_set.create(property1='value1', property2 = 'value2') # create a new related model of the model.
+  modelObject.relatedModel_set.create(property1='value1', property2 = 'value2') # create a new related model of the model. Same as init new object and use object.save()
   ModelClass.objects.all().order_by('-column') # use - for descending order
   ModelClass.objects.select_related('tableA','tableB').prefetch_related('tableC').all() # Join tables for future queries. select_related is used for tables with one to one relationship, prefetch_related is used for many-to-many relationships.
   ModelClass.objects.values('field1', 'field2') # return dict queryset for certain fields
   ModelClass.objects.values_list('id', flat=True) # return a list queryset of id, if flat=False return list of tuples.
+  ModelClass.objects.all().query.sql_with_params() # get the SQL sentence for this query
   ModelClass.objects.annotate(raw_link=Concat(Value("https://"), F('domain'))) # create a temp field with annonted strings append from a existing field
+  from django.db.models import Count
+  ModelClass.objects.annotate(managers_required=(Count('num_employees') / 4) + Count('num_managers'))
+  from django.db.models import Sum
+  ModelClass.objects.aggregate(total=(Sum('grade')))
   list(ModelClass.objects.all()) #convert queryset into a list
   # Aggregate PostgreSQL fields into an array
   TestModel.objects.aggregate(result=ArrayAgg('field1'))

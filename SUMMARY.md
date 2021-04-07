@@ -60,6 +60,7 @@
   - [Arduino](embedded/arduino.md)
   - [Raspberry Pi](embedded/raspberry-pi.md)
   - [STMicroelectronics](embedded/st.md)
+  - [NVIDIA](embedded/nvidia.md)
   - [Electricity & Magnetism](embedded/electricity-magnetism.md)
 - [GIS](gis/README.md)
   - [ArcGIS](gis/arcgis.md)

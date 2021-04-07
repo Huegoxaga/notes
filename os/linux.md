@@ -837,6 +837,10 @@
 - `sudo /etc/init.d/nginx start` or `service nginx start` start the server
 - `sudo /etc/init.d/nginx restart` or `service nginx restart` restart the server
 - `sudo nginx -t` test the server
+- `service nginx status` check the status
+- `service nginx reload` restart gracefully
+- `service nginx stop` stop the server
+- `service nginx quit` stop gracefully
 
 ### httpd
 
