@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="electricity-magnetism.html" />
+    <link rel="next" href="nvidia.html" />
     
     
     <link rel="prev" href="raspberry-pi.html" />
@@ -948,7 +948,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21.4" data-path="electricity-magnetism.html">
+        <li class="chapter " data-level="1.21.4" data-path="nvidia.html">
+            
+                <a href="nvidia.html">
+            
+                    
+                    NVIDIA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.5" data-path="electricity-magnetism.html">
             
                 <a href="electricity-magnetism.html">
             
@@ -1485,10 +1498,10 @@
 </li>
 <li>To enable <code>printf()</code> with <code>OpenOCD</code><ul>
 <li>Select <code>OpenOCD</code> as the debug probe in the debugger config</li>
-<li>Add <code>monitor arm semihosting enable</code> in the startup tab&apos;s <code>Run Commands</code> input box</li>
+<li>In debugger config, add <code>monitor arm semihosting enable</code> in the startup tab&apos;s <code>Run Commands</code> input box</li>
 <li>Right click on project, <code>Properties &gt; C/C++ Build &gt; Settings &gt; Tool Settings &gt; MCU GCC Linker &gt; Miscellaneous</code>, in <code>Other Flags</code> add <code>-specs=rdimon.specs -lc -lrdimon</code></li>
 <li>Right before any <code>printf()</code> add <code>initialise_monitor_handles();</code>, also add <code>extern void initialise_monitor_handles(void);</code> on top</li>
-<li>Exclude <code>syscalls.c</code> from build by right click this file and select <code>Exclude resource from build</code> in the <code>C/C++ Build</code> setting</li>
+<li>Exclude <code>syscalls.c</code> from build by right click this file and select <code>Exclude resource from build</code> under the <code>Resourse Configuration</code> option</li>
 <li>String should end with <code>\n</code> when using this method</li>
 </ul>
 </li>
@@ -1577,6 +1590,7 @@ HAL_Delay(<span class="hljs-number">500</span>);
 </ul>
 </li>
 <li>When connect to multiple devices specify the ST-Link S/N for each device in the debug configuration</li>
+<li>Use <code>Project Propoerties</code> -&gt; <code>C/C++ General</code> -&gt; <code>Paths and Symbols</code>&apos;s <code>Includes</code> and <code>Source Location</code> tabs to specify the folder path of all the <code>.h</code> and <code>.c</code> files for build</li>
 </ul>
 <h3 id="stm32cubemx">STM32CubeMX</h3>
 <ul>
@@ -1656,7 +1670,7 @@ HAL_Delay(<span class="hljs-number">500</span>);
                 </a>
                 
                 
-                <a href="electricity-magnetism.html" class="navigation navigation-next " aria-label="Next page: Electricity & Magnetism">
+                <a href="nvidia.html" class="navigation navigation-next " aria-label="Next page: NVIDIA">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1667,7 +1681,7 @@ HAL_Delay(<span class="hljs-number">500</span>);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"next":{"title":"Electricity & Magnetism","level":"1.21.4","depth":2,"path":"embedded/electricity-magnetism.md","ref":"embedded/electricity-magnetism.md","articles":[]},"previous":{"title":"Raspberry Pi","level":"1.21.2","depth":2,"path":"embedded/raspberry-pi.md","ref":"embedded/raspberry-pi.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/st.md","mtime":"2021-03-06T01:33:19.661Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"next":{"title":"NVIDIA","level":"1.21.4","depth":2,"path":"embedded/nvidia.md","ref":"embedded/nvidia.md","articles":[]},"previous":{"title":"Raspberry Pi","level":"1.21.2","depth":2,"path":"embedded/raspberry-pi.md","ref":"embedded/raspberry-pi.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/st.md","mtime":"2021-04-03T23:26:12.493Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-08T19:33:01.152Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

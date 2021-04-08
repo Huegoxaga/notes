@@ -948,7 +948,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21.4" data-path="../embedded/electricity-magnetism.html">
+        <li class="chapter " data-level="1.21.4" data-path="../embedded/nvidia.html">
+            
+                <a href="../embedded/nvidia.html">
+            
+                    
+                    NVIDIA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.5" data-path="../embedded/electricity-magnetism.html">
             
                 <a href="../embedded/electricity-magnetism.html">
             
@@ -2237,7 +2250,14 @@ between. for example ID=5 and ID=10)
 <ul>
 <li><code>VIEW</code> is a virtual table that is based on the result-set of an SQL statement</li>
 <li>The View result set is not permanently stored in the database, but generated and executed each time it is used</li>
-<li>It cannot use ORDER BY</li>
+<li>A <code>VIEW</code> can be modified by an <code>UPDATE</code>, <code>INSERT</code> or <code>DELETE</code> provided it doesn&#x2019;t use any of the following<ul>
+<li>Set operations (UNION, UNION ALL, INTERSECT, MINUS)</li>
+<li>Group functions (AVG, COUNT, MAX, MIN, SUM)&#x2013;GROUP BY or HAVING clauses</li>
+<li>CONNECT BY or START WITH clauses</li>
+<li>DISTINCT operator&#x2013;ROWNUM pseudocolumn</li>
+</ul>
+</li>
+<li>For Oracle use <code>GRANT CREATE VIEW TO tableA;</code> to grant permission</li>
 <li>Create a view<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> current_patients
 <span class="hljs-keyword">AS</span>
 <span class="hljs-keyword">SELECT</span> a.patient_id, first_name, last_name, nursing_unit_id, room
@@ -3151,6 +3171,610 @@ WHEN OTHERS THEN
 </code></pre>
 </li>
 </ul>
+<h4 id="procedure">Procedure</h4>
+<ul>
+<li>A procedure is a named PL/SQL block</li>
+<li>Procedures have names and may be called from a SQL prompt, other procedures, triggers or scheduling utilities</li>
+<li>Procedures may accept and return parameters</li>
+<li>If procedure doesn&apos;t compile, inspect the Compiler Log or use the show error command <code>SHOW ERROR;</code></li>
+<li>Example<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">PROCEDURE</span> Discount
+<span class="hljs-keyword">AS</span>
+  <span class="hljs-keyword">CURSOR</span> c_group_discount
+  <span class="hljs-keyword">IS</span>
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">distinct</span> s.course_no, c.description
+      <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">section</span> s, enrollment e, course c
+      <span class="hljs-keyword">WHERE</span> s.section_id = e.section_id
+      <span class="hljs-keyword">AND</span> c.course_no = s.course_no
+      <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> s.course_no, c.description,
+              e.section_id, s.section_id
+      <span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">COUNT</span>(*) &gt;= <span class="hljs-number">8</span>;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">FOR</span> r_group_discount <span class="hljs-keyword">IN</span> c_group_discount <span class="hljs-keyword">LOOP</span>
+    <span class="hljs-keyword">UPDATE</span> course
+      <span class="hljs-keyword">SET</span> <span class="hljs-keyword">cost</span> = <span class="hljs-keyword">cost</span> * <span class="hljs-number">.95</span>
+      <span class="hljs-keyword">WHERE</span> course_no = r_group_discount.course_no;
+    DBMS_OUTPUT.PUT_LINE
+      (&apos;A 5% discount has been given to &apos;||
+      r_group_discount.course_no||&apos; &apos;||
+      r_group_discount.description);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>Execute Procedure<pre><code class="lang-sql"><span class="hljs-keyword">BEGIN</span>
+  Discount;
+<span class="hljs-keyword">END</span>
+</code></pre>
+<ul>
+<li>Interactively in SQL Developer, use <code>EXECUTE Discount;</code>, and <code>EXEC Discount;</code></li>
+</ul>
+</li>
+<li>Query existing procedure<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> object_name, object_type, <span class="hljs-keyword">status</span>
+  <span class="hljs-keyword">FROM</span> user_objects
+  <span class="hljs-keyword">WHERE</span> object_name = <span class="hljs-string">&apos;DISCOUNT&apos;</span>;
+</code></pre>
+</li>
+<li>Procedure parameter modes:<ul>
+<li><code>IN</code> - Passes a value into the programConstants, literals, expressions, cannot be changed with the program. Read-only value</li>
+<li><code>OUT</code> - Passes a value back from the program, cannot assign default values, must be a variable, a value is assigned only if the program is successful. Write-only value</li>
+<li><code>IN OUT</code> - Passes value in and also sends values back. Must be a variable</li>
+</ul>
+</li>
+<li>Procedure parameter example<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">PROCEDURE</span> find_sname
+  (i_student_id <span class="hljs-keyword">IN</span> <span class="hljs-built_in">NUMBER</span>,
+  o_first_name <span class="hljs-keyword">OUT</span> VARCHAR2,
+  o_last_name <span class="hljs-keyword">OUT</span> VARCHAR2)
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">SELECT</span> first_name, last_name
+    <span class="hljs-keyword">INTO</span> o_first_name, o_last_name
+    <span class="hljs-keyword">FROM</span> student
+    <span class="hljs-keyword">WHERE</span> student_id = i_student_id;
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE(&apos;Error in finding student_id: &apos;||i_student_id);
+<span class="hljs-keyword">END</span> find_sname;
+</code></pre>
+</li>
+<li>Calling with Positional Parameters<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_first student.first_name%<span class="hljs-keyword">TYPE</span>;
+  v_last student.last_name%TYPE;
+<span class="hljs-keyword">BEGIN</span>
+  find_sname (<span class="hljs-number">105</span>, v_first, v_last);
+  DBMS_OUTPUT.PUT_LINE(v_first ||&apos; &apos;|| v_last);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>Calling with Named Parameters<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_id student.student_id%<span class="hljs-keyword">TYPE</span> := <span class="hljs-number">110</span>;
+  v_first student.first_name%TYPE;
+  v_last student.last_name%TYPE;
+<span class="hljs-keyword">BEGIN</span>
+  find_sname (o_first_name =&gt; v_first,
+              o_last_name =&gt; v_last,
+              i_student_id =&gt; v_id);
+  DBMS_OUTPUT.PUT_LINE(v_first ||&apos; &apos;|| v_last);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>For debugging, login as <code>SYS</code> and issue following commands, <code>GRANT DEBUG CONNECT SESSION TO student;</code>, <code>GRANT DEBUG ANY PROCEDURE TO student;</code> and perform the following steps:<ol>
+<li>Expand Procedures in explorer</li>
+<li>Right click desired procedure and select Edit&#x2026;</li>
+<li>Compile for Debug by clicking dropdown of gears icon</li>
+<li>Add breakpoints as desired by clicking in gutter</li>
+<li>Click Debug icon to run</li>
+<li>Edit created anonymous block for input parameters as necessary</li>
+<li>Step through code</li>
+</ol>
+</li>
+</ul>
+<h4 id="execute-immediate">EXECUTE IMMEDIATE</h4>
+<ul>
+<li>It is a statement that allows the execution of a sql statement or block stroed in a string</li>
+<li>It allows for creating SQL statements on the fly and executing them</li>
+<li>It allows things that wouldn&#x2019;t normally be permissible in a PL/SQL block, such as DDL</li>
+<li>Syntax<pre><code class="lang-sql">  <span class="hljs-keyword">EXECUTE</span> <span class="hljs-keyword">IMMEDIATE</span> dynamic_SQL_string
+  [<span class="hljs-keyword">INTO</span> defined_variable1, defined_variable2, ...]
+  [<span class="hljs-keyword">USING</span> [<span class="hljs-keyword">IN</span> | <span class="hljs-keyword">OUT</span> | <span class="hljs-keyword">IN</span> <span class="hljs-keyword">OUT</span>] bind_argument1, bind_argument2,
+  ...][{<span class="hljs-keyword">RETURNING</span> | <span class="hljs-keyword">RETURN</span>} field1, field2, ... <span class="hljs-keyword">INTO</span> bind_argument1,
+  bind_argument2, ...]
+</code></pre>
+<ul>
+<li>dynamic_SQL_string may be a SQL statement or a PL/SQL block</li>
+<li>The INTO clause contains the list of predefined variables that hold values returned by the SELECT statement, when it returns a single row</li>
+<li>The USING clause contains a list of bind arguments passed to the SQL statement or PL/SQL block</li>
+<li>IN, OUT and IN OUT are modes for bind arguments, IN is default</li>
+<li>RETURNING INTO or RETURN clause contains a list of bind arguments that store values returned by the dynamic SQL or PL/SQL block</li>
+<li>RETURNING INTO has similar argument modes to USING, OUT is default</li>
+</ul>
+</li>
+<li>Example<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  sql_stmt VARCHAR2(<span class="hljs-number">100</span>);
+  plsql_block VARCHAR2(300);
+  v_zip VARCHAR2(5) := &apos;11106&apos;;
+  v_total_students NUMBER;
+  v_new_zip VARCHAR2(5);
+  v_student_id NUMBER := 151;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-comment">-- Create table MY_STUDENT</span>
+  sql_stmt := <span class="hljs-string">&apos;CREATE TABLE my_student &apos;</span>||
+              <span class="hljs-string">&apos;AS SELECT * FROM student WHERE zip = &apos;</span>||v_zip;
+  <span class="hljs-keyword">EXECUTE</span> <span class="hljs-keyword">IMMEDIATE</span> sql_stmt;
+  <span class="hljs-comment">-- Select total number of records from MY_STUDENT table</span>
+  <span class="hljs-comment">-- and display results on the screen</span>
+  <span class="hljs-keyword">EXECUTE</span> <span class="hljs-keyword">IMMEDIATE</span> <span class="hljs-string">&apos;SELECT COUNT(*) FROM my_student&apos;</span> <span class="hljs-keyword">INTO</span> v_total_students;
+  DBMS_OUTPUT.PUT_LINE (&apos;Students added: &apos;||v_total_students);
+  <span class="hljs-comment">-- Select current date and display it on the screen</span>
+  plsql_block := &apos;<span class="hljs-keyword">DECLARE</span> <span class="hljs-string">&apos; ||
+                &apos;</span>  v_date <span class="hljs-built_in">DATE</span>; &apos; ||
+                &apos;<span class="hljs-keyword">BEGIN</span> <span class="hljs-string">&apos; ||
+                &apos;</span>  <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SYSDATE</span> <span class="hljs-keyword">INTO</span> v_date <span class="hljs-keyword">FROM</span> DUAL; &apos;||
+                &apos;  DBMS_OUTPUT.PUT_LINE (TO_CHAR(v_date, &apos;&apos;DD-MON-YYYY&apos;&apos;));&apos;||
+                &apos;<span class="hljs-keyword">END</span>;&apos;;
+  <span class="hljs-keyword">EXECUTE</span> <span class="hljs-keyword">IMMEDIATE</span> plsql_block;
+  <span class="hljs-comment">-- Update record in MY_STUDENT table</span>
+  sql_stmt := &apos;<span class="hljs-keyword">UPDATE</span> my_student <span class="hljs-keyword">SET</span> zip = <span class="hljs-number">11105</span> <span class="hljs-keyword">WHERE</span> student_id = :<span class="hljs-number">1</span> <span class="hljs-string">&apos;||
+              &apos;</span><span class="hljs-keyword">RETURNING</span> zip <span class="hljs-keyword">INTO</span> :<span class="hljs-number">2</span><span class="hljs-string">&apos;;
+  EXECUTE IMMEDIATE sql_stmt USING v_student_id RETURNING INTO v_new_zip;
+  DBMS_OUTPUT.PUT_LINE (&apos;</span><span class="hljs-keyword">New</span> zip code: <span class="hljs-string">&apos;||v_new_zip);
+END;
+</span></code></pre>
+</li>
+<li>DDL statements cannot accept bind arguments, Names of schema objects cannot be passed as bind arguments, Both of these problems are solved by concatenation<ul>
+<li>Dynamic SQL statements should not be terminated with a semicolon (<code>;</code>)</li>
+<li>Dynamic PL/SQL blocks should not be terminated with a slash (<code>/</code>)</li>
+</ul>
+</li>
+<li>Passing NULL<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  sql_stmt VARCHAR2(<span class="hljs-number">100</span>);
+  v_null VARCHAR2(1);
+<span class="hljs-keyword">BEGIN</span>
+  sql_stmt := <span class="hljs-string">&apos;UPDATE course&apos;</span>||
+              <span class="hljs-string">&apos; SET prerequisite = :some_value&apos;</span>;
+  <span class="hljs-keyword">EXECUTE</span> <span class="hljs-keyword">IMMEDIATE</span> sql_stmt
+  <span class="hljs-keyword">USING</span> v_null;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+</ul>
+<h4 id="open-for-fetch-and-close">OPEN-FOR, FETCH and CLOSE</h4>
+<ul>
+<li>They are statements for multi-row queries</li>
+<li>Very similar to cursors<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  <span class="hljs-comment">-- REF CURSOR declares a cursor type</span>
+  <span class="hljs-keyword">TYPE</span> student_cur_type <span class="hljs-keyword">IS</span> <span class="hljs-keyword">REF</span> <span class="hljs-keyword">CURSOR</span>;
+  <span class="hljs-comment">-- student_cur is an instance of the new type</span>
+  student_cur student_cur_type;
+  v_zip VARCHAR2(5) := &apos;&amp;sv_zip&apos;;
+  v_first_name VARCHAR2(25);
+  v_last_name VARCHAR2(25);
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">OPEN</span> student_cur <span class="hljs-keyword">FOR</span>
+    <span class="hljs-string">&apos;SELECT first_name, last_name FROM student &apos;</span>|| <span class="hljs-string">&apos;WHERE zip = :1&apos;</span>
+  <span class="hljs-keyword">USING</span> v_zip;
+  LOOP
+    FETCH student_cur INTO v_first_name, v_last_name;
+    EXIT WHEN student_cur%NOTFOUND;
+    DBMS_OUTPUT.PUT_LINE (&apos;First Name: &apos;||v_first_name);
+    DBMS_OUTPUT.PUT_LINE (&apos;Last Name: &apos;||v_last_name);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+  CLOSE student_cur;
+EXCEPTION
+  WHEN OTHERS THEN
+    IF student_cur%ISOPEN THEN
+      CLOSE student_cur;
+    <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+    DBMS_OUTPUT.PUT_LINE (&apos;ERROR: &apos;|| SUBSTR(SQLERRM, 1, 200));
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+</ul>
+<h4 id="trigger">Trigger</h4>
+<ul>
+<li>A database trigger is a named PL/SQL block</li>
+<li>Triggers are &quot;special&quot; procedures</li>
+<li>Triggers may not use transaction control statements: COMMIT, SAVEPOINT or ROLLBACK with the exception of an autonomous transaction</li>
+<li>Triggers execute automatically (or are fired) in response to an event</li>
+<li>During the execution of the trigger, there are pseudorecords <code>:NEW</code> and <code>:OLD</code>, they can be used to access the new and old values, it has the type <code>triggering_table%TYPE</code><ul>
+<li>Delete event has a old record</li>
+<li>Insert event has a new record</li>
+<li>Update event has both new and old record</li>
+</ul>
+</li>
+<li>Debug trigger in SQL Develop<ol>
+<li>In the Connections navigator, expand the student connection, then expand the Triggers folder, select the student_bi trigger</li>
+<li>Click the gears icon to compile the trigger</li>
+<li>The same error messages appear and the line of code in error is highlighted</li>
+<li>Fix the error and compile</li>
+</ol>
+</li>
+<li>BEFORE Trigger<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">TRIGGER</span> student_bi
+<span class="hljs-keyword">BEFORE</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> student
+<span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span>
+<span class="hljs-keyword">DECLARE</span>
+  v_student_id STUDENT.STUDENT_ID%<span class="hljs-keyword">TYPE</span>;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">SELECT</span> STUDENT_ID_SEQ.<span class="hljs-keyword">NEXTVAL</span>
+    <span class="hljs-keyword">INTO</span> v_student_id
+    <span class="hljs-keyword">FROM</span> dual;
+  :NEW.student_id    := v_student_id;
+  :NEW.created_by    := USER;
+  :NEW.created_date  := SYSDATE;
+  :NEW.modified_by   := USER;
+  :NEW.modified_date := SYSDATE;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>After Trigger<pre><code class="lang-sql">CREATE OR REPLACE TRIGGER employees_au
+AFTER UPDATE ON employees
+FOR EACH ROW
+DECLARE
+  v_diff NUMBER;
+BEGIN
+  v_diff := :NEW.salary - :OLD.salary;
+  IF v_diff &gt; 250 THEN
+    INSERT INTO salary_log (employee_id, salary_date, description)
+      VALUES(:NEW.employee_id, SYSDATE, &apos;Raise of more than $250&apos;);
+  END IF;
+END;
+</code></pre>
+</li>
+<li>A row trigger will fire the same number of times as rows that have been affected. Whereas a statement trigger will only fire once, regardless of how many rows have been affected<ul>
+<li>Row trigger is enabled by adding the <code>FOR EACH ROW</code> keyword</li>
+</ul>
+</li>
+<li><code>INSERTING</code>, <code>UPDATING</code> and <code>DELETING</code> are boolean functions that evaluate to <code>TRUE</code> depending on which DML statement invoked the trigger<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">TRIGGER</span> instructor_aud
+<span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">ON</span> INSTRUCTOR
+<span class="hljs-keyword">DECLARE</span>
+  v_type VARCHAR2(<span class="hljs-number">10</span>);
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">IF</span> UPDATING <span class="hljs-keyword">THEN</span>
+    v_type := <span class="hljs-string">&apos;UPDATE&apos;</span>;
+  ELSIF DELETING THEN
+    v_type := &apos;<span class="hljs-keyword">DELETE</span><span class="hljs-string">&apos;;
+  END IF;
+  UPDATE statistics SET transaction_user = USER, transaction_date = SYSDATE
+    WHERE table_name = &apos;</span>INSTRUCTOR<span class="hljs-string">&apos; AND transaction_name = v_type;
+  IF SQL%NOTFOUND THEN
+    INSERT INTO statistics
+    VALUES (&apos;</span>INSTRUCTOR<span class="hljs-string">&apos;, v_type, USER, SYSDATE);
+  END IF;
+END;
+</span></code></pre>
+</li>
+<li>COMMIT<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">TRIGGER</span> instructor_aud
+<span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">ON</span> INSTRUCTOR
+<span class="hljs-keyword">DECLARE</span>
+  v_type VARCHAR2(<span class="hljs-number">10</span>);
+  <span class="hljs-keyword">PRAGMA</span> AUTONOMOUS_TRANSACTION;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">IF</span> UPDATING <span class="hljs-keyword">THEN</span>
+    v_type := <span class="hljs-string">&apos;UPDATE&apos;</span>;
+  ELSIF DELETING THEN
+    v_type := &apos;<span class="hljs-keyword">DELETE</span><span class="hljs-string">&apos;;
+  END IF;
+  UPDATE statistics SET transaction_user = USER, transaction_date = SYSDATE
+    WHERE table_name = &apos;</span>INSTRUCTOR<span class="hljs-string">&apos; AND transaction_name = v_type;
+  IF SQL%NOTFOUND THEN
+    INSERT INTO statistics VALUES (&apos;</span>INSTRUCTOR<span class="hljs-string">&apos;, v_type, USER, SYSDATE);
+  END IF;
+  COMMIT;
+END;
+</span></code></pre>
+<ul>
+<li><code>ROLLBACK;</code> can be executed after the trigger is activated</li>
+</ul>
+</li>
+<li>Raise error can cancel the trigger<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">TRIGGER</span> instructor_biud
+<span class="hljs-keyword">BEFORE</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">ON</span> INSTRUCTOR
+<span class="hljs-keyword">DECLARE</span>
+  v_day VARCHAR2(<span class="hljs-number">10</span>);
+<span class="hljs-keyword">BEGIN</span>
+  v_day := <span class="hljs-keyword">RTRIM</span>(TO_CHAR(<span class="hljs-keyword">SYSDATE</span>, <span class="hljs-string">&apos;DAY&apos;</span>));
+  IF v_day LIKE (&apos;T%&apos;) THEN
+    RAISE_APPLICATION_ERROR(-20000, &apos;A table cannot be modified during off hours&apos;);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>An <code>INSTEAD OF</code> trigger can operate against a view<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">TRIGGER</span> instructor_summary_del
+INSTEAD <span class="hljs-keyword">OF</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">ON</span> instructor_summary_view
+<span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span>
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> instructor <span class="hljs-keyword">WHERE</span> instructor_id = :<span class="hljs-keyword">OLD</span>.INSTRUCTOR_ID;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li><code>DROP TRIGGER instructor_biud;</code> delete a trigger</li>
+</ul>
+<h4 id="function">Function</h4>
+<ul>
+<li>A function is another type of procedure</li>
+<li>Parameters are optional</li>
+<li>A value must be returned</li>
+<li>A function can be used in a SQL statement<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">FUNCTION</span> show_description
+  (i_course_no course.course_no%<span class="hljs-keyword">TYPE</span>)
+<span class="hljs-keyword">RETURN</span> varchar2
+<span class="hljs-keyword">AS</span>
+  v_description varchar2(<span class="hljs-number">50</span>);
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">SELECT</span> description
+    <span class="hljs-keyword">INTO</span> v_description
+    <span class="hljs-keyword">FROM</span> course
+  <span class="hljs-keyword">WHERE</span> course_no = i_course_no;
+  RETURN v_description;
+EXCEPTION
+  WHEN NO_DATA_FOUND
+  THEN
+    RETURN(&apos;The Course is not in the database&apos;);
+  WHEN OTHERS
+  THEN
+    RETURN(&apos;Error in running show_description&apos;);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>Using Function<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_description VARCHAR2(<span class="hljs-number">50</span>);
+<span class="hljs-keyword">BEGIN</span>
+  v_description := show_description(&amp;course_number);
+  dbms_output.put_line(v_description);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+<li>Using Function in SQL Statement, <code>SELECT course_no, show_description(course_no) FROM course;</code></li>
+</ul>
+<h4 id="packages">Packages</h4>
+<ul>
+<li>A package is a container that may hold procedures, functions, global variables and cursors</li>
+<li>When a package is first called, it is loaded into memory, making it very fast on subsequent calls</li>
+<li>PL/SQL is not object oriented, but using packages offer some of the concepts such as overloading</li>
+<li>Package specification:<ul>
+<li>Information about the package&#x2019;s contents, but not the code</li>
+<li>Global/public variables</li>
+<li>Anything found in a PL/SQL DECLARE section may be placed in the specification</li>
+<li>Objects in the specification are public<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">PACKAGE</span> manage_students
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">PROCEDURE</span> find_sname
+  (i_student_id <span class="hljs-keyword">IN</span> student.student_id%<span class="hljs-keyword">TYPE</span>,
+  o_first_name <span class="hljs-keyword">OUT</span> student.first_name%<span class="hljs-keyword">TYPE</span>,
+  o_last_name <span class="hljs-keyword">OUT</span> student.last_name%<span class="hljs-keyword">TYPE</span>);
+FUNCTION id_is_good
+  (i_student_id IN student.student_id%TYPE)
+  RETURN BOOLEAN;
+<span class="hljs-keyword">END</span> manage_students;
+</code></pre>
+</li>
+<li>modify packages by redefining the specification</li>
+</ul>
+</li>
+<li>Package Body<ul>
+<li>Executable code</li>
+<li>Any code for objects in body that are not in the specification are private to the package</li>
+<li>Must match specification for cursor and modules<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">PACKAGE</span> <span class="hljs-keyword">BODY</span> manage_students
+<span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">PROCEDURE</span> find_sname
+  (i_student_id <span class="hljs-keyword">IN</span> student.student_id%<span class="hljs-keyword">TYPE</span>,
+  o_first_name <span class="hljs-keyword">OUT</span> student.first_name%<span class="hljs-keyword">TYPE</span>,
+  o_last_name <span class="hljs-keyword">OUT</span> student.last_name%<span class="hljs-keyword">TYPE</span>)
+<span class="hljs-keyword">IS</span>
+  v_student_id student.student_id%<span class="hljs-keyword">TYPE</span>;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">SELECT</span> first_name, last_name
+    <span class="hljs-keyword">INTO</span> o_first_name, o_last_name
+    <span class="hljs-keyword">FROM</span> student
+  <span class="hljs-keyword">WHERE</span> student_id = i_student_id;
+EXCEPTION
+  WHEN OTHERS THEN
+    dbms_output.put_line(&apos;Error in finding student_id: &apos; || v_student_id);
+<span class="hljs-keyword">END</span> find_sname;
+FUNCTION id_is_good
+  (i_student_id IN student.student_id%TYPE)
+  RETURN BOOLEAN
+IS
+  v_id_cnt number;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*)
+    <span class="hljs-keyword">INTO</span> v_id_cnt
+    <span class="hljs-keyword">FROM</span> student
+  <span class="hljs-keyword">WHERE</span> student_id = i_student_id;
+  RETURN 1 = v_id_cnt;
+EXCEPTION
+  WHEN OTHERS THEN
+    RETURN FALSE;
+<span class="hljs-keyword">END</span> id_is_good;
+<span class="hljs-keyword">END</span> manage_students;
+</code></pre>
+</li>
+<li>To creat packages in a single script, use <code>/</code> on a line by itself to separate the <code>CREATE PACKAGE</code> and <code>CREATE PACKAGE BODY</code> script</li>
+</ul>
+</li>
+<li>Referencing Package Elements<ul>
+<li>From outside the package: <code>package_name.element</code></li>
+<li>From inside the package: <code>element</code></li>
+</ul>
+</li>
+<li>Using a Package<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_first_name student.first_name%<span class="hljs-keyword">TYPE</span>;
+  v_last_name student.last_name%TYPE;
+  v_id student.student_id%TYPE := &amp;student_id;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">IF</span> manage_students.id_is_good(v_id) <span class="hljs-keyword">THEN</span>
+    manage_students.find_sname(v_id, v_first_name, v_last_name);
+    dbms_output.put_line(&apos;Student No. &apos; || v_id || &apos; is &apos;
+      || v_last_name || &apos;, &apos; || v_first_name);
+  ELSE
+    dbms_output.put_line(&apos;Student ID: &apos; || v_id || &apos; is not in the database.&apos;);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+<span class="hljs-keyword">END</span>;
+</code></pre>
+<ul>
+<li>Anything that doesn&apos;t define in the specification are private, to use private functions run <code>EXECUTE package_name.private_definition;</code></li>
+</ul>
+</li>
+<li>Package Initialization<ul>
+<li>The first time a package is called, the initialization section is executed, if it exists</li>
+<li>Package initialization code is placed after any procedures or functions<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">PACKAGE</span> school_api <span class="hljs-keyword">AS</span>
+v_current_date <span class="hljs-built_in">DATE</span>;
+PROCEDURE Discount_Cost;
+FUNCTION new_instructor_id
+  RETURN instructor.instructor_id%TYPE;
+<span class="hljs-keyword">END</span> school_api;
+/
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">PACKAGE</span> <span class="hljs-keyword">BODY</span> school_api <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">PROCEDURE</span> discount_cost
+<span class="hljs-keyword">IS</span>
+  <span class="hljs-keyword">CURSOR</span> c_group_discount
+  <span class="hljs-keyword">IS</span>
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">distinct</span> s.course_no, c.description
+      <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">section</span> s, enrollment e, course c
+    <span class="hljs-keyword">WHERE</span> s.section_id = e.section_id
+      <span class="hljs-keyword">AND</span> s.course_no = c.course_no
+    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> s.course_no, c.description,
+            e.section_id, s.section_id
+    <span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">COUNT</span>(*) &gt;= <span class="hljs-number">8</span>;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">FOR</span> r_group_discount <span class="hljs-keyword">IN</span> c_group_discount <span class="hljs-keyword">LOOP</span>
+    <span class="hljs-keyword">UPDATE</span> course
+      <span class="hljs-keyword">SET</span> <span class="hljs-keyword">cost</span> = <span class="hljs-keyword">cost</span> * <span class="hljs-number">.95</span>
+    <span class="hljs-keyword">WHERE</span> course_no = r_group_discount.course_no;
+    dbms_output.put_line
+      (&apos;A 5% discount has been given to &apos;
+      || r_group_discount.course_no || &apos; &apos;
+      || r_group_discount.description);
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+<span class="hljs-keyword">END</span> discount_cost;
+FUNCTION new_instructor_id
+  RETURN instructor.instructor_id%TYPE
+IS
+  v_new_instid instructor.instructor_id%TYPE;
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">SELECT</span> INSTRUCTOR_ID_SEQ.<span class="hljs-keyword">NEXTVAL</span>
+    <span class="hljs-keyword">INTO</span> v_new_instid
+    <span class="hljs-keyword">FROM</span> dual;
+  RETURN v_new_instid;
+EXCEPTION
+  WHEN OTHERS THEN
+    <span class="hljs-keyword">DECLARE</span>
+      v_sqlerrm VARCHAR2(<span class="hljs-number">250</span>) := <span class="hljs-keyword">SUBSTR</span>(SQLERRM, <span class="hljs-number">1</span>, <span class="hljs-number">250</span>);
+    <span class="hljs-keyword">BEGIN</span>
+      RAISE_APPLICATION_ERROR(<span class="hljs-number">-20003</span>,
+        <span class="hljs-string">&apos;Error in instructor_id: &apos;</span> || v_sqlerrm);
+    <span class="hljs-keyword">END</span>;
+<span class="hljs-keyword">END</span> new_instructor_id;
+<span class="hljs-comment">-- Initial starts</span>
+<span class="hljs-keyword">BEGIN</span>
+  <span class="hljs-keyword">SELECT</span> trunc(<span class="hljs-keyword">sysdate</span>, <span class="hljs-string">&apos;DD&apos;</span>)
+    <span class="hljs-keyword">INTO</span> v_current_date
+    <span class="hljs-keyword">FROM</span> dual;
+<span class="hljs-keyword">END</span> school_api;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Access a variable from a package<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+  v_date <span class="hljs-built_in">DATE</span>;
+<span class="hljs-keyword">BEGIN</span>
+  v_date := school_api.v_current_date;
+  dbms_output.put_line(&apos;Current date from package: &apos; || v_date);
+<span class="hljs-keyword">END</span>;
+</code></pre>
+</li>
+</ul>
+<h4 id="oracle-supplied-packages">Oracle Supplied Packages</h4>
+<ul>
+<li>Oracle supplies 100s of PL/SQL packages</li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/18/arpls/index.html" target="_blank">Click</a> for complete PL/SQL Packages and Types Reference</li>
+<li>Steps to check package content like <code>DBMS_OUTPUT</code> in SQL Developer<ol>
+<li>Expand the SYS user</li>
+<li>Expand the Packages node</li>
+<li>Scroll to DBMS_OUTPUT</li>
+<li>Expand it to see its parameters</li>
+<li>Select it to see its specification</li>
+<li>Select DBMS_OUTPUT Body</li>
+</ol>
+</li>
+<li><code>dbms_job</code> package allows the scheduling of execution of PL/SQL procedures<ul>
+<li><code>dbms_job.submit()</code>, Enters a PL/SQL procedure as a job into the job queue
+```sql
+-- Example Procedure
+CREATE OR REPLACE PROCEDURE new_course
+(course_name IN course.description%TYPE)
+AS
+BEGIN
+INSERT INTO course
+  (course_no, description, created_by, created_date, modified_by, modified_date)
+  VALUES(course_no_seq.NEXTVAL, course_name, USER, SYSDATE, USER, SYSDATE);
+END;
+-- Submit the job
+-- Parameters
+/* job - OUT Mode, The unique number that identifies the job in the job queue</li>
+<li>what - IN Mode, The PL/SQL procedure and parameters that execute as part of this job</li>
+<li>next_date - IN Mode, The next execution date for the job</li>
+<li>interval - IN Mode, The calculation to compute the next date of the job; this can make use of SYSDATE and any date function</li>
+<li>no_parse - IN Mode, FALSE (default): Procedure is parsed for validity at submission, TRUE: procedure is parsed when job first runs
+*/
+DECLARE
+v_job_no NUMBER;
+BEGIN
+dbms_job.SUBMIT(job       =&gt; v_job_no,<pre><code>            what      =&gt; &apos;new_course(&apos;&apos;Oracle PL/SQL Programming&apos;&apos;);&apos;,
+            next_date =&gt; SYSDATE,
+            interval  =&gt; &apos;SYSDATE + 1/4&apos;);
+</code></pre>COMMIT;
+dbms_output.put_line(v_job_no);
+END;
+-- See Jobs in the Queue
+SELECT job, last_date, last_sec, next_date, next_sec, broken, what
+FROM dba_jobs;
+```</li>
+<li><code>dbms_job.remove()</code>, Removes a previously submitted PL/SQL procedure from the job queue, e.g. <code>EXEC dbms_job.remove(n)</code></li>
+<li><code>dbms_job.change()</code>, Changes the parameters that have been set for a previously submitted job (description, next run time or interval), <code>EXEC dbms_job.change(n, NULL, NULL, &apos;SYSDATE + 1/24&apos;);</code> timing format are shown as follows<pre><code class="lang-sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">SESSION</span> <span class="hljs-keyword">SET</span> NLS_DATE_FORMAT = <span class="hljs-string">&apos;YYYY-MM-DD HH:MI:SS&apos;</span>;
+<span class="hljs-comment">-- Now and 2 days from now</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SYSDATE</span>, TO_CHAR(<span class="hljs-keyword">SYSDATE</span> + <span class="hljs-number">2</span>) <span class="hljs-keyword">FROM</span> dual;
+<span class="hljs-comment">-- Now and 6 hours from now</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SYSDATE</span>, TO_CHAR(<span class="hljs-keyword">SYSDATE</span> + <span class="hljs-number">1</span>/<span class="hljs-number">4</span>) <span class="hljs-keyword">FROM</span> dual;
+<span class="hljs-comment">-- Now and 1 hour from now</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SYSDATE</span>, TO_CHAR(<span class="hljs-keyword">SYSDATE</span> + <span class="hljs-number">1</span>/<span class="hljs-number">24</span>) <span class="hljs-keyword">FROM</span> dual;
+<span class="hljs-comment">-- Now and 1 minute from now</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SYSDATE</span>, TO_CHAR(<span class="hljs-keyword">SYSDATE</span> + <span class="hljs-number">60</span>/<span class="hljs-number">86400</span>) <span class="hljs-keyword">FROM</span> dual;
+<span class="hljs-comment">-- There are 86,400 seconds in 1 day</span>
+</code></pre>
+</li>
+<li><code>dbms_job.broken()</code>, Disables a job in the queue, e.g. set job n to be broken <code>EXEC dbms_job.broken(n, TRUE);</code></li>
+<li><code>dbms_job.interval()</code>, Alters the interval set for an existing job</li>
+<li><code>dbms_job.next_date()</code>, Changes the next time an existing job runs</li>
+<li><code>dbms_job.run()</code>, Forces the run of a job regardless of schedule, e.g. <code>EXEC dbms_job.run(n);</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="explain-plan">EXPLAIN PLAN</h4>
+<ul>
+<li>This statement displays execution plans chosen by the Oracle optimizer for SELECT, UPDATE, INSERT, and DELETE statements<pre><code class="lang-sql"><span class="hljs-keyword">EXPLAIN</span> PLAN <span class="hljs-keyword">FOR</span>
+<span class="hljs-keyword">SELECT</span> s.course_no,
+      c.description,
+      i.first_name,
+      i.last_name,
+      s.section_no,
+      TO_CHAR(s.start_date_time, <span class="hljs-string">&apos;Mon-DD-YYYY HH:MIAM&apos;</span>),
+      s.location
+  <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">section</span> s,
+      course c,
+      instructor i
+<span class="hljs-keyword">WHERE</span> s.course_no     = c.course_no
+<span class="hljs-keyword">AND</span>   s.instructor_id = i.instructor_id;
+<span class="hljs-comment">-- To see the plan, issue this command which uses the dbms_xplan package</span>
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">TABLE</span>(dbms_xplan.display);
+<span class="hljs-comment">-- The TABLE function converts the output of the display procedure into a table that can be queried by SELECT</span>
+</code></pre>
+</li>
+<li>A statement&apos;s execution plan is the sequence of operations Oracle performs to run the statement</li>
+<li>Cardinality is the estimated number of rows the operation will return</li>
+<li>Cost is not expressed in any actual units, it is relative to other execution plans<ul>
+<li>Cost is a numeric internal measure that represents the estimated resource usage for an execution plan</li>
+<li>The lower the cost, the more efficient the plan</li>
+</ul>
+</li>
+<li>When using SQL Developer, Click the <code>Explain Plan...</code> button on the toolbar, or press <code>F10</code> to see the execution plan</li>
+</ul>
 <h3 id="mysql-scripts">MySQL Scripts</h3>
 <h4 id="system-stored-procedures">System Stored Procedures</h4>
 <ul>
@@ -3475,7 +4099,7 @@ END
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.15","depth":1,"next":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"previous":{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sql/README.md","mtime":"2021-03-18T16:43:05.733Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T17:17:47.344Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.15","depth":1,"next":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"previous":{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sql/README.md","mtime":"2021-04-08T16:11:06.534Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-08T19:33:01.152Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
