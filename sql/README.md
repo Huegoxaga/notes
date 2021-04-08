@@ -2074,6 +2074,288 @@ ORDER BY last_name, first_name, medication_description
   ```
 - `DROP TRIGGER instructor_biud;` delete a trigger
 
+#### Function
+
+- A function is another type of procedure
+- Parameters are optional
+- A value must be returned
+- A function can be used in a SQL statement
+  ```sql
+  CREATE OR REPLACE FUNCTION show_description
+    (i_course_no course.course_no%TYPE)
+  RETURN varchar2
+  AS
+    v_description varchar2(50);
+  BEGIN
+    SELECT description
+      INTO v_description
+      FROM course
+    WHERE course_no = i_course_no;
+    RETURN v_description;
+  EXCEPTION
+    WHEN NO_DATA_FOUND
+    THEN
+      RETURN('The Course is not in the database');
+    WHEN OTHERS
+    THEN
+      RETURN('Error in running show_description');
+  END;
+  ```
+- Using Function
+  ```sql
+  DECLARE
+    v_description VARCHAR2(50);
+  BEGIN
+    v_description := show_description(&course_number);
+    dbms_output.put_line(v_description);
+  END;
+  ```
+- Using Function in SQL Statement, `SELECT course_no, show_description(course_no) FROM course;`
+
+#### Packages
+
+- A package is a container that may hold procedures, functions, global variables and cursors
+- When a package is first called, it is loaded into memory, making it very fast on subsequent calls
+- PL/SQL is not object oriented, but using packages offer some of the concepts such as overloading
+- Package specification:
+  - Information about the package’s contents, but not the code
+  - Global/public variables
+  - Anything found in a PL/SQL DECLARE section may be placed in the specification
+  - Objects in the specification are public
+  ```sql
+  CREATE OR REPLACE PACKAGE manage_students
+  AS
+    PROCEDURE find_sname
+      (i_student_id IN student.student_id%TYPE,
+      o_first_name OUT student.first_name%TYPE,
+      o_last_name OUT student.last_name%TYPE);
+    FUNCTION id_is_good
+      (i_student_id IN student.student_id%TYPE)
+      RETURN BOOLEAN;
+  END manage_students;
+  ```
+  - modify packages by redefining the specification
+- Package Body
+  - Executable code
+  - Any code for objects in body that are not in the specification are private to the package
+  - Must match specification for cursor and modules
+  ```sql
+  CREATE OR REPLACE PACKAGE BODY manage_students
+  AS
+    PROCEDURE find_sname
+      (i_student_id IN student.student_id%TYPE,
+      o_first_name OUT student.first_name%TYPE,
+      o_last_name OUT student.last_name%TYPE)
+    IS
+      v_student_id student.student_id%TYPE;
+    BEGIN
+      SELECT first_name, last_name
+        INTO o_first_name, o_last_name
+        FROM student
+      WHERE student_id = i_student_id;
+    EXCEPTION
+      WHEN OTHERS THEN
+        dbms_output.put_line('Error in finding student_id: ' || v_student_id);
+    END find_sname;
+    FUNCTION id_is_good
+      (i_student_id IN student.student_id%TYPE)
+      RETURN BOOLEAN
+    IS
+      v_id_cnt number;
+    BEGIN
+      SELECT COUNT(*)
+        INTO v_id_cnt
+        FROM student
+      WHERE student_id = i_student_id;
+      RETURN 1 = v_id_cnt;
+    EXCEPTION
+      WHEN OTHERS THEN
+        RETURN FALSE;
+    END id_is_good;
+  END manage_students;
+  ```
+  - To creat packages in a single script, use `/` on a line by itself to separate the `CREATE PACKAGE` and `CREATE PACKAGE BODY` script
+- Referencing Package Elements
+  - From outside the package: `package_name.element`
+  - From inside the package: `element`
+- Using a Package
+  ```sql
+  DECLARE
+    v_first_name student.first_name%TYPE;
+    v_last_name student.last_name%TYPE;
+    v_id student.student_id%TYPE := &student_id;
+  BEGIN
+    IF manage_students.id_is_good(v_id) THEN
+      manage_students.find_sname(v_id, v_first_name, v_last_name);
+      dbms_output.put_line('Student No. ' || v_id || ' is '
+        || v_last_name || ', ' || v_first_name);
+    ELSE
+      dbms_output.put_line('Student ID: ' || v_id || ' is not in the database.');
+    END IF;
+  END;
+  ```
+  - Anything that doesn't define in the specification are private, to use private functions run `EXECUTE package_name.private_definition;`
+- Package Initialization
+  - The first time a package is called, the initialization section is executed, if it exists
+  - Package initialization code is placed after any procedures or functions
+  ```sql
+  CREATE OR REPLACE PACKAGE school_api AS
+    v_current_date DATE;
+    PROCEDURE Discount_Cost;
+    FUNCTION new_instructor_id
+      RETURN instructor.instructor_id%TYPE;
+  END school_api;
+  /
+  CREATE OR REPLACE PACKAGE BODY school_api AS
+    PROCEDURE discount_cost
+    IS
+      CURSOR c_group_discount
+      IS
+        SELECT distinct s.course_no, c.description
+          FROM section s, enrollment e, course c
+        WHERE s.section_id = e.section_id
+          AND s.course_no = c.course_no
+        GROUP BY s.course_no, c.description,
+                e.section_id, s.section_id
+        HAVING COUNT(*) >= 8;
+    BEGIN
+      FOR r_group_discount IN c_group_discount LOOP
+        UPDATE course
+          SET cost = cost * .95
+        WHERE course_no = r_group_discount.course_no;
+        dbms_output.put_line
+          ('A 5% discount has been given to '
+          || r_group_discount.course_no || ' '
+          || r_group_discount.description);
+      END LOOP;
+    END discount_cost;
+    FUNCTION new_instructor_id
+      RETURN instructor.instructor_id%TYPE
+    IS
+      v_new_instid instructor.instructor_id%TYPE;
+    BEGIN
+      SELECT INSTRUCTOR_ID_SEQ.NEXTVAL
+        INTO v_new_instid
+        FROM dual;
+      RETURN v_new_instid;
+    EXCEPTION
+      WHEN OTHERS THEN
+        DECLARE
+          v_sqlerrm VARCHAR2(250) := SUBSTR(SQLERRM, 1, 250);
+        BEGIN
+          RAISE_APPLICATION_ERROR(-20003,
+            'Error in instructor_id: ' || v_sqlerrm);
+        END;
+    END new_instructor_id;
+    -- Initial starts
+    BEGIN
+      SELECT trunc(sysdate, 'DD')
+        INTO v_current_date
+        FROM dual;
+  END school_api;
+  ```
+- Access a variable from a package
+  ```sql
+  DECLARE
+    v_date DATE;
+  BEGIN
+    v_date := school_api.v_current_date;
+    dbms_output.put_line('Current date from package: ' || v_date);
+  END;
+  ```
+
+#### Oracle Supplied Packages
+
+- Oracle supplies 100s of PL/SQL packages
+- [Click](https://docs.oracle.com/en/database/oracle/oracle-database/18/arpls/index.html) for complete PL/SQL Packages and Types Reference
+- Steps to check package content like `DBMS_OUTPUT` in SQL Developer
+  1. Expand the SYS user
+  2. Expand the Packages node
+  3. Scroll to DBMS_OUTPUT
+  4. Expand it to see its parameters
+  5. Select it to see its specification
+  6. Select DBMS_OUTPUT Body
+- `dbms_job` package allows the scheduling of execution of PL/SQL procedures
+  - `dbms_job.submit()`, Enters a PL/SQL procedure as a job into the job queue
+  ```sql
+  -- Example Procedure
+  CREATE OR REPLACE PROCEDURE new_course
+    (course_name IN course.description%TYPE)
+  AS
+  BEGIN
+    INSERT INTO course
+      (course_no, description, created_by, created_date, modified_by, modified_date)
+      VALUES(course_no_seq.NEXTVAL, course_name, USER, SYSDATE, USER, SYSDATE);
+  END;
+  -- Submit the job
+  -- Parameters
+  /* job - OUT Mode, The unique number that identifies the job in the job queue
+  * what - IN Mode, The PL/SQL procedure and parameters that execute as part of this job
+  * next_date - IN Mode, The next execution date for the job
+  * interval - IN Mode, The calculation to compute the next date of the job; this can make use of SYSDATE and any date function
+  * no_parse - IN Mode, FALSE (default): Procedure is parsed for validity at submission, TRUE: procedure is parsed when job first runs
+  */
+  DECLARE
+    v_job_no NUMBER;
+  BEGIN
+    dbms_job.SUBMIT(job       => v_job_no,
+                    what      => 'new_course(''Oracle PL/SQL Programming'');',
+                    next_date => SYSDATE,
+                    interval  => 'SYSDATE + 1/4');
+    COMMIT;
+    dbms_output.put_line(v_job_no);
+  END;
+  -- See Jobs in the Queue
+  SELECT job, last_date, last_sec, next_date, next_sec, broken, what
+  FROM dba_jobs;
+  ```
+  - `dbms_job.remove()`, Removes a previously submitted PL/SQL procedure from the job queue, e.g. `EXEC dbms_job.remove(n)`
+  - `dbms_job.change()`, Changes the parameters that have been set for a previously submitted job (description, next run time or interval), `EXEC dbms_job.change(n, NULL, NULL, 'SYSDATE + 1/24');` timing format are shown as follows
+  ```sql
+  ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH:MI:SS';
+  -- Now and 2 days from now
+  SELECT SYSDATE, TO_CHAR(SYSDATE + 2) FROM dual;
+  -- Now and 6 hours from now
+  SELECT SYSDATE, TO_CHAR(SYSDATE + 1/4) FROM dual;
+  -- Now and 1 hour from now
+  SELECT SYSDATE, TO_CHAR(SYSDATE + 1/24) FROM dual;
+  -- Now and 1 minute from now
+  SELECT SYSDATE, TO_CHAR(SYSDATE + 60/86400) FROM dual;
+  -- There are 86,400 seconds in 1 day
+  ```
+  - `dbms_job.broken()`, Disables a job in the queue, e.g. set job n to be broken `EXEC dbms_job.broken(n, TRUE);`
+  - `dbms_job.interval()`, Alters the interval set for an existing job
+  - `dbms_job.next_date()`, Changes the next time an existing job runs
+  - `dbms_job.run()`, Forces the run of a job regardless of schedule, e.g. `EXEC dbms_job.run(n);`
+
+#### EXPLAIN PLAN
+
+- This statement displays execution plans chosen by the Oracle optimizer for SELECT, UPDATE, INSERT, and DELETE statements
+  ```sql
+  EXPLAIN PLAN FOR
+  SELECT s.course_no,
+        c.description,
+        i.first_name,
+        i.last_name,
+        s.section_no,
+        TO_CHAR(s.start_date_time, 'Mon-DD-YYYY HH:MIAM'),
+        s.location
+    FROM section s,
+        course c,
+        instructor i
+  WHERE s.course_no     = c.course_no
+  AND   s.instructor_id = i.instructor_id;
+  -- To see the plan, issue this command which uses the dbms_xplan package
+  SELECT * FROM TABLE(dbms_xplan.display);
+  -- The TABLE function converts the output of the display procedure into a table that can be queried by SELECT
+  ```
+- A statement's execution plan is the sequence of operations Oracle performs to run the statement
+- Cardinality is the estimated number of rows the operation will return
+- Cost is not expressed in any actual units, it is relative to other execution plans
+  - Cost is a numeric internal measure that represents the estimated resource usage for an execution plan
+  - The lower the cost, the more efficient the plan
+- When using SQL Developer, Click the `Explain Plan...` button on the toolbar, or press `F10` to see the execution plan
+
 ### MySQL Scripts
 
 #### System Stored Procedures
