@@ -36,7 +36,7 @@
 - the directories/folders are files
 - home directory `~` are for users
 - the current folder shown before shell symbol, all its contain can be accessed without specify path. In short, `./` is ignored for file path.
-- For file contain space use """ surround the whole path.
+- For file contain space use double quotes to surround the whole path.
 - Its important to remember that all Linux Operating systems are case sensitive
 - linux system use forward slash `/` and the following sign for relative path.
   - `.` is the current directory

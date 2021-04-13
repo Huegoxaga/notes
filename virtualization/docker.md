@@ -94,6 +94,7 @@
   - `-e 'ACCEPT_EULA=Y'` - The Y shows that you agree with the EULA (End User Licence Agreement). This is required in order to have SQL Server for Linux run on your Mac.
   - `-e 'SA_PASSWORD=reallyStrongPwd123'` - Required parameter that sets the sa database password.
   - `-p 1433:1433` - This maps the local port 1433 to port 1433 on the container. This is the default TCP port that SQL Server uses to listen for connections.
+    - One can map multiple ports from host to container instance `-p 80:80 -p 1433:1433`
   - `-d` Runs the container in detached mode leaving your current terminal free as well as allowing the container to run in the background.
   - `microsoft/mssql-server-linux` - This tells Docker which image to use.
 - optionally, run `docker exec`

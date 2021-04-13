@@ -127,6 +127,7 @@
 - Using `cd` or `%cd` in a cell will ask IPython to change its own working directory. This will persist for the duration of your IPython session
   - it still has no effect on the shell you launched IPython from
 - One can move any cell to new window tabs in the main work area by right-clicking the cell and selecting "Create New View for Output"
+- The Jupyter Notebook uses MathJax to render LaTeX inside HTML / Markdown. Just put your LaTeX math inside `$ $`. Or enter in display math mode by writing between`$$ $$`.
 
 ## NumPy
 

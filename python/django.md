@@ -80,11 +80,17 @@ class AppNameConfig(AppConfig):
 ### urls.py
 
 ```py
-from django.urls import path
+from django.urls import path, re_path
+from django.conf.urls import url, include
+from django.contrib import admin
 from . import views
 urlpatterns = [
     path('', views.home, name='appname-home'),
     path('about/', views.about, name='appname-about'),
+    # re_path enables regex
+    re_path('^student/edit/([0-9]+)/$', views.editStudent, name="editStudent"),
+    # optionally use url (order matters)
+    url(r'^', admin.site.urls, name='admin'),
 ]
 ```
 
@@ -132,7 +138,7 @@ def about(request):
       # exists by default, primary_key is mandatory.
       id = models.AutoField(primary_key=True)
       # add nullable and allow it to be black options
-      title = models.CharField(max_length=100,blank=True, null=True)
+      title = models.CharField(max_length=100, blank=True, null=True)
       # add default value
       content = models.TextField(default="Yes")
       # add unique option
@@ -262,10 +268,12 @@ def about(request):
 
 - Apps can have template that stores dynamic html file that can access variables and run code inside.
   - If support basic logic syntax in between html codes. Unlike Python code, each code block requried to be closed in the end.
-- Variables here are passed from the `view.py`.
+- This folder and its related `views.py` should be located under the same directory
+- Variables here are passed from the `views.py`.
 <!-- {% raw %} -->
 - To access `.css` files in the static folder, add `{% load static %}` at the first line and set css link url to `href="{% static 'appfolder/filename.css' %}"`
 - All links in the template files are represented as `href="{% url 'path-name' %}"`. The pass name is the name attributes of the paths elements in the `urls.py`.
+  - use `href="{% url 'path-name' variable %}"` to pass data into url path
 - To display date in certain format use format string as `{{ post.date|date:"F d, Y" }}`
 <!-- {% endraw %} -->
 
@@ -288,6 +296,18 @@ def about(request):
 ```
 
 - This is the layout that can be shared by all views.
+- `{% block blockname %}{% endblock %}` can enclose a defaut content, when it is used to replace a beginning tag, the ending tag should be in a separate block as well
+  ```html
+  <body>
+    {% block div_begin %}
+    <div class="root">
+      {% endblock %}
+      <main></main>
+      {% block div_end %}
+    </div>
+    {% endblock %}
+  </body>
+  ```
 
 #### content.html
 

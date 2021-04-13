@@ -4,6 +4,11 @@
 
 - Data structure is a systematic way of organizing and accessing data.
 
+### Integer
+
+- Unsigned interger has range `[0, 2^bitSize - 1]` where the `bitSize` is the number of bits
+- Signed interger has range `[-2^(bitSize-1), 2^(bitSize-1) - 1]` where the `bitSize` is the number of bits
+
 ### Array
 
 - An ordered collection of data.

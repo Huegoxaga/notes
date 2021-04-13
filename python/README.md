@@ -314,8 +314,8 @@ else:
 	#…
 ```
 
-- Ternary: `x = a if condition else b`.
-- Chained Ternary: `x = 1 if condition1 else 2 if condition2 else 3`.
+- Ternary: `x = a if condition else b`, `return x if condition else y`
+- Chained Ternary: `x = 1 if condition1 else 2 if condition2 else 3`
 
 ### All and Any
 

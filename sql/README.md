@@ -112,6 +112,8 @@
 ### SQL Developer
 
 - Used for Oracle Database
+- [Click](https://github.com/oracle/docker-images/blob/main/OracleDatabase/SingleInstance/README.md) to see to installation instruction from oracle docker image repo
+  - Oracle 18.4 Express Edition has SID as `xe`
 - SET command
   - it only effect the current session
     - To set all sessions, a connection startup script can be created and set in `Tools / Preferences...`
@@ -1209,7 +1211,7 @@ ORDER BY last_name, first_name, medication_description
 
 ### Oracle Scripts
 
-#### Functions
+#### Built-in Functions
 
 - TO_CHAR
   - TO_CHAR converts its arguments into a VARCHAR2 with optional formatting
@@ -2093,11 +2095,9 @@ ORDER BY last_name, first_name, medication_description
     WHERE course_no = i_course_no;
     RETURN v_description;
   EXCEPTION
-    WHEN NO_DATA_FOUND
-    THEN
+    WHEN NO_DATA_FOUND THEN
       RETURN('The Course is not in the database');
-    WHEN OTHERS
-    THEN
+    WHEN OTHERS THEN
       RETURN('Error in running show_description');
   END;
   ```
@@ -2222,7 +2222,7 @@ ORDER BY last_name, first_name, medication_description
       FOR r_group_discount IN c_group_discount LOOP
         UPDATE course
           SET cost = cost * .95
-        WHERE course_no = r_group_discount.course_no;
+          WHERE course_no = r_group_discount.course_no;
         dbms_output.put_line
           ('A 5% discount has been given to '
           || r_group_discount.course_no || ' '
