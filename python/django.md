@@ -148,7 +148,8 @@ def about(request):
       # related_name field can be used to reverse lookup
       # Filter function has reversed fields available using the all lower-case model class name
       related_posts = models.ManyToManyField(User,blank=True,null=True, related_name='other_posts')
-
+      # use the string 'self' to indicate a self-reference
+      parent = models.ForeignKey('self', null=True, blank=True)
       # Meta provides additional info for the Model
       class Meta:
         # add check constrains
@@ -197,8 +198,8 @@ def about(request):
   ModelClass.objects.first() # return the first object
   ModelClass.objects.last() # return the last object
   ModelClass.objects.all()[0:20]# return first 20 objects
-  ModelClass.objects.filter(propertyname='value') # return a list of matching objects.
-  ModelClass.objects.filter(id__in=[1,2,3]) # return all matching id
+  ModelClass.objects.filter(propertyname='value') # return a list of matching objects in a queryset.
+  ModelClass.objects.filter(id__in=[1,2,3]) # return results with matching id in a queryset
   ModelClass.objects.get(propertyname='value') # get a single record
   ModelClass.objects.get(id=1) # return the object with id 1
   newobject = ModelClass(property1='value1', property2 = 'value2') #create a new object
@@ -239,6 +240,8 @@ def about(request):
           output_field=ArrayField(base_field=CharField()),
       ),
   )
+  # Examine Database Execution Plan
+  queryset.explain()
   # Subquery returns only one row
   Subquery(newest.values('email')[:1])
   ```

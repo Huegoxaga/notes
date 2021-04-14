@@ -83,3 +83,39 @@
     - `Relative Frequency Distribution` - the y-axis is the `data count / total data count`
     - `Accumulative Frequency Distribution` - Suming the y value from left to right along the x-axis
       - the right most bar has `100%`
+
+## Economics
+
+### Demand and Supply Analysis
+
+#### Elasticity
+
+- Demand Curve has quantity demanded on the x-axis and the price of the item on the y-axis
+  - Quantity demanded represents the comsumer's intention to buy
+- The demand function has price on the x-axis and the quantity demanded on the y-axis
+
+##### Own-Price Elasticity of Demand
+
+- Own-Price Elasticity of Demand is the percentage change in quantity demanded when the price changes by 1 percent
+  - it is not equal to the slope of a demand curve
+  - it depends on the current price or demand and it is not constant
+  - The elasticity coefficient is the slope of the demand function
+  - elasticity coefficient multiple by the current price and divided by the current quantity demand will get the elasticity
+  - The reciprocal of the elasticity coefficient is the slope of the demand curve
+- When the Demand Curve is downward sloping the Own-Price Elasticity is negative
+  - There is a region in the demand curve that the quantity demanded is very responsive to a change in price in terms of the changes in percentage, the demand is elastic,
+    - the absolute value of elasticity is greater than 1
+    - When the demand curve is fully horizontal, it is called perfectly elastic demand where the elasticity is infinite
+  - There is a region in the demand curve that the quantity demanded is not very responsive to a change in price in terms of the changes in percentage, the demand is inelastic
+    - The absolute value of elasticity is less than 1
+    - When the demand curve is fully vertical. it is called perfectly inelastic demand where the elasticity is equal to zero
+  - There's this unique point where the elasticity is minus 1, it is called the unitary elasticity point
+    - the total revenue is maximized at this point
+    - it's the dividing point between the elastic region and inelastic region of the demand curve
+      - an increase in price moves us to the elastic region of the curve
+      - a decrease in price from this point moves us into the inelastic region
+- Factors that effects the slope of the demand and price
+  - when goods have many other close substitutes, it will be elastic
+  - If the the price of the goods is more expensive compared to the comsumer's income it will be more elastic
+  - The elasticity of demand tends to be greater in the long run, as consumers can take time to make adjustments to their consumption habits
+  - Essential goods tend to be more inelastic

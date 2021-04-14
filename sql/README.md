@@ -102,8 +102,8 @@
 - multiple queries or commands can be entered at the same time and separate by ; at end of each line.
 - SQL is case insensitive. However uppercase is preferred for all commands.
 - SQL syntax is not sensitive to indentations.
-- `dual` is a “dummy” table in Oracle that has 1 row and 1 column
-  – Used whenever a single value is needed
+- `dual` is a "dummy" table in Oracle that has 1 row and 1 column
+  – Used whenever a single value is expected from a `SELECT ... FROM dual;` syntax
 
 ## Database Tools
 
@@ -500,7 +500,7 @@
   FROM employees;
   SELECT FirstName, LastName AS LastName
   FROM employees
-  WHERE LOWER(LastName) like 'smi%';;
+  WHERE LOWER(LastName) like 'smi%';
   ```
 - GROUP BY
   - It can be used to deal with results of the column that has different rows.
@@ -1731,8 +1731,8 @@ ORDER BY last_name, first_name, medication_description
     DBMS_OUTPUT.PUT_LINE(r_stud_zip.student_id);
       UPDATE student
         SET phone = '718'||SUBSTR(phone,4)
-        WHERE CURRENT OF c_stud_zip;  E
-    ND LOOP;
+        WHERE CURRENT OF c_stud_zip;
+    END LOOP;
   END;
   ```
 
