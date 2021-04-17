@@ -20,6 +20,8 @@
   - `network speeds` - it is represented by the slowest connection in between.
     - Bits and Byte
       - 8 bits = 1 byte
+      - 1024 Byte = 1 KB
+      - 1024 Bits = 1 Kb
       - `bits` are generally used to describe network speed. It should be represented as lowercase `b`. `1Mbps` means one megabits per second
       - `bytes` are generally used to describe data size. It should be represented as uppercase `B`. `1MB` means one megabytes.
     - Fast Ethernet(100Mbps) or Gigabit Ethernet(1000Mbps)
@@ -41,9 +43,10 @@
 - Topology:
   - It is the arrangement of the elements of a communication network.
   - Types:
-    - Star - share one core switch.
-    - Ring - connected one by one.
-    - Bus - share one cable.
+    - `Star` - share one core switch.
+    - `Ring` - connected one by one.
+    - `Bus` - share one cable.
+    - `Hybrid` - a combination of any of above
 
 ## Network Reference Models
 
@@ -53,32 +56,32 @@
 ### OSI model
 
 - The Open Systems Interconnection (OSI) model.
-- Developed by International Organization for Standardization(ISO), because IBM vs DEC cannot communicate.
-- Each layer work independently
-
-1. Physical - present data as bit, all hardwares likes cables and wires are in the physical layer.
-2. Data Link - present data as frame with MAC address in the data link header. It will also handle error checking.
-3. Network — present data as packet and add IP address in the packet header. It naviagte and find the best path for data transmition.
-   - Each packet in the conversation will have the same source and destination addresses, however they may not take the same path.
-4. Transport - present data as encapsulated segement with header. It decide which data transmition protocol to use and add a port number and a source port number to the IP address.
-5. Session - create and maintain session.
-6. Presentation - the layer generify data, deal with data encryption and convserion.
-7. Application - the point of contact for network aware application
-
+- Developed by International Organization for Standardization(ISO), because devices from IBM is not compatible with Digital Equipment Corp.(DEC) products
+- Each layer work independently, they are:
+  1. Physical - present data as bit, all hardwares likes cables and wires are in the physical layer.
+     - This is where the actual data transmission happens
+  2. Data Link - present data as `Frame` with MAC address in the data link header. It will also handle error checking.
+  3. Network — present data as `Packet` and add IP address in the packet header. It naviagtes and find the best path for data transmition if the destination address is not in the local subnet.
+     - Each packet in the conversation will have the same source and destination addresses, however they may not take the same path.
+  4. Transport - present data as encapsulated `Segement` with header. It decide which data transmition protocol to use and add a port number and a random source port number to the IP address.
+  5. Session - create and maintain session.
+  6. Presentation - the layer generify data, it is where files are generated from session data, it deals with data encryption and convserion.
+  7. Application - the point of contact for network aware application
 - Mnemonic: `Please Do Not Throw Sausage Pizza Away`
-- 2, 3, 4 layers all have its own header that will be added or processed during data transmition.
-  - as a result, a frame will have three headers. a segement will have one header.
+- 2, 3, 4 layers all have its own header
+  - when data goes to lower layer one extra header will be added
+  - when data goes to higher layer related header will be processed and removed
+  - as a result, a frame will have three headers. a segement will have one header
 
 ### TCP/IP model
 
 - Developed by the Department of Defense.
-
-1. Network Interface - equivelent to OSI model 1 and 2.
-2. Internet - equivelent to OSI model 3.
-3. Transport - equivelent to OSI model 4.
-4. Application - equivelent to OSI model 5,6,7.
-   - This layer is handled by the operating system and will not be discussed by network engineer.
-
+- A simplified version of OSI and now become the industry standart
+  1. Network Interface - equivelent to OSI model 1 and 2.
+  2. Internet - equivelent to OSI model 3.
+  3. Transport - equivelent to OSI model 4.
+  4. Application - equivelent to OSI model 5,6,7.
+     - This layer is handled by the operating system and will not be discussed by network engineer.
 - Mnemonic: TCP/IP comes in `A TIN`.
 
 ## Protocols
@@ -109,21 +112,23 @@
 - A group of 4 octets (8-bit) data with a total of 32 bits.
 - 4.3 billions unique addresses available.
 - IPv4 can be presented in dotted decimal notation: `130.132.19.31`. It can be converted to binary form as `10000010.10000100.00010011.00011111`.
-- The gateway IP is the IP address of a router.
 - Subnet Mask
   - It has network ID in the left portion and node ID in the right portion combined.
-  - Subnet Mask is used to determine which part of the IP is networkID.
+  - Subnet Mask is used to determine which part of the IP is network ID.
     - network ID is represented by subnet mask 1 value digit place. For an ip with a mask as `11111111.11111111.00000000.00000000` -> `255.255.0.0`, the first two groups of octets, represents networkID.
   - For `192.168.0.1/24` The number followed means the first n number is the networkID. This type of notation is called classless IP address (CIDR) notation the number after `/` is called network prefix .
 - Among all the hosts in a network, the first IP is the network ID. The last one is the boardcast ID.
-- IPv4 address can be devided into different classes according to its first octet.
+- Gateway IP is the IP address of a router
+  - The network ID portion of the gateway IP and all other IP addresses in the same local network should be the same
+- IPv4 address can be devided into different classes according to its first octet, each class has a different default mask value.
   - class A: `1.0.0.0 - 126.255.255.255/8`
   - class B: `128.0.0.0 - 191.255.255.255/16`
   - class C: `192.0.0.0 - 223.255.255.255/24`
   - class D(multicast): `224.0.0.0 - 239.255.255.255`
   - class E(experimental purpose) `240.0.0.0 - 255.255.255.255`
 - Subnetting is achieved by have 1 more bit of subnet mask compare to its IP class default mask.
-- Supernetting is lend 1 bit to represent all the subnets. it is a summarization of ip addresses.
+  - One network can do subnetting with different CIDR value, it is called Variable Length Subnet Mask(VLSM), e.g. subnets with network ID `192.168.1.0/25`, then `192.168.1.128/26` and `192.168.1.192/26`
+- Supernetting is lending bits to represent a larger network. it is a summarization of ip addresses from a range of adjacent small subnets
 - ideal network size is less than 500 hosts.
 - RFC 1918 reserves three ranges of IP addresses for private use
   - Class A range `10.0.0.0 - 10.255.255.255`
@@ -143,7 +148,7 @@
 
 ### Transport Layer Protocols
 
-##### Transmission Control Protocol(TCP)
+#### Transmission Control Protocol(TCP)
 
 - TCP is a connection oriented transmission.
 - Responsible for establishing and maintaining network conversations
@@ -156,21 +161,20 @@
     3. ACK package
 - Windowing - It is the trail process for testing the max packages can be sent at the same time using TCP connection.
 
-##### User Datagram Protocol(UDP)
+#### User Datagram Protocol(UDP)
 
 - It is a connectionless transmission.
 - It is an alternative communications protocol to Transmission Control Protocol (TCP) used primarily for establishing low-latency and loss-tolerating connections between applications on the internet. It is faster than TCP.
 
 ### Presentation Layer Protocols
 
-TLS,SSL
+#### TLS
+
+#### SSL
 
 ### Application Layer Protocols
 
-FTP. TFTP,SNMP,DNS,HTTP, smtp pop imap
-http(s)
-
-##### Hypertext Transport Protocol(HTTP)
+#### Hypertext Transport Protocol(HTTP)
 
 - It uses port 80.
 - HTTP is called a stateless protocol because each command is executed independently, without any knowledge of the commands that came before it.
@@ -274,7 +278,7 @@ http(s)
     - `multipart/form-data`
     - `text/plain`
 
-##### Hyper Text Transfer Protocol Secure(HTTPS)
+#### Hyper Text Transfer Protocol Secure(HTTPS)
 
 - It use port number 443.
 - It is the secure version of HTTP.
@@ -286,13 +290,13 @@ http(s)
 - Digital certificates will be issued by certificate authorities(CAs) for SSL/TLS connection
 - Each SSL/TLS connection begins with a “handshake” – the negotiation between two client and host that nails down the details of how they’ll proceed. The handshake determines what cipher suite will be used to encrypt their communications, verifies the server, and establishes that a secure connection is in place before beginning the actual transfer of data.
 
-##### Simple Mail Transport Protocol(SMTP)
+#### Simple Mail Transport Protocol(SMTP)
 
-##### Post Office Protocol(POP)
+#### Post Office Protocol(POP)
 
-##### Internet Message Access Protocol(IMAP)
+#### Internet Message Access Protocol(IMAP)
 
-##### Dynamic Host Configuration Protocol(DHCP)
+#### Dynamic Host Configuration Protocol(DHCP)
 
 - Is a protocol that automatically configure IP to a host
 - It generates 6 messages
@@ -304,6 +308,14 @@ http(s)
   - 2 non-critical messages
     - `DHCP Information` If the client need more information from the DHCP offer
     - `DHCP Release` The client tell the server to release its IP address when done.
+
+#### FTP
+
+#### TFTP
+
+#### SNMP
+
+#### DNS
 
 ## Basic Concepts
 
@@ -317,11 +329,12 @@ http(s)
 - Port numbers have a range between 0-65535.
 - Port numbers are used to identify the type of application or services during data transmission.
 - Here are Some standard port number.
-  80 - Unsecured web browsing (http)
-  443 - Secured web browsing (https)
-  25 - Unsecured/secured sending of e-mail messages (smtp/smtp-s)
-  110 - Unsecured/secured receiving of e-mail messages (pop/pop-s)
-  143 - Unsecured/secured receiving of e-mail messages ( imap imap-s )
+  - `80` - Unsecured web browsing (http)
+  - `443` - Secured web browsing (https)
+  - `25` - Unsecured/secured sending of e-mail messages (smtp/smtp-s)
+  - `110` - Unsecured/secured receiving of e-mail messages (pop/pop-s)
+  - `143` - Unsecured/secured receiving of e-mail messages ( imap imap-s )
+  - Standard port numbers used by TCP and UDP are different or sometimes shared
 - There are (3) sub-ranges for stanrdrand port numbers
   - Well-known Ports: registered with a governing body(a.k.a. System Ports)
     - Range: 0 - 1,023
@@ -359,7 +372,7 @@ http(s)
 
 ## Network Devices
 
-- Media Access Control is a unique physical address for each devices, it is hard-coded.
+- Media Access Control(MAC) address is a unique physical address for each devices, it is hard-coded.
 - MAC is a 12 digit hexadecimal value, there are two digit in one pair, consisted of 6 pairs.
 - MAC address is a 12 X (Hexdecimal) 4 bit = 48 bit Number divided by : into 3 parts.
 - All device port(network interface) have its own unique MAC address.
@@ -414,13 +427,13 @@ http(s)
 ### Switch
 
 - It has Application specific integration cicuitry(ASIC)
-  - It learns Mac address of devices on CAM table(Address Learning)
-- Many Collision Domains - 1 port a collision domains
+  - It learns MAC addresses of devices on CAM table(Address Learning)
+- Many Collision Domains - 1 port can be a collision domain
 - One or more broadcast domains - as many as the VLANs
 - Manegement IP is the switch IP used for telnet connection
 - It does not need power if it is not used as power source for devices(POE)
 - works at layer two.
-- Each on of its port has access mode that is used to connected to end devices, and trunk mode that connects to other switches.
+- Each on of its port has access mode that is used to connected to end devices, and trunk(attack) mode that connects to other switches.
   - Two switches connected in trunk mode will act like one combined switch.
   - There are two encapuslation protocal for trunking:
     - `802.1q` most used
@@ -429,7 +442,7 @@ http(s)
   - `Desirable` - It will start to negotiate trunk mode connection.
   - `Auto` - It accepts trunk mode connection.
   - `No Negotiate` - It won't accept trunk mode connection.
-- Spanning Tree Protocol - It is used for loop avoidance. It detects if the network has duplicated connection that will causes layer-2 loops. It will disconnect thoese links logically.
+- Spanning Tree Protocol - It is used for loop avoidance. It detects if the network has duplicated connection that will causes layer-2 loops. It will disconnect those links logically.
 - Forwarding Decision - A switch will have two types of forwarding decision:
   - `Cut Through` - forwarding immediately.
   - `Store & Forward` - wait to receive the entire frame then do error checking before forwarding.
@@ -444,7 +457,7 @@ http(s)
 
 ### Router
 
-- Intelligent - only exchange info between different networks,
+- Intelligent - only exchange info between different networks, it is the gateway in most cases
 - Many Collision Domains
 - Many broadcast Domains
 - It has the ability to assign source and destination mac address according to the source and destination ip addresses if the IP addresses are from different sub networks.

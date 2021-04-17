@@ -500,9 +500,11 @@ list(accumulate(range(8)))
 
 - `response = requests.get(url, headers=headers)` make get requests when `headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer {0}'.format(token)}`
   - `response.content` get the returning json data as string.
+  - `response.text` get the response as a string in unicode
   - `response.status_code` get the response status code.
   - `response.json()` Get the response data as a dictionary.
-  - `response.headers` get the header as a dictionary
+  - `response.headers` get the header as a dictionary.
+  - `response.url` Returns the URL of the response
   - It can pass parameters as `response = requests.get(url, params=parameters, headers=headers)` where `parameters` is a dictionary.
 
 ## base64

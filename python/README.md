@@ -385,7 +385,7 @@ while condition:
 #### List Methods
 
 ```py
-list.append(value)#This will append a value at its end.
+list.append(value)#This will append a value at its end. The method doesn't return any value
 list.sort()#sorts the list ascending by default, has argument `reverse` which can be set to True
 list.sort(key=lambda listItem: listItem.get('group_name')) #sort based on the key value of the element
 list.remove(value)#It will remove certain value in the list regardless of its location.
@@ -394,6 +394,7 @@ list.insert(index, element)#It will insert an element at certain index location.
 list.count(object)#It returns how many times an item occurs in the list
 list.index(object)#It returns the first index of the item, ValueError if not find.
 list.pop(index)#It returns the element according the index and remove the element from the existing list.
+list.copy() # It return a new copy of the list, instead of a reference
 ```
 
 #### List Operators
@@ -459,6 +460,7 @@ dictionay.values() # Return a list of values.
 dictionay.keys() # Return a list of keys.
 dictionay.items() # Return a list of dictionay elements.
 dictionay.clear() # empties the dictionary
+dictionay.copy() # Return a copy of the dictionary instead of passing a reference
 ```
 
 ### Iteration

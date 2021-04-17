@@ -92,15 +92,18 @@
 
 - Demand Curve has quantity demanded on the x-axis and the price of the item on the y-axis
   - Quantity demanded represents the comsumer's intention to buy
-- The demand function has price on the x-axis and the quantity demanded on the y-axis
+- The demand function quantity demanded equals a constant plus the Own-Price coefficient times Own-Price value plus Cross-price elasticity coeffiecient times Cross-price value plus income coeffiecient times income value
+  - The quantity demanded is associated with a period, e.g. the demand for 15 apples in a month
+  - The quantity demanded is associated wiath a specific group of consumers (e.g. low-income)
+- For all the following elasticity, when the absolute value is above 1, it is elastic. When it is less than 1, it is in elastic
+  - A high elasticity will greatly effect the demand
 
 ##### Own-Price Elasticity of Demand
 
 - Own-Price Elasticity of Demand is the percentage change in quantity demanded when the price changes by 1 percent
   - it is not equal to the slope of a demand curve
   - it depends on the current price or demand and it is not constant
-  - The elasticity coefficient is the slope of the demand function
-  - elasticity coefficient multiple by the current price and divided by the current quantity demand will get the elasticity
+- Own-price coefficient multiple by the current own-price value and divided by the total quantity demand will get the Own-price elasticity
   - The reciprocal of the elasticity coefficient is the slope of the demand curve
 - When the Demand Curve is downward sloping the Own-Price Elasticity is negative
   - There is a region in the demand curve that the quantity demanded is very responsive to a change in price in terms of the changes in percentage, the demand is elastic,
@@ -119,3 +122,23 @@
   - If the the price of the goods is more expensive compared to the comsumer's income it will be more elastic
   - The elasticity of demand tends to be greater in the long run, as consumers can take time to make adjustments to their consumption habits
   - Essential goods tend to be more inelastic
+
+##### Cross-price Elasticity of Demand
+
+- the percentage change in quantity demanded for every percentage change in price of the related good
+- the cross price elasticity is positive when the related good is a substitute
+- the cross price elasticity is negative when the related good is a compliment
+- Cross-price coefficient multiple by the cross-price value and divided by the total quantity demand will return the cross-price elasticity
+- When the price of a goods drops while all its substitutes' price keep the same, the demand for that goods will increase this is called a positive substitute effect
+
+##### Income Elasticity of Demand
+
+- the percentage change in quantity, demanded for every percentage change in income level
+- Normal goods are those in which the demand increases with consumer income levels and vice versa, the income elasticity is therefore positive for normal goods
+- Inferior goods(goods that save budget) are those for which the demand decreases with consumer income levels, the income elasticity is therefore negative for inferior goods.
+- Income coefficient multiple by the income value and divided by the total quantity demand will return the income elasticity
+- When there is a positive change in real income (purchasing power) due to prices drop on some goods, the demand for normal goods will increase and it is called a positive income effect, inferior goods will result in a negative income effect
+- For an inferior good, when the negative income effect outweights the positive substitute effect, it is called a Giffen good, the demand curve of this good will be an upward sloping straight line
+  - It is a exception to the law of demand
+  - only in theory, there are some rare instances where this has turned out to be true
+  - another exception where the demand curve is upward sloping is the Veblen good for which a higher price makes the goods more desirable. This is usually the case for some luxury goods like Hermes bags where the higher price conveys higher status to the owners. It only applies to a select group of people who can afford it and there has to be a limit to it

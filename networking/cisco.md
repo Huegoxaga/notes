@@ -57,7 +57,7 @@
   - `t?`, list commands start with letter `t`.
   - `<cr>` output means blank space, so a command can be executed by hitting enter directly
 - `enable`, switch mode `>` to mode `#`.
-- `disable`, `exit` or `Ctrl + Z` switch to the previous mode
+- `disable`, `exit`, `end` or `Ctrl + Z` switch to the previous mode
 - `show privilege` show the current privilege level
   - the privilege level ranges from 1 to 15, higher level will have more commands available.
 - `show ip interface brief` show a breif summary of all ip interface status in current privilege Level.
