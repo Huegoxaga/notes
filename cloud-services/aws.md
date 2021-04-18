@@ -173,6 +173,14 @@ It provide computing services.
 
 - If ISP assigns IPv6 address to the local network, policy should include IPv6 address, e.g. `::/0` when applying allow any
 
+## VPC
+
+### VPN
+
+- Site-to-Site VPN - setup VPN connect to the VPC from on-premises router
+- Client VPN - setup VPN connect to the VPC from end devices
+- There will be a hourly charge for each connection
+
 ## Elastic Beanstalk
 
 It deploys app on EC2 and will do capacity provisioning, load balancing, scaling, and application health monitoring automatically.

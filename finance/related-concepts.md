@@ -88,15 +88,16 @@
 
 ### Demand and Supply Analysis
 
-#### Elasticity
+#### Demand Analysis
 
 - Demand Curve has quantity demanded on the x-axis and the price of the item on the y-axis
   - Quantity demanded represents the comsumer's intention to buy
-- The demand function quantity demanded equals a constant plus the Own-Price coefficient times Own-Price value plus Cross-price elasticity coeffiecient times Cross-price value plus income coeffiecient times income value
+- The demand function - quantity demanded equals a constant plus the Own-Price coefficient times Own-Price value plus Cross-price elasticity coeffiecient times Cross-price value plus income coeffiecient times income value
   - The quantity demanded is associated with a period, e.g. the demand for 15 apples in a month
   - The quantity demanded is associated wiath a specific group of consumers (e.g. low-income)
 - For all the following elasticity, when the absolute value is above 1, it is elastic. When it is less than 1, it is in elastic
   - A high elasticity will greatly effect the demand
+- The law of demand - conditional on all else being equal, as the price of a good increases, quantity demanded will decrease; conversely, as the price of a good decreases, quantity demanded will increase
 
 ##### Own-Price Elasticity of Demand
 
@@ -105,7 +106,7 @@
   - it depends on the current price or demand and it is not constant
 - Own-price coefficient multiple by the current own-price value and divided by the total quantity demand will get the Own-price elasticity
   - The reciprocal of the elasticity coefficient is the slope of the demand curve
-- When the Demand Curve is downward sloping the Own-Price Elasticity is negative
+- When the Demand Curve is downward sloping the Own-Price Elasticity is negative, and the law of demand applies
   - There is a region in the demand curve that the quantity demanded is very responsive to a change in price in terms of the changes in percentage, the demand is elastic,
     - the absolute value of elasticity is greater than 1
     - When the demand curve is fully horizontal, it is called perfectly elastic demand where the elasticity is infinite
@@ -142,3 +143,70 @@
   - It is a exception to the law of demand
   - only in theory, there are some rare instances where this has turned out to be true
   - another exception where the demand curve is upward sloping is the Veblen good for which a higher price makes the goods more desirable. This is usually the case for some luxury goods like Hermes bags where the higher price conveys higher status to the owners. It only applies to a select group of people who can afford it and there has to be a limit to it
+
+#### Supply Analysis
+
+##### The Law of Diminishing Marginal Returns
+
+- In order to supply goods the factors of production are required
+  - Land - the physical space you own or rent
+  - Labour (L) - all workers from unskilled to top management
+  - Capital (K) sometimes called plant and equipment
+    - this does not include financial capital
+  - Materials - refers to the inputs that make the production possible
+  - Economists typically concentrate on just two of these, labor (L) and physical capital (K)
+- The total product function
+  - In a short run, some factors of production are fixed, like capital. The total production should be a function of the labor
+  - In the long run however all factors of production are variable. The total production should be a function of the labor and capital input
+- Total production is simply the total output in a period
+- Average production is the total output per unit of input
+- Marginal product is the amount of additional product resulting from using one more unit of input
+- The diminishing marginal productivity of labor where in the short run the additional output from each additional worker decreases progressively, it happens in three stages
+  - when the labor input is smaller marginal productivity is increasing the slope of the output curve increases at this stage
+  - when the labor input gets larger. The marginal productivity is decreasing the slope of the output curve decreases at this stage
+  - and for some companies marginal productivity can become zero or even negative, the output curve hits a maximum and starts to dip beyond that
+
+##### Breakeven and Shutdown Analysis
+
+- Fixed costs cannot be changed in the short run, e.g. rental lease
+  - average fixed cost (AFC) - total fixed cost devided by the number of output
+    - when plot the average fixed cost against the quantity produced, it will show a downward sloping line
+- Variable costs vary according to the level of production, e.g. labour cost
+  - average variable cost (AVC) - total variable cost devided by the number of output
+    - because of diminishing marginal productivity of labor. The average variable cost starts increasing after a certain point
+- Total cost equals fixed cost plus variable costs
+  - average total cost (ATC) - total cost divide by the number of output
+    - The ATC graph looks similar to the AVC, shift up by the AFC
+- Marginal cost is the change in total cost per unit change in output quantity
+  - it is upward sloping after a certain point due to diminishing marginal productivity
+  - marginal cost curve has the actual cost of that additional output on the y-axis
+  - marginal cost curve intersects the AVC and ATC curves at their minimum
+- Revenue - price times the quantity sold
+- The average profit per cup is the difference between the marginal cost and average total cost
+- The profit maximizing point will then be the point where the marginal revenue is equal to the marginal cost, because it is the highest point where `MR > MC` is satisfied
+- This minimum point where the `ATC` is equal to the `MC` is the breakeven level, when price goes above this level the business makes a profit, when price goes below this level the business will have a loss
+- When the price is below the breakeven level and falls in between the lowest point of `ATC` and `AVC` cost, the profit maximizing point is also in between the `ATC` and `AVC` cost, the firm will be running at loss but it still has revenue to cover the `AVC` and part of the `AFC`
+  - In this case, continue running the business in short run can minimize loss of the fixed cost, since there is no refund for fixed costs
+- This minimum point where the `AVC` is equal to the `MC` is the shutdown level, When price goes below the `AVC` cost, the `AVC` cannot be covered and there is no point to keep the business in both short and long run
+
+##### Economies and Diseconomies of Scale
+
+- In a long run the `AVC` for short run can shift to the right because the output product quantity is increased due the increase in productivity after business growed by investing
+- The `AVC` curve might even shift to a lower position due to the the effect called the `Economies of Scale`, Economies of scale occur if the cost per unit of production falls as the firm increases its scale, it results from factors such as:
+  - labour specialization
+  - mass production
+  - investment in more efficient equipment and technology
+  - being able to lower input prices with suppliers as its bargaining power increases with scale
+- `Economies of Scale` have to hit a limit somewhere. When scaling up does not result in any economies of scale. It is called the `Constant Returns to Scale`
+- `Diseconomies of Scale` happens when scaling up even further results in an increase in average cost, due to:
+  - inefficiencies from bureaucracy of larger firms
+  - problems with motivating a larger workforce
+  - greater barriers to innovation and entrepreneurial activity
+- if we draw a line that connects all the minimums of the short run `ATC` (`SR ATC`) curves we get the long run `ATC` curve (`LR ATC`) of the firm
+  - `Minimum Efficient Scale` - the lowest point on the `LR ATC` corresponds to the scale at which the average total cost of production is minimized
+
+### Market Structures
+
+- A perfectly competitive market has a perfectly elastic demand curve. The marginal revenue is equal to the average revenue which is equal to the market price
+  - A perfectly elastic demand curve, will have the price as a constant, regardless the quantity demanded
+  - Under perfect competition firms must operate at minimum efficient scale in the long run, all compititos operate their at this scale in the long run. So this minimum will equal the market price which is the marginal revenue and also the average revenue, anyone operating at a different scale will have a cost that is higher than the market price and have a loss

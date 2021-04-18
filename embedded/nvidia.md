@@ -30,6 +30,7 @@
   - Transfer Learning Toolkit - it includes production quality pre-trained models and deploy as is or apply minimal fine-tuning for various computer vision and conversational AI use-cases
   - DeepStream SDK - it delivers a complete streaming analytics toolkit for AI-based multi-sensor processing, video, audio and image understanding
 - NVIDA's GPU Technology Conference (GTC) is a popular annual event in the GPU computing industry
+- `iGPU` is an integrated GPU, GPU that's in the CPU. `dGPU` is a dedicated GPU, it is the actual graphic card
 
 ## Jetson
 
@@ -43,14 +44,16 @@
   - Jetson TX2 Series
   - Jetson Xavier NX
   - Jetson AGX Xavier Series
+- [Click here](https://developer.nvidia.com/embedded/downloads) to go the download center for Jetson Development
 
 ### Setup
 
 - First boot up:
-  1.  Download the Jetpack image for the specific module
+  1.  Download the Jetpack image for the specific module, or using the NVIDIA SDK Manager on a Ubuntu or CentOS host and skip step 2
   2.  Flash the image into the SD card
       - Recommanded tool: Ethcher
       - it is recommanded to have a SD card with at least 64GB memory size
+      - The OS will not recongize the drive after flashing is completed
   3.  Plugin the SD and connect the power, and I/O devices to the carrier board or the module
 - Use serial connection with `115200` Baudrate for headless mode
 - Jetson Nano Developer Kit doesn't come with WiFi module, use USB WiFi adapter instead
@@ -95,7 +98,7 @@
 
 ### SDKs
 
-#### Deapstream
+#### Deepstream
 
 - It defines an extensible video processing pipeline that can be used to perform inference, object tracking and reporting
 - Hardware Accelerated GStreamer plugins - GStreamer is a framework for creating streaming media applications
@@ -109,3 +112,7 @@
   - `Gst-nvv4l2decoder` - Decode a video stream.
   - `Gst-Nvv4l2h264enc` - Encode a video stream.
   - `Gst-NvArgusCameraSrc` - Provide options to control ISP properties using the Argus API.
+- The deepstream supports C/C++ with GStreamer natively, it also supports Python using Gst Python which is GStreamer framework's Python bindings
+  - Python bindings is a compiled module included in the DeepStream SDK, it is generated using Pybind11
+  - [Click here](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps#metadata_bindings) to explore sample apps in Python
+- In NGC, there are docker containers available with deepstream installed for a quick start, `dGPU` container is called `deepstream` and the `Jetson` container is called `deepstream-l4t`
