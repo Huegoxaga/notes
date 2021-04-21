@@ -62,7 +62,7 @@
 - A 4GB swap file is recommended
   - run `sudo systemctl disable nvzramconfig` before creating swap file
   - use path `/mnt/4GB.swap` for swap file
-- For remote host identity changed warning, run `ssh-keygen -R <RemoteAddress>`
+- For remote host identity changed warning, run `ssh-keygen -R <RemoteIPAddress>`
 - To clock control
   - `sudo /usr/bin/jetson_clocks --show` to see the current status
   - `sudo /usr/bin/jetson_clocks --fan` To run the fan at max speed
@@ -101,6 +101,7 @@
 #### Deepstream
 
 - It defines an extensible video processing pipeline that can be used to perform inference, object tracking and reporting
+- [Click here](https://developer.nvidia.com/deepstream-getting-started) for more resources
 - Hardware Accelerated GStreamer plugins - GStreamer is a framework for creating streaming media applications
   - `Gst-nvinfer` implements TensorRT-based inferencing
   - `Gst-nvstreammux` - Batch streams before sending for AI inference, manage metadata for video stream

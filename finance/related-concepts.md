@@ -207,6 +207,41 @@
 
 ### Market Structures
 
+- Market Structures are determined by examining the following five characteristics of the industry
+
+| Characteristics                 | Perfect Competition   | Monopolistic Competition                  | Oligopoly                                           | Monopoly             |
+| ------------------------------- | --------------------- | ----------------------------------------- | --------------------------------------------------- | -------------------- |
+| The number and sizes of sellers | Many firms            | Many firms                                | Few firms                                           | Single seller        |
+| Barriers to entry or exit       | Very Low              | Very Low                                  | High(economies of scale lead to big size)           | Very high            |
+| Products differentiation        | Identical Products    | Different in quality, features, marketing | good substitutes or differentiated                  | No close substitutes |
+| The nature of competition       | Compete on price only | Price and product difference              | Price and product difference                        | Little competition   |
+| The pricing power of the firms  | None                  | Limited based on perceived differences    | limited if less differentiate or Significant if not | Significant          |
+
+#### Perfect Competition
+
+- It is where many firms produce identical products. And competition forces them all to sell at the market price
+- This is just in theory, some industry like wheat production industry are close to it, its price depends on the overall market supply and demand
 - A perfectly competitive market has a perfectly elastic demand curve. The marginal revenue is equal to the average revenue which is equal to the market price
   - A perfectly elastic demand curve, will have the price as a constant, regardless the quantity demanded
   - Under perfect competition firms must operate at minimum efficient scale in the long run, all compititos operate their at this scale in the long run. So this minimum will equal the market price which is the marginal revenue and also the average revenue, anyone operating at a different scale will have a cost that is higher than the market price and have a loss
+
+#### Monopolistic Competition
+
+- It is where there are many sellers and differentiated products
+- It has a downward sloping elastic demand curve
+
+#### Oligopoly
+
+- It is where a few firms compete in a variety of ways
+- Firms need to consider other firms'(interdependent firms) strategy
+- Demand is also downward sloping but can vary in elasticity, in general firms (Automobile Industry) that are very differentiated from itself to others tend to have more elastic demand than firms with less differentiation (Telco industry)
+
+#### Monopoly
+
+- It is where only one firm is producing the product
+- It has a downward sloping demand curve which is the market demand curve, and firm has the power to choose the price at which it sells its product
+- there can be a few reasons for monopolies:
+  - Firstly very high barriers to entry protect a monopoly producer from competition
+  - copyrights and patents also protect a monopoly from competition
+  - sometimes firm has control over a resource specifically needed to produce the product
+  - Mostly monopoly power is supported by government in such cases the price the monopoly charges is often regulated by the government as well

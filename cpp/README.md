@@ -139,7 +139,7 @@
 
 ## Operators
 
-#### Arithmetic Operators
+### Arithmetic Operators
 
 - `+` addition
 - `-` subtraction
@@ -151,7 +151,7 @@
   - Modulus division only works on integers.
 - Using parentheses `( )` to indicate which operations are to be performed first.
 
-#### Assignment Operators
+### Assignment Operators
 
 - Apply numerical operation with itself by using the following:
   - `+=`
@@ -166,7 +166,7 @@
   - `++i`, the prefix form increments/decrements the variable and then uses it in the assignment statement.
   - `i++`, the postfix form uses the value of the variable first, before incrementing/decrementing it.
 
-#### Relational Operators
+### Relational Operators
 
 - it can be used to form a Boolean expression, which returns true or false:
   - `<` less than
@@ -176,7 +176,7 @@
   - `==` equal to
   - `!=` not equal to
 
-#### Logical Operators
+### Logical Operators
 
 - `&&` and
 - `||` or
@@ -521,7 +521,7 @@
 
 ## Class
 
-#### Declaration
+### Declaration
 
 - A class definition must be followed by a semicolon.
 - access specifier
@@ -548,7 +548,7 @@
       };
     ```
 
-#### Instantiation
+### Instantiation
 
 - A class must be declared before using it,
   ```cpp
@@ -559,7 +559,7 @@
   }
   ```
 
-#### Constructors
+### Constructors
 
 ```cpp
 class myClass {
@@ -582,7 +582,7 @@ private:
 - The constructor's name is identical to that of the class. It has no return type, not even void.
 - It's possible to have multiple constructors that take different numbers of parameters.
 
-#### Destructors
+### Destructors
 
 ```cpp
 class MyClass {
@@ -599,7 +599,7 @@ public:
 - A destructor can't return a value or take any parameters.
 - Destructors can be very useful for releasing resources before coming out of the program. This can include closing files, releasing memory, and so on.
 
-#### Header Files and Source Files
+### Header Files and Source Files
 
 - A class has two files
   - MyClass.h is the header file.
@@ -639,7 +639,7 @@ public:
     - Some developers use `.hpp` extension for header files
 - `MyClass::MyClass()` means MyClass class has a contractor function, then write the constructor definition in the corresponding code blocks
 
-#### Class Object
+### Class Object
 
 - The arrow member selection operator (->) is used to access an object's members with a pointer.
   ```cpp
@@ -686,7 +686,7 @@ public:
     ```
     - All three alternatives will produce the same result.
 
-#### Member Initialization List
+### Member Initialization List
 
 - It must be used for constant.
 
@@ -711,7 +711,7 @@ MyClass obj(42, 33);
 }
 ```
 
-#### Friends
+### Friends
 
 - Declaring a non-member function as a friend of a class allows it to access the class's private members
 
@@ -742,7 +742,7 @@ int main() {
 - Similar to friend functions, you can define a friend class, which has access to the private members of another class.
 - Friend functions do not have a `this` pointer, because friends are not members of a class.
 
-#### Operator Overloading
+### Operator Overloading
 
 - Most of the `C++` built-in operators can be redefined or overloaded
 - Operators that can't be overloaded include `:: | .\* | . | ?:`
@@ -770,7 +770,7 @@ int main() {
   }
   ```
 
-#### Composition
+### Composition
 
 - Classes can have classes
 
@@ -815,7 +815,7 @@ int main() {
 }
 ```
 
-#### Inheritance
+### Inheritance
 
 - The class whose properties are inherited by another class is called the Base class. - The class which inherits the properties is called the Derived class.
 - The Base class is specified using a colon and an access specifier:
@@ -889,7 +889,7 @@ int main() {
   ```
   - created two pointers of type Enemy, pointing them to the Ninja and Monster objects.
 
-#### Virtual Function
+### Virtual Function
 
 - A virtual function is a base class function that is declared using the keyword virtual. It can be either defined or empty. It can be overridden by it’s derived class.
   ```cpp
@@ -935,7 +935,7 @@ int main() {
     e2->attack();
     ```
 
-#### Class Template
+### Class Template
 
 - Generic Class
   ```cpp
@@ -1022,7 +1022,7 @@ int main() {
 
 - `#include <cstdlib>`
 
-##### Ramdon number
+#### Ramdon number
 
 - `rand()` return an integer
   - Use the modulo (%) operator to generate random numbers within a specific range. `1 + (rand() % 6)` will generate an integer from 1 to 6.
@@ -1041,7 +1041,7 @@ int main() {
 - It defines the standard stream objects that input and output data.
 - `#include <iostream>`
 
-##### Output
+#### Output
 
 - `cout`
   - Output content should follow the insertion operator `<<`. For example, `cout << "Hi!";`
@@ -1051,7 +1051,7 @@ int main() {
   - The new line character `\n` can be used as an alternative to `endl`.
   - Two newline characters (`\n\n`) placed together result in a blank line.
 
-##### Input
+#### Input
 
 - `cin`
   - Input content is indicated by the extraction operator (`>>`). For example, `int num; cin >> num;`.
@@ -1065,7 +1065,7 @@ int main() {
   - `ifstream`: Input file stream that reads information from files.
   - `fstream`: General file stream, with both ofstream and ifstream capabilities that allow it to create, read, and write information to files.
 
-##### Open and Write a File
+#### Open and Write a File
 
 ```cpp
 #include <iostream>
@@ -1103,7 +1103,7 @@ int main() {
     outfile.open("file.dat", ios::out | ios::trunc );
     ```
 
-##### Read a File
+#### Read a File
 
 - The getline function reads characters from an input stream and places them into a string.
   ```cpp
@@ -1120,6 +1120,6 @@ int main() {
   }
   ```
 
-##### Closing a File
+#### Closing a File
 
 - `MyFile.close();`

@@ -160,6 +160,10 @@
   - `create` Create a pull request interactively
     - `create --title "Pull request title" --body "Pull request body"`
     - `create --web` Quickly navigate to the pull request creation page
+    - `-f`, `--fill` Do not prompt for title/body and just use commit info
+    - `-B` The branch into which you want your code merged
+    - `-H` The branch that contains commits for your pull request (default: current branch)
+      - `gh pr create -f -B <master> -H <dev>` use this to avoid error or confusing
   - `merge` Merge a pull request
     - `--delete-branch=false'` or `-d=false` retain the remote and local head branch after merge
     - `-m` or `--merge` Merge the commits with the base branch
