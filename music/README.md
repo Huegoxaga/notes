@@ -1,4 +1,4 @@
 # Music
 
-- [Music Theory](https://huegoxaga.github.io/notes/music/theory.html)
-- [Logic Pro](https://huegoxaga.github.io/notes/music/logic-pro.html)
+- [Music Theory](theory.md)
+- [Logic Pro](logic-pro.md)

@@ -1,6 +1,6 @@
 # Java
 
-## Introduction:
+## Introduction
 
 - Java is a high level, modern programming language designed in 1990s by Sun Microsystems, and currently owned by Oracle.
 - javac is the complier executable that is used compile .java(source code) file into .class(byte code) file.

@@ -31,7 +31,7 @@
   - network infrastructure
   - most popular for Oracle Database
   - free to use and charged for maintenance agreement annually
-- [Oracle VM VirtualBox](https://huegoxaga.github.io/notes/virtualization/virtualbox.html)
+- [Oracle VM VirtualBox](virtualbox.md)
   - as an application
   - personal use
   - available for all major platforms.
@@ -50,11 +50,11 @@
 - Container focuses on running a certain software inside, with its filesystem, CPU, memory, process space, and more.
 - Containers are lightweight and flexible.
 - Container Providers
-  - [Docker](https://huegoxaga.github.io/notes/virtualization/kubernetes.html)
+  - [Docker](docker.md)
 
 ## Container Orchestration
 
 - Container orchestration is the automatic process of managing or scheduling the work of individual containers for applications based on microservices within multiple clusters.
 - Container Orchestration Tools
   - Docker Compose
-  - [Kubernetes](https://huegoxaga.github.io/notes/virtualization/kubernetes.html)
+  - [Kubernetes](kubernetes.md)
