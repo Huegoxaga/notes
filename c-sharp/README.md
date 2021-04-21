@@ -1,15 +1,15 @@
-# `C#`
+# C`#`
 
 ## Introduction
 
-- In 2000, Microsoft announced the C# programming language.
-- C# has roots in the C, C++ and Java programming language
-- C# is an object-oriented language that runs on the .NET Framework.
-- C# graphical user interfaces (GUIs) are event-driven. It waits to respond to the users' input.
+- In 2000, Microsoft announced the `C#` programming language.
+- `C#` has roots in the C, C++ and Java programming language
+- `C#` is an object-oriented language that runs on the .NET Framework.
+- `C#` graphical user interfaces (GUIs) are event-driven. It waits to respond to the users' input.
 - Microsoft’s Visual Studio enables you to use C# as a visual programming language.
-- C# can be used to create Windows, mobile, database application and Web services, etc.
+- `C#` can be used to create Windows, mobile, database application and Web services, etc.
 - The source code for programs that are executed and managed by the Common Language Runtime (CLR) is called managed code. It is first compiled into Microsoft Intermediate Language (MSIL), then translated the code in executable file by the just-in-time compiler or Just-In-Time (JIT) compiler into machine language.
-  - .NET Framework consists of the Common Language Runtime(CLR) and the .NET Framework class library.
+  - `.NET` Framework consists of the Common Language Runtime(CLR) and the .NET Framework class library.
 - When the user creates a new project in Visual Studio A solution and a folder are created at the same time with the same name as the project.
 - The project belongs to the solution
 - Multiple projects can be included in a solution
@@ -71,6 +71,7 @@
   - Constants are all static.
 - C# use stack to store static value, like primitive type data and address reference for objects. It uses heap to store object information.
 
+```md
 ### Type
 
 Instance variables of types char, byte, sbyte, short, ushort, int, uint, long, ulong, float, double, and decimal are all given the value 0 by default.
@@ -1284,3 +1285,4 @@ Partial indicates that the class is specified in multiple files
 movie.DateSeen.ToShortDateString();
 
 DateTime.Today
+```
