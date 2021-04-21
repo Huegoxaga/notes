@@ -1381,6 +1381,8 @@
 <li><code>network speeds</code> - it is represented by the slowest connection in between.<ul>
 <li>Bits and Byte<ul>
 <li>8 bits = 1 byte</li>
+<li>1024 Byte = 1 KB</li>
+<li>1024 Bits = 1 Kb</li>
 <li><code>bits</code> are generally used to describe network speed. It should be represented as lowercase <code>b</code>. <code>1Mbps</code> means one megabits per second</li>
 <li><code>bytes</code> are generally used to describe data size. It should be represented as uppercase <code>B</code>. <code>1MB</code> means one megabytes.</li>
 </ul>
@@ -1416,9 +1418,10 @@
 <li>Topology:<ul>
 <li>It is the arrangement of the elements of a communication network.</li>
 <li>Types:<ul>
-<li>Star - share one core switch.</li>
-<li>Ring - connected one by one.</li>
-<li>Bus - share one cable.</li>
+<li><code>Star</code> - share one core switch.</li>
+<li><code>Ring</code> - connected one by one.</li>
+<li><code>Bus</code> - share one cable.</li>
+<li><code>Hybrid</code> - a combination of any of above</li>
 </ul>
 </li>
 </ul>
@@ -1432,43 +1435,45 @@
 <h3 id="osi-model">OSI model</h3>
 <ul>
 <li>The Open Systems Interconnection (OSI) model.</li>
-<li>Developed by International Organization for Standardization(ISO), because IBM vs DEC cannot communicate.</li>
-<li><p>Each layer work independently</p>
+<li>Developed by International Organization for Standardization(ISO), because devices from IBM is not compatible with Digital Equipment Corp.(DEC) products</li>
+<li>Each layer work independently, they are:<ol>
+<li>Physical - present data as bit, all hardwares likes cables and wires are in the physical layer.<ul>
+<li>This is where the actual data transmission happens</li>
+</ul>
 </li>
-<li><p>Physical - present data as bit, all hardwares likes cables and wires are in the physical layer.</p>
-</li>
-<li>Data Link - present data as frame with MAC address in the data link header. It will also handle error checking.</li>
-<li>Network &#x2014; present data as packet and add IP address in the packet header. It naviagte and find the best path for data transmition.<ul>
+<li>Data Link - present data as <code>Frame</code> with MAC address in the data link header. It will also handle error checking.</li>
+<li>Network &#x2014; present data as <code>Packet</code> and add IP address in the packet header. It naviagtes and find the best path for data transmition if the destination address is not in the local subnet.<ul>
 <li>Each packet in the conversation will have the same source and destination addresses, however they may not take the same path.</li>
 </ul>
 </li>
-<li>Transport - present data as encapsulated segement with header. It decide which data transmition protocol to use and add a port number and a source port number to the IP address.</li>
+<li>Transport - present data as encapsulated <code>Segement</code> with header. It decide which data transmition protocol to use and add a port number and a random source port number to the IP address.</li>
 <li>Session - create and maintain session.</li>
-<li>Presentation - the layer generify data, deal with data encryption and convserion.</li>
-<li><p>Application - the point of contact for network aware application</p>
+<li>Presentation - the layer generify data, it is where files are generated from session data, it deals with data encryption and convserion.</li>
+<li>Application - the point of contact for network aware application</li>
+</ol>
 </li>
-<li><p>Mnemonic: <code>Please Do Not Throw Sausage Pizza Away</code></p>
-</li>
-<li>2, 3, 4 layers all have its own header that will be added or processed during data transmition.<ul>
-<li>as a result, a frame will have three headers. a segement will have one header.</li>
+<li>Mnemonic: <code>Please Do Not Throw Sausage Pizza Away</code></li>
+<li>2, 3, 4 layers all have its own header<ul>
+<li>when data goes to lower layer one extra header will be added</li>
+<li>when data goes to higher layer related header will be processed and removed</li>
+<li>as a result, a frame will have three headers. a segement will have one header</li>
 </ul>
 </li>
 </ul>
 <h3 id="tcpip-model">TCP/IP model</h3>
 <ul>
-<li><p>Developed by the Department of Defense.</p>
-</li>
-<li><p>Network Interface - equivelent to OSI model 1 and 2.</p>
-</li>
+<li>Developed by the Department of Defense.</li>
+<li>A simplified version of OSI and now become the industry standart<ol>
+<li>Network Interface - equivelent to OSI model 1 and 2.</li>
 <li>Internet - equivelent to OSI model 3.</li>
 <li>Transport - equivelent to OSI model 4.</li>
-<li><p>Application - equivelent to OSI model 5,6,7.</p>
-<ul>
+<li>Application - equivelent to OSI model 5,6,7.<ul>
 <li>This layer is handled by the operating system and will not be discussed by network engineer.</li>
 </ul>
 </li>
-<li><p>Mnemonic: TCP/IP comes in <code>A TIN</code>.</p>
+</ol>
 </li>
+<li>Mnemonic: TCP/IP comes in <code>A TIN</code>.</li>
 </ul>
 <h2 id="protocols">Protocols</h2>
 <h3 id="datalink-layer-protocols">DataLink Layer Protocols</h3>
@@ -1497,10 +1502,9 @@
 <li>A group of 4 octets (8-bit) data with a total of 32 bits.</li>
 <li>4.3 billions unique addresses available.</li>
 <li>IPv4 can be presented in dotted decimal notation: <code>130.132.19.31</code>. It can be converted to binary form as <code>10000010.10000100.00010011.00011111</code>.</li>
-<li>The gateway IP is the IP address of a router.</li>
 <li>Subnet Mask<ul>
 <li>It has network ID in the left portion and node ID in the right portion combined.</li>
-<li>Subnet Mask is used to determine which part of the IP is networkID.<ul>
+<li>Subnet Mask is used to determine which part of the IP is network ID.<ul>
 <li>network ID is represented by subnet mask 1 value digit place. For an ip with a mask as <code>11111111.11111111.00000000.00000000</code> -&gt; <code>255.255.0.0</code>, the first two groups of octets, represents networkID.</li>
 </ul>
 </li>
@@ -1508,7 +1512,11 @@
 </ul>
 </li>
 <li>Among all the hosts in a network, the first IP is the network ID. The last one is the boardcast ID.</li>
-<li>IPv4 address can be devided into different classes according to its first octet.<ul>
+<li>Gateway IP is the IP address of a router<ul>
+<li>The network ID portion of the gateway IP and all other IP addresses in the same local network should be the same</li>
+</ul>
+</li>
+<li>IPv4 address can be devided into different classes according to its first octet, each class has a different default mask value.<ul>
 <li>class A: <code>1.0.0.0 - 126.255.255.255/8</code></li>
 <li>class B: <code>128.0.0.0 - 191.255.255.255/16</code></li>
 <li>class C: <code>192.0.0.0 - 223.255.255.255/24</code></li>
@@ -1516,8 +1524,11 @@
 <li>class E(experimental purpose) <code>240.0.0.0 - 255.255.255.255</code></li>
 </ul>
 </li>
-<li>Subnetting is achieved by have 1 more bit of subnet mask compare to its IP class default mask.</li>
-<li>Supernetting is lend 1 bit to represent all the subnets. it is a summarization of ip addresses.</li>
+<li>Subnetting is achieved by have 1 more bit of subnet mask compare to its IP class default mask.<ul>
+<li>One network can do subnetting with different CIDR value, it is called Variable Length Subnet Mask(VLSM), e.g. subnets with network ID <code>192.168.1.0/25</code>, then <code>192.168.1.128/26</code> and <code>192.168.1.192/26</code></li>
+</ul>
+</li>
+<li>Supernetting is lending bits to represent a larger network. it is a summarization of ip addresses from a range of adjacent small subnets</li>
 <li>ideal network size is less than 500 hosts.</li>
 <li>RFC 1918 reserves three ranges of IP addresses for private use<ul>
 <li>Class A range <code>10.0.0.0 - 10.255.255.255</code></li>
@@ -1540,7 +1551,7 @@
 <li>::1 is loopback</li>
 </ul>
 <h3 id="transport-layer-protocols">Transport Layer Protocols</h3>
-<h5 id="transmission-control-protocoltcp">Transmission Control Protocol(TCP)</h5>
+<h4 id="transmission-control-protocoltcp">Transmission Control Protocol(TCP)</h4>
 <ul>
 <li>TCP is a connection oriented transmission.</li>
 <li>Responsible for establishing and maintaining network conversations</li>
@@ -1557,17 +1568,16 @@
 </li>
 <li>Windowing - It is the trail process for testing the max packages can be sent at the same time using TCP connection.</li>
 </ul>
-<h5 id="user-datagram-protocoludp">User Datagram Protocol(UDP)</h5>
+<h4 id="user-datagram-protocoludp">User Datagram Protocol(UDP)</h4>
 <ul>
 <li>It is a connectionless transmission.</li>
 <li>It is an alternative communications protocol to Transmission Control Protocol (TCP) used primarily for establishing low-latency and loss-tolerating connections between applications on the internet. It is faster than TCP.</li>
 </ul>
 <h3 id="presentation-layer-protocols">Presentation Layer Protocols</h3>
-<p>TLS,SSL</p>
+<h4 id="tls">TLS</h4>
+<h4 id="ssl">SSL</h4>
 <h3 id="application-layer-protocols">Application Layer Protocols</h3>
-<p>FTP. TFTP,SNMP,DNS,HTTP, smtp pop imap
-http(s)</p>
-<h5 id="hypertext-transport-protocolhttp">Hypertext Transport Protocol(HTTP)</h5>
+<h4 id="hypertext-transport-protocolhttp">Hypertext Transport Protocol(HTTP)</h4>
 <ul>
 <li>It uses port 80.</li>
 <li>HTTP is called a stateless protocol because each command is executed independently, without any knowledge of the commands that came before it.</li>
@@ -1703,7 +1713,7 @@ http(s)</p>
 </ul>
 </li>
 </ul>
-<h5 id="hyper-text-transfer-protocol-securehttps">Hyper Text Transfer Protocol Secure(HTTPS)</h5>
+<h4 id="hyper-text-transfer-protocol-securehttps">Hyper Text Transfer Protocol Secure(HTTPS)</h4>
 <ul>
 <li>It use port number 443.</li>
 <li>It is the secure version of HTTP.</li>
@@ -1721,10 +1731,10 @@ http(s)</p>
 <li>Digital certificates will be issued by certificate authorities(CAs) for SSL/TLS connection</li>
 <li>Each SSL/TLS connection begins with a &#x201C;handshake&#x201D; &#x2013; the negotiation between two client and host that nails down the details of how they&#x2019;ll proceed. The handshake determines what cipher suite will be used to encrypt their communications, verifies the server, and establishes that a secure connection is in place before beginning the actual transfer of data.</li>
 </ul>
-<h5 id="simple-mail-transport-protocolsmtp">Simple Mail Transport Protocol(SMTP)</h5>
-<h5 id="post-office-protocolpop">Post Office Protocol(POP)</h5>
-<h5 id="internet-message-access-protocolimap">Internet Message Access Protocol(IMAP)</h5>
-<h5 id="dynamic-host-configuration-protocoldhcp">Dynamic Host Configuration Protocol(DHCP)</h5>
+<h4 id="simple-mail-transport-protocolsmtp">Simple Mail Transport Protocol(SMTP)</h4>
+<h4 id="post-office-protocolpop">Post Office Protocol(POP)</h4>
+<h4 id="internet-message-access-protocolimap">Internet Message Access Protocol(IMAP)</h4>
+<h4 id="dynamic-host-configuration-protocoldhcp">Dynamic Host Configuration Protocol(DHCP)</h4>
 <ul>
 <li>Is a protocol that automatically configure IP to a host</li>
 <li>It generates 6 messages<ul>
@@ -1743,6 +1753,10 @@ http(s)</p>
 </ul>
 </li>
 </ul>
+<h4 id="ftp">FTP</h4>
+<h4 id="tftp">TFTP</h4>
+<h4 id="snmp">SNMP</h4>
+<h4 id="dns">DNS</h4>
 <h2 id="basic-concepts">Basic Concepts</h2>
 <h3 id="port-number">Port Number</h3>
 <ul>
@@ -1755,12 +1769,15 @@ http(s)</p>
 <li>A socket is an IP address with a port number.</li>
 <li>Port numbers have a range between 0-65535.</li>
 <li>Port numbers are used to identify the type of application or services during data transmission.</li>
-<li>Here are Some standard port number.
-80 - Unsecured web browsing (http)
-443 - Secured web browsing (https)
-25 - Unsecured/secured sending of e-mail messages (smtp/smtp-s)
-110 - Unsecured/secured receiving of e-mail messages (pop/pop-s)
-143 - Unsecured/secured receiving of e-mail messages ( imap imap-s )</li>
+<li>Here are Some standard port number.<ul>
+<li><code>80</code> - Unsecured web browsing (http)</li>
+<li><code>443</code> - Secured web browsing (https)</li>
+<li><code>25</code> - Unsecured/secured sending of e-mail messages (smtp/smtp-s)</li>
+<li><code>110</code> - Unsecured/secured receiving of e-mail messages (pop/pop-s)</li>
+<li><code>143</code> - Unsecured/secured receiving of e-mail messages ( imap imap-s )</li>
+<li>Standard port numbers used by TCP and UDP are different or sometimes shared</li>
+</ul>
+</li>
 <li>There are (3) sub-ranges for stanrdrand port numbers<ul>
 <li>Well-known Ports: registered with a governing body(a.k.a. System Ports)<ul>
 <li>Range: 0 - 1,023</li>
@@ -1818,7 +1835,7 @@ http(s)</p>
 </ul>
 <h2 id="network-devices">Network Devices</h2>
 <ul>
-<li>Media Access Control is a unique physical address for each devices, it is hard-coded.</li>
+<li>Media Access Control(MAC) address is a unique physical address for each devices, it is hard-coded.</li>
 <li>MAC is a 12 digit hexadecimal value, there are two digit in one pair, consisted of 6 pairs.</li>
 <li>MAC address is a 12 X (Hexdecimal) 4 bit = 48 bit Number divided by : into 3 parts.</li>
 <li>All device port(network interface) have its own unique MAC address.</li>
@@ -1891,15 +1908,15 @@ http(s)</p>
 <h3 id="switch">Switch</h3>
 <ul>
 <li>It has Application specific integration cicuitry(ASIC)<ul>
-<li>It learns Mac address of devices on CAM table(Address Learning)</li>
+<li>It learns MAC addresses of devices on CAM table(Address Learning)</li>
 </ul>
 </li>
-<li>Many Collision Domains - 1 port a collision domains</li>
+<li>Many Collision Domains - 1 port can be a collision domain</li>
 <li>One or more broadcast domains - as many as the VLANs</li>
 <li>Manegement IP is the switch IP used for telnet connection</li>
 <li>It does not need power if it is not used as power source for devices(POE)</li>
 <li>works at layer two.</li>
-<li>Each on of its port has access mode that is used to connected to end devices, and trunk mode that connects to other switches.<ul>
+<li>Each on of its port has access mode that is used to connected to end devices, and trunk(attack) mode that connects to other switches.<ul>
 <li>Two switches connected in trunk mode will act like one combined switch.</li>
 <li>There are two encapuslation protocal for trunking:<ul>
 <li><code>802.1q</code> most used</li>
@@ -1914,7 +1931,7 @@ http(s)</p>
 <li><code>No Negotiate</code> - It won&apos;t accept trunk mode connection.</li>
 </ul>
 </li>
-<li>Spanning Tree Protocol - It is used for loop avoidance. It detects if the network has duplicated connection that will causes layer-2 loops. It will disconnect thoese links logically.</li>
+<li>Spanning Tree Protocol - It is used for loop avoidance. It detects if the network has duplicated connection that will causes layer-2 loops. It will disconnect those links logically.</li>
 <li>Forwarding Decision - A switch will have two types of forwarding decision:<ul>
 <li><code>Cut Through</code> - forwarding immediately.</li>
 <li><code>Store &amp; Forward</code> - wait to receive the entire frame then do error checking before forwarding.</li>
@@ -1935,7 +1952,7 @@ http(s)</p>
 </ul>
 <h3 id="router">Router</h3>
 <ul>
-<li>Intelligent - only exchange info between different networks,</li>
+<li>Intelligent - only exchange info between different networks, it is the gateway in most cases</li>
 <li>Many Collision Domains</li>
 <li>Many broadcast Domains</li>
 <li>It has the ability to assign source and destination mac address according to the source and destination ip addresses if the IP addresses are from different sub networks.</li>
@@ -2092,7 +2109,7 @@ Network firewalls cannot provide protection from traffic generated within a trus
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Networking","level":"1.18","depth":1,"next":{"title":"Security","level":"1.18.1","depth":2,"path":"networking/security.md","ref":"networking/security.md","articles":[]},"previous":{"title":"Media","level":"1.17.9","depth":2,"path":"os/media.md","ref":"os/media.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"networking/README.md","mtime":"2020-12-25T05:14:22.338Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-08T19:33:01.152Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Networking","level":"1.18","depth":1,"next":{"title":"Security","level":"1.18.1","depth":2,"path":"networking/security.md","ref":"networking/security.md","articles":[]},"previous":{"title":"Media","level":"1.17.9","depth":2,"path":"os/media.md","ref":"os/media.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"networking/README.md","mtime":"2021-04-17T01:21:59.741Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T15:06:58.594Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

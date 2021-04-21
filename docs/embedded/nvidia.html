@@ -1392,6 +1392,7 @@
 </ul>
 </li>
 <li>NVIDA&apos;s GPU Technology Conference (GTC) is a popular annual event in the GPU computing industry</li>
+<li><code>iGPU</code> is an integrated GPU, GPU that&apos;s in the CPU. <code>dGPU</code> is a dedicated GPU, it is the actual graphic card</li>
 </ul>
 <h2 id="jetson">Jetson</h2>
 <ul>
@@ -1407,14 +1408,16 @@
 <li>Jetson AGX Xavier Series</li>
 </ul>
 </li>
+<li><a href="https://developer.nvidia.com/embedded/downloads" target="_blank">Click here</a> to go the download center for Jetson Development</li>
 </ul>
 <h3 id="setup">Setup</h3>
 <ul>
 <li>First boot up:<ol>
-<li>Download the Jetpack image for the specific module</li>
+<li>Download the Jetpack image for the specific module, or using the NVIDIA SDK Manager on a Ubuntu or CentOS host and skip step 2</li>
 <li>Flash the image into the SD card<ul>
 <li>Recommanded tool: Ethcher</li>
 <li>it is recommanded to have a SD card with at least 64GB memory size</li>
+<li>The OS will not recongize the drive after flashing is completed</li>
 </ul>
 </li>
 <li>Plugin the SD and connect the power, and I/O devices to the carrier board or the module</li>
@@ -1429,7 +1432,7 @@
 <li>use path <code>/mnt/4GB.swap</code> for swap file</li>
 </ul>
 </li>
-<li>For remote host identity changed warning, run <code>ssh-keygen -R &lt;RemoteAddress&gt;</code></li>
+<li>For remote host identity changed warning, run <code>ssh-keygen -R &lt;RemoteIPAddress&gt;</code></li>
 <li>To clock control<ul>
 <li><code>sudo /usr/bin/jetson_clocks --show</code> to see the current status</li>
 <li><code>sudo /usr/bin/jetson_clocks --fan</code> To run the fan at max speed</li>
@@ -1474,9 +1477,10 @@
 <li><code>tegrastats</code> - shows details on temperature and power usage.</li>
 </ul>
 <h3 id="sdks">SDKs</h3>
-<h4 id="deapstream">Deapstream</h4>
+<h4 id="deepstream">Deepstream</h4>
 <ul>
 <li>It defines an extensible video processing pipeline that can be used to perform inference, object tracking and reporting</li>
+<li><a href="https://developer.nvidia.com/deepstream-getting-started" target="_blank">Click here</a> for more resources</li>
 <li>Hardware Accelerated GStreamer plugins - GStreamer is a framework for creating streaming media applications<ul>
 <li><code>Gst-nvinfer</code> implements TensorRT-based inferencing</li>
 <li><code>Gst-nvstreammux</code> - Batch streams before sending for AI inference, manage metadata for video stream</li>
@@ -1490,6 +1494,12 @@
 <li><code>Gst-NvArgusCameraSrc</code> - Provide options to control ISP properties using the Argus API.</li>
 </ul>
 </li>
+<li>The deepstream supports C/C++ with GStreamer natively, it also supports Python using Gst Python which is GStreamer framework&apos;s Python bindings<ul>
+<li>Python bindings is a compiled module included in the DeepStream SDK, it is generated using Pybind11</li>
+<li><a href="https://github.com/NVIDIA-AI-IOT/deepstream_python_apps#metadata_bindings" target="_blank">Click here</a> to explore sample apps in Python</li>
+</ul>
+</li>
+<li>In NGC, there are docker containers available with deepstream installed for a quick start, <code>dGPU</code> container is called <code>deepstream</code> and the <code>Jetson</code> container is called <code>deepstream-l4t</code></li>
 </ul>
 
                                 
@@ -1534,7 +1544,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"NVIDIA","level":"1.21.4","depth":2,"next":{"title":"Electricity & Magnetism","level":"1.21.5","depth":2,"path":"embedded/electricity-magnetism.md","ref":"embedded/electricity-magnetism.md","articles":[]},"previous":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"path":"embedded/st.md","ref":"embedded/st.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/nvidia.md","mtime":"2021-04-02T23:18:51.208Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-08T19:33:01.152Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"NVIDIA","level":"1.21.4","depth":2,"next":{"title":"Electricity & Magnetism","level":"1.21.5","depth":2,"path":"embedded/electricity-magnetism.md","ref":"embedded/electricity-magnetism.md","articles":[]},"previous":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"path":"embedded/st.md","ref":"embedded/st.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/nvidia.md","mtime":"2021-04-21T04:47:12.479Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T15:06:58.594Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

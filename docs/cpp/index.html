@@ -1530,7 +1530,7 @@
 </li>
 </ul>
 <h2 id="operators">Operators</h2>
-<h4 id="arithmetic-operators">Arithmetic Operators</h4>
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
 <ul>
 <li><code>+</code> addition</li>
 <li><code>-</code> subtraction</li>
@@ -1546,7 +1546,7 @@
 </li>
 <li>Using parentheses <code>( )</code> to indicate which operations are to be performed first.</li>
 </ul>
-<h4 id="assignment-operators">Assignment Operators</h4>
+<h3 id="assignment-operators">Assignment Operators</h3>
 <ul>
 <li>Apply numerical operation with itself by using the following:<ul>
 <li><code>+=</code></li>
@@ -1567,7 +1567,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="relational-operators">Relational Operators</h4>
+<h3 id="relational-operators">Relational Operators</h3>
 <ul>
 <li>it can be used to form a Boolean expression, which returns true or false:<ul>
 <li><code>&lt;</code> less than</li>
@@ -1579,7 +1579,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="logical-operators">Logical Operators</h4>
+<h3 id="logical-operators">Logical Operators</h3>
 <ul>
 <li><code>&amp;&amp;</code> and</li>
 <li><code>||</code> or</li>
@@ -1965,7 +1965,7 @@ temp = *num1;
 </li>
 </ul>
 <h2 id="class">Class</h2>
-<h4 id="declaration">Declaration</h4>
+<h3 id="declaration">Declaration</h3>
 <ul>
 <li>A class definition must be followed by a semicolon.</li>
 <li>access specifier<ul>
@@ -1999,7 +1999,7 @@ temp = *num1;
 </ul>
 </li>
 </ul>
-<h4 id="instantiation">Instantiation</h4>
+<h3 id="instantiation">Instantiation</h3>
 <ul>
 <li>A class must be declared before using it,<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
 </span>{
@@ -2009,7 +2009,7 @@ test.sayHi();
 </code></pre>
 </li>
 </ul>
-<h4 id="constructors">Constructors</h4>
+<h3 id="constructors">Constructors</h3>
 <pre><code class="lang-cpp"><span class="hljs-keyword">class</span> myClass {
 <span class="hljs-keyword">public</span>:
   myClass(<span class="hljs-built_in">string</span> nm) {
@@ -2030,7 +2030,7 @@ test.sayHi();
 <li>The constructor&apos;s name is identical to that of the class. It has no return type, not even void.</li>
 <li>It&apos;s possible to have multiple constructors that take different numbers of parameters.</li>
 </ul>
-<h4 id="destructors">Destructors</h4>
+<h3 id="destructors">Destructors</h3>
 <pre><code class="lang-cpp"><span class="hljs-keyword">class</span> MyClass {
 <span class="hljs-keyword">public</span>:
   ~MyClass() {
@@ -2045,7 +2045,7 @@ test.sayHi();
 <li>A destructor can&apos;t return a value or take any parameters.</li>
 <li>Destructors can be very useful for releasing resources before coming out of the program. This can include closing files, releasing memory, and so on.</li>
 </ul>
-<h4 id="header-files-and-source-files">Header Files and Source Files</h4>
+<h3 id="header-files-and-source-files">Header Files and Source Files</h3>
 <ul>
 <li>A class has two files<ul>
 <li>MyClass.h is the header file.</li>
@@ -2091,7 +2091,7 @@ MyClass::MyClass()
 </li>
 <li><code>MyClass::MyClass()</code> means MyClass class has a contractor function, then write the constructor definition in the corresponding code blocks</li>
 </ul>
-<h4 id="class-object">Class Object</h4>
+<h3 id="class-object">Class Object</h3>
 <ul>
 <li>The arrow member selection operator (-&gt;) is used to access an object&apos;s members with a pointer.<pre><code class="lang-cpp">MyClass obj;
 MyClass *ptr = &amp;obj;
@@ -2142,7 +2142,7 @@ ptr-&gt;myPrint();
 </ul>
 </li>
 </ul>
-<h4 id="member-initialization-list">Member Initialization List</h4>
+<h3 id="member-initialization-list">Member Initialization List</h3>
 <ul>
 <li>It must be used for constant.</li>
 </ul>
@@ -2165,7 +2165,7 @@ MyClass::MyClass(<span class="hljs-keyword">int</span> a, <span class="hljs-keyw
 <span class="hljs-function">MyClass <span class="hljs-title">obj</span><span class="hljs-params">(<span class="hljs-number">42</span>, <span class="hljs-number">33</span>)</span></span>;
 }
 </code></pre>
-<h4 id="friends">Friends</h4>
+<h3 id="friends">Friends</h3>
 <ul>
 <li>Declaring a non-member function as a friend of a class allows it to access the class&apos;s private members</li>
 </ul>
@@ -2195,7 +2195,7 @@ MyClass::MyClass(<span class="hljs-keyword">int</span> a, <span class="hljs-keyw
 <li>Similar to friend functions, you can define a friend class, which has access to the private members of another class.</li>
 <li>Friend functions do not have a <code>this</code> pointer, because friends are not members of a class.</li>
 </ul>
-<h4 id="operator-overloading">Operator Overloading</h4>
+<h3 id="operator-overloading">Operator Overloading</h3>
 <ul>
 <li>Most of the <code>C++</code> built-in operators can be redefined or overloaded</li>
 <li>Operators that can&apos;t be overloaded include <code>:: | .\* | . | ?:</code></li>
@@ -2222,7 +2222,7 @@ int main() {
 </code></pre>
 </li>
 </ul>
-<h4 id="composition">Composition</h4>
+<h3 id="composition">Composition</h3>
 <ul>
 <li>Classes can have classes</li>
 </ul>
@@ -2265,7 +2265,7 @@ int main() {
  p.printInfo();
 }
 </code></pre>
-<h4 id="inheritance">Inheritance</h4>
+<h3 id="inheritance">Inheritance</h3>
 <ul>
 <li>The class whose properties are inherited by another class is called the Base class. - The class which inherits the properties is called the Derived class.</li>
 <li>The Base class is specified using a colon and an access specifier:<ul>
@@ -2345,7 +2345,7 @@ d.sayHi();
 </ul>
 </li>
 </ul>
-<h4 id="virtual-function">Virtual Function</h4>
+<h3 id="virtual-function">Virtual Function</h3>
 <ul>
 <li>A virtual function is a base class function that is declared using the keyword virtual. It can be either defined or empty. It can be overridden by it&#x2019;s derived class.<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Enemy {
   <span class="hljs-keyword">public</span>:
@@ -2390,7 +2390,7 @@ e2-&gt;attack();
 </ul>
 </li>
 </ul>
-<h4 id="class-template">Class Template</h4>
+<h3 id="class-template">Class Template</h3>
 <ul>
 <li>Generic Class<pre><code class="lang-cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> T&gt;
 <span class="hljs-keyword">class</span> Pair {
@@ -2474,7 +2474,7 @@ T Pair&lt;T&gt;::bigger() {
 <ul>
 <li><code>#include &lt;cstdlib&gt;</code></li>
 </ul>
-<h5 id="ramdon-number">Ramdon number</h5>
+<h4 id="ramdon-number">Ramdon number</h4>
 <ul>
 <li><code>rand()</code> return an integer<ul>
 <li>Use the modulo (%) operator to generate random numbers within a specific range. <code>1 + (rand() % 6)</code> will generate an integer from 1 to 6.</li>
@@ -2499,7 +2499,7 @@ T Pair&lt;T&gt;::bigger() {
 <li>It defines the standard stream objects that input and output data.</li>
 <li><code>#include &lt;iostream&gt;</code></li>
 </ul>
-<h5 id="output">Output</h5>
+<h4 id="output">Output</h4>
 <ul>
 <li><code>cout</code><ul>
 <li>Output content should follow the insertion operator <code>&lt;&lt;</code>. For example, <code>cout &lt;&lt; &quot;Hi!&quot;;</code></li>
@@ -2511,7 +2511,7 @@ T Pair&lt;T&gt;::bigger() {
 </ul>
 </li>
 </ul>
-<h5 id="input">Input</h5>
+<h4 id="input">Input</h4>
 <ul>
 <li><code>cin</code><ul>
 <li>Input content is indicated by the extraction operator (<code>&gt;&gt;</code>). For example, <code>int num; cin &gt;&gt; num;</code>.</li>
@@ -2529,7 +2529,7 @@ T Pair&lt;T&gt;::bigger() {
 </ul>
 </li>
 </ul>
-<h5 id="open-and-write-a-file">Open and Write a File</h5>
+<h4 id="open-and-write-a-file">Open and Write a File</h4>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;fstream&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
@@ -2565,7 +2565,7 @@ outfile.open(<span class="hljs-string">&quot;file.dat&quot;</span>, ios::out | i
 </ul>
 </li>
 </ul>
-<h5 id="read-a-file">Read a File</h5>
+<h4 id="read-a-file">Read a File</h4>
 <ul>
 <li>The getline function reads characters from an input stream and places them into a string.<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;fstream&gt;</span></span>
@@ -2581,7 +2581,7 @@ outfile.open(<span class="hljs-string">&quot;file.dat&quot;</span>, ios::out | i
 </code></pre>
 </li>
 </ul>
-<h5 id="closing-a-file">Closing a File</h5>
+<h4 id="closing-a-file">Closing a File</h4>
 <ul>
 <li><code>MyFile.close();</code></li>
 </ul>
@@ -2628,7 +2628,7 @@ outfile.open(<span class="hljs-string">&quot;file.dat&quot;</span>, ios::out | i
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C++","level":"1.7","depth":1,"next":{"title":"C#","level":"1.8","depth":1,"path":"c-sharp/README.md","ref":"c-sharp/README.md","articles":[{"title":".NET","level":"1.8.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},{"title":"ASP.NET","level":"1.8.2","depth":2,"path":"c-sharp/asp-dot-net.md","ref":"c-sharp/asp-dot-net.md","articles":[]}]},"previous":{"title":"C","level":"1.6","depth":1,"path":"c/README.md","ref":"c/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp/README.md","mtime":"2021-02-14T18:36:04.913Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-08T19:33:01.152Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C++","level":"1.7","depth":1,"next":{"title":"C#","level":"1.8","depth":1,"path":"c-sharp/README.md","ref":"c-sharp/README.md","articles":[{"title":".NET","level":"1.8.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},{"title":"ASP.NET","level":"1.8.2","depth":2,"path":"c-sharp/asp-dot-net.md","ref":"c-sharp/asp-dot-net.md","articles":[]}]},"previous":{"title":"C","level":"1.6","depth":1,"path":"c/README.md","ref":"c/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cpp/README.md","mtime":"2021-04-21T03:56:36.134Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T15:06:58.594Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

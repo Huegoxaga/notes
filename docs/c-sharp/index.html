@@ -1349,14 +1349,14 @@
                                 <h1 id="c"><code>C#</code></h1>
 <h2 id="introduction">Introduction</h2>
 <ul>
-<li>In 2000, Microsoft announced the C# programming language.</li>
-<li>C# has roots in the C, C++ and Java programming language</li>
-<li>C# is an object-oriented language that runs on the .NET Framework.</li>
-<li>C# graphical user interfaces (GUIs) are event-driven. It waits to respond to the users&apos; input.</li>
+<li>In 2000, Microsoft announced the <code>C#</code> programming language.</li>
+<li><code>C#</code> has roots in the C, C++ and Java programming language</li>
+<li><code>C#</code> is an object-oriented language that runs on the .NET Framework.</li>
+<li><code>C#</code> graphical user interfaces (GUIs) are event-driven. It waits to respond to the users&apos; input.</li>
 <li>Microsoft&#x2019;s Visual Studio enables you to use C# as a visual programming language.</li>
-<li>C# can be used to create Windows, mobile, database application and Web services, etc.</li>
+<li><code>C#</code> can be used to create Windows, mobile, database application and Web services, etc.</li>
 <li>The source code for programs that are executed and managed by the Common Language Runtime (CLR) is called managed code. It is first compiled into Microsoft Intermediate Language (MSIL), then translated the code in executable file by the just-in-time compiler or Just-In-Time (JIT) compiler into machine language.<ul>
-<li>.NET Framework consists of the Common Language Runtime(CLR) and the .NET Framework class library.</li>
+<li><code>.NET</code> Framework consists of the Common Language Runtime(CLR) and the .NET Framework class library.</li>
 </ul>
 </li>
 <li>When the user creates a new project in Visual Studio A solution and a folder are created at the same time with the same name as the project.</li>
@@ -1427,80 +1427,109 @@
 </li>
 <li>C# use stack to store static value, like primitive type data and address reference for objects. It uses heap to store object information.</li>
 </ul>
-<h3 id="type">Type</h3>
-<p>Instance variables of types char, byte, sbyte, short, ushort, int, uint, long, ulong, float, double, and decimal are all given the value 0 by default.
+<pre><code class="lang-md"><span class="hljs-section">### Type</span>
+
+Instance variables of types char, byte, sbyte, short, ushort, int, uint, long, ulong, float, double, and decimal are all given the value 0 by default.
 Instance variables of type bool are given the value false by default.
 Reference-type instance variables are initialized by default to the value null.
 null object cannot be accessed for its methods and properties.
 If any type might be assigned a null value, it is then a nullable type. denoted as typeName?
-nullable type has property HasValue, returns true if it is not null.</p>
-<p>float x = 0.0f; //it is represented by 0.0f, can store 7 numbers after decimal point.
+nullable type has property HasValue, returns true if it is not null.
+
+float x = 0.0f; //it is represented by 0.0f, can store 7 numbers after decimal point.
 double x = 0.0d; //it is represented by 0.0d, can store 15 numbers after decimal point.
 decimal x = 0.0m; //it is represented by 0.0m, can store 28 numbers after decimal point.
-//decimal work with price</p>
-<h3 id="operator">Operator</h3>
-<p>standard operator can all be used in C#.
-int divide int will get a int result.</p>
-<p>&amp;&amp; and
+//decimal work with price
+
+<span class="hljs-section">### Operator</span>
+
+standard operator can all be used in C#.
+int divide int will get a int result.
+
+&amp;&amp; and
 || or
-! not</p>
-<p>is
+! not
+
+is
 object A is object B
-is operator return true if A if of type B.</p>
-<p>as
+is operator return true if A if of type B.
+
+as
 object A as object B
-explicitly convert type A to B, if not successful, A become null.</p>
-<p>conditional operator
-  condition ? value1   : value2 ;    if true returns value1.</p>
-<p>null conditional operator ?.
+explicitly convert type A to B, if not successful, A become null.
+
+conditional operator
+  condition ? value1   : value2 ;    if true returns value1.
+
+null conditional operator ?.
 exampleObject?.Dispose();
-It calls Dispose only if exampleObject is not null</p>
-<p>decimal? salary = employee?.BaseSalary;
+It calls Dispose only if exampleObject is not null
+
+decimal? salary = employee?.BaseSalary;
 typeName?
-this specify that the type is nullable.</p>
-<p>null coalescing operator (??)
+this specify that the type is nullable.
+
+null coalescing operator (??)
 decimal salary = employee?.BaseSalary ?? 0M;
-if employee is not null, salary is assigned the employee&#x2019;s BaseSalary; otherwise, salary is assigned 0M.</p>
-<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
-<h3 id="array">Array</h3>
-<p>int[] arrayName = new int[5] //an array of int with 5 elements.
+if employee is not null, salary is assigned the employee&#x2019;s BaseSalary; otherwise, salary is assigned 0M.
+
+&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
+
+<span class="hljs-section">### Array</span>
+
+int[] arrayName = new int[5] //an array of int with 5 elements.
 or
 int[] arrayName = new int[5] {1,2,3,4,5}; //assign values during instantiation.
 or
 int[] arrayName = new int[] {1,2,3,4,5};
 or
-int[] arrayName = {1,2,3,4,5};</p>
-<p>arrayName[0] = 5 //assign 5 to the first element of this array.</p>
-<p>Multidimensional Array
-All of its element have the same length and type.</p>
-<p>int[,] x = new int[4,4]; //a new 4 by 4 integer array.<br>// the [,] indicates two dimensional array. for three dimensional array using [, ,]
+int[] arrayName = {1,2,3,4,5};
+
+arrayName[0] = 5 //assign 5 to the first element of this array.
+
+Multidimensional Array
+All of its element have the same length and type.
+
+int[,] x = new int[4,4]; //a new 4 by 4 integer array.  
+// the [,] indicates two dimensional array. for three dimensional array using [, ,]
 int[,] x = { {1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16} };
-//x[1][1] is 6 from the above array.</p>
-<p>Jagged array
-It is an array of any array.</p>
-<p>int[][] x = new int[3][] //an array of three array. these three array have unknown length.
-int[][] x = new int[3][,]//an array of three two-dimensional array.
-int[][] x = new int[][] {new int[] {1,2}, new int[] {1,2,3}, new int[] {1,2,3,4} }</p>
-<p>Array Properties
+//x[<span class="hljs-string">1</span>][<span class="hljs-symbol">1</span>] is 6 from the above array.
+
+Jagged array
+It is an array of any array.
+
+int[<span class="hljs-string"></span>][<span class="hljs-symbol"></span>] x = new int[<span class="hljs-string">3</span>][<span class="hljs-symbol"></span>] //an array of three array. these three array have unknown length.
+int[<span class="hljs-string"></span>][<span class="hljs-symbol"></span>] x = new int[<span class="hljs-string">3</span>][<span class="hljs-symbol">,</span>]//an array of three two-dimensional array.
+int[<span class="hljs-string"></span>][<span class="hljs-symbol"></span>] x = new int[][] {new int[] {1,2}, new int[] {1,2,3}, new int[] {1,2,3,4} }
+
+Array Properties
 arrayName.Length //return array length.
 arrayName.Rank //return the number of dimension.
 arrayName.Max
 arrayName.Min
-arrayName.Sum</p>
-<p>Array Class Methods
+arrayName.Sum
+
+Array Class Methods
 Array.Sort(arrayName);
-Array.Reverse(arrayName);</p>
-<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
-<h3 id="string">String</h3>
-<p>String type is similar to a one dimensional array it can be accessed using index in [].
+Array.Reverse(arrayName);
+
+&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
+
+<span class="hljs-section">### String</span>
+
+String type is similar to a one dimensional array it can be accessed using index in [].
 Strings use double quotation.
-String can be compared directly using comparison operators. Characters of each string are compared one by one until a difference is found.</p>
-<p>\r\n will start a new line.</p>
-<p>String indexer
-s[index] return the chat on the index.</p>
-<p>String properties
-s.Length returns the length of the string.</p>
-<p>String methods
+String can be compared directly using comparison operators. Characters of each string are compared one by one until a difference is found.
+
+\r\n will start a new line.
+
+String indexer
+s[index] return the chat on the index.
+
+String properties
+s.Length returns the length of the string.
+
+String methods
 s.IndexOf(value) returns the index of the first occurrence of the value within the string.
 if not found returns 0. value can be a string or character.
 s.IndexOf(value, startPosition) search from start position.
@@ -1531,117 +1560,152 @@ String class constructor
 new string(character, number) this repeatedly prints a character for a number of time.
 new String(&quot;0&quot;,5); get a string with five &quot;a&quot; in a row
 new string(charArray); //convert an array of char into string.
-new string(charArray, index, length); //convert part of an array of char into string.</p>
-<p>Formatted String
-String interpolation allows the creation of formatted strings.</p>
-<p>string person = &quot;Jack&quot;;
-Console.WriteLine($&quot;Welcome to C# Programming, {person}!&quot;);</p>
-<p>In {} variable names can be followed by a format specifier and alignment number like {variableName,alignment:format}</p>
-<p>alignment number is a place holder.
+new string(charArray, index, length); //convert part of an array of char into string.
+
+Formatted String
+String interpolation allows the creation of formatted strings.
+
+string person = &quot;Jack&quot;;
+Console.WriteLine(\$&quot;Welcome to C# Programming, {person}!&quot;);
+
+In {} variable names can be followed by a format specifier and alignment number like {variableName,alignment:format}
+
+alignment number is a place holder.
 ,10 mean 10 space align to the right
-,-10 means 10 space align to the left</p>
-<p>C or c is for currency symbol
+,-10 means 10 space align to the left
+
+C or c is for currency symbol
 D or d is for whole number
 N or n is for number has thousand separator and a default of two decimal places.
 E or e using scientific notation and 6 decimal places.
-F or f using certain number of decimal places(default 2) //F1 represents one decimal place.</p>
-<p>$ indicates the start of an interpolated string.
-{} is the place holder for the value.</p>
-<p>Substitution parameters can also be used, starting at {0}
+F or f using certain number of decimal places(default 2) //F1 represents one decimal place.
+
+\$ indicates the start of an interpolated string.
+{} is the place holder for the value.
+
+Substitution parameters can also be used, starting at {0}
 string s = &quot;World!&quot;
-Console.WriteLine(&quot;{0} {1}&quot;, &quot;Hello&quot;, s);</p>
-<p>Verbatim strings do not require \ to escape special characters. It is indicated by @
-string s1 = @&quot;\a\b\c&quot; //If s1 get printed, it will have output \a\b\c</p>
-<p>Composite formatting of parameters
+Console.WriteLine(&quot;{0} {1}&quot;, &quot;Hello&quot;, s);
+
+Verbatim strings do not require \ to escape special characters. It is indicated by @
+string s1 = @&quot;\a\b\c&quot; //If s1 get printed, it will have output \a\b\c
+
+Composite formatting of parameters
 more information can added in {} after index for formatted substitution.
-{index(starts from 0)[[,alignment][:formatstring]}</p>
-<h3 id="character">Character</h3>
-<p>Chars use single quotation.</p>
-<p>Character Methods
-char.IsDigit(&#x2018;a&#x2019;); //returns true if the character in the bracket is an integer.</p>
-<h3 id="type-conversion">Type Conversion</h3>
-<p>Type casting
+{index(starts from 0)[<span class="hljs-string">[,alignment</span>][<span class="hljs-symbol">:formatstring</span>]}
+
+<span class="hljs-section">### Character</span>
+
+Chars use single quotation.
+
+Character Methods
+char.IsDigit(&#x2018;a&#x2019;); //returns true if the character in the bracket is an integer.
+
+<span class="hljs-section">### Type Conversion</span>
+
+Type casting
 (double)19; //gets 19.0
-((objType)i).Property; //cast an object into a specific object when applying polymorphism.</p>
-<p>Any type can be converted to its string representation explicitly by using that type&#x2019;s .ToString() method:
+((objType)i).Property; //cast an object into a specific object when applying polymorphism.
+
+Any type can be converted to its string representation explicitly by using that type&#x2019;s .ToString() method:
 double d1 = 3.14159; string s3 = d1.ToString();
 A string can be converted to any type by using that type&#x2019;s .Parse() method:
-string s4 = &quot;3.14159&quot;; double d2 = double.Parse(s4);</p>
-<p>Each numeric variable type has a TryParse method
+string s4 = &quot;3.14159&quot;; double d2 = double.Parse(s4);
+
+Each numeric variable type has a TryParse method
 if(TryParse(StringX, out int valueX)){}
 or
 int valueX = 0;
 if(TryParse(StringX, out valueX)){}
 //returns true(succeed) or false(failed), if true valueX is assigned.
-DateTime &amp; Boolean types include the TryParse method as well.</p>
-<p>There is a Convert class that convert argument x into any type, specified in the method name.
+DateTime &amp; Boolean types include the TryParse method as well.
+
+There is a Convert class that convert argument x into any type, specified in the method name.
 Convert.ToDouble(x);
 Convert.ToBoolean(x);
 Convert.ToInt16(x);
 Convert.ToInt32(x);
-Convert.ToInt64(x);</p>
-<h3 id="generic-type">Generic Type</h3>
-<p><t>, it is a form of representing all type as one. It only cares about reference relationship.</t></p>
-<p>Generic Methods
-static void Swap<t>(ref T a, ref T b) {
+Convert.ToInt64(x);
+
+<span class="hljs-section">### Generic Type</span>
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>, it is a form of representing all type as one. It only cares about reference relationship.
+
+Generic Methods
+static void Swap<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>(ref T a, ref T b) {
 T temp = a;
 a = b;
 b = temp;
-}</t></p>
-<p><t> represents a generic type variable T</t></p>
-<p>T then can be replaced by any other type</p>
-<p>In Main method:
+}
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span> represents a generic type variable T
+
+T then can be replaced by any other type
+
+In Main method:
 int a = 4, b = 9;
-Swap<int>(ref a, ref b);
-//Now b is 4, a is 9</int></p>
-<p>string x = &quot;Hello&quot;;
+Swap<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span>(ref a, ref b);
+//Now b is 4, a is 9
+
+string x = &quot;Hello&quot;;
 string y = &quot;World&quot;;
-Swap<string>(ref x, ref y);</string></p>
-<p>Type can even be omitted</p>
-<p>Multiple generic parameters can be used with a single method.
-For example: Func<t, u=""> takes two different generic types</t,></p>
-<p>Generic Class
-Generic type can be used in classes</p>
-<p>class StackExample<t> {
-}</t></p>
-<p>It&#x2019;s object and method also works like in the old way
-Stack<int> intStack = new Stack<int>();
-intStack.Push(3);</int></int></p>
-<h3 id="collections">Collections</h3>
-<p>Collections can change size.
-All elements in collection have to be the same type.</p>
-<p>Generic collection
-using Systems.Collections.Generic;</p>
-<ul>
-<li>List<t></t></li>
-<li>Dictionary<tkey, tvalue=""></tkey,></li>
-<li>SortedList<tkey, tvalue=""></tkey,></li>
-<li>Stack<t></t></li>
-<li>Queue<t></t></li>
-<li>Hashset<t></t></li>
-</ul>
-<p>Non-Generic Collections
+Swap<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span></span>(ref x, ref y);
+
+Type can even be omitted
+
+Multiple generic parameters can be used with a single method.
+For example: Func<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T,</span> <span class="hljs-attr">U</span>&gt;</span></span> takes two different generic types
+
+Generic Class
+Generic type can be used in classes
+
+class StackExample<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span> {
+}
+
+It&#x2019;s object and method also works like in the old way
+Stack<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span> intStack = new Stack<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span>();
+intStack.Push(3);
+
+<span class="hljs-section">### Collections</span>
+
+Collections can change size.
+All elements in collection have to be the same type.
+
+Generic collection
+using Systems.Collections.Generic;
+
+<span class="hljs-bullet">- </span>List<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>
+<span class="hljs-bullet">- </span>Dictionary<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TKey,</span> <span class="hljs-attr">TValue</span>&gt;</span></span>
+<span class="hljs-bullet">- </span>SortedList<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TKey,</span> <span class="hljs-attr">TValue</span>&gt;</span></span>
+<span class="hljs-bullet">- </span>Stack<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>
+<span class="hljs-bullet">- </span>Queue<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>
+<span class="hljs-bullet">- </span>Hashset<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>
+
+Non-Generic Collections
 using System.Collections
 It can store objects, and it is slower
-ArrayList</p>
-<ul>
-<li>SortedList</li>
-<li>Stack</li>
-<li>Queue</li>
-<li>Hashtable</li>
-<li>BitArray</li>
-</ul>
-<p>Collections can all be created using following format.
-Collection<t> name = new Collection<t>();
+ArrayList
+
+<span class="hljs-bullet">- </span>SortedList
+<span class="hljs-bullet">- </span>Stack
+<span class="hljs-bullet">- </span>Queue
+<span class="hljs-bullet">- </span>Hashtable
+<span class="hljs-bullet">- </span>BitArray
+
+Collections can all be created using following format.
+Collection<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span> name = new Collection<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>();
 and initializer
-var name = new Collection<t> {element1, element2, element 3, ... };</t></t></t></p>
-<p>List
+var name = new Collection<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span> {element1, element2, element 3, ... };
+
+List
 List is a collection
-List<int> li = new List<int>();</int></int></p>
-<p>List<int> This is the type identifier for a list of integer.</int></p>
-<p>Use initializer
-var items = new List<string> {&quot;a&quot;,&quot;b&quot;,&quot;c&quot;};
-List<t> properties and methods include:
+List<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span> li = new List<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span>();
+
+List<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span> This is the type identifier for a list of integer.
+
+Use initializer
+var items = new List<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span></span> {&quot;a&quot;,&quot;b&quot;,&quot;c&quot;};
+List<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span> properties and methods include:
 Count A property that gets the number of elements contained in the list.
 Item[int i] Gets or sets the element in the list at the index i. Item is the indexer and is not required when accessing an element. You only need to use the brackets [] and the index value inside the brackets.
 Add(T t) Adds an element t to the end of the list.
@@ -1650,7 +1714,7 @@ Sort() Sorts elements in the list.
 Capacity - A property that gets the number of elements the list can hold before needing to be resized.
 Clear() - Removes all the elements from the list.
 TrimExcess() - Sets the capacity to the actual number of elements in the list. This is useful when trying to reduce memory overhead.
-AddRange(IEnumerable coll) - Adds the elements of collection coll with elements of the same type as List<t> to the end of the list. IEnumerable is the collections interface that supports simple iteration over the collection.
+AddRange(IEnumerable coll) - Adds the elements of collection coll with elements of the same type as List<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span> to the end of the list. IEnumerable is the collections interface that supports simple iteration over the collection.
 Insert(int i, T t) - Inserts an element t at a specific index i in the list.
 InsertRange(int i, IEnumerable coll) - Inserts the elements of a collection coll at a specified index i in the list. IEnumerable is the collections interface that supports simple iteration over the collection.
 Remove(T t) - Removes the first occurrence of the object t from the list.
@@ -1658,85 +1722,103 @@ RemoveRange(int i, int count) - Removes a specified number of elements count fro
 Contains(T t) - Returns true if the specified element t is present in the list.
 IndexOf(T t) - Returns the index of the first occurrence of the element t in the list.
 Reverse() - Reverses the order of the elements in the list.
-ToArray() - Copies the elements of the list into a new array.</t></t></string></p>
-<p>Sorted list
+ToArray() - Copies the elements of the list into a new array.
+
+Sorted list
 A sorted list is a collection of key/value pairs
 Duplicated keys are not allowed in the sorted keys
-SortedList<string, int=""> sl = new SortedList<string, int="">();</string,></string,></p>
-<p>SortedList<k, v="">
+SortedList<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">string,</span> <span class="hljs-attr">int</span>&gt;</span></span> sl = new SortedList<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">string,</span> <span class="hljs-attr">int</span>&gt;</span></span>();
+
+SortedList<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">K,</span> <span class="hljs-attr">V</span>&gt;</span></span>
 properties include:
 Count - Gets the number of key/value pairs contained in the sorted list.
 Item[K key] - Gets or sets the value associated the specified key contained in the sorted list. Item is the indexer and is not required when accessing an element. You only need to use the brackets [] and the key, value.
 Keys - Gets a sorted and indexed collection containing only the keys in the sorted list.
-SortedList<k, v=""> methods include:
+SortedList<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">K,</span> <span class="hljs-attr">V</span>&gt;</span></span> methods include:
 Add(K key, V value) - Adds an element with a specific key, value pair into the sorted list.
 Remove(K key) - Removes the element with the specific key, value pair associated with the specified key from the sorted list.
-SortedList<k, v=""> properties and methods:
+SortedList<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">K,</span> <span class="hljs-attr">V</span>&gt;</span></span> properties and methods:
 Values - Gets a sorted and indexed collection of the values in the sorted list.
 Clear() - Removes all the elements from the sorted list.
 ContainsKey(K key) - Returns true when the specified key is present in the sorted list.
 ContainsValue(V value) - Returns true when a specified value is present in the sorted list.
 IndexOfKey(K key) - Returns the index of the specified key within the sorted list.
-IndexOfValue(V value) - Returns the index of the specified value within the sorted list.</k,></k,></k,></p>
-<p>Bit Array
+IndexOfValue(V value) - Returns the index of the specified value within the sorted list.
+
+Bit Array
 A bit array is a collection of bits
-BitArray ba1 = new BitArray(4);</p>
-<p>BitArray properties include:
+BitArray ba1 = new BitArray(4);
+
+BitArray properties include:
 Count - Gets the number of bits in the bit array.
-IsReadOnly - Gets a value indicating if the bit array is read only or not.</p>
-<p>BitArray methods include:
+IsReadOnly - Gets a value indicating if the bit array is read only or not.
+
+BitArray methods include:
 Get(int i) - Gets the value of the bit at a specified position i in the bit array.
 Set(int i, bool value) - Sets the bit at a specified position i to a specified value in the bit array.
 SetAll(bool value) - Sets all the bits to a specified value in the bit array.
 And(BitArray ba) - Performs the bitwise AND operation on the elements of the bit array object with a specified bit array ba.
 Or(BitArray ba) - Performs the bitwise OR operation on the elements of the bit array and the specified bit array ba.
 Not() - Inverts the bit values of the bit array.
-Xor(BitArray ba) - Performs the bitwise XOR operation on the elements of the current bit array object and the elements in the specified bit array ba.</p>
-<p>Stack
+Xor(BitArray ba) - Performs the bitwise XOR operation on the elements of the current bit array object and the elements in the specified bit array ba.
+
+Stack
 A stack is a Last In, First Out (LIFO) collection of elements
-Stack<int> s = new Stack<int>();</int></int></p>
-<p>Stack<t> properties include:
-Count - Returns the number of elements in the stack.</t></p>
-<p>Stack<t> methods include:
+Stack<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span> s = new Stack<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span>();
+
+Stack<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span> properties include:
+Count - Returns the number of elements in the stack.
+
+Stack<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span> methods include:
 Peek() - Returns the element at the top of the stack without removing it.
 Pop() - Returns the element at the top of the stack and removes it from the stack.
 Push(T t) - Inserts an element t at the top of the stack.
 Clear() - Removes all the elements from the stack.
 Contains(T t) - Returns true when the element t is present in the stack.
-ToArray() - Copies the stack into a new array.</t></p>
-<p>Queue
+ToArray() - Copies the stack into a new array.
+
+Queue
 A queue is a First In, First Out (FIFO) collection of elements
-Queue<int> q = new Queue<int>();</int></int></p>
-<p>Queue<t> properties include:
-Count - Gets the number of elements in the queue.</t></p>
-<p>And methods include:
+Queue<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span> q = new Queue<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span>();
+
+Queue<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span> properties include:
+Count - Gets the number of elements in the queue.
+
+And methods include:
 Dequeue() - Returns the object at the beginning of the queue and also removes it.
 Enqueue(T t) - Adds the object t to the end of the queue.
 Clear() - Removes all objects from the queue.
 Contains(T t) - Returns true when the element t is present in the queue.
 Peek() - Returns the object at the beginning of the queue without removing it.
-ToArray() - Copies the queue into a new array.</p>
-<p>Dictionary
+ToArray() - Copies the queue into a new array.
+
+Dictionary
 Duplicate keys are not permitted
-Dictionary<string, int=""> d = new Dictionary<string, int="">();</string,></string,></p>
-<p>Dictionary<k, v=""> properties include:
+Dictionary<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">string,</span> <span class="hljs-attr">int</span>&gt;</span></span> d = new Dictionary<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">string,</span> <span class="hljs-attr">int</span>&gt;</span></span>();
+
+Dictionary<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">K,</span> <span class="hljs-attr">V</span>&gt;</span></span> properties include:
 Count - Gets the number of key/value pairs contained in the dictionary.
 Item[K key] - Gets the value associated with the specified key in the dictionary. Item is the indexer and is not required when accessing an element. You only need to use the brackets [] and key value.
-Keys - Gets an indexed collection containing only the keys contained in the dictionary.</k,></p>
-<p>Dictionary<k, v=""> methods include:
+Keys - Gets an indexed collection containing only the keys contained in the dictionary.
+
+Dictionary<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">K,</span> <span class="hljs-attr">V</span>&gt;</span></span> methods include:
 Add(K key, V value) - Adds the key, value pair to the dictionary.
-Remove(K key) - Removes the key/value pair related to the specified key from the dictionary.</k,></p>
-<p>Here are the additional Dictionary<k, v=""> properties and methods:
+Remove(K key) - Removes the key/value pair related to the specified key from the dictionary.
+
+Here are the additional Dictionary<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">K,</span> <span class="hljs-attr">V</span>&gt;</span></span> properties and methods:
 Values - Gets an indexed collection containing only the values in the dictionary.
 Clear() - Removes all the key/value pairs from the dictionary.
 ContainsKey(K key) - Returns true if the specified key is present in the dictionary.
-ContainsValue(V value) - Returns true if the specified value is present in the dictionary.</k,></p>
-<p>Hash set
+ContainsValue(V value) - Returns true if the specified value is present in the dictionary.
+
+Hash set
 A hash set is a set of unique values where duplicates are not allowed.
 They do not have index positions and elements cannot be ordered.
-HashSet<int> hs = new HashSet<int>();</int></int></p>
-<p>Count Returns the number of values in the hash set.</p>
-<p>And methods include:
+HashSet<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span> hs = new HashSet<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">int</span>&gt;</span></span>();
+
+Count Returns the number of values in the hash set.
+
+And methods include:
 Add(T t) Adds a value (t) to the hash set.
 IsSubsetOf(ICollection c) Returns true if the hash set is a subset of the specified collection (c).
 Remove(T t) Removes the value (t) from the hash set.
@@ -1746,79 +1828,107 @@ ToString() Creates a string from the hash set.
 IsSupersetOf(ICollection c) Returns true if the hash set is a superset of the specified collection.
 UnionWith(ICollection c) Applies set union operation on the hash set and the specified collection (c).
 IntersectWith(ICollection c) Applies set intersection operation on the hash set and the specified collection (c).
-ExceptWith(ICollection c) Applies set difference operation on the hash set and the specified collection (c).</p>
-<p>Most the collection type has the following methods
+ExceptWith(ICollection c) Applies set difference operation on the hash set and the specified collection (c).
+
+Most the collection type has the following methods
 Add (item As Object) Method: adds item to the collection, returning its index position
 Clear ( ) Method: removes all items in the collection. No return value
 Contains (value As Object) Method: returns True if value is found at least once in the collection.
 Count Property: returns the number of items in the collection. Read-only
-IndexOf (value As Object) Method: returns the Integer index position of the first occurrence of value in the collection. If value is not found, the return value is &#x2013;1</p>
-<p>Insert (index As Integer, item As Object)
+IndexOf (value As Object) Method: returns the Integer index position of the first occurrence of value in the collection. If value is not found, the return value is &#x2013;1
+
+Insert (index As Integer, item As Object)
 Method: insert item in the collection at position index. No return
 value
 Item (index As Integer) Property: returns the object located at position index
 Remove (value As Object) Method: removes value from the collection. No return value
-RemoveAt(index As Integer) Method: removes the item at the specified index. No return value</p>
-<p>Control Structure</p>
-<p>if(condition){
+RemoveAt(index As Integer) Method: removes the item at the specified index. No return value
+
+Control Structure
+
+if(condition){
    //a
   //b
-}</p>
-<p>if(condition) //code goes here if only one line.</p>
-<p>if(con){}else{}</p>
-<p>if(con1){}else if(con2){}else{}</p>
-<p>int x = 3;
+}
+
+if(condition) //code goes here if only one line.
+
+if(con){}else{}
+
+if(con1){}else if(con2){}else{}
+
+int x = 3;
 switch(x)
 {
    case 1:
-                       //code1
-                      break;
+<span class="hljs-code">                       //code1</span>
+<span class="hljs-code">                      break;</span>
    case 2:
-                      //code2</p>
-<p>break;
-   default:<br>                  //code if none matches
-                 break;
-}//C# require all case and default code must end with a break statement.</p>
-<p>while(condition) {}</p>
-<p>It can be shorten like using the following format:
+<span class="hljs-code">                      //code2</span>
+
+break;
+   default:  
+<span class="hljs-code">                  //code if none matches</span>
+<span class="hljs-code">                 break;</span>
+}//C# require all case and default code must end with a break statement.
+
+while(condition) {}
+
+It can be shorten like using the following format:
 int x = 0;
-while(++x &lt; 6)
-    Console.WriteLine(x);</p>
-<p>for(init; condition ; increment expression) {}</p>
-<p>init parameter can be defined before for loop:
-int init=0;
-for(;con;in){}</p>
-<p>Increment parameter can be defined in the loop code:
-for(init; con; ){i++;}</p>
-<p>for(;;){} is an infinite loop</p>
-<p>do{}while(con);
-assign array element to varName in each loop.
-foreach(type varName in arrayName) {</p>
-<p>}</p>
-<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
-<p>Method
-modifier [static] <return type=""> methodName(type1 par1, type2 par2, ... , typeN parN)   {  }</return></p>
-<p>Access modifier for methods:
+while(++x <span class="xml"><span class="hljs-tag">&lt; <span class="hljs-attr">6</span>)
+    <span class="hljs-attr">Console.WriteLine</span>(<span class="hljs-attr">x</span>);
+
+<span class="hljs-attr">for</span>(<span class="hljs-attr">init</span>; <span class="hljs-attr">condition</span> ; <span class="hljs-attr">increment</span> <span class="hljs-attr">expression</span>) {}
+
+<span class="hljs-attr">init</span> <span class="hljs-attr">parameter</span> <span class="hljs-attr">can</span> <span class="hljs-attr">be</span> <span class="hljs-attr">defined</span> <span class="hljs-attr">before</span> <span class="hljs-attr">for</span> <span class="hljs-attr">loop:</span>
+<span class="hljs-attr">int</span> <span class="hljs-attr">init</span>=<span class="hljs-string">0;</span>
+<span class="hljs-attr">for</span>(;<span class="hljs-attr">con</span>;<span class="hljs-attr">in</span>){}
+
+<span class="hljs-attr">Increment</span> <span class="hljs-attr">parameter</span> <span class="hljs-attr">can</span> <span class="hljs-attr">be</span> <span class="hljs-attr">defined</span> <span class="hljs-attr">in</span> <span class="hljs-attr">the</span> <span class="hljs-attr">loop</span> <span class="hljs-attr">code:</span>
+<span class="hljs-attr">for</span>(<span class="hljs-attr">init</span>; <span class="hljs-attr">con</span>; ){<span class="hljs-attr">i</span>++;}
+
+<span class="hljs-attr">for</span>(;;){} <span class="hljs-attr">is</span> <span class="hljs-attr">an</span> <span class="hljs-attr">infinite</span> <span class="hljs-attr">loop</span>
+
+<span class="hljs-attr">do</span>{}<span class="hljs-attr">while</span>(<span class="hljs-attr">con</span>);
+<span class="hljs-attr">assign</span> <span class="hljs-attr">array</span> <span class="hljs-attr">element</span> <span class="hljs-attr">to</span> <span class="hljs-attr">varName</span> <span class="hljs-attr">in</span> <span class="hljs-attr">each</span> <span class="hljs-attr">loop.</span>
+<span class="hljs-attr">foreach</span>(<span class="hljs-attr">type</span> <span class="hljs-attr">varName</span> <span class="hljs-attr">in</span> <span class="hljs-attr">arrayName</span>) {
+
+}
+
+&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
+
+<span class="hljs-attr">Method</span>
+<span class="hljs-attr">modifier</span> [<span class="hljs-attr">static</span>] &lt;<span class="hljs-attr">return</span> <span class="hljs-attr">type</span>&gt;</span></span> methodName(type1 par1, type2 par2, ... , typeN parN)   {  }
+
+Access modifier for methods:
 public
 private
 protected this type of variable can be accessible from its derived class.
-sealed - not available for inheritance.</p>
-<p>Return type should be void if no value is returned from the method.</p>
-<p>Keyword static can be added before return type so Main method can access it without creating an instance of the method&apos;s class. because, static method can access only static methods.</p>
-<p>In method definition, the default value of a par can be set at the end of parameter list
-static int Sum(int x, int y = 10 ){}</p>
-<p>Named arguments
+sealed - not available for inheritance.
+
+Return type should be void if no value is returned from the method.
+
+Keyword static can be added before return type so Main method can access it without creating an instance of the method&apos;s class. because, static method can access only static methods.
+
+In method definition, the default value of a par can be set at the end of parameter list
+static int Sum(int x, int y = 10 ){}
+
+Named arguments
 It can give arguments a name in method
 static int Vol(int h, int w, int l){
-return h<em>w</em>l
+return h<span class="hljs-emphasis">*w*</span>l
 }
 In main method method can be called in the following ways
-int v = Vol(w:2, h:9, l:3);</p>
-<p>ref keyword can be used to pass the reference of a value. it will change the original value during operation. when use ref for method the keyword should be used in method definition and in method call
+int v = Vol(w:2, h:9, l:3);
+
+ref keyword can be used to pass the reference of a value. it will change the original value during operation. when use ref for method the keyword should be used in method definition and in method call
 static void Method(ref int x){}
-Method(ref a);</p>
-<p>like ref, keyword out can be used to output value from a method.</p>
-<p>static void GetValues(out int x, out int y)
+Method(ref a);
+
+like ref, keyword out can be used to output value from a method.
+
+static void GetValues(out int x, out int y)
 {
    x = 3;
    y= 12;
@@ -1827,94 +1937,116 @@ static void Main (string[] args)
 {
    int a, b;
    GetValues(out a, out b);
-   // now a = 3, b = 12</p>
-<p>Variable-length argument lists allow you to create methods that receive an arbitrary number of arguments.It uses params modifier and exists as the last parameter among all parameters of the method.
+   // now a = 3, b = 12
+
+Variable-length argument lists allow you to create methods that receive an arbitrary number of arguments.It uses params modifier and exists as the last parameter among all parameters of the method.
 It usually works with array
 static void Method(params int[] x){
 }
 when call
 Method(1,2) -&gt; x = [1,2]
-Method(1,2,3,4) -&gt; x = [1,2,3,4]</p>
-<p>Method Overloading
-Method overloading also works for methods have same name but different parameters.</p>
-<p>//method override
+Method(1,2,3,4) -&gt; x = [1,2,3,4]
+
+Method Overloading
+Method overloading also works for methods have same name but different parameters.
+
+//method override
 public override void Method1()
-{<br> Console.WriteLine(&quot;Derived - Method1&quot;);<br>}</p>
-<p>Delegate
+{  
+ Console.WriteLine(&quot;Derived - Method1&quot;);  
+}
+
+Delegate
 It helps using method as a parameter of other methods.
-public bool RunTheMethod(Func<string, int=""> myMethodName)
+public bool RunTheMethod(Func<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">string,</span> <span class="hljs-attr">int</span>&gt;</span></span> myMethodName)
 {
 // ... do stuff
 int i = myMethodName(&quot;My String&quot;);
 // ... do more stuff
 return true;
-}</string,></p>
-<p>Extension Method
+}
+
+Extension Method
 Extension method are available from various classes in C#
 it can be called by objects using . in between or use ClassName.ExtensionName(objectName)
 extension methods are static methods from static class
-example for define extension class:</p>
-<p>static class TimeExtensions
+example for define extension class:
+
+static class TimeExtensions
 {
 // display the Time2 object in console
 public static void DisplayTime(this Time2 aTime)
 {
 Console.WriteLine(aTime.ToString());
-}</p>
-<p>// add the specified number of hours to the time
+}
+
+// add the specified number of hours to the time
 // and return a new Time2 object
 public static Time2 AddHours(this Time2 aTime, int hours)
 {
 // create a new Time object
 var newTime = new Time2() {
-Minute = aTime.Minute, Second = aTime.Second};</p>
-<pre><code>  // add the specified number of hours to the given time
-  newTime.Hour = (aTime.Hour + hours) % 24;
+Minute = aTime.Minute, Second = aTime.Second};
 
-  return newTime; // return the new Time2 object
-</code></pre><p>}
-}</p>
-<p>//this keyword before a method&#x2019;s first parameter notifies the compiler that the method extends an existing class</p>
-<p>Recursion
-a method can call itself in the method definition. an exit condition should exist for recursive function.</p>
-<p>Expression Bodied Methods
+<span class="hljs-code">      // add the specified number of hours to the given time</span>
+<span class="hljs-code">      newTime.Hour = (aTime.Hour + hours) % 24;</span>
+
+<span class="hljs-code">      return newTime; // return the new Time2 object</span>
+
+}
+}
+
+//this keyword before a method&#x2019;s first parameter notifies the compiler that the method extends an existing class
+
+Recursion
+a method can call itself in the method definition. an exit condition should exist for recursive function.
+
+Expression Bodied Methods
 static int Cube(int x) {
-return x <em> x </em> x;
+return x <span class="hljs-emphasis">_ x _</span> x;
 }
 can be written as.
-static int Cube(int x) =&gt; x <em> x </em> x;</p>
-<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
+static int Cube(int x) =&gt; x <span class="hljs-emphasis">_ x _</span> x;
+
+&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
 Class
 Classes can have property and method
 Public property and method can be accessed by class object using dot.
 A class can be sealed. It makes the class not available for inheritance.
-C# enables nested class, a class definition contains within another class&#x2019;s definition.</p>
-<p>Simple Class example
+C# enables nested class, a class definition contains within another class&#x2019;s definition.
+
+Simple Class example
 class Account
 {
-private string name;</p>
-<pre><code>public void SetName(string accountName)
-{
-    name = accountName;
+private string name;
+
+<span class="hljs-code">    public void SetName(string accountName)</span>
+<span class="hljs-code">    {</span>
+<span class="hljs-code">        name = accountName;</span>
+<span class="hljs-code">    }</span>
+
+<span class="hljs-code">    public string GetName( )</span>
+<span class="hljs-code">    {</span>
+<span class="hljs-code">        return name;</span>
+<span class="hljs-code">    }</span>
+
 }
 
-public string GetName( )
-{
-    return name;
-}
-</code></pre><p>}</p>
-<p>readonly keyword can be added to indicated that the variable can only be edited in declaration or from within a constructor.
+readonly keyword can be added to indicated that the variable can only be edited in declaration or from within a constructor.
 readonly variable names use Pascal case by convention.
 private readonly string name; //it can be declared without initialization(without assigning a value.)
-a class can be static, once it is static all of its method and variable should be static. It can not be instantiated.</p>
-<p>Class Properties
+a class can be static, once it is static all of its method and variable should be static. It can not be instantiated.
+
+Class Properties
 Property name has its first letter capitalized.
 Properties are accessed by using objectName.Property.
 The set accessor uses the keyword value as its parameter.
 a property can also be private.
-accessors of a property can be omitted.</p>
-<p>Simple Class example using properties</p>
-<p>class Account
+accessors of a property can be omitted.
+
+Simple Class example using properties
+
+class Account
 {
 private string name;
 public string Name
@@ -1928,40 +2060,49 @@ set
 name = value;
 }
 }
-}// the private name, can now be accessed using property Name.</p>
-<p>Example in Main class:
+}// the private name, can now be accessed using property Name.
+
+Example in Main class:
 using System;
 class AccountTest
 {
 static void Main( )
 {
-Account myAccount = new Account( );</p>
-<pre><code>    Console.WriteLine($&#x201D;Initial name is: {myAccount.Name}&#x201D;);
+Account myAccount = new Account( );
 
-    Console.Write(&#x201C;Please enter the name: &#x201D;);
-    string theName = Console.ReadLine();
-    myAccount.Name = theName;
+<span class="hljs-code">        Console.WriteLine($&#x201D;Initial name is: {myAccount.Name}&#x201D;);</span>
 
-    Console.WriteLine($&#x201D;myAccount&#x2019;s name is: {myAccount.Name}&#x201D;);
+<span class="hljs-code">        Console.Write(&#x201C;Please enter the name: &#x201D;);</span>
+<span class="hljs-code">        string theName = Console.ReadLine();</span>
+<span class="hljs-code">        myAccount.Name = theName;</span>
+
+<span class="hljs-code">        Console.WriteLine($&#x201D;myAccount&#x2019;s name is: {myAccount.Name}&#x201D;);</span>
+<span class="hljs-code">    }</span>
+
 }
-</code></pre><p>}</p>
-<p>Using auto-implemented property to shorten the code with simple getter and setter.
+
+Using auto-implemented property to shorten the code with simple getter and setter.
 these accessors only read or write the original value of the private property.
 public string Name {get; set;}
-//keyword private can be used before both set / get, or before any one of them.</p>
-<p>Using auto-property initializers shorten the code in the declaration
+//keyword private can be used before both set / get, or before any one of them.
+
+Using auto-property initializers shorten the code in the declaration
 public type propertyName { get; set; } = value;
-public int x ( get; set; } = 0;</p>
-<p>In UML, a property is represented in guillemets.
+public int x ( get; set; } = 0;
+
+In UML, a property is represented in guillemets.
 Ex,
-+&lt;<property>&gt; Name: string</property></p>
-<p>Constructor
++<span class="xml"><span class="hljs-tag">&lt;&lt;<span class="hljs-attr">property</span>&gt;</span></span>&gt; Name: string
+
+Constructor
 constructor can also be used as public. It can also be overloaded. It can have default values.
-public ClassName(parm1,&#x2026;){ }</p>
-<p>Constructor Chaining
+public ClassName(parm1,&#x2026;){ }
+
+Constructor Chaining
 public ClassName(x):this(){}
-the ClassName(x) constructor is chained with the ClassName() constructor. When ClassName(x) is called ClassName() will be call first, then ClassName(x) will be called.</p>
-<p>Define constructor for a derived class.
+the ClassName(x) constructor is chained with the ClassName() constructor. When ClassName(x) is called ClassName() will be call first, then ClassName(x) will be called.
+
+Define constructor for a derived class.
 public CommissionEmployee(string firstName, string lastName,
 string socialSecurityNumber, decimal grossSales,
 decimal commissionRate)
@@ -1970,38 +2111,46 @@ decimal commissionRate)
 GrossSales = grossSales; // additional properties in the current constructor.
 CommissionRate = commissionRate;
 }
-base keyword is used to borrow property assignment from the base constructor.</p>
-<p>If the base class does not have a default constructor, every derived constructor must explicitly invoke one of the base class constructors using base</p>
-<p>public Account(string accountName)
+base keyword is used to borrow property assignment from the base constructor.
+
+If the base class does not have a default constructor, every derived constructor must explicitly invoke one of the base class constructors using base
+
+public Account(string accountName)
 {
 Name = accountName;
-}</p>
-<p>constructor can be static, when a static variable is accessed, the static method will be called.
+}
+
+constructor can be static, when a static variable is accessed, the static method will be called.
 In UML, it can be
-&lt;<constructor>&gt; Account(accountName: string)</constructor></p>
-<p>Partial class????</p>
-<p>Destructor
+<span class="xml"><span class="hljs-tag">&lt;&lt;<span class="hljs-attr">constructor</span>&gt;</span></span>&gt; Account(accountName: string)
+
+Partial class????
+
+Destructor
 it is called when an object is deleted or destroyed.
 it does not take modifiers or have parameters.
 the name of the destructor is the class name with a ~ prefix.
 ~ClassName()
 {
 //code for releasing resources in a destructor.
-}</p>
-<p>Operator Overloading
-Operator overloading can be used to define custom actions for operators. Then, these operator can be used in between two object variables.</p>
-<p>public static Box operator+ (Box a, Box b) {
+}
+
+Operator Overloading
+Operator overloading can be used to define custom actions for operators. Then, these operator can be used in between two object variables.
+
+public static Box operator+ (Box a, Box b) {
 int h = a.Height + b.Height;
 int w = a.Width + b.Width;
 Box res = new Box(h,w);
 return res; //return type is also Box
 }
-//all arithmetic operator can be define, for comparison operator they return bool, also &lt; and &gt; should be defined together. Same for &lt;= and &gt;=, == and !=(object .Equal()method works better with many other language in .NET it is more recommended than ==)</p>
-<p>Conversion operator overloading
+//all arithmetic operator can be define, for comparison operator they return bool, also <span class="xml"><span class="hljs-tag">&lt; <span class="hljs-attr">and</span> &gt;</span></span> should be defined together. Same for <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">=</span> <span class="hljs-attr">and</span> &gt;</span></span>=, == and !=(object .Equal()method works better with many other language in .NET it is more recommended than ==)
+
+Conversion operator overloading
 public static implicit operator TypeConvertToName(TypeToConvert variableName){}
-If the operation is guarantee to succeed with no data lost, use implicit keyword. Otherwise, use explicit.</p>
-<h6 id="">#</h6>
-<p>Indexers
+If the operation is guarantee to succeed with no data lost, use implicit keyword. Otherwise, use explicit.
+<span class="hljs-section">#########################</span>
+Indexers
 Indexers can be used to create index for a class objects.
 class Clients {
 private string[] names = new string[10];
@@ -2009,23 +2158,29 @@ public string this [int index] {
 get{ return names[index];}
 set{ names[index] =value; }
 }
-}}</p>
-<p>In main;
+}}
+
+In main;
 Client c = new Client();
 c[0] = &#x201C;Dave&#x201D;;
 c[1] = &#x201C;Bob&#x201D;;
 Console.WriteLine(c[1]);
-//Output Bob</p>
-<p>Inheritance
+//Output Bob
+
+Inheritance
 In C# the child class is called derived class, the parent class is called the base class.
-One derived class can have only one base class.</p>
-<p>class DerivedClass : BaseClass {
-}</p>
-<p>When an object of the derived class is instantiated, the base class constructor will be called first, then the derived class constructor will be called if it has one.
-When an object of the derived class is deleted, the derived class destructor will be called first, then the base class destructor will be called if it has one.</p>
-<p>A object can be created as a base type and used as a specific derived type.
-DerivedType x = new BaseType();</p>
-<p>A method can be defined as a virtual method in base class, then overridden in different derived class.
+One derived class can have only one base class.
+
+class DerivedClass : BaseClass {
+}
+
+When an object of the derived class is instantiated, the base class constructor will be called first, then the derived class constructor will be called if it has one.
+When an object of the derived class is deleted, the derived class destructor will be called first, then the base class destructor will be called if it has one.
+
+A object can be created as a base type and used as a specific derived type.
+DerivedType x = new BaseType();
+
+A method can be defined as a virtual method in base class, then overridden in different derived class.
 class BaseClass {
 public virtual void MethodName() {
 }
@@ -2033,82 +2188,106 @@ public virtual void MethodName() {
 class DerivedClass : BaseClass {
 public override void MethodName() {
 }
-}</p>
-<p>new keyword in the derived class can be use to hide base.method, it works even the base method is not a virtual method.
+}
+
+new keyword in the derived class can be use to hide base.method, it works even the base method is not a virtual method.
 Keyword base can be used to represent the method from base class.
-base.methodName();</p>
-<p>In a derived class:
+base.methodName();
+
+In a derived class:
 public new void methodName()
 {
 base.methodName();
 //additional changes goes here.
-}</p>
-<p>Abstract class
+}
+
+Abstract class
 If method or property does not need to be defined in the base class, the method can be an abstract method or property, the class itself also need to be abstract to hold an abstract method and property. abstract class cannot be instantiated. non-abstract class are described as concrete class.
 abstract class BaseClass {
-public abstract PropertyType MyProperty { get; set; }</p>
-<pre><code>public abstract void MethodName();
-</code></pre><p>}
+public abstract PropertyType MyProperty { get; set; }
+
+<span class="hljs-code">    public abstract void MethodName();</span>
+
+}
 class DerivedClass : BaseClass {
 public override void MethodName(){
 //implementation for the abstract method is mandatory.
 }
-}</p>
-<p>Interface
+}
+
+Interface
 If a class has only abstract members, it is an interface.
 All members of an interface are always public.
 public interface IShapes //interface name usually starts with an &#x2018;I&#x2019;
 {
 void AbstractMethodName();
-}</p>
-<p>Interface can contain properties and method, however it cannot contain variables.
+}
+
+Interface can contain properties and method, however it cannot contain variables.
 Interface can implement one or more other interfaces. It called extending or combining an interface.
 A class can implement multiple interfaces, separated by , after :
 class Name : Ione, Itwo, Three {
 public void AbstractMethod(){
 //keyword override is not needed in this case.
 }
-}</p>
-<p>A class can have a reference to its interface class.
+}
+
+A class can have a reference to its interface class.
 Interface object can not be used created, but an interface reference can be created.
-To use a method from interface reference, an implemented class can be instantiated and assign this object to the interface reference.</p>
-<p>If a Document class implements IPrintable<br>IPrintable myPrintable = new Document();
-IStorable[] myStorableArray = new IStorable[3];</p>
-<p>Document myDoc = new Document(&#x2026;);<br>IStorable myStorable = myDoc;</p>
-<p>myStorable.method();</p>
-<p>Interface IEnumerable<t>
+To use a method from interface reference, an implemented class can be instantiated and assign this object to the interface reference.
+
+If a Document class implements IPrintable  
+IPrintable myPrintable = new Document();
+IStorable[] myStorableArray = new IStorable[3];
+
+Document myDoc = new Document(&#x2026;);  
+IStorable myStorable = myDoc;
+
+myStorable.method();
+
+Interface IEnumerable<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>
 Implements this interface enable a data/object type to be used for iteration like foreach loop and linq queries.
-Arrays and Collections already implement the IEnumerable<t></t></t></p>
-<p>Interface IComparable<t>
+Arrays and Collections already implement the IEnumerable<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>
+
+Interface IComparable<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>
 Implements this interface enable a data/object type to be comparable. like orderby in linq
-All built-in types have implemented IComparable.</t></p>
-<p>Interface IComponent<t>
+All built-in types have implemented IComparable.
+
+Interface IComponent<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>
 Implemented by classes that represents a component
-Interface IDisposable<t>
+Interface IDisposable<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span>&gt;</span></span>
 Implemented by classes that must provide an explicit mechanism for releasing resources.
 &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
 Delegate
 It is declared as a reference of methods with the same parameters and return types.
 It can be instantiate and assigned with an method of certain class.
-It can be then pass to a class method which take this delegate as a parameter.</t></t></p>
-<p>In the class that declare and use the delegate:
+It can be then pass to a class method which take this delegate as a parameter.
+
+In the class that declare and use the delegate:
 //Declare delegate in DelegateClass
 public delegate returnType DelegateName();
 //Declare method take the delegate
 public void DelegateMethodName(DelegateName DelegateVariableName){
 //use delegate method here as DelegateVariableName()
-}</p>
-<p>Assume that there is a method called SomeMethod in OtherClass.</p>
-<p>In main:
-DelegateClass newDelegateClass = new DelegateClass();</p>
-<p>OtherClass newOtherClass = new OtherClass();</p>
-<p>DelegateClass.DelegateName newDelegate = new DelegateClass.DelegateName(newOtherClass.SomeMethod);</p>
-<p>//then the SomeMethod can be called by the delegate.
-newDelegateClass.DelegateMethodName(newDelegate);</p>
-<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
+}
+
+Assume that there is a method called SomeMethod in OtherClass.
+
+In main:
+DelegateClass newDelegateClass = new DelegateClass();
+
+OtherClass newOtherClass = new OtherClass();
+
+DelegateClass.DelegateName newDelegate = new DelegateClass.DelegateName(newOtherClass.SomeMethod);
+
+//then the SomeMethod can be called by the delegate.
+newDelegateClass.DelegateMethodName(newDelegate);
+
+&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
 Struct
-It is a customized type which can store multiple value inside.</p>
-<p>struct Quality {
+It is a customized type which can store multiple value inside.
+
+struct Quality {
 public string body;
 public string aroma;
 public double score;
@@ -2116,8 +2295,9 @@ public double score;
 In Main class
 Quality x;
 x.body = &#x201C;good&#x201D;;
-b.score = 100.0;</p>
-<p>struct can have constructor. new keyword is required to use struct constructor.
+b.score = 100.0;
+
+struct can have constructor. new keyword is required to use struct constructor.
 struct Quality {
 public string body;
 public string aroma;
@@ -2127,10 +2307,12 @@ this.body = x;
 this.aroma = y;
 this.score = z;
 }
-}</p>
-<p>in main:
-Quality s = new Quality(&#x201C;good&#x201D;, &#x201C;nice&#x201D;, 100.0);</p>
-<p>types like int and double in C# are struct.
+}
+
+in main:
+Quality s = new Quality(&#x201C;good&#x201D;, &#x201C;nice&#x201D;, 100.0);
+
+types like int and double in C# are struct.
 &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
 Enum
 It is a list of names as value.
@@ -2139,13 +2321,15 @@ Now enum days has 5 constant, Days.Mon, Days.Tue, Days.Wed, Days.Thu, Days.Fri
 the enum now has type Days.
 Ex:
 Days x;
-x = Days.Mon;</p>
-<p>enum elements can have a value starts from 0, increased by 1 to the right
+x = Days.Mon;
+
+enum elements can have a value starts from 0, increased by 1 to the right
 int x = (int)Days.Mon; //x = 0
 The value can be assigned specifically
 enum Days {Mon, Tue = 10, Wed, Thu, Fri };
-Then Days.Mon is 0, Days.Tue is 10, Days.Wed is 11, Days.Thu is 12.</p>
-<p>enums can be used with switch cases
+Then Days.Mon is 0, Days.Tue is 10, Days.Wed is 11, Days.Thu is 12.
+
+enums can be used with switch cases
 switch (x) {
 case Days.Mon:
 //code
@@ -2153,30 +2337,38 @@ break;
 case Days.Tue:
 //code
 break;
-}</p>
-<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
+}
+
+&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
 Random class
-Random randomObject = new Random( );</p>
-<p>int newNumber = randomObject.Next(1,7) //generates random number from 1 to 6.
+Random randomObject = new Random( );
+
+int newNumber = randomObject.Next(1,7) //generates random number from 1 to 6.
 randomObject.Next() //generates random integer from 0 to 2,147,483,647
 randomObject.Next(100) //generates random integer from 0 to 99
-randomObject.NextDouble() //generates random floating-point number in range [0.0,1.0)</p>
-<p>A seed value is used by the random number generation algorithm. It produces a repeated series of number as &#x201C;random&#x201D; numbers.
-Seed value can be assigned in the random object constructor.</p>
-<p>Random randomObject = new Random( seed:int );</p>
-<p>By default, C# uses a current time value as the seed value as it keeps changing.
+randomObject.NextDouble() //generates random floating-point number in range [0.0,1.0)
+
+A seed value is used by the random number generation algorithm. It produces a repeated series of number as &#x201C;random&#x201D; numbers.
+Seed value can be assigned in the random object constructor.
+
+Random randomObject = new Random( seed:int );
+
+By default, C# uses a current time value as the seed value as it keeps changing.
 &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
-DateTime class</p>
-<p>DateTime.Now; //return the current date &amp; time
+DateTime class
+
+DateTime.Now; //return the current date &amp; time
 DateTime.Today; //return the current day
 DateTime.DaysInMonth(2016,2); //return the number of days in the specified month
 DateTime date1 = new DateTime(2017, 8, 30);
 DateTime date2 = new DateTime(2017, 8, 30, 2, 25, 30);
 DateTime.AddYears(18); //get date 18 years later.
-.ToShortDateString() method</p>
-<p>can be converted to string
-string s1 = date5.ToString();</p>
-<p>convert a string to datetime object
+.ToShortDateString() method
+
+can be converted to string
+string s1 = date5.ToString();
+
+convert a string to datetime object
 string s2 = &quot;30/08/2017 12:00:00 AM&#x201D;;
 DateTime date6 = DateTime.Parse(s2);
 &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
@@ -2191,12 +2383,15 @@ Sin
 Cos
 Pow
 Round
-Sqrt</p>
-<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
+Sqrt
+
+&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
 Object class
-If a class does not specify that it inherits from another class, it implicitly inherits from object class.</p>
-<p>Class object&#x2019;s default (empty) constructor does nothing.</p>
-<p>Class Object Methods
+If a class does not specify that it inherits from another class, it implicitly inherits from object class.
+
+Class object&#x2019;s default (empty) constructor does nothing.
+
+Class Object Methods
 Equals()
 Finalize()
 GetHashCode()
@@ -2204,9 +2399,11 @@ GetValueOrDefault()
 GetType() returns the object type in a string
 Memberwise-Clone()
 Reference-Equals(): static method returns true if two objects are the same instance or are both null.otherwise returns false
-ToString method returns a string that describes the class object when called.</p>
-<p>Exception Class</p>
-<p>Try &amp; Catch
+ToString method returns a string that describes the class object when called.
+
+Exception Class
+
+Try &amp; Catch
 The exception in the try block will be caught in the catch block as its parameter
 if there are many catch block the catch all exception block should be the last one.
 Exception object has the following properties.
@@ -2216,8 +2413,9 @@ Source specifies the name of the app or object that caused the exception.
 TargetSite specifies the method where the exception originated.
 the InnerException property stores the original exception object of a newly defined exception object.
 StackTrace property trace the exception, show file location and line numbers for the exception.
-ToString method of exception presents the error message.</p>
-<p>A finally block can be added in the last, for codes that will be executed for sure.
+ToString method of exception presents the error message.
+
+A finally block can be added in the last, for codes that will be executed for sure.
 Finally block is usually used to close a file in the end.
 try{
 }
@@ -2225,68 +2423,86 @@ catch(Exception e) {
 }
 finally {
 }
-//This is the catch all error try-catch block with finally block.</p>
-<p>static void CodeWithCleanup()
+//This is the catch all error try-catch block with finally block.
+
+static void CodeWithCleanup()
 {
 System.IO.FileStream file = null;
-System.IO.FileInfo fileInfo = null;</p>
-<pre><code>try
-{
-    fileInfo = new System.IO.FileInfo(&quot;C:\\file.txt&quot;);
+System.IO.FileInfo fileInfo = null;
 
-    file = fileInfo.OpenWrite();
-    file.WriteByte(0xF);
+<span class="hljs-code">    try</span>
+<span class="hljs-code">    {</span>
+<span class="hljs-code">        fileInfo = new System.IO.FileInfo(&quot;C:\\file.txt&quot;);</span>
+
+<span class="hljs-code">        file = fileInfo.OpenWrite();</span>
+<span class="hljs-code">        file.WriteByte(0xF);</span>
+<span class="hljs-code">    }</span>
+<span class="hljs-code">    catch(System.UnauthorizedAccessException e)</span>
+<span class="hljs-code">    {</span>
+<span class="hljs-code">        System.Console.WriteLine(e.Message);</span>
+<span class="hljs-code">    }</span>
+<span class="hljs-code">    finally</span>
+<span class="hljs-code">    {</span>
+<span class="hljs-code">        if (file != null)</span>
+<span class="hljs-code">        {</span>
+<span class="hljs-code">            file.Close();</span>
+<span class="hljs-code">        }</span>
+<span class="hljs-code">    }</span>
+
 }
-catch(System.UnauthorizedAccessException e)
-{
-    System.Console.WriteLine(e.Message);
-}
-finally
-{
-    if (file != null)
-    {
-        file.Close();
-    }
-}
-</code></pre><p>}</p>
-<p>catch(ExceptionType name) when(condition)
-a certain exception can be only caught under certain condition</p>
-<p>catch when(condition)
-an general exception can be only caught under certain condition</p>
-<p>Exception type
+
+catch(ExceptionType name) when(condition)
+a certain exception can be only caught under certain condition
+
+catch when(condition)
+an general exception can be only caught under certain condition
+
+Exception type
 DivideByZeroException
 FileNotFoundException
 FormationException
 IndexOutOfRangeException
 InvalidOperationException
-OutOfMemoryException</p>
-<p>Exceptions can be thrown using throw keyword.
-throw new ExceptionType(&#x201C;message&#x201D;,InnerExceptionType); //the inner exception stores info.</p>
-<p>To create user defined exception class</p>
-<p>public class NegativeNumberException : Exception
+OutOfMemoryException
+
+Exceptions can be thrown using throw keyword.
+throw new ExceptionType(&#x201C;message&#x201D;,InnerExceptionType); //the inner exception stores info.
+
+To create user defined exception class
+
+public class NegativeNumberException : Exception
 {
-// default constructor<br> public NegativeNumberException()
+// default constructor  
+ public NegativeNumberException()
 : base(&quot;Illegal operation for a negative number&quot;)
 {
-// empty body<br> }</p>
-<p>// constructor for customizing error message<br> public NegativeNumberException(string messageValue)
+// empty body  
+ }
+
+// constructor for customizing error message  
+ public NegativeNumberException(string messageValue)
 : base(messageValue)
 {
-// empty body<br> }</p>
-<p>// constructor for customizing the exception&apos;s error
+// empty body  
+ }
+
+// constructor for customizing the exception&apos;s error
 // message and specifying the InnerException object
 public NegativeNumberException(string messageValue, Exception inner)
 : base(messageValue, inner)
 {
-// empty body<br> }
-}</p>
-<p>The using statement simplifies writing code in which you obtain a resource.
+// empty body  
+ }
+}
+
+The using statement simplifies writing code in which you obtain a resource.
 It is possible to nest multiple using statements one after another.
 using (var exampleObject = new ExampleClass())
 {
 exampleObject.SomeMethod();
-}</p>
-<p>The using statement code is equivalent to
+}
+
+The using statement code is equivalent to
 {
 var exampleObject = new ExampleClass();
 try
@@ -2300,36 +2516,42 @@ if (exampleObject != null)
 ((IDisposable) exampleObject).Dispose();
 }
 }
-}</p>
-<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
+}
+
+&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;
 File I/O
 file I/O requires library System.IO
-using System.IO</p>
-<p>To open a file use FileStream class
+using System.IO
+
+To open a file use FileStream class
 FileStream file = new FileStream(&#x201C;path.txt&#x201D;, FileMode.option, FileAccess.option);
 FileMode.option can be:
 Append, Create, CreateNew, Open, OpenOrCreate, Truncate
 FileAccess.open can be:
-Read, ReadWrite, Write</p>
-<p>To write a file use StreamWriter class
+Read, ReadWrite, Write
+
+To write a file use StreamWriter class
 Object Instantiation:
 StreamWriter data = new StreamWriter(file);
 Write methods
 data.Write(&#x201C;abc&#x201D;);
-data.WriteLine(&#x201C;abc&#x201D;);</p>
-<p>To read from a file, use StreamReader class
+data.WriteLine(&#x201C;abc&#x201D;);
+
+To read from a file, use StreamReader class
 Object Instantiation:
 StreamReader data = new StreamReader(file);
 string s = data.ReadToEnd(); //read entire file
 string s = data.Read(); //read file character by character
 string s = data.ReadBlock();
-string s = data.ReadLine(); //read file line by line, if there is no more data in the file return null.</p>
-<p>When file I/O is over, close the stream and the file.
+string s = data.ReadLine(); //read file line by line, if there is no more data in the file return null.
+
+When file I/O is over, close the stream and the file.
 close stream
 data.Close();
 close file
-file.Close();</p>
-<p>view file information
+file.Close();
+
+view file information
 use FileInfo class
 Object Instantiation
 FileInfo properties = new FileInfo(&#x201C;path.txt&#x201D;);
@@ -2342,69 +2564,83 @@ properties.Attributes;
 properties.DirectoryName;
 properties.Exists;
 properties.Extension;
-properties.IsReadOnly;</p>
-<p>To get information about the directory, uses directory class
+properties.IsReadOnly;
+
+To get information about the directory, uses directory class
 Object Instantiation:
 string[] drives = Directory.GetLogialDrives();//drives would be an array of logical drives.
-string[] dirs = Directory.GetDirectories(&#x201C;c:\&#x201D;); //return an array of directory names under c drive.
-string[] file = Directory.GetFiles(&#x201C;c:\&#x201D;); //return an array of file names under c drive.</p>
-<p>LINQ
+string[] dirs = Directory.GetDirectories(&#x201C;c:\\&#x201D;); //return an array of directory names under c drive.
+string[] file = Directory.GetFiles(&#x201C;c:\\&#x201D;); //return an array of file names under c drive.
+
+LINQ
 System.Linq namespace is a library that allows programmer using LINQ to Objects provider to write SQL in the code.
-LINQ uses deferred execution&#x2014;the query executes only when you access the results, not when you define the query.</p>
-<p>var sortedValue =
+LINQ uses deferred execution&#x2014;the query executes only when you access the results, not when you define the query.
+
+var sortedValue =
 from value in arrayName
 where value &gt; 10
 orderby value descending //delete descending for ascending result.
-select value;</p>
-<p>select clause can create new object type using:
+select value;
+
+select clause can create new object type using:
 var names =
 from e in employees
-select new {e.FirstName, e.LastName}</p>
-<p>This can be used to generate new data according to the original data, It is called transformation.</p>
-<p>where clause adopts syntax from SQL like
-where (e.MonthlySalary &gt;= 4000M) &amp;&amp; (e.MonthlySalay &lt;= 6000M)
-orderby clause can have more than one data enties.
-orderby e.Lastname, e,FirstName</p>
-<p>s clause can be used to create a new range variable to store atemporary result for use later in the LINQ query
-var convertUpper =
-from item in items
-s uppercaseString = item.ToUpper()
-select upperString;</p>
-<p>Methods
-Any returns true if there is at least one element, false if not.
-First returns the first result.
-Count returns the number of results.
-Distrinct removes duplicate elements.</p>
-<p>Linq has extesion method ToArray and ToList
-These methods immediately execute the query on which they are called. the query is only executed once.</p>
-<p>SQL
-try
-{
-string connectionString = @&quot;Data Source=.\SQLEXPRESS;Initial Catalog=COMP10204_Lab5;Integrated Security=True&quot;;
-using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-{
-sqlConnection.Open();
-string doctorQuery = &quot;SELECT * FROM DOCTOR&quot;;
-SqlCommand doctorCommand = new SqlCommand(doctorQuery, sqlConnection);
-SqlDataReader doctorReader = doctorCommand.ExecuteReader();
-while (doctorReader.Read())
-{
-int doctorId = int.Parse(doctorReader[&quot;DOCTORID&quot;].ToString());
-string actor = doctorReader[&quot;ACTOR&quot;].ToString();
-int series = int.Parse(doctorReader[&quot;SERIES&quot;].ToString());
-int age = int.Parse(doctorReader[&quot;AGE&quot;].ToString());
-int debut = int.Parse(doctorReader[&quot;DEBUT&quot;].ToString());</p>
-<pre><code>                    byte[] photo = (byte[])doctorReader[&quot;PICTURE&quot;];
-                    MemoryStream stream = new MemoryStream(photo);
-                    Image image = Image.FromStream(stream);
+select new {e.FirstName, e.LastName}
 
-                    doctorsList.Add(new Doctor(doctorId, actor, series, age, debut, image));
-                }
-                sqlConnection.Close();
-}
-</code></pre><p>Partial indicates that the class is specified in multiple files
-movie.DateSeen.ToShortDateString();</p>
-<p>DateTime.Today</p>
+This can be used to generate new data according to the original data, It is called transformation.
+
+where clause adopts syntax from SQL like
+where (e.MonthlySalary &gt;= 4000M) &amp;&amp; (e.MonthlySalay <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">=</span> <span class="hljs-attr">6000M</span>)
+<span class="hljs-attr">orderby</span> <span class="hljs-attr">clause</span> <span class="hljs-attr">can</span> <span class="hljs-attr">have</span> <span class="hljs-attr">more</span> <span class="hljs-attr">than</span> <span class="hljs-attr">one</span> <span class="hljs-attr">data</span> <span class="hljs-attr">enties.</span>
+<span class="hljs-attr">orderby</span> <span class="hljs-attr">e.Lastname</span>, <span class="hljs-attr">e</span>,<span class="hljs-attr">FirstName</span>
+
+<span class="hljs-attr">s</span> <span class="hljs-attr">clause</span> <span class="hljs-attr">can</span> <span class="hljs-attr">be</span> <span class="hljs-attr">used</span> <span class="hljs-attr">to</span> <span class="hljs-attr">create</span> <span class="hljs-attr">a</span> <span class="hljs-attr">new</span> <span class="hljs-attr">range</span> <span class="hljs-attr">variable</span> <span class="hljs-attr">to</span> <span class="hljs-attr">store</span> <span class="hljs-attr">atemporary</span> <span class="hljs-attr">result</span> <span class="hljs-attr">for</span> <span class="hljs-attr">use</span> <span class="hljs-attr">later</span> <span class="hljs-attr">in</span> <span class="hljs-attr">the</span> <span class="hljs-attr">LINQ</span> <span class="hljs-attr">query</span>
+<span class="hljs-attr">var</span> <span class="hljs-attr">convertUpper</span> =
+<span class="hljs-attr">from</span> <span class="hljs-attr">item</span> <span class="hljs-attr">in</span> <span class="hljs-attr">items</span>
+<span class="hljs-attr">s</span> <span class="hljs-attr">uppercaseString</span> = <span class="hljs-attr">item.ToUpper</span>()
+<span class="hljs-attr">select</span> <span class="hljs-attr">upperString</span>;
+
+<span class="hljs-attr">Methods</span>
+<span class="hljs-attr">Any</span> <span class="hljs-attr">returns</span> <span class="hljs-attr">true</span> <span class="hljs-attr">if</span> <span class="hljs-attr">there</span> <span class="hljs-attr">is</span> <span class="hljs-attr">at</span> <span class="hljs-attr">least</span> <span class="hljs-attr">one</span> <span class="hljs-attr">element</span>, <span class="hljs-attr">false</span> <span class="hljs-attr">if</span> <span class="hljs-attr">not.</span>
+<span class="hljs-attr">First</span> <span class="hljs-attr">returns</span> <span class="hljs-attr">the</span> <span class="hljs-attr">first</span> <span class="hljs-attr">result.</span>
+<span class="hljs-attr">Count</span> <span class="hljs-attr">returns</span> <span class="hljs-attr">the</span> <span class="hljs-attr">number</span> <span class="hljs-attr">of</span> <span class="hljs-attr">results.</span>
+<span class="hljs-attr">Distrinct</span> <span class="hljs-attr">removes</span> <span class="hljs-attr">duplicate</span> <span class="hljs-attr">elements.</span>
+
+<span class="hljs-attr">Linq</span> <span class="hljs-attr">has</span> <span class="hljs-attr">extesion</span> <span class="hljs-attr">method</span> <span class="hljs-attr">ToArray</span> <span class="hljs-attr">and</span> <span class="hljs-attr">ToList</span>
+<span class="hljs-attr">These</span> <span class="hljs-attr">methods</span> <span class="hljs-attr">immediately</span> <span class="hljs-attr">execute</span> <span class="hljs-attr">the</span> <span class="hljs-attr">query</span> <span class="hljs-attr">on</span> <span class="hljs-attr">which</span> <span class="hljs-attr">they</span> <span class="hljs-attr">are</span> <span class="hljs-attr">called.</span> <span class="hljs-attr">the</span> <span class="hljs-attr">query</span> <span class="hljs-attr">is</span> <span class="hljs-attr">only</span> <span class="hljs-attr">executed</span> <span class="hljs-attr">once.</span>
+
+<span class="hljs-attr">SQL</span>
+<span class="hljs-attr">try</span>
+{
+<span class="hljs-attr">string</span> <span class="hljs-attr">connectionString</span> = @&quot;<span class="hljs-attr">Data</span> <span class="hljs-attr">Source</span>=<span class="hljs-string">.\SQLEXPRESS;Initial</span> <span class="hljs-attr">Catalog</span>=<span class="hljs-string">COMP10204_Lab5;Integrated</span> <span class="hljs-attr">Security</span>=<span class="hljs-string">True&quot;;</span>
+<span class="hljs-attr">using</span> (<span class="hljs-attr">SqlConnection</span> <span class="hljs-attr">sqlConnection</span> = <span class="hljs-attr">new</span> <span class="hljs-attr">SqlConnection</span>(<span class="hljs-attr">connectionString</span>))
+{
+<span class="hljs-attr">sqlConnection.Open</span>();
+<span class="hljs-attr">string</span> <span class="hljs-attr">doctorQuery</span> = &quot;<span class="hljs-attr">SELECT</span> \* <span class="hljs-attr">FROM</span> <span class="hljs-attr">DOCTOR</span>&quot;;
+<span class="hljs-attr">SqlCommand</span> <span class="hljs-attr">doctorCommand</span> = <span class="hljs-attr">new</span> <span class="hljs-attr">SqlCommand</span>(<span class="hljs-attr">doctorQuery</span>, <span class="hljs-attr">sqlConnection</span>);
+<span class="hljs-attr">SqlDataReader</span> <span class="hljs-attr">doctorReader</span> = <span class="hljs-attr">doctorCommand.ExecuteReader</span>();
+<span class="hljs-attr">while</span> (<span class="hljs-attr">doctorReader.Read</span>())
+{
+<span class="hljs-attr">int</span> <span class="hljs-attr">doctorId</span> = <span class="hljs-attr">int.Parse</span>(<span class="hljs-attr">doctorReader</span>[&quot;<span class="hljs-attr">DOCTORID</span>&quot;]<span class="hljs-attr">.ToString</span>());
+<span class="hljs-attr">string</span> <span class="hljs-attr">actor</span> = <span class="hljs-attr">doctorReader</span>[&quot;<span class="hljs-attr">ACTOR</span>&quot;]<span class="hljs-attr">.ToString</span>();
+<span class="hljs-attr">int</span> <span class="hljs-attr">series</span> = <span class="hljs-attr">int.Parse</span>(<span class="hljs-attr">doctorReader</span>[&quot;<span class="hljs-attr">SERIES</span>&quot;]<span class="hljs-attr">.ToString</span>());
+<span class="hljs-attr">int</span> <span class="hljs-attr">age</span> = <span class="hljs-attr">int.Parse</span>(<span class="hljs-attr">doctorReader</span>[&quot;<span class="hljs-attr">AGE</span>&quot;]<span class="hljs-attr">.ToString</span>());
+<span class="hljs-attr">int</span> <span class="hljs-attr">debut</span> = <span class="hljs-attr">int.Parse</span>(<span class="hljs-attr">doctorReader</span>[&quot;<span class="hljs-attr">DEBUT</span>&quot;]<span class="hljs-attr">.ToString</span>());
+
+                        <span class="hljs-attr">byte</span>[] <span class="hljs-attr">photo</span> = (<span class="hljs-attr">byte</span>[])<span class="hljs-attr">doctorReader</span>[&quot;<span class="hljs-attr">PICTURE</span>&quot;];
+                        <span class="hljs-attr">MemoryStream</span> <span class="hljs-attr">stream</span> = <span class="hljs-attr">new</span> <span class="hljs-attr">MemoryStream</span>(<span class="hljs-attr">photo</span>);
+                        <span class="hljs-attr">Image</span> <span class="hljs-attr">image</span> = <span class="hljs-attr">Image.FromStream</span>(<span class="hljs-attr">stream</span>);
+
+                        <span class="hljs-attr">doctorsList.Add</span>(<span class="hljs-attr">new</span> <span class="hljs-attr">Doctor</span>(<span class="hljs-attr">doctorId</span>, <span class="hljs-attr">actor</span>, <span class="hljs-attr">series</span>, <span class="hljs-attr">age</span>, <span class="hljs-attr">debut</span>, <span class="hljs-attr">image</span>));
+                    }
+                    <span class="hljs-attr">sqlConnection.Close</span>();
+    }
+
+<span class="hljs-attr">Partial</span> <span class="hljs-attr">indicates</span> <span class="hljs-attr">that</span> <span class="hljs-attr">the</span> <span class="hljs-attr">class</span> <span class="hljs-attr">is</span> <span class="hljs-attr">specified</span> <span class="hljs-attr">in</span> <span class="hljs-attr">multiple</span> <span class="hljs-attr">files</span>
+<span class="hljs-attr">movie.DateSeen.ToShortDateString</span>();
+
+<span class="hljs-attr">DateTime.Today</span>
+</span></span></code></pre>
 
                                 
                                 </section>
@@ -2448,7 +2684,7 @@ movie.DateSeen.ToShortDateString();</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C#","level":"1.8","depth":1,"next":{"title":".NET","level":"1.8.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},"previous":{"title":"C++","level":"1.7","depth":1,"path":"cpp/README.md","ref":"cpp/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c-sharp/README.md","mtime":"2020-11-20T18:09:53.100Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-08T19:33:01.152Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C#","level":"1.8","depth":1,"next":{"title":".NET","level":"1.8.1","depth":2,"path":"c-sharp/dot-net.md","ref":"c-sharp/dot-net.md","articles":[]},"previous":{"title":"C++","level":"1.7","depth":1,"path":"cpp/README.md","ref":"cpp/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c-sharp/README.md","mtime":"2021-04-21T14:45:34.870Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T15:06:58.594Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

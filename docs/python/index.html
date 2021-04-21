@@ -1634,8 +1634,8 @@ bool(x) <span class="hljs-comment">#  when convert string to boolean any thing o
     <span class="hljs-comment">#&#x2026;</span>
 </code></pre>
 <ul>
-<li>Ternary: <code>x = a if condition else b</code>.</li>
-<li>Chained Ternary: <code>x = 1 if condition1 else 2 if condition2 else 3</code>.</li>
+<li>Ternary: <code>x = a if condition else b</code>, <code>return x if condition else y</code></li>
+<li>Chained Ternary: <code>x = 1 if condition1 else 2 if condition2 else 3</code></li>
 </ul>
 <h3 id="all-and-any">All and Any</h3>
 <p>It can be used to test the condition among multiple values in an object.</p>
@@ -1696,7 +1696,7 @@ print(list[<span class="hljs-number">1</span>][<span class="hljs-number">0</span
 </li>
 </ul>
 <h4 id="list-methods">List Methods</h4>
-<pre><code class="lang-py">list.append(value)<span class="hljs-comment">#This will append a value at its end.</span>
+<pre><code class="lang-py">list.append(value)<span class="hljs-comment">#This will append a value at its end. The method doesn&apos;t return any value</span>
 list.sort()<span class="hljs-comment">#sorts the list ascending by default, has argument `reverse` which can be set to True</span>
 list.sort(key=<span class="hljs-keyword">lambda</span> listItem: listItem.get(<span class="hljs-string">&apos;group_name&apos;</span>)) <span class="hljs-comment">#sort based on the key value of the element</span>
 list.remove(value)<span class="hljs-comment">#It will remove certain value in the list regardless of its location.</span>
@@ -1705,6 +1705,7 @@ list.insert(index, element)<span class="hljs-comment">#It will insert an element
 list.count(object)<span class="hljs-comment">#It returns how many times an item occurs in the list</span>
 list.index(object)<span class="hljs-comment">#It returns the first index of the item, ValueError if not find.</span>
 list.pop(index)<span class="hljs-comment">#It returns the element according the index and remove the element from the existing list.</span>
+list.copy() <span class="hljs-comment"># It return a new copy of the list, instead of a reference</span>
 </code></pre>
 <h4 id="list-operators">List Operators</h4>
 <ul>
@@ -1765,6 +1766,7 @@ dictionay.values() <span class="hljs-comment"># Return a list of values.</span>
 dictionay.keys() <span class="hljs-comment"># Return a list of keys.</span>
 dictionay.items() <span class="hljs-comment"># Return a list of dictionay elements.</span>
 dictionay.clear() <span class="hljs-comment"># empties the dictionary</span>
+dictionay.copy() <span class="hljs-comment"># Return a copy of the dictionary instead of passing a reference</span>
 </code></pre>
 <h3 id="iteration">Iteration</h3>
 <ul>
@@ -2431,7 +2433,7 @@ newfile.write(stringS)     <span class="hljs-comment">#write content into the fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2021-02-10T19:25:22.173Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-08T19:33:01.152Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.2","depth":1,"next":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/README.md","mtime":"2021-04-16T21:50:04.055Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T15:06:58.594Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

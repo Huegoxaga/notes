@@ -1491,8 +1491,8 @@ Cardinality can be used to represent the Entity relationship(one to one, one to 
 <li>multiple queries or commands can be entered at the same time and separate by ; at end of each line.</li>
 <li>SQL is case insensitive. However uppercase is preferred for all commands.</li>
 <li>SQL syntax is not sensitive to indentations.</li>
-<li><code>dual</code> is a &#x201C;dummy&#x201D; table in Oracle that has 1 row and 1 column
-&#x2013; Used whenever a single value is needed</li>
+<li><code>dual</code> is a &quot;dummy&quot; table in Oracle that has 1 row and 1 column
+&#x2013; Used whenever a single value is expected from a <code>SELECT ... FROM dual;</code> syntax</li>
 </ul>
 <h2 id="database-tools">Database Tools</h2>
 <ul>
@@ -1501,6 +1501,10 @@ Cardinality can be used to represent the Entity relationship(one to one, one to 
 <h3 id="sql-developer">SQL Developer</h3>
 <ul>
 <li>Used for Oracle Database</li>
+<li><a href="https://github.com/oracle/docker-images/blob/main/OracleDatabase/SingleInstance/README.md" target="_blank">Click</a> to see to installation instruction from oracle docker image repo<ul>
+<li>Oracle 18.4 Express Edition has SID as <code>xe</code></li>
+</ul>
+</li>
 <li>SET command<ul>
 <li>it only effect the current session<ul>
 <li>To set all sessions, a connection startup script can be created and set in <code>Tools / Preferences...</code></li>
@@ -1910,7 +1914,7 @@ between. for example ID=5 and ID=10)
 <span class="hljs-keyword">FROM</span> employees;
 <span class="hljs-keyword">SELECT</span> FirstName, LastName <span class="hljs-keyword">AS</span> LastName
 <span class="hljs-keyword">FROM</span> employees
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">LOWER</span>(LastName) <span class="hljs-keyword">like</span> <span class="hljs-string">&apos;smi%&apos;</span>;;
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">LOWER</span>(LastName) <span class="hljs-keyword">like</span> <span class="hljs-string">&apos;smi%&apos;</span>;
 </code></pre>
 </li>
 <li>GROUP BY<ul>
@@ -2620,7 +2624,7 @@ GO
 <li>DML (INSERT, UPDATE, DELETE) and SELECT are valid in PL/SQL</li>
 </ul>
 <h3 id="oracle-scripts">Oracle Scripts</h3>
-<h4 id="functions">Functions</h4>
+<h4 id="built-in-functions">Built-in Functions</h4>
 <ul>
 <li>TO_CHAR<ul>
 <li>TO_CHAR converts its arguments into a VARCHAR2 with optional formatting</li>
@@ -3140,8 +3144,8 @@ WHEN OTHERS THEN
   DBMS_OUTPUT.PUT_LINE(r_stud_zip.student_id);
     <span class="hljs-keyword">UPDATE</span> student
       <span class="hljs-keyword">SET</span> phone = <span class="hljs-string">&apos;718&apos;</span>||<span class="hljs-keyword">SUBSTR</span>(phone,<span class="hljs-number">4</span>)
-      <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">CURRENT</span> <span class="hljs-keyword">OF</span> c_stud_zip;  E
-  ND LOOP;
+      <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">CURRENT</span> <span class="hljs-keyword">OF</span> c_stud_zip;
+  <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
 <span class="hljs-keyword">END</span>;
 </code></pre>
 </li>
@@ -3504,11 +3508,9 @@ INSTEAD <span class="hljs-keyword">OF</span> <span class="hljs-keyword">DELETE</
   <span class="hljs-keyword">WHERE</span> course_no = i_course_no;
   RETURN v_description;
 EXCEPTION
-  WHEN NO_DATA_FOUND
-  THEN
+  WHEN NO_DATA_FOUND THEN
     RETURN(&apos;The Course is not in the database&apos;);
-  WHEN OTHERS
-  THEN
+  WHEN OTHERS THEN
     RETURN(&apos;Error in running show_description&apos;);
 <span class="hljs-keyword">END</span>;
 </code></pre>
@@ -3636,7 +3638,7 @@ FUNCTION new_instructor_id
   <span class="hljs-keyword">FOR</span> r_group_discount <span class="hljs-keyword">IN</span> c_group_discount <span class="hljs-keyword">LOOP</span>
     <span class="hljs-keyword">UPDATE</span> course
       <span class="hljs-keyword">SET</span> <span class="hljs-keyword">cost</span> = <span class="hljs-keyword">cost</span> * <span class="hljs-number">.95</span>
-    <span class="hljs-keyword">WHERE</span> course_no = r_group_discount.course_no;
+      <span class="hljs-keyword">WHERE</span> course_no = r_group_discount.course_no;
     dbms_output.put_line
       (&apos;A 5% discount has been given to &apos;
       || r_group_discount.course_no || &apos; &apos;
@@ -4099,7 +4101,7 @@ END
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.15","depth":1,"next":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"previous":{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sql/README.md","mtime":"2021-04-08T16:11:06.534Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-08T19:33:01.152Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.15","depth":1,"next":{"title":"Solidity","level":"1.16","depth":1,"path":"solidity/README.md","ref":"solidity/README.md","articles":[]},"previous":{"title":"WordPress","level":"1.14.1","depth":2,"path":"php/wordpress.md","ref":"php/wordpress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"sql/README.md","mtime":"2021-04-13T17:10:13.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T15:06:58.594Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

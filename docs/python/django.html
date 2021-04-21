@@ -1433,11 +1433,17 @@ urlpatterns = [
 <li>The class name <code>AppNameConfig</code> should be registered in the project&apos;s <code>settings.py</code> file for the project to access the app.</li>
 </ul>
 <h3 id="urlspy">urls.py</h3>
-<pre><code class="lang-py"><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path
+<pre><code class="lang-py"><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path, re_path
+<span class="hljs-keyword">from</span> django.conf.urls <span class="hljs-keyword">import</span> url, include
+<span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin
 <span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views
 urlpatterns = [
     path(<span class="hljs-string">&apos;&apos;</span>, views.home, name=<span class="hljs-string">&apos;appname-home&apos;</span>),
     path(<span class="hljs-string">&apos;about/&apos;</span>, views.about, name=<span class="hljs-string">&apos;appname-about&apos;</span>),
+    <span class="hljs-comment"># re_path enables regex</span>
+    re_path(<span class="hljs-string">&apos;^student/edit/([0-9]+)/$&apos;</span>, views.editStudent, name=<span class="hljs-string">&quot;editStudent&quot;</span>),
+    <span class="hljs-comment"># optionally use url (order matters)</span>
+    url(<span class="hljs-string">r&apos;^&apos;</span>, admin.site.urls, name=<span class="hljs-string">&apos;admin&apos;</span>),
 ]
 </code></pre>
 <ul>
@@ -1483,7 +1489,7 @@ urlpatterns = [
     <span class="hljs-comment"># exists by default, primary_key is mandatory.</span>
     id = models.AutoField(primary_key=<span class="hljs-keyword">True</span>)
     <span class="hljs-comment"># add nullable and allow it to be black options</span>
-    title = models.CharField(max_length=<span class="hljs-number">100</span>,blank=<span class="hljs-keyword">True</span>, null=<span class="hljs-keyword">True</span>)
+    title = models.CharField(max_length=<span class="hljs-number">100</span>, blank=<span class="hljs-keyword">True</span>, null=<span class="hljs-keyword">True</span>)
     <span class="hljs-comment"># add default value</span>
     content = models.TextField(default=<span class="hljs-string">&quot;Yes&quot;</span>)
     <span class="hljs-comment"># add unique option</span>
@@ -1493,7 +1499,8 @@ urlpatterns = [
     <span class="hljs-comment"># related_name field can be used to reverse lookup</span>
     <span class="hljs-comment"># Filter function has reversed fields available using the all lower-case model class name</span>
     related_posts = models.ManyToManyField(User,blank=<span class="hljs-keyword">True</span>,null=<span class="hljs-keyword">True</span>, related_name=<span class="hljs-string">&apos;other_posts&apos;</span>)
-
+    <span class="hljs-comment"># use the string &apos;self&apos; to indicate a self-reference</span>
+    parent = models.ForeignKey(<span class="hljs-string">&apos;self&apos;</span>, null=<span class="hljs-keyword">True</span>, blank=<span class="hljs-keyword">True</span>)
     <span class="hljs-comment"># Meta provides additional info for the Model</span>
     <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Meta</span>:</span>
       <span class="hljs-comment"># add check constrains</span>
@@ -1542,8 +1549,8 @@ ModelClass.objects.all() <span class="hljs-comment"># return all objects of this
 ModelClass.objects.first() <span class="hljs-comment"># return the first object</span>
 ModelClass.objects.last() <span class="hljs-comment"># return the last object</span>
 ModelClass.objects.all()[<span class="hljs-number">0</span>:<span class="hljs-number">20</span>]<span class="hljs-comment"># return first 20 objects</span>
-ModelClass.objects.filter(propertyname=<span class="hljs-string">&apos;value&apos;</span>) <span class="hljs-comment"># return a list of matching objects.</span>
-ModelClass.objects.filter(id__in=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]) <span class="hljs-comment"># return all matching id</span>
+ModelClass.objects.filter(propertyname=<span class="hljs-string">&apos;value&apos;</span>) <span class="hljs-comment"># return a list of matching objects in a queryset.</span>
+ModelClass.objects.filter(id__in=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]) <span class="hljs-comment"># return results with matching id in a queryset</span>
 ModelClass.objects.get(propertyname=<span class="hljs-string">&apos;value&apos;</span>) <span class="hljs-comment"># get a single record</span>
 ModelClass.objects.get(id=<span class="hljs-number">1</span>) <span class="hljs-comment"># return the object with id 1</span>
 newobject = ModelClass(property1=<span class="hljs-string">&apos;value1&apos;</span>, property2 = <span class="hljs-string">&apos;value2&apos;</span>) <span class="hljs-comment">#create a new object</span>
@@ -1584,6 +1591,8 @@ organisations_with_user_emails = Organisation.objects.annotate(
         output_field=ArrayField(base_field=CharField()),
     ),
 )
+<span class="hljs-comment"># Examine Database Execution Plan</span>
+queryset.explain()
 <span class="hljs-comment"># Subquery returns only one row</span>
 Subquery(newest.values(<span class="hljs-string">&apos;email&apos;</span>)[:<span class="hljs-number">1</span>])
 </code></pre>
@@ -1621,9 +1630,13 @@ admin.site.register(Post)
 <li>If support basic logic syntax in between html codes. Unlike Python code, each code block requried to be closed in the end.</li>
 </ul>
 </li>
-<li>Variables here are passed from the <code>view.py</code>.<!--  --></li>
+<li>This folder and its related <code>views.py</code> should be located under the same directory</li>
+<li>Variables here are passed from the <code>views.py</code>.<!--  --></li>
 <li>To access <code>.css</code> files in the static folder, add <code>{% load static %}</code> at the first line and set css link url to <code>href=&quot;{% static &apos;appfolder/filename.css&apos; %}&quot;</code></li>
-<li>All links in the template files are represented as <code>href=&quot;{% url &apos;path-name&apos; %}&quot;</code>. The pass name is the name attributes of the paths elements in the <code>urls.py</code>.</li>
+<li>All links in the template files are represented as <code>href=&quot;{% url &apos;path-name&apos; %}&quot;</code>. The pass name is the name attributes of the paths elements in the <code>urls.py</code>.<ul>
+<li>use <code>href=&quot;{% url &apos;path-name&apos; variable %}&quot;</code> to pass data into url path</li>
+</ul>
+</li>
 <li>To display date in certain format use format string as <code>{{ post.date|date:&quot;F d, Y&quot; }}</code><!--  -->
 </li>
 </ul>
@@ -1644,6 +1657,18 @@ admin.site.register(Post)
 </code></pre>
 <ul>
 <li>This is the layout that can be shared by all views.</li>
+<li><p>`` can enclose a defaut content, when it is used to replace a beginning tag, the ending tag should be in a separate block as well</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;root&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+</li>
 </ul>
 <h4 id="contenthtml">content.html</h4>
 <pre><code>{% extends &quot;appname/base.html&quot; %}
@@ -2324,7 +2349,7 @@ __all__ = (<span class="hljs-string">&apos;celery_app&apos;</span>,)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Django","level":"1.2.3","depth":2,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},{"title":"Android Development","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]}]},"previous":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/django.md","mtime":"2021-04-04T17:09:36.042Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-08T19:33:01.152Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Django","level":"1.2.3","depth":2,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"JavaFX","level":"1.3.1","depth":2,"path":"java/javafx.md","ref":"java/javafx.md","articles":[]},{"title":"Android Development","level":"1.3.2","depth":2,"path":"java/android.md","ref":"java/android.md","articles":[]}]},"previous":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"path":"python/tools-and-packages.md","ref":"python/tools-and-packages.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/django.md","mtime":"2021-04-14T18:18:52.316Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T15:06:58.594Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
