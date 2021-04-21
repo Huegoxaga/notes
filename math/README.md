@@ -1,8 +1,8 @@
 # Math Notes
 
-- [Basic Math](https://huegoxaga.github.io/notes/math/basic.html)
-- [Calculus](https://huegoxaga.github.io/notes/math/calculus.html)
-- [Linear Algebra](https://huegoxaga.github.io/notes/math/linear-algebra.html)
-- [Discrete Mathematics](https://huegoxaga.github.io/notes/math/discrete.html)
-- [Probability & Statistics](https://huegoxaga.github.io/notes/math/probability-statistics.html)
-- [Maple Softwares](https://huegoxaga.github.io/notes/math/maple.html)
+- [Basic Math](basic.md)
+- [Calculus](calculus.md)
+- [Linear Algebra](linear-algebra.md)
+- [Discrete Mathematics](discrete.md)
+- [Probability & Statistics](probability-statistics.md)
+- [Maple Softwares](maple.md)
