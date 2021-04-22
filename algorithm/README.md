@@ -286,22 +286,24 @@ It is used to tell if a data structure or Algorithm is good.
   1. compare target value with the median values(round down if the mid position is not an integer). check equality first, if not determine the location the target in either upper or lower section
   2. compare the target with the median of the lower or upper section until it is found.
 - Example of Recursive Binary Search:
-  ```java
-  int binarySearch(int A[], int lower, int upper, int X){
-    // check base case for missing X
-    if (lower > upper)
-      return -1;
-    // check if X is at the middle
-    int middle = (lower + upper)/2;
-    if (A[middle] == X)
-      return middle;
-    // determine which segment to continue search in
-    if (A[middle] < X)
-      return binSearch(A, middle+1, upper, X);
-    else
-      return binSearch(A, lower, middle-1, X);
-  }
-  ```
+
+```java
+int binarySearch(int A[], int lower, int upper, int X){
+  // check base case for missing X
+  if (lower > upper)
+    return -1;
+  // check if X is at the middle
+  int middle = (lower + upper)/2;
+  if (A[middle] == X)
+    return middle;
+  // determine which segment to continue search in
+  if (A[middle] < X)
+    return binSearch(A, middle+1, upper, X);
+  else
+    return binSearch(A, lower, middle-1, X);
+}
+```
+
 - Worst case `O(logN)`.
 
 ### Sort
@@ -317,18 +319,19 @@ An array is sorted in ascending order if the array entries increase as indices i
   4. repeat the process n times for n is the number of input.
 - The complexity of Bubble Sort is `О(n^2)` (worst case).
 - Example:
-  ```java
-  for (int last=N-1; last>=1; last--){
-    // Move the largest entry in A[0...last] to A[last]
-    for (int index=0; index <= last-1; index++){     //swap adjacent elements if necessary
-      if (A[index] > A[index+1]){
-        int temp = A[index];
-        A[index] = A[index+1];
-        A[index + 1] = temp;
-      }
+
+```java
+for (int last=N-1; last>=1; last--){
+  // Move the largest entry in A[0...last] to A[last]
+  for (int index=0; index <= last-1; index++){     //swap adjacent elements if necessary
+    if (A[index] > A[index+1]){
+      int temp = A[index];
+      A[index] = A[index+1];
+      A[index + 1] = temp;
     }
   }
-  ```
+}
+```
 
 #### Selection Sort
 
@@ -338,25 +341,26 @@ An array is sorted in ascending order if the array entries increase as indices i
   3. After the comparison in one iteration, swap the max value to its proper location according to a count number that count the rank of the max value of each iteration.
 - The time complexity of Selection Sort is `О(n^2)`(worst case).
 - Example:
-  ```java
-  for (last = N -1; last >= 1; last --)
+
+```java
+for (last = N -1; last >= 1; last --)
+{
+  // Move the largest entry in A[0...last] to A[last]
+  // Determine position of largest in A[0..last] and store
+  // in maxIndex
+  int maxIndex = 0;
+  for (int index = 1; index <= last; index++)
   {
-    // Move the largest entry in A[0...last] to A[last]
-    // Determine position of largest in A[0..last] and store
-    // in maxIndex
-    int maxIndex = 0;
-    for (int index = 1; index <= last; index++)
-    {
-      if (A[index] > A[maxIndex])
-      maxIndex = index;
-    }
-    // maxIndex is position of largest in A[0..last]
-    // swap A[maxIndex] with A[last]
-    int temp = A[maxIndex];
-    A[maxIndex] = A[last];
-    A[last] = temp;
+    if (A[index] > A[maxIndex])
+    maxIndex = index;
   }
-  ```
+  // maxIndex is position of largest in A[0..last]
+  // swap A[maxIndex] with A[last]
+  int temp = A[maxIndex];
+  A[maxIndex] = A[last];
+  A[last] = temp;
+}
+```
 
 #### Insertion Sort
 
@@ -366,25 +370,26 @@ An array is sorted in ascending order if the array entries increase as indices i
   3. repeat the process to the last element. In the end all elements are placed into the right location.
 - The complexity of Insertion Sort is `О(n^2)` (worst case).
 - Example:
-  ```java
-  //A[0..0] is sorted
-  for (index = 1; index <= N-1; index ++)
+
+```java
+//A[0..0] is sorted
+for (index = 1; index <= N-1; index ++)
+{
+  // A[0..index-1] is sorted
+  // insert A[index] at the right place in A[0..index]
+  int unSortedValue = A[index];
+  scan = index;
+  while (scan > 0 && A[scan-1] > unSortedValue)
   {
-    // A[0..index-1] is sorted
-    // insert A[index] at the right place in A[0..index]
-    int unSortedValue = A[index];
-    scan = index;
-    while (scan > 0 && A[scan-1] > unSortedValue)
-    {
-      A[scan] = A[scan-1];
-      scan --;
-    }
-    // Drop in the unsorted value
-    A[scan] = unSortedValue;
-    // Now A[0..index] is sorted
+    A[scan] = A[scan-1];
+    scan --;
   }
-    // Now A[0..N-1] is sorted, so entire array is sorted
-  ```
+  // Drop in the unsorted value
+  A[scan] = unSortedValue;
+  // Now A[0..index] is sorted
+}
+  // Now A[0..N-1] is sorted, so entire array is sorted
+```
 
 #### Merge Sort
 

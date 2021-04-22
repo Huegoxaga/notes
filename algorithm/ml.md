@@ -96,7 +96,7 @@
 
 - It can handle non-linear datasets.
 
-##### Regression Trees
+#### Regression Trees
 
 - It is used for regression problems
 - It split the datapoints into groups based on the independent variables of a data point.
@@ -108,7 +108,7 @@
 - The split add information to the datapoint and group them.
 - The average of all data points in one terminal leaf will be calculated as the prediced value for all new data point if it falls in the split.
 
-##### Classification Trees
+#### Classification Trees
 
 - It is used for classification problems
 - similar to regression tree but each leaf represents one category
@@ -156,7 +156,7 @@
 - The boundary is called maximum margin hyperplane or maximum margin classifier.
 - The lines which are parallel to the maximum margin hyperplane and have zero distance to the support vectors are called positive or negative hyperplane.
 
-##### Support Vector Regression
+#### Support Vector Regression
 
 ### Neural Networks
 
@@ -172,7 +172,7 @@
   - The most important indicator of overfitting is the train set accurancy is much better than the test set.
 - Hyperparameters are parameters used to build and train models.
 
-##### Artificial Neural Networks(ANNs)
+#### Artificial Neural Networks(ANNs)
 
 - The initial input values for the artificial neural network would be multiple features about one sample.
 - The final output values for the artificial neural network could be either a predicted value(one output), a boolean value(one output) or categorical values(multiple output nodes)
@@ -206,7 +206,7 @@
 - One epoach is the process of finding minimun cost function value of a batch of dataset after many times of iteration of the forward propagation and backpropagation adjusting of the weights.
   - One epoach will be repeated many times in order to improve accuracy.
 
-##### Convolutional Neural Networks(CNNs)
+#### Convolutional Neural Networks(CNNs)
 
 - It is an ANN for image recoginion.
 - For a computer, a back and white image is an array of numbers from 0-255(8 bits data) where 0 represents black, 255 represents white and grey scale colors in between.
@@ -258,7 +258,7 @@
         - [Click](https://github.com/pjreddie/darknet) to view the repo from the original auther of the `darknet`
         - [Click](https://github.com/AlexeyAB/darknet) to view the modified version that supports Window OS
 
-##### Recurrent Neural Networks(RNNs)
+#### Recurrent Neural Networks(RNNs)
 
 - RNNs are a type of ANNs that can capture temporal dependencies.
   - Temporal Dependencies or Dependencies Over Time - Current output dependent on both current and past inputs.
@@ -302,7 +302,7 @@
   - Example applications include: machine translation, text summarization, speech-to-text.
   - It uses Recurrent Neural Networks (RNNs) and Convolutional Neural Network (CNN) models with attention as encoder-decoder architectures.
 
-##### Hyperparameters Tuning
+#### Hyperparameters Tuning
 
 - For Neural Networks, hyperparameters tuning can be done during model building and model training.
 - Build Model
@@ -442,9 +442,10 @@
   - Classification is achieved by
     - To predict a label for a sentence, a vector representation of the sentence is obtained by averaging the word embeddings vector results for each word in the sentence
     - Then, use linear classifier(multinomial logistic regression) to predict the label based on the vector value
-  - Gram
+  - Language models can have the following types
     - Unigram - each single word is considered as one unit, for a sentence contains words `A B C`. `A`, `B`, `C` are considered.
     - Bigram - each two words are considered as one unit, for a sentence contains words `A B C`. `AB`, `BC` are considered.
+      - The model will then calculate the probability of `AB` given `A` by counting and dividing the occurrence of `AB` over `A`, it aims to find all probability of each word for all other words in a large text corpus
     - N-gram - each group of consecutive N words are considered.
       - fastText even consider n-gram for group of characters within a word("ora", "ran", "ang", "nge" when `minn` is 3) and make it different from `Word2Vec`. Hence, it works good with misspelled words.
       - Default `minn` is 3, `maxn` is 6
@@ -535,9 +536,9 @@
       - VoTT (generic JSON schema)
       - Comma Separated Values (CSV)
 
-### Timeseries data preprocessing
+### Timeseries Data Preprocessing
 
-### Text data preprocessing
+### Text Data Preprocessing
 
 #### Normalization
 
@@ -567,7 +568,8 @@
   - Then, the data can be fed into other algorithms. Ex, ANNs or Native Bayes for classfication.
 - Word2Vec
   - Word2Vec are used to predict a vector representation of a word using a model trained by a text corpus
-    - It is a word embedding(representation) method, word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers.
+    - It is a word embedding(representation) method, word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers
+      - language model is a model of the probability of a sequence of words (sentence)
     - it converts every word in a large text corpus into a vector
     - text corpus is a language resource consisting of a large and structured set of texts
     - It can predict any word if all its subwords presented in the training text corpus
@@ -595,11 +597,11 @@
 
 ### Evaluating Regression Models
 
-##### Root Mean Square Error(RMSE)
+#### Root Mean Square Error(RMSE)
 
 - The smaller the better
 
-##### Residual Histograms
+#### Residual Histograms
 
 - Residual value equals to the actual value minus predicted value.
 - Residual Histograms have Residual value for each prediction on x-axis and count on y-asix.
@@ -633,7 +635,7 @@
 
 - A ML frameworks is a libray for a certain programming language which contains various ML algorithm as methods.
 
-#### [TensorFlow](https://www.tensorflow.org)
+### [TensorFlow](https://www.tensorflow.org)
 
 - It was developed by the Google Brain team for internal Google use. It was released under the Apache License 2.0 on November 9, 2015.
 - It is the most popular deep learning framework for Python
@@ -643,7 +645,7 @@
 - Static computation graph - The model should be defined first then compile and train it after.
 - TensorFlow 2.0 uses Keras as its official high-level API
 
-#### [PyTorch](https://pytorch.org)
+### [PyTorch](https://pytorch.org)
 
 - PyTorch is an open source machine learning library based on the Torch library
   - Torch is an open-source machine learning library, a scientific computing framework, and a script language based on the Lua programming language.It provides a wide range of algorithms for deep learning
@@ -652,12 +654,12 @@
 - Dynamically Updated Graph - The model is compile after each line of the model definition
 - PyTorch is suited for small projects and prototyping
 
-#### [Sonnet](https://sonnet.readthedocs.io/en/latest/)
+### [Sonnet](https://sonnet.readthedocs.io/en/latest/)
 
 - Sonnet is a high level library to build complex neural network structures in TensorFlow.
 - It is designed to create neural networks with a complex architecture by DeepMind.
 
-#### [MXNet](https://mxnet.apache.org)
+### [MXNet](https://mxnet.apache.org)
 
 - It is owned by Apache Software Foundation
 - The framework initially supports a large number of languages (including C++, Python, Java, Julia, Matlab, JavaScript, Go, R, Scala, Perl, and Wolfram Language.)
@@ -679,22 +681,22 @@
 
 ### Image Data
 
-##### MNIST
+#### MNIST
 
 - It contains Database of handwritten digits.
 - It has 60,000 images, created by National Institute of Standards and Technology in 1998.
 
-##### [ImageNet](http://www.image-net.org)
+#### [ImageNet](http://www.image-net.org)
 
 - ImageNet is an image database organized according to the WordNet hierarchy (currently only the nouns), in which each node of the hierarchy is depicted by hundreds and thousands of images.
   - WordNet is a large lexical database of English. Nouns, verbs, adjectives and adverbs are grouped into sets of cognitive synonyms (synsets), each expressing a distinct concept.
 
-##### [COCO](http://cocodataset.org/#home)
+#### [COCO](http://cocodataset.org/#home)
 
 - Microsoft Common Objects in Context (COCO)
 - Images are preprocessed with object highlighting, labeling, and classification into 91 object types.
 
-##### [ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/index.html)
+#### [ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/index.html)
 
 - Released by MIT CSAIL Computer Vision Group
 - 20210 images are fully annotated with objects and, many of the images have parts too.
@@ -702,7 +704,7 @@
 
 ### Numeric Data
 
-##### [Iris Dataset](http://archive.ics.uci.edu/ml/datasets/Iris)
+#### [Iris Dataset](http://archive.ics.uci.edu/ml/datasets/Iris)
 
 - It has measurement data for three types of iris plants taken by R. Fisher, released in 1936.
 - The dataset contains a set of 150 records under 4 attributes - sepal length, sepal width, petal length, petal width.

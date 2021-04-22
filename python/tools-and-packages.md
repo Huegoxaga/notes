@@ -757,6 +757,7 @@ finally:
 ```
 
 - `inserted_values` has to be a tuple, even if it has only one parameter. For example, use `(1,)`.
+- Use `None` in Python to represent `NULL` in `PostgreSQL`
 
 ## pyttsx3
 

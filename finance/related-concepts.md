@@ -88,6 +88,13 @@
 
 ### Demand and Supply Analysis
 
+- Target of the demand and supply analysis can be either the market or the firm
+- The demand curve of the market is downward sloping and the supply curve is upward sloping and the curve slopes upwards, the intersaction point represent the market price and demand
+- The demand curve of the market depends on the types of market it is in, and the supply curve is the `MC` curve above the shutdown level
+- One demand or supply curve in a graph can only depict the market condition in a short run, in a long run the curve can shift in all directions accordingly, e.g.:
+  - When more firms are joining the market in a long run the supply curve will move down, which is a result of supply increase and price drop, and vice versa
+  - when there is an increase in demand, market demand curve shifts upwards and to the right, makes the market price higher and vice versa
+
 #### Demand Analysis
 
 - Demand Curve has quantity demanded on the x-axis and the price of the item on the y-axis
@@ -182,7 +189,14 @@
   - marginal cost curve has the actual cost of that additional output on the y-axis
   - marginal cost curve intersects the AVC and ATC curves at their minimum
 - Revenue - price times the quantity sold
-- The average profit per cup is the difference between the marginal cost and average total cost
+- The average profit is the difference between the marginal cost and average total cost
+- The total economic profit is the average profit multiply by quantity
+- The toal economic loss happens when the economic profit is a negative value
+- Economic costs are based on opportunity cost which is measured by determining of resources next best opportunity
+  - The profit that is gained from this opportunity is called the normal return
+  - Not be able to have the full normal return will occur an opportunity cost
+  - in economic terms the total economic cost includes the full normal market return on all the resources utilized in the business.
+  - So when we say a firm does not earn economic profit it doesn't mean that the firm makes no profit at all. Rather it means that the firm is just making normal profit based on its opportunity costs
 - The profit maximizing point will then be the point where the marginal revenue is equal to the marginal cost, because it is the highest point where `MR > MC` is satisfied
 - This minimum point where the `ATC` is equal to the `MC` is the breakeven level, when price goes above this level the business makes a profit, when price goes below this level the business will have a loss
 - When the price is below the breakeven level and falls in between the lowest point of `ATC` and `AVC` cost, the profit maximizing point is also in between the `ATC` and `AVC` cost, the firm will be running at loss but it still has revenue to cover the `AVC` and part of the `AFC`
@@ -222,13 +236,33 @@
 - It is where many firms produce identical products. And competition forces them all to sell at the market price
 - This is just in theory, some industry like wheat production industry are close to it, its price depends on the overall market supply and demand
 - A perfectly competitive market has a perfectly elastic demand curve. The marginal revenue is equal to the average revenue which is equal to the market price
+  - For a firm, the marginal revenue is the revenue for each addition product
+  - For a firm, the average revenue is the average price of the product
   - A perfectly elastic demand curve, will have the price as a constant, regardless the quantity demanded
   - Under perfect competition firms must operate at minimum efficient scale in the long run, all compititos operate their at this scale in the long run. So this minimum will equal the market price which is the marginal revenue and also the average revenue, anyone operating at a different scale will have a cost that is higher than the market price and have a loss
+- Neither economic profit nor economic loss is sustainable in the long run.
+  - if existing firms are making economic loss in the short run some of them will eventually shut down or reduce scale thus reducing supply driving prices up and eliminating any economic losses
+  - conversely if there are economic profits to be made new firms will enter the industry in the long run. Increasing supply drive in the market price down eliminating any economic profit in essence market price
+  - As a result, in a long run the market price will always be at the minimun point of the `ATC` curve, this level is called the `Long-run equilibrium output level` for perfectly competitive firms
+  - It goes the same if the economic profit or loss is triggered by a permanent increase/decrease in demand, firm will join or leave the market in long-run due to the changes in the market demand and make the market price back to normal, however the level of overall output will be changed based on the changes in market demand
 
 #### Monopolistic Competition
 
 - It is where there are many sellers and differentiated products
 - It has a downward sloping elastic demand curve
+- It is characterized by a large number of independent sellers, each firm has a relatively small market share
+- No individual firm has any significant power over price.
+  - Firms need only pay attention to the average price charged in the market, not the price of individual competitors
+- Unlike perfectly competitive markets where products are perfect substitutes for each other, firms under monopolistic competition reduce slightly different products from each other in terms of quality features and marketing
+  - Although there are differences, the competing products are close substitutes for one another as the basic functions are the same
+  - Firms compete on price, quality, and features and marketing as a result of product differentiation
+  - Marketing is a must to inform the market about such differentiating characteristics
+- Firms have downward sloping demand curves, the demand curves for most firms are highly elastic because competing products are close substitutes
+  - Firms can make their demand curves less elastic by providing compelling quality and features that consumers are willing to pay a premium for
+  - For a firm, the demand curve is also the average revenue curve.
+  - The marginal revenue curve is also downward sloping but below and steeper than the average revenue curve
+- Monopolistic competition sells at a higher price, higher average cost, and a lower quantity than under perfect competition
+  - Higher price is caused by downward sloping AR curve suggests that firm is not producing at the most efficient level. Because, for monopolistic competition, economic cost includes product differentiation costs such as marketing costs and R&D
 
 #### Oligopoly
 

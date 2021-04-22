@@ -418,6 +418,7 @@ It runs scripts and codes without the need to set up the server.
   - By default when only use the function name, it means the lastest version(the one without any version number and alias).
   - Updating alias to point to a new version by `aws lambda update-alias --function-name <FunctionName> --name <AliasName> --function-version <VersionNumber>`
   - A Lambda version is a readonly snapshot that is saved for other resources to trigger.
+  - Incoming traffic between two AWS Lambda function versions can be distributed randomly based on pre-assigned weights. This allows a gradual traffic shift between two versions
 - Updating a function with additional dependencies using AWS CLI
   1. Run `pip install --target ./package <pkgName>` to install the package to the `package` folder inside the project foloder.
   2. Run `zip -r9 ${OLDPWD}/function.zip .` to create a ZIP archive of the dependencies in the project folder.
