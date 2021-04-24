@@ -102,8 +102,9 @@
 
 - It defines an extensible video processing pipeline that can be used to perform inference, object tracking and reporting
 - [Click here](https://developer.nvidia.com/deepstream-getting-started) for more resources
-- Hardware Accelerated GStreamer plugins - GStreamer is a framework for creating streaming media applications
+- Hardware Accelerated GStreamer plugins - GStreamer is a framework for creating streaming media applications, the following list of plugins are tools that can be inserted into the GStreamer pipeline
   - `Gst-nvinfer` implements TensorRT-based inferencing
+    - It takes a config file as the element property, inference models and details are defined there
   - `Gst-nvstreammux` - Batch streams before sending for AI inference, manage metadata for video stream
   - `Gst-nvvideo4linux2` - Decode video streams using the hardware accelerated decoder (NVDEC); Encode RAW data in I420 format to H264 or H265 output video stream using hardware accelerated encoder (NVENC).
   - `Gst-nvvideoconvert` - Perform video color format conversion. The first Gst-nvvideoconvert plugin before Gst-nvdsosd plugin converts stream data from I420 to RGBA and the second Gst-nvvideoconvert plugin after Gst-nvdsosd plugin converts data from RGBA to I420.

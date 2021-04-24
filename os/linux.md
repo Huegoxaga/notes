@@ -513,7 +513,7 @@
 
 - `tar -cvf filename.tar <DestinationPath>` Create tar Archive File
   - `c` – Creates a new .tar archive file.
-  - `v` – Verbosely show the .tar file progress.
+  - `v` – Verbosely show the `.tar` file progress.
   - `f` – File name type of the archive file.
 - `tar cvzf filename.tar.gz <DestinationPath>` or `tar cvzf filename.tar.tgz <DestinationPath>` Create tar.gz Archive File
   - `z` compressed `gzip` archive file, use the option as `z`
@@ -695,6 +695,7 @@
 
 - It is used to log in remote servers.
 - Ex, `ssh -i ~/.ssh/"WordPress Key.pem" ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com`
+- `ssh -L 4444:example.com:80` forward port `4444` on the host machine to the a web page opened from the remote machine in port `80`
 
 ### sFTP
 
@@ -725,6 +726,7 @@
 - `curl -X DELETE -d "key1=value1&key2=value2" <URL>` send a delete request
 - `curl -u <username>:<password> <URL>` send a get request with credentials.
 - `curl -o <FileName> <URL>` send a get request, download response into a local file.
+- `curl -O <URL>` send a get request, download response into current folder with default name
 
 ### mssql
 
@@ -1319,3 +1321,35 @@
 
 - `screen /dev/tty.devicename <BaudRate>` start serial terminal session
   - `ls /dev/tty.*` to find all connected serial devices
+
+### Display Manager
+
+- `gdm3` (GNOME3), `kdm`, and `lightdm` are all display managers. They provide graphical logins and handle user authentication.
+- `sudo systemctl set-default multi-user.target`, to boot to console
+- `sudo systemctl set-default graphical.target`, to boot to display manager
+- `sudo systemctl start gdm3.service` or `sudo systemctl start lightdm.service`, start the graphical environment from the console.
+
+### Gstreamer
+
+- GStreamer is a framework for creating streaming media applications, written in C, it comes with CLI tools, `gst-inspect-1.0`, `gst-launch-1.0`, `ges-launch-1.0`
+- `gst-inspect-1.0 <Element | Plugin>` see element and plugins details including all property options
+  - The sink capabilities (sink Caps) lists the supported output format for the element
+  - The source capabilities (src Caps) lists the supported source format for the element
+  - A Pad template can contain multiple sink or src template each accept different Caps
+- `gst-typefind-1.0 <MediaFile>` find out the media format (Caps)
+- `gst-launch-1.0 <SourceElement> ! <Element|Plugin> ! ...<OptionalCapsSetting>... ! <Element|Plugin> | <SinkElement>`, define and run streaming pipline
+  - The output method is defined as a sink
+  - `!` is used to seperate elements, plugins, and caps setting
+  - Caps setting can specify the supported sink cap of a element for output by appending setting like `audio/x-raw,format=U18lE` or `video/x-raw,width=1280,height=960,framerate=30/1` (after `videoconvert` element), seperated by `!`
+    - convert is needed if the media format is not listed in target element's source/sink caps
+    - detailed caps settings are seperated by comma
+  - `gst-launch-1.0 audiotestsrc ! audioconvert ! autoaudiosink`, test an audio stream
+  - `gst-launch-1.0 audiotestsrc wave=saw freq=880 ! audioconvert ! autoaudiosink` test an audio stream with defined properties
+  - Video filters like `edgetv` and `rippletv` add effects to the video stream in between `videoconvert` elements
+
+## Platform Specific Configuration
+
+### Ubuntu
+
+- Enable Automatic Login For a User
+  - Change setting file at `sudo nano /etc/gdm3/custom.conf`

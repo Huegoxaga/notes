@@ -626,9 +626,10 @@ from .folder import file # . represent the current folder of the running python 
 from ..folder import file # .. represent the parent folder of the running python script
 ```
 
-### Show Version
+### Show Module Info
 
-- `print(package.__version__)`
+- `print(package.__version__)` show module version
+- `print(package.__file__)` show module path
 
 ### `__name__` variable
 

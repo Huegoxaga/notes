@@ -111,10 +111,14 @@
 - Jupyter Notebook
   - Run command `jupyter notebook` in the project folder to start a server and open the notebook in the browser
   - [Click](https://jupyter.readthedocs.io/en/latest/index.html) to see the docs for Jupyter Notebook
+- Setup:
+  - `jupyter notebook --generate-config` init the config file
+  - `jupyter notebook password` follow the prompt to enter the password, required for remote accessing notebook server
 - The `JupyterLab` is the newest product of the Jupyter Project.
   - [Click](https://jupyterlab.readthedocs.io/en/latest/index.html) to see details.
   - To Download JupyterLab, run command `conda install -c conda-forge jupyterlab`.
   - To Run JupyterLab, run command `jupyter lab`.
+    - `jupyter lab --notebook-dir='/'` launch in root directory
 
 ### Usage
 
@@ -123,7 +127,7 @@
 - `Shift + Enter` to run code block in the cell.
 - It supports LaTeX code in markdown cell, inside `$$` block.
 - In a cell, use `!` followed by terminal command using a new shell session
-  - optionally, use `$$bash` as the first line of a cell for Mac, use `$$cmd` as the first line of a cell for Mac
+  - optionally, use `$$bash` as the first line of a cell for Mac, use `$$cmd` as the first line of a cell for Windows
 - Using `cd` or `%cd` in a cell will ask IPython to change its own working directory. This will persist for the duration of your IPython session
   - it still has no effect on the shell you launched IPython from
 - One can move any cell to new window tabs in the main work area by right-clicking the cell and selecting "Create New View for Output"
@@ -428,6 +432,7 @@
 - `imwrite(filename, img)`, save an image to a file
 - video
   - `cap = cv2.VideoCapture(0)`, reading video directly from the webcam
+    - `cv2.VideoCapture(pipeline)` also takes a GStreamer pipepline definition string as an argument for video input
     - One camera will be connected by passing `0` OR `-1`
     - Second camera can be selected by passing `2`
   - `cap = cv2.VideoCapture('LOCATION OF THE VIDEO')`, reading a video from local storage
@@ -1144,3 +1149,86 @@ quit()
 ## PyTorch
 
 - To auto enable GPU when available set global variable `DEVICE = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')`, then replace all `.cuda()` with `.to(DEVICE)`
+
+## Gst-python
+
+- The Python bindings of the GStreamer library
+
+```py
+# import GStreamer's Python binding library PyGObject
+import gi
+# get GStreamer
+gi.require_version("Gst", "1.0")
+from gi.repository import Gst, GLib
+Gst.init()
+# Start the mainloop in the backgroud
+from threading import Thread
+main_loop = GLib.MainLoop()
+thread = Thread(target=main_loop.run)
+thread.start()
+# define pipeline
+pipeline = Gst.parse_launch("ksvideosrc ! decodebin ! videoconvert ! autovideosink")
+# start pipeline in mainloop
+pipeline.set_state(Gst.State.PLAYING)
+# block the main program and let mainloop run in the background
+try:
+    while True:
+        sleep(0.1)
+except KeyboardInterrupt:
+    pass
+# clean up and stop the mainloop
+pipeline.set_state(Gst.State.NULL)
+main_loop.quit()
+```
+
+- Set environment variable before running the program to show debug info `GST_DEBUG=2 python test.py`
+- Example of adding user defined plugins
+
+```py
+# import GstApp for try_pull_sample()
+gi.require_version("GstApp", "1.0")
+from gi.repository import GstApp
+# get rid of warnings
+_ = GstApp
+pipeline = Gst.parse_launch("ksvideosrc ! decodebin ! videoconvert ! "
+                            "appsink name=mySink")
+appsink = pipeline.get_by_name("mySink")
+try:
+    while True:
+        sample = appsink.try_pull_sample(Gst.SECOND)
+        if sample is None:
+            continue
+
+        print("Got a sample!")
+except KeyboardInterrupt:
+    pass
+```
+
+- Instead of using `Gst.parse_launch()` pipeline can be defined by its element and add them later
+
+```py
+# Create Pipeline element
+pipeline = Gst.Pipeline()
+# Source element for reading from the file
+# filesrc is the element name, file-source is the identifier that can be auto generated when set to None
+source = Gst.ElementFactory.make("filesrc", "file-source")
+# set element property
+source.set_property('location', 'path/to/file')
+convert = Gst.ElementFactory.make("videoconvert", "converter")
+sink = Gst.ElementFactory.make("autovideosink", "output")
+# Adding elements to Pipeline
+pipeline.add(source)
+pipeline.add(convert)
+pipeline.add(sink)
+# link the elements together in order
+# file-source -> converter -> output
+source.link(convert)
+convert.link(sink)
+# check pad info
+sinkpad = sink.get_request_pad("template_name")
+if not sinkpad:
+    sys.stderr.write(" Unable to get the sink pad info \n")
+sourcepad = source.get_static_pad("src")
+if not srcpad:
+    sys.stderr.write(" Unable to get source pad info \n")
+```

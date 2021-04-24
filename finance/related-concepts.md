@@ -253,7 +253,7 @@
 - It is characterized by a large number of independent sellers, each firm has a relatively small market share
 - No individual firm has any significant power over price.
   - Firms need only pay attention to the average price charged in the market, not the price of individual competitors
-- Unlike perfectly competitive markets where products are perfect substitutes for each other, firms under monopolistic competition reduce slightly different products from each other in terms of quality features and marketing
+- Unlike perfectly competitive markets where products are perfect substitutes for each other, firms under monopolistic competition produce slightly different products from each other in terms of quality features and marketing
   - Although there are differences, the competing products are close substitutes for one another as the basic functions are the same
   - Firms compete on price, quality, and features and marketing as a result of product differentiation
   - Marketing is a must to inform the market about such differentiating characteristics
@@ -269,13 +269,96 @@
 - It is where a few firms compete in a variety of ways
 - Firms need to consider other firms'(interdependent firms) strategy
 - Demand is also downward sloping but can vary in elasticity, in general firms (Automobile Industry) that are very differentiated from itself to others tend to have more elastic demand than firms with less differentiation (Telco industry)
+- An oligopoly market has higher barriers to entry due to economies of scale
+- The level of differentiation can vary from good substitutes to high differentiation depending on the industry, this affects the level of pricing power
+  - If the level of differentiation is high firms enjoy significant pricing power
+- The key distinguishing feature of oligopoly markets is that the firms are interdependent
+  - Actions of one company affect not just its own demand curve but also other competitor's, same goes for the price changes
+- Oligopoly models has four types of models, each is under a serial of assumption
+
+##### Kinked Demand Curve Model
+
+- Kinked demand curve model is based on the assumption that an increase in a firm's product price will not be followed by its competitors
+  - Other firms won't follow because they believe customers will switch to purchase their products and stay away from the product with higher prices, if they keeps the same old price
+  - The demand curve for that firm is more elastic above the prevailing price
+- The other assumption is that a decrease in price will be followed by its competitors
+  - for prices lower than the prevailing price the demand curve is less elastic
+- Based on the above assumptions, an oligopoly market has more to lose when it raises prices (high elastic demand curve at higher price) and has less to gain when it lowers prices (low elastic demand curve at lower price). The most profitable price and output combination for the firm is at the kink point where the elasticity is about to change
+  - an oligopoly market will maintain its price at this level unless a competitor lowers its price
+  - due to the shape of the kinked demand curve the corresponding marginal revenue curve for the firm will have a gap, each line with a difference slope on the two side of the kink point
+  - If the `MC` curve fall in between the gap of the `MR` curve, the firm produces at the most profitable price and output combination
+  - If the `MC` curve move higher, the price goes up and the firm lose lots of customer, this explain why most oligopoly market price is stable
+
+##### Cournot Model
+
+- The model considers an oligopoly with only two firms competing and both have identical and constant marginal costs of production
+- Each firm knows the quantity supplied by the other firm in the previous period and assumes that the supply will not change in the next period
+- In this model the combined equilibrium output will return a market price based on the market demand curve
+  - this price output combination of the market is known as the Cournot equilibrium
+  - This price will be much higher than the market price in a perfect competition market which is the same as the marginal costs
+  - This price will be close to but smaller than the max market price in an unregulated monopoly market
+  - As more firms join the market the outputs and price equilibrium positions move toward the competitive equilibrium
+
+##### Nash Equilibrium
+
+- It assumes that all firms in an oligopoly will make choices where there is a chance of a better outcome for the firm
+  - In other words the Nash equilibrium is reached when the choices of all firms are such that there is no other choice that makes any firm better off
+  - According to Nash, collusive agreements to increase profits are seldom successful, if there are no binding agreements
+- When collusive agreements are made openly and formally the firms involved are called a `Cartel`, e.g. the `OPEC` oil cartel
+  - If there is perfect collusion amongst the firms, the profit can be maximize and the market demand curve can be used to determine the price,
+  - In reality, the price is lower and the quantity demanded is higher
+- Collusive agreements to increase price in an oligopoly market will be more successful when:
+  - There are fewer firms products are less differentiated
+  - Cost structures are more similar
+  - Purchases are relatively small and frequent
+  - retaliation by other firms for cheating is more certain and more severe
+  - Less competition from firms outside the cartel
+
+##### Dominant Firm Model
+
+- This model has a dominant firm in the market
+  - It is a single firm that has a significantly large market share because of its greater scale and lower cost structure
+  - The market price is essentially determined by the dominant firm and the rest of the firms are price takers
+- The demand curve of the dominant firm is slightly below the market demand curve
+  - the quantity supplied by the other firms decreases at lower prices, it means the dominant firms demand curve is even closer to the market demand curve when its price is low, and its supply is high
+- Based on this demand curve and its associated marginal revenue curve, the firm will maximize profits at the production level where its `MR` is equal to `MC`, this point determines the market price
+- The marginal cost curves of other firms are likely higher than that of the dominant firm, the quantity demanded for these firms is determined by the intersaction point between its `MC` curve and the market price
 
 #### Monopoly
 
 - It is where only one firm is producing the product
 - It has a downward sloping demand curve which is the market demand curve, and firm has the power to choose the price at which it sells its product
+- For maximize profit, firms will expand output until its marginal revenue is equal to its marginal cost, the quantity then will determine the market price based on the market demand curve
+- Long run positive economic profits can exist, because no other firm can join and change the market supply
 - there can be a few reasons for monopolies:
   - Firstly very high barriers to entry protect a monopoly producer from competition
   - copyrights and patents also protect a monopoly from competition
   - sometimes firm has control over a resource specifically needed to produce the product
   - Mostly monopoly power is supported by government in such cases the price the monopoly charges is often regulated by the government as well
+- Compared to a perfectly competitive market, the monopoly market will produce less total output and charge a higher price
+- Monopoly market will not have consumer surplus and producer surplus both maximized like what perfect competetion market does
+  - the consumer surplus is the area below the demand curve and above the price level
+  - the supply surplus is the area above the supply curve and below the price level
+  - High surplus means taking advantage of the transaction, high consumer surplus means paying to little, high supply surplus means earning too much
+  - Monopoly market increases the producer surplus, at the expense of consumer surplus
+- A single price model for monopoly market is where monopolist charges all its customers the same price for the product or service
+  - This produces a quantity that does not maximize the sum of consumer surplus and produce a surplus from the market perspective
+  - It creates a deadweight loss which is a loss of economic efficiency
+  - It is an area where marginal benefit is still greater than marginal cost
+  - Customers could purchase more goods but give up because of the higher price
+- Price discrimination model is can be used to capture more profits by selling at a higher price to those who are willing to pay more, and selling at a lower price to those who will only buy if the price is lower
+  - Through price discrimination the consumer surplus is reduced and so is the deadweight
+  - Perfect price discrimination is an extreme case in theory, if it were possible for the supplier to charge each consumer the maximum they're willing to pay for each unit, there would be no deadweight loss because a monopolist would produce the same quantity as under perfect competition, there would also be no consumer surplus as all the surplus would be captured by the monopolist
+  - Conditions for price discrimination to work:
+    - The seller must face a downward sloping demand curve
+    - Have at least two identifiable groups of customers with different price elasticity of demand for the product
+    - Be able to prevent the customers paying the lower price from reselling the product to the customers paying the higher price
+- Natural monopoly - It is due to the economics of production when there are large economies of scale
+  - As firm in a certain industry grows bigger and bigger it become more effeient and other firm become harder to enter the market
+  - Governments tend to regulate the price charged by natural monopolies to improve resource allocation, protect consumers, reduce deadweight loss, it can be done through
+    - Regulating by average cost pricing - monopolist is required to set its price at its average cost
+      - This increases the output and decreases price for consumers
+      - The monopolist earns zero economic profit as the price just covers the cost of production it just earns a normal profit to cover opportunity costs
+    - Regulating by marginal cost pricing - it forces the monopolies to reduce price to the point where the firms M.S. curve intersects the market demand curve
+      - The market demand curve this further increases output and reduces price but causes the monopolies to incur an economic loss
+      - Because price is below `ATC`, a government subsidy is provided in order to provide the firm with a normal profit and prevent it from leaving the market entirely

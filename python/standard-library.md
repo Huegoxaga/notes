@@ -391,6 +391,11 @@ list(accumulate(range(8)))
 
 - `sys.argv` get a list of command line parameters
   - `argv[0]` will always be the script name
+- `sys.exit(exit_code)` exit the program with exit code as the argument
+  - `0` is the default value, and it indicates a successful termination
+  - any value other than `0` indicates an abnormal termination upon exit
+  - sometimes, `sys.exit(main(sys.argv))` is used under `if __name__ == '__main__':` block for a good modularized structure
+- `sys.stderr.write("Error!\n")` output error messages
 
 ## subprocess
 

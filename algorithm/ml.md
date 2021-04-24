@@ -143,7 +143,7 @@
 - Fit a linear regression into a range of 0 and 1 as the probabilities using the logistic regression formula.
   - Subsitute `y` in the linear regression formula into the sigmoid function will return the logistic regression formula.
 - It can generate `P` hat as predicted probability of a given value.
-- It can return ethier 0 or 1 as `y` hat value if categorical results are preferred..
+- It can return ethier 0 or 1 as `y` hat value if categorical results are preferred
   - return `y` hat as 1 if the probability is higher than a certain defined value and vise versa.
 
 ### Support Vector Machines(SVMs)
@@ -445,7 +445,11 @@
   - Language models can have the following types
     - Unigram - each single word is considered as one unit, for a sentence contains words `A B C`. `A`, `B`, `C` are considered.
     - Bigram - each two words are considered as one unit, for a sentence contains words `A B C`. `AB`, `BC` are considered.
-      - The model will then calculate the probability of `AB` given `A` by counting and dividing the occurrence of `AB` over `A`, it aims to find all probability of each word for all other words in a large text corpus
+      - The model will then calculate the probability of `AB` given `A` by counting and dividing the occurrence of `AB` by `A`, it aims to find all probability of each word for all other words in a large text corpus
+        - Add-one smoothing - During prediction, the probability of any word followed by `A` cannot be `0`, to introduce the possibility during training, this case should be included in the calculation, so the calculation should be dividing the occurrence of `A` followed by `B` plus `1` over the number of `A` plus the total number of unique words in the training corpus
+      - Once the model has the all the probability info, it chains the predicted words into a sentence, as `P(A,B,C) = P(C|B)P(B|A)P(A)`
+        - based on the Bayes rule, `B C` depended on `A` also need to be found by doing counting, however, `B C` depended on `A` is trigram and will not be used, based on Markov Assumption, what we see only depends on the what we see in previous step, so the term `B C` depended on `A` will be ignored in the calculation, it is also easier to model because the occurrence of shorter word sequences (two word phrases) is higher than long sentences in the training corpus
+        - In the actually calculation, add up the logarithm of the probability instead of multiplying the chained probability, and get the average of this log value for each word by dividing the sum by the number of words in a sentence
     - N-gram - each group of consecutive N words are considered.
       - fastText even consider n-gram for group of characters within a word("ora", "ran", "ang", "nge" when `minn` is 3) and make it different from `Word2Vec`. Hence, it works good with misspelled words.
       - Default `minn` is 3, `maxn` is 6
