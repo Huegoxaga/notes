@@ -1232,3 +1232,5 @@ sourcepad = source.get_static_pad("src")
 if not srcpad:
     sys.stderr.write(" Unable to get source pad info \n")
 ```
+
+- It accesses meta data from `C` through `pyds` module, note that Python garabe collection will affect the workflow if declare those data in Python instead of obtaining data through `C` memory address

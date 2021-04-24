@@ -1498,10 +1498,18 @@
 <li><a href="https://jupyter.readthedocs.io/en/latest/index.html" target="_blank">Click</a> to see the docs for Jupyter Notebook</li>
 </ul>
 </li>
+<li>Setup:<ul>
+<li><code>jupyter notebook --generate-config</code> init the config file</li>
+<li><code>jupyter notebook password</code> follow the prompt to enter the password, required for remote accessing notebook server</li>
+</ul>
+</li>
 <li>The <code>JupyterLab</code> is the newest product of the Jupyter Project.<ul>
 <li><a href="https://jupyterlab.readthedocs.io/en/latest/index.html" target="_blank">Click</a> to see details.</li>
 <li>To Download JupyterLab, run command <code>conda install -c conda-forge jupyterlab</code>.</li>
-<li>To Run JupyterLab, run command <code>jupyter lab</code>.</li>
+<li>To Run JupyterLab, run command <code>jupyter lab</code>.<ul>
+<li><code>jupyter lab --notebook-dir=&apos;/&apos;</code> launch in root directory</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1514,7 +1522,7 @@
 <li><code>Shift + Enter</code> to run code block in the cell.</li>
 <li>It supports LaTeX code in markdown cell, inside <code>$$</code> block.</li>
 <li>In a cell, use <code>!</code> followed by terminal command using a new shell session<ul>
-<li>optionally, use <code>$$bash</code> as the first line of a cell for Mac, use <code>$$cmd</code> as the first line of a cell for Mac</li>
+<li>optionally, use <code>$$bash</code> as the first line of a cell for Mac, use <code>$$cmd</code> as the first line of a cell for Windows</li>
 </ul>
 </li>
 <li>Using <code>cd</code> or <code>%cd</code> in a cell will ask IPython to change its own working directory. This will persist for the duration of your IPython session<ul>
@@ -1945,6 +1953,7 @@
 <li><code>imwrite(filename, img)</code>, save an image to a file</li>
 <li>video<ul>
 <li><code>cap = cv2.VideoCapture(0)</code>, reading video directly from the webcam<ul>
+<li><code>cv2.VideoCapture(pipeline)</code> also takes a GStreamer pipepline definition string as an argument for video input</li>
 <li>One camera will be connected by passing <code>0</code> OR <code>-1</code></li>
 <li>Second camera can be selected by passing <code>2</code></li>
 </ul>
@@ -2349,6 +2358,7 @@ cnn.add(tf.keras.layers.Dense(units=<span class="hljs-number">1</span>, activati
 </code></pre>
 <ul>
 <li><code>inserted_values</code> has to be a tuple, even if it has only one parameter. For example, use <code>(1,)</code>.</li>
+<li>Use <code>None</code> in Python to represent <code>NULL</code> in <code>PostgreSQL</code></li>
 </ul>
 <h2 id="pyttsx3">pyttsx3</h2>
 <ul>
@@ -2762,6 +2772,88 @@ setup(name = <span class="hljs-string">&quot;projectName&quot;</span> ,
 <ul>
 <li>To auto enable GPU when available set global variable <code>DEVICE = torch.device(&apos;cuda:0&apos; if torch.cuda.is_available() else &apos;cpu&apos;)</code>, then replace all <code>.cuda()</code> with <code>.to(DEVICE)</code></li>
 </ul>
+<h2 id="gst-python">Gst-python</h2>
+<ul>
+<li>The Python bindings of the GStreamer library</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-comment"># import GStreamer&apos;s Python binding library PyGObject</span>
+<span class="hljs-keyword">import</span> gi
+<span class="hljs-comment"># get GStreamer</span>
+gi.require_version(<span class="hljs-string">&quot;Gst&quot;</span>, <span class="hljs-string">&quot;1.0&quot;</span>)
+<span class="hljs-keyword">from</span> gi.repository <span class="hljs-keyword">import</span> Gst, GLib
+Gst.init()
+<span class="hljs-comment"># Start the mainloop in the backgroud</span>
+<span class="hljs-keyword">from</span> threading <span class="hljs-keyword">import</span> Thread
+main_loop = GLib.MainLoop()
+thread = Thread(target=main_loop.run)
+thread.start()
+<span class="hljs-comment"># define pipeline</span>
+pipeline = Gst.parse_launch(<span class="hljs-string">&quot;ksvideosrc ! decodebin ! videoconvert ! autovideosink&quot;</span>)
+<span class="hljs-comment"># start pipeline in mainloop</span>
+pipeline.set_state(Gst.State.PLAYING)
+<span class="hljs-comment"># block the main program and let mainloop run in the background</span>
+<span class="hljs-keyword">try</span>:
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+        sleep(<span class="hljs-number">0.1</span>)
+<span class="hljs-keyword">except</span> KeyboardInterrupt:
+    <span class="hljs-keyword">pass</span>
+<span class="hljs-comment"># clean up and stop the mainloop</span>
+pipeline.set_state(Gst.State.NULL)
+main_loop.quit()
+</code></pre>
+<ul>
+<li>Set environment variable before running the program to show debug info <code>GST_DEBUG=2 python test.py</code></li>
+<li>Example of adding user defined plugins</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-comment"># import GstApp for try_pull_sample()</span>
+gi.require_version(<span class="hljs-string">&quot;GstApp&quot;</span>, <span class="hljs-string">&quot;1.0&quot;</span>)
+<span class="hljs-keyword">from</span> gi.repository <span class="hljs-keyword">import</span> GstApp
+<span class="hljs-comment"># get rid of warnings</span>
+_ = GstApp
+pipeline = Gst.parse_launch(<span class="hljs-string">&quot;ksvideosrc ! decodebin ! videoconvert ! &quot;</span>
+                            <span class="hljs-string">&quot;appsink name=mySink&quot;</span>)
+appsink = pipeline.get_by_name(<span class="hljs-string">&quot;mySink&quot;</span>)
+<span class="hljs-keyword">try</span>:
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+        sample = appsink.try_pull_sample(Gst.SECOND)
+        <span class="hljs-keyword">if</span> sample <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span>:
+            <span class="hljs-keyword">continue</span>
+
+        print(<span class="hljs-string">&quot;Got a sample!&quot;</span>)
+<span class="hljs-keyword">except</span> KeyboardInterrupt:
+    <span class="hljs-keyword">pass</span>
+</code></pre>
+<ul>
+<li>Instead of using <code>Gst.parse_launch()</code> pipeline can be defined by its element and add them later</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-comment"># Create Pipeline element</span>
+pipeline = Gst.Pipeline()
+<span class="hljs-comment"># Source element for reading from the file</span>
+<span class="hljs-comment"># filesrc is the element name, file-source is the identifier that can be auto generated when set to None</span>
+source = Gst.ElementFactory.make(<span class="hljs-string">&quot;filesrc&quot;</span>, <span class="hljs-string">&quot;file-source&quot;</span>)
+<span class="hljs-comment"># set element property</span>
+source.set_property(<span class="hljs-string">&apos;location&apos;</span>, <span class="hljs-string">&apos;path/to/file&apos;</span>)
+convert = Gst.ElementFactory.make(<span class="hljs-string">&quot;videoconvert&quot;</span>, <span class="hljs-string">&quot;converter&quot;</span>)
+sink = Gst.ElementFactory.make(<span class="hljs-string">&quot;autovideosink&quot;</span>, <span class="hljs-string">&quot;output&quot;</span>)
+<span class="hljs-comment"># Adding elements to Pipeline</span>
+pipeline.add(source)
+pipeline.add(convert)
+pipeline.add(sink)
+<span class="hljs-comment"># link the elements together in order</span>
+<span class="hljs-comment"># file-source -&gt; converter -&gt; output</span>
+source.link(convert)
+convert.link(sink)
+<span class="hljs-comment"># check pad info</span>
+sinkpad = sink.get_request_pad(<span class="hljs-string">&quot;template_name&quot;</span>)
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> sinkpad:
+    sys.stderr.write(<span class="hljs-string">&quot; Unable to get the sink pad info \n&quot;</span>)
+sourcepad = source.get_static_pad(<span class="hljs-string">&quot;src&quot;</span>)
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> srcpad:
+    sys.stderr.write(<span class="hljs-string">&quot; Unable to get source pad info \n&quot;</span>)
+</code></pre>
+<ul>
+<li>It accesses meta data from <code>C</code> through <code>pyds</code> module, note that Python garabe collection will affect the workflow if declare those data in Python instead of obtaining data through <code>C</code> memory address</li>
+</ul>
 
                                 
                                 </section>
@@ -2805,7 +2897,7 @@ setup(name = <span class="hljs-string">&quot;projectName&quot;</span> ,
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2021-04-12T01:47:43.629Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T16:40:50.241Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Tools & More Packages","level":"1.2.2","depth":2,"next":{"title":"Django","level":"1.2.3","depth":2,"path":"python/django.md","ref":"python/django.md","articles":[]},"previous":{"title":"Python Stardard Library","level":"1.2.1","depth":2,"path":"python/standard-library.md","ref":"python/standard-library.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/tools-and-packages.md","mtime":"2021-04-24T16:47:31.159Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-24T18:21:17.978Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

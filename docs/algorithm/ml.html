@@ -1501,7 +1501,7 @@
 <ul>
 <li>It can handle non-linear datasets.</li>
 </ul>
-<h5 id="regression-trees">Regression Trees</h5>
+<h4 id="regression-trees">Regression Trees</h4>
 <ul>
 <li>It is used for regression problems</li>
 <li>It split the datapoints into groups based on the independent variables of a data point.</li>
@@ -1517,7 +1517,7 @@
 <li>The split add information to the datapoint and group them.</li>
 <li>The average of all data points in one terminal leaf will be calculated as the prediced value for all new data point if it falls in the split.</li>
 </ul>
-<h5 id="classification-trees">Classification Trees</h5>
+<h4 id="classification-trees">Classification Trees</h4>
 <ul>
 <li>It is used for classification problems</li>
 <li>similar to regression tree but each leaf represents one category</li>
@@ -1564,7 +1564,7 @@
 </ul>
 </li>
 <li>It can generate <code>P</code> hat as predicted probability of a given value.</li>
-<li>It can return ethier 0 or 1 as <code>y</code> hat value if categorical results are preferred..<ul>
+<li>It can return ethier 0 or 1 as <code>y</code> hat value if categorical results are preferred<ul>
 <li>return <code>y</code> hat as 1 if the probability is higher than a certain defined value and vise versa.</li>
 </ul>
 </li>
@@ -1581,7 +1581,7 @@
 <li>The boundary is called maximum margin hyperplane or maximum margin classifier.</li>
 <li>The lines which are parallel to the maximum margin hyperplane and have zero distance to the support vectors are called positive or negative hyperplane.</li>
 </ul>
-<h5 id="support-vector-regression">Support Vector Regression</h5>
+<h4 id="support-vector-regression">Support Vector Regression</h4>
 <h3 id="neural-networks">Neural Networks</h3>
 <ul>
 <li>It was first introduced in 1980s, it was getting popular recently only becase the improved stroage and computing</li>
@@ -1600,7 +1600,7 @@
 </li>
 <li>Hyperparameters are parameters used to build and train models.</li>
 </ul>
-<h5 id="artificial-neural-networksanns">Artificial Neural Networks(ANNs)</h5>
+<h4 id="artificial-neural-networksanns">Artificial Neural Networks(ANNs)</h4>
 <ul>
 <li>The initial input values for the artificial neural network would be multiple features about one sample.</li>
 <li>The final output values for the artificial neural network could be either a predicted value(one output), a boolean value(one output) or categorical values(multiple output nodes)</li>
@@ -1648,7 +1648,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="convolutional-neural-networkscnns">Convolutional Neural Networks(CNNs)</h5>
+<h4 id="convolutional-neural-networkscnns">Convolutional Neural Networks(CNNs)</h4>
 <ul>
 <li>It is an ANN for image recoginion.</li>
 <li>For a computer, a back and white image is an array of numbers from 0-255(8 bits data) where 0 represents black, 255 represents white and grey scale colors in between.</li>
@@ -1730,7 +1730,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="recurrent-neural-networksrnns">Recurrent Neural Networks(RNNs)</h5>
+<h4 id="recurrent-neural-networksrnns">Recurrent Neural Networks(RNNs)</h4>
 <ul>
 <li>RNNs are a type of ANNs that can capture temporal dependencies.<ul>
 <li>Temporal Dependencies or Dependencies Over Time - Current output dependent on both current and past inputs.</li>
@@ -1800,7 +1800,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="hyperparameters-tuning">Hyperparameters Tuning</h5>
+<h4 id="hyperparameters-tuning">Hyperparameters Tuning</h4>
 <ul>
 <li>For Neural Networks, hyperparameters tuning can be done during model building and model training.</li>
 <li>Build Model<ul>
@@ -2010,9 +2010,20 @@
 <li>Then, use linear classifier(multinomial logistic regression) to predict the label based on the vector value</li>
 </ul>
 </li>
-<li>Gram<ul>
+<li>Language models can have the following types<ul>
 <li>Unigram - each single word is considered as one unit, for a sentence contains words <code>A B C</code>. <code>A</code>, <code>B</code>, <code>C</code> are considered.</li>
-<li>Bigram - each two words are considered as one unit, for a sentence contains words <code>A B C</code>. <code>AB</code>, <code>BC</code> are considered.</li>
+<li>Bigram - each two words are considered as one unit, for a sentence contains words <code>A B C</code>. <code>AB</code>, <code>BC</code> are considered.<ul>
+<li>The model will then calculate the probability of <code>AB</code> given <code>A</code> by counting and dividing the occurrence of <code>AB</code> by <code>A</code>, it aims to find all probability of each word for all other words in a large text corpus<ul>
+<li>Add-one smoothing - During prediction, the probability of any word followed by <code>A</code> cannot be <code>0</code>, to introduce the possibility during training, this case should be included in the calculation, so the calculation should be dividing the occurrence of <code>A</code> followed by <code>B</code> plus <code>1</code> over the number of <code>A</code> plus the total number of unique words in the training corpus</li>
+</ul>
+</li>
+<li>Once the model has the all the probability info, it chains the predicted words into a sentence, as <code>P(A,B,C) = P(C|B)P(B|A)P(A)</code><ul>
+<li>based on the Bayes rule, <code>B C</code> depended on <code>A</code> also need to be found by doing counting, however, <code>B C</code> depended on <code>A</code> is trigram and will not be used, based on Markov Assumption, what we see only depends on the what we see in previous step, so the term <code>B C</code> depended on <code>A</code> will be ignored in the calculation, it is also easier to model because the occurrence of shorter word sequences (two word phrases) is higher than long sentences in the training corpus</li>
+<li>In the actually calculation, add up the logarithm of the probability instead of multiplying the chained probability, and get the average of this log value for each word by dividing the sum by the number of words in a sentence</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>N-gram - each group of consecutive N words are considered.<ul>
 <li>fastText even consider n-gram for group of characters within a word(&quot;ora&quot;, &quot;ran&quot;, &quot;ang&quot;, &quot;nge&quot; when <code>minn</code> is 3) and make it different from <code>Word2Vec</code>. Hence, it works good with misspelled words.</li>
 <li>Default <code>minn</code> is 3, <code>maxn</code> is 6</li>
@@ -2144,8 +2155,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="timeseries-data-preprocessing">Timeseries data preprocessing</h3>
-<h3 id="text-data-preprocessing">Text data preprocessing</h3>
+<h3 id="timeseries-data-preprocessing">Timeseries Data Preprocessing</h3>
+<h3 id="text-data-preprocessing">Text Data Preprocessing</h3>
 <h4 id="normalization">Normalization</h4>
 <ul>
 <li>Clean text</li>
@@ -2182,7 +2193,10 @@
 </li>
 <li>Word2Vec<ul>
 <li>Word2Vec are used to predict a vector representation of a word using a model trained by a text corpus<ul>
-<li>It is a word embedding(representation) method, word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers.</li>
+<li>It is a word embedding(representation) method, word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers<ul>
+<li>language model is a model of the probability of a sequence of words (sentence)</li>
+</ul>
+</li>
 <li>it converts every word in a large text corpus into a vector</li>
 <li>text corpus is a language resource consisting of a large and structured set of texts</li>
 <li>It can predict any word if all its subwords presented in the training text corpus<ul>
@@ -2224,11 +2238,11 @@
 </ul>
 <h2 id="model-evaluation">Model Evaluation</h2>
 <h3 id="evaluating-regression-models">Evaluating Regression Models</h3>
-<h5 id="root-mean-square-errorrmse">Root Mean Square Error(RMSE)</h5>
+<h4 id="root-mean-square-errorrmse">Root Mean Square Error(RMSE)</h4>
 <ul>
 <li>The smaller the better</li>
 </ul>
-<h5 id="residual-histograms">Residual Histograms</h5>
+<h4 id="residual-histograms">Residual Histograms</h4>
 <ul>
 <li>Residual value equals to the actual value minus predicted value.</li>
 <li>Residual Histograms have Residual value for each prediction on x-axis and count on y-asix.</li>
@@ -2270,7 +2284,7 @@
 <ul>
 <li>A ML frameworks is a libray for a certain programming language which contains various ML algorithm as methods.</li>
 </ul>
-<h4 id="tensorflow"><a href="https://www.tensorflow.org" target="_blank">TensorFlow</a></h4>
+<h3 id="tensorflow"><a href="https://www.tensorflow.org" target="_blank">TensorFlow</a></h3>
 <ul>
 <li>It was developed by the Google Brain team for internal Google use. It was released under the Apache License 2.0 on November 9, 2015.</li>
 <li>It is the most popular deep learning framework for Python</li>
@@ -2280,7 +2294,7 @@
 <li>Static computation graph - The model should be defined first then compile and train it after.</li>
 <li>TensorFlow 2.0 uses Keras as its official high-level API</li>
 </ul>
-<h4 id="pytorch"><a href="https://pytorch.org" target="_blank">PyTorch</a></h4>
+<h3 id="pytorch"><a href="https://pytorch.org" target="_blank">PyTorch</a></h3>
 <ul>
 <li>PyTorch is an open source machine learning library based on the Torch library<ul>
 <li>Torch is an open-source machine learning library, a scientific computing framework, and a script language based on the Lua programming language.It provides a wide range of algorithms for deep learning</li>
@@ -2291,12 +2305,12 @@
 <li>Dynamically Updated Graph - The model is compile after each line of the model definition</li>
 <li>PyTorch is suited for small projects and prototyping</li>
 </ul>
-<h4 id="sonnet"><a href="https://sonnet.readthedocs.io/en/latest/" target="_blank">Sonnet</a></h4>
+<h3 id="sonnet"><a href="https://sonnet.readthedocs.io/en/latest/" target="_blank">Sonnet</a></h3>
 <ul>
 <li>Sonnet is a high level library to build complex neural network structures in TensorFlow.</li>
 <li>It is designed to create neural networks with a complex architecture by DeepMind.</li>
 </ul>
-<h4 id="mxnet"><a href="https://mxnet.apache.org" target="_blank">MXNet</a></h4>
+<h3 id="mxnet"><a href="https://mxnet.apache.org" target="_blank">MXNet</a></h3>
 <ul>
 <li>It is owned by Apache Software Foundation</li>
 <li>The framework initially supports a large number of languages (including C++, Python, Java, Julia, Matlab, JavaScript, Go, R, Scala, Perl, and Wolfram Language.)</li>
@@ -2319,31 +2333,31 @@
 <li>See a complete list <a href="https://en.wikipedia.org/wiki/List_of_datasets_for_machine-learning_research" target="_blank">here</a>.</li>
 </ul>
 <h3 id="image-data">Image Data</h3>
-<h5 id="mnist">MNIST</h5>
+<h4 id="mnist">MNIST</h4>
 <ul>
 <li>It contains Database of handwritten digits.</li>
 <li>It has 60,000 images, created by National Institute of Standards and Technology in 1998.</li>
 </ul>
-<h5 id="imagenet"><a href="http://www.image-net.org" target="_blank">ImageNet</a></h5>
+<h4 id="imagenet"><a href="http://www.image-net.org" target="_blank">ImageNet</a></h4>
 <ul>
 <li>ImageNet is an image database organized according to the WordNet hierarchy (currently only the nouns), in which each node of the hierarchy is depicted by hundreds and thousands of images.<ul>
 <li>WordNet is a large lexical database of English. Nouns, verbs, adjectives and adverbs are grouped into sets of cognitive synonyms (synsets), each expressing a distinct concept.</li>
 </ul>
 </li>
 </ul>
-<h5 id="coco"><a href="http://cocodataset.org/#home" target="_blank">COCO</a></h5>
+<h4 id="coco"><a href="http://cocodataset.org/#home" target="_blank">COCO</a></h4>
 <ul>
 <li>Microsoft Common Objects in Context (COCO)</li>
 <li>Images are preprocessed with object highlighting, labeling, and classification into 91 object types.</li>
 </ul>
-<h5 id="ade20k"><a href="https://groups.csail.mit.edu/vision/datasets/ADE20K/index.html" target="_blank">ADE20K</a></h5>
+<h4 id="ade20k"><a href="https://groups.csail.mit.edu/vision/datasets/ADE20K/index.html" target="_blank">ADE20K</a></h4>
 <ul>
 <li>Released by MIT CSAIL Computer Vision Group</li>
 <li>20210 images are fully annotated with objects and, many of the images have parts too.</li>
 <li>2000 images are fully annotated with objects and parts</li>
 </ul>
 <h3 id="numeric-data">Numeric Data</h3>
-<h5 id="iris-dataset"><a href="http://archive.ics.uci.edu/ml/datasets/Iris" target="_blank">Iris Dataset</a></h5>
+<h4 id="iris-dataset"><a href="http://archive.ics.uci.edu/ml/datasets/Iris" target="_blank">Iris Dataset</a></h4>
 <ul>
 <li>It has measurement data for three types of iris plants taken by R. Fisher, released in 1936.</li>
 <li>The dataset contains a set of 150 records under 4 attributes - sepal length, sepal width, petal length, petal width.</li>
@@ -2391,7 +2405,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Machine Learning","level":"1.23.3","depth":2,"next":{"title":"Mathematics","level":"1.24","depth":1,"path":"math/README.md","ref":"math/README.md","articles":[{"title":"Basic Math","level":"1.24.1","depth":2,"path":"math/basic.md","ref":"math/basic.md","articles":[]},{"title":"Calculus","level":"1.24.2","depth":2,"path":"math/calculus.md","ref":"math/calculus.md","articles":[]},{"title":"Linear Algebra","level":"1.24.3","depth":2,"path":"math/linear-algebra.md","ref":"math/linear-algebra.md","articles":[]},{"title":"Discrete Mathematics","level":"1.24.4","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},{"title":"Probability & Statistics","level":"1.24.5","depth":2,"path":"math/probability-statistics.md","ref":"math/probability-statistics.md","articles":[]},{"title":"Maple Softwares","level":"1.24.6","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]}]},"previous":{"title":"Cryptography","level":"1.23.2","depth":2,"path":"algorithm/cryptography.md","ref":"algorithm/cryptography.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"algorithm/ml.md","mtime":"2021-02-07T21:11:48.785Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T16:40:50.241Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Machine Learning","level":"1.23.3","depth":2,"next":{"title":"Mathematics","level":"1.24","depth":1,"path":"math/README.md","ref":"math/README.md","articles":[{"title":"Basic Math","level":"1.24.1","depth":2,"path":"math/basic.md","ref":"math/basic.md","articles":[]},{"title":"Calculus","level":"1.24.2","depth":2,"path":"math/calculus.md","ref":"math/calculus.md","articles":[]},{"title":"Linear Algebra","level":"1.24.3","depth":2,"path":"math/linear-algebra.md","ref":"math/linear-algebra.md","articles":[]},{"title":"Discrete Mathematics","level":"1.24.4","depth":2,"path":"math/discrete.md","ref":"math/discrete.md","articles":[]},{"title":"Probability & Statistics","level":"1.24.5","depth":2,"path":"math/probability-statistics.md","ref":"math/probability-statistics.md","articles":[]},{"title":"Maple Softwares","level":"1.24.6","depth":2,"path":"math/maple.md","ref":"math/maple.md","articles":[]}]},"previous":{"title":"Cryptography","level":"1.23.2","depth":2,"path":"algorithm/cryptography.md","ref":"algorithm/cryptography.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"algorithm/ml.md","mtime":"2021-04-22T20:51:59.556Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-24T18:21:17.978Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

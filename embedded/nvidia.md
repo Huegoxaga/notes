@@ -100,9 +100,10 @@
 
 #### Deepstream
 
-- It defines an extensible video processing pipeline that can be used to perform inference, object tracking and reporting
-- [Click here](https://developer.nvidia.com/deepstream-getting-started) for more resources
-- Hardware Accelerated GStreamer plugins - GStreamer is a framework for creating streaming media applications, the following list of plugins are tools that can be inserted into the GStreamer pipeline
+- It is a group of GStreaner Plugins that can work with NVIDIA GPUs
+  - also known asHardware Accelerated GStreamer plugins)
+  - GStreamer is a framework for creating streaming media applications
+- the following list of plugins are tools that can be inserted into the GStreamer pipeline
   - `Gst-nvinfer` implements TensorRT-based inferencing
     - It takes a config file as the element property, inference models and details are defined there
   - `Gst-nvstreammux` - Batch streams before sending for AI inference, manage metadata for video stream
@@ -114,7 +115,8 @@
   - `Gst-nvv4l2decoder` - Decode a video stream.
   - `Gst-Nvv4l2h264enc` - Encode a video stream.
   - `Gst-NvArgusCameraSrc` - Provide options to control ISP properties using the Argus API.
-- The deepstream supports C/C++ with GStreamer natively, it also supports Python using Gst Python which is GStreamer framework's Python bindings
+- [Click here](https://developer.nvidia.com/deepstream-getting-started) for more resources
+- GStreamer is a `C` framework, it also supports Python using Gst Python which is GStreamer framework's Python bindings
   - Python bindings is a compiled module included in the DeepStream SDK, it is generated using Pybind11
   - [Click here](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps#metadata_bindings) to explore sample apps in Python
 - In NGC, there are docker containers available with deepstream installed for a quick start, `dGPU` container is called `deepstream` and the `Jetson` container is called `deepstream-l4t`

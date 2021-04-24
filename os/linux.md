@@ -1346,6 +1346,7 @@
   - `gst-launch-1.0 audiotestsrc ! audioconvert ! autoaudiosink`, test an audio stream
   - `gst-launch-1.0 audiotestsrc wave=saw freq=880 ! audioconvert ! autoaudiosink` test an audio stream with defined properties
   - Video filters like `edgetv` and `rippletv` add effects to the video stream in between `videoconvert` elements
+- `gst-device-monitor-1.0` discover available devices
 
 ## Platform Specific Configuration
 

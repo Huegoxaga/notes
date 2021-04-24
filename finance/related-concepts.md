@@ -195,8 +195,9 @@
 - Economic costs are based on opportunity cost which is measured by determining of resources next best opportunity
   - The profit that is gained from this opportunity is called the normal return
   - Not be able to have the full normal return will occur an opportunity cost
-  - in economic terms the total economic cost includes the full normal market return on all the resources utilized in the business.
-  - So when we say a firm does not earn economic profit it doesn't mean that the firm makes no profit at all. Rather it means that the firm is just making normal profit based on its opportunity costs
+  - in economic terms the total economic cost includes the full normal market return on all the resources utilized in the business
+  - The actual earnings for a firm is called the accounting profit
+  - So when we say a firm does not earn economic profit it doesn't mean that the firm makes no profit (accounting profit) at all. Rather it means that the firm is just making normal profit based on its opportunity costs
 - The profit maximizing point will then be the point where the marginal revenue is equal to the marginal cost, because it is the highest point where `MR > MC` is satisfied
 - This minimum point where the `ATC` is equal to the `MC` is the breakeven level, when price goes above this level the business makes a profit, when price goes below this level the business will have a loss
 - When the price is below the breakeven level and falls in between the lowest point of `ATC` and `AVC` cost, the profit maximizing point is also in between the `ATC` and `AVC` cost, the firm will be running at loss but it still has revenue to cover the `AVC` and part of the `AFC`
@@ -235,7 +236,8 @@
 
 - It is where many firms produce identical products. And competition forces them all to sell at the market price
 - This is just in theory, some industry like wheat production industry are close to it, its price depends on the overall market supply and demand
-- A perfectly competitive market has a perfectly elastic demand curve. The marginal revenue is equal to the average revenue which is equal to the market price
+- A perfectly competitive market has a perfectly elastic demand curve for all firms. The marginal revenue is equal to the average revenue which is equal to the market price
+  - For the market, the demand curve is still downward sloping
   - For a firm, the marginal revenue is the revenue for each addition product
   - For a firm, the average revenue is the average price of the product
   - A perfectly elastic demand curve, will have the price as a constant, regardless the quantity demanded
@@ -313,6 +315,9 @@
   - Purchases are relatively small and frequent
   - retaliation by other firms for cheating is more certain and more severe
   - Less competition from firms outside the cartel
+- If we assume that there is perfect collusion amongst the firms the entire market acts like one big monopoly
+  - Perfect competition amongst the firms in an oligopoly market is the other exemtre situation, the price output combination will be exactly the same as the perfectly competitive market in the long run
+  - In reality the long run price will be in between the above two cases
 
 ##### Dominant Firm Model
 
@@ -330,6 +335,8 @@
 - It has a downward sloping demand curve which is the market demand curve, and firm has the power to choose the price at which it sells its product
 - For maximize profit, firms will expand output until its marginal revenue is equal to its marginal cost, the quantity then will determine the market price based on the market demand curve
 - Long run positive economic profits can exist, because no other firm can join and change the market supply
+- At average cost pricing, a monopolist earns zero economic profit
+- At marginal cost pricing, a monopolist makes an economic loss.
 - there can be a few reasons for monopolies:
   - Firstly very high barriers to entry protect a monopoly producer from competition
   - copyrights and patents also protect a monopoly from competition
@@ -347,7 +354,7 @@
   - It is an area where marginal benefit is still greater than marginal cost
   - Customers could purchase more goods but give up because of the higher price
 - Price discrimination model is can be used to capture more profits by selling at a higher price to those who are willing to pay more, and selling at a lower price to those who will only buy if the price is lower
-  - Through price discrimination the consumer surplus is reduced and so is the deadweight
+  - Through price discrimination the consumer surplus is reduced and so is the deadweight, the producer surplus is increased due to higher sales
   - Perfect price discrimination is an extreme case in theory, if it were possible for the supplier to charge each consumer the maximum they're willing to pay for each unit, there would be no deadweight loss because a monopolist would produce the same quantity as under perfect competition, there would also be no consumer surplus as all the surplus would be captured by the monopolist
   - Conditions for price discrimination to work:
     - The seller must face a downward sloping demand curve
@@ -362,3 +369,14 @@
     - Regulating by marginal cost pricing - it forces the monopolies to reduce price to the point where the firms M.S. curve intersects the market demand curve
       - The market demand curve this further increases output and reduces price but causes the monopolies to incur an economic loss
       - Because price is below `ATC`, a government subsidy is provided in order to provide the firm with a normal profit and prevent it from leaving the market entirely
+- Market Concentration Measurment - It is done by market regulator, in order to determine whether there is a monopolist in the market who violates any anti-competition laws, The methods are:
+  - `Econometric` approaches aims to estimate the elasticity of demand and supply in a market by collecting large dataset and doing regression analysis on average past sales data of the entire market or sales of individual firms in a single period
+    - If demand is very elastic the market must be very close to perfect competition, if demand is inelastic companies may have significant market power
+  - `N-firm Concentration Ratio` is calculated as the sum of the percentage market shares of the largest and firms in a market, an example result can be 5 firms take up to the 80% of the market share
+    - Simple to calculate and understand, but it does not directly quantify market power or elasticity of demand
+    - If the barriers to entry are low, the market is still healthy
+    - If dominant firms merge, it won't have a big impact on the N-firm concentration ratio, the following improved `HHI` calculation will be able to show the difference
+  - `Herfindahl-Hirschman Index` (`HHI`) calculates the sum of the squares of the market shares of
+    the largest N firms in the market
+    - it is the most used method
+    - Regulator will set a cap for N firms `HHI` and making decision or approval for merging firms based on the `HHI` calculation

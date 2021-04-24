@@ -1479,10 +1479,16 @@
 <h3 id="sdks">SDKs</h3>
 <h4 id="deepstream">Deepstream</h4>
 <ul>
-<li>It defines an extensible video processing pipeline that can be used to perform inference, object tracking and reporting</li>
-<li><a href="https://developer.nvidia.com/deepstream-getting-started" target="_blank">Click here</a> for more resources</li>
-<li>Hardware Accelerated GStreamer plugins - GStreamer is a framework for creating streaming media applications<ul>
-<li><code>Gst-nvinfer</code> implements TensorRT-based inferencing</li>
+<li>It is a group of GStreaner Plugins that can work with NVIDIA GPUs<ul>
+<li>also known asHardware Accelerated GStreamer plugins)</li>
+<li>GStreamer is a framework for creating streaming media applications</li>
+</ul>
+</li>
+<li>the following list of plugins are tools that can be inserted into the GStreamer pipeline<ul>
+<li><code>Gst-nvinfer</code> implements TensorRT-based inferencing<ul>
+<li>It takes a config file as the element property, inference models and details are defined there</li>
+</ul>
+</li>
 <li><code>Gst-nvstreammux</code> - Batch streams before sending for AI inference, manage metadata for video stream</li>
 <li><code>Gst-nvvideo4linux2</code> - Decode video streams using the hardware accelerated decoder (NVDEC); Encode RAW data in I420 format to H264 or H265 output video stream using hardware accelerated encoder (NVENC).</li>
 <li><code>Gst-nvvideoconvert</code> - Perform video color format conversion. The first Gst-nvvideoconvert plugin before Gst-nvdsosd plugin converts stream data from I420 to RGBA and the second Gst-nvvideoconvert plugin after Gst-nvdsosd plugin converts data from RGBA to I420.</li>
@@ -1494,7 +1500,8 @@
 <li><code>Gst-NvArgusCameraSrc</code> - Provide options to control ISP properties using the Argus API.</li>
 </ul>
 </li>
-<li>The deepstream supports C/C++ with GStreamer natively, it also supports Python using Gst Python which is GStreamer framework&apos;s Python bindings<ul>
+<li><a href="https://developer.nvidia.com/deepstream-getting-started" target="_blank">Click here</a> for more resources</li>
+<li>GStreamer is a <code>C</code> framework, it also supports Python using Gst Python which is GStreamer framework&apos;s Python bindings<ul>
 <li>Python bindings is a compiled module included in the DeepStream SDK, it is generated using Pybind11</li>
 <li><a href="https://github.com/NVIDIA-AI-IOT/deepstream_python_apps#metadata_bindings" target="_blank">Click here</a> to explore sample apps in Python</li>
 </ul>
@@ -1544,7 +1551,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"NVIDIA","level":"1.21.4","depth":2,"next":{"title":"Electricity & Magnetism","level":"1.21.5","depth":2,"path":"embedded/electricity-magnetism.md","ref":"embedded/electricity-magnetism.md","articles":[]},"previous":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"path":"embedded/st.md","ref":"embedded/st.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/nvidia.md","mtime":"2021-04-21T04:47:12.479Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T16:40:50.241Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"NVIDIA","level":"1.21.4","depth":2,"next":{"title":"Electricity & Magnetism","level":"1.21.5","depth":2,"path":"embedded/electricity-magnetism.md","ref":"embedded/electricity-magnetism.md","articles":[]},"previous":{"title":"STMicroelectronics","level":"1.21.3","depth":2,"path":"embedded/st.md","ref":"embedded/st.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"embedded/nvidia.md","mtime":"2021-04-24T16:41:00.158Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-24T18:21:17.978Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

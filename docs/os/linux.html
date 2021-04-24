@@ -2001,7 +2001,7 @@ rather to wait for additional data to be appended to the input</li>
 <ul>
 <li><code>tar -cvf filename.tar &lt;DestinationPath&gt;</code> Create tar Archive File<ul>
 <li><code>c</code> &#x2013; Creates a new .tar archive file.</li>
-<li><code>v</code> &#x2013; Verbosely show the .tar file progress.</li>
+<li><code>v</code> &#x2013; Verbosely show the <code>.tar</code> file progress.</li>
 <li><code>f</code> &#x2013; File name type of the archive file.</li>
 </ul>
 </li>
@@ -2219,6 +2219,7 @@ rather to wait for additional data to be appended to the input</li>
 <ul>
 <li>It is used to log in remote servers.</li>
 <li>Ex, <code>ssh -i ~/.ssh/&quot;WordPress Key.pem&quot; ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com</code></li>
+<li><code>ssh -L 4444:example.com:80</code> forward port <code>4444</code> on the host machine to the a web page opened from the remote machine in port <code>80</code></li>
 </ul>
 <h3 id="sftp">sFTP</h3>
 <ul>
@@ -2249,6 +2250,7 @@ rather to wait for additional data to be appended to the input</li>
 <li><code>curl -X DELETE -d &quot;key1=value1&amp;key2=value2&quot; &lt;URL&gt;</code> send a delete request</li>
 <li><code>curl -u &lt;username&gt;:&lt;password&gt; &lt;URL&gt;</code> send a get request with credentials.</li>
 <li><code>curl -o &lt;FileName&gt; &lt;URL&gt;</code> send a get request, download response into a local file.</li>
+<li><code>curl -O &lt;URL&gt;</code> send a get request, download response into current folder with default name</li>
 </ul>
 <h3 id="mssql">mssql</h3>
 <ul>
@@ -2981,6 +2983,46 @@ fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-var
 </ul>
 </li>
 </ul>
+<h3 id="display-manager">Display Manager</h3>
+<ul>
+<li><code>gdm3</code> (GNOME3), <code>kdm</code>, and <code>lightdm</code> are all display managers. They provide graphical logins and handle user authentication.</li>
+<li><code>sudo systemctl set-default multi-user.target</code>, to boot to console</li>
+<li><code>sudo systemctl set-default graphical.target</code>, to boot to display manager</li>
+<li><code>sudo systemctl start gdm3.service</code> or <code>sudo systemctl start lightdm.service</code>, start the graphical environment from the console.</li>
+</ul>
+<h3 id="gstreamer">Gstreamer</h3>
+<ul>
+<li>GStreamer is a framework for creating streaming media applications, written in C, it comes with CLI tools, <code>gst-inspect-1.0</code>, <code>gst-launch-1.0</code>, <code>ges-launch-1.0</code></li>
+<li><code>gst-inspect-1.0 &lt;Element | Plugin&gt;</code> see element and plugins details including all property options<ul>
+<li>The sink capabilities (sink Caps) lists the supported output format for the element</li>
+<li>The source capabilities (src Caps) lists the supported source format for the element</li>
+<li>A Pad template can contain multiple sink or src template each accept different Caps</li>
+</ul>
+</li>
+<li><code>gst-typefind-1.0 &lt;MediaFile&gt;</code> find out the media format (Caps)</li>
+<li><code>gst-launch-1.0 &lt;SourceElement&gt; ! &lt;Element|Plugin&gt; ! ...&lt;OptionalCapsSetting&gt;... ! &lt;Element|Plugin&gt; | &lt;SinkElement&gt;</code>, define and run streaming pipline<ul>
+<li>The output method is defined as a sink</li>
+<li><code>!</code> is used to seperate elements, plugins, and caps setting</li>
+<li>Caps setting can specify the supported sink cap of a element for output by appending setting like <code>audio/x-raw,format=U18lE</code> or <code>video/x-raw,width=1280,height=960,framerate=30/1</code> (after <code>videoconvert</code> element), seperated by <code>!</code><ul>
+<li>convert is needed if the media format is not listed in target element&apos;s source/sink caps</li>
+<li>detailed caps settings are seperated by comma</li>
+</ul>
+</li>
+<li><code>gst-launch-1.0 audiotestsrc ! audioconvert ! autoaudiosink</code>, test an audio stream</li>
+<li><code>gst-launch-1.0 audiotestsrc wave=saw freq=880 ! audioconvert ! autoaudiosink</code> test an audio stream with defined properties</li>
+<li>Video filters like <code>edgetv</code> and <code>rippletv</code> add effects to the video stream in between <code>videoconvert</code> elements</li>
+</ul>
+</li>
+<li><code>gst-device-monitor-1.0</code> discover available devices</li>
+</ul>
+<h2 id="platform-specific-configuration">Platform Specific Configuration</h2>
+<h3 id="ubuntu">Ubuntu</h3>
+<ul>
+<li>Enable Automatic Login For a User<ul>
+<li>Change setting file at <code>sudo nano /etc/gdm3/custom.conf</code></li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -3024,7 +3066,7 @@ fswebcam -r 1280x720 --no-banner /home/pi/Downloads/photos/<span class="hljs-var
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.17.1","depth":2,"next":{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.17","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.17.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.17.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.17.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},{"title":"Media","level":"1.17.9","depth":2,"path":"os/media.md","ref":"os/media.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2021-04-10T08:52:44.647Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T16:40:50.241Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.17.1","depth":2,"next":{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.17","depth":1,"path":"os/README.md","ref":"os/README.md","articles":[{"title":"Linux","level":"1.17.1","depth":2,"path":"os/linux.md","ref":"os/linux.md","articles":[]},{"title":"Bash Scripting","level":"1.17.2","depth":2,"path":"os/bash-scripting.md","ref":"os/bash-scripting.md","articles":[]},{"title":"Regular Expression","level":"1.17.3","depth":2,"path":"os/regex.md","ref":"os/regex.md","articles":[]},{"title":"MacOS","level":"1.17.4","depth":2,"path":"os/macos.md","ref":"os/macos.md","articles":[]},{"title":"Solution Stack","level":"1.17.5","depth":2,"path":"os/solution-stack.md","ref":"os/solution-stack.md","articles":[]},{"title":"Hadoop","level":"1.17.6","depth":2,"path":"os/hadoop.md","ref":"os/hadoop.md","articles":[]},{"title":"Git","level":"1.17.7","depth":2,"path":"os/git.md","ref":"os/git.md","articles":[]},{"title":"Redis","level":"1.17.8","depth":2,"path":"os/redis.md","ref":"os/redis.md","articles":[]},{"title":"Media","level":"1.17.9","depth":2,"path":"os/media.md","ref":"os/media.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"os/linux.md","mtime":"2021-04-24T04:40:16.170Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-24T18:21:17.978Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

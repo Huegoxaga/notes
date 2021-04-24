@@ -1691,7 +1691,9 @@
 <li>compare the target with the median of the lower or upper section until it is found.</li>
 </ol>
 </li>
-<li>Example of Recursive Binary Search:<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[], <span class="hljs-keyword">int</span> lower, <span class="hljs-keyword">int</span> upper, <span class="hljs-keyword">int</span> X)</span></span>{
+<li>Example of Recursive Binary Search:</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[], <span class="hljs-keyword">int</span> lower, <span class="hljs-keyword">int</span> upper, <span class="hljs-keyword">int</span> X)</span></span>{
   <span class="hljs-comment">// check base case for missing X</span>
   <span class="hljs-keyword">if</span> (lower &gt; upper)
     <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
@@ -1706,7 +1708,7 @@
     <span class="hljs-keyword">return</span> binSearch(A, lower, middle-<span class="hljs-number">1</span>, X);
 }
 </code></pre>
-</li>
+<ul>
 <li>Worst case <code>O(logN)</code>.</li>
 </ul>
 <h3 id="sort">Sort</h3>
@@ -1721,7 +1723,9 @@
 </ol>
 </li>
 <li>The complexity of Bubble Sort is <code>&#x41E;(n^2)</code> (worst case).</li>
-<li>Example:<pre><code class="lang-java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> last=N-<span class="hljs-number">1</span>; last&gt;=<span class="hljs-number">1</span>; last--){
+<li>Example:</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> last=N-<span class="hljs-number">1</span>; last&gt;=<span class="hljs-number">1</span>; last--){
   <span class="hljs-comment">// Move the largest entry in A[0...last] to A[last]</span>
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index=<span class="hljs-number">0</span>; index &lt;= last-<span class="hljs-number">1</span>; index++){     <span class="hljs-comment">//swap adjacent elements if necessary</span>
     <span class="hljs-keyword">if</span> (A[index] &gt; A[index+<span class="hljs-number">1</span>]){
@@ -1732,8 +1736,6 @@
   }
 }
 </code></pre>
-</li>
-</ul>
 <h4 id="selection-sort">Selection Sort</h4>
 <ul>
 <li>Steps for Selection sort:<ol>
@@ -1743,7 +1745,9 @@
 </ol>
 </li>
 <li>The time complexity of Selection Sort is <code>&#x41E;(n^2)</code>(worst case).</li>
-<li>Example:<pre><code class="lang-java"><span class="hljs-keyword">for</span> (last = N -<span class="hljs-number">1</span>; last &gt;= <span class="hljs-number">1</span>; last --)
+<li>Example:</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span> (last = N -<span class="hljs-number">1</span>; last &gt;= <span class="hljs-number">1</span>; last --)
 {
   <span class="hljs-comment">// Move the largest entry in A[0...last] to A[last]</span>
   <span class="hljs-comment">// Determine position of largest in A[0..last] and store</span>
@@ -1761,8 +1765,6 @@
   A[last] = temp;
 }
 </code></pre>
-</li>
-</ul>
 <h4 id="insertion-sort">Insertion Sort</h4>
 <ul>
 <li>Steps for insertion sort:<ol>
@@ -1772,7 +1774,9 @@
 </ol>
 </li>
 <li>The complexity of Insertion Sort is <code>&#x41E;(n^2)</code> (worst case).</li>
-<li>Example:<pre><code class="lang-java"><span class="hljs-comment">//A[0..0] is sorted</span>
+<li>Example:</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//A[0..0] is sorted</span>
 <span class="hljs-keyword">for</span> (index = <span class="hljs-number">1</span>; index &lt;= N-<span class="hljs-number">1</span>; index ++)
 {
   <span class="hljs-comment">// A[0..index-1] is sorted</span>
@@ -1790,8 +1794,6 @@
 }
   <span class="hljs-comment">// Now A[0..N-1] is sorted, so entire array is sorted</span>
 </code></pre>
-</li>
-</ul>
 <h4 id="merge-sort">Merge Sort</h4>
 <ul>
 <li>Steps for merge sort:<ol>
@@ -1930,7 +1932,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Algorithm","level":"1.23","depth":1,"next":{"title":"Blockchain","level":"1.23.1","depth":2,"path":"algorithm/blockchain.md","ref":"algorithm/blockchain.md","articles":[]},"previous":{"title":"ArcGIS","level":"1.22.1","depth":2,"path":"gis/arcgis.md","ref":"gis/arcgis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"algorithm/README.md","mtime":"2021-04-10T10:43:05.541Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T16:40:50.241Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Algorithm","level":"1.23","depth":1,"next":{"title":"Blockchain","level":"1.23.1","depth":2,"path":"algorithm/blockchain.md","ref":"algorithm/blockchain.md","articles":[]},"previous":{"title":"ArcGIS","level":"1.22.1","depth":2,"path":"gis/arcgis.md","ref":"gis/arcgis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"algorithm/README.md","mtime":"2021-04-22T13:34:14.261Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-24T18:21:17.978Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
