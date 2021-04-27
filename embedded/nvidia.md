@@ -105,11 +105,18 @@
   - GStreamer is a framework for creating streaming media applications
 - the following list of plugins are tools that can be inserted into the GStreamer pipeline
   - `Gst-nvinfer` implements TensorRT-based inferencing
-    - It takes a config file as the element property, inference models and details are defined there
+    - It takes a key based config file as the element property, inference models and details are defined there, keys are placed in the following key groups:
+      - The `[property]` group configures the general behavior and file paths settings. It is the only mandatory group
+        - The `labelfile-path` points to the `label.txt` file which specifies class IDs
+      - The `[class-attrs-all]` group configures detection parameters for all classes
+      - The `[class-attrs-<ClassID>]` group configures detection parameters for a specific class, e.g. `[class-attrs-2]`, it uses the same key properies as `[class-attrs-all]`, and the key value are used to override settings in the `[class-attrs-all]` for a specific class
+    - The `Gst-nvinfer` plugin finds objects and provides metadata about them as an output on its source pad
   - `Gst-nvstreammux` - Batch streams before sending for AI inference, manage metadata for video stream
   - `Gst-nvvideo4linux2` - Decode video streams using the hardware accelerated decoder (NVDEC); Encode RAW data in I420 format to H264 or H265 output video stream using hardware accelerated encoder (NVENC).
   - `Gst-nvvideoconvert` - Perform video color format conversion. The first Gst-nvvideoconvert plugin before Gst-nvdsosd plugin converts stream data from I420 to RGBA and the second Gst-nvvideoconvert plugin after Gst-nvdsosd plugin converts data from RGBA to I420.
+    - A buffer is created with nvvideoconvert so that bounding boxes can be overlaid on the video images with an appended `nvdsosd` plugin
   - `Gst-nvdsosd` - Draw bounding boxes, text, and region of interest (ROI) polygons.
+    - The input or "sink pad" of this plugin is a good place to extraction or process the meta data, a `probe` will be used to take snapshot of this sink pad, it is a callback function that is invoked whenever a frame is received at `Gst-nvdsosd`'s sink pad
   - `Gst-nvtracker` - Track object between frames.
   - `Gst-nvmultistreamtiler` - Composite a 2D tile from batched buffers.
   - `Gst-nvv4l2decoder` - Decode a video stream.

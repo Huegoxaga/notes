@@ -140,7 +140,7 @@
 ### Logistic Regression
 
 - It is a classification algorithm.
-- Fit a linear regression into a range of 0 and 1 as the probabilities using the logistic regression formula.
+- Fit the linear regression result to fall within the range of 0 and 1 as the probabilities of an event using the logistic regression formula.
   - Subsitute `y` in the linear regression formula into the sigmoid function will return the logistic regression formula.
 - It can generate `P` hat as predicted probability of a given value.
 - It can return ethier 0 or 1 as `y` hat value if categorical results are preferred

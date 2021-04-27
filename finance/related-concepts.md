@@ -366,7 +366,7 @@
     - Regulating by average cost pricing - monopolist is required to set its price at its average cost
       - This increases the output and decreases price for consumers
       - The monopolist earns zero economic profit as the price just covers the cost of production it just earns a normal profit to cover opportunity costs
-    - Regulating by marginal cost pricing - it forces the monopolies to reduce price to the point where the firms M.S. curve intersects the market demand curve
+    - Regulating by marginal cost pricing - it forces the monopolies to reduce price to the point where the firms `MC` curve intersects the market demand curve
       - The market demand curve this further increases output and reduces price but causes the monopolies to incur an economic loss
       - Because price is below `ATC`, a government subsidy is provided in order to provide the firm with a normal profit and prevent it from leaving the market entirely
 - Market Concentration Measurment - It is done by market regulator, in order to determine whether there is a monopolist in the market who violates any anti-competition laws, The methods are:
@@ -376,7 +376,6 @@
     - Simple to calculate and understand, but it does not directly quantify market power or elasticity of demand
     - If the barriers to entry are low, the market is still healthy
     - If dominant firms merge, it won't have a big impact on the N-firm concentration ratio, the following improved `HHI` calculation will be able to show the difference
-  - `Herfindahl-Hirschman Index` (`HHI`) calculates the sum of the squares of the market shares of
-    the largest N firms in the market
-    - it is the most used method
+  - `Herfindahl-Hirschman Index` (`HHI`) calculates the sum of the squares of the market shares of the largest N firms in the market
+    - It is the most used method
     - Regulator will set a cap for N firms `HHI` and making decision or approval for merging firms based on the `HHI` calculation

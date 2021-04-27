@@ -47,7 +47,8 @@
 - `git config --list` Check all config values.
 - `git gc` cleanup unnecessary files and optimize the local repository in the `.git` folder
 - `git clean -f` Remove untracked files from the working tree
-- `touch .gitignore` Add the filename or folder addresses in the .gitignore file line by line, those files will be ignored by git.
+- `touch .gitignore` Add the filename or folder addresses in the `.gitignore` file line by line, those files will be ignored by git.
+  - [Click here](https://github.com/github/gitignore) to check out `.gitignore` templates for different projects
 
 #### Managing Staging Area
 
@@ -117,7 +118,12 @@
   - `git pull origin master --no-commit` this is recommanded to merge new codes from master before sending pull request from working branches.
 - `git pull` Pull the latest from the remote repos
 - `git clone URL` Clone repos into the current directory.
-- `git clone URL folderAddress` Clone repos into the certain directory.
+- `git clone URL <FolderName>` Clone repos into the certain directory.
+- `git submodule add URL <FolderName>` import a remote git repo into a subfolder of the current project
+  - A record will be saved in the `.gitmodules` file
+- `submodule update --init --recursive` update submodules
+  - `--init` automatically initialize the submodule if the submodule is not yet initialized
+  - `--recursive` recurse into the registered submodules, and update any nested submodules within
 
 ## Git Large File Storage(LFS)
 

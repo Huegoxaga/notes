@@ -118,6 +118,8 @@
   - `ls /etc` it will display all files inside the `etc` folder.
   - add `\` before ls to see not colored outputs.
   - `-h` changes the output to be more human readable
+- `lshw` list info about all hardware
+  - `lshw -class network` only list a certain hardware class
 - `lsusb` check all existing USB devices.(debian-based Linux)
 - `cd` Change directory to the directory followed, if nothing followed cd to home dir.
 - `pwd` display the absolute path to the current working directory.
@@ -196,11 +198,6 @@
   - `-n` sort contents numerically.
   - `-u` sort and ignore duplicated contents.
   - `-k2` sort by the second column.
-- `make` it will compile binary files in the current folder.
-  - `make test` verify the completed `make` process has no error.
-- `make install` it will build the binaries then copt it to a `make` managed folder which has been already added to the environment path and ready to run in the terminal.
-  - This command is provided by a package called `build-essential`
-  - Although this command does all the things `make` will do, it is recommanded to run `make` first.
 - `truncate -s 0 syslog` truncate text file
 - `tail -f /var/log/syslog` view log from the buttom
   - The `-f` option causes tail to not stop when end of file is reached, but
@@ -1311,6 +1308,153 @@
   - `echo "my ID is 1234" | tr -d [:digit:]` To remove all the digits from the string.
 - `echo "my ID is 1234" | tr -cd [:digit:]` complement the selected pattern and remove all the non-digits characters from the string.
 
+### gcc
+
+- GNU C Compiler ( gcc ) is a compiler in Linux which is used to compile C programs. It compiles files with extension `.c`.
+- `gcc --version`, check version
+- `gcc -o target filename.c` or `gcc filename.c -o target` Compiles and links `filename.c` and generates executable target file with name `target`
+  - run `gcc filename1.c filename2.c -o target` to combine or link two source files during compilation
+  - run `./target` to execute the app
+
+### g++
+
+- GNU C++ Compiler ( g++ ) is a compiler in Linux which is used to compile C++ programs. It compiles both files with extension `.c` and `.cpp` as C++ files
+- `g++ --version`, check version
+- `g++ filename.cpp`, compiles, assembles and links hello.cpp to produce a default target executable file a.out in present working directory
+  - default file name for the executable is `a.out`, run `./a.out` to execute the app
+- `g++ -S filename.cpp`, only compile the source file and not assembling or linking, it generates a assembly source file with name `filename.a`
+- `g++ -c filename.cpp` is used to only compile and assemble the file_name and not link the object code to produce executable file, it will generate a `filename.o` object code file in present working directory
+- `g++ -o target filename.cpp` or `g++ filename.cpp -o target` Compiles and links `filename.cpp` and generates executable target file with name `target`
+  - run `./target` to execute the app
+
+### make
+
+- `make` it will compile binary files in the current folder
+  - `make -C <path/to/build>` build the executable file under the `<path/to/build>`
+  - `make -f <makefile>` specify the `MakeFile` file
+  - `make -k` continue running even in the face of errors. Helpful if you want to see all the errors of Make at once.
+  - `make -s` no output
+  - `make -i` surpress errors
+- `make clean` remove previous compiled files
+- `make test` verify the completed `make` process has no error.
+- `make install` it will build the binaries then copt it to a `make` managed folder which has been already added to the environment path and ready to run in the terminal.
+  - This command is provided by a package called `build-essential`
+  - Although this command does all the things `make` will do, it is recommanded to run `make` first.
+
+#### MakeFile Syntax
+
+- It is consisted of a list of targets files with dependency files, separated by `:` and a serial of command for the target file, each on a new line, indented by tabs
+  - The default target is the first target in `MakeFile`
+  - During `make` the targets will be checked from top to bottom
+  - if dependcency file of the target file does not exist in the project folder, find the line where the dependency file is a target and run its related command, will run this logic recursively
+  - if the dependency file has a later modified timestamp, the dependency file will be treated as a target and recompile its related command
+  - if the target file does not exist and the dependency is satisfied the command followed will be executed
+  - `clean` is often used as a target that removes the output of other targets, but it is not a special word in `make`
+
+```makefile
+target: dependency
+   command
+   command
+   command
+```
+
+- It takes multiple target or dependencies seperated by space, `target1 target2:` or `target: dependency1 dependency2`
+- It can store variables as string, declared on a new line, `files = file1 file2` or `x = build`
+  - It can be accessed using `$()` or `${}`, e.g. `$(file1)` and `${file2}`
+  - Use `:=` to assign a variable to another variable, `new_v := $(old_v)`
+- automatic variables
+  - `$@` Stores the target name
+  - `$?` Outputs all prerequisites newer than the target
+  - `$^` Outputs all prerequisites
+- Wildcards `*` may be used in the target, prerequisites
+  - `*` must be used with the `withcard` function in a variable definitions, `files := $(wildcard *.o)`
+- Commands
+  - Make sure the commands are intended by tabs, not spaces
+  - Add an `@` before a command to stop it from being printed
+  - Each command is run in a new shell
+  - Setting the default shell by changing the `SHELL` variable, `SHELL=/bin/bash` on the top of the `MakeFile`
+  - Add a `-` before a command to suppress the error
+- Conditions
+
+```makefile
+x = yes
+all:
+ifeq ($(x), yes)
+    echo "is yes"
+else
+    echo "is no"
+endif
+```
+
+### CMake
+
+- `CMake` is the de facto standard for building `C++` projects
+- It works greater in a project with complicated strcutures
+- It will generate a `MakeFile` based on the settings in the `CMakeLists.txt`
+- `cmake --version` check the version
+- `cmake <path/to/CMakeLists.txt>` generate build instructions including `MakeFile`
+  - after execution, run `make` to build the project
+- `cmake -S <path/to/source/> -S <path/to/build/>` generate build instructions, `<path/to/source/>` must contain `CMakeLists.txt`
+
+#### CMakeLists Syntax
+
+- `#` inline comment
+- `$(VARIABLE_NAME)` access variables
+  - Use `"$(VARIABLE_NAME)"` to access a string variable, to avoid parsing error because spaces are the delimiters in this file
+  - Predefined variables
+    - `CMAKE_INSTALL_PREFIX` the base path for the install command
+    - `PROJECT_BINARY_DIR` the path to the build folder
+- `cmake_minimum_required(VERSION X.X.X)` (required) specify the CMake version in use
+- `project("project_name")` (required) specify the project name
+  - It will declear a string variable `PROJECT_NAME`
+- `add_executable("target_name" "source_file_1.cpp" "source_file_2.cpp" "source_file.cpp_3")` (required) spcecify the target and a list of source files
+- `install (TARGETS "target_name" DESTINATION bin` move the executable target into the bin directory under the `CMAKE_INSTALL_PREFIX` path
+- `install (FILES "souce_name.cpp" DESTINATION src` move the source file into the src directory under the `CMAKE_INSTALL_PREFIX` path
+- To create a library structure, add `add_subdirectory(DIR_NAME)` to include library source files under this directory during build, then add `target_link_libraries("project_name" "library_name_1" "library_name_2" "library_name_3")` to link the project with one library or more libraries
+  - `DIR_NAME` is the folder name for the library, in the library folder create a `CMakeLists.txt` file and add `add_library("library_name" "library_source.cpp")`
+  - Optionally, add `target_include_directories("project_name" PUBLIC|PRIVATE "library_headers_folder")`, then in the main source file the library can be imported using `#include <library_name.h>` instead of using `#include "library_folder_name/library_name.h"`
+  - Optionally, add `target_link_directories("project_name" PUBLIC|PRIVATE "library_target_folder_name")` to specify the library's link file path in the build folder
+- To add an option, use `option(OPTION_NAME "helper text" VALUE)`
+  - Then run `cmake -DOPTION_NAME=NEW_VALUE` can pass the option into `CMakeLists.txt`
+- Auto download GitHub submodule for the project
+
+```cmake
+#           DOWNLOAD ALL THE SUBMODULES
+find_package(Git QUIET)
+if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+# Update submodules as needed
+    option(GIT_SUBMODULE "Check submodules during build" ON)
+    if(GIT_SUBMODULE)
+        message(STATUS "Submodule update")
+        execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+                        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                        RESULT_VARIABLE GIT_SUBMOD_RESULT)
+        if(NOT GIT_SUBMOD_RESULT EQUAL "0")
+            message(FATAL_ERROR "git submodule update --init failed with ${GIT_SUBMOD_RESULT}, please checkout submodules")
+        endif()
+    endif()
+endif()
+
+#           CHECK ALL THE SUBMODULES
+if(NOT EXISTS "${PROJECT_SOURCE_DIR}/external/glfw/CMakeLists.txt")
+    message(FATAL_ERROR "The glfw submodules was not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
+endif()
+```
+
+#### CMake GUI
+
+##### Steps to Generate a Project for Build
+
+1. Specify the source code path, it is the path of the `CMakeLists.txt` file
+2. Specify the build path, it can be any where but typically in a new build directory under the `CMakeLists.txt` folder
+3. Click on the `Configure` button, select the generator
+   - `MakeFile` will be generatd if a `MakeFile` generator is selected.
+   - A VS `.sln` file with projects will be generated if `Visual Studio` is selected
+4. Modify cache variables and option values in red to customize the build, and click `Configure` again
+5. Click on `Generate` to generate the project
+6. Build the project using the selected generator
+   - For `VS`, open the IDE with admin access and build the `INSTALL` project to install
+
 ### python
 
 - `python3 -m <module>` run module as a script using python3
@@ -1333,6 +1477,8 @@
 
 - GStreamer is a framework for creating streaming media applications, written in C, it comes with CLI tools, `gst-inspect-1.0`, `gst-launch-1.0`, `ges-launch-1.0`
 - `gst-inspect-1.0 <Element | Plugin>` see element and plugins details including all property options
+  - Each plugin has a defined input, also called its sink, and defined output, known as its source
+  - the source pad of one plugin connects to the sink pad of the next in line. The source includes metadata extracted from the previous processing
   - The sink capabilities (sink Caps) lists the supported output format for the element
   - The source capabilities (src Caps) lists the supported source format for the element
   - A Pad template can contain multiple sink or src template each accept different Caps
@@ -1346,6 +1492,7 @@
   - `gst-launch-1.0 audiotestsrc ! audioconvert ! autoaudiosink`, test an audio stream
   - `gst-launch-1.0 audiotestsrc wave=saw freq=880 ! audioconvert ! autoaudiosink` test an audio stream with defined properties
   - Video filters like `edgetv` and `rippletv` add effects to the video stream in between `videoconvert` elements
+  - `queue` is an element that cache data in a buffer and output data with a new thread
 - `gst-device-monitor-1.0` discover available devices
 
 ## Platform Specific Configuration

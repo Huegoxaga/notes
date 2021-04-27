@@ -53,21 +53,25 @@
 - Single-line comments `//`
   - It is introduced in `C++` and adopted by some of the `C` compiler.
 - Multi-line comments
-  ```c
-  /*
-   * Multi-line comments
-   */
-  ```
+
+```c
+/*
+  * Multi-line comments
+  */
+```
+
 - `#include <stdio.h>`, make functions from the `stdio` library available in `main()`
 - main function is the entry point of the program
-  ```c++
-  int main() {
-    printf("Hello, World!\n");
-    return 0;
-  }
-  ```
-  - main function return `0` to the calling process after execution.
-  - `0` means the program executed successfully, other number indicates the program didn't execute successfully.
+
+```c++
+int main() {
+  printf("Hello, World!\n");
+  return 0;
+}
+```
+
+- main function return `0` to the calling process after execution.
+- `0` means the program executed successfully, other number indicates the program didn't execute successfully.
 
 ## Data Types
 
@@ -139,17 +143,20 @@
 ## String
 
 - A string in C is an array of characters that ends with a NULL character '\0'.
-- Declaration
-  ```c++
-  char str1[6] = "hello";
-  char str2[ ] = "world"; /* size 6 */
-  char str3[6] = {'h', 'e', 'l', 'l', 'o', '\0'};
-  char str4[ ] = {'h', 'e', 'l', 'l', 'o', '\0'}; /* size 6 */
-  ```
-  - During declaration, array size can be optionally stated. The size is the string length plus one for the NULL character.
-  - `\0` has to included explicitly
-  - A string literal is a text enclosed in double quotation marks.
-  - `char *str = "hello";` is the string pointer declaration, it is considered a constant and cannot be changed from its initial value.
+
+### Declaration
+
+```c++
+char str1[6] = "hello";
+char str2[ ] = "world"; /* size 6 */
+char str3[6] = {'h', 'e', 'l', 'l', 'o', '\0'};
+char str4[ ] = {'h', 'e', 'l', 'l', 'o', '\0'}; /* size 6 */
+```
+
+- During declaration, array size can be optionally stated. The size is the string length plus one for the NULL character.
+- `\0` has to included explicitly
+- A string literal is a text enclosed in double quotation marks.
+- `char *str = "hello";` is the string pointer declaration, it is considered a constant and cannot be changed from its initial value.
 
 ## Operators
 
