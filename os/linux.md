@@ -223,6 +223,10 @@
   - `-k` sort by key or column index
   - `r` reverse order
   - `f` case insensititve
+- `pbcopy < test.txt` add text from file into clipboard
+  - `echo $PATH | pbcopy` send the output of the command into clipboard
+- `pbpaste`, is will show the content of the clipboard
+  - `pbpaste > test.txt` output the text in the clipboard into a file
 
 ### Access Control
 
@@ -693,6 +697,35 @@
 - It is used to log in remote servers.
 - Ex, `ssh -i ~/.ssh/"WordPress Key.pem" ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com`
 - `ssh -L 4444:example.com:80` forward port `4444` on the host machine to the a web page opened from the remote machine in port `80`
+
+### SSH Configuration
+
+- The config file is located at `/etc/ssh/sshd_config`
+  - `PermitRootLogin without-password` this line is used to for root user to use key pairs to login
+  - `PasswordAuthentication no` disable password login entirely
+- run `sudo systemctl reload sshd.service` or `sudo service sshd restart` to reload the config file
+  - For Ubuntu/Debian use `sudo service ssh restart`
+
+### ssh-keygen
+
+- It is used to generate keys
+- `ssh-keygen`, follow the prompts to generate a private/public key pair
+  - The passphrase is an additional password that required when login in using the private key. If it is empty, there will be no prompt during ssh login
+  - `-b 4096` override the `2048` bits default SSH key size for more security
+  - `-t rsa` specify the algorithm
+  - `-C "example@email.com"` add a comment to the key so it will show after entering key path
+- `ssh-keygen -p` update passphrase, after prompt for entering key file path
+- `ssh-keygen -l` display finger print after prompt for entering key file path
+
+### ssh-copy-id
+
+- It is used to append the content of the public key to the remote server's `~/.ssh/authorized_keys` file
+- `ssh-copy-id -i <path/to/key> <username>@<RemoteIP>` following prompt for user password
+  - Alternatively, `cat ~/.ssh/id_rsa.pub | ssh <username>@<RemoteIP> "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/<KeyName>"`
+
+### ssh-agent
+
+- It holds private keys and forward local private keys to remote servers when connected through `ssh`
 
 ### sFTP
 
@@ -1327,6 +1360,12 @@
 - `g++ -o target filename.cpp` or `g++ filename.cpp -o target` Compiles and links `filename.cpp` and generates executable target file with name `target`
   - run `./target` to execute the app
 
+### pkg-config
+
+- It is a helper to return compiler flags during complation
+- `pkg-config --libs <pkg1> <pkg1>` output all linker flags
+- `pkg-config --cflags <pkg1> <pkg1>` output all pre-processor and compiler flags
+
 ### make
 
 - `make` it will compile binary files in the current folder
@@ -1335,11 +1374,11 @@
   - `make -k` continue running even in the face of errors. Helpful if you want to see all the errors of Make at once.
   - `make -s` no output
   - `make -i` surpress errors
-- `make clean` remove previous compiled files
-- `make test` verify the completed `make` process has no error.
-- `make install` it will build the binaries then copt it to a `make` managed folder which has been already added to the environment path and ready to run in the terminal.
-  - This command is provided by a package called `build-essential`
-  - Although this command does all the things `make` will do, it is recommanded to run `make` first.
+- `make <target>` run `MakeFile` from a specific target, frequently used target names are:
+  - `make clean` remove previous compiled files
+  - `make test` verify the completed `make` process has no error.
+  - `make install` it will build the binaries then copy it to a `make` managed folder which has been already added to the environment path and ready to run in the terminal
+- This command is provided by a package called `build-essential`
 
 #### MakeFile Syntax
 
@@ -1352,20 +1391,24 @@
   - `clean` is often used as a target that removes the output of other targets, but it is not a special word in `make`
 
 ```makefile
-target: dependency
+target: prerequisite
    command
    command
    command
 ```
 
-- It takes multiple target or dependencies seperated by space, `target1 target2:` or `target: dependency1 dependency2`
+- It takes multiple target or prerequisite (dependencies) seperated by space, `target1 target2:` or `target: dependency1 dependency2`
 - It can store variables as string, declared on a new line, `files = file1 file2` or `x = build`
   - It can be accessed using `$()` or `${}`, e.g. `$(file1)` and `${file2}`
   - Use `:=` to assign a variable to another variable, `new_v := $(old_v)`
+  - `?:` will only do assignment when the variable is empty string or not defined previously
+  - `+=` is used for appending more text to a variable
+  - `SOURCE :=example.cpp`, `OBJ:= $(SOURCE:.cpp=.o)` subsitute `example.cpp` into `example.o` and save it as `OBJ`
 - automatic variables
   - `$@` Stores the target name
   - `$?` Outputs all prerequisites newer than the target
   - `$^` Outputs all prerequisites
+  - `$<` Outputs the first prerequisite
 - Wildcards `*` may be used in the target, prerequisites
   - `*` must be used with the `withcard` function in a variable definitions, `files := $(wildcard *.o)`
 - Commands
@@ -1374,6 +1417,8 @@ target: dependency
   - Each command is run in a new shell
   - Setting the default shell by changing the `SHELL` variable, `SHELL=/bin/bash` on the top of the `MakeFile`
   - Add a `-` before a command to suppress the error
+  - When calling `make` inside makefile, use the special `$(MAKE)` instead, it will pass the make flags
+  - When not under the `target: dependency` lines, command can be entered using `$(shell <command>)` function, this function will render the command output as string at this location when running make
 - Conditions
 
 ```makefile
@@ -1404,6 +1449,9 @@ endif
   - Predefined variables
     - `CMAKE_INSTALL_PREFIX` the base path for the install command
     - `PROJECT_BINARY_DIR` the path to the build folder
+    - `APPLE` equals true in a MacOS machine
+    - `WIN32` equals true in a Windows machine
+  - `ENV{VAR}` Access environment variables
 - `cmake_minimum_required(VERSION X.X.X)` (required) specify the CMake version in use
 - `project("project_name")` (required) specify the project name
   - It will declear a string variable `PROJECT_NAME`

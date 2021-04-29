@@ -48,7 +48,9 @@
 - `git gc` cleanup unnecessary files and optimize the local repository in the `.git` folder
 - `git clean -f` Remove untracked files from the working tree
 - `touch .gitignore` Add the filename or folder addresses in the `.gitignore` file line by line, those files will be ignored by git.
+  - Rules are applied from top to bottom
   - [Click here](https://github.com/github/gitignore) to check out `.gitignore` templates for different projects
+  - use `!` before ignore rules to unignore, lines with `!` should be placed at the bottom of the file
 
 #### Managing Staging Area
 
@@ -62,7 +64,8 @@
 - `git status` Check the current staging area.
 - `git rm - -cached filename` Remove the file from the Index.
 - `git commit` Open and add commit message for the commit document, save the staging area to the local repos.
-- `git commit -m 'commit message'` Commit the files with commit message.
+  - `git commit -m 'commit message'` Commit the files with commit message.
+  - `git commit --amend -m 'updated message'` alter latest local commit message, run `git push --force` to modify latest remote branch commit message
 - `git diff <branch1> <branch2>` View difference between branches.
 
 #### Branches
@@ -120,6 +123,7 @@
 - `git clone URL` Clone repos into the current directory.
 - `git clone URL <FolderName>` Clone repos into the certain directory.
 - `git submodule add URL <FolderName>` import a remote git repo into a subfolder of the current project
+  - Submodule has its own seperate version control which points to a different remote repo
   - A record will be saved in the `.gitmodules` file
 - `submodule update --init --recursive` update submodules
   - `--init` automatically initialize the submodule if the submodule is not yet initialized

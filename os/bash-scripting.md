@@ -18,7 +18,8 @@
   - It is an operator look like `#!`
   - It is followed by the path of the interpreter.
   - For bash scripting, use `#!/bin/sh` or `#!/usr/bin/env bash` if the path of bash is unknown.
-  - The user needs the `execute` file permission for the script.
+  - The user needs the `execute` file permission for the script
+    - `chmod a+x filename.sh`
   - The file can then be executed by using `./filename`.
   - Add the directory path into the `$PATH` variable to make the script run without `./`.
 - Each script will be run in a separate session.

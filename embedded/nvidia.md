@@ -82,7 +82,7 @@
   - `sudo nvpmodel -q –verbose` query which mode is currently being used
   - `cat /etc/nvpmodel.conf` to see all the modes available
     - For Jetson Nano mode `1` is 10W mode with Barrel jack 5V 4A power supplies, `2` is 5W mode with Micro USB power supplies
-- `cat nv_tegra_release` check the current version of the `L4T`
+- `cat /etc/nv_tegra_release` check the current version of the `L4T`
 - nmcli
   - `nmcli d` list all network interface
   - `nmcli r wifi on` enable wifi if available

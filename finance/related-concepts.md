@@ -379,3 +379,97 @@
   - `Herfindahl-Hirschman Index` (`HHI`) calculates the sum of the squares of the market shares of the largest N firms in the market
     - It is the most used method
     - Regulator will set a cap for N firms `HHI` and making decision or approval for merging firms based on the `HHI` calculation
+
+### GDP
+
+- A modern economy consists of four major sectors:
+  - households
+  - businesses
+  - government
+  - foreign sector - acts like a gateway to the outside world
+- The activity centre primarily around four types of markets:
+  - goods and services market
+  - financial markets
+  - factors of production market
+- Four sectors interact with four markets, with the following economic flows
+  - Services of labor land and capital flow through the factor market to businesses
+  - Income from businesses flow back to households in the form of profits and compensation
+  - Households spend part of their income on current consumption where the expenditure flows through the goods and services market to the business sector
+  - households also save part of their income for future consumption which flows into the financial markets
+  - financial markets provides funding for businesses that need to borrow or raise equity capital
+  - the amounts raised by businesses are invested in inventory property plant and equipment, so the investment money goes in the goods market
+  - businesses also save part of their excess cash in financial markets for future needs
+  - The government sector collects taxes from households and businesses
+  - The government sector purchases goods and services from the goods and services market which flows back to the businesses
+    - For example the government sector hires construction companies to build roads schools and public facilities, there are other spending on government services like the military and postal service
+  - The government is also a major employer in the economy, so it has other sources of income and spending on related activities
+  - If government spending exceeds net taxes then the government has a fiscal deficit and must borrow in the financial markets to fund its expenditures in our increasingly connected world
+  - For the foreign sector, the net exports proceeds flow to businesses.
+  - When an economy imports more than it exports, there is a trade deficit. A trade deficit must be funded by borrowing from the rest of the world through the financial markets conversely if the imports are less than exports. There is a trade surplus in this case. There is net foreign lending to the rest of the world
+- The `Aggregate Output` of an economy is the value of all the goods and services produced
+  in a specified period of time
+  - The output from factories
+- The `Aggregate Income` of an economy is the value of all the payments earned by the suppliers of factors used in the production of goods and services
+  - The income of factory workers
+- The value of the output produced must eventually accrue to the factors of production, so `Aggregate Output` and `Aggregate Income` within an economy must be equal
+  - All workers use income to purchase goods and services produced from all factorys
+- The `Aggregate Expenditure` is the total amount spent on the goods and services produced in the domestic economy during the period
+  - The workers income spent on all domestic goods and services
+- `Gross Domestic Product` (`GDP`) is formally defined as the total market value of the goods and services produced in an economy within a certain time period
+  - By definition the `GDP` is the aggregate output of the economy for the period
+  - As a result, in an isolated economy, `GDP`, `Aggregate Output`, `Aggregate Income`, and `Aggregate Expenditure` should all have the same value
+- GPD can be calculated by getting the value of `Aggregate Output`, and `Aggregate Income`
+  - `Expenditure Approach` - `GDP` is calculated as the total amount spent on the goods and services produced within the economy during a given period
+    - It calculates total expenditures in the economy as the consumption spending by households plus business investment plus government spending plus the net exports
+    - Market analysts generally prefer the expenditure approach because expenditure data is more timely and reliable than data for the income components
+  - `Income Approach` - `GDP` is calculated as the total amount earned by households and companies in the economy, it uses the sum of:
+    - `National Income` - the sum of the income received by all factors of production they go into the creation of final output, which includes:
+      - employee compensation
+      - interest income
+      - business owners incomes
+      - rent
+      - corporate and government enterprise profits before taxes
+      - indirect business taxes less subsidies which include taxes like sales tax, import duties, and property taxes
+    - `Capital Consumption Allowance` - measures the wear and tear of physical capital from the production of goods and services over a period, it can be thought of as the profit to be reinvested to maintain the productivity of physical capital
+    - `Statistical Discrepancy` - an adjustment for the difference between GDP measured under the income approach and the expenditure approach because they use different data
+- Based on the `Expenditure Approach`, `GDP` = `Households Spending` + `Business Investment` + `Government Spending` + `Net Exports`. Based on the economic flow this also equals `Households Spending` + `Net Taxes` + `Households Savings` + `Businesses Savings`
+  - `Households Savings` + `Businesses Savings` is known as `Domestic Private Saving`
+  - `Net Exports` + `Government Spending` - `Net Taxes`= `Domestic Private Saving` - `Business Investment`
+    - `Government Spending` - `Net Taxes` is the government deficit
+    - `Businesses & Households Savings` - `Business Investment` is the excess of private saving over private investment
+    - `Net Exports` is the trade deficit
+    - In conclusion, government deficit and trade deficit will always be covered by the excess of private saving over private investment
+- `GDP` calculation criteria
+  - all goods and services included in the calculation must be produced during the measurement period
+    - `GDP` is usually measured in one calendar year but many governments do give annualized quarterly estimates
+  - The second criteria is not the goods or services value can be determined by being sold in the market, non-market, illege activities or government benefits are excluded
+  - When using the expenditure approach only the market value of final goods and services should be included, the value of intermediate goods like raw materials and parts should be excluded
+    - This type of expenditure approach is called the value of final output method
+    - An alternative approach is the sum of value added method which is to sum up all the value added during the production and distribution processes
+- `Nominal GDP` of the economy are calculated using the current market value of the goods and services
+  - `Nominal GDP` equals the sum of all the current prices multiplied by the quantity produced for each good in a certain period
+  - As the growth in `Nominal GDP` will include the effect of price increase (inflation) for the period, this figure is not representative of the actual production growth
+- Real GPD is calculated relative to a base year by using base year prices and current year output quantities
+  - For base year, `Real GDP` is the `Nominal GDP`, the current year `Real GDP` is the sum of the product of prices from the base year and output quantities of this year for all goods and services, then compare the `Real GDP` of the two year to get a relative increases
+  - `Real GDP` growth reflects only increases in total output
+  - Per capita `Real GDP` is defined as `Real GDP` divided by population
+- the `GDP Deflator` is a price index that can be used to convert `Nominal GDP` into `Real GDP`
+  - It equals the `Nominal GDP / Real GDP * 100` for a certain year
+  - If the `GDP Deflator` index is known the conversion between `Nomial GDP` and `Real GDP` can be done easily
+- `Personal Income` is a measure of the pre-tax income received by households and is one determinant of consumer purchasing power and consumption, compare with the nationl income component, personal income:
+  - includes employee compensation
+  - includes interest income
+  - includes business owner income
+  - excludes income indirect business taxes are not considered personal income
+    - This portion goes to the government
+  - rent
+  - includes shareholders distribution of the corporate benefits after tax
+    - the taxes goes to the government are excluded
+    - the portion retained by the company is excluded
+  - includes transfer payments in the form of pay outs like unemployment benefits or indirectly through programs like universal healthcare
+    - Transfer payments are excluded from national income, they are not government expenditures
+    - Transfer payments are subtracted from government taxes income and reduce the net taxes amount
+  - In conclusion, `Personal Income` is equal to transfer payments from the government plus national income minus distributed corporate profits, minus corporate income taxes, minus indirect business taxes
+- `Personal Disposable Income` (`PDI`) = `Personal Income` + `Personal Income Taxes`
+  - It measures the amount that households have available to either save or spend on goods and services
+  - It is an important economic indicator of the ability of consumers to spend and save
