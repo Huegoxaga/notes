@@ -362,3 +362,12 @@
   - If a function does not return a value, the exit status of the function is the exit status of the last statement executed inside the function body.
 - A function can be used inside `$()` or double backticks to print to output.
 - A function in Bash has inline form as `function name(){ //statement; }` where `;` is mandatory)
+
+### Useful Snippets
+
+- refresh sudo priviliege throughout the lifetime of the script
+
+```bash
+sudo -v
+while true; do sudo -n true; sleep 120; kill -0 "$$" || exit; done 2>/dev/null &
+```

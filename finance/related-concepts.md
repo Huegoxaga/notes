@@ -420,7 +420,7 @@
   - As a result, in an isolated economy, `GDP`, `Aggregate Output`, `Aggregate Income`, and `Aggregate Expenditure` should all have the same value
 - GPD can be calculated by getting the value of `Aggregate Output`, and `Aggregate Income`
   - `Expenditure Approach` - `GDP` is calculated as the total amount spent on the goods and services produced within the economy during a given period
-    - It calculates total expenditures in the economy as the consumption spending by households plus business investment plus government spending plus the net exports
+    - It calculates total expenditures in the economy as the `consumption spending by households` plus `business investment` plus `government spending` plus the `net exports`
     - Market analysts generally prefer the expenditure approach because expenditure data is more timely and reliable than data for the income components
   - `Income Approach` - `GDP` is calculated as the total amount earned by households and companies in the economy, it uses the sum of:
     - `National Income` - the sum of the income received by all factors of production they go into the creation of final output, which includes:
@@ -473,3 +473,159 @@
 - `Personal Disposable Income` (`PDI`) = `Personal Income` + `Personal Income Taxes`
   - It measures the amount that households have available to either save or spend on goods and services
   - It is an important economic indicator of the ability of consumers to spend and save
+
+#### The IS (Investment vs Savings) Curve
+
+- it plots the `goods market equilibrium` for real interest rate against real income
+  - Baed on the economic flows, lower interest rates tend to decrease `Businesses & Households Savings` and increase `Business Investment`, in order to maintain the equilibrium in the goods market. Income must increase. Greater income can increase savings which increases `Businesses & Households Savings` and decrease `Business Investment`
+    - Otherwise, tax or imports need to be incresed
+- the relationship between real interest rates and real income has to be inverse to maintain equilibrium
+- so the `IS` curve is downward sloping
+
+#### LM (Liquidity vs Money) Curve
+
+- It plots the `money market equilibrium` for real interest rate against real income
+- The demand for money equals to the supply of money
+- Higher real interest rates decrease the demand and supply for liquid money because investors are encouraged to shift their assets out of money into higher yielding securities
+- to maintain the real money supply at a given level, the income level should be increased such that the demand is kept constant as well
+- the relationship between real interest rates and real income has to be direct to maintain equilibrium
+- LM is upward sloping
+- real money supply equals the nominal money supply (usually a constant) divide by the overall price level of the goods and services
+  - If price level increases, real money supply decreases, the `LM` curve shift upwards
+  - If price level decreases, real money supply increases, the `LM` curve shift downwards
+  - At same interest rate level, high price level results in low real income, real income reflects the real purchasing power
+    - Nominal income refers to the actually income amount
+- Intersections between the IS and LM curves determine the equilibrium point of both the money and goods market
+
+#### Aggregate Demand Curve
+
+- Real output, read GDP or real income of of the economy are refer to the same thing
+- It determines the equilibrium levels of price level and real income, it is consisted of a collection of the intersection point between the `IS` and `LM`, when price level moves up and down on the y-axis
+  - It is a downward sloping curve
+  - It shows that higher price level reduce real income, increase real interest rate and make domestic goods more expensive, and reduce the quantity of demand for domestic goods
+- The aggregate demand shows the relationship between the price level and the amount of output demanded at those prices from the consumer's point of view
+- When `GDP` increases, this curve move to the right, based on the `Expenditure Approach` increase in `GDP` means:
+  - For households, increases in consumer wealth or expect higher future income
+  - For businesses, optimistic business outlook or high capacity utilisation
+  - For government, expansionary fiscal policy through low tax rate and high government spending
+  - For Import/Export
+    - weaker currency rate - when a company's currency weakens against its major trading partners exports will increase and imports decrease
+    - global economic growth - when global growth is strong foreign economies tend to buy more goods from domestic producers. Exports increase increasing aggregate demand
+  - In addition, When the central bank adopts an expansionary monetary policy through lower reserve requirements and target low interest rates, the money supply increases and consumption from the above sectors will increase (can cause real estate boom)
+
+#### Aggregate Supply Curve
+
+- It shows the amount of output that all the domestic producers are willing to provide at various prices level
+- Similar to the aggregate demand curve, but from the producers's point of view, it also has price level on y-axis and quantity of real output on x-axis
+- The very short, short, and long run aggregate supply curves are different because they depend on the how input prices like wages material costs and rent respond to changes in production levels
+
+##### Very Short-Run Aggregate Supply Curve
+
+- It is assumed that the input prices remain fixed regardless of changes in production levels
+- Companies can increase or decrease output to some degree without changing price
+- It is a horizontal line, a perfectly elastic supply curve
+- The following very short term production increasing methods are available without increasing the unit cost of each unit produced
+  - increasing overtime hours
+  - maximizing the existing plant and equipment
+  - depleting existing stockpile of components
+
+##### Short-Run Aggregate Supply Curve
+
+- Only some input prices will change as production is increased or decreased, becasue some input prices can be slow to adjust
+  - the cost of certain components or raw materials may increase quickly due to the increased demand
+  - wages may not have increased due to union contracts which can be valid for a few years
+  - rental costs may not change in the short run
+- It has an upward sloping aggregate supply curve
+- Changes in costs of production will shift this supply curve
+  - decrease input prices like wages rent and raw materials can decrease production costs, lower production costs allow firms to produce more for the same profits, then the SRS curve is shifted to the right.
+  - strength of the local currency is a factor when a country's currency appreciates. Domestic firms import foreign goods at cheaper prices and causes the supply curce move to the right
+  - decrease in taxes or increase in subsidies also lower the cost and shift the curve to the right
+- Changes in expectation of future output prices
+  - when businesses expect the price of their output to increase in the future they will expand production increasing SRS
+    - Doesn't work if the price level of inputs adjusts according to output prices
+    - This effect is more likely to be transient and modest
+- Changes in costs of production and expectation of future output prices only have affect on `SRAS` Curve
+
+##### Long-Run Aggregate Supply Curve
+
+- All input prices tend to catch up with the level of their demand
+- It has a perfectly inelastic supply curve
+- It is vertical at the economy's potential level of real GDP
+- `Potential GDP` increases as the economy's resource base grows
+  - When the economy is at potential level of the GDP, the economy is at full employment and physical capital are all operating at 100 percent utilization
+- Resource base of an economy includes,
+  - Quantitative factors:
+    - labor
+    - natural resources like land and oil
+    - physical capital like property, plant and equipment
+  - Qualitative improvements:
+    - Training and Education that increases the supply of human capital
+    - Technology can increase labour productivity
+- The curve shifts to the right when `Potential GDP` increases
+  - This also holds true for short run supply curves
+
+#### Equilibrium
+
+- Long-Run and Short-Run Aggregate Supply Curve intersects with Aggregate Demand Curve at the Long-run Full-employment equilibrium point
+  - This is the point where the economy is producing at its full potential where there is no unemployment and all physical capital are operating at full capacity
+- When `AD` curve shift to the left, in a short-run the economy produces less at a lower price level, and there is unemployment because `Real GDP` is less than the `Potential GDP`
+  - Then gap between the actual `GDP` and the potential `GDP` is called the `Recessionary Gap`
+  - Classical economists believe that unemployment would drive wages down which in turn would shift `SRAS` to the right and return the economy to its full employment level of real `GDP` at an even lower price level, so nothing need to be done
+  - Keynesian economists believes this is a long and economically painful process, so action should be taken to stimulate `AD` through expansionary fiscal and monetary policy such actions can help to return real GDP to its full employment level and restore prices back to the level before the recession
+- When `AD` curve shift to the right, there will be an `Inflationary Gap`
+  - The economy can operate at this level in the short run as workers work overtime and maintenance of productive equipment is delayed
+  - This is unsustainable in the long run because wages and input prices increase under intense competition thus increasing costs of production shifting the `SRAS` curve to the left, as a result the `Real GDP` is back the the `Potential GDP` level and the price level is higher
+    - A Inflationary Loop happens if price keep going up and price levels go up without any increase in real output
+    - Contractionary fiscal and monetary policies should be introduced to decrease government spending, increase taxes or slow the growth rate to the money supply through higher interest rates, this will shift `AD` curve back to its original level
+- When `SRAS` curve shift to the left due to higher wage or energy cost, it is called a `Stagflation`, it causes a lower `GDP` and higher price level
+  - If the country doesn't have control over the energy price, policymaker can only use expansionary policy to stimulate aggregate demand and shift the `AD` to the right, the `GDP` is back to normal, but at a higher price level
+    - conversely policymakers can choose to fight inflation by decreasing aggregate demand, this is not ideal either as `GDP` is reduced further
+    - If policymakers do nothing and wait for wages to come down due to high unemployment, the costs of production are lowered and the `SRAS` shifts back to the right where price and `GDP` go back to their previous levels. However, this is not a good from a political standpoint if there is high unemployment rate
+- When `SRAS` curve shift to the left due to a decrease in the price of important productive inputs, this results in a new short run equilibrium where the GDP is greater than full employment GDP and the price level is lower, the situation may eventually correct itself where the tight labor market pushes wages up increasing production costs shifting `SRAS` back to its original equilibrium
+
+#### Economic Growth
+
+##### Five Sources of Economic Growth
+
+- `Labor Supply` - the number of people over the age of 16 who are either working or looking for work, it is affected by:
+  - population growth
+  - immigration
+  - labor force participation rate
+- `Physical Capital Stock` - plant and equipment built up over the years to produce goods and services
+  - Investments by businesses increases a country's stock of physical capital
+  - Countries with a higher rate of investment into productive physical capital usually have a higher rate of GDP growth
+- `Human Capital` - education and skill level of a country's labor force
+  - skilled or well-educated workers are more productive as they are better able to harness advances in technology
+  - Many countries invest in human capital either through educating the population or importing talents from overseas
+- `Technology`
+  - Most important for developed countries
+  - As there is diminishing marginal productivity in adding physical capital. Technological advances are important as they allow advanced economies to overcome such limits
+  - It requires investments in more advanced equipment and softwareplus a skilled workforce that can develop and harness the benefits of technology
+  - Countries typically innovate through expenditures on R&D
+- `Natural Resources` - material inputs such as oil and land which are necessary to produce economic output
+  - It can be renewable like forests
+  - It can be non-renewable like oil
+  - Countries with large amounts of productive natural resources like oil and achieve greater rates of economic growth
+  - This factor is not mandatory for enconomic growth
+
+##### Growth in Potential GDP
+
+- `Production Function` states that the `GDP` equals a function of the size of the labour force and the amount of capital multiply by a total factor productivity
+  - the size of the labour force reflects the `Labor Supply` and `Human Capital` factors
+  - the amount of capital reflects the `Physical Capital Stock` factor
+  - the total factor productivity reflects `Technology` factor
+- The `Production Function` can be transformed into a per work basis by using the GDP per work as output, which is a function of the amount of capital per worker, multiply by the total factor productivity
+  - The output of this per worker `Production Function` is called the `Labour Productivity`
+  - Economists often look at labor productivity as a measure of the health and prosperity of an economy
+  - The higher the level of labor productivity the more goods and services the economy can produce with the same number of workers
+- `Potential GDP` equals the size of the labor force times the labor productivity
+  - The size of the labor force equals the aggregate hours worked among all workers
+- Long term `Potential GDP Rate` equals `Labor Force Growth Rate` plus `Labor Productivity Growth Rate`
+  - This growth rate is important because long term equity returns are highly dependent on economic growth over time
+- The Solow model or Neoclassical model states the growth in potential GDP equates to growth in technology plus the growth in labor times a weight `Wl` plus growth in capital times a weight `Wc`
+  - The two weights represent the shares of labour's and capital's percentage shares respectively, and two weights add up to one
+  - For most developed economies `Wc` is lower than `Wl`. Investments in physical capital to grow the economy are less effective than growing the workforce
+  - The growth in technology represents the change in total factor productivity
+- The Neoclassical model can have a per-capita form where the `Growth in per-captita Potential GDP` equals `Growth in Technology` plus `Wc` times `Growth in Capital-to-labour ratio`
+  - In developed economies where capital per worker is already relatively high there may be `diminishing marginal productivity` of capital. This means that policymakers cannot continue to grow the economy through capital deepening investments
+  - In developed economies, growth in technology should be the primary source of growth in GDP per worker

@@ -34,9 +34,10 @@ AWS CLI provides full controls of AWS using command lines.
   - use `file://<filepath>` for text file
   - use `fileb://<filepath>` for binary file
 
-## AWS SDK
+## AWS SDKs
 
-They are used to connect AWS services from the programming written in various languages.
+- They are libraries which can communicate with AWS services through AWS APIs
+- It supports the following lanuages
 
 ### Python - Boto3
 
@@ -49,6 +50,10 @@ They are used to connect AWS services from the programming written in various la
     - stores configuration information (primarily credentials and selected region)
     - allows developer to create service clients and resources
     - `boto3` creates a default session if not specified.
+
+### SDK for Java
+
+- [Click here](https://sdk.amazonaws.com/java/api/latest/overview-summary.html) for more details
 
 ## IAM
 
@@ -511,6 +516,55 @@ It provides support for generating serverless APIs.
     - integration is an AWS service that handles the request and prepare response content(e.g. Lambda)
   - mapping templates for request is used for handle/reformat response output from integration
 - In the API setting, add specific content type or `image/*` or `*/*` in `Binary Media Types`, then whenever a header `Content-Type` or `Accept` match is found, the body will be converted to binary using base64 encoding
+
+## Kinesis
+
+- It provides a searies of services related to streaming information to the cloud
+
+### Kinesis Video Streams
+
+- It is a video streaming service
+- Use `Video stream` for one way regular video streaming
+- Refer to the [Kinesis Video Streams Producer libraries](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-sdk.html) to define the video source, it is supported by the following SDKs and others
+  - [C++ Library](https://github.com/awslabs/amazon-kinesis-video-streams-producer-sdk-java)
+    - It includes JNI (Java Native Interface) and a GStreamer Plugin
+  - [Android SDK](https://github.com/aws-amplify/aws-sdk-android)
+- Use [Video Stream Parser Library](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/parser-library.html) to comsume video
+  - [Java Library](https://github.com/aws/amazon-kinesis-video-streams-parser-library)
+  - [Python SDK (Boto3)](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kinesis-video-media.html)
+- The above libraries communicate with the cloud using AWS API, [click] to see details on the API Reference
+- Data encryption is auto managed by AWS Key Management Service (KMS), user can create their own key for encryption
+  - It is a server-side encryption, Data is encrypted before it is written to the video stream storage layer, and it is decrypted after it is retrieved from storage
+
+#### Signaling Channels
+
+- It is used for two way with Web Real-Time Communications (WebRTC) framework
+- It includes the following SDKs in `C`, `JavaScrript`, `Android`, and `iOS`
+
+### Kinesis Data Streams
+
+- It collects streaming data with a data stream.
+- Data sources can be uploaded from:
+  - Kinesis Agent - a standalone Java application that send data to the data stream
+  - AWS SDKs
+  - [Amazon Kinesis Producer Library](https://github.com/awslabs/amazon-kinesis-producer)
+- Each record contains base64-encoded data blob, it will be upload one at a time in API calls
+  - The data blob can be any type of data; for example, a segment from a log file, geographic/location data, website clickstream data, and so on
+- Records will be grouped into shards and identified by a partition keys
+- Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MiB per second
+- It can trigger Lambda functions
+- It supports server-side encryption
+
+### Kinesis Data Firehose
+
+- It is a data delivery stream that deliver real-time data streams to destinations such as Amazon S3 and Amazon Redshift
+- It takes data from a `Kinesis Data Streams`, `AWS IoT`, `CloudWatch Logs`, or `CloudWatch Events` or directly from API calls
+- It can connect to a Lambda function to manipulate data content before data is delivered to the destination
+- It can uses AWS Glue to convert data and then it to `S3`
+
+### Kinesis Data Analytics
+
+- It processes data in real-time using `SQL`, or `Apache Flink`
 
 ## Amplify
 
