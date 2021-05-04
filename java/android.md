@@ -296,6 +296,40 @@
 - In the example `sendInput` is a user defined method in the main class as `public void sendInput(String in) { }`
 - Use `CustomDialog myDialog = new CustomDialog();`, `myDialog.show(getSupportFragmentManager(),null);` to initiate and show the dialog in main class
 
+#### Application Class
+
+- The Application class in Android is the base class within an Android app that contains all other components such as activities and services
+- It is instantiated before any other class
+- This class is primarily used for initialization of global state before the first Activity is displayed
+- See the following template for custom application classes
+
+```java
+import android.app.Application;
+
+public class MyCustomApplication extends Application {
+  // Called when the application is starting, before any other application objects have been created.
+  // Overriding this method is totally optional!
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    // Required initialization logic here!
+    }
+    // Called by the system when the device configuration changes while your component is running.
+    // Overriding this method is totally optional!
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+  }
+  // This is called when the overall system is running low on memory,
+  // and would like actively running processes to tighten their belts.
+  // Overriding this method is totally optional!
+  @Override
+  public void onLowMemory() {
+    super.onLowMemory();
+  }
+}
+```
+
 #### View object
 
 - View object class represents the basic building block for user interface components. A View occupies a rectangular area on the screen and is responsiblefor drawing and event handling. View is the base class for widgets, which are used to create interactive UI components (buttons, text fields, etc.)

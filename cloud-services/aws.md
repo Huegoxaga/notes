@@ -608,6 +608,7 @@ It provides support for generating serverless APIs.
   2. run `amplify configure` to create new aws crendentials for amplify CLI
   3. run `amplify init` from the root directory of the frontend app to create new amplify project
      - This command will create an empty full-stack project with selected framework
+  - If the app is created by the Amplify Console, in the project folder run `amplify pull --appId <appID> --envName <envName>` to sync the existing setup to the current project
 - run `amplify hosting add` to host frontend web app, there are two options:
   - hosting of static website using Amazon S3 and Amazon Cloudfront directly
   - hosting with AWS Amplify Console, there are two more options:
@@ -621,8 +622,10 @@ It provides support for generating serverless APIs.
   - `GraphQL` APIs are implemented by `AWS AppSync` (a managed GraphQL service)
   - `REST` APIs are implemented by `API Gateway`
 - run `amplify console` to open Amplify Console
+  - run `amplify console <Resource>` to open console for a specific resource
 - run `amplify status` check the status of running services
 - run `amplify delete` delete all the environments of the project from the cloud and wipe out all the local files created by Amplify CLI
+- run `amplify remove <Resource>` to remove local files related to existing backend services
 - run `amplify help` to see more options
 
 ## Amazon Certificate Manager

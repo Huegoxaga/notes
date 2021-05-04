@@ -12,6 +12,8 @@
 ## Installation
 
 - Installer is available from [nodejs.org](nodejs.org).
+  - run `sudo n stable` to update node to the latest stable version
+  - run `sudo n latest` to update node to the latest version
 
 ### NPM
 

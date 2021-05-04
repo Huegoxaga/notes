@@ -380,7 +380,7 @@
     - It is the most used method
     - Regulator will set a cap for N firms `HHI` and making decision or approval for merging firms based on the `HHI` calculation
 
-### GDP
+### Economic Flows
 
 - A modern economy consists of four major sectors:
   - households
@@ -406,6 +406,9 @@
   - If government spending exceeds net taxes then the government has a fiscal deficit and must borrow in the financial markets to fund its expenditures in our increasingly connected world
   - For the foreign sector, the net exports proceeds flow to businesses.
   - When an economy imports more than it exports, there is a trade deficit. A trade deficit must be funded by borrowing from the rest of the world through the financial markets conversely if the imports are less than exports. There is a trade surplus in this case. There is net foreign lending to the rest of the world
+
+### GDP
+
 - The `Aggregate Output` of an economy is the value of all the goods and services produced
   in a specified period of time
   - The output from factories
@@ -418,34 +421,48 @@
 - `Gross Domestic Product` (`GDP`) is formally defined as the total market value of the goods and services produced in an economy within a certain time period
   - By definition the `GDP` is the aggregate output of the economy for the period
   - As a result, in an isolated economy, `GDP`, `Aggregate Output`, `Aggregate Income`, and `Aggregate Expenditure` should all have the same value
-- GPD can be calculated by getting the value of `Aggregate Output`, and `Aggregate Income`
-  - `Expenditure Approach` - `GDP` is calculated as the total amount spent on the goods and services produced within the economy during a given period
-    - It calculates total expenditures in the economy as the `consumption spending by households` plus `business investment` plus `government spending` plus the `net exports`
-    - Market analysts generally prefer the expenditure approach because expenditure data is more timely and reliable than data for the income components
-  - `Income Approach` - `GDP` is calculated as the total amount earned by households and companies in the economy, it uses the sum of:
-    - `National Income` - the sum of the income received by all factors of production they go into the creation of final output, which includes:
-      - employee compensation
-      - interest income
-      - business owners incomes
-      - rent
-      - corporate and government enterprise profits before taxes
-      - indirect business taxes less subsidies which include taxes like sales tax, import duties, and property taxes
-    - `Capital Consumption Allowance` - measures the wear and tear of physical capital from the production of goods and services over a period, it can be thought of as the profit to be reinvested to maintain the productivity of physical capital
-    - `Statistical Discrepancy` - an adjustment for the difference between GDP measured under the income approach and the expenditure approach because they use different data
+
+#### `GDP` Calculation
+
+- `GDP` can be calculated by getting the value of `Aggregate Output`, and `Aggregate Income`
+
+##### Expenditure Approach
+
+- `GDP` is calculated as the total amount spent on the goods and services produced within the economy during a given period
+  - It calculates total expenditures in the economy as the `consumption spending by households` plus `business investment` plus `government spending` plus the `net exports`
+  - Market analysts generally prefer the expenditure approach because expenditure data is more timely and reliable than data for the income components
+
+##### Income Approach
+
+- `GDP` is calculated as the total amount earned by households and companies in the economy, it uses the sum of:
+  - `National Income` - the sum of the income received by all factors of production they go into the creation of final output, which includes:
+    - employee compensation
+    - interest income
+    - business owners incomes
+    - rent
+    - corporate and government enterprise profits before taxes
+    - indirect business taxes less subsidies which include taxes like sales tax, import duties, and property taxes
+  - `Capital Consumption Allowance` - measures the wear and tear of physical capital from the production of goods and services over a period, it can be thought of as the profit to be reinvested to maintain the productivity of physical capital
+  - `Statistical Discrepancy` - an adjustment for the difference between GDP measured under the income approach and the expenditure approach because they use different data
 - Based on the `Expenditure Approach`, `GDP` = `Households Spending` + `Business Investment` + `Government Spending` + `Net Exports`. Based on the economic flow this also equals `Households Spending` + `Net Taxes` + `Households Savings` + `Businesses Savings`
-  - `Households Savings` + `Businesses Savings` is known as `Domestic Private Saving`
-  - `Net Exports` + `Government Spending` - `Net Taxes`= `Domestic Private Saving` - `Business Investment`
-    - `Government Spending` - `Net Taxes` is the government deficit
-    - `Businesses & Households Savings` - `Business Investment` is the excess of private saving over private investment
-    - `Net Exports` is the trade deficit
-    - In conclusion, government deficit and trade deficit will always be covered by the excess of private saving over private investment
-- `GDP` calculation criteria
-  - all goods and services included in the calculation must be produced during the measurement period
-    - `GDP` is usually measured in one calendar year but many governments do give annualized quarterly estimates
-  - The second criteria is not the goods or services value can be determined by being sold in the market, non-market, illege activities or government benefits are excluded
-  - When using the expenditure approach only the market value of final goods and services should be included, the value of intermediate goods like raw materials and parts should be excluded
-    - This type of expenditure approach is called the value of final output method
-    - An alternative approach is the sum of value added method which is to sum up all the value added during the production and distribution processes
+- `Households Savings` + `Businesses Savings` is known as `Domestic Private Saving`
+- `Net Exports` + `Government Spending` - `Net Taxes`= `Domestic Private Saving` - `Business Investment`
+  - `Government Spending` - `Net Taxes` is the government deficit
+  - `Businesses & Households Savings` - `Business Investment` is the excess of private saving over private investment
+  - `Net Exports` is the trade deficit
+  - In conclusion, government deficit and trade deficit will always be covered by the excess of private saving over private investment
+
+#### `GDP` Calculation Criteria
+
+- all goods and services included in the calculation must be produced during the measurement period
+  - `GDP` is usually measured in one calendar year but many governments do give annualized quarterly estimates
+- The second criteria is not the goods or services value can be determined by being sold in the market, non-market, illege activities or government benefits are excluded
+- When using the expenditure approach only the market value of final goods and services should be included, the value of intermediate goods like raw materials and parts should be excluded
+  - This type of expenditure approach is called the value of final output method
+  - An alternative approach is the sum of value added method which is to sum up all the value added during the production and distribution processes
+
+#### Nominal vs Real GDP
+
 - `Nominal GDP` of the economy are calculated using the current market value of the goods and services
   - `Nominal GDP` equals the sum of all the current prices multiplied by the quantity produced for each good in a certain period
   - As the growth in `Nominal GDP` will include the effect of price increase (inflation) for the period, this figure is not representative of the actual production growth
@@ -456,6 +473,9 @@
 - the `GDP Deflator` is a price index that can be used to convert `Nominal GDP` into `Real GDP`
   - It equals the `Nominal GDP / Real GDP * 100` for a certain year
   - If the `GDP Deflator` index is known the conversion between `Nomial GDP` and `Real GDP` can be done easily
+
+#### Personal Income
+
 - `Personal Income` is a measure of the pre-tax income received by households and is one determinant of consumer purchasing power and consumption, compare with the nationl income component, personal income:
   - includes employee compensation
   - includes interest income
@@ -473,6 +493,8 @@
 - `Personal Disposable Income` (`PDI`) = `Personal Income` + `Personal Income Taxes`
   - It measures the amount that households have available to either save or spend on goods and services
   - It is an important economic indicator of the ability of consumers to spend and save
+
+### Aggregate Demand & Supply
 
 #### The IS (Investment vs Savings) Curve
 
@@ -583,9 +605,9 @@
     - If policymakers do nothing and wait for wages to come down due to high unemployment, the costs of production are lowered and the `SRAS` shifts back to the right where price and `GDP` go back to their previous levels. However, this is not a good from a political standpoint if there is high unemployment rate
 - When `SRAS` curve shift to the left due to a decrease in the price of important productive inputs, this results in a new short run equilibrium where the GDP is greater than full employment GDP and the price level is lower, the situation may eventually correct itself where the tight labor market pushes wages up increasing production costs shifting `SRAS` back to its original equilibrium
 
-#### Economic Growth
+### Economic Growth
 
-##### Five Sources of Economic Growth
+#### Five Sources of Economic Growth
 
 - `Labor Supply` - the number of people over the age of 16 who are either working or looking for work, it is affected by:
   - population growth
@@ -608,7 +630,7 @@
   - Countries with large amounts of productive natural resources like oil and achieve greater rates of economic growth
   - This factor is not mandatory for enconomic growth
 
-##### Growth in Potential GDP
+#### Growth in Potential GDP
 
 - `Production Function` states that the `GDP` equals a function of the size of the labour force and the amount of capital multiply by a total factor productivity
   - the size of the labour force reflects the `Labor Supply` and `Human Capital` factors
@@ -629,3 +651,80 @@
 - The Neoclassical model can have a per-capita form where the `Growth in per-captita Potential GDP` equals `Growth in Technology` plus `Wc` times `Growth in Capital-to-labour ratio`
   - In developed economies where capital per worker is already relatively high there may be `diminishing marginal productivity` of capital. This means that policymakers cannot continue to grow the economy through capital deepening investments
   - In developed economies, growth in technology should be the primary source of growth in GDP per worker
+
+### Business Cycle
+
+#### Phases of Business Cycle
+
+- Business cycles can be thought of as fluctuations around the following trend growth of an economy
+- The length of business cycles varies depending on the companies, it can be as short as a year or longer than a decade
+- This wave shape business cycles recur, in the long-term it can have an overall uptrend or downtrend
+- The recovery (or early expansion) or trough phase - GDP stops decreasing and begins increasing
+  - Companies stop layoffs, unemployment rate is still high
+  - Consumer and business spending may slowly pick up particularly in housing and consumer durables
+  - inflation remains moderate and may continue to fall
+- expansion phase - real GDP is increasing
+  - businesses increase hiring to meet rising demand and unemployment rate falls
+  - consumer and investment spending increase greatly
+  - Inflation picks up modestly as price increases with a delay
+- peak phase - real GDP stops increasing and begins decreasing
+  - Business activity starts to decelerate
+  - Businesses slow their rate of hiring adn the unemployment rate continues to fall at a decreasing rate
+  - spending is still increasing but the rate of spending starts to slow
+  - inflation accelerates at this stage
+- contraction or recession phase - real GDP is decreasing
+  - Business activity declines
+  - Business start laying off, unemployment rate rises
+  - Spending by both consumers and businesses falls
+  - Inflation decelerates with a lag
+- Generally, consider two consecutive quarters of growth in real GDP as the beginning of an expansion and two consecutive quarters of declining real GDP as indicating the beginning of a recession
+
+#### Business Cycle Indicator
+
+- Inventory
+  - Firms want to keep a balance of having enough inventory for sales and having enough liquidity
+  - The ratio of inventory to sales can be used to indicate the business cycle
+  - In steady economic growth this ratio is at its normal level
+  - During recession as sales pick up the ratio decreases to meet the increase in demand
+  - Firms will increase output and the inventory to sales ratio will increase toward normal levels during the expansion phase
+  - During peak phases, sales growth begins to slow and unsold inventories accumulate, inventory to sales ratio rises above its normal level
+  - Firms respond by reducing production which is one of the causes of the subsequent contraction in the economy, then the ration reaches the normal level
+  - A planed increase in this raito means firms are anticipating higher demand, and it is a sign of the expansion phase
+  - if the increases unplanned it is a sign of the recession phase
+    could be an early sign of a recession forming
+- Labor
+  - Hiring and retrenchment is not just costly in terms of direct expenses. it can damage employee loyalty and morale
+  - Firms prefer adding overtime hours to the current workforce than hiring
+  - Firms only hire more when it is necessary which is around the mid to end of the expansion phase and downsize the workforce at the beginning of the contraction phase
+- Physical capital
+  - It is costly to adjust production levels frequently
+  - Similar to the trend of the labor force, firms purchase new equitment at mid to end of the expansion phase
+  - At the beginning of the contraction phase, firms reduce their physical capacity by spending less on maintenance or purchase new equipment when it is near the end of its useful life
+
+#### Housing Sector in Business Cycle
+
+- The housing section affect the economy with a cyclical swings
+- It is affected by the following three factors
+- It is sensitive to the `Interest Rate`
+  - Interest Rates are usually low during recessions and high during expansion
+  - Low interest rates tend to increase home buying and construction while high interest rates tend to reduce home buying and construction
+- `Affordability` is a factor measured by household income relative to housing prices, higher affordability can lead to higher sales
+  - Household incomes are typically lower in the contraction phase and higher in the expansion phase
+  - Household incomes cannot determine the affordability entirely, e.g. in peak phase, the income level is high but the housing price level is also high
+- `Speculative Activity` is the expectation that buyer can sell real estate on a higher price in a short period
+  - It can be independent from the business cycle
+  - Higher prices lead to more construction eventually resulting in oversupply and a subsequent fall in prices
+  - When speculative buyers are forced to sale their properties when housing price falls, it will make the price drop further and it can destabilize the financial system as evident in the 2008 financial crisis
+- `Demography` is also an important factor
+  - It is independent from the business cycle
+  - Population in the 25 to 40 year old segment is particularly important because they have the greatest demand for new houses
+- `Urbanization` - When governments encourage shifts from rural areas to cities construction activity in cities picks up to accommodate new settlers
+
+#### External Trade in Business Cycle
+
+- It depends on domestic GDP growth relative to trading partners GDP growth
+  - Increasing growth of domestic GDP leads to increases in imports of foreign goods, decreasing domestic GDP growth reduces imports
+  - Increasing foreign incomes increase exports, decreasing economic growth in foreign countries decreases exports
+- Relative strength of the country's currency is another factor
+  - If a country's currency strengthens against its trading partners its goods are relatively more expensive so exports decrease and imports increase
+  - If a foreign currency strengthens the country's domestic goods become relatively cheaper than foreign goods, exports increase and imports decrease

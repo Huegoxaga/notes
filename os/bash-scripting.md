@@ -70,6 +70,7 @@
 ### Exit
 
 - keyword `exit` is used to stop the script.
+  - `exit 1` exit with error
 
 ### Variables
 
@@ -110,6 +111,8 @@
     - `$2` is the second argument, and so on.
     - If an argument is missing, `$N` will be empty.
   - Positional parameters are read-only and can not be modified. Stored them in a variable to modify it or calculate its length.
+  - `shift` command remove argument from the argument list
+    - `shift 2` removes two arguments at a time
 - Other Special Characters
   - `$*` returns all arguments as a single string.
   - `"$*"`returns all arguments and expands to a word
@@ -370,4 +373,36 @@
 ```bash
 sudo -v
 while true; do sudo -n true; sleep 120; kill -0 "$$" || exit; done 2>/dev/null &
+```
+
+- Read scripts flags from arg
+
+```bash
+# Loop through arguments and process them
+for arg in "$@"
+do
+    case $arg in
+        -i|--initialize)
+        SHOULD_INITIALIZE=1
+        shift # Remove --initialize from processing
+        ;;
+        -c=*|--cache=*)
+        CACHE_DIRECTORY="${arg#*=}" # #* remove anything from the beginnign to = sign of arg
+        shift # Remove --cache= from processing
+        ;;
+        -r|--root)
+        ROOT_DIRECTORY="$2"
+        shift # Remove argument name from processing
+        shift # Remove argument value from processing
+        ;;
+        *)
+        OTHER_ARGUMENTS+=("$1")
+        shift # Remove generic argument from processing
+        ;;
+    esac
+done
+echo "# Should initialize: $SHOULD_INITIALIZE"
+echo "# Cache directory: $CACHE_DIRECTORY"
+echo "# Root directory: $ROOT_DIRECTORY"
+echo "# Other arguments: ${OTHER_ARGUMENTS[*]}"
 ```
