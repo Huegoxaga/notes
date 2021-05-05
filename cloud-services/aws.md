@@ -570,6 +570,10 @@ It provides support for generating serverless APIs.
 
 - It is used for hosting frontend apps and backend services
 - The backend app in amplify is a group of utility functions used to connect to serviceless cloud services, in a frontend web app project
+- `Amplify Console` and `Amplify CLI` can both initialize, create services, it is done internally with CloudFormation
+- If the changes or creation is done through `Amplify Console`, use command `amplify pull --appId <appID> --envName <envName>` inside the project folder to sync the changes to the local project
+  - Making changes to the auto created services inside their console (e.g. Cognito Console) is not recommanded, as `CloudFormation` will not be informed and updated accordingly
+- If changes or creation is made through the `Amplify CLI`, use command `amplify push` to deploy the new settings to the cloud, then changes will be shown in `Amplify Console`
 
 ### Amplify Console
 
@@ -579,12 +583,12 @@ It provides support for generating serverless APIs.
 
 - [Sandbox environments](https://sandbox.amplifyapp.com/getting-started) can be used to generate a local Amplify full-stack project for testing purpose
   - It can be deployed onto AWS Cloud anytime later
-- Alternatively, login the AWS console and directly deploy a new backend app on the cloud, the use `Admin UI` to setup the backend
+- Alternatively, login the AWS console and directly deploy a new backend app on the cloud, then use `Admin UI` to setup the backend
   - A frontend app can be asscociated with the backend later
 
 #### Hosting Web App
 
-- It uss source code from online repo provider like GitHub
+- It uses source code from online repo provider like GitHub
 - Whenever a change is pushed the app will be auto built and updated
 - Preview can be setup, so whenever a pull request is made, one can preview the changes in a browser
 - Each GitHub branch can connect to one server
@@ -608,8 +612,7 @@ It provides support for generating serverless APIs.
   2. run `amplify configure` to create new aws crendentials for amplify CLI
   3. run `amplify init` from the root directory of the frontend app to create new amplify project
      - This command will create an empty full-stack project with selected framework
-  - If the app is created by the Amplify Console, in the project folder run `amplify pull --appId <appID> --envName <envName>` to sync the existing setup to the current project
-- run `amplify hosting add` to host frontend web app, there are two options:
+- run `amplify add hosting` to host frontend web app, there are two options:
   - hosting of static website using Amazon S3 and Amazon Cloudfront directly
   - hosting with AWS Amplify Console, there are two more options:
     - Continuous deployment - auto built and update when every a `git push` is made
@@ -626,7 +629,9 @@ It provides support for generating serverless APIs.
 - run `amplify status` check the status of running services
 - run `amplify delete` delete all the environments of the project from the cloud and wipe out all the local files created by Amplify CLI
 - run `amplify remove <Resource>` to remove local files related to existing backend services
+- run `amplify update <Resource>` to update local files related to existing backend services
 - run `amplify help` to see more options
+- run `amplify push` to deploy any changes to the cloud including the creation, update and removal of any services
 
 ## Amazon Certificate Manager
 

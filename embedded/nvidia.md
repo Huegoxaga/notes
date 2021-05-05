@@ -9,7 +9,7 @@
   - It is created by NVIDIA in 2007
   - It only runs on supported GPU
   - It provides C/C++ language extension and APIs for programming and managing GPUs.
-- NVIDIA® CUDA-X, built on top of NVIDIA CUDA®, is a collection of libraries which utilize GPU computing
+- NVIDIA® CUDA-X, is a collection of CUDA based libraries which utilize GPU computing
   - CUDA-X AI - it includes the following AI libraries:
     - cuDNN - NVIDIA CUDA Deep Neural Network (cuDNN) library is a GPU-accelerated library of primitives for deep neural networks
     - Optimized Frameworks - The NVIDIA Optimized Frameworks such as Kaldi, NVIDIA Optimized Deep Learning Framework, powered by Apache MXNet, NVCaffe, PyTorch, and TensorFlow (which includes DLProf and TF-TRT) offer flexibility with designing and training custom deep neural networks (DNNs) for machine learning and AI applications
@@ -31,6 +31,23 @@
   - DeepStream SDK - it delivers a complete streaming analytics toolkit for AI-based multi-sensor processing, video, audio and image understanding
 - NVIDA's GPU Technology Conference (GTC) is a popular annual event in the GPU computing industry
 - `iGPU` is an integrated GPU, GPU that's in the CPU. `dGPU` is a dedicated GPU, it is the actual graphic card
+
+## GPUs
+
+### Types of Drivers
+
+- Tesla drivers
+  - These drivers are intended primarily for compute workloads, which use GPUs for computational tasks
+  - They are good for parallelized floating-point calculations for machine learning and fast Fourier transforms for high performance computing applications
+- GRID drivers
+  - These drivers are certified to provide optimal performance for professional visualization applications that render content such as 3D models or high-resolution videos
+  - One can configure GRID drivers to support two modes
+    - Quadro Virtual Workstations provide access to four 4K displays per GPU
+    - GRID vApps provide RDSH App hosting capabilities
+- Gaming drivers
+  - These drivers contain optimizations for gaming and are updated frequently to provide performance enhancements
+  - They support a single 4K display per GPU
+- [Click Here](https://www.nvidia.com/Download/Find.aspx) to serach and download specific driver version based on the GPU type and Host OS
 
 ## Jetson
 
@@ -69,12 +86,15 @@
   - `sudo /usr/bin/jetson_clocks --store` export clock setting to `~/l4t_dfs.conf`
   - `sudo /usr/bin/jetson_clocks --restore` restore clock setting from `~/l4t_dfs.conf`
 - [Click](https://developer.nvidia.com/embedded/learn/tutorials/vnc-setup) to see steps for configuring VNC server
+  - `VNC` is only available when login the GUI interface, one can use command line to enable automatic login
+  - `VNC` instruction can be found in the USB drive when connected in USB mode, it also contain config info on changing screen resolution
 - Backup
   - Clone the entire SD drive, `sudo dd if=/dev/sdc conv=sync,noerror bs=4096 | gzip -c > ~/backup_image.img.gz`
   - Restore the entire SD drive, `gunzip -c ~/backup_image.img.gz | dd of=/dev/sdc bs=4096`
 
 #### CLI
 
+- `nvcc --version` or `/usr/local/cuda/bin/nvcc --version` returns cuda version
 - nvpmodel
   - This CLI tool switches the module into different modes. Each mode specify which CPU cores are used, and the maximum frequency of the CPU and GPU being used
   - Each mode has different energy usage and performance scenarios

@@ -728,3 +728,71 @@
 - Relative strength of the country's currency is another factor
   - If a country's currency strengthens against its trading partners its goods are relatively more expensive so exports decrease and imports increase
   - If a foreign currency strengthens the country's domestic goods become relatively cheaper than foreign goods, exports increase and imports decrease
+
+#### Theories of Business Cycle
+
+- `Business Cycles` are a result of short term fluctuations in aggregate demand and short-run aggregate supply
+  - Aggregate demand and Short-Run aggregate supply are determined by `Market` forces
+    - Shifts in `Aggregate Demand` are mainly due to factors such as `Consumer and Business Sentiment`
+    - Shifts in `Short-Run Aggregate Supply` are mainly driven by cost factors such as `Input Prices` and `Wage` levels
+  - `External Shocks` and changes in `Technology` can also affect demand and supply significantly
+  - `Government Policies` also have significant influence
+    - `Monetary Policies` affect the rate of increase of `Money Supply` through instruments like the benchmark interest rate, this can shift aggregate demand
+    - `Fiscal Policies` is also a factor
+      - `Government Spending` which has a direct effect on the aggregate demand
+      - changes in `Tax Rates` affect both aggregate demand and short run aggregate supply
+- `Neoclassical` economists believe that the economy has a strong tendency toward full employment equilibrium, so in theory business cycles should not exist
+  - They do acknowledge that changes in technology can greatly affect certain industries that are displaced by the technology and that can cause limited short term lowering of aggregate demand resulting in a recession
+  - They believe that such recessions are short lived, as unemployment will lower wages shifting the `SRAS` curve to the right such that the economy is back to its long run equilibrium
+  - No intervention is needed from the government
+- `Austrian` School share most of the beliefs of the `Neoclassical school`. The key difference is that the `Austrian` economists argue that business cycles are not a result of changes in technology but misguided interventions by the government
+  - When policymakers lower the interest rate, firms invest too much. When these investments turn out poorly, firms must decrease output in those lines which causes a contraction
+  - Austrian economists believe that government intervention should be avoided
+  - `Neoclassical` and `Austrian` theories both agree that wages will adjust such that the economy will always return to full employment, so recessions should be short lived
+- `Keynesian` economists argue that it can take a very long time for the market to adjust wages and go back to full employment this is because wages are inherently `Downward Sticky`
+  - `Downward Sticky` means people will choose to remain unemployed rather than to accept a pay cut
+  - They believe the business cycle is the result of swings in market sentiment rather than changes in technology or government intervention
+  - they argue that for long and deep recessions government intervention particularly in the form of expansionary fiscal policy is necessary to save the economy
+- `Monetarist` economists believes government intervention is bad, `Monetary Policies` is good
+  - `Monetarists` believe that the `Keynesians` focus on fiscal policy is misplaced
+  - They think the `Keynesian` model fails to consider the long term harm that can be caused by sustained government budget deficits and there may be a lag in the stimulative effects of fiscal policy
+  - Government intervention may be too slow to prevent an economic crisis from blowing up
+  - They believe money supply has the greatest effect on the economy
+    - When the money supply grows too fast, the boom is unsustainable
+    - When it grows to slow the economy contracts
+  - `Monetarists` recommend that the government should follow a policy of steady and predictable increases in the money supply in order to keep aggregate demand stable and growing
+- `New Classical` school economists also doen't like government intervention as the predictable loosening and tightening of money supply itself can cause a recession as businesses would just wait for easy money to start investing
+  - `New Classical` models consider the changes in technology and external shocks as the main cause of business cycles, such models are called `Real Business Cycle` (RBC) models
+  - `New Classical` economists believe that expansions and contractions represent efficient operation of the economy in response to external real shocks and technological changes
+  - They believe the government should not intervene in the economy
+
+#### Unemployment
+
+- In any economy, employers hire to meet increased demand and fire when demand falls. Workers also quit to look for better jobs and new graduates start looking for jobs.
+- Categories of Unemployment
+  - `Frictional Unemployment` is due to the time lag necessary to match job seekers with employers
+    - This is unavoidable, there will always be some frictional unemployment
+  - `Cyclical Unemployment` is caused by short run changes in the general level of economic activity
+    - in a recession, the number of available jobs is fewer. So the proportion of unemployed increases
+  - `Structural Unemployment` is caused by long run changes in the economy that eliminates some jobs while new jobs for which the unemployed workers are not qualified for
+    - This is a structural problem because the unemployed workers do not currently have the skills needed to perform the jobs that are available
+- formal definitions of unemployment
+  - an `Unemployed` person is one who is not working but is actively searching for work
+  - A `Long-term Unemployed` happens when a job seeker has been unsuccessfully looking for a job for several months
+  - An `Underemployed` person is someone who is employed part time but would prefer to work full time or is paid far below what his qualifications or skills suggest
+    - This is very subjective
+  - A `Discouraged Worker` is one who has given up looking for a job perhaps because of a weak economy
+  - A `voluntarily unemployed` people choose not to be employed because wages are not up to their expectation or they choose to retire early
+- The `labor force` of an economy consists of `Employed`, `Underemployed` and `Unemployed`
+  - `Discouraged Workers` are statistically outside the labor force
+- the `Participation Ratio` is the size of the labor force as a percentage of the working age population
+- The `Unemployment Rate` is the percentage of the labor force that is currently classified as unemployed
+- Economy Cycle Indicators
+  - the `Unemployment Rates` is a lagging indicator of the health of the economy, it will alway fall behind the movement of the economy as employers trying to minimize hiring and firing as these are costly exercises
+    - If a drop in unemployment is accompanied by a drop in participation rate. It may mean that more of the unemployed have given up looking for jobs rather than an actual pickup in hiring
+    - It shows that discouraged workers might be hidden inside the unemployed people as it is hard to tell
+    - So `Unemployment Rates` might not be a good indicator
+  - `Payrolls Growth` can be a better indicator of the economy cycle, it can be a good indication of recovery when they rise number of hours worked especially overtime and the use of temporary workers may also be useful indications of economic activity
+  - `Number of Hours Worked` especially overtime and the use of `Temporary Workers` may also be useful indications of economic activity firms tend to increase overtime hours and hire part time workers to cope with initial pickup in demand.
+    - these two indicators may be a better signal of economic recovery than the unemployment rate
+  - `Productivity` is a measure of output against the number of workers declines early in contractions as firms try to keep workers despite producing less output, in early expansion phase firms trying to produce more output with existing workers, so productivity rises

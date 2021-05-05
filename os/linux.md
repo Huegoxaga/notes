@@ -227,6 +227,7 @@
   - `echo $PATH | pbcopy` send the output of the command into clipboard
 - `pbpaste`, is will show the content of the clipboard
   - `pbpaste > test.txt` output the text in the clipboard into a file
+- `killall <ServiceName>` kill all related services
 
 ### Access Control
 
@@ -698,13 +699,14 @@
 - Ex, `ssh -i ~/.ssh/"WordPress Key.pem" ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com`
 - `ssh -L 4444:example.com:80` forward port `4444` on the host machine to the a web page opened from the remote machine in port `80`
 
-### SSH Configuration
+#### SSH Configuration
 
 - The config file is located at `/etc/ssh/sshd_config`
   - `PermitRootLogin without-password` this line is used to for root user to use key pairs to login
   - `PasswordAuthentication no` disable password login entirely
 - run `sudo systemctl reload sshd.service` or `sudo service sshd restart` to reload the config file
   - For Ubuntu/Debian use `sudo service ssh restart`
+- To create a ssh key for remote access, use `ssh-keygen` to generate key pairs, then use `ssh-copy-id` to upload the public key to the remote machine
 
 ### ssh-keygen
 
@@ -716,11 +718,12 @@
   - `-C "example@email.com"` add a comment to the key so it will show after entering key path
 - `ssh-keygen -p` update passphrase, after prompt for entering key file path
 - `ssh-keygen -l` display finger print after prompt for entering key file path
+- `ssh-keygen -R <RemoteIPAddress>` remove all records of known hosts
 
 ### ssh-copy-id
 
 - It is used to append the content of the public key to the remote server's `~/.ssh/authorized_keys` file
-- `ssh-copy-id -i <path/to/key> <username>@<RemoteIP>` following prompt for user password
+- `ssh-copy-id -i <path/to/public_key> <username>@<RemoteIP>` following prompt for user password
   - Alternatively, `cat ~/.ssh/id_rsa.pub | ssh <username>@<RemoteIP> "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/<KeyName>"`
 
 ### ssh-agent
@@ -1520,6 +1523,51 @@ endif()
 - `sudo systemctl set-default multi-user.target`, to boot to console
 - `sudo systemctl set-default graphical.target`, to boot to display manager
 - `sudo systemctl start gdm3.service` or `sudo systemctl start lightdm.service`, start the graphical environment from the console.
+
+#### Config Files
+
+- `/etc/X11/xorg.conf` for screen resolution
+
+```conf
+Section "Screen"
+   Identifier    "Default Screen"
+   Monitor       "Configured Monitor"
+   Device        "DeviceName"
+   SubSection "Display"
+       Depth    24
+       Virtual 1280 800 # Modify the resolution by editing these values
+   EndSubSection
+EndSection
+```
+
+### gpsd
+
+- It is a daemon which handles GPS data
+- Config file is located at `/etc/default/gpsd`
+  - It defines where to fetch the data and whether to start the daemon on boot
+  - Use `-n` flag in the options to pull data
+- Deamon socket file is located at `/lib/systemd/system/gpsd.socket`
+- `gpsd <device>` listen to a device
+  - A device may be a local serial device for GPS input, or a URL in one of the following forms:
+    - `tcp://<host>:<port>`
+    - `udp://<host>:<port>`
+    - `{dgpsip|ntrip}://[user:passwd@]host[:port][/stream]`
+    - `gpsd://host[:port][/device][?protocol]`
+  - all gpsd process need to be stopped before binding to another port, use one the following command to stop
+    - `systemctl stop gpsd` and `systemctl stop gpsd.socket`
+    - `sudo killall gpsd`
+- `sudo gpsd /dev/<GPSDevice> -F /var/run/gpsd.socket` bind the gpsd socket with the GPS device
+- `sudo gpsd -N upd://*:<port>` bind data from UPD port
+- `gpsd -S <TCP_Port> /dev/<GPSDevice>` bind data from device to TCP port of localhost
+
+#### gpsd-clients
+
+- It provides tools to access GPS data
+- `cgps -s` view GPS data
+- `gpsmon` view GPS data
+- `gpsfake <NMEA_Log>` fake GPS data from NMEA log file
+  - `-c <delay>` set a delay between data feed
+  - [Click Here](https://www.nmeagen.org) to generate NMEA log
 
 ### Gstreamer
 

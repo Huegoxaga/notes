@@ -141,6 +141,7 @@
   - a record in `.gitattributes` file will be created
 - During future `git push` large files will be automatically managed by `lfs`
   - Rollback is required when large file has already been committed to the local repo
+- Run `git lfs pull` to get large files from remote repo
 
 ## GitHub CLI
 

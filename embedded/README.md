@@ -67,6 +67,9 @@
     - Some register are used to read data at its address location in loop
   - Detailed boundaries are stated on the reference manual.
   - The relationship between the range and the assigned peripheral is called a memory map.
+  - The 64-bit processor architecture for microcontroller commonly refers as `ARM64` or `aarch64`
+    - Generally `ARM64` and `aarch64` refer to the same thing, different vendor uses different term
+  - Processor for microcontroller is more compat and has lower power consumption compare to microprocessor chipset like `x64`
 - Types of memory
   - Non-volatile - persist after reboot
   - It is the program memory or code memory, stores the logic(instruction) of the program
@@ -231,10 +234,19 @@
 ## Microprocessor
 
 - It can be used to run an OS
+- They consume more power compare to MCU processors
 - A microprocessor is a device that incorporates the functions of a CPU on a single IC (or a few). It is a clock-driven, register-based digital integrated circuit
 - It accepts binary data as input, processes it according to an instruction set stored in its memory, and provides output.
 - Different instrument sets determine the different architectures of microprocessors
   - common architectures today are generally 32-bit or 64-bit
+  - `x86` is the architectures for 64-bit microprocessor
+    - It named after several successors to Intel's 8086 processor end in "86", including the 80186, 80286, 80386 and 80486 processors
+      - The 8086 (also called iAPX 86) is a 16-bit microprocessor chip designed by Intel between early 1976 and June 8, 1978
+    - a 32-bit system can address a maximum of 4GB of RAM
+  - `x86-64` or `x64` is the architectures for 64-bit microprocessor
+    - It it the 64-bit version of the `X86` instruction set
+    - `AMD64` is famous because, it allows backward compatibility
+    - A 64-bit register can theoretically reference 17,179,869,184 GB (16 exabytes) of RAM
 - CPUs are almost all implemented on microprocessors, causing the two terms to be practically interchangeable.
 - It is most used in personal computers or other chips used for more general purpose applications.
 - Digital Signal Processor (DSP)
