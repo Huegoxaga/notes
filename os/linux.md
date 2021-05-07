@@ -498,13 +498,46 @@
   - `apt upgrade` will automatically install but not remove packages.
   - `apt autoremove` find dangling dependencies and remove them.
   - `apt remove <PackageName>` remove packages
+
+#### apt-key
+
+- It is used to manage the list of keys used by apt to authenticate packages
+  - Packages which have been authenticated using these keys will be considered trusted
+- `sudo apt-key adv --fetch-keys <PUB_KEY_URL>` download a public key and add it
+- `sudo apt-key adv --keyserver <SERVER_URL> --recv-keys <KEY>` add a key from a server
+
+#### add-apt-repository
+
+- All remote packages are from the servers, listed in the `/etc/apt/sources.list` or separate files in the `/etc/apt/sources.list.d` directory
+- `add-apt-repository "<SOURCES_LIST_RECORD>"` adds a server URL record in the sources list
+  - Then, new packages are available for download after `sudo apt-get update && sudo apt-get -y install <package>`
+
+#### apt-cache
+
+- It shows available information about installed and installable packages
+- `apt-cache policy` view the global priority for each Apt source (repository)
+  - The `/etc/apt/preferences` file , or `.pin` files in `/etc/apt/preferences.d/` directory are used to control the priority of packages available from remote services
+  - The priority is used to select the package that will be installed
+  - Higher number has a higher priority
+- `apt-cache policy <package>` view priority policy for a certain package
+- Apt will assign a default priority numbers based on the Release file of the package. Apt can install this package without asking the consent from user if `NotAutomatic` in Release file is set to `yes`. Additionally if `ButAutomaticUpgrades` is set to `yes`, an update can be performed during installation when the package has a higher version than an existing installed package
+  - `priority 1` If a distribution Release file contains `NotAutomatic: yes` and `ButAutomaticUpgrades: no` or if it contains only `NotAutomatic: yes`, this is usually called an `experimental distribution`
+  - `priority 100` If a distribution Release file contains `NotAutomatic: yes` and `ButAutomaticUpgrades: yes`
+  - `priority 500` For all other distributions
+  - Installed packages will always receive a priority of `100`
+
+#### dpkg
+
+- It is used to install, downloaded debian packages locally
 - `dpkg --get-selections` Shows all of your installed packages
-  - 500 and 100 are the priority numbers. 500 corresponds to installable, 100 means installed
-- Useful packages:
-  - `dkms` dkms is a framework which allows kernel modules to be dynamically built for each kernel on your system in a simplified and organized fashion
-  - `build-essential` This package contains an informational list of packages which are considered essential for building Debian packages
-  - `module-assistant` command-line tool for handling module-source packages that have been prepared for the Debian distribution
-    - `m-a prepare` Tries to determine the name of the required linux-headers package, installs it if needed and creates the `/usr/src/linux` symlink if needed
+- `dpkg -i <PackageFile>` to install `.deb` package files
+
+#### Useful packages:
+
+- `dkms` dkms is a framework which allows kernel modules to be dynamically built for each kernel on your system in a simplified and organized fashion
+- `build-essential` This package contains an informational list of packages which are considered essential for building Debian packages
+- `module-assistant` command-line tool for handling module-source packages that have been prepared for the Debian distribution
+  - `m-a prepare` Tries to determine the name of the required linux-headers package, installs it if needed and creates the `/usr/src/linux` symlink if needed
 
 ### WGET
 

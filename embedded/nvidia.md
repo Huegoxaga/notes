@@ -48,6 +48,90 @@
   - These drivers contain optimizations for gaming and are updated frequently to provide performance enhancements
   - They support a single 4K display per GPU
 - [Click Here](https://www.nvidia.com/Download/Find.aspx) to serach and download specific driver version based on the GPU type and Host OS
+  - [Click Here](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html) for steps to install drivers
+  - Use run script option to have a better control on which version to install
+  - If certain path can't be found during installation on a new machine, it can potentially break in the future. When it happens check driver status again and reinstall. Optionally install related packages that will create those paths
+- [Click Here](https://docs.nvidia.com/cuda/index.html) to see docs for CUDA
+  - [Click Here](https://developer.nvidia.com/cuda-downloads) for steps to install CUDA
+  - In CUDA installation, its compatible GPU driver will also be intalled
+  - Use the following Environment variables in the dot file
+
+```bash
+# CUDA
+export CUDA=XX.X
+export PATH=/usr/local/cuda-$CUDA/bin${PATH:+:${PATH}}
+export CUDA_PATH=/usr/local/cuda-$CUDA
+export CUDA_HOME=/usr/local/cuda-$CUDA
+export LIBRARY_PATH=$CUDA_HOME/lib64:$LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-$CUDA/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+export NVCC=/usr/local/cuda-$CUDA/bin/nvcc
+export CFLAGS="-I$CUDA_HOME/include $CFLAGS"
+```
+
+- [Click Here](https://docs.nvidia.com/deeplearning/cudnn/developer-guide/index.html) to see docs for cuDNN
+  - [Click Here](https://developer.nvidia.com/rdp/cudnn-download) sign in to download the Runtime and Developer cuDNN Library for selected CUDA version
+  - run `sudo dpkg -i *.deb` to install download libraries
+- Steps to install OpenCV using CUDA
+
+```bash
+# Install build tools
+sudo apt install python3-dev python3-pip python3-testresources
+sudo apt install build-essential cmake pkg-config unzip yasm git checkinstall
+sudo apt install libjpeg-dev libpng-dev libtiff-dev
+sudo apt install libavcodec-dev libavformat-dev libswscale-dev libavresample-dev
+sudo apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+sudo apt install libxvidcore-dev x264 libx264-dev libfaac-dev libmp3lame-dev libtheora-dev
+sudo apt install libfaac-dev libmp3lame-dev libvorbis-dev
+sudo apt install libopencore-amrnb-dev libopencore-amrwb-dev
+sudo apt-get install libgtk-3-dev
+sudo apt-get install libtbb-dev
+sudo apt-get install libatlas-base-dev gfortran
+sudo apt-get install libprotobuf-dev protobuf-compiler
+sudo apt-get install libgoogle-glog-dev libgflags-dev
+sudo apt-get install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen
+pip3 install numpy
+# Download OpenCV source
+# replace X.X.X with a openCV version number
+mkdir opencvbuild && cd opencvbuild
+wget -O opencv.zip https://github.com/opencv/opencv/archive/X.X.X.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/X.X.X.zip
+unzip opencv.zip
+unzip opencv_contrib.zip
+mv opencv-X.X.X opencv
+mv opencv_contrib-X.X.X opencv_contrib
+cd opencv
+mkdir build && cd build
+# generate build instruction
+# find the compute capability version for the GPU card and use it as the value for the CUDA_ARCH_BIN option
+# Go to https://en.wikipedia.org/wiki/CUDA#GPUs_supported for a list of compute capability version
+# Run it in virtual environment can build under that environment
+cmake \
+-D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_C_COMPILER=/usr/bin/gcc-7 \
+-D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_PYTHON_EXAMPLES=ON \
+-D INSTALL_C_EXAMPLES=ON -D WITH_TBB=ON -D WITH_CUDA=ON -D WITH_CUDNN=ON \
+-D OPENCV_DNN_CUDA=ON -D CUDA_ARCH_BIN=7.5 -D BUILD_opencv_cudacodec=OFF \
+-D ENABLE_FAST_MATH=1 -D CUDA_FAST_MATH=1 -D WITH_CUBLAS=1 \
+-D WITH_V4L=ON -D WITH_QT=OFF -D WITH_OPENGL=ON -D WITH_GSTREAMER=ON \
+-D WITH_FFMPEG=ON -D OPENCV_GENERATE_PKGCONFIG=ON \
+-D OPENCV_PC_FILE_NAME=opencv4.pc -D OPENCV_ENABLE_NONFREE=ON \
+-D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+-D PYTHON_EXECUTABLE=$(which python) \
+-D PYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") \
+-D PYTHON_INCLUDE_DIRS=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+-D PYTHON_DEFAULT_EXECUTABLE=$(which python3) -D BUILD_EXAMPLES=ON ..
+# Build
+make -j$(nproc)
+sudo make install
+# Link opencv with virtual environment
+ln -s /usr/local/lib/python3.6/site-packages/cv2 ~/anaconda3/envs/<env>/lib/python3.6/site-packages/cv2
+# Check result
+pkg-config --libs --cflags opencv4
+```
+
+### CLI
+
+- `nvidia-smi` return GPU driver info
 
 ## Jetson
 
@@ -65,32 +149,46 @@
 
 ### Setup
 
-- First boot up:
-  1.  Download the Jetpack image for the specific module, or using the NVIDIA SDK Manager on a Ubuntu or CentOS host and skip step 2
-  2.  Flash the image into the SD card
-      - Recommanded tool: Ethcher
-      - it is recommanded to have a SD card with at least 64GB memory size
-      - The OS will not recongize the drive after flashing is completed
-  3.  Plugin the SD and connect the power, and I/O devices to the carrier board or the module
+#### First Boot Up
+
+1. Download the Jetpack image for the specific module, or using the NVIDIA SDK Manager on a Ubuntu or CentOS host and skip step 2
+2. Flash the image into the SD card
+   - Recommanded tool: Ethcher
+   - it is recommanded to have a SD card with at least 64GB memory size
+   - The OS will not recongize the drive after flashing is completed
+3. Plugin the SD and connect the power, and I/O devices to the carrier board or the module
+
+#### Connections
+
 - Use serial connection with `115200` Baudrate for headless mode
 - Jetson Nano Developer Kit doesn't come with WiFi module, use USB WiFi adapter instead
 - When in `USB Device Mode` without network connection, the Jetson device can be accessed through `ssh`, `scp`, `sftp` using IP address `192.168.55.1` pre-configured with `l4tbr0` interface
 - For models with both USB and DC power supply, put a jumper on J48 properly if DC power supply is preferred
+
+#### Swap File
+
 - A 4GB swap file is recommended
   - run `sudo systemctl disable nvzramconfig` before creating swap file
   - use path `/mnt/4GB.swap` for swap file
 - For remote host identity changed warning, run `ssh-keygen -R <RemoteIPAddress>`
-- To clock control
-  - `sudo /usr/bin/jetson_clocks --show` to see the current status
-  - `sudo /usr/bin/jetson_clocks --fan` To run the fan at max speed
-  - `sudo /usr/bin/jetson_clocks --store` export clock setting to `~/l4t_dfs.conf`
-  - `sudo /usr/bin/jetson_clocks --restore` restore clock setting from `~/l4t_dfs.conf`
+
+#### Clock Control
+
+- `sudo /usr/bin/jetson_clocks --show` to see the current status
+- `sudo /usr/bin/jetson_clocks --fan` To run the fan at max speed
+- `sudo /usr/bin/jetson_clocks --store` export clock setting to `~/l4t_dfs.conf`
+- `sudo /usr/bin/jetson_clocks --restore` restore clock setting from `~/l4t_dfs.conf`
+
+#### VNC
+
 - [Click](https://developer.nvidia.com/embedded/learn/tutorials/vnc-setup) to see steps for configuring VNC server
   - `VNC` is only available when login the GUI interface, one can use command line to enable automatic login
   - `VNC` instruction can be found in the USB drive when connected in USB mode, it also contain config info on changing screen resolution
-- Backup
-  - Clone the entire SD drive, `sudo dd if=/dev/sdc conv=sync,noerror bs=4096 | gzip -c > ~/backup_image.img.gz`
-  - Restore the entire SD drive, `gunzip -c ~/backup_image.img.gz | dd of=/dev/sdc bs=4096`
+
+#### Backup
+
+- Clone the entire SD drive, `sudo dd if=/dev/sdc conv=sync,noerror bs=4096 | gzip -c > ~/backup_image.img.gz`
+- Restore the entire SD drive, `gunzip -c ~/backup_image.img.gz | dd of=/dev/sdc bs=4096`
 
 #### CLI
 

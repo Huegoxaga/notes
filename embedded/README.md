@@ -244,8 +244,8 @@
       - The 8086 (also called iAPX 86) is a 16-bit microprocessor chip designed by Intel between early 1976 and June 8, 1978
     - a 32-bit system can address a maximum of 4GB of RAM
   - `x86-64` or `x64` is the architectures for 64-bit microprocessor
-    - It it the 64-bit version of the `X86` instruction set
-    - `AMD64` is famous because, it allows backward compatibility
+    - It it the 64-bit version of the Intel `X86` instruction set
+    - It is also referred as `AMD64`, `AMD` makes it backward compatible
     - A 64-bit register can theoretically reference 17,179,869,184 GB (16 exabytes) of RAM
 - CPUs are almost all implemented on microprocessors, causing the two terms to be practically interchangeable.
 - It is most used in personal computers or other chips used for more general purpose applications.

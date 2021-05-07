@@ -796,3 +796,79 @@
   - `Number of Hours Worked` especially overtime and the use of `Temporary Workers` may also be useful indications of economic activity firms tend to increase overtime hours and hire part time workers to cope with initial pickup in demand.
     - these two indicators may be a better signal of economic recovery than the unemployment rate
   - `Productivity` is a measure of output against the number of workers declines early in contractions as firms try to keep workers despite producing less output, in early expansion phase firms trying to produce more output with existing workers, so productivity rises
+
+#### Inflation
+
+- Inflation is a sustained increase in the overall price level over time
+  - Inflation erodes the purchasing power of a currency meaning that the same dollar can buy less goods over time
+  - inflation favors borrowers at the expense of lenders, because when the borrower returns the principal to the lender, the purchasing power of that amount is lower than it was when it was borrowed
+- the inflation rate is the percentage increase in the price level typically compared to the prior year
+- In general the inflation rate is pro cyclical (a sine wave above 0)
+  - It goes up and down with the business cycle but with a lag of a year or more
+- `Disinflation` refers to an inflation rate that is decreasing over time but remains greater than zero
+- `Deflation` is the phenomenon where the inflation rate is persistently negative over a period of time
+  - It is commonly associated with deep recessions
+  - Central banks want to avoid at all costs as it is difficult to bring an economy out of deflation
+  - When most prices are decreasing consumers delay purchases because they believe they can buy the same goods more cheaply in the future. This depresses aggregate demand causing prices to further decline in a downward spiral
+- `Hyperinflation` happens when inflation accelerates out of control
+  - It can destroy a country's monetary system and bring about social and political upheavals
+- Central banks tend to closely monitor the inflation rate and take monetary actions to keep it within
+  a target range
+  - Contractionary monetary policies like increasing the benchmark interest rate are used when inflation is too high
+  - Expansionary policies are used when the inflation rate is too low
+
+##### Cost Push Inflation
+
+- `Cost Push Inflation` - Inflation happens when the cost of an important factor of production such as labor or energy increases
+  - The short run aggregate supply curve of the economy is shifted to the left. Output is lower but price is higher. If the central bank opts to stimulate aggregate demand so output returns to its long run potential, the result would be a further increase in the price level
+  - The cost push effect decreases GDP resulting in higher short term unemployment
+- The source of cost push inflation is mostly the pressures caused by increase in wages.
+  - Lower unemployment rate can generate a higher the pressure on wages
+    - The unemployment rate may not be the most effective indicator of wage pressures
+    - `Job-skills mismatch`, `Cultural Patterns` that despise certain jobs, and `Inefficiencies` in the labor market can make the unemployment rate misleading
+- `NAIRU` (`Non-accelerating inflation rate of unemployment`) or `NARU` (`Natural rate of unemployment`)
+  - they can be better indicators of wage pressures which is a major factor of cost push inflation
+- `Labor Productivity` can be used to identify signs of potential wage pressure
+  - wage increases are not inflationary as long as they remain in line with gains in productivity
+  - A useful indicator of wages and benefits in terms of productivity is `Unit Labor Costs`
+    - It is the ratio of `Total Labor Compensation per Hour` to `Output Units per Hour`
+- `Expected Inflation` can generate wage pressure. If workers expect inflation to increase, they will increase their wage demands accordingly
+  - `Expected Inflation` can be determined by using the difference in yields between inflation indexed bonds such as `Treasury Inflation Protected Securities` and otherwise similar non indexed bonds
+
+##### Demand Pull Inflation
+
+- It happens when prices rise as a result of demand pressures.
+- the increased demand is usually a result of an increase in the money supply or increased government spending, rising cost of production results in a decrease in short run aggregate supply until real GDP reverts back to full employment GDP
+- To measure the potential for demand pull inflation in an economy. Economists often study the capacity utilization rate of key industries
+  - High rates of capacity utilization suggest that the economy is producing above potential GDP and may experience inflationary pressure
+- The demand pull effect increases GDP above full employment GDP
+
+##### Inflaction Calculation
+
+- Various index can be calculated to determine the inflaction rate
+- `Consumer Price Index` (`CPI`) is to determine the change in the overall price of a basket of goods and services that reflect the cost of living of a typical consumer
+  - basket of goods and services is a set quanaity of goods and services
+  - as the typical consumer can differ vastly between countries, each country has their own definition on basket of goods and services
+- The `CPI` is known as the `Laspeyres Index` if it uses the same quantity of goods and services for the base year to calculate the overall expense in the current year, then represent the change in percentage
+- The `Laspeyres Index` has shortcomes like:
+  - `Quality Bias` the price increase for a product may be partially due to improvements in quality, not just inflation, this creates an upward bias
+    - quality bias can be adjusted by a technique known as `Hedonic pricing` where the products in the basket are reviewed and their current prices adjusted for the improvements in quality
+  - `New Products Bias` - New products are frequently introduced and priced competitively to gain market share however a fixed basket of goods and services will not include them, this creates an upward bias. It can be fixed by
+    - Periodically reviewing consumption habits
+    - To adjust the quantities of the current basket of goods
+    - Add in new products that consumers are switching to
+  - `Substitution Bias` when two goods are substitutes for each other, consumers buy more of the relatively cheaper goods and buy less of the relatively more expensive good. If using outdated consumption figures from the base period, the Laspeyres buyers index can be upwardly biased again
+    - A chained price index like the `Fisher Index` can be used to fix this bias
+- `Fisher Index` is the geometric mean (root of the product) of a `Laspeyres Index` and a `Paasche Index`
+  - `Paasche Index` uses the `Current Consumption Weights` and current prices to compute the cost of the basket
+    - This is indicative of the substitution bias in the `Laspeyres Index`
+  - This is an adjusted CPI that takes into account that consumers may have substituted relatively more expensive goods with relatively cheaper substitutes
+- `Personal Consumption Expenditures` (`PCG`) is based on business surveys
+  - `PCG` and `CPI` all measures comsumer price inflation
+- `Producer Price Index`(`PPI`) or `Wholesale Price Index` reflects the price changes experienced by producers
+  - This is based on items like fuels farm products machinery and equipment transportation equipment and so on
+  - Because price increases of these items may eventually pass through to customers. The `PPI` can be a predictor of the future `CPI`
+- `Headline Inflation` refers to price indices for all goods
+- `Core inflation` refers to price indices that exclude food and energy
+  - as food and energy prices are typically more volatile than other goods, core inflation is therefore less volatile and can sometimes be a more useful measure of the underlying trend in prices
+- `GDP Deflator` is usually determined by the above price indices

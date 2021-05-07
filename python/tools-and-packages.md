@@ -477,6 +477,13 @@
     - `scaleFactor`: Specifies the image size to be reduced.
     - `minNeighbors`: Specifies the number of neighbors each rectangle should have to retain it, Higher value results in less detections but with higher quality.
     - It returns `(x,y,w,h)` of the bounding box
+- GPU Accelerated Related
+  - `print(getBuildInformation())` view the build info
+  - `cv2.cuda.getCudaEnabledDeviceCount()` returns the number of installed CUDA-enabled devices
+  - Load model with GPU support
+    - `net = cv2.dnn_DetectionModel(cfgPath, weightsPath)`
+    - `net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)`
+    - `net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)`
 
 ## Matplotlib
 
