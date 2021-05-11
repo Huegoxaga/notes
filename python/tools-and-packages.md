@@ -555,6 +555,117 @@
 - `soup.get_text()` get the text inside the tag.
 - `soup.find('ul', {"class": "className"})` `find` method return the one result.
 
+## uWSGI
+
+- It turns a Python application into a web server
+
+### CLIs
+
+- `uwsgi --http :8000 --wsgi-file test.py` run python app on port `8000`
+- `uwsgi --http :8000 --module project_name.wsgi` run Django project on port `8000`
+- `uwsgi --socket mysite.sock --module project_name.wsgi --chmod-socket=664` create a socket file in the current folder with `664` permission and run the Django project on that socket
+  - Servers app like Nginx or Apache can then listen to that file socket
+- `uwsgi --ini <ini_file>` run uwsgi with options in a config file
+
+### Configuration File
+
+- All options can be placed into an `.ini` file
+
+```ini
+[uwsgi]
+# telling user to execute file
+uid = user
+# telling group to execute file
+gid = group
+# name of project you during "django-admin startproject <name>"
+project_name = project
+# building base path to where project directory is present
+base_dir = path/to/project
+# path to python end with bin/python3
+pythonpath = /path/to/bin/python
+# set PYTHONHOME/virtualenv or setting where my virtual enviroment is
+virtualenv = /path/to/python/env/contains/bin
+# changig current directory to project directory where manage.py is present
+chdir = path/to/manage.py
+# loading wsgi module
+module =  %(project_name).wsgi:application
+# enabling master process with n numer of child process
+master = true
+processes = 4
+# enabling multithreading and assigning threads per process
+# enable-threads  = true
+# threads = 2
+# Enable post buffering past N bytes. save to disk all HTTP bodies larger than the limit $
+post-buffering = 204800
+# Serialize accept() usage (if possibie).
+thunder-lock = True
+# Bind to the specified socket using default uwsgi protocol.
+socket = path/to/socket/file
+# Run on 8000 for testing
+# http = 0.0.0.0:8000
+# set the UNIX sockets’ permissions to access
+chmod-socket = 666
+# Set internal sockets timeout in seconds.
+socket-timeout = 300
+# Set the maximum time (in seconds) a worker can take to reload/shutdown.
+reload-mercy = 8
+# Reload a worker if its address space usage is higher than the specified value (in megabytes).
+reload-on-as = 512
+# respawn processes taking more than 50 seconds
+harakiri = 50
+# respawn processes after serving 5000 requests
+max-requests = 5000
+# clear environment on exit
+vacuum = true
+# When enabled (set to True), only uWSGI internal messages and errors are logged.
+disable-logging = True
+# path to where uwsgi logs will be saved
+logto = path/to/logfile
+# maximum size of log file 20MB
+log-maxsize = 20971520
+# Set logfile name after rotation.
+log-backupname = path/to/old/logfile
+# Reload uWSGI if the specified file or directory is modified/touched.
+# touch-reload = %(base_dir)/src/
+# Set the number of cores (CPUs) to allocate to each worker process.
+# cpu-affinity = 1
+# Reload workers after this many seconds. Disabled by default.
+max-worker-lifetime = 300
+# static-map = /static=%(base_dir)/static/
+# static-expires = /* 7776000
+# offload-threads = %k
+# Set Environment Variables
+env = KEY=value
+```
+
+- When log is enabled, there will be no output printed onto the console
+- Each worker will run the app concurrently, each worker can run in multithread
+  - If 2 worker and 2 thread is configured, the runing order will be worker 1 thread 1, worker 1 thread 2, worker 2 thread 1, worker 2 thread 2
+
+### Sample Systemd File
+
+- Following `uwsgi.service` file can be used by systemd for auto start on reboot
+
+```conf
+[Unit]
+Description=uWSGI instance to serve example project
+After=network.target
+
+[Service]
+User=username
+Group=groupname
+WorkingDirectory=/path/to/project
+Environment="PATH=/path/to/virtual/env"
+ExecStart=/path/to/uwsgi/command --ini /path/to/uwsgi/config
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
+```
+
 ## SkiLearn
 
 ### sklearn.impute

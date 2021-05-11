@@ -149,12 +149,14 @@
 ### Support Vector Machines(SVMs)
 
 - It is a classificaton algorithm
-- It focuses on finding the boundary, then make decision only based on the boundary.
-- The boundary is found to separate all data point with maximum margin.
-  - Maximum margin means the greatest distance to points from different categories.
-- The points that have the same cloest distance to the boundary is called support vectors.
-- The boundary is called maximum margin hyperplane or maximum margin classifier.
-- The lines which are parallel to the maximum margin hyperplane and have zero distance to the support vectors are called positive or negative hyperplane.
+- It focuses on finding the boundary, then make decision only based on the boundary
+- The boundary is found to separate all data points with maximum margin.
+  - One single point that is cloest to the boundary is selected from each category
+  - Maximum margin is found to have the greatest distance to all of those selected points
+- Those points that have the same closest distance to the boundary is called support vectors
+- The boundary is called maximum margin hyperplane or maximum margin classifier
+- The lines which are parallel to the maximum margin hyperplane and have zero distance to the support vectors are called positive or negative hyperplane
+- Compare to other algorithm, `SVM` focuses on the looking at the extreme cases rather than analyze the generate features of a category
 
 #### Support Vector Regression
 

@@ -872,3 +872,118 @@
 - `Core inflation` refers to price indices that exclude food and energy
   - as food and energy prices are typically more volatile than other goods, core inflation is therefore less volatile and can sometimes be a more useful measure of the underlying trend in prices
 - `GDP Deflator` is usually determined by the above price indices
+
+#### Economic Indicators
+
+- In the United States, a market research organization called the `Conference Board` compiles leading coincident and lagging indicators for the US and several major economies
+- One or more indicator from the same type can be aggregated
+- All following three types of indicators need to be reviewed to build a stronger case in determining which phase
+  of the business cycle the economy is in
+- classifications of the following indicators reflect tendencies in the timing of their turning points, not necessarily true all the time
+- Not all changes in direction of leading indicator indices have been followed by corresponding changes in the business cycle, and even when they have the lead time has varied
+
+##### Lagging Indicator
+
+- It doesn't tend to change direction until expansions or contractions are already underway
+- It can serve to confirm that the economy is in an actual expansion or contraction phase
+- `Conference Board` indicators
+  - Average duration of unemployment
+  - Inventory-sales ratio - businesses are slow to stock up on inventory
+  - Change in unit labor costs
+  - Average prime lending rate
+  - Commercial and industrial loans - these loans frequently support inventory building
+  - Ratio of consumer installment debt to income
+  - Change in consumer price index - inflation generally adjusts to the cycle late as producers are slow to adjust prices
+- `Aggregate Leading Indicator Index`
+  - `Index of Leading Economic Indicators` (`LEI`) - It contains 10 types of `Leading Indicators`
+- `OECD` compiles the `Composite Leading Indicators` (`CLI`) for several countries including `EU` or `G7` nations
+
+##### Coincident Indicator
+
+- It changes its direction at roughly the same time as the peaks or troughs
+- It can serve to confirm that the economy is in an actual expansion or contraction phase
+- `Conference Board` indicators
+  - Employees on nonfarm payrolls - businesses adjsut their fulltime payrolls once recession/recovery is clear
+  - Aggregate real personal income
+  - Index of industrial production
+  - Manufacturing and trade sales
+
+##### Leading Indicator
+
+- It is known to change direction before peaks or troughs
+- It helps with anticipating cyclical turns and allow strategists and businesses to position themselves to benefit or protect themselves from movements in the business cycle
+- `Conference Board` indicators
+  - Average weekly hours in manufacturing
+  - Initial claims for unemployment insurance - very sensitive indication of initial layoffs and rehiring
+  - Manufacturers' new orders for consumer goods
+  - Manufacturers' new orders for non-defense goods
+  - Institute for Supply Management (ISM) new orders index - decline in new orders can be indication of weekness in demand
+  - Building permits for new houses
+  - S&P 500 equity price index - stock prices anticipate economic turning points
+  - Leading Credit Index
+  - 10-year Treasury to Fed funds interest rate spread
+  - Consumer expectations
+
+### Monetary and Fiscal Policy
+
+- Money is simply a medium of exchange
+- In a `Barter System`, goods and services are exchanged directly
+- Money can be:
+  - Means of payment - can be used to purchase goods
+  - Universal unit of account - can be used to measure the value of goods
+  - Store of Value - can be used to save
+- Banks in early days start with depositing gold and silver and return a promissory notes
+  - Promissory notes then became the early form of money, when people start to exchange them for service and goods
+- When banker realize all deposits would never be withdrawn at the same time, it starts to lend a portion of the deposits to earn interest
+  - This is called a `Fractional Reserve Banking`
+  - `Reserve Requirement` is a minimum percentage of deposits that banks are required to hold
+  - Assume the led moeny will end up in another bank, and so on, the total money created by this system equals `New Deposit` divided by the `Reserve Requirement`
+  - `Money Multiplier` - The reciprocal of the `Reserve Requirement`
+- `Narrow Money` defines the money as notes and `coins in circulation` plus `very liquid assets` such as bank deposits in current accounts
+- `Board Money` includes all `Narrow Money` plus `less liquid assets` which can still be used to make purchases
+- the definition of what constitutes money differs amongst central banks around the world
+- In the U.S. the Federal Reserve produces two measures of money
+  - `M1` - Narrow Money
+    - notes and coins in circulation
+    - traveler's checks of non-bank issuers
+    - demand deposits at commercial banks
+    - other deposits on which checks can be written
+  - `M2` - Board Money
+    - includes `M1`
+    - savings and money market deposits
+    - time deposit accounts have less than one hundred thousand dollars
+    - other balances in retail money market and mutual funds
+- the European Central Bank produces three measures of euro area money supply
+  - `M1` - Narrow Money
+    - notes and coins in circulation
+    - all overnight deposits
+  - `M2` - Board Money
+    - includes `M1`
+      - deposits redeemable with notes up to three months
+      - deposits with maturity up to two years
+  - `M3` - Boardest Money
+    - includes `M2`
+    - repurchase agreements
+    - money Market Fund units
+    - debt securities with up to two years maturity
+
+#### Demand and Supply of Money
+
+- `Demand for Money` - the amount of wealth that households and firms in an economy choose to hold in the form of moneyWelcome back as we study the demand and supply of money
+- There are three main reasons for holding money
+  - firstly there is transaction demand where the money is needed for undertaking transactions like paying of employee salaries and payment for goods and services
+    - as the level of real GDP increases the size and number of transactions will increase and the demand for money to carry out transactions increases
+  - secondly there is precautionary demand where money is held for unforeseen future needs
+    - The demand for money for precautionary reasons is higher for large firms in the aggregate. The total amount of precautionary demand for money increases with the size of the economy
+  - Thirdly there is speculative demand where money is set aside to take advantage of investment opportunities that may arise in the future.
+    - the expected returns of the market. If Bonds and other financial instruments provide higher returns investors would rather invest their money now than hold speculative money balances
+    - secondly the perceived risk in the market. If the risk is perceived to be higher. People choose to reduce exposure to risky assets and hold money instead.
+    - thirdly short term interest rates which referes to the interest rates of risk free bonds. At lower interest rates firms and households choose to hold more money, so money demand is higher
+- The money demand curve against nominal interest rate it should be downward sloping
+- the supply of money is determined by the central bank, So it is independent of the interest rate this accounts for the perfectly inelastic (vertical line) supply curve
+- Market (short term) interest rates are determined by the equilibrium between money supply and money demand
+  - If the interest rate is above the equilibrium rate there is excess supply of real money. Firms and households are holding more real money balances than they desire so, they'll purchase short term bonds to reduce their money balances which will decrease the interest rate as bond prices are bid up
+  - if interest rates are below equilibrium, There is excess demand for real money balances firms and households will sell securities to increase their money holdings to the desired level. Decreasing bond prices and increasing the interest rate
+- a central bank can affect short term interest rates by increasing or decreasing the money supply.
+  - For example an increase in the money supply will shift the money supply curve to the right. This causes the equilibrium rate to fall which pressures market interest rate to follow
+  - conversely if the central bank decreases the money supply. Excess demand for money balances results in sales of securities and an increase in the interest rate

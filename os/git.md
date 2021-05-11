@@ -66,6 +66,7 @@
 - `git commit` Open and add commit message for the commit document, save the staging area to the local repos.
   - `git commit -m 'commit message'` Commit the files with commit message.
   - `git commit --amend -m 'updated message'` alter latest local commit message, run `git push --force` to modify latest remote branch commit message
+  - use `--auther "John Dow <name@email.com>"` to update author info
 - `git diff <branch1> <branch2>` View difference between branches.
 
 #### Branches
@@ -139,8 +140,8 @@
 - run `git lfs install` to signin
 - run `git lfs track "<large_file>"` to let `lfs` handle large file
   - a record in `.gitattributes` file will be created
-- During future `git push` large files will be automatically managed by `lfs`
-  - Rollback is required when large file has already been committed to the local repo
+- Then, `git add`, `git commit`, `git push` large files will be automatically managed by `lfs`
+  - It large file has already been committed to the local repo before tracked by lfs, run `git lfs migrate info` to see it, and use `git lfs migrate import --include "*.extension"` to update the reference to the large file in the commit, then `git push` as usually
 - Run `git lfs pull` to get large files from remote repo
 
 ## GitHub CLI

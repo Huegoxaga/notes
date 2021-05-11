@@ -50,6 +50,7 @@ AWS CLI provides full controls of AWS using command lines.
     - stores configuration information (primarily credentials and selected region)
     - allows developer to create service clients and resources
     - `boto3` creates a default session if not specified.
+- Files represented by `StreamBody` can be loaded as `Bytes` by using method `.read()`
 
 ### SDK for Java
 

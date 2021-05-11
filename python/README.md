@@ -802,7 +802,7 @@ def factorial(x):
 ### Object methods
 
 - They are functions defined within the class block.
-- It must have self as its first parameter. When calling functions, self parameter can be ignored.
+- It must have `self` as its first parameter. When calling functions, `self` parameter can be ignored.
 
 ### `__init__` method
 
@@ -817,7 +817,7 @@ They are placed in the `__init__` method
 
 ### Class attributes
 
-They are placed in the first line of the class block. and shared by all instance of the class.
+They are placed in the first line of the class block without using `self`, they are the `static` variables and shared by all instance of the class.
 
 ```py
 class Dog:
