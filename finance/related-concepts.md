@@ -969,21 +969,106 @@
 
 #### Demand and Supply of Money
 
-- `Demand for Money` - the amount of wealth that households and firms in an economy choose to hold in the form of moneyWelcome back as we study the demand and supply of money
+- `Demand for Money` - the amount of wealth that households and firms in an economy choose to hold in the form of money
 - There are three main reasons for holding money
-  - firstly there is transaction demand where the money is needed for undertaking transactions like paying of employee salaries and payment for goods and services
-    - as the level of real GDP increases the size and number of transactions will increase and the demand for money to carry out transactions increases
-  - secondly there is precautionary demand where money is held for unforeseen future needs
-    - The demand for money for precautionary reasons is higher for large firms in the aggregate. The total amount of precautionary demand for money increases with the size of the economy
-  - Thirdly there is speculative demand where money is set aside to take advantage of investment opportunities that may arise in the future.
+  - There is transaction demand where the money is needed for undertaking transactions like paying of employee salaries and payment for goods and services
+    - As the level of real GDP increases the size and number of transactions will increase and the demand for money to carry out transactions increases
+  - There is precautionary demand where money is held for unforeseen future needs
+    - The demand for money for precautionary reasons is higher for large firms. The total amount of precautionary demand for money increases with the size of the economy
+  - There is speculative demand where money is set aside to take advantage of investment opportunities that may arise in the future, there are three reasons
     - the expected returns of the market. If Bonds and other financial instruments provide higher returns investors would rather invest their money now than hold speculative money balances
-    - secondly the perceived risk in the market. If the risk is perceived to be higher. People choose to reduce exposure to risky assets and hold money instead.
-    - thirdly short term interest rates which referes to the interest rates of risk free bonds. At lower interest rates firms and households choose to hold more money, so money demand is higher
-- The money demand curve against nominal interest rate it should be downward sloping
-- the supply of money is determined by the central bank, So it is independent of the interest rate this accounts for the perfectly inelastic (vertical line) supply curve
+    - the perceived risk in the market. If the risk is perceived to be higher. People choose to reduce exposure to risky assets and hold money instead.
+    - short term interest rates which referes to the interest rates of risk free bonds. At lower interest rates firms and households choose to hold more money, so money demand is higher
+- The money demand curve against nominal (short-term or market) interest rate should be downward sloping
+- The supply of money is determined by the central bank, So it is independent of the interest rate this accounts for the perfectly inelastic (vertical line) supply curve
 - Market (short term) interest rates are determined by the equilibrium between money supply and money demand
   - If the interest rate is above the equilibrium rate there is excess supply of real money. Firms and households are holding more real money balances than they desire so, they'll purchase short term bonds to reduce their money balances which will decrease the interest rate as bond prices are bid up
-  - if interest rates are below equilibrium, There is excess demand for real money balances firms and households will sell securities to increase their money holdings to the desired level. Decreasing bond prices and increasing the interest rate
-- a central bank can affect short term interest rates by increasing or decreasing the money supply.
+  - If interest rates are below equilibrium, There is excess demand for real money balances firms and households will sell securities to increase their money holdings to the desired level. Decreasing bond prices and increasing the interest rate
+- A central bank can affect short term interest rates by increasing or decreasing the money supply.
   - For example an increase in the money supply will shift the money supply curve to the right. This causes the equilibrium rate to fall which pressures market interest rate to follow
-  - conversely if the central bank decreases the money supply. Excess demand for money balances results in sales of securities and an increase in the interest rate
+  - Conversely, if the central bank decreases the money supply. Excess demand for money balances results in sales of securities and an increase in the interest rate
+- `Money Neutrality` - Some economists believe that in the long run an increase in the supply of money will increase in the aggregate price level while real output and money velocity remains unchanged
+  - The quantity theory of money states that quantity of money is proportional to the total spending in an economy
+  - In the quantity equation of exchange, `M * V = P * Y`
+    - `M` is the quantity of money or money supply
+    - `V` is the velocity of circulation of money which is the average number of times each unit of money (e.g. one dollor) is used for purchases
+    - `P` is the average price level
+    - `Y` is real output in terms of units sold
+  - Assuming that velocity and real output remain constant. Any increase in the money supply will lead to a proportionate increase in the price level
+  - For this reason monetarists argue that monetary policy to regulate the supply of money can be used to control inflation
+- `Fisher Effect` - it states that the real rate of interest in an economy is stable over time so that changes in nominal interest rates are the result of changes in expected inflation, thus the nominal interest rate in an economy is the sum of the `Real Rate Interest` (Required real return), the `Expected Rate of Inflation` (compensation for expected inflation), and a `Risk Premium` (compensation for uncertainty)
+  - This is consistent with money neutrality when nominal interest rate can be seen as the aggregate price level while other factors like real interest rate keep unchanged
+- `Expected Inflation` is the level of inflation that the government households and businesses expect in the future
+  - Maintaining a stable inflation rate is the primary objective of the central banks
+- `Unexpected Inflation` is the level of inflation experienced that's above or below the expected inflation
+  - It is much more costly to the economy than expected inflation
+- The cost of `Expected Inflation` are:
+  - `Menu Costs` - High inflation always means that businesses constantly have to change the advertised prices of their goods and services.
+  - `Shoe Leather Costs` - the costs to individuals of making frequent trips to the bank to minimize their holdings of cash which are depreciating in value due to inflation
+  - `Cost of Holding Money` - Purchasing power of money decreases at a faster rate than interest-bearing securities, then people will tend to shift more of their money from the bank to interest bearing securities like government bonds. The cost of such transactions can be significant other than these costs
+- The cost of `Unexpected Inflation` are:
+  - `Inequitable Transfer of Wealth` between borrowers and lenders
+    - The cost of high inflation occurs only when it is not perfectly anticipated
+    - No cost when everyone increase the price and cost of everything at the same time
+    - Otherwise, there will always have someone make profit from it and some others have loss from it
+  - `High Cost of Borrowing` - If inflation is very uncertain or very volatile then lenders will ask for a higher risk premium to compensate them for this uncertainty
+    - Higher borrowing costs could in turn reduce economic activity
+  - `Lower information Content of Market Prices` - This happens when the unexpected inflation makes business owner to make wrong decisions and then it takes more time and adjust
+    - unexpected inflation can increase the magnitude or frequency of business cycles
+    - Misinformation is a real cost to the economy
+
+#### Central Bank
+
+##### Roles of Central Banks
+
+- Central banks have the sole authority to supply money
+  - Traditionally such money was backed by gold, the central bank stood ready to convert the money into a pre specified quantity of gold
+  - the gold backing was removed and money supplied by the central bank was deemed legal tender by law
+    - This refers to the `Fiat Money` - which is money that not backed by any tangible asset
+    - `Fiat Money` holds its value over time and is acceptable for transactions, it can continue to serve as a medium of exchange
+- Central bank provides banking services to the government and other banks in the economy
+  - the central bank also acts as a lender of last resort. It can supply money to banks which are short of money. This role assures depositors that their funds are secure and therefore prevents a run on banks from happening
+- The central bank is the regulator and supervisor of the banking and payment systems
+  - In many countries, central banks may regulate the banking system by imposing standards of risk taking allowed and reserve requirements of banks under its jurisdiction
+  - central banks also oversee the payment system to ensure smooth operations of the domestic clearing system and in conjunction with other central banks for international transactions
+- The central bank is also the holder of the nation's gold and reserves of foreign currencies.
+- The central bank is the conductor of monetary policy.
+  - The central bank controls or influences the quantity of money supplied and the growth of money supply over time.
+  - These are done to achieve its stated objectives.
+
+##### Objectives of Central Banks
+
+- The single most important objective of most central banks is to control inflation in order to promote price stability
+  - most central banks focus on keeping inflation close to a stated target rate this target rate is usually a range of around 2 to 3 per cent for most developed countries
+  - The US Fed and the Bank of Japan do not have an explicit target inflation rate
+    - This is because the US Fed has the additional goals of maximum employment and moderate long term interest rates
+    - In Japan. It's because deflation rather than inflation has been a persistent problem in recent years
+- For most developed nations, monetary policy can be quite effective to regulate the supply of money in their economy.
+- Most developing nations may have some difficulty in using monetary policy to control inflation, some common reasons include:
+  - The absence of a sufficiently liquid government bond market
+  - A rapidly changing economy
+  - A poor track record in controlling inflation in the past, making monetary policy intentions less credible
+  - An unwillingness of governments to grant genuine independence to the central bank
+- Instead of depending solely on monetary policy some central banks rely on pegging their exchange rate against a major currency, primarily the US dollar
+  - This involves setting a fixed level or range for the exchange rate against the dollar with the central bank supporting the target by buying and selling the domestic currency in foreign exchange markets
+  - The basic idea is that by tying a domestic economy's currency to that of an economy with a good track record on inflation, the domestic economy would effectively import the inflation experience of the low inflation economy
+  - The centrel bank of that country sells foreign currency reserves and buys domestic currency to lower domestic money supply and increase short-run interest rate when it experiences high domestic inflation and low exchange rate of their currency, then bring down the inflation
+
+##### Desirable Qualities of Central Banks
+
+- `Independence` - a central bank should be free from political interference for it to be truly effective
+  - The political party in power has a preference to boost economic activity and reduce unemployment to create a feel good environment that will increase its popularity
+  - The central bank on the other hand has the main objective of maintaining price stability and that may mean taking steps to limit money supply which can hamper economic growth
+  - As such it is best that political parties do not interfere with the work of the central bank as they may compromise the central banks ability to manage inflation
+  - Independence should be thought of as a spectrum (scale) rather than in absolute terms
+  - Independence can be evaluated based on both `Operational Independence` and `Target Independent`
+    - `Operational Independence` means that the central bank is allowed to independently determine the policy rate
+    - `Target Independence` means that the central bank also defines how inflation is computed, sets the target inflation level, and determines the horizon over which the target is to be achieved
+  - Most central banks only have operational independence.
+    - European Central Bank has both Target and operational independence
+- `Credibility` which affects how businesses and households perceive the central bank's will and ability to follow through on their stated intentions
+  - A credible central bank's targets can become self-fulfilling prophecies
+  - If the market believes that a central bank is serious about achieving a target inflation rate of 3 percent, wages and other nominal contracts will be based on 3 percent inflation and actual inflation will turn out to be close to 3 percent.
+- `Transparency` - transparency means central banks regularly disclose the state of the economy by issuing inflation reports
+  - The reports disclose to the public the central bank's views on the range of indicators that they watch, when they come to their monthly interest rate decision
+  - By explaining their views on the economy and by being transparent in decision making. The central bank seeks to gain reputation and credibility. This makes it easier for them to influence inflation expectations

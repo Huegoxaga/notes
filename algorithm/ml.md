@@ -100,9 +100,10 @@
 
 - It is used for regression problems
 - It split the datapoints into groups based on the independent variables of a data point.
-- It uses an information entripy algorithm to optimaize the split.
+- It uses an information entropy algorithm to optimaize the split, each split will essentially add information to the dataset
 - Each one of the split is called a leaf.
-  - Each of the final split is called the terminal leaf.
+  - Each of the final split is called the terminal leaf
+  - Terminal leaf is a result of a combination of final split sections from each independent variable
 - A decision tree is a binary tree structure, each node check if one of the independent variable is greater or smaller than a certain value.
   - Nodes from the same depth are dealing with the same independent variable.
 - The split add information to the datapoint and group them.
@@ -117,7 +118,7 @@
 ### Random Forests
 
 - It is a type of ensemble machine learning algorithm called Bootstrap Aggregation or bagging.
-  - A algorithm that utlizes a single machine learning algorithm multiple times or uses different algorithm at the same time.
+  - Ensemble machine learning algorithm utlizes a single machine learning algorithm multiple times or uses different algorithm at the same time.
 - For complicated data, a single decision tree can easily get deep and overfitting.
 - It uses random subsets of the datapoints to form decision trees.
   - The number of data points in each subset should be set.
@@ -146,6 +147,14 @@
 - It can return ethier 0 or 1 as `y` hat value if categorical results are preferred
   - return `y` hat as 1 if the probability is higher than a certain defined value and vise versa.
 
+### Support Vector Regression(SVRs)
+
+- Compare to linear regression, instead of finding the best fitting line, it find the best fitting tube
+- The tube, known as `ε-Intensitive Tube`, `ε` is the width of the tube, projected on the y-axis
+- All data inside the tube will be ignore, so this algorithm allows a margin of error
+- When the data can't be fit by a linear model, data can be projected on a kernel function and the best fitting plane (for 2-D data) can be found
+  - Similar to tube for a line, The plane has a "thinkness", the predicted plane is surrended by one plane that is one `ε` above, and the other plane one `ε` below, all data within the block will be ignored. The data outside the block will be used to determine the best fitting plane
+
 ### Support Vector Machines(SVMs)
 
 - It is a classificaton algorithm
@@ -158,7 +167,15 @@
 - The lines which are parallel to the maximum margin hyperplane and have zero distance to the support vectors are called positive or negative hyperplane
 - Compare to other algorithm, `SVM` focuses on the looking at the extreme cases rather than analyze the generate features of a category
 
-#### Support Vector Regression
+#### Kernel SVM
+
+- When dataset is non-linear seperatble, a mapping function is used to move the data into a higher demension
+  - For example, non-linear seperatble happens when data from category A is completed surrounded by data from category B
+  - For example, a mapping function can move data from 2-D to 3-D with one catepory located at lower part and the other located at a higher position, then seperate by a plane
+- However, mapping all data to a higher demension can be highly compute-intensive, so a kernel function is used as a model to fit and classify the data, some commonly used functions are:
+  - `Gaussian RBF Kernel` - A steep mountain shape with a constant which defines the radius of the model
+  - `Sigmoid Kernel`
+  - `Polynomial Kernel`
 
 ### Neural Networks
 
@@ -451,7 +468,7 @@
         - Add-one smoothing - During prediction, the probability of any word followed by `A` cannot be `0`, to introduce the possibility during training, this case should be included in the calculation, so the calculation should be dividing the occurrence of `A` followed by `B` plus `1` over the number of `A` plus the total number of unique words in the training corpus
       - Once the model has the all the probability info, it chains the predicted words into a sentence, as `P(A,B,C) = P(C|B)P(B|A)P(A)`
         - based on the Bayes rule, `B C` depended on `A` also need to be found by doing counting, however, `B C` depended on `A` is trigram and will not be used, based on Markov Assumption, what we see only depends on the what we see in previous step, so the term `B C` depended on `A` will be ignored in the calculation, it is also easier to model because the occurrence of shorter word sequences (two word phrases) is higher than long sentences in the training corpus
-        - In the actually calculation, add up the logarithm of the probability instead of multiplying the chained probability, and get the average of this log value for each word by dividing the sum by the number of words in a sentence
+        - Use log probability in the actually calculation to avoid the product of chained probability reaches zero, add up the logarithm of the probability, and get the average of this log value for each word by dividing the sum by the number of words in a sentence, to avoid biase introduced by various sentence length
     - N-gram - each group of consecutive N words are considered.
       - fastText even consider n-gram for group of characters within a word("ora", "ran", "ang", "nge" when `minn` is 3) and make it different from `Word2Vec`. Hence, it works good with misspelled words.
       - Default `minn` is 3, `maxn` is 6

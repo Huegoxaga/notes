@@ -474,6 +474,11 @@ list(accumulate(range(8)))
 
 - `uncompressed_data = gzip.decompress(compressed_data)` decompress data
 
+## random
+
+- `r = random.randint(start, stop)` return random integer in range `[start, stop]` inclusive
+- `r = random.randrange(start, stop, step)` `start` value is optional, default is `0`. `step` value is optional default is `1`
+
 ## uuid
 
 - It generates uuid objects.

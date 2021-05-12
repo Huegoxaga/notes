@@ -359,6 +359,12 @@
     - `h, w = image.shape[:2]` will get the height and width of the image
     - `(B, G, R) = image[x, y]` get the `B`, `R`, `G` color values of one pixel at `(x, y)` on the image.
     - `roi = image[x : h, y : w]` get a rectangle area which starts at the top-left point `(x, y)` with height `h` and width `w`.
+- `img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)` read image from np array
+  - Use `np_arr = np.fromstring(imageByte, np.uint8)` to convert image from `Bytes` to `np_arr`
+- `cv2.imwrite('output.jpg', img)` write a image to local file
+- `image_bytes = cv2.imencode('.jpg', img)[1].tobytes()` encode a `jpg` image to `Bytes`
+  - replace `.jpg` for other image format
+  - use `.tostring()` instead of `.tobytes` to get binary string
 - resize
   - `resize = cv2.resize(image, (w, h))` resize an image using area interpolation
   - `scaling_cubic = cv2.resize(image, None, fx=.75, fy=.75, interpolation = cv2.INTER_CUBIC)` Scaling using cubic interpolation
@@ -430,7 +436,6 @@
   - `cv.bitwise_xor(input, output, mask)`
 - `cv2.imshow('image',img)`, showing the stored image
   - The first parameter is the title of title window.
-- `imwrite(filename, img)`, save an image to a file
 - video
   - `cap = cv2.VideoCapture(0)`, reading video directly from the webcam
     - `cv2.VideoCapture(pipeline)` also takes a GStreamer pipepline definition string as an argument for video input
