@@ -362,6 +362,15 @@ It deploys app on EC2 and will do capacity provisioning, load balancing, scaling
 
 A NoSQL database that stores JSON data.
 
+- In DynamoDB, a table is a collection of items, and each item is a collection of attributes
+- Each table must have one of the following type of primary key to uniquely identify each item
+  - `Partition key` – A simple primary key, composed of one attribute known as the partition key
+  - `Partition key and sort key` – Referred to as a composite primary key, this type of key is composed of two attributes. The first attribute is the partition key, and the second attribute is the sort key
+- Secondary Indexes enable additional ways to query data, it can be:
+  - `Global secondary index` – Another set of partition key and sort key which are different from the existing ones used by the primary keys
+  - `Local secondary index` – An index that has the same partition key used by the primary key, but a different sort key.
+- `Partition` keys use `HASH` which adpots strict equality for query
+- `Sort` keys enables `gt`, `ge`, `lt`, `le`, `eq`, `beginsWith`, and `between` for query
 - Whenever the database is updated, new record or updated record will be sent to the DynamoDB Stream.
 
 ## RDS
@@ -575,6 +584,7 @@ It provides support for generating serverless APIs.
 - If the changes or creation is done through `Amplify Console`, use command `amplify pull --appId <appID> --envName <envName>` inside the project folder to sync the changes to the local project
   - Making changes to the auto created services inside their console (e.g. Cognito Console) is not recommanded, as `CloudFormation` will not be informed and updated accordingly
 - If changes or creation is made through the `Amplify CLI`, use command `amplify push` to deploy the new settings to the cloud, then changes will be shown in `Amplify Console`
+- It provides predefined directives for GraphQL APIs to enable advanced feature, [click here](https://docs.amplify.aws/cli/graphql-transformer/directives) for more details
 
 ### Amplify Console
 
@@ -637,6 +647,11 @@ It provides support for generating serverless APIs.
 ## Amazon Certificate Manager
 
 - Certificates from ACM cannot be downloaded used to on the server unless it is private CAs generated from ACM.
+
+## AppSync
+
+- It provides a GraphQL server which can use Amazon DynamoDB, AWS Lambda, and HTTP REST APIs as data sources
+- [Click Here](https://docs.aws.amazon.com/appsync/latest/devguide/scalars.html) to see all supported data types
 
 ## Sagemaker
 

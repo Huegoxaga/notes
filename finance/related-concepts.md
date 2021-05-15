@@ -1072,3 +1072,51 @@
 - `Transparency` - transparency means central banks regularly disclose the state of the economy by issuing inflation reports
   - The reports disclose to the public the central bank's views on the range of indicators that they watch, when they come to their monthly interest rate decision
   - By explaining their views on the economy and by being transparent in decision making. The central bank seeks to gain reputation and credibility. This makes it easier for them to influence inflation expectations
+
+#### Monetary Policy
+
+##### Monetary Policy Tools
+
+- `Reserve Requirement` is the percentage of deposits, banks are required to retain as reserves
+  - An expansionary policy is to decrease the reserve requirement which effectively increases the funds that are available for lending and the money supply which will tend to decrease interest rates
+  - An increase in the reserve requirement will decrease the funds available for lending and the money supply which will tend to increase interest rates
+  - Most developed economies have not been using reserve requirements as a tool because its banks seldom lend to the extent that the reserve requirement has hit. Adjusting the reserve requirement may have limited impact on lending and market interest rates
+  - Reserve requirements are still actively used in many developing countries to control lending as demand for capital is high
+- `Policy Rate` also known as the official or benchmark interest rate set by the central bank
+  - The purpose of the policy rate is to influence market interest rates and ultimately real economic activity
+  - This is the interest rate that the central bank lends money to commercial banks at
+    - One common way to lend money to banks is through a repurchase agreement. The central bank purchases securities from banks that in turn agree to repurchase the securities at a higher price that's equal to the principal plus the interest which is the policy rate
+    - the Bank of England uses this method and its policy rate is called the two week repo rate
+    - For the European Central Bank. It's called the refinancing rate
+    - In the US. This rate at which banks can borrow funds from the Fed is termed the discount rate. However the most important interest rate used in U.S. monetary policy is not the discount rate, but the Fed funds rate. This is the rate that banks charge each other on overnight loans of reserves. The Fed sets a target for this market determined rate and uses open market operations to move it to the target rate.
+  - The neutral interest rate is the growth rate of the money supply that neither increases nor decreases the economic growth rate
+    - It can be estimated by adding the central bank's inflation target to the real trend rate of economic growth trend rate
+      - This is the economy's long term sustainable real growth rate
+      - the trend rate is not directly observable and must be estimated. It also changes over time as structural conditions of the economy change.
+  - When the policy rate is below the neutral rate. The monetary policy is said to be expansionary
+  - Contractionary policy is to set a higher policy rate which decreases lending and increases interest rates
+- `Open Market Operations` which is the buying and selling of government bonds by the central bank
+  - when the central bank buys government bonds from commercial banks. Cash replaces securities So banks have excess cash reserves.This means that more funds are available for lending. The money supply increases and interest rates decrease. This is expansionary monetary policy
+  - sales of government bonds by the central bank have the opposite effect. Reducing cash reserves in commercial banks. This reduces the funds available for lending and the money supply which will tend to cause interest rates to increase. This is contractionary monetary policy
+  - In the US `Open Market Operations` by the Federal Reserve is the most commonly used monetary tool to achieve the fed funds rate
+- Expansionary Policies like reducing reserve requirements lowering the policy rate or open market purchases seek to increase money supply which hopefully increases aggregate demand and helps
+  to raise prices when inflation is too low.
+- Contractionary Policies like increasing reserve requirements raising the policy rate or open markets selling of bonds seek to decrease money supply which hopefully decreases aggregate demand and helps to moderate price increases when inflation is too high.
+- Central banks have to consider the source of inflation before implementing monetary policies
+  - The central bank should determine if it is demand pull inflation or cost push inflation
+  - If it is cost push due to higher food or energy prices. The economy is already operating below full employment. In such a situation, a contractionary monetary policy may cause even higher unemployment which is harmful to the economy
+
+##### Monetary Transmission System
+
+- The monetary transmission mechanism refers to the ways in which a change in monetary policy, specifically the central bank's policy rate affects the price level and inflation.
+- There are four channels through which a change in a policy rate is transmitted to prices. They are transmitted through their effect on
+  - market interest rates
+  - asset values (Bonds, equity, real estate)
+  - consumer and business confidence
+  - currency exchange rates.
+- For example, when a central bank increases the policy rate. Its intention is to eventually lower the inflation rate.
+  - Firstly raising the policy rate increases the costs for commercial banks to borrow from the central bank and from each other. The bank's short term lending rates will therefore increase in line with the increase in the policy rate. The higher rates will decrease aggregate demand as consumers reduce credit purchases and businesses cut back on investment in new projects
+  - Secondly bond prices equity prices and asset prices in general will decrease as the discount rates apply to future expected cash flows are increased. These may have a wealth effect because a decrease in the value of households assets may increase the savings rate and decrease consumption
+  - Thirdly an increase in policy rate can hurt consumers and business confidence lowering their expectations for future economic growth. As a result they may decrease their expenditures and investments leading to lower domestic demand.
+  - Lastly the increase in domestic interest rates may attract foreign investment in debt securities leading to an appreciation of the domestic currency. This increases the foreign currency prices of exports and can reduce the external demand for the country's export goods.
+    - besides the stronger currency. Also makes imports of foreign goods cheaper. This also puts downward pressure on the price level resulting in lower inflation
