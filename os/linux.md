@@ -498,6 +498,7 @@
   - `apt upgrade` will automatically install but not remove packages.
   - `apt autoremove` find dangling dependencies and remove them.
   - `apt remove <PackageName>` remove packages
+- Packages end with `-dev` provides header files of the installed package libraries, it can be used by the compiler during build for development purpose
 
 #### apt-key
 
@@ -1395,12 +1396,22 @@
 - `g++ -c filename.cpp` is used to only compile and assemble the file_name and not link the object code to produce executable file, it will generate a `filename.o` object code file in present working directory
 - `g++ -o target filename.cpp` or `g++ filename.cpp -o target` Compiles and links `filename.cpp` and generates executable target file with name `target`
   - run `./target` to execute the app
+- Compiler Flags
+  - `-l` - Links to shared library or shared object - Specifically, it links to linalg.dll on Windows, liblinalg.so (on Unix-like oses like Linux, BSD, AIX, …) or linalg.dylib on MacOSX.
+    - Errors about undefined reference to a function or object will be raised during compilation if the compiler knows the header file without having the access to related share libraries
+  - `-L` - Add search path to shared libraries, directory containing `*.so`, `*.dll` or `*.dlyb` files such as libLinearAlgebra.so depending on the current operating system.
+  - `-I` Add search path to header files (`.h`) or (`.hpp`)
+  - `-D[FLAG]` or `-D[FLAG]=VALUE`, option flag
 
 ### pkg-config
 
 - It is a helper to return compiler flags during complation
 - `pkg-config --libs <pkg1> <pkg1>` output all linker flags
 - `pkg-config --cflags <pkg1> <pkg1>` output all pre-processor and compiler flags
+
+### ldconfig
+
+- `ldconfig -p` return all installed shared libraries
 
 ### make
 
@@ -1599,7 +1610,7 @@ EndSection
 - `cgps -s` view GPS data
 - `gpsmon` view GPS data
 - `gpsfake <NMEA_Log>` fake GPS data from NMEA log file
-  - `-c <delay>` set a delay between data feed
+  - `-c <delay>` set a delay between data feed in seconds
   - [Click Here](https://www.nmeagen.org) to generate NMEA log
 
 ### Gstreamer

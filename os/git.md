@@ -123,12 +123,17 @@
 - `git pull` Pull the latest from the remote repos
 - `git clone URL` Clone repos into the current directory.
 - `git clone URL <FolderName>` Clone repos into the certain directory.
-- `git submodule add URL <FolderName>` import a remote git repo into a subfolder of the current project
+- `git submodule add <URL> <FolderName>` import a remote git repo into a subfolder of the current project
+  - If folder name is not specified, the repo name will be used
   - Submodule has its own seperate version control which points to a different remote repo
+  - Submodule on the github console will be displayed as `RepoName @ CommitID`
   - A record will be saved in the `.gitmodules` file
-- `submodule update --init --recursive` update submodules
+- `git submodule update --init --recursive` pull submodules from remote
   - `--init` automatically initialize the submodule if the submodule is not yet initialized
   - `--recursive` recurse into the registered submodules, and update any nested submodules within
+- `git submodule update --remote --merge` push local changes to the submodules' repo
+- `git submodule deinit <SubmoduleDir>` untrack the submodule
+  - `git rm <SubmoduleDir>` delete all related files in the repo
 
 ## Git Large File Storage(LFS)
 

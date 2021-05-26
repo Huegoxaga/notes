@@ -131,7 +131,18 @@ pkg-config --libs --cflags opencv4
 
 ### CLI
 
+#### Env Setup
+
+- `PATH` includes `/usr/local/cuda/bin`
+- `LD_LIBRARY_PATH` includes `/usr/local/cuda/lib64`,
+  - or, add `/usr/local/cuda/lib64` to `/etc/ld`.so conf and run ldconfig as root
+
+#### Command
+
 - `nvidia-smi` return GPU driver info
+- To uninstall the CUDA Toolkit, run `cuda-uninstaller`
+  - Uninstall first before update
+- To uninstall the NVIDIA Driver, run `nvidia-uninstall`
 
 ## Jetson
 

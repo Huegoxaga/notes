@@ -829,7 +829,7 @@ class Dog:
 		print("Woof!")
 fido = Dog("Fido","brown")
 fido.bark() # Woof!
-fido.legs # 4, instance variable
+fido.name # 4, instance variable
 Dog.legs # 4, class variable
 ```
 

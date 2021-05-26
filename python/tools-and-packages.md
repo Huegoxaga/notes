@@ -626,10 +626,14 @@ vacuum = true
 disable-logging = True
 # path to where uwsgi logs will be saved
 logto = path/to/logfile
+# Add time info for log
+log-date = [%%Y:%%m:%%d %%H:%%M:%%S]
 # maximum size of log file 20MB
 log-maxsize = 20971520
 # Set logfile name after rotation.
 log-backupname = path/to/old/logfile
+# Stop sharing workers' memory with master
+lazy-apps = true
 # Reload uWSGI if the specified file or directory is modified/touched.
 # touch-reload = %(base_dir)/src/
 # Set the number of cores (CPUs) to allocate to each worker process.
