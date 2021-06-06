@@ -46,6 +46,8 @@
 - File descriptor `0` is the standard input (stdin)
 - File descriptor `1` is the standard output (stdout)
 - File descriptor `2` is the standard error (stderr)
+  - Any number higher than `2` can be used to create a new temp file descriptor, e.g. `1>&3`
+    - Then, new file descriptors can be accessed as a device using `/dev/fd/3`
 - `/dev/null` is a special device that discards everything that is written to it
   - `command 2> /dev/null` discard all error messages
   - `2> /dev/null > ~/result.txt` discard all error messages and send output to `result.txt`

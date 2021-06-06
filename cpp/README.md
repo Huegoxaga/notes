@@ -518,6 +518,8 @@
     - Input argument need to be cast when dereferencing with `*` before use.
   - `void * example (void *);`
   - It makes the function generic.
+- To cast a pointer type, use `reinterpret_cast`
+  - e.g. `int* p = new int(5); char* char_pointer = reinterpret_cast<char*>(p);` this example cast an `int` pointer to a `char` pointer, then point it to a `char` pointer
 
 ## Class
 

@@ -261,8 +261,13 @@
 - `groupadd <groupname>` create a new group.
   - group infos are stored in the `etc/group` file.
   - `groupadd <groupname> --system` or `groupadd <groupname> -r` Create a system group with low range(defined by `SYS_GID_MIN-SYS_GID_MAX` in `login.defs`) of GID(Group ID)
-- `usermod -G <groupname> <username>` add user to a group.
+- `usermod -G <groupname> <username>` move user to a group.
+  - `usermod -G -a <groupname> <username>` add user to an additional group
   - or `adduser <username> <groupname>` for Debian
+  - Devices under `/dev/*` belongs to a certain group, use `ls -al` to find out
+  - The user need to re-login to have the privilege from the new group
+- `groups <username>` list the groups a user belongs to
+- `id <username>` list the groups and `GID` a user belongs to
 - `chmod <permissionCode> <filePath>` change the file permission.
 - `chmod <permissionCode> <folderPath> -R` change permission for the folder and all its contents.
 - a permission formula can be used to replace the code.
@@ -328,6 +333,8 @@
 - `kill -l` list kill signal options.
 - `kill <PID>` kill a process
 - `kill –s <signalNumber> <PID>` kill a process with certain kill signal, the process is indicated by PID(Process ID).
+- `pkill -f <filename>` kill processes by executed filename
+- `killall <process>` kill processes by process name
 - `jobs` list all current jobs.
 - `fg <jobNumber>` bring a job to the foreground.
 - `<command> &` start a process and make it a background job.
@@ -1283,6 +1290,7 @@
 - `systemctl list-units` list all services and units
 - `systemctl status <unitfile>`
   - same as `service <unitfile> status`
+  - `service --status-all` list current status of all services
 - `systemctl start <unitfile>`
   - same as `service <unitfile> start`
 - `systemctl stop <unitfile>`
@@ -1412,6 +1420,7 @@
 ### ldconfig
 
 - `ldconfig -p` return all installed shared libraries
+  - `LD_LIBRARY_PATH` can also be used to locate the shared libraries
 
 ### make
 
