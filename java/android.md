@@ -181,7 +181,7 @@
 - Fragments have a lifecycle similar to the activity lifecycle
   - fragment is created within the `setContentView()` of the activity class, if it is dragged into the main activity `xml`
   - fragment resumes after the parent activity is resumed
-  - fragment will be destroyed when the activity is destroyed
+  - fragment will be destroyed when the activity is destroyed or replaced by another fragment
   - Before creation `onCreate()` is called
   - During initialization `onCreateView()`, `onViewCreated()` are called in sequence
   - After creation `onViewStateRestored()` is called
@@ -398,6 +398,7 @@ protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
   }
   ```
   - `resultCode` can be `RESULT_OK` or `RESULT_CANCELED`
+  - All parent class's `onActivityResult()` will be invoke with the same return data
 - Example handler for return button from the other activity class which initiate the return
   ```java
   public void onClickClose(View view) {
@@ -630,6 +631,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
 #### ListView
 
 - Use ListView to display a string of array into a list
+
   ```java
   ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myStringList);
   // get the number of elements
@@ -638,6 +640,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
   // associate an adapter with the list
   randList.setAdapter(adapter);
   ```
+
 - Adapter methods:
   - `adapter.add(data)` add a new data element to the existing adapter
 - Predefined list item layout:
@@ -645,6 +648,14 @@ String formattedText = "Formatted as: " + formatter.format(date);
   - `android.R.layout.simple_list_item_2`
   - `android.R.layout.two_line_list_item`
 - To handle items click, register the listener `randList.setOnItemClickListener(this::onItemClick);`, then define `public void onItemClick(AdapterView parent, View v, int position, long id) {}`
+- Use the following way to add foot or header view to the list view
+
+  ```java
+  layoutInflater = getLayoutInflater();
+  ViewGroup footer = (ViewGroup) layoutInflater.inflate(R.layout.listview_footer, listView, false);
+  listView.addFooterView(footer);
+  listView.setAdapter(adapter);
+  ```
 
 ##### BaseAdapter
 
