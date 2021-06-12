@@ -969,7 +969,7 @@ System.out.println(myVar.nextLine());  //get user input
 - `System.out.println("");` println is the method. System is the class and out is the stream to access the println method. the method creates a new line at the end, print() does not.
 - `printf()` //This is the formatting output method.
 - `System.out.printf("%s(this is the formatting string) %f" , aString, aDouble);`
-- `String.format()` can also be used to generate formatted string and save it into a variable.
+- `String.format("value is %f", 32.33434);` can also return formatted string
 - `printf()` is only good with System.out
 - String is an object, a reference type.
 - `+` concatenation (auto casting)
@@ -985,11 +985,14 @@ System.out.println(myVar.nextLine());  //get user input
 - Width
   - width.decimal(default 6 decimal place, precision can be used for %s %b %h as well)(decimal point is 1 space)
 - alignment.
-  - place `-` after `%` sign means left alignment. Ex: `%-6s`,"good" ->good\_ \_ (default right justified).
+  - place `-` after `%` sign means left alignment. Ex: `%-6s`,"good" ->`good__` (default right justified).
 - divider
   - `,` use `,` to divide thousand, million position for a number.
 - leading zero
-  - `0` 0 will be used to fill the leading space. Ex: `%010d`.
+  - `0` 0 will be used to fill the leading space. Ex: `%010d` will fill leading zeros and have 10 digits in total length.
+- Specifying argument positions
+  - `%1$s` is for the first string argument
+  - `%2$s` is for the second string argument
 
 ### Enums
 

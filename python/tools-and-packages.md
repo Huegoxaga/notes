@@ -891,6 +891,7 @@ finally:
 
 - `inserted_values` has to be a tuple, even if it has only one parameter. For example, use `(1,)`.
 - Use `None` in Python to represent `NULL` in `PostgreSQL`
+- Parameters can have names, `%(name)s`. A dictionary structure is required to define their values in stead of tuples. e.g. `{'name': "value"}`
 
 ## pyttsx3
 

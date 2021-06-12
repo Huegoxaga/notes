@@ -145,6 +145,7 @@
   - all activities in the stack is stored in the memory
   - the phone’s back button can return to the previous activity with `onResume()`, the top activity might be destroyed if memory is low
 - If this activity has no `setContentView()` and ends with `finish()` it will not inflate any layout
+- Before `setContentView()`, `getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);` can be used to hide the status bar
 - Declare `private static Activity currentActivity = null;` in the activity class and assign `currentActivity = this;` in the `onCreate()` method so the current state of the acivity can be accessed by other classes using a public getter at runtime
 
 #### Event Handler
@@ -155,7 +156,7 @@
   - `implements View.OnClickListener` for the activity class, then find the button `Button bview = findViewById(R.id.button1);`, and bind local handler to the button's `OnClickListener`, `bview.setOnClickListener(this);`
   - Listeners interface:
     - `View.OnClickListener` has the `onClick()` method
-    - `AdapterView.OnItemSelectedListener` has the `onItemSelected()` method
+    - `AdapterView.OnItemSelectedListener` has `onItemSelected()` and `onNothingSelected()` methods
   - Optionally use, `widgetObject.listenerType(this::handlerMethod)` to bind in the `onCreate()` method without implement the linstener interface for the activity class
     - It works when listener interface requires overriding one method
   - `this::handlerMethod` can be replace by anonymous classes as
@@ -330,7 +331,7 @@ public class MyCustomApplication extends Application {
 }
 ```
 
-#### View object
+#### View
 
 - View object class represents the basic building block for user interface components. A View occupies a rectangular area on the screen and is responsiblefor drawing and event handling. View is the base class for widgets, which are used to create interactive UI components (buttons, text fields, etc.)
 - View objects can be obtained using `findViewById` with element id, `View myView = (View) findViewById(R.id.elementID)`
@@ -342,8 +343,39 @@ public class MyCustomApplication extends Application {
 - `view.setVisibility(View.GONE);` hide the view, and it doesn't take any space for layout purposes
 - `view.setVisibility(View.INVISIBLE);` hide the view, but it still takes up space for layout purposes
 - `view.setVisibility(View.VISIBLE);` show the view
+- `getView()` can be used to return the view object of the class it belongs to, after `onCreate` or `onCreateView`is invoked
+- `view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);` Set the view to fullscreen
+- The layout of a view can be defined in `Java` as well:
+  - `View myView = new View(context);`
+  - `myView.setPadding(10, 10, 10, 10);`
+- Nested scrollable views need to define height using code logic by overriding `onMeasure()` method in a custom view class as follows, the layout should have height as `wrap_content`
 
-#### Intent object
+```java
+@Override
+protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    int heightSpec;
+
+    if (getLayoutParams().height == LayoutParams.WRAP_CONTENT) {
+
+        // The two leftmost bits in the height measure spec have
+        // a special meaning, hence we can't use them to describe height.
+        heightSpec = MeasureSpec.makeMeasureSpec(
+                Integer.MAX_VALUE >>2, MeasureSpec.AT_MOST);
+    }
+    else {
+        // Any other height should be respected as is.
+        heightSpec = heightMeasureSpec;
+    }
+
+    super.onMeasure(widthMeasureSpec, heightSpec);
+}
+```
+
+#### ViewGroup
+
+- It is the base class for `Layout`s
+
+#### Intent
 
 - It is used to navigate between activities
 - `Intent switch2Activity2 = new Intent(MainActivity.this, MainActivity2.class);` declares new intent, it takes the class of each imported activity files as arguments
@@ -401,6 +433,7 @@ public class MyCustomApplication extends Application {
 - The getSharedPreferences method retrieves and hold the contents of the preferences file, returning a SharedPreferences through which you can retrieve and modify its values
   - Only one instance of the SharedPreferences object is returned to any callers for the same name, meaning they will see each other's edits as soon as they are made.
 - If the preferences directory does not already exist, it will be created when this method is called
+- To store objects into shared preference, use `gson` library to convert Java object into json string then use `putString()`
 - Fetch the string that stored our saved state from the `onResume()` state, just before the app becomes active
   ```java
   private SharedPreferences sharedPreferences;
@@ -605,11 +638,67 @@ String formattedText = "Formatted as: " + formatter.format(date);
   // associate an adapter with the list
   randList.setAdapter(adapter);
   ```
+- Adapter methods:
+  - `adapter.add(data)` add a new data element to the existing adapter
 - Predefined list item layout:
   - `android.R.layout.simple_list_item_1`
   - `android.R.layout.simple_list_item_2`
   - `android.R.layout.two_line_list_item`
 - To handle items click, register the listener `randList.setOnItemClickListener(this::onItemClick);`, then define `public void onItemClick(AdapterView parent, View v, int position, long id) {}`
+
+##### BaseAdapter
+
+- The class that can be overriden to define custom adapter for other views
+- The following method need to be implemented for the `BaseAdapter` interface
+
+```java
+public class MyAdapter extends BaseAdapter {
+
+    Context context;
+    LayoutInflater layoutInflater;
+    String[] data = { "A", "B", "C", "D", "E", "F", "G" };
+
+    // The constructor can access dynamic data as input
+    public MyAdapter(Context context) {
+        this.context = context;
+        layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    @Override
+    public int getCount() {
+        return data.length ;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return data[position];
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View view, ViewGroup parent) {
+
+        view = layoutInflater.inflate(R.layout.my_custom_layout, null);
+
+        TextView title = view.findViewById(R.id.title);
+        title.setText(data[position]);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Title: " + title.getText(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        return view;
+    }
+}
+```
+
+- In the view class, declear an instance of the adapter and use `listView.setadapter(myAdapter)` to inflat its content
 
 #### AsyncTask
 
@@ -717,6 +806,33 @@ String formattedText = "Formatted as: " + formatter.format(date);
         }
       }
   ```
+
+#### Handler
+
+- Android handles all the UI events from one single thread called the Main or UI thread
+- Handler enables the use of another thread by communicating the `Message` or `Runnable` objects with the Main UI thread
+  - `Runnable` is an interface in Java which initiate task in a new thread, it has a `run()` method which will be executed in a separate thread
+- It is used to schedule a runnable task or send a delay messages by using one of the following methods:
+  - `post(myRunnable)`, `myRunnable` is a `Runnable` object
+  - `postAtTime(myRunnable, absUpTime)`
+  - `postDelayed(myRunnable, delayInMS)`
+  - `sendEmptyMessage(intMsgData)`, It sends a message containing only an int value from the parameter
+  - `sendMessage(myMessage)`, `myMessage` is a `Message` object
+  - `sendMessageAtTime(myMessage, absUpTime)`
+  - `sendMessageDelayed(myMessage, delayInMS)`
+- For example:
+
+```java
+handler = new Handler();
+
+final Runnable r = new Runnable() {
+    public void run() {
+        tv.append("Hello World");
+        handler.postDelayed(this, 1000);
+    }
+};
+handler.postDelayed(r, 1000);
+```
 
 #### SQLiteOpenHelper
 
@@ -957,8 +1073,8 @@ String formattedText = "Formatted as: " + formatter.format(date);
 - `<LinearLayout>`
   - It defines layout container that can grow in two direction, either vertical or horizontal
   - `android:orientation` can be either `"vertical"` or `"horizontal"`
-  - `android:layout_weight` controls how much space it takes
-    - set `android:layout_height`(when vertical) or `android:layout_height`(when horizontal) to `0dp` and `android:layout_weight` to `1` can make all component evenly distributes with zero space in between
+  - `android:layout_weight` controls how much space its component takes
+    - set `android:layout_height`(when vertical) or `android:layout_width`(when horizontal) to `0dp` and `android:layout_weight` to `1` can make all component evenly distributes with zero space in between
 - `<RelativeLayout>` (legacy)
   - It defines elements relative to sibling elements (such as to the left-of or below another view) or parents (such as aligned to the bottom, left or center)
   - `android:layout_centerHorizontal="true"`, `android:layout_centerVertical="true"`, `android:layout_centerInParent="true"` for centering elements
@@ -1018,6 +1134,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
 - `colorPrimaryVariant` controls the status bar color
 - The background color of some widgets is controlled by the theme type
   - Use theme `Theme.MaterialComponents.DayNight.DarkActionBar.Bridge` to change the button background color
+- Other than `DarkActionBar`, it can be `NoActionBar`. As a result the app title will be removed
 
 ##### `strings.xml`
 
@@ -1025,8 +1142,8 @@ String formattedText = "Formatted as: " + formatter.format(date);
 - The file has parent element `<resources></resources>`
 - It consisted of multiple string records as `<string name="key">value</string>`
   - It can hold formatted string with variable specified in java code, `<string name="hello">Fragment %1$s The Switch is %2$s</string>`
+  - use `getResource(R.string.string_name, arg1, arg2).getString()` method to get formatted string with value
 - It can stores arrays as `<string-array name="key"><item>A</item><item>B</item><item>C</item></string-array>`
-- It can be used in Java code as `R.string.string_name`
 - It can be used in XML code or the layout attribute panel as `@string/string_name`
 
 ## Gradle Scripts

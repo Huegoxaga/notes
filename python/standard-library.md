@@ -415,12 +415,15 @@ list(accumulate(range(8)))
 
 - `datetime.fromtimestamp(timestamp)` convert timestamp in second from `1970` to value to datetime object.
 - `timestamp = datetime.timestamp(datetime_obj)` convert datetime object to timestamp.
-- `datetime_obj = datetime.now()` get a current datetime object.
+- `datetime_obj = datetime.now()` get a current local datetime object.
   - `time = datetime.now(timezone_obj)` get a current datetime object with a certain timezone.
+- `datetime_obj = datetime.utcnow()` get current datetime in UTC
 - `datetime.now().time()` get a current time object.
 - `datetime_obj.strftime("%m/%d/%Y, %H:%M:%S")` return a formatted time string.
 - `date_object = datetime.strptime(date_string, "%d %B, %Y")` string to datetime object
   - [Click Here](https://strftime.org) to see complete list of format code
+- `datetime_obj.isoformat()` return datetime in a string in ISO `YYYY-MM-DDThh:mm:ss` format
+  - it takes argument like `timespec='microseconds'` for format options
 - For datetime object
   - `datetime_obj.year`
   - `datetime_obj.month`
@@ -465,6 +468,11 @@ list(accumulate(range(8)))
 
 - `myTimeZone = pytz.timezone('Country/City')`
   - `myTimeZone = pytz.timezone('America/New_York')`
+- `myTimeZone.localize(datetime)` add timezone info to a datetime object declared without `tz`
+- `datetimeObj.replace(tzinfo=myTimeZone)` update a dateime object `tz` info
+- `dtWithTZ.astimezone(tz=timezone('America/Toronto')` return the datetime object if it is in another timezone, then update the `tzinfo` for the datetime object.
+  - If `dtWithTZ` has no `tzinfo` the `tzinfo` in `astimezone()` will be added and returned
+- `dtWithTZ.offset()` return the timedelta for the difference of the dt
 
 ## gzip
 
