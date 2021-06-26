@@ -740,6 +740,7 @@ def about(request):
 ### Basic Usage
 
 1. Celery requires a broker to store task list in a queue. There are three options, follow one of the link to install:
+
    - RabbitMQ(fully supported recommanded) - [click](http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq) to see installation & configuration instruction.
      - Not need to pip install rabbitMQ for project
      - Install server `brew install rabbitmq`
@@ -755,12 +756,24 @@ def about(request):
      - Add the connection string `broker_url = 'amqp://myuser:mypassword@localhost:5672/myvhost'`, and `CELERY_AUTH_MECHANISMS = ['PLAIN', 'AMQPLAIN']` to set allowed AUTH MECHANISMS
      - run `sudo rabbitmqctl status` to check status.
      - if want to stop the server run `sudo rabbitmqctl stop`.
-   - Redis - [click](http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis) to see installation & configuration instruction.
+   - Redis - [click](https://docs.celeryproject.org/en/stable/getting-started/backends-and-brokers/redis.html) to see installation & configuration instruction.
+
      - run `pip install -U "celery[redis]"` to install Celery and Redis as a bundle.
-     - For Django app add `BROKER_URL = 'redis://localhost:6379/0'` and `BROKER_TRANSFER = 'redis'` in `settings.py`.
-     - install server locally `brew install redis` and run it `redis-server`.
+     - For Django app in `settings.py`.
+
+     ```py
+     CELERY_BROKER_URL = 'redis://localhost:6379'
+     CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+     CELERY_ACCEPT_CONTENT = ['application/json']
+     CELERY_RESULT_SERIALIZER = 'json'
+     CELERY_TASK_SERIALIZER = 'json'
+     ```
+
+     - install server locally `brew install redis` or `sudo apt-get install redis-server` and run `redis-server`.
      - test server `redis-cli ping`
+
    - Amazon SQS - [click](http://docs.celeryproject.org/en/latest/getting-started/brokers/sqs.html#broker-sqs) to see installation & configuration instruction.
+
 2. Defines the task in `tasks.py`
    ```py
    from celery import Celery
@@ -845,6 +858,7 @@ def about(request):
    from __future__ import absolute_import, unicode_literals
    from celery import shared_task
    from demoapp.models import Widget
+   # The @shared_task decorator lets the tasks can be used by any app(s).
    @shared_task
    def add(x, y):
        return x + y
@@ -879,6 +893,55 @@ def about(request):
 
 - In production you’ll want to run the worker in the background as a daemon instead of running the service using commands explicitly.
 - Either `systemd` or `supervisord` can be used.
+
+#### Systemd for Celery
+
+- Use a config file to store setting
+
+```conf
+# The name of one or more workers to be initiated by systemd separated by space
+CELERYD_NODES="worker1 worker2"
+#   alternatively, specify the number of nodes to start:
+#CELERYD_NODES=10
+# Path to the celery command
+CELERY_BIN="/home/ubuntu/.local/bin/celery"
+CELERY_APP="app_name"
+CELERYD_MULTI="multi"
+# %n is the worker name
+CELERYD_PID_FILE="/home/ubuntu/app/config/%n.pid"
+# %I is the process ID
+CELERYD_LOG_FILE="/home/ubuntu/app/config/%n%I.log"
+CELERYD_LOG_LEVEL="INFO"
+# additional settings, default concurrent process number equals CPU core number
+CELERYD_OPTS="--time-limit=300 --concurrency=8"
+```
+
+- Use the service file for systemd
+
+```
+[Unit]
+Description=Celery Service
+After=network.target
+
+[Service]
+Type=forking
+User=celery
+Group=celery
+EnvironmentFile=/path/to/celery.conf
+WorkingDirectory=/opt/celery
+ExecStart=/bin/sh -c '${CELERY_BIN} -A $CELERY_APP multi start $CELERYD_NODES \
+    --pidfile=${CELERYD_PID_FILE} --logfile=${CELERYD_LOG_FILE} \
+    --loglevel="${CELERYD_LOG_LEVEL}" $CELERYD_OPTS'
+ExecStop=/bin/sh -c '${CELERY_BIN} multi stopwait $CELERYD_NODES \
+    --pidfile=${CELERYD_PID_FILE} --loglevel="${CELERYD_LOG_LEVEL}"'
+ExecReload=/bin/sh -c '${CELERY_BIN} -A $CELERY_APP multi restart $CELERYD_NODES \
+    --pidfile=${CELERYD_PID_FILE} --logfile=${CELERYD_LOG_FILE} \
+    --loglevel="${CELERYD_LOG_LEVEL}" $CELERYD_OPTS'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
 
 ## Unit Testing
 

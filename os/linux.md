@@ -185,6 +185,11 @@
   - Or place them into `.bash_profile` or `.bashrc` to make it available all the time.
   - run `unalias alias_name` to remove the alias.
   - run `unalias -a` to remove all alias.
+- `ln -s <filePath> <linkPath>` create a symlink for a file
+  - use flag `-sf` to update link
+  - The link path will be replaced by the file path in the file system
+  - If using relative path for the file path, the path is relative to the link path directory
+  - Link in red means the file to the link is not available
 - `type -f <keyword>` returns the type of the keyword.
 - `type <command>` returns the type of the command.
 - `export VAR=123` define a environment variables for current terminal session and sub-sessions.

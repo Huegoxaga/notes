@@ -652,7 +652,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
 
   ```java
   layoutInflater = getLayoutInflater();
-  ViewGroup footer = (ViewGroup) layoutInflater.inflate(R.layout.listview_footer, listView, false);
+  View footer = layoutInflater.inflate(R.layout.listview_footer, listView, false);
   listView.addFooterView(footer);
   listView.setAdapter(adapter);
   ```
@@ -669,27 +669,28 @@ public class MyAdapter extends BaseAdapter {
     LayoutInflater layoutInflater;
     String[] data = { "A", "B", "C", "D", "E", "F", "G" };
 
-    // The constructor can access dynamic data as input
+    // define input data
     public MyAdapter(Context context) {
         this.context = context;
         layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    //define list length
     @Override
     public int getCount() {
         return data.length ;
     }
-
+    //define items' position
     @Override
     public Object getItem(int position) {
         return data[position];
     }
-
+    //defines item id
     @Override
     public long getItemId(int position) {
         return position;
     }
-
+    //define view for each list cell
     @Override
     public View getView(int position, View view, ViewGroup parent) {
 

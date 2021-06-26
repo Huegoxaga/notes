@@ -923,6 +923,8 @@ finally:
 - run `pip` with `sudo` will install the module globally.
 - `pip install virtualenv`
 - In the project folder run `virtualenv <env_name>` create new env
+  - new env folder will be created under the current directory
+  - `rm -rf <env>` will delete the environment
 - `source <env_name>/bin/activate` activate new env
 - When in a virtual environment all packages will be installed in it, if `pip install` always install package into global, check the environment path in the `activate` file
   - use `which pip` to check the path of the `pip` command
