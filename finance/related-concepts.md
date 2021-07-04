@@ -499,6 +499,7 @@
 #### The IS (Investment vs Savings) Curve
 
 - it plots the `goods market equilibrium` for real interest rate against real income
+  - `goods market equilibrium` is the balance between the excess of private saving over private investment and the sum of government deficit and trade deficit
   - Baed on the economic flows, lower interest rates tend to decrease `Businesses & Households Savings` and increase `Business Investment`, in order to maintain the equilibrium in the goods market. Income must increase. Greater income can increase savings which increases `Businesses & Households Savings` and decrease `Business Investment`
     - Otherwise, tax or imports need to be incresed
 - the relationship between real interest rates and real income has to be inverse to maintain equilibrium

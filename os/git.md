@@ -145,8 +145,14 @@
 - run `git lfs install` to signin
 - run `git lfs track "<large_file>"` to let `lfs` handle large file
   - a record in `.gitattributes` file will be created
+  - To remove a record, delete the record in the `.gitattributes` or use `git lfs untrack <filename>` command
 - Then, `git add`, `git commit`, `git push` large files will be automatically managed by `lfs`
   - It large file has already been committed to the local repo before tracked by lfs, run `git lfs migrate info` to see it, and use `git lfs migrate import --include "*.extension"` to update the reference to the large file in the commit, then `git push` as usually
+    - `git lfs migrate` commands work on committed files by rewriting the git history
+    - `git rm --cached <file>` can be useful sometimes when there is a need to remove the git history for this file
+    - `export` command is used to let `git` handle files instead of using `lfs`
+    - there is also a `--exclude` flag
+    - `git lfs migrate` command will examine, create, and modify `.gitattributes` files as necessary
 - Run `git lfs pull` to get large files from remote repo
 
 ## GitHub CLI
