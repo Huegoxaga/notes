@@ -485,9 +485,11 @@ String formattedText = "Formatted as: " + formatter.format(date);
 - `Spinner mySpinner = findViewById(R.id.spinner);`
 - Spinner requires to override two different methods
   - `onItemSelected(AdapterView<?> parent, View view, int position, long id)` Callback method to be invoked when a new item in this view has been selected. It is not called if there is no change in selection
+  - When item list increase from 0 to 1, that single item will not be able to selected, add a first item as `Select an Item` to avoid this issue
   - `onNothingSelected(AdapterView<?> parent)` Callback method to be invoked when the selection disappears from this view or when the adapter becomes empty
 - `mySpinner.setSelection(0, false);` set the first selection as default
   - Set a selection before setting listener, to prevent "ghost" selection on start
+- `mySpinner.getSelectedItemPosition()` return the index of seltected item, return `-1` if no item is selected
 
 #### Button
 
@@ -975,27 +977,44 @@ handler.postDelayed(r, 1000);
 
 ##### GSON
 
-- Gson (also known as Google Gson) is an open-source Java library to serialize anddeserialize Java objects to (and from) JSON
+- Gson (also known as Google Gson) is an open-source Java library to serialize and deserialize Java objects to (and from) JSON
 - add `implementation 'com.google.code.gson:gson:2.8.6'` explicitly to `gradle.build` file at the application level in the dependencies section before use
 - Right click the folder that contains the java files you are working with and create new java class files each with the following classes
 - To use GSON declare a data model
+
   ```java
-  public class Projects {
+  public class MyObject {
     public String   _id;
     public String   Year;
-    public String   ProjectNum;
+    public String   Num;
     public String   Title;
     @Override
     public String toString() {
-      return Year + " " + ProjectNum + " " + Title;
+      return Year + " " + Num + " " + Title;
     }
   }
   ```
+
 - Declare a data model list
+
   ```java
-  public class FairList extends ArrayList<Projects> {
+  public class MyObjectList extends ArrayList<MyObject> {
     private static final long serialVersionUID = 1L;
   }
+  ```
+
+- Convert object to json string
+
+  ```java
+  Gson gson = new Gson();
+  String jsonStr = gson.toJson(myObject);
+  ```
+
+- Get object instance from json string
+
+  ```java
+  Gson gson = new Gson();
+  MyObject obj = gson.fromJson(jsonStr, MyObject.class);
   ```
 
 ### `manifests` folder

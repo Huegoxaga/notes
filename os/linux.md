@@ -190,6 +190,7 @@
   - The link path will be replaced by the file path in the file system
   - If using relative path for the file path, the path is relative to the link path directory
   - Link in red means the file to the link is not available
+  - `rm` the previous link file, before linking to a new path
 - `type -f <keyword>` returns the type of the keyword.
 - `type <command>` returns the type of the command.
 - `export VAR=123` define a environment variables for current terminal session and sub-sessions.

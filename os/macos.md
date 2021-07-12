@@ -97,6 +97,7 @@
 - `brew list` list installed packages and apps
 - `brew install <PackageName>` install a package.
   - brew with distinguish some new package with pre-installed system package by prepending a `g` to its name. use `-with-default-names` will make them use their original names.
+- `brew unlink <package> && brew link <package>` recreate the symlink for an installed package
 - `brew uninstall <PackageName>` uninstall a package.
 - `brew home <PackageName>` open package or app homepage in browser.
 - `brew tap <RepoName>` include an external repo. If a certain formulae is not found using `brew search`. The package can then be installed using `brew install`.
@@ -129,7 +130,7 @@
 - VS Code delete `Cache` and `CacheData` folders at `/Users/<username>/Library/Application Support/Code`, then in app command input enter `Clear Editor History`
 - Clear VirtualBox log in `/Users/<username>/Library/VirtualBox` folder
 - Clean conda package caches, run `conda clean -f && conda clean -a`
-- Homebrew clean up`brew cleanup`
+- Homebrew clean up all broken symlinks `brew doctor && brew cleanup`
 - Clean up npm cache `npm cache clean --force`
 
 ### Dual-Boot
