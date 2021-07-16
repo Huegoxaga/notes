@@ -984,6 +984,7 @@ System.out.println(myVar.nextLine());  //get user input
   - `%n` new line.
 - Width
   - width.decimal(default 6 decimal place, precision can be used for %s %b %h as well)(decimal point is 1 space)
+  - e.g. `%.2f` returns to two decimal places
 - alignment.
   - place `-` after `%` sign means left alignment. Ex: `%-6s`,"good" ->`good__` (default right justified).
 - divider
@@ -1152,7 +1153,9 @@ for all collections have static abstract methods:
 - collectionsName.remove(element) return true if successful.
 - collectionsName.size()
 - Collections.binarySearch(collectionName, element); for sorted collection in ascending order only, return the index of the element, return values <0 if not found
-- Collections.binarySearch(collectionName, element, comparator); can use Lambda expression as a comparator. can be in ascending or descending order.
+- Collections.binarySearch(collectionName, element, comparator); can use Lambda expression as a comparator. can be in ascending or descending order
+- `Collections.nCopies(numOfCopies, Obj)` returns an immutable collection which has multiple copies of the object or value
+  - Use `new ArrayList<>(Collections.nCopies(numOfCopies, obj));` to declare mutable collections
 
 ### List
 

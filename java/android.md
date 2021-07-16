@@ -121,6 +121,7 @@
   - For security reason, multiple popups are not allowed
   - The security issue involves attempting to confuse a user by asking for permissions, but hiding the exact message with another overlay
 - Inflater should be used when loading a layout during runtime
+  - One inflate call can only load one `.xml` file
 
 #### Activities
 
@@ -230,6 +231,13 @@
 - `getActivity()` can also be used to get reference of a widget from parent activity
   - From the fragments uses `Switch actSw = getActivity().findViewById(R.id.switch1);`
   - It was added in API level 11, but then deprecated in API level 28
+
+##### LayoutInflater
+
+- Fragments use inflater to create views
+- `LayoutInflater` is used to create a new View (or Layout) object from xml layouts
+- Use `View myview = inflater.inflate(R.layout.fragment_custom, parent, false);` to create the view, the view will be inflated with the given parent, but won't attach it to the parent
+  - `infalInflater.inflate(R.layout.list_item, null);` this method is not recommanded
 
 ##### Event Handlers for Widgets inside a Fragment
 
@@ -414,9 +422,10 @@ protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
     - Using back button will get `RESULT_CANCELED` as well
   - `onResume()` will be called after
 
-#### Application Context
+#### Context Class
 
 - The Context class provides an interface to global information about an application environment
+  - `Activity` and `Application` class are inherited from `Context` class
 - This is an abstract class whose implementation is provided by the Android system
 - It allows access to application-specific resources and classes, as well as up-calls for application-level operations such as launching activities, broadcasting and receiving intents, etc
 
@@ -479,16 +488,29 @@ String formattedText = "Formatted as: " + formatter.format(date);
 - `EditText myEditText = (EditText) findViewById(R.id.elementID)`
 - `myEditText.getText().toString()`, returns the string value of the current edittext input box
   - `getText()` returns a `Editable` instance can be converted to string using `toString()`
+- The listener for EditText should be defined as follows
+
+  ```java
+  myEditText.addTextChangedListener(new TextWatcher() {
+    public void afterTextChanged(Editable s) {
+      Log.d("Changed Text: ", s.toString());
+    }
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+  });
+  ```
 
 #### Spinner
 
 - `Spinner mySpinner = findViewById(R.id.spinner);`
-- Spinner requires to override two different methods
+- The Listener for Spinner requires to override two different methods
   - `onItemSelected(AdapterView<?> parent, View view, int position, long id)` Callback method to be invoked when a new item in this view has been selected. It is not called if there is no change in selection
   - When item list increase from 0 to 1, that single item will not be able to selected, add a first item as `Select an Item` to avoid this issue
   - `onNothingSelected(AdapterView<?> parent)` Callback method to be invoked when the selection disappears from this view or when the adapter becomes empty
+- It uses an adapter to pupolate its options, use `mySpinner.setAdapter(adapter);` to assign an adapter for the spinner
 - `mySpinner.setSelection(0, false);` set the first selection as default
   - Set a selection before setting listener, to prevent "ghost" selection on start
+  - It works after `setAdapter()`
 - `mySpinner.getSelectedItemPosition()` return the index of seltected item, return `-1` if no item is selected
 
 #### Button
@@ -541,6 +563,7 @@ String formattedText = "Formatted as: " + formatter.format(date);
   ```java
   // To show a toast with a custom layout - need to inflate the layoutLayout
   LayoutInflater myLayout = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+  // optionally, LayoutInflater.from(context)
   View customtoast = myLayout.inflate(R.layout.message_output_layout, null);
   // Now build the Toast - adjust settings
   Toast myToast = new Toast(context);
@@ -674,7 +697,6 @@ public class MyAdapter extends BaseAdapter {
     // define input data
     public MyAdapter(Context context) {
         this.context = context;
-        layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     //define list length
@@ -695,9 +717,10 @@ public class MyAdapter extends BaseAdapter {
     //define view for each list cell
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-
-        view = layoutInflater.inflate(R.layout.my_custom_layout, null);
-
+        if (view == null) {
+          LayoutInflater layoutInflater = LayoutInflater.from(context);
+          view = layoutInflater.inflate(R.layout.my_custom_layout, parent, false);
+        }
         TextView title = view.findViewById(R.id.title);
         title.setText(data[position]);
         view.setOnClickListener(new View.OnClickListener() {

@@ -159,6 +159,9 @@
   - `array = np.array([1,2,3,4])`
 - Create a `numpy` array of rank 2
   - `array = np.array([[1,2,3,4],[5,6,7,8]])`
+- Create a `numpy` array of type `float32`
+  - `np.array([1,2,3,4], dtype=np.float32)`
+  - or, `np.float32([1,2,3,4])`
 - Create an array of ones
   - `array = np.ones((3,5))`, a `3*5` array with all elements as 1.
   - `array = np.ones_like(img, np.uint8)` create an array of ones with the same shape and type as `img`, with data type as `np.uint8`.(generate a white image with the same size of `img` with unsigned 8 bits integer)
@@ -436,6 +439,11 @@
   - `cv.bitwise_xor(input, output, mask)`
 - `cv2.imshow('image',img)`, showing the stored image
   - The first parameter is the title of title window.
+- Perspective transformation
+  - `cv2.getPerspectiveTransform(src, dst)` returns a transformation matrix `M`, where
+    - `src`, and `dst` are a list of points from source view and destination view before and after transformation, in a `np` array of type `float32`
+  - `cv2.perspectiveTransform(pointsArray, M)` returns a list of converted points based on the given transformation matrix `M`
+  - `cv2.warpPerspective(img, M, (width, height))` returns a transformed image with specified output width and height
 - video
   - `cap = cv2.VideoCapture(0)`, reading video directly from the webcam
     - `cv2.VideoCapture(pipeline)` also takes a GStreamer pipepline definition string as an argument for video input
