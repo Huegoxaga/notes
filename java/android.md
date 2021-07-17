@@ -847,6 +847,7 @@ public class MyAdapter extends BaseAdapter {
 #### Handler
 
 - Android handles all the UI events from one single thread called the Main or UI thread
+- Handler is used often because, one cannot touch anything in the UI thread from a background thread
 - Handler enables the use of another thread by communicating the `Message` or `Runnable` objects with the Main UI thread
   - `Runnable` is an interface in Java which initiate task in a new thread, it has a `run()` method which will be executed in a separate thread
 - It is used to schedule a runnable task or send a delay messages by using one of the following methods:
@@ -857,19 +858,43 @@ public class MyAdapter extends BaseAdapter {
   - `sendMessage(myMessage)`, `myMessage` is a `Message` object
   - `sendMessageAtTime(myMessage, absUpTime)`
   - `sendMessageDelayed(myMessage, delayInMS)`
-- For example:
+  - `removeCallbacks(myRunnable)` Cancel all delayed runnable in queue
+- To run a runnable in a short delay:
 
-```java
-handler = new Handler();
+  ```java
+  private final Handler handler = new Handler();
+  private final Runnable r = new Runnable() {
+      @Override
+      public void run() {
+          // Tasks
+      }
+  };
+  // run r in 1 second
+  handler.postDelayed(r, 1000);
+  ```
 
-final Runnable r = new Runnable() {
-    public void run() {
-        tv.append("Hello World");
-        handler.postDelayed(this, 1000);
+- To execute a message:
+
+  ```java
+  // in the background thread
+  if(dataArrives){
+      Message msg = handler.obtainMessage();
+      msg.what = UPDATE_IMAGE;
+      msg.obj = bitmap;
+      msg.arg1 = index;
+      handler.sendMessage(msg);
+  }
+  // in the UI thread
+  final Handler handler = new Handler(){
+    @Override
+    public void handleMessage(Message msg) {
+      if(msg.what==UPDATE_IMAGE){
+        images.get(msg.arg1).setImageBitmap((Bitmap) msg.obj);
+      }
+      super.handleMessage(msg);
     }
-};
-handler.postDelayed(r, 1000);
-```
+  };
+  ```
 
 #### SQLiteOpenHelper
 
