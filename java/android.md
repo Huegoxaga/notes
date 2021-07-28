@@ -390,6 +390,7 @@ protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 - `startActivity(switch2Activity2);` navigate to the second activity
 - `switch2Activity2.putExtra("data", "Hello");` use intent to store string into varialbe name `"data"`
   - The variable name can be a constant from `Intent` class, e.g. `Intent.EXTRA_TEXT`
+  - The size of the data cannot be larger than around `1M`, or the app will crash silently when new activity starts
 - In any `onCreate()` method, use `Intent intent = getIntent();` to access the intent that started it
   - Use `if (getIntent()!=null && getIntent().hasExtra("DataName")) {}` to get if the intent has the data
 - Use `String i = intent.getStringExtra("data");` to get a string value stored in intent

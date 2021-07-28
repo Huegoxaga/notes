@@ -51,6 +51,7 @@
   - Rules are applied from top to bottom
   - [Click here](https://github.com/github/gitignore) to check out `.gitignore` templates for different projects
   - use `!` before ignore rules to unignore, lines with `!` should be placed at the bottom of the file
+  - Existing files are tracked even after it is excluded in the `.gitignore`, to reset the file records, commit all changes first, then, `git rm -rf --cached . && git add .`
 
 #### Managing Staging Area
 
@@ -82,7 +83,8 @@
 - `git branch -d branchName` Delete the branch locally.
 - `git push -d origin <BranchName>` Delete remote branch
 - `git branch --set-upstream-to <remoteBranchName>` or `git branch -u <remoteBranchName>` set the remote tracking branch for the local branch.
-- `git push origin --delete branchName` Delete the branch in the remote repos.
+- `git push origin --delete <branchName>` Delete the branch in the remote repos.
+  - or, `git push -d origin <branchName>`
 - `git checkout branchName` Switch branch.
 - `git checkout -b branchName` create a new branch and switch to that branch.
 - `git fetch origin && git checkout -b remoteBranchName origin/remoteBranchName` add a new remote branch to local

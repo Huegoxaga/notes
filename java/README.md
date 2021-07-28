@@ -239,6 +239,11 @@ for(int x=0; x<arrayInt.length; x++){
     i=arrayInt[x];
     // ……….
   }
+//for each loop
+for (type var : array)
+{
+  //statements using var;
+}
 ```
 
 - Because i is an independent temperate value.the value of a primitive type(and Strings because it’s immutable(the object cannot be changed after initialization))array can’t be change using i variable in the for loop, only the methods(setter) for an array of an objects can be used to change the object values. and assignment for public variable of an object array will work.(the assignment trace the memory location of the object through i, and change the actual value inside the object.)

@@ -36,12 +36,16 @@
   - Packages installed in `base` will share with other environment as alias
 - Packages and Environments can be controlled using a GUI tool called Anaconda Navigator.
 - If conda cannot find a certain package use `pip` to install.
-  - It is better to create a conda environment to isolate any changes pip makes
+  - try to use `conda build` first
+  - After using pip, stop installing any future packages using `conda` again
+    - because the packages installed by `pip` won't be managed by the Conda package manager, `pip` will update packages installed by conda without lettig conda know
+    - however `conda list` can still show the packaged installed by `pip` with as `pypi` in the `Channel` column
+    - conda env can export or create environments based on a file with a combined conda and pip requirements
+  - In order to use conda again, recreate a new environment and install all conda packages first then start to use pip
   - Make sure the `pip` in use is from the `conda` environment
     - run `which pip` to check
-  - the packages installed by `pip` won't be managed by the Conda package manager, they will still be managed by the Anaconda environment
-    - Any packaged installed by `pip` can be found using `conda list`. However, conda won't track all changes made by `pip`.
-    - conda env can export or create environments based on a file with conda and pip requirements.
+  - pip should be run with --upgrade-strategy only-if-needed (the default)
+  - Do not use pip with the `--user` argument, avoid all "users" installs
 - Remember to restart all terminals when installation or changes are made.
 
 ### Commands
