@@ -109,8 +109,23 @@
 - `git reset <commitID>` reset the files to the state after a certain commit.
   - use `git push --force` will delete all the newer commits in the remote repo.
 - `git remote` List all the current remote repos.
-- `git remote add origin <URL>` Add the remote repos.
+- `git remote add origin <URL|SERVER>` Add the remote repos.
+
   - For Github repos, the URL is usually like, `https://github.com/AccountName/ReposName.git`
+  - For SSH connection to the GitHub server, it should be in `git@github.com:user/repo.git` format
+  - Switch HTTPS and SSH connection, run `git remote -v && git remote remove origin && git remote add origin <URL|SERVER>`
+  - For ssh connection upload the public key to `github.com` then save private key into `ssh-agent` for login
+
+    - For mac, add the following to `~/.ssh/config` to save the key to `ssh-agent` automatically, add `UseKeychain yes` if passphrase is used
+
+    ```config
+    Host *
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/git.pem
+    ```
+
+    - run `ssh -T git@github.com` to test `ssh` connection
+
 - `git remote show origin` check the tracking config
 - `git remote set-url origin <URL>` update remote URL(happens when repo name changed)
 - `git config --get remote.origin.url` check the current tracking remote URL
