@@ -69,6 +69,19 @@
   - `git commit --amend -m 'updated message'` alter latest local commit message, run `git push --force` to modify latest remote branch commit message
   - use `--auther "John Dow <name@email.com>"` to update author info
 - `git diff <branch1> <branch2>` View difference between branches.
+- Signing commit using GPG Keys
+  1. Install the `GPG` command line tools
+     - On Mac, run `brew install gnupg`
+  2. `gpg --full-generate-key` generate the key
+     - key size must be greater than `4096` bits
+  3. `gpg --list-secret-keys --keyid-format=long`, found the key ID after the `/` in the `sec` row
+  4. `gpg --armor --export <ID>` get its public key
+  5. Add the public key onto `GitHub` account
+  6. Specify the key to use, `git config --global user.signingkey <ID>`
+  7. Install GPG Suite
+     - On Mac, run `brew install --cask gpg-suite-no-mail`
+  8. `git config --global commit.gpgsign true` enable auto sign
+     - If not enabled, add `-S` flag in commit command, `git commit -S -m "commit message"`
 
 #### Branches
 
@@ -109,14 +122,16 @@
 - `git reset <commitID>` reset the files to the state after a certain commit.
   - use `git push --force` will delete all the newer commits in the remote repo.
 - `git remote` List all the current remote repos.
+  - `git remote -v` to see details
 - `git remote add origin <URL|SERVER>` Add the remote repos.
 
   - For Github repos, the URL is usually like, `https://github.com/AccountName/ReposName.git`
   - For SSH connection to the GitHub server, it should be in `git@github.com:user/repo.git` format
-  - Switch HTTPS and SSH connection, run `git remote -v && git remote remove origin && git remote add origin <URL|SERVER>`
-  - For ssh connection upload the public key to `github.com` then save private key into `ssh-agent` for login
+  - Switch HTTPS and SSH connection, run `git remote -v && git remote remove origin && git remote add origin <URL|SERVER>` or `git remote set-url origin <SERVER>`
+  - For ssh connection upload the public key to `github.com` then save private key into `ssh-agent` for login, by running `eval \$(ssh-agent -s) && ssh-add ~/.ssh/id_rsa`
 
     - For mac, add the following to `~/.ssh/config` to save the key to `ssh-agent` automatically, add `UseKeychain yes` if passphrase is used
+    - In `~/.ssh/config`, add `ForwardAgent yes` to the host records where the git ssh keys are needed, the local key stored in the agent will be passed to the corresponding remote servers during connection
 
     ```config
     Host *
