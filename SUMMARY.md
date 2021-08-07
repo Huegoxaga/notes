@@ -70,6 +70,7 @@
   - [Blockchain](algorithm/blockchain.md)
   - [Cryptography](algorithm/cryptography.md)
   - [Machine Learning](algorithm/ml.md)
+- [Testing](testing/README.md)
 - [Mathematics](math/README.md)
   - [Basic Math](math/basic.md)
   - [Calculus](math/calculus.md)

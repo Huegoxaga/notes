@@ -1121,3 +1121,29 @@
   - Thirdly an increase in policy rate can hurt consumers and business confidence lowering their expectations for future economic growth. As a result they may decrease their expenditures and investments leading to lower domestic demand.
   - Lastly the increase in domestic interest rates may attract foreign investment in debt securities leading to an appreciation of the domestic currency. This increases the foreign currency prices of exports and can reduce the external demand for the country's export goods.
     - besides the stronger currency. Also makes imports of foreign goods cheaper. This also puts downward pressure on the price level resulting in lower inflation
+
+### Currency Exchange Rates
+
+- An exchange rate is simply the price of one currency in terms of another
+- The currency on top is known as the price currency, and the one below is the base currency
+  - there are alternative conventions for foreign exchange quotes where the base currency is on top
+- the exchange rate is the price of one unit of the base currency in terms of the price currency
+- A direct quote is from the point of view of an investor in the price currency country
+  - Direct qoute directly help investors calculate the price of a foregin goods in their own currency
+- An indirect quote is from the point of view of an investor in the base currency country
+- the percentage change in one currency relative to another is only in terms of the base currency
+  - It represents the percentage change of buying power of the base currency
+  - `1.25 CAD/USD -> 1.2 CAD/USD` means the US dollar has depreciated `4%` relative to Canadian dollor
+- Nominal exchange rate is discussed in the above, which is the quoted exchange rate at a point in time
+- The real exchange rate takes into account the relative price changes between the two countries from a base period
+  - `Real Exchange Rate = Nominal Exchange Rate * CPI of the base currency / CPI of the price currency`
+- For a pair of relatively less traded currencies, there may not be an active trade in the pair, a third currency which is commonly exchanged between those currencies can be used for a cross rate calculation
+- A spot exchange rate is the currency exchange rate for immediate delivery, which for most currencies means the exchange of currencies takes place two days after the trade
+- A forward exchange rate is a currency exchange rate for an exchange to be done in the future, which can be 30/60/90/180 days or one year
+  - When a firm buys (longs) a currency forward, it's obliged to exchange a specific amount of the base currency for a specific amount of price currency on a future date specified in the contract
+  - A forward exchange rate quote can be expressed as an absolute value
+  - Or it can be a relative value which is the number of pips relative to the spot exchange rate
+    - e.g. `Spot Exchange Rate + 55 pips`, `1 pip or pts = 0.0001` (4th decimal place)
+  - When the forward rate is higher than the spot rate, there is a forward premium. When the forward rate is lower than the spot rate, there is a forward discount
+    - `Forward Premium/Discount = Forward Rate/Spot Rate - 1`
+    - The result can be annualised based on the length of the contract, `90 days formard premium * 4 = Annual Forward Premium`

@@ -742,9 +742,10 @@
 
 ### SSH
 
-- It is used to log in remote servers.
+- It is used to log in remote servers
 - Ex, `ssh -i ~/.ssh/"WordPress Key.pem" ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com`
 - `ssh -L 4444:example.com:80` forward port `4444` on the host machine to the a web page opened from the remote machine in port `80`
+- SSH will lost connection when the remote server run out of memory
 
 #### SSH Configuration
 

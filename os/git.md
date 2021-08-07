@@ -69,7 +69,7 @@
   - `git commit --amend -m 'updated message'` alter latest local commit message, run `git push --force` to modify latest remote branch commit message
   - use `--auther "John Dow <name@email.com>"` to update author info
 - `git diff <branch1> <branch2>` View difference between branches.
-- Signing commit using GPG Keys
+- Signing commit using GPG Keys - When a Git commit is signed, the committers can prove that the code is submitted by them and wasn't altered during transfer
   1. Install the `GPG` command line tools
      - On Mac, run `brew install gnupg`
   2. `gpg --full-generate-key` generate the key
@@ -125,9 +125,12 @@
   - `git remote -v` to see details
 - `git remote add origin <URL|SERVER>` Add the remote repos.
 
-  - For Github repos, the URL is usually like, `https://github.com/AccountName/ReposName.git`
+  - For Github repos, the URL is used for HTTPS connection,
+    - The URL looks like this, `https://github.com/AccountName/ReposName.git`
   - For SSH connection to the GitHub server, it should be in `git@github.com:user/repo.git` format
   - Switch HTTPS and SSH connection, run `git remote -v && git remote remove origin && git remote add origin <URL|SERVER>` or `git remote set-url origin <SERVER>`
+  - Token in GitHub is a temporary password used for HTTPS connection, it can be generated in the console's setting page
+    - On the console, specific privileges of the token can be controlled
   - For ssh connection upload the public key to `github.com` then save private key into `ssh-agent` for login, by running `eval \$(ssh-agent -s) && ssh-add ~/.ssh/id_rsa`
 
     - For mac, add the following to `~/.ssh/config` to save the key to `ssh-agent` automatically, add `UseKeychain yes` if passphrase is used

@@ -363,9 +363,12 @@
   - The color mode used to read an image is optional, it can be one of the following options.
     - `cv2.IMREAD_GRAYSCALE` read as a grayscale image
     - `cv2.IMREAD_COLOR` read as a colorful image
-    - `h, w = image.shape[:2]` will get the height and width of the image
-    - `(B, G, R) = image[x, y]` get the `B`, `R`, `G` color values of one pixel at `(x, y)` on the image.
-    - `roi = image[x : h, y : w]` get a rectangle area which starts at the top-left point `(x, y)` with height `h` and width `w`.
+    - `h, w = img.shape[:2]` will get the height and width of the image
+    - `(B, G, R) = img[x, y]` get the `B`, `R`, `G` color values of one pixel at `(x, y)` on the image.
+    - `roi = img[x : h, y : w]` get a rectangle area which starts at the top-left point `(x, y)` with height `h` and width `w`.
+    - `img[:, :, ::-1]` convert image array from `BRG` to `RGB`
+      - Use thie again to convert it back
+      - optionally, `img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)`
 - `img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)` read image from np array
   - Use `np_arr = np.fromstring(imageByte, np.uint8)` to convert image from `Bytes` to `np_arr`
 - `cv2.imwrite('output.jpg', img)` write a image to local file
@@ -384,6 +387,7 @@
 - Change brightness
   1. `matrix = np.ones(image.shape, dtype = "uint8") * 120` create an array of ones with a brightness factor `120`
   2. `add = cv2.add(image, matrix)` add the brightness to the image.
+     - `cv2.add(image1, image2)` can be used for pixel level addition
   3. `subtract = cv2.subtract(image, matrix)` decrease the brightness.
 - `output = img1 + img2` image can be added to output an overlaped one since they are numpy arrays.
 - `lineType`
@@ -435,10 +439,10 @@
   - `lineType` optional, type of the polygon boundaries.
 - bitwise operation
   - `cv.bitwise_not(input, output, mask)` Inverts every bit of an array.
-    - `invert = cv2.bitwise_not(white,white, mask=mask)` can be used to find the invert of a mask.
-  - `dst=cv.bitwise_and(input1, input2, output, mask)` computes bitwise conjunction of the two arrays. Calculates the per-element bit-wise conjunction of two arrays or an array and a scalar.
-    - `mask` optional, 8-bit single channel array, that specifies elements of the output array to be changed.
-    - It usually works with mask that output a masked image. Only the white area of a mask will be shown after this operation.
+    - `invert = cv2.bitwise_not(white, white, mask=mask)` can be used to find the invert of a mask.
+  - `dst=cv.bitwise_and(input, input, mask)` return a masked input
+    - `mask` is a 8-bit single channel array
+    - Only the non-zero parts of a mask will be shown after this operation.
   - `cv.bitwise_not(input)`
   - `cv.bitwise_xor(input, output, mask)`
 - `cv2.imshow('image',img)`, showing the stored image
