@@ -1,2 +1,5 @@
-- [SQL](sql.md)
-- [GraphQL](graphql.md)
+# Database
+
+* [SQL](sql.md)
+* [GraphQL](graphql.md)
+

@@ -2,134 +2,135 @@
 
 ## Matrices
 
-- A Matrix is a representation of a system of linear equations.
-  - ![$a_1x+b_1y=c_1$](https://render.githubusercontent.com/render/math?math=%24a_1x%2Bb_1y%3Dc_1%24) and ![$a_2x+b_2y=c_2$](https://render.githubusercontent.com/render/math?math=%24a_2x%2Bb_2y%3Dc_2%24) and be represented by a matrix as ![$\begin{bmatrix} a_1 & b_1 \ a_2 & b_2  \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%20a_1%20%26%20b_1%20%5C%5C%20a_2%20%26%20b_2%20%20%5Cend%7Bbmatrix%7D%24). It is a matrix of coefficient.
-- Augmented Matrix includes dependent variables of a system of linear equations in the right most column, ![$\begin{bmatrix} a_1 & b_1 & c_1 \ a_2 & b_2 & c_2  \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%20a_1%20%26%20b_1%20%26%20c_1%20%5C%5C%20a_2%20%26%20b_2%20%26%20c_2%20%20%5Cend%7Bbmatrix%7D%24) or ![$\left[ \begin{array}{cc|r} a_1 & b_1 & c_1\ a_2 & b_2 & c_2 \end{array} \right]$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bcc%7Cr%7D%20a_1%20%26%20b_1%20%26%20c_1%5C%5C%20a_2%20%26%20b_2%20%26%20c_2%20%5Cend%7Barray%7D%20%5Cright%5D%24)
-- The Size of A Matrix can be represented as `2 X 3`
-  - First number represents the number of rows.(number of equations)
-  - Second number represents the number of columns.(number of variables plus dependent variables for augmented matrix)
-- Square Matrix - is a matrix has the same number of rows and columns.
-- The elements or entries of the matrix can be represented as ![$a_{ij}$](https://render.githubusercontent.com/render/math?math=%24a_%7Bij%7D%24) where `i` is its row number and `j` is its column number.
-  - For example, ![$\begin{bmatrix} a_{11} & a_{12} & a_{13} \ a_{21} & a_{22} & a_{23} \ a_{31} & a_{32} & a_{33} \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%20a_%7B11%7D%20%26%20a_%7B12%7D%20%26%20a_%7B13%7D%20%5C%5C%20a_%7B21%7D%20%26%20a_%7B22%7D%20%26%20a_%7B23%7D%20%5C%5C%20a_%7B31%7D%20%26%20a_%7B32%7D%20%26%20a_%7B33%7D%20%5Cend%7Bbmatrix%7D%24)
-- For Matrix `A` and `B`, `A = B` if they have the same dimension and all their elements are the same.
-- When a matrix add a matrix, a Matrix minus a matrix and a matrix multiply or divide by a constant. These operations will take effect on each element of the matrix independently.
-  - For example, `A + B` will get Matrix `C` which all of its element equals the sum of elements of `A` and `B` from the same location.
-  - These three operations of matrix can be combined and calculated at the same time.
-  - Addition and Subtraction only works for two matrix that has the same dimension.
-  - The dimension of matrices will not be changed by these operations.
-- When a matrix multiply by a matrix. If Matrix `A` has shape `M X N`, If Matrix `B` has shape `P X Q`
-  - `N` must equal `P`.
-  - The result will be matrix `C` with shape `M X Q`.
-  - matrix `C` will have element ![$c_{mq}$](https://render.githubusercontent.com/render/math?math=%24c_%7Bmq%7D%24) equals the sum of elements from row `m` of Matrix `A` multiplies elements from column `q` of Matrix B. Ex, ![$c_{mq} = a_{m1}b_{1q}+a_{m2}b_{2q}+ \ldots $](https://render.githubusercontent.com/render/math?math=%24c_%7Bmq%7D%20%3D%20a_%7Bm1%7Db_%7B1q%7D%2Ba_%7Bm2%7Db_%7B2q%7D%2B%20%5Cldots%20%24)
-- Identity Matrix ![$I_n$](https://render.githubusercontent.com/render/math?math=%24I_n%24) is a `n X n` square matrix has 1 aross diagonal and 0 for all other elements.
-  - It acts like 1 for matrices multiplication and has properties like `A X I = I X A = A`.
-  - Its determinant equals to 1.
-- ![$A^{-1}$](https://render.githubusercontent.com/render/math?math=%24A%5E%7B-1%7D%24) is the inverse of matrix `A` if ![$A^{-1}A=AA^{-1}=I$](https://render.githubusercontent.com/render/math?math=%24A%5E%7B-1%7DA%3DAA%5E%7B-1%7D%3DI%24)
-  - Find the inverse of a 2 by 2 matrix
-    - if ![$A = \begin{bmatrix} a & b \ c & d \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20%5Cbegin%7Bbmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bbmatrix%7D%24) then ![$A^{-1} = \frac{1}{D} \begin{bmatrix} d & -b \ -c & a \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24A%5E%7B-1%7D%20%3D%20%5Cfrac%7B1%7D%7BD%7D%20%5Cbegin%7Bbmatrix%7D%20d%20%26%20-b%20%5C%5C%20-c%20%26%20a%20%5Cend%7Bbmatrix%7D%24) where `D` is the determinant of `A` ![$D = ad-bc$](https://render.githubusercontent.com/render/math?math=%24D%20%3D%20ad-bc%24)
-    - A matrix is non-invertible when its determinant is 0. If a matrix is invertiable its determinant will not equal to 0.
-  - Find the inverse of any matrices by using Gaussian Elimination
-    - If ![$A=\begin{bmatrix} a & b \ c & d \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24A%3D%5Cbegin%7Bbmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bbmatrix%7D%24)
-    - Convert the matrix A on the left side to Identity matrix then the inverse matrix will be the matrix on the right side. ![$\left[ \begin{array}{cc|rr} a & b & 1 & 0 \ c & d & 0 & 1 \end{array} \right] \Rightarrow [I : | ; A^{-1}]$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bcc%7Crr%7D%20a%20%26%20b%20%26%201%20%26%200%20%5C%5C%20c%20%26%20d%20%26%200%20%26%201%20%5Cend%7Barray%7D%20%5Cright%5D%20%5CRightarrow%20%5BI%20%5C%3A%20%7C%20%5C%3B%20A%5E%7B-1%7D%5D%24)
-    - Same steps used by Gaussian Elimination for Reduced Echelon form, the difference is the right side has more than one column.
-  - Find the inverse using the adjugate matrix.
-    - The inverse of a matrix `A` equals to the adjugate matrix of `A` divided by the determinant of `A`.
-- The Transpose of a Matrix is a matrix reflected by the diagonal from top-left to bottom-right.
-  - The transpose of matrix `A` can be denoted as ![$A^T$](https://render.githubusercontent.com/render/math?math=%24A%5ET%24).
-- Matrix `A` divide by `B` equals to `A` times the inverse of `B`.
-  - A system of linear equations can be represent by `AX = B` where `A` is a matrix of coefficient, `X` is a `n` by 1 matrix n variables, `C` equals a `n` by 1 matrix of the values of the dependent variables. Then `X` can be solved by using `B` times the inverse of `A`.
-  - This method can be an alternative for Gaussian Elimination for solving systems of linear equations.
-- The conjugate of Matrix `A` is the matrix has all the element of A as their conjugate. It is denoted as ![$ \overline{A}$](https://render.githubusercontent.com/render/math?math=%24+%5Coverline%7BA%7D%24)
-- The determinant of a square matrix is a single value calculated from all elements of the matrix.
-  - The determinant of a matrix `A` can be represented as `|A|` or `det(A)`
-  - There is a difference that a matrix is surrounded by `[]` and a determinant is surrounded by `||`
-  - For a `2 X 2` matrix ![$A = \begin{bmatrix} a & b \ c & d \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20%5Cbegin%7Bbmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bbmatrix%7D%24), the determinant equals to `ad - bc`.
-  - For a `3 X 3` matrix to get the determinant, expand two more new column to the right, copy first column as the fourth column, copy the second column as the fifth column. and draw all the possible diagonal lines in two direction. Multiple all elements on one diagonal lines, add the sum of diagonal elements that goes from top-left to bottom right, substract the sum of diagonal elements that goes from top-right to bottom left.
-    - Same idea for matrices with larger sizes.
-  - Pick any row or column that is on the outter boundary of the matrix. For each one of the element ![$a_{ij}$](https://render.githubusercontent.com/render/math?math=%24a_%7Bij%7D%24) in the selected row or column, multiply it by the determinant of a smaller matrix(Minor of the matrix as ![$M_{ij}$](https://render.githubusercontent.com/render/math?math=%24M_%7Bij%7D%24)) with elements excluded from all elements on row `i` and column `j`, then determine the sign of the result by calculating `-1` to the power of `i + j`. This result for ![$a_{ij}$](https://render.githubusercontent.com/render/math?math=%24a_%7Bij%7D%24) is called the cofactor of the matrix as ![$C_{ij}$](https://render.githubusercontent.com/render/math?math=%24C_%7Bij%7D%24). The sum of all the cofactor in one selected row or column will be the determinant for the matrix.
-    - pick the row or column on the boundary that has the most zeros can speed up the calculation
-    - For a matrix larger than `4 X 4`, the determinant of four `3 X 3` matrices are needed, so a second minor are needed so a determinant of a `2 X 2` matrix can be calculated, then the determinant of the `3 X 3` can be determined, so this method need to be used recursively for matrix larger than `4 X 4`.
-  - Transforming matrices to the Echelon Form(diagonal elements don't need to be 1, just make the lower left part all zeros)
-    - When a matrix is transformed to its Echelon Form the determinant of the matrix equals to the product of the elements on its diagonal line from top-left to bottom-right, if only row addition is used. For example, Substract the second row from the first row twice.
-    - If the rows are interchanged once, the determinant equals to the product times `-1`.
-    - If one row is divided by a constant, the determinant equals to the product times the constant.
-      - It happens when a row is scaled up or down by a factor for further transformation, if the row return to its original size, no need to times the factor in the end.
-  - Rules of determinant
-    - ![rule1](https://render.githubusercontent.com/render/math?math=%24%7CcA%7C%3Dc%5En%7CA%7C%24) for any `n X n` matrices where `c` is a constant.
-    - ![$|-A|=(-1)^n|A|$](https://render.githubusercontent.com/render/math?math=%24%7C-A%7C%3D%28-1%29%5En%7CA%7C%24) for any `n X n` matrices.
-    - `|AB| = |BA| = |A||B|`
-    - ![$|I|=|AA^{-1}|=|A| ; |A^{-1}|=1$](https://render.githubusercontent.com/render/math?math=%24%7CI%7C%3D%7CAA%5E%7B-1%7D%7C%3D%7CA%7C+%5C%3B+%7CA%5E%7B-1%7D%7C%3D1%24)
-    - ![$|A|= \frac{1}{|A^{-1}|}$](https://render.githubusercontent.com/render/math?math=%24%7CA%7C%3D+%5Cfrac%7B1%7D%7B%7CA%5E%7B-1%7D%7C%7D%24)
-    - ![$|BAB^{-1}|=|B| ; |A| ; |B^{-1}|=|B| ; |A| ; \frac{1}{|B|}=|A|$](https://render.githubusercontent.com/render/math?math=%24%7CBAB%5E%7B-1%7D%7C%3D%7CB%7C+%5C%3B+%7CA%7C+%5C%3B+%7CB%5E%7B-1%7D%7C%3D%7CB%7C+%5C%3B+%7CA%7C+%5C%3B+%5Cfrac%7B1%7D%7B%7CB%7C%7D%3D%7CA%7C%24)
-    - ![$|A|=|A^T|$](https://render.githubusercontent.com/render/math?math=%24%7CA%7C%3D%7CA%5ET%7C%24)
-    - ![$|\overline{A}|= \overline{|A|}$](https://render.githubusercontent.com/render/math?math=%24%7C%5Coverline%7BA%7D%7C%3D+%5Coverline%7B%7CA%7C%7D%24) Left side is the determinant of the conjucate of `A`, right side is the conjugate of the determinant of A.
-    - More any matrics if it has at least two identical rows, its determinant equals zero.
-    - If a matrix has a row of all zeros, its determinant equals zero.
-    - If a matrix has a column that can be obtained from tranforming other columns using addition or multiply by a constant, its determinant is zero.
-    - The determinant of matrix is zero when it is a result of a `n X 1` matrix times a `1 X n` matrix.
-    - The determinant of a `1 X 1` matrix equals to the that single element.
-  - The cofactor matrix of a matrix `A` is a matrix has all the cofactor of `A` as its element in the corresponding row and column. For example the element in row `i`, column `j` in the cofactor matrix equals the cofactor at row `i`, column `j` of matrix `A`.
-    - The cofactor matrix for a `2 X 2` matrix is just four reordered element with changed signs.
-  - The adjugate matrix of `A`, is the transpose of the cofactor matrix of `A`.
-- Gaussian Elimination
-  - Row Echelon Form - It has 1 across diagonal from top-left to bottom-right, all entries below 1 is 0.
-    - In an augmented matrix, independent variables can be solved by subsitution.
-  - Reduced Echelon form - has 1 across diagonal from top-left to bottom-right, all other entries are 0.(identity matrix)
-    - In an augmented matrix, independent variables is solved and equals to corresponding entries in the right most column.
-  - Method of Gaussian Elimination - Solve a system of linear equations by finding the Row Echelon Form or Reduced Echelon Form of an augmented matrix.
-    - Steps for finding the Row Echelon Form
-      - Divide the entire row by the first element to make the first element on first row 1.
-      - Multiply first row accordingly and substitute it to the rest rows one by one to make the first elements of all other row equal to 0.
-      - repeat the step for the second element until the matrix is in the Row Echelon Form
-    - Steps for finding the Reduced Echelon Form
-      - find the Row Echelon Form first.
-      - multiply and subsitute the last row into the second last row to make the last element of all other rows 0.
-      - Repeat the process to make the second last element 0 for all upper rows starting from the third last row until the matrix become Reduced Echelon Form.
-    - Tips
-      - When there is a row with first element equals to 1, swap it as the first row so the first step can be skipped.
-    - Cases when a unique set of solution cannot be found
-      - ![$\left[ \begin{array}{ccc|r} 1 & 2 & 2 & 3 \ 0 & 1 & 1 & 2 \ 0 & 0 & 0 & 2 \end{array} \right]$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bccc%7Cr%7D%201%20%26%202%20%26%202%20%26%203%20%5C%5C%200%20%26%201%20%26%201%20%26%202%20%5C%5C%200%20%26%200%20%26%200%20%26%202%20%5Cend%7Barray%7D%20%5Cright%5D%24) this system of linear equations has no solution, because ![$0x+0y+0z \neq 2$](https://render.githubusercontent.com/render/math?math=%240x%2B0y%2B0z%20%5Cneq%202%24)
-      - In Echelon Form if one row are all 0s, the equation has inifite solutions.
-      - The determinant of the matrix is zero.
-- Cramer's Rule
-  - It can be another alternative for solving a system of linear equation.
-  - For a system of linear equations, `D` is the determinant of the matrix of coefficient. ![$D_x$](https://render.githubusercontent.com/render/math?math=%24D_x%24) is the determinant of the matrix of coefficient which the column for coefficient of `x` is replaced by the dependent variable matrix(right side of the augemented matrix). ![$D_y$](https://render.githubusercontent.com/render/math?math=%24D_x%24) is the determinant of the matrix of coefficient which the column for coefficient of `y` is replaced by the dependent variable matrix, and so on. Then ![$x= \frac{D_x}{D}, y= \frac{D_y}{D}, \ldots$](https://render.githubusercontent.com/render/math?math=%24x%3D%20%5Cfrac%7BD_x%7D%7BD%7D%2C%20y%3D%20%5Cfrac%7BD_y%7D%7BD%7D%2C%20%5Cldots%24)
-- Vectors
-  - A vector with `N` demensions can be represented by a `N X 1` matrix with its values along each axis written from top row to the bottom row.
-  - Two vectors can be represented by a matrix `A` which has the first vector on the first row and second vector on the second row, Each colomn represents a demension from left to right as values for `x`, `y`,... axis.
-    - The area between these two vector equals to the determinant of matrix `A`.
-- Method Of Least Square
-  - It is used to find the best fitting lines from data points.
-  - If the best fitting lines has slope `m` and constant `b`.
-  - The following system of linear equation can be established
-    - The number of points times `b` plus the sum of `x` of all points times `m`, equals to the sum of `y` of all points.
-    - The sum of `x` of all points times `b` plus the sum of `x` square of all point times `m`, equals to the sum of `x*y` of all points.
-  - The system of linear equation can be written in an augmented matrixed as:
-    - ![$\left[ \begin{array}{cc|r} \ n & \sum{x} & \sum{y} \ \sum{x} & \sum{x^2} & \sum{xy} \end{array} \right]$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B+%5Cbegin%7Barray%7D%7Bcc%7Cr%7D+%5C+n+%26+%5Csum%7Bx%7D+%26+%5Csum%7By%7D+%5C%5C+%5Csum%7Bx%7D+%26+%5Csum%7Bx%5E2%7D+%26+%5Csum%7Bxy%7D+%5Cend%7Barray%7D+%5Cright%5D%24)
-  - Solve the unknown will get the `m` and `b` for the best fitting line.
-- The trace of a matrix is the sum of all of its diagonal elements from top-left to bottom-right. The trace of matrix `A` is denoted as ![$T_r A$](https://render.githubusercontent.com/render/math?math=%24T_r+A%24).
-- The eigenvalue of a `N X N` matrix `A` is a constant `λ`, such that the determinant of `A-λI` equals to 0 where I is the identity matrix of `A`.
-  - The relationship can be expressed as `|A - λI|= 0` or ![$\left | \begin{matrix} a_11 - \lambda & a_12 \ a_21 & a_22 - \lambda \end{matrix} \right | = 0$](https://render.githubusercontent.com/render/math?math=%24%5Cleft+%7C+%5Cbegin%7Bmatrix%7D+a_11+-+%5Clambda+%26+a_12+%5C%5C+a_21+%26+a_22+-+%5Clambda+%5Cend%7Bmatrix%7D+%5Cright+%7C+%3D+0%24) for a 2 by 2 matrix.
-  - For a `2 X 2` matrix there are two possible eigenvalue associated to it, and the general solution is ![$\lambda = \frac{(T_r A)\pm \sqrt{(T_r A)^2 - 4|A|}}{2}$](https://render.githubusercontent.com/render/math?math=%24%5Clambda+%3D+%5Cfrac%7B%28T_r+A%29%5Cpm+%5Csqrt%7B%28T_r+A%29%5E2+-+4%7CA%7C%7D%7D%7B2%7D%24)
-  - For a `3 X 3` matrix there are three potential eigenvalue associated to it.
-- Eigenvector ![$\overrightarrow{v}$](https://render.githubusercontent.com/render/math?math=%24%5Coverrightarrow%7Bv%7D%24) or ![$\begin{bmatrix} x_1 \ x_2 \ . \ . \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D+x_1+%5C%5C+x_2+%5C%5C+.+%5C%5C+.+%5Cend%7Bbmatrix%7D%24) of a matrix `A` for one of the eigenvalue `λ` of `A` is a vector which times matrix `(A - λI)` equals zero vector ![$\overrightarrow{0}$](https://render.githubusercontent.com/render/math?math=%24%5Coverrightarrow%7B0%7D%24) or ![$\begin{bmatrix} 0 \ 0 \ . \ . \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D+0+%5C%5C+0+%5C%5C+.+%5C%5C+.+%5Cend%7Bbmatrix%7D%24)
-  - The eigenvector can also be expressed as ![$A \overrightarrow{v} = \lambda \overrightarrow{v}$](https://render.githubusercontent.com/render/math?math=%24A+%5Coverrightarrow%7Bv%7D+%3D+%5Clambda+%5Coverrightarrow%7Bv%7D%24).
-    - This expression provides another method of solving eigenvector given a eigenvalue of the matrix.
-  - Solving the eigenvector is to find the relationship between ![$x_1$](https://render.githubusercontent.com/render/math?math=%24x_1%24), ![$x_2$](https://render.githubusercontent.com/render/math?math=%24x_2%24), etc. then represent the relationship by using the smallest integers possible.
-  - Sometimes multiple vectors are used to represent the relationship(make differenct variable to zero in the derived equation), and each vector need to be linear independent.
-    - Linear independent means one vector cannot be obtained by other vectors when it multiply by a constant and add to another vector.
-  - The smallest sets of integers found to represent the eigenvectors are called the basis of the corresponding matrix and associated eigenvalue when all of them are put in a vector set `S`.
-  - The basis of all the eigenvectors of the matrix `A` will span the vectorspace.
-    - Spaning the vector space happens when each column of the matrix `A` can be obtained by getting the sum of all the basis multiply a different constant. Ex, `aS1 + bS2`
-  - The basis with a zero vector is also known as the eigenspace of a matrix and its associated eigenvalue.
-  - The matrix multiply by one of its eigenvector will return the eigenvector itself or the eigenvector multiply by a constant.
-  - The approximation(power) method can be used to find the eigenvector by multiplying the original matrix by an arbitray small vector, then multiply the original matrix by the result from the previous multiplication. Repeat the process until the relationship of the values of resulting vector can be identified. Then it should be one of the eigenvector of the matrix.
-    - Can be verified by multiply the original matrix by the possiable eigenvector, the result should be still the eigenvector times a constant(eigenvalue).
-    - The eigenvector found by using this method is the dominant eigenvector.
-    - The scaling technique will add the scale-down version all of the product in each step to the side for comparision purpose. For example, make one of the value of the vector always one. It makes it easier to see what number the element of the vector is converging to.
-- Diagonalized matrix of matrix `A` has all the eigenvalues of `A` along its diagonal lines from top-left to bottom-right.
-  - The diagonalized matrix `D` has the following relationship with the P matrix ![$D = P^{-1}AP$](https://render.githubusercontent.com/render/math?math=%24D+%3D+P%5E%7B-1%7DAP%24) where `P` contains eigenvectors as ![$P = [v_1, v_2]$](https://render.githubusercontent.com/render/math?math=%24P+%3D+%5Bv_1%2C+v_2%5D%24).
-    - For example, if ![$ v_1 = \begin{bmatrix} a_1 \ a_2 \end{bmatrix} $](https://render.githubusercontent.com/render/math?math=%24+v_1+%3D+%5Cbegin%7Bbmatrix%7D+a_1+%5C%5C+a_2+%5Cend%7Bbmatrix%7D+%24) and ![$ v_2 = \begin{bmatrix} b_1 \ b_2 \end{bmatrix} $](https://render.githubusercontent.com/render/math?math=%24+v_2+%3D+%5Cbegin%7Bbmatrix%7D+b_1+%5C%5C+b_2+%5Cend%7Bbmatrix%7D+%24), then ![$ P = \begin{bmatrix} a_1 & b_1 \ a_1 & b_2 \end{bmatrix} $](https://render.githubusercontent.com/render/math?math=%24+P+%3D+%5Cbegin%7Bbmatrix%7D+a_1+%26+b_1+%5C%5C+a_1+%26+b_2+%5Cend%7Bbmatrix%7D+%24)
-    - The order of the eigenvalues along the diagonal doesnot matter, as long as it corresponds to the eigenvectors in the `P` matrix.
-  - Any matrix to the power of `n` can be found as ![$A^n=PD^nP^{-1}$](https://render.githubusercontent.com/render/math?math=%24A%5En%3DPD%5EnP%5E%7B-1%7D%24).
-    - ![$D^n$](https://render.githubusercontent.com/render/math?math=%24D%5En%24) can be found easily by only calculate the power of its elements on the diagonal.
+* A Matrix is a representation of a system of linear equations.
+  * ![$a\_1x+b\_1y=c\_1$](https://render.githubusercontent.com/render/math?math=%24a_1x%2Bb_1y%3Dc_1%24) and ![$a\_2x+b\_2y=c\_2$](https://render.githubusercontent.com/render/math?math=%24a_2x%2Bb_2y%3Dc_2%24) and be represented by a matrix as ![$\begin{bmatrix} a\_1 &amp; b\_1  a\_2 &amp; b\_2  \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%20a_1%20%26%20b_1%20%5C%5C%20a_2%20%26%20b_2%20%20%5Cend%7Bbmatrix%7D%24). It is a matrix of coefficient.
+* Augmented Matrix includes dependent variables of a system of linear equations in the right most column, ![$\begin{bmatrix} a\_1 &amp; b\_1 &amp; c\_1  a\_2 &amp; b\_2 &amp; c\_2  \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%20a_1%20%26%20b_1%20%26%20c_1%20%5C%5C%20a_2%20%26%20b_2%20%26%20c_2%20%20%5Cend%7Bbmatrix%7D%24) or ![$\left\[ \begin{array}{cc\|r} a\_1 &amp; b\_1 &amp; c\_1 a\_2 &amp; b\_2 &amp; c\_2 \end{array} \right\]$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bcc%7Cr%7D%20a_1%20%26%20b_1%20%26%20c_1%5C%5C%20a_2%20%26%20b_2%20%26%20c_2%20%5Cend%7Barray%7D%20%5Cright%5D%24)
+* The Size of A Matrix can be represented as `2 X 3`
+  * First number represents the number of rows.\(number of equations\)
+  * Second number represents the number of columns.\(number of variables plus dependent variables for augmented matrix\)
+* Square Matrix - is a matrix has the same number of rows and columns.
+* The elements or entries of the matrix can be represented as ![$a\_{ij}$](https://render.githubusercontent.com/render/math?math=%24a_%7Bij%7D%24) where `i` is its row number and `j` is its column number.
+  * For example, ![$\begin{bmatrix} a\_{11} &amp; a\_{12} &amp; a\_{13}  a\_{21} &amp; a\_{22} &amp; a\_{23}  a\_{31} &amp; a\_{32} &amp; a\_{33} \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%20a_%7B11%7D%20%26%20a_%7B12%7D%20%26%20a_%7B13%7D%20%5C%5C%20a_%7B21%7D%20%26%20a_%7B22%7D%20%26%20a_%7B23%7D%20%5C%5C%20a_%7B31%7D%20%26%20a_%7B32%7D%20%26%20a_%7B33%7D%20%5Cend%7Bbmatrix%7D%24)
+* For Matrix `A` and `B`, `A = B` if they have the same dimension and all their elements are the same.
+* When a matrix add a matrix, a Matrix minus a matrix and a matrix multiply or divide by a constant. These operations will take effect on each element of the matrix independently.
+  * For example, `A + B` will get Matrix `C` which all of its element equals the sum of elements of `A` and `B` from the same location.
+  * These three operations of matrix can be combined and calculated at the same time.
+  * Addition and Subtraction only works for two matrix that has the same dimension.
+  * The dimension of matrices will not be changed by these operations.
+* When a matrix multiply by a matrix. If Matrix `A` has shape `M X N`, If Matrix `B` has shape `P X Q`
+  * `N` must equal `P`.
+  * The result will be matrix `C` with shape `M X Q`.
+  * matrix `C` will have element ![$c\_{mq}$](https://render.githubusercontent.com/render/math?math=%24c_%7Bmq%7D%24) equals the sum of elements from row `m` of Matrix `A` multiplies elements from column `q` of Matrix B. Ex, ![$c\_{mq} = a\_{m1}b\_{1q}+a\_{m2}b\_{2q}+ \ldots $](https://render.githubusercontent.com/render/math?math=%24c_%7Bmq%7D%20%3D%20a_%7Bm1%7Db_%7B1q%7D%2Ba_%7Bm2%7Db_%7B2q%7D%2B%20%5Cldots%20%24)
+* Identity Matrix ![$I\_n$](https://render.githubusercontent.com/render/math?math=%24I_n%24) is a `n X n` square matrix has 1 aross diagonal and 0 for all other elements.
+  * It acts like 1 for matrices multiplication and has properties like `A X I = I X A = A`.
+  * Its determinant equals to 1.
+* ![$A^{-1}$](https://render.githubusercontent.com/render/math?math=%24A%5E%7B-1%7D%24) is the inverse of matrix `A` if ![$A^{-1}A=AA^{-1}=I$](https://render.githubusercontent.com/render/math?math=%24A%5E%7B-1%7DA%3DAA%5E%7B-1%7D%3DI%24)
+  * Find the inverse of a 2 by 2 matrix
+    * if ![$A = \begin{bmatrix} a &amp; b  c &amp; d \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20%5Cbegin%7Bbmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bbmatrix%7D%24) then ![$A^{-1} = \frac{1}{D} \begin{bmatrix} d &amp; -b  -c &amp; a \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24A%5E%7B-1%7D%20%3D%20%5Cfrac%7B1%7D%7BD%7D%20%5Cbegin%7Bbmatrix%7D%20d%20%26%20-b%20%5C%5C%20-c%20%26%20a%20%5Cend%7Bbmatrix%7D%24) where `D` is the determinant of `A` ![$D = ad-bc$](https://render.githubusercontent.com/render/math?math=%24D%20%3D%20ad-bc%24)
+    * A matrix is non-invertible when its determinant is 0. If a matrix is invertiable its determinant will not equal to 0.
+  * Find the inverse of any matrices by using Gaussian Elimination
+    * If ![$A=\begin{bmatrix} a &amp; b  c &amp; d \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24A%3D%5Cbegin%7Bbmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bbmatrix%7D%24)
+    * Convert the matrix A on the left side to Identity matrix then the inverse matrix will be the matrix on the right side. ![$\left\[ \begin{array}{cc\|rr} a &amp; b &amp; 1 &amp; 0  c &amp; d &amp; 0 &amp; 1 \end{array} \right\] \Rightarrow \[I : \| ; A^{-1}\]$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bcc%7Crr%7D%20a%20%26%20b%20%26%201%20%26%200%20%5C%5C%20c%20%26%20d%20%26%200%20%26%201%20%5Cend%7Barray%7D%20%5Cright%5D%20%5CRightarrow%20%5BI%20%5C%3A%20%7C%20%5C%3B%20A%5E%7B-1%7D%5D%24)
+    * Same steps used by Gaussian Elimination for Reduced Echelon form, the difference is the right side has more than one column.
+  * Find the inverse using the adjugate matrix.
+    * The inverse of a matrix `A` equals to the adjugate matrix of `A` divided by the determinant of `A`.
+* The Transpose of a Matrix is a matrix reflected by the diagonal from top-left to bottom-right.
+  * The transpose of matrix `A` can be denoted as ![$A^T$](https://render.githubusercontent.com/render/math?math=%24A%5ET%24).
+* Matrix `A` divide by `B` equals to `A` times the inverse of `B`.
+  * A system of linear equations can be represent by `AX = B` where `A` is a matrix of coefficient, `X` is a `n` by 1 matrix n variables, `C` equals a `n` by 1 matrix of the values of the dependent variables. Then `X` can be solved by using `B` times the inverse of `A`.
+  * This method can be an alternative for Gaussian Elimination for solving systems of linear equations.
+* The conjugate of Matrix `A` is the matrix has all the element of A as their conjugate. It is denoted as ![$ \overline{A}$](https://render.githubusercontent.com/render/math?math=%24+%5Coverline%7BA%7D%24)
+* The determinant of a square matrix is a single value calculated from all elements of the matrix.
+  * The determinant of a matrix `A` can be represented as `|A|` or `det(A)`
+  * There is a difference that a matrix is surrounded by `[]` and a determinant is surrounded by `||`
+  * For a `2 X 2` matrix ![$A = \begin{bmatrix} a &amp; b  c &amp; d \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24A%20%3D%20%5Cbegin%7Bbmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bbmatrix%7D%24), the determinant equals to `ad - bc`.
+  * For a `3 X 3` matrix to get the determinant, expand two more new column to the right, copy first column as the fourth column, copy the second column as the fifth column. and draw all the possible diagonal lines in two direction. Multiple all elements on one diagonal lines, add the sum of diagonal elements that goes from top-left to bottom right, substract the sum of diagonal elements that goes from top-right to bottom left.
+    * Same idea for matrices with larger sizes.
+  * Pick any row or column that is on the outter boundary of the matrix. For each one of the element ![$a\_{ij}$](https://render.githubusercontent.com/render/math?math=%24a_%7Bij%7D%24) in the selected row or column, multiply it by the determinant of a smaller matrix\(Minor of the matrix as ![$M\_{ij}$](https://render.githubusercontent.com/render/math?math=%24M_%7Bij%7D%24)\) with elements excluded from all elements on row `i` and column `j`, then determine the sign of the result by calculating `-1` to the power of `i + j`. This result for ![$a\_{ij}$](https://render.githubusercontent.com/render/math?math=%24a_%7Bij%7D%24) is called the cofactor of the matrix as ![$C\_{ij}$](https://render.githubusercontent.com/render/math?math=%24C_%7Bij%7D%24). The sum of all the cofactor in one selected row or column will be the determinant for the matrix.
+    * pick the row or column on the boundary that has the most zeros can speed up the calculation
+    * For a matrix larger than `4 X 4`, the determinant of four `3 X 3` matrices are needed, so a second minor are needed so a determinant of a `2 X 2` matrix can be calculated, then the determinant of the `3 X 3` can be determined, so this method need to be used recursively for matrix larger than `4 X 4`.
+  * Transforming matrices to the Echelon Form\(diagonal elements don't need to be 1, just make the lower left part all zeros\)
+    * When a matrix is transformed to its Echelon Form the determinant of the matrix equals to the product of the elements on its diagonal line from top-left to bottom-right, if only row addition is used. For example, Substract the second row from the first row twice.
+    * If the rows are interchanged once, the determinant equals to the product times `-1`.
+    * If one row is divided by a constant, the determinant equals to the product times the constant.
+      * It happens when a row is scaled up or down by a factor for further transformation, if the row return to its original size, no need to times the factor in the end.
+  * Rules of determinant
+    * ![rule1](https://render.githubusercontent.com/render/math?math=%24%7CcA%7C%3Dc%5En%7CA%7C%24) for any `n X n` matrices where `c` is a constant.
+    * ![$\|-A\|=\(-1\)^n\|A\|$](https://render.githubusercontent.com/render/math?math=%24%7C-A%7C%3D%28-1%29%5En%7CA%7C%24) for any `n X n` matrices.
+    * `|AB| = |BA| = |A||B|`
+    * ![$\|I\|=\|AA^{-1}\|=\|A\| ; \|A^{-1}\|=1$](https://render.githubusercontent.com/render/math?math=%24%7CI%7C%3D%7CAA%5E%7B-1%7D%7C%3D%7CA%7C+%5C%3B+%7CA%5E%7B-1%7D%7C%3D1%24)
+    * ![$\|A\|= \frac{1}{\|A^{-1}\|}$](https://render.githubusercontent.com/render/math?math=%24%7CA%7C%3D+%5Cfrac%7B1%7D%7B%7CA%5E%7B-1%7D%7C%7D%24)
+    * ![$\|BAB^{-1}\|=\|B\| ; \|A\| ; \|B^{-1}\|=\|B\| ; \|A\| ; \frac{1}{\|B\|}=\|A\|$](https://render.githubusercontent.com/render/math?math=%24%7CBAB%5E%7B-1%7D%7C%3D%7CB%7C+%5C%3B+%7CA%7C+%5C%3B+%7CB%5E%7B-1%7D%7C%3D%7CB%7C+%5C%3B+%7CA%7C+%5C%3B+%5Cfrac%7B1%7D%7B%7CB%7C%7D%3D%7CA%7C%24)
+    * ![$\|A\|=\|A^T\|$](https://render.githubusercontent.com/render/math?math=%24%7CA%7C%3D%7CA%5ET%7C%24)
+    * ![$\|\overline{A}\|= \overline{\|A\|}$](https://render.githubusercontent.com/render/math?math=%24%7C%5Coverline%7BA%7D%7C%3D+%5Coverline%7B%7CA%7C%7D%24) Left side is the determinant of the conjucate of `A`, right side is the conjugate of the determinant of A.
+    * More any matrics if it has at least two identical rows, its determinant equals zero.
+    * If a matrix has a row of all zeros, its determinant equals zero.
+    * If a matrix has a column that can be obtained from tranforming other columns using addition or multiply by a constant, its determinant is zero.
+    * The determinant of matrix is zero when it is a result of a `n X 1` matrix times a `1 X n` matrix.
+    * The determinant of a `1 X 1` matrix equals to the that single element.
+  * The cofactor matrix of a matrix `A` is a matrix has all the cofactor of `A` as its element in the corresponding row and column. For example the element in row `i`, column `j` in the cofactor matrix equals the cofactor at row `i`, column `j` of matrix `A`.
+    * The cofactor matrix for a `2 X 2` matrix is just four reordered element with changed signs.
+  * The adjugate matrix of `A`, is the transpose of the cofactor matrix of `A`.
+* Gaussian Elimination
+  * Row Echelon Form - It has 1 across diagonal from top-left to bottom-right, all entries below 1 is 0.
+    * In an augmented matrix, independent variables can be solved by subsitution.
+  * Reduced Echelon form - has 1 across diagonal from top-left to bottom-right, all other entries are 0.\(identity matrix\)
+    * In an augmented matrix, independent variables is solved and equals to corresponding entries in the right most column.
+  * Method of Gaussian Elimination - Solve a system of linear equations by finding the Row Echelon Form or Reduced Echelon Form of an augmented matrix.
+    * Steps for finding the Row Echelon Form
+      * Divide the entire row by the first element to make the first element on first row 1.
+      * Multiply first row accordingly and substitute it to the rest rows one by one to make the first elements of all other row equal to 0.
+      * repeat the step for the second element until the matrix is in the Row Echelon Form
+    * Steps for finding the Reduced Echelon Form
+      * find the Row Echelon Form first.
+      * multiply and subsitute the last row into the second last row to make the last element of all other rows 0.
+      * Repeat the process to make the second last element 0 for all upper rows starting from the third last row until the matrix become Reduced Echelon Form.
+    * Tips
+      * When there is a row with first element equals to 1, swap it as the first row so the first step can be skipped.
+    * Cases when a unique set of solution cannot be found
+      * ![$\left\[ \begin{array}{ccc\|r} 1 &amp; 2 &amp; 2 &amp; 3  0 &amp; 1 &amp; 1 &amp; 2  0 &amp; 0 &amp; 0 &amp; 2 \end{array} \right\]$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bccc%7Cr%7D%201%20%26%202%20%26%202%20%26%203%20%5C%5C%200%20%26%201%20%26%201%20%26%202%20%5C%5C%200%20%26%200%20%26%200%20%26%202%20%5Cend%7Barray%7D%20%5Cright%5D%24) this system of linear equations has no solution, because ![$0x+0y+0z \neq 2$](https://render.githubusercontent.com/render/math?math=%240x%2B0y%2B0z%20%5Cneq%202%24)
+      * In Echelon Form if one row are all 0s, the equation has inifite solutions.
+      * The determinant of the matrix is zero.
+* Cramer's Rule
+  * It can be another alternative for solving a system of linear equation.
+  * For a system of linear equations, `D` is the determinant of the matrix of coefficient. ![$D\_x$](https://render.githubusercontent.com/render/math?math=%24D_x%24) is the determinant of the matrix of coefficient which the column for coefficient of `x` is replaced by the dependent variable matrix\(right side of the augemented matrix\). ![$D\_y$](https://render.githubusercontent.com/render/math?math=%24D_x%24) is the determinant of the matrix of coefficient which the column for coefficient of `y` is replaced by the dependent variable matrix, and so on. Then ![$x= \frac{D\_x}{D}, y= \frac{D\_y}{D}, \ldots$](https://render.githubusercontent.com/render/math?math=%24x%3D%20%5Cfrac%7BD_x%7D%7BD%7D%2C%20y%3D%20%5Cfrac%7BD_y%7D%7BD%7D%2C%20%5Cldots%24)
+* Vectors
+  * A vector with `N` demensions can be represented by a `N X 1` matrix with its values along each axis written from top row to the bottom row.
+  * Two vectors can be represented by a matrix `A` which has the first vector on the first row and second vector on the second row, Each colomn represents a demension from left to right as values for `x`, `y`,... axis.
+    * The area between these two vector equals to the determinant of matrix `A`.
+* Method Of Least Square
+  * It is used to find the best fitting lines from data points.
+  * If the best fitting lines has slope `m` and constant `b`.
+  * The following system of linear equation can be established
+    * The number of points times `b` plus the sum of `x` of all points times `m`, equals to the sum of `y` of all points.
+    * The sum of `x` of all points times `b` plus the sum of `x` square of all point times `m`, equals to the sum of `x*y` of all points.
+  * The system of linear equation can be written in an augmented matrixed as:
+    * ![$\left\[ \begin{array}{cc\|r}  n &amp; \sum{x} &amp; \sum{y}  \sum{x} &amp; \sum{x^2} &amp; \sum{xy} \end{array} \right\]$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B+%5Cbegin%7Barray%7D%7Bcc%7Cr%7D+%5C+n+%26+%5Csum%7Bx%7D+%26+%5Csum%7By%7D+%5C%5C+%5Csum%7Bx%7D+%26+%5Csum%7Bx%5E2%7D+%26+%5Csum%7Bxy%7D+%5Cend%7Barray%7D+%5Cright%5D%24)
+  * Solve the unknown will get the `m` and `b` for the best fitting line.
+* The trace of a matrix is the sum of all of its diagonal elements from top-left to bottom-right. The trace of matrix `A` is denoted as ![$T\_r A$](https://render.githubusercontent.com/render/math?math=%24T_r+A%24).
+* The eigenvalue of a `N X N` matrix `A` is a constant `λ`, such that the determinant of `A-λI` equals to 0 where I is the identity matrix of `A`.
+  * The relationship can be expressed as `|A - λI|= 0` or ![$\left \| \begin{matrix} a\_11 - \lambda &amp; a\_12  a\_21 &amp; a\_22 - \lambda \end{matrix} \right \| = 0$](https://render.githubusercontent.com/render/math?math=%24%5Cleft+%7C+%5Cbegin%7Bmatrix%7D+a_11+-+%5Clambda+%26+a_12+%5C%5C+a_21+%26+a_22+-+%5Clambda+%5Cend%7Bmatrix%7D+%5Cright+%7C+%3D+0%24) for a 2 by 2 matrix.
+  * For a `2 X 2` matrix there are two possible eigenvalue associated to it, and the general solution is ![$\lambda = \frac{\(T\_r A\)\pm \sqrt{\(T\_r A\)^2 - 4\|A\|}}{2}$](https://render.githubusercontent.com/render/math?math=%24%5Clambda+%3D+%5Cfrac%7B%28T_r+A%29%5Cpm+%5Csqrt%7B%28T_r+A%29%5E2+-+4%7CA%7C%7D%7D%7B2%7D%24)
+  * For a `3 X 3` matrix there are three potential eigenvalue associated to it.
+* Eigenvector ![$\overrightarrow{v}$](https://render.githubusercontent.com/render/math?math=%24%5Coverrightarrow%7Bv%7D%24) or ![$\begin{bmatrix} x\_1  x\_2  .  . \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D+x_1+%5C%5C+x_2+%5C%5C+.+%5C%5C+.+%5Cend%7Bbmatrix%7D%24) of a matrix `A` for one of the eigenvalue `λ` of `A` is a vector which times matrix `(A - λI)` equals zero vector ![$\overrightarrow{0}$](https://render.githubusercontent.com/render/math?math=%24%5Coverrightarrow%7B0%7D%24) or ![$\begin{bmatrix} 0  0  .  . \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D+0+%5C%5C+0+%5C%5C+.+%5C%5C+.+%5Cend%7Bbmatrix%7D%24)
+  * The eigenvector can also be expressed as ![$A \overrightarrow{v} = \lambda \overrightarrow{v}$](https://render.githubusercontent.com/render/math?math=%24A+%5Coverrightarrow%7Bv%7D+%3D+%5Clambda+%5Coverrightarrow%7Bv%7D%24).
+    * This expression provides another method of solving eigenvector given a eigenvalue of the matrix.
+  * Solving the eigenvector is to find the relationship between ![$x\_1$](https://render.githubusercontent.com/render/math?math=%24x_1%24), ![$x\_2$](https://render.githubusercontent.com/render/math?math=%24x_2%24), etc. then represent the relationship by using the smallest integers possible.
+  * Sometimes multiple vectors are used to represent the relationship\(make differenct variable to zero in the derived equation\), and each vector need to be linear independent.
+    * Linear independent means one vector cannot be obtained by other vectors when it multiply by a constant and add to another vector.
+  * The smallest sets of integers found to represent the eigenvectors are called the basis of the corresponding matrix and associated eigenvalue when all of them are put in a vector set `S`.
+  * The basis of all the eigenvectors of the matrix `A` will span the vectorspace.
+    * Spaning the vector space happens when each column of the matrix `A` can be obtained by getting the sum of all the basis multiply a different constant. Ex, `aS1 + bS2`
+  * The basis with a zero vector is also known as the eigenspace of a matrix and its associated eigenvalue.
+  * The matrix multiply by one of its eigenvector will return the eigenvector itself or the eigenvector multiply by a constant.
+  * The approximation\(power\) method can be used to find the eigenvector by multiplying the original matrix by an arbitray small vector, then multiply the original matrix by the result from the previous multiplication. Repeat the process until the relationship of the values of resulting vector can be identified. Then it should be one of the eigenvector of the matrix.
+    * Can be verified by multiply the original matrix by the possiable eigenvector, the result should be still the eigenvector times a constant\(eigenvalue\).
+    * The eigenvector found by using this method is the dominant eigenvector.
+    * The scaling technique will add the scale-down version all of the product in each step to the side for comparision purpose. For example, make one of the value of the vector always one. It makes it easier to see what number the element of the vector is converging to.
+* Diagonalized matrix of matrix `A` has all the eigenvalues of `A` along its diagonal lines from top-left to bottom-right.
+  * The diagonalized matrix `D` has the following relationship with the P matrix ![$D = P^{-1}AP$](https://render.githubusercontent.com/render/math?math=%24D+%3D+P%5E%7B-1%7DAP%24) where `P` contains eigenvectors as ![$P = \[v\_1, v\_2\]$](https://render.githubusercontent.com/render/math?math=%24P+%3D+%5Bv_1%2C+v_2%5D%24).
+    * For example, if ![$ v\_1 = \begin{bmatrix} a\_1  a\_2 \end{bmatrix} $](https://render.githubusercontent.com/render/math?math=%24+v_1+%3D+%5Cbegin%7Bbmatrix%7D+a_1+%5C%5C+a_2+%5Cend%7Bbmatrix%7D+%24) and ![$ v\_2 = \begin{bmatrix} b\_1  b\_2 \end{bmatrix} $](https://render.githubusercontent.com/render/math?math=%24+v_2+%3D+%5Cbegin%7Bbmatrix%7D+b_1+%5C%5C+b_2+%5Cend%7Bbmatrix%7D+%24), then ![$ P = \begin{bmatrix} a\_1 &amp; b\_1  a\_1 &amp; b\_2 \end{bmatrix} $](https://render.githubusercontent.com/render/math?math=%24+P+%3D+%5Cbegin%7Bbmatrix%7D+a_1+%26+b_1+%5C%5C+a_1+%26+b_2+%5Cend%7Bbmatrix%7D+%24)
+    * The order of the eigenvalues along the diagonal doesnot matter, as long as it corresponds to the eigenvectors in the `P` matrix.
+  * Any matrix to the power of `n` can be found as ![$A^n=PD^nP^{-1}$](https://render.githubusercontent.com/render/math?math=%24A%5En%3DPD%5EnP%5E%7B-1%7D%24).
+    * ![$D^n$](https://render.githubusercontent.com/render/math?math=%24D%5En%24) can be found easily by only calculate the power of its elements on the diagonal.
+

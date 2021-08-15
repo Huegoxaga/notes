@@ -2,30 +2,30 @@
 
 ## Practice Tools
 
-- Emulator run hardware image, simulator mimic the hardware behavior using software
-- `GNS` is an emulator. but it cannot mimic switch as a hardware.
-- `Packet Tracer` is a simulator made by cisco for practise. it is good for switch.
+* Emulator run hardware image, simulator mimic the hardware behavior using software
+* `GNS` is an emulator. but it cannot mimic switch as a hardware.
+* `Packet Tracer` is a simulator made by cisco for practise. it is good for switch.
 
 ## Device Connection
 
-- Out of band configration provide direct access to the router motherboard. It provides the following ways to connect.
-  - Console is used to connect to computer.(out of band access)
-  - AUX is connected to a modem, it acts as a backup method for out of band access.
-  - A mini USB port one is used for easy console connection.
-- A larger USB port is used for update,
-- Connect with software like `putty`, `Tera Term`, `Secure CRT`, `Hyper Term`. Use the following settings.
-- Console port connection setup:
-  - Connection type: `Serial`
-  - Speed `9600`
-  - Serial line mostly `COM1`, can be found out in the device manager.
-- Telnet conncection setup
-  - Configure interface management IP
-  - In the host machine's terminal, run `telnet <CiscoDeviceIP>`
-    - run `brew install telnet` to install `telnet` for Mac
-  - The user can only establish one connection through one telnet port at a time.
-- SSH conncection setup
-  - It is more secure than telnet as the traffic is encrypted
-  - Steps to setup SSH connection
+* Out of band configration provide direct access to the router motherboard. It provides the following ways to connect.
+  * Console is used to connect to computer.\(out of band access\)
+  * AUX is connected to a modem, it acts as a backup method for out of band access.
+  * A mini USB port one is used for easy console connection.
+* A larger USB port is used for update,
+* Connect with software like `putty`, `Tera Term`, `Secure CRT`, `Hyper Term`. Use the following settings.
+* Console port connection setup:
+  * Connection type: `Serial`
+  * Speed `9600`
+  * Serial line mostly `COM1`, can be found out in the device manager.
+* Telnet conncection setup
+  * Configure interface management IP
+  * In the host machine's terminal, run `telnet <CiscoDeviceIP>`
+    * run `brew install telnet` to install `telnet` for Mac
+  * The user can only establish one connection through one telnet port at a time.
+* SSH conncection setup
+  * It is more secure than telnet as the traffic is encrypted
+  * Steps to setup SSH connection
     1. setup hostname
     2. create domain name
     3. generate secure key
@@ -35,143 +35,143 @@
 
 ## Command Line
 
-- Cisco command has auto completion feature with `tab`.
-- Commands work when the minimum required characters are entered that can be used to distinguish it with all other possible commands.
+* Cisco command has auto completion feature with `tab`.
+* Commands work when the minimum required characters are entered that can be used to distinguish it with all other possible commands.
 
 ### Prompt
 
-- The command line prompt starts with the hostname and followed by the mode indicator.
-- Commands lines for Cisco devices can be in different modes, it is indicated by the symbols or brackets in the command prompt:
-  - `>` - User EXEC Mode - Privilege Level 1
-  - `#` - Privileged EXEC Mode - Privilege Level 15(highest)
-    - `(config)#` - Global Configuration Mode
-      - `(config-if)#` - Interface Configuration Mode
-      - `(config-router)#` - Routing Configuration Mode
-      - `(config-line)#` - Line Configuration Mode
+* The command line prompt starts with the hostname and followed by the mode indicator.
+* Commands lines for Cisco devices can be in different modes, it is indicated by the symbols or brackets in the command prompt:
+  * `>` - User EXEC Mode - Privilege Level 1
+  * `#` - Privileged EXEC Mode - Privilege Level 15\(highest\)
+    * `(config)#` - Global Configuration Mode
+      * `(config-if)#` - Interface Configuration Mode
+      * `(config-router)#` - Routing Configuration Mode
+      * `(config-line)#` - Line Configuration Mode
 
 ### Commands
 
 #### General Commands
 
-- `?`, list all commands available in the current mode
-  - `t?`, list commands start with letter `t`.
-  - `<cr>` output means blank space, so a command can be executed by hitting enter directly
-- `enable`, switch mode `>` to mode `#`.
-- `disable`, `exit`, `end` or `Ctrl + Z` switch to the previous mode
-- `show privilege` show the current privilege level
-  - the privilege level ranges from 1 to 15, higher level will have more commands available.
-- `show ip interface brief` show a breif summary of all ip interface status in current privilege Level.
-  - When protocol is down, it means there is no traffic at this port.
-- `ping 192.168.1.3` ping an IP address
-  - `!` means packet received, `.` means packet not received.
-- `telnet 192.168.1.3` open telnet connection
-  - `Shift + Ctrl + 6` -> `x`, go to the command for previous connection.
-- `show users` get current user connection and connection ID
-- `show version` show register info
-- `show interface f 0/0` show port details
-- `show clock` show the current time
-- `show controller Serial 0` (Router Only) show serial connection info
-- `show interface f 0/0 switchport` (Switch Only) show port access mode
-- `show vtp status` (Switch Only) show vtp info including version number
-- `show cdp neighbours detail` show others devices detail through `CDP`
-- `show sessions` get all devices logged into
-  - Hit enter to go to the last connection, Hit `Enter + 1` to go to connection with ID `1`.
-- `no <command>` negect or disable the command.
+* `?`, list all commands available in the current mode
+  * `t?`, list commands start with letter `t`.
+  * `<cr>` output means blank space, so a command can be executed by hitting enter directly
+* `enable`, switch mode `>` to mode `#`.
+* `disable`, `exit`, `end` or `Ctrl + Z` switch to the previous mode
+* `show privilege` show the current privilege level
+  * the privilege level ranges from 1 to 15, higher level will have more commands available.
+* `show ip interface brief` show a breif summary of all ip interface status in current privilege Level.
+  * When protocol is down, it means there is no traffic at this port.
+* `ping 192.168.1.3` ping an IP address
+  * `!` means packet received, `.` means packet not received.
+* `telnet 192.168.1.3` open telnet connection
+  * `Shift + Ctrl + 6` -&gt; `x`, go to the command for previous connection.
+* `show users` get current user connection and connection ID
+* `show version` show register info
+* `show interface f 0/0` show port details
+* `show clock` show the current time
+* `show controller Serial 0` \(Router Only\) show serial connection info
+* `show interface f 0/0 switchport` \(Switch Only\) show port access mode
+* `show vtp status` \(Switch Only\) show vtp info including version number
+* `show cdp neighbours detail` show others devices detail through `CDP`
+* `show sessions` get all devices logged into
+  * Hit enter to go to the last connection, Hit `Enter + 1` to go to connection with ID `1`.
+* `no <command>` negect or disable the command.
 
 #### Privileged EXEC Mode
 
-- `configure terminal`, switch from mode `#` to `(config)#` mode.
-- `show running-config` show the current configuration saved in RAM
-- `show startup-config` show the saved configuration for next startup in NVRAM
-- `show vlan` show the the ID, name, ports of all existing VLAN
-- `show interfaces trunck` show all trunk ports
-- `write` save the running config as startup configuration
-- `copy <From> <To>`(recommanded alternative for `write` command)
-  - `copy running-config startup-config` save running-config to startup-config
-- `clear line 0` kick out other connection
-- `disconnect 1` disconnect a connection
-- `reload` or `reboot` restart the device
+* `configure terminal`, switch from mode `#` to `(config)#` mode.
+* `show running-config` show the current configuration saved in RAM
+* `show startup-config` show the saved configuration for next startup in NVRAM
+* `show vlan` show the the ID, name, ports of all existing VLAN
+* `show interfaces trunck` show all trunk ports
+* `write` save the running config as startup configuration
+* `copy <From> <To>`\(recommanded alternative for `write` command\)
+  * `copy running-config startup-config` save running-config to startup-config
+* `clear line 0` kick out other connection
+* `disconnect 1` disconnect a connection
+* `reload` or `reboot` restart the device
 
 #### Global Configuration Commands
 
-- `enable password <password>` setup a password when entering `#` mode.
-  - This password is required by `vty` connection by default.
-- `enable secret <password>` setup a secret password when entering `#` mode.
-  - The password will be encrypted in the config files.
-- `do <command>` run `#` command in `(config)#` mode.
-- `ip domain-lookup`, enable domain-lookup for unrecognized commands by default it is on.
-- `ip default-gateway <IP>` setup the default gateway IP address
-  - Router needs a default gateway to work with router.
-- `ip domain-name example.com` set a domain name
-- `crypto key generate rsa` then enter the bits size for the key size to generate a key
-- `ip ssh version 2` set the ssh version to 2
-- `username <name> password <password>` create a new local user
-- `hostname <NewName>`, change hostname of the device
-- `banner motd <delimittingCharacter>`, entering the command will allow you change the login banner message, enter the same delimitting character at the end of the banner message, then hit enter to save the change.
-  - It will be displayed before password prompt during login
-- `banner login <delimittingCharacter>` (Router Only), set the login message
-- `cdp run` enable `CDP`
-  - enabled by default
-- `lldp run` enable `lldp`
-  - disabled by default
-- `interface gigabitEthernet 0/0`, enter the Interface Configuration Mode for gigabitEthernet Port `0/0`.
-  - All router ports start at `0/0`
-  - All switch ports start at `0/1`
-- `interface range f0/2-5` configure port `2-5` at once
-- `line console 0`, enter the Line Configuration Mode
-- `line console vty 0 15` enter the Line Configuration Mode for all 16 virtual lines.
-  - `vty 0 15` configuration will be broken down to `0 4` and `5 15` to support older devices with only `vty 0 4`
-- `interface vlan 1`(Switch Only), enter the Interface Configuration Mode for the `vlan 1`
-  - This is where the access IP address or the management IP located
-- `router rip`(Router Only), enter the Routing Configuration Mode for `RIP` protocal.
-- `vlan 1`(Switch Only), create VLAN(if not exist) and enter the VLAN Configuration Mode for `vlan 1`.
-- `interface Loopback 0`(Router Only) enable a lookback interface and change its state to up, then enter loopback config mode
-- `interface serial 0` (Router Only) enter the serial config mode
+* `enable password <password>` setup a password when entering `#` mode.
+  * This password is required by `vty` connection by default.
+* `enable secret <password>` setup a secret password when entering `#` mode.
+  * The password will be encrypted in the config files.
+* `do <command>` run `#` command in `(config)#` mode.
+* `ip domain-lookup`, enable domain-lookup for unrecognized commands by default it is on.
+* `ip default-gateway <IP>` setup the default gateway IP address
+  * Router needs a default gateway to work with router.
+* `ip domain-name example.com` set a domain name
+* `crypto key generate rsa` then enter the bits size for the key size to generate a key
+* `ip ssh version 2` set the ssh version to 2
+* `username <name> password <password>` create a new local user
+* `hostname <NewName>`, change hostname of the device
+* `banner motd <delimittingCharacter>`, entering the command will allow you change the login banner message, enter the same delimitting character at the end of the banner message, then hit enter to save the change.
+  * It will be displayed before password prompt during login
+* `banner login <delimittingCharacter>` \(Router Only\), set the login message
+* `cdp run` enable `CDP`
+  * enabled by default
+* `lldp run` enable `lldp`
+  * disabled by default
+* `interface gigabitEthernet 0/0`, enter the Interface Configuration Mode for gigabitEthernet Port `0/0`.
+  * All router ports start at `0/0`
+  * All switch ports start at `0/1`
+* `interface range f0/2-5` configure port `2-5` at once
+* `line console 0`, enter the Line Configuration Mode
+* `line console vty 0 15` enter the Line Configuration Mode for all 16 virtual lines.
+  * `vty 0 15` configuration will be broken down to `0 4` and `5 15` to support older devices with only `vty 0 4`
+* `interface vlan 1`\(Switch Only\), enter the Interface Configuration Mode for the `vlan 1`
+  * This is where the access IP address or the management IP located
+* `router rip`\(Router Only\), enter the Routing Configuration Mode for `RIP` protocal.
+* `vlan 1`\(Switch Only\), create VLAN\(if not exist\) and enter the VLAN Configuration Mode for `vlan 1`.
+* `interface Loopback 0`\(Router Only\) enable a lookback interface and change its state to up, then enter loopback config mode
+* `interface serial 0` \(Router Only\) enter the serial config mode
 
-##### Interface Configuration Commands
+**Interface Configuration Commands**
 
-- `ip address 10.1.1.1 255.255.255.0` set management IP for the interface.
-- `shutdown` administratively shutdown a port.
-  - open a port using negating command `no`
-- `cdp enable` enable cdp for a certain port
-- `lldp receive` allows the port to receive lldp info from other devices.
-- `lldp transmit` allows the port to receive and send lldp info with other devices.
-- Switch Only Commands
-  - `switchport mode access` set port to access mode to connect the port to end device
-  - `switchport mode trunk` set port to trunk mode to connection the port to another switch
-  - DTP config
-    - `switchport mode dynamic desirable`
-    - `switchport mode dynamic auto`
-    - `switchport nonegotiate`
-  - Assign a port to VLAN
-    - `switchport mode access` only ports in access mode can be in a VLAN
-    - `switchport access vlan <NO>` assign the port to a VLAN
-      - will create new VLAN if the VLAN number does not exist
+* `ip address 10.1.1.1 255.255.255.0` set management IP for the interface.
+* `shutdown` administratively shutdown a port.
+  * open a port using negating command `no`
+* `cdp enable` enable cdp for a certain port
+* `lldp receive` allows the port to receive lldp info from other devices.
+* `lldp transmit` allows the port to receive and send lldp info with other devices.
+* Switch Only Commands
+  * `switchport mode access` set port to access mode to connect the port to end device
+  * `switchport mode trunk` set port to trunk mode to connection the port to another switch
+  * DTP config
+    * `switchport mode dynamic desirable`
+    * `switchport mode dynamic auto`
+    * `switchport nonegotiate`
+  * Assign a port to VLAN
+    * `switchport mode access` only ports in access mode can be in a VLAN
+    * `switchport access vlan <NO>` assign the port to a VLAN
+      * will create new VLAN if the VLAN number does not exist
 
-##### VLAN Configuration Commands
+**VLAN Configuration Commands**
 
-- `name <name>` naming the VLAN
-  - The name is only used as a description.
+* `name <name>` naming the VLAN
+  * The name is only used as a description.
 
-##### Line Configuration Commands
+**Line Configuration Commands**
 
-- `password <password>` set login password
-- `login`, set to require login password for the current line console port
-- `login local`, enable login and use the local user password to login
-- `transport input <option>` setup input transmittion type, there are 4 options:
-  - `all`
-  - `none`
-  - `telnet`
-  - `ssh`
-- `logging synchronous` sync command line input after interrupt by other output while typing.
-- `exec-timeout` set timeout duration.
-  - `0` means never timeout. `3 10` means `3 minutes 2 seconds`.
+* `password <password>` set login password
+* `login`, set to require login password for the current line console port
+* `login local`, enable login and use the local user password to login
+* `transport input <option>` setup input transmittion type, there are 4 options:
+  * `all`
+  * `none`
+  * `telnet`
+  * `ssh`
+* `logging synchronous` sync command line input after interrupt by other output while typing.
+* `exec-timeout` set timeout duration.
+  * `0` means never timeout. `3 10` means `3 minutes 2 seconds`.
 
-##### Serial Configuration Commands
+**Serial Configuration Commands**
 
-- `clockrate 64000` config clock rate for `DCE` connection with DTE terminal.
+* `clockrate 64000` config clock rate for `DCE` connection with DTE terminal.
 
-```md
+```text
 ## Switch
 
 ### Trunking
@@ -350,3 +350,4 @@ half
 either send or receive
 Switch(config-if)# duplex full
 ```
+

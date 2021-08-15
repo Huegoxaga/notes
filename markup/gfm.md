@@ -1,24 +1,27 @@
 # GFM
 
-- GFM is Github Flavored Markdown.
-- It is Github's own version of markdown syntax. All `.md` file in Github follows its Syntax.
-- It is consisted of standard markdown syntax and additional features supported by GFM.
+## GFM
+
+* GFM is Github Flavored Markdown.
+* It is Github's own version of markdown syntax. All `.md` file in Github follows its Syntax.
+* It is consisted of standard markdown syntax and additional features supported by GFM.
+
   `.md` or `.markdown` extension.
 
-## Syntax
+### Syntax
 
-### Inline HTML
+#### Inline HTML
 
-- Raw HTML can be used in the Markdown file, and it'll mostly work pretty well.
-- Styling can be added to the HTML tag:
-  - align content, `<div align="center"></div>`
-  - styling images, `<img align="left" width="200" height="100" />`
+* Raw HTML can be used in the Markdown file, and it'll mostly work pretty well.
+* Styling can be added to the HTML tag:
+  * align content, `<div align="center"></div>`
+  * styling images, `<img align="left" width="200" height="100" />`
 
-### Headers
+#### Headers
 
-#### Example:
+**Example:**
 
-```md
+```text
 # This is an h1 tag plus a horizontal line after. alternatively use = below each character
 
 ## This is an h2 tag plus a horizontal line after. alternatively use - below each character
@@ -32,25 +35,23 @@
 ###### This is an h6 tag
 ```
 
-#### Result:
+**Result:**
 
-# This is an h1 tag plus a horizontal line after. alternatively use = below each character
+## This is an h1 tag plus a horizontal line after. alternatively use = below each character
 
-## This is an h2 tag plus a horizontal line after. alternatively use - below each character
+### This is an h2 tag plus a horizontal line after. alternatively use - below each character
 
-### This is an h3 tag
+#### This is an h3 tag
 
-.
-.
-.
+. . .
 
-###### This is an h6 tag
+**This is an h6 tag**
 
-### Emphasis
+#### Emphasis
 
-#### Example:
+**Example:**
 
-```md
+```text
 _This text will be italic_
 _This will also be italic_
 **This text will be bold**
@@ -58,19 +59,19 @@ _This will also be italic_
 _You **can** combine them_
 ```
 
-#### Result:<br>
+**Result:**
 
-_This text will be italic_<br>
-_This will also be italic_<br>
-**This text will be bold**<br>
-**This will also be bold**<br>
-_You **can** combine them_
+_This text will be italic_  
+ _This will also be italic_  
+ **This text will be bold**  
+ **This will also be bold**  
+ _You **can** combine them_
 
-### Lists
+#### Lists
 
-#### Unordered
+**Unordered**
 
-```md
+```text
 - Item 1
 - Item 2
   - Item 2a
@@ -79,11 +80,11 @@ _You **can** combine them_
 * also works
 ```
 
-- subpoints follow two spaces.
+* subpoints follow two spaces.
 
-#### Ordered
+**Ordered**
 
-```md
+```text
 1. Item 1
 2. Item 2
 3. Item 3
@@ -92,43 +93,43 @@ _You **can** combine them_
 - Item 3b
 ```
 
-### Images
+#### Images
 
-```md
+```text
 ![Alt Text](url)
 ![image name](/images/logo.png)
 ```
 
-### Links
+#### Links
 
-```md
+```text
 [Text](url)
 [GitHub](http://github.com)
 http://github.com - automatic!
 ```
 
-- Using `#header-name` as link for content in the page.
-- `#header-name-1` for the second header with the same name in the page.
+* Using `#header-name` as link for content in the page.
+* `#header-name-1` for the second header with the same name in the page.
 
-### Block Quotes
+#### Block Quotes
 
-```
+```text
 > Hello World!
 ```
 
-#### Result:<br>
+**Result:**
 
 > Hello World!
 
-### Backslash escapes
+#### Backslash escapes
 
-```md
+```text
 \*literal asterisks\*
 ```
 
-### Horizontal Lines
+#### Horizontal Lines
 
-```
+```text
 Use one of the following
 Three or more...
 ---  Hyphens
@@ -136,29 +137,33 @@ Three or more...
 ___  Underscores
 ```
 
-### Strikethrough
+#### Strikethrough
 
 Any word wrapped with two tildes, like `~~this~~`, will appear crossed out.
 
-### Metions
+#### Metions
 
 `@username` explicitly mention the user to view the comment.
 
-### Code blocks
+#### Code blocks
 
-- Inline Code blocks
+* Inline Code blocks
+
   wrapped in a set of \`\`.
 
-```
+```text
 ``int x = 12;``
 ```
 
-- Fenced Code blocks
+* Fenced Code blocks
+
   using a set of \`\`\` at the first line and the last line of the code block
-- Fenced Code blocks with syntax highlighting
-- use a language identifier after \`\`\` in the first line, language identifier including: \*
-- use the following ways to print `` ` `` inside code block
-  ```md
+
+* Fenced Code blocks with syntax highlighting
+* use a language identifier after \`\`\` in the first line, language identifier including: \*
+* use the following ways to print `````  inside code block
+
+  ```text
   use backslash to escape when backtick is printed outside code blocks
   Print a singe \` inside code blocks `` ` ``
   Use higher number of \` to print more \` inside code blocks ` `` ` (print two)
@@ -166,113 +171,114 @@ Any word wrapped with two tildes, like `~~this~~`, will appear crossed out.
   `` `text`` produces \`foo
   ```
 
-### Issue References
+#### Issue References
 
-- Any number that refers to an Issue or Pull Request will be automatically converted into a link.
+* Any number that refers to an Issue or Pull Request will be automatically converted into a link.
 
-```
+```text
  #1
 github-flavored-markdown#1
 defunkt/github-flavored-markdown#1
 ```
 
-### Emoji
+#### Emoji
 
 GitHub supports emoji:
 
-```
+```text
 :+1: :sparkles: :camel: :tada: :rocket: :metal: :octocat:
 ```
 
-#### Result:
+**Result:**
 
 :+1: :sparkles: :camel: :tada: :rocket: :metal: :octocat:
 
-### Task Lists
+#### Task Lists
 
-```
+```text
 - [x] task1
 - [ ] task2
 - [x] task3
 - [x] task4
 ```
 
-#### Result: <br>
+**Result:** 
 
-- [x] task1
-- [ ] task2
-- [x] task3
-- [x] task4
+* [x] task1
+* [ ] task2
+* [x] task3
+* [x] task4
 
-### Tables
+#### Tables
 
-create tables by assembling a list of words and dividing them with hyphens - (for the first row), and then separating each column with a pipe |
+create tables by assembling a list of words and dividing them with hyphens - \(for the first row\), and then separating each column with a pipe \|
 
-```md
+```text
 | First Header     | Second Header    |
 | ---------------- | ---------------- |
 | Content cell 1   | Content cell 2   |
 | Content column 1 | Content column 2 |
 ```
 
-#### Result: <br>
+**Result:** 
 
-| First Header     | Second Header    |
-| ---------------- | ---------------- |
-| Content cell 1   | Content cell 2   |
+| First Header | Second Header |
+| :--- | :--- |
+| Content cell 1 | Content cell 2 |
 | Content column 1 | Content column 2 |
 
-### YouTube Videos
+#### YouTube Videos
 
 They can't be added directly but you can add an image with a link to the video like this:
 
-```
+```text
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE " target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg"  alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 ```
 
-### LaTeX
+#### LaTeX
 
-- Insert LaTeX code in an `img` tag as `https://render.githubusercontent.com/render/math?math=x = -1`
-  - `+` need to be replaced by its percent-encoding value which is `%2B`.
-- Another to way insert`![$x=1+a$](https://render.githubusercontent.com/render/math?math=%24x%3D1%2Ba%24)`
-  - It works only when there is no space in the path. Can replce space with its encoded value `%20`.
-  - [Click](https://alexanderrodin.com/github-latex-markdown/) to use the LaTeX image link generator tools for GFM.
-    - This generator does not encode `(` which is `%28` and `)` which is `%29`. It should be changed manually.
+* Insert LaTeX code in an `img` tag as `https://render.githubusercontent.com/render/math?math=x = -1`
+  * `+` need to be replaced by its percent-encoding value which is `%2B`.
+* Another to way insert`![$x=1+a$](https://render.githubusercontent.com/render/math?math=%24x%3D1%2Ba%24)`
+  * It works only when there is no space in the path. Can replce space with its encoded value `%20`.
+  * [Click](https://alexanderrodin.com/github-latex-markdown/) to use the LaTeX image link generator tools for GFM.
+    * This generator does not encode `(` which is `%28` and `)` which is `%29`. It should be changed manually.
 
-# Gitbook
+## Gitbook
 
-- a CLI tool that auto convert `.md` file into webpages.
+* a CLI tool that auto convert `.md` file into webpages.
 
-## Setup
+### Setup
 
-- Installation `npm i gitbook-cli -g`
-- Create Project, in project folder`gitbook init`
-- in project file `SUMMARY.md` is the menu
-- Preview, `gitbook serve`
-- At the end of the line, the URL can be used to view the content.
+* Installation `npm i gitbook-cli -g`
+* Create Project, in project folder`gitbook init`
+* in project file `SUMMARY.md` is the menu
+* Preview, `gitbook serve`
+* At the end of the line, the URL can be used to view the content.
 
-## Build Website
+### Build Website
 
-- Run `gitbook init` everytime when change it made.
-- if `SUMMARY.md` is updated, init will add new files in the project folder.
-- `{{` or `}}` in `.md` files in code block will cause error, place a space in between to avoid errors. Ex, `{ {`
-- all code must be in code block.
-- Run `gitbook build`
-- Use `gitbook build ./ --log=debug --debug` to debug.
+* Run `gitbook init` everytime when change it made.
+* if `SUMMARY.md` is updated, init will add new files in the project folder.
+* `{{` or `}}` in `.md` files in code block will cause error, place a space in between to avoid errors. Ex, `{ {`
+* all code must be in code block.
+* Run `gitbook build`
+* Use `gitbook build ./ --log=debug --debug` to debug.
 
-#### Escape Special Symbols
+**Escape Special Symbols**
 
-Use a keyword `raw` and `endraw` surrounded by `{`(outter) and `%`(inner) as html comments to escape special symbols that cause build errors
+Use a keyword `raw` and `endraw` surrounded by `{`\(outter\) and `%`\(inner\) as html comments to escape special symbols that cause build errors
 
-## Publish
+### Publish
 
-- github pages host static webpages from repo, it is free.
-- add the generated webpages files in the GitHub Repo
-- in Settings, find GitHub Pages Section and Set the folder location for hosting.
-- The Theme if for `.md` pages.
+* github pages host static webpages from repo, it is free.
+* add the generated webpages files in the GitHub Repo
+* in Settings, find GitHub Pages Section and Set the folder location for hosting.
+* The Theme if for `.md` pages.
 
-## Export as PDF
+### Export as PDF
 
-- Install [Calibre](https://calibre-ebook.com/download)
-- run `PATH=$PATH:/Applications/calibre.app/Contents/MacOS/`
-- run `gitbook pdf`
+* Install [Calibre](https://calibre-ebook.com/download)
+* run `PATH=$PATH:/Applications/calibre.app/Contents/MacOS/`
+* run `gitbook pdf`
+

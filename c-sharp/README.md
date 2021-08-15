@@ -1,34 +1,35 @@
-# `C#`
+# C\#
 
 ## Introduction
 
-- In 2000, Microsoft announced the `C#` programming language.
-- `C#` has roots in the C, C++ and Java programming language
-- `C#` is an object-oriented language that runs on the .NET Framework.
-- `C#` graphical user interfaces (GUIs) are event-driven. It waits to respond to the users' input.
-- Microsoft’s Visual Studio enables you to use C# as a visual programming language.
-- `C#` can be used to create Windows, mobile, database application and Web services, etc.
-- The source code for programs that are executed and managed by the Common Language Runtime (CLR) is called managed code. It is first compiled into Microsoft Intermediate Language (MSIL), then translated the code in executable file by the just-in-time compiler or Just-In-Time (JIT) compiler into machine language.
-  - `.NET` Framework consists of the Common Language Runtime(CLR) and the .NET Framework class library.
-- When the user creates a new project in Visual Studio A solution and a folder are created at the same time with the same name as the project.
-- The project belongs to the solution
-- Multiple projects can be included in a solution
-- The folder stores files related to the project including:
-  - A solution file (`.sln`)
-  - A project file (`.csproj`)
-- C# is case-sensitive.
-- C# requires `;` at the end of each line.
-- The apps have an extension of .cs.
-- Console apps input and output text in a console window, which in Windows is known as the Command Prompt.
+* In 2000, Microsoft announced the `C#` programming language.
+* `C#` has roots in the C, C++ and Java programming language
+* `C#` is an object-oriented language that runs on the .NET Framework.
+* `C#` graphical user interfaces \(GUIs\) are event-driven. It waits to respond to the users' input.
+* Microsoft’s Visual Studio enables you to use C\# as a visual programming language.
+* `C#` can be used to create Windows, mobile, database application and Web services, etc.
+* The source code for programs that are executed and managed by the Common Language Runtime \(CLR\) is called managed code. It is first compiled into Microsoft Intermediate Language \(MSIL\), then translated the code in executable file by the just-in-time compiler or Just-In-Time \(JIT\) compiler into machine language.
+  * `.NET` Framework consists of the Common Language Runtime\(CLR\) and the .NET Framework class library.
+* When the user creates a new project in Visual Studio A solution and a folder are created at the same time with the same name as the project.
+* The project belongs to the solution
+* Multiple projects can be included in a solution
+* The folder stores files related to the project including:
+  * A solution file \(`.sln`\)
+  * A project file \(`.csproj`\)
+* C\# is case-sensitive.
+* C\# requires `;` at the end of each line.
+* The apps have an extension of .cs.
+* Console apps input and output text in a console window, which in Windows is known as the Command Prompt.
 
 ## Basic Syntax
 
 ### Comments
 
-- `//` single-line comment.
-- `/* */` multi-line comment.
-- XML-style comment. It is used to describe classes and methods at the beginning of a class or method definition.
-  ```cs
+* `//` single-line comment.
+* `/* */` multi-line comment.
+* XML-style comment. It is used to describe classes and methods at the beginning of a class or method definition.
+
+  ```csharp
   ///<summary>
   ///
   ///</summary>
@@ -38,8 +39,9 @@
 
 ### Region
 
-- Region lets you specify a block of code that you can expand or collapse when using the outlining feature of the Visual Studio Code Editor.
-  ```cs
+* Region lets you specify a block of code that you can expand or collapse when using the outlining feature of the Visual Studio Code Editor.
+
+  ```csharp
   #region MyClass definition
   public class MyClass
   {
@@ -52,26 +54,26 @@
 
 ### Namespaces
 
-- The `using ...` directive is used to import namespaces in the app.
-- The `System` namespace contains the predefined Console classes.
-- The namespace is a collection of pre-defined classes
-- Class methods from other namespaces can only be accessed as `namespace.class.method`, when the `using ..` directive is absent.
-  - If `using.System` is absent. Use `System.Console.WriteLine("abc");`
+* The `using ...` directive is used to import namespaces in the app.
+* The `System` namespace contains the predefined Console classes.
+* The namespace is a collection of pre-defined classes
+* Class methods from other namespaces can only be accessed as `namespace.class.method`, when the `using ..` directive is absent.
+  * If `using.System` is absent. Use `System.Console.WriteLine("abc");`
 
 ### Variables
 
-- Declare and assign a new variable. `modifier` `type` `name` = `value;`
-- access modifier for variables can be either:
-  - `public`, default when the modifier is not used in the declaration.
-  - `private`
-  - `protected`, this type of variable can be accessed from its derived class.
-- For implicitly typed variables, using keyword `var`, a value is mandatory. the compiler will determine the type automatically. `var x = 6; //x will be int`
-  - This is called an implicitly typed variable a value must be assigned to it.
-- `const` keyword is for constant, must assign a value, variable names need all-cap. `const double PI = 3.1415926;`
-  - Constants are all static.
-- C# use stack to store static value, like primitive type data and address reference for objects. It uses heap to store object information.
+* Declare and assign a new variable. `modifier` `type` `name` = `value;`
+* access modifier for variables can be either:
+  * `public`, default when the modifier is not used in the declaration.
+  * `private`
+  * `protected`, this type of variable can be accessed from its derived class.
+* For implicitly typed variables, using keyword `var`, a value is mandatory. the compiler will determine the type automatically. `var x = 6; //x will be int`
+  * This is called an implicitly typed variable a value must be assigned to it.
+* `const` keyword is for constant, must assign a value, variable names need all-cap. `const double PI = 3.1415926;`
+  * Constants are all static.
+* C\# use stack to store static value, like primitive type data and address reference for objects. It uses heap to store object information.
 
-```md
+```text
 ### Type
 
 Instance variables of types char, byte, sbyte, short, ushort, int, uint, long, ulong, float, double, and decimal are all given the value 0 by default.
@@ -104,7 +106,7 @@ object A as object B
 explicitly convert type A to B, if not successful, A become null.
 
 conditional operator
-  condition ? value1   : value2 ;    if true returns value1.
+  condition ? value1   : value2 ;    if true returns value1.
 
 null conditional operator ?.
 exampleObject?.Dispose();
@@ -492,8 +494,8 @@ RemoveAt(index As Integer) Method: removes the item at the specified index. No r
 Control Structure
 
 if(condition){
-   //a
-  //b
+   //a
+  //b
 }
 
 if(condition) //code goes here if only one line.
@@ -505,16 +507,16 @@ if(con1){}else if(con2){}else{}
 int x = 3;
 switch(x)
 {
-   case 1:
-                       //code1
-                      break;
-   case 2:
-                      //code2
+   case 1:
+                       //code1
+                      break;
+   case 2:
+                      //code2
 
 break;
-   default:  
-                  //code if none matches
-                 break;
+   default:  
+                  //code if none matches
+                 break;
 }//C# require all case and default code must end with a break statement.
 
 while(condition) {}
@@ -522,7 +524,7 @@ while(condition) {}
 It can be shorten like using the following format:
 int x = 0;
 while(++x < 6)
-    Console.WriteLine(x);
+    Console.WriteLine(x);
 
 for(init; condition ; increment expression) {}
 
@@ -544,7 +546,7 @@ foreach(type varName in arrayName) {
 ————————————————————————————————————
 
 Method
-modifier [static] <return type> methodName(type1 par1, type2 par2, ... , typeN parN)   {  }
+modifier [static] <return type> methodName(type1 par1, type2 par2, ... , typeN parN)   {  }
 
 Access modifier for methods:
 public
@@ -575,14 +577,14 @@ like ref, keyword out can be used to output value from a method.
 
 static void GetValues(out int x, out int y)
 {
-   x = 3;
-   y= 12;
+   x = 3;
+   y= 12;
 }
 static void Main (string[] args)
 {
-   int a, b;
-   GetValues(out a, out b);
-   // now a = 3, b = 12
+   int a, b;
+   GetValues(out a, out b);
+   // now a = 3, b = 12
 
 Variable-length argument lists allow you to create methods that receive an arbitrary number of arguments.It uses params modifier and exists as the last parameter among all parameters of the method.
 It usually works with array
@@ -667,12 +669,12 @@ private string name;
 
     public void SetName(string accountName)
     {
-    	name = accountName;
+        name = accountName;
     }
 
     public string GetName( )
     {
-    	return name;
+        return name;
     }
 
 }
@@ -715,13 +717,13 @@ static void Main( )
 {
 Account myAccount = new Account( );
 
-    	Console.WriteLine($”Initial name is: {myAccount.Name}”);
+        Console.WriteLine($”Initial name is: {myAccount.Name}”);
 
-    	Console.Write(“Please enter the name: ”);
-    	string theName = Console.ReadLine();
-    	myAccount.Name = theName;
+        Console.Write(“Please enter the name: ”);
+        string theName = Console.ReadLine();
+        myAccount.Name = theName;
 
-    	Console.WriteLine($”myAccount’s name is: {myAccount.Name}”);
+        Console.WriteLine($”myAccount’s name is: {myAccount.Name}”);
     }
 
 }
@@ -1286,3 +1288,4 @@ movie.DateSeen.ToShortDateString();
 
 DateTime.Today
 ```
+

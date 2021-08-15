@@ -2,51 +2,51 @@
 
 ## Introduction
 
-- Django is a Python-based free and open-source web framework
-- One Django project can have multiple Apps as web components.
-- Web servers like `Apache` or `Nginx` are used to get browser request, requests are then forwarded to `WSGI`.
-  - Web server can enable a certain web port socket
-- `WSGI`(Web Server Gateway Interface) is used to run the Django application, send to request to the app and then get return response from the app.
-- `ASGI` (Asynchronous Server Gateway Interface) it provides an upgrade to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.
+* Django is a Python-based free and open-source web framework
+* One Django project can have multiple Apps as web components.
+* Web servers like `Apache` or `Nginx` are used to get browser request, requests are then forwarded to `WSGI`.
+  * Web server can enable a certain web port socket
+* `WSGI`\(Web Server Gateway Interface\) is used to run the Django application, send to request to the app and then get return response from the app.
+* `ASGI` \(Asynchronous Server Gateway Interface\) it provides an upgrade to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.
 
 ## Useful Commands
 
-- `pip install django` install django library
-- `python -m django --version` check the version
-- `django-admin` show a list of sub-command
-- `django-admin startproject <project_name>` create a new project.
-- `python manage.py runserver` it will run the website and return the url of the running website. By default it works with 127.0.0.1 on 8000 port only
-  - append the command with `0.0.0.0:8000` to runserver on all server addresses on port 8000.
-  - append the port number as `python manage.py runserver 8001` to run the project on a certain port
-- `python manage.py startapp <appname>` create a new app inside a project.
-- `python manage.py makemigrations` update changes made on database model files for an app.
-  - create files in the `app/migrations` folder for the `migrate` command to run.
-  - run `python manage.py makemigrations <appname>` for migrating a certain app
-  - run `python manage.py sqlmigrate <appname> <migrationID>` to see the SQL code that will be run on the database when executing migrate command.
-    - Migration ID is the number in the file names in the `app/migration` folder.
-- `python manage.py migrate`
-  - first migration command will create default databases.
-  - `python manage.py migrate --fake <appname> <migratationID>` make certain migration, assume the database is the same as this migration file is made, reset the migration record. Migration Files after this time can be deleted.
-    - fake will not alter the database, new migrations are needed to rollback changes, then fake and delete the new and unused migration files.
-  - `python manage.py migrate --fake-initial` force making initial migrate with database is already exists.
-- `python manage.py showmigrations` Check migration history.
-- `python manage.py createsuperuser` follow the promts and create admin account for the admin page.
-- `python manage.py shell` It starts an interactive shell to run django project code line by line.
-- `python manage.py collectstatic` it populates the static directory with static assets (JavaScript, CSS, and images).
-  - Make sure that `django.contrib.staticfiles` is included in the `INSTALLED_APPS` in `settings.py`.
+* `pip install django` install django library
+* `python -m django --version` check the version
+* `django-admin` show a list of sub-command
+* `django-admin startproject <project_name>` create a new project.
+* `python manage.py runserver` it will run the website and return the url of the running website. By default it works with 127.0.0.1 on 8000 port only
+  * append the command with `0.0.0.0:8000` to runserver on all server addresses on port 8000.
+  * append the port number as `python manage.py runserver 8001` to run the project on a certain port
+* `python manage.py startapp <appname>` create a new app inside a project.
+* `python manage.py makemigrations` update changes made on database model files for an app.
+  * create files in the `app/migrations` folder for the `migrate` command to run.
+  * run `python manage.py makemigrations <appname>` for migrating a certain app
+  * run `python manage.py sqlmigrate <appname> <migrationID>` to see the SQL code that will be run on the database when executing migrate command.
+    * Migration ID is the number in the file names in the `app/migration` folder.
+* `python manage.py migrate`
+  * first migration command will create default databases.
+  * `python manage.py migrate --fake <appname> <migratationID>` make certain migration, assume the database is the same as this migration file is made, reset the migration record. Migration Files after this time can be deleted.
+    * fake will not alter the database, new migrations are needed to rollback changes, then fake and delete the new and unused migration files.
+  * `python manage.py migrate --fake-initial` force making initial migrate with database is already exists.
+* `python manage.py showmigrations` Check migration history.
+* `python manage.py createsuperuser` follow the promts and create admin account for the admin page.
+* `python manage.py shell` It starts an interactive shell to run django project code line by line.
+* `python manage.py collectstatic` it populates the static directory with static assets \(JavaScript, CSS, and images\).
+  * Make sure that `django.contrib.staticfiles` is included in the `INSTALLED_APPS` in `settings.py`.
 
 ## Project Folder
 
 ### settings.py
 
-- To register an app to the project, add the element `'appname.apps.AppNameConfig'` or just `'AppName'` in the `INSTALLED_APPS` array.
-- Add `STATIC_ROOT = 'static'` to tell Django where to store static files.
-- Add `USE_TZ = True` enable timezone support, then use `from django.utils import timezone`, `timezone.now()` to get current local time.
-- When `Debug=True`, static file will be auto generated.
+* To register an app to the project, add the element `'appname.apps.AppNameConfig'` or just `'AppName'` in the `INSTALLED_APPS` array.
+* Add `STATIC_ROOT = 'static'` to tell Django where to store static files.
+* Add `USE_TZ = True` enable timezone support, then use `from django.utils import timezone`, `timezone.now()` to get current local time.
+* When `Debug=True`, static file will be auto generated.
 
 ### urls.py
 
-```py
+```python
 from django.contrib import admin
 from django.urls import path, include
 from users import views as user_views
@@ -59,27 +59,27 @@ urlpatterns = [
 ]
 ```
 
-- `urlpatterns` contains a list of path.
-- The first parameter of path is the url string, root path is empty.
-- A match is found when actual path begins with the string in the first parameter. Ex. `www.example.com/a/b/c` will matchs string `a/`.
-- When a match is found the `urls.py` file for the app `appnameA` will be loaded if the path is `www.example.com/`
-- The path can also point to an app view file directly.
+* `urlpatterns` contains a list of path.
+* The first parameter of path is the url string, root path is empty.
+* A match is found when actual path begins with the string in the first parameter. Ex. `www.example.com/a/b/c` will matchs string `a/`.
+* When a match is found the `urls.py` file for the app `appnameA` will be loaded if the path is `www.example.com/`
+* The path can also point to an app view file directly.
 
 ## App Folder
 
 ### apps.py
 
-```py
+```python
 from django.apps import AppConfig
 class AppNameConfig(AppConfig):
     name = 'appname'
 ```
 
-- The class name `AppNameConfig` should be registered in the project's `settings.py` file for the project to access the app.
+* The class name `AppNameConfig` should be registered in the project's `settings.py` file for the project to access the app.
 
 ### urls.py
 
-```py
+```python
 from django.urls import path, re_path
 from django.conf.urls import url, include
 from django.contrib import admin
@@ -94,12 +94,12 @@ urlpatterns = [
 ]
 ```
 
-- The full path excluded the matched string in the project `urls.py` will be used to match with the path strings here. For `www.example.com/a/b/c` after `a/` is matched in the project `urls.py`, `b/` will be used here to find a match.
-- the second parameter `views.home` is pointing to the `home` method in the `view.py` file.
+* The full path excluded the matched string in the project `urls.py` will be used to match with the path strings here. For `www.example.com/a/b/c` after `a/` is matched in the project `urls.py`, `b/` will be used here to find a match.
+* the second parameter `views.home` is pointing to the `home` method in the `view.py` file.
 
 ### view.py
 
-```py
+```python
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import ModelClass
@@ -116,20 +116,20 @@ def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
 ```
 
-- Each method here is a page.
-- Each method has a parameter `request`.
-- `HttpResponse` can be used to return html content in text for the webpage.
-- render method can be used to render a template page.
-  - The third parameter is the data that will be passed to the template page.
-  - The data passed in like `post` can be a list of dictionary or just a dictionary of data.
-  - The data passed in the example is from a data model.
+* Each method here is a page.
+* Each method has a parameter `request`.
+* `HttpResponse` can be used to return html content in text for the webpage.
+* render method can be used to render a template page.
+  * The third parameter is the data that will be passed to the template page.
+  * The data passed in like `post` can be a list of dictionary or just a dictionary of data.
+  * The data passed in the example is from a data model.
 
 ### models.py
 
-- This is the data model for the project.
-- Each class is corresponding to a database table.
+* This is the data model for the project.
+* Each class is corresponding to a database table.
 
-  ```py
+  ```python
   from django.db import models
   from django.utils import timezone
   #import user from built-in auth models
@@ -169,30 +169,34 @@ def about(request):
         unique_together = ["sno", "cno"]
   ```
 
-  - `null` is database-related. Defines if a given database column will accept null values or not
-  - `blank` is validation-related. It will be used during forms validation, when calling `form.is_valid()`
-  - `on.delete` has the following options:
-    - `models.CASCADE` delete all associated records.
-    - `models.PROTECT` prevent deletion
-    - `models.SET_NULL`
-    - `models.SET_DEFAULT` only default value it set.
-    - `models.SET('value')` set to certain value.
-  - `models.ForeignKey('self')` if using a resursive FK relationship
-  - When a class is defined as `abstract=True` in `Meta` options. Its fields can be reused by pass the Class Name in other class definition.
-    ```py
+  * `null` is database-related. Defines if a given database column will accept null values or not
+  * `blank` is validation-related. It will be used during forms validation, when calling `form.is_valid()`
+  * `on.delete` has the following options:
+    * `models.CASCADE` delete all associated records.
+    * `models.PROTECT` prevent deletion
+    * `models.SET_NULL`
+    * `models.SET_DEFAULT` only default value it set.
+    * `models.SET('value')` set to certain value.
+  * `models.ForeignKey('self')` if using a resursive FK relationship
+  * When a class is defined as `abstract=True` in `Meta` options. Its fields can be reused by pass the Class Name in other class definition.
+
+    ```python
     # The student table will have all fields from the CommonInfoAbstract class
     class Student(CommonInfoAbstract):
       home_group = models.CharField(max_length=5)
     ```
-  - Adding an index for a field by using `db_index=True`
-  - Model class can have a `__str__` method to define a string representation.
-    ```py
+
+  * Adding an index for a field by using `db_index=True`
+  * Model class can have a `__str__` method to define a string representation.
+
+    ```python
     def __str__(self):
         return self.title
     ```
 
-- Whenever a file import the data model. It will have access to the data from the database.
-  ```py
+* Whenever a file import the data model. It will have access to the data from the database.
+
+  ```python
   from .models import ModelClass
   ModelClass.objects.all() # return all objects of this class from the database.
   ModelClass.objects.first() # return the first object
@@ -248,16 +252,17 @@ def about(request):
 
 ### admin.py
 
-- It controls the admin page.
-- The default admin path is the site url followed by `/admin`.
-- Can be used to create users and groups.
-- All changes need to be made on the admin page not in the database directly. Otherwise, database tables need to be resync for the pointer values.
-  - For Postgre: run SQL `SELECT setval('your_table_id_seq', COALESCE((SELECT MAX(id) FROM your_table), 1), false);` in the database.
-    - run `SELECT nextval('your_table_id_seq');` to check the next value for insert.
-      - Everytime it runs, it will increase the `nextval` by one.
-    - run `SELECT MAX(id) FROM your_table;` to check the total record count.
-- Data models need to be registered here for the admin page to display and edit.
-  ```py
+* It controls the admin page.
+* The default admin path is the site url followed by `/admin`.
+* Can be used to create users and groups.
+* All changes need to be made on the admin page not in the database directly. Otherwise, database tables need to be resync for the pointer values.
+  * For Postgre: run SQL `SELECT setval('your_table_id_seq', COALESCE((SELECT MAX(id) FROM your_table), 1), false);` in the database.
+    * run `SELECT nextval('your_table_id_seq');` to check the next value for insert.
+      * Everytime it runs, it will increase the `nextval` by one.
+    * run `SELECT MAX(id) FROM your_table;` to check the total record count.
+* Data models need to be registered here for the admin page to display and edit.
+
+  ```python
   from django.contrib import admin
   from .models import Post
   admin.site.register(Post)
@@ -265,24 +270,22 @@ def about(request):
 
 ### static folder
 
-- It can be used to store additional static files for the app, like css files.
+* It can be used to store additional static files for the app, like css files.
 
 ### template folder
 
-- Apps can have template that stores dynamic html file that can access variables and run code inside.
-  - If support basic logic syntax in between html codes. Unlike Python code, each code block requried to be closed in the end.
-- This folder and its related `views.py` should be located under the same directory
-- Variables here are passed from the `views.py`.
-<!-- {% raw %} -->
-- To access `.css` files in the static folder, add `{% load static %}` at the first line and set css link url to `href="{% static 'appfolder/filename.css' %}"`
-- All links in the template files are represented as `href="{% url 'path-name' %}"`. The pass name is the name attributes of the paths elements in the `urls.py`.
-  - use `href="{% url 'path-name' variable %}"` to pass data into url path
-- To display date in certain format use format string as `{{ post.date|date:"F d, Y" }}`
-<!-- {% endraw %} -->
+* Apps can have template that stores dynamic html file that can access variables and run code inside.
+  * If support basic logic syntax in between html codes. Unlike Python code, each code block requried to be closed in the end.
+* This folder and its related `views.py` should be located under the same directory
+* Variables here are passed from the `views.py`.
+* To access `.css` files in the static folder, add `{% load static %}` at the first line and set css link url to `href="{% static 'appfolder/filename.css' %}"`
+* All links in the template files are represented as `href="{% url 'path-name' %}"`. The pass name is the name attributes of the paths elements in the `urls.py`.
+  * use `href="{% url 'path-name' variable %}"` to pass data into url path
+* To display date in certain format use format string as `{{ post.date|date:"F d, Y" }}`
 
 #### base.html
 
-```html
+```markup
 <!DOCTYPE html>
 <html>
   <head>
@@ -298,9 +301,10 @@ def about(request):
 </html>
 ```
 
-- This is the layout that can be shared by all views.
-- `{% block blockname %}{% endblock %}` can enclose a defaut content, when it is used to replace a beginning tag, the ending tag should be in a separate block as well
-  ```html
+* This is the layout that can be shared by all views.
+* `{% block blockname %}{% endblock %}` can enclose a defaut content, when it is used to replace a beginning tag, the ending tag should be in a separate block as well
+
+  ```markup
   <body>
     {% block div_begin %}
     <div class="root">
@@ -314,7 +318,7 @@ def about(request):
 
 #### content.html
 
-```
+```text
 {% extends "appname/base.html" %}
 {% block blockname %}
     {% for post in posts %}
@@ -324,14 +328,15 @@ def about(request):
 {% endblock blockname %}
 ```
 
-- This is the file that will be inserted into the base template.
-- Templates from other apps can also be used here.
-- The block name should be the same name specified in the `base.html`.
+* This is the file that will be inserted into the base template.
+* Templates from other apps can also be used here.
+* The block name should be the same name specified in the `base.html`.
 
 ### Customized Forms
 
-- Create a `forms.py` in the app folder. Define a custom form class that inherit the default auth form from Django.
-  ```py
+* Create a `forms.py` in the app folder. Define a custom form class that inherit the default auth form from Django.
+
+  ```python
   from django import forms
   from django.contrib.auth.models import User
   from django.contrib.auth.forms import UserCreationForm
@@ -343,8 +348,10 @@ def about(request):
           # use this if all fields are included.
           fields = '__all__'
   ```
-- In the view page set up the request logic.
-  ```py
+
+* In the view page set up the request logic.
+
+  ```python
   from django.shortcuts import render, redirect
   from django.contrib import messages
   from .forms import UserRegisterForm
@@ -363,11 +370,12 @@ def about(request):
       # render the form in the view
       return render(request, 'users/register.html', {'form': form})
   ```
-- run `pip install django-crispy-forms` to install the app that helps style the form with `Bootstrap`.
-- In `settings.py`, register the app as `'crispy_forms'` in `INSTALLED_APPS`, and `CRISPY_TEMPLATE_PACK = 'bootstrap4'` at the bottom to specify the package in use.
-- For the form template:
-  <!-- {% raw %} -->
-  ```py
+
+* run `pip install django-crispy-forms` to install the app that helps style the form with `Bootstrap`.
+* In `settings.py`, register the app as `'crispy_forms'` in `INSTALLED_APPS`, and `CRISPY_TEMPLATE_PACK = 'bootstrap4'` at the bottom to specify the package in use.
+* For the form template:
+
+  ```python
   {% extends "blog/base.html" %}
   {% load crispy_forms_tags %}
   {% block content %}
@@ -385,9 +393,10 @@ def about(request):
       </div>
   {% endblock content %}
   ```
-  <!-- {% raw %} -->
-- Use this for feedback upon valid submission.
-  ```py
+
+* Use this for feedback upon valid submission.
+
+  ```python
   {% if messages %}
               {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}">
@@ -399,7 +408,7 @@ def about(request):
 
 ## Cloud Storages
 
-- [Click](https://django-storages.readthedocs.io/en/latest/) to see many possible cloud storage implementation for Django.
+* [Click](https://django-storages.readthedocs.io/en/latest/) to see many possible cloud storage implementation for Django.
 
 ### AWS S3
 
@@ -408,7 +417,8 @@ def about(request):
 3. Save credentials and buck name in the virtual environment's `.bash_profile` file.
 4. run `pip install boto3` and `pip install django-storages`
 5. In `settings.py` add `'storages'` and following settings.
-   ```py
+
+   ```python
    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
@@ -419,16 +429,17 @@ def about(request):
 
 ## REST Framework
 
-- It is used to create restful api for the web app.
-- [Click here](https://www.django-rest-framework.org) for full docs.
-- run `pip install djangorestframework` to install
-- add `'rest_framework'` to `INSTALLED_APPS` in `settings.py`
-- The Serializers convert objects into JSON data. It is defined in the `serializers.py` in the api app folder.
-  - Model Serializers - It provides a template that is easy to implement a serializer class based on model class.
-  ```py
-  from rest_framework import serializers
-  from .models import Sample
-  class SampleSerializer(serializers.ModelSerializer):
+* It is used to create restful api for the web app.
+* [Click here](https://www.django-rest-framework.org) for full docs.
+* run `pip install djangorestframework` to install
+* add `'rest_framework'` to `INSTALLED_APPS` in `settings.py`
+* The Serializers convert objects into JSON data. It is defined in the `serializers.py` in the api app folder.
+  * Model Serializers - It provides a template that is easy to implement a serializer class based on model class.
+
+    ```python
+    from rest_framework import serializers
+    from .models import Sample
+    class SampleSerializer(serializers.ModelSerializer):
     # add fielder from other serializers
     someFields = OtherSerializer(many=True)
     # add fields in the meta class
@@ -445,40 +456,47 @@ def about(request):
                 'created': {'write_only': True},
                 'id': {'required': True}
         }
-  ```
-  - Serializers can be used to update or create JSON object by defining the `create()` and `update()` method in Serializer Class.
-  ```py
-  def create(self, validated_data):
+    ```
+
+  * Serializers can be used to update or create JSON object by defining the `create()` and `update()` method in Serializer Class.
+
+    ```python
+    def create(self, validated_data):
         return Sample.objects.create(**validated_data)
-  def update(self, instance, validated_data):
+    def update(self, instance, validated_data):
       instance.name = validated_data.get('name', instance.name)
       instance.email = validated_data.get('email', instance.email)
       instance.save()
       return instance
-  ```
-  - Validation method can be added in the Serializer Class.
-  ```py
-  # field level validation
-  def validate_title(self, value):
+    ```
+
+  * Validation method can be added in the Serializer Class.
+
+    ```python
+    # field level validation
+    def validate_title(self, value):
         # check if value contains keyword django
         if 'django' not in value.lower():
             raise serializers.ValidationError("Blog post is not about Django")
         return value
-  # object level validation
-  def validate(self, data):
+    # object level validation
+    def validate(self, data):
         if data['start'] > data['finish']:
             raise serializers.ValidationError("finish must occur after start")
         return data
-  ```
-  - Override the `to_representation()` method can change the final output of the serializer
-  ```py
-  def to_representation(self, obj):
+    ```
+
+  * Override the `to_representation()` method can change the final output of the serializer
+
+    ```python
+    def to_representation(self, obj):
     data = super().to_representation(obj)
     # manipulate data['cashflows'] to group by month
     return data
-  ```
-- In `views.py` defines the behavior of the certain path, when either a POST(update) request or GET(read) request is sent.
-  ```py
+    ```
+* In `views.py` defines the behavior of the certain path, when either a POST\(update\) request or GET\(read\) request is sent.
+
+  ```python
   from rest_framework import status # return status
   # enable .as_view in urls.py that return a view based on JSON result
   from rest_framework.views import APIView
@@ -502,71 +520,86 @@ def about(request):
       # if serializer has create method.
       data = Snippet(code='foo = "bar"\n')
   ```
-  - When serializer has `create()` or `update()` methods. `serializer.save(data=data)` method will run `create()`. `serializer.save(existingObject, data=data)` will run `update()`.
-  - When serializer has `validate()`, `serializer.is_valid()` will run validation. Then use `serializer.error()` to return errors.
-  - `request.user` returns the current user object who initiate the request based on the credential
-- In `urls.py` add the view method that returning data as view to path, `path('api/', views.SampleView.as_view()),`
-- Pagination
-  - Set Pagination globally in `settings.py`
-    - For Pagination based on page number
-      ```js
+
+  * When serializer has `create()` or `update()` methods. `serializer.save(data=data)` method will run `create()`. `serializer.save(existingObject, data=data)` will run `update()`.
+  * When serializer has `validate()`, `serializer.is_valid()` will run validation. Then use `serializer.error()` to return errors.
+  * `request.user` returns the current user object who initiate the request based on the credential
+
+* In `urls.py` add the view method that returning data as view to path, `path('api/', views.SampleView.as_view()),`
+* Pagination
+  * Set Pagination globally in `settings.py`
+    * For Pagination based on page number
+
+      ```javascript
       REST_FRAMEWORK = {
         DEFAULT_PAGINATION_CLASS:
           "rest_framework.pagination.PageNumberPagination",
         PAGE_SIZE: 100,
       };
       ```
-    - For cursor pagination
-      ```js
+
+    * For cursor pagination
+
+      ```javascript
       REST_FRAMEWORK = {
         DEFAULT_PAGINATION_CLASS: "rest_framework.pagination.CursorPagination",
         PAGE_SIZE: 100,
       };
       ```
-    - For Limit Offset Pagination
-      ```js
+
+    * For Limit Offset Pagination
+
+      ```javascript
       REST_FRAMEWORK = {
         DEFAULT_PAGINATION_CLASS:
           "rest_framework.pagination.LimitOffsetPagination",
       };
       ```
-  - Set Pagination for each method of `views.py` individually
-    - defind the pagination class
-      ```py
+  * Set Pagination for each method of `views.py` individually
+    * defind the pagination class
+
+      ```python
       class StandardResultsSetPagination(PageNumberPagination):
       page_size = 100
       page_size_query_param = 'page_size'
       max_page_size = 1000
       ```
-    - Assign the class name to the `pagination_class` variables in the each view method.
+
+    * Assign the class name to the `pagination_class` variables in the each view method.
 
 ### Swagger Generators
 
-- It auto generate document pages for the Rest API
+* It auto generate document pages for the Rest API
 
-#### Django REST Swagger(Deprecated)
+#### Django REST Swagger\(Deprecated\)
 
-##### Setup
+**Setup**
 
 1. Run `pip install django-rest-swagger`
 2. Add `'rest_framework_swagger'` to `INSTALLED_APPS` in Django settings.
 3. In API app's `views.py` add
-   ```py
+
+   ```python
    from rest_framework_swagger.views import get_swagger_view
    schema_view = get_swagger_view(title='Pastebin API')
    ```
-   - There are two optional parameter for the `get_swagger_view()` method:
-     - `title`: The title of the documentation `(Default: None)`
-     - `url`: The URL to the documentation, if not on the same host or path. Can be a relative path or can be an absolute URL. `(Default: None)`
+
+   * There are two optional parameter for the `get_swagger_view()` method:
+     * `title`: The title of the documentation `(Default: None)`
+     * `url`: The URL to the documentation, if not on the same host or path. Can be a relative path or can be an absolute URL. `(Default: None)`
+
 4. add path in `urls.py`
-   ```py
+
+   ```python
    from django.conf.urls import url
    urlpatterns = [
        url(r'^$', appname.views.docs_view)
    ]
    ```
+
 5. Make additional setting in the `settings.py` file.
-   ```py
+
+   ```python
    SWAGGER_SETTINGS = {
      'SHOW_REQUEST_HEADERS': True,
      'SUPPORTED_SUBMIT_METHODS': [
@@ -575,19 +608,21 @@ def about(request):
      ]
    }
    ```
-   - [Click Here](https://django-rest-swagger.readthedocs.io/en/latest/settings/) to see all setting options.
-6. Add docs string comments to provide more info in the docs page.
 
-- If see `'AutoSchema' object has no attribute 'get_link' swagger` error, add `'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',` in the `settings.py`.
+   * [Click Here](https://django-rest-swagger.readthedocs.io/en/latest/settings/) to see all setting options.
+
+6. Add docs string comments to provide more info in the docs page.
+7. If see `'AutoSchema' object has no attribute 'get_link' swagger` error, add `'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',` in the `settings.py`.
 
 #### Yet another Swagger Generator
 
-##### Setup
+**Setup**
 
 1. run `pip install drf-yasg`
 2. Add `'drf_yasg'` to `INSTALLED_APPS` in Django settings
 3. Add the following to `urls.py`
-   ```py
+
+   ```python
    from rest_framework import permissions
    from drf_yasg.views import get_schema_view
    from drf_yasg import openapi
@@ -612,10 +647,11 @@ def about(request):
      url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),]
    ```
 
-##### Usage
+**Usage**
 
-- Add comment for methods defined in class view
-  ```py
+* Add comment for methods defined in class view
+
+  ```python
   from drf_yasg.utils import swagger_auto_schema
   class ExampleAPIView(ListAPIView):
       permission_classes = (IsAuthenticated,)
@@ -635,8 +671,10 @@ def about(request):
       def post(self, request, *args, **kwargs):
         pass
   ```
-- Add comment for inherited View
-  ```py
+
+* Add comment for inherited View
+
+  ```python
   from django.utils.decorators import method_decorator
   from drf_yasg.utils import swagger_auto_schema
   @method_decorator(name='post', decorator=swagger_auto_schema(
@@ -646,60 +684,64 @@ def about(request):
   class YourAPIView(PredefinedAPIView):
       pass
   ```
-- Add comment for a serializer fields, `name = serializers.BooleanField(required=False, help_text="description")`
-- Add comment for a model fields, `field_name = models.FloatField(default=0, help_text="Field Description", verbose_name="Title")`
+
+* Add comment for a serializer fields, `name = serializers.BooleanField(required=False, help_text="description")`
+* Add comment for a model fields, `field_name = models.FloatField(default=0, help_text="Field Description", verbose_name="Title")`
 
 #### RapiPDF
 
-- It can be used to generate docs and export docs as PDF
-- It takes the json format docs link as input
-- [Click here](https://mrin9.github.io/RapiPdf/) for more details
+* It can be used to generate docs and export docs as PDF
+* It takes the json format docs link as input
+* [Click here](https://mrin9.github.io/RapiPdf/) for more details
 
 ### Cache
 
-- import the following
-  ```py
+* import the following
+
+  ```python
   from django.utils.decorators import method_decorator
   from django.views.decorators.cache import cache_page
   ```
-- Add decorator `@method_decorator(cache_page(time))` above each api method.
-  - Cache TTL time is in seconds.
+
+* Add decorator `@method_decorator(cache_page(time))` above each api method.
+  * Cache TTL time is in seconds.
 
 ## GeoDjango
 
-- It provide data model and function for GIS supported database.
-  - `PostgreSQL` uses `PostGIS` extenstion.
-- It is included in the Django package.
-- `QGIS` is a GIS app that helps install all the required database drivers.
-  - `PostgreSQL` requires `GDAL`, `GEOS`, and `PROJ.4`.
+* It provide data model and function for GIS supported database.
+  * `PostgreSQL` uses `PostGIS` extenstion.
+* It is included in the Django package.
+* `QGIS` is a GIS app that helps install all the required database drivers.
+  * `PostgreSQL` requires `GDAL`, `GEOS`, and `PROJ.4`.
 
 #### Setup
 
-- Install drivers
-  - `PostgreSQL` requires `GDAL`, `GEOS`, and `PROJ.4`.
-    - For Mac:
-      - run `brew install gdal`
-      - run `brew install geos`
-      - run `brew install proj`
-- Install PostGIS extension
-  - If installing locally, click the PostGIS extension in the slack builder wizards.
-  - If using AWS RDS, skip this step and enable the exstension directly.
-- Add extension to the database, in PGAdmin select the database, right click extension, then add.
-  - or run SQL `CREATE EXTENSION postgis`.
-- Download and Install QGIS from its [official website](https://qgis.org/en/site/forusers/download.html)
-- Set database engine in `setting.py`.
-  - Use `django.contrib.gis.db.backends.postgis` for `PostgreSQL`.
-- Add `django.contrib.gis` to `INSTALLED_APPS` in `setting.py`
+* Install drivers
+  * `PostgreSQL` requires `GDAL`, `GEOS`, and `PROJ.4`.
+    * For Mac:
+      * run `brew install gdal`
+      * run `brew install geos`
+      * run `brew install proj`
+* Install PostGIS extension
+  * If installing locally, click the PostGIS extension in the slack builder wizards.
+  * If using AWS RDS, skip this step and enable the exstension directly.
+* Add extension to the database, in PGAdmin select the database, right click extension, then add.
+  * or run SQL `CREATE EXTENSION postgis`.
+* Download and Install QGIS from its [official website](https://qgis.org/en/site/forusers/download.html)
+* Set database engine in `setting.py`.
+  * Use `django.contrib.gis.db.backends.postgis` for `PostgreSQL`.
+* Add `django.contrib.gis` to `INSTALLED_APPS` in `setting.py`
 
 ## Django Crontab
 
-- It manages crontab tasks with django.
-- Usage:
+* It manages crontab tasks with django.
+* Usage:
   1. run `pip install django-crontab` to install
   2. add `'django_crontab'` to the `INSTALLED_APPS` in the `settings.py`.
   3. create a python file in the project or app foloder and define task methods.
   4. add the methods in the `settings.py` using the following format.
-     ```py
+
+     ```python
      CRONJOBS = [
      ('*/5 * * * *', 'myapp.cron.my_scheduled_job'),
      ('0   0 1 * *', 'myapp.cron.my_scheduled_job', '>> /tmp/scheduled_job.log'),
@@ -707,61 +749,64 @@ def about(request):
      ('0   4 * * *', 'django.core.management.call_command', ['clearsessions']),
      ]
      ```
-     - optionally the task can take a list of positional arguments for the method (default: [])
-     - optionally the task can take a dictionary of keyword arguments for the method (default: {})
+
+     * optionally the task can take a list of positional arguments for the method \(default: \[\]\)
+     * optionally the task can take a dictionary of keyword arguments for the method \(default: {}\)
+
   5. add or update new tasks added in the `settings.py` by running command `python manage.py crontab add`
-     - run `python manage.py crontab show` to show the list of tasks.
-     - run `python manage.py crontab remove` to remove all registered tasks.
+     * run `python manage.py crontab show` to show the list of tasks.
+     * run `python manage.py crontab remove` to remove all registered tasks.
 
 ## Django Extension
 
-- Provide additional tools for the Django project
+* Provide additional tools for the Django project
 
 ### Setup
 
-- run `pip install django-extensions` to install
-- add `django_extensions` to `INSTALLED_APPS`
+* run `pip install django-extensions` to install
+* add `django_extensions` to `INSTALLED_APPS`
 
 ### Graph Models
 
-- Choose and install diagram generators, `Graphviz` or `Dotplus`
-  - `pip install pydotplus` if choose `Dotplus`
-- Run `python manage.py graph_models -o <filename>.png`
-  - `-a` create diagrams for all apps in the project
-  - `-g` group by apps
+* Choose and install diagram generators, `Graphviz` or `Dotplus`
+  * `pip install pydotplus` if choose `Dotplus`
+* Run `python manage.py graph_models -o <filename>.png`
+  * `-a` create diagrams for all apps in the project
+  * `-g` group by apps
 
 ## Celery
 
 ### Introduction
 
-- It’s a task queue with focus on real-time processing, while also supporting task scheduling.
-- It is not included in the anaconda default package, and need to be installed using command `conda install celery`.
+* It’s a task queue with focus on real-time processing, while also supporting task scheduling.
+* It is not included in the anaconda default package, and need to be installed using command `conda install celery`.
 
 ### Basic Usage
 
 1. Celery requires a broker to store task list in a queue. There are three options, follow one of the link to install:
+   * RabbitMQ\(fully supported recommanded\) - [click](http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq) to see installation & configuration instruction.
+     * Not need to pip install rabbitMQ for project
+     * Install server `brew install rabbitmq`
+     * Add environment variables `PATH=$PATH:/usr/local/sbin` in `.bash_profile`
+     * run the server `sudo rabbitmq-server` use `-detached` to run in background.
+     * commplete the following config in command lines.
 
-   - RabbitMQ(fully supported recommanded) - [click](http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html#broker-rabbitmq) to see installation & configuration instruction.
-     - Not need to pip install rabbitMQ for project
-     - Install server `brew install rabbitmq`
-     - Add environment variables `PATH=$PATH:/usr/local/sbin` in `.bash_profile`
-     - run the server `sudo rabbitmq-server` use `-detached` to run in background.
-     - commplete the following config in command lines.
        ```bash
        $ sudo rabbitmqctl add_user myuser mypassword
        $ sudo rabbitmqctl add_vhost myvhost
        $ sudo rabbitmqctl set_user_tags myuser mytag
        $ sudo rabbitmqctl set_permissions -p myvhost myuser ".*" ".*" ".*"
        ```
-     - Add the connection string `broker_url = 'amqp://myuser:mypassword@localhost:5672/myvhost'`, and `CELERY_AUTH_MECHANISMS = ['PLAIN', 'AMQPLAIN']` to set allowed AUTH MECHANISMS
-     - run `sudo rabbitmqctl status` to check status.
-     - if want to stop the server run `sudo rabbitmqctl stop`.
-   - Redis - [click](https://docs.celeryproject.org/en/stable/getting-started/backends-and-brokers/redis.html) to see installation & configuration instruction.
 
-     - run `pip install -U "celery[redis]"` to install Celery and Redis as a bundle.
-     - For Django app in `settings.py`.
+     * Add the connection string `broker_url = 'amqp://myuser:mypassword@localhost:5672/myvhost'`, and `CELERY_AUTH_MECHANISMS = ['PLAIN', 'AMQPLAIN']` to set allowed AUTH MECHANISMS
+     * run `sudo rabbitmqctl status` to check status.
+     * if want to stop the server run `sudo rabbitmqctl stop`.
+   * Redis - [click](https://docs.celeryproject.org/en/stable/getting-started/backends-and-brokers/redis.html) to see installation & configuration instruction.
 
-     ```py
+     * run `pip install -U "celery[redis]"` to install Celery and Redis as a bundle.
+     * For Django app in `settings.py`.
+
+     ```python
      CELERY_BROKER_URL = 'redis://localhost:6379'
      CELERY_RESULT_BACKEND = 'redis://localhost:6379'
      CELERY_ACCEPT_CONTENT = ['application/json']
@@ -769,41 +814,46 @@ def about(request):
      CELERY_TASK_SERIALIZER = 'json'
      ```
 
-     - install server locally `brew install redis` or `sudo apt-get install redis-server` and run `redis-server`.
-     - test server `redis-cli ping`
+     * install server locally `brew install redis` or `sudo apt-get install redis-server` and run `redis-server`.
+     * test server `redis-cli ping`
 
-   - Amazon SQS - [click](http://docs.celeryproject.org/en/latest/getting-started/brokers/sqs.html#broker-sqs) to see installation & configuration instruction.
-
+   * Amazon SQS - [click](http://docs.celeryproject.org/en/latest/getting-started/brokers/sqs.html#broker-sqs) to see installation & configuration instruction.
 2. Defines the task in `tasks.py`
-   ```py
+
+   ```python
    from celery import Celery
    app = Celery('tasks', broker='pyamqp://guest@localhost//')
    @app.task
    def add(x, y):
      return x + y
    ```
+
 3. Run the Celery server by running command `celery -A <projectName> worker --loglevel=info`.
 4. Call the task
-   ```py
+
+   ```python
    from tasks import add
    >>> add.delay(4, 4)
    ```
+
 5. Setup and view the result
    1. add the `backend` argument to Celery, using a selected backend storage method from [here](http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html#keeping-results)
    2. Access result using the following ways
-   ```py
-   result = add.delay(4, 4)
-   result.ready() #return true if it is done.
-   result.get(timeout=1) # get result after a certain duration.
-   result.get(propagate=False) # preventing a exception is reraised when calling get() after an error.
-   result.traceback #  access to the original traceback after a exception is raised.
-   # Remember to call either get() or forget() to release the memory
-   result.forget()
-   ```
+
+      ```python
+      result = add.delay(4, 4)
+      result.ready() #return true if it is done.
+      result.get(timeout=1) # get result after a certain duration.
+      result.get(propagate=False) # preventing a exception is reraised when calling get() after an error.
+      result.traceback #  access to the original traceback after a exception is raised.
+      # Remember to call either get() or forget() to release the memory
+      result.forget()
+      ```
 6. Do additional settings
-   - To change a certain settings `app.conf.task_serializer = 'json'`
-   - To change multiple settings:
-     ```py
+   * To change a certain settings `app.conf.task_serializer = 'json'`
+   * To change multiple settings:
+
+     ```python
      app.conf.update(
      task_serializer='json',
      accept_content=['json'],  # Ignore other content
@@ -812,8 +862,10 @@ def about(request):
      enable_utc=True,
      )
      ```
-   - To change settings from a config file, use `app.config_from_object('celeryconfig')`, An example config file named `celeryconfig.py` is shown as follows:
-     ```py
+
+   * To change settings from a config file, use `app.config_from_object('celeryconfig')`, An example config file named `celeryconfig.py` is shown as follows:
+
+     ```python
      broker_url = 'pyamqp://'
      result_backend = 'rpc://'
      task_serializer = 'json'
@@ -826,7 +878,8 @@ def about(request):
 ### Work with Django
 
 1. Add the Celery instance definition at `proj/proj/celery.py`
-   ```py
+
+   ```python
    from __future__ import absolute_import, unicode_literals
    import os
    from celery import Celery
@@ -844,16 +897,20 @@ def about(request):
    def debug_task(self):
        print('Request: {0!r}'.format(self.request))
    ```
+
 2. Let celery start in the `proj/proj/__init__.py` when django starts.
-   ```py
+
+   ```python
    from __future__ import absolute_import, unicode_literals
    # This will make sure the app is always imported when
    # Django starts so that shared_task will use this app.
    from .celery import app as celery_app
    __all__ = ('celery_app',)
    ```
+
 3. Write tasks in the `tasks.py` in app folders
-   ```py
+
+   ```python
    # Create your tasks here
    from __future__ import absolute_import, unicode_literals
    from celery import shared_task
@@ -880,8 +937,8 @@ def about(request):
 
 ### Celery Beat
 
-- This is a celery extension that stores the schedule in the Django database, and presents a convenient admin interface to manage periodic tasks at runtime.
-- Setup steps:
+* This is a celery extension that stores the schedule in the Django database, and presents a convenient admin interface to manage periodic tasks at runtime.
+* Setup steps:
   1. Use pip to install the package, `pip install django-celery-beat`
   2. Add the `django_celery_beat` module to `INSTALLED_APPS` in `settings.py`
   3. Apply Django database migrations so that the necessary tables are created: `python manage.py migrate`
@@ -891,14 +948,14 @@ def about(request):
 
 ### Daemonization
 
-- In production you’ll want to run the worker in the background as a daemon instead of running the service using commands explicitly.
-- Either `systemd` or `supervisord` can be used.
+* In production you’ll want to run the worker in the background as a daemon instead of running the service using commands explicitly.
+* Either `systemd` or `supervisord` can be used.
 
 #### Systemd for Celery
 
-- Use a config file to store setting
+* Use a config file to store setting
 
-```conf
+```text
 # The name of one or more workers to be initiated by systemd separated by space
 CELERYD_NODES="worker1 worker2"
 #   alternatively, specify the number of nodes to start:
@@ -916,9 +973,9 @@ CELERYD_LOG_LEVEL="INFO"
 CELERYD_OPTS="--time-limit=300 --concurrency=8"
 ```
 
-- Use the service file for systemd
+* Use the service file for systemd
 
-```
+```text
 [Unit]
 Description=Celery Service
 After=network.target
@@ -945,16 +1002,19 @@ WantedBy=multi-user.target
 
 ## Unit Testing
 
-- Writing test methods in `test.py` as follows
-  ```py
+* Writing test methods in `test.py` as follows
+
+  ```python
   from django.test import TestCase
   class MyTestCase(TestCase):
      # Your test methods
   ```
-- Or optionally, replace tests.py with a folder called tests, insert an empty file inside called `__init__.py`, and create the `test_*.py` files. Django will discover and execute these.
-- run `python manage.py test` to start all test method in the project or `python manage.py <appname>` to run test cases in a certain app folder.
-- Example Code:
-  ```py
+
+* Or optionally, replace tests.py with a folder called tests, insert an empty file inside called `__init__.py`, and create the `test_*.py` files. Django will discover and execute these.
+* run `python manage.py test` to start all test method in the project or `python manage.py <appname>` to run test cases in a certain app folder.
+* Example Code:
+
+  ```python
   from django.test import TestCase, Client
   from django.urls import reverse
   import json
@@ -997,3 +1057,4 @@ WantedBy=multi-user.target
           self.assertEquals(self.url.func, view_method_name)
           self.assertEquals(self.url.func.view_class, ViewClassName)
   ```
+
