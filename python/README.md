@@ -1105,11 +1105,11 @@ except:
 
 ### Assert
 
-- Assert statement is used to assume a condition then raise an error accordingly.
+- Assert statement is used to assume a condition then raise an error if condition is evaluated as `False`.
 
 ```py
 assert 1==2
-# Result: AssertionError
+# AssertionError will be raised in runtime
 ```
 
 - It can has an argument to display details
@@ -1117,7 +1117,7 @@ assert 1==2
 ```py
 temp = -10
 assert (temp >= 0), "Colder than absolute zero!"
-# Result: AssertionError: Colder than absolute zero!
+# AssertionError will be raised with the specified message
 ```
 
 ## File

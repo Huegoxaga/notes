@@ -842,6 +842,9 @@
     - Links are created by `sudo ln -s /etc/nginx/sites-available/confg-name.conf /etc/nginx/sites-enabled/confg-name.conf`
   - By default, In each of these two folders, there is only one conf file named default that has basic setup for NGINX.
 - run `sudo nginx -t` to validate config script
+- `/etc/nginx/nginx.conf` contains the system config for NGINX
+- For the systemd service file
+  - Add `LimitNOFILE=70000` under `[Service]` to increase the open file limit
 
 ##### Work with uWSGI
 

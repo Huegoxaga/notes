@@ -15,7 +15,7 @@
 
 ### CLI
 
-- `jmeter` launch JMeter GUI
+- run `/usr/local/Cellar/jmeter/5.4.1/libexec/bin/jmeter.sh` launch JMeter GUI
 - `jmeter -n -t test_plan.jmx -l log.jtl -H my.proxy.server -P 8000` run a test plan
   - `-n`, This specifies JMeter is to run in cli mode
   - `-t`, specify the name of JMX file that contains the test plan

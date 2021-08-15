@@ -661,6 +661,8 @@ max-worker-lifetime = 300
 # offload-threads = %k
 # Set Environment Variables
 env = KEY=value
+listen = 2000 # increase server socket listen backlog limit
+# run sudo sysctl -w net.core.somaxconn=4096 to increase the system limit
 ```
 
 - When log is enabled, there will be no output printed onto the console
