@@ -165,11 +165,11 @@ while working on a draft.
 - `$\frac{1}{3}$` $$\frac{1}{3}$$ fraction
 - `$(x+1)$` $$(x+1)$$ parentheses
 - `$|x|$` $$|x|$$ absolute value
-- `$\left(\frac{2}{3}\right)$` $$\left(\frac{2}{3}\right)$$ expand the brackets, otherwise it looks like this
+- `$\left(\frac{2}{3}\right)$` $$\left(\frac{2}{3}\right)$$ expand the brackets, otherwise it looks like this $$(\frac{2}{3})$$
 - `$\left(\frac{2}{3}\right.$` $$\left(\frac{2}{3}\right.$$ show only the left bracket.
 - `$[x+1]$` $$[x+1]$$ square bracket
 - `$\{x,y,z\}$` $$\{x,y,z\}$$ curly brackets need to be escaped by `\`
-- `$\$88.88$` $$\$88.88$$ escape dollar sign
+- `$\$88.88$` $$$88.88$$ escape dollar sign
 - `$\sum_{n=0}^{\infty}$` $$\sum_{n=0}^{\infty}$$ sigma sum
 - `$\int_a^b$` $$\int_a^b$$ integral
 - `$\lim_{x \to a}$` $$\lim_{x \to a}$$ limit
