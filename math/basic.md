@@ -52,7 +52,7 @@
 - Test for Primality - Test if a number if a prime
   - It can be done by checking if the number is divisible by any prime number in the range from 2 to its square root.
 - Prime factorization - Prime factorization of a number is to find a product of primes with the same value
-  - Ex, ![$28050 = 2\times3\times5^2\times11\times17$](https://render.githubusercontent.com/render/math?math=%2428050%20%3D%202%5Ctimes3%5Ctimes5%5E2%5Ctimes11%5Ctimes17%24) (this is the format for prime factorization result)
+  - Ex, $$28050 = 2\times3\times5^2\times11\times17$$ (this is the format for prime factorization result)
 
 > #### The Fundamental Theorem of Arithmetic
 >
@@ -75,18 +75,18 @@
 #### GCF & LCM
 
 - A Greatest Common Factor, GCF, of two (or more) numbers is the biggest number that we can divide with (is a factor of) both numbers.
-  - It can be express as ![$A \cap B$](https://render.githubusercontent.com/render/math?math=%24A%20%5Ccap%20B%24), when A and B are the set of factors of the two numbers.
+  - It can be express as $$A \cap B$$, when A and B are the set of factors of the two numbers.
 - A Least Common Multiple, LCM, of two (or more) numbers is the smallest number that both numbers will divide into.
-  - It can be express as ![$A \cup B$](https://render.githubusercontent.com/render/math?math=%24A%20%5Ccup%20B%24), when A and B are the set of factors of the two numbers.
+  - It can be express as $$A \cup B$$, when A and B are the set of factors of the two numbers.
 - Euclidian Algorithm
   - It can be used to find the GCF of two large numbers.
   - For Example, find the GCF of 125,460 and 365,840.
-    1. ![$365840 = 2 \times 125460 + 114920$](https://render.githubusercontent.com/render/math?math=%24365840%20%3D%202%20%5Ctimes%20125460%20%2B%20114920%24)
-    2. ![$125460 = 1 \times 114920 + 10540$](https://render.githubusercontent.com/render/math?math=%24125460%20%3D%201%20%5Ctimes%20114920%20%2B%2010540%24)
-    3. ![$114920 = 10 \times 10540 + 9520$](https://render.githubusercontent.com/render/math?math=%24114920%20%3D%2010%20%5Ctimes%2010540%20%2B%209520%24)
-    4. ![$10540 = 1 \times 9520 + 1020 $](https://render.githubusercontent.com/render/math?math=%2410540%20%3D%201%20%5Ctimes%209520%20%2B%201020%20%24)
-    5. ![$9520 = 9 \times 1020 + 340 $](https://render.githubusercontent.com/render/math?math=%249520%20%3D%209%20%5Ctimes%201020%20%2B%20340%20%24)
-    6. ![$1020 = 3 \times 340 + 0$](https://render.githubusercontent.com/render/math?math=%241020%20%3D%203%20%5Ctimes%20340%20%2B%200%24)
+    1. $$365840 = 2 \times 125460 + 114920$$
+    2. $$125460 = 1 \times 114920 + 10540$$
+    3. $$114920 = 10 \times 10540 + 9520$$
+    4. $$10540 = 1 \times 9520 + 1020 $$
+    5. $$9520 = 9 \times 1020 + 340 $$
+    6. $$1020 = 3 \times 340 + 0$$
 
 #### Number Systems
 
@@ -132,25 +132,25 @@
 - Vectors has both magnitude and direction
   - Magnitude can never be negative
   - A scalar only represents magnitude, and it can be negative
-- A vector from point `P` points to `Q` can be denoted as a letter with hat ![$\vec{v}$](https://render.githubusercontent.com/render/math?math=%24%5Cvec%7Bv%7D%24) or a bold letter ![$\mathbf{v}$](https://render.githubusercontent.com/render/math?math=%24%5Cmathbf%7Bv%7D%24), or other notations like ![$\overrightarrow{PQ}=v_{x}\hat{x}+v_{y}\hat{y}=v_{x}\hat{i}+v_{y}\hat{j}=v_{1}\hat{i}+v_{2}\hat{j}=v_{1}\hat{x}+v_{2}\hat{y}=\langle v_{x},v_{y} \rangle=\langle v_{1},v_{2} \rangle$](https://render.githubusercontent.com/render/math?math=%24%5Coverrightarrow%7BPQ%7D%3Dv_%7Bx%7D%5Chat%7Bx%7D%2Bv_%7By%7D%5Chat%7By%7D%3Dv_%7Bx%7D%5Chat%7Bi%7D%2Bv_%7By%7D%5Chat%7Bj%7D%3Dv_%7B1%7D%5Chat%7Bi%7D%2Bv_%7B2%7D%5Chat%7Bj%7D%3Dv_%7B1%7D%5Chat%7Bx%7D%2Bv_%7B2%7D%5Chat%7By%7D%3D%5Clangle+v_%7Bx%7D%2Cv_%7By%7D+%5Crangle%3D%5Clangle+v_%7B1%7D%2Cv_%7B2%7D+%5Crangle%24)
+- A vector from point `P` points to `Q` can be denoted as a letter with hat $$\vec{v}$$ or a bold letter $$\mathbf{v}$$, or other notations like $$\overrightarrow{PQ}=v_{x}\hat{x}+v_{y}\hat{y}=v_{x}\hat{i}+v_{y}\hat{j}=v_{1}\hat{i}+v_{2}\hat{j}=v_{1}\hat{x}+v_{2}\hat{y}=\langle v_{x},v_{y} \rangle=\langle v_{1},v_{2} \rangle$$
   - A 2-D vector is represented by two components
-- The magnitude of a vector equals ![$|\hat{v}|=\sqrt{v_x^2+v^2_y}$](https://render.githubusercontent.com/render/math?math=%24%7C%5Chat%7Bv%7D%7C%3D%5Csqrt%7Bv_x%5E2%2Bv%5E2_y%7D%24)
+- The magnitude of a vector equals $$|\hat{v}|=\sqrt{v_x^2+v^2_y}$$
 - When the magitude and direction of a vector are known, its two components can be obtained by using `cos` and `sin`
-- When multiply a vector with a scalar, ![$c\hat{v}=c(x_x\hat{i}+y_y\hat{j})=cx_x\hat{i}+cy_y\hat{j}$](https://render.githubusercontent.com/render/math?math=%24c%5Chat%7Bv%7D%3Dc%28x_x%5Chat%7Bi%7D%2By_y%5Chat%7Bj%7D%29%3Dcx_x%5Chat%7Bi%7D%2Bcy_y%5Chat%7Bj%7D%24)
+- When multiply a vector with a scalar, $$c\hat{v}=c(x_x\hat{i}+y_y\hat{j})=cx_x\hat{i}+cy_y\hat{j}$$
 - A unit vector has magnitude that always equals to `1`, it is used to indicate direction
-  - The unit vector of any given vector is ![$\frac{\hat{v}}{|v|}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7B%5Chat%7Bv%7D%7D%7B%7Cv%7C%7D%24)
+  - The unit vector of any given vector is $$\frac{\hat{v}}{|v|}$$
 - Vectors can be added using the triangle rule(left), and the parallelogram rule(right)
   - ![b-vector-addition](img/b-vector-addition.png)
   - If the components of a vector are known, simply add them together
 - One vector subtract one other vector is the same as add the other vector with opposite direction, or it can be directly subtracted using the following rule
   - ![b-vector-subtraction](img/b-vector-subtraction.png)
   - If the components of a vector are known, simply subtract them separately
-- A dot product of two vectors is, ![$\vec{A}\vec{B}=|\vec{A}||\vec{B}|\cos{\theta}$](https://render.githubusercontent.com/render/math?math=%24%5Cvec%7BA%7D%5Cvec%7BB%7D%3D%7C%5Cvec%7BA%7D%7C%7C%5Cvec%7BB%7D%7C%5Ccos%7B%5Ctheta%7D%24) where `θ` is the angle between the two vectors
+- A dot product of two vectors is, $$\vec{A}\vec{B}=|\vec{A}||\vec{B}|\cos{\theta}$$ where `θ` is the angle between the two vectors
   - It returns a scalar that describes the magnitude and how close the vectors are
   - When the angle is smaller than `±90+360n` degrees the result is positive
   - It returns 0, the the angle is `90+360n` degress
   - It returns a negative values the angle is greater than `±90+360n` degrees
   - When the components of the vectors are known, dot product is the sum of the product of the `x` component of the two vectors and the `y` component of the two vectors
-  - Based on the above properties, the angle between two vectors can be found when the components of them and the magnitude of them are known, ![$\cos{\theta}=\frac{A_x B_x + A_y B_y}{|\vec{A}||\vec{B}|}$](https://render.githubusercontent.com/render/math?math=%24%5Ccos%7B%5Ctheta%7D%3D%5Cfrac%7BA_x+B_x+%2B+A_y+B_y%7D%7B%7C%5Cvec%7BA%7D%7C%7C%5Cvec%7BB%7D%7C%7D%24)
+  - Based on the above properties, the angle between two vectors can be found when the components of them and the magnitude of them are known, $$\cos{\theta}=\frac{A_x B_x + A_y B_y}{|\vec{A}||\vec{B}|}$$
 
 ## Geometry
