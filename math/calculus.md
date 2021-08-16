@@ -6,84 +6,84 @@
 
 - Intuitive Definitions
   - Definition of a Limit
-    - Suppose _`f(x)`_ is defined when `x` is near the number `a`. (This means that f is defined on some open interval that contains a, except possibly at a itself.) Then we write ![$\lim_{x \to a}f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3DL%24) and say "the limit of `f(x)`, as x approaches a, equals L" if we can make the values of _`f(x)`_ arbitrarily close to L (as close to L as we like) by restricting x to be sufficiently close to a (on either side of a) but not equal to a.
+    - Suppose _`f(x)`_ is defined when `x` is near the number `a`. (This means that f is defined on some open interval that contains a, except possibly at a itself.) Then we write $$\lim_{x \to a}f(x)=L$$ and say "the limit of `f(x)`, as x approaches a, equals L" if we can make the values of _`f(x)`_ arbitrarily close to L (as close to L as we like) by restricting x to be sufficiently close to a (on either side of a) but not equal to a.
   - Definition of One-Sided Limits
-    - ![$\lim_{x \to a^-}f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df%28x%29%3DL%24) and say the left-hand limit of _`f(x)`_ as x approaches a [or the limit of f sxd as x approaches `a` from the left] is equal to `L` if we can make the values of _`f(x)`_ arbitrarily close to `L` by taking `x` to be sufficiently close to a with `x` less than `a`.
-    - ![$\lim_{x \to a^+}f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df%28x%29%3DL%24) if we require that x be greater than a, we get "the right-hand limit of _`f(x)`_ as `x` approaches `a` is equal to `L`".
+    - $$\lim_{x \to a^-}f(x)=L$$ and say the left-hand limit of _`f(x)`_ as x approaches a [or the limit of f sxd as x approaches `a` from the left] is equal to `L` if we can make the values of _`f(x)`_ arbitrarily close to `L` by taking `x` to be sufficiently close to a with `x` less than `a`.
+    - $$\lim_{x \to a^+}f(x)=L$$ if we require that x be greater than a, we get "the right-hand limit of _`f(x)`_ as `x` approaches `a` is equal to `L`".
   - Definition of an Infinite Limit
-    - Let `f` be a function defined on both sides of `a`, except possibly at `a` itself. Then ![$\lim_{x \to a}f(x)= \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3D%20%5Cinfty%24) means that the values of _`f(x)`_ can be made arbitrarily large (as large as we please) by taking `x` sufficiently close to `a`, but not equal to `a`.
-    - Let `f` be a function defined on both sides of `a`, except possibly at `a` itself. Then ![$\lim_{x \to a}f(x)= - \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3D%20-%20%5Cinfty%24) means that the values of _`f(x)`_ can be made arbitrarily large negative by taking `x` sufficiently close to `a`, but not equal to `a`.
+    - Let `f` be a function defined on both sides of `a`, except possibly at `a` itself. Then $$\lim_{x \to a}f(x)= \infty$$ means that the values of _`f(x)`_ can be made arbitrarily large (as large as we please) by taking `x` sufficiently close to `a`, but not equal to `a`.
+    - Let `f` be a function defined on both sides of `a`, except possibly at `a` itself. Then $$\lim_{x \to a}f(x)= - \infty$$ means that the values of _`f(x)`_ can be made arbitrarily large negative by taking `x` sufficiently close to `a`, but not equal to `a`.
   - Definition of a Limit at Infinity
-    - Let _f_ be a function defined on some interval ![$(a, \infty)$](https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty%29%24). Then ![$\lim_{x \to \infty}f(x)= L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7Df%28x%29%3D%20L%24) means that the values of _f(x)_ can be made arbitrarily close to _L_ by requiring _x_ to be sufficiently large.
-    - Let _f_ be a function defined on some interval ![$(a, -\infty)$](https://render.githubusercontent.com/render/math?math=%24%28a%2C%20-%5Cinfty%29%24). Then ![$\lim_{x \to - \infty}f(x)= L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7Df%28x%29%3D%20L%24) means that the values of _f(x)_ can be made arbitrarily close to _L_ by requiring _x_ to be sufficiently large negative.
+    - Let _f_ be a function defined on some interval $$(a, \infty)$$. Then $$\lim_{x \to \infty}f(x)= L$$ means that the values of _f(x)_ can be made arbitrarily close to _L_ by requiring _x_ to be sufficiently large.
+    - Let _f_ be a function defined on some interval $$(a, -\infty)$$. Then $$\lim_{x \to - \infty}f(x)= L$$ means that the values of _f(x)_ can be made arbitrarily close to _L_ by requiring _x_ to be sufficiently large negative.
   - Definition of an Infinite Limit at Infinity
-    - Let _f_ be a function defined on some interval ![$(a, \infty)$](https://render.githubusercontent.com/render/math?math=%24%28a%2C%20%5Cinfty%29%24). Then ![$\lim_{x \to \infty}f(x)= \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7Df%28x%29%3D%20%5Cinfty%24) means that for every positive number _M_ there is a corresponding positive number _N_ such that if ![$x > N$](https://render.githubusercontent.com/render/math?math=%24x%20%3E%20N%24) then ![$f(x) > M$](https://render.githubusercontent.com/render/math?math=%24f%28x%29%20%3E%20M%24)
+    - Let _f_ be a function defined on some interval $$(a, \infty)$$. Then $$\lim_{x \to \infty}f(x)= \infty$$ means that for every positive number _M_ there is a corresponding positive number _N_ such that if $$x > N$$ then $$f(x) > M$$
 - Precise Definitions
   - Definition of a Limit
-    - Let _`f`_ be a function defined on some open interval that contains the number _`a`_, except possibly at _`a`_ itself. Then we say that the limit of _`f(x)`_ as _`x`_ approaches _`a`_ is _`L`_, and we write ![$\lim_{x \to a}f(x) = L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%20%3D%20L%24) if for every number ![$\epsilon > 0$](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24) there is a number ![$\delta > 0$](https://render.githubusercontent.com/render/math?math=%24%5Cdelta%20%3E%200%24) such that, if ![$0 < |x-a| < \delta$](https://render.githubusercontent.com/render/math?math=%240%20%3C%20%7Cx-a%7C%20%3C%20%5Cdelta%24) then ![$|f(x) - L| < \epsilon$](https://render.githubusercontent.com/render/math?math=%24%7Cf%28x%29%20-%20L%7C%20%3C%20%5Cepsilon%24)
+    - Let _`f`_ be a function defined on some open interval that contains the number _`a`_, except possibly at _`a`_ itself. Then we say that the limit of _`f(x)`_ as _`x`_ approaches _`a`_ is _`L`_, and we write $$\lim_{x \to a}f(x) = L$$ if for every number $$\epsilon > 0$$ there is a number $$\delta > 0$$ such that, if $$0 < |x-a| < \delta$$ then $$|f(x) - L| < \epsilon$$
   - Definition of One-Sided Limits
-    - ![$\lim_{x \to a^-}f(x) = L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df%28x%29%20%3D%20L%24) if for every number ![$\epsilon > 0$](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24) there is a number ![$\delta > 0$](https://render.githubusercontent.com/render/math?math=%24%5Cdelta%20%3E%200%24) such that, if ![$a - \delta < x < a$](https://render.githubusercontent.com/render/math?math=%24a%20-%20%5Cdelta%20%3C%20x%20%3C%20a%24) then ![$|f(x) - L| < \epsilon$](https://render.githubusercontent.com/render/math?math=%24%7Cf%28x%29%20-%20L%7C%20%3C%20%5Cepsilon%24)
-    - ![$\lim_{x \to a^-}f(x) = L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df%28x%29%20%3D%20L%24) if for every number ![$\epsilon > 0$](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24) there is a number ![$\delta > 0$](https://render.githubusercontent.com/render/math?math=%24%5Cdelta%20%3E%200%24) such that, if ![$a < x < a + \delta $](https://render.githubusercontent.com/render/math?math=%24a%20%3C%20x%20%3C%20a%20%2B%20%5Cdelta%20%24) then ![$|f(x) - L| < \epsilon$](https://render.githubusercontent.com/render/math?math=%24%7Cf%28x%29%20-%20L%7C%20%3C%20%5Cepsilon%24)
+    - $$\lim_{x \to a^-}f(x) = L$$ if for every number $$\epsilon > 0$$ there is a number $$\delta > 0$$ such that, if $$a - \delta < x < a$$ then $$|f(x) - L| < \epsilon$$
+    - $$\lim_{x \to a^-}f(x) = L$$ if for every number $$\epsilon > 0$$ there is a number $$\delta > 0$$ such that, if $$a < x < a + \delta $$ then $$|f(x) - L| < \epsilon$$
   - Definition of an Infinite Limit
-    - Let _`f`_ be a function defined on some open interval that contains the number _`a`_, except possibly at _`a`_ itself. Then ![$\lim_{x \to a}f(x) = \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%20%3D%20%5Cinfty%24) means that for every positive number _M_ there is a positive number ![$\delta$](https://render.githubusercontent.com/render/math?math=%24%5Cdelta%24) such that if ![$0 < |x-a| < \delta$](https://render.githubusercontent.com/render/math?math=%240%20%3C%20%7Cx-a%7C%20%3C%20%5Cdelta%24) then ![$f(x) > M$](https://render.githubusercontent.com/render/math?math=%24f%28x%29%20%3E%20M%24)
-    - Let _`f`_ be a function defined on some open interval that contains the number _`a`_, except possibly at _`a`_ itself. Then ![$\lim_{x \to a}f(x) = - \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%20%3D%20-%20%5Cinfty%24) means that for every positive number _M_ there is a negetive number ![$\delta$](https://render.githubusercontent.com/render/math?math=%24%5Cdelta%24) such that if ![$0 < |x-a| < \delta$](https://render.githubusercontent.com/render/math?math=%240%20%3C%20%7Cx-a%7C%20%3C%20%5Cdelta%24) then ![$f(x) < N$](https://render.githubusercontent.com/render/math?math=%24f%28x%29%20%3C%20N%24)
-  - Definition of a Limit at Infinity - Let _f_ be a function defined on some interval ![$(a, \infty)$](https://render.githubusercontent.com/render/math?math=%24%28a%2C%20%5Cinfty%29%24). Then ![$\lim_{x \to \infty} f(x) = L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%20f%28x%29%20%3D%20L%24) means that for every ![$\epsilon > 0$](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24) there is a corresponding number _N_ such that if ![$x > N$](https://render.githubusercontent.com/render/math?math=%24x%20%3E%20N%24) then ![$| f(x) - L| < \epsilon$](https://render.githubusercontent.com/render/math?math=%24%7C%20f%28x%29%20-%20L%7C%20%3C%20%5Cepsilon%24) - Let _f_ be a function defined on some interval ![$(-\infty , a)$](https://render.githubusercontent.com/render/math?math=%24%28-%5Cinfty%20%2C%20a%29%24). Then ![$\lim_{x \to -\infty} f(x) = L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%5Cinfty%7D%20f%28x%29%20%3D%20L%24) means that for every ![$\epsilon > 0$](https://render.githubusercontent.com/render/math?math=%24%5Cepsilon%20%3E%200%24) there is a corresponding number _N_ such that if ![$x < N$](https://render.githubusercontent.com/render/math?math=%24x%20%3C%20N%24) then ![$| f(x) - L| < \epsilon$](https://render.githubusercontent.com/render/math?math=%24%7C%20f%28x%29%20-%20L%7C%20%3C%20%5Cepsilon%24)
-- ![$\lim_{x \to a}f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3DL%24) if and only if ![$\lim_{x \to a^+}f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df%28x%29%3DL%24) and ![$\lim_{x \to a^-}f(x)=L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df%28x%29%3DL%24)
-- The vertical line `x = a` is called a vertical asymptote of the curve ![$y= f(x)$](https://render.githubusercontent.com/render/math?math=%24y%3D%20f%28x%29%24) if at least one of the following statements is true:
-  - ![$\lim_{x \to a}f(x)= \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3D%20%5Cinfty%24)
-  - ![$\lim_{x \to a^-}f(x)= \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df%28x%29%3D%20%5Cinfty%24)
-  - ![$\lim_{x \to a^+}f(x)= \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df%28x%29%3D%20%5Cinfty%24)
-  - ![$\lim_{x \to a}f(x)=- \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%3D-%20%5Cinfty%24)
-  - ![$\lim_{x \to a^-}f(x)=- \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df%28x%29%3D-%20%5Cinfty%24)
-  - ![$\lim_{x \to a^+}f(x)=- \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df%28x%29%3D-%20%5Cinfty%24)
-  - Example: ![$\lim_{x \to 0^+} \ln{x}=- \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%200%5E%2B%7D%20%5Cln%7Bx%7D%3D-%20%5Cinfty%24)
-- the line _y = mx + b_ is called a slant(oblique) asymptote where ![$\lim_{x \to \infty} [f(x)-(mx+b)]=0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%20%5Bf%28x%29-%28mx%2Bb%29%5D%3D0%24) if ![$m \neq 0$](https://render.githubusercontent.com/render/math?math=%24m%20%5Cneq%200%24)
-- A function _f_ is continuous at a number a if ![$\lim_{x \to a}f(x) = f(a)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df%28x%29%20%3D%20f%28a%29%24)
-- A function _f_ is continuous from the right at a number _a_ if ![$\lim_{x \to a^+}f(x) = f(a)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7Df(x%29%20%3D%20f(a%29%24)
-- A function _f_ is continuous from the left at a number _a_ if ![$\lim_{x \to a^-}f(x) = f(a)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E-%7Df(x%29%20%3D%20f(a%29%24)
+    - Let _`f`_ be a function defined on some open interval that contains the number _`a`_, except possibly at _`a`_ itself. Then $$\lim_{x \to a}f(x) = \infty$$ means that for every positive number _M_ there is a positive number $$\delta$$ such that if $$0 < |x-a| < \delta$$ then $$f(x) > M$$
+    - Let _`f`_ be a function defined on some open interval that contains the number _`a`_, except possibly at _`a`_ itself. Then $$\lim_{x \to a}f(x) = - \infty$$ means that for every positive number _M_ there is a negetive number $$\delta$$ such that if $$0 < |x-a| < \delta$$ then $$f(x) < N$$
+  - Definition of a Limit at Infinity - Let _f_ be a function defined on some interval $$(a, \infty)$$. Then $$\lim_{x \to \infty} f(x) = L$$ means that for every $$\epsilon > 0$$ there is a corresponding number _N_ such that if $$x > N$$ then $$| f(x) - L| < \epsilon$$ - Let _f_ be a function defined on some interval $$(-\infty , a)$$. Then $$\lim_{x \to -\infty} f(x) = L$$ means that for every $$\epsilon > 0$$ there is a corresponding number _N_ such that if $$x < N$$ then $$| f(x) - L| < \epsilon$$
+- $$\lim_{x \to a}f(x)=L$$ if and only if $$\lim_{x \to a^+}f(x)=L$$ and $$\lim_{x \to a^-}f(x)=L$$
+- The vertical line `x = a` is called a vertical asymptote of the curve $$y= f(x)$$ if at least one of the following statements is true:
+  - $$\lim_{x \to a}f(x)= \infty$$
+  - $$\lim_{x \to a^-}f(x)= \infty$$
+  - $$\lim_{x \to a^+}f(x)= \infty$$
+  - $$\lim_{x \to a}f(x)=- \infty$$
+  - $$\lim_{x \to a^-}f(x)=- \infty$$
+  - $$\lim_{x \to a^+}f(x)=- \infty$$
+  - Example: $$\lim_{x \to 0^+} \ln{x}=- \infty$$
+- the line _y = mx + b_ is called a slant(oblique) asymptote where $$\lim_{x \to \infty} [f(x)-(mx+b)]=0$$ if $$m \neq 0$$
+- A function _f_ is continuous at a number a if $$\lim_{x \to a}f(x) = f(a)$$
+- A function _f_ is continuous from the right at a number _a_ if $$\lim_{x \to a^+}f(x) = f(a)$$
+- A function _f_ is continuous from the left at a number _a_ if $$\lim_{x \to a^-}f(x) = f(a)$$
 - A function _f_ is continuous on an interval if it is continuous at every number in the interval. (If _f_ is defined only on one side of an endpoint of the interval, we understand continuous at the endpoint to mean continuous from the right or continuous from the left.)
-- The line _y = L_ is called a horizontal asymptote of the curve _y = f(x)_ if either ![$\lim_{x \to a}f(x)= - \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%3D%20-%20%5Cinfty%24) or ![$(a, -\infty)$](https://render.githubusercontent.com/render/math?math=%24(a%2C%20-%5Cinfty%29%24). Then ![$\lim_{x \to - \infty}f(x)= L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7Df(x%29%3D%20L%24)
+- The line _y = L_ is called a horizontal asymptote of the curve _y = f(x)_ if either $$\lim_{x \to a}f(x)= - \infty$$ or $$(a, -\infty)$$. Then $$\lim_{x \to - \infty}f(x)= L$$
   - For Example:
-    - ![$\lim_{x \to - \infty}\tan^{-1}{x}= - \frac{\pi}{2} $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7D%5Ctan%5E%7B-1%7D%7Bx%7D%3D%20-%20%5Cfrac%7B%5Cpi%7D%7B2%7D%20%24)
-    - ![$\lim_{x \to \infty}\tan^{-1}{x}= \frac{\pi}{2} $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%5Ctan%5E%7B-1%7D%7Bx%7D%3D%20%5Cfrac%7B%5Cpi%7D%7B2%7D%20%24)
-    - ![$\lim_{x \to - \infty} e^x = 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7D%20e%5Ex%20%3D%200%24)
+    - $$\lim_{x \to - \infty}\tan^{-1}{x}= - \frac{\pi}{2} $$
+    - $$\lim_{x \to \infty}\tan^{-1}{x}= \frac{\pi}{2} $$
+    - $$\lim_{x \to - \infty} e^x = 0$$
 - Definition of the Number _e_
-  - _e_ is the number such that ![$\lim_{h \to 0} \frac{e^h-1}{h} = 1$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bh%20%5Cto%200%7D%20%5Cfrac%7Be%5Eh-1%7D%7Bh%7D%20%3D%201%24)
-  - So, ![$e = \lim_{x \to 0} (1+x)^{\frac{1}{x}}$](https://render.githubusercontent.com/render/math?math=%24e%20%3D%20%5Clim_%7Bx%20%5Cto%200%7D%20(1%2Bx%29%5E%7B%5Cfrac%7B1%7D%7Bx%7D%7D%24) or ![$e = \lim_{x \to \infty} \left(1+ \frac{1}{n}\right)^n$](https://render.githubusercontent.com/render/math?math=%24e%20%3D%20%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%20%5Cleft(1%2B%20%5Cfrac%7B1%7D%7Bn%7D%5Cright%29%5En%24)
-- L'Hospital's Rule - Suppose _f_ and _t_ are differentiable and ![$g'(x) \neq 0$](https://render.githubusercontent.com/render/math?math=%24g'(x%29%20%5Cneq%200%24) on an open interval _I_ that contains _a_ (except possibly at _a_). Suppose that ![$\lim_{x \to a}f(x) = 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3D%200%24) and ![$\lim_{x \to a}g(x) = 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%20%3D%200%24) or that ![$\lim_{x \to a}f(x) = \pm \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3D%20%5Cpm%20%5Cinfty%24) and ![$\lim_{x \to a}g(x) = \pm \infty$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%20%3D%20%5Cpm%20%5Cinfty%24) In other words, we have an indeterminate form of type `0/0` or ![$\infty / \infty$](https://render.githubusercontent.com/render/math?math=%24%5Cinfty%20%2F%20%5Cinfty%24). Then ![$\lim_{x \to a} \frac{f(x)}{g(x)}=\lim_{x \to a} \frac{f'(x)}{g'(x)}$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf(x%29%7D%7Bg(x%29%7D%3D%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf'(x%29%7D%7Bg'(x%29%7D%24) if the limit on the right side exists (or is opposite/negative inifinity)
+  - _e_ is the number such that $$\lim_{h \to 0} \frac{e^h-1}{h} = 1$$
+  - So, $$e = \lim_{x \to 0} (1+x)^{\frac{1}{x}}$$ or $$e = \lim_{x \to \infty} \left(1+ \frac{1}{n}\right)^n$$
+- L'Hospital's Rule - Suppose _f_ and _t_ are differentiable and $$g'(x) \neq 0$$ on an open interval _I_ that contains _a_ (except possibly at _a_). Suppose that $$\lim_{x \to a}f(x) = 0$$ and $$\lim_{x \to a}g(x) = 0$$ or that $$\lim_{x \to a}f(x) = \pm \infty$$ and $$\lim_{x \to a}g(x) = \pm \infty$$ In other words, we have an indeterminate form of type `0/0` or $$\infty / \infty$$. Then $$\lim_{x \to a} \frac{f(x)}{g(x)}=\lim_{x \to a} \frac{f'(x)}{g'(x)}$$ if the limit on the right side exists (or is opposite/negative inifinity)
 
 ### Laws
 
-- Limit Laws, Suppose that `c` is a constant and the limits ![$\lim_{x \to a} f(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29%24) and ![$\lim_{x \to a} g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20g(x%29%24) exist. Then:
-  - ![$\lim_{x \to a} [f(x)+g(x)]=\lim_{x \to a} f(x)+\lim_{x \to a} g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bf(x%29%2Bg(x%29%5D%3D%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29%2B%5Clim_%7Bx%20%5Cto%20a%7D%20g(x%29%24) Sum Law
-  - ![$\lim_{x \to a} [f(x)-g(x)]=\lim_{x \to a} f(x)-\lim_{x \to a} g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bf(x%29-g(x%29%5D%3D%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29-%5Clim_%7Bx%20%5Cto%20a%7D%20g(x%29%24) Difference Law
-  - ![$\lim_{x \to a} [cf(x)]=c \lim_{x \to a} f(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bcf(x%29%5D%3Dc%20%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29%24) Constant Multiple Law
-  - ![$\lim_{x \to a} [f(x)g(x)]=\lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bf(x%29g(x%29%5D%3D%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29%20%5Ccdot%20%5Clim_%7Bx%20%5Cto%20a%7D%20g(x%29%24) Product Law
-  - ![$\lim_{x \to a} \frac{f(x)}{g(x)}=\frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf(x%29%7D%7Bg(x%29%7D%3D%5Cfrac%7B%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29%7D%7B%5Clim_%7Bx%20%5Cto%20a%7D%20g(x%29%7D%24) if ![$\lim_{x \to a} g(x) \neq 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20g(x%29%20%5Cneq%200%24) Quotient Law
-  - ![$\lim_{x \to a} [f(x)]^n = \left[\lim_{x \to a} f(x)\right]^n$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Bf(x%29%5D%5En%20%3D%20%5Cleft%5B%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29%5Cright%5D%5En%24) where n is a positive integer, Power Law
-  - ![$\lim_{x \to a}c=c $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dc%3Dc%20%24)
-  - ![$\lim_{x \to a}x=a $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dx%3Da%20%24)
-  - ![$\lim_{x \to a} x^n=a^n $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20x%5En%3Da%5En%20%24) where n is a positive integer
-  - ![$\lim_{x \to a} \sqrt[n]{x}=\sqrt[n]{a} $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Csqrt%5Bn%5D%7Bx%7D%3D%5Csqrt%5Bn%5D%7Ba%7D%20%24) where `n` is a positive integer (If `n` is even, we assume that `a > 0`.)
-  - ![$\lim_{x \to a} \sqrt[n]{f(x)}=\sqrt[n]{\lim_{x \to a} f(x)} $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%20%5Csqrt%5Bn%5D%7Bf(x%29%7D%3D%5Csqrt%5Bn%5D%7B%5Clim_%7Bx%20%5Cto%20a%7D%20f(x%29%7D%20%24) where `n` is a positive integer. If `n` is even, we assume that ![$\lim_{x \to a}f(x) > 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3E%200%24). Root Law
+- Limit Laws, Suppose that `c` is a constant and the limits $$\lim_{x \to a} f(x)$$ and $$\lim_{x \to a} g(x)$$ exist. Then:
+  - $$\lim_{x \to a} [f(x)+g(x)]=\lim_{x \to a} f(x)+\lim_{x \to a} g(x)$$ Sum Law
+  - $$\lim_{x \to a} [f(x)-g(x)]=\lim_{x \to a} f(x)-\lim_{x \to a} g(x)$$ Difference Law
+  - $$\lim_{x \to a} [cf(x)]=c \lim_{x \to a} f(x)$$ Constant Multiple Law
+  - $$\lim_{x \to a} [f(x)g(x)]=\lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)$$ Product Law
+  - $$\lim_{x \to a} \frac{f(x)}{g(x)}=\frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}$$ if $$\lim_{x \to a} g(x) \neq 0$$ Quotient Law
+  - $$\lim_{x \to a} [f(x)]^n = \left[\lim_{x \to a} f(x)\right]^n$$ where n is a positive integer, Power Law
+  - $$\lim_{x \to a}c=c $$
+  - $$\lim_{x \to a}x=a $$
+  - $$\lim_{x \to a} x^n=a^n $$ where n is a positive integer
+  - $$\lim_{x \to a} \sqrt[n]{x}=\sqrt[n]{a} $$ where `n` is a positive integer (If `n` is even, we assume that `a > 0`.)
+  - $$\lim_{x \to a} \sqrt[n]{f(x)}=\sqrt[n]{\lim_{x \to a} f(x)} $$ where `n` is a positive integer. If `n` is even, we assume that $$\lim*{x \to a}f(x) > 0$$. Root Law
 
 ### Properties
 
-- Direct Substitution Property If _`f`_ is a polynomial or a rational function and _`a`_ is in the domain of _`f`_ , then ![$\lim_{x \to a}f(x) = f(a)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3D%20f(a%29%24)
-- If ![$f(x)=g(x)$](https://render.githubusercontent.com/render/math?math=%24f(x%29%3Dg(x%29%24) when ![$x \neq a$](https://render.githubusercontent.com/render/math?math=%24x%20%5Cneq%20a%24), then ![$\lim_{x \to a}f(x) = \lim_{x \to a}g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3D%20%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%24) provided the limits exist.
+- Direct Substitution Property If _`f`_ is a polynomial or a rational function and _`a`_ is in the domain of _`f`_ , then $$\lim_{x \to a}f(x) = f(a)$$
+- If $$f(x)=g(x)$$ when $$x \neq a$$, then $$\lim_{x \to a}f(x) = \lim_{x \to a}g(x)$$ provided the limits exist.
 
 ### Theorem
 
-- ![$\lim_{x \to a}f(x) = L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%3D%20L%24) if and only if ![$\lim_{x \to a_-}f(x) = L = \lim_{x \to a_+}f(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a_-%7Df(x%29%20%3D%20L%20%3D%20%5Clim_%7Bx%20%5Cto%20a_%2B%7Df(x%29%24)
-- If ![$f(x) \leqslant g(x)$](https://render.githubusercontent.com/render/math?math=%24f(x%29%20%5Cleqslant%20g(x%29%24) where _`x`_ is near _`a`_ (except possibly at _`a`_) and the limits of _`f`_ and _`g`_ both exist as _`x`_ approaches _`a`_, then ![$\lim_{x \to a}f(x) \leqslant \lim_{x \to a}g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%20%5Cleqslant%20%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%24)
-- The Squeeze Theorem - If ![$f(x) \leqslant g(x) \leqslant h(x)$](https://render.githubusercontent.com/render/math?math=%24f(x%29%20%5Cleqslant%20g(x%29%20%5Cleqslant%20h(x%29%24) when _`x`_ is near _`a`_ (except possibly at _`a`_) and ![$\lim_{x \to a}f(x)= \lim_{x \to a}h(x) = L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(x%29%3D%20%5Clim_%7Bx%20%5Cto%20a%7Dh(x%29%20%3D%20L%24) then ![$\lim_{x \to a}g(x) = L$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%20%3D%20L%24)
+- $$\lim_{x \to a}f(x) = L$$ if and only if $$\lim_{x \to a_-}f(x) = L = \lim_{x \to a_+}f(x)$$
+- If $$f(x) \leqslant g(x)$$ where _`x`_ is near _`a`_ (except possibly at _`a`_) and the limits of _`f`_ and _`g`_ both exist as _`x`_ approaches _`a`_, then $$\lim_{x \to a}f(x) \leqslant \lim_{x \to a}g(x)$$
+- The Squeeze Theorem - If $$f(x) \leqslant g(x) \leqslant h(x)$$ when _`x`_ is near _`a`_ (except possibly at _`a`_) and $$\lim_{x \to a}f(x)= \lim_{x \to a}h(x) = L$$ then $$\lim_{x \to a}g(x) = L$$
 - If _f_ and _g_ are continuous at _a_ and _c_ is a constant, then the following functions are also continuous at _a_:
   - _f + g_
   - _f - g_
   - _cf_
   - _fg_
-  - ![$\frac{f}{g}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bf%7D%7Bg%7D%24) if ![$g(a) \neq 0$](https://render.githubusercontent.com/render/math?math=%24g(a%29%20%5Cneq%200%24)
-- Any polynomial is continuous everywhere; that is, it is continuous on ![$\mathbb{R} = (- \infty, \infty)$](https://render.githubusercontent.com/render/math?math=%24%5Cmathbb%7BR%7D%20%3D%20(-%20%5Cinfty%2C%20%5Cinfty%29%24).
+  - $$\frac{f}{g}$$ if $$g(a) \neq 0$$
+- Any polynomial is continuous everywhere; that is, it is continuous on $$\mathbb{R} = (- \infty, \infty)$$.
 - Any rational function is continuous wherever it is defined; that is, it is contin- uous on its domain.
 - The following types of functions are continuous at every number in their domains:
   - polynomials
@@ -93,18 +93,18 @@
   - exponential functions
   - inverse trigonometric functions
   - logarithmic functions
-- If _f_ is continuous at _b_ and ![$\lim_{x \to a}g(x) = b$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%20%3D%20b%24)
-  - then ![$\lim_{x \to a}f(g(x)) =f(b)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(g(x%29%29%20%3Df(b%29%24).
-  - In other words, ![$\lim_{x \to a}f(g(x)) =f\left(\lim_{x \to a}g(x)\right)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7Df(g(x%29%29%20%3Df%5Cleft(%5Clim_%7Bx%20%5Cto%20a%7Dg(x%29%5Cright%29%24)
-- If _g_ is continuous at _a_ and _f_ is continuous at _g(a)_, then the composite function ![$f \circ g$](https://render.githubusercontent.com/render/math?math=%24f%20%5Ccirc%20g%24) given by ![$(f \circ g)(x) = f(g(x))$](https://render.githubusercontent.com/render/math?math=%24(f%20%5Ccirc%20g%29(x%29%20%3D%20f(g(x%29%29%24) is continuous at _a_.
-- The Intermediate Value Theorem - Suppose that _f_ is continuous on the closed interval ![$[a,b]$](https://render.githubusercontent.com/render/math?math=%24%5Ba%2Cb%5D%24) and let _N_ be any number between _f(a)_ and _f(b)_ , where ![$f(a) \neq f(b)$](https://render.githubusercontent.com/render/math?math=%24f(a%29%20%5Cneq%20f(b%29%24). Then there exists _a_ number _c_ in ![$(a,b)$](https://render.githubusercontent.com/render/math?math=%24(a%2Cb%29%24) such that _f(c) = N_.
-- If ![$r > 0$](https://render.githubusercontent.com/render/math?math=%24r%20%3E%200%24) is a rational number, then ![$\lim_{x \to \infty}\frac{1}{x^r}= 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20%5Cinfty%7D%5Cfrac%7B1%7D%7Bx%5Er%7D%3D%200%24) If ![$r > 0$](https://render.githubusercontent.com/render/math?math=%24r%20%3E%200%24) is a rational number such that ![$x^r$](https://render.githubusercontent.com/render/math?math=%24x%5Er%24) is defined for all _x_, then ![$\lim_{x \to - \infty}\frac{1}{x^r}= 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20-%20%5Cinfty%7D%5Cfrac%7B1%7D%7Bx%5Er%7D%3D%200%24)
+- If _f_ is continuous at _b_ and $$\lim_{x \to a}g(x) = b$$
+  - then $$\lim_{x \to a}f(g(x)) =f(b)$$.
+  - In other words, $$\lim_{x \to a}f(g(x)) =f\left(\lim_{x \to a}g(x)\right)$$
+- If _g_ is continuous at _a_ and _f_ is continuous at _g(a)_, then the composite function $$f \circ g$$ given by $$(f \circ g)(x) = f(g(x))$$ is continuous at _a_.
+- The Intermediate Value Theorem - Suppose that _f_ is continuous on the closed interval $$[a,b]$$ and let _N_ be any number between _f(a)_ and _f(b)_ , where $$f(a) \neq f(b)$$. Then there exists _a_ number _c_ in $$(a,b)$$ such that _f(c) = N_.
+- If $$r > 0$$ is a rational number, then $$\lim_{x \to \infty}\frac{1}{x^r}= 0$$ If $$r > 0$$ is a rational number such that $$x^r$$ is defined for all _x_, then $$\lim_{x \to - \infty}\frac{1}{x^r}= 0$$
 
 ### Related Solving Methods
 
 - use _f_ over the recipical of _g_ for Indeterminate products, in order to use the L'Hospital's Rule.
 - solving the the limit of one polynomial over another, divide everything by the highest power of the variable
-- Based on the geometric properties and the squeeze theorem, ![$\lim_{x \to \infty}\frac{\sin{\theta}}{\theta}= 1$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx+%5Cto+%5Cinfty%7D%5Cfrac%7B%5Csin%7B%5Ctheta%7D%7D%7B%5Ctheta%7D%3D+1%24) and ![$\lim_{x \to \infty}\frac{\cos{\theta}}{\theta}= 0$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx+%5Cto+%5Cinfty%7D%5Cfrac%7B%5Ccos%7B%5Ctheta%7D%7D%7B%5Ctheta%7D%3D+0%24).
+- Based on the geometric properties and the squeeze theorem, $$\lim_{x \to \infty}\frac{\sin{\theta}}{\theta}= 1$$ and $$\lim_{x \to \infty}\frac{\cos{\theta}}{\theta}= 0$$.
 - When using L'Hospital's Rule, try differentiate the numerator and the denominator multiple times until an result can be found
 - Infinity times infinity is infinity
 - For L'Hospital's Rule when an indeterminate form is not a fraction, like infinity to the power of zero, substitue the expression to `y` and take the nature log of the both side. and find the value of `lny` and get the value of `y`
@@ -113,36 +113,36 @@
 
 ### Definition
 
-- Tangent Line - The tangent line to the curve ![$y = f(x)$](https://render.githubusercontent.com/render/math?math=%24y%20%3D%20f(x%29%24)
-  - at the point ![$P(a, f(a))$](https://render.githubusercontent.com/render/math?math=%24P(a%2C%20f(a%29%29%24) is the line through _P_ with slope ![$m = \lim_{x \to a} \frac{f(x)-f(a)}{x-a}$](https://render.githubusercontent.com/render/math?math=%24m%20%3D%20%5Clim_%7Bx%20%5Cto%20a%7D%20%5Cfrac%7Bf(x%29-f(a%29%7D%7Bx-a%7D%24) provided that this limit exists.
-  - Optionally, ![$m = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$](https://render.githubusercontent.com/render/math?math=%24m%20%3D%20%5Clim_%7Bh%20%5Cto%200%7D%20%5Cfrac%7Bf(a%2Bh%29-f(a%29%7D%7Bh%7D%24)
-  - Or it can be ![$\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim_{x_2 \to x_1} \frac{f(x_2)-f(x_1)}{x_2 - x_1} $](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7B%5CDelta%20x%20%5Cto%200%7D%20%5Cfrac%7B%5CDelta%20y%7D%7B%5CDelta%20x%7D%20%3D%20%5Clim_%7Bx_2%20%5Cto%20x_1%7D%20%5Cfrac%7Bf(x_2%29-f(x_1%29%7D%7Bx_2%20-%20x_1%7D%20%24)
-- The derivative of a function _f_ at a number _a_, denoted by ![$f'(a)$](https://render.githubusercontent.com/render/math?math=%24f'(a%29%24) is ![$f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$](https://render.githubusercontent.com/render/math?math=%24f'(a%29%20%3D%20%5Clim_%7Bh%20%5Cto%200%7D%20%5Cfrac%7Bf(a%2Bh%29-f(a%29%7D%7Bh%7D%24)
+- Tangent Line - The tangent line to the curve $$y = f(x)$$
+  - at the point $$P(a, f(a))$$ is the line through _P_ with slope $$m = \lim_{x \to a} \frac{f(x)-f(a)}{x-a}$$ provided that this limit exists.
+  - Optionally, $$m = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$$
+  - Or it can be $$\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim_{x_2 \to x_1} \frac{f(x_2)-f(x_1)}{x_2 - x_1} $$
+- The derivative of a function _f_ at a number _a_, denoted by $$f'(a)$$ is $$f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$$
   - It is the function that returns the slope of the tangent as dependent variable.
   - It can also represent the instantaneous rate of change.
   - The derivateve of a function can be also denoted as
-    - ![$\frac{dy}{dx}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdy%7D%7Bdx%7D%24), known as Leibniz notation.
+    - $$\frac{dy}{dx}$$, known as Leibniz notation.
       - Does not have to be `dy` over `dx`, anything below is the current independent variable.
       - The notation itself can be calculated since it represent a relationship in fraction notation. For example, `dy/dx = (dy/dz)/(dx/dz)`
-    - ![$\frac{d}{dx}(x)$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(x%29%24)
-    - ![$y'$](https://render.githubusercontent.com/render/math?math=%24y'%24)
-    - ![$\dot{x}$](https://render.githubusercontent.com/render/math?math=%24%5Cdot%7Bx%7D%24) if _x_ represents time
+    - $$\frac{d}{dx}(x)$$
+    - $$y'$$
+    - $$\dot{x}$$ if _x_ represents time
     - All of the notation represents how much `y` changes when `x` changes.
 - Higher Derivatives
   - The derivatives of a derivative is called the second derivative, it can be denoted as follows:
-    - ![$\frac{d}{dy}\left(\frac{dy}{dx}\right)$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdy%7D%5Cleft(%5Cfrac%7Bdy%7D%7Bdx%7D%5Cright%29%24)
-    - ![$\frac{d^2 y}{d x^2}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%5E2%20y%7D%7Bd%20x%5E2%7D%24)
-    - ![$f''(x)$](https://render.githubusercontent.com/render/math?math=%24f''(x%29%24)
-    - ![$y''$](https://render.githubusercontent.com/render/math?math=%24y''%24)
-    - ![$\ddot{x}$](https://render.githubusercontent.com/render/math?math=%24%5Cddot%7Bx%7D%24)
+    - $$\frac{d}{dy}\left(\frac{dy}{dx}\right)$$
+    - $$\frac{d^2 y}{d x^2}$$
+    - $$f''(x)$$
+    - $$y''$$
+    - $$\ddot{x}$$
   - Same idea for third and fourth and higher derivatives.
-- A function _f_ is differentiable at a if _f'(a)_ exists. It is differen- tiable on an open interval (_a, b_)[or ![$(a, \infty)$](https://render.githubusercontent.com/render/math?math=%24(a%2C%20%5Cinfty%29%24) or ![$(-\infty, a)$](https://render.githubusercontent.com/render/math?math=%24(-%5Cinfty%2C%20a%29%24) or ![$(-\infty, \infty)$](https://render.githubusercontent.com/render/math?math=%24(-%5Cinfty%2C%20%5Cinfty%29%24)] if it is differentiable at every number in the interval.
+- A function _f_ is differentiable at a if _f'(a)_ exists. It is differen- tiable on an open interval (_a, b_)[or $$(a, \infty)$$ or $$(-\infty, a)$$ or $$(-\infty, \infty)$$] if it is differentiable at every number in the interval.
 - Let _c_ be a number in the domain _D_ of a function _f_. Then _f(c)_ is the
-  - absolute maximum value of _f_ on _D_ if ![$f(c) \geqslant f(x)$](https://render.githubusercontent.com/render/math?math=%24f(c%29%20%5Cgeqslant%20f(x%29%24) for all _x_ in _D_.
-  - absolute minimum value of f on D if ![$f(c) \leqslant f(x)$](https://render.githubusercontent.com/render/math?math=%24f(c%29%20%5Cleqslant%20f(x%29%24) for all _x_ in _D_.
+  - absolute maximum value of _f_ on _D_ if $$f(c) \geqslant f(x)$$ for all _x_ in _D_.
+  - absolute minimum value of f on D if $$f(c) \leqslant f(x)$$ for all _x_ in _D_.
 - The number _f(c)_ is a
-  - local maximum value of _f_ if ![$f(c) \geqslant f(x)$](https://render.githubusercontent.com/render/math?math=%24f(c%29%20%5Cgeqslant%20f(x%29%24) when _x_ is near _c_.
-  - local maximum value of _f_ if ![$f(c) \leqslant f(x)$](https://render.githubusercontent.com/render/math?math=%24f(c%29%20%5Cleqslant%20f(x%29%24) when _x_ is near _c_.
+  - local maximum value of _f_ if $$f(c) \geqslant f(x)$$ when _x_ is near _c_.
+  - local maximum value of _f_ if $$f(c) \leqslant f(x)$$ when _x_ is near _c_.
 - A critical number of a function _f_ is a number _c_ in the domain of _f_ such that either _f'(c) = 0_ or _f'(c)_ does not exist.
   - If _f_ has a local maximum or minimum at _c_, then _c_ is a critical number of _f_.
 - If the graph of _f_ lies above all of its tangents on an interval _I_, then it is called concave upward on _I_. If the graph of _f_ lies below all of its tangents on _I_, it is called concave downward on _I_.
@@ -150,37 +150,37 @@
 - A function _F_ is called an antiderivative of _f_ on an interval _I_ if `F'(x)=f(x)` for all _x_ in _I_.
 - The derivative of polar functions
   - Polar coordinates uses the distance to origin and the angle `θ` between the line to origin and x-axis to represent the location of a point. Instead of using `x`, `y` values in Cartesian coordinates.
-  - When converting a point from cartesian coordinates to polar coordinates, ![$r = \sqrt{x^2+y^2}$](https://render.githubusercontent.com/render/math?math=%24r+%3D+%5Csqrt%7Bx%5E2%2By%5E2%7D%24) and ![$\theta = \tan^{-1}{\left(\frac{y}{x}\right )}$](https://render.githubusercontent.com/render/math?math=%24%5Ctheta+%3D+%5Ctan%5E%7B-1%7D%7B%5Cleft%28%5Cfrac%7By%7D%7Bx%7D%5Cright+%29%7D%24)
+  - When converting a point from cartesian coordinates to polar coordinates, $$r = \sqrt{x^2+y^2}$$ and $$\theta = \tan^{-1}{\left(\frac{y}{x}\right )}$$
   - When converting a point from polar coordinates to cartesian coordinates, _`x = rsinθ`_ and _`y = rcosθ`_
   - Then function that uses `θ` as its indenpendent variable and `r` as its dependent variable are called polar function.
     - Using selected `θ` value to graph the polar function. polar function simplfy problem related to functions that have circular shape.
   - The derivative `dy/dx` of a polar function is calculated by:
-    - `dy/dθ` can be obtained from _`y = rcosθ`_, which is ![$r \cos{\theta}+ \frac{dy}{d \theta} \sin{\theta}$](https://render.githubusercontent.com/render/math?math=%24r+%5Ccos%7B%5Ctheta%7D%2B+%5Cfrac%7Bdy%7D%7Bd+%5Ctheta%7D+%5Csin%7B%5Ctheta%7D%24).
-    - `dx/dθ` can be obtained from _`x = rsinθ`_, which is ![$-r \sin{\theta}+ \frac{dy}{d \theta} \cos{\theta}$](https://render.githubusercontent.com/render/math?math=%24-r+%5Csin%7B%5Ctheta%7D%2B+%5Cfrac%7Bdy%7D%7Bd+%5Ctheta%7D+%5Ccos%7B%5Ctheta%7D%24).
-    - Then, ![$\frac{dy}{dx} = \frac{\frac{dy}{d \theta}}{\frac{dx}{d \theta}}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdy%7D%7Bdx%7D+%3D+%5Cfrac%7B%5Cfrac%7Bdy%7D%7Bd+%5Ctheta%7D%7D%7B%5Cfrac%7Bdx%7D%7Bd+%5Ctheta%7D%7D%24)
+    - `dy/dθ` can be obtained from _`y = rcosθ`_, which is $$r \cos{\theta}+ \frac{dy}{d \theta} \sin{\theta}$$.
+    - `dx/dθ` can be obtained from _`x = rsinθ`_, which is $$-r \sin{\theta}+ \frac{dy}{d \theta} \cos{\theta}$$.
+    - Then, $$\frac{dy}{dx} = \frac{\frac{dy}{d \theta}}{\frac{dx}{d \theta}}$$
 - Partial Derivatives
   - When a function has more than one independent variable, the partial derivative can be used to represent how much the dependent variable changes when one of its independent variables changes while keeping the other independent variable constant.
   - For `f(x, y)` it can have two derivatives which are `∂f/∂x` and `∂f/∂y`.
   - Function with multiple independent variable has a multi-demensional graph, parial derivative only looks at the rate of change between one independent variable and the dependent variable in one plane. All other independent variable will be kept in the result and the derivative function will have a reduced demension(by 1).
 - The position vector indicates the position of a particle relative to the origin
-  - the position can be defined by parametric equations which is depended on variables for time, angle etc., ![$\vec{r}(t)=f(t) \hat{i} + g(t) \hat{j}$](https://render.githubusercontent.com/render/math?math=%24%5Cvec%7Br%7D%28t%29%3Df%28t%29+%5Chat%7Bi%7D+%2B+g%28t%29+%5Chat%7Bj%7D%24)
-- The derivative of the position vector ![$\vec{r}(t)=f(t) \hat{i} + g(t) \hat{j}$](https://render.githubusercontent.com/render/math?math=%24%5Cvec%7Br%7D%28t%29%3Df%28t%29+%5Chat%7Bi%7D+%2B+g%28t%29+%5Chat%7Bj%7D%24) is ![$\vec{r}'(t)=f'(t) \hat{i} + g'(t) \hat{j}$](https://render.githubusercontent.com/render/math?math=%24%5Cvec%7Br%7D%27%28t%29%3Df%27%28t%29+%5Chat%7Bi%7D+%2B+g%27%28t%29+%5Chat%7Bj%7D%24)
-  - The second derivate of the position vector is ![$\vec{r}''(t)=f''(t) \hat{i} + g''(t) \hat{j}$](https://render.githubusercontent.com/render/math?math=%24%5Cvec%7Br%7D%27%27%28t%29%3Df%27%27%28t%29+%5Chat%7Bi%7D+%2B+g%27%27%28t%29+%5Chat%7Bj%7D%24)
-- The unit tangent vector ![$\hat{T}(t)$](https://render.githubusercontent.com/render/math?math=%24%5Chat%7BT%7D%28t%29%24) is a unit vector that is tangent to the change of the position vector
-  - It has the same direction as the derivate of the position vector at any given point, ![$\hat{T}(t)=\frac{\vec{v}'(t)}{|\vec{v}'(t)|}$](https://render.githubusercontent.com/render/math?math=%24%5Chat%7BT%7D%28t%29%3D%5Cfrac%7B%5Cvec%7Bv%7D%27%28t%29%7D%7B%7C%5Cvec%7Bv%7D%27%28t%29%7C%7D%24)
+  - the position can be defined by parametric equations which is depended on variables for time, angle etc., $$\vec{r}(t)=f(t) \hat{i} + g(t) \hat{j}$$
+- The derivative of the position vector $$\vec{r}(t)=f(t) \hat{i} + g(t) \hat{j}$$ is $$\vec{r}'(t)=f'(t) \hat{i} + g'(t) \hat{j}$$
+  - The second derivate of the position vector is $$\vec{r}''(t)=f''(t) \hat{i} + g''(t) \hat{j}$$
+- The unit tangent vector $$\hat{T}(t)$$ is a unit vector that is tangent to the change of the position vector
+  - It has the same direction as the derivate of the position vector at any given point, $$\hat{T}(t)=\frac{\vec{v}'(t)}{|\vec{v}'(t)|}$$
 - The unit normal vector is a unit vector that is tangent to the change of the unit tangent vector
   - It has the same direction as the second derivate of the position vector at any given point
   - The unit normal vector will always point toward the "inside" of how a curve is curving
-  - The function of the unit normal vector for the x component is the same as the function of the unit normal vector for the y component with opposite sign, the function of the unit normal vector for the y component is the same as the function of the unit normal vector for the x component, proven by using the angle `𝛟` that is counter-clockwise angle from the positive x-axis to the position vector, then the unit tangle vector can be written as ![$\hat{T}(\phi)=\cos{\phi} \hat{i}+\sin{\phi}\hat{j}$](https://render.githubusercontent.com/render/math?math=%24%5Chat%7BT%7D%28%5Cphi%29%3D%5Ccos%7B%5Cphi%7D+%5Chat%7Bi%7D%2B%5Csin%7B%5Cphi%7D%5Chat%7Bj%7D%24), then the unit normal vector ![$\hat{N}(\phi)=\hat{T}(\phi+\frac{\pi}{2})=\cos{(\phi+\frac{\pi}{2})} \hat{i}+\sin{(\phi+\frac{\pi}{2})}\hat{j}=-\sin{\phi} \hat{i}+\cos{\phi}\hat{j}$](https://render.githubusercontent.com/render/math?math=%24%5Chat%7BN%7D%28%5Cphi%29%3D%5Chat%7BT%7D%28%5Cphi%2B%5Cfrac%7B%5Cpi%7D%7B2%7D%29%3D%5Ccos%7B%28%5Cphi%2B%5Cfrac%7B%5Cpi%7D%7B2%7D%29%7D+%5Chat%7Bi%7D%2B%5Csin%7B%28%5Cphi%2B%5Cfrac%7B%5Cpi%7D%7B2%7D%29%7D%5Chat%7Bj%7D%3D-%5Csin%7B%5Cphi%7D+%5Chat%7Bi%7D%2B%5Ccos%7B%5Cphi%7D%5Chat%7Bj%7D%24)
+  - The function of the unit normal vector for the x component is the same as the function of the unit normal vector for the y component with opposite sign, the function of the unit normal vector for the y component is the same as the function of the unit normal vector for the x component, proven by using the angle `𝛟` that is counter-clockwise angle from the positive x-axis to the position vector, then the unit tangle vector can be written as $$\hat{T}(\phi)=\cos{\phi} \hat{i}+\sin{\phi}\hat{j}$$, then the unit normal vector $$\hat{N}(\phi)=\hat{T}(\phi+\frac{\pi}{2})=\cos{(\phi+\frac{\pi}{2})} \hat{i}+\sin{(\phi+\frac{\pi}{2})}\hat{j}=-\sin{\phi} \hat{i}+\cos{\phi}\hat{j}$$
 
 ### Rules
 
-- Derivative of a Constant Function ![$\frac{d}{dx}(c)=0$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(c%29%3D0%24)
-- The Power Rule - ![$\frac{d}{dx}(x^n)=nx^{n-1}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(x%5En%29%3Dnx%5E%7Bn-1%7D%24)
-- The Constant Multiple Rule - If _c_ is a constant and _f_ is a differentiable function, then ![$\frac{d}{dx}[cf(x)]=c \frac{d}{dx}f(x)$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Bcf(x%29%5D%3Dc%20%5Cfrac%7Bd%7D%7Bdx%7Df(x%29%24)
-- The Sum Rule - If _f_ and _g_ are both differentiable, then ![$\frac{d}{dx}[f(x)+g(x)]= \frac{d}{dx}f(x)+\frac{d}{dx}g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x%29%2Bg(x%29%5D%3D%20%5Cfrac%7Bd%7D%7Bdx%7Df(x%29%2B%5Cfrac%7Bd%7D%7Bdx%7Dg(x%29%24)
-- The Difference Rule - If _f_ and _g_ are both differentiable, then ![$\frac{d}{dx}[f(x)-g(x)]= \frac{d}{dx}f(x)-\frac{d}{dx}g(x)$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x%29-g(x%29%5D%3D%20%5Cfrac%7Bd%7D%7Bdx%7Df(x%29-%5Cfrac%7Bd%7D%7Bdx%7Dg(x%29%24)
-- Derivative of the Natural Exponential Function - ![$\frac{d}{dx}(e^x)=e^x$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D(e%5Ex%29%3De%5Ex%24)
+- Derivative of a Constant Function $$\frac{d}{dx}(c)=0$$
+- The Power Rule - $$\frac{d}{dx}(x^n)=nx^{n-1}$$
+- The Constant Multiple Rule - If _c_ is a constant and _f_ is a differentiable function, then $$\frac{d}{dx}[cf(x)]=c \frac{d}{dx}f(x)$$
+- The Sum Rule - If _f_ and _g_ are both differentiable, then $$\frac{d}{dx}[f(x)+g(x)]= \frac{d}{dx}f(x)+\frac{d}{dx}g(x)$$
+- The Difference Rule - If _f_ and _g_ are both differentiable, then $$\frac{d}{dx}[f(x)-g(x)]= \frac{d}{dx}f(x)-\frac{d}{dx}g(x)$$
+- Derivative of the Natural Exponential Function - $$\frac{d}{dx}(e^x)=e^x$$
 - The Product Rule - If _f_ and _g_ are both differentiable, then ![$\frac{d}{dx}[f(x)g(x)]=f(x) \frac{d}{dx}[g(x)]+g(x) \frac{d}{dx}[f(x)]$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x%29g(x%29%5D%3Df(x%29%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bg(x%29%5D%2Bg(x%29%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x%29%5D%24)
 - The Quotient Rule - If _f_ and _g_ are differentiable, then ![$\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x) \frac{d}{dx}[f(x)]-f(x) \frac{d}{dx}[g(x)]}{[g(x)]^2}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bd%7D%7Bdx%7D%5Cleft%5B%5Cfrac%7Bf(x%29%7D%7Bg(x%29%7D%5Cright%5D%3D%5Cfrac%7Bg(x%29%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bf(x%29%5D-f(x%29%20%5Cfrac%7Bd%7D%7Bdx%7D%5Bg(x%29%5D%7D%7B%5Bg(x%29%5D%5E2%7D%24)
 - The Chain Rule - If _g_ is differentiable at _x_ and _f_ is differentiable at _g(x)_, then the composite function ![$F=f \circ g$](https://render.githubusercontent.com/render/math?math=%24F%3Df%20%5Ccirc%20g%24) defined by ![$F(x)=f(g(x))$](https://render.githubusercontent.com/render/math?math=%24F(x%29%3Df(g(x%29%29%24)is differentiable at _x_ and _F'_ is given by the product ![$F'(x)=f'(g(x%29%29 \cdot g'(x%29$](https://render.githubusercontent.com/render/math?math=%24F'(x%29%3Df'(g(x%29%29%20%5Ccdot%20g'(x%29%24) In Leibniz notation, if _y = f(u)_ and _u = g(x)_ are both differentiable functions, then ![$\frac{dy}{dx}= \frac{dy}{du} \frac{du}{dx}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7Bdy%7D%7Bdx%7D%3D%20%5Cfrac%7Bdy%7D%7Bdu%7D%20%5Cfrac%7Bdu%7D%7Bdx%7D%24)
