@@ -1,58 +1,54 @@
-# Maple Softwares
-
 #### This document collects information on products from Maplesoft and DigitalED.
 
-[Maple](maple.md#maple)
+[Maple](#maple)
+* [Introduction](#introduction)
+* [Maple Code Syntax](#maple-code-syntax)
+* [Operators](#operators)
+* [Types](#types)
+* [Flow Control](#flow-control)
+* [Functions](#functions)
+* [Packages](#packages)
 
-* [Introduction](maple.md#introduction)
-* [Maple Code Syntax](maple.md#maple-code-syntax)
-* [Operators](maple.md#operators)
-* [Types](maple.md#types)
-* [Flow Control](maple.md#flow-control)
-* [Functions](maple.md#functions)
-* [Packages](maple.md#packages)
+[Möbius](#möbius)
+* [Introduction](#introduction-1)
+* [Using the Algorithm Editor](#using-the-algorithm-editor)
+  * [Assignment](#assignment-1)
+  * [Comments](#comments)
+  * [Built-in Functions](#built-in-functions)
+  * [Code Examples](#code-examples)
+* [Getting Response](#getting-response)
+  * [Multiple Choices](#multiple-choices)
+  * [Maple Graded Questions](#maple-graded-questions)
+* [Symbolic Entry](#symbolic-entry)
 
-[Möbius](maple.md#möbius)
 
-* [Introduction](maple.md#introduction-1)
-* [Using the Algorithm Editor](maple.md#using-the-algorithm-editor)
-  * [Assignment](maple.md#assignment-1)
-  * [Comments](maple.md#comments)
-  * [Built-in Functions](maple.md#built-in-functions)
-  * [Code Examples](maple.md#code-examples)
-* [Getting Response](maple.md#getting-response)
-  * [Multiple Choices](maple.md#multiple-choices)
-  * [Maple Graded Questions](maple.md#maple-graded-questions)
-* [Symbolic Entry](maple.md#symbolic-entry)
-
-## Maple
+# Maple
 
 ### Introduction
-
 * It is the flagship product of Maplesoft.
 * It is a software that make use of a powerful mathematics engine.
 * It can be used to solve mathematical problems.
 * Help document for Maple can be found [here](https://www.maplesoft.com/support/help/index.aspx).
 
-### Maple Code Syntax
 
-* Each line of code should end with a `;`.
-* Single line comments start with \# sign.
+
+### Maple Code Syntax
+* Each line of code should end with a ```;```.
+* Single line comments start with # sign.
 
 ### Operators
 
-**Assignment**
 
-```text
+##### Assignment
+```
 r := x^3;
 ```
+* The expression ```x^3``` is assigned to the variable ```r```.
 
-* The expression `x^3` is assigned to the variable `r`.
 
 ### Types
-
 * Name
-  * Maple has a type name denoted by a pair of left single quotes, ```x``` . Variable names are of type Name.
+  * Maple has a type name denoted by a pair of left single quotes, ``` `x` ```. Variable names are of type Name.
 * String
   * String are enclosed by double quotes.
 * Rational
@@ -60,193 +56,166 @@ r := x^3;
 
 [Click here](https://www.maplesoft.com/support/help/Maple/view.aspx?path=type&term=type#bkmrk2) to see a complete lists of defined type in Maple.
 
-**Convert to String**
-
-```text
+##### Convert to String
+```
 "$x"
 ```
+* Expression ```$x``` is converted to plain text string.
 
-* Expression `$x` is converted to plain text string.
-
-**Type Conversion**
-
-```text
+##### Type Conversion
+```
 convert(expression, type)
 ```
-
 * The second argument of the convert function is the type for the expression to convert to.
-* If the type is `rational`, the expression is converted to the rational form.
-* `convert(expresion, float, 3)` converts the expression to a float number with 3 decimal places.
-* Type can also be `binary`, `degrees`, `radians`, `string` etc.
-* parse\(string, option\)   //convert string into expression, auto evaluation.
+* If the type is ```rational```, the expression is converted to the rational form.
+* ```convert(expresion, float, 3)``` converts the expression to a float number with 3 decimal places.
+* Type can also be ```binary```, ```degrees```, ```radians```, ```string``` etc.
+* parse(string, option)   //convert string into expression, auto evaluation.
 
-```text
+```
 parse(s);
 ```
-
 * Parse function convert the string s into an expression or a statement.
-* If statement is specified as the second argument, `parse(s, statement);`, the statement in the first argument will be evaluated.
+* If statement is specified as the second argument, ```parse(s, statement);```, the statement in the first argument will be evaluated.
 
-**Type checking**
-
-```text
+##### Type checking
+```
 type(x,'float');
 ```
-
 * Returns true is x is of the type that is indicated by the type name.
-* `'float'` could be replace by any type name.
+* ```'float'``` could be replace by any type name.
 
-```text
+```
 whattype(x);
 ```
-
 * Returns the type name of x.
 
+
 ### Flow Control
-
-**If condition**
-
-```text
+##### If condition
+```
 if (a > b) then a else b end if;
 ```
+* Returns a if a > b. Returns b if a < b.
+* Condition can be ```'Fail'``` which means false, then the second value will be returned.
 
-* Returns a if a &gt; b. Returns b if a &lt; b.
-* Condition can be `'Fail'` which means false, then the second value will be returned.
-
-```text
+```
 if a < b then
   if a < c then d := a*b else d := a*c end if
 end if;
 ```
-
 * Nested if statement
 
-```text
+```
 a := 3;
 s := String(a, if a = 1 then "st"
                elif a = 2 then "nd"
                elif a = 3 then "rd"
                else "th" end if);
 ```
-
 * if-elif-else structure.
-* The example code is equivalent to  `s := "3rd"`.
+* The example code is equivalent to  ```s := "3rd"```.
 
 ### Functions
 
-**String Concatenation**
-
-```text
+##### String Concatenation
+```
 String(a,b,c,....);
 ```
-
 * The String function concatenates zero or more expressions into a single string.
 
-```text
+```
 cat(a,b,c,....);
 ```
-
 * The cat function is commonly used to concatenate strings and names together.
 
-**Root**
 
-```text
+
+##### Root
+```
 root(x,n);
 ```
-
 * Returns the nth root of x.
 
-**Simplify**
-
-```text
+##### Simplify
+```
 simplify(x);
 ```
-
 * x can be any expression.
 * Returns a simplified expression for x.
 
-**Expand**
-
-```text
+##### Expand
+```
 expand(x);
 ```
-
 * x can be any expression.
 * Returns an expanded expression for x.
 
-**Evaluation**
-
-```text
+##### Evaluation
+```
 evalb(x);
 ```
-
 * Evaluates a comparison expression and returns a boolean value of either true, false, and FAIL.
 * If evaluation is not possible, an unevaluated expression is returned.
 
-```text
+```
 evala(x);
 ```
-
 * Evaluate an algebraic field.
-* `x` can be placed inside functions like Factor\(\), Normal\(\), Expand\(\), Simplify\(\) to get the result in certain form. Ex, `evala(Normal(x))`.
+* ```x``` can be placed inside functions like Factor(), Normal(), Expand(), Simplify() to get the result in certain form. Ex, ```evala(Normal(x))```.
 
-```text
+```
 solve(x4−x3+1,x);
 ```
-
-```text
+```
 solve({x+y+z=2,2x+y=3,z=1},{x,y,z});
 ```
-
 * solve one or more equations.
 
-```text
+
+```
 fsolve(tan(sin(x))=1);
 ```
-
 * Returns result as floating-point.
 
-**Factorize**
 
-```text
+
+##### Factorize
+```
 factor($q);
 ```
-
 * Factorize the expression q.
 
-**Normalization**
-
-```text
+##### Normalization
+```
 radnormal(r);
 ```
-
 * Normalize an expression containing radical numbers.
 
-### Packages
 
+### Packages
 * Maple has many packages that add additional functions to the Maple engine.
 * Packages can be accessed by using the following ways.
-  * Long form: Use function directly with `PackageName[CommandName](arguments)` syntax.
-  * Short form: place `with(PackageName)` at the beginning of the code to import the package.
-  * Module Members: Use function directly with `PackageName:-commandName(arguments)` syntax.
+ * Long form: Use function directly with ```	PackageName[CommandName](arguments)``` syntax.
+ * Short form: place ```with(PackageName)``` at the beginning of the code to import the package.
+ * Module Members: Use function directly with ```PackageName:-commandName(arguments)``` syntax.
 
-**StringTools**
 
+##### StringTools
 The StringTools package is a collection of optimized string manipulation utilities.
-
 * [Click here](https://www.maplesoft.com/support/help/Maple/view.aspx?path=StringTools&term=stringtools#bkmrk0) to see a list of StringTools Package Commands.
 
-**InertForm**
+##### InertForm
 
 The InertForm package provides a collection of commands for obtaining and working with inert-form expressions.
-
 * The inert form of an expression is a representation that avoids evaluation and automatic simplification by changing operators and function names to unassigned symbols prefixed with a % character.  For general information on inert functions, see value.
 * [Click here](https://www.maplesoft.com/support/help/Maple/view.aspx?path=InertForm&term=InertForm#bkmrk0) to see a list of InvertForm Package Commands.
 
-## Möbius
+
+
+# Möbius
 
 ### Introduction
-
 * It is formerly known as Maple T.A.
 * It is a web-based, e-learning platform provided by DigitalED, a spin-off of Maplesoft.
 * It can be used to present course content and provide online testing and assessment.
@@ -255,10 +224,8 @@ The InertForm package provides a collection of commands for obtaining and workin
 * Help document for older versions can be found [here](https://www.maplesoft.com/support/help/MapleTA2017/index.aspx).
 
 ### Using the Algorithm Editor
-
 Codes can be written in the editor, in order to add random variables for the questions, and calculate the result for the questions.
-
-* Each line of code should end with a `;`.
+* Each line of code should end with a ```;```.
 * Strings are enclosed by double quotes.
 * expressions which are enclosed by single quotes will not be evaluated.
 * Click _Refresh algorithm preview_ to run the code once, and see the outputs for all the variables.
@@ -266,223 +233,173 @@ Codes can be written in the editor, in order to add random variables for the que
 The following syntax should be adopted for the algorithm editor.
 
 #### Assignment
-
-```text
+```
 $x = 5;
 ```
-
-* Variable names are started with `$` sign.
+* Variable names are started with ```$``` sign.
 * Variables can be accessed in the question editing area, feedback editing area and the grading code for maple-graded questions.
 
 #### Comments
-
-```text
+```
 #This is the comment.
 ```
-
-* Any codes after `#` will be ignored.
+* Any codes after ```#``` will be ignored.
 
 #### Built-in Functions
-
 The following built-in functions can be used in the algorithm editor.
 
-**Factorial**
-
-```text
+##### Factorial
+```
 fact(n)
 ```
-
 * Returns factorial n.
-* If n is not an integer returns fact\(int\(n\)\).
+* If n is not an integer returns fact(int(n)).
 * If n is negative, returns 1
 
-**If Condition**
-
-```text
+##### If Condition
+```
 if(a, b, c)
 ```
-
 * If a is nonzero, it returns b. Otherwise, it returns c.
 
-**Convert to Integer**
-
-```text
+##### Convert to Integer
+```
 int(x)
 ```
-
 * Returns the integer part of x.
 
-**Round Decimals**
-
-```text
+##### Round Decimals
+```
 decimal(n, x)
 ```
-
 * Rounds x to n decimal places.
 
-**Round for Sig Dig**
-
-```text
+##### Round for Sig Dig
+```
 sig(n, x)
 ```
-
 * Rounds x to n significant digits.
 
-**Random Integer Starting at 1**
-
-```text
+##### Random Integer Starting at 1
+```
 range(x, y, n)
 ```
-
 * x and y are integers.
 * Returns random values from x to y inclusively, in steps of n.
-* `range(x,y)` is equivalent to `range(x,y,1)`
-* `range(x)` is equivalent to `range(1,x,1)`
+* ```range(x,y)``` is equivalent to ```range(x,y,1)```
+* ```range(x)``` is equivalent to ```range(1,x,1)```
 
-**Random Integer Starting at 0**
-
-```text
+##### Random Integer Starting at 0
+```
 rint(x, y, n)
 ```
-
 * Returns random values from x to **y-1** inclusively, in steps of n.
-* `rint(x,y)` is equivalent to `rint(x,y,1)`
-* `rint(x)` is equivalent to `rint(0,x,1)`
+* ```rint(x,y)``` is equivalent to ```rint(x,y,1)```
+* ```rint(x)``` is equivalent to ```rint(0,x,1)```
 
-**Random Real Number**
-
-```text
+##### Random Real Number
+```
 rand(x, y, k)
 ```
-
-* Returns a random real number between x and y \(inclusive\), expressed to k significant figures
+* Returns a random real number between x and y (inclusive), expressed to k significant figures
 * If parameter k is ignored, any random real number between x and y could be generated.
 
-**Compare Not**
-
-```text
+##### Compare Not
+```
 not(a)
 ```
-
 * Returns 1.0 if a is equal to 0.0. Otherwise, it returns 0.0.
 
-**Compare Equal**
-
-```text
+##### Compare Equal
+```
 eq(a, b)
 ```
-
 * Returns 1.0 if a and b are equal. Otherwise, it returns 0.0.
 
-**Compare Greater or Equal**
-
-```text
+##### Compare Greater or Equal
+```
 ge(a,b)
 ```
-
 * Returns 1.0 if a is greater than, or equal to b. Otherwise, it returns 0.
 
-**Compare Less or Equal**
-
-```text
+##### Compare Less or Equal
+```
 le(a,b)
 ```
-
 * Returns 1.0 if a is less than, or equal to b. Otherwise, it returns 0.0.
 
-**Compare Not Equal**
-
-```text
+##### Compare Not Equal
+```
 ne(a,b)
 ```
-
 * Returns 1.0 if a and b are not equal. Otherwise, it returns 0.0.
 
-**Compare Greater**
-
-```text
+##### Compare Greater
+```
 gt(a, b)
 ```
+* Returns 1.0 if a is greater than b, that is (a > b). Otherwise, it returns 0.0.
 
-* Returns 1.0 if a is greater than b, that is \(a &gt; b\). Otherwise, it returns 0.0.
-
-**Compare Less**
-
-```text
+##### Compare Less
+```
 lt(a, b)
 ```
+* Returns 1.0 if a is less than b, that is (a < b). Otherwise, it returns 0.0.
 
-* Returns 1.0 if a is less than b, that is \(a &lt; b\). Otherwise, it returns 0.0.
-
-**Add Condition**
-
-```text
+##### Add Condition
+```
 $x = range(a,b);
 condition: ne($x,c);
 ```
-
 * Imposes the condition defined by any comparison statement.
 * The example returns a random integer between a and b that is not equal to c.
 
-**Greatest Common Divisor**
-
-```text
+##### Greatest Common Divisor
+```
 gcd(a, b)
 ```
-
 * Returns the greatest common divisor of a and b.
 
-**Using Maple Code**
-
-```text
+##### Using Maple Code
+```
 maple("ithprime(12)")
 ```
-
 * Pass text to the MapleTM kernel and return the value of the last line processed.
-* The example returns the result of maple code `ithprime(12)`.
+* The example returns the result of maple code ```ithprime(12)```.
 
-**Formatted Number**
-
-```text
+##### Formatted Number
+```
 numfmt("#.00", a)
 ```
-
 * Returns the value of a, formatted according to the template fmt.
 * The format in the example code print a with 2 decimal places.
 
-**String Concatenation**
-
-```text
+##### String Concatenation
+```
 strcat("Hello", " World", "!")
 ```
-
 * Returns the concatenation of the strings in the list.
-* The example returns `Hello World!`
+* The example returns ```Hello World!```
 
-**Select Element from a List**
-
-```text
+##### Select Element from a List
+```
 $n = 0;
 switch($n,23,14,21,18);
 ```
-
 * Returns an element of the list of parameters after $n, $n is the index of the element to be returns, starting from 0.
-* The example returns the first element after `$n` which is `23`, when `$n=0`.
-* `$n` in the switch function could be replace by functions like `rint(4)`, in order to return the list element randomly.
+* The example returns the first element after ```$n``` which is ```23```, when ```$n=0```.
+* ```$n``` in the switch function could be replace by functions like ```rint(4)```, in order to return the list element randomly.
 
-**Render Expression Using MathML**
-
-```text
+##### Render Expression Using MathML
+```
 mathml("x^(1/3)")
 ```
-
 * The expression will be displayed as cubic root of x.
-* `mathml(expresion, "nosimplify")` will displayed the expression without simplification.
+* ```mathml(expresion, "nosimplify")``` will displayed the expression without simplification.
 * variable which represents a rendered expression can be placed in the question editor.
 
 #### Code Examples
-
-```text
+```
 $st="st";
 $nd="nd";
 $rd="rd";
@@ -490,63 +407,50 @@ $th="th";
 $tha=maple("if (modp($A,10)=1) then $st elif (modp($A,10)=2) then $nd elif (modp($A,10)=3) then $rd else $th end if");
 $thb=maple("if (modp($B,10)=1) then $st elif (modp($B,10)=2) then $nd elif (modp($B,10)=3) then $rd else $th end if");
 ```
-
-This code appends st, nd, rd to any given number `$A` as `$tha`.
+This code appends st, nd, rd to any given number ```$A``` as ```$tha```.
 
 ### Symbolic Entry
-
 It can be used to construct complex math expressions for display or get student responses.
-
 * Variables can be put inside the symbolic expressions, always add a space after the variable names or the following values will be treated as a part of variable names.
-* When getting response with symbolic entry, currently, \* need to be placed between variable with exponents.
+* When getting response with symbolic entry, currently, * need to be placed between variable with exponents.
 * LaTeX code can be placed in the \\(...\\) block for inline math expressions, \\[...\\] for block math expressions in the MathML/LaTeX input page.
 
-### Getting Response
 
+### Getting Response
 * Response can be received for different question types.
 * Click the Response Area button to select the question types.
 
 #### Multiple Choices
-
 * The correct answer for the question can be set to a certain choice using the checkbox.
 * The correct answer can be represented by a variable, when variable equals 1, the first choice is correct. When variables 2, the second choice is correct and so on.
-* For multiple choice that has two or more answers use `$AnsA, $AnsB` as the algorithmic value in Answers field.
+* For multiple choice that has two or more answers use ```$AnsA, $AnsB``` as the algorithmic value in Answers field.
 * Set the correct answer with checkbox still works if algorithmic value is set.
 
 #### Maple Graded Questions
-
 * The grading code for maple-graded questions uses Maple codes.
 * When the expression for correct answer is placed in the answer input field, the auto-generated code check if the response equals the answer value.
-* Change the `$ANSWER` variable to any other expression for maple-graded question to compare student response with.
+* Change the ```$ANSWER``` variable to any other expression for maple-graded question to compare student response with.
 * To display symbolic expressions as answer, generate the answer using Symbolic Entry, go to the MathML tab, copy the markup syntax, paste everything inside ```print(``)``` function, and place the function in the Answer input field.
-* `$RESPONSE` stores the expression received from student response.
-* Both of the `evalb(e)` and `is(e)` functions can be used to evaluate the student response.
-* `"$RESPONSE"` converts the expression to string, and it can be placed in the Answer input field to check the actual response interpreted by symbolic entry.
+* ```$RESPONSE``` stores the expression received from student response.
+* Both of the ```evalb(e)``` and ```is(e)``` functions can be used to evaluate the student response.
+* ```"$RESPONSE"``` converts the expression to string, and it can be placed in the Answer input field to check the actual response interpreted by symbolic entry.
 * StringTools package is helpful when certain coefficient in required in the response string. Here are some examples.
-
-  ```text
+  ```
   evalb(($ans)=($RESPONSE) and not StringTools:-Search("$coefX","$RESPONSE")=0 and not StringTools:-Search("$coefY","$RESPONSE")=0);
   ```
-
-  `"$coefX"` and `"$coefY"` must be in the `"$RESPONSE"` string.
-
-  ```text
+  ```"$coefX"``` and ```"$coefY"``` must be in the ``` "$RESPONSE" ``` string.
+  ```
   evalb(($ans)=($RESPONSE) and not StringTools:-Search(["$coefX","$coefY"],"$RESPONSE")=[0,0]);
   ```
-
-  Either `"$coefX"` or `"$coefY"` must be in the `"$RESPONSE"` string.
-
-  ```text
+  Either ```"$coefX"``` or ```"$coefY"``` must be in the ``` "$RESPONSE" ``` string.
+  ```
   evalb(($ans)=($RESPONSE) and StringTools:-CountCharacterOccurrences("$RESPONSE","^")=3 );
   ```
-
-  There must be `3` `"^"` in the `"$RESPONSE"` string.
+  There must be ```3``` ```"^"``` in the ```"$RESPONSE"``` string.
 
 * InertForm package can also be used for grading.
-
-  ```text
+  ```
   ia := InertForm[Parse]("$ans");
   ir := InertForm[Parse]("$RESPONSE");
   is( value(ia) = value(ir) and op(0,ia) = op(0,ir) and map(value,{op(ia)}) = map(value,{op(ir)}) );
   ```
-

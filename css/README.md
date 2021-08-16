@@ -2,8 +2,8 @@
 
 ## Introduction
 
-* CSS - Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language like HTML.
-* A CSS file ends with `.css`.
+- CSS - Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language like HTML.
+- A CSS file ends with `.css`.
 
 ## Syntax
 
@@ -16,19 +16,19 @@ selector {
 
 ## Comments
 
-* It supports multiline comments `/* abc */`.
+- It supports multiline comments `/* abc */`.
 
 ## Implementation
 
 ### Inline CSS
 
-```markup
+```html
 <p style="color: blue;">this is the blue text</p>
 ```
 
 ### Embedded or Internal CSS
 
-```markup
+```html
 <style>
   p {
     color: blue;
@@ -36,146 +36,142 @@ selector {
 </style>
 ```
 
-* The style tag is placed inside the head tag of the HTML file.
+- The style tag is placed inside the head tag of the HTML file.
 
 ### External CSS
 
-```markup
+```html
 <link href="style.css" rel="stylesheet" />
 ```
 
-* place the link tag inside the head tag of the HTML file.
+- place the link tag inside the head tag of the HTML file.
 
 ## Units
 
-* For width and height:
-  * `pt` point
-  * `px` pixel
-  * `%` percentage
-  * `cm` centimeter
-  * `mm` millimeter Try it
-  * `in` inch
-  * `vw` Relative to 1% of the width of the viewport
-  * `vh` Relative to 1% of the height of the viewport
-* For font size:
-  * `em` 1em is 100%, relate to the current font size.
-* For color:
-  * `#ff0000` HEX color
-  * `red` color in plain words
-  * `rgb(255,0,0)` RGB
+- For width and height:
+  - `pt` point
+  - `px` pixel
+  - `%` percentage
+  - `cm` centimeter
+  - `mm` millimeter Try it
+  - `in` inch
+  - `vw` Relative to 1% of the width of the viewport
+  - `vh` Relative to 1% of the height of the viewport
+- For font size:
+  - `em` 1em is 100%, relate to the current font size.
+- For color:
+  - `#ff0000` HEX color
+  - `red` color in plain words
+  - `rgb(255,0,0)` RGB
 
 ## Override Rules
 
-* add `!important` at the end of the attribute value to make it overrides other rules.
-* Ex, `border-width: 5px !important;`.
+- add `!important` at the end of the attribute value to make it overrides other rules.
+- Ex, `border-width: 5px !important;`.
 
 ## Selector
 
-* To select elements for style editing the element tag can be used directly.
+- To select elements for style editing the element tag can be used directly.
 
 ```css
 p {
 }
 ```
 
-* For HTML elements with class identifier.
+- For HTML elements with class identifier.
 
 ```css
 .className {
 }
 ```
 
-* For HTML elements with id identifier.
+- For HTML elements with id identifier.
 
 ```css
 #idName {
 }
 ```
 
-* Use a combination of tag, id, and class selectors.
-  * `tagA tagB` select all the tagB in tagA.
-  * `tagA>tagB` select the tagB who is directly inside tagA\(tagA is the parent of tagB\)
-  * `tagA, tagB` select both tagA and tagB.
-  * `tagName[attribute=value]` select certain tag with certain attribute.
-  * `tagA#idName` select the tag with id name idName that is placed inside tagA
-  * `tagA.className` select the tag with class name className that is placed inside tagA.
-  * `p:first-child` Selects every `<p>` element that is the first child of its parent.
-  * `p:last-child` Selects every `<p>` element that is the last child of its parent.
-  * `p:nth-child(2)` Selects every `<p>` element that is the second child of its parent.
-  * `*` Select all tags inside the html body.
-* Link Colors
-  * By default, a link will appear like this \(in all browsers\):
-    * An unvisited link is underlined and blue
-    * A visited link is underlined and purple
-    * An active link is underlined and red
-  * The default colors can be changed, by using styles:
-
-    ```css
-    a:link {
+- Use a combination of tag, id, and class selectors.
+  - `tagA tagB` select all the tagB in tagA.
+  - `tagA>tagB` select the tagB who is directly inside tagA(tagA is the parent of tagB)
+  - `tagA, tagB` select both tagA and tagB.
+  - `tagName[attribute=value]` select certain tag with certain attribute.
+  - `tagA#idName` select the tag with id name idName that is placed inside tagA
+  - `tagA.className` select the tag with class name className that is placed inside tagA.
+  - `p:first-child` Selects every `<p>` element that is the first child of its parent.
+  - `p:last-child` Selects every `<p>` element that is the last child of its parent.
+  - `p:nth-child(2)` Selects every `<p>` element that is the second child of its parent.
+  - `*` Select all tags inside the html body.
+- Link Colors
+  - By default, a link will appear like this (in all browsers):
+    - An unvisited link is underlined and blue
+    - A visited link is underlined and purple
+    - An active link is underlined and red
+  - The default colors can be changed, by using styles:
+  ```css
+  a:link {
     color: green;
     background-color: transparent;
     text-decoration: none;
-    }
-    a:visited {
+  }
+  a:visited {
     color: pink;
     background-color: transparent;
     text-decoration: none;
-    }
-    a:hover {
+  }
+  a:hover {
     color: red;
     background-color: transparent;
     text-decoration: underline;
-    }
-    a:active {
+  }
+  a:active {
     color: yellow;
     background-color: transparent;
     text-decoration: underline;
-    }
-    ```
-
-  * `a` can be replaced be other tag.
+  }
+  ```
+  - `a` can be replaced be other tag.
 
 ## Responsive Design
 
-* It can be done by using a special selector for different screen size.
-  * should arrange from small to big.
-
-    ```css
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) {
-    }
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px) {
-    }
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px) {
-    }
-    /* Large devices (laptops/desktops, 992px and up) */
-    @media only screen and (min-width: 992px) {
-    }
-    /* Extra large devices (large laptops and desktops, 1200px and up) */
-    @media only screen and (min-width: 1200px) {
-    }
-    ```
-
-  * Media Features, structures like `(min-width: 1200px)` are known as media features, there are many others.
-    * `max-height`
-    * `min-height` useful for a dynamic page.
-  * Media Types, the keyword screen in the example can be replaced by the following Media Types.
-    * `all` Default. Used for all media type devices
-    * `print` Used for printers
-    * `screen` Used for computer screens, tablets, smart-phones etc.
-    * `speech` Used for screenreaders that "reads" the page out loud
-  * The keyword `only` can be replaced by other keywords like:
-    * `and` it is used to combine media types and media Features.
-    * `not` not mediaType the Styling will not work on the mediaType that follows.
-    * `only`
-* Dynamically change width with `calc()`. E.g. `width: calc(100% - 100px);`
+- It can be done by using a special selector for different screen size.
+  - should arrange from small to big.
+  ```css
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+  }
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+  }
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+  }
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+  }
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+  }
+  ```
+  - Media Features, structures like `(min-width: 1200px)` are known as media features, there are many others.
+    - `max-height`
+    - `min-height` useful for a dynamic page.
+  - Media Types, the keyword screen in the example can be replaced by the following Media Types.
+    - `all` Default. Used for all media type devices
+    - `print` Used for printers
+    - `screen` Used for computer screens, tablets, smart-phones etc.
+    - `speech` Used for screenreaders that "reads" the page out loud
+  - The keyword `only` can be replaced by other keywords like:
+    - `and` it is used to combine media types and media Features.
+    - `not` not mediaType the Styling will not work on the mediaType that follows.
+    - `only`
+- Dynamically change width with `calc()`. E.g. `width: calc(100% - 100px);`
 
 ## CSS Reset Rule
 
-* It is used to override default browser styles. It is recommended so the website will have the same look on all browser.
-* The following block of css rules is usually used.
+- It is used to override default browser styles. It is recommended so the website will have the same look on all browser.
+- The following block of css rules is usually used.
 
 ```css
 * {
@@ -293,52 +289,52 @@ img {
 
 ## Display Property
 
-* The display property specifies the display behavior
-* a HTML tag inside its body tag can be either block element or inline element by default.
+- The display property specifies the display behavior
+- a HTML tag inside its body tag can be either block element or inline element by default.
 
 ### Hide Elements
 
-* set display property to `none`
-  * when set to `none` the element is ignored by the browser and the spacing of the element is lost
-* set visibility property from `visible` to `hidden`
-  * when set to `hidden`, the space of the element is reserved
+- set display property to `none`
+  - when set to `none` the element is ignored by the browser and the spacing of the element is lost
+- set visibility property from `visible` to `hidden`
+  - when set to `hidden`, the space of the element is reserved
 
 ### Block Elements
 
-* A block-level element always starts on a new line and takes up the full width available \(stretches out to the left and right as far as it can\)
-* By default, the following tags are block elements.
+- A block-level element always starts on a new line and takes up the full width available (stretches out to the left and right as far as it can)
+- By default, the following tags are block elements.
 
-```markup
+```html
 <address><article><aside><blockquote><canvas><dd><div><dl><dt><fieldset>
 <figcaption><figure><footer><form><h1><h6><header><hr><li><main><nav>
 <noscript><ol><p><pre><section><table><tfoot><ul><video>
 ```
 
-* An element can be explicitly set to block element by using `display : block`.
+- An element can be explicitly set to block element by using `display : block`.
 
 ### Inline Elements
 
-* An inline element does not start on a new line and only takes up as much width as necessary.
-* By default, the following tags are inline elements.
+- An inline element does not start on a new line and only takes up as much width as necessary.
+- By default, the following tags are inline elements.
 
-```markup
+```xml
 <a><abbr><acronym><b><bdo><big><br><button><cite><code><dfn><em><i><img>
 <input><kbd><label><map><object><output><q><samp><script><select><small>
 <span><strong><sub><sup><textarea><time><tt><var>
 ```
 
-* An element can be explicitly set to inline element by using `display : inline`.
+- An element can be explicitly set to inline element by using `display : inline`.
 
 ### Inline block
 
-* An inline element that can apply height and width values to it.
-* set by using `display : inline-block`
+- An inline element that can apply height and width values to it.
+- set by using `display : inline-block`
 
 ### Flex
 
-* Elements in the flex container will transform its length and width accordingly.
-* set by using `display : flex`.
-* for the flex container
+- Elements in the flex container will transform its length and width accordingly.
+- set by using `display : flex`.
+- for the flex container
 
 ```css
 .container {
@@ -366,7 +362,7 @@ img {
 }
 ```
 
-* for the sections inside flex container
+- for the sections inside flex container
 
 ```css
 .childItems {
@@ -385,9 +381,9 @@ img {
 
 ### Grid
 
-* display as a table of block elements, base on the current size of the browser.
-* set by using `display : grid`.
-* for the container
+- display as a table of block elements, base on the current size of the browser.
+- set by using `display : grid`.
+- for the container
 
 ```css
 .container {
@@ -424,7 +420,7 @@ img {
 }
 ```
 
-* for the item
+- for the item
 
 ```css
 .childItems {
@@ -449,10 +445,9 @@ img {
 
 ### Inline Grid
 
-* display as a table of inline elements
-* set by using `display : inline-grid`.
+- display as a table of inline elements
+- set by using `display : inline-grid`.
 
 ## Browser Compatibility
 
-* smaller font size can be displayed by `Chrome`, while `Safari` has a set minimum font size
-
+- smaller font size can be displayed by `Chrome`, while `Safari` has a set minimum font size
