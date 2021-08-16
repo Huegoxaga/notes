@@ -148,9 +148,9 @@ while working on a draft.
 
 - Use [Detexify](http://detexify.kirelabs.org/classify.html) to draw a symbol and find the LeTaX syntax for it.
 - `\` can be used to escape special symbols used by the compiler.
-- `$3x^2$` ![$3x^2$](https://render.githubusercontent.com/render/math?math=%243x%5E2%24) superscripts
-- `$3x^{3x^2+1}$` ![$3x^{3x^2+1}$](https://render.githubusercontent.com/render/math?math=%243x%5E%7B3x%5E2%2B1%7D%24) superscripts for more than 1 character
-- `$x_1$` ![$x_1$](https://render.githubusercontent.com/render/math?math=%24x_1%24) subscripts
+- `$3x^2$` $$3x^2$$
+- `$3x^{3x^2+1}$` $$3x^{3x^2+1}$$ superscripts for more than 1 character
+- `$x_1$` $$x_1$$ subscripts
 - `${x_1}_2$` ![${x_1}_2$](https://render.githubusercontent.com/render/math?math=%24%7Bx_1%7D_2%24) subscript of a subscript
 - `$\pi$` ![$\pi](https://render.githubusercontent.com/render/math?math=%24%5Cpi) greek letters
 - `$A=\pi r^2$` ![$A=\pi r^2$](https://render.githubusercontent.com/render/math?math=%24A%3D%5Cpi%20r%5E2%24) greek letter need to have a space with others.
