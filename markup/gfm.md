@@ -238,8 +238,9 @@ They can't be added directly but you can add an image with a link to the video l
   - It works only when there is no space in the path. Can replce space with its encoded value `%20`.
   - [Click](https://alexanderrodin.com/github-latex-markdown/) to use the LaTeX image link generator tools for GFM.
     - This generator does not encode `(` which is `%28` and `)` which is `%29`. It should be changed manually.
+- If hosted by `GitBook.com`, `LaTeX` syntax will be recognized if formula is surrounded by `$$`
 
-# Gitbook
+# GitBook
 
 - a CLI tool that auto convert `.md` file into webpages.
 

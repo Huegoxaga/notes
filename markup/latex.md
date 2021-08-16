@@ -151,36 +151,36 @@ while working on a draft.
 - `$3x^2$` $$3x^2$$
 - `$3x^{3x^2+1}$` $$3x^{3x^2+1}$$ superscripts for more than 1 character
 - `$x_1$` $$x_1$$ subscripts
-- `${x_1}_2$` ![${x_1}_2$](https://render.githubusercontent.com/render/math?math=%24%7Bx_1%7D_2%24) subscript of a subscript
-- `$\pi$` ![$\pi](https://render.githubusercontent.com/render/math?math=%24%5Cpi) greek letters
-- `$A=\pi r^2$` ![$A=\pi r^2$](https://render.githubusercontent.com/render/math?math=%24A%3D%5Cpi%20r%5E2%24) greek letter need to have a space with others.
-- `$\sin{x}$` ![$\sin{x}$](https://render.githubusercontent.com/render/math?math=%24%5Csin%7Bx%7D%24) trig functions
-- `$\tan^{-1}{x}$` ![$\tan^{-1}{x}$](https://render.githubusercontent.com/render/math?math=%24%5Ctan%5E%7B-1%7D%7Bx%7D%24) trig functions with exponent
-- `$\log{x}$` ![$\log{x}$](https://render.githubusercontent.com/render/math?math=%24%5Clog%7Bx%7D%24) log functions
-- `$\log_5{x}$` ![$\log_5{x}$](https://render.githubusercontent.com/render/math?math=%24%5Clog_5%7Bx%7D%24) log function with a base
-- `$\ln{x}$` ![$\ln{x}$](https://render.githubusercontent.com/render/math?math=%24%5Cln%7Bx%7D%24) nature log function
-- `$\sqrt{2}$` ![$\sqrt{2}$](https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B2%7D%24) square root
-- `$\sqrt[3]{2}$` ![$\sqrt{3}{2}$](https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B3%7D%7B2%7D%24) cubic root
-- `$\sqrt[3]{1+\sqrt{x}}$` ![$\sqrt{3}{1+\sqrt{x}}$](https://render.githubusercontent.com/render/math?math=%24%5Csqrt%7B3%7D%7B1%2B%5Csqrt%7Bx%7D%7D%24) square root of a cubic root
-- `$\frac{1}{3}$` ![$\frac{1}{3}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7B1%7D%7B3%7D%24) fraction
-- `$(x+1)$` ![$(x+1)$](https://render.githubusercontent.com/render/math?math=%24(x%2B1%29%24) parentheses
-- `$|x|$` ![$|x|$](https://render.githubusercontent.com/render/math?math=%24%7Cx%7C%24) absolute value
-- `$\left(\frac{2}{3}\right)$` ![$\left(\frac{2}{3}\right)$](https://render.githubusercontent.com/render/math?math=%24%5Cleft(%5Cfrac%7B2%7D%7B3%7D%5Cright%29%24) expand the brackets, otherwise it looks like this
-- `$\left(\frac{2}{3}\right.$` ![$\left(\frac{2}{3}\right.$](https://render.githubusercontent.com/render/math?math=%24%5Cleft(%5Cfrac%7B2%7D%7B3%7D%5Cright.%24) show only the left bracket.
-- `$[x+1]$` ![$[x+1]$](https://render.githubusercontent.com/render/math?math=%24%5Bx%2B1%5D%24) square bracket
-- `$\{x,y,z\}$` ![${x,y,z}$](https://render.githubusercontent.com/render/math?math=%24%5C%7Bx%2Cy%2Cz%5C%7D%24) curly brackets need to be escaped by `\`
-- `$\$88.88$` ![$$88.88$](https://render.githubusercontent.com/render/math?math=%24%5C%2488.88%24) escape dollar sign
-- `$\sum_{n=0}^{\infty}$` ![$\sum_{n=0}^{\infty}$](https://render.githubusercontent.com/render/math?math=%24%5Csum_%7Bn%3D0%7D%5E%7B%5Cinfty%7D%24) sigma sum
-- `$\int_a^b$` ![$\int_a^b$](https://render.githubusercontent.com/render/math?math=%24%5Cint_a%5Eb%24) integral
-- `$\lim_{x \to a}$` ![$\lim_{x \to a}$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%7D%24) limit
-- `$\lim_{x \to a^+} f(x)$` ![$\lim_{x \to a^+} f(x)$](https://render.githubusercontent.com/render/math?math=%24%5Clim_%7Bx%20%5Cto%20a%5E%2B%7D%20f(x%29%24) limit
-- `$f'(a)$` ![$f'(a)$](https://render.githubusercontent.com/render/math?math=%24f'(a%29%24) derivative
-- `$\binom{n}{k} = \frac{n!}{k!(n-k)!}$` binomial
-- `$\begin{matrix} a & b \\ c & d \end{matrix}$` ![$\begin{matrix} a & b \ c & d \end{matrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bmatrix%7D%24) matrix without brackets
-- `$\begin{pmatrix} a & b \\ c & d \end{pmatrix}$` ![$\begin{pmatrix} a & b \ c & d \end{pmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bpmatrix%7D%20a%20%26%20b%20%5C%5C%20c%20%26%20d%20%5Cend%7Bpmatrix%7D%24) matrix with round brackets
-- `$\begin{bmatrix} 1 & 2 & 1 \\ 3 & 0 & 1 \\ 0 & 2 & 4 \end{bmatrix}$` ![$\begin{bmatrix} 1 & 2 & 1 \ 3 & 0 & 1 \ 0 & 2 & 4 \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D%201%20%26%202%20%26%201%20%5C%5C%203%20%26%200%20%26%201%20%5C%5C%200%20%26%202%20%26%204%20%5Cend%7Bbmatrix%7D%24) matrix with square brackets
-- `$\left[ \begin{array}{cc|r} 3 & 4 & 5 \\ 1 & 3 & 729 \end{array} \right]$` ![$\left[ \begin{array}{cc|r} 3 & 4 & 5 \ 1 & 3 & 729 \end{array} \right]$](https://render.githubusercontent.com/render/math?math=%24%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bcc%7Cr%7D%203%20%26%204%20%26%205%20%5C%5C%201%20%26%203%20%26%20729%20%5Cend%7Barray%7D%20%5Cright%5D%24) Augmented Matrix
-- `$\left | \begin{matrix} a_11 - \lambda & a_12 \\ a_21 & a_22 - \lambda \end{matrix} \right | $` ![$\left | \begin{matrix} a_11 - \lambda & a_12 \ a_21 & a_22 - \lambda \end{matrix} \right | $](https://render.githubusercontent.com/render/math?math=%24%5Cleft+%7C+%5Cbegin%7Bmatrix%7D+a_11+-+%5Clambda+%26+a_12+%5C%5C+a_21+%26+a_22+-+%5Clambda+%5Cend%7Bmatrix%7D+%5Cright+%7C+%24) Determinant of a matrix.
+- `${x_1}_2$` $${x_1}_2$$ subscript of a subscript
+- `$\pi$` $$\pi$$ greek letters
+- `$A=\pi r^2$` $$A=\pi r^2$$ greek letter need to have a space with others.
+- `$\sin{x}$` $$\sin{x}$$ trig functions
+- `$\tan^{-1}{x}$` $$\tan^{-1}{x}$$ trig functions with exponent
+- `$\log{x}$` $$\log{x}$$ log functions
+- `$\log_5{x}$` $$\log_5{x}$$ log function with a base
+- `$\ln{x}$` $$\ln{x}$$ nature log function
+- `$\sqrt{2}$` $$\sqrt{2}$$ square root
+- `$\sqrt[3]{2}$` $$\sqrt[3]{2}$$ cubic root
+- `$\sqrt[3]{1+\sqrt{x}}$` $$\sqrt[3]{1+\sqrt{x}}$$ square root of a cubic root
+- `$\frac{1}{3}$` $$\frac{1}{3}$$ fraction
+- `$(x+1)$` $$(x+1)$$ parentheses
+- `$|x|$` $$|x|$$ absolute value
+- `$\left(\frac{2}{3}\right)$` $$\left(\frac{2}{3}\right)$$ expand the brackets, otherwise it looks like this
+- `$\left(\frac{2}{3}\right.$` $$\left(\frac{2}{3}\right.$$ show only the left bracket.
+- `$[x+1]$` $$[x+1]$$ square bracket
+- `$\{x,y,z\}$` $$\{x,y,z\}$$ curly brackets need to be escaped by `\`
+- `$\$88.88$` $$\$88.88$$ escape dollar sign
+- `$\sum_{n=0}^{\infty}$` $$\sum_{n=0}^{\infty}$$ sigma sum
+- `$\int_a^b$` $$\int_a^b$$ integral
+- `$\lim_{x \to a}$` $$\lim_{x \to a}$$ limit
+- `$\lim_{x \to a^+} f(x)$` $$\lim_{x \to a^+} f(x)$$ limit
+- `$f'(a)$` $$f'(a)$$ derivative
+- `$\binom{n}{k} = \frac{n!}{k!(n-k)!}$` $$\binom{n}{k} = \frac{n!}{k!(n-k)!}$$ binomial
+- `$\begin{matrix} a & b \\ c & d \end{matrix}$` $$\begin{matrix} a & b \\ c & d \end{matrix}$$ matrix without brackets
+- `$\begin{pmatrix} a & b \\ c & d \end{pmatrix}$` $$\begin{pmatrix} a & b \\ c & d \end{pmatrix}$$ matrix with round brackets
+- `$\begin{bmatrix} 1 & 2 & 1 \\ 3 & 0 & 1 \\ 0 & 2 & 4 \end{bmatrix}$` $$\begin{bmatrix} 1 & 2 & 1 \\ 3 & 0 & 1 \\ 0 & 2 & 4 \end{bmatrix}$$ matrix with square brackets
+- `$\left[ \begin{array}{cc|r} 3 & 4 & 5 \\ 1 & 3 & 729 \end{array} \right]$` $$\left[ \begin{array}{cc|r} 3 & 4 & 5 \\ 1 & 3 & 729 \end{array} \right]$$ Augmented Matrix
+- `$\left | \begin{matrix} a_11 - \lambda & a_12 \\ a_21 & a_22 - \lambda \end{matrix} \right | $` $$\left | \begin{matrix} a_11 - \lambda & a_12 \\ a_21 & a_22 - \lambda \end{matrix} \right | $$ Determinant of a matrix.
 
 ### Block Contents
 
