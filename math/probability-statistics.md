@@ -122,7 +122,7 @@
 
 ### Features
 
-- mean(average), ![$\overline{x}=\frac{ \sum_{i=1}^n x_i}{n}$](https://render.githubusercontent.com/render/math?math=%24%5Coverline%7Bx%7D%3D%5Cfrac%7B+%5Csum_%7Bi%3D1%7D%5En+x_i%7D%7Bn%7D%24).
+- mean(average), $$\overline{x}=\frac{ \sum_{i=1}^n x_i}{n}$$.
 - median, the middle reading. for even number of data, get the average of the two data in the middle.
 - mode, the value occurs the most.
   - The mode is the value that occurs the most often. If there are two different numbers that occur the most​ often, then the set is bimodal, or has M shape. Three or more different items sharing the highest frequency of occurrence rarely offer useful information. Such a distribution has no mode. If each number occurs exactly​ once, then there is no mode.
@@ -159,11 +159,11 @@
   - insurance company is aimed to make the expected value 0 for their policies.
   - when the distribution is symmetrical the mean = expected value.
 - variance
-  - for equally likely values ![$\frac{ \sum_{i=1}^n (x_i-\overline{x})^2}{n}$](https://render.githubusercontent.com/render/math?math=%24%5Cfrac%7B+%5Csum_%7Bi%3D1%7D%5En+%28x_i-%5Coverline%7Bx%7D%29%5E2%7D%7Bn%7D%24)
+  - for equally likely values $$\frac{ \sum_{i=1}^n (x_i-\overline{x})^2}{n}$$
     - Use `n-1` in the denominator for sample standard deviation denoted as `sx`.
-  - for values with probability distribution ![$\sum_{i=1}^n P(E_i)(x_i-E(x))^2$](https://render.githubusercontent.com/render/math?math=%24%5Csum_%7Bi%3D1%7D%5En+P%28E_i%29%28x_i-E%28x%29%29%5E2%24) where `P(Ei)` is the probability of `i`, and `E(x)` is the expected value.
+  - for values with probability distribution $$\sum_{i=1}^n P(E_i)(x_i-E(x))^2$$ where `P(Ei)` is the probability of `i`, and `E(x)` is the expected value.
 - standard deviation(σ)(represent the range of x-axis)
-  - ![$\sigma= \sqrt{variance}$](https://render.githubusercontent.com/render/math?math=%24%5Csigma%3D+%5Csqrt%7Bvariance%7D%24)
+  - $$\sigma= \sqrt{variance}$$
 
 ### Data Representation
 
@@ -202,8 +202,8 @@
 
 #### Normal Distribution
 
-- the normal distribution function is written as: ![$f(x)=\frac{1}{\sigma \sqrt{2 \pi}} e^{\frac{-(x- \mu)^2}{2 \sigma^2}}$](https://render.githubusercontent.com/render/math?math=%24f%28x%29%3D%5Cfrac%7B1%7D%7B%5Csigma+%5Csqrt%7B2+%5Cpi%7D%7D+e%5E%7B%5Cfrac%7B-%28x-+%5Cmu%29%5E2%7D%7B2+%5Csigma%5E2%7D%7D%24)
-  - ![$y_{max}=\frac{1}{\sigma \sqrt{2 \pi}}$](https://render.githubusercontent.com/render/math?math=%24y_%7Bmax%7D%3D%5Cfrac%7B1%7D%7B%5Csigma+%5Csqrt%7B2+%5Cpi%7D%7D%24)
+- the normal distribution function is written as: $$f(x)=\frac{1}{\sigma \sqrt{2 \pi}} e^{\frac{-(x- \mu)^2}{2 \sigma^2}}$$
+  - $$y_{max}=\frac{1}{\sigma \sqrt{2 \pi}}$$
   - `μ` is the x value of the highest point, when `μ = 0`, the graph is symetrix on y-axis.
   - `σ` determine the height of the graph. Smaller `σ` value will result in a taller graph.
 - Characteristics
@@ -235,7 +235,7 @@
 - p + q = 1
 - the possible outcomes of i success in n trials satisfy pasca triangle nth i column. the sum of nth column is 2^n(the all possible outcomes)
 - The probability of m successes in n trials.
-- In the Binomial Distribution, for each possible `m` it has a `Pm` value on y-axis as ![$P_m = C^m_n p^m (1-p)^{n-m}$](https://render.githubusercontent.com/render/math?math=%24P_m+%3D+C%5Em_n+p%5Em+%281-p%29%5E%7Bn-m%7D%24) or ![$P_m = \frac{n!}{m!(n-m)!} p^m q^{n-m}$](https://render.githubusercontent.com/render/math?math=%24P_m+%3D+%5Cfrac%7Bn%21%7D%7Bm%21%28n-m%29%21%7D+p%5Em+q%5E%7Bn-m%7D%24)
+- In the Binomial Distribution, for each possible `m` it has a `Pm` value on y-axis as $$P_m = C^m_n p^m (1-p)^{n-m}$$ or $$P_m = \frac{n!}{m!(n-m)!} p^m q^{n-m}$$
 - expected value:
   - u = `np` = `number of trials X probability of success`
 - `variance = npq`
@@ -297,7 +297,7 @@
 
 - Theorem 1 - if A must result in one of the mutually exclusive events A1,A2,A3…An then, `P(A1nA2nA3) = P(A1)P(A2|A1)P(A3|A1nA2)`
 - Theorem 2 - `P(A) = P(A1)P(A|A1)+P(A2)P(A|A2)+….+P(An)P(A|An)`
-- From 1 and 2 bayes' theorem can be derived. If A must result in one of the mutually exclusive events A1,A2,A3,Ai,...,An. It has extended form as ![P(A_i|B) = \frac{P(B|A_i)P(A_i)}{\sum_{i=1}^n P(B|A_i)P(A_i)}](https://render.githubusercontent.com/render/math?math=P%28A_i%7CB%29+%3D+%5Cfrac%7BP%28B%7CA_i%29P%28A_i%29%7D%7B%5Csum_%7Bi%3D1%7D%5En+P%28B%7CA_i%29P%28A_i%29%7D) where ![P(B)= \sum_{i=1}^n P(B|A_i)P(A_i)](https://render.githubusercontent.com/render/math?math=P%28B%29%3D+%5Csum_%7Bi%3D1%7D%5En+P%28B%7CA_i%29P%28A_i%29), or in short ![$P(A|B)= \frac{P(B|A)P(A)}{P(B)}$](https://render.githubusercontent.com/render/math?math=%24P%28A%7CB%29%3D+%5Cfrac%7BP%28B%7CA%29P%28A%29%7D%7BP%28B%29%7D%24).
+- From 1 and 2 bayes' theorem can be derived. If A must result in one of the mutually exclusive events A1,A2,A3,Ai,...,An. It has extended form as $$P(A_i|B) = \frac{P(B|A_i)P(A_i)}{\sum_{i=1}^n P(B|A_i)P(A_i)}$$ where $$P(B)= \sum_{i=1}^n P(B|A_i)P(A_i)$$, or in short $$P(A|B)= \frac{P(B|A)P(A)}{P(B)}$$.
 - True Negative and False Positive divide by the actual negative count will get the True Negative rate and False Positive rate.
 - True Positive and False Negative divide by the actual positive count will get the True Positive rate and False Negative rate.
 - Accuracy rate - correct prediction count over the total prediction count.
@@ -322,7 +322,7 @@
 
 ### Markov Chains
 
-- It is used predict the future state(matrix ![$X_1$](https://render.githubusercontent.com/render/math?math=%24X_1%24)) by multiply the matrix of transition probabilities(P) by the current state(matrix ![$X_0$](https://render.githubusercontent.com/render/math?math=%24X_0%24)).
+- It is used predict the future state(matrix $$X_1$$) by multiply the matrix of transition probabilities(P) by the current state(matrix $$X_0$$).
   - Each current or future state has `N` elements and represented by a `N X 1` matrix. During each step, each element will
     - lose part of it to other element
     - gain from other element
@@ -332,13 +332,13 @@
   - The probability matrix should be a regular matrix which means for all P^n(n>1) all its element should be greater than one.
   - Using the transpose of all the matrix can be an alternative way to write the formula. In this case multiply the initial state by the probability matrix.
     - The probability matrix should be stochastic which means all element in each row will add up to 1.
-  - To calculate the future state after n-steps: ![$X_n = P^n X_0$](https://render.githubusercontent.com/render/math?math=%24X_n+%3D+P%5En+X_0%24)
-  - After certain interation the state matrix will be stable and won't change, then it is called the stable distribution matrix(![$\overline{X}$](https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BX%7D%24)).
-  - The ![$P^n$](https://render.githubusercontent.com/render/math?math=%24P%5En%24) for the stable distribution matrix is the stable probability matrix, it will keep the same when `n` is greater than a certain value, the production of stable probability matrix with any initial state will return the same stable distribution matrix.
+  - To calculate the future state after n-steps: $$X_n = P^n X_0$$
+  - After certain interation the state matrix will be stable and won't change, then it is called the stable distribution matrix($$\overline{X}$$).
+  - The $$P^n$$ for the stable distribution matrix is the stable probability matrix, it will keep the same when `n` is greater than a certain value, the production of stable probability matrix with any initial state will return the same stable distribution matrix.
   - Every column(when state represented by a `N X 1` matrix) of a stable probability matrix is a stable distribution matrix.
   - When the stable probability matrix or the stable distribution matrix is found, all probability matrix from P to P^n together, are called regular markov chain.
-  - If ![$P \overline{X} = \overline{X}$](https://render.githubusercontent.com/render/math?math=%24P+%5Coverline%7BX%7D+%3D+%5Coverline%7BX%7D%24), then ![$\overline{X}$](https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BX%7D%24) is the stable distribution matrix and ![$\overline{P}X_0 = \overline{X}$](https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BP%7DX_0+%3D+%5Coverline%7BX%7D%24).
-  - ![$P \overline{X} = \overline{X}$](https://render.githubusercontent.com/render/math?math=%24P+%5Coverline%7BX%7D+%3D+%5Coverline%7BX%7D%24) can be used to solved for stable distribution matrix based on any known probability matrix.
+  - If $$P \overline{X} = \overline{X}$$, then $$\overline{X}$$ is the stable distribution matrix and $$\overline{P}X_0 = \overline{X}$$.
+  - $$P \overline{X} = \overline{X}$$ can be used to solved for stable distribution matrix based on any known probability matrix.
   - If a Markov chain has one more elements never lost part of it to other elements, it is called the absorbing Markov chain. When the states represented by a `N X 1` matrix:
     - In the probability matrix, it will have one column or row with one element on the diagnal as 1 and all others as 0.
     - For an absorbing Markov chain, the element that has 100% probability in the probability matrix must have connection with all other element.

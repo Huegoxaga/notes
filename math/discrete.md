@@ -12,25 +12,25 @@
 ### Modular Systems
 
 - The integers (a) and (b) are **congruent modulo** `m` (where m is a natural number greater than 1) if and only if the difference `a – b`  is divisible by `m`. hence `a` and `b` both have the same remainder when divided by `m`.
-- ![$a \equiv b$](https://render.githubusercontent.com/render/math?math=%24a%20%5Cequiv%20b%24) _(mod m)_, From where `a - b = k·m` (for some integer k)
+- $$a \equiv b$$ _(mod m)_, From where `a - b = k·m` (for some integer k)
 - It also means that there is calculation among the positional number in each mod n system.
 - It is like a is circling around a circle of 0 to m-1 and ends up at b.
   so b is like the positional number for a which is counting around the circle.
 
 ### Modular Arithmetic
 
-- If ![$a \equiv b$](https://render.githubusercontent.com/render/math?math=%24a%20%5Cequiv%20b%24) _(mod n)_ and ![$c \equiv d$](https://render.githubusercontent.com/render/math?math=%24c%20%5Cequiv%20d%24) _(mod n)_ then:
-  - ![$a + c \equiv b + d$](https://render.githubusercontent.com/render/math?math=%24a%20%2B%20c%20%5Cequiv%20b%20%2B%20d%24) _(mod n)_
-  - ![$a - c \equiv : b -  d$](https://render.githubusercontent.com/render/math?math=%24a%20-%20c%20%5Cequiv%20%5C%3A%20b%20-%20%20d%24) _(mod n)_
-  - ![$a \cdot c \equiv b \cdot d$](https://render.githubusercontent.com/render/math?math=%24a%20%5Ccdot%20c%20%5Cequiv%20b%20%5Ccdot%20d%24) _(mod n)_
-  - ![$a^k \equiv b^k$](https://render.githubusercontent.com/render/math?math=%24a%5Ek%20%5Cequiv%20b%5Ek%24) _(mod n)_
+- If $$a \equiv b$$ _(mod n)_ and $$c \equiv d$$ _(mod n)_ then:
+  - $$a + c \equiv b + d$$ _(mod n)_
+  - $$a - c \equiv : b -  d$$ _(mod n)_
+  - $$a \cdot c \equiv b \cdot d$$ _(mod n)_
+  - $$a^k \equiv b^k$$ _(mod n)_
 - module equation holds by plus and multiply, power operations on both sides. (position number on both sides change together)
   module equation holds by plus and multiply operations with unknowns on both sides.
 - As a result, if you want to evaluate `mod p` of an expression just do the arithmetic calculate of both side normally and then simplify by taking the remainder after dividing by p.
 - The remainder of a negative number is the negative remain add one full circle.
-- ![$a x \equiv b (mod : m)$](https://render.githubusercontent.com/render/math?math=%24a%20x%20%5Cequiv%20b%20%28mod%20%5C%3A%20m%29%24) is called a Congruence equation , unknown `x` is always an integer, `x` will be solved as follow.
-  - ![$x \equiv b (mod : m)$](https://render.githubusercontent.com/render/math?math=%24x%20%5Cequiv%20b%20%28mod%20%5C%3A%20m%29%24), where be is an positive integer that is smaller than `m`.
-  - The solution for all positive values can also be represented as ![$x \in {b, bm,b+2m, \dotsc }$](https://render.githubusercontent.com/render/math?math=%24x%20%5Cin%20%5C%7Bb%2C%20bm%2Cb%2B2m%2C%20%5Cdotsc%20%5C%7D%24) or ![$x \in \emptyset$](https://render.githubusercontent.com/render/math?math=%24x%20%5Cin%20%5Cemptyset%24) if no solution is found.
+- $$a x \equiv b (mod : m)$$ is called a Congruence equation , unknown `x` is always an integer, `x` will be solved as follow.
+  - $$x \equiv b (mod : m)$$, where be is an positive integer that is smaller than `m`.
+  - The solution for all positive values can also be represented as $$x \in {b, bm,b+2m, \dotsc }$$ or $$x \in \emptyset$$ if no solution is found.
 - In order to find the positional b of a large number with exponent.
   - find position for the base and the raise the power of the base position number and then find the positional number for the newly generated number.
   - Sometimes when base is not 1 and the exponent is still too big, see if it can be -1.
@@ -48,9 +48,9 @@
       - multiply by -1
       - The check digit is mod 10
   - UPC – Universal Product Code
-    - _check digit =_ ![$-(3a_11+a_10+3a_9+a_8+3a_7+a_6+3a_5+a_4+3a_3+a_2+3a_1); (mod: 10)$](https://render.githubusercontent.com/render/math?math=%24-%283a_11%2Ba_10%2B3a_9%2Ba_8%2B3a_7%2Ba_6%2B3a_5%2Ba_4%2B3a_3%2Ba_2%2B3a_1%29%5C%3B%20%28mod%5C%3A%2010%29%24)
+    - _check digit =_ $$-(3a_11+a_10+3a_9+a_8+3a_7+a_6+3a_5+a_4+3a_3+a_2+3a_1); (mod: 10)$$
   - ISBN – International Standard Book Number
-    - ![a_0 = a_9+2a_8+3a_7+4a_6+5a_5+6a_4+7a_3+8a_2+9a_1 ; (mod : 11)](<https://render.githubusercontent.com/render/math?math=a_0%20%3D%20a_9%2B2a_8%2B3a_7%2B4a_6%2B5a_5%2B6a_4%2B7a_3%2B8a_2%2B9a_1%20%5C%3B%20(mod%20%5C%3A%2011)>)
+    - $$a_0 = a_9+2a_8+3a_7+4a_6+5a_5+6a_4+7a_3+8a_2+9a_1 ; (mod : 11)$$>)
 - Round-Robin Tournament
   - Each team must play against every team once.
   - In even number of teams
@@ -97,13 +97,13 @@
   - Identity law: `1A = A`, `0 + A = A`
   - Null law: `0A = 0`, `1 + A = 1`
   - Idempotent law: `AA = A`, `A + A = A`
-  - Inverse law: ![inverse-1](https://render.githubusercontent.com/render/math?math=%24A+%5Coverline%7BA%7D+%3D+0%24), ![$A + \overline{A} = 1$](https://render.githubusercontent.com/render/math?math=%24A+%2B+%5Coverline%7BA%7D+%3D+1%24)
+  - Inverse law: $$A \overline{A} = 0$$, $$A + \overline{A} = 1$$
   - Commutative law: `AB = BA`, `A + B = B + A`
   - Associative law: `(AB)C = A(BC)`, `(A + B) + C = A + (B + C)`
   - Distributive law: `A + BC = (A + B)(A + C)`, `A(B + C) = AB + AC`
   - Absorption law: `A(A + B) = A`, `A + AB = A`
-  - De Morgan's law: ![$\overline{AB} = \overline{A} + \overline{B} $](https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BAB%7D+%3D+%5Coverline%7BA%7D+%2B+%5Coverline%7BB%7D+%24), ![$\overline{A+B} = \overline{A} \overline{B} $](https://render.githubusercontent.com/render/math?math=%24%5Coverline%7BA%2BB%7D+%3D+%5Coverline%7BA%7D+%5Coverline%7BB%7D+%24)
-  - ![$A (\overline{A} + B) = AB$](https://render.githubusercontent.com/render/math?math=%24A+%28%5Coverline%7BA%7D+%2B+B%29+%3D+AB%24), ![$A + \overline{A}B = A+B$](https://render.githubusercontent.com/render/math?math=%24A+%2B+%5Coverline%7BA%7DB+%3D+A%2BB%24)
+  - De Morgan's law: $$\overline{AB} = \overline{A} + \overline{B} $$, $$\overline{A+B} = \overline{A} \overline{B} $$
+  - $$A (\overline{A} + B) = AB$$, $$A + \overline{A}B = A+B$$
 
 #### Truth Tables
 
