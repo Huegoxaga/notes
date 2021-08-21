@@ -66,6 +66,11 @@
   - `conda install --file filename.txt` install packages base on text file info.
   - `conda install -c <channelname> <packagename>` install a package from a certain channel
     - some package might be available in a certain channel, to search all the channels for a package, [Open](https://anaconda.org) the offcial website and type the package name in the search bar and find the package under the channel that has the most download number to install
+- Channel has priority, when it has high priority the package will be installed from that channel regardless the version
+  - `conda config --set channel_priority false` To make conda install the newest version of a package in any listed channel
+  - `conda config --add channels new_channel` adds the channel "new_channel" to the top of the channel list, making it the highest priority
+  - `conda config --append channels new_channel` adds the new channel to the bottom of the channel list, making it the lowest priority
+  - `sudo vi ~/.condarc` view channel setting
 - `conda update <packagename>` Update any installed program
   - `conda update --all` update everything
 - `conda create --name py35 python=3.5` Create a new environment named py35, install Python 3.5
@@ -209,6 +214,8 @@
   - `print(array)`
 - Get the rank of the array.
   - `array.ndim` returns the rank.
+- Get the element data type
+  - `array.dtype`
 - Get row and column number
   - `array.shape` returns array shape as `(rowNumber, columnNumber)`
 - Get number of elements
@@ -231,6 +238,12 @@
   - `np.transpose(array)` or `array.transpose()` the row and column numbers of an element are switched.
 - `np.vstack((arrayA,arrayB))` Stack a tuple of arrays into one array vertically (increase demension)
 - `np.vstack((arrayA,arrayB))` Stack a tuple of arrays into one array horizontically (keep the same demension)
+- `filter_arr = arr > 3` return a boolean array where `True` when the condition of the corresponding element is satisfied
+  - `arr[filter_arr]` return a filtered array
+- `new_arr = arr.astype('float64')` convert the element data type of an array
+  - or, `np.float64(arr)`
+- `arr.clip(0, 255)` clip the elements of the array to be within the defined max and min value
+  - `out_array = np.clip(in_array, a_min =[3, 4, 1, 1, 1, 4, 4, 4, 4, 4], a_max = 9)` min or max can be a list of the same size of the original array, and each element is the min range for elements of the original array at that location
 
 #### Calculations
 
@@ -411,6 +424,7 @@
     - `sizeX` is a positive and odd number, represents the width of the kernel
     - `sizeY` is a positive and odd number, represents the height of the kernel
 - `output = img.copy()` copy the original image
+- `cv2.line(image, (x1, y1), (x2, y2), (0, 255, 0), thickness=2)` draw a line
 - `cv2.circle(circle, (100, 100), 100, 255, -1)` circle
 - `rectangle = cv2.rectangle(img, (left, top), (bottom, right), (B, G, R), fillMethod)` draw rectangle box on `img`
   - `FillMethod` can be any integer value as line width for bounding box.
@@ -424,6 +438,30 @@
   - Font size
   - Color (BGR format)
   - Line width
+- `contours, hierarchy = cv.findContours(mask, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)` find contour from a mask
+  - `contours` contains a list of contours
+  - `hierarchy` is a 2-D list contains `[Next, Previous, First_Child, Parent]` for each contours in the `contours` list
+  - `hierarchy` flags:
+    - `RETR_TREE` return full hierarchy details
+    - `RETR_LIST` return all contour within the same hierarchy level
+    - `RETR_EXTERNAL` return only the highest level
+    - `RETR_CCOMP` return only the top two levels
+  - `cv.CHAIN_APPROX_NONE` return all points pixel by pixel
+  - `cv.CHAIN_APPROX_SIMPLE` return the points only necessary for representing the shape of the contour
+    - It will return only the two ends of a straight line, not every points on the line
+- `cv2.contourArea(contour)` return the contour size
+  - `contours = sorted(contours, key=lambda x: cv2.contourArea(x), reverse=True)` sort contours by area
+- `perimeter = cv2.arcLength(contour, True)` return contour perimeter
+- `approximatedShape = cv2.approxPolyDP(contour, 0.02 * perimeter, True)` apply simplification on contour shape, based on the epsilon value
+  - the epsilon value is calculated from the perimeter in this example
+- `convexHull = cv2.convexHull(contour)` returns convex hull of a contour
+  - a convex hull of an object is the minimum boundary that can completely enclose or wrap the object
+- `convexityDefects = cv2.convexityDefects(contour, convexhull)` returns a list of all the convexity defects
+  - A convexity defect is the deviation of the contour from its convex hull
+  - each defect is described as `[start_point, end_point, farthest_point, approximate_distance_from_mid_of_start_end_to_farthest point]`
+- `rect = cv2.minAreaRect(contour)` returns a `Box2D` object represents the min rect around the contour
+  - `Box2D` object is a rotated rectangular shape
+  - four points of the `Box2D` object can be obtained from `box = np.int0(cv2.boxPoints(rect))`
 - `image=cv.drawContours(image, contours, contourIdx, color, thickness, lineType, hierarchy, maxLevel, offset)`, draws contours outlines or filled contours. This method will return a smoother shape
   - `image` - Destination image.
   - `contours` - array of contours, 4-D array. Each contour is stored as a point vector.
@@ -437,6 +475,8 @@
 - `img=cv.fillPoly(img, pts, color, lineType)`, Fills the area bounded by one or more polygons.
   - `pts` can be an array of ploygons, each with an array of points. Each point is an array like `[x, y]`. Hence, `pts` holds a 3-D array.
   - `lineType` optional, type of the polygon boundaries.
+- `output = cv2.polylines(img, np.int32([[pts]]), isClosed, (147,20,255), 3)` draw polygon boundary
+  - `isClosed`, A boolean flag indicating whether the drawn polylines are closed or not. If they are closed, the function draws a line from the last vertex of each curve to its first
 - bitwise operation
   - `cv.bitwise_not(input, output, mask)` Inverts every bit of an array.
     - `invert = cv2.bitwise_not(white, white, mask=mask)` can be used to find the invert of a mask.
@@ -1298,6 +1338,8 @@ quit()
 ## PyTorch
 
 - To auto enable GPU when available set global variable `DEVICE = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')`, then replace all `.cuda()` with `.to(DEVICE)`
+- `tensor.numpy()` convert Tensor object to Numpy array
+  - `tensor.cpu().numpy()` if output from GPU save it on CPU first
 
 ## Gst-python
 

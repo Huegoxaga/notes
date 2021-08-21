@@ -11,7 +11,7 @@
    - Purposes of the participants in using the financial system are:
      - Save
        - Individuals typically save for retirement and expect a return that compensates them for risk and the use of their money
-       - Firm save a portion of their sales to fund future expenditures, instruments used for saving include stocks, bonds, certificates of deposit or real assets such as real estate
+       - Firm save a portion of their sales to fund future expenditures。 Instruments used for saving include stocks, bonds, certificates of deposit or real assets such as real estate
      - Borrow
        - Individuals often borrow in order to buy a house, fund a college education or for other purposes
        - Governments may borrow by issuing debt to fund their expenditures
@@ -23,17 +23,19 @@
          - analysts value the equity
          - reporting requirements and accounting standards, ensure the production of meaningful financial disclosures
      - Manage risks
-       - Changing interest rates
-       - Currency values
-       - Commodity values
-       - Defaults on debt
+       - risks includes:
+         - Changing interest rates
+         - Currency values
+         - Commodity values
+         - Defaults on debt
      - Exchange assets
-       - The above risks can often be managed by trading contracts that serve as hedges for the risks.
-       - Difference from spot market trading is more common and convenient to trade in an organized market governed by the financial system
+       - Trading contracts that serve as hedges for the risks
+         - It is a method for managing risk
+       - Difference from spot market trading, its more common and convenient to trade in an organized market governed by the financial system
          - spot market trading - trade directly with one another
+       - Participants have operational needs to trade in market
      - Utilize information
-       - Not all market participants, however, have an operational need to trade in the financial market
-       - Some people trade based on information that they believe allows them to predict future prices
+       - Participants trade based on information that they believe allows them to predict future prices, in order to make profit
 2. Determine the rates of return
    - the rates should equate the total supply of savings with the total demand for borrowing
    - Borrowing and lending can be viewed as demand and supply of money in the financial system.
@@ -109,7 +111,7 @@
     - Short term government debt is sometimes called bills.
     - Repurchase agreements or repos. - The borrower sells a high quality asset to the lender and has both the right and obligation to repurchase it at a higher price in the future
       - Repos can be as short as one day
-  - Intermediate term
+  - Intermediate term - in between short term and long term
   - Long term - usually more than 10 years
 - Bonds are generally long term and notes are generally intermediate term
 - Convertible debt - debt instruments that have the option to be exchanged for a specified number of equity shares of the issuing firm
@@ -131,9 +133,8 @@
 
 ##### Maturity
 
-- maturity date of a bond is the date on which the principal is to be repaid once a bond has been issued
-- the term to maturity (tenor) - The time remaining until maturity date
 - Maturity date is the date on which the principal is to be repaid once a bond has been issued
+- the term to maturity (tenor) - The time remaining until maturity date
 - terms to maturity can be as short as one day or as long as thirty years or more
   - money market securities bonds has original maturities of one year or less
   - capital market securities has original maturities of more than one year
@@ -159,7 +160,7 @@
 - There are bonds which make annually, semi-annually, quarterly payments or even monthly payments
 - The most common is semi-annual payments
 
-##### Currency denomination
+##### Currency Denomination
 
 - Sometimes borrowers from countries with volatile currencies issue bonds denominated in U.S. dollars
   - U.S. dollar denominated bonds - Both the coupon payments and par value are in U.S. dollars
@@ -208,7 +209,7 @@
   - A company will hire an underwriter(mostly investment bank) who will help the company to sell the IPO portion of its shares publically
     - Firm Commitment - the underwriter buys all the shares available for sell first, under a guaranteed price
     - Best efforts agreement - the underwriter sells the shares on the company behave without guarantee
-  - Regulatory compliance of financial disclosures and transparency is established durint IPO
+  - Regulatory compliance of financial disclosures and transparency is established during IPO
   - IPO shares can only be purchased through the underwriter with some requirement
     - Primary Market is where investors purchase securities directly from the issuer, e.g. purchasing IPO
     - Secondary Markets is where daily tracsation happens after the securities go public
@@ -460,7 +461,7 @@
 
 - Hedge funds are organized as limited partnerships with
   - the investors as the limited partners and the the limited partners are qualified investors who are wealthy enough and well-informed enough to tolerate and accept substantial losses should they occur
-  - fund manager as the general partner, Hedge fund managers typically charge a management fee based on the amount of assets under management, as well as an incentive fee based on their investment results.They try to add value by utilizing various strategies, and leverage is often used to amplify the gains
+  - fund manager as the general partner, Hedge fund managers typically charge a management fee based on the amount of assets under management, as well as an incentive fee based on their investment results. They try to add value by utilizing various strategies, and leverage is often used to amplify the gains
 
 ## Alternative
 
