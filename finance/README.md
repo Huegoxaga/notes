@@ -36,6 +36,11 @@
        - Participants have operational needs to trade in market
      - Utilize information
        - Participants trade based on information that they believe allows them to predict future prices, in order to make profit
+   - Overall the financial system allows
+     - investors to save for the future at fair rates of return
+     - creditworthy borrowers to obtain funds through debt or equity issuance
+     - hedgers to easily trade away or offset risks
+     - traders to easily exchange currencies, commodities and other assets they need
 2. Determine the rates of return
    - the rates should equate the total supply of savings with the total demand for borrowing
    - Borrowing and lending can be viewed as demand and supply of money in the financial system.
@@ -48,13 +53,49 @@
      - This process is efficient only if market information is accurate.
      - The regulators and standard setting bodies have the responsibility to ensure that financial information is accurately reported in the most useful manner
 
-#### Best Condition for the Financial System
+#### Performance of Financial System
 
 - The financial system is best at fulfilling these roles when
   - The markets are liquid
   - Transaction costs are low
   - Information is readily available
   - Regulation ensures the execution of contracts
+- A well functioning financial system has prices that reflect fundamental values and should be
+  - Operationally efficient - is where a market can perform these functions at low trading costs, including commissions, bid ask spreads and price impacts
+  - Informationally efficient - is where the security prices reflect all the information associated with fundamental value in a timely fashion
+    - Reporting requirements and accounting standards that produce meaningful and timely financial disclosures allow analysts to form more accurate estimates of fundamental values
+  - Allocationally efficient, is where capital is allocated to its most productive use
+- A well functioning financial system has financial intermediaries like
+  - Exchanges, brokerages and alternative trading systems that match buyers to sellers
+  - Dealers that provide liquidity on demand to traders
+  - Securitisers is that securities assets to produce investment instruments that are attractive to investors, lowering interest costs for borrowers.
+  - Banks that match investors to borrowers by taking deposits and making loans
+  - Insurance companies that pool uncorrelated risks
+  - Financial advisers that help investors manage and grow their assets
+  - Clearinghouses that ensure everyone settles their trades and contracts and depositories that ensure nobody loses their assets
+- In a well functioning financial system, savers and investors can directly or indirectly fund companies that need capital for expansion or projects, and transfer the risk to those that can better bear it.
+  - These benefits are enhanced because the transactions can occur among strangers, widening the opportunities for capital formation and risk sharing in the economy
+
+#### Market Regulations
+
+- Market Regualtions are used to address the following issues
+  - Fraud and Theft - Investors who often placed their trust in agents or investment managers to manage their wealth. It can be easy for the agents to steal or overcharge their clients if there are no safeguards in place. Furthermore, since returns are often random, it can be easy for agents to attribute client losses to market underperformance
+    - Market Regualtions requires minimum standards of competency, and make it easier for investors to evaluate performance.
+      - The CFA program and the global investment performance standards are part of this effort
+  - Insider Trading - If market insiders are allowed to trade based on their privileged information, the playing field will be skewed towards them at a cost to investors who do not have such information. Without assurance of a level playing field, traders without inside information will exit the market and liquidity will be reduced
+    - Regulators make it illegal and enforce the rules strictly such that traders are confident that the playing field is level
+  - Costly Information - If market information comes at a high cost to investors, markets will not be as informationally efficient and investors will not invest as much
+    - Regulations requires all companies to report according to a common financial reporting standard like IFRS or US GAP reporting on a common basis reduces costs of information gathering and comparisons across companies
+  - Default - the risk of defaults where parties might not honor their obligations in the markets
+    - Regulations require minimum levels of capital so that market participants will be able to honor their long term commitments
+    - This is especially important for insurance companies and pension funds that individuals depend on for their financial future
+- Regulations can be provided by governments and related entities, as well as industry groups, for example, most exchanges, clearing houses and dealer trade organizations are self-regulating organizations, meaning that they regulate their members
+  - Governments sometimes delegate regulatory authority to such organizations.
+- Without proper market regulation
+  - Liquidity declines.
+  - Firms shun risky projects
+  - New ideas go unfunded
+  - Economic growth slows.
 
 ### Types of Market
 
@@ -71,8 +112,55 @@
 
 #### Source
 
-- Primary market - when issuers, which are mainly government or corporate entities, sell new securities to investors.
-- Secondary market - Subsequent sales of securities, funds flow between traders
+- Primary market - when issuers, which are mainly government or corporate entities, sell new securities to investors. The trade happens between the issuer and investor directly, with the help of the underwriter. One of the following transaction can happen in the primary market
+  - An underwriter is any party that evaluates and assumes another party's risk for a fee, which often takes the form of a commission, premium, spread, or interest
+  - If the securities are available to the public for first time, it is called initial public offering (IPO)
+    - Otherwise, they are seasoned offerings or secondary issues
+  - A primary offering can be a private placement to qualified investors
+    - In a private placement firm sells securities directly to a small group of qualified investors, usually with the assistance of an investment bank, qualified investors or those with substantial wealth and investment knowledge
+    - Private placements do not require the issuer to disclose as much information as they must when securities are being sold to the public
+    - Therefore, the issuance costs may be lower than public offerings
+    - Investors are likely to require higher returns, meaning a lower price as the securities are less liquid as they cannot be traded in an organized secondary market.
+  - Shelf registrations - a firm registered securities for issuance as in a regular offering, but only issues the registered securities over time when it needs capital and when the markets are favorable
+  - Dividend Reinvestment Plans - it allows existing shareholders to use their dividends to buy new shares from the firm at a slight discount
+  - Rights offerings - Existing shareholders are given the right to buy new shares are discount to the current market price
+    - Shareholders tend to dislike rights offerings because their ownership is diluted unless they exercise their rights and buy the additional shares
+    - In some circumstances, shareholders can choose to trade the rights with other investors
+  - Governments issue short term and long term debt, either by auction or through investment banks
+- Secondary Markets is where daily tracsation happens after the securities go public, they are subsequent sales of securities, funds flow between traders
+  - Secondary markets are important because they provide liquidity and price information
+    - a liquid market is one in which a security can be sold quickly without incurring a significant discount from the current price
+    - The liquidity of the secondary market is important to the primary market. Buyers value liquidity and will pay more for securities that they can easily sell. This enables issuers to raise capital in the primary markets at a lower cost
+  - Secondary Markets can be categorized into Call Market and Continuous Trading Market based on when securities are traded or Quote-Driven Market, Order-Driven Market and Brokered Market based on how they are traded
+  - Call Market is a type of secondary market where stocks can be traded only at specific times
+    - All interested buyers and sellers of a stock gather at a specific time and place to declare their bids and asks
+    - A call market can be very liquid when in session because all traders are present, but illiquid between sessions
+    - Call markets usually are organized just once a day, but some markets organize calls at more frequent intervals
+  - Continuous Trading Market is where trades can be arranged and executed at any time the market is open
+    - Many continuous trading markets start their trading with a call market auction during a preopening period. Traders submit their orders for the market call at the opening, Some also close their trading session with a call
+  - Quote-Driven Market is where investors trade with dealers
+    - commonly known as over-the-counter markets
+    - Most securities other than stocks trade in Quote-Driven Market
+  - Order-Driven Market is where rules are used to match buyers and sellers
+    - Stocks are mostly traded in exchanges or automated trading systems in a Order-Driven Market
+    - Orders are placed in a queue and executed based on the clients instruction, order matching rules are used to determine which order gets priority over others and how the orders are matched
+      - price priority is the number one criterion where the most aggressively priced orders get priority
+        - This means that the highest priced bid orders and the lowest priced ask orders go first
+      - If orders are at the same prices, a secondary precedence rule gives priority to non hidden orders
+      - If that's also the same than the earliest arriving orders get the priority
+    - Order matching rules encourage traders to price their trades aggressively, display their entire orders and trade earlier, thereby improving liquidity
+    - In continuous trading markets, the discriminatory pricing rule is often practiced, the limit price of the order that arrived first determines the trade price, donesn't matter if its a buy or sell order
+    - In call markets. Uniform pricing rule allows all orders trade at the same price, which is the price that results in the highest volume of trading
+    - In crossing networks, derivative pricing rule is practiced where the price is often the midpoint between the best bid and ask quotes published by the other exchange
+      - Crossing networks are trading systems that match traders who are willing to trade at prices obtained from other exchanges
+  - Brokered Markets where investors use brokers to locate a counterparty to a trade
+    - This service is usually for assets that are unique or illiquid, like very large blocks of stock, real estate and artwork
+  - Markets also differ in the type and quantity of data that they disseminate to the public
+    - Pre-Trade Transparent Markets - publish real time data about quotes and orders
+      - Buy-side traders prefer this type of market because the transparency allows better understanding of security values and trading costs
+    - Post-Trade Transparent - publish trade prices and sizes only after the trades occur
+      - Dealers prefer this type, which are more opaque as it gives them an informational advantage over traders who trade less frequently
+      - Transaction costs and bid ask spreads are larger in opaque markets
 
 #### Maturity
 
@@ -293,6 +381,8 @@
   - For a long sale, the broker must confirm that the securities held are available for delivery
   - For a short sale, the broker must either borrow the security on behalf of the client or confirm that the client can borrow the security
 
+### Market Efficiency
+
 ## Securities
 
 - A security is a financial investment with some monetary value
@@ -303,6 +393,45 @@
   - Derivative Securities - Purchasing derivative securities will grant the investor the right to trade other financial securities at pre-agreed upon terms
     - Futures contracts - A type of derivative securities that one has agreed to purchase assets(mostly commodities) for an agreed-upon price in the future
     - Stock options - A type of derivative securities that grants the right to purchase shares for a discounted price in the future
+- Securities market index - It is used to represent the performance of an asset class, security market or segment of a market
+  - they're usually created by selecting a number of representatives securities in the marke. These elected securities are known as the constituent securities of the index
+  - Price Index - The numerical value calculated from the market prices of the constituent securities at that particular instance
+  - Price Return - The percentage change in the price index over a period of time
+  - Return Index - It takes into account the interim cash flows, such as dividends or interest payments issued by the securities
+  - Total Return - The percentage change in the return index over a period of time
+  - Aggregate Return - The percentage return calculated for a longer period, which is the product of the return factors of each smaller period, then minus 1.
+    - the return factors are the return percentage plus 1, negative returns have return factors smaller than 1
+  - In order to construct a meaningful index, the index provider need to
+    1. Determine the target market the index is intended to measure
+       - It may be defined by asset class, geographic region or other characteristics like economic sector, company size, duration or credit quality
+    2. Select securities from the target market
+       - Some equity indexes fixed the number of stocks to be selected
+       - It can be determined by an objective rule such as the number of shares outstanding, the number of shareholders and market capitalization or subjectively by a committee
+    3. to determine the weighting scheme, that is how each security should be weighted in the index
+       - a price weighted index is simply an arithmetic average of the prices of the securities included in the index
+         - In the event of a stock split, the index provider will adjust the denominator accordingly. However the weight of that stock will be reduced. Actions like stock splits, stock dividends and stock repurchase affect the prices of the affected stocks and shifts the weight distribution of the entire index as a result
+         - Another disadvantage is that higher priced stocks have more weight, but the price of a stock has no indication of how large a company actually is
+       - A market cap weighted index has weights based on the market cap of each stock as a proportion of the total market cap of all the stocks in the index, It tracks the growth factor of the sum of the market cap of all selected stock for the index, then multiply it by 100
+         - It does not need to be adjusted when a stock splits or pays a stock dividend, because the market cap of a stock is not affected by stock splits or stock dividends
+         - This weighting method more closely represents changes in aggregate investor wealth in the entire market
+         - It's disadvantage is similar to following a momentum strategy under which the most successful stocks are given the greatest weights and poor performing stocks are underweighted
+       - A float adjusted market cap weighted index - similar to market cap weighted but only use firm market float for the market cap calculation
+         - firms market float is the number of the (floating) shares that are actually available to the investing public and excludes the shares held by controlling stock holders because they are unlikely to sell their shares, shares held by large corporations or governments are often excluded as well
+       - A free float adjusted market cap weighted index is similar to float adjusted weighted, but it also exclude stock that is not available for foreign investors
+       - An equal weighted index is calculated as the arithmetic average return of the index stocks
+         - note that it is the return of each stock and not the price as used in a price weighted index
+       - An fundamental weighted index uses weights based on firm fundamentals such as earnings, dividends or cash flow. The weights can be based on a single measure or some combination of these measures
+         - It avoids the bias that market cap indexes have toward the performance of the shares of overvalued firms
+         - It can overweight a stock because the metrics used in the calculation like earning or dividends of the stock is too high
+    4. to rebalancing the weight - It is the process of adjusting the weights of securities in a portfolio to their target weights after price changes have affected the weights
+       - The weights in price and market cap weighted indexes will adjust by itself
+       - Equal weighted and fundamental weighted index need to be rebalanced periodically
+       - Rebalancing will lead higher transaction cost
+    5. to reconstitute index - It is the process of adding and deleting constituent securities that make up the index
+       - This is necessary as some firms may go bankrupt, be delisted, or if they no longer meet the criteria of the index
+       - Deleted securities are replaced by other securities that meet the index criteria. The deletion and insertion of securities to an index can also be at the subjective judgment of a committee
+       - When a security is added to an index, its price tends to rise as portfolio managers tracking index buys the security, the prices of deleted securities tend to fall as portfolio managers sell them
+       - Reconstitution also requires that the weights on the returns of other index stocks be adjusted to conform to the desired weighting scheme
 
 ### Fixed Income Securities
 
@@ -409,15 +538,27 @@
 - Stock of a corporation is all of the shares into which ownership of the corporation is divided
   - Similar to shares
 - Stocks can be of different types with various rights(voting)
-- Stocks can be sold publically on stock exchange
-  - An IPO(Initial Public Offering) is the process by which a firm places shares on the public market for the first time
+- When companies decided to sell its share to the public (IPO) on stock exchange
   - A company will hire an underwriter(mostly investment bank) who will help the company to sell the IPO portion of its shares publically
-    - Firm Commitment - the underwriter buys all the shares available for sell first, under a guaranteed price
-    - Best efforts agreement - the underwriter sells the shares on the company behave without guarantee
+    - the issuer provides information about its finance and prospects, as well as how the funds will be used. The investment bank disseminates this information to interested investors and gets preliminary agreements to buy part of the issue.
+    - These are not actual orders, but are referred to as indications of interest, the investment bank adjust the number of shares to be offered based on buyers' interest
+    - The process of gathering indications of interest is referred to as book building
+    - In London, the book builder is referred to as the book runner
+    - In Europe, an accelerated book build occurs when securities must be issued quickly
+  - Firm Commitment - the underwriter buys all the shares available for sell first, under a guaranteed price
+  - In an underwritten offering, the investment bank takes the role of an underwriter who agrees to purchase the entire issue at a price that is negotiated between the issuer and the bank
+    - For large issues, a syndicate of investment banks and broker dealers helps the lead underwriter build the book
+    - If the issue is priced too high, it may be undersubscribed, the investment bank must buy the unsold portion
+    - In the case of an IPO, the investment bank also agrees to make a market in the stock for a period after the issuance to provide price support for the issuer
+    - If it's priced too low, the issue may be oversubscribed. Not every investor gets the amount they applied for, which may mean that the issuer is not getting a fair deal
+    - In an underwritten offering, investment banks have a conflict of interest. As the issuer's agents, they should set the price high to raise the most funds for the issuer. But as underwriters, they would prefer that the price be set low enough that the whole issue sells.
+      - This also allows them to allocate portions of an undervalued IPO to their clients.
+      - This results in IPOs typically being underpriced.
+    - Some insurers may also prefer underpricing the IPO because oversubscription and the subsequent trading above IPO price is good publicity for the firm. Such an IPO is referred to as a hot issue.
+  - Best efforts offering - the investment bank does not commit to purchase the whole issue. It acts only as a broker to issue the shares to interested investors
+    - If the issue is undersubscribed, the issuer may not raise the desired amount
   - Regulatory compliance of financial disclosures and transparency is established during IPO
   - IPO shares can only be purchased through the underwriter with some requirement
-    - Primary Market is where investors purchase securities directly from the issuer, e.g. purchasing IPO
-    - Secondary Markets is where daily tracsation happens after the securities go public
 - A company's value, market cap, or market value in the stock exchange is determined by multiplying the outstanding stocks(number of shares available in the market) by the stock price, the cap ranges are as follows:
   - Large Cap: Greater than `$10` billion
   - Mid Cap: `$2-$10` billion
@@ -456,13 +597,16 @@
   - Cboe BZX Exchange, United States
 - Stock Index - A weighted average price calculated from selective stocks to represent the state of the current market
   - Dow Jones Industrial Average - it measures the stock performance of 30 large companies listed on stock exchanges in the United States from New York Stock Exchange and NASDAQ
+    - It's a price weighted index
   - S&P 500 - it measures the stock performance of 500 large companies listed on stock exchanges in the United States from NYSE, NASDAQ, and Cboe BZX Exchange
-    - Weighted by market cap
+    - A float adjusted market cap weighted index with a fixed number of constituents
     - recognized as the best representation of the US market
   - Nasdaq Composite - it includes almost all stocks listed on the Nasdaq stock market
     - Weighted by market cap
     - recognized as a great representation of the US technology market
   - S&P/TSX Composite Index - it represents roughly 70% of the total market capitalization on the Toronto Stock Exchange (TSX) with about 250 companies included in it
+  - The Value Line Composite Index - a stock index containing approximately 1,700 companies from the NYSE, American Stock Exchange, Nasdaq, Toronto, and over-the-counter markets
+    - an equal weighted index
 - Volume is the amount of an asset or security that changes hands over some period of time(often daily)
   - The average volume is the average of the (daily) volumes for a specified period. e.g. `Avg. Volumn(10)` is the 10 days average, `Average Volumn(3m)` is the 3 months average
 - Valuation Ratios
@@ -668,12 +812,6 @@
   - Car loans
 - The interest and principal repayments on these loans are passed through to investors with different classes of claims and levels of risk based on the seniority of the security held by the investor
 
-#### Hedge Funds
-
-- Hedge funds are organized as limited partnerships with
-  - the investors as the limited partners and the the limited partners are qualified investors who are wealthy enough and well-informed enough to tolerate and accept substantial losses should they occur
-  - fund manager as the general partner, Hedge fund managers typically charge a management fee based on the amount of assets under management, as well as an incentive fee based on their investment results. They try to add value by utilizing various strategies, and leverage is often used to amplify the gains
-
 ## Alternative
 
 - Alternative investment does anything that traditional investment donesn't focus on
@@ -725,7 +863,8 @@
   - possess adequate wealth
   - sufficient liquidity
   - acceptable degree of investment sophistication
-- the management firm typically receives both a management fee based on the value of the portfolio and an incentive fee based on fund returns
+- the management firm hires fund manager to manage the fund, they typically receives both a management fee based on the value of the portfolio and an incentive fee based on fund returns
+  - They try to add value by utilizing various strategies, and leverage is often used to amplify the gains
 - hedge fund investments are less liquid than traditional investments
   - lockup period - investors are required to keep their money in the hedge fund for a minimum period before they are allowed to make redemptions
   - investors may be required to give notice of their intent to redeem the notice period is typically 30 to 90 days in length and the investors may be charged a fee to redeem the shares
