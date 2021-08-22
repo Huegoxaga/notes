@@ -88,6 +88,211 @@
 - Traditional investments include all publicly traded debts and equities and shares in pooled investment vehicles that hold publicly traded debts and or equities like an equity index ETF
 - Alternative investments include hedge funds, private equities, commodities, real estate and infrastructure investments, because these investments are often hard to trade and hard to value, they often sell at a discount and require substantial investor due diligence
 
+### Financial Intermediaries
+
+- Financial intermediaries stand between buyers and sellers, facilitating the exchange of assets, capital and risk
+- Financial intermediaries can be ons of the followings
+
+#### Brokers
+
+- Brokers help their clients buy and sell securities with each other by finding counterparty to trade in a cost efficient manner
+- Brokers may work for large brokerage firms, for banks or at exchanges.
+- Block brokers help with a placement of large trades by concealing clients intentions, so that the market does not move against them
+- Investment banks are also considered a form of brokers as they help corporations sell common stock, preferred stock and bonds to investors
+  - They also provide advice to firms notably about mergers, acquisitions and raising capital
+
+#### Exchanges
+
+- Exchanges provide a venue where different parties can trade with each other
+- They can act as brokers by providing electronic order
+- Exchanges also regulate their members and require firms that list on the exchange to provide faithful and timely financial disclosures to allow analysts to value the securities issued by them
+- Exchanges acquire their regulatory power through the member agreement or from their governments
+- Alternative Trading Systems (ATS) serves the same trading function as exchanges but have no regulatory function
+  - They're also known as Electronic Communication Networks (ECNs) or Multilateral Trading Facilities (MTFs)
+  - Large investment managers, prefer to use these systems when they want to keep large transactions secret
+
+#### Dealers
+
+- Unlike brokers and exchanges, dealer buy and sell securities directly from the traders, and they do maintain an inventory
+- Dealers provide liquidity in the market and profit primarily from the spread between the bid (purchasing) price and the ask (selling) price
+  - This difference between the bid and ask prices is referred to as the bid ask spread
+  - The bid and ask are quoted for specific trade sizes, larger size trades often have narrower bid ask spreads
+  - More liquid securities have lower bid ask spreads
+  - In one market, there can be several dealers, the quotation in the market is the highest paid and lowest ask from among all dealers in a particular security
+  - Traders who post bids and offers are said to make a market, while those who trade with them at posted prices are set to take the market
+- A dealer can also act as a broker and help client to buy or sell with a counterparty or directly with itself, then it can be called a broker dealer
+  - There is an inherent conflict of interest
+    - As a broker, it should seek the best prices for the client.
+    - As a dealer, its goal is to profit through prices or spreads.
+    - As a result, traders typically place limits on how their orders are filled when they transact with broker dealers
+- They connect buyers and sellers that arrive at different times in the same market
+
+#### Securitisers
+
+- Securitisers pool large amounts of securities or assets and then send interests in the pool to investors
+- This large amounts of securities are commonly known as asset backed securities
+- An asset-backed security (ABS) is a type of financial investment that is collateralized by an underlying pool of assets—usually ones that generate a cashflow. The investors can get this cashflow after certain securitisers fees are deducted
+  - Assets that are often securitized include mortgages, car loans, credit card receivables, bank loans and equipment leases
+  - Some asset backed securities are securitized by firms which set up a separate legal entity known as a special purpose vehicle (SPV) to buy some of its assets
+    - This removes the assets from the firm's balance sheet and may increase their value to investors as the assets are now bankruptcy remote from the originating firm
+      - This means that creditors of the firm cannot lay claim to the assets sold to the SPV
+- These securities are commonly segregated into multiple categories called tranches
+  - the senior tranches provide the most certain cash flows, while the junior and subordinated tranches have greater risk
+- The benifit of securitization
+  - Having different tranches allows investors to invest according to their required risk and returns
+  - The large pool of securites is split into many units or shares, as a result the minimum investment amount is lower
+  - Diversification benefits in pooling assets together
+  - Cash flows get more predictable
+  - Liquidity is improved as the securities are more easily traded
+  - There are also economies of scale in the management costs of large pools of assets
+  - Potential benefits from the managers expertise in selecting assets
+
+#### Depository Institutions
+
+- Types of depository institutions
+  - Banks - they take on customer deposits, pay interest on them and provide transaction services such as checking accounts, then they make loans to various borrowers and earn interest
+    - Most banks have expertise in evaluating credit quality and managing the risk of a portfolio of loans of various types
+  - Payday lenders and Factoring companies - they lend money to firms and individuals on the basis of their wages, accounts receivable and other future cash flows
+    - They often finance the loans by issuing commercial paper or other debt securities
+  - Prime brokers - a special type of broker that act as depository institutions
+    - Securities brokers provide loans to investors who purchase securities on margin
+    - When this margin lending is to hedge funds and other institutions, they are prime brokers
+- The deposits from the depositors and the debt from the lenders can be considered the liabilities of the institution in its balance sheet
+- There are also stockholders who supply capital to institutions, and this forms the equity capital
+  - Bank capital represents the value invested in the bank by its owners and/or investors. It is calculated as the sum of the bank's assets minus the sum of the bank's liabilities, or being equal to the bank's equity
+  - The stockholders absorb any loan losses before the lenders and depositors
+  - The more equity capital the institution has, the less risk for depositors
+
+#### Insurance Companies
+
+- They collect insurance premiums in return for providing risk reduction to the insured
+- The insurance firm can do this efficiently when it provides protection to a diversified pool of policyholders whose risks of loss are typically uncorrelated
+  - This provides more predictable cash flows compared to a single insurance contract
+- they connect the buyers of their insurance contracts with investors, creditors and reinsurers who are willing to bear the insured risks
+- Insurance companies provide a benefit to investors by managing the risks inherent in insurance
+- Insurance companies manages the following risks
+  - `Moral Hazard` occurs because the insured may take more risks once he is protected against losses
+  - `Adverse Selection` occurs when those most likely to experience losses are the predominant buyers of insurance
+  - `fraudulent claims` occurs when the insurers purposely causes damage or fakes losses so they can make an insurance claim
+
+#### Arbitragers
+
+- Arbitrageurs trade when they can identify opportunities to buy and sell identical or essentially similar instruments at different prices in different markets
+  - They profit when they can buy in one market for less than they sell in another market
+- They connect sellers in one market to buyers in another market in the same time
+- The purest form of arbitrage involves buying and selling the same instrument in two different markets, in markets with good information, pure arbitrage is rare because traders will favor the markets with the best prices
+- More commonly, arbitrageurs trade securities or contracts whose values depend on the same underlying factors
+
+#### Clearinghouses
+
+- They are responsible for the final settlement of trades
+  - They transfer money from the buyer to the seller while transferring securities from the seller to the buyer in future markets
+  - They guarantee contract completion, making sure that both the long and the short fulfill their contractual agreement for margin trades
+  - They ensures that they pose sufficient margin and limit the aggregate net order quantity of the members
+- As a result, The clearinghouse limit counterparty risk, which is the risk that the other party to a transaction will not fulfill its obligation
+- In some markets, the clearinghouse ensures only the trades of its member brokers and dealers, who in turn ensure the trades of their retail customers
+- Custodian's also improve market integrity by holding clients securities, these services, which are often offered by banks, help prevent the loss of securities through fraud, oversight or natural disaster
+
+### Financial Positions
+
+- In order to achieve financial goals or manage financial risks, an investor has to take a position in an asset
+
+#### Long Positions
+
+- The investor takes a long position when he owns an asset
+- Long positions benefit from an appreciation in the prices of the assets owned
+  - The investor profits by purchasing at a low price and selling at a high price
+
+#### Short Positions
+
+- The investor takes a short position when he has sold assets that he does not own
+- Short positions benefit from a decrease in the prices of the assets sold
+  - Short sellers profit by selling at high prices and repurchasing at lower prices
+- Short sellers need to borrow the stocks from securities lender and sold it at a high price, then deposit the cash gained from the transcaction to the lender, it is the short seller responsibility to purchase and return (short covering) the borrowed stocks regardless the market price
+  - A short seller may also be required to deposit additional margin in the form of cash or short term riskless securities
+  - The lender then earns interest on these funds and may return a portion of this interest to the short seller
+  - This is at a rate referred to as the short rebate rate, typically `0.1%` less than overnight interest rates
+  - If the security is difficult to borrow, the short rebate rate may be lower or negative
+  - The short seller must pay to the lender all dividends or interest that the lender would have received from the security
+    - These payments are called payments in lieu of dividends or interest
+
+#### Leveraged Positions
+
+- Traders can borrow money from the broker to purchase securities
+  - The loan can be called the margin loan, this loan is backed by the equity position of the investor in their investment account
+    - This minimun equity position amount must meet the initial margin requirement, which can be set by the government exchange clearinghouse or broker
+    - The leverage ratio of a margin investment is the value of the total asset divided by the value of the equity position
+  - Such purchases can be called the margin purchase
+- Investor need to pay interest on the margin loan, this interest is known as the call money rate
+  - This rate is generally higher than the government bill rate
+  - For larger investors with better collateral, the call money rate is lower
+- The use of leverage magnifies both the gains and losses
+  - This additional risk is referred to as risk from financial leverage
+- Brokers usually enforce a maintenance margin requirement on the trader
+  - This is the minimum equity percentage that the trader must maintain in the account
+  - This is typically `25%` of the current position value
+    - But brokers may require a greater minimum equity percentage for volatile stocks
+- If the percentage of equity in a margin account falls below the maintenance margin requirement, the investor will receive a margin call, a request to bring the equity percentage in the account back up to the maintenance margin percentage
+  - An investor can satisfy this request by depositing additional funds or depositing other on margin securities
+  - If the investor does not meet the margin call, the broker must sell the position
+  - The margin call will be trigger when the asset value fall below `initial purchase price * (1 - initial margin percentage) / (1 - maintenance margin percentage)`
+
+### Market Instructions
+
+- When investors want to trade, they must enter orders that specify whether to buy or sell and the size of the trade, plus the following three instrcutions
+
+#### Execution Instructions
+
+- They specify how to trade, the most common are
+  - A market order instructs the broker to execute the trade immediately at the best possible price available in the current market ask or bid queue
+    - A market order is often appropriate when the trader wants to execute quickly, as when the trader has information she believes is not yet reflected in market prices.
+    - Uncertainty is the biggest shortcoming of market orders, especially if the security has low trading volume relative to the order size
+  - A limit order places a minimum execution price on sell orders and a maximum execution price on buy orders, and only buy or sell when the current market has stock available with price within the limit
+    - The disadvantage is that the order might not be filled or only be partially filled
+- Limit order terminology
+  - A limit buy order above the best ask or a limit sell order below the best bid are said to be marketable or aggressively priced, because at least part of the order is likely to execute immediately
+  - If the limit price is between the best bid and the best, ask a limit order is said to be making a new market or inside the market
+  - limit orders waiting to execute a called standing limit orders
+  - A limit by order at the best bid or a limit sell order at the best ask are said to make the market
+  - A buy order with a limit price below the best bid or a sell order with a limit price above the best ask is said to be behind the market
+  - A limit by order with a price considerably lower than the best bid or a limit sell order with a price significantly higher than the best ask is said to be far from the market
+- Traders can also specify the volume of the trade
+  - If there's no specification, the broker makes a best effort attempt to fill as many units before the order expires
+  - If the trade specifies an all or nothing order, the broker executes only if the whole order can be filled
+  - Traders can also specify the minimum size of a trade. The trade only executes if the minimum size can be met
+    - This type of order is beneficial when trading costs depend on the number of executed trades rather than the size of the order
+- Trade visibility can also be specified
+  - Investors that have a large amount to trade and do not want to reveal their intentions prefer hidden orders for which only the broker or exchange know the trade size
+  - Traders can also specify displaces where some of the trade is visible to the market, but the rest is not
+    - These are also referred to as iceberg orders because part or most of the order is hidden from view.
+    - They allow the investor to advertise some of the trade without revealing the actual size of the trade.
+
+#### Validity Instructions
+
+- They specify when the order can be executed
+  - Day orders, meaning they expire if unfulfilled by the end of the trading day
+  - Good to cancel orders last until they are filled or when the trader cancels the order
+  - Immediate or cancel orders are canceled unless they can be filled immediately
+    - They're also known as fill or kill orders
+  - Good-on-close orders, are filled at the end of the trading day
+    - If they are market orders, they're referred to as market-on-closed orders
+      - These are often used by mutual funds because their portfolios are valued using closing prices
+  - Good-on-open orders, are filled at the open of the next trading day
+  - Stop orders are those that execute only when the stock price has been met
+    - They're often referred to as stop loss orders because they can be used to prevent losses or to protect profits
+    - It is a market order triggerred by pre-set price limit
+    - It can be a stop-sell order or stop-buy order for short seller to prevent loss
+    - Inverstors can also use stop-buy order to confirm the stock will rise
+
+#### Clearing Instructions
+
+- They specify how to settle the trade
+  - Retail trades are typically cleared and settled by the same broker who arranged the trade
+  - Institutional trades may be settled by a custodian or another broker, which might be the traders prime broker using to brokers, allows the investor to keep one broker as the prime broker for margin and custodial services while it engages other brokers for specialized arrangements
+- When a trader issues a sell order, one important clearing instruction is to specify whether it is a long sale or short sale
+  - For a long sale, the broker must confirm that the securities held are available for delivery
+  - For a short sale, the broker must either borrow the security on behalf of the client or confirm that the client can borrow the security
+
 ## Securities
 
 - A security is a financial investment with some monetary value
@@ -294,6 +499,7 @@
 - Contracts are generally agreements between two parties to perform some action in the future
 - for financial contracts. These actions are often based on security prices, currency exchange rates, commodity prices or security indexes
 - Commonly known as derivatives
+- Contracts can have both long sides and short sides
 - Derivatives can be a contract which is a agreements between two parties to perform some action in the future for financial contracts.
 - These actions are often based on security prices, currency exchange rates, commodity prices or security indexes
 - Derivatives are a type of securities that derive values from underlyings like assets or securites
@@ -367,6 +573,8 @@
   - In a swap contract, two parties agree to pay each other such that the net payment is equivalent to one asset being swapped for another, usually over multiple settlement dates until the expiry
 - The contract ends on the expiry date which is usually the date of the last payments to be made
 - Each settlement date the difference of period payment is calculated so that only one payment is made
+- In swaps, each party is long one asset and short the other, so the designation of the long and short side is often arbitrary
+  - Usually the side that benefits from an increase in the quoted price or rate is referred to as the long side and the other side is short
 
 #### Options
 
@@ -388,6 +596,9 @@
 - Contingent claim derivatives can be defined as an option with payoff
   - The payoff here is the profit of the long
   - a event is when the market price of the asset is higher than the exercise price
+- The short is the writer of the contract and the long is the holder of the contract.
+  - Call options, give the long the right to buy the underlying from the short
+  - Put options, give the long the right to sell the underlying to the short
 
 #### Credit Derivatives
 

@@ -125,10 +125,10 @@
 
 #### Clean up
 
-- Remove Wechat account folder at `/Users/<username>/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/`, then clear cache in app setting
-- Remove Webex support folders `WebEx Meetings` and `WebEx Folder` at `/Users/<username>/Library/Application Support/`
-- VS Code delete `Cache` and `CacheData` folders at `/Users/<username>/Library/Application Support/Code`, then in app command input enter `Clear Editor History`
-- Clear VirtualBox log in `/Users/<username>/Library/VirtualBox` folder
+- Remove Wechat account folder at `~/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/`, then clear cache in app setting
+- Remove Webex support folders `WebEx Meetings` and `WebEx Folder` at `~/Library/Application Support/`
+- VS Code delete `Cache` and `CacheData` folders at `~/Library/Application Support/Code`, then in app command input enter `Clear Editor History`
+- Clear VirtualBox log in `~/Library/VirtualBox` folder
 - Clean conda package caches, run `conda clean -f && conda clean -a`
 - Homebrew clean up all broken symlinks `brew doctor && brew cleanup`
 - Clean up npm cache `npm cache clean --force`
