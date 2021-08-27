@@ -1,6 +1,6 @@
 # MacOS
 
-### zsh
+## zsh
 
 - `Zsh` is the macOS default shell for its terminal. It is similar to `bash` but has the following difference.
 - set `Zsh` as the default shell, run `chsh -s /bin/zsh` then restart the terminal.
@@ -24,9 +24,9 @@
   - Add `ZSH_THEME=themename` in `~/.zshrc` to change themes for terminal.
     - set `ZSH_THEME=""` to disable theme.
 
-### System-wide setting
+## System-wide setting
 
-#### Power Settings
+### Power Settings
 
 - run `pmset -g` list power settings for current power source.
 - `hibernatemode`:
@@ -44,7 +44,7 @@
   - `-u`, UPS
   - `-a`, all
 
-#### Dock Settings
+### Dock Settings
 
 - `defaults write com.apple.dock autohide -bool true` turn off autohide
   - Or, press `Cmd+Alt+D`
@@ -56,7 +56,7 @@
 - `defaults write com.apple.dock tilesize -float 1` change the dock size to 1 pixel
 - Run `killall Dock` to restart the dock and load the new settings
 
-### Xcode Command Line Tools
+## Xcode Command Line Tools
 
 - It includes and enables many useful command.
   - can be found at `/Library/Developer/CommandLineTools/usr/bin`
@@ -71,12 +71,12 @@
 - run `xcode-select --print-path` to find out what version of Xcode is being used by the tools
 - run `sudo xcode-select -switch /Applications/XcodeX.X.X/Xcode.app` set the default version of Xcode to use for the command-line tools.
 
-### iCloud
+## iCloud
 
 - add `.nosync` after file or folder name will stop syncing the file to iCloud
   - `.nosync` can be added directly before or after the file's extension. e.g. `movie.nosync.avi` or `movie.avi.nosync`
 
-### Homebrew
+## Homebrew
 
 - It is the package management tool for macOS.
   - It provides many up-to-date GNU software that can replace the default Unix BSD software.
@@ -111,7 +111,7 @@
   - `brew cask` is deprecated
 - `brew install --appdir="/<PathToAppFolder>" <AppName>` specify the app folder
 
-### Disk Management
+## Disk Management
 
 - When erease external disks with `Disk Utility`, format it in `exFAT` format with `Master Boot Record` scheme allows it to be readable by both Mac and Window hosts
   - `FAT32` doesn't support files larger than 4 GB
@@ -123,7 +123,7 @@
   - `3` is the number of partition
 - `diskutil list` list all storage devices
 
-#### Clean up
+### Clean up
 
 - Remove Wechat account folder at `~/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/`, then clear cache in app setting
 - Remove Webex support folders `WebEx Meetings` and `WebEx Folder` at `~/Library/Application Support/`
@@ -133,20 +133,123 @@
 - Homebrew clean up all broken symlinks `brew doctor && brew cleanup`
 - Clean up npm cache `npm cache clean --force`
 
-### Dual-Boot
+## Editor
+
+### VSCode
+
+#### Installation
+
+- run `brew install --cask visual-studio-code` to install
+- VSCode stores files at the following locations:
+  - `/Applications/Visual Studio Code.app`
+  - `~/Library/Preferences/com.microsoft.VSCode.helper.plist`
+  - `~/Library/Preferences/com.microsoft.VSCode.plist`
+  - `~/Library/Caches/com.microsoft.VSCode`
+  - `~/Library/Caches/com.microsoft.VSCode.ShipIt/`
+  - `~/Library/Application\ Support/Code/`
+  - `~/Library/Saved\ Application\ State/com.microsoft.VSCode.savedState/`
+  - `~/.vscode/`
+- Sign in to sync all setup to newly installed editor
+- Workspace is an environment that collects one or more project folders into one place shown in the sidebar
+- Setting Scopes, VSCode settings have different scopes
+  - User Settings - Settings that apply globally to any instance of VS Code you open, config file is located at `~/Library/Application Support/Code/User/settings.json`
+  - Workspace Settings - Settings that override the global settings and only valid for the current workplace, the config is stored in the workspace's `.code-workspace` file
+  - Folder Settings - Settings valid for a specific folder under a workspace, config file located in the `.vscode` under that folder
+
+#### CLI
+
+- `code` command is enabled using link after installation `/usr/local/bin/code -> /Applications/Visual Studio Code.app/Contents/Resources/app/bin/code`
+- `code` launch vscode
+  - `code .` launch vscode with the current folder open in a new window
+  - `code <file>` open a file with vscode
+  - `code --add <dir>` Add folder(s) to the last active window for a multi-root workspace
+- `code --list-extensions` list installed extensions
+
+#### Shortkeys
+
+- `Shift + Command + P` open command pallet
+- `Command + J` toggle terminal
+- `Command + B` toggle sidebar
+
+#### Debug
+
+- A debug config can be defined in the `launch.json` in the `.vscode` folder for a project
+
+#### Tasks
+
+- Tasks can be dedinged in the `tasks.json` in the `.vscode` folder for a project
+
+## Automator
+
+- It can be used to create document that run a certain task
+- An automator document defines the tasks and triggers the tasks in different ways:
+  - `Workflow` - tasks will be triggered from the Automator App
+  - `Application` - Automator will create an app for the tasks, files can be dragged onto the app as input
+    - Update the `Contents/Resources/ApplicationStub.icns` file to change teh app icon
+    - The icon in the `Get Info` tab can be selected and copied, the paste it onto the icon of the new app in its `Get Info` tab
+  - `Quick Action` - tasks will be available in dropdown menus
+  - `Folder Action` - tasks will be triggered when items added to a specific folder
+- Actions - Are the tasks that will be executed in order
+- Variables - are stoted data that will be passed between actions
+  - The `Varibales` tab can be used to declare or manage variables
+  - Use `Set Value of Variable` action to store the output of the previous action into a variable
+  - Drag the declared variables into actions for output
+
+## Apple Script
+
+- It can be used to mimic user's workflow in MacOS
+- Scripts have extensioin `.scpt`
+- `Script Editor` is its default editor
+
+### Key Codes
+
+- The keys on the keyboard will be described as codes in the script as below
+
+![Key Codes](![NOT Gate](img/apple-script-key-codes.png))
+
+### Syntax
+
+- Example Script:
+
+```s
+tell application "Google Chrome" to activate
+tell application "System Events"
+  key code 17 using command down
+  delay 0.5
+  key code 37 using command down
+  delay 1
+  keystroke "https://www.instagram.com/users_account/"
+  delay 0.5
+  key code 36
+  delay 2
+end tell
+```
+
+#### Comment
+
+- single line comment `-- This is a comment` or `# This is a comment`
+- Multiline comments
+
+```
+(* Hello world,
+this is my first multi-line AppleScript
+comment. *)
+```
+
+## Dual-Boot
 
 - Boot Camp Assistant is the tool for setting up dual-boot for Windows on a Mac
 - It will create a new partition using internal disk by default
 - Boot Camp Assistant can be used to download all Mac hardware drivers for Windows
   - Open `Boot Camp Assistant`, go to menu bar and select `Action` and download Mac hardware drivers to be installed on Windows
 
-#### Dual-Boot on External Drive
+### Dual-Boot on External Drive
 
 - An EFI partition under GUID scheme is required for each OS to boot on Mac from most external drives
 - To rename the EFI boot options during startup, put files generated by `sudo bless --folder <EDIDriveOutputPath> --label "<NewName>"` into the EFI drives `boot` folder
   - In window assign EFI partition a letter, unhide and copy the label files to `boot` folder
 
-##### VM Disk Mapping Method(Recommended)
+#### VM Disk Mapping Method(Recommended)
 
 - Install other OSs on an external hard drive using the VM method
   1. Unmount the target disk's all partitions
@@ -162,7 +265,7 @@
      - For Mac with T2 chip, disable secure boot in recovery mode
   8. Install the driver downloaded through Boot Camp Assistant
 
-##### Bootable Installer Method
+#### Bootable Installer Method
 
 - Format in GUID scheme to boot
 - For big OS with file size larger than 4GB, use `exFAT` instead
@@ -174,14 +277,14 @@
   4. Boot into Window and install the drivers
 - Ubuntu will install bootloader into Mac Drive's EFI partition, mount it using `diskutil` and delete the `BOOT` and `ubuntu` folder when uninstalling Ubuntu
 
-##### WinToUSB
+#### WinToUSB
 
 - A disk cloning software that runs on Windows
 - It clones Window ISO into an external hard drive
 - Use VM to run this software
 - Select UEFI options and lagacy in the setting
 
-##### Bootable Ubuntu
+#### Bootable Ubuntu
 
 - Use Command Lines
   1. Download the image
@@ -192,14 +295,14 @@
   - Format target USB with GUID scheme and `FAT32`
 - A partition can be selected for install during Ubuntu installation
 
-### Troubleshoot
+## Troubleshoot
 
-#### Check Apple Service Status
+### Check Apple Service Status
 
 - [Apple System Status Page](https://www.apple.com/uk/support/systemstatus/)
 - [Apple System Status Page for Developers](https://developer.apple.com/system-status/)
 
-#### Reset SMC
+### Reset SMC
 
 - System Management Controller(SMC) manages the following low level settings, even when the power is off:
   - Responding to presses of the power button
@@ -222,7 +325,7 @@
   2. Wait 15 seconds
   3. Plug the power cord back in, then turn on the Mac
 
-#### Reset NVRAM or PRAM
+### Reset NVRAM or PRAM
 
 - NVRAM (nonvolatile random-access memory) is a small amount of memory that your Mac uses to store certain settings and access them quickly. PRAM (Parameter RAM) stores similar information
 - It stores setting info like sound volume, display resolution, startup-disk selection, time zone, and recent kernel panic information
@@ -232,7 +335,7 @@
   1. Shut down the Mac, then turn it on and immediately press and hold `Option + Command + P + R`
   2. release the keys after the second startup sound or logo appears and disappears for the second time
 
-#### Boot to Safe Mode
+### Boot to Safe Mode
 
 - When Mac failed to boot up, try safe mode
   - When it happens during system upgrade, hold power key to turn it off
@@ -255,7 +358,7 @@
   - hold down the Option key and choose `Apple menu -> System Information`, see Boot Mode `Safe` in the Software section
 - Leave Safe Mode, restart the machine normally
 
-#### Enter Recovery Mode
+### Enter Recovery Mode
 
 - Recovery Mode provides the following features without boot up macOS:
   - `Restore from Time Machine`: Restore your files from a Time Machine backup

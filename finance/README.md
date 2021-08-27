@@ -432,6 +432,17 @@
        - Deleted securities are replaced by other securities that meet the index criteria. The deletion and insertion of securities to an index can also be at the subjective judgment of a committee
        - When a security is added to an index, its price tends to rise as portfolio managers tracking index buys the security, the prices of deleted securities tend to fall as portfolio managers sell them
        - Reconstitution also requires that the weights on the returns of other index stocks be adjusted to conform to the desired weighting scheme
+  - The uses of market indexes
+    1. provide a gauge of investor confidence or market sentiment by looking at the trend of the indexes
+       - A broader market index are more appropriate for this purpose
+    2. can be a measure of the risk and return of an asset class by studying the historical returns of a index to estimate the expected return and standard deviation of returns for a market
+       - useful when optimizing portfolio allocation
+    3. can be used as a measure of beta and to determine the systematic risk adjusted return by comparing the expected returns with the actual stock returns
+    4. can be used to benchmark a manager's performance
+       - the chosen benchmark index should be consistent with the manager's investment approach and style on the market the manager operates in
+    5. can serve as model portfolios for index funds or ETFs
+       - Index funds and ETFs allow investors to gain exposure to a particular index
+       - There are index mutual funds and some private portfolios that are structured to match the return of an index as well
 
 ### Fixed Income Securities
 
@@ -524,6 +535,8 @@
 
 - a plain vanilla bond where coupon is paid regularly and the full par value returned on maturity
 
+#### Types of Fixed Income Indexes
+
 ### Equity
 
 - Equity securities represent ownership in a firm
@@ -607,6 +620,20 @@
   - S&P/TSX Composite Index - it represents roughly 70% of the total market capitalization on the Toronto Stock Exchange (TSX) with about 250 companies included in it
   - The Value Line Composite Index - a stock index containing approximately 1,700 companies from the NYSE, American Stock Exchange, Nasdaq, Toronto, and over-the-counter markets
     - an equal weighted index
+- Types of equity indexes
+  - A broad equity market index represents an entire given equity market and typically includes stocks representing more than 90 percent of the selected market
+  - Multi-Market indices usually comprise indices from different countries and are designed to represent multiple stock markets, such indices may represent multiple national markets based on geographic regions (Asian Pacific Index), economic development groups (Emerging Markets), or even the entire world (World Index)
+    - World indices are important to investors who take a global approach to equity investments
+    - Multi-market index with fundamental waiting - It weights the stocks within each country by market capitalization and then weight each country in the overall index based on some fundamental metric (like GDP of a country)
+  - Sector indices represent ontrack different economic sectors such as consumer goods, energy finance, health care and technology on either a national, regional or global basis
+    - Different sectors of the economy behave differently over the course of the economic cycle. Some investors may seek to overweight or underweight their exposure to the different sectors based on the stage of economic cycle
+  - Style indices can be categorized according to market cap, value or growth or a combination of these characteristics
+    - they're intended to reflect the investing styles of certain investors, such as the small cap, investor growth investor and value investor
+    - Market cap indices can be differentiated along the lines of small cap, mid-cap and large cap stocks. Classification can be based on absolute market capitalization (the cap value) or relative market capitalization (the cap value rank)
+    - Value stocks and growth stocks can be differentiated based on their price to earnings ratios or dividend yields
+    - Some indices reflect a combination of the market cap and growth or value styles, they are small-cap value, mid-cap value, large-cap value, small-cap growth, mid-cap growth and large-cap growth
+    - there's no universal definition regarding the classifications
+    - Valuation ratios and market cap are the companies change over time, stocks frequently migrate from one style index category to another on reconstitution dates
 - Volume is the amount of an asset or security that changes hands over some period of time(often daily)
   - The average volume is the average of the (daily) volumes for a specified period. e.g. `Avg. Volumn(10)` is the 10 days average, `Average Volumn(3m)` is the 3 months average
 - Valuation Ratios
