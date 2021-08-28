@@ -82,12 +82,13 @@
      - On Mac, run `brew install --cask gpg-suite-no-mail`
   8. `git config --global commit.gpgsign true` enable auto sign
      - If not enabled, add `-S` flag in commit command, `git commit -S -m "commit message"`
-- If sign failed try update key and upload it to GitHub again
+- Update key info
   1. `gpg --edit-key <Key_sec>`
   2. run `adduid` in `gpg` command
   3. follow steps to update info
   4. run `save` to exit `gpg` command
   5. export new public key and update it on GitHub console
+- If sign failed try regenerate new public key, delete and update the public key on GitHub console
 
 #### Branches
 
