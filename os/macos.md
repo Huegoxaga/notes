@@ -179,11 +179,113 @@
 
 #### Debug
 
-- A debug config can be defined in the `launch.json` in the `.vscode` folder for a project
+- VSCode will start a debug session by clicking the `Run and Debug` button in the debugger tab
+- A customized debug config can be defined in the `launch.json` in the `.vscode` folder for a project
+- Debug config can be platform-specific properties
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/node_modules/gulp/bin/gulpfile.js",
+      "args": ["myFolder/path/app.js"],
+      "windows": {
+        "args": ["myFolder\\path\\app.js"]
+      }
+    }
+  ]
+}
+```
+
+- There are also compound launch configurations
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Server",
+      "program": "${workspaceFolder}/server.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Client",
+      "program": "${workspaceFolder}/client.js"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Server/Client",
+      "configurations": ["Server", "Client"],
+      "preLaunchTask": "${defaultBuildTask}"
+    }
+  ]
+}
+```
 
 #### Tasks
 
-- Tasks can be dedinged in the `tasks.json` in the `.vscode` folder for a project
+- VSCode can auto detect the project file and provide a list of auto-generated tasks when entering `Task: Run Task` in the command pallet
+- User defined tasks can be written in the `tasks.json` in the `.vscode` folder for a project after entering `Task: Config Task` in the command pallet
+- A custom task can be defined as:
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run tests",
+      "type": "shell",
+      "command": "./scripts/test.sh",
+      "windows": {
+        "command": ".\\scripts\\test.cmd"
+      },
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
+```
+
+- Tasks can also be compounded
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Client Build",
+      "command": "gulp",
+      "args": ["build"],
+      "options": {
+        "cwd": "${workspaceFolder}/client"
+      }
+    },
+    {
+      "label": "Server Build",
+      "command": "gulp",
+      "args": ["build"],
+      "options": {
+        "cwd": "${workspaceFolder}/server"
+      }
+    },
+    {
+      "label": "Build",
+      "dependsOn": ["Client Build", "Server Build"]
+    }
+  ]
+}
+```
 
 ## Automator
 
