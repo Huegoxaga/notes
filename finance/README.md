@@ -534,8 +534,37 @@
 #### Coupon Structures
 
 - a plain vanilla bond where coupon is paid regularly and the full par value returned on maturity
+- zero coupon
+- fixed coupon
+- floating rate notes
 
 #### Types of Fixed Income Indexes
+
+- Aggregate or broad market indices - it represent the broad market of fixed income securities of a geographic region
+  - The Bloomberg Barclays US Aggregate Bond Index is a single country aggregate index, it comprises more than 9200 U.S. based securities, including US Treasury, government related corporate bonds under various business sectors and various types of asset backed securities
+- Indexes can be created the track securites from a certain market sector
+  - market sector can be categorized into
+    - government
+    - government agency
+    - corporate - it can be further categoized by the business sector that it operates in, the energy, finance, health care or the technology sector
+    - structured finance - it creates structured securities like asset backed securities and collateral debt obligations
+- Indexes can group securities based on the style with determined by
+  - Credit quality of the security - it can be broadly classified as
+    - investment grade - those with a standard investment rating of BBB or better
+    - non-investment grade - also known as high yield securities
+  - The time to maturity
+- Some indices may also choose to distinguish themselves based on other characteristics, like
+  - Coupon structure and coupon rates
+  - Embedded options such as convertibility to common stock, callable, and putable options
+- Some indices use a combination of the above characteristics
+  - The Markit iBoxx Euro Liquid High-Yield Bond Index that tracks only euro denominated corporate bonds which are non-investment grade. It does not track bonds that have maturity greater than 10 years or zero coupon bonds, convertible and putable bonds are also excluded
+- Issues with the construction of fixed income indices
+  - securities are issued not just by firms, but also by governments and government agencies. Each of these entities may also issue various types of fixed income securities, selecting securities that can meaningfully represent such a wide market may not be easy
+  - Bonds mature and must be replaced in fixed income indices, turnover is high in fixed income indices
+  - Illiquidity, a lack of recent trades may require index providers to estimate the value of some securities from recent prices of securities with similar characteristics
+- Challenges for portfolio managers
+  - Illiquidity results in a high transaction costs
+  - High turnover make it hard and even more expensive to replicate
 
 ### Equity
 
@@ -844,6 +873,7 @@
 - Alternative investment does anything that traditional investment donesn't focus on
   - Traditional investment focuses on stocks and bonds investment
   - The investment structure for traditional investments tends to be straightforward between the issuer and investor
+- Alternative assets are of interest to investors because of their potential diversification benefits
 - Alternative investment portfolios can often include derivatives and illiquid assets such as real estate
 - Alternative investment utilzes leverage and employ short positions
   - leverage - borrow money to invest, in order to amplify returns
@@ -943,6 +973,7 @@
       - Fundamental value is also the use of fundamental analysis to buy equity shares. But instead of focusing on high growth companies, fundamental value managers look out for undervalued companies to invest in
       - Short bias is the strategy of using technical or fundamental analysis to take predominantly short positions in overvalued equities. The hedge funds may possibly enter into smaller long positions with the market exposure is overall negative
 - Most hedge funds tend to specialize in a specific strategy at first. Over time some may develop or add additional areas of expertise becoming multi-strategy funds.
+- Most hedge fund indices equally weight in the returns of the hedge funds included in the index, hedge funds are largely unregulated and are not required to report their performance to index providers. Consequently, some funds will report to one index, but not another, the performance of different indices can thus very substantially. Furthermore, it's often the case that those funds that report are the funds that have good performance, poorly performing funds do not want to publicize their performance. The result is an upward bias in index returns, with hedge funds appearing to be better investments than they actually are
 
 ### Private Equity Funds
 
@@ -974,6 +1005,13 @@
     - require substantial due diligence
     - There are also illiquid as the investment size can be large and the pool of investors is limited
   - Indirect investments can buy through vehicles such as real estate investment, trust master, limited partnership or stock of firms that have large ownership of real assets. The investor owns an interest in these vehicles, which hold the assets directly in direct ownership. Interests are typically more liquid than ownership of the assets themselves
+  - Real Estate Indexes
+    - Direct investments have
+      - Appraisal Index - measures returns based on appraisals of properties
+      - Repeat Sales Index - measured based on repeat property sales
+    - Indirect investments have
+      - REITs Indexes - updated much more frequently direct investments indexes
+        - FTSE International produces a family of REITs indices that seeks to represent trends in real estate worldwide (e.g. FTSE NAREIT Global Index)
 
 ### Commodities
 
@@ -993,6 +1031,14 @@
   as they are best able to take or make immediate deliveries.
 - Many producers employ financial analysts to help them analyze commodity market conditions so that they can best manage their inventories to hedge their operational risks and to speculate on future price changes.
 - Many of the producers and consumers of commodities take opposite sides in futures and forward contracts to hedge against change in price in the future.
+- Commodity indices represent futures contracts on commodities such as agriculture, metals and energy
+- The contracts mature and must be replaced over time by other contracts, so the return on commodity futures could be quite different from the return based on changes in the prices of the commodities
+- Weighting Scheme
+  - Some commodity index providers use equal weighting
+    - The Commodity Research Bureau Index
+  - Some other indices weight based on global production values
+    - The S&P GSCI uses a combination of liquidity measures and global production values in its weighting scheme
+  - Others use fixed weights that the index provider determines
 
 ### Infrastructure
 

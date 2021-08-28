@@ -13,6 +13,13 @@
   - Each pixel in RGB mode has 3 channel: Red Green Blue. Each has an 8-bit value from 0-255. 24 bit per pixel.
   - It is an additive color mode. 0,0,0 means no light from the display which means black.
   - It is used for digit display.
+- HSL
+  - For hue, saturation, lightness
+  - Designed in the 1970s by computer graphics researchers to more closely align with the way human vision perceives color-making attributes
+  - Each attribute is measured in percentage
+  - Hue represents the angle in a color wheel
+  - Saturation represents the radius in a color wheel
+  - Lightness changes the brigtness of the entire color wheel
 - CMYK
   - Each pixel in CMYK mode has 4 channel: cyan, magenta, yellow, key(black) from 0% to 100%
   - It is a subtractive color mode. 0%,0%,0%,0% means no ink is printed which is white. For any color a total percentage of 240% is recommended for good quality(avoid too much ink). sometimes all 4 have values for specific true black color.

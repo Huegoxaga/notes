@@ -878,6 +878,10 @@ def about(request):
        w.save()
    ```
 
+### Useful Commands
+
+- `celery -A <proj> purge` delete all pending tasks
+
 ### Celery Beat
 
 - This is a celery extension that stores the schedule in the Django database, and presents a convenient admin interface to manage periodic tasks at runtime.

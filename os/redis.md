@@ -21,6 +21,7 @@
 ## Redis CLI
 
 - It can be used to access the database.
+- Run `redis-server` to start the Redis server
 - Run `redis-cli` to start the Redis CLI prompt.
 - `ping` returns `pong` if the redis server is running.
 - `flushall` will delete all records

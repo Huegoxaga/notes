@@ -44,17 +44,20 @@
   - `~` is the home directory
   - `*` matches all non-dot-files
 - absolute path starts with `/` from root folder.
-- In Linux, files that start with a dot ( . ) are considered hidden files
+- In Linux, files that start with a dot are considered hidden files
 - Linux System has the following files structure.
-  - / - the root of the file system
-  - /var – variable files or files that vary frequently
-  - /root/Downloads – downloads directory for the root user
-  - /etc – contains system wide configuration files
-  - /etc/sysconfig/iptables – the path to the iptables configuration file
-  - /home – contains all other user home directories
-  - /home/username – the username user home directory
-  - /usr – the ‘user file system’ contains non-system critical files and binary (executable) files
-  - /bin and /sbin – contain system binary files
+  - `/` - the root of the file system
+  - `/var` – variable files or files that vary frequently
+  - `/root/Downloads` – downloads directory for the root user
+  - `/etc` – contains system wide configuration files
+  - `/etc/sysconfig/iptables` – the path to the iptables configuration file
+  - `/home` – contains all other user home directories
+  - `/home/username` – the username user home directory
+  - `/usr` – the ‘user file system’ contains non-system critical files and binary (executable) files
+    - `usr/local/lib` the libraries for user installed packages
+    - `usr/lib` the libraries for other normal user-programs
+  - `/bin` and `/sbin` – contain system binary files
+  - `/lib` essential libraries
 - drag file into the terminal to get its directory.
 - Files permission can be represented by a character followed by three groups of three letters.
   - `ls -al` shows the following info.
@@ -229,6 +232,8 @@
   - `-k` sort by key or column index
   - `r` reverse order
   - `f` case insensititve
+- `xargs` it can take output of a command and passes it as argument of another command
+  - e.g. `pip freeze | xargs pip uninstall -y` will delete all installed packages
 - `pbcopy < test.txt` add text from file into clipboard
   - `echo $PATH | pbcopy` send the output of the command into clipboard
 - `pbpaste`, is will show the content of the clipboard

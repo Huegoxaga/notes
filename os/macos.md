@@ -92,12 +92,16 @@
 - `brew search` list all packages available from homebrew.
 - `brew update` update all packages
 - `brew outdated` list all outdated packages and apps
-- `brew upgrade` update outdated packages and apps
-- `brew cleanup` troubleshoot and clean old versions
+- `brew upgrade` update all outdated unpinned packages and apps
+  - `brew pin <PackageName>` stop a package from being updated
+  - `brew unpin <PackageName>` undo pinning
+- `brew cleanup` Remove stale lock files and outdated downloads for all formulae and casks, and remove old versions of installed formulae
 - `brew list` list installed packages and apps
 - `brew install <PackageName>` install a package.
   - brew with distinguish some new package with pre-installed system package by prepending a `g` to its name. use `-with-default-names` will make them use their original names.
-- `brew unlink <package> && brew link <package>` recreate the symlink for an installed package
+- `brew link <PackageName>` creates symlinks from `/usr/local/Cellar` to `/usr/local/bin`, or `/usr/local/lib`
+  - `brew unlink <package> && brew link <package>@NewVersion` recreate the symlink for different version
+  - `brew link --overwrite <PackageName>` update link
 - `brew uninstall <PackageName>` uninstall a package.
 - `brew home <PackageName>` open package or app homepage in browser.
 - `brew tap <RepoName>` include an external repo. If a certain formulae is not found using `brew search`. The package can then be installed using `brew install`.
@@ -125,13 +129,15 @@
 
 ### Clean up
 
-- Remove Wechat account folder at `~/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/`, then clear cache in app setting
-- Remove Webex support folders `WebEx Meetings` and `WebEx Folder` at `~/Library/Application Support/`
-- VS Code delete `Cache` and `CacheData` folders at `~/Library/Application Support/Code`, then in app command input enter `Clear Editor History`
-- Clear VirtualBox log in `~/Library/VirtualBox` folder
+- Clean App Caches under `~/Library/Application Support/<App Name>`, e.g.
+  - Remove Webex support folders `WebEx Meetings` and `WebEx Folder` at `~/Library/Application\ Support/`
+  - For VS Code, delete `Cache` and `CacheData` folders at `~/Library/Application\ Support/Code`, then in app command input enter `Clear Editor History`
+- Clear App logs in `~/Library/Logs` folder
 - Clean conda package caches, run `conda clean -f && conda clean -a`
 - Homebrew clean up all broken symlinks `brew doctor && brew cleanup`
 - Clean up npm cache `npm cache clean --force`
+- Clean up sandboxed apps in folders located under `~/Library/Containers/`, usually can be achived by using apps' own clearing cache feature
+- Clean up shared libraries for uninstalled apps under `/Library/Application\ Support`
 
 ## Editor
 
@@ -211,7 +217,7 @@
 
 - Example Script:
 
-```s
+```scpt
 tell application "Google Chrome" to activate
 tell application "System Events"
   key code 17 using command down
@@ -230,7 +236,7 @@ end tell
 - single line comment `-- This is a comment` or `# This is a comment`
 - Multiline comments
 
-```
+```scpt
 (* Hello world,
 this is my first multi-line AppleScript
 comment. *)
