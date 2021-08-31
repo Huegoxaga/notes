@@ -100,7 +100,8 @@
 - `brew install <PackageName>` install a package.
   - brew with distinguish some new package with pre-installed system package by prepending a `g` to its name. use `-with-default-names` will make them use their original names.
 - `brew link <PackageName>` creates symlinks from `/usr/local/Cellar` to `/usr/local/bin`, or `/usr/local/lib`
-  - `brew unlink <package> && brew link <package>@NewVersion` recreate the symlink for different version
+  - `brew unlink <package> && brew install <package>@NewVersion && brew link --overwrite <package>@NewVersion && brew pin <package>` downgrade a package to a specific version
+    - Optionally, delete the unlinked latest package, instead of pinning it
   - `brew link --overwrite <PackageName>` update link
 - `brew uninstall <PackageName>` uninstall a package.
 - `brew home <PackageName>` open package or app homepage in browser.
@@ -114,6 +115,21 @@
 - For all the above command use `--cask` for cask only, use `--formula` for formulas only
   - `brew cask` is deprecated
 - `brew install --appdir="/<PathToAppFolder>" <AppName>` specify the app folder
+
+### Homebrew Services
+
+- It can be used to manage brew installed packages that contains background services
+- `brew tap homebrew/services` will be executed when any `brew services` command is entered
+- `brew services list` list all services
+- `brew services run <service>` Run the service formula without registering to launch automatically
+- `brew services start <service>` Start the service formula immediately and register it to launch automatically
+- `brew services stop <service>` Stop the service formula immediately and unregister it from launching automatically
+- `brew services restart <service>` Stop (if necessary) and start the service formula immediately and register it to launch automatically
+- `brew services cleanup <service>` Remove all unused services
+- The specific service in the above command can be replaced by a `--all` flag
+- For launch registration:
+  - If `sudo` is passed, operate on `/Library/LaunchDaemons` (started at boot).
+  - If `sudo` is not used, operate on `~/Library/LaunchAgents` (started at login).
 
 ## Disk Management
 
