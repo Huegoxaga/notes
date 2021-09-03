@@ -3,6 +3,11 @@
 - All the following libraries are commonly included in Python distributions.
 - [Click here](https://docs.python.org/3.8/library/index.html) to view the complete documentation.
 
+## venv
+
+- create new environment `python3 -m venv <envFolderName>`
+- activate environment, under project folder `source <envFolderName>/bin/activate`
+
 ## itertools modules
 
 ### Usage

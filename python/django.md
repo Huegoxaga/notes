@@ -947,6 +947,29 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
+## AllAuth
+
+- It provides authentication support for Django web apps
+- run `pip install django-allauth` to install
+- [Click Here](https://django-allauth.readthedocs.io/en/latest/) to see official docs
+- It has `html` teamplates related to the auth flow
+- It supports social account (thrid parties) sign-in and sign-up
+- It has a data model that stores social accounts and their providers' info
+- It will auto sync social accounts table with Django user table
+- A sites table tracks all the frontend web app that utilizing auth using social accounts
+- A social provider can be used by one or more sites
+- Settings file contains additional config context that is not included in the social provider data model, and defines the current site ID
+
+## Rest Auth
+
+- It provides the web app a user specific token for API access
+- It needs the `allauth` package to have the signup feature
+- run `pip install django-rest-auth` to install or `pip install dj-rest-auth` (more actively maintained)
+- [Click Here](https://django-rest-auth.readthedocs.io/en/latest/installation.html) to see official docs
+- It has a token table which stores all the temp tokens for associated users
+- It needs `rest_framework.authentication.TokenAuthentication` in the `settings.py` in order to auth by the tokens
+- It supports social authentication by providing API endpoints that takes social auth tokens and returns and stores the API token
+
 ## Unit Testing
 
 - Writing test methods in `test.py` as follows
