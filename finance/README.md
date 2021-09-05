@@ -664,11 +664,40 @@
 ### Equity
 
 - Equity securities represent ownership in a firm
-- Types:
-  - Preferred stock - an equity security that pays regular dividends that is typically fixed over the securities life
-    - Different from bonds as there is no maturity date and the dividends can only be paid after interest payments to debt holders have been fulfilled
-  - Common stock
+- This topic focuses on publicly traded equities that companies issue through IPOs and are traded in public exchanges
+- Types of publicly traded equities
+  - Common stock (ordinary shares or common stock)
     - A residual claim on a firm's assets, common stock dividends are paid only after dividends are paid to preferred stock holders. Therefore, dividend payouts are not fixed and are entirely at the discretion of the management
+      - Firms are under no obligation to pay dividends to the common stockholders The firm determines what dividend will be paid periodically
+    - Common stockholders are able to vote for the board of directors on merger decisions and on the selection of auditors. If they're unable to attend the annual meeting, shareholders can vote by proxy, which is to authorize someone to vote on their behalf
+      - When voting for board of directors, a certain amount of seats will be selected from the candidates, two types of voting systems are allowed:
+        - In a statutory voting system, each share held is assigned one vote in the election of each board member
+          - Each shareholder can have votes equal to share number multiply by seat number, the votes on one seat equals the number of shares the shareholder holds
+        - In a cumulative voting system, shareholders are allowed to accumulate their votes to cast on any candidate they wish
+          - Each shareholder can have votes equal to share number multiply by seat number, all of the votes can be used on one seat
+    - A firm may have different classes of common stock, one class may have greater voting power and seniority. If the firm's assets are liquidated. The classes may also be treated differently with respect to dividends and stock splits.
+    - A prospective investor should always refer to the company's filings with securities regulators for information on the ownership and voting rights of different classes of shares
+    - Callable common shares give the firm the right to repurchase the stock at a pre specified call price
+      - Callable shares are lightly issued at lower prices to compensate investors for the cool option, which is a disadvantage to them
+      - Firms issue callable shares if they want the flexibility to repurchase the shares in the future at a fixed price
+    - Putable common shares give the shareholder the right to sell the shares back to the firm at a prespecified put price
+      - Putable shares are lightly issued at higher prices than non-political shares
+      - Firms issue them if they want to raise more capital for the same number of shares issued
+  - Preferred stock - an equity security that pays regular dividends that is typically fixed over the securities life
+    - Preferred shares do not have voting rights, it can be putable or callable shares
+    - Preferred shares have a par value
+    - Different from bonds, there is no maturity date and the dividends can only be paid after interest payments to debt holders have been fulfilled, the guaranteed par value percentage amount is then paid to the preferred stock holder before the common stock holder
+      - Dividends are usually fixed and periodic like debt, but still not a contractual obligation
+    - For cumulative preference shares, if the firm is not be able to pay all the divedend at one point, it has to make up for it in the future when it is able to do so
+    - Nonparticipating preference shares have fixed dividends, and the claim in the event of liquidation is equal to the par value.
+    - Participating preference shares receive extra dividends if the firm profits exceed a predetermined level and may receive a value greater than the par value if the firm is liquidated
+    - Smaller and riskier firms often issues such securities to make their offering more compelling to investors
+    - Converable preference shares allow preferred stock holders to exchange their shares for common shares at a conversion ratio determined when the shares are originally issued. Such shares have the following advantages:
+      - The preferred dividend is higher than a common dividend.
+      - If the firm is profitable, the investor can share in the profits by converting his shares into common stock
+      - When the common stock price increases, the conversion option becomes more valuable.
+      - Preferred shares are less risky than common shares because the dividend is stable and they have seniority over common stock in the event of liquidation
+      - Because of their upside potential convertible preferred shares are often issued by risky venture capital and private equity firms, investors prefer this to limit risk exposure when the firm is not profitable yet and to participate in the upside when the firm turns profitable
   - Warrants
     - Warrants are similar to options in that they give the holder the right to buy a firm's common stock at the stated exercise price prior to the warrants, expiration warrants are considered equity because they are issued by the company and can potentially become equity if the holder exercises the right to purchase
 - In the event of firm liquidation, debt holders have priority over preferred stockholders who in turn have priority over common stockholders
@@ -1076,6 +1105,41 @@
   - The majority of private equity funds are `leveraged buyout funds`
     - leveraged buyout funds - use borrowed money to purchase equity in established companies with solid customer bases proven products and high quality management
   - Some private equity funds are venture capitals which typically invest in or provide financing to startups or young companies with high growth potential
+  - Companies can issue equity privately. Private equity is usually issued to institutional investors via private placements
+  - Such securities are not listed on public exchanges, so there's no active secondary market for them. As a result, private equity securities do not have market prices, are highly illiquid and are traded through negotiations
+- Financial disclosures for these securities are limited because there's typically no government or exchange requirement to do so
+  - Firms incur lower reporting costs
+  - The films are also able to focus on long term prospects because there's no public pressure for short term results
+  - Firms can have weaker corporate governance because of reduced reporting requirements and less public scrutiny
+- If the company eventually goes public, the potential return to the investors can be much higher
+- Types of private equity investments
+  - Venture Capital
+    - Venture capital funds invest in companies in the early stages of their development
+    - The investment often is in the form of equity, but can be and convertible preferred shares or convertible debt
+    - While the risk of failure is high, returns on successful companies can be very high. This is often the case when the company has grown to the point where it can be sold to the public via an IPO
+    - The companies in which a venture capital fund is invested are referred to as its portfolio companies
+    - Venture capital fund managers are closely involved in the development of portfolio companies often sitting on their boards or filling key management roles
+    - Categorization of venture capital investments is based on the company's stage of development, it includes the following financing stages
+      - `Formative Stage` - Investments made during a firm's earliest period, It can have the following sub-stages
+        - Angel investing is capital provided at the idea stage funds may be used to transform the idea into a business plan and to assess market potential
+          - The amount of financing at this stage is typically small and provided by individuals rather than by venture capital funds
+        - Seed stage financing refers to investments made for product development, marketing and market research
+          - This is typically the stage during which venture capital funds make initial investments through ordinary or convertible preferred shares
+        - Early stage financing is provided to companies moving toward operation that before commercial production and sales have occurred
+          - The investments are made to fund the initial production costs and sales expenses
+      - `Later Stage` - refers to the stage where a company already has production and sales and is operating as a commercial entity
+        - Investment funds provided at this stage are typically used for expansion of production and increasing sales through an expanded marketing campaign
+      - `Mezzanine Stage` - refers to capital provided to an established company to prepare it for an IPO
+  - Leveraged Buyouts (LBOs) - It acquire established private companies or publicly listed companies with a large portion of the funds financed through debt
+    - If the target is a publicly listed company, it's taken private after the buyout
+    - The target firm should have the potential for increase in value through some combination of management incentives, restructuring, cost reduction or revenue enhancement
+    - There are two types of LBOs
+      - Management Buyouts (MBOs) - The existing management team is involved in the acquisition and will stay to implement the value add measures under management
+      - Management Buy-ins (MBIs) - An external management team will replace the existing management team to implement the value add measures on the target firm
+    - The ultimate objective of a buyout is to restructure the acquired company and profit later by taking it public again, by issuing new shares to the public
+  - Private Investments in Public Equity (PIPs) - It happens when a public company that's in need of additional capital quickly and is willing to sell a sizable ownership position to private investors
+    - The additional capital may be needed for a significant expansion opportunity to pay off large amounts of debt or to cope with a distressed situation
+    - Depending on how urgent the need is and the size of the investment, the private investor may be able to purchase shares in the company at a significant discount to the publicly quoted market price
 
 ### Real Estate Investments
 

@@ -71,7 +71,7 @@
 - `git diff <branch1> <branch2>` View difference between branches.
 - Signing commit using GPG Keys - When a Git commit is signed, the committers can prove that the code is submitted by them and wasn't altered during transfer
   1. Install the `GPG` command line tools
-     - On Mac, run `brew install gnupg`
+     - On MacOS, it should be pre-installed. Otherwise, run `brew install gnupg`
   2. `gpg --full-generate-key` generate the key
      - key size must be greater than `4096` bits
   3. `gpg --list-secret-keys --keyid-format=long`, found the key ID after the `/` in the `sec` row
@@ -88,7 +88,8 @@
   3. follow steps to update info
   4. run `save` to exit `gpg` command
   5. export new public key and update it on GitHub console
-- If sign failed try regenerate new public key, delete and update the public key on GitHub console
+- If sign failed:
+  - run `echo "test" | gpg --clearsign` to test
 
 #### Branches
 
