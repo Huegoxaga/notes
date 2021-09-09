@@ -1,7 +1,9 @@
 # JavaFX
-* It is a API for Java program with GUI interface
-* [Click here](https://docs.oracle.com/javase/8/javafx/api/toc.htm) for official docs for JavaFX in Java ES 8.
-* sample starting code
+
+- It is a API for Java program with GUI interface
+- [Click here](https://docs.oracle.com/javase/8/javafx/api/toc.htm) for official docs for JavaFX in Java ES 8.
+- sample starting code
+
 ```java
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -81,21 +83,23 @@ public class HelloWorldGUI extends Application {
 }
 ```
 
-
-* RequestFocus is used to auto-select the text after execution
-* setGraphic adds image
-* getSource will get the action content
-* a::b reference object a to method b
-* Thread handler can hijack the program
-* Threads can hijack the event handlers.
+- RequestFocus is used to auto-select the text after execution
+- setGraphic adds image
+- getSource will get the action content
+- a::b reference object a to method b
+- Thread handler can hijack the program
+- Threads can hijack the event handlers.
 
 ## Colorpicker object
 
 ### Create new object
+
 ```java
 final ColorPicker colorPicker = new ColorPicker(Color.default);
 ```
+
 ### Methods
+
 ```java
 Color c = colorPicker.getValue();
 .getRed()
@@ -103,8 +107,10 @@ Color c = colorPicker.getValue();
 .getBlue()
 ```
 
-## Style:
-* simple Button, MenuButton(default) and SplieMenuButton
+## Style
+
+- simple Button, MenuButton(default) and SplieMenuButton
+
 ```java
 colorPicker.getStyleClass().add("button");
 //or
@@ -112,38 +118,45 @@ colorPicker.getStyleClass().add("split-button");
 ```
 
 ## Cursor
-* ``scene.setCursor(Cursor.type);``
-* ``scene.getCursor();``
 
+- `scene.setCursor(Cursor.type);`
+- `scene.getCursor();`
 
-## button
-* ``.setOnAction()``
-* ``.setOnMouseEntered()``
-* ``.setOnMouseExited()``
-* ``.setDisable(boolean) ``  make it not clickable
+## Button
+
+- `.setOnAction()`
+- `.setOnMouseEntered()`
+- `.setOnMouseExited()`
+- `.setDisable(boolean)` make it not clickable
 
 ### Mouse Events
-* add a mouse event handler
+
+- add a mouse event handler
+
 ```java
 canvasName.addEventHandler(MouseEvent.MOUSE_PRESSED, this::newHandlerName);
 //or
 canvasName.setOnMouse(Entered/Exited etc)(this::Handler);
 ```
 
-* Events
-  * ``MouseEvent.MOUSE_PRESSED``
-  * ``MouseEvent.MOUSE_RELEASED``
-  * ``MouseEvent.MOUSE_MOVED``
-  * ``MouseEvent.MOUSE_DRAGGED``  //for drag any movement is one event.
-  * ``MouseEvent.MOUSE_ENTERED``
-  * ``MouseEvent.MOUSE_EXITED``
+- Events
 
-* add event handler method:
+  - `MouseEvent.MOUSE_PRESSED`
+  - `MouseEvent.MOUSE_RELEASED`
+  - `MouseEvent.MOUSE_MOVED`
+  - `MouseEvent.MOUSE_DRAGGED` //for drag any movement is one event.
+  - `MouseEvent.MOUSE_ENTERED`
+  - `MouseEvent.MOUSE_EXITED`
+
+- add event handler method:
+
 ```java
 private void newHandlerName(MouseEvent x) {
 }
 ```
-* get MouseEvent object info
+
+- get MouseEvent object info
+
 ```java
 x.getX(); //X location of the mouse
 x.getY(); //Y location
@@ -151,6 +164,7 @@ x.getButton(); //return String? which button is clicked
 ```
 
 ### Radio Button
+
 ```java
 ToggleGroup group = new ToggleGroup();
 //This enables only one button can be selected at the same time.
@@ -166,35 +180,42 @@ if(button1.isSelected()==true){
 ```
 
 ### Alert windows
-``new Alert(Alert.AlertType.WARNING, “Alert message").showAndWait();``
+
+`new Alert(Alert.AlertType.WARNING, “Alert message").showAndWait();`
 
 ### Stage
-* ``primaryStage.setMinHeight(200);  ``
-* ``primaryStage.setMinWidth(200);``
+
+- `primaryStage.setMinHeight(200);`
+- `primaryStage.setMinWidth(200);`
 
 ### Font
-* ``.setFont(new Font("System", 20));``
+
+- `.setFont(new Font("System", 20));`
 
 ### Color
 
-
-
 ### Style
-        hint.setStyle("-fx-background-color: lightblue;-fx-text-fill:darkblue;”);
+
+`hint.setStyle("-fx-background-color: lightblue;-fx-text-fill:darkblue;”);`
 
 ### ChioceBox
-* It is a drop down menu.
+
+- It is a drop down menu.
 
 #### New Choice Box
-``ChioceBox chioceBox = new ChoiceBox();``
+
+`ChioceBox chioceBox = new ChoiceBox();`
 
 #### Add options
-``cb.getItems().addAll("option1", "option2", "option3");``
 
-#### get selected value
-``String selected = (String)chioceBoxName.getValue();``
+`cb.getItems().addAll("option1", "option2", "option3");`
 
-#### set the default for selected item
+#### Get selected value
+
+`String selected = (String)chioceBoxName.getValue();`
+
+#### Set the Default for Selected Item
+
 ```java
 chioceBoxName.getSelectionModel().selectFirst();
 //or
@@ -202,11 +223,13 @@ chioceBoxName.getSelectionModel().select(int index);
 ```
 
 ### Tooltip
-* it is a small floating label provide hints when mouse over any GUI object
-``GUIobject.setTooltip(new Tooltip(“Select the language”));)``
 
+- it is a small floating label provide hints when mouse over any GUI object
+
+`GUIobject.setTooltip(new Tooltip(“Select the language”));)`
 
 ### setLineWidth
+
 ```java
 double canvasHeight = g.getCanvas().getHeight();
 setPrefWidth();
@@ -216,9 +239,9 @@ setStyle()  ->
 "-fx-border-width: 3;\n" +
 "-fx-border-style: dashed;\n";
 ```
+
 Documentation
 Rules.
-
 
 Platform
 Platform.runLater  

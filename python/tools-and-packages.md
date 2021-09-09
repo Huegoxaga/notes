@@ -154,6 +154,7 @@
 - Numpy arrays are defined in the class `numpy.ndarray` of the numpy package. Numpy arrays are objects of type `numpy.ndarray`.
 - For any numpy arrays the dimensions are axes and the number of axes is called rank.
 - [Click here](https://docs.scipy.org/doc/numpy/reference/index.html) to see `NumPy` official reference.
+- Many numpy methods work in both `np.method(arr)` and `arr.method()` format
 
 ### Usage
 
@@ -180,7 +181,10 @@
   - Optionally, `dtype` can be its second argument which defines the elements data type.
   - `array = np.zeros_like(img, np.uint8)` create an array of zeros with the same shape and type as `img`, with data type as `np.uint8`.(generate a black image)
 - Create an array with random values
-  - `array = np.random.random(5)`, an array with 5 random double value in range `[0,1)`.
+  - `array = np.random.random(5)`, an array with 5 random double value in range `[0,1)`
+  - `array = np.random.random((rows,cols))`  2D array of random doubles
+  - `array = np.random.randint(min, max, size)` list of random ints
+  - `array = np.random.randint(min, max, (rows,cols))` 2D array of random ints
 - Create an array with certain constant
   - `array = np.full((2,2),7)`, return a `2*2` array with all elements as 7.
 - Create an empty array
@@ -201,15 +205,19 @@
   - when `step` is missing. It is 1.
 - Create an array that has elements evenly spaced in a certain range
   - `array = np.linspace(start, end, numofvalues)`
-- Get the max element(s) for array with any demension
-  - `np.argmax(array)` the index of the max element of the entire array, the index count from left to right regardless the columns and rows.
-  - `np.argmax(array, axis=0)` the indices of the max element along each column.
-  - `np.argmax(array, axis=1)` the indices of the max element along each row.
 
 #### Access the array
 
+- 1D arrays work just like python lists
 - Access an element of a rank 2 `numpy` array
   - `array[0,1]`, it return element value from row 0, column 1.
+  - `x[1,:]` or `x[1]` returns the entire second ros
+  - `x[1,2:5]` return a slice of the second row
+  - `x[:,1]` return the second column
+  - `x[2:5,1]` returns a slice of the second column
+  - `x[2:5, 2:5]` rectangular slicing
+  - `x[[list of indices]]` pulls out selected indices and return them in a new list
+  - `x[[True, False, True, True, False]]` pulls out values where True
 - `numpy` array can be printed directly.
   - `print(array)`
 - Get the rank of the array.
@@ -224,6 +232,10 @@
   - `type(array)` returns `numpy.ndarray`
 - Export array to a `txt` file
   - `array.save()`
+- `x > 40` or `x == 1` returns a Boolean array of the same shape as `x` based on the condition
+- `x > y` if the arrays are the same size, returns a Boolean array with element by element comparisons
+- `x[x>40]` returns new array of items from `x` that are `> 40`
+- `np.where(arr >= 10)` return a filtered index array based on the conditional
 
 #### Modify the array
 
@@ -244,11 +256,21 @@
   - or, `np.float64(arr)`
 - `arr.clip(0, 255)` clip the elements of the array to be within the defined max and min value
   - `out_array = np.clip(in_array, a_min =[3, 4, 1, 1, 1, 4, 4, 4, 4, 4], a_max = 9)` min or max can be a list of the same size of the original array, and each element is the min range for elements of the original array at that location
+- `array = np.random.shuffle(arr)` randomly shuffle an array
+- `array = a.sort()` sort in ascending order (sorts each row if a 2D array)
+  - `a.sort(axis=0)` sort each column
+- Related (Parallel) Arrays are arrays with the same size and they are related to one another by index, numpy is good at processing and filter those arrays by using one of them as the other's index with or without a method, for example:
+  - `names[scores.argsort()[::-1]][:2]` list the names that have the top scores
 
 #### Calculations
 
 - Arithmetic Functions
-  - It works between two arrays.
+  - The following rule work between two numpy arrays, for example `a = a + b`
+    - if `b` is a scalar, adds `b` to every element of `a`
+    - if `b` is an array of same shape as `a`, adds element by element
+    - if `a` is 2D and `b` is the shape of a single row of `a`, broadcasts `+ b` across `a`
+      - adds `b` element by element to each row of `a`
+    - Same goes for other operations like `+`, `-`, `*`, `/`, `**`, `<`, `>`, `<=`, `==`, etc
   - `np.add(x,y)` or `x+y` add each element of the same location if x and y have the same shape.
     - If two arrays have different sizes, broadcasting will be performed to stretch the smaller array.
       - Broadcasting requires the arrays to have the same degree of dimension or the smaller one is a one-dimensional array.
@@ -261,10 +283,12 @@
   - `np.sqrt(x)` It returns a matrix of elements of `x` which all have taken the square root.
   - It also has functions `exp(s)`, `around(x,roundToNDecimal)`, `trunc(x)`, `floor(x)`, `ceil(x)`, `log(x)`.
 - Array Functions
-  - It works on the entire array and return a single value.
-  - It has functions `sum()`, `min()`, `max()`, `cumsum(); //cumulative sum`, `mean()`, `median()`, `corrcoef()`, `std()`.
+  - It works on the entire array and return a single value or list.
+  - It has functions `sum()`, `min()`, `max()`, `sum()`,`cumsum()`, `mean()`, `median()`, `corrcoef()`, `std()`
+    - `cumsum()` returns a list of cumulative sum
   - All functions can have `axis=1` as its parameter. This makes the function evaluate row by row, and return a list of results.
   - All functions can have `axis=0` as its parameter. This makes the function evaluate column by column, and return a list of results.
+  - The `argmin()`, `argmax()`, and `argsort()` methods in Numpy work the same way as their non-arg counterparts, but they return the indexes rather than the values
 
 ## Pandas
 

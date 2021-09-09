@@ -100,6 +100,7 @@
 - `brew install <PackageName>` install a package.
   - brew with distinguish some new package with pre-installed system package by prepending a `g` to its name. use `-with-default-names` will make them use their original names.
 - `brew link <PackageName>` creates symlinks from `/usr/local/Cellar` to `/usr/local/bin`, or `/usr/local/lib`
+  - unlinked packages are refered as keg-only
   - `brew unlink <package> && brew install <package>@NewVersion && brew link --overwrite <package>@NewVersion && brew pin <package>` downgrade a package to a specific version
     - Optionally, delete the unlinked latest package, instead of pinning it
   - `brew link --overwrite <PackageName>` update link

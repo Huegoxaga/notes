@@ -3,10 +3,10 @@
 ## Introduction
 
 - Java is a high level, modern programming language designed in 1990s by Sun Microsystems, and currently owned by Oracle.
-- javac is the complier executable that is used compile .java(source code) file into .class(byte code) file.
-- java executable is used to run complied byte code. It creates an instance of a Java Virtual Machine(JVM) with an area in the node’s memory.
+- `javac` is the complier executable that is used compile .java(source code) file into .class(byte code) file.
+- `java` executable is used to run complied byte code. It creates an instance of a Java Virtual Machine(JVM) with an area in the node’s memory.
 - Java Runtime Environment (JRE) contains java executable.
-- Java Development Kit (JDK) contains java and javac.
+- Java Development Kit (JDK) contains `java` and `javac`.
 - Standard Edition(SE) is the regular JDK for developing applications.
 - Enterprise Edition(EE) contains SE plus the application server and more.
 - A redistributable package is used to deploy applications.
@@ -17,23 +17,30 @@
 
 ## Setup
 
-- run `/usr/libexec/java_home -V` to see the location of java
+- run `/usr/libexec/java_home -V` to list the all versions of java installed on the machine
 - run `/usr/libexec/java_home -v11` to see the location of a specific java version installed in the system
-- run `export JAVA_HOME=<JAVA_LIB_LOCATION>` assign the Java location to the envirionment variable to let the system work on a specific Java version,
+- run `export JAVA_HOME=<JAVA_HOME_LOCATION>` assign the Java location to the envirionment variable to let the system work on a specific Java version,
   - change and reload the dot file for a permanent change
-- The system Java wrappers can't find the Java library if it is not installed inside the system default folder, create a symbolic link into the `JavaVirtualMachines` so the `java_home` command can find it
+- The system Java wrappers can't find the Java library if it is not installed inside the system default folder, create a symbolic link of the `.jdk` under `libexec` into the `JavaVirtualMachines` so the `java_home` command can find it
 - To complete remove java, run the following command after removing the content inside the Java home folder
   - `sudo rm -rf "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin"`
   - `sudo rm -rf "/Library/PreferencePanes/JavaControlPanel.prefPane"`
   - `sudo rm -rf "~/Library/Application Support/Java"`
+- run `java -version` and `javac -version` to test the CLI and see the version in use
 
 ## IDE
 
-There are many great IDE for Java.
+There are many great IDE for Java
 
-- NetBeans:
-  - Auto indentation with ALT+SHIFT+F.
+- NetBeans
+  - Auto indentation with `Alt + Shift + F`
 - Eclipse
+- IntelliJ IDEA
+  - Ultimate - can be used for web and enterprise development
+  - Community Edition - can be used for JVM and Android development
+  - The `.idea` folder under the project folder contains the project configuration files
+  - Auto formatting with `Option + Command + L`
+  - The regular indexes are built locally. Shared indexes are pre-built indexes and are ready to be downloaded and used, in order to save indexing time
 
 ## Basic Syntax:
 

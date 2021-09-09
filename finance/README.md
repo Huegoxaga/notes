@@ -678,10 +678,12 @@
     - A firm may have different classes of common stock, one class may have greater voting power and seniority. If the firm's assets are liquidated. The classes may also be treated differently with respect to dividends and stock splits.
     - A prospective investor should always refer to the company's filings with securities regulators for information on the ownership and voting rights of different classes of shares
     - Callable common shares give the firm the right to repurchase the stock at a pre specified call price
-      - Callable shares are lightly issued at lower prices to compensate investors for the cool option, which is a disadvantage to them
+      - Callable shares are lightly issued at lower prices to compensate investors for the call option, which is a disadvantage to them
+      - Callable shares usually pay a higher dividend yield
       - Firms issue callable shares if they want the flexibility to repurchase the shares in the future at a fixed price
     - Putable common shares give the shareholder the right to sell the shares back to the firm at a prespecified put price
       - Putable shares are lightly issued at higher prices than non-political shares
+      - Putable shares usually pay a lower dividend yield
       - Firms issue them if they want to raise more capital for the same number of shares issued
   - Preferred stock - an equity security that pays regular dividends that is typically fixed over the securities life
     - Preferred shares do not have voting rights, it can be putable or callable shares
@@ -748,8 +750,10 @@
 - Historically, overall stock prices always recover and go up over time with an average annual return around `10%`
 - A stock can be categorized by the following types:
   - Income stock - it returns a percentage of the stock prices to the holder quaterly(or monthly determined by the company)
-  - Growth stock - A stock with no dividend, the company will use all its profit and the try to grow faster
-  - Value stock - undervalued stocks with some dividend
+  - Growth stock - A stock with no dividend, high expectation on capital gains
+    - Often issued by companies that are in the early stages of their life cycle as they reinvest the earnings to finance the company's growth
+  - Value stock - low expectation for growth, pay higher dividends
+    - Often issued by companies that are in the mature phase, they tend to pay higher dividends as they may not have much opportunities to invest the excess cash flow
 - Major stock exchanges
   - New York Stock Exchange(NYSE), United States
   - Nasdaq, United States
@@ -787,6 +791,19 @@
     - Some indices reflect a combination of the market cap and growth or value styles, they are small-cap value, mid-cap value, large-cap value, small-cap growth, mid-cap growth and large-cap growth
     - there's no universal definition regarding the classifications
     - Valuation ratios and market cap are the companies change over time, stocks frequently migrate from one style index category to another on reconstitution dates
+- The `Total Return` of an equity security is the sum of capital gains and all dividends received divided by the purchase price
+  - For Depositary Receipts or foreign shares, source of return includes foreign exchange gains
+  - If investors reinvested the dividends received, they generate additional returns
+- The risk of an equity security can be defined as the uncertainty of its future total return
+  - Risk is often measured by calculating the standard deviation of the equities expected total return
+  - One way to estimate this is to use the `Average Historical Return` of the stock as a proxy for its future return and the `Historical Standard Deviation of Returns` as proxy for its expected risk
+  - Another way is to estimating a range of future returns over a specified period of time, assigning probabilities to those returns and then calculating an expected return and a standard deviation of return based on this information
+  - Putable shares are the least risky, callable shares are the most risky
+  - For shares with the same embedded options, preference shares are less risky than common shares for the following reasons
+    - Dividends on preference shares are known and fixed, and they account for a large portion of the total return
+    - Preference shareholders receive dividends before common shareholders
+    - The amount owed to preference shareholders if the company is liquidated is fixed at the par value of their shares
+      - There's no such fixed value for common shareholders
 - Volume is the amount of an asset or security that changes hands over some period of time(often daily)
   - The average volume is the average of the (daily) volumes for a specified period. e.g. `Avg. Volumn(10)` is the 10 days average, `Average Volumn(3m)` is the 3 months average
 - Valuation Ratios
@@ -817,6 +834,50 @@
   - The debt-to-equity (D/E) ratio is calculated by dividing a company’s total liabilities by its shareholder equity
   - Interest coverage ratio can be calculated by dividing a company's earnings before interest and taxes (EBIT) by its interest expense
     - Lower than 1.0 is not good
+
+#### Non-Domestic Equity
+
+- When capital flows freely across borders, markets are said to be integrated
+- Many countries still impose restrictions on foreign individuals and companies from investing in their domestic companies, because
+  - They want to limit the amount of foreign control on domestic companies
+  - They want to reduce the volatility of capital flows into and out of domestic equity markets
+    - The large capital outflow from Asian markets in the 1997 Asian financial crisis led many governments to place restrictions on capital flows
+    - Today, many of these same markets have built up currency reserves (safe deposit) to better withstand capital outflows in periods of financial market turmoil
+  - They want to give domestic investors the opportunity to own shares in the foreign companies that are conducting business in their country
+    - There are regulations requiring domestic ownership in foreign companies
+- An increasing number of countries have dropped foreign capital restrictions because
+  - Studies have shown that reducing such barriers improves equity market performance
+- Companies are increasingly turning to foreign investors for capital by listing their stocks on foreign stock exchanges or by encouraging foreign ownership of their shares
+  - Listing on foreign stock exchanges increases publicity for the firm's products and the liquidity of the firm shares
+  - Foreign listing also increases firm transparency due to the stricter disclosure requirements of many foreign markets
+- Methods for an investor to invest in non-domestic equities
+  - Buy and sell securities directly in foreign markets, it is not a preferred method due to the following reasons:
+    - The investment and return are denominated in a foreign currency
+    - The foreign stock exchange may be less liquid
+    - The reporting requirements of foreign stock exchanges may be less strict, impeding analysis
+    - The regulations and procedures of each market may be different, so investors have to familiarize themselves with account opening and trading rules
+  - Depositary Receipts (DR) - it represents ownership in a foreign firm and it can be traded like ordinary shares in local markets, in local market currencies
+    - To create DRs, a bank (Depositary Bank) deposit shares of a foreign firm. And then issues depositary receipts, representing ownership of a specific number of the foreign shares in the local market, which can be bought by local investors
+      - The Depository Bank acts as a custodian and manages dividends, stock splits and other events
+    - The value of the depository receipt is affected both the price of the underlying foreign stocks, and the currency exchange rate
+    - A `Sponsored DR` is one in which the foreign firm is involved with the issue of the receipts and investor of a `Sponsored DR` has direct voting rights and the right to receive dividends
+    - An `Unsponsored DR` is one in which the foreign firm has no involvement in the issuance, the depository buys the shares from the foreign market. The investor does not have any voting rights which is retained by the depository bank
+    - Global Depositary Receipts (GDRs) are issued outside the United States and the issuer's home country
+      - Most GDRs are traded on the London or Luxembourg exchanges. They are usually denominated in US dollars and can be sold to US institutional investors
+      - GDRs are not subject to the capital flow restrictions imposed by governments and thus offer both the foreign firm and the investor greater opportunities
+      - The farm usually chooses to list the GDR in a market where many investors are familiar with the firm
+    - American Depository Receipts (ADRs) are denominated in US dollars and trade in the United States
+      - The underlying security is the American Depository Share, which trades in the firm's home market
+      - Level I ADRs trade in the over-the-counter market and are not listed on any exchange
+      - Level II and III ADRs are both listed securities that trade in the US market
+        - The main difference is that Level III ADRs can raise capital in the US market through public offerings
+      - The Rule 144A securities extend to private equity and does not require SEC registration
+        - Foreign firms are allowed to raise capital by privately placing these depository receipts with qualified institutional investors
+    - Basket of Listed Depository Receipts (BLDRs) - a number of depositary receipts are pooled into a portfolio and securitized as an exchange traded fund (ETF)
+      - They are traded in markets, just like common stocks and any other ETFs
+    - Global Registered Shares are common shares issued by the same company that's traded on different stock exchanges in different currencies
+      - The shares are identical, just that they're quoted and traded in different currencies
+      - They offer more flexibility than depository receipts because the shares represent an actual ownership interest in the company and currency conversions are not needed to trade in them
 
 ### Contracts
 

@@ -385,16 +385,18 @@ while condition:
 #### List Methods
 
 ```py
-list.append(value)#This will append a value at its end. The method doesn't return any value
-list.sort()#sorts the list ascending by default, has argument `reverse` which can be set to True
-list.sort(key=lambda listItem: listItem.get('group_name')) #sort based on the key value of the element
-list.remove(value)#It will remove certain value in the list regardless of its location.
-list.reverse()  #It will reverse the order, print(list.sort()) will not work
-list.insert(index, element)#It will insert an element at certain index location.
-list.count(object)#It returns how many times an item occurs in the list
-list.index(object)#It returns the first index of the item, ValueError if not find.
-list.pop(index)#It returns the element according the index and remove the element from the existing list.
-list.copy() # It return a new copy of the list, instead of a reference
+mylist.append(value) #This will append a value at its end. The method doesn't return any value
+mylist.sort() #sorts the list ascending by default, has argument `reverse` which can be set to True
+mylist.sort(key=lambda listItem: listItem.get('group_name')) #sort based on the key value of the element
+mylist.remove(value) #It will remove certain value in the list regardless of its location (using ==).
+mylist.reverse() #It will reverse the order, print(list.sort()) will not work
+mylist.insert(index, element) #It will insert an element at certain index location. (raise ValueError exception if element is not found)
+mylist.count(object) #It returns how many times an item occurs in the list
+mylist.index(object) #It returns the first index of the item, ValueError if not find.
+mylist.pop(index) #It returns the element according the index and remove the element from the existing list.
+mylist.copy() # It return a new copy of the list, instead of a reference
+mylist.extend(b) # Adds all elements from list b to the end of mylist
+mylist.insert(i, e) # Inserts e into mylist at index i
 ```
 
 #### List Operators
@@ -443,17 +445,21 @@ sum(list)
   ```
 - To add a new key/value pair to a dictionay, simply assign the value to a new key.
 
-### Operators
+### Related Operations
 
 - Membership Operator - in
+
   ```py
   keyName in dictionaryName # return a bool
   keyName not in dictionaryName
   ```
 
+- `del` keyword, `del d[key]` Removes the selected key from dictionary `d`
+
 ### Methods
 
 ```py
+# The list functions len, sum, min, max, and sortedcan be passed dictarguments. They perform their operations on the keys, not the values.
 dictionary.get(key, default_value)  #It returns the key’s value and None if key is not found. or display specific default value. None type can have this method without error
 dictionay.pop(key,default)  # It returns and remove the value that match the key. Return the default value if not found.
 dictionay.values() # Return a list of values.
@@ -524,7 +530,8 @@ x = zip(a, b)
 
 ## Set
 
-- It is an unordered list.
+- It is a mutable, unordered list, it uses hash table and does not accept duplicated elements
+- A set is like a dict with keys but no values
 - It is surrounded by curly bracket `{}`.
 - Empty set is `set()`. `{}` is reserved for dictionary.
 
@@ -576,9 +583,11 @@ len(set) # get length
 - Created by range function.
 
 ```py
-range(2,5) #It represents number from 2 to 4.
+range(5) # It represents number from 0 to 4.
 list(range(5))=[0,1,2,3,4]
-range(5,20,x) #It creates a range from 5 to 19 with certain interval x.
+range(2,5) # It represents number from 2 to 4.
+range(5,20,x) # It creates a range from 5 to 19 with certain interval x.
+reversed(range(5)) # It represents number from 4 to 0.
 ```
 
 ### None object

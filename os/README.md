@@ -1,6 +1,24 @@
 # Operating Systems
 
-### Unix
+- It is the most important piece of software running on a computer
+- It is responsible for managing and communicating with the computer’s hardware
+- It dictates which applications are allowed access to the hardware, when they are allowed, for how long, and so forth. This is referred to as scheduling
+- All of the hardware resources are managed by this singular operating system, and applications can then run in the environment set up by that operating system
+  - For most virtualization tool, they are running on top of this singular operating system called the host OS
+  - Type 1 hypervisor is an exception, it runs directly on the hardwares
+- They can be categorized into desktop operating systems, mobile operating systems, server operating systems and embedded operating systems
+  - Embedded operating system is any OS designed for a specific piece of hardware rather than for general purpose use
+- Components of an Operating System
+  - Kernel
+    - Along with device drivers, the kernel manages the computer’s hardware
+    - It is the interface that applications use to interact with the hardware (for example, saving a file to the hard drive)
+  - Process Management
+    - The operating system provides an environment in which applications can begin and run
+    - The operating system is responsible for trying to make the computer and all applications work as efficiently as possible
+  - Shell
+    - The shell is the interface that users interact with. For most users, it is a graphical user interface (GUI). Operating systems can also accept user input via a command line interface (CLI).
+
+## Unix
 
 - UNIX is an operating system since the 1960’s
 - Unix is a [trademarked](www.unix.org) name.
@@ -15,7 +33,7 @@
   - Oracle Solaris
   - Apple MacOS
 
-### Linux
+## Linux
 
 - Linux is Unix "like" OS.
 - Linux was created around 1990's
