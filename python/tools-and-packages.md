@@ -154,7 +154,9 @@
 - Numpy arrays are defined in the class `numpy.ndarray` of the numpy package. Numpy arrays are objects of type `numpy.ndarray`.
 - For any numpy arrays the dimensions are axes and the number of axes is called rank.
 - [Click here](https://docs.scipy.org/doc/numpy/reference/index.html) to see `NumPy` official reference.
-- Many numpy methods work in both `np.method(arr)` and `arr.method()` format
+- Many numpy methods work in two formats
+  - `np.method(arr)` format returns a processed array
+  - `arr.method()` format doesn't return anything but modify the input array
 
 ### Usage
 
@@ -256,7 +258,7 @@
   - or, `np.float64(arr)`
 - `arr.clip(0, 255)` clip the elements of the array to be within the defined max and min value
   - `out_array = np.clip(in_array, a_min =[3, 4, 1, 1, 1, 4, 4, 4, 4, 4], a_max = 9)` min or max can be a list of the same size of the original array, and each element is the min range for elements of the original array at that location
-- `array = np.random.shuffle(arr)` randomly shuffle an array
+- `np.random.shuffle(arr)` randomly shuffle the input array, it returns `None`
 - `array = a.sort()` sort in ascending order (sorts each row if a 2D array)
   - `a.sort(axis=0)` sort each column
 - Related (Parallel) Arrays are arrays with the same size and they are related to one another by index, numpy is good at processing and filter those arrays by using one of them as the other's index with or without a method, for example:

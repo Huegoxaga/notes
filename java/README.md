@@ -15,6 +15,15 @@
 - Java guarantees "Write Once, Run Anywhere."
 - All programs in Java is object-oriented.
 
+## Installation
+
+- [BellSoft](https://bell-sw.com) provides open-sourced Java development toolkits called Liberica JDK, it bundles with many other useful libraries
+  - For Mac, install with homebrew, `brew tap bell-sw/liberica`, then `brew install <liberica-jdkXX-full>`. [Click here](https://github.com/bell-sw/homebrew-liberica) to see the list of available packages
+  - The full package of Liberica JDK includes LibericaFX. It’s a supported version of OpenJFX, the open source project behind JavaFX technology
+- Java JDK should be located in the `JavaVirtualMachines` folder
+  - For mac the full path is `/Library/Java/JavaVirtualMachines/`
+  - The Java home is located under `JavaVirtualMachines/<jdk-name>/Contents/Home`
+
 ## Setup
 
 - run `/usr/libexec/java_home -V` to list the all versions of java installed on the machine

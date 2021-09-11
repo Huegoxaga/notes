@@ -6,20 +6,20 @@
   - One-Part Tasks: use lists
   - Two-Part Tasks: use tables
   - Multiple-Part Tasks: use trees
-- FUNDAMENTAL COUNTING PRINCIPLE
-  - Under uniformity(independent and equally possibility) criterion: the way c it can be done is equals to products of the ways in different steps.
+- Fundamental Counting Principle
+  - Under uniformity (independent and equally possibility) criterion: For one taks invloves multiple step, the way it can be done is equals to products of the ways in different steps.
 - Factorial
-  - `n!=n×(n− 1)×(n− 2)×...×2×1`
-  - By definition: `0!=1`
+  - $$n! = n\times(n-1)\times(n-2)\times\ldots\times2\times1$$
+  - By definition: $$0!=1$$
 - Arrangements(order matters) of `n` Distinct Objects
-  - It equals to `n!`
-  - if same objects are found in the group(Ex, same color same letter same age in an arrangement), its arrangement can be calculated by dividing `n!` by the factorial of the size of special group.
+  - It equals to $$n!$$
+  - if same objects are found in the group(Ex, same color same letter same age in an arrangement), its arrangement can be calculated by dividing $$n!$$ by the factorial of the size of special group.
 - Permutations(order matters) is the ways of making arrangements of small group r from a big group n
   And order matters
-  - It equals to `nPr = n!/(n-r)!`
-  - `n` minus `r` excluded objects form a same group for all arrangements.
+  - It equals to $$_nP_r=\frac{n!}{(n-r)!}$$
+  - Ex, pick three card from five card, $$5\times4\times3=\frac{5!}{2!}=\frac{5!}{(5-3)!}$$
 - Combination is like permutations but order doesn't matter
-  - It euqals to `nCr=n!/r!(n-r)!`
+  - It euqals to $$_nC_r=\frac{n!}{r!(n-r)!}$$
   - Extra `r!` in the formula is used to make orders not matter.
 - Strategies
   - Draw graph and make analogy to solve different senareio in questions.
@@ -119,6 +119,10 @@
   - discrete variable: integer value, single event.
   - discrete infinite variable: multiple event.
   - continuous(nondiscrete) variable: events happens overtime.
+- A Monte Carlo simulation is a model used to predict the probability of different outcomes when the intervention of random variables is present
+  - It can be a program that brutal force all the random outcomes, it iterates many times until there is a consistent outcome
+  - The more random our system, the larger the universe, the more iterations are needed to test the system
+  - It is good at solving complex problems due to the intervention of random variables
 
 ### Features
 
@@ -322,6 +326,7 @@
 
 ### Markov Chains
 
+- A Markov chain is a mathematical system that experiences transitions from one state to another according to certain probabilistic rules
 - It is used predict the future state(matrix $$X_1$$) by multiply the matrix of transition probabilities(P) by the current state(matrix $$X_0$$).
   - Each current or future state has `N` elements and represented by a `N X 1` matrix. During each step, each element will
     - lose part of it to other element

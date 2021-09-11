@@ -43,53 +43,53 @@
     - Social Engineering
 - Attack Types
   - Distributed Denial of Service (DDoS) Attacks
-  - A common "low-tech" attack that is hard to defend against
-  - The attacker uses a swarm of computers under their control (referred to as a botnet) to flood the target with network traffic
-  - The goal is to overwhelm the target so that it cannot respond to legitimate requests
-  - Advanced firewalls can detect what is and isn’t legitimate traffic, but they can become overwhelmed too
-  - If a business falls victim to repeated DDoS attacks, they can hire a specialized mitigation service which has the infrastructure required to fend off these attacks
-  - A [map](http://www.digitalattackmap.com/) of daily DDoS attacks around the world
+    - A common "low-tech" attack that is hard to defend against
+    - The attacker uses a swarm of computers under their control (referred to as a botnet) to flood the target with network traffic
+    - The goal is to overwhelm the target so that it cannot respond to legitimate requests
+    - Advanced firewalls can detect what is and isn’t legitimate traffic, but they can become overwhelmed too
+    - If a business falls victim to repeated DDoS attacks, they can hire a specialized mitigation service which has the infrastructure required to fend off these attacks
+    - A [map](http://www.digitalattackmap.com/) of daily DDoS attacks around the world
   - Port Scans
-  - Ports that are left open can have anyone make a connection into them
-  - If the software listening on that port has a vulnerability, it is possible for the attacker to send unexpected, malicious payloads into that port in order to exploit the vulnerability
-  - From there, the hacker may be able to execute their own code on the victim’s computer, opening the floodgates to many other avenues of attack
-  - Attackers do reconnaissance on which ports are open by using port scanning software to send packets to every port. They then see what responses (if any) they receive back
-  - They can target all of the ports of a single computer, or scan all of the ports of all computers on a network – they just need to find one ”in“
-  - The responses they receive back can be a telltale sign about what type of software is listening on a given port as well as the operating system running on the computer. From there, they can research possible vulnerabilities and exploits they can use to gain access
-  - Example [Port Scanner](https://www.whatismyip.com/port-scanner/) Tool
+    - Ports that are left open can have anyone make a connection into them
+    - If the software listening on that port has a vulnerability, it is possible for the attacker to send unexpected, malicious payloads into that port in order to exploit the vulnerability
+    - From there, the hacker may be able to execute their own code on the victim’s computer, opening the floodgates to many other avenues of attack
+    - Attackers do reconnaissance on which ports are open by using port scanning software to send packets to every port. They then see what responses (if any) they receive back
+    - They can target all of the ports of a single computer, or scan all of the ports of all computers on a network – they just need to find one ”in“
+    - The responses they receive back can be a telltale sign about what type of software is listening on a given port as well as the operating system running on the computer. From there, they can research possible vulnerabilities and exploits they can use to gain access
+    - Example [Port Scanner](https://www.whatismyip.com/port-scanner/) Tool
   - Access Attacks
-  - Certain versions of software will have "well-known" exploits and potentially even premade hacking tools to take advantage of them.
-  - Software vendors will typically patch these issues. This is the importance of updating software. On the other hand, brand new updates will sometimes bring with them brand new problems to be exploited
-  - Another necessary step is "reducing the attack surface" of the computer, which means uninstalling or turning off unused software or services (especially on servers). This reduces the number of avenues of attack
+    - Certain versions of software will have "well-known" exploits and potentially even premade hacking tools to take advantage of them.
+    - Software vendors will typically patch these issues. This is the importance of updating software. On the other hand, brand new updates will sometimes bring with them brand new problems to be exploited
+    - Another necessary step is "reducing the attack surface" of the computer, which means uninstalling or turning off unused software or services (especially on servers). This reduces the number of avenues of attack
   - Packet Sniffing
-  - A packet is a unit of data sent across a computer network. “Inside” the packet is the data that a computer is trying to send to another
-  - A packet could contain part of an email, a webpage, or anything else accessed via the computer network
-  - "Sniffing" packets means to have a computer on the network which is listening in and recording packets that are not being sent or addressed to them -- in other words, the packet sniffer is eavesdropping on the conversations of other computers
-  - This means that if the data inside the packet is not encrypted, it can be read by anyone that is recording the packets on the network
-  - Legitimate websites that require you to log in should always have secure connections(HTTPS) available
+    - A packet is a unit of data sent across a computer network. “Inside” the packet is the data that a computer is trying to send to another
+    - A packet could contain part of an email, a webpage, or anything else accessed via the computer network
+    - "Sniffing" packets means to have a computer on the network which is listening in and recording packets that are not being sent or addressed to them -- in other words, the packet sniffer is eavesdropping on the conversations of other computers
+    - This means that if the data inside the packet is not encrypted, it can be read by anyone that is recording the packets on the network
+    - Legitimate websites that require you to log in should always have secure connections(HTTPS) available
   - Phishing
-  - The practice of sending emails purporting to be from reputable companies in order to induce individuals to reveal personal info
-  - Following a phishing email will lead to a website made up to look exactly like the real thing
-  - Sophisticated phishing websites will even have secure connections, however they cannot fake the website URL via phishing alone
-  - End users must be trained to spot phishing emails and to not open any links or attachments from suspicious emails
+    - The practice of sending emails purporting to be from reputable companies in order to induce individuals to reveal personal info
+    - Following a phishing email will lead to a website made up to look exactly like the real thing
+    - Sophisticated phishing websites will even have secure connections, however they cannot fake the website URL via phishing alone
+    - End users must be trained to spot phishing emails and to not open any links or attachments from suspicious emails
   - Brute-force and Dictionary Attacks
-  - Brute-force attacks use a random approach, trying every combination of letters, numbers, and symbols until it is successful
-  - A dictionary attack is a method of breaking into a password-protected computer or server by systematically entering every word in a dictionary as a password
-  - If the hashed password on the host is found. A list of hash code can be generated base on the dictionary. Then the original password might be retrieved if a match if found
-  - The best defense is to have a highly secure password. Encourage employees to use a "pass phrase" -- a complex enough series of words, numbers, and symbols will make the amount of time needed to crack the password so long that it is practically infeasible
+    - Brute-force attacks use a random approach, trying every combination of letters, numbers, and symbols until it is successful
+    - A dictionary attack is a method of breaking into a password-protected computer or server by systematically entering every word in a dictionary as a password
+    - If the hashed password on the host is found. A list of hash code can be generated base on the dictionary. Then the original password might be retrieved if a match if found
+    - The best defense is to have a highly secure password. Encourage employees to use a "pass phrase" -- a complex enough series of words, numbers, and symbols will make the amount of time needed to crack the password so long that it is practically infeasible
   - Code Injection
-  - Whereby the attacker takes advantage of a bug in software that allows them to input something that was not expected
-  - For example, on a website that may be expecting you to type your first name to fill out a form, an attacker might type in some malicious code instead
-  - If the software was not programmed to check the input for validity, it may end up executing the malicious code. This can be used by the attacker to destroy data or to gain further access
+    - Whereby the attacker takes advantage of a bug in software that allows them to input something that was not expected
+    - For example, on a website that may be expecting you to type your first name to fill out a form, an attacker might type in some malicious code instead
+    - If the software was not programmed to check the input for validity, it may end up executing the malicious code. This can be used by the attacker to destroy data or to gain further access
   - Drive-by Attacks
-  - Hackers look for websites that have vulnerabilities and take advantage of them in order to insert their own code
-  - The modified website may not look any different than usual. Once the hacker has placed the code on the website, anyone who visits the website might run the code. The code could install malware onto the computer or redirect the web browser to a different malicious website set up by the hacker
-  - Keeping web browsers and anti-virus software up-to-date and minimizing the number of plugins on your web browser is the best defense
+    - Hackers look for websites that have vulnerabilities and take advantage of them in order to insert their own code
+    - The modified website may not look any different than usual. Once the hacker has placed the code on the website, anyone who visits the website might run the code. The code could install malware onto the computer or redirect the web browser to a different malicious website set up by the hacker
+    - Keeping web browsers and anti-virus software up-to-date and minimizing the number of plugins on your web browser is the best defense
   - Information Queries
-  - Not exactly an attack, but is often a precursor
-  - A large amount of information can typically be found online about websites and businesses, usually part of registration processes
-  - Further information can be found via social media (of the organization, or of employees)
-  - This information can be used towards further social engineering attacks
+    - Not exactly an attack, but is often a precursor
+    - A large amount of information can typically be found online about websites and businesses, usually part of registration processes
+    - Further information can be found via social media (of the organization, or of employees)
+    - This information can be used towards further social engineering attacks
 - Malware can be referred to as any unwanted or undesirable program that infects computers in order to achieve some sort of malicious goal
   - The goal could be damaging the computer or its data, stealing data, opening a “backdoor” to gain more access, sending a political message, or even just to simply seeing how far the malware will spread
   - Malware comes in a variety of types, including viruses, adware, spyware, ransomware, and more
@@ -106,3 +106,7 @@
   - Adware - It displays unwanted advertisements, generating income for the creator of the adware
     - Adware will often change your web browser’s home page to something that includes ads, and will periodically redirect the web page you are on to more ads
     - Adware may also display ads in the toolbar of the operating systems, or will open its own windows separate from that of your web browser
+- A white hat hacker is an ethical computer hacker, or a computer security expert, who specializes in penetration testing and other testing methodologies that ensure the security of an organization's information systems
+- Penetration test is an authorized simulated cyberattack on a computer system, performed to evaluate the security of the system
+- A vulnerability assessment is a systematic review of security weaknesses in an information system by doing various scans
+  - Vulnerability assessments and penetration tests are complementary, as both have desirable qualities the other lacks (scans are automated and relatively quick; pen tests are rigorous and provide more context)

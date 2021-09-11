@@ -9,6 +9,7 @@
   - [MiKTeX](https://miktex.org) distribution for Window
 - LaTex source code has extension as `tex`
 - Online editting tool can be used to write and compile LaTex Code quickly.
+  - [LaTex Equation Editor](https://latex.codecogs.com/eqneditor/editor.php)
   - [Overleaf](https://www.overleaf.com)
 - LaTeX works with editors as follow:
   - TeXworks - included in distributions.
@@ -25,7 +26,7 @@
 
 - title
 
-```
+```latex
 \documentclass[12pt, letterpaper, twoside]{article}
 \usepackage[utf8]{inputenc}
 
@@ -48,7 +49,7 @@ and pagesize and fontsize parameters.
 
 - abstract
 
-```
+```latex
 \documentclass[12pt, letterpaper, twoside]{article}
 \usepackage[utf8]{inputenc}
 
@@ -70,7 +71,7 @@ This line will start a second paragraph. And I can
 
 - comment
 
-```
+```latex
 \documentclass{article}
 \usepackage[utf8]{inputenc} %codification of the document
 
@@ -116,19 +117,19 @@ while working on a draft.
 
 ### Mathematics
 
-##### Mathematical Modes
+#### Mathematical Modes
 
 - inline mode - inline math expression as part of a text
   - use delimiters: `\( \)`, `$ $` or `\begin{math} \end{math}`
 - display mode - centered math expression in a new paragraph.
   - use delimiters: `\[ \]`, `$$ $$`, `\begin{displaymath} \end{displaymath}` or `\begin{equation} \end{equation}`
 
-##### Symbol Size
+#### Symbol Size
 
 - `$\displaystyle{x}$` normal size for math symbols and expressions.
 - or replace `\display` with `\large`, `\Large`, `\LARGE`, `\huge`, `\Huge` to make the math object even bigger.
 
-##### Spacing
+#### Spacing
 
 - LaTeX provides the following four commands for spacing in math mode:
   - `\;` - a thick space.
@@ -136,7 +137,7 @@ while working on a draft.
   - `\,` - a thin space.
   - `\!` - a negative thin space.
 
-##### Common Math Symbols
+#### Common Math Symbols
 
 - `\times` multiply
 - `\approx` approximate
@@ -144,7 +145,7 @@ while working on a draft.
 - `\cdot` dot for multiplication
 - `\neq` not equal
 
-##### Math Expressions
+#### Math Expressions
 
 - Use [Detexify](http://detexify.kirelabs.org/classify.html) to draw a symbol and find the LeTaX syntax for it.
 - `\` can be used to escape special symbols used by the compiler.
@@ -184,9 +185,9 @@ while working on a draft.
 
 ### Block Contents
 
-##### Tables
+#### Tables
 
-```
+```latex
 \begin{tabular}{ |c|c|c| }
  \hline
  $x$ & 1 & 2 \\ \hline
@@ -202,9 +203,9 @@ while working on a draft.
 - Use `\hline` to define horizontal border
 - Space between `&` is not mandatory
 
-##### Equation Array
+#### Equation Array
 
-```
+```latex
 \begin{eqnarray}
 5x^2-9&=&x+3\\
 4x^2&=&12\\
@@ -216,9 +217,9 @@ x&\approx&\pm1.732
 - Anything in the equation array is math mode by default.
 - Add `*` after `eqnarray` to remove equation numbering.
 
-##### List
+#### List
 
-```
+```latex
 \begin{enumerate}
 \item item1
 \item item1
