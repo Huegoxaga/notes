@@ -99,35 +99,33 @@
 
 #### Bridged
 
-- Configured with an IPv4/IPv6 address, just like a real physical network
-  adapter
-- Can communicate on the network, just like any other physical network
-  device
+- A bridged adapter type will allow the virtual machine to utilize the physical network adapter of the host machine, providing a connection to the Internet
+- Configured with an IPv4/IPv6 address, just like a real physical network adapter
+- Can communicate on the network, just like any other physical network device
 - Can communicate out to the Internet
 
 #### NAT (Network Address Translation)
 
 - Configured with a special reserved IPv4/IPv6 address
-- Can communicate with other devices beyond the Host OS, including the
-  Internet
-- By default, cannot be communicated with by other Guest OSes running
-  on the same physical host
-- By default, cannot be communicated with by other hosts anywhere on the
-  network
+- Can communicate with other devices beyond the Host OS, including the Internet
+- By default, cannot be communicated with by other Guest OSes running on the same physical host
+- By default, cannot be communicated with by other hosts anywhere on the network
 
-### Internal Network
+#### Internal Network
 
+- A virtual network contained inside the host machine. Any virtual machines on the host that are connected to the same Internal network can communicate with each other, but they cannot communicate with the host machine or the Internet
 - Used to create small isolated network environments
-- Requires an arbitrary logical network name (e.g. intnet), common to all
-  Guest OSes communicating in the same small network
+- Requires an arbitrary logical network name (e.g. intnet), common to all guest OSes communicating in the same small network
 - Cannot communicate with the Host OS
-- Cannot communicate with (or be communicated by) other hosts anywhere
-  on the network
-- Cannot communicate with other Guest OSes which are not configured to
-  use the same logical network name (e.g. intnet)
+- Cannot communicate with (or be communicated by) other hosts anywhere on the network
+- Cannot communicate with other Guest OSes which are not configured to use the same logical network name (e.g. intnet)
 - Cannot communicate out to the Internet
-  Host-only
-- Can communicate with the Host OS
-- Can communicate with other Guest OSes configure with the same
-  network adapter type (Host-only)
-  Cannot communicate beyond the Host OS, including the Internet
+
+#### Host-Only Network
+
+- A virtual network contained inside the host machine
+- Can communicate with the host machine
+- Cannot communicate with the Internet
+- Can communicate with other Guest OSes which also configure as Host-only
+- Use `Host Network Manager` to craete a host network, then use it in the network setting for the VM
+  - For mac, run `sudo "/Library/Application Support/VirtualBox/LaunchDaemons/VirtualBoxStartup.sh" restart` and grant the permission needed in the system preference

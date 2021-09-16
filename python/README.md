@@ -385,15 +385,17 @@ while condition:
 #### List Methods
 
 ```py
-mylist.append(value) #This will append a value at its end. The method doesn't return any value
-mylist.sort() #sorts the list ascending by default, has argument `reverse` which can be set to True
+mylist.append(value) # This will append a value at its end. The method doesn't return any value
+mylist.sort() # Sorts the list ascending by default
+mylist.sort(reverse=True) # Sorts the list in desending order
+# When sort a list of tuples, sort by the first element of the tuples
 mylist.sort(key=lambda listItem: listItem.get('group_name')) #sort based on the key value of the element
-mylist.remove(value) #It will remove certain value in the list regardless of its location (using ==).
-mylist.reverse() #It will reverse the order, print(list.sort()) will not work
-mylist.insert(index, element) #It will insert an element at certain index location. (raise ValueError exception if element is not found)
-mylist.count(object) #It returns how many times an item occurs in the list
-mylist.index(object) #It returns the first index of the item, ValueError if not find.
-mylist.pop(index) #It returns the element according the index and remove the element from the existing list.
+mylist.remove(value) # It will remove certain value in the list regardless of its location (using ==).
+mylist.reverse() # It will reverse the order, print(list.sort()) will not work
+mylist.insert(index, element) # It will insert an element at certain index location. (raise ValueError exception if element is not found)
+mylist.count(object) # It returns how many times an item occurs in the list
+mylist.index(object) # It returns the first index of the item, ValueError if not find.
+mylist.pop(index) # It returns the element according the index and remove the element from the existing list.
 mylist.copy() # It return a new copy of the list, instead of a reference
 mylist.extend(b) # Adds all elements from list b to the end of mylist
 mylist.insert(i, e) # Inserts e into mylist at index i
@@ -411,9 +413,7 @@ mylist.insert(i, e) # Inserts e into mylist at index i
   - `a[n:m]`, slice list `a` from index `n` to `m-1`.
   - `a[n:m:k]`, slice list `a` from index `n` to `m-1` with step `k`.
   - `a[::-1]`, reverse list `a` by getting elements from left to right.
-  - `a[n:m,x]` for 2-D list, return a list of elements of index x from row `n` to row `m-1`.
-  - `a[...,x]` for 2-D list, return a list of elements of index x from all rows. same as `a[:,x]`
-  - If the starting index is missing, it is one by default.
+  - If the starting index is missing, it is first one by default.
   - If the ending index is miss, it will take all elements to the end.
   - A negative index counts from the end of the list. Ex: `a[-5:]` it take the last 5 elements of list a.
 
@@ -1135,6 +1135,8 @@ assert (temp >= 0), "Colder than absolute zero!"
 
 ```py
 newfile = open("localfile.txt", 'r+')
+# specify encoding
+newfile = open("filename.txt", encoding="latin-1")
 ```
 
 ### File Mode

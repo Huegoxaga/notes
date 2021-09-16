@@ -213,7 +213,7 @@
 - 1D arrays work just like python lists
 - Access an element of a rank 2 `numpy` array
   - `array[0,1]`, it return element value from row 0, column 1.
-  - `x[1,:]` or `x[1]` returns the entire second ros
+  - `x[1,:]` or `x[1]` returns the entire second rows
   - `x[1,2:5]` return a slice of the second row
   - `x[:,1]` return the second column
   - `x[2:5,1]` returns a slice of the second column
@@ -238,6 +238,9 @@
 - `x > y` if the arrays are the same size, returns a Boolean array with element by element comparisons
 - `x[x>40]` returns new array of items from `x` that are `> 40`
 - `np.where(arr >= 10)` return a filtered index array based on the conditional
+  - `np.where(condition, x, arr)` replace match elements in `arr` with `x`
+  - `np.where(condition, arr, x)` replace elements in `arr` with `x`, where condition is not true
+- `np.unique(arr)` return an array that only contains unique elements
 
 #### Modify the array
 
@@ -582,7 +585,9 @@
 ### pyplot
 
 - `from matplotlib import pyplot as plt`
-- `plt.scatter(X_train, y_train, color = 'red')` plot points
+- `plt.scatter(listofX, listofY, color = 'red')` plot points
+  - Use argument `marker='.'` will print points as dots
+  - Use argument `marker='v'` will print points as triangles
 - `plt.plot(listofX, listofY)` plot a line, run this method multiple times to draw multiple lines.
   - `plt.plot(listofX, listofY, label='line legend')` add a legend to the line.
   - `plt.plot(listofX, listofY, color='#3b3b3b', linewidth=2,linestyle='--' label='line legend')` or `plt.plot(listofX, listofY, 'formatstring',label='line legend')` to add format to the line, see details about the characters [here](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot)
@@ -609,9 +614,13 @@
   - the range of bin can be set by passing into a list of boundaries.
   - add `log=True` draw data in the logorithmic scale(y-axis will be 10^n).
 - `plt.axcline(y, label="text")` add a vertical line in the graph.
+- `plt.ylim(ymin=-2.5, ymax=2.5)` define the range of y axis
+- `plt.xlim(xmin=-0, xmax=50)` define the range of x axis
 - `plt.xlabel('XAxisLabel')`
 - `plt.ylabel('YAxisLabel')`
 - `plt.title('Graph Title')`
+- `plt.figure(1)` init a separate tab to draw the graph
+  - After figure 1 is plotted, `plt.figure(2)` will create a second tab
 - `plt.legend()` add legend base on labels automatically
   - `plt.legend(['firstLineLegend','firstLineLegend'])` set legend text.
   - `plt.legend(loc='upper left')` or `plt.legend(loc=(percent_from_left, percent_from_bottom))` set the legend location.
@@ -622,7 +631,11 @@
 - `plt.skcd()` set a comic style
 - `plt.show()` show the graph
 - `plt.savefig('filename.png')` save the file in the working directory.
-- `plt.get_cmap('color_code')` return a list of colors as color map, [Click](https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html) to see all options, color is in RBG and has been divided by `255`
+- `cmap=plt.get_cmap('color_code')` return a list of colors as color map, [Click](https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html) to see all options
+  - Plot methods also take `cmap` as argument, when a color map is assigned it will generate different colors for each plot
+  - Additionally, `c` argument can takes a list of index where same index corresponding to the same color for the data
+  - Use method `cmap(i)` to access its value, where `i` in range `[0.0, 1.0]`
+  - Color value is in RBG and has been divided by `255`
 
 ## BeautifulSoup
 

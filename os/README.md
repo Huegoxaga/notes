@@ -38,8 +38,10 @@
 - Linux is Unix "like" OS.
 - Linux was created around 1990's
 - Linux is a [trademarked](www.linuxmark.org) name.
-- Linux is the name of the OS kernel, means Linux "based" OS.
-- Active Linux OS:
+- Linux is the name of the OS kernel, means Linux "based" OS
+  - The Linux kernel, written by Linus Torvalds, first released in 1991
+- Linux distribution refers to an OS, which package the kernel along with shells, utilities, and so on, in order to create full-fledged operating systems
+- Active Linux Distributions:
   - Google Android
   - Oracle Linux
     - Red Hat Enterprise Linux
@@ -52,3 +54,6 @@
       - Interim releases will introduce new capabilities from Canonical and upstream open source projects, they serve as a proving ground for these new capabilities.
     - It uses `apt` for package management.
   - Debian Linux
+  - [Kali Linux](https://www.kali.org/downloads/)
+    - A Linux distribution Focused on cyber security
+    - It has been pre-configured with all of the most well-known cyber security tools

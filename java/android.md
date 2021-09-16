@@ -231,6 +231,7 @@
 - `getActivity()` can also be used to get reference of a widget from parent activity
   - From the fragments uses `Switch actSw = getActivity().findViewById(R.id.switch1);`
   - It was added in API level 11, but then deprecated in API level 28
+  - Similar to `getActivity()`, `requireActivity()` is safer to use because it will always return a valid non-null activity
 
 ##### LayoutInflater
 

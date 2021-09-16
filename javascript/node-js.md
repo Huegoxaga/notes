@@ -22,6 +22,9 @@
   - `npm install -g npm@latest` update the npm to the last version.
 - `npm install -g <package-name>` -g means install globally.
 - `npm install` install packages listed in `package.json` file.
+  - `npm install <package>@<version>` install a specific version
+- `npm view <package>` view details about a package
+  - `npm view <package> versions` view all available version of a package
 - `npm update` update packages listed in `package.json` file and update the `package.json` file.
 - `npm list` see the installed non-global libraries for the current location
 - `npm list -g --depth=0` list all globally installed package, only show the root folder name
@@ -33,6 +36,7 @@
 - `npm cache verify` Verify the contents of the `_cacache` folder, garbage collecting any unneeded data, and verifying the integrity of the cache index and all cached data.
 - `npm -g uninstall <package-name> --save` remove global package.
   - `-S` or `--save` will remove packages from `package.json`.
+- `npm init` create a new node project under the current directory
 
 ## Global object
 
@@ -72,26 +76,26 @@
 
 ```js
 const getName = () => {
-  return 'Tom';
+  return "Tom";
 };
 exports.getAge = () => {
   return 18;
 };
 exports.getName = getName;
-const exports.NAME = 'Tom';
+exports.NAME = "Tom";
 // can also export class with default values in the constructor
 // Optionally use the exports property of a module object
 module.exports = {
   functionName: () => {
-    return '123';
+    return "123";
   },
-  variableName: '123',
+  variableName: "123",
 };
 module.exports = {
-    firstName: 'James',
-    lastName: 'Bond'
-}
-module.exports = functionName
+  firstName: "James",
+  lastName: "Bond",
+};
+module.exports = functionName;
 ```
 
 ### Import Modules
@@ -104,6 +108,7 @@ const { NAME, getName, getAge } = require("filePath");
 ```
 
 - extenstion is not required in the filePath
+- use `require("./filename")` to import module from the same directory
 
 ## Buildin Modules
 

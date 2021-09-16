@@ -40,7 +40,7 @@
     - Phishing / Malicious Emails
     - Accessing corporate systems from unknown/compromised devices
     - Excessive access privileges on corporate systems
-    - Social Engineering
+    - Social Engineering (refers to low-tech methods)
 - Attack Types
   - Distributed Denial of Service (DDoS) Attacks
     - A common "low-tech" attack that is hard to defend against
@@ -110,3 +110,42 @@
 - Penetration test is an authorized simulated cyberattack on a computer system, performed to evaluate the security of the system
 - A vulnerability assessment is a systematic review of security weaknesses in an information system by doing various scans
   - Vulnerability assessments and penetration tests are complementary, as both have desirable qualities the other lacks (scans are automated and relatively quick; pen tests are rigorous and provide more context)
+- Zero-day vulnerabilities
+  - This is term that describes any serious vulnerability that is known to no one except a hacker who has just discovered it
+  - "Day one" is the day when the vendor of the software becomes aware of the vulnerability, for which they will then typically create a security patch
+  - These vulnerabilities are often shared (or sold) between black hat hackers
+  - If they are discovered by a white hat hacker, they may by reported directly to the software vendor (sometimes for a reward), or posted publicly to draw attention and incite improvements
+
+## Related Tools
+
+### Penetration Testing Tools
+
+- Vulnerability Scanners
+  - A more advanced version of the port scanners
+  - Not only can they scan the network for open ports, but they can also scan for virtual machines, mobile devices, databases, etc
+  - They analyze any responses they receive in order to tell you as much as possible about the target, allowing you to research potential vulnerabilities for that type of system
+  - They are `nmap` (most widely used), `Nessus` (popular, not free), `Nipper`, `Core Impact`, `SAINT`
+- Password Crackers
+  - Password crackers are automated tools that attempt to guess a user’s password
+  - They can use a totally random approach (brute-force attack) or one that references a list or table of likely possibilities (dictionary attack)
+  - Password cracking tools have legitimate uses in the event that a password is lost and cannot be reset
+  - They are `John the Ripper` (the most popular), `Ophcrack`, `Medusa`
+- Packet Sniffers
+  - Used to capture and analyze packets on a computer network. Many can be used on both wired and wireless (Wi-Fi, Bluetooth, etc.) connections
+  - Anything sent unencrypted on a network can be assumed to be compromised
+    - encrypting enhance security and sacrifice speed
+  - They are `Wireshark` (most popular), `Fiddler`, `Tcpdump`
+- Vulnerability Exploitation Tools
+  - These tools provide information about security vulnerability and have the capability to assist in the development of exploit code against a remote target machine
+  - They are `Metasploit` (most popular), `Core Impact`, `Sqlmap`, `Netsparker`, `W3af`
+- Wireless Hacking Tools
+  - Wireless networks (such as Wi-Fi networks) are very convenient, but that convenience comes at a cost, they are far more susceptible to network security threats than wired networks
+  - Wireless networks are more vulnerable due to the simple fact that they require much less physical access
+  - Outdated wireless security standards are very easy to crack
+  - Popular tools include `nSSIDer`, `Aircrack-ng`, `Cain & Able`
+- Forensic Tools
+  - Digital forensics is the practice of obtaining and protecting evidence on computers and storage media
+  - The ability to audit and understand IT incidents is useful in any organization
+  - Forensic Tools can do one particular task or can be an all-in-one package that can perform a variety of functions. These tools can protect evidence from modification, recover deleted files, gather and summarize logs from the computer, and so forth
+  - Digital forensics is an entire discipline of its own
+  - Available tools are `The Sleuth Kit` (most popular), `Autopsy` (graphical environment for The Sleuth Kit), `Helix`, `Encase`

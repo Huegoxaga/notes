@@ -110,19 +110,35 @@ list(accumulate(range(8)))
 ### Usage
 
 - read a file with default delimter:
+
   ```py
   with open('filename.csv', 'r') as csv_file:
     csv_reader =csv.reader(csv_file)
   ```
-  - `csv_reader` stores a list of list. each list in the list is one row of data that can be accessed by index. Ex, `csv_reader[0][0]` is the first header.
+
+  - `csv_reader` stores a list of list. each list in the list is one row of data that can be accessed by index. Ex, `csv_reader[0][0]` is the first header
+    - `csv_reader` can be casted into a list, then used as a list
   - use `csv.reader(csv_file, delimiter='\t')` to set delimiter as `\t`.
   - `next(csv_reader)` will return one line at a time and skip to the next line.
   - use `csv.DictReader(csv_file)` to read csv files into an ordered dictionary. Keys for data in each row are the headers. Use `line['header']` to access data.
+
+  ```py
+  with open('filename.csv') as file:
+    reader = csv.DictReader(file, delimiter=",")
+    for row in reader:
+        print(row["headOne"])
+        print(int(row["headTwo"]))
+  ```
+
+  - `dict_reader.fieldnames` return a list of header names
+
 - write a file with default delimter:
+
   ```py
   with open('filename.csv', 'r') as csv_file:
     csv_writer =csv.writer(csv_file)
   ```
+
   - run `csv_writer.writerow("a,b,c")` to write a row to the file.
   - use `csv.writer(csv_file, delimiter='\t')` to set delimiter as `\t`.
   - use `csv.DictWriter(csv_file, fieldnames=listOfHeaders)` to write `csv` files from an ordered dictionary. add `csv_writer.writeheader()` first to write the header to the first line.

@@ -23,6 +23,7 @@
   - Bourne-Again Shell(bash), most used shell.
   - C Shell(csh)
   - Korn Shell(ksh)
+  - Z shell(Zsh)
 
 ### Filesystem
 
@@ -58,6 +59,8 @@
     - `usr/lib` the libraries for other normal user-programs
   - `/bin` and `/sbin` – contain system binary files
   - `/lib` essential libraries
+  - `/dev` contains device files (e.g. printers, drives)
+  - `/tmp` contains temporary files
 - drag file into the terminal to get its directory.
 - Files permission can be represented by a character followed by three groups of three letters.
   - `ls -al` shows the following info.
@@ -126,7 +129,7 @@
 - `lsusb` check all existing USB devices.(debian-based Linux)
 - `cd` Change directory to the directory followed, if nothing followed cd to home dir.
 - `pwd` display the absolute path to the current working directory.
-- `touch` create new file
+- `touch` create new file, or to update the access/modified dates on an existing file.
 - `basename <path>` return filename or directory portion of pathname
 - `mkdir <directory path(s)>` make new dir
   - create multiple new folderName separate by space.
@@ -157,6 +160,8 @@
 - `ifconfig eth0` will display networking information about the device named `eth0`.
   - `eth0` the number is the order in which the card has been detected, starting with a zero
 - `ifconfig` will display networking information about all device.
+- `ping <IP>` ping an IP
+  - `ping -c <n> <IP>` ping `n` times
 - `iwconfig` Check which network the wireless adapter is using
 - `hostname` show hosts
 - `system-config-network-tui` starts an interactive network configuration utility.
