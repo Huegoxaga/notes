@@ -3,6 +3,10 @@
 - It is the most important piece of software running on a computer
 - It is responsible for managing and communicating with the computer’s hardware
 - It dictates which applications are allowed access to the hardware, when they are allowed, for how long, and so forth. This is referred to as scheduling
+  - Scheduling algorithms includes first come first serve, shortest job next, priority, shortest remaining time, round robin, etc
+  - Operating systems opened up the opportunity to have multiple processes running at once (Parallelism)
+  - Communication between processes can be achieved via sockets, signal handlers, shared memory, semaphores and files
+  - OS also controls the execution of multiple threads in each process (Concurrency)
 - All of the hardware resources are managed by this singular operating system, and applications can then run in the environment set up by that operating system
   - For most virtualization tool, they are running on top of this singular operating system called the host OS
   - Type 1 hypervisor is an exception, it runs directly on the hardwares

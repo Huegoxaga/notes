@@ -107,18 +107,19 @@ module.exports = functionName;
 const { NAME, getName, getAge } = require("filePath");
 ```
 
-- extenstion is not required in the filePath
-- use `require("./filename")` to import module from the same directory
+- Extenstion is not required in the filePath
+- Use `require("./filename")` to import module from the same directory
+- Async methods can be imported as `const {method} = await require("module")`
 
 ## Buildin Modules
 
-- check the official docs for all builtin Modules.
+- check the [official docs](https://nodejs.org/api/) for all builtin Modules.
 - Any method name end with `Sync` is a synchronous method.
 - Removing Sync from a Synchronous method will make it an asynchronous method, it has a second parameter as the call back function.
 - Callback function will be called when the asynchronous operation is completed.
 - Most of the callback functions have two parameters. first is the error, the second parameter is the result.
 
-### Path Module
+### Path
 
 - `require('path');`
 - Methods:
@@ -126,14 +127,14 @@ const { NAME, getName, getAge } = require("filePath");
   - `.extname(filename)` get the file extension with the dot
   - `.join(dir, filename)` join path with `/`
 
-### OS Module
+### OS
 
 - `require('os');`
 - Methods:
   - `.totalmem();` total memory
   - `.freemem();` free memory
 
-### File System module
+### File System
 
 - `require('fs');`
 - Methods:
@@ -142,7 +143,7 @@ const { NAME, getName, getAge } = require("filePath");
   - `.readFileSync(filePath)` load file into file object
   - `const writeStream = fs.createWriteStream(targetFilePath);`, `await awaitWriteStream(file.pipe(writeStream));` write file to `targetFilePath` using write stream
 
-### Events module
+### Events
 
 - `require('events');`
 - This is a class, an object is needed.
@@ -155,13 +156,37 @@ const { NAME, getName, getAge } = require("filePath");
     - eventObject can be `{name1:value1, name2:value2,…}`
     - In practice, Create a new class that extends the EventEmitter class with the defined event listener.`const EventEmitter = require('events'); class ClassName extends EventEmitter{ functionName(){ this.emit(…); } } }`
 
-### HTTP module
+### HTTP
 
 - `require('fs');`
 - `const server = http.createServer();` create server object, it is inherited from EventEmitter class.
 - Methods:
   - `server.on('connection', (socket)=>{…})` add event handler for connection event.
   - `server.listen(portNumber)` make the server listen on certain port.
+
+### Crypto
+
+- `require('crypto');`
+- The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions
+
+#### Crypto Methods
+
+- `const crypto = require("crypto");`
+- `crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)` Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation
+
+```js
+crypto.pbkdf2(
+  "some_text",
+  "salt_str",
+  20000,
+  32,
+  "sha256",
+  function (err, hashed) {
+    if (err) return callback(err);
+    console.log(hashed.toString("base64"));
+  }
+);
+```
 
 ## Mocha Testing Framework
 
@@ -248,3 +273,13 @@ const { NAME, getName, getAge } = require("filePath");
 - In project folder `sudo pm2 start app.js` run the app
 - `sudo pm2 startup` automatically start the app after reboot
 - `sudo pm2 list` or `sudo pm2 show app` check the current running apps
+
+## pg
+
+- `node-postgres` is a collection of node.js modules for interfacing with your PostgreSQL database
+- [Click Here](https://node-postgres.com) to see the detailed usages
+- It supports client connection and pool connection
+  - Pool connection manages a reusable pool of clients, it performs better than querying with individual client
+- Postgres connection can be defined using connection string, the format is `'postgres://<user>:<password>@<host>:<port>/<db>'`
+
+## crypto

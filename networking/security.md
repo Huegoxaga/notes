@@ -9,7 +9,7 @@
   - Authentication is testing a user in an effort to ensure that they are who they say they are. A username and password pair are an example of authentication factors
   - Authorization is about making sure that users have access only to the data and privileges that they need - nothing more and nothing less
 - Integrity - It means ensuring that your data remains consistent
-  - Bad actors could modify data while it is "in transit” on the network or while the data is "at rest" on a server’s hard drive
+  - Bad actors could modify data while it is "in transit" on the network or while the data is "at rest" on a server's hard drive
   - Data can also be unintentionally modified by user error, hardware or software issues, or even natural events
   - Data integrity can be ensured by techniques such as creating a checksum of the data as well as keeping backups
 - Availability - It means ensuring that your data is always accessible for those who need it
@@ -97,7 +97,7 @@
   - Viruses - Computer viruses are a type of malware that attach themselves to other, legitimate programs. That program is then said to be “infected”, and when it is executed it will also run the malicious code of the virus, often in order for the virus to spread or cause further damage
   - Worms - they are totally self-contained programs that replicate across networks on their own, often at an exponential rate. Once a system is infected, the worm will attempt to spread via such means as emailing itself to all of the victim’s email contacts
     - They are named after tapeworms, which consist of a head attached to a long train of reproductive segments, each of which can produce more worms when detached. This is a reference to the self-replicating nature of computer worms
-  - Trojan Horses - Malicious programs that trick us into willingly running it in on our computers by appearing to be something that we want. Often, Trojans will establish a “backdoor” that hackers can use to much more easily access the system
+  - Trojan Horses - Malicious programs that trick us into willingly running it in on our computers by appearing to be something that we want. Often, Trojans will establish a "backdoor" that hackers can use to much more easily access the system
   - Ransomware - A computer infected with ransomware will have part or all of its data encrypted, rendering the data inaccessible. A message will then be displayed, asking the user to pay a certain amount of money in order for the data to be decrypted
     - The name is derived from the malware holding the data for ransom. Unfortunately for many of those who pay, the data will often not be decrypted after all
   - Spyware - It is a general term for any malware that has the intention to gather information such as personal data or passwords and send it back to a centralized server
@@ -149,3 +149,42 @@
   - Forensic Tools can do one particular task or can be an all-in-one package that can perform a variety of functions. These tools can protect evidence from modification, recover deleted files, gather and summarize logs from the computer, and so forth
   - Digital forensics is an entire discipline of its own
   - Available tools are `The Sleuth Kit` (most popular), `Autopsy` (graphical environment for The Sleuth Kit), `Helix`, `Encase`
+
+## Authorization Protocols
+
+- Each of the following protocal can be used to authenticate a user from an identity provider
+- Each protocols supports various types of authorization flows
+  - A flow consists of a serial of steps involved for a user to be authenticated
+  - Different flows can be adapoted for different use case
+- Single-Sign On (SSO) happens when one login can access multiple different app, regradless which authorization method is implemented
+  - Similarly, there is a Single Logout (SLO) feature
+
+### SAML
+
+- SAML stands for `Security Assertion Markup Language`
+- The active version if `SAML 2.0`
+- It is an XML-based markup language
+- It is used to exchange authentication and authorization identities between security domains
+  - It allows members of the organization to sign into web apps or any other service providers (SPs) with the credentials from an existing identity provider (IDP) used by the organization
+  - SPs can connect to one or more IDPs through SAML
+- SAML login is a type of organization-specific logins (enterprise logins)
+- It enables SSO by using one or more SPs sharing one IDP or a fedration of IDPs
+- Compare to OAuth, SAML is more user based
+
+### OAuth
+
+- The `Open Authorization` (OAuth) authorization framework is a protocol that allows a user to grant a third-party web site or application access to the user's protected resources, without necessarily revealing their long-term credentials or even their identity
+- It works with OpenID Connect (OIDC) - an identity layer built on top of the OAuth 2.0 framework that verifies the identity of the end-user and to obtain basic user profile information in JWT token
+- `OAuth 2.0` is the active version
+- Auth0 generates access tokens for API authorization scenarios, in JSON web token (JWT) format
+- It enables Single-Sign On (SSO)
+- Compare to SAML, OAuth is more application based
+- OAuth has the following flows
+  - Authorization Code Flow
+  - Implicit Flow
+
+### LDAP
+
+- LDAP (Lightweight Directory Access Protocol) is an open and cross platform protocol used for directory services authentication
+  - It manages the access of on-premise devices
+- It is an internet protocol in the application layer
