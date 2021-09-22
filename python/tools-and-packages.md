@@ -163,7 +163,8 @@
 #### Import the package
 
 - add `import numpy as np` to the first line of the code.
-- For most function `np.functionName(arrayName)` works the same as `arrayName.functionName()`
+- For GPU accelerated machines, install `cupy` package and use `import cupy as np`
+  - CuPy is a library that implements Numpy arrays on Nvidia GPUs by leveraging the CUDA GPU library
 
 #### Create an array
 
@@ -241,6 +242,7 @@
   - `np.where(condition, x, arr)` replace match elements in `arr` with `x`
   - `np.where(condition, arr, x)` replace elements in `arr` with `x`, where condition is not true
 - `np.unique(arr)` return an array that only contains unique elements
+  - `uniques, counts = np.unique(arr, return_counts=True)` it also returns the occurrance count in a related array
 
 #### Modify the array
 
@@ -282,7 +284,8 @@
   - It also has `subtract(x,y)`, `multiply(x,y)`, `divide(x,y)`, `remainder(x,y)` and `power(x,y)` functions.
   - Math operators `+`, `-`, `*`, `/` and `**` also works.
   - Logical comparisons are available by using `<`, `==`, and `>`. It turns an array of Booleans after comparsion each element of the same location from two arrays as result.
-  - `np.dot(x,y)` return the dot product of matrix x and y.
+  - `np.dot(x,y)` returns the dot product of matrix x and y.
+  - `np.fabs(arr)` returns the absolute values of all the element in an array
 - Elementwise Functions
   - It changes the values of all elements of one array.
   - `np.sqrt(x)` It returns a matrix of elements of `x` which all have taken the square root.
@@ -294,6 +297,9 @@
   - All functions can have `axis=1` as its parameter. This makes the function evaluate row by row, and return a list of results.
   - All functions can have `axis=0` as its parameter. This makes the function evaluate column by column, and return a list of results.
   - The `argmin()`, `argmax()`, and `argsort()` methods in Numpy work the same way as their non-arg counterparts, but they return the indexes rather than the values
+- Linear Algebra Functions
+  - `np.linalg.norm(x - y)` the Euclidean distance of array `x` and `y`, or the `L2` norm of `x-y`
+    - `np.linalg.norm(x - y, ord=1)` the Manhattan distance of array `x` and `y`, or the `L1` norm of `x-y`
 
 ## Pandas
 

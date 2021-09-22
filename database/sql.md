@@ -724,6 +724,12 @@
   - TODATETIMEOFFSET
   - YEAR
 
+### Extensions
+
+- It provides additional functions to the database engine
+- `CREATE EXTENSION extension_name;` enable extension to the database
+- `DROP EXTENSION extension_name;` disable extension from the database
+
 ### Join
 
 - Table names can use nickname, set after `FROM` clause, e.g. `FROM tablename alias`

@@ -219,7 +219,7 @@
   ```
 - Main Activity can get `getSupportFragmentManager()` when it extends the `AppCompatActivity` interface
   - `AppCompatActivity` extends `FragmentActivity`
-  - optionally, `getFragmentManager()` method is available for fragment classes and is part of an older API, and deprecated in API level 28
+  - optionally, `getFragmentManager()` method is available for fragment classes and is part of an older API, and deprecated in API level 28, it's replaced by `getParentFragmentManager()`
 - Fragment constructor - can be used to pass view into framgment class when initialized with fragment manager. For example when use fragment manager in the main acticity, declare fragment as `Fragment myFragment1 = new BlankFragment(findViewById(R.id.textview));`
   ```java
   // Define constructor inside fragment class

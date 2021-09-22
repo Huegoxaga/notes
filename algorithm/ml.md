@@ -95,6 +95,28 @@
 ### Decision Trees
 
 - It can handle non-linear datasets.
+- Decision Tree algorithms are often implemented as greedy algorithms
+  - they always take the best looking split at each step, and never backtrack
+- They can be treated as divide and conquer algorithms
+  - they repeatedly divide big problems into smaller problems
+- They have a naturally recursive implementation
+- Pros and Cons:
+  - Pros:
+    - Interpretability - Decision trees can be easily read and understood by human beings. This makes them attractive, especially in domains such as medicine and the law where it is important not only to make good decisions, but to be able to understand and justify them
+    - Feature Selection - Once constructed, decision trees tend to select only a few features as relevant (which means you don’t have to figure out which ones are most important)
+    - Fast Classification - Once constructed, decision trees are very quick to categorize new examples
+    - No Need to Normalize the data - Since decision trees don’t rely on any distance measurement (such as kNN), scaling or normalizing the features is not necessary
+  - Cons:
+    - High Error Rate on Small Data Sets - If you have a small training set, making vertical and horizontal cuts through the feature space might not be a good match for the natural distribution of the data, and can lead to high error rates
+    - Slow Training - As the problem sets get bigger (more data, more features) decision tree algorithms tend to get exponentially slower to train
+- Gini Impurity or Information Gain equations can be used to find the best fit
+  - Gini Impurity is a measure of the probability of a randomly chosen element being misclassified if each split is adopted. When a split is pure, the Gini Impurity is 0.
+  - Information Gain is a measure of how much each split reduces the amount of information needed to correctly classify the items. Both measures tend to come out better for splits that are more pure.
+- Stopping criteria: By Default, most decision tree methods would keep splitting until every training item is correctly classified, to prevent overfitting a proper stopping strategy is required, the following parameters can be set:
+  - The maximum depth for the tree
+  - The maximum allowed number of leaf nodes for the tree
+  - The minimum number of data points in a leaf
+  - The minimum number of data points that can be split
 
 #### Regression Trees
 
@@ -137,6 +159,9 @@
 - For regression:
   - Queries K-Nearest Neighbors and returns average value for the instance
 - It does not scale well for large datasets
+- `k = 1` leads to overfit
+- Increase the number of `k` to avoid ties when counting the neighbor types
+  - To avoid ties, one can use weighted voting where the weight of each count is the inverse of the distance
 
 ### Logistic Regression
 
@@ -528,6 +553,10 @@
 
 ## Data Preprocessing
 
+- Ideally training data should be balanced
+  - For balanced data, each class should have (almost) the same amount of samples
+  - Otherwise, rebalancing the training set or weighted voting should be used
+
 ### Numeric Data Preprocessing
 
 1. Importing the data.
@@ -540,6 +569,9 @@
    - There are two ways for Feature Scaling
      - Standardization returns a result from -3 to 3, Standardization alway works.
      - Normalization returns a result from 0 to 1, Normalization works only if data have a normal distribution in most of the features.
+       - Min-Max Norm uses `value - min / max - min` for each data
+       - L1 Norm uses `Value / Sum of the Abs of All Values` for each data
+       - L2 Norm uses `Value / Root of Sum of Square of All Values` for each data
    - Dummy variables do not need to apply feature scaling.
 
 ### Image Preprocessing

@@ -54,7 +54,7 @@
   - Independent path of execution through the code
   - Threads share the memory and code
   - Operating System responsible for scheduling threads for execution
-    - Known as context switch which requires current thread to pause and save state and new thread to load state and begin executing
+    - Known as context switch which requires current thread to pause and save state in the form of call stack and new thread to load state and begin executing
   - Compare with multiprocessing, multithreading has lower memory consumption, communication between threads is easier, and faster to switch between shared memory, there is no need to change memory in cache
     - It is the preferred method if problem can be designed to use threads
 - Memory Architecture

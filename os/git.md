@@ -156,6 +156,7 @@
 - `git remote set-url origin <URL>` update remote URL(happens when repo name changed)
 - `git config --get remote.origin.url` check the current tracking remote URL
   - or `git remote -v`
+- `git remote update origin --prune` update remote branch info, remove records on deleted remote branch locally
 - `git push -u origin <remoteBranch>` push to certain remote branch and set the remote branch as the remote tracking branch.
   - create new remote branch if not exists
 - `git push` update the remote repo with its corresponding local branch.

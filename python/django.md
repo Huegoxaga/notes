@@ -208,9 +208,8 @@ def about(request):
   querySet.delete() # delete all objects in the query set
   modelObject.id # get the object id
   modelObject.pk # get the object primary key value
-  modelObject.manyToManyField.all() # return all related fields of a many-to-many fields. Direct access without all() will cause "TypeError: ManyRelatedManager object is not iterable"
-  modelObject.relatedModel_set.all() # return all assciated model of one model.
-  modelObject.relatedModel_set.create(property1='value1', property2 = 'value2') # create a new related model of the model. Same as init new object and use object.save()
+  modelObject.manyToManyFieldRelatedName.all() # return all related fields of a many-to-many fields. Direct access without all() will cause "TypeError: ManyRelatedManager object is not iterable"
+  modelObject.manyToManyFieldRelatedName.create(property1='value1', property2 = 'value2') # create a new related model of the model. Same as init new object and use object.save()
   ModelClass.objects.all().order_by('-column') # use - for descending order
   ModelClass.objects.select_related('tableA','tableB').prefetch_related('tableC').all() # Join tables for future queries. select_related is used for tables with one to one relationship, prefetch_related is used for many-to-many relationships.
   ModelClass.objects.values('field1', 'field2') # return dict queryset for certain fields
@@ -681,12 +680,12 @@ def about(request):
       - run `brew install gdal`
       - run `brew install geos`
       - run `brew install proj`
+    - Or, download and Install QGIS from its [official website](https://qgis.org/en/site/forusers/download.html)
 - Install PostGIS extension
   - If installing locally, click the PostGIS extension in the slack builder wizards.
   - If using AWS RDS, skip this step and enable the exstension directly.
 - Add extension to the database, in PGAdmin select the database, right click extension, then add.
   - or run SQL `CREATE EXTENSION postgis`.
-- Download and Install QGIS from its [official website](https://qgis.org/en/site/forusers/download.html)
 - Set database engine in `setting.py`.
   - Use `django.contrib.gis.db.backends.postgis` for `PostgreSQL`.
 - Add `django.contrib.gis` to `INSTALLED_APPS` in `setting.py`

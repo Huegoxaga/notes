@@ -477,6 +477,13 @@ int partition(int A[ ], int start, int end)
 - Find the sum of the absolute difference along all axes
 - It is a dissimilarity function
 
+#### Minkowski Distance
+
+- It is a generalization of Euclidean and Manhattan distance
+- The distance between point `t` and point `p` is $$d_{minkowski} =\left ( \sum_{i=1}^n|t_i-p_i|^m \right)^\frac{1}{m}$$, where $$t_n$$ is the value of `t` on `n` axis, same goes for $$p_n$$
+  - When `m = 1` (L1 norm), the formula is calculating Manhattan distance
+  - When `m = 2`(L2 norm), the formula is calculating Euclidean distance
+
 #### Cosine Similarity
 
 - It calculates how similar two vectors are, by geting the cosine value of the two vectors using the dot product formula, which is dividing the dot product by the product of their magnitude

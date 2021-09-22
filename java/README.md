@@ -879,7 +879,7 @@ try{
 - one try block can have many catch block, the exceptions for those catch block should be arranged from the most specific one to the most general one, since they are checked from top to bottom.
 - whenever there is an exception in the try block, the try block stops running. When the catch block finishes, the code in try block will continue.
 - Throws keyword defines the exception that can be thrown in this method. More exception types can be defined after throws in the method definition line, separate them with comma.
-  For InputMismatchException, scannerName.next() is often used in the catch block to clear the wrong user input stored in the buffer.
+  - For InputMismatchException, scannerName.next() is often used in the catch block to clear the wrong user input stored in the buffer.
 - IllegalArgumentException is the exception for wrong argument input for a method.
   For custom exception super() in constructor is for getMessage().
 
@@ -1445,34 +1445,64 @@ outputFile.close();
 ## Thread
 
 - Java is a multi-threaded programming language.
-- The life-cycle of a thread is shown below:
+- The main method itself will be running in a main thread and it can start a new thread by using the following implementation
+  - By default in Java, the main thread will wait for all spawned threads to complete execution before exiting
+- There are two ways to run code in a new thread:
 
-  - First way to run code in a new Thread, create a subclass of Thread class as your own class, override your own code in the run() method, then create an instant of your class object and run the start() method of the new object.
+  - First way to run code in a new Thread, create a subclass of Thread class as your own class, override your own code in the `run()` method, then create an instant of your class object and run the start() method of the new object.
   - All thread has priorities range from 1 to 10, can be set with the set Priority() method.
+
+  ```java
+  public class ThreadDemo extends Thread{
+      private static boolean runThread = true;
+      public void run()
+      {
+          while(runThread){
+              System.out.println("One thread is running as an object");
+          }
+      }
+      public static void main(String[] args) throws InterruptedException {
+          Thread t1 = new ThreadDemo();
+          Thread t2 = new ThreadDemo();
+          Thread t3 = new ThreadDemo();
+          // Start three individual threads
+          t1.start();
+          t2.start();
+          t3.start();
+          // Stop all thread in one second
+          Thread.sleep(1000);
+          ThreadDemo.runThread = false;
+      }
+  }
+  ```
 
   - Second way to create a Thread(preferred way, make extends available for use), implements the Runnable interface for your own class, and write your own run() method in your class. Later create a new Thread object with(new youClass()) as argument for its constructor. Lastly, run the thread object start() method.
 
-### pause a thread
+  ```java
+  public class ThreadDemo implements Runnable{
+      private static boolean runThread = true;
+      public void run()
+      {
+          while(runThread){
+              System.out.println( "A thread is running");
+          }
+      }
+      public static void main(String[] args) throws InterruptedException {
+          Thread t1 = new Thread(new ThreadDemo());
+          Thread t2 = new Thread(new ThreadDemo());
+          Thread t3 = new Thread(new ThreadDemo());
+          // Start three individual threads
+          t1.start();
+          t2.start();
+          t3.start();
+          // Stop all thread in one second
+          Thread.sleep(1000);
+          ThreadDemo.runThread = false;
+      }
+  }
+  ```
 
-- Method
-
-```java
-Tread.sleep(int numberofMS); //it throws InterruptedException
-```
-
-- Example
-
-```java
-public static void main(String[] args) throws InterruptedException {  //exception handling for it
-Thread.sleep(500);} //make it stops for 500ms
-//or use the following pause method instead of Thread.sleep
-public static void pause(int duration) {
-    try {
-        Thread.sleep(duration);
-    } catch (InterruptedException ex) {
-    }
-}
-```
+  - When implementing runnable interface, passing the same variable reference to the same class (in `new ThreadDemo(sharedVar)`) when creating new threads, multiple threads can run on the same data (shared memory)
 
 ### Create a Thread
 
@@ -1481,3 +1511,53 @@ Thread name = new Thread();
 //Or new thread that runs a method.
 Thread t = new Thread(() -> animate(gc));
 ```
+
+### Deamon Thread
+
+- Deamon threads will be terminated when main method is ready to exit
+- It is good for background tasks with low priorities
+
+### Thread States
+
+1. New state: When a new thread is created, but the `start()` method has not been called
+   - Only `start()` method can be called on a new thread; otherwise, an `IllegalThreadStateException` will be thrown
+2. Runnable state: Runnable state means a thread is ready for execution after `start()` is called on a new thread
+   - In runnable state, thread is ready for execution and is waiting for availability of the processor (CPU time). That is, thread has joined queue (line) of threads that are waiting for execution
+   - If all threads have equal priority, CPU allocates time slots for thread execution on the basis of first-come, first-serve manner. The process of allocating time to threads is known as `time slicing`
+   - A thread can come into runnable state from running, waiting, or new states
+3. Running state: Running means Processor (CPU) has allocated time slot to thread for its execution. When thread scheduler selects a thread from the runnable state for execution, it goes into running state
+   - In running state, processor gives its time to the thread for execution and executes its run method. This is the state where thread performs its actual functions
+   - A thread can come into running state only from runnable state
+4. Blocked state: A thread is considered to be in the blocked state when it is suspended, sleeping, or waiting for some time in order to satisfy some condition.
+   - When `sleep()` method is invoked on a thread to sleep for specified time period, the thread is out of queue during this time period. The thread again reenters into the runnable state as soon as this time period is elapsed.
+   - When a thread is suspended using `suspend()` method for some time in order to satisfy some conditions. A suspended thread can be revived by using resume() method.
+   - When `wait()` method is called on a thread to wait for some time. The thread in wait state can be run again using `notify()` or `notifyAll()` method
+5. Dead state: A thread dies or moves into dead state automatically when its `run()` method completes the execution of statements
+   - A thread can also be dead when the `stop()` method is called, this method is not recommanded because it can't clean up the thread properly
+
+### Thread Methods
+
+- `Tread.sleep(int numberofMS);` Pause All Thread Method
+
+  - it throws `InterruptedException`, For example:
+
+  ```java
+  public static void main(String[] args) throws InterruptedException {  //exception handling for it
+  Thread.sleep(500);} //make it stops in 500ms
+  //or use the following pause method instead of Thread.sleep
+  public static void pause(int duration) {
+      try {
+          Thread.sleep(duration);
+      } catch (InterruptedException ex) {
+      }
+  }
+  ```
+
+- `Thread.currentThread()` returns the current thread object
+- `threadObj.getId()` returns the unique Id of this thread
+- `threadObj.setName("name")` set the thread name, name doesn't have to be unique
+- `threadObj.getName()` returns the thread name
+- `threadObj.getPriority()` get priority
+- `threadObj.getState()` returns the state of thread
+  - Blocked state can be due to waiting for I/O, memory, timer, join method
+  - Runnable state means the thread is awaiting scheduling

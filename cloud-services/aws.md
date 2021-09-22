@@ -635,6 +635,8 @@ It provides support for generating serverless APIs.
   - It uses `DynamoDB`, `S3`, `Aurora MySQL`(`GraphQL`) as data sources
   - `GraphQL` APIs are implemented by `AWS AppSync` (a managed GraphQL service)
   - `REST` APIs are implemented by `API Gateway`
+  - By default cascading deletion is enabled for only one-to-many relationship
+  - Errors may occur when some fields are omitted in a model
 - run `amplify console` to open Amplify Console
   - run `amplify console <Resource>` to open console for a specific resource
 - run `amplify status` check the status of running services
