@@ -185,7 +185,7 @@
   - `array = np.zeros_like(img, np.uint8)` create an array of zeros with the same shape and type as `img`, with data type as `np.uint8`.(generate a black image)
 - Create an array with random values
   - `array = np.random.random(5)`, an array with 5 random double value in range `[0,1)`
-  - `array = np.random.random((rows,cols))`  2D array of random doubles
+  - `array = np.random.random((rows,cols))`, 2D array of random doubles
   - `array = np.random.randint(min, max, size)` list of random ints
   - `array = np.random.randint(min, max, (rows,cols))` 2D array of random ints
 - Create an array with certain constant
@@ -219,6 +219,8 @@
   - `x[:,1]` return the second column
   - `x[2:5,1]` returns a slice of the second column
   - `x[2:5, 2:5]` rectangular slicing
+  - `x[[1, 3], [2, 6]]` return second and fourth rows and third and seventh colomns
+  - `x[[1, 3], [2, 6, -1]]` return second and fourth rows and third, seventh and last colomns
   - `x[[list of indices]]` pulls out selected indices and return them in a new list
   - `x[[True, False, True, True, False]]` pulls out values where True
 - `numpy` array can be printed directly.
@@ -243,6 +245,15 @@
   - `np.where(condition, arr, x)` replace elements in `arr` with `x`, where condition is not true
 - `np.unique(arr)` return an array that only contains unique elements
   - `uniques, counts = np.unique(arr, return_counts=True)` it also returns the occurrance count in a related array
+- `np.printoptions(precision=3, suppress=True)`, set print precision, and suppresses the use of scientific notation
+
+  - `np.set_printoptions(formatter={'float': '{: 0.3f}'.format})`, set formatter in print option
+  - Print options can also be applied locally
+
+  ```py
+  with np.printoptions(precision=3, suppress=True):
+    print(arr)
+  ```
 
 #### Modify the array
 
@@ -264,6 +275,8 @@
 - `arr.clip(0, 255)` clip the elements of the array to be within the defined max and min value
   - `out_array = np.clip(in_array, a_min =[3, 4, 1, 1, 1, 4, 4, 4, 4, 4], a_max = 9)` min or max can be a list of the same size of the original array, and each element is the min range for elements of the original array at that location
 - `np.random.shuffle(arr)` randomly shuffle the input array, it returns `None`
+  - `shuffled = np.random.permutation(arr)` returns a shuffled copy of the input array
+  - `np.random.permutation(n)` is similar with `np.random.shuffle(np.arange(n))` and return a modified array
 - `array = a.sort()` sort in ascending order (sorts each row if a 2D array)
   - `a.sort(axis=0)` sort each column
 - Related (Parallel) Arrays are arrays with the same size and they are related to one another by index, numpy is good at processing and filter those arrays by using one of them as the other's index with or without a method, for example:
@@ -780,6 +793,15 @@ WantedBy=multi-user.target
 
 ## SkiLearn
 
+### sklearn.datasets
+
+- `from sklearn import datasets`
+- [Click Here](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets) for a list of available datasets
+- `dataset = datasets.load_iris()` loads a dataset
+- `dataset.data` returns 2D array of data
+- `dataset.target` returns related array of classification labels
+- `dataset.feature_names` returns the name of each feature (column) in dataset.data
+
 ### sklearn.impute
 
 - SimpleImputer
@@ -832,7 +854,7 @@ WantedBy=multi-user.target
 - Linear Regression Model
   - `from sklearn.linear_model import LinearRegression`
   - `regressor = LinearRegression()` initialize the linear regression model
-  - `regressor.fit(X_train, y_train)` training the training data
+  - `regressor.fit(X_train, y_train)` trains the training data
   - `y_pred = regressor.predict(X_test)` get predict result from test set data points
 
 ### sklearn.metrics
@@ -840,6 +862,23 @@ WantedBy=multi-user.target
 - Confusion Matrix
   - `from sklearn.metrics import confusion_matrix`
   - `cm = confusion_matrix(y_test, y_pred)` calculate accurracy
+
+### sklearn.tree
+
+- Decision tree classifier
+- `from sklearn import tree`
+- `cls = tree.DecisionTreeClassifier()` returns a decision tree classifier object
+- `cls.fit(train, train_target)` trains the training data
+- `prediction = cls.predict(test)` returns a list of predicted results
+- `dot_data = tree.export_graphviz(cls, out_file=None, feature_names=dataset.feature_names, class_names=dataset.target_names, filled=True, rounded=True, special_characters=True)` returns a dot file for the tree graph in graphviz format
+
+## Graphviz
+
+- It provides a simple pure-Python interface for the Graphviz graph-drawing software
+- It loads graphs based on the DOT language
+- `pip install graphviz` or `conda install graphviz`
+- `graph = graphviz.Source(dot_data)` loads dot file string
+- `graph.render("output.dot")` generate PDF graph and output dot file
 
 ## TensorFlow
 

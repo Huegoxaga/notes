@@ -1444,13 +1444,18 @@ outputFile.close();
 
 ## Thread
 
-- Java is a multi-threaded programming language.
+- Java is a multi-threaded programming language
+  - It is a implementation of the concept of concurrency
+  - Concurrency is the composition of independently executing processes, while parallelism is the simultaneous execution of (possibly related) computations
 - The main method itself will be running in a main thread and it can start a new thread by using the following implementation
   - By default in Java, the main thread will wait for all spawned threads to complete execution before exiting
+- All threads under one main threads all belong to one process
+  - Multi-threading in Java focuses on handling the execution of threads as parts of a bigger program
+  - Threads might share or run on different CPU cores
+- For some IDEs, by default only the thread that hits the breakpoint stops. However, this behavior can be modified by changing the breakpopint properties
 - There are two ways to run code in a new thread:
 
   - First way to run code in a new Thread, create a subclass of Thread class as your own class, override your own code in the `run()` method, then create an instant of your class object and run the start() method of the new object.
-  - All thread has priorities range from 1 to 10, can be set with the set Priority() method.
 
   ```java
   public class ThreadDemo extends Thread{
@@ -1512,34 +1517,45 @@ Thread name = new Thread();
 Thread t = new Thread(() -> animate(gc));
 ```
 
-### Deamon Thread
+### Thread Priority
 
-- Deamon threads will be terminated when main method is ready to exit
+- All thread has priorities range from 1 to 10, can be set with the `threadObj.setPriority()` method.
+
+### Daemon Thread
+
+- Daemon threads will be terminated when main method is ready to exit
 - It is good for background tasks with low priorities
+- `threadObj.setDaemon(true)` set the thread as a daemon thread
 
 ### Thread States
 
-1. New state: When a new thread is created, but the `start()` method has not been called
-   - Only `start()` method can be called on a new thread; otherwise, an `IllegalThreadStateException` will be thrown
-2. Runnable state: Runnable state means a thread is ready for execution after `start()` is called on a new thread
-   - In runnable state, thread is ready for execution and is waiting for availability of the processor (CPU time). That is, thread has joined queue (line) of threads that are waiting for execution
-   - If all threads have equal priority, CPU allocates time slots for thread execution on the basis of first-come, first-serve manner. The process of allocating time to threads is known as `time slicing`
-   - A thread can come into runnable state from running, waiting, or new states
-3. Running state: Running means Processor (CPU) has allocated time slot to thread for its execution. When thread scheduler selects a thread from the runnable state for execution, it goes into running state
-   - In running state, processor gives its time to the thread for execution and executes its run method. This is the state where thread performs its actual functions
-   - A thread can come into running state only from runnable state
-4. Blocked state: A thread is considered to be in the blocked state when it is suspended, sleeping, or waiting for some time in order to satisfy some condition.
-   - When `sleep()` method is invoked on a thread to sleep for specified time period, the thread is out of queue during this time period. The thread again reenters into the runnable state as soon as this time period is elapsed.
-   - When a thread is suspended using `suspend()` method for some time in order to satisfy some conditions. A suspended thread can be revived by using resume() method.
-   - When `wait()` method is called on a thread to wait for some time. The thread in wait state can be run again using `notify()` or `notifyAll()` method
-5. Dead state: A thread dies or moves into dead state automatically when its `run()` method completes the execution of statements
-   - A thread can also be dead when the `stop()` method is called, this method is not recommanded because it can't clean up the thread properly
+- `NEW` state: When a new thread is created, but the `start()` method has not been called
+  - Only `start()` method can be called on a new thread; otherwise, an `IllegalThreadStateException` will be thrown
+- `RUNNABLE` state: Runnable state means a thread is ready for execution after `start()` is called on a new thread
+  - In runnable state, thread is ready for execution and is waiting for availability of the processor (CPU time). That is, thread has joined queue (line) of threads that are waiting for execution
+  - If all threads have equal priority, CPU allocates time slots for thread execution on the basis of first-come, first-serve manner. The process of allocating time to threads is known as `time slicing`
+  - Thread start running in this state when Processor (CPU) has allocated time slot to thread for its execution. When thread scheduler selects a thread from the runnable state for execution, it goes into running state
+    - In running state, processor gives its time to the thread for execution and executes its run method. This is the state where thread performs its actual functions
+    - A thread can come into running state only when it is in runnable state
+    - When a thread is suspended, it stops running but it is still in `RUNNABLE` state
+- Threads can go to non-runnable and fall into one of the following state
+  - `TIMED_WAITING` state: when it's waiting for another thread to perform a particular action within a stipulated amount of time
+    - When `sleep()` method is invoked on a thread to sleep for specified time period, it enters the `TIMED_WAITING` state, the thread is out of queue during this time period. The thread again reenters into the runnable state as soon as this time period is elapsed
+    - can be also triggered by `thread.join(long millis)`, `LockSupport.parkNanos`, `LockSupport.parkUntil`
+    - When `wait()` method is called on a thread to wait for some time. The thread in wait state can be run again using `notify()` or `notifyAll()` method
+  - `WAITING` state: A thread is in WAITING state when it's waiting for some other thread to perform a particular action
+    - It happens when either `object.wait()`, `thread.join()` or `LockSupport.park()` is called without specifying the time to wait
+  - `BLOCKED` state: A thread is considered to be in the blocked state when it is waiting for a monitor lock and is trying to access a section of code that is locked by some other thread
+    - (deprecated) When a thread is suspended using `suspend()` method for some time in order to satisfy some conditions. A suspended thread can be revived by using `resume()` method
+- `TERMINATED` state: A thread dies or moves into dead state automatically when its `run()` method completes the execution of statements
+  - (deprecated) A thread can also be dead when the `stop()` method is called, this method is not recommanded because it can't clean up the thread properly
 
 ### Thread Methods
 
 - `Tread.sleep(int numberofMS);` Pause All Thread Method
 
-  - it throws `InterruptedException`, For example:
+  - Precision and accuracy of the sleeping time depends on system timers and schedulers
+  - if any thread has interrupted the sleeping thread. `InterruptedException` will be thrown from the sleeping thread, For example:
 
   ```java
   public static void main(String[] args) throws InterruptedException {  //exception handling for it
@@ -1553,6 +1569,8 @@ Thread t = new Thread(() -> animate(gc));
   }
   ```
 
+- `threadObj.join()` stop the thread which is calling the method and wait for `threadObj` to finish
+  - if any thread has interrupted the joined thread. an `InterruptedException` will be thrown from the `run()` method of `threadObj`
 - `Thread.currentThread()` returns the current thread object
 - `threadObj.getId()` returns the unique Id of this thread
 - `threadObj.setName("name")` set the thread name, name doesn't have to be unique
@@ -1561,3 +1579,5 @@ Thread t = new Thread(() -> animate(gc));
 - `threadObj.getState()` returns the state of thread
   - Blocked state can be due to waiting for I/O, memory, timer, join method
   - Runnable state means the thread is awaiting scheduling
+- `threadObj.interrupt()` raise an `InterruptedException` from the running thread
+  - The exception is raised from the running line in the `run()` method of the threading

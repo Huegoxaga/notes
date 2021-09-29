@@ -643,10 +643,11 @@ list(accumulate(range(8)))
 
 - create a fake object for testing
 
-##### patch
+#### patch
 
 - `from unittest.mock import patch`
 - In the class definition:
+
   ```py
   def method_for_test(self, t):
         response = requests.get(f'http://company.com/{self.x}/{y}')
@@ -655,7 +656,9 @@ list(accumulate(range(8)))
         else:
             return 'Bad Response!'
   ```
+
 - In the test method:
+
   ```py
   def test_method(self):
        with patch('classname.requests.get') as mocked_get:
@@ -703,6 +706,28 @@ class TestExample(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 ```
+
+## logging
+
+- Write output to a log file with different log level
+
+### Log Level
+
+- `DEBUG` - Detailed information, typically of interest only when diagnosing problems
+- `INFO` - Confirmation that things are working as expected.
+- `WARNING` - An indication that something unexpected happened, or indicative of some problem in the near future (e.g. ‘disk space low’). The software is still working as expected
+- `ERROR` - Due to a more serious problem, the software has not been able to perform some function
+- `CRITICAL` - A serious error, indicating that the program itself may be unable to continue running
+
+### Usage
+
+- `import logging`
+- `logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG)`
+  - For `python<3.9`, omit the `encoding` argument
+- `logging.debug('message')` log debug message
+- `logging.info('message')` log info message
+- `logging.warning('message')` log warning message
+- `logging.error('message')` log error message
 
 # def createHash():
 

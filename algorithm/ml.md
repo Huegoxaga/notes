@@ -364,7 +364,7 @@
     - Fine-Tuning - replace the last fully connected layers with a new layer then train the model based on existing weight from trained model.
 - Train Model
   - Hyperparameters in the train model step is called Optimizer Hyperparameters.
-  - Epochs
+  - Epochs - an epoch refers to one cycle through the full training dataset
     - If the number of epochs is too small the model will be underfitting, If the number of epochs is too large the model will be overfitting.
       - The best number of epochs will make the test set and the model have the best performance, this is called the Goldilocks point.
       - Early Stopping is the algorithm for finding the Goldilocks point, hence determine the best number of epochs to train the model.

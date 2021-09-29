@@ -184,7 +184,10 @@
   - Request header content type decide the content type of the request body
     - On the server side, `Access-Control-Allow-Headers` need to be setup to allow certain headers in request.
     - `"Cache-Control", "no-cache"`, `"Pragma", "no-cache"` can be used to disable client side broswer cache
-- It has a Authentication realms for authentication
+- It has a Authentication realms for authentication, it accepts the following types in the authorization header
+  - `Basic Auth`: `Basic Base64Encoded(username:password)`
+  - `API Key`: `Token <API_Key>`
+  - `Bearer Token`: `Bearer <JWT_Token>`
 - HTTP Response
   - The response message contain:
     - a status line which includes the status code and reason message (e.g., HTTP/1.1 200 OK, which indicates that the client's request succeeded)
@@ -267,7 +270,22 @@
       - 599 Network Connect Timeout Error
 - The URL will be encoded using the `UTF-8` encoding scheme
   - `+` means a space only in `application/x-www-form-urlencoded` content, such as the query part of a URL
-- A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood and a server is aware using specific methods and headers.
+- Same-origin policy controls interactions between two different origins
+  - Same-origin means two sites have identical domian, protocol, and port
+  - `CORS` is used to allow cross-origin access, it opens a backdoor for same-origin policy
+    - A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood and a server is aware using specific methods and headers.
+- HTTP Cookies (web cookie, browser cookie) - is a small piece of data that a server sends to the user's web browser
+  - A cookie stores a key-value pair data which is limited to 4KB
+  - it is sent automatically along with HTTP requests if the following conditions satisfied
+    - The cookie still exists, based on its lifetime definition
+      - `Session cookies` are deleted when the current session ends
+      - `Permanent cookies` are deleted at a date specified by the `Expires` attribute, or after a period of time specified by the `Max-Age` attribute
+    - The restricted access of the cookie
+      - A cookie with the Secure attribute is sent to the server only with an encrypted request over the HTTPS protocol
+      - A cookie with the HttpOnly attribute is inaccessible to the JavaScript Document.cookie API; it is sent only to the server
+    - The applicable `Domain` and `Path` for the cookie, or the defined `SameSite` attribute
+  - Local storage and session storage are used to store data for the web app only, as their contents are not sent through HTTP requests
+    - Local storage persists while session storage is cleared at the end of each session
 - A simple request does not use reflight check, itmeets all the following conditions:
   - One of the allowed methods:
     - `GET`

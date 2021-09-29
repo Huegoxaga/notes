@@ -1174,6 +1174,40 @@
   - The `–c` option specifies the number of concurrent connections to be made
   - The `–v` option specifies the level of reporting (verbosity)
 
+### logrotate
+
+- It controls log auto rotation on a daily bases
+  - It will be executed daily by cron
+- Its config file is located at `/etc/logrotate.conf`
+  - Based on the default config, additional configs for log files can be stored under `/etc/logrotate.d`
+  - Usually package manager drops log information for installed packages in the `logrotate.d` directory
+- Config format
+  - `compress` rotated log files
+  - `create` new log files
+    - It can includes permissions, `create 0600 root root`
+  - `size` only rotates when log file is greater than the pre-config file
+  - `dateext` rotate the old log file with date in the log filename
+  - `maxage 100` remove older rotated log files in number of days
+  - `missingok` Don't return error if the log file is missing
+  - `copytruncate` make a copy of rotated log and keeping use the existing log file by clearing it instead of creating a new file
+  - `*` works in log path, e.g. `/var/log/* {}`
+
+```config
+<absolute/log/path> {
+  daily | weekly | monthly
+  rotate <keepNumberOfInterval>
+  size 30k
+  compress
+  create
+  postrotate
+    <command after rotate>
+  endscript
+}
+```
+
+- run `logrotate -f /etc/logrotate.conf` to force all logs to be rotated one based on the config rules
+- run `logrotate <configFile>` run rotate once based on rules defined in the specified config file
+
 ### openssl
 
 - OpenSSL is an open-source command line tool that is commonly used to generate private keys, create CSRs, install your SSL/TLS certificate, and identify certificate information.
