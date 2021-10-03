@@ -364,13 +364,14 @@ A NoSQL database that stores JSON data.
 
 - In DynamoDB, a table is a collection of items, and each item is a collection of attributes
 - Each table must have one of the following type of primary key to uniquely identify each item
-  - `Partition key` – A simple primary key, composed of one attribute known as the partition key
-  - `Partition key and sort key` – Referred to as a composite primary key, this type of key is composed of two attributes. The first attribute is the partition key, and the second attribute is the sort key
-- Secondary Indexes enable additional ways to query data, it can be:
+  - `Partition key` – A simple primary key, composed of one attribute known as the partition key. In this case, each partition key has to be unique
+  - `Partition key and sort key` – Referred to as a composite primary key, this type of key is composed of two attributes. The first attribute is the partition key, and the second attribute is the sort key. In this case, the combination of these two keys have to be unique
+- Secondary Indexes enable additional ways to query data which doesn't have to be unique, it can be:
   - `Global secondary index` – Another set of partition key and sort key which are different from the existing ones used by the primary keys
   - `Local secondary index` – An index that has the same partition key used by the primary key, but a different sort key.
 - `Partition` keys use `HASH` which adpots strict equality for query
 - `Sort` keys enables `gt`, `ge`, `lt`, `le`, `eq`, `beginsWith`, and `between` for query
+- A query needs to specify a target partition key, then sort by sort key, then use a filter on non-key fields
 - Whenever the database is updated, new record or updated record will be sent to the DynamoDB Stream.
 
 ## RDS

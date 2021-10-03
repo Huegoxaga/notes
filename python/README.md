@@ -154,8 +154,9 @@ a=1101101
 
 ### Boolean
 
-- True
-- False
+- A Boolean value is either `True` or `False`
+- In Python `3.x`, `True` and `False` are keywords and will always be equal to `1` and `0` respectively
+- In arithmetic operation `True` is `1`, `False` is `0`
 
 ### Integer
 

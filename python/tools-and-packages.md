@@ -640,6 +640,9 @@
 - `plt.title('Graph Title')`
 - `plt.figure(1)` init a separate tab to draw the graph
   - After figure 1 is plotted, `plt.figure(2)` will create a second tab
+  - Or, `plt.figure("Title Text", figsize=(width, height))`
+- `plt.subplot(xyz)` defines subplots within one figure, should be called before drawing each subplot
+  - It is the same as `plt.subplot(rows, cols, index)`, rows and cols defines the shape of the grid, index is the start location from top-left, starting from `1`
 - `plt.legend()` add legend base on labels automatically
   - `plt.legend(['firstLineLegend','firstLineLegend'])` set legend text.
   - `plt.legend(loc='upper left')` or `plt.legend(loc=(percent_from_left, percent_from_bottom))` set the legend location.
@@ -868,6 +871,7 @@ WantedBy=multi-user.target
 - Decision tree classifier
 - `from sklearn import tree`
 - `cls = tree.DecisionTreeClassifier()` returns a decision tree classifier object
+  - [Click Here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) to see all related parameters
 - `cls.fit(train, train_target)` trains the training data
 - `prediction = cls.predict(test)` returns a list of predicted results
 - `dot_data = tree.export_graphviz(cls, out_file=None, feature_names=dataset.feature_names, class_names=dataset.target_names, filled=True, rounded=True, special_characters=True)` returns a dot file for the tree graph in graphviz format
@@ -876,6 +880,7 @@ WantedBy=multi-user.target
 
 - It provides a simple pure-Python interface for the Graphviz graph-drawing software
 - It loads graphs based on the DOT language
+  - [Click Here](http://webgraphviz.com/) to visualize dot file graph online
 - `pip install graphviz` or `conda install graphviz`
 - `graph = graphviz.Source(dot_data)` loads dot file string
 - `graph.render("output.dot")` generate PDF graph and output dot file

@@ -93,6 +93,9 @@ There are many great IDE for Java
 - They use function to make conversion. (Interger.toString(intx))
 - They use function to test equality(no == sign) (a.equals(b) for Strings)
 - null? relation to reference type with no memory reference. 0 for some float initialization default when they are not assigned with any number.
+- When a variable is volatile, it means the data must be read from and written to main memory
+  - It cannot use the cache value
+  - The use of main memory over cache is expensive
 
 ### Type casting
 
@@ -1581,3 +1584,85 @@ Thread t = new Thread(() -> animate(gc));
   - Runnable state means the thread is awaiting scheduling
 - `threadObj.interrupt()` raise an `InterruptedException` from the running thread
   - The exception is raised from the running line in the `run()` method of the threading
+
+### Locks
+
+- The areas of the code that access (read or write) the shared resource or memory is considered a critical section
+  - Critical section needs to be protected using mutual exclusion and locks
+  - If two threads are using the same memory location and at least one thread is changing the value (writing to memory) there is a chance for a data race to occur
+  - Critical section in code should be minimized to only what is necessary
+- Locks is a mechanism to ensure only one thread can execute at a time
+- Lock ensures that write will occur before any subsequent reads
+- An unlock must occur before another thread can lock
+- Locks in Java are interfaces
+- Keeps a count of the number of times it has been locked•getHoldCount method
+- Fairness Policy - Java lock interfaces have the ability to turn on a fairness policy. Once set to true in constructor, the lock will be always assigned to the longest waiting thread (no matter if it is a read or write)
+  - This often results in slower throughput or slower execution time
+  - As thread scheduling is still done by the operating system, there is no guarantee as to when that thread will be scheduled
+- When using locks, suspending and resuming threads is expensive due to context switching
+
+#### ReentrantLock
+
+- It acts as a gate to the critical section
+- The thread has to obtain the lock before entering the critical section
+- The thread has to release the lock when exiting the critical section
+- All other threads that try to obtain the lock are blocked waiting for the lock to become available
+- Reentrant means the same thread can hold the same lock multiple times in the case of nested critical sections
+- Declare a lock object in a class using `private static ReentrantLock lock = new ReentrantLock();`
+- Use `lock.lock();` before, and `lock.unlock();` after a critical section
+
+#### ReentrantReadWriteLock
+
+- Useful in situations where threads are mostly reading (obtaining data) and very few writes are occurring
+- The write lock ensures one thread can write to the variable and stop threads that are reading
+- The read lock ensures many threads can read the variable, as long as no single thread are writing
+- Declare a lock object in a class using `private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();`
+- For read lock, use `lock.readLock().lock();` before, and `lock.readLock().unlock();` after a critical section
+- For write lock, use `lock.writeLock().lock();` before, and `lock.writeLock().unlock();` after a critical section
+
+### Atomic Variables
+
+- They are non-blocking algorithm that uses the atomic machine instructions like compare-and-switch (CAS)
+  - CAS operation is a single machine level operation that has three operands in it’s operation
+    - `M` – memory location
+    - `A` – the expected value of the variable before updating
+    - `B` – the new value it needs to set the variable to
+  - When the CAS executes, if the expected does not match what is actually in memory, the update fails and returns false
+- Atomic Variables can be modified using built-in methods, it is less flexible compare to locks
+- Declare an integer atomic value with `0` initial value in a class using `private static AtomicInteger intAtm = new AtomicInteger(0);`
+
+#### Methods for Atomic Variables
+
+- For an atomic integer:
+  - `AtomicInteger intAtm = new AtomicInteger(0);`
+  - `intAtm.incrementAndGet()`, same as `++intAtm`
+  - `intAtm.getAndIncrement()`, same as `intAtm++`
+- For an atomic boolean:
+  - `AtomicBoolean boolAtm = new AtomicBoolean(false);`
+  - `boolean value = boolAtm.get();` get boolean value
+  - `boolAtm.set(false);` set value
+  - `boolAtm.getAndSet(newBool);` set new value and return old value
+  - `boolAtm.compareAndSet(expect, update)` sets the value to the given updated value if the current value equals the expected value
+    - returns true if successful
+
+### Synchronized
+
+- Java objects already have a lock associated with it
+  - Just like a lock you declare, as long as one thread has the lock, all others are blocked
+- In order to enforce the intrinsic lock, we use the keyword synchronized
+- The performance is slower than atomic variables and faster than locks
+
+#### Synchronized Method
+
+- Include keyword synchronized as a part of the method signature
+- The lock controls access to the method one Thread at a time
+- Declare a synchronized method in a class using `private static synchronized void syncMethodName(){ /*critical section goes here*/ }`
+  - Then call it where the critical code section is needed
+
+#### Synchronized Statement
+
+- Using synchronized keyword followed the specific object that will provide the intrinsic lock and then curly braces
+- Code block inside braces are protected by the intrinsic lock
+- The specified object needs to be consistent for each Thread
+  - Make sure the same object is always being used
+- To use synchronized statement, wrap `synchronized (ClassName.class) { /*critical section*/ }` around critical section
