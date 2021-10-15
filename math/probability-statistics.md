@@ -23,7 +23,8 @@
   - Extra `r!` in the formula is used to make orders not matter.
 - Strategies
   - Draw graph and make analogy to solve different senareio in questions.
-  - Methods using steps of combanation&Pemutation is more reliable.
+  - Methods using steps of Combination and Pemutation (e.g. $${_6}P_2 \cdot {_5}C_4$$) is more reliable.
+  - When finding all combination using steps like $${_5}C_2 \cdot {_3}C_2$$, be aware of duplicated cases, because steps itself have order which combination doesn't care about
   - The idea of dividing into event and analysis the independence is crutial.
 
 ## Probability

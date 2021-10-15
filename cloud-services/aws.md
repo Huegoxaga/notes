@@ -527,6 +527,13 @@ It provides support for generating serverless APIs.
     - integration is an AWS service that handles the request and prepare response content(e.g. Lambda)
   - mapping templates for request is used for handle/reformat response output from integration
 - In the API setting, add specific content type or `image/*` or `*/*` in `Binary Media Types`, then whenever a header `Content-Type` or `Accept` match is found, the body will be converted to binary using base64 encoding
+- Gateway responses defines response messages from API Gateways when there is error before resquest is sent to the backend
+  - Select corresponding error type and customize the response message
+  - e.g. for `Bad Request Body` update the message as `{"message":"$context.error.validationErrorString"}` to see the detailed validation errors
+- Models can be defined and used by the request validator and response model
+  - It is defined in [JSON Schema](http://json-schema.org/learn/getting-started-step-by-step) format
+  - Add the model to request body and select request body validator to enable validation
+- Defines query string parameters and request header for a method and select validate query string parameters and headers to enable API gateway validation for requests
 
 ## Kinesis
 

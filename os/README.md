@@ -7,6 +7,20 @@
   - Operating systems opened up the opportunity to have multiple processes running at once (Parallelism)
   - Communication between processes can be achieved via sockets, signal handlers, shared memory, semaphores and files
   - OS also controls the execution of multiple threads in each process (Concurrency)
+  - For programs utilize multithread, there are three common thread liveness problems:
+    - Deadlock: Each thread operating is waiting for another thread to finish executing
+      - There is no CPU usage, because all threads are waiting
+      - Can be the affect of lock ordering (when multiple locks are required)
+        - May have to modify the order the locks are obtained
+        - May have to include a lock timeout after a certain amount of time all locks are released and each thread has to try again
+      - Can also happen when a thread unexpectedly exits without unlocking resources
+        - Lock and unlock should always be executed in programs exception handling step
+    - Starvation: For some reason, a thread is unable to obtain the resources it needs
+      - Having priority on threads may cause this, low priority threads never get scheduled to run
+      - Having a large number of incoming threads running may also cause starvation
+    - Livelock: Threads are still not making progress, but are actively trying to solve the problem
+      - It is like four cars are waiting other to go first in a four ways intersection in front of all-way stop signs
+      - CPU has consistent usage under livelock, lots of context switching going on
 - All of the hardware resources are managed by this singular operating system, and applications can then run in the environment set up by that operating system
   - For most virtualization tool, they are running on top of this singular operating system called the host OS
   - Type 1 hypervisor is an exception, it runs directly on the hardwares

@@ -126,7 +126,7 @@
 - `brew services start <service>` Start the service formula immediately and register it to launch automatically
 - `brew services stop <service>` Stop the service formula immediately and unregister it from launching automatically
 - `brew services restart <service>` Stop (if necessary) and start the service formula immediately and register it to launch automatically
-- `brew services cleanup <service>` Remove all unused services
+- `brew services cleanup` Remove all unused services
 - The specific service in the above command can be replaced by a `--all` flag
 - For launch registration:
   - If `sudo` is passed, operate on `/Library/LaunchDaemons` (started at boot).

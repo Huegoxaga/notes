@@ -226,6 +226,7 @@ str.upper()
 str.lower()
 str.isalpha()         # Return boolean
 str.isdecimal()
+str.isnumeric() # check if contains only 0-9
 str.islower()
 str.isspace()
 str.isupper()

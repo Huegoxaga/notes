@@ -96,6 +96,7 @@ There are many great IDE for Java
 - When a variable is volatile, it means the data must be read from and written to main memory
   - It cannot use the cache value
   - The use of main memory over cache is expensive
+- Static variable belongs to the class, new objects of a class will share a common static variable, class objects won't allocate memory for these variables the same way as local variables
 
 ### Type casting
 
@@ -469,6 +470,7 @@ public class Test
 
 - Anonymous classes are used to override other class method in the main method in braces follow the constructor.
 - This modification is done on the object but not the classes.
+
   ```java
   class Machine {
     public void start() {
@@ -747,7 +749,9 @@ double pi = p.getX();
 ```
 
 - The wildcard type symbol `?` stands for any generic type. `Point<?>` references will accept a `Point<T>` object for any type T.
+
   - T will require casting when using wild card without constrain.
+
   ```java
   static double sqLength(Point<?> p)
   {
@@ -759,9 +763,11 @@ double pi = p.getX();
     return x*x + y*y;
   }
   ```
+
   - `Point <? extends Number> p2;` Constrained wild card `p2` can accept a `Point<T>` object, where T is any type that extends Number
   - In class definition `class Point<T extends Number>` constrains to a subclass of Number.
   - A type parameter can be constrained to a type implementing an interface
+
   ```java
   public static <T extends Comparable<T>>
   T greatest(T arg1, T arg2)
@@ -779,6 +785,7 @@ double pi = p.getX();
     System.out.println(great);
   }
   ```
+
 - Interfaces, like classes, can be generic.
 
 #### Generic Methods
@@ -849,9 +856,9 @@ public static void main (String[] args) throws CheckedExceptionType{
 
 ```java
 public class ExampleException extends RuntimeException {
-	public ExampleException() {
-		super("set message here");
-	}
+  public ExampleException() {
+    super("set message here");
+    }
 }
 ```
 
@@ -1582,8 +1589,9 @@ Thread t = new Thread(() -> animate(gc));
 - `threadObj.getState()` returns the state of thread
   - Blocked state can be due to waiting for I/O, memory, timer, join method
   - Runnable state means the thread is awaiting scheduling
-- `threadObj.interrupt()` raise an `InterruptedException` from the running thread
+- `threadObj.interrupt()` raise an `InterruptedException` from the thread
   - The exception is raised from the running line in the `run()` method of the threading
+  - Interrupting a thread that is not alive need not have any effect
 
 ### Locks
 
@@ -1600,16 +1608,21 @@ Thread t = new Thread(() -> animate(gc));
   - This often results in slower throughput or slower execution time
   - As thread scheduling is still done by the operating system, there is no guarantee as to when that thread will be scheduled
 - When using locks, suspending and resuming threads is expensive due to context switching
+- Proper exception handlding should be used for lock methods, lock method in try block, and unlock method in finally block
+- A lock is owned by the thread last successfully locking, but not yet unlocking it
 
 #### ReentrantLock
 
 - It acts as a gate to the critical section
 - The thread has to obtain the lock before entering the critical section
 - The thread has to release the lock when exiting the critical section
-- All other threads that try to obtain the lock are blocked waiting for the lock to become available
+- All other threads that are trying to lock are blocked waiting for the lock to become available
 - Reentrant means the same thread can hold the same lock multiple times in the case of nested critical sections
 - Declare a lock object in a class using `private static ReentrantLock lock = new ReentrantLock();`
 - Use `lock.lock();` before, and `lock.unlock();` after a critical section
+- Use `lock.tryLock()` allows the thread to be locked in a non-blocking manner, it returns false if locking is not successful, then there should be a logic to allow thread to run `lock.tryLock()` again
+  - Allows the thread to perform other work if lock is not available, instead of just waiting
+  - Untimed tryLock method does not honor the fairness settin
 
 #### ReentrantReadWriteLock
 
@@ -1666,3 +1679,20 @@ Thread t = new Thread(() -> animate(gc));
 - The specified object needs to be consistent for each Thread
   - Make sure the same object is always being used
 - To use synchronized statement, wrap `synchronized (ClassName.class) { /*critical section*/ }` around critical section
+
+## Runtime
+
+- The `Runtime` class allows the application to interface with the JVM environment in which the application is running
+- `Runtime.getRuntime()` return the current runtime object
+- `runtimeObj.freeMemory()` return the amount of free memory in the JVM
+- `runtimeObj.gc()` runs the garbage collector now
+- `runtimeObj.availableProcessors()` returns the number of processors available to the JVM
+- `runtimeObj.addShutdownHook(threadObj);` run thread when program exits or user send interupt singal
+
+```java
+Runtime.getRuntime().addShutdownHook(new Thread() {
+      public void run() {
+        System.out.println("Program exiting");
+      }
+    });
+```
