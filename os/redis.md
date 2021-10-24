@@ -18,6 +18,11 @@
   - Run `src/redis-server` to start the server after compilation, other installation will start redis server automatically.
   - Use `make install` for compilation will compile the binaries to the system, then environment path setting is no longer required.
 
+## Configuration
+
+- Config file is located at `/etc/redis/redis.conf`
+- To run redis under systemd, set `supervised systemd`
+
 ## Redis CLI
 
 - It can be used to access the database.

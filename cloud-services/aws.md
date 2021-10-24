@@ -535,6 +535,46 @@ It provides support for generating serverless APIs.
   - Add the model to request body and select request body validator to enable validation
 - Defines query string parameters and request header for a method and select validate query string parameters and headers to enable API gateway validation for requests
 
+## AppSync
+
+- It can be used to create GraphQL APIs,
+- The API is defined by GraphQL schema syntax
+- Data is served from an AppSync Data Source, it supports a range of existing data source types including DynamoDB tables, RDS, and Lambda functions
+  - It helps auto generate DynamoDB tables by defining new data model in the schema
+  - Data sources are created with a IAM role, the role has permission to access the data
+
+### Resolver
+
+- It adds logic to the GraphQL APIs
+- The resolver scripts are written in Apache Velocity Template Language (VTL)
+- Each table field can have one resolver or more when using pipepline resolver
+  - Pipeline resolver is defined as a list of functions
+  - Only in this way, it the resolver can access multiple data sources
+- Query and Mutation type must attach itself to a resolver to properly match the request to the data and the define the response data
+
+  - example mutation request mapping resolver
+
+  ```vtl
+  {
+    "version": "2017-02-28",
+    "operation": "PutItem",
+    "key": {
+      ## This upload rosolver auto generate uuid for the id field
+      "id": $util.dynamodb.toDynamoDBJson($util.autoId()),
+    },
+    "attributeValues": $util.dynamodb.toMapValuesJson($ctx.args.input),
+    ## the default mutation resolver has a condition check to prevent data overwrite
+    "condition": {
+      "expression": "attribute_not_exists(#id)",
+      "expressionNames": {
+        "#id": "id",
+      },
+    },
+  }
+  ```
+
+  - example mutation response mapping resolver, `$util.toJson($ctx.result)`
+
 ## Kinesis
 
 - It provides a searies of services related to streaming information to the cloud
@@ -650,6 +690,7 @@ It provides support for generating serverless APIs.
 - run `amplify status` check the status of running services
 - run `amplify delete` delete all the environments of the project from the cloud and wipe out all the local files created by Amplify CLI
 - run `amplify remove <Resource>` to remove local files related to existing backend services
+  - Before removing an auth service, turn off the auth setting in the API service first
 - run `amplify update <Resource>` to update local files related to existing backend services
 - run `amplify help` to see more options
 - run `amplify push` to deploy local changes to the cloud including the creation, update and removal of any services

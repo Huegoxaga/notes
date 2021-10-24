@@ -1223,6 +1223,7 @@ ArrayList<String> x = new ArrayList<String>(10);
 
 ```java
 ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(10, 20, 30, 40, 30, 50, 10, 20, 30, 90));
+ArrayList<Integer> numbers = new ArrayList<>(List.of(10, 20, 30, 40, 30, 50, 10, 20, 30, 90));
 ```
 
 ### create linkedlist object
@@ -1381,7 +1382,7 @@ while(it.hasNext()) {
 
 ```java
 try {
-  File fileName = new File("C:\\folderName\\test.txt");
+  File file = new File("C:\\folderName\\test.txt");
 }
  catch (FileNotFoundException e) {
 }
@@ -1389,8 +1390,27 @@ try {
 
 - if use relative path, the path is in the same folder as the `src` folder.
 - we used double backslashes in the path, as one backslash should be escaped in the path String.
-- `exists()` method, determine whether a file exists. //return boolean
-- The `getName()` method returns the name of the file.
+- `exists()` returns true if the file exists
+- `file.getName()` returns the name of the file
+- `file.isDirectory()` returns true if the filepath represents a directory
+
+#### Filter File
+
+```java
+//create a FileFilter and override its accept-method
+FileFilter myFilter = new FileFilter() {
+  //Override accept method
+  public boolean accept(File file) {
+      //if the file extension is .log return true, else false
+      if (file.getName().endsWith(".log")) {
+        return true;
+      }
+      return false;
+  }
+};
+// return list of files after filtering under the directory `file`
+File[] files = file.listFiles(myFilter);
+```
 
 #### Read File
 
@@ -1580,7 +1600,8 @@ Thread t = new Thread(() -> animate(gc));
   ```
 
 - `threadObj.join()` stop the thread which is calling the method and wait for `threadObj` to finish
-  - if any thread has interrupted the joined thread. an `InterruptedException` will be thrown from the `run()` method of `threadObj`
+  - If thread is interrupted then join method will throw `InterruptedException`
+  - One thread can join multiple threads, so it can wait until all threads are finished. When a thread is completed before others join, the join method return immediately
 - `Thread.currentThread()` returns the current thread object
 - `threadObj.getId()` returns the unique Id of this thread
 - `threadObj.setName("name")` set the thread name, name doesn't have to be unique
@@ -1648,8 +1669,8 @@ Thread t = new Thread(() -> animate(gc));
 
 - For an atomic integer:
   - `AtomicInteger intAtm = new AtomicInteger(0);`
-  - `intAtm.incrementAndGet()`, same as `++intAtm`
-  - `intAtm.getAndIncrement()`, same as `intAtm++`
+  - `intAtm.incrementAndGet()`, a thread safe version of `++intAtm`
+  - `intAtm.getAndIncrement()`, a thread safe version of `intAtm++`
 - For an atomic boolean:
   - `AtomicBoolean boolAtm = new AtomicBoolean(false);`
   - `boolean value = boolAtm.get();` get boolean value
@@ -1679,6 +1700,61 @@ Thread t = new Thread(() -> animate(gc));
 - The specified object needs to be consistent for each Thread
   - Make sure the same object is always being used
 - To use synchronized statement, wrap `synchronized (ClassName.class) { /*critical section*/ }` around critical section
+
+## Blocking Queue
+
+- A producer is one or more threads that produce elements to be added to a shared data structure
+- A consumer is one or more threads that remove the elements from the shared data structure and process them
+- The `BlockingQueue` interface API in Java is the thread safe shared data structure, used by both producers and consumers
+  - It ensures only one thread is adding / removing at a time
+  - It ensures a producer thread doesn't add data to a full queue
+  - It ensures a consumer thread doesn't remove data from an empty queue
+- The `BlockingQueue` interface implements and has the following queue classe types available:
+  - Unbounded Queues - it will only full when there is no free memory
+    - `LinkedBlockingQueue`
+  - Bounded Queues - they require the producer to wait if queue is full
+    - `ArrayBlockingQueue`
+- [Click Here](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/concurrent/BlockingQueue.html) for more details
+- Producer can send poison objects to each consumer thread, consumer threads will shutdown immeditately when a poison object condition check is evaluated as true
+
+### Blocking Queue Methods
+
+- `queueObj.add()` Inserts the specified element into this queue, returning true upon success and throwing an `IllegalStateException` if no space is currently available
+- `queueObj.remove()` Retrieves and removes the head of this queue, throws an exception if this queue is empty
+- `queueObj.element()` Retrieves, but does not remove, the head of this queue, throws an exception is empty
+- `queueObj.offer(e)` Inserts the specified element into this queue, returning true upon success and false if no space is currently available
+  - `offer(e, time, unit)` Inserts the specified element into this queue, waiting up to the specified wait time if full
+- `queueObj.poll()` Retrieves and removes the head of this queue, or returns null if this queue is empty
+  - `poll(time, unit)` Retrieves and removes the head of this queue, waiting up to the specified wait time if empty
+- `queueObj.peak()` Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty
+- `queueObj.put(e)` Inserts the specified element into this queue, waiting if necessary for space to become available
+- `queueObj.take()` Retrieves and removes the head of this queue, waiting if necessary until an element becomes available
+
+## Executor Service
+
+- Executor Service is the class for thread pools
+  - Thread pools is a group of pre-allocated threads that wait for tasks, and complete tasks
+  - It fits the producer and consumer pattern
+- Executor can be used to create different types of thread pools using factory design pattern
+  - Single Thread Executor - it has a single worker thread (consumer) plus an unbounded queue
+  - Fixed Thread Pools - it has a fixed number of worker thread (consumer) plus an unbounded queue
+  - Cached Thread Pools
+  - Scheduled Thread Pools
+  - Fork Join Pools (for recursive algorithms)
+- This solves the issue of unbounded thread creation including
+  - Thread Lifecycle Overhead
+  - Resource Consumption
+  - Stability
+- It addresses the overhead of thread creation / deletion, as these threads are created once at beginning of program and just wait for tasks to be assigned
+- It works great when time to execute task is shorter than time to create thread
+
+### Usage
+
+- `ExecutorService pool = Executors.newFixedThreadPool(numProcs);` create a fixed thread pool
+  - usually the thread number equals the number of processes, `int numProcs = Runtime.getRuntime().availableProcessors();`
+- `pool.submit(new Task())` add tasks (runnable classes) to the pool
+- `pool.shutdown();` ensures an orderly shutdown of all threads
+  - The pool will not accept new tasks once the shutdown is started
 
 ## Runtime
 

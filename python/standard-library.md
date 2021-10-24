@@ -710,6 +710,7 @@ if __name__ == '__main__':
 ## logging
 
 - Write output to a log file with different log level
+- `import logging`
 
 ### Log Level
 
@@ -721,7 +722,6 @@ if __name__ == '__main__':
 
 ### Usage
 
-- `import logging`
 - `logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG)`
   - For `python<3.9`, omit the `encoding` argument
 - `logging.debug('message')` log debug message
@@ -729,22 +729,32 @@ if __name__ == '__main__':
 - `logging.warning('message')` log warning message
 - `logging.error('message')` log error message
 
-# def createHash():
+## ast
 
-# """This function generate 10 character long hash"""
+- `myList = ast.literal_eval('["A", "B", "C" , "D"]')` evaluate python literal into tuples, lists, dicts
 
-# hash = hashlib.sha1()
+## hashlib
 
-# hash.update(str(time.time()))
+- It implements a common interface to many different secure hash and message digest algorithms
+- `import hashlib`
 
-# return hash.hexdigest()[:-10]
+### Usage
 
-# """This function generate 10 character long hash"""
+- `m = hashlib.sha256()` constructors for hash algorithm, including:
+  - `sha1()`, `sha224()`, `sha256()`, `sha384()`, `sha512()`, `blake2b()`, and `blake2s()` etc
+- `m.update(b"Data")` load byte string
+- `m.digest()` get hashed result for the loaded data
+  - `hashlib.sha256(b"Data").hexdigest()` hash data in one line
+- `hash.digest_size` resulting hash size in bytes
+- `hash.block_size` The internal block size of the hash algorithm in bytes
 
-# return hexlify(os.urandom(5))
+## binascii
 
-import hashlib
-import time
-import random
-from binascii import hexlify
-import contextlib
+- It handles conversion between binary data and ASCII characters
+
+### Usage
+
+- `binascii.hexlify(binaryData)` Return the hexadecimal representation of the binary data, every byte of data is converted into the corresponding 2-digit hex representation
+- `binascii.a2b_hex(hexstr)` or `binascii.unhexlify(hexstr)` Return the binary data represented by the hexadecimal string hexstr
+
+## contextlib

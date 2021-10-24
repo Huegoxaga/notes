@@ -946,6 +946,12 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
+## Django Redis
+
+- `django-redis` package integrate `redis-py` with `django`
+- It helps setup Redis as Django's cache backend
+- [Click Here](https://github.com/jazzband/django-redis) for more details
+
 ## AllAuth
 
 - It provides authentication support for Django web apps

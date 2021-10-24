@@ -608,7 +608,8 @@
   - Use argument `marker='.'` will print points as dots
   - Use argument `marker='v'` will print points as triangles
 - `plt.plot(listofX, listofY)` plot a line, run this method multiple times to draw multiple lines.
-  - `plt.plot(listofX, listofY, label='line legend')` add a legend to the line.
+  - `plt.plot(listofX, listofY, label='line legend')` multiple plots can be drawn by calling this method multiple times before `plt.show()`
+    - `plt.legend()` show the line legend in the corner after all lines are drawn
   - `plt.plot(listofX, listofY, color='#3b3b3b', linewidth=2,linestyle='--' label='line legend')` or `plt.plot(listofX, listofY, 'formatstring',label='line legend')` to add format to the line, see details about the characters [here](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot)
 - `plt.bar(listofX, listofY, label='bar legend')` draw a bar chart.
   - Use numpy to off set the x-value to display multiple groups of data using bar chart.`plt.bar(np.arange(len(x_datalist))+0.25, y_datalist, width=0.25, color="#ebebeb", label="labelName")`
