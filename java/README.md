@@ -974,12 +974,13 @@ System.out.println(myVar.nextLine());  //get user input
 
 ### String
 
-- `stringx.valueOf(intx)`
-- `stringx.trim()` remove the leading and trailing white space of the string.
-- `stringx.startsWith(string)` return true is the stringx start with the method argument.
-- `stringx.endsWith(string)`
-- `string.indexOf("sam")` return index and -1 if not exist.
-- `string.toUpperCase`
+- `str.valueOf(intx)`
+- `str.trim()` remove the leading and trailing white space of the string.
+- `str.startsWith(string)` return true is the stringx start with the method argument.
+- `str.endsWith(string)`
+- `str.indexOf("sam")` return index and -1 if not exist.
+- `str.matches(regexStr)` return true if the string matches the regex
+- `str.toUpperCase`
 - `str.charAt(i)` return the character at position i.
 - `str.substring(a, b)` only take string from charact with index `a` to `b - 1`.
 
@@ -1716,6 +1717,7 @@ Thread t = new Thread(() -> animate(gc));
     - `ArrayBlockingQueue`
 - [Click Here](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/concurrent/BlockingQueue.html) for more details
 - Producer can send poison objects to each consumer thread, consumer threads will shutdown immeditately when a poison object condition check is evaluated as true
+  - The number of poison objects can be exactly the same as the number of consumer threads since once a consumer thread receive it, the consumer will shutdown immediately and will no longer receice any other poison objects
 
 ### Blocking Queue Methods
 
@@ -1752,9 +1754,17 @@ Thread t = new Thread(() -> animate(gc));
 
 - `ExecutorService pool = Executors.newFixedThreadPool(numProcs);` create a fixed thread pool
   - usually the thread number equals the number of processes, `int numProcs = Runtime.getRuntime().availableProcessors();`
-- `pool.submit(new Task())` add tasks (runnable classes) to the pool
+- `pool.submit(new Task())` add tasks (runnable classes) to the pool, this task will be handled by one available thread in the pool
 - `pool.shutdown();` ensures an orderly shutdown of all threads
+  - It happens when previously submitted tasks are executed
   - The pool will not accept new tasks once the shutdown is started
+  - It is non-blocking
+- `pool.awaitTermination(long timeout, TimeUnit unit)` blocks until all tasks have completed execution after a shutdown request, or the timeout occurs, or the current thread is interrupted, whichever happens first
+  - Usually used after `shutdown()` to create a blocking manner for the shutdown method
+  - e.g. `pool.awaitTermination(1, TimeUnit.HOURS);`
+- `pool.shutdownNow()` attempts to terminate the pool
+- `pool.isTerminated()` returns true if terminated
+- `pool.isShutdown()` returns true if shutdown
 
 ## Runtime
 

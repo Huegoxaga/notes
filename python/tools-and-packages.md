@@ -238,6 +238,7 @@
 - Export array to a `txt` file
   - `array.save()`
 - `x > 40` or `x == 1` returns a Boolean array of the same shape as `x` based on the condition
+  - For the returned array, use `~` operator to negate
 - `x > y` if the arrays are the same size, returns a Boolean array with element by element comparisons
 - `x[x>40]` returns new array of items from `x` that are `> 40`
 - `np.where(arr >= 10)` return a filtered index array based on the conditional
@@ -804,6 +805,7 @@ WantedBy=multi-user.target
 - `dataset = datasets.load_iris()` loads a dataset
 - `dataset.data` returns 2D array of data
 - `dataset.target` returns related array of classification labels
+- `data.target_names` returns the names of each class
 - `dataset.feature_names` returns the name of each feature (column) in dataset.data
 
 ### sklearn.impute
@@ -853,6 +855,12 @@ WantedBy=multi-user.target
     - `test_size` `20%` data as test set, `80%` data as training set.
     - `random_state` When equals `1` always return the same spliting result.
 
+### sklearn.metrics
+
+- Confusion Matrix
+  - `from sklearn.metrics import confusion_matrix`
+  - `cm = confusion_matrix(y_test, y_pred)` calculate accurracy
+
 ### sklearn.linear_model
 
 - Linear Regression Model
@@ -860,12 +868,6 @@ WantedBy=multi-user.target
   - `regressor = LinearRegression()` initialize the linear regression model
   - `regressor.fit(X_train, y_train)` trains the training data
   - `y_pred = regressor.predict(X_test)` get predict result from test set data points
-
-### sklearn.metrics
-
-- Confusion Matrix
-  - `from sklearn.metrics import confusion_matrix`
-  - `cm = confusion_matrix(y_test, y_pred)` calculate accurracy
 
 ### sklearn.tree
 
@@ -876,6 +878,16 @@ WantedBy=multi-user.target
 - `cls.fit(train, train_target)` trains the training data
 - `prediction = cls.predict(test)` returns a list of predicted results
 - `dot_data = tree.export_graphviz(cls, out_file=None, feature_names=dataset.feature_names, class_names=dataset.target_names, filled=True, rounded=True, special_characters=True)` returns a dot file for the tree graph in graphviz format
+
+### sklearn.naive_bayes
+
+- Naive Bayes Models
+- `from sklearn import naive_bayes`
+- `gnb = naive_bayes.GaussianNB()` Init a Gaussian Naive Bayes Classifier
+- `gnb.fit(dataset.data, dataset.target)` Train a Gaussian Naive Bayes Classifier
+- `y_pred = gnb.predict(dataset.data)` returns a list of prediction result for the input data
+- `probs = gnb.predict_proba(dataset.data)` Returns the probability results in a 2-D array. Each row is the probability of being each class in order for one input data
+  - Append `.max(axis=1)` to get the list of probability for predicted (higher probability) class
 
 ## Graphviz
 

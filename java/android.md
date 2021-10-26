@@ -1148,6 +1148,7 @@ public class MyAdapter extends BaseAdapter {
   - `app` namespace that can access to `parent` element
   - `android` namespace includes all other attributes in the attribute panel
   - `tools` namespace for some design-time features
+- `?attr/` refer to attributes specified in `themes/themes.xml` if not found, use default
 
 ##### Layout Types
 

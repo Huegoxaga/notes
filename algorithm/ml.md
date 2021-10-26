@@ -204,17 +204,16 @@
 
 #### Bayesian Classification
 
-- It forms a theory from the training data that can be used to estimate the probability that a newitem is a member of a given class
-- There is a training phase in which a theory is constructed for each class
-- Both training and categorization are fast
-- Bayesian classifiers can often do well with a small amount of training data
-- There are very fewlearning parameters to tweak
+- It calculates the likely-hood of one data belongs to one class by using the Bayes' Rule, given the probability of one class having a certian feature based on the training data
+  - Bayes' Rule, $$P(CLASS|FEATURE)=\frac{P(FEATURE|CLASS)P(CLASS))}{P(FEATURE))}$$
+  - The probabilities from different features can be multiplied to yield the final result
+- For numerical features, Gaussian Naive Bayes can be used when values between features are independent and values of a feature follows normal distribution
+  - It compares the test data's one feature with the mean of this feature from the training and yields the probability of each classes having the feature value to be close to the mean of all feature values from the training data
 - Output can be read as a level of confidence in each possible class
   - The overall probability for the data to be each class is calculated, then the highest wins
-- It works based on Bayes' Rule, $$P(CLASS|FEATURE)=\frac{P(FEATURE|CLASS)P(CLASS))}{P(FEATURE))}$$
-- If values between features are independent and values of a feature follows normal distribution, Gaussian Naive Bayes can be used
-  - It compares the test data's one feature with the mean of this feature from the training and yields the probability of each classes having the feature value to be close to the mean of all feature values from the training data
-  - The probabilities from different features can be multiplied to yield the final result
+- Both training and categorization are fast
+- Bayesian classifiers can often do well with a small amount of training data
+- There are very few learning parameters to tweak
 
 ### Neural Networks
 
