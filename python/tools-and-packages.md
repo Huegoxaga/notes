@@ -796,6 +796,14 @@ NotifyAccess=all
 WantedBy=multi-user.target
 ```
 
+## Natural Language Toolkit
+
+### Stemmer
+
+- `from from nltk import stem`
+- `s = stem.porter.PorterStemmer()` Init Porter stemmer
+- `s.stem("fracturing")` stem a word
+
 ## SkiLearn
 
 ### sklearn.datasets
@@ -844,6 +852,21 @@ WantedBy=multi-user.target
   - `X_test[:, 3:] = sc.transform(X_test[:, 3:])` only return the standardized value.
 - Image Preprocessing
 
+### sklearn.feature_extraction
+
+#### from text
+
+- `from sklearn.feature_extraction import text`
+- CountVectorizer - Convert a collection of text documents to a matrix of token counts, it is doing the bag of words extraction
+  - `vectorizer = text.CountVectorizer()`
+  - `vectors = vectorizer.fit_transform(sentenceList)` it takes a list of sentence and generate a list of unique vocabulary and return a sparse matrix which contains a 2-D list of word count
+  - `new_vector = vectorizer.transform(sentenceList)` it appends the word count from the sentences into the existing sparse matrix using the existing vacabulary
+  - `vectorizer.get_feature_names_out()` or `sorted(vectorizer.vocabulary_)` returns the vocabulary list
+    - `vectorizer.vocabulary_` returns a dictionary of unique words where key is the word and value is the index in counting list
+  - `vectors.toArray()` convert the sparse matrix to a 2-D list
+- TfidfVectorizer - Similar to CountVectorizer but additionally perform a tf-idf transformermation using TfidfTransformer
+  - `vectorizer = text.TfidfVectorizer()`
+
 ### sklearn.model_selection
 
 - Splitting test and train data
@@ -853,13 +876,17 @@ WantedBy=multi-user.target
     - `X` independent variables to split.
     - `y` dependent variables to split.
     - `test_size` `20%` data as test set, `80%` data as training set.
-    - `random_state` When equals `1` always return the same spliting result.
+    - `random_state` controls the shuffling applied to the data before applying the split, when equals `1` always return the same spliting result. It has default `None`
 
 ### sklearn.metrics
 
-- Confusion Matrix
-  - `from sklearn.metrics import confusion_matrix`
-  - `cm = confusion_matrix(y_test, y_pred)` calculate accurracy
+- Evaluate results
+- `from sklearn import metrics`
+- Confusion Matrix - `cm = metrics.confusion_matrix(y_test, y_pred)` returns the matrix in a 2-D array
+- Accuracy - `cm = metrics.accuracy_score(y_test, y_pred)` calculates accurracy
+- Precision - `cm = metrics.precision_score(y_test, y_pred)` calculates precision
+- Recall - `cm = metrics.recall_score(y_test, y_pred)` calculates recall
+  - For recall and precision, use `pos_label` to specify the class to report, For multiclass/multilabel prediction, `average` is required as its `binary` default is not longer suitable
 
 ### sklearn.linear_model
 
@@ -881,13 +908,15 @@ WantedBy=multi-user.target
 
 ### sklearn.naive_bayes
 
-- Naive Bayes Models
 - `from sklearn import naive_bayes`
-- `gnb = naive_bayes.GaussianNB()` Init a Gaussian Naive Bayes Classifier
-- `gnb.fit(dataset.data, dataset.target)` Train a Gaussian Naive Bayes Classifier
-- `y_pred = gnb.predict(dataset.data)` returns a list of prediction result for the input data
-- `probs = gnb.predict_proba(dataset.data)` Returns the probability results in a 2-D array. Each row is the probability of being each class in order for one input data
-  - Append `.max(axis=1)` to get the list of probability for predicted (higher probability) class
+- Gaussian Naive Bayes Models
+  - `gnb = naive_bayes.GaussianNB()` Init a Gaussian Naive Bayes Classifier
+  - `gnb.fit(dataset.data, dataset.target)` Train a Gaussian Naive Bayes Classifier
+  - `y_pred = gnb.predict(dataset.data)` returns a list of prediction result for the input data
+  - `probs = gnb.predict_proba(dataset.data)` Returns the probability results in a 2-D array. Each row is the probability of being each class in order for one input data
+    - Append `.max(axis=1)` to get the list of probability for predicted (higher probability) class
+- Naive Bayes classifier for multinomial models
+  - `mnb = MultinomialNB()` Init the model
 
 ## Graphviz
 

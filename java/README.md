@@ -1473,7 +1473,9 @@ outputFile.println("Hello World");
 outputFile.close();
 ```
 
-## Thread
+## Java Concurrency
+
+### Thread
 
 - Java is a multi-threaded programming language
   - It is a implementation of the concept of concurrency
@@ -1540,7 +1542,7 @@ outputFile.close();
 
   - When implementing runnable interface, passing the same variable reference to the same class (in `new ThreadDemo(sharedVar)`) when creating new threads, multiple threads can run on the same data (shared memory)
 
-### Create a Thread
+#### Create a Thread
 
 ```java
 Thread name = new Thread();
@@ -1548,17 +1550,17 @@ Thread name = new Thread();
 Thread t = new Thread(() -> animate(gc));
 ```
 
-### Thread Priority
+#### Thread Priority
 
 - All thread has priorities range from 1 to 10, can be set with the `threadObj.setPriority()` method.
 
-### Daemon Thread
+#### Daemon Thread
 
 - Daemon threads will be terminated when main method is ready to exit
 - It is good for background tasks with low priorities
 - `threadObj.setDaemon(true)` set the thread as a daemon thread
 
-### Thread States
+#### Thread States
 
 - `NEW` state: When a new thread is created, but the `start()` method has not been called
   - Only `start()` method can be called on a new thread; otherwise, an `IllegalThreadStateException` will be thrown
@@ -1581,7 +1583,7 @@ Thread t = new Thread(() -> animate(gc));
 - `TERMINATED` state: A thread dies or moves into dead state automatically when its `run()` method completes the execution of statements
   - (deprecated) A thread can also be dead when the `stop()` method is called, this method is not recommanded because it can't clean up the thread properly
 
-### Thread Methods
+#### Thread Methods
 
 - `Tread.sleep(int numberofMS);` Pause All Thread Method
 
@@ -1620,12 +1622,13 @@ Thread t = new Thread(() -> animate(gc));
 - The areas of the code that access (read or write) the shared resource or memory is considered a critical section
   - Critical section needs to be protected using mutual exclusion and locks
   - If two threads are using the same memory location and at least one thread is changing the value (writing to memory) there is a chance for a data race to occur
+    - Race condition is different, it refers to the race between threads when the execution order of different threads can affect the result. Race condition is sometimes hard to debug, it is why having an independent logic for each thread is preferred
   - Critical section in code should be minimized to only what is necessary
 - Locks is a mechanism to ensure only one thread can execute at a time
 - Lock ensures that write will occur before any subsequent reads
 - An unlock must occur before another thread can lock
 - Locks in Java are interfaces
-- Keeps a count of the number of times it has been locked•getHoldCount method
+- It keeps a count of the number of times it has been locked
 - Fairness Policy - Java lock interfaces have the ability to turn on a fairness policy. Once set to true in constructor, the lock will be always assigned to the longest waiting thread (no matter if it is a read or write)
   - This often results in slower throughput or slower execution time
   - As thread scheduling is still done by the operating system, there is no guarantee as to when that thread will be scheduled
@@ -1644,7 +1647,8 @@ Thread t = new Thread(() -> animate(gc));
 - Use `lock.lock();` before, and `lock.unlock();` after a critical section
 - Use `lock.tryLock()` allows the thread to be locked in a non-blocking manner, it returns false if locking is not successful, then there should be a logic to allow thread to run `lock.tryLock()` again
   - Allows the thread to perform other work if lock is not available, instead of just waiting
-  - Untimed tryLock method does not honor the fairness settin
+  - Untimed tryLock method does not honor the fairness setting
+- `lock.getHoldCount()` returns the number of time the lock has been locked
 
 #### ReentrantReadWriteLock
 
@@ -1702,7 +1706,7 @@ Thread t = new Thread(() -> animate(gc));
   - Make sure the same object is always being used
 - To use synchronized statement, wrap `synchronized (ClassName.class) { /*critical section*/ }` around critical section
 
-## Blocking Queue
+### Blocking Queue
 
 - A producer is one or more threads that produce elements to be added to a shared data structure
 - A consumer is one or more threads that remove the elements from the shared data structure and process them
@@ -1719,7 +1723,7 @@ Thread t = new Thread(() -> animate(gc));
 - Producer can send poison objects to each consumer thread, consumer threads will shutdown immeditately when a poison object condition check is evaluated as true
   - The number of poison objects can be exactly the same as the number of consumer threads since once a consumer thread receive it, the consumer will shutdown immediately and will no longer receice any other poison objects
 
-### Blocking Queue Methods
+#### Blocking Queue Methods
 
 - `queueObj.add()` Inserts the specified element into this queue, returning true upon success and throwing an `IllegalStateException` if no space is currently available
 - `queueObj.remove()` Retrieves and removes the head of this queue, throws an exception if this queue is empty
@@ -1732,7 +1736,7 @@ Thread t = new Thread(() -> animate(gc));
 - `queueObj.put(e)` Inserts the specified element into this queue, waiting if necessary for space to become available
 - `queueObj.take()` Retrieves and removes the head of this queue, waiting if necessary until an element becomes available
 
-## Executor Service
+### Executor Service
 
 - Executor Service is the class for thread pools
   - Thread pools is a group of pre-allocated threads that wait for tasks, and complete tasks
@@ -1750,11 +1754,12 @@ Thread t = new Thread(() -> animate(gc));
 - It addresses the overhead of thread creation / deletion, as these threads are created once at beginning of program and just wait for tasks to be assigned
 - It works great when time to execute task is shorter than time to create thread
 
-### Usage
+#### Usage
 
 - `ExecutorService pool = Executors.newFixedThreadPool(numProcs);` create a fixed thread pool
   - usually the thread number equals the number of processes, `int numProcs = Runtime.getRuntime().availableProcessors();`
 - `pool.submit(new Task())` add tasks (runnable classes) to the pool, this task will be handled by one available thread in the pool
+  - It returns a future object
 - `pool.shutdown();` ensures an orderly shutdown of all threads
   - It happens when previously submitted tasks are executed
   - The pool will not accept new tasks once the shutdown is started
@@ -1765,6 +1770,45 @@ Thread t = new Thread(() -> animate(gc));
 - `pool.shutdownNow()` attempts to terminate the pool
 - `pool.isTerminated()` returns true if terminated
 - `pool.isShutdown()` returns true if shutdown
+
+### Future
+
+- It is a class that helps return a result in the future
+- A future object will be returned when the `call()` method of a callable class is called
+  - Runnable class differs from callable by not returning anything when is executed, and runnable uses `run()` while callable uses `call()`
+
+#### Future Methods
+
+- `f.get()` retrieves the result. Blocks if asynchronous task is not complete
+- `f.cancel()` Cancels the asynchronous task
+- `f.isCancelled()` Checks to see if the task was cancelled
+- `f.isDone()` Checks to see if the task was completed
+
+### Semaphore
+
+- It's a signaling mechanism that allows multiple threads to use and share
+- Types of Semaphores:
+  - Counting Semaphore - counter can be any positive value, and 0 represents no more resources available
+  - Bounded Semaphores - a counting semaphore with upper limit
+  - Timed Semaphores - allows a thread to run for a specified period of time
+  - Binary Semaphores - a counting semaphores that only accepts only 0 or 1
+- In a producer and consumer pattern, producer can have a semaphore to check if queue or buffer is full, and consumer can have one semaphore to check if there is message in queue or buffer
+- `public static Semaphore sem= new Semaphore(count);` create a semaphore with a certain total count (permits)
+- `sem.acquire();` reduce the count by 1, if count is already zero, it blocks until the count goes back to at least 1
+  - `acquire()` can act like `lock()` when it is a binary lock
+- `sem.release()` increase the count
+  - If a thread that acquired once and then get interruptted, the count increase as well
+- `sem.availablePermits()` returns the number of available permits
+
+### CyclicBarrier
+
+- It creates a sync point for a certain number of threads
+- it can be re-used after the waiting threads are released
+- `private static CyclicBarrier barrier = new CyclicBarrier(threadNum);` - It takes a single integer that denotes the number of threads that need to call the `await()` method on the barrier instance to signify reaching the common execution point
+- `barrier.await()` the thread calls this method to line up at the sync point
+- `barrier.reset()` resets the barrier before reuse
+- `barrier.getNumberWaiting()` returns the number of parties currently waiting at the barrier
+- `barrier.getParties()` returns the number of parties required to trip this barrier
 
 ## Runtime
 

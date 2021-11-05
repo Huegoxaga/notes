@@ -464,7 +464,7 @@ sum(list)
 # The list functions len, sum, min, max, and sortedcan be passed dictarguments. They perform their operations on the keys, not the values.
 dictionary.get(key, default_value)  #It returns the key’s value and None if key is not found. or display specific default value. None type can have this method without error
 dictionay.pop(key,default)  # It returns and remove the value that match the key. Return the default value if not found.
-dictionay.values() # Return a list of values.
+dictionay.values() # Return a list of values, it returns an object of type dict_values which can be cast into a list
 dictionay.keys() # Return a list of keys.
 dictionay.items() # Return a list of dictionay elements.
 dictionay.clear() # empties the dictionary

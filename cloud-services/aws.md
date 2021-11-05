@@ -373,6 +373,7 @@ A NoSQL database that stores JSON data.
 - `Sort` keys enables `gt`, `ge`, `lt`, `le`, `eq`, `beginsWith`, and `between` for query
 - A query needs to specify a target partition key, then sort by sort key, then use a filter on non-key fields
 - Whenever the database is updated, new record or updated record will be sent to the DynamoDB Stream.
+  - DynamoDB Stream can be used to trigger a Lambda function, item by item or in a batch when the items reach a certain amount
 
 ## RDS
 

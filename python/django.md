@@ -965,6 +965,10 @@ WantedBy=multi-user.target
 - A social provider can be used by one or more sites
 - Settings file contains additional config context that is not included in the social provider data model, and defines the current site ID
 
+## Simple JWT
+
+- `https://jwt.io/ and put the token into debugger`
+
 ## Rest Auth
 
 - It provides the web app a user specific token for API access

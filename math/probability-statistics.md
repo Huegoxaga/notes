@@ -103,6 +103,7 @@
   - the trials are independent.
     - The 10% condition: Bernoulli trials must be independent. If that assumption is violated, it is still okay to proceed as long as the sample is smaller than 10% of the population.
 - A Binomial model tells us the probability for a random variable that counts the number of successes in a fixed number of Bernoulli trials.
+  - It is a special type of multinomial model when there are only two outcomes
   - Two parameters define the Binomial model: n, the number of trials; and, p, the probability of success. We denote this Binom(n, p).
   - In n trials, there are nCk ways to have k successes. (`nCk = n! / k!(n - k)!`)
   - Hence, for a Binomial distribution model the probability of successes equals `nCk * p^x * q^n-x`. where

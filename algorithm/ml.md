@@ -202,7 +202,7 @@
   - `Sigmoid Kernel`
   - `Polynomial Kernel`
 
-#### Bayesian Classification
+### Bayesian Classification
 
 - It calculates the likely-hood of one data belongs to one class by using the Bayes' Rule, given the probability of one class having a certian feature based on the training data
   - Bayes' Rule, $$P(CLASS|FEATURE)=\frac{P(FEATURE|CLASS)P(CLASS))}{P(FEATURE))}$$
@@ -214,6 +214,10 @@
 - Both training and categorization are fast
 - Bayesian classifiers can often do well with a small amount of training data
 - There are very few learning parameters to tweak
+- Naïve Bayes model uses multinominal distributions (multiple occurrance of one class)
+- Complement Naïve Bayes is a a variation of Naïve Bayes model. It also takes the data from other classes into consideration. When a word appears in a complement class frequently, the appearance of this word can reduced the probability result of the target class
+  - This method take more info into the training and yields better results
+  - It works well when the dataset is imbalanced
 
 ### Neural Networks
 
@@ -404,6 +408,7 @@
 - It receives rewards.
 - The objective of the algorithm is to maximize rewards.
   - Rewards can be either positve or negative, only positive, or only negative. Maximize rewards is the same as minimize nagetive reward only, or maximize positive reward only, or both.
+    - Similar to minmax algorithm which aim at minimizing the possible loss or maxinizing the possible gain
   - The rules to get rewards need to be designed to encourage the agent to make preferred behavior and punished promptly. It is not only about the outcome, the performance need to be quantified.
   - The punishment should not limit novel strategies which can provides creative solution to gain more rewards.
 - The algorithm the agent uses to make action is called policy.
@@ -611,6 +616,8 @@
 #### Normalization
 
 - Clean text
+  - Removal of infrequent words - The number of unique words can be reduced greatly if many infrequent words are removed, this procedure can incresed the training speed, and might reduce the accuracy
+  - Removal of infrequent words - If a word appears too frequently, it might not prove to be very useful for classification. Removing frequent words might speed things up a little bit and also make the classification task easier
 - leave out all double qoutes
 - Stop Words - are words that are not providing useful information and will be excluded from the text.
 - Stemmer - are used to transform various forms of a word to a common one. Ex, different tense of a verb to the present tense.
@@ -630,10 +637,21 @@
 
 - one-hot vectors - a way to represent a word in a set vocabulary by an vector (array), each word in the vocabulary is associated with one index and the word is represented by an array that has `1` on the correponding index and everywhere else is `0`
   - The demesion of the vector equals the number words in the vocabulary
-- Bag of word - It is a way to preprocess text data by using an array of count for all unique words to record the occurrence of each word in the text data.
-  - The list of words are ordered by its frenquent among all words in the text data.
-  - Most frenquent words are important, words that are not frenquently seen in the text are usually names, places, holiday etc.
-  - Then, the data can be fed into other algorithms. Ex, ANNs or Native Bayes for classfication.
+- Bag of words - It is a way to preprocess text data by using an array of count for all unique words to record the occurrence of each word in the text data.
+  - Each list of occurrence is a data record that has one label attached
+    - Then, the data can be fed into other algorithms. Ex, ANNs or Native Bayes for classfication.
+  - Bag of words fits the multinominal model (study the different number of occurrance of the same outcome)
+  - The list of words can be ordered by its frenquent among all words in the text data
+    - Most frenquent words are important, words that are not frenquently seen in the text are usually names, places, holiday etc.
+    - Taking frenquent vocabulary can reduce the demension
+- Set of words - a document is represented as a list of 1's and 0's indicating the presence or absence of each vocabulary word in the document
+  - It fits the Bernoulli model (binary outcomes)
+  - It contains less information than the bag of words
+- Term Frequency-Inverse Document Frequency (tf-idf) - For each feature, it computes the term frequency and multiply it by the inverse document frequency
+  - the term frequency is the number of times the word appears in the document divided by number of words in the document
+  - the inverse document frequency is the number of documents in the corpus divided by number of documents with that term in it
+  - It increases the weight of a word if it appears in fewer documents
+  - It fits multinominal and Gaussian model
 - Word2Vec
   - Word2Vec are used to predict a vector representation of a word using a model trained by a text corpus
     - It is a word embedding(representation) method, word embedding is the collective name for a set of language modeling and feature learning techniques in natural language processing (NLP) where words or phrases from the vocabulary are mapped to vectors of real numbers
@@ -683,8 +701,19 @@
     - True Negative - Correctly predicted a negative result.
     - False Positive(type I error) - A false prediction which is predicted as Positive.
     - False Negative(type II error) - A false prediction which is predicted as Negative.
-  - For Multiclass classifier that has `n` classes, use confusion matrix with shape `n X n`.
-  - accuracy paradox - It happens when only use accuracy rate as the reference to consider the performance of a model. because the number of the actual positive and negative results does not always be the same.
+  - Accuracy represents the percentage of correct prediction, it equals `(True Positive + True Negative) / All`
+    - Accuracy paradox - It happens when only use accuracy rate as the reference to consider the performance of a model. because the number of the actual positive and negative results does not always be the same
+  - Because of accuracy paradox, precision and recall are preferred:
+    - Precision - it equals `True Positive / (True Positive + False Positive)`. For an object detection model, low precision means many detected objects are wrong objects
+    - Recall - it equals `True Positive / (True Positive + False Negative)`. For an object detection model, low recall means many objects are missed
+    - Precision and recall move in opposite directions under different parameter settings, hence precision vs. recall graph is a good way to represent the performance of a model
+    - The overall best result for both precision and recall happens when they are close, this is where one model achieves the best performance
+    - F1 score is defined as the weighted harmonic mean of the precision and recall, it equals `2*((precision*recall)/(precision+recall))`
+  - For Multiclass classifier that has `n` classes, use confusion matrix with shape `n X n`. There are different ways to calculate the average
+    - The micro-average is calculated by expanding the formula to include related `TP`, `TN`, `FP`, `FN` for all class
+      - For example the micro-average for precision for two classes classifier is calculated using `(TP1 + TP2) / (TP1 + TP2 + FP1 + FP2)`
+    - The macro-average for accuracy, precision, recall or F-1 score is calcualted by taking the average of accuracy, precision, recall and F-1 score result of different class, respectively
+    - The weighted-average happens when the macro-average calculation applys a weight based on the instance percentage of one class
 - Area Under Curve (AUC)
   - AUC is the area of a curve formed by plotting True Positive Rate against False Positive Rate at different cut-off thresholds
   - Good model have AUC closer to 1

@@ -353,7 +353,7 @@ list(accumulate(range(8)))
 
 ### Usage
 
-- `os.getcwd()` print out the current working directory
+- `os.getcwd()` print out the current directory of the command line that running the script
 - `os.chdir('newPath')` change the working directory
 - `os.listdir()` a list of file and folder in the current working directory.
   - `os.listdir('path')`list path in certain directory.
@@ -418,6 +418,7 @@ list(accumulate(range(8)))
   - any value other than `0` indicates an abnormal termination upon exit
   - sometimes, `sys.exit(main(sys.argv))` is used under `if __name__ == '__main__':` block for a good modularized structure
 - `sys.stderr.write("Error!\n")` output error messages
+- `sys.path[0]` returns the directory path of the running python script
 
 ## subprocess
 
@@ -758,3 +759,11 @@ if __name__ == '__main__':
 - `binascii.a2b_hex(hexstr)` or `binascii.unhexlify(hexstr)` Return the binary data represented by the hexadecimal string hexstr
 
 ## contextlib
+
+## string
+
+- It contains common string operations
+
+### Usage
+
+- `string.punctuation` returns a string of ASCII punctuation characters
