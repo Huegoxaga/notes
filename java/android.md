@@ -1328,6 +1328,15 @@ public class MyAdapter extends BaseAdapter {
 - User `Log.d()` to print output and view them in Logcat tab at the bottom of android studio
   - Usually and tag can be used to filter the logs, `final static String tag = "==LIFECYCLE==";` , `Log.d(tag, "Debug");`
 
+### Android Debug Bridge (adb)
+
+- `adb` - a versatile command-line tool that can communicate with the device
+- Setup
+  - `echo 'export ANDROID_HOME=/Users/$USER/Library/Android/sdk' >> ~/.bash_profile`
+  - `echo 'export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools' >> ~/.bash_profile`
+  - `source ~/.bash_profile`
+- `adb uninstall com.example.appname` uninstall the app
+
 ## Exporting Projects
 
 - a `.zip` file of the project can be created using the option under `Manage IDE Settings --> Export to Zip File...`

@@ -409,16 +409,34 @@ list(accumulate(range(8)))
 - System-specific parameters and functions
 - `import sys`
 
-#### Usage
+### Usage
 
 - `sys.argv` get a list of command line parameters
   - `argv[0]` will always be the script name
+  - `argv[1:]` all other arguments
 - `sys.exit(exit_code)` exit the program with exit code as the argument
   - `0` is the default value, and it indicates a successful termination
   - any value other than `0` indicates an abnormal termination upon exit
   - sometimes, `sys.exit(main(sys.argv))` is used under `if __name__ == '__main__':` block for a good modularized structure
 - `sys.stderr.write("Error!\n")` output error messages
 - `sys.path[0]` returns the directory path of the running python script
+
+## getopt
+
+- It parse arguments
+- `import getopt`
+- `arguments, values = getopt.getopt(argv[1:], ["hio:", "Help", "Input =", "Output ="])`
+  - arguments contains a list of tuples of `(arg, value)`, `arg` can be either short flag or long flag, so `arg in ("-h", "--Help")` can be used to check condition
+  - It can throw exceptions from `getopt.error`, so use `except getopt.error as err:` to handle errors
+
+## argparse
+
+- The recommanded argument parser
+- `parser = argparse.ArgumentParser(description = "Script Description")` init parser
+- `parser.add_argument("-o", "--Output", default="output.txt", help="Show Output")` add options
+  - it includes option `-h` by default, along with its long version `–help`
+- `args = parser.parse_args()` read arguments
+- `args.Output` access option value, `None` if it does not exist
 
 ## subprocess
 

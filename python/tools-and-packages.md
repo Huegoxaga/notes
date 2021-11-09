@@ -1378,6 +1378,58 @@ quit()
 - Define initial perspective and translation setting before while loop
 - Put the render function inside while loop
 
+## paho-mqtt
+
+- It is the MQTT Python client library, which implements versions 5.0, 3.1.1, and 3.1 of the MQTT protocol
+
+### MQTT Client
+
+- `import paho.mqtt.client as mqtt`
+- `client = mqtt.Client("Specify a Client Name Here")`
+- `client.username_pw_set("username", password="password")`
+- `client.connect(broker_IP, port=12345)`
+- `client.disconnect()` close connection after done
+- `client.loop()` this is the heart beat of MQTT message exchange and it must be called regularly to process network events
+- `client.loop_start()` it starts to call `loop()` in a background thread automatically
+- `client.loop_stop()` stops the background thread
+
+- Connection Handling
+
+```py
+def on_connect(client, userdata, flags, rc):
+    if rc == 0:
+        print("Connected to broker")
+        global Connected                #Use global variable
+        Connected = True                #Signal connection
+    else:
+        print("Connection failed")
+client.on_connect= on_connect
+client.loop_start()
+while Connected != True: # Now the program can wait until connection is established
+    time.sleep(0.1)
+```
+
+- Pulish a topic
+
+```py
+while True:
+    client.publish("TOPIC_NAME", data)
+    time.sleep(1)
+```
+
+- Subscribe a topic
+
+```py
+def message_handler(client, userdata, message):
+    print(str(message.payload.decode("utf-8")))
+
+client.loop_start()
+client.subscribe("TOPIC_NAME")
+client.on_message = message_handler
+time.sleep(10)
+client.loop_stop()
+```
+
 ## cx_Frezze
 
 - It is a set of scripts and modules for freezing Python scripts into executable.
@@ -1400,6 +1452,18 @@ quit()
 - run `python setup.py build` to build the project into a build folder
 - run `python setup.py bdist_msi` to generate the installer for Windows
 - run `python setup.py bdist_dmg` to generate the installer for Mac
+
+## PyInstaller
+
+- It compile python script into binary executable
+- It can't do cross platform compilation, the binary can only run on where it is compiled
+- Steps to compile:
+  1. For Linux machines, make sure python3 development libraries is installed
+  2. `pip install pyinstaller`
+  3. `pyinstaller filename.py --onefile` or `python -m PyInstaller run.py --onefile`
+     - `-n appname` app name flag
+     - `--paths="/usr/lib/python3.6/dist-packages/cv2/python-3.6"` add path to search for imports, if the module is compiled from source
+  4. find the binary in `dist` folder and run it `./filename` directly
 
 ## Scared
 

@@ -151,6 +151,7 @@
 - Jetson is the branch name for NVIDIA embedded development board powered by its GPU
 - Jetson supports CUDA-X
 - JetPack is the OS image for Jetson devices, with pre-installed drivers and tools
+  - The pre-installed opencv wasn't compiled using CUDA, refer to this [link](https://qengineering.eu/install-opencv-4.5-on-jetson-nano.html) to install openCV on a Jetson
 - L4T is the OS name for Jetson devices, it is based on Ubuntu 18.04
 - Jetson Modules is a card containing processing units, it can be plugged into a carrier board for development, the carrier board and the modules are sold together as a development kit
 - It currently has the following active modules from slow to fast:
@@ -177,13 +178,12 @@
 - Jetson Nano Developer Kit doesn't come with WiFi module, use USB WiFi adapter instead
 - When in `USB Device Mode` without network connection, the Jetson device can be accessed through `ssh`, `scp`, `sftp` using IP address `192.168.55.1` pre-configured with `l4tbr0` interface
 - For models with both USB and DC power supply, put a jumper on J48 properly if DC power supply is preferred
+- For remote host identity changed warning, run `ssh-keygen -R <RemoteIPAddress>`
 
 #### Swap File
 
 - A 4GB swap file is recommended
   - run `sudo systemctl disable nvzramconfig` before creating swap file
-  - use path `/mnt/4GB.swap` for swap file
-- For remote host identity changed warning, run `ssh-keygen -R <RemoteIPAddress>`
 
 #### Clock Control
 

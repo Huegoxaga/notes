@@ -86,9 +86,11 @@
   2. `sudo chmod 600 /swapfile`, change swap file permission
   3. `sudo mkswap /swapfile`, Set up a Linux swap area
   4. `sudo swapon /swapfile`, Make the swap file available for immediate use by adding the swap file to swap space
+     - run `sudo swapoff /swapfile` before removing swapfile
   5. `sudo swapon -s`, Verify that the procedure was successful
      - swap priority is a value between -1 and 32767. Higher numbers indicate higher priority
   6. `sudo vi /etc/fstab`, add line `/swapfile swap swap defaults 0 0` to enable the swap file at boot time
+     - Remove this line after removing swapfile
 - `sudo growpart /dev/<volumn> <partNO>` extend the size of a volumn to use new spaces from its newly added partition
   - Partition number starts from `1` in the `lsblk` list
   - The volumn can not be full when running this command
@@ -570,7 +572,7 @@
 
 ### TAR
 
-- `tar -cvf filename.tar <DestinationPath>` Create tar Archive File
+- `tar -cvf filename.tar <FilePath>` Create tar Archive File
   - `c` – Creates a new .tar archive file.
   - `v` – Verbosely show the `.tar` file progress.
   - `f` – File name type of the archive file.
@@ -756,15 +758,44 @@
 - Ex, `ssh -i ~/.ssh/"WordPress Key.pem" ubuntu@ec2-13-229-104-228.ap-southeast-1.compute.amazonaws.com`
 - `ssh -L 4444:example.com:80` forward port `4444` on the host machine to the a web page opened from the remote machine in port `80`
 - SSH will lost connection when the remote server run out of memory
+- To create a ssh key for remote access, use `ssh-keygen` to generate key pairs, then use `ssh-copy-id` to upload the public key to the remote machine
 
 #### SSH Configuration
 
 - The config file is located at `/etc/ssh/sshd_config`
-  - `PermitRootLogin without-password` this line is used to for root user to use key pairs to login
-  - `PasswordAuthentication no` disable password login entirely
+- With the following recored in the config file, a connection can be made using command `ssh connection-a` without additional input
+
+```config
+Host connection-a
+  HostName 10.0.0.88
+  IdentityFile ~/.ssh/key_name.pem
+  User username
+```
+
+- With the following setup, a second connection inside a jump server can be made directly using `ssh connection-b`
+
+```config
+Host connection-b
+  HostName localhost
+  User username
+  Port 10000
+  ProxyJump connection-a
+```
+
+- A certain setup can be applied to all connection using wild card
+  - The following config forward a ssh key through all connection
+
+```config
+Host *
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/github.pem
+  ForwardAgent yes
+```
+
+- `PermitRootLogin without-password` this line is used to for root user to use key pairs to login
+- `PasswordAuthentication no` disable password login entirely
 - run `sudo systemctl reload sshd.service` or `sudo service sshd restart` to reload the config file
   - For Ubuntu/Debian use `sudo service ssh restart`
-- To create a ssh key for remote access, use `ssh-keygen` to generate key pairs, then use `ssh-copy-id` to upload the public key to the remote machine
 
 ### ssh-keygen
 
@@ -1208,6 +1239,13 @@
 - run `logrotate -f /etc/logrotate.conf` to force all logs to be rotated one based on the config rules
 - run `logrotate <configFile>` run rotate once based on rules defined in the specified config file
 
+### dphys-swapfile
+
+- A tool to setup, mount/unmount, and delete an swap file
+- `apt-get install dphys-swapfile` install the package
+- Modify the settings in `/sbin/dphys-swapfile`, and `/etc/dphys-swapfile`, then reboot to setup swapfile
+- `sudo /etc/init.d/dphys-swapfile stop` , and `sudo apt-get remove --purge dphys-swapfile` to stop using swapfile and uninstall
+
 ### openssl
 
 - OpenSSL is an open-source command line tool that is commonly used to generate private keys, create CSRs, install your SSL/TLS certificate, and identify certificate information.
@@ -1484,6 +1522,7 @@
   - `make -k` continue running even in the face of errors. Helpful if you want to see all the errors of Make at once.
   - `make -s` no output
   - `make -i` surpress errors
+  - `make -j4` compile using 4 cores
 - `make <target>` run `MakeFile` from a specific target, frequently used target names are:
   - `make clean` remove previous compiled files
   - `make test` verify the completed `make` process has no error.
