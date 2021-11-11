@@ -688,7 +688,7 @@ name = (parameter) -> statement or {} block;       //-> read as become
   - static: method can run without creating an instance of the class containing the main method.
   - void: method doesn't return any value.
   - main: the name of the method.
-  - String[] args is the parameter for the main method.
+  - `String[] args` is the input parameter for the main method when executing from the command line separated by space
   - void test() // it is a test method with no returning value and no parameters.
 
 ### Generic Class
@@ -1825,4 +1825,140 @@ Runtime.getRuntime().addShutdownHook(new Thread() {
         System.out.println("Program exiting");
       }
     });
+```
+
+## Java Networking
+
+- The `java.net` package provides a library of classes to be used for networking applications
+- It contains two Levels of APIs
+  - Low Level API deals with Addresses (like IP), Sockets and network interfaces
+  - High Level API deals with URIs, URLs and Connections
+
+### Socket
+
+- It is the primary method of communication over a network in Java
+- Socket communucate through streams
+  - Once connected the getInputStreamand getOutputStream methods can be used to obtain the associated raw Socket streams
+  - Socket streams can be thought of as a type of simple File Stream
+  - A stream may be either read or write but not both
+- The Socket class creates sockets by using one of two approaches
+
+#### Server
+
+- Server sockets are created using the ServerSocket class and are used only to accept new connections
+- Server has a BufferedReader to hold incoming messages from client
+- Server is in waiting state until message is received
+- Data loss mitigated by increasing size of buffer
+- The ServerSocket needs to be created and executed in the Server program first
+  - This results in a server waiting for connections
+- The programmer must specify the TCP/IP port for connection attempts
+
+```java
+public class SkeletonServer implements Runnable {
+
+    private Socket server;
+    private DataInputStream in;
+    private DataOutputStream out;
+
+    public SkeletonServer(Socket theSocket) throws IOException {
+        server = theSocket;
+    }
+
+    public void run() {
+        String line = "start";
+
+        try {
+            System.out.println("Just connected to " + server.getRemoteSocketAddress());
+            in = new DataInputStream(server.getInputStream());
+            out = new DataOutputStream(server.getOutputStream());
+            /* Echo back whatever the client writes until the client exits. */
+            while (!line.equals("exit")) {
+                if (in.available() > 0) {  // non blocking
+                    line = in.readUTF();  // read line from client
+                    System.out.println("Echo back: " + line);
+                    out.writeUTF(line);  // echo the line back to the client
+                }
+            }
+            // close all connections
+            out.close();
+            in.close();
+            server.close();
+        } catch (SocketTimeoutException s) {
+            System.out.println("Socket timed out!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+                //out.writeUTF("Thank you for connecting to " + server.getLocalSocketAddress() + "\nGoodbye!");
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        int port = 0;
+        ServerSocket mySocket = new ServerSocket(port);  // Create the listening socket for client requests
+        // Need a way to close the server without just killing it.
+        while (true) {
+            System.out.println("Waiting for client on port "
+                    + mySocket.getLocalPort() + "...");
+            Socket server = mySocket.accept(); //blocking, awaiting a new client connection
+            try {
+                // new client connection recieved, spawn a thread to handle it
+                Thread t = new Thread(new SkeletonServer(server));
+                t.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+```
+
+#### Client
+
+- Client sockets are created using the Socket class (within a client) or by the ServerSocket.accept method (within the server)
+- The Socket constructor identifies the computer name (or IP address) and the socket we are attempting to connect to.
+- If a name is used the DNS is responsible for finding the IP address
+- `getInetAddress()` will return the IP address of the connected socket (The remote computer)
+- `getLocalAddress()` will return the IP address of the connected socket (The local computer)
+- `getPort()` will return the connected port of the remote computer
+- `getLocalPort()` will return the port on the local machine that is being used for communication
+
+```java
+public class SkeletonClient
+{
+   public static void main(String [] args)
+   {
+      // Retrieve input from command line, server name and port to connect to
+      String serverName = args[0];
+      int port = Integer.parseInt(args[1]);
+      Scanner keyboard = new Scanner(System.in);
+      String typing = "";
+      try
+      {
+         // Create a new socket to communicate over
+         Socket client = new Socket(serverName, port);
+         System.out.println("Just connected to " + client.getRemoteSocketAddress());
+         DataOutputStream out = new DataOutputStream(client.getOutputStream());
+         DataInputStream in = new DataInputStream(client.getInputStream());
+
+         while(!typing.equals("exit")){
+             typing = keyboard.nextLine();
+             out.writeUTF(typing);  // send input to server
+
+            while(in.available()<=0);  // non-blocking, wait until reply from server is recieved
+             if(in.available() > 0){
+                 System.out.println("Server replies " + in.readUTF());  // display result from server
+             }
+         }
+         out.writeUTF("exit");
+         // close all connections
+         out.close();
+         in.close();
+         client.close();
+      }catch(IOException e)
+      {
+         e.printStackTrace();
+      }
+   }
+}
 ```

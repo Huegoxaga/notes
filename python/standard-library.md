@@ -201,6 +201,7 @@ list(accumulate(range(8)))
 - `import multiprocessing as mp`
 - It enables methods to be run on multiple CPU cores.
 - All methods of `mp` are identical with `threading`.
+  - Also, use `Process()` class to init
 - Additionally, Multiprocessing can use `Pool()` and `map()` to auto processing multi-input and return a list of result.
   ```py
   # if processes parameter is omitted, it will use all cores available.

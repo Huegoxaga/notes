@@ -345,6 +345,7 @@
   - A frame has both a source port number and a destination port number
 - A socket is an IP address with a port number.
 - Port numbers have a range between 0-65535.
+  - Application can use port range from 1025 to 65535
 - Port numbers are used to identify the type of application or services during data transmission.
 - Here are Some standard port number.
   - `80` - Unsecured web browsing (http)

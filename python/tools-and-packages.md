@@ -547,6 +547,7 @@
     - One camera will be connected by passing `0` OR `-1`
     - Second camera can be selected by passing `2`
   - `cap = cv2.VideoCapture('LOCATION OF THE VIDEO')`, reading a video from local storage
+    - It accepts rstp location as input stream from IP camera. However, in the frame grabing loop, when there is code that's blocking each loop longer than the interval of the frame rate, the pipeline will break, due to timestamp mismatch
   - `ret, frame = cap.read()`, capture one video frame by frame, if frame is read correctly `ret` is `True`
   - `cap.isOpened()`, check if the video is successfully stored in the variable
     - work well with `while` loop

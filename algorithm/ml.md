@@ -238,12 +238,20 @@
 - The initial input values for the artificial neural network would be multiple features about one sample.
 - The final output values for the artificial neural network could be either a predicted value(one output), a boolean value(one output) or categorical values(multiple output nodes)
 - Each input value is associated with a weight, the neural network learns by adjusting the weight of each input value.
-- Each nerual will have the sum of all input value times the weight.
+- Each neuron will have the sum of all input value times the weight
+  - Each neuron itself is a linear binary classifier called perceptron
+    - linear classifier guarantees to converge on a solution as long as the data is linearly separable
+  - Perceptron model can be trained using perceptron learning algorithm
+    - During training, weight and threshold are adjusted - increase / decrease all weight by value times learning rate and increase / decrease threshold at the learning rate, based on the output result, ignore input that equals 0
+    - Works on normalized data
 - Activation function determine the output of each nerual based on the inputs' sum value
-  - Threshold function - either yes or no(0 or 1)
+  - Threshold function - either yes or no(0 or 1) or it uses a bias value and the threshold is always 0
   - Sigmoid function - gradually increase(0 to 1) close to but never reaches 0 or 1
   - Hyperbolic Tangent - gradually increase(-1 to 1) close to but never reaches -1 or 1
   - Rectifier function - either 0 or linearlly grows from 0 to 1.
+- Artificial Neurons are often referred to as units and named by their activation function: Threshold Units, Sigmoid Units, Tanh Units, and Rectified Linear Units(ReLU)
+- A single layer feed forward nerual network(perceptron) is the base machine learning unit in ANNs.
+- ANN or A multi-layer perceptron(a.k.a. MLP, or deep learning network) consists of a network of artificial neurons arranged into layers
 - The input values are called the input layer the output values are called output layer.
 - Nodes in between are called hidden layers, each layers will process values and generate output for the next layer.
   - Each neuron in the same layer focuses on different aspects of the input info.
@@ -253,10 +261,10 @@
   - `y` is the actually value, `y` hat the is output value.
   - A cost function is used to calculate the difference between `y` and `y` hat. The most frenquely used cost function is mean squared error which divides the squares of the difference of `y` and `y` hat by 2.
   - During each back propagation all of the weight for each synapse in the entire neural network are adjusted at the same time.
-  - All the weight are initially set to a random small number close to zero.
+  - All the weight are initially set to a random small number close to zero
+    - depending on where it starts, it might converge on a better or worse solution
   - Learning rate can be set to control how much the weights can be adjusted at a time.
-- A single layer feed forward nerual network(perceptron) is the base machine learning unit in ANNs.
-- There are several ways of adjust the weights:
+- There are several ways of adjust the weights for ANNs:
   - Try all possible combination of weight values and calculate its cost function value, this is not practically since it takes billions of years.(curse of dimensionality)
   - Gradient Descent - adjust the combination of weights by calculating the slope, hence each trials will move closer to the minimum value. The sum of cost functions of all rows of data in the dataset are calculated in one guess.
     - It might find the local minimum if all the cost function values are not convex.
@@ -266,6 +274,11 @@
   - Mini-batch Gradient Descent - runs one batch of rows at a time.
 - One epoach is the process of finding minimun cost function value of a batch of dataset after many times of iteration of the forward propagation and backpropagation adjusting of the weights.
   - One epoach will be repeated many times in order to improve accuracy.
+- When determining the number of layers or nodes for a model, consider:
+  - Each layer is computing a new representation of the classification task, with the final layer rendering the problem linearly separable. Examine the output of each hidden neuron as an interim classification computed along the way, and learn from these interim classifications
+  - If a layer has more neurons than the one before, it can transform the input by adding new meta-features (e.g. a neuron could learn to output 1 if two of its inputs are large and 0 if they are small, ignoring the othersentirely). This can add information to be used by the next layer
+  - If a layer has fewer neurons than the layer before, then it will send less information forward to the next layer. If features are redundant, or if it’s useful to combine features, this can be a good thing. Otherwise, it might hurt performance
+  - As a general rule, the more layers the model have, the more epochs are needed to train the network
 
 #### Convolutional Neural Networks(CNNs)
 
@@ -389,6 +402,7 @@
   - Learning rate
     - can be a value from 0.1 - 0.00001
     - It controls how fast weight changes during gradient descent.
+    - Larger valuesmightlead to faster convergence. Smallervalues might yieldhigher accuracy
     - 0.01 suggested starting value.
     - If to small it will take longer steps to find the best weight, if too big the algorithm might not be able to find the best weight.
     - Learning rate decay is an algorithm that helps the model to find the best weight.
@@ -398,6 +412,10 @@
     - It is 2^n and it can be anywhere from 1 - 256, 32 is a good starting point, then 64, 128, 256.
     - Larger batch size requires more computational resources, and it might cause out of memory errors.
     - Smaller batch size helps preventing the weight to be found at local minima, and it will be slow.
+      - Shuffle training data in each epoch can reduce the chances of getting local minima
+  - Regularization
+    - Regularization refers to a set of mathematical techniques applied to the backpropagation algorithm to avoidoverfitting
+    - Also known as the alpha parameter
 
 ### Reinforcement Learning
 

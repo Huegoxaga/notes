@@ -131,6 +131,21 @@
   - These vulnerabilities are often shared (or sold) between black hat hackers
   - If they are discovered by a white hat hacker, they may by reported directly to the software vendor (sometimes for a reward), or posted publicly to draw attention and incite improvements
 
+## Stages of a Cyber Attack
+
+### Reconnaissance
+
+- There are two types of reconnaissance
+  - Passive Reconnaissance - Refers to information gathering methods that are unlikely to alert the target
+    - For example, if the target is a web server, a passive reconnaissance technique would be to simply connect to a website hosted by that web server as if you were using the website like anyone else
+  - Active Reconnaissance - Refers to gathering of information by interacting with the target more directly. This type of recon is more likely to be discovered
+    - Typically involves network scans, which may include pings, port scans, certain information gathering requests being sent to specific ports/services, and so on
+- Types of Information Gained from Recon
+  - Network Information – General information about the network as a whole, including, IP Addresses, Network Topology, Domain Names
+  - Host Information – Information about individual devices on the network, including, Operating System and Patches, Open Ports and Running Services, Usernames and Group Names
+  - Security Policy Information – Information about security software, physical security devices, and policies that are in place on the network and equipment, including, Firewalls and Intrusion Detection Systems, Password Policies
+  - Human Information – Information pertaining to the people that use the network. Useful for social engineering attacks, including, Names and Roles, Email Addresses, Telephone Numbers, Social Information
+
 ## Related Tools
 
 ### Penetration Testing Tools
@@ -164,6 +179,34 @@
   - Forensic Tools can do one particular task or can be an all-in-one package that can perform a variety of functions. These tools can protect evidence from modification, recover deleted files, gather and summarize logs from the computer, and so forth
   - Digital forensics is an entire discipline of its own
   - Available tools are `The Sleuth Kit` (most popular), `Autopsy` (graphical environment for The Sleuth Kit), `Helix`, `Encase`
+
+### Recon
+
+- Zenmap (Nmap)
+  - Zenmap is a graphical interface for the network scanner Nmap
+  - Nmap means "network mapper". It functions as a way for you to gain an understanding of the network’s topology, helping you to identify any potential weak points for exploitation
+  - Nmap is considered an active recon tool
+  - Nmap can gather Network Information and Host Information
+- recon-ng
+  - recon-ng is an all-in-one tool for web and social media reconnaissance, specialized in gathering Human Information
+  - It can be used to find out public information about an organization that is on the web, such as domain name registries, host names, and contact info
+  - recon-ng can also search and interact with popular social media websites like Twitter and LinkedIn
+    - like running a query to find all people on LinkedIn who list a certain organization as an employer, including past employees, then find any listed phone numbers for those people
+  - recon-ng can act as a useful tool for the first steps towards a social engineering attack
+- Google Search Operators - advanced google search
+  - exact match search in double qoutes
+  - `OR` search - `epsi OR Coke`
+  - `-` exclude search - `Happy -birthday`
+  - use `()` to group terms
+  - file type search - `"Corporate Directory" filetype:pdf`
+  - search within a specific site - `site:`
+  - search related to a given domain - `related:`
+- Maltego
+  - Maltego is a data visualizer for finding relationships between pieces of information found on the Internet
+  - It performs data mining from open sources on the web
+  - It then displays the information in a graph, showing the links between people, organizations, email addresses, network devices, and much more
+  - Maltego is extensible – there are add-ons for searching more kinds of information, and from different sources
+    - Try out the "Have I been Pwned?" add-on, which checks an email address against various databases that contain passwords and other information from data breaches over the years
 
 ## Authorization Protocols
 
