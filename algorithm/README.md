@@ -488,3 +488,35 @@ int partition(int A[ ], int start, int end)
 
 - It calculates how similar two vectors are, by geting the cosine value of the two vectors using the dot product formula, which is dividing the dot product by the product of their magnitude
 - It is a similarity function
+
+### Königsberg Bridge Problem
+
+- It's about finding the unique path to cross all bridges when a group of islands are connected by multiple bridges
+- Euler states that there will be an optimal solution only when there are zero or two island that is connected to an odd number of bridges. When there are two such bridges, the solution path starts at one of these bridges and ends at the other
+  - This solution is proved by Carl Hierholzer
+  - Such solution path is then called the Eulerian path
+- An alternative form of the problem asks for a path that traverses all bridges and also has the same starting and ending point. Such a walk is called an Eulerian circuit or an Euler tour. Such a circuit exists if, and only if, the graph is connected, and there are no nodes of odd degree (connected to an odd number of bridges) at all.
+  - All Eulerian circuits are also Eulerian paths, but not all Eulerian paths are Eulerian circuits
+
+### Dynamic Programming
+
+- commonly referred to as DP
+- It uses recursive algorithm to solve problem, then it reduces the complex of a recursive algorithm that would take exponential time further by saving intermeditate recursive function result in a list in memory and pruning duplicated recursive calls when the result of a similar method call can be find in the result list
+
+### Path Finding Algorithms
+
+- Algorithm that finds the shortest paths between nodes in a graph
+
+#### Dijkstra's Algorithm
+
+- It finds the shortest time to get to all intermeditate nodes from the starting point to the destination, only the path that takes the shortest time to the intermeditate nodes are saved and will be used to reaching further nodes
+
+#### `A*` search Algorithm
+
+- It is pronounced as "A-star" search algorithm
+
+### Knapsack problem
+
+#### 0-1 Knapsack problem
+
+### The Travelling Salesman Problem

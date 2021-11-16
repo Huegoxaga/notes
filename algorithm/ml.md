@@ -242,7 +242,7 @@
   - Each neuron itself is a linear binary classifier called perceptron
     - linear classifier guarantees to converge on a solution as long as the data is linearly separable
   - Perceptron model can be trained using perceptron learning algorithm
-    - During training, weight and threshold are adjusted - increase / decrease all weight by value times learning rate and increase / decrease threshold at the learning rate, based on the output result, ignore input that equals 0
+    - During training, weight and threshold are adjusted - increase / decrease all weight by input value times learning rate and decrease / increase threshold at the learning rate, based on the output result
     - Works on normalized data
 - Activation function determine the output of each nerual based on the inputs' sum value
   - Threshold function - either yes or no(0 or 1) or it uses a bias value and the threshold is always 0

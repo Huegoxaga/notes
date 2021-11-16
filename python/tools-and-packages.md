@@ -878,6 +878,13 @@ WantedBy=multi-user.target
     - `y` dependent variables to split.
     - `test_size` `20%` data as test set, `80%` data as training set.
     - `random_state` controls the shuffling applied to the data before applying the split, when equals `1` always return the same spliting result. It has default `None`
+- Compare different parameter settings for a model
+  1. `from sklearn.model_selection import GridSearchCV` import
+  2. `clf = ModelClass(**baseArgs)` init model with common config
+  3. `parameter_space = {'hidden_layer_sizes': [(32,15), (32,10,16), (32,10)], 'activation': ['tanh', 'relu']}` define config space
+  4. `clf = GridSearchCV(clf, parameter_space, n_jobs=-1, cv=3)` init grid search which will test all combination of parameter space
+  5. `clf.fit(training_data, training_labels)` train the models
+  6. `print(clf.best_params_)` print the config that yields the best result
 
 ### sklearn.metrics
 
@@ -889,13 +896,21 @@ WantedBy=multi-user.target
 - Recall - `cm = metrics.recall_score(y_test, y_pred)` calculates recall
   - For recall and precision, use `pos_label` to specify the class to report, For multiclass/multilabel prediction, `average` is required as its `binary` default is not longer suitable
 
+### SKLearn Models
+
+- After declaring the training model class `clf = ModelClass()`
+  - train the model by using `clf.fit(dataset.data, dataset.target)`
+  - run prediction by using `result = clf.predict(testData)`
+
 ### sklearn.linear_model
 
 - Linear Regression Model
   - `from sklearn.linear_model import LinearRegression`
   - `regressor = LinearRegression()` initialize the linear regression model
-  - `regressor.fit(X_train, y_train)` trains the training data
-  - `y_pred = regressor.predict(X_test)` get predict result from test set data points
+- Perceptron
+  - `from sklearn.linear_model import Perceptron`
+  - `clf = Perceptron(max_iter=1000)`
+    - `max_iter` defines the max number of epochs
 
 ### sklearn.tree
 
@@ -903,8 +918,6 @@ WantedBy=multi-user.target
 - `from sklearn import tree`
 - `cls = tree.DecisionTreeClassifier()` returns a decision tree classifier object
   - [Click Here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) to see all related parameters
-- `cls.fit(train, train_target)` trains the training data
-- `prediction = cls.predict(test)` returns a list of predicted results
 - `dot_data = tree.export_graphviz(cls, out_file=None, feature_names=dataset.feature_names, class_names=dataset.target_names, filled=True, rounded=True, special_characters=True)` returns a dot file for the tree graph in graphviz format
 
 ### sklearn.naive_bayes
@@ -912,12 +925,19 @@ WantedBy=multi-user.target
 - `from sklearn import naive_bayes`
 - Gaussian Naive Bayes Models
   - `gnb = naive_bayes.GaussianNB()` Init a Gaussian Naive Bayes Classifier
-  - `gnb.fit(dataset.data, dataset.target)` Train a Gaussian Naive Bayes Classifier
-  - `y_pred = gnb.predict(dataset.data)` returns a list of prediction result for the input data
   - `probs = gnb.predict_proba(dataset.data)` Returns the probability results in a 2-D array. Each row is the probability of being each class in order for one input data
     - Append `.max(axis=1)` to get the list of probability for predicted (higher probability) class
 - Naive Bayes classifier for multinomial models
   - `mnb = MultinomialNB()` Init the model
+
+### sklearn.neural_network
+
+- Multi-layer Perceptron
+  - `from sklearn.neural_network import MLPClassifier`
+  - `clf = MLPClassifier(hidden_layer_sizes=layers, max_iter=5000)`
+    - `hidden_layer_sizes` defines hidden layers in between input/output layer as tuple like `(10, 5, 8)`, it means 3 hidden layers each with 10, 5, 8 perceptrons
+      - `()` means no hidden layer, it is used when the data is linearlly separable already
+    - `random_state` model init weight using random number by default, set it to zero to stop using random weights
 
 ## Graphviz
 

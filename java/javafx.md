@@ -2,6 +2,13 @@
 
 - It is a API for Java program with GUI interface
 - [Click here](https://docs.oracle.com/javase/8/javafx/api/toc.htm) for official docs for JavaFX in Java ES 8.
+  - It has been excluded from the offical package after SE 8, and needs to be installed from third party packages
+- It follows the Observer Design Pattern by using the main thread as the Event Dispatch Thread (EDT)
+  - EDT should be live all the time and has no blocking code
+  - EDT is listening the user events, and it handles UI updates
+  - EDT has two rules:
+    - All GUI activity is on the EDT
+    - No other time consuming activities can occur on the EDT
 - sample starting code
 
 ```java
@@ -239,6 +246,51 @@ setStyle()  ->
 "-fx-border-width: 3;\n" +
 "-fx-border-style: dashed;\n";
 ```
+
+## JavaFX Concurrent Package
+
+- It contains the classes required to allow background threads to run complex calculations
+
+### Task
+
+- It defines a background task for an UI
+
+```java
+public class BackgroundTask extends Task<String> {
+    @Override
+    public String call() {
+        pause(1000);  // waits 1 second tp simulate a large task
+        updateValue("123"); // Call the observable property to update the JavaFX UI's binded property
+        return Integer.toString(i);
+    }
+}
+```
+
+### Service
+
+- It is designed to execute the Task object
+- It knows about the EDT (Event Dispatch Thread)
+- It is designed to help with managing multithreaded code
+- Service must be initialized and accessed from the EDT (main)
+
+```java
+public class BackgroundService extends Service {
+    public Task createTask(){
+        return new BackgroundTask(); //Init a Task class for a Service
+    }
+}
+```
+
+#### Service Methods
+
+- In the event handler from the EDT, a service can be executed using the following methods
+- `label.textProperty().bind(service.valueProperty());` bind the service to a property of an UI
+  - A JavaFX component can bind its `valueProperty()` or `messageProperty()` to a service
+- `service.start();` start the task, the task must be in the READY state
+- `service.cancel();` cancel the task
+- `service.restart();` restart the task
+- `service.reset();` reset the task, the service must be in one of the finished states (SUCCEEDED, FAILED, CANCELLED OR READY)
+- `label.textProperty().unbind();` unbind the task, must unbind the property if it was bound, before updating the property's value in the EDT manually
 
 Documentation
 Rules.
