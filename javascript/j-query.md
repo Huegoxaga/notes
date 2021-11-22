@@ -133,7 +133,7 @@ $("<span>Hello World!</span>").appendTo("p");
 - It works with the document node which represents all elements from the entire page.
 
 ```js
-$(document).ready(function() {
+$(document).ready(function () {
   // jQuery code goes here, recommended earlier that window load which waits for image and other content to load.
 });
 ```
@@ -141,7 +141,7 @@ $(document).ready(function() {
 - It has a short form.
 
 ```js
-$(function() {
+$(function () {
   // jQuery code goes here
 });
 ```
@@ -243,7 +243,7 @@ $("#id").load("filename.php", { dataName: "data" });
 - The get method requests data from the server with an HTTP GET request.
 
 ```js
-$.get("filename.php", { dataName: "data" }, function(callbackData) {
+$.get("filename.php", { dataName: "data" }, function (callbackData) {
   $("#resultTag").html(callbackData);
 });
 ```
@@ -251,7 +251,7 @@ $.get("filename.php", { dataName: "data" }, function(callbackData) {
 - Get request with Serialized string
 
 ```js
-$.get("filename.php?dataName=data", function(data) {
+$.get("filename.php?dataName=data", function (data) {
   //Process data here
 });
 ```
@@ -261,7 +261,7 @@ $.get("filename.php?dataName=data", function(data) {
 - The getJSON method requests JSON data from the server with an HTTP GET request.
 - This method is in the full version of the jQuery. It doesn't exist in the `.min` CDN link file.
   ```js
-  $.getJSON("filename.php?dataName=data", function(data) {
+  $.getJSON("filename.php?dataName=data", function (data) {
     //Process data here
   });
   ```
@@ -278,7 +278,7 @@ $.get("filename.php?dataName=data", function(data) {
   $.post(
     "file.php",
     { dataName: "data" },
-    function(data) {
+    function (data) {
       //process data here
     },
     "json"
@@ -296,9 +296,9 @@ $.ajax({
   type: "GET",
   url: "09xml.xml",
   dataType: "xml",
-  success: function(xml) {
+  success: function (xml) {
     //process data here.
-  }
+  },
 });
 ```
 
@@ -307,7 +307,7 @@ $.ajax({
 - Each - iterate over an array
 
 ```js
-jQuery.each(arrayName, function(key, val) {
+jQuery.each(arrayName, function (key, val) {
   //Access array elements here.
 });
 ```
@@ -317,7 +317,7 @@ jQuery.each(arrayName, function(key, val) {
 ```js
 $(node)
   .find("target")
-  .each(function() {
+  .each(function () {
     //Process data here
   });
 ```
@@ -347,12 +347,10 @@ jQuery can be used to construct templates of convert html layout.
 
 ```js
 //Use templates with different data.
-$(document).ready(function() {
-  $("#ajax-trigger").click(function(event) {
-    $.getJSON("10templates.php", { employerId: 1 }, function(data) {
-      $("#employerList")
-        .tmpl(data)
-        .appendTo("#ajax-target");
+$(document).ready(function () {
+  $("#ajax-trigger").click(function (event) {
+    $.getJSON("10templates.php", { employerId: 1 }, function (data) {
+      $("#employerList").tmpl(data).appendTo("#ajax-target");
     });
   });
 });

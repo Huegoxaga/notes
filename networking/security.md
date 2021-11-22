@@ -69,9 +69,11 @@
     - Legitimate websites that require you to log in should always have secure connections(HTTPS) available
   - Phishing
     - The practice of sending emails purporting to be from reputable companies in order to induce individuals to reveal personal info
+      - Spear-Phishing refers to attacks that target to a smaller group of people
     - Following a phishing email will lead to a website made up to look exactly like the real thing
-    - Sophisticated phishing websites will even have secure connections, however they cannot fake the website URL via phishing alone
-    - End users must be trained to spot phishing emails and to not open any links or attachments from suspicious emails
+      - Sophisticated phishing websites will even have secure connections, however they cannot fake the website URL via phishing alone
+    - Phishing emails can also include malicious attachments
+      - End users must be trained to spot phishing emails and to not open any links or attachments from suspicious emails
   - Typo-squatting
     - Typo-squatting is when a malicious actor owns a domain name that is very similar to a legitimate website that is visited often. By creating a look-a-like web page, username and password credentials can easily be stolen. These web pages can also be used to try to download malware onto the visitor’s computer
     - This should be distinguished from cyber squatting or domain squatting, which is owning a desirable domain name and "sitting on it" until there is a motivated buyer

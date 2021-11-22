@@ -147,9 +147,10 @@
 #### Heap
 
 - It can be used to improve the performance of a priority queue.
-- It is a binary that stores a key and a value in all of its nodes.
+- It is a binary tree that stores a key and a value in all of its nodes.
 - It also need to satisfy the following requirement.
-  - The child node key is always greater or equal to its parent node key.
+  - In a max-heap, the child node key is always greater or equal to its parent node key.
+  - In a min-heap, the child node key is always smaller or equal to its parent node key.
   - Except the nodes with the highest depth of the tree, all nodes have two children(full). This guarantee the tree has minimal height.
 
 ### Maps
@@ -217,7 +218,12 @@
   - Linear Recursion - Each recursive method call itself once.
   - Binary Recursion - Each recursive method call itself twice.
   - Multiple Recursion - Each recursive method call itself more than twice.
-- For binary and multiple recursion, the methods call itself as deep as possible than call the sibiling methods after all its recursive methods are called.
+- For binary and multiple recursion, the methods call itself as deep as possible than call the sibiling methods after all its recursive methods are called
+
+#### Dynamic Programming
+
+- Commonly referred to as DP
+- It optimizes native recursive algorithm by saving the intermeditate result from recursive calls in a list in the memory, it reduces the complex of a recursive algorithm that would take exponential time further by pruning duplicated recursive calls when the result of a similar method call can be find in the result list
 
 ### Algorithm Analysis
 
@@ -447,22 +453,6 @@ int partition(int A[ ], int start, int end)
 }
 ```
 
-### Assignment Algorithm
-
-#### Hungarian(Munkres Assignment) Algorithm
-
-- It is used to find the smallest sum of elements from a square matrix, when only one element can be selected from each row and column
-- Using brutal force will result a time complexity of `O(n!)`
-- Hungarian Algorithm helps to speed up with a time complexity of `O(n^3)`
-- Steps:
-  1. Substract the smallest element of each row from all elements of each row
-  2. Substract the smallest element of each column from all elements of each column
-  3. Connect all the zeros using minimum numbers of lines, where `n` lines should be used for a `n X n` matrix
-     - If lines used is smaller than `n`, substract all unconnected elements by the smallest one of them, then add the number to the intersection of the lines, then go back to step `3`, as a result the line number will increase by one, if `n` is still small repeat this additional step again
-     - This additional step can be repeated as many as `n` times when `n` is initially `1`, and causing the final highest time complexity of this algorithm is equals `n`(line number) multiply by `n^2`(element scaning in this step), which is `O(n^3)`
-  4. Find one zero in each row and column, and use the original element that located the zero's position to do the sum, then obtain the final result
-- For solving problems involves non-square matrix, fit it with the smallest square matric and fill the missing elements with zeros, and discard the assignment for these position in the final step
-
 ### Distance and Similarity Calculation
 
 #### Euclidean Distance
@@ -489,7 +479,29 @@ int partition(int A[ ], int start, int end)
 - It calculates how similar two vectors are, by geting the cosine value of the two vectors using the dot product formula, which is dividing the dot product by the product of their magnitude
 - It is a similarity function
 
-### Königsberg Bridge Problem
+### Assignment Algorithm
+
+- It is a problem in combinatorial optimization
+
+#### Hungarian(Munkres Assignment) Algorithm
+
+- It is used to find the smallest sum of elements from a square matrix, when only one element can be selected from each row and column
+- Using brutal force will result a time complexity of `O(n!)`
+- Hungarian Algorithm helps to speed up with a time complexity of `O(n^3)`
+- Steps:
+  1. Substract the smallest element of each row from all elements of each row
+  2. Substract the smallest element of each column from all elements of each column
+  3. Connect all the zeros using minimum numbers of lines, where `n` lines should be used for a `n X n` matrix
+     - If lines used is smaller than `n`, substract all unconnected elements by the smallest one of them, then add the number to the intersection of the lines, then go back to step `3`, as a result the line number will increase by one, if `n` is still small repeat this additional step again
+     - This additional step can be repeated as many as `n` times when `n` is initially `1`, and causing the final highest time complexity of this algorithm is equals `n`(line number) multiply by `n^2`(element scaning in this step), which is `O(n^3)`
+  4. Find one zero in each row and column, and use the original element that located the zero's position to do the sum, then obtain the final result
+- For solving problems involves non-square matrix, fit it with the smallest square matric and fill the missing elements with zeros, and discard the assignment for these position in the final step
+
+### Path Finding Algorithms
+
+- Algorithm that finds the shortest paths between nodes in a graph
+
+#### Königsberg Bridge Problem
 
 - It's about finding the unique path to cross all bridges when a group of islands are connected by multiple bridges
 - Euler states that there will be an optimal solution only when there are zero or two island that is connected to an odd number of bridges. When there are two such bridges, the solution path starts at one of these bridges and ends at the other
@@ -498,25 +510,141 @@ int partition(int A[ ], int start, int end)
 - An alternative form of the problem asks for a path that traverses all bridges and also has the same starting and ending point. Such a walk is called an Eulerian circuit or an Euler tour. Such a circuit exists if, and only if, the graph is connected, and there are no nodes of odd degree (connected to an odd number of bridges) at all.
   - All Eulerian circuits are also Eulerian paths, but not all Eulerian paths are Eulerian circuits
 
-### Dynamic Programming
-
-- commonly referred to as DP
-- It uses recursive algorithm to solve problem, then it reduces the complex of a recursive algorithm that would take exponential time further by saving intermeditate recursive function result in a list in memory and pruning duplicated recursive calls when the result of a similar method call can be find in the result list
-
-### Path Finding Algorithms
-
-- Algorithm that finds the shortest paths between nodes in a graph
-
 #### Dijkstra's Algorithm
 
-- It finds the shortest time to get to all intermeditate nodes from the starting point to the destination, only the path that takes the shortest time to the intermeditate nodes are saved and will be used to reaching further nodes
+- It finds the shortest time to get to all the next intermeditate nodes from the starting point to the destination, only the path that takes the shortest time to the next nodes will be adopted and will be used to reach further nodes
 
-#### `A*` search Algorithm
+#### `A*` Search Algorithm
 
 - It is pronounced as "A-star" search algorithm
+- It optimzes the Dijkstra's Algorithm by adding a heuristic function
+  - The heuristic function returns an direct distance from the source to the destination, so the program can have a general sense of the general direction for searching
+  - The `h` distance to the destination for each node that calculated from the heuristic function will be added to the actual distance traveled (`g`) to get to the node for path selection
+    - The sum of `h` and `g` distance is the `f` distance for a node
+- Open set or list refers to the nodes that will be evaluated or visited
+- Closed set or list refers to the nodes that has been evaluated or visited
+- Steps:
+  1. Add the starting square (or node) to the open list
+  2. Repeat the following:
+     - A) Look for the node with lowest F cost on the open list
+       - The node with lowest F is referred as the current node
+     - B) Remove current node from open list, put it to the closed list
+     - C) For each of the adjacent nodes to this current node (closed node)
+       - If it is not walkable or if it is on the closed list, ignore it
+       - If it isn't on the open list, add it to the open list. Make the current node the parent of this node. Record the F, G, and H costs of the node
+       - If it is on the open list already, check to see if this path to that node is better, using G cost as the measure. A lower G cost means that this is a better path. If so, change the parent of the node to the current node, and recalculate the G and F scores of the node
+         - The same scenario in Dijkstra's algorithm when an old path turns out to be better
+         - If you are keeping your open list sorted by F score, you may need to resort the list to account for the change.
+     - D) Stop when you:
+       - Add the target square to the closed list, in which case the path has been found
+       - Or, fail to find the target square, and the open list is empty. In this case, there is no path.
+  3. Save the path. Working backwards from the destination node, adding each parent node to list until starting node is reached, the list of nodes represents the optimal path
 
-### Knapsack problem
+#### The Travelling Salesman Problem
+
+- It is a problem in combinatorial optimization
+
+### Knapsack Problem
+
+- It is a problem in combinatorial optimization
+- The original problem is to maximize the value of items put in a knapsack that can only hold a certain amount of total weight, given each item has a specific weight and value
 
 #### 0-1 Knapsack problem
 
-### The Travelling Salesman Problem
+- It solves a special scenario when there are only two options for each item in the defined list, ethier put it in the bag or leave it
+- It is suitable to solve using dynamic programming
+- A bottom-up solution is provided by drawing a table with all possible total weight for each columns and items for each row
+  - For each column, the current total weight allowed is specified in the column header
+  - For each row, only the item in current row and above can be used to fill the current weight
+  - In each cell, find out the maximum value using the current weight and available items
+  - When filling the cell, two values need to be calculated, the result if putting the current item or filling the current weight using the items from above row (directly using the value one cell above). For each of the above option, search for the possibility of add more items using the remaining weight for items in the above row and putting the max value in the current cell
+- If the item index is `n`, total weight is `W`, values and weight for each item in array `v` and `w` (The array `v` and `w` are assumed to store all relevant values starting at index `1`), the example solutions for finding the max total value are shown below
+
+  - The native recursive solution in Java that costs `O(2^n)`
+
+  ```java
+  int[] w = new int[] {1,2,3,4};
+  int[] v = new int[] {2,4,7,8};
+  int W = 15;
+  int n = v.length;
+  int knapsackRec(int n, int W) {
+      if (n <= 0) {
+          return 0;
+      } else if (w[n - 1] > W) {
+          return knapsackRec(n - 1, W);
+      } else {
+          return Math.max(knapsackRec(n - 1, W), v[n - 1]
+            + knapsackRec(n - 1, W - w[n - 1]));
+      }
+  }
+  ```
+
+  - The recursive solution improved using dynamic programming that costs `O(nW)`
+
+  ```java
+  // Similar to the above code but using a temp 2D array to save and check the existing result
+  int[] w = new int[] {1,2,3,4};
+  int[] v = new int[] {2,4,7,8};
+  int W = 15;
+  int n = v.length;
+  int[][] temp = new int[5][5];
+  Arrays.fill(temp, -1);
+  int knapsackRec(int n, int W) {
+      int result;
+      if (temp[n][W] != -1) return temp[n][W];
+      if (n <= 0) {
+          result = 0;
+      } else if (w[n - 1] > W) {
+          result = knapsackRec(n - 1, W);
+      } else {
+          result = Math.max(knapsackRec(n - 1, W), v[n - 1]
+            + knapsackRec(n - 1, W - w[n - 1]));
+      }
+      temp[n][W] = result;
+      return result;
+  }
+  ```
+
+  - The bottom-up solution (as if one is drawing the `n` vs `W` table row by row) with dynamic programming that costs `O(nW)`
+
+  ```java
+
+    int[] wt = new int[] {1,2,3,4};
+    int[] val = new int[] {2,4,7,8};
+    int W = 15;
+    int n = val.length;
+    int knapsackBottomUp(int W, int n)
+    {
+      int i, w;
+      int K[][] = new int[n + 1][W + 1];
+      for (i = 0; i <= n; i++)
+      {
+        for (w = 0; w <= W; w++)
+        {
+          if (i == 0 || w == 0)
+            K[i][w] = 0;
+          else if (wt[i - 1] > w)
+            K[i][w] = K[i - 1][w];
+          else
+            K[i][w] = Math.max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);
+        }
+      }
+      return K[n][W];
+    }
+  ```
+
+  - To find the indices of item selected for the max value using filled table result
+
+  ```java
+  Set<Integer> getResultSet(int i, int j, int[][] m) {
+      Set<Integer> result = new HashSet<>();
+      if (i == 0) return result;
+      if (m[i][j] > m[i - 1][j]) {
+          result.add(i);
+          result.addAll(getResultSet(i - 1, j - w[i - 1], m));
+      } else {
+          return getResultSet(i - 1, j, m);
+      }
+      return result;
+  }
+  ```

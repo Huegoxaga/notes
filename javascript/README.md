@@ -21,7 +21,7 @@
   - [GeoLocation](#geolocation)
 - [Import/Export](#import/export)
 - Libraries
-  - [jQuery](jquery.md)
+  - [jQuery](j-query.md)
   - [REACT](react.md)
 - Framework
   - [React Native](react-native.md)
@@ -105,7 +105,7 @@ JavaScript code can be added inside the script tag.
 
 ##### var
 
-`var` keyword is used to declared a global variable, its value can be any data type.
+- `var` keyword is used to declared a global variable, its value can be any data type.
 
 ```js
 var x = 10;
@@ -113,8 +113,8 @@ var x = 10;
 
 ##### let
 
-`let` declares local variables that only available in the current block of code.
-let keyword is recommended for variable declaration.
+- `let` declares local variables that only available in the current block of code, enclosed by `{}`
+- `let` keyword is recommended for variable declaration.
 
 ##### const
 
@@ -543,7 +543,7 @@ let x = new Person("Jim", 1, 100);
 
 #### String
 
-- Strings can be enclosed by either single quotes and double quotes. when use single quotes, double quotes can be used without the escape character \\. when use double quotes, single quotes can be used inside.
+- Strings can be enclosed by either single quotes and double quotes. when use single quotes, double quotes can be used without the escape character `\`. when use double quotes, single quotes can be used inside.
 - Uses `+` sign for concatenation.
 - `parseInt("10")`, converts a string into int.
 - `parseFloat("2.3")` converts a string into float.
@@ -553,7 +553,8 @@ let x = new Person("Jim", 1, 100);
 - `s.split(c)`; turn string into an array, split by character `c`.
 - `s1.includes(s2)` return bool value states if s1 includes s2.
 - `s1.equals(s2)` return true if two strings are equal
-- Template literals are a way to output variables in the string. `'Value: ${variable}'`.
+- Template literals are a way to output variables in the string. `` `Value: ${variable}` ``
+  - Optionally, use `String.format('{0} {1}!', 'Hello', 'World');`
 - click to see the docs for string.
 - `s.toLowerCase()`
 - `s.toUpperCase()`
@@ -587,7 +588,7 @@ var person = {
 
 ```js
 let person = {
-  name: "Sam Scott",
+  name: "John Dow",
   id: 1021,
   balance: 123.99,
   addItem: function (price) {
@@ -737,6 +738,7 @@ array.filter(i => i.id === 1); //retern a filtered array that doesnot have items
 [1, 2, 3].map(x => 2 * x); //return an array of element base on an array of data.
 [1, 2, 3].map((item, index, array) => 2 * x); //it can takes optional parameters, index(second), and the array itself(third)
 array.splice(2, 3); // delete 3 items starting at index 2.(have to call it independently and get the result after.)
+array.splice(3, 0, item) // insert an item at index 3
 array.reverse() //reverse all elements
 array.sort() //sort the array
 array1.find(element => element > 10); //return the first element found, returns undefined if no match is found
@@ -744,6 +746,7 @@ array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 //reduce iterate over each element of the function and return a value that will be used by the next iteration.
 let arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length //get avg
 Math.max(...array);//find the max value among array elements
+array.shift();//remove the first element of the array
 array.unshift(a,b,c);//adds one or more items or elements to the beginning of the array and returns the new length of the array.
 array.slice(1, 3);//The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
 newArray = array.slice() //will also clone the array with a new reference

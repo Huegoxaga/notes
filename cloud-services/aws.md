@@ -428,6 +428,7 @@ It runs scripts and codes without the need to set up the server.
       - If running `pip install` locally and the package doesn't work, build Amazon Linux container using Docker or use EC2 run `pip install` and get the package for Amazon Linux.
     - In environment variable add the folder path to key `PYTHONPATH` if anything goes wrong.
 - DynamoDB can trigger Lambda function using DynamoDB stream. All records will be sent to lambda when one or more records are edited.
+  - Watch out recursive calls when the lambda will modify the table in the end
 - Versioning
   - Create a version will create a snapshot of the current function.
   - An Alias can point to one version at a time.

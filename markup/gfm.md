@@ -149,8 +149,8 @@ Any word wrapped with two tildes, like `~~this~~`, will appear crossed out.
 - Inline Code blocks
   wrapped in a set of \`\`.
 
-```
-``int x = 12;``
+```md
+`int x = 12;`
 ```
 
 - Fenced Code blocks
@@ -158,12 +158,14 @@ Any word wrapped with two tildes, like `~~this~~`, will appear crossed out.
 - Fenced Code blocks with syntax highlighting
 - use a language identifier after \`\`\` in the first line, language identifier including: \*
 - use the following ways to print `` ` `` inside code block
+
   ```md
   use backslash to escape when backtick is printed outside code blocks
   Print a singe \` inside code blocks `` ` ``
   Use higher number of \` to print more \` inside code blocks ` `` ` (print two)
   `` text`  `` produces text\`
-  `` `text`` produces \`foo
+  `` `text `` produces \`text
+  `` `text` `` produces \`text\`
   ```
 
 ### Issue References

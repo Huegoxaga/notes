@@ -10,7 +10,7 @@
   - [Android Development](java/android.md)
 - [Scala](scala/README.md)
 - [JavaScript](javascript/README.md)
-  - [jQuery](javascript/jquery.md)
+  - [jQuery](javascript/j-query.md)
   - [React](javascript/react.md)
   - [React Native](javascript/react-native.md)
   - [Node.js](javascript/node-js.md)
