@@ -87,6 +87,8 @@ Provide Persistent Storage
     - `https://bucket.s3.amazonaws.com/key`
     - `https://bucket.s3.region.amazonaws.com/key`
     - `https://bucket.s3-region.amazonaws.com/key`
+- The CORS setting for a bucket only works when the request header contains `Origin` for the site
+  - A browser may use a cached response that did not include the appropriate Access-Control response headers
 
 ### CLI Commands
 
@@ -418,6 +420,7 @@ It runs scripts and codes without the need to set up the server.
 - Add proper Lambda Execution Role to allow Lambda instance to be triggered by other AWS services.
 - When SQS is the trigger, the batch means the number of SQS messages the lambda wants to receive and process during one invocation.
 - The online editor console display limited lines of output, go to CloudWatch log group to view complete logs
+- When retry number is set to `-1`, Lambda will keep trying until success
 - A layer is a ZIP archive that contains libraries, a custom runtime, or other dependencies which will be deployed in to the `/opt` folder of your Lambda container
   - If the zipped image size is over 50MB upload to S3 and use link to add layer.
   - The Lambda Develop package cannot be over 250MB after unzipping

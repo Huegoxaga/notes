@@ -148,9 +148,86 @@
   - Security Policy Information – Information about security software, physical security devices, and policies that are in place on the network and equipment, including, Firewalls and Intrusion Detection Systems, Password Policies
   - Human Information – Information pertaining to the people that use the network. Useful for social engineering attacks, including, Names and Roles, Email Addresses, Telephone Numbers, Social Information
 
-## Related Tools
+### Analysis for Potential Vulnerabilities
 
-### Penetration Testing Tools
+- Vulnerability Analysis is about taking the information gained from recon and figuring out a way to utilize it towards exploitation
+- The issues can be addressed by
+  - a white hat consultant or taken advantage of by a black hat hacker
+  - use premade tools that scan for and analyze well-known security issues that have not been addressed in the target network
+  - perform related analysis and research into the vulnerabilities that are present
+
+#### Common Vulnerabilities
+
+- Missing Patches - Unpatched software is vulnerable to well-known, published exploits
+- Use of Broken Algorithms
+  - This ties in closely to the previous topic of outdated software
+  - Algorithms used for encryption or hashing are inevitably rendered useless as computers advance far enough to be able to crack them within a reasonable amount of time
+  - Some algorithms are retired early due to weaknesses found in their implementation
+  - Vendors often provide patches in order to implement the latest and greatest algorithms – but those patches need to actually be applied and those algorithms need to be turned on
+  - Because encryption is a computationally intensive task, it may not be possible for older hardware to run newer or stronger versions of algorithms
+  - Running a mix of newer and older hardware and software might mean being forced to use the lowest common denominator when it comes to algorithms
+  - List of Commonly Found Outdated Algorithms
+    - Symmetric Encryption Algorithms
+      - DES, 2DES, 3DES – these have been made obsolete by AES, although 3DES is still used.
+      - RC4 – Security concerns. Made obsolete by AES.
+      - Blowfish – Made obsolete by Twofish and then Threefish. Less commonly used than AES
+    - Asymmetric Encryption Algorithms
+      - When it comes to asymmetric algorithms, RSA and Diffie-Hellman were both first published in the late 70’s, but have been periodically improved upon over the years and can be made more and more secure by increasing the key strength used for the encryption process
+    - Hashing Algorithms
+      - SHA-1 – made obsolete by SHA-2 and SHA-3
+      - MD5 (and its predecessors) – Broken. Use SHA-2 or SHA-3
+    - Recommended Algorithms (2019)
+      - Symmetric Encryption Algorithms
+        - AES with 128-bit key strength (or 256 for especially secure systems)
+      - Asymmetric Encryption Algorithms
+        - RSA with 2048-bit key strength (or 4096 for especially secure systems)
+        - Elliptic-Curve Diffie-Hellman with 256-bit key strength
+      - Hashing Algorithms
+        - SHA-256 (which is a version of SHA-2) or better
+- Weak Passwords
+  - Multi-factor authentication can be used to enhance authentication challenges on systems. Categories of multi-factor authentication mechanisms
+    - Something you know (like a username and password)
+    - Something you have (like a bank card or key fob)
+    - Something you are (fingerprint, etc.)
+- Lax Physical Security
+  - In the end, having physical access to a computer or device is the simplest way to be able to exploit it
+  - Simply being able to momentarily plug in a USB drive into the computer of a distracted person can lead to a completely compromised system
+  - Physical security should mean physical access barriers, like locked network cabinets, locked doors, disabled Ethernet ports that aren’t in use, and so forth
+- Weak Wireless Access Point Security
+  - It doesn’t help that, as previously mentioned, wireless encryption standards are notoriously weak
+  - Some hackers do what is called "wardriving", which is driving around in a car with a laptop or smartphone running software that searches for open or easily crackable wireless networks
+  - You should never consider your traffic over wireless networks (unless otherwise encrypted by TLS, a VPN, etc.) to be secure, especially public Wi-Fi networks
+- Unmanaged Mobile Devices
+  - Most organizations today either provide employees with mobile devices or have "Bring Your Own Device" (BYOD) policies whereby company resources can be accessed via personal mobile devices
+  - Mobile devices (especially personal ones) represent a weak point in security, since they are difficult to manage from an IT perspective and because they usually connect to the network wirelessly
+  - Mobile devices can be lost or stolen and should be configured so that the IT department has the ability to wipe them remotely
+  - Organizations can use Mobile Device Management (MDM) software to mitigate some of the risk
+- Excessive Levels of Access
+  - Users should only have the access they need, nothing more and nothing less. When privileges are no longer required, they should be removed
+  - Excessive privileges increase the potential for attacks from internal threats as well as accounts compromised by external threats
+  - A common issue is "privilege creep", where over time users are slowly allowed more and more access on the network and its systems beyond what they currently need to do their job. This is especially common in employees who change roles in the organization
+- Unchecked User Input
+  - SQL code injection
+- Software Misconfigurations
+  - Often, end users or IT staff will configure software in such a way that it is more convenient for them to use rather than configuring it in such a way that it is secure IT staff may also misconfigure software by accident or due to lack of knowledge
+  - Common misconfigurations often lead to common exploits
+
+### Exploitation
+
+- Exploitation is the actual attack on the system that the attacker is trying to compromise, taking place after the recon and analysis steps
+- An exploit is a piece of software, a chunk of data, or a sequence of commands that takes advantage of a bug or vulnerability to cause unintended or unanticipated behavior to occur on computer software, hardware, or something electronic
+
+### Completing the Objective
+
+- Gaining further access
+- Could include obtaining, modifying, or causing damage to target
+
+### Making an Escape
+
+- Exfiltration of data
+- Covering your tracks
+
+## Related Tools
 
 - Vulnerability Scanners
   - A more advanced version of the port scanners
@@ -181,6 +258,75 @@
   - Forensic Tools can do one particular task or can be an all-in-one package that can perform a variety of functions. These tools can protect evidence from modification, recover deleted files, gather and summarize logs from the computer, and so forth
   - Digital forensics is an entire discipline of its own
   - Available tools are `The Sleuth Kit` (most popular), `Autopsy` (graphical environment for The Sleuth Kit), `Helix`, `Encase`
+
+### Metasploit
+
+- The most used software for discovering and launching exploits is Metasploit, which is an all-in-one penetration testing framework
+- Metaploit contains hundreds of checks and tests to see whether an exploit on a certain system is possible, making it very useful in the analysis step of a cyber attack
+- Try the `search check:yes` command in Metasploit to see a complete list of tests
+  - Note that some tests have risks -- many may be caught by intrusion detection software
+- Searches can be done for tests and exploits for specific operating systems or software that you find on the target network
+- Searches can also be done for particular classes of exploits
+
+#### Modules
+
+- A module is a piece of software that the Metasploit Framework uses to perform a task, such as scanning or exploiting a target
+- Different types of modules can be used together to perform an attack
+- Metasploit includes thousands of modules
+- Types of modules
+  - Exploit modules
+    - The main action of the attack
+    - Ex. Taking advantage of unpatched software on the target machine, causing a buffer overflow
+  - Payload modules
+    - After the target is exploited, what do we want to do or send to the target machine?
+    - Ex. Send a file to start a reverse shell, files to stage the next part of the attack, etc.)
+    - a reverse shell is a common payload type that will allow the attacker to use the command-line interface of a remote machine, giving them the ability to execute any commands on it that they wish
+    - It is called a reverse shell because, via the exploit, you are actually causing the victim to open the remote shell connection to you
+  - Auxiliary modules
+    - Includes scanners, sniffers, etc.
+  - Encoders
+    - Used to scramble the code used in the other modules so that they will be less likely to be detected by anti-virus software
+
+#### Metasploit Commands
+
+- `service postgresql start`, Using this command in the Terminal will start the database service that Metasploit uses. This is recommended as it will make Metasploit run faster
+- `msfconsole`, Using this command in the Terminal will start the main interactive command-line tool for Metasploit
+- `load msgrpc`, Starting Metasploit RPC server
+- `help`, Typing the help in the Metasploit console will show you all of the different Metasploit commands as well as descriptions of them. It is a good place to start
+- `search`, Type `search <data>` to search the Metasploit database for any modules that have the something in its name. (Ex. search windows)
+  - Note: you may want to go to View > Zoom Out so that the text is not wrapping around
+- `use`, Type `use <module>` to select a module to use. You must identify the module by its full name, which you would have obtained using the search command (or from reading it online)
+- `show info`, Once you have selected a module, use show info to display available targets, basic options, a description, and references of the module
+- `show targets`, Once you have selected a module, use show targets to view the different target types for the module. For example, you may find that the module can change targets between Windows and Linux, and you may want to select a specific target type depending on the system you want to attack.
+  - Note: Targets are selected using the set command. Ex. set TARGET Windows Server 2003 SP2
+- `show payloads`, Once you have selected a target for the module, use show payloads to view the different actions that the module can take after the exploitation has been completed. For example, the module may be able to open a reverse shell if the exploit is successful
+  - Note: Payloads are selected using the set command. Ex. set PAYLOADS generic/shell_bind_tcp
+- `show options`, Once you have selected a module, a target type, and a payload, use show options to view the different settings you can configure, some of which are mandatory before the module can be executed.
+  - Note: Options are configured using the set command. Ex. set LHOST 192.168.10.42
+- `Common Options`
+  - LHOST – The local IP address to listen on. Use ifconfig to view the IP address of the virtual machine, which is what you want to set LHOST to.
+  - LPORT – The local port number to listen on. The number chosen does not matter too much, unless the number is already being used by another service. For that reason, it is best to choose a number >1024 or to use the default if it is already set.
+  - `RHOST` – The IP address of the target.
+  - `RPORT` – The port number that you are attempting to send traffic to on the target.
+- `set`
+  - As previously mentioned, this command is used to set the values for the options, targets, and payloads of a module.
+    - Ex. set TARGET Windows Server 2003 SP2
+    - Ex. set PAYLOADS generic/shell_bind_tcp
+    - Ex. set LHOST 192.168.10.42
+  - You can use the show command and use an ID number to set a target or payload from the list rather than using a long target/payload name.
+  - Example: set payload generic/shell_reverse_tcp OR set target 3
+  - Use the show command after any set commands to verify the changes.
+  - `run` or `exploit` Once all of your modules have been selected and all of the mandatory options have been configured, you are ready to go.
+  - You can type either of the above commands to execute your attack
+  - it doesn't make a different which of the two you choose
+    - Note: run is faster to type, but entering exploit just seems cooler
+
+#### Armitage
+
+- Armitage is a graphical environment for Metasploit – as we know, graphical interfaces can make software easier to use
+- It is still important to be able to use Metasploit itself, as it provides more control and you may not always be using it on a system that has a desktop
+- Before using Armitage, you must start Metasploit and run its RPC (remote procedure call) server so that Metasploit will accept commands from Armitage (instructions on next slide)
+- Once the Metasploit RPC server is running, open Armitage, enter the relevant information, and click Connect
 
 ### Recon
 

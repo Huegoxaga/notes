@@ -76,9 +76,18 @@
 
 - Linear regression is used to find the best fitting line(not nesscessirily straight) of a set of data points
 - suitable for solving regression problems that find a predicted value.
+- It outputs a set of coefficients for each feature and an intercept (the constant term) for a linear equation, the dependent variable will be the output value
+  - It is a linear equation in `Number of Features + 1` dimensional space
 - Ordinary least squares is used to calculate the best fit
-  - find the minimum value of the square of the difference of y and y hat.
+  - it finds the minimum value of the square of the difference of y and y hat (Minimum RSS Error).
   - y hat is the predicted value while y is the actual value.
+- Using square signify the data that is further away from the actual value
+- Performance Measurment
+  - Correlation Coefficient (r) - it ranges from `1` to `-1`
+    - When it is close to `1`, there is a strong correlation between the predicted values and the real values
+    - When it is close to `0`, the predicted values has nothing to do with the real values
+    - When it is close to `-1`, there is an inverse correlation between the predicted values and the real values
+  - Residual Sum of Squares or RSS Error - It calculates the sum of the square of the difference of `y` and `y` hat for each data point
 - Simple linear regression - The model will be a linear function with one constant, one dependent variable and one independent variable `x` times a coefficient.
 - Multiple linear regression has one constant, one dependent variable and many combinations of independent variables times a coefficient.
   - Each independent variable represents a different feature in a single row of data.
@@ -130,6 +139,8 @@
   - Nodes from the same depth are dealing with the same independent variable.
 - The split add information to the datapoint and group them.
 - The average of all data points in one terminal leaf will be calculated as the prediced value for all new data point if it falls in the split.
+- When learning, it chooses splits based on minimizing the mean squared error of the resulting splits
+- When predicting, A decision tree uses the average value of all data in the corresponding leaf node
 
 #### Classification Trees
 
@@ -162,6 +173,8 @@
 - `k = 1` leads to overfit
 - Increase the number of `k` to avoid ties when counting the neighbor types
   - To avoid ties, one can use weighted voting where the weight of each count is the inverse of the distance
+- When using kNN for regression, predict a value for a new example using the mean value of the k nearest neighbours
+  - Optionally, using a weighted average, where the inverse of its distance is used to calculate a weighted average for neighbor data
 
 ### Logistic Regression
 
@@ -218,6 +231,19 @@
 - Complement Naïve Bayes is a a variation of Naïve Bayes model. It also takes the data from other classes into consideration. When a word appears in a complement class frequently, the appearance of this word can reduced the probability result of the target class
   - This method take more info into the training and yields better results
   - It works well when the dataset is imbalanced
+
+### k-Mean Clustering
+
+- It is an automatic clustering (belongs to unsupervised learning) that group together similar items in the data
+- Automatic clustering algorithms are widely used for big data analysis
+  - For example: Netflix divides its users into "taste communities" based on similarities, then uses membership in a taste community to customize its recommendations
+- It uses distance calcuation to group data into clusters, so normalization and feature weighting are important for k-Mean clustering
+- k-parameter specifies the number of clusters, the algorithm assign k number of random data points as centroids and group data into k groups around the centroids. For each group, calculate the mean distance from each point in group to the centroid of the group and use the mean value as the new centroid and repeat the process until there is no big improvement
+- It is easy to implement. But it is slow on large data sets, and it takes multiple runs to get the optimal solution
+- To measure the outcome, using the square sum of the distance from all data points to their assigned group centroid, the lower the sum, the better the outcome
+  - This is known as the inertia or the Sum Squared Error (`SSE`) of the clusters
+- For prediction, find the centroid that is closest to the new data, then the new data belongs to group represented by that centroid
+- The `SSE` of clusters will always decrease as `k` increases. To find the right number of `k`, looking for the `elbow` where it is the last `k` that significantly decreases the `SSE`
 
 ### Neural Networks
 
@@ -279,6 +305,7 @@
   - If a layer has more neurons than the one before, it can transform the input by adding new meta-features (e.g. a neuron could learn to output 1 if two of its inputs are large and 0 if they are small, ignoring the othersentirely). This can add information to be used by the next layer
   - If a layer has fewer neurons than the layer before, then it will send less information forward to the next layer. If features are redundant, or if it’s useful to combine features, this can be a good thing. Otherwise, it might hurt performance
   - As a general rule, the more layers the model have, the more epochs are needed to train the network
+- For regression task, it uses no activation function in the output layer. Instead, it just outputs the total activation level
 
 #### Convolutional Neural Networks(CNNs)
 

@@ -1690,6 +1690,7 @@ Thread t = new Thread(() -> animate(gc));
   - Just like a lock you declare, as long as one thread has the lock, all others are blocked
 - In order to enforce the intrinsic lock, we use the keyword synchronized
 - The performance is slower than atomic variables and faster than locks
+- In order to guarantee mutual exclusion on a data structure in Java, the programmer must use the synchronized method call in Collections to retrieve a synchronized data structure
 
 #### Synchronized Method
 
@@ -1736,6 +1737,17 @@ Thread t = new Thread(() -> animate(gc));
 - `queueObj.put(e)` Inserts the specified element into this queue, waiting if necessary for space to become available
 - `queueObj.take()` Retrieves and removes the head of this queue, waiting if necessary until an element becomes available
 
+### Concurrent Map
+
+- Map uses key-value pairs to store data
+- Key must be unique
+- Value may be duplicated
+- `ConcurrentHashMap` is one concrete implementation
+- Retrieval operations do not block (may overlap with updates)
+- Same with status methods (size, isEmpty and containsValue)
+- Update operations (put and remove) block, but does allow for more than one writer at a time
+  - Collections does have a `synchronizedMap` that is guaranteed to be exclusive
+
 ### Executor Service
 
 - Executor Service is the class for thread pools
@@ -1747,6 +1759,13 @@ Thread t = new Thread(() -> animate(gc));
   - Cached Thread Pools
   - Scheduled Thread Pools
   - Fork Join Pools (for recursive algorithms)
+    - It forks the tasks by breaking the task down into smaller tasks until the base case is reached
+    - Then the framework will "join" the threads by waiting for all threads to complete execution
+    - Each available thread (task) in the pool tries to "steal" or find work that is submitted to the pool or created by other threads (tasks)
+    - Basically, when a thread is waiting on a join (sub tasks to be completed), it will look for other work to do
+      - Threads take full advantage of their running time
+      - Better performance
+    - By default a ForkJoinPool will create a thread pool equal to the system’s number of available processors
 - This solves the issue of unbounded thread creation including
   - Thread Lifecycle Overhead
   - Resource Consumption
@@ -1754,7 +1773,7 @@ Thread t = new Thread(() -> animate(gc));
 - It addresses the overhead of thread creation / deletion, as these threads are created once at beginning of program and just wait for tasks to be assigned
 - It works great when time to execute task is shorter than time to create thread
 
-#### Usage
+#### Fixed Thread Pool Methods
 
 - `ExecutorService pool = Executors.newFixedThreadPool(numProcs);` create a fixed thread pool
   - usually the thread number equals the number of processes, `int numProcs = Runtime.getRuntime().availableProcessors();`
@@ -1770,6 +1789,18 @@ Thread t = new Thread(() -> animate(gc));
 - `pool.shutdownNow()` attempts to terminate the pool
 - `pool.isTerminated()` returns true if terminated
 - `pool.isShutdown()` returns true if shutdown
+
+#### Fork Join Pool Methods
+
+- Execute
+  - Main thread will not block, no result is returned
+  - Can be any Runnable task or ForkJoinTask
+- Invoke
+  - Main thread will block and wait until result is returned
+  - Must be a ForkJoinTask
+- Submit
+  - Main thread will not block on submit call, must use the get method to retrieve the Future Object. Allows for use of isDone to check and other work to be done by main thread while waiting.
+  - Can be any Callable task or ForkJoinTask
 
 ### Future
 

@@ -1115,6 +1115,7 @@ fetch(URL, options)
 - credentials:'include' means authorization headers and cookies are included in the request.
 - success is the function that process the response.
 - can chain more function in then after then. asynchronously.
+- When set to `mode: 'no-cors'`, fetch request will only send limited request headers
 
 ```js
 function success(text) {

@@ -172,6 +172,7 @@
   - `array = np.array([1,2,3,4])`
 - Create a `numpy` array of rank 2
   - `array = np.array([[1,2,3,4],[5,6,7,8]])`
+  - `np.NINF` numpy constant, negative infinity, [click here](https://numpy.org/devdocs/reference/constants.html) to see more
 - Create a `numpy` array of type `float32`
   - `np.array([1,2,3,4], dtype=np.float32)`
   - or, `np.float32([1,2,3,4])`
@@ -195,6 +196,8 @@
 - Create an identity arrays
   - `np.eye()`
   - `np.identity()`
+- Create a matrix
+  - `np.mat(data)` or `np.matrix(data, copy=False)` interpret the input as a matrix
 - Specify the data type for array elements upon creation
   - `array = np.full((2,2),12,dtype=np.float32)`
 - Create a array from another array
@@ -282,6 +285,7 @@
   - `a.sort(axis=0)` sort each column
 - Related (Parallel) Arrays are arrays with the same size and they are related to one another by index, numpy is good at processing and filter those arrays by using one of them as the other's index with or without a method, for example:
   - `names[scores.argsort()[::-1]][:2]` list the names that have the top scores
+- `np.delete(arr, i, axis)` return a modified array that the record on `i`th row if axis is `0` or column if axis if `1` is deleted
 
 #### Calculations
 
@@ -844,8 +848,11 @@ WantedBy=multi-user.target
   - `OneHotEncoder()` it is a type of encoder for multiple categorical values.
 - LabelEncoder
   - `from sklearn.preprocessing import LabelEncoder`
-  - `le = LabelEncoder()` it is a type of encoder for a binary categorical value(Yes or No).
-  - `y = le.fit_transform(y)` return the encoding result.
+  - `le = LabelEncoder()` it is a type of encoder that convert a list of categorical values into a list of integer indices
+  - `le.fit(['A', 'A', 'B', 'C'])` load the labels
+    - `list(le.classes_)` returns a list of unique labels
+  - `le.fit_transform(['A', 'A', 'B', 'C'])` load the labels and return the encoding result `[0, 0, 1, 2]`
+  - `le.inverse_transform([2, 2, 1])` convert indices into list of categorical labels
 - StandardScaler
   - `from sklearn.preprocessing import StandardScaler`
   - `sc = StandardScaler()` apply Standardization for feature scaling
@@ -907,6 +914,10 @@ WantedBy=multi-user.target
 - Linear Regression Model
   - `from sklearn.linear_model import LinearRegression`
   - `regressor = LinearRegression()` initialize the linear regression model
+  - `regressor.coef_` list of coefficients found for each feature
+  - `regressor.intercept_` the intercept
+  - For correlation use, `np.corrcoef(prediction, targets)[0,1]`
+  - For RSS use, `((pred-testtargets)**2).sum()`
 - Perceptron
   - `from sklearn.linear_model import Perceptron`
   - `clf = Perceptron(max_iter=1000)`
@@ -915,8 +926,8 @@ WantedBy=multi-user.target
 ### sklearn.tree
 
 - Decision tree classifier
-- `from sklearn import tree`
-- `cls = tree.DecisionTreeClassifier()` returns a decision tree classifier object
+- `from sklearn.tree import DecisionTreeClassifier`
+- `cls = DecisionTreeClassifier()` returns a decision tree classifier object
   - [Click Here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) to see all related parameters
 - `dot_data = tree.export_graphviz(cls, out_file=None, feature_names=dataset.feature_names, class_names=dataset.target_names, filled=True, rounded=True, special_characters=True)` returns a dot file for the tree graph in graphviz format
 
@@ -929,6 +940,16 @@ WantedBy=multi-user.target
     - Append `.max(axis=1)` to get the list of probability for predicted (higher probability) class
 - Naive Bayes classifier for multinomial models
   - `mnb = MultinomialNB()` Init the model
+
+### sklearn.cluster
+
+- `from sklearn.cluster import KMeans`
+- `km = KMeans(n_clusters=4, verbose=1)` create 4 clusters, use verbose=1 to see the run in action
+- `km.fit(data)` it takes only training data
+- `km.cluster_centers_` the list of cluster centroids
+- `km.labels_` the list of indices for training data
+- `km.inertia_` the inertia
+- `km.predict(list_of_points)` the list of cluster indices
 
 ### sklearn.neural_network
 
