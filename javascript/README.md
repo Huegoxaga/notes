@@ -1116,6 +1116,9 @@ fetch(URL, options)
 - success is the function that process the response.
 - can chain more function in then after then. asynchronously.
 - When set to `mode: 'no-cors'`, fetch request will only send limited request headers
+- When the same request are sent for multiple times, the browser will directly use the request record from cache
+  - Unexpected behaviours may happen when specific headers are not stored in the cache
+  - Use `Cache-Control=no-cache` in the request header to force browser to stop storing the cache
 
 ```js
 function success(text) {

@@ -33,6 +33,8 @@ AWS CLI provides full controls of AWS using command lines.
 - When uploading files with aws cli:
   - use `file://<filepath>` for text file
   - use `fileb://<filepath>` for binary file
+- `aws configure list-profiles` list all available profiles
+- `aws configure list [--profile profile-name]` see profile details
 
 ## AWS SDKs
 
@@ -90,7 +92,7 @@ Provide Persistent Storage
 - The CORS setting for a bucket only works when the request header contains `Origin` for the site
   - A browser may use a cached response that did not include the appropriate Access-Control response headers
 
-### CLI Commands
+### S3 Commands
 
 - `aws s3 mb s3://bucket-name` Create new bucket.
   - bucket name has to be unique.
@@ -531,7 +533,7 @@ It provides support for generating serverless APIs.
   - mapping templates for request is used for handle/reformat response input for integration
     - integration is an AWS service that handles the request and prepare response content(e.g. Lambda)
   - mapping templates for request is used for handle/reformat response output from integration
-- In the API setting, add specific content type or `image/*` or `*/*` in `Binary Media Types`, then whenever a header `Content-Type` or `Accept` match is found, the body will be converted to binary using base64 encoding
+- In the API setting, add specific content type or `image/*` or `*/*` in `Binary Media Types`, then whenever a header `Content-Type` or `Accept` is found to have its value match the specified content type, the body will be converted to binary using base64 encoding
 - Gateway responses defines response messages from API Gateways when there is error before resquest is sent to the backend
   - Select corresponding error type and customize the response message
   - e.g. for `Bad Request Body` update the message as `{"message":"$context.error.validationErrorString"}` to see the detailed validation errors
@@ -539,6 +541,7 @@ It provides support for generating serverless APIs.
   - It is defined in [JSON Schema](http://json-schema.org/learn/getting-started-step-by-step) format
   - Add the model to request body and select request body validator to enable validation
 - Defines query string parameters and request header for a method and select validate query string parameters and headers to enable API gateway validation for requests
+- The resource's method name can be surrounded by like `{methodVar}` and the path mapping url can also contain variable name surrounded by `{pathVar}`, then a mapping between these two variables can be created in the method config
 
 ## AppSync
 
@@ -933,3 +936,10 @@ It is used to allow devices to support Alexa.
 - The two main components of Amazon Cognito are user pools and identity pools.
   - User pools are user directories that provide sign-up and sign-in options for your app users.
   - Identity pools enable you to grant your users access to other AWS services. You can use identity pools and user pools separately or together.
+
+### Cognito Commands
+
+- `aws cognito-idp list-user-pools --max-results 20` list user pools
+- `aws cognito-idp list-users --user-pool-id us-west-2_aaaaaaaaa --limit 20` list users in user pool
+- `aws cognito-idp admin-create-user --user-pool-id us-east-1_youruserpoolid --username <value> --message-action RESEND --temporary-password <value>` reset expired user with temp password
+- `aws cognito-idp admin-delete-user --user-pool-id us-west-2_aaaaaaaaa --username diego@example.com` delete user
