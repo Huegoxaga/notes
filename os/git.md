@@ -108,6 +108,7 @@
   - or, `git push -d origin <branchName>`
 - `git checkout branchName` Switch branch.
 - `git checkout -b branchName` create a new branch and switch to that branch.
+- `git checkout --track origin/new_remote_branch` create a local branch that tracks an existing remote branch
 - `git fetch origin && git checkout -b remoteBranchName origin/remoteBranchName` add a new remote branch to local
 - `git merge` Combines remote tracking branch into current local branch.
 - `git merge branchName` Merge certain branch to the current branch, when done input commit message.
@@ -139,15 +140,15 @@
   - Switch HTTPS and SSH connection, run `git remote -v && git remote remove origin && git remote add origin <URL|SERVER>` or `git remote set-url origin <SERVER>`
   - Token in GitHub is a temporary password used for HTTPS connection, it can be generated in the console's setting page
     - On the console, specific privileges of the token can be controlled
-  - For ssh connection upload the public key to `github.com` then save private key into `ssh-agent` for login, by running `eval \$(ssh-agent -s) && ssh-add ~/.ssh/id_rsa`
+  - For ssh connection upload the public key to `github.com` then save private key into `ssh-agent` for login, by running `eval $(ssh-agent -s) && ssh-add ~/.ssh/<private_key>`
 
     - For mac, add the following to `~/.ssh/config` to save the key to `ssh-agent` automatically, add `UseKeychain yes` if passphrase is used
-    - In `~/.ssh/config`, add `ForwardAgent yes` to the host records where the git ssh keys are needed, the local key stored in the agent will be passed to the corresponding remote servers during connection
 
     ```config
     Host *
-    AddKeysToAgent yes
-    IdentityFile ~/.ssh/git.pem
+      AddKeysToAgent yes
+      IdentityFile ~/.ssh/git.pem
+      ForwardAgent yes
     ```
 
     - run `ssh -T git@github.com` to test `ssh` connection

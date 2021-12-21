@@ -808,6 +808,8 @@ Host *
 - `ssh-keygen -p` update passphrase, after prompt for entering key file path
 - `ssh-keygen -l` display finger print after prompt for entering key file path
 - `ssh-keygen -R <RemoteIPAddress>` remove all records of known hosts
+- `ssh-keygen -y -f <keyFile>` get the public key content
+  - public key content should be added to the `~/.ssh/authorized_keys` file on the host machine for connection
 
 ### ssh-copy-id
 
@@ -818,6 +820,9 @@ Host *
 ### ssh-agent
 
 - It holds private keys and forward local private keys to remote servers when connected through `ssh`
+- `ssh-add -l` list keys managed by agent
+- `ssh-add -K <key>` add key to agent
+- To use ssh-agent in VSCode, the app have to be launched from the terminal which has an active ssh-agent running
 
 ### sFTP
 
