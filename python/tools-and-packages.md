@@ -1518,6 +1518,73 @@ client.loop_stop()
   - reproduce the results
 - [Click Here](https://sacred.readthedocs.io/en/latest/index.html) to view its official docs
 
+## Paramiko
+
+- Paramiko is a pure-Python implementation of the SSHv2 protocol, providing both client and server functionality
+- Direct use of Paramiko itself is only intended for users who need advanced/low-level primitives
+- import package using `import paramiko`
+- [Click Here](https://docs.paramiko.org/en/stable/index.html) to see full docs
+
+### SSH
+
+- Makeing a connection
+
+```py
+ssh_client =paramiko.SSHClient()
+# Apply trust all remote machine key policy
+ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh_client.connect(hostname='hostname',username='username',password='mypassword')
+ssh_client.close()
+```
+
+- Running command on the remote machine, `stdin,stdout,stderr=ssh_client.exec_command("ls")`
+  - print response, `print(stdout.readlines())`
+  - print error, `print(stderr.readlines)`
+  - enter input, `stdin.write('mypassword\n')`
+
+### SFTP
+
+- Creating a Direct SFTP Connection
+
+```py
+host = "demo.wftpserver.com"
+port = 22
+# Create a Transport object
+transport = paramiko.Transport((host, port))
+
+# Connect to a Transport server
+password = "demo-user"
+username = "demo-user"
+transport.connect(username = username, password = password)
+
+# Create an SFTP client
+sftp = paramiko.SFTPClient.from_transport(transport)
+
+# Upload file to server
+path = "/upload/src.py"
+localpath = "src.py"
+sftp.put(localpath, path)
+
+sftp.close()
+transport.close()
+```
+
+- Creating SFTP Connection from SSH Client
+
+```py
+ftp_client = ssh_client.open_sftp()
+ftp_client.get('remote_file_path','local_file_path')
+ftp_client.close()
+ssh_client.close()
+```
+
+- [Click](https://docs.paramiko.org/en/stable/api/sftp.html) to See more methods from `SFTPClient`
+
+## Fabric
+
+- A high-level SSH library built on top of `Paramiko`
+- [Click Here](https://www.fabfile.org) to see its official docs
+
 ## PyOpenGL
 
 - PyOpenGL is the most common cross platform Python binding to OpenGL and related APIs

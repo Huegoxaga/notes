@@ -409,15 +409,12 @@
 
 ### GDP
 
-- The `Aggregate Output` of an economy is the value of all the goods and services produced
-  in a specified period of time
-  - The output from factories
-- The `Aggregate Income` of an economy is the value of all the payments earned by the suppliers of factors used in the production of goods and services
-  - The income of factory workers
-- The value of the output produced must eventually accrue to the factors of production, so `Aggregate Output` and `Aggregate Income` within an economy must be equal
+- The `Aggregate Output` is the sum of all the goods and services produced in an economy over a certain period of time
+- The `Aggregate Income` is defined as the total income earned by individuals and companies in the economy, excluding any adjustment for inflation and taxes
+  - The value of the output produced must eventually accrue to the factors of production, so `Aggregate Output` and `Aggregate Income` within an economy must be equal
   - All workers use income to purchase goods and services produced from all factorys
-- The `Aggregate Expenditure` is the total amount spent on the goods and services produced in the domestic economy during the period
-  - The workers income spent on all domestic goods and services
+- The `Aggregate Expenditure` is the total amount spent on the goods and services produced in the domestic economy during the period, it is defined as the current value of all the finished goods and services in the economy
+  - All income spent on all domestic goods and services
 - `Gross Domestic Product` (`GDP`) is formally defined as the total market value of the goods and services produced in an economy within a certain time period
   - By definition the `GDP` is the aggregate output of the economy for the period
   - As a result, in an isolated economy, `GDP`, `Aggregate Output`, `Aggregate Income`, and `Aggregate Expenditure` should all have the same value
@@ -466,8 +463,8 @@
 - `Nominal GDP` of the economy are calculated using the current market value of the goods and services
   - `Nominal GDP` equals the sum of all the current prices multiplied by the quantity produced for each good in a certain period
   - As the growth in `Nominal GDP` will include the effect of price increase (inflation) for the period, this figure is not representative of the actual production growth
-- Real GPD is calculated relative to a base year by using base year prices and current year output quantities
-  - For base year, `Real GDP` is the `Nominal GDP`, the current year `Real GDP` is the sum of the product of prices from the base year and output quantities of this year for all goods and services, then compare the `Real GDP` of the two year to get a relative increases
+- Real `GDP` is calculated relative to a base year by using base year prices and current year output quantities
+  - For base year, `Nominal GDP` is used to represent the `Real GDP`. The current year `Real GDP` equals the sum of each product of price from the base year times its output quantity of current year for all goods and services, then compare the `Real GDP` of the two year to get a relative increases
   - `Real GDP` growth reflects only increases in total output
   - Per capita `Real GDP` is defined as `Real GDP` divided by population
 - the `GDP Deflator` is a price index that can be used to convert `Nominal GDP` into `Real GDP`

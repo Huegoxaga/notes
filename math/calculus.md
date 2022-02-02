@@ -136,7 +136,7 @@
     - $$y''$$
     - $$\ddot{x}$$
   - Same idea for third and fourth and higher derivatives.
-- A function _f_ is differentiable at a if _f'(a)_ exists. It is differen- tiable on an open interval (_a, b_)[or $$(a, \infty)$$ or $$(-\infty, a)$$ or $$(-\infty, \infty)$$] if it is differentiable at every number in the interval.
+- A function _f_ is differentiable at a if _f'(a)_ exists. It is differentiable on an open interval (_a, b_) [or $$(a, \infty)$$ or $$(-\infty, a)$$ or $$(-\infty, \infty)$$] if it is differentiable at every number in the interval.
 - Let _c_ be a number in the domain _D_ of a function _f_. Then _f(c)_ is the
   - absolute maximum value of _f_ on _D_ if $$f(c) \geqslant f(x)$$ for all _x_ in _D_.
   - absolute minimum value of f on D if $$f(c) \leqslant f(x)$$ for all _x_ in _D_.
@@ -161,7 +161,7 @@
 - Partial Derivatives
   - When a function has more than one independent variable, the partial derivative can be used to represent how much the dependent variable changes when one of its independent variables changes while keeping the other independent variable constant.
   - For `f(x, y)` it can have two derivatives which are `∂f/∂x` and `∂f/∂y`.
-  - Function with multiple independent variable has a multi-demensional graph, parial derivative only looks at the rate of change between one independent variable and the dependent variable in one plane. All other independent variable will be kept in the result and the derivative function will have a reduced demension(by 1).
+  - Function with multiple independent variable has a multi-demensional graph, parial derivative only looks at the rate of change between one independent variable and the dependent variable in one plane. All other independent variable will be kept in the result and the derivative function will have a reduced demension (by 1).
 - The position vector indicates the position of a particle relative to the origin
   - the position can be defined by parametric equations which is depended on variables for time, angle etc., $$\vec{r}(t)=f(t) \hat{i} + g(t) \hat{j}$$
 - The derivative of the position vector $$\vec{r}(t)=f(t) \hat{i} + g(t) \hat{j}$$ is $$\vec{r}'(t)=f'(t) \hat{i} + g'(t) \hat{j}$$

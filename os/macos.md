@@ -56,6 +56,10 @@
 - `defaults write com.apple.dock tilesize -float 1` change the dock size to 1 pixel
 - Run `killall Dock` to restart the dock and load the new settings
 
+### GateKeeper
+
+- Disable GateKeeper, `sudo spctl --master-disable`
+
 ## Xcode Command Line Tools
 
 - It includes and enables many useful command.

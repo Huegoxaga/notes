@@ -550,6 +550,7 @@ It provides support for generating serverless APIs.
 - Data is served from an AppSync Data Source, it supports a range of existing data source types including DynamoDB tables, RDS, and Lambda functions
   - It helps auto generate DynamoDB tables by defining new data model in the schema
   - Data sources are created with a IAM role, the role has permission to access the data
+- Creating a DynamoDB table first and then add the table to AppSync as a data source. This gives more control on the table config, compare to creating new tables by creating data sources from AppSync
 
 ### Resolver
 

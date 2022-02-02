@@ -121,6 +121,8 @@ list(accumulate(range(8)))
   - use `csv.reader(csv_file, delimiter='\t')` to set delimiter as `\t`.
   - `next(csv_reader)` will return one line at a time and skip to the next line.
   - use `csv.DictReader(csv_file)` to read csv files into an ordered dictionary. Keys for data in each row are the headers. Use `line['header']` to access data.
+    - `dict_reader.fieldnames` return a list of header names
+    - DictReader can also take `csv_reader` as input
 
   ```py
   with open('filename.csv') as file:
@@ -129,8 +131,6 @@ list(accumulate(range(8)))
         print(row["headOne"])
         print(int(row["headTwo"]))
   ```
-
-  - `dict_reader.fieldnames` return a list of header names
 
 - write a file with default delimter:
 

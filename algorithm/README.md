@@ -126,7 +126,13 @@
   - `Inorder traversal` - traverses the left subtree, then visits the root, and then traverses the right subtree.(recursive methods for left subtree run first, recursive methods for right subtree run last)
     - traverses in a sorted order, from smallest to largest.
   - `Postorder traversal` - traverses the left and right subtrees, and then visits the root.(recursive methods for left and right subtree run first)
-- Application of binary tree:
+- Types of binary trees:
+  - `Full Binary Tree` is a Binary Tree in which every node has 0 or 2 children
+  - `Complete Binary Tree` has all levels completely filled with nodes except the last level and in the last level, all the nodes are as left side as possible
+  - `Perfect Binary Tree` is a Binary Tree in which all internal nodes have 2 children and all the leaf nodes are at the same depth or same level
+  - `Balanced Binary Tree` is a Binary tree in which height of the left and the right sub-trees of every node may differ by at most `1`
+  - `Degenerate(or Pathological) Binary Tree` is a Binary Tree where every parent node has only one child node
+- Application of binary trees:
   - `Binary Search Tree` - Used in many search applications where data is constantly entering/leaving, such as the map and set objects in many languages' libraries.
     - Left child is always smaller than the root, Right child is always bigger than the root.
     - To implement the binary search tree, adding and searching methods are recursive with base cases that check if the root is empty and non-base case that traverses the tree.
@@ -136,7 +142,7 @@
       - Removal of a node with two child node
         - For this case, the node will be replaced by the largest node from its left subtree. Then, reorganinze the rest.
   - `Binary Space Partition` - Used in almost every 3D video game to determine what objects need to be rendered.
-  - `Binary Tries` - Used in almost every high-bandwidth router for storing router-tables.
+  - `Binary Trees` - Used in almost every high-bandwidth router for storing router-tables.
   - `Hash Trees` - used in p2p programs and specialized image-signatures in which a hash needs to be verified, but the whole file is not available.
   - `Huffman Coding Tree` - used in compression algorithms, such as those used by the .jpeg and .mp3 file-formats.
   - `Syntax Tree` - Constructed by compilers and (implicitly) calculators to parse expressions.
