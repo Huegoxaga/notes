@@ -45,6 +45,8 @@
 - `git config --global user.name 'name'` setup git username(required).
 - `git config --global user.email 'email'` setup git user's email information(required).
 - `git config --list` Check all config values.
+- `git config remote.origin.prune true` setup auto update from the locat list of remote branch, listed using `git branch -a`
+  - By default, The record of remote branches won't get updated if even it's been removed from the server
 - `git gc` cleanup unnecessary files and optimize the local repository in the `.git` folder
 - `git clean -f` Remove untracked files from the working tree
 - `touch .gitignore` Add the filename or folder addresses in the `.gitignore` file line by line, those files will be ignored by git.
@@ -127,7 +129,11 @@
 #### Working with Remote Repository
 
 - `git log` see records and past commit id
+  - For merge commits, the `Merge` line shows its parents
+  - One parent is the last commit of main branch before merge, one parent is the last commit of the incoming branch
+    - For commits from incoming branches, the branch names are shown in brackets
 - `git revert <commitID>` revert back a certain commit and commit the changes.
+  - To revert a merge commit, use `-m 1` to revert to the left parent in merge history, use `-m 2` to revert to the right parent in merge history
 - `git reset <commitID>` reset the files to the state after a certain commit.
   - use `git push --force` will delete all the newer commits in the remote repo.
 - `git remote` List all the current remote repos.
@@ -233,6 +239,8 @@
     - `-H` The branch that contains commits for your pull request (default: current branch)
       - `gh pr create -f -B <master> -H <dev>` use this to avoid error or confusing
   - `merge` Merge a pull request
+    - A merge commit will be created with a record of two parents commits.
+      - The parent commits are consisted of the original branch's latest commit before merge and the head of the branch to be merged
     - `--delete-branch=false'` or `-d=false` retain the remote and local head branch after merge
     - `-m` or `--merge` Merge the commits with the base branch
     - `-r` or `--rebase` Rebase the commits onto the base branch

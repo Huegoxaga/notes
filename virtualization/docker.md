@@ -217,6 +217,7 @@
   - `docker build <TarURL>` download tar as context folder then build.
   - `docker build - < Dockerfile` or `cat Dockerfile | docker build -` build from files using standard input.
   - `docker build - < <filepath>` build from compressed files using standard input.
+- `docker build -t <app-name> .` build an image to the local image server from the Dockerfile in the current directory
 
 ### Docker Compose
 
