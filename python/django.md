@@ -96,6 +96,7 @@ urlpatterns = [
 
 - The full path excluded the matched string in the project `urls.py` will be used to match with the path strings here. For `www.example.com/a/b/c` after `a/` is matched in the project `urls.py`, `b/` will be used here to find a match.
 - the second parameter `views.home` is pointing to the `home` method in the `view.py` file.
+- For Django 3.2+, move CSRF exempt apis to the top in the url patterns list. CSRF protected endpoints like `admin.site.urls` should be placed at the end of the list. Any url pattern after CSDR protected endpoints are required to have CSRF header and token
 
 ### view.py
 

@@ -1,11 +1,18 @@
 # Related Concepts
 
-## Time Value of Money
+## Quantitative Analysis
+
+### Time Value of Money
 
 - The time value of money (TVM) is the concept that money you have now is worth more than the identical sum in the future due to its potential earning capacity, the time value can be:
-  - Present value(PV) is the current value before making the investment
-  - Future value(FV) is the future value after making the investment
-- The interest rate is the amount charged, expressed as a percentage of the principal, by a lender to a borrower for the use of assets, it is consisted of the following components:
+  - `Present Value (PV)` is the current value before making the investment
+  - `Future Value (FV)` is the future value after making the investment
+- `Interest` is the difference between the amount of money lent and the amount of money later repaid
+- The `Interest Rate` is the amount charged, expressed as a percentage of the principal, by a lender to a borrower for the use of assets
+
+#### Components of Interest Rate
+
+- The interest rate is consisted of the following components:
   - Risk Premium Components - this part compensate the risk for lending, it includes:
     - Default Risk Premium - it reflects the borrower's financial status
     - Liquidity Premium - it reflects the demand of the debt covenants(which is the debt agreement or financial contracts for loans and bonds) in the market, or the cost of selling it
@@ -17,20 +24,51 @@
   - The `Required Rate of Return` for the lenders or investors
   - The interest rate can be seen as a `Discounted Rate` by discounting the future value of the total return
   - It can be treated as the `Opportunity Cost` of the current consumption of the money if not lending it
-- If the time period of an interest rate is not spcified, it is an annual interest rate
-- A cashflow means a certain amount of money, usually used for making investment, it can be:
-  - A single cashflow - a lump sum of money
-  - Regular cashflows - continous contribution, same amount every time
-  - Uneven cashflows - continous contribution, uneven amount every time
-- Simple interest only uses the original pricipal to calculate interest for the next time period
-- Compound interest will include the interest earned from previous time period to calculate the interest for the next time period
-  - `FV=PV(1+r)^N` where `r` is the interest occurs during the time period and `N` is the total number of time periods
-  - If interest `r` for a certain time period is divided from annual interest `R` by `n`, if there are `n` time periods each year
+
+#### Interest Calculation
+
+- This base unit of time over which an interest rate is calculated is called the interest period
+  - If the time period of an interest rate is not spcified, it is an annual interest rate
+- `Nominal interest rate` is the conventional method of stating the annual interest rate
+- `Effective interest rate` is the actual annual interest rate after compounding its sub-compounding periods
   - The more frequent the rate of compounding the higher the interest the investor can get
-  - The Effective Annual Rate(EAR) is the total annual interest rate after compounding, `EAR=((1+r)^N)-1`
-- Continuous compound has the compound frequency set to infinite
+- `Simple Interest` only uses the original pricipal to calculate interest for the next time period
+- `Compound Interest` - Compound interest will include the interest earned from previous time period to calculate the interest for the next time period
+  - The interest period used for compounding is called the compounding period
+  - When compounding period is a sub-period, convert the interest rate to the sub-period first
+    - e.g. If annual interest rate is `12%`, monthly interest rate is `1%`
+  - If interest `r` for a certain time period is divided from annual interest `R` by `n`, if there are `n` time periods each year
+  - $$I_c=P(1+i)^N-P$$ where `i` is the interest occurs during the time period and `N` is the total number of time periods
+  - Effective interest rate - `EAR=((1+r)^N)-1`
+- `Continuous Compound` has the compound frequency set to infinite
   - Then, `FV = PV*e^(rN)` and `EAR=e^r-1` where `r` is the stated compound rate and `N` is the stated number of time period for the stated rate
   - Continuous compound yields the highest interest one can get from compounding, given the same interest rate
+
+#### Cash Flow Analysis
+
+- A `Cash Flow Diagram` is a graph that summarizes the timing and magnitude of cash flows as they occur over time
+  - the graph’s vertical axis is not shown explicitly
+    - positive cash flows is represented by arrow pointing upwards and vice versa
+  - The horizontal (X) axis represents time
+    - Now is time `0`
+    - `N` years from now is the end of period `N` and the beginning of period `(N + 1)`
+- To simplify the cash flow analysis, models are created for estimation:
+  - `Discrete Models` - model assumes that all cash flows and all compounding of cash flows occur at the ends of conventionally defined periods, such as months or years.
+  - `Continuous Models` - models that assume cash flows and their compounding occur continuously over time
+- A `Cash Flow` means a certain amount of money, usually used for making investment, it can be:
+  - A single cashflow - a lump sum of money
+  - Regular cashflows, also known as annuity - continous contribution, same amount every time
+  - Uneven cashflows - continous contribution, uneven amount every time
+    - Irregular amount every time
+    - A set of disbursements or receipts that change by a constant amount from one period to the next in a sequence of periods, referred to as an arithmetic gradient series
+    - A set of disbursements or receipts that change by a constant proportion from one period to the next in a sequence of periods, referred to as a geometric gradient series
+- The principle of discrete compounding requires several assumptions:
+  1. Compounding periods are of equal length
+  2. Each disbursement and receipt occurs at the end of a period. A payment at time 0 can be considered to occur at the end of period minus 1
+  3. Annuities and gradients coincide with the ends of sequential periods
+- The math function or factor used to convert the mathematical equivalence between the present value and future value of cash flows are referred as the `Compound Interest Factors`
+  - `Compound Amount Factor` has the future value as the independent variable
+  - `Present Worth Factor` has the present value as the independent variable
 - Time values of regular cashflows can be calculatd by stacking each individual single cashflow with different number of time period together, the calculation can be simplified using the formula for the sum of a geometric series
   - regular cashflows calculation can have a end mode(default for most calculators) which means the cashflow is added at the end of each time period
   - regular cashflows calculation can have a begin mode which means the cashflow is added at the beginning of each time period

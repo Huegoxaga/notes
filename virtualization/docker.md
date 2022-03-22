@@ -201,10 +201,18 @@
   - `FROM scratch` an empty image for apps that can run on machine by itself.
     - Suitable for apps developed by GOlang.
 - `RUN`
+  - Each `RUN` command create a new image layer
   - Can be used to execute CLI commands.
   - Commands followed by it will be run.
   - or append `[filename, param1, param2]` to `RUN` command, then the file will also be executed.
   - To avoid redudent layers, multiple commands should be combined by using `&&` and using one `RUN` command.
+- `CMD` and `CHECKPOINT`
+  - Both command will be executed during the `docker run` command after the image is built
+  - The recommanded form is to append `["command", "param1", "param2"]` for both `CMD` and `CHECKPOINT`
+  - `CMD` can be overridden by appending command after `docker run`
+  - `CHECKPOINT` can be overridden by using the `--checkpoint` flag when executing `docker run`
+  - Only the last `CMD` or `CHECKPOINT` command in a dockerfile will be executed
+  - When both `CHECKPOINT` and `CMD` are in the same dockerfile, `CHECKPOINT` is used to specify the actual command and `CMD` is used to specify the parameter for the command in `CHECKPOINT`
 
 ##### Build Image
 
