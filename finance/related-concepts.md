@@ -1,8 +1,6 @@
-# Related Concepts
+# Quantitative Analysis
 
-## Quantitative Analysis
-
-### Time Value of Money
+## Time Value of Money
 
 - The time value of money (TVM) is the concept that money you have now is worth more than the identical sum in the future due to its potential earning capacity, the time value can be:
   - `Present Value (PV)` is the current value before making the investment
@@ -10,7 +8,7 @@
 - `Interest` is the difference between the amount of money lent and the amount of money later repaid
 - The `Interest Rate` is the amount charged, expressed as a percentage of the principal, by a lender to a borrower for the use of assets
 
-#### Components of Interest Rate
+### Components of Interest Rate
 
 - The interest rate is consisted of the following components:
   - Risk Premium Components - this part compensate the risk for lending, it includes:
@@ -25,7 +23,7 @@
   - The interest rate can be seen as a `Discounted Rate` by discounting the future value of the total return
   - It can be treated as the `Opportunity Cost` of the current consumption of the money if not lending it
 
-#### Interest Calculation
+### Interest Calculation
 
 - This base unit of time over which an interest rate is calculated is called the interest period
   - If the time period of an interest rate is not spcified, it is an annual interest rate
@@ -44,8 +42,9 @@
   - Then, `FV = PV*e^(rN)` and `EAR=e^r-1` where `r` is the stated compound rate and `N` is the stated number of time period for the stated rate
   - Continuous compound yields the highest interest one can get from compounding, given the same interest rate
 
-#### Cash Flow Analysis
+### Cash Flow Analysis
 
+- A `Cash Flow` means a certain amount of money disbursed or receipted, usually used when making investment
 - A `Cash Flow Diagram` is a graph that summarizes the timing and magnitude of cash flows as they occur over time
   - the graph’s vertical axis is not shown explicitly
     - positive cash flows is represented by arrow pointing upwards and vice versa
@@ -55,30 +54,54 @@
 - To simplify the cash flow analysis, models are created for estimation:
   - `Discrete Models` - model assumes that all cash flows and all compounding of cash flows occur at the ends of conventionally defined periods, such as months or years.
   - `Continuous Models` - models that assume cash flows and their compounding occur continuously over time
-- A `Cash Flow` means a certain amount of money, usually used for making investment, it can be:
-  - A single cashflow - a lump sum of money
-  - Regular cashflows, also known as annuity - continous contribution, same amount every time
-  - Uneven cashflows - continous contribution, uneven amount every time
-    - Irregular amount every time
-    - A set of disbursements or receipts that change by a constant amount from one period to the next in a sequence of periods, referred to as an arithmetic gradient series
-    - A set of disbursements or receipts that change by a constant proportion from one period to the next in a sequence of periods, referred to as a geometric gradient series
 - The principle of discrete compounding requires several assumptions:
   1. Compounding periods are of equal length
   2. Each disbursement and receipt occurs at the end of a period. A payment at time 0 can be considered to occur at the end of period minus 1
   3. Annuities and gradients coincide with the ends of sequential periods
 - The math function or factor used to convert the mathematical equivalence between the present value and future value of cash flows are referred as the `Compound Interest Factors`
-  - `Compound Amount Factor` has the future value as the independent variable
-  - `Present Worth Factor` has the present value as the independent variable
-- Time values of regular cashflows can be calculatd by stacking each individual single cashflow with different number of time period together, the calculation can be simplified using the formula for the sum of a geometric series
-  - regular cashflows calculation can have a end mode(default for most calculators) which means the cashflow is added at the end of each time period
-  - regular cashflows calculation can have a begin mode which means the cashflow is added at the beginning of each time period
-  - Begin mode will compound the interest one more time at the end
-- For uneven casflows calculation each cashflow separate then add them together
-- Annuity - An annuity is a contract between you and an insurance company in which you make a lump-sum payment or series of payments and, in return, receive regular cashflows, beginning either immediately or at some point in the future. it can be further categorized as:
-  - Annuity Due - regular cashflows, begin mode
-  - Ordinary Annuities - regular cashflows, end mode
-  - Perpetuities - regular cashflows, end mode, infinite number of time periods
-    - The time value for perpetuities equals payment amount divided by the interest rate for the payment time period
+
+#### Types of Cash Flow
+
+- A single cashflow - a lump sum of money, a single disbursement or receipt, it can be measured by:
+  - `Compound Amount Factor`, denoted by `(F/P,i,N)`, gives the future amount, `F`, that is equivalent to a present amount, `P`, when the interest rate is `i` and the number of periods is `N`
+    - It equals $$(1+i)^N$$
+  - `Present Worth Factor`, denoted by `(P/F,i,N)`, gives the present amount, `P`, that is equivalent to a future amount, `F`, when the interest rate is `i` and the number of periods is `N`
+    - It is the reciprocal of the compound amount factor
+    - It equals $$\frac{1}{(1+i)^N}$$
+- Regular cashflows, also known as annuity - continous contribution, same amount every time, it can be measured by:
+  - `Sinking Fund Factor`, denoted by `(A/F,i,N)`, gives the size, `A`, of a repeated small receipt or disbursement that is equivalent to a large future amount, `F`, if the interest rate is `i` and the number of periods is `N`
+    - It equals $$\frac{i}{(1+i)^N-1}$$
+    - A sinking fund is an interest-bearing account into which regular deposits are made in order to accumulate some amount
+  - `Uniform Series Compound Amount Factor`, denoted by `(F/A,i,N)`, gives the future value, `F`, that is equivalent to a series of equal-sized receipts or disbursements, `A`, when the interest rate is `i` and the number of periods is `N`
+    - It is the reciprocal of the sinking fund factor
+    - It equals $$\frac{(1+i)^N-1}{i}$$
+  - `Capital Recovery Factor`, denoted by `(A/P,i,N)`, gives the value, `A`, of the equal periodic payments or receipts that are equivalent to a present amount, `P`, when the interest rate is `i` and the number of periods is `N`
+    - It can be easily derived from the sinking fund factor and the compound amount factor
+    - It equals $$\frac{i(1+i)^N}{(1+i)^N-1}$$
+  - `Series Present Worth Factor`, denoted by `(P/A,i,N)`, gives the present amount, `P`, that is equivalent to an annuity with disbursements or receipts in the amount, `A`, where the interest rate is `i` and the number of periods is `N`
+    - It is the reciprocal of the capital recovery factor
+    - It equals $$\frac{(1+i)^N-1}{i(1+i)^N}$$
+    - `Capitalized Value` of a series can be obtained by getting the limit of the number of periods `N` to infinity in the in the series present worth factor calculation
+  - Time values of regular cashflows can be calculatd by stacking each individual single cashflow with different number of time period together, the calculation can be simplified using the formula for the sum of a geometric series
+    - Regular cashflows calculation can have a end mode(default for most calculators) which means the cashflow is added at the end of each time period
+    - Regular cashflows calculation can have a begin mode which means the cashflow is added at the beginning of each time period
+    - Begin mode will compound the interest one more time at the end
+  - An annuity is a contract between you and an insurance company in which you make a lump-sum payment or series of payments and, in return, receive regular cashflows, beginning either immediately or at some point in the future. it can be further categorized as:
+    - Annuity Due - regular cashflows, begin mode
+    - Ordinary Annuities - regular cashflows, end mode
+    - Perpetuities - regular cashflows, end mode, infinite number of time periods
+      - The time value for perpetuities equals payment amount divided by the interest rate for the payment time period
+- `Arithmetic Gradient Series` - a series of receipts or disbursements that starts at zero at the end of the first period and then increases by a constant amount from period to period
+  - `Arithmetic Gradient to Annuity Conversion Factor`, denoted by `(A/G,i,N)`, gives the value of an annuity, `A`, that is equivalent to an arithmetic gradient series where the constant increase in receipts or disbursements is `G` per period, the interest rate is `i`, and the number of periods is `N`
+    - It equals $$\frac{1}{i}-\frac{N}{(1+i)^N-1}$$
+    - There is often a base annuity `A'` associated with a gradient. Hence, the total cash flow equals `A'+G(A/G,i,N)`
+- `Geometric Gradient Series` - a series of cash flows that increase or decrease by a constant percentage each period
+  - `Geometric Gradient to Present Worth Conversion Factor`, denoted by `(P/A,g,i,N)`, gives the present worth, `P`, that is equivalent to a geometric gradient series where the base receipt or disbursement is `A`, and where the rate of growth is `g`, the interest rate is `i`, and the number of periods is `N`
+    - It equals $$\frac{(P/A,i^{\circ},N)}{1+g}$$ or $$\left(\frac{(1+i^{\circ})^N-1}{i^{\circ}(1+i^{\circ})^N}\right)\frac{1}{1+g}$$ where $$i^{\circ}=\frac{1+i}{1+g}-1$$
+- Uneven Cash Flows (Non-Standard Annuities and Gradients) - continous contribution, uneven amount every time. There are three methods for dealing with this situation:
+  1. Treat each cash flow in the annuity or gradient individually. This is most useful when the annuity or gradient series is not large.
+  2. Convert the non-standard annuity or gradient to standard form by changing the compounding period
+  3. Convert the non-standard annuity to standard form by finding an equivalent standard annuity for the compounding period. This method cannot be used for gradients
 - When calculating cashflow it's critical to determine the entity(e.g. bank or investor) and the outflows and inflows of the cashflows for this entity, use negative sign for outflows and positive sign for inflows
 - Discounted Cashflow is a method to discount all cashflows from its future value to its present value by compounded the discounted rate(interest rate)
   - Net Present Value(NPV) is the sum of the discounted present value for all inflows and outflows
@@ -94,7 +117,7 @@
     - It is the geometric mean of the change factors of all HPR values
   - For all of the above calculation for return, a nagative HPR means losses, and a positive HPR means gains
 
-## Statistics Concepts
+# Statistics Concepts
 
 - Types of scales for statistic meaturement
   - Nominal Scale - A property of the data is categorized by name
@@ -122,9 +145,9 @@
     - `Accumulative Frequency Distribution` - Suming the y value from left to right along the x-axis
       - the right most bar has `100%`
 
-## Economics
+# Economics
 
-### Demand and Supply Analysis
+## Demand and Supply Analysis
 
 - Target of the demand and supply analysis can be either the market or the firm
 - The demand curve of the market is downward sloping and the supply curve is upward sloping and the curve slopes upwards, the intersaction point represent the market price and demand
@@ -133,7 +156,7 @@
   - When more firms are joining the market in a long run the supply curve will move down, which is a result of supply increase and price drop, and vice versa
   - when there is an increase in demand, market demand curve shifts upwards and to the right, makes the market price higher and vice versa
 
-#### Demand Analysis
+### Demand Analysis
 
 - Demand Curve has quantity demanded on the x-axis and the price of the item on the y-axis
   - Quantity demanded represents the comsumer's intention to buy
@@ -144,7 +167,7 @@
   - A high elasticity will greatly effect the demand
 - The law of demand - conditional on all else being equal, as the price of a good increases, quantity demanded will decrease; conversely, as the price of a good decreases, quantity demanded will increase
 
-##### Own-Price Elasticity of Demand
+#### Own-Price Elasticity of Demand
 
 - Own-Price Elasticity of Demand is the percentage change in quantity demanded when the price changes by 1 percent
   - it is not equal to the slope of a demand curve
@@ -169,7 +192,7 @@
   - The elasticity of demand tends to be greater in the long run, as consumers can take time to make adjustments to their consumption habits
   - Essential goods tend to be more inelastic
 
-##### Cross-price Elasticity of Demand
+#### Cross-price Elasticity of Demand
 
 - the percentage change in quantity demanded for every percentage change in price of the related good
 - the cross price elasticity is positive when the related good is a substitute
@@ -177,7 +200,7 @@
 - Cross-price coefficient multiple by the cross-price value and divided by the total quantity demand will return the cross-price elasticity
 - When the price of a goods drops while all its substitutes' price keep the same, the demand for that goods will increase this is called a positive substitute effect
 
-##### Income Elasticity of Demand
+#### Income Elasticity of Demand
 
 - the percentage change in quantity, demanded for every percentage change in income level
 - Normal goods are those in which the demand increases with consumer income levels and vice versa, the income elasticity is therefore positive for normal goods
@@ -189,9 +212,9 @@
   - only in theory, there are some rare instances where this has turned out to be true
   - another exception where the demand curve is upward sloping is the Veblen good for which a higher price makes the goods more desirable. This is usually the case for some luxury goods like Hermes bags where the higher price conveys higher status to the owners. It only applies to a select group of people who can afford it and there has to be a limit to it
 
-#### Supply Analysis
+### Supply Analysis
 
-##### The Law of Diminishing Marginal Returns
+#### The Law of Diminishing Marginal Returns
 
 - In order to supply goods the factors of production are required
   - Land - the physical space you own or rent
@@ -211,7 +234,7 @@
   - when the labor input gets larger. The marginal productivity is decreasing the slope of the output curve decreases at this stage
   - and for some companies marginal productivity can become zero or even negative, the output curve hits a maximum and starts to dip beyond that
 
-##### Breakeven and Shutdown Analysis
+#### Breakeven and Shutdown Analysis
 
 - Fixed costs cannot be changed in the short run, e.g. rental lease
   - average fixed cost (AFC) - total fixed cost devided by the number of output
@@ -242,7 +265,7 @@
   - In this case, continue running the business in short run can minimize loss of the fixed cost, since there is no refund for fixed costs
 - This minimum point where the `AVC` is equal to the `MC` is the shutdown level, When price goes below the `AVC` cost, the `AVC` cannot be covered and there is no point to keep the business in both short and long run
 
-##### Economies and Diseconomies of Scale
+#### Economies and Diseconomies of Scale
 
 - In a long run the `AVC` for short run can shift to the right because the output product quantity is increased due the increase in productivity after business growed by investing
 - The `AVC` curve might even shift to a lower position due to the the effect called the `Economies of Scale`, Economies of scale occur if the cost per unit of production falls as the firm increases its scale, it results from factors such as:
@@ -258,7 +281,7 @@
 - if we draw a line that connects all the minimums of the short run `ATC` (`SR ATC`) curves we get the long run `ATC` curve (`LR ATC`) of the firm
   - `Minimum Efficient Scale` - the lowest point on the `LR ATC` corresponds to the scale at which the average total cost of production is minimized
 
-### Market Structures
+## Market Structures
 
 - Market Structures are determined by examining the following five characteristics of the industry
 
@@ -270,7 +293,7 @@
 | The nature of competition       | Compete on price only | Price and product difference              | Price and product difference                        | Little competition   |
 | The pricing power of the firms  | None                  | Limited based on perceived differences    | limited if less differentiate or Significant if not | Significant          |
 
-#### Perfect Competition
+### Perfect Competition
 
 - It is where many firms produce identical products. And competition forces them all to sell at the market price
 - This is just in theory, some industry like wheat production industry are close to it, its price depends on the overall market supply and demand
@@ -286,7 +309,7 @@
   - As a result, in a long run the market price will always be at the minimun point of the `ATC` curve, this level is called the `Long-run equilibrium output level` for perfectly competitive firms
   - It goes the same if the economic profit or loss is triggered by a permanent increase/decrease in demand, firm will join or leave the market in long-run due to the changes in the market demand and make the market price back to normal, however the level of overall output will be changed based on the changes in market demand
 
-#### Monopolistic Competition
+### Monopolistic Competition
 
 - It is where there are many sellers and differentiated products
 - It has a downward sloping elastic demand curve
@@ -304,7 +327,7 @@
 - Monopolistic competition sells at a higher price, higher average cost, and a lower quantity than under perfect competition
   - Higher price is caused by downward sloping AR curve suggests that firm is not producing at the most efficient level. Because, for monopolistic competition, economic cost includes product differentiation costs such as marketing costs and R&D
 
-#### Oligopoly
+### Oligopoly
 
 - It is where a few firms compete in a variety of ways
 - Firms need to consider other firms'(interdependent firms) strategy
@@ -316,7 +339,7 @@
   - Actions of one company affect not just its own demand curve but also other competitor's, same goes for the price changes
 - Oligopoly models has four types of models, each is under a serial of assumption
 
-##### Kinked Demand Curve Model
+#### Kinked Demand Curve Model
 
 - Kinked demand curve model is based on the assumption that an increase in a firm's product price will not be followed by its competitors
   - Other firms won't follow because they believe customers will switch to purchase their products and stay away from the product with higher prices, if they keeps the same old price
@@ -329,7 +352,7 @@
   - If the `MC` curve fall in between the gap of the `MR` curve, the firm produces at the most profitable price and output combination
   - If the `MC` curve move higher, the price goes up and the firm lose lots of customer, this explain why most oligopoly market price is stable
 
-##### Cournot Model
+#### Cournot Model
 
 - The model considers an oligopoly with only two firms competing and both have identical and constant marginal costs of production
 - Each firm knows the quantity supplied by the other firm in the previous period and assumes that the supply will not change in the next period
@@ -339,7 +362,7 @@
   - This price will be close to but smaller than the max market price in an unregulated monopoly market
   - As more firms join the market the outputs and price equilibrium positions move toward the competitive equilibrium
 
-##### Nash Equilibrium
+#### Nash Equilibrium
 
 - It assumes that all firms in an oligopoly will make choices where there is a chance of a better outcome for the firm
   - In other words the Nash equilibrium is reached when the choices of all firms are such that there is no other choice that makes any firm better off
@@ -357,7 +380,7 @@
   - Perfect competition amongst the firms in an oligopoly market is the other exemtre situation, the price output combination will be exactly the same as the perfectly competitive market in the long run
   - In reality the long run price will be in between the above two cases
 
-##### Dominant Firm Model
+#### Dominant Firm Model
 
 - This model has a dominant firm in the market
   - It is a single firm that has a significantly large market share because of its greater scale and lower cost structure
@@ -367,7 +390,7 @@
 - Based on this demand curve and its associated marginal revenue curve, the firm will maximize profits at the production level where its `MR` is equal to `MC`, this point determines the market price
 - The marginal cost curves of other firms are likely higher than that of the dominant firm, the quantity demanded for these firms is determined by the intersaction point between its `MC` curve and the market price
 
-#### Monopoly
+### Monopoly
 
 - It is where only one firm is producing the product
 - It has a downward sloping demand curve which is the market demand curve, and firm has the power to choose the price at which it sells its product
@@ -418,7 +441,7 @@
     - It is the most used method
     - Regulator will set a cap for N firms `HHI` and making decision or approval for merging firms based on the `HHI` calculation
 
-### Economic Flows
+## Economic Flows
 
 - A modern economy consists of four major sectors:
   - households
@@ -445,7 +468,7 @@
   - For the foreign sector, the net exports proceeds flow to businesses.
   - When an economy imports more than it exports, there is a trade deficit. A trade deficit must be funded by borrowing from the rest of the world through the financial markets conversely if the imports are less than exports. There is a trade surplus in this case. There is net foreign lending to the rest of the world
 
-### GDP
+## GDP
 
 - The `Aggregate Output` is the sum of all the goods and services produced in an economy over a certain period of time
 - The `Aggregate Income` is defined as the total income earned by individuals and companies in the economy, excluding any adjustment for inflation and taxes
@@ -457,17 +480,17 @@
   - By definition the `GDP` is the aggregate output of the economy for the period
   - As a result, in an isolated economy, `GDP`, `Aggregate Output`, `Aggregate Income`, and `Aggregate Expenditure` should all have the same value
 
-#### `GDP` Calculation
+### `GDP` Calculation
 
 - `GDP` can be calculated by getting the value of `Aggregate Output`, and `Aggregate Income`
 
-##### Expenditure Approach
+#### Expenditure Approach
 
 - `GDP` is calculated as the total amount spent on the goods and services produced within the economy during a given period
   - It calculates total expenditures in the economy as the `consumption spending by households` plus `business investment` plus `government spending` plus the `net exports`
   - Market analysts generally prefer the expenditure approach because expenditure data is more timely and reliable than data for the income components
 
-##### Income Approach
+#### Income Approach
 
 - `GDP` is calculated as the total amount earned by households and companies in the economy, it uses the sum of:
   - `National Income` - the sum of the income received by all factors of production they go into the creation of final output, which includes:
@@ -487,7 +510,7 @@
   - `Net Exports` is the trade deficit
   - In conclusion, government deficit and trade deficit will always be covered by the excess of private saving over private investment
 
-#### `GDP` Calculation Criteria
+### `GDP` Calculation Criteria
 
 - all goods and services included in the calculation must be produced during the measurement period
   - `GDP` is usually measured in one calendar year but many governments do give annualized quarterly estimates
@@ -496,7 +519,7 @@
   - This type of expenditure approach is called the value of final output method
   - An alternative approach is the sum of value added method which is to sum up all the value added during the production and distribution processes
 
-#### Nominal vs Real GDP
+### Nominal vs Real GDP
 
 - `Nominal GDP` of the economy are calculated using the current market value of the goods and services
   - `Nominal GDP` equals the sum of all the current prices multiplied by the quantity produced for each good in a certain period
@@ -509,7 +532,7 @@
   - It equals the `Nominal GDP / Real GDP * 100` for a certain year
   - If the `GDP Deflator` index is known the conversion between `Nomial GDP` and `Real GDP` can be done easily
 
-#### Personal Income
+### Personal Income
 
 - `Personal Income` is a measure of the pre-tax income received by households and is one determinant of consumer purchasing power and consumption, compare with the nationl income component, personal income:
   - includes employee compensation
@@ -529,9 +552,9 @@
   - It measures the amount that households have available to either save or spend on goods and services
   - It is an important economic indicator of the ability of consumers to spend and save
 
-### Aggregate Demand & Supply
+## Aggregate Demand & Supply
 
-#### The IS (Investment vs Savings) Curve
+### The IS (Investment vs Savings) Curve
 
 - it plots the `goods market equilibrium` for real interest rate against real income
   - `goods market equilibrium` is the balance between the excess of private saving over private investment and the sum of government deficit and trade deficit
@@ -540,7 +563,7 @@
 - the relationship between real interest rates and real income has to be inverse to maintain equilibrium
 - so the `IS` curve is downward sloping
 
-#### LM (Liquidity vs Money) Curve
+### LM (Liquidity vs Money) Curve
 
 - It plots the `money market equilibrium` for real interest rate against real income
 - The demand for money equals to the supply of money
@@ -555,7 +578,7 @@
     - Nominal income refers to the actually income amount
 - Intersections between the IS and LM curves determine the equilibrium point of both the money and goods market
 
-#### Aggregate Demand Curve
+### Aggregate Demand Curve
 
 - Real output, read GDP or real income of of the economy are refer to the same thing
 - It determines the equilibrium levels of price level and real income, it is consisted of a collection of the intersection point between the `IS` and `LM`, when price level moves up and down on the y-axis
@@ -571,13 +594,13 @@
     - global economic growth - when global growth is strong foreign economies tend to buy more goods from domestic producers. Exports increase increasing aggregate demand
   - In addition, When the central bank adopts an expansionary monetary policy through lower reserve requirements and target low interest rates, the money supply increases and consumption from the above sectors will increase (can cause real estate boom)
 
-#### Aggregate Supply Curve
+### Aggregate Supply Curve
 
 - It shows the amount of output that all the domestic producers are willing to provide at various prices level
 - Similar to the aggregate demand curve, but from the producers's point of view, it also has price level on y-axis and quantity of real output on x-axis
 - The very short, short, and long run aggregate supply curves are different because they depend on the how input prices like wages material costs and rent respond to changes in production levels
 
-##### Very Short-Run Aggregate Supply Curve
+#### Very Short-Run Aggregate Supply Curve
 
 - It is assumed that the input prices remain fixed regardless of changes in production levels
 - Companies can increase or decrease output to some degree without changing price
@@ -587,7 +610,7 @@
   - maximizing the existing plant and equipment
   - depleting existing stockpile of components
 
-##### Short-Run Aggregate Supply Curve
+#### Short-Run Aggregate Supply Curve
 
 - Only some input prices will change as production is increased or decreased, becasue some input prices can be slow to adjust
   - the cost of certain components or raw materials may increase quickly due to the increased demand
@@ -604,7 +627,7 @@
     - This effect is more likely to be transient and modest
 - Changes in costs of production and expectation of future output prices only have affect on `SRAS` Curve
 
-##### Long-Run Aggregate Supply Curve
+#### Long-Run Aggregate Supply Curve
 
 - All input prices tend to catch up with the level of their demand
 - It has a perfectly inelastic supply curve
@@ -622,7 +645,7 @@
 - The curve shifts to the right when `Potential GDP` increases
   - This also holds true for short run supply curves
 
-#### Equilibrium
+### Equilibrium
 
 - Long-Run and Short-Run Aggregate Supply Curve intersects with Aggregate Demand Curve at the Long-run Full-employment equilibrium point
   - This is the point where the economy is producing at its full potential where there is no unemployment and all physical capital are operating at full capacity
@@ -641,9 +664,9 @@
     - If policymakers do nothing and wait for wages to come down due to high unemployment, the costs of production are lowered and the `SRAS` shifts back to the right where price and `GDP` go back to their previous levels. However, this is not a good from a political standpoint if there is high unemployment rate
 - When `SRAS` curve shift to the left due to a decrease in the price of important productive inputs, this results in a new short run equilibrium where the GDP is greater than full employment GDP and the price level is lower, the situation may eventually correct itself where the tight labor market pushes wages up increasing production costs shifting `SRAS` back to its original equilibrium
 
-### Economic Growth
+## Economic Growth
 
-#### Five Sources of Economic Growth
+### Five Sources of Economic Growth
 
 - `Labor Supply` - the number of people over the age of 16 who are either working or looking for work, it is affected by:
   - population growth
@@ -666,7 +689,7 @@
   - Countries with large amounts of productive natural resources like oil and achieve greater rates of economic growth
   - This factor is not mandatory for enconomic growth
 
-#### Growth in Potential GDP
+### Growth in Potential GDP
 
 - `Production Function` states that the `GDP` equals a function of the size of the labour force and the amount of capital multiply by a total factor productivity
   - the size of the labour force reflects the `Labor Supply` and `Human Capital` factors
@@ -688,9 +711,9 @@
   - In developed economies where capital per worker is already relatively high there may be `diminishing marginal productivity` of capital. This means that policymakers cannot continue to grow the economy through capital deepening investments
   - In developed economies, growth in technology should be the primary source of growth in GDP per worker
 
-### Business Cycle
+## Business Cycle
 
-#### Phases of Business Cycle
+### Phases of Business Cycle
 
 - Business cycles can be thought of as fluctuations around the following trend growth of an economy
 - The length of business cycles varies depending on the companies, it can be as short as a year or longer than a decade
@@ -715,7 +738,7 @@
   - Inflation decelerates with a lag
 - Generally, consider two consecutive quarters of growth in real GDP as the beginning of an expansion and two consecutive quarters of declining real GDP as indicating the beginning of a recession
 
-#### Business Cycle Indicator
+### Business Cycle Indicator
 
 - Inventory
   - Firms want to keep a balance of having enough inventory for sales and having enough liquidity
@@ -737,7 +760,7 @@
   - Similar to the trend of the labor force, firms purchase new equitment at mid to end of the expansion phase
   - At the beginning of the contraction phase, firms reduce their physical capacity by spending less on maintenance or purchase new equipment when it is near the end of its useful life
 
-#### Housing Sector in Business Cycle
+### Housing Sector in Business Cycle
 
 - The housing section affect the economy with a cyclical swings
 - It is affected by the following three factors
@@ -756,7 +779,7 @@
   - Population in the 25 to 40 year old segment is particularly important because they have the greatest demand for new houses
 - `Urbanization` - When governments encourage shifts from rural areas to cities construction activity in cities picks up to accommodate new settlers
 
-#### External Trade in Business Cycle
+### External Trade in Business Cycle
 
 - It depends on domestic GDP growth relative to trading partners GDP growth
   - Increasing growth of domestic GDP leads to increases in imports of foreign goods, decreasing domestic GDP growth reduces imports
@@ -765,7 +788,7 @@
   - If a country's currency strengthens against its trading partners its goods are relatively more expensive so exports decrease and imports increase
   - If a foreign currency strengthens the country's domestic goods become relatively cheaper than foreign goods, exports increase and imports decrease
 
-#### Theories of Business Cycle
+### Theories of Business Cycle
 
 - `Business Cycles` are a result of short term fluctuations in aggregate demand and short-run aggregate supply
   - Aggregate demand and Short-Run aggregate supply are determined by `Market` forces
@@ -802,7 +825,7 @@
   - `New Classical` economists believe that expansions and contractions represent efficient operation of the economy in response to external real shocks and technological changes
   - They believe the government should not intervene in the economy
 
-#### Unemployment
+### Unemployment
 
 - In any economy, employers hire to meet increased demand and fire when demand falls. Workers also quit to look for better jobs and new graduates start looking for jobs.
 - Categories of Unemployment
@@ -833,7 +856,7 @@
     - these two indicators may be a better signal of economic recovery than the unemployment rate
   - `Productivity` is a measure of output against the number of workers declines early in contractions as firms try to keep workers despite producing less output, in early expansion phase firms trying to produce more output with existing workers, so productivity rises
 
-#### Inflation
+### Inflation
 
 - Inflation is a sustained increase in the overall price level over time
   - Inflation erodes the purchasing power of a currency meaning that the same dollar can buy less goods over time
@@ -853,7 +876,7 @@
   - Contractionary monetary policies like increasing the benchmark interest rate are used when inflation is too high
   - Expansionary policies are used when the inflation rate is too low
 
-##### Cost Push Inflation
+#### Cost Push Inflation
 
 - `Cost Push Inflation` - Inflation happens when the cost of an important factor of production such as labor or energy increases
   - The short run aggregate supply curve of the economy is shifted to the left. Output is lower but price is higher. If the central bank opts to stimulate aggregate demand so output returns to its long run potential, the result would be a further increase in the price level
@@ -871,7 +894,7 @@
 - `Expected Inflation` can generate wage pressure. If workers expect inflation to increase, they will increase their wage demands accordingly
   - `Expected Inflation` can be determined by using the difference in yields between inflation indexed bonds such as `Treasury Inflation Protected Securities` and otherwise similar non indexed bonds
 
-##### Demand Pull Inflation
+#### Demand Pull Inflation
 
 - It happens when prices rise as a result of demand pressures.
 - the increased demand is usually a result of an increase in the money supply or increased government spending, rising cost of production results in a decrease in short run aggregate supply until real GDP reverts back to full employment GDP
@@ -879,7 +902,7 @@
   - High rates of capacity utilization suggest that the economy is producing above potential GDP and may experience inflationary pressure
 - The demand pull effect increases GDP above full employment GDP
 
-##### Inflaction Calculation
+#### Inflaction Calculation
 
 - Various index can be calculated to determine the inflaction rate
 - `Consumer Price Index` (`CPI`) is to determine the change in the overall price of a basket of goods and services that reflect the cost of living of a typical consumer
@@ -909,7 +932,7 @@
   - as food and energy prices are typically more volatile than other goods, core inflation is therefore less volatile and can sometimes be a more useful measure of the underlying trend in prices
 - `GDP Deflator` is usually determined by the above price indices
 
-#### Economic Indicators
+### Economic Indicators
 
 - In the United States, a market research organization called the `Conference Board` compiles leading coincident and lagging indicators for the US and several major economies
 - One or more indicator from the same type can be aggregated
@@ -918,7 +941,7 @@
 - classifications of the following indicators reflect tendencies in the timing of their turning points, not necessarily true all the time
 - Not all changes in direction of leading indicator indices have been followed by corresponding changes in the business cycle, and even when they have the lead time has varied
 
-##### Lagging Indicator
+#### Lagging Indicator
 
 - It doesn't tend to change direction until expansions or contractions are already underway
 - It can serve to confirm that the economy is in an actual expansion or contraction phase
@@ -934,7 +957,7 @@
   - `Index of Leading Economic Indicators` (`LEI`) - It contains 10 types of `Leading Indicators`
 - `OECD` compiles the `Composite Leading Indicators` (`CLI`) for several countries including `EU` or `G7` nations
 
-##### Coincident Indicator
+#### Coincident Indicator
 
 - It changes its direction at roughly the same time as the peaks or troughs
 - It can serve to confirm that the economy is in an actual expansion or contraction phase
@@ -944,7 +967,7 @@
   - Index of industrial production
   - Manufacturing and trade sales
 
-##### Leading Indicator
+#### Leading Indicator
 
 - It is known to change direction before peaks or troughs
 - It helps with anticipating cyclical turns and allow strategists and businesses to position themselves to benefit or protect themselves from movements in the business cycle
@@ -960,7 +983,7 @@
   - 10-year Treasury to Fed funds interest rate spread
   - Consumer expectations
 
-### Monetary and Fiscal Policy
+## Monetary and Fiscal Policy
 
 - Money is simply a medium of exchange
 - In a `Barter System`, goods and services are exchanged directly
@@ -1003,7 +1026,7 @@
     - money Market Fund units
     - debt securities with up to two years maturity
 
-#### Demand and Supply of Money
+### Demand and Supply of Money
 
 - `Demand for Money` - the amount of wealth that households and firms in an economy choose to hold in the form of money
 - There are three main reasons for holding money
@@ -1053,9 +1076,9 @@
     - unexpected inflation can increase the magnitude or frequency of business cycles
     - Misinformation is a real cost to the economy
 
-#### Central Bank
+### Central Bank
 
-##### Roles of Central Banks
+#### Roles of Central Banks
 
 - Central banks have the sole authority to supply money
   - Traditionally such money was backed by gold, the central bank stood ready to convert the money into a pre specified quantity of gold
@@ -1072,7 +1095,7 @@
   - The central bank controls or influences the quantity of money supplied and the growth of money supply over time.
   - These are done to achieve its stated objectives.
 
-##### Objectives of Central Banks
+#### Objectives of Central Banks
 
 - The single most important objective of most central banks is to control inflation in order to promote price stability
   - most central banks focus on keeping inflation close to a stated target rate this target rate is usually a range of around 2 to 3 per cent for most developed countries
@@ -1090,7 +1113,7 @@
   - The basic idea is that by tying a domestic economy's currency to that of an economy with a good track record on inflation, the domestic economy would effectively import the inflation experience of the low inflation economy
   - The centrel bank of that country sells foreign currency reserves and buys domestic currency to lower domestic money supply and increase short-run interest rate when it experiences high domestic inflation and low exchange rate of their currency, then bring down the inflation
 
-##### Desirable Qualities of Central Banks
+#### Desirable Qualities of Central Banks
 
 - `Independence` - a central bank should be free from political interference for it to be truly effective
   - The political party in power has a preference to boost economic activity and reduce unemployment to create a feel good environment that will increase its popularity
@@ -1109,9 +1132,9 @@
   - The reports disclose to the public the central bank's views on the range of indicators that they watch, when they come to their monthly interest rate decision
   - By explaining their views on the economy and by being transparent in decision making. The central bank seeks to gain reputation and credibility. This makes it easier for them to influence inflation expectations
 
-#### Monetary Policy
+### Monetary Policy
 
-##### Monetary Policy Tools
+#### Monetary Policy Tools
 
 - `Reserve Requirement` is the percentage of deposits, banks are required to retain as reserves
   - An expansionary policy is to decrease the reserve requirement which effectively increases the funds that are available for lending and the money supply which will tend to decrease interest rates
@@ -1142,7 +1165,7 @@
   - The central bank should determine if it is demand pull inflation or cost push inflation
   - If it is cost push due to higher food or energy prices. The economy is already operating below full employment. In such a situation, a contractionary monetary policy may cause even higher unemployment which is harmful to the economy
 
-##### Monetary Transmission System
+#### Monetary Transmission System
 
 - The monetary transmission mechanism refers to the ways in which a change in monetary policy, specifically the central bank's policy rate affects the price level and inflation.
 - There are four channels through which a change in a policy rate is transmitted to prices. They are transmitted through their effect on
@@ -1157,7 +1180,7 @@
   - Lastly the increase in domestic interest rates may attract foreign investment in debt securities leading to an appreciation of the domestic currency. This increases the foreign currency prices of exports and can reduce the external demand for the country's export goods.
     - besides the stronger currency. Also makes imports of foreign goods cheaper. This also puts downward pressure on the price level resulting in lower inflation
 
-### Currency Exchange Rates
+## Currency Exchange Rates
 
 - An exchange rate is simply the price of one currency in terms of another
 - The currency on top is known as the price currency, and the one below is the base currency
