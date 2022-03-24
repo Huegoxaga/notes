@@ -30,7 +30,7 @@
 ## Probability
 
 - Probability is the prediction of a certain outcome when something occurs
-- All the possible outcomes(an elements or member, same points) of experiments make the sample space(a set, denoted by omega Ω). `S= {a,b,c,d,….}`.
+- All the possible outcomes(an elements or member, same points) of experiments make the sample space(a set, denoted by omega Ω). `S = {a,b,c,d,….}`.
 - Favourable outcomes or successes make an event that is the subset of the sample space.
 - Venn diagram is used to describe sets relationship: intersection, union, compliment, adjoint, subset and difference(minus sign). total box is the sample space omega.
 - `n(set)` is the cardinal number of set(the number of its element)

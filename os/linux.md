@@ -1483,6 +1483,12 @@ Host *
   - `echo "my ID is 1234" | tr -d [:digit:]` To remove all the digits from the string.
 - `echo "my ID is 1234" | tr -cd [:digit:]` complement the selected pattern and remove all the non-digits characters from the string.
 
+### awk
+
+- `ps | awk '{print $2}'` print the second column of the output os `ps` command
+- `awk -F "=" '/regex/ {print $2 $3}' <filepath>` print the second and third columns of the matching rows and specify `=` as the separator instead of using spaces as default separator
+  - the print section can be formated as `{print $2-$3}`, or equivilantly use `BEGIN{FS=":"; OFS="-"} {print $2,$3}' <filepath>`
+
 ### gcc
 
 - GNU C Compiler ( gcc ) is a compiler in Linux which is used to compile C programs. It compiles files with extension `.c`.

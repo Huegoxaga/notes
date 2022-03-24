@@ -72,16 +72,21 @@
   - if the image is not found locally, Docker will download one immediately.
   - It will assign a new IP address for the container instance.
 - Run an interactive Linux OS
+
   ```s
   docker run -it --rm \
   ubuntu:18.04 \
   bash
   ```
+
   - Optionally, run `$ docker run -t -i ubuntu:18.04 /bin/bash`
   - `-it` means open an interactive pseudo terminal.
+  - `-t` create a pesudo TTY connection
+    - some container needs `-t` to keep running, because their image might have a default command bash, it will exit immediately when running in `-d` mode
   - `--rm` means remove the container upon exiting.
   - Third line is the shell for interaction after the container started.
   - run `exit` to quit the container when done.
+
 - run `docker container start` restart a stopped container.
 - run `docker start <containerIDorNames>` start a stopped container.
 - run `$ docker run -d <RepoName>:<TagName> <ContainerCommandPath> -c "command enter here"`, run command in background and return the `containerID`. Stop container when done.
@@ -100,6 +105,7 @@
 - optionally, run `docker exec`
 - `docker run --rm -it -v $(pwd):/data <ImageName> cp <CopyFileFrom> /data` mount a data volumn to the local directory then copy a from to the volumn from the container.
   - `-v` is used to mount a volumn
+- `docker run -d --restart unless-stopped redis` run am image in the background and always start it automatically unless manually stopped
 
 ### Stop a Container
 
@@ -193,7 +199,7 @@
   - Empty continuation lines will become errors in a future release.
 - It supports comments after `#`
 
-##### Commands
+#### Commands
 
 - `FROM`
   - It must be the first command in a `Dockerfile`.
@@ -213,6 +219,9 @@
   - `CHECKPOINT` can be overridden by using the `--checkpoint` flag when executing `docker run`
   - Only the last `CMD` or `CHECKPOINT` command in a dockerfile will be executed
   - When both `CHECKPOINT` and `CMD` are in the same dockerfile, `CHECKPOINT` is used to specify the actual command and `CMD` is used to specify the parameter for the command in `CHECKPOINT`
+  - Usually, use `CMD [ "bash", "docker/launch.sh" ]`
+    - Because only one command will be executed during launch, use bash script to include all the necessary commands inside. For background processes, each line except the last should end with `&` in the bash script
+    - When the last service has `&` the container will stop and exit immediately. [Click Here](https://docs.docker.com/config/containers/multi-service_container/) for alternative solutions
 
 ##### Build Image
 

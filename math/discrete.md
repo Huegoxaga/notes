@@ -1,5 +1,49 @@
 # Discrete Mathematics
 
+## Sets
+
+- Relationships among sets can be pictured in Venn diagrams
+  - THe universal set is represented by a rectangular region
+  - subsets of the universal set are usually represented by circular disks drawn within the rectangular region
+  - Sets that are not known to be disjoint should be represented by overlapping circles
+
+### Definition
+
+- Empty set (denoted $$\emptyset$$) is a subset of all sets
+- Elements in a set are grouped inside a pair of curly brackets
+  - The order of the elements is not important
+    - e.g. $$\{1,2,3\}=\{2,3,1\}$$
+  - When order matters, use ordered pair. Its elements are grouped in round brackets
+    - e.g. $$(1,2,3)\neq(2,3,1)$$
+- the `union` of sets `A` and `B` we mean the set consisting of all the elements that are in `A` or in `B`
+  - It is denoted `A U B`
+  - Thus, $$A\cup B=\{x:x\in A \ \text{or} \ x\in B\}$$
+- the `intersection` of sets `A` and `B` is the set consisting of all the elements that are in both `A` and `B`
+  - It is denoted `A ∩ B`
+  - Thus, $$A\cap B=\{x:x\in A \ \text{and} \ x\in B\}$$
+  - If the intersection of two sets is the empty set, then these sets are said to be disjoint
+- the `difference` of sets A and B, is the set consisting of the elements in A that are not in B
+  - It is denoted `A - B`
+  - Thus, $$A-B=\{x:x\in A \ \text{and} \ x\notin  B\}$$
+- `Universal Set` - a set containing all of the elements of interest in a particular situation
+  - Given a universal set `U` and a subset `A` of `U`, the set `U - A` is called the complement of `A` and is denoted $$\overline{A}$$
+- the `Cartesian product` of `A` and `B` is the set consisting of all the ordered pairs `(a, b)`, where $$a\in A$$ and $$b\in B$$
+  - It is denoted `A x B`
+  - Thus, $$A\times B=\{(a,b):a\in A \ \text{and} \ b\in B\}$$
+
+### Theorem
+
+- $$A\cup B=B\cup A$$ and $$A\cap B=B\cap A$$ (commutative laws)
+- $$(A\cup B)\cup C=A\cup (B\cup C)$$ and $$(A\cap B)\cap C=A\cap (B\cap C)$$ (associative laws)
+- $$A\cup (B\cap C)=(A\cup B)\cap(A\cup C)$$ and $$A\cap (B\cup C)=(A\cap B)\cup(A\cap C)$$ (distributive laws)
+- $$\overline{\overline{A}}=A$$
+- $$A\cup\overline{A}=U$$
+- $$A\cap \overline{A}=\emptyset$$
+- $$A\subseteq A\cup B$$ and $$B\subseteq A\cup B$$
+- $$A\cap B\subseteq A$$ and $$A\cap B\subseteq B$$
+- $$A-B=A\cap \overline{B}$$
+- $$\overline{(A\cup B)}=\overline{A}\cap\overline{B}$$ and $$\overline{(A\cap B)}=\overline{A}\cup\overline{B}$$ (De Morgan’s Laws)
+
 ## Modular Arithmetic
 
 - Modular arithmetic is a system in which all numbers up to some positive integer `n` are used.

@@ -25,6 +25,13 @@
 - Each script will be run in a separate session.
 - It import and execute an external bash file for the current session, run `source <filepath>`.
   - `source` is an alias and can be replaced by the built-in command `.`. Ex, One can run `. <filepath>` instead.
+- Run other script inside bash script
+
+  ```sh
+  python3 << END
+  print("Hi")
+  END
+  ```
 
 ## Syntax
 
