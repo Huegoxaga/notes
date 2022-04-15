@@ -30,6 +30,20 @@
 - the `Cartesian product` of `A` and `B` is the set consisting of all the ordered pairs `(a, b)`, where $$a\in A$$ and $$b\in B$$
   - It is denoted `A x B`
   - Thus, $$A\times B=\{(a,b):a\in A \ \text{and} \ b\in B\}$$
+- If `R` is a subset of `A x B`, it can be called a relation from set `A` to set `B`, and if `(x, y)` is an element of `R`, we will say that `x` is related to `y` by `R`, written as `x R y`, instead of $$(x,y)\in R$$
+  - If `x R y` exists, it equals true and vice versa
+- A relation from a set `S` to itself is called a relation on `S`
+- A relation R on a set S may have any of the following special properties:
+  1. If for each `x` in `S`, `x R x` is true, then `R` is called `reflexive`
+  2. If `y R x` is true whenever `x R y` is true, then `R` is called `symmetric`
+  3. If `x R z` is true whenever `x R y` and `y R z` are both true, then `R` is called `transitive`
+- A relation that is reflexive, symmetric, and transitive is called an equivalence relation
+- Equivalence class is a subset of some equivalence relation `R` which includes all elements that are equivalent to each other
+  - Equivalence class of `x` is a subset of `R` which each elements `y` is equivalent to `x`, denoted as $$[x]=\{y|(x,y)\in R\}$$
+- The equivalence classes of an equivalence relation `R` on set `S` divide `S` into disjoint subsets, such a family of subsets of `S` is called a `partition` of `S`, it has the following properties
+  - No subset is empty
+  - Each element of `S` belongs to some subset
+  - Two distinct subsets are disjoint
 
 ### Theorem
 
@@ -43,6 +57,12 @@
 - $$A\cap B\subseteq A$$ and $$A\cap B\subseteq B$$
 - $$A-B=A\cap \overline{B}$$
 - $$\overline{(A\cup B)}=\overline{A}\cap\overline{B}$$ and $$\overline{(A\cap B)}=\overline{A}\cup\overline{B}$$ (De Morgan’s Laws)
+- Let `R` be an equivalence relation on a set `S`
+  - If `x` and `y` are elements of `S`,then `x` is related to `y` by `R` if and only if `[x] = [y]`
+  - Two equivalence classes of `R` are either equal or disjoint
+- An equivalence relation `R` gives rise to a partition `P` in which the members of `P` are the equivalence classes of `R`
+- Conversely, a partition `P` induces an equivalence relation `R` in which two elements are related by `R` whenever they lie in the same member of `P`
+  - Moreover, the equivalence classes of this relatio nare the members of `P`
 
 ## Modular Arithmetic
 

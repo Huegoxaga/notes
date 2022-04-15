@@ -219,7 +219,7 @@
 ### Recursion
 
 - A method that calls itself is a recursive method.
-- It has a base case, the method will called itself until the base case is reached and solved.
+- It has a base case, the program will call the method recursively until the first base case is reached, then move on to the next top level method that hasn't been resolved
 - Recursive methods can have the following types:
   - Linear Recursion - Each recursive method call itself once.
   - Binary Recursion - Each recursive method call itself twice.

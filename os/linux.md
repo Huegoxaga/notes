@@ -189,7 +189,7 @@
 - `mount <deviceTypeLocation>`. unmount a device.
   - `/etc/fstab` is a list of filesystems to be mounted at boot time
   - `/etc/mtab` is a list of currently mounted filesystems
-- `source <FileName>`, it can be used to load any functions file into the current shell script or a command prompt. It read and executes commands from given FILENAME.
+- `source <FileName>`, it can be used to load any functions file and environment variables into the current shell script or a command prompt. It read and executes commands from given FILENAME.
 - `alias` it will list all the alias the shell current have.
   - To add new alias temperately run `alias shortcut="fullCommand"`
   - Or place them into `.bash_profile` or `.bashrc` to make it available all the time.

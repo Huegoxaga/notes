@@ -6,6 +6,8 @@
 ## venv
 
 - create new environment `python3 -m venv <envFolderName>`
+  - current user must own the project folder to create
+  - environment folder will be owned by root if command is executed with `sudo`
 - activate environment, under project folder `source <envFolderName>/bin/activate`
 
 ## itertools modules
