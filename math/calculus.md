@@ -117,33 +117,41 @@
   - at the point $$P(a, f(a))$$ is the line through _P_ with slope $$m = \lim_{x \to a} \frac{f(x)-f(a)}{x-a}$$ provided that this limit exists.
   - Optionally, $$m = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$$
   - Or it can be $$\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim_{x_2 \to x_1} \frac{f(x_2)-f(x_1)}{x_2 - x_1} $$
-- The derivative of a function _f_ at a number _a_, denoted by $$f'(a)$$ is $$f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$$
+- The derivative of a function _f_ at a number _a_, denoted by $$f'(a)$$ is $$f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$$ (also known as the first principle)
   - It is the function that returns the slope of the tangent as dependent variable.
   - It can also represent the instantaneous rate of change.
   - The derivateve of a function can be also denoted as
     - $$\frac{dy}{dx}$$, known as Leibniz notation.
       - Does not have to be `dy` over `dx`, anything below is the current independent variable.
       - The notation itself can be calculated since it represent a relationship in fraction notation. For example, `dy/dx = (dy/dz)/(dx/dz)`
-    - $$\frac{d}{dx}(x)$$
+    - $$\frac{d}{dx}(x)$$ or $$\frac{d}{dx}f(x)$$
+    - $$f'(x)$$
     - $$y'$$
+    - $$Dy$$ where `D` is the derivative operator
     - $$\dot{x}$$ if _x_ represents time
     - All of the notation represents how much `y` changes when `x` changes.
 - Higher Derivatives
   - The derivatives of a derivative is called the second derivative, it can be denoted as follows:
-    - $$\frac{d}{dy}\left(\frac{dy}{dx}\right)$$
+    - $$\frac{d}{dx}\left(\frac{dy}{dx}\right)$$, which means the derivative of `dy/dx`
     - $$\frac{d^2 y}{d x^2}$$
     - $$f''(x)$$
     - $$y''$$
+    - $$D^{2}y$$ where `D` is the derivative operator
     - $$\ddot{x}$$
   - Same idea for third and fourth and higher derivatives.
 - A function _f_ is differentiable at a if _f'(a)_ exists. It is differentiable on an open interval (_a, b_) [or $$(a, \infty)$$ or $$(-\infty, a)$$ or $$(-\infty, \infty)$$] if it is differentiable at every number in the interval.
-- Let _c_ be a number in the domain _D_ of a function _f_. Then _f(c)_ is the
-  - absolute maximum value of _f_ on _D_ if $$f(c) \geqslant f(x)$$ for all _x_ in _D_.
-  - absolute minimum value of f on D if $$f(c) \leqslant f(x)$$ for all _x_ in _D_.
 - The number _f(c)_ is a
   - local maximum value of _f_ if $$f(c) \geqslant f(x)$$ when _x_ is near _c_.
-  - local maximum value of _f_ if $$f(c) \leqslant f(x)$$ when _x_ is near _c_.
-- A critical number of a function _f_ is a number _c_ in the domain of _f_ such that either _f'(c) = 0_ or _f'(c)_ does not exist.
+  - local minimum value of _f_ if $$f(c) \leqslant f(x)$$ when _x_ is near _c_.
+- Let _c_ be a number in the domain _D_ of a function _f_. Then _f(c)_ is the
+  - absolute maximum value of _f_ on _D_ if $$f(c) \geqslant f(x)$$ for all _x_ in _D_.
+  - absolute minimum value of _f_ on _D_ if $$f(c) \leqslant f(x)$$ for all _x_ in _D_.
+  - the highest value amongst all of the local maximum and left and right end values is the absolut maximum of _f_ on _D_, and vice versa for the absolute minimum
+- A critical number(point) of a function _f_ is a number _c_ in the domain of _f_ such that either _f'(c) = 0_ or _f'(c)_ does not exist.
+  - the nature of critical number includes three senarios
+    - local maximum
+    - local minimum
+    - niether
   - If _f_ has a local maximum or minimum at _c_, then _c_ is a critical number of _f_.
 - If the graph of _f_ lies above all of its tangents on an interval _I_, then it is called concave upward on _I_. If the graph of _f_ lies below all of its tangents on _I_, it is called concave downward on _I_.
 - A point _P_ on a curve _y = f(x)_ is called an inflection point if _f_ is continuous there and the curve changes from concave upward to concave downward or from concave downward to concave upward at _P_.
@@ -160,8 +168,20 @@
     - Then, $$\frac{dy}{dx} = \frac{\frac{dy}{d \theta}}{\frac{dx}{d \theta}}$$
 - Partial Derivatives
   - When a function has more than one independent variable, the partial derivative can be used to represent how much the dependent variable changes when one of its independent variables changes while keeping the other independent variable constant.
+  - Symbol `∂` specifically refers to partial derivative, while `d` means the function has only one variable
   - For `f(x, y)` it can have two derivatives which are `∂f/∂x` and `∂f/∂y`.
+  - For `f(x, y)`, $$\frac{\partial f}{\partial x}=\lim_{h \to 0} \frac{f((x+h),y)-f(x,y)}{h}$$
+  - Partial derivatives of function `f(x, y) = z` in terms of `x` can be denoted as
+    - $$\frac{\partial f}{\partial x}$$
+    - $$\frac{\partial z}{\partial x}$$
+    - $$f_x$$
+    - $$z_x$$
+    - $$D_x f$$
   - Function with multiple independent variable has a multi-demensional graph, parial derivative only looks at the rate of change between one independent variable and the dependent variable in one plane. All other independent variable will be kept in the result and the derivative function will have a reduced demension (by 1).
+  - Higher partial derivatives differentiate the variables of a function with two or more variables more than onece, they can be denoted as follows
+    - For `f(x, y)`, differentiating in terms of `x` twice gives $$\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}\right)=\frac{\partial^2f}{\partial^2x}=(f_x)_x=f_{xx}=D^2_{xx}f$$
+    - For `f(x, y)`, differentiating in terms of `x` first, then `y` gives $$\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)=\frac{\partial^2f}{\partial y \partial x}=(f_x)_y=f_{xy}=D^2_{xy}f$$, it is also known as higher mixed partial derivatives
+    - Same idea when differentiating partially for three or more times
 - The position vector indicates the position of a particle relative to the origin
   - the position can be defined by parametric equations which is depended on variables for time, angle etc., $$\vec{r}(t)=f(t) \hat{i} + g(t) \hat{j}$$
 - The derivative of the position vector $$\vec{r}(t)=f(t) \hat{i} + g(t) \hat{j}$$ is $$\vec{r}'(t)=f'(t) \hat{i} + g'(t) \hat{j}$$
@@ -187,6 +207,8 @@
 
 ### Derivatives of Common Functions
 
+- Derivatives of Exponential Functions
+  - $$a^x=a^x\ln a$$
 - Derivatives of Trigonometric Functions
   - $$\frac{d}{dx} (\sin x)=\cos x$$
   - $$\frac{d}{dx} (\cos x)=-\sin x$$
@@ -224,6 +246,8 @@
   2. _f_ is differentiable on the open interval (_a, b_).
 - If _f'(x)=0_ for all _x_ in an interval (_a, b_), then _f_ is constant on (_a, b_).
   - If _f'(x)-g'(x)_ for all _x_ in an interval (_a, b_), then _f - g_ is constant on (_a, b_); that is, _f(x)=g(x)+c_ where _c_ is a constant.
+- Clairaut's Theorem - For higher mixed partial derivatives, the order in which the variables are differentiated does not mateer, as long as each variable is differentiated the same number of times it appears in the higher miexed partial derivateive
+  - i.e. $$f_{xy}=f_{yx}$$
 - If _F_ is an antiderivative of _f_ on an interval _I_, then the most general
   antiderivative of _f_ on _I_ is _F(x) + C_ where _C_ is an arbitrary constant.
 
@@ -231,7 +255,8 @@
 
 - Chain rule applys to all variable except the one that is at the denomination in the Leibniz notation.
   - If `dx` is the variable that is at the denomination in the Leibniz notation and `y` is the variable that will be applied by chain rule. When the relationship between `y` and `x` is unknown, use `y'` or `dy/dx` to represent the derivative of `y` in respect to `x`.
-- Implicit differentiation. This consists of differentiating both sides of the equation with respect to _x_ and then solving the resulting equation for _y'_.
+- Implicit differentiation. This consists of differentiating both sides of the equation with respect to target variable and then solving the resulting equation for _y'_, where _y_ is the dependent variable.
+  - When differentiating the dependent variable, chain rule is required
   - The result should be an expression which is consisted of _x_ and _y_.
 - Logarithmic differentiation - The calculation of derivatives of complicated functions involving products, quotients, or powers can often be simplified by taking logarithms. The method used in the following example is called logarithmic differentiation.
 - linear approximation - or tangent line approximation of _f_ at _a_ uses the tangent line of the function at _a_ to replace the original funtion, then make prediction about values that is close to _a_. As a result we have the linear approximation _L(x)_ equals to $$f(a)+f'(a)(x-a)$$.
@@ -254,6 +279,7 @@
 - The Second Derivative Test - Suppose _f''_ is continuous near _c_.
   - If _f'(c)=0_ and _f''(c)>0_, then _f_ has a local minimum at _c_.
   - If _f'(c)=0_ and _f''(c)<0_, then _f_ has a local maximum at _c_.
+  - If _f'(c)=0_ and _f''(c)<0_, then no conclusions can be made and only first derivative test can be used
 - The Newton's method can be used to find the root(solution) of a high order function.
   - Pick a random value $$x_1$$, then calculate `x - f(x)/f'(x)`, then treat the result $$x_2$$ as $$x_1$$ and repeat the calculation, repeat the process then the result value will be closer and closer to the root.
   - When the $$x_n$$ is the root value the new result will not change since $$f(x_n) = 0$$ in this case.
@@ -274,6 +300,17 @@
     - When `k > 0` it is a heart shape growing upwards as k increse and have an empty hole inside when `k > 1`
     - When `k < 0` it is a heart shape growing downward as k decrease and have an empty hole inside when `k > -1`
 - When solving partial derivative just treat all other variable as constant and use the same methods and rules for a regular derivative problem.
+  - When solving partial derivatives for composite function, chain rule applies and a tree diagram can be drawn.
+    - the tree diagram represents the dependency of all the variables of a composite function, where the root node is the dependent variable, and end nodes are the independent variable respect to each intermediate functions
+    - From top to bottom, each node is a partial derivative of the parent node in terms of the current node
+    - To find the partial derivatives of any variables, trace from the root node and multiply all imternediate partial derivatives. If one variable appears in multiple root node, add the product together
+    - e.g. for `f(x,y)`, `x=g(t)`, `y=h(s,t)`
+      - Tree diagram: ![Example Tree Diagram](img/c-tree-diagram.png)
+      - $$\frac{\partial f}{\partial s}= \frac{\partial f}{\partial y}\cdot \frac{\partial y}{\partial s}$$
+      - $$\frac{\partial f}{\partial t}= \frac{\partial f}{\partial x}\cdot \frac{d x}{d t}+ \frac{\partial f}{\partial y}\cdot \frac{\partial y}{\partial t}$$
+    - Remember to subsitute the variable which you are solving the partial derivatives for, in the final answer
+  - Partial derivatives can simplfy some complicated implicit derivative by wrap all variable (dependent or independent) into a composite function and make it has a zero on on side of the equation. Then draw the tree diagram the use the above rule, differentiate both side for the partial derivitives of the target variable, solve all of them and find the target derivative
+    - The tree diagram for the wrapper function has all variables from the root node, then specific child node in the next layer
 - Function with multiple independent variables can still be used to solve for a regular derivative for a certain independent variable, in this case other independent variable can not be treated as a constant and all rules for variables like chain rules should apply.
 
 ## Integral
@@ -285,79 +322,79 @@
 - Definition of a Definite Integral - If _f_ is a function defined for $$a \leqslant x \leqslant b$$, we divide the interval [_a, b_] into _n_ subintervals of equal width $$\Delta x = (b-a)/n$$. We let $$x_0(=a),x_1,x_2, \ldots ,x_n(=b)$$ be the endpoints of these subintervals and we let $$x^*_1,x^*_2, \ldots ,x^*_n$$ be any sample points in these subintervals, so $$x^*_i$$ lies in the _ith_ subinterval $$[x_{i-1},x_i]$$. Then the definite integral of _f_ from _a_ to _b_ is $$\int^b_a f(x) dx=\lim_{n \to \infty} \sum_{i=1}^n f(x^*_i) \Delta x$$ provided that this limit exists and gives the same value for all possible choices of sample points. If it does exist, we say that f is integrable on [_a, b_].
   - sample point usually is the right endpoint of the _ith_ subinterval
   - sample point can also be the mid point.
-- Indefinite Integrals - $$\int f(x) ; dx = F(x)$$ means _F'(x)=f(x)_
+- Indefinite Integrals - $$\int f(x) \; dx = F(x)$$ means _F'(x)=f(x)_
   - Indefinite Integrals represents a function, Definite Integrals represents a value.
-- Definition of Volume - Let _S_ be a solid that lies between _x = a_, _x = b_. If the cross-sectional area of _S_ in the plane $$P_x$$, through _x_ and perpendicular to the x-axis, is _A(x)_, where _A_ is a continuous function, then the volume of S is $$V = \lim_{n \to \infty} \sum^n_{i=1} A(x^*_i) \Delta x = \int^b_a A(x) ; dx$$
-- Formula for integration by parts is as $$\int u ; dv = uv - \int v ; du$$
+- Definition of Volume - Let _S_ be a solid that lies between _x = a_, _x = b_. If the cross-sectional area of _S_ in the plane $$P_x$$, through _x_ and perpendicular to the x-axis, is _A(x)_, where _A_ is a continuous function, then the volume of S is $$V = \lim_{n \to \infty} \sum^n_{i=1} A(x^*_i) \Delta x = \int^b_a A(x) \; dx$$
+- Formula for integration by parts is as $$\int u \; dv = uv - \int v \; du$$
 - integration by parts also works for definite integral. $$\int^b_a f(x)g'(x) \; dx=f(x)g(x)]^b_a - \int^b_a g(x)f'(x) \; dx$$
 - Definition of an Improper Integral of Type 1(infinite boundary for infinite integrals)
-  - If $$\int^t_a f(x) ; dx$$ exists for every number $$t \geqslant a$$, $$\int^{\infty}_{a} f(x) ; dx=\lim_{t \to \infty} \int^t_a f(x) ; dx$$ provided this limit exists (as a finite number).
-  - If $$\int^b_t f(x) ; dx$$ exists for every number $$t \leqslant b$$, $$\int^{b}_{- \infty} f(x) ; dx=\lim_{t \to - \infty} \int^b_t f(x) ; dx$$ provided this limit exists (as a finite number).
-  - The improper integrals are called convergent if the corresponding limit exists and divergent if the limit does not exist. If both $$\int^{\infty}_{a}f(x)$$ and $$\int^{a}_{- \infty}f(x)$$ are convergent, then we define $$\int^{\infty}_{- \infty}f(x) ; dx=\int^{a}_{- \infty}f(x) ; dx+ \int^{\infty}_{a}f(x) ; dx$$ where any real number _a_ can be used.
+  - If $$\int^t_a f(x) \; dx$$ exists for every number $$t \geqslant a$$, $$\int^{\infty}_{a} f(x) \; dx=\lim_{t \to \infty} \int^t_a f(x) \; dx$$ provided this limit exists (as a finite number).
+  - If $$\int^b_t f(x) \; dx$$ exists for every number $$t \leqslant b$$, $$\int^{b}_{- \infty} f(x) \; dx=\lim_{t \to - \infty} \int^b_t f(x) \; dx$$ provided this limit exists (as a finite number).
+  - The improper integrals are called convergent if the corresponding limit exists and divergent if the limit does not exist. If both $$\int^{\infty}_{a}f(x)$$ and $$\int^{a}_{- \infty}f(x)$$ are convergent, then we define $$\int^{\infty}_{- \infty}f(x) \; dx=\int^{a}_{- \infty}f(x) \; dx+ \int^{\infty}_{a}f(x) \; dx$$ where any real number _a_ can be used.
 - Definition of an Improper Integral of Type 2(infinite boundary for definite integrals)
-  - If _f_ is continuous on [_a, b_) and is discontinuous at _b_, then $$\int^b_a f(x) ; dx = \lim_{t \to b^-} \int^t_a f(x) ;dx$$ if this limit exists (as a finite number).
-  - If _f_ is continuous on (_a, b_] and is discontinuous at _b_, then $$\int^b_a f(x) ; dx = \lim_{t \to a^+} \int^b_t f(x) ;dx$$ if this limit exists (as a finite number).
+  - If _f_ is continuous on [_a, b_) and is discontinuous at _b_, then $$\int^b_a f(x) \; dx = \lim_{t \to b^-} \int^t_a f(x) \;dx$$ if this limit exists (as a finite number).
+  - If _f_ is continuous on (_a, b_] and is discontinuous at _b_, then $$\int^b_a f(x) \; dx = \lim_{t \to a^+} \int^b_t f(x) \;dx$$ if this limit exists (as a finite number).
   - The improper integral is called convergent if the corresponding limit exists and divergent if the limit does not exist.
-  - If _f_ has a discontinuity at _c_, where _a < c < b_ and both integrals are convergent, then we define $$\int^b_a f(x) ; dx=\int^c_a f(x) ; dx + \int^b_c f(x) ; dx$$
+  - If _f_ has a discontinuity at _c_, where _a < c < b_ and both integrals are convergent, then we define $$\int^b_a f(x) \; dx=\int^c_a f(x) \; dx + \int^b_c f(x) \; dx$$
 
 ### Theorem
 
-- If _f_ is continuous on [_a, b_], or if _f_ has only a finite number of jump discontinuities, then f is integrable on [_a, b_]; that is, the definite integral $$\int^b_a f(x) ; dx$$ exists.
-- If _f_ is integrable on [_a, b_], then $$\int^b_a f(x) ; dx=\lim_{n \to \infty} \sum_{i=1}^n f(x_i) \Delta x$$ where $$\Delta x= \frac{b-a}{n}$$ and $$x_i=a+i \Delta x$$
+- If _f_ is continuous on [_a, b_], or if _f_ has only a finite number of jump discontinuities, then f is integrable on [_a, b_]; that is, the definite integral $$\int^b_a f(x) \; dx$$ exists.
+- If _f_ is integrable on [_a, b_], then $$\int^b_a f(x) \; dx=\lim_{n \to \infty} \sum_{i=1}^n f(x_i) \Delta x$$ where $$\Delta x= \frac{b-a}{n}$$ and $$x_i=a+i \Delta x$$
 - the Fundamental theorem of calculus
-  - If _f_ is continuous on [_a, b_], then the function _g_ defined by $$g(x)= \int^x_a f(t) ; dt ; ; ; a \leqslant x \leqslant b$$ is continuous on [_a, b_] and differentiable on (_a, b_), and $$g'(x)=f(x)$$.
-  - If _f_ is continuous on [_a, b_], then $$\int^b_a f(x) ; dx = F(b) - F(a)$$ where _F_ is any antiderivative of _f_, that is, a function such that _F'=f_.
-- Net Change Theorem - The integral of a rate of change is the net change: $$\int^b_a F'(x) ; dx=F(b)-F(a)$$
-- The Mean Value Theorem for Integrals - If _f_ is continuous on [_a, b_], then there exists a number _c_ in [_a, b_] such that $$f(c)=f_{avg}=\frac{1}{b-a} \int^b_a f(x) ; dx$$ that is, $$\int^b_a f(x) ; dx = f(c)(b-a)$$
+  - If _f_ is continuous on [_a, b_], then the function _g_ defined by $$g(x)= \int^x_a f(t) \; dt \; \; \; a \leqslant x \leqslant b$$ is continuous on [_a, b_] and differentiable on (_a, b_), and $$g'(x)=f(x)$$.
+  - If _f_ is continuous on [_a, b_], then $$\int^b_a f(x) \; dx = F(b) - F(a)$$ where _F_ is any antiderivative of _f_, that is, a function such that _F'=f_.
+- Net Change Theorem - The integral of a rate of change is the net change: $$\int^b_a F'(x) \; dx=F(b)-F(a)$$
+- The Mean Value Theorem for Integrals - If _f_ is continuous on [_a, b_], then there exists a number _c_ in [_a, b_] such that $$f(c)=f_{avg}=\frac{1}{b-a} \int^b_a f(x) \; dx$$ that is, $$\int^b_a f(x) \; dx = f(c)(b-a)$$
 - Comparison Theorem - Suppose that _f_ and _g_ are continuous functions with $$f(x) \geqslant g(x) \geqslant 0$$ for $$x \geqslant a$$
-  - If $$\int^{\infty}_a f(x) ; dx$$ is convergent, then $$\int^{\infty}_a g(x) ; dx$$ is convergent.
-  - If $$\int^{\infty}_a g(x) ; dx$$ is divergent, then $$\int^{\infty}_a f(x) ; dx$$ is divergent.
+  - If $$\int^{\infty}_a f(x) \; dx$$ is convergent, then $$\int^{\infty}_a g(x) \; dx$$ is convergent.
+  - If $$\int^{\infty}_a g(x) \; dx$$ is divergent, then $$\int^{\infty}_a f(x) \; dx$$ is divergent.
 
 ### Properties
 
 - Properties of the Definite Integral
-  - $$\int^a_b f(x) ; dx=- \int^b_a f(x) ; dx$$
-  - $$\int^a_a f(x) ; dx=0$$
-  - $$\int^b_a c ; dx=c(b-a)$$ where _c_ is any constant.
-  - $$\int^b_a cf(x) ; dx=c \int^b_a f(x) ; dx$$ where _c_ is any constant.
-  - $$\int^b_a [f(x)+g(x)] ; dx=\int^b_a f(x) ; dx + \int^b_a g(x) ; dx$$
-  - $$\int^b_a [f(x)-g(x)] ; dx=\int^b_a f(x) ; dx - \int^b_a g(x) ; dx$$
-  - $$\int^c_a f(x) ; dx + \int^b_c f(x) ; dx = \int^b_a f(x) ; dx$$
+  - $$\int^a_b f(x) \; dx=- \int^b_a f(x) \; dx$$
+  - $$\int^a_a f(x) \; dx=0$$
+  - $$\int^b_a c \; dx=c(b-a)$$ where _c_ is any constant.
+  - $$\int^b_a cf(x) \; dx=c \int^b_a f(x) \; dx$$ where _c_ is any constant.
+  - $$\int^b_a [f(x)+g(x)] ; dx=\int^b_a f(x) ; dx + \int^b_a g(x) \; dx$$
+  - $$\int^b_a [f(x)-g(x)] \; dx=\int^b_a f(x) \; dx - \int^b_a g(x) \; dx$$
+  - $$\int^c_a f(x) \; dx + \int^b_c f(x) \; dx = \int^b_a f(x) \; dx$$
 - Comparison Properties of the Integral
-  - If $$f(x) \geqslant 0$$ for $$a \leqslant x \leqslant b$$, then $$\int^b_a f(x) ; dx \geqslant 0$$.
-  - If $$f(x) \geqslant g(x)$$ for $$a \leqslant x \leqslant b$$, then $$\int^b_a f(x) ; dx \geqslant \int^b_a g(x) ; dx$$.
-  - If $$m \leqslant f(x) \leqslant M$$ for $$a \leqslant x \leqslant b$$, then $$m(b-a) \leqslant \int^b_a f(x) ; dx \leqslant M(b-a)$$
+  - If $$f(x) \geqslant 0$$ for $$a \leqslant x \leqslant b$$, then $$\int^b_a f(x) \; dx \geqslant 0$$.
+  - If $$f(x) \geqslant g(x)$$ for $$a \leqslant x \leqslant b$$, then $$\int^b_a f(x) \; dx \geqslant \int^b_a g(x) \; dx$$.
+  - If $$m \leqslant f(x) \leqslant M$$ for $$a \leqslant x \leqslant b$$, then $$m(b-a) \leqslant \int^b_a f(x) \; dx \leqslant M(b-a)$$
 - Properties of the Indefinite Integral
-  - $$\int cf(x) ; dx=c \int f(x) ; dx$$
-  - $$\int k ; dx=kx+C$$
-  - $$\int [f(x)+g(x)] ; dx=\int f(x); dx+ \int g(x); dx$$
-  - $$\int x^n ; dx= \frac{x^{n+1}}{n+1}+C ; (n \neq -1)$$
-  - $$\int \frac{1}{x} ; dx=\ln{|x|}+C$$
-  - ![$\int e^x ; dx = e^x +C](https://render.githubusercontent.com/render/math?math=%24%5Cint%20e%5Ex%20%5C%3B%20dx%20%3D%20e%5Ex%20%2BC)
-  - $$\int b^x ; dx = \frac{b^x}{\ln b} +C$$
-  - $$\int \sin x ; dx= - \cos x +C$$
-  - $$\int \cos x ; dx= \sin x +C$$
-  - $$\int \sex^2 x ; dx= \tan x +C$$
-  - $$\int \csc^2 x ; dx= - \cot x +C$$
-  - $$\int \cec x ; \tan x ; dx= \sec x +C$$
-  - $$\int \csc x ; \cot x ; dx=- \csc x +C$$
+  - $$\int cf(x) \; dx=c \int f(x) \; dx$$
+  - $$\int k \; dx=kx+C$$
+  - $$\int [f(x)+g(x)] \; dx=\int f(x)\; dx+ \int g(x)\; dx$$
+  - $$\int x^n \; dx= \frac{x^{n+1}}{n+1}+C \; (n \neq -1)$$
+  - $$\int \frac{1}{x} \; dx=\ln{|x|}+C$$
+  - $$\int e^x \; dx = e^x +C$$
+  - $$\int b^x \; dx = \frac{b^x}{\ln b} +C$$
+  - $$\int \sin x \; dx= - \cos x +C$$
+  - $$\int \cos x \; dx= \sin x +C$$
+  - $$\int \sec^2 x \; dx= \tan x +C$$
+  - $$\int \csc^2 x \; dx= - \cot x +C$$
+  - $$\int \sec x \; \tan x \; dx= \sec x +C$$
+  - $$\int \csc x \; \cot x \; dx=- \csc x +C$$
   - $$\int \frac{1}{x^2+1} dx=\tan^{-1} x+C$$
   - $$\int \frac{1}{\sqrt{1-x^2}} dx=\sin^{-1} x+C$$
-  - $$\int \sinh x ; dx=\cosh x +C$$
-  - $$\int \cosh x ; dx=\sinh x +C$$
-  - $$\int \tan x ; dx=\ln ; |\sec x| +C$$
-  - $$\int \cot x ; dx=\ln ; |\sin x| +C$$
-  - $$\int \frac{1}{x^2+a^2} ; dx=\frac{1}{a} \tan^{-1} \left(\frac{x}{a}\right)+C$$
-  - $$\int \frac{1}{\sqrt{a^2-x^2}} ; dx= \sin^{-1} \left(\frac{x}{a}\right)+C$$, _a > 0_
-- The Substitution Rule If _u=g(s)_ is a differentiable function whose range is an interval _I_ and _f_ is continuous on _I_, then $$f(g(x))g'(x)dx=\int f(u) ; du$$
-- The Substitution Rule for Definite Integrals - If _g'_ is continuous on [_a, b_] and _f_ is continuous on the range of _u = g(x)_, then $$\int^b_a f(g(x))g'(x)dx=\int^{g(b)}_{g(a)}f(u) ; du$$
+  - $$\int \sinh x \; dx=\cosh x +C$$
+  - $$\int \cosh x \; dx=\sinh x +C$$
+  - $$\int \tan x \; dx=\ln \; |\sec x| +C$$
+  - $$\int \cot x \; dx=\ln \; |\sin x| +C$$
+  - $$\int \frac{1}{x^2+a^2} \; dx=\frac{1}{a} \tan^{-1} \left(\frac{x}{a}\right)+C$$
+  - $$\int \frac{1}{\sqrt{a^2-x^2}} \; dx= \sin^{-1} \left(\frac{x}{a}\right)+C$$, _a > 0_
+- The Substitution Rule If _u=g(s)_ is a differentiable function whose range is an interval _I_ and _f_ is continuous on _I_, then $$f(g(x))g'(x)dx=\int f(u) \; du$$
+- The Substitution Rule for Definite Integrals - If _g'_ is continuous on [_a, b_] and _f_ is continuous on the range of _u = g(x)_, then $$\int^b_a f(g(x))g'(x)dx=\int^{g(b)}_{g(a)}f(u) \; du$$
 - Integrals of Symmetric Functions Suppose _f_ is continuous on [_-a, a_].
-  - If f is even [_f(-x) = f(x)_], then $$\int^a_{-a} f(x) ; dx=2 \int^a_0 f(x) ; dx$$
-  - If f is odd [_f(-x) = -f(x)_], $$\int^a_{-a} f(x) ; dx=0$$
-- Midpoint rule - $$\int^b_a f(x) ; dx \approx M_n = \Delta x [f(\overline{x}_1)+f(\overline{x}_2)+ \cdots +f(\overline{x}_n)]$$ where $$\Delta x= \frac{b-a}{n}$$ and $$\overline{x}_i = \frac{1}{2}(x_{i-1}+x_i)=$$ midpoint of $$[x_{i-1},x_i]$$
-- Trapezoidal Rule - $$\int^b_a f(x) ; dx \approx T_n = \frac{\Delta x}{2}[f(x_0)+2f(x_1)+2f(x_2)+ \cdots +2f(x_{n-1})+2f(x_n)]$$ where $$\Delta x= (b-a)/n$$ and ![$x_i = a + i \Delta x](https://render.githubusercontent.com/render/math?math=%24x_i%20%3D%20a%20%2B%20i%20%5CDelta%20x)
+  - If f is even [_f(-x) = f(x)_], then $$\int^a_{-a} f(x) \; dx=2 \int^a_0 f(x) \; dx$$
+  - If f is odd [_f(-x) = -f(x)_], $$\int^a_{-a} f(x) \; dx=0$$
+- Midpoint rule - $$\int^b_a f(x) \; dx \approx M_n = \Delta x [f(\overline{x}_1)+f(\overline{x}_2)+ \cdots +f(\overline{x}_n)]$$ where $$\Delta x= \frac{b-a}{n}$$ and $$\overline{x}_i = \frac{1}{2}(x_{i-1}+x_i)=$$ midpoint of $$[x_{i-1},x_i]$$
+- Trapezoidal Rule - $$\int^b_a f(x) \; dx \approx T_n = \frac{\Delta x}{2}[f(x_0)+2f(x_1)+2f(x_2)+ \cdots +2f(x_{n-1})+2f(x_n)]$$ where $$\Delta x= (b-a)/n$$ and $$x_i = a + i \Delta x$$
   - It treats the area as the sum of many trapezoidals.
-- Simpson’s Rule - $$\int^b_a f(x) ; dx \approx S_n = \frac{\Delta x}{3}[f(x_0)+4f(x_1)+2f(x_2)+4f(x_3)+ \cdots +2f(x_{n-2})+4f(x_{n-1})+f(n)]$$ where n is even and $$\Delta x= (b-a)/n$$
+- Simpson’s Rule - $$\int^b_a f(x) \; dx \approx S_n = \frac{\Delta x}{3}[f(x_0)+4f(x_1)+2f(x_2)+4f(x_3)+ \cdots +2f(x_{n-2})+4f(x_{n-1})+f(n)]$$ where n is even and $$\Delta x= (b-a)/n$$
 - If K is a value that $$\left|f''(x) \right| \leqslant K$$ for $$a \leqslant x \leqslant b$$
   - the errors in the Trapezoidal Rules is $$|E_T| \leqslant \frac{K(b-a)^3}{12n^2}$$
   - the errors in the Midpoint Rules is $$|E_M| \leqslant \frac{K(b-a)^3}{24n^2}$$
@@ -365,21 +402,21 @@
 
 ### Techniques
 
-- The area _A_ of the region bounded by the curves _y = f(x)_, _y = g(x)_, and the lines _x = a_, _x = b_, where _f_ and _g_ are continuous and $$f(x) \geqslant g(x)$$ for all _x_ in [_a, b_], is $$A = \int^b_a [f(x) - g(x)] ; dx$$
-- Generally, the area between the curves _y = f(x)_, _y = g(x)_, and the lines _x = a_, _x = b_ is $$A = \int^b_a |f(x) - g(x)| ; dx$$
-- Method of cylindrical shells - The volume of a cylindrical shapes, obtained by rotating about the y-axis the region under the curve _y = f(x)_ from _a_ to _b_, is $$V = \int^b_a 2 \pi x f(x) ; dx$$ where $$0 \leqslant a < b$$
+- The area _A_ of the region bounded by the curves _y = f(x)_, _y = g(x)_, and the lines _x = a_, _x = b_, where _f_ and _g_ are continuous and $$f(x) \geqslant g(x)$$ for all _x_ in [_a, b_], is $$A = \int^b_a [f(x) - g(x)] \; dx$$
+- Generally, the area between the curves _y = f(x)_, _y = g(x)_, and the lines _x = a_, _x = b_ is $$A = \int^b_a |f(x) - g(x)| \; dx$$
+- Method of cylindrical shells - The volume of a cylindrical shapes, obtained by rotating about the y-axis the region under the curve _y = f(x)_ from _a_ to _b_, is $$V = \int^b_a 2 \pi x f(x) \; dx$$ where $$0 \leqslant a < b$$
   - Since the volume of a cylindrical shell is $$V=2 \pi rh \Delta r$$
-- the average value of _f_ on the interval [_a, b_] is $$f_{avg}=\frac{1}{b-a} \int^b_a f(x) ; dx$$
+- the average value of _f_ on the interval [_a, b_] is $$f_{avg}=\frac{1}{b-a} \int^b_a f(x) \; dx$$
 - Integration By Parts is the reversed way of doing differentiation using the product rule
   - A problem can be solved by integral by parts if the function can be represented by one sub function times the differentiated function of another one.
 - Integration By Substitution is the reversed way of doing differentiation using the chain rule
   - Chain rules can be used to solved an integral by substitute a subfunction in along with _du_ when and differential function of the sub function is found and the relationship between _du_ and _dx_ is found.
 - When integrate a fraction of two high order(greater than 1) polynomials, use partial fraction to split the fraction to two simpler one and then integrate
 - Trigonometric Integrals 7.2 7.3 7.4 7.5
-- The Arc Length Formula - If _f'_ is continuous on [_a, b_] then the length of the curve _y = f(x)_, ![a \leqslant x \leqslant b](https://render.githubusercontent.com/render/math?math=a%20%5Cleqslant%20x%20%5Cleqslant%20b), is $$L=\int^b_a \sqrt{1+[f'(x)]^2} ; dx$$ or $$L=\int^b_a \sqrt{1+\left(\frac{dy}{dx}\right)^2} ; dx$$ using Leibniz notation.
-  - the surface area of the surface obtained by rotating the curve _y = f(x)_, $$a \leqslant x \leqslant b$$, about the x-axis as $$S=\int^b_a 2 \pi y \sqrt{1+\left(\frac{dy}{dx}\right)^2} ; dx$$
+- The Arc Length Formula - If _f'_ is continuous on [_a, b_] then the length of the curve _y = f(x)_, $$a \leqslant x \leqslant b$$, is $$L=\int^b_a \sqrt{1+[f'(x)]^2} \; dx$$ or $$L=\int^b_a \sqrt{1+\left(\frac{dy}{dx}\right)^2} \; dx$$ using Leibniz notation.
+  - the surface area of the surface obtained by rotating the curve _y = f(x)_, $$a \leqslant x \leqslant b$$, about the x-axis as $$S=\int^b_a 2 \pi y \sqrt{1+\left(\frac{dy}{dx}\right)^2} \; dx$$
     - The surface area of a cone is $$A=\pi rl$$, the surface area of a cone when its top is cut with side length `l` is $$A=2 \pi rl$$
-    - when rotate about the x-axis, uses $$S=\int^b_a 2 \pi y \sqrt{1+\left(\frac{dx}{dy}\right)^2} ; dy$$
+    - when rotate about the x-axis, uses $$S=\int^b_a 2 \pi y \sqrt{1+\left(\frac{dx}{dy}\right)^2} \; dy$$
   - If _x = f(y)_, uses `dy/dx`.
 - Double integral is used to calculate the area of a graph by using `dx` times `dy`. It can be expressed as $$\int^{x_2}_{x_1} dx \int^{y_2}_{y_1} dy$$ or $$\int^{y_2}_{y_1} \int^{x_2}_{x_1} dx dy$$ or $$\int^{x_2}_{x_1} \int^{y_2}_{y_1} dy dx$$.
   - The first diffrential is associated with the last integral sign, The second diffrential is associated with the first integral sign,
@@ -390,32 +427,40 @@
 
 ### Definition
 
+- It solves a function, represented by a variable by using its relationship with its derivates
 - First Order Differential Equation - it is an equation that contains both the function itself and its derivates. For example, $$\frac{dx}{dt}=x^2 t$$ where _x = f(t)_. Then, solve for the function _f(t)_
+  - Linear First Order - _y' + P(x)y = Q(x)_ where _P(x)_, _Q(x)_ can be either a constant or a function of `x`
+    - Homogeneous when _Q(x)_ is zero
+    - Non-homogeneous when _Q(x)_ is not zero, _Q(x)_ can be called the driven function
+  - Non-linear First Order - anything first order equation that is not linear like _y' = f(x, y)_ where _f(x, y)_ can be a mix of `x` and `y` like `(x+y+1)^2`
 - Second Order Differential Equation - it is an equation that contains both the function itself and its first and second derivates. For example, $$\frac{d^2y}{dx^2}-2 \frac{dy}{dx}+8y=0$$ or it can be _y'-2y'+8y = 0_ where _y = f(x)_. Then, solve for the function _f(x)_
+  - Linear Second Order has a form as _y'' + P(x)y' + Q(x)y = S(x)_ where _P(x)_, _Q(x)_, _S(x)_ can be either a constant or a function of x.
+    - Homogeneous when _S(x)_ is zero
+    - Non-homogeneous when _S(x)_ is not zero, _S(x)_ can be called the driven function.
+  - Linear Second Order - Any second order equation that is not linear
 - The solution will have a constant C that make differential equations have infinite solutions and this is called the general solution.
-- A slope field can be drawn based on general solution.
-  - fill the graph with short lines that represent a slope at that point.
-- Infinite solution curves can be drawn based on slope fields.
-- When the constant is given or the a initial value is given, a particular solution can be found.
-- Linear first order differential equation has a form as _y' + P(x)y = Q(x)_
-- Non-linear first order differential equations are others in a form like _y' = f(x, y)_
-- Linear second order differential equation has a form as _y'' + P(x)y' + Q(x)y = S(x)_ where _P(x)_, _Q(x)_, _S(x)_ can be either a constant or a function of x.
-  - Linear second order differential equation become homogeneous when _S(x)_ is zero
-  - non-homogeneous when _S(x)_ is not zero, _S(x)_ can be called the driven function.
+  - When a set of value called initial condition is given, the constant value can be solved. Then, a particular solution is found
+- A slope field can be drawn to represent the differential equation
+  - the derivates of the unkown function can be drawn as short lines with different slopes
+  - different points on graph has different slopes
+  - fill the graph with short lines that represent a slope at that point
+- Any lines that can follow the curves on the slope field can be a solution to the differential equation
+  - Those lines are called the solution curves
 
 ### Techniques
 
 - Solving First Order Differential Equation
-  - For equations has variable _x_, _y_ and _y'_(_dy/dx_) and has the form as _g(y)y' = f(x)_ use Separation of Variables - place _x_ and _dx_ on one side of the equation and _y_ and _dy_ on the other side, then integrate both side of the function.
+  - For equations has variable _x_, _y_ and _y'_ or _dy/dx_ and has the form as _g(y)y' = f(x)_ use Separation of Variables - place _x_ and _dx_ on one side of the equation and _y_ and _dy_ on the other side, then integrate both side of the function.
     - Separation of Variables works for all homogeneous linear first order differential equation _y' + f(x)y = 0_, integrate the both side after separation and take the power of _e_ for both side will the general solution as $$y=c e^{- \int{f(x)dx}}$$.
   - For homogeneous first order differential equations in the form as _y' = F(x/y)_ which is not separable, substitute `u = x/y` into _F(x/y)_ and form a separable expression as _u + xu' = f(u)_, because _u = y/x_ -> _y = ux_ -> _y' = u + xu'_. When _f(u)_ is solved, subsistute _y/x_ back to get the answer.
     - The variable _y/x_ is mostly formed by dividing both side of the expression by _x_ or _x^2_.
-  - For non-homogeneous linear first order differential equation _y' + f(x)y = r(x)_, multiply both sides of the equation by an integrating factor $$P(x)=e^{\int P(x) ; dx}$$
+  - For non-homogeneous linear first order differential equation _y' + f(x)y = r(x)_, multiply both sides of the equation by an integrating factor $$P(x)=e^{\int P(x) \; dx}$$
   - For Non-linear first order differential equations use substitution method.
   - The exact differential equations - _F(x, y(x))_ can be solved if _M(x, y)dx + N(x, y)dy = 0_ where _dF/dx = M_ and _dF/dy = N_.
   - Solving Second Order Differential Equation
     - For equations like has variables _F(x, y', y'')_ it can be reduced to first order by substituting _p = dy/dx_ and _y'' = dp/dx_.
-    - Linear non-homogeneous second order differential equation, solve the homogeneous version of the equation and add the driven function to the homogeneous solution.
+    - Linear non-homogeneous second order differential equation, get the homogeneous solution by solving the homogeneous version of the equation and get the paricular solution by solving the driven function. Then, get the final solution by adding the homogeneous solution to the paricular solution
+- Laplace Transform - convert differential equation into an algebraic equation
 
 ## Infinite Sequences and Series
 
@@ -432,7 +477,7 @@
   - the nth term of geometric sequence is: `an = a1* r ^（ n - 1）`, where `a1` is the first term and r(`r ≠ 0`) is the common ratio
   - the sum of the first n terms of a geometric sequence is: `Sn=a1*(1-r^n)/(1-r)`
   - For an infinite geometric series: converges at 0 if the ratio satisfies `|r| < 1`. The sum T will be `a1/(1-r)` since `r^n -> 0`.
-- The Fibonacci sequence $${f_n}$$ is defined recursively by the conditions $$f_1=1 ; ;;; f_2=1 ;;;; f_n=f_{n-1}+f_{n-2} ;;; n \geqslant 3$$
+- The Fibonacci sequence $${f_n}$$ is defined recursively by the conditions $$f_1=1 ; \;\;\; f_2=1 ;\;\;\; f_n=f_{n-1}+f_{n-2} ;\;\; n \geqslant 3$$
   - Binet form of the nth Fibonacci number can be calculated using the Binet formula, $$F_n = \frac{\phi^n - \overline{\phi}^n}{\sqrt{5}}$$ where phi(ϕ) equals to the golden ratio $$\phi = \frac{1+ \sqrt{5}}{2}$$ and $$\overline{\phi} = \frac{1- \sqrt{5}}{2}$$.
 - Intuitive Definition of Sequences' Limit - A sequence $${a_n}$$ has the limit _L_ and we write $$\lim_{n \to \infty} a_n=L$$
   - If L exists we say the sequence converges (or is convergent). Otherwise, we say the sequence diverges (or is divergent).
@@ -493,19 +538,19 @@
 - the sums of diagonals of Pascal Triangle forms the Fibonacci sequence
   - For a Pascal Triangle, row = 11^rownumber
 - Test for Divergence if $$\lim_{n \to \infty} a_n$$ does not exist or if $$\lim_{n \to \infty} a_n \neq 0$$, then the its series is divergent.
-- The Integral Test - Suppose _f_ is a continuous, positive, decreasing function on $$[1, \infty)$$ and let $$a_n=f(n)$$. Then the series $$\sum^{\infty}_{n=1} a_n$$ is convergent if and only if the improper integral $$\int^{\infty}_{1} f(x) ; dx$$ is convergent. Otherwise the series is divergent.
-- Remainder Estimate for the Integral Test - Suppose $$f(k)=a_k$$ where _f_ is a continuous, positive, decreasing function for $$x \geqslant n$$ and $$\sum a_n$$ an is convergent. If $$R_n=s-s_n$$, where _Sn_ is the partial(estimated) sum, then $$\int^{\infty}_{n+1} f(x) ; dx \leqslant R_n \leqslant \int^{\infty}_{n} f(x) ; dx$$ where the remainder $$R_n$$ represents the size the error. when $$s_n$$, the sum of the first n terms, is used as an approximation to the total sum.
+- The Integral Test - Suppose _f_ is a continuous, positive, decreasing function on $$[1, \infty)$$ and let $$a_n=f(n)$$. Then the series $$\sum^{\infty}_{n=1} a_n$$ is convergent if and only if the improper integral $$\int^{\infty}_{1} f(x) \; dx$$ is convergent. Otherwise the series is divergent.
+- Remainder Estimate for the Integral Test - Suppose $$f(k)=a_k$$ where _f_ is a continuous, positive, decreasing function for $$x \geqslant n$$ and $$\sum a_n$$ an is convergent. If $$R_n=s-s_n$$, where _Sn_ is the partial(estimated) sum, then $$\int^{\infty}_{n+1} f(x) \; dx \leqslant R_n \leqslant \int^{\infty}_{n} f(x) \; dx$$ where the remainder $$R_n$$ represents the size the error. when $$s_n$$, the sum of the first n terms, is used as an approximation to the total sum.
 - The Comparison Test - Suppose that $$\sum a_n$$ and $$\sum b_n$$ are series with positive terms.
   - If $$\sum b_n$$ is convergent and $$a_n \leqslant b_n$$ for all _n_, then $$\sum b_n$$ is also convergent.
   - If $$\sum b_n$$ is divergent and $$a_n \geqslant b_n$$ for all _n_, then $$\sum b_n$$ is also divergent.
 - The Comparison Test - Suppose that $$\sum a_n$$ and $$\sum b_n$$ are series with positive terms. If $$\lim_{n \to \infty} \frac{a_n}{b_n}=c$$ where _c_ is a finite number and _c > 0_, then either both series converge or both diverge.
-- Alternating Series Test - If the alternating series $$\sum^{\infty}_{n=1} (-1)^{n-1} b_n=b_1-b_2+b_3-b_4+ \cdots ; ; ; b_n > 0$$ satisfies
+- Alternating Series Test - If the alternating series $$\sum^{\infty}_{n=1} (-1)^{n-1} b_n=b_1-b_2+b_3-b_4+ \cdots \; \; \; b_n > 0$$ satisfies
   - $$b_{n+1} \leqslant b_n$$ for all _n_
   - $$\lim_{n \to \infty} b_n = 0$$ then the series is convergent.
 - The Ratio Test
   - $$\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = L < 1$$, then the series $$\sum^{\infty}_{n=1} a_n$$ is absolutely convergent, and therefore convergent.
   - If $$\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = L > 1$$ then the series $$\sum^{\infty}_{n=1} a_n$$ is divergent.
-  - $$\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| =  1$$ the Ratio Test is inconclusive; that is, no conclusion can be drawn about the convergence or divergence of $$\sum^{\infty}_{n=1} a_n$$.
+  - $$\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| =  1$$ the Ratio Test is inconclusive\; that is, no conclusion can be drawn about the convergence or divergence of $$\sum^{\infty}_{n=1} a_n$$.
 - The Root Test
   - If $$\lim_{n \to \infty} \sqrt[n]{\left| a_n \right|}=L < 1 $$, then the series $$\sum^{\infty}_{n=1} a_n$$ is absolutely convergent, and therefore convergent.
   - If $$\lim_{n \to \infty} \sqrt[n]{\left| a_n \right|}=L > 1 $$ or $$\lim_{n \to \infty} \sqrt[n]{\left| a_n \right|}=\infty$$ then the series $$\sum^{\infty}_{n=1} a_n$$ is divergent.

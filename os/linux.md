@@ -72,7 +72,7 @@
   - A permission code can be calculated, using `r`=4, `w`=2, `x`=1, `-`=0, and and them together.
   - For example, `400` means only user has read permission, so the file is private.
 - Related Commands
-  - `df -h` list file systems
+  - `df -H` list file systems
   - Calculation based on `1 kilobyte = 1024 bytes`
   - `lsblk` list block devices info.
   - `du -sh <folder> | sort -h` List all files inside the folder and its size in order
@@ -129,6 +129,7 @@
 - `lshw` list info about all hardware
   - `lshw -class network` only list a certain hardware class
 - `lsusb` check all existing USB devices.(debian-based Linux)
+- `top` check CPU usage
 - `cd` Change directory to the directory followed, if nothing followed cd to home dir.
 - `pwd` display the absolute path to the current working directory.
 - `touch` create new file, or to update the access/modified dates on an existing file.

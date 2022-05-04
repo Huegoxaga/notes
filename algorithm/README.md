@@ -226,10 +226,15 @@
   - Multiple Recursion - Each recursive method call itself more than twice.
 - For binary and multiple recursion, the methods call itself as deep as possible than call the sibiling methods after all its recursive methods are called
 
-#### Dynamic Programming
-
-- Commonly referred to as DP
-- It optimizes native recursive algorithm by saving the intermeditate result from recursive calls in a list in the memory, it reduces the complex of a recursive algorithm that would take exponential time further by pruning duplicated recursive calls when the result of a similar method call can be find in the result list
+- Related Algorithmic Techniques
+  - Dynamic Programming
+    - Commonly referred to as DP
+    - It optimizes native recursive algorithm by saving the intermeditate result from recursive calls in a list in the memory, it reduces the complex of a recursive algorithm that would take exponential time further by pruning duplicated recursive calls when the result of a similar method call can be find in the result list
+  - Backtracking
+    - It is a technique that recursively build a solution incrementally and remove all the solutions that does not satisfy the constraints of the problem at any point of time
+    - The goal is to get all solutions to a problem using the brute force approach
+    - A search tree named state-space tree is used. In a state-space tree, each branch is a variable, and each node represents a solution
+    - the depth-first search method is performed on the tree. When it starts exploring the solutions, a bounding function is applied so that the algorithm can check if the so-far built solution satisfies the constraints, when solution from one node failed to meet the constraints, the recursion stops. Since the next node from upper level will continue to execute, it looks like the path has been backtracked
 
 ### Parallel
 

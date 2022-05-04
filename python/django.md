@@ -41,7 +41,10 @@
 
 - To register an app to the project, add the element `'appname.apps.AppNameConfig'` or just `'AppName'` in the `INSTALLED_APPS` array.
 - Add `STATIC_ROOT = 'static'` to tell Django where to store static files.
-- Add `USE_TZ = True` enable timezone support, then use `from django.utils import timezone`, `timezone.now()` to get current local time.
+- Add `USE_TZ = True` enable timezone support, then use `from django.utils import timezone`, `timezone.now()` to get current local time based on `TIME_ZONE` settings.
+  - With timezone support is enabled all datetime object has timezone info
+  - `TIME_ZONE` will change the server timezone environment variable
+- If `USE_TZ = False`, `TIME_ZONE` must equals the server default. Otherwise, timestamp data with timezone in the database will be converted twice.
 - When `Debug=True`, static file will be auto generated.
 
 ### urls.py

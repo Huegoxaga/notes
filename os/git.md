@@ -143,7 +143,8 @@
   - For Github repos, the URL is used for HTTPS connection,
     - The URL looks like this, `https://github.com/AccountName/ReposName.git`
   - For SSH connection to the GitHub server, it should be in `git@github.com:user/repo.git` format
-  - Switch HTTPS and SSH connection, run `git remote -v && git remote remove origin && git remote add origin <URL|SERVER>` or `git remote set-url origin <SERVER>`
+  - Switch HTTPS and SSH connection, run `git remote -v && git remote remove origin && git remote add origin <URL|SERVER>`
+    - Optionally, use `git remote set-url origin <SERVER>`, it can also be used for repo name change or url update
   - Token in GitHub is a temporary password used for HTTPS connection, it can be generated in the console's setting page
     - On the console, specific privileges of the token can be controlled
   - For ssh connection upload the public key to `github.com` then save private key into `ssh-agent` for login, by running `eval $(ssh-agent -s) && ssh-add ~/.ssh/<private_key>`
