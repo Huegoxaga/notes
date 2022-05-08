@@ -768,7 +768,13 @@ max-worker-lifetime = 300
 # static-expires = /* 7776000
 # offload-threads = %k
 # Set Environment Variables
-env = KEY=value
+env = KEY1=value1
+env = KEY2=value2
+# When there are multiple env variables, load from env file
+for-readline = /path/to/env/file
+  env = %(_)
+endfor =
+
 listen = 2000 # increase server socket listen backlog limit
 # run sudo sysctl -w net.core.somaxconn=4096 to increase the system limit
 ```

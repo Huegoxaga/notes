@@ -378,12 +378,14 @@
   - $$\int \csc^2 x \; dx= - \cot x +C$$
   - $$\int \sec x \; \tan x \; dx= \sec x +C$$
   - $$\int \csc x \; \cot x \; dx=- \csc x +C$$
+  - $$\int \tan x \; dx=\ln \; |\sec x| +C$$
+  - $$\int \cot x \; dx=\ln \; |\sin x| +C$$
+  - $$\int \sec x \; dx=\ln \; |\sec x+\tan x | +C$$
+  - $$\int \csc x \; dx=\ln \; |\csc x-\cot x | +C$$
   - $$\int \frac{1}{x^2+1} dx=\tan^{-1} x+C$$
   - $$\int \frac{1}{\sqrt{1-x^2}} dx=\sin^{-1} x+C$$
   - $$\int \sinh x \; dx=\cosh x +C$$
   - $$\int \cosh x \; dx=\sinh x +C$$
-  - $$\int \tan x \; dx=\ln \; |\sec x| +C$$
-  - $$\int \cot x \; dx=\ln \; |\sin x| +C$$
   - $$\int \frac{1}{x^2+a^2} \; dx=\frac{1}{a} \tan^{-1} \left(\frac{x}{a}\right)+C$$
   - $$\int \frac{1}{\sqrt{a^2-x^2}} \; dx= \sin^{-1} \left(\frac{x}{a}\right)+C$$, _a > 0_
 - The Substitution Rule If _u=g(s)_ is a differentiable function whose range is an interval _I_ and _f_ is continuous on _I_, then $$f(g(x))g'(x)dx=\int f(u) \; du$$
@@ -409,9 +411,16 @@
 - the average value of _f_ on the interval [_a, b_] is $$f_{avg}=\frac{1}{b-a} \int^b_a f(x) \; dx$$
 - Integration By Parts is the reversed way of doing differentiation using the product rule
   - A problem can be solved by integral by parts if the function can be represented by one sub function times the differentiated function of another one.
+  - Choose the term that will not being intergrated during the process by the `LIATE` order
+    - L = Log, I = Inverse Trig, A = Algebraic, T = Trigonometric, E = Exponential
+    - Terms on the left is harder to integrate then terms on the right
 - Integration By Substitution is the reversed way of doing differentiation using the chain rule
   - Chain rules can be used to solved an integral by substitute a subfunction in along with _du_ when and differential function of the sub function is found and the relationship between _du_ and _dx_ is found.
-- When integrate a fraction of two high order(greater than 1) polynomials, use partial fraction to split the fraction to two simpler one and then integrate
+- When integrate a fraction of two high order(greater than 1) polynomials, use partial fraction to split the fraction to two simpler one and then integrate, it can make:
+  - $$\frac{a_3x+b_3}{(a_1x+b_1)(a_2x+b_2)}=\frac{A}{(a_1x+b_1)}+\frac{B}{(a_2x+b_2)}$$, where `A` and `B` are constant
+  - $$\frac{a_3x+b_3}{(a_1x+b_1)(a_2x+b_2)^2}=\frac{A}{(a_1x+b_1)}+\frac{B}{(a_2x+b_2)}+\frac{C}{(a_2x+b_2)^2}$$, where `A`, `B`, `C` are constant
+  - $$\frac{a_3x^2+b_3}{(a_1x+b_1)(a_2x^2+b_2)}=\frac{A}{(a_1x+b_1)}+\frac{Bx+C}{(a_2x^2+b_2)}$$, where `A`, `B`, `C` are constant
+- When the nominator has higher order than the denominator use long division
 - Trigonometric Integrals 7.2 7.3 7.4 7.5
 - The Arc Length Formula - If _f'_ is continuous on [_a, b_] then the length of the curve _y = f(x)_, $$a \leqslant x \leqslant b$$, is $$L=\int^b_a \sqrt{1+[f'(x)]^2} \; dx$$ or $$L=\int^b_a \sqrt{1+\left(\frac{dy}{dx}\right)^2} \; dx$$ using Leibniz notation.
   - the surface area of the surface obtained by rotating the curve _y = f(x)_, $$a \leqslant x \leqslant b$$, about the x-axis as $$S=\int^b_a 2 \pi y \sqrt{1+\left(\frac{dy}{dx}\right)^2} \; dx$$

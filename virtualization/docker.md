@@ -212,13 +212,13 @@
   - Commands followed by it will be run.
   - or append `[filename, param1, param2]` to `RUN` command, then the file will also be executed.
   - To avoid redudent layers, multiple commands should be combined by using `&&` and using one `RUN` command.
-- `CMD` and `CHECKPOINT`
+- `CMD` and `ENTRYPOINT`
   - Both command will be executed during the `docker run` command after the image is built
-  - The recommanded form is to append `["command", "param1", "param2"]` for both `CMD` and `CHECKPOINT`
+  - The recommanded form is to append `["command", "param1", "param2"]` for both `CMD` and `ENTRYPOINT`
   - `CMD` can be overridden by appending command after `docker run`
-  - `CHECKPOINT` can be overridden by using the `--checkpoint` flag when executing `docker run`
-  - Only the last `CMD` or `CHECKPOINT` command in a dockerfile will be executed
-  - When both `CHECKPOINT` and `CMD` are in the same dockerfile, `CHECKPOINT` is used to specify the actual command and `CMD` is used to specify the parameter for the command in `CHECKPOINT`
+  - `ENTRYPOINT` can be overridden by using the `--entrypoint` flag when executing `docker run`
+  - Only the last `CMD` or `ENTRYPOINT` command in a dockerfile will be executed
+  - When both `ENTRYPOINT` and `CMD` are in the same dockerfile, `ENTRYPOINT` is used to specify the actual command and `CMD` is used to specify the parameter for the command in `ENTRYPOINT`
   - Usually, use `CMD [ "bash", "docker/launch.sh" ]`
     - Because only one command will be executed during launch, use bash script to include all the necessary commands inside. For background processes, each line except the last should end with `&` in the bash script
     - When the last service has `&` the container will stop and exit immediately. [Click Here](https://docs.docker.com/config/containers/multi-service_container/) for alternative solutions

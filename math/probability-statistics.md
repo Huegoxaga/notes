@@ -26,6 +26,10 @@
   - Methods using steps of Combination and Pemutation (e.g. $${_6}P_2 \cdot {_5}C_4$$) is more reliable.
   - When finding all combination using steps like $${_5}C_2 \cdot {_3}C_2$$, be aware of duplicated cases, because steps itself have order which combination doesn't care about
   - The idea of dividing into event and analysis the independence is crutial.
+- Critical Path Analysis
+  - It can be solved by drawing PERT (Program Evaluation and Review Technique) chart.
+    - PERT chart list the sequence of all task with time
+  - It finds the longest path
 
 ## Probability
 

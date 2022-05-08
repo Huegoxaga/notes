@@ -14,7 +14,8 @@
 - `pip install django` install django library
 - `python -m django --version` check the version
 - `django-admin` show a list of sub-command
-- `django-admin startproject <project_name>` create a new project.
+- `django-admin startproject <project_name> <project_folder>` create a new project.
+  - If project folder is not specified, create a new folder using the project name
 - `python manage.py runserver` it will run the website and return the url of the running website. By default it works with 127.0.0.1 on 8000 port only
   - append the command with `0.0.0.0:8000` to runserver on all server addresses on port 8000.
   - append the port number as `python manage.py runserver 8001` to run the project on a certain port
@@ -904,6 +905,7 @@ def about(request):
 #### Systemd for Celery
 
 - Use a config file to store setting
+  - `.pid` file stores the process id of the celery process
 
 ```conf
 # The name of one or more workers to be initiated by systemd separated by space
@@ -919,13 +921,14 @@ CELERYD_PID_FILE="/home/ubuntu/app/config/%n.pid"
 # %I is the process ID
 CELERYD_LOG_FILE="/home/ubuntu/app/config/%n%I.log"
 CELERYD_LOG_LEVEL="INFO"
-# additional settings, default concurrent process number equals CPU core number
+# additional settings, the number of process for each worker
+# Default concurrent process number equals CPU core number
 CELERYD_OPTS="--time-limit=300 --concurrency=8"
 ```
 
 - Use the service file for systemd
 
-```
+```s
 [Unit]
 Description=Celery Service
 After=network.target

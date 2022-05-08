@@ -27,7 +27,7 @@
 
 - This base unit of time over which an interest rate is calculated is called the interest period
   - If the time period of an interest rate is not spcified, it is an annual interest rate
-- `Nominal interest rate` is the conventional method of stating the annual interest rate
+- `Nominal interest rate` is the conventional method of stating the annual interest rate regardless how it is compounded, i.e. monthly, annually
 - `Effective interest rate` is the actual annual interest rate after compounding its sub-compounding periods
   - The more frequent the rate of compounding the higher the interest the investor can get
 - `Simple Interest` only uses the original pricipal to calculate interest for the next time period
@@ -42,6 +42,17 @@
   - Then, `FV = PV*e^(rN)` and `EAR=e^r-1` where `r` is the stated compound rate and `N` is the stated number of time period for the stated rate
   - Continuous compound yields the highest interest one can get from compounding, given the same interest rate
 
+### Depreciation Calculation
+
+- Book value = Cost basis – Depreciation charges made to date
+- Straight-Line Depreciation (SLD)
+  - Goods depreciate at a constant rate
+  - Annual Depreciation Charge = $$d_t=\frac{(B-S)}{N}$$, where B = cost basis, S = salvage value, N = depreciable life
+  - Salvage value is the value of a good when its service life is reached
+- Declining-Balance Depreciation (DBD)
+  - The declining balance method (DBD) of depreciation models the loss in value of an asset in a period as a constant proportion of the asset’s current value
+  - Book Value at the end of period n using DBD equals $$P(1-d)^n$$, where `P` is the initial book value, `d` is the constant depreciation percentage, `n` is the number of periods
+
 ### Cash Flow Analysis
 
 - A `Cash Flow` means a certain amount of money disbursed or receipted, usually used when making investment
@@ -51,6 +62,7 @@
   - The horizontal (X) axis represents time
     - Now is time `0`
     - `N` years from now is the end of period `N` and the beginning of period `(N + 1)`
+  - When cash flows occur in between time periods, move it to the next period
 - To simplify the cash flow analysis, models are created for estimation:
   - `Discrete Models` - model assumes that all cash flows and all compounding of cash flows occur at the ends of conventionally defined periods, such as months or years.
   - `Continuous Models` - models that assume cash flows and their compounding occur continuously over time

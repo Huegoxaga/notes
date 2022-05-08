@@ -126,6 +126,7 @@
   - `ls /etc` it will display all files inside the `etc` folder.
   - add `\` before ls to see not colored outputs.
   - `-h` changes the output to be more human readable
+- `lscpu` list cpu hardware info
 - `lshw` list info about all hardware
   - `lshw -class network` only list a certain hardware class
 - `lsusb` check all existing USB devices.(debian-based Linux)
@@ -384,6 +385,8 @@
   - `/etc/profile` - Variables set in this file are loaded whenever a bash login shell is entered. Use `export` command in each line for this file, `export JAVA_HOME="/path/to/java/home"`
     - Scripts in `etc/profile.d` are also responsible for changing the system environment
   - Dot files - are per-user shell specific configuration files, `export` commands are required on each line
+- A environment file stores env variables in a text file, each line defines variables as `Key=Value`
+  - run `export $(grep -v '^#' /path/to/environment/file | xargs -0)` to load variables into current shell
 
 #### PATH
 
@@ -1375,15 +1378,19 @@ Host *
   - `.slice`: A .slice unit is associated with Linux Control Group nodes, allowing resources to be restricted or assigned to any processes associated with the slice. The name reflects its hierarchical position within the cgroup tree. Units are placed in certain slices by default depending on their type.
   - `.scope`: Scope units are created automatically by systemd from information received from its bus interfaces. These are used to manage sets of system processes that are created externally.
 - Example unit file
+
   ```config
   [Unit]
   Description=Example systemd service.
   [Service]
   Type=simple
+  EnvironmentFile=/path/to/env/key/value/file
+  EnvironmentFile=/can/load/multiple/file
   ExecStart=/bin/bash /usr/bin/test_service.sh
   [Install]
   WantedBy=multi-user.target
   ```
+
 - For a unit with unit file name `unit.service`, the following command work for both full file names or unit names.
 - `systemctl list-units` list all services and units
 - `systemctl status <unitfile>`
