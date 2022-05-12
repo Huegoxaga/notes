@@ -136,6 +136,7 @@
     - $$\frac{d^2 y}{d x^2}$$
     - $$f''(x)$$
     - $$y''$$
+    - $$y^{(2)}$$, brackets are required to distinguish the notation from `y` square
     - $$D^{2}y$$ where `D` is the derivative operator
     - $$\ddot{x}$$
   - Same idea for third and fourth and higher derivatives.
@@ -204,6 +205,8 @@
 - The Product Rule - If _f_ and _g_ are both differentiable, then $$\frac{d}{dx}[f(x)g(x)]=f(x) \frac{d}{dx}[g(x)]+g(x) \frac{d}{dx}[f(x)]$$
 - The Quotient Rule - If _f_ and _g_ are differentiable, then $$\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x) \frac{d}{dx}[f(x)]-f(x) \frac{d}{dx}[g(x)]}{[g(x)]^2}$$
 - The Chain Rule - If _g_ is differentiable at _x_ and _f_ is differentiable at _g(x)_, then the composite function $$F=f \circ g$$ defined by $$F(x)=f(g(x))$$is differentiable at _x_ and _F'_ is given by the product $$F'(x)=f'(g(x)) \cdot g'(x)$$ In Leibniz notation, if _y = f(u)_ and _u = g(x)_ are both differentiable functions, then $$\frac{dy}{dx}= \frac{dy}{du} \frac{du}{dx}$$
+  - The version 1 of the chain rule works on the composite function directly
+  - The version 2 of the chain rule specifically requires the substitute of the inner function as a variable. e.g. `u`
 
 ### Derivatives of Common Functions
 
@@ -212,10 +215,11 @@
 - Derivatives of Trigonometric Functions
   - $$\frac{d}{dx} (\sin x)=\cos x$$
   - $$\frac{d}{dx} (\cos x)=-\sin x$$
-  - $$\frac{d}{dx} (\tan x)=\sec^2 x$$
-  - $$\frac{d}{dx} (\csc x)=-\csc x : \cot x$$
-  - $$\frac{d}{dx} (\sec x)=\sec x : \tan x$$
-  - $$\frac{d}{dx} (\cot x)=-\csc^2 x$$
+  - Reorganize `sinx` and `cosx` can derive the derivatives of the following trig functions
+    - $$\frac{d}{dx} (\tan x)=\frac{d}{dx} (\frac{\sin x}{\cos x})=\sec^2 x$$
+    - $$\frac{d}{dx} (\csc x)=\frac{d}{dx} (\frac{1}{\sin x})=-\csc x \: \cot x$$
+    - $$\frac{d}{dx} (\sec x)=\frac{d}{dx} (\frac{1}{\cos x})=\sec x \: \tan x$$
+    - $$\frac{d}{dx} (\cot x)=\frac{d}{dx} (\frac{1}{\tan x})=-\csc^2 x$$
 - Derivatives of Inverse Trigonometric Functions
   - $$\frac{d}{dx}(\sin^{-1}{x})=\frac{1}{\sqrt{1-x^2}}$$
   - $$\frac{d}{dx}(\cos^{-1}{x})=-\frac{1}{\sqrt{1-x^2}}$$
@@ -496,7 +500,7 @@
   - A sequence is monotonic if it is either increasing or decreasing.
 - A sequence $${a_n}$$ is bounded above if there is a number _M_ such that $$a_n \leqslant M$$ for all $$n \geqslant 1$$. It is bounded below if there is a number _m_ such that $$m \leqslant a_n$$ for all $$n \geqslant 1$$.
   - If it is bounded above and below, then the sequence is a bounded sequence.
-- In general, if we try to add the terms of an infinite sequence $${a_n}^{\infty}_{n=1}$$ we get an expression $$a_1+a_2+a_3+ \cdots +a_n+ \cdots$$ which is called an infinite series (or just a series) and is denoted, for short, by the symbol $$\sum^{\infty}_{n=1} a_n$$ or ![$\sum a_n](https://render.githubusercontent.com/render/math?math=%24%5Csum%20a_n)
+- In general, if we try to add the terms of an infinite sequence $${a_n}^{\infty}_{n=1}$$ we get an expression $$a_1+a_2+a_3+ \cdots +a_n+ \cdots$$ which is called an infinite series (or just a series) and is denoted, for short, by the symbol $$\sum^{\infty}_{n=1} a_n$$ or $$\sum a_n$$
 - Given a series $$\sum^{\infty}_{n=1} a_n=a_1+a_2+a_3+ \cdots$$, the partial sum of the first _n_ terms is $$s_n = \sum^{n}_{i=1} a_i=a_1+a_2+ \cdots +a_n$$
 - Sum of the series - If the sequence is convergent and its limit exists as a real number, then the series is called convergent and we write $$\sum^{\infty}_{n=1} a_n=s$$ The number _s_ is called the sum of the series. If the sequence is divergent, then the series is called divergent.
 - A series $$\sum a_n$$ is called absolutely convergent if the series of absolute values $$\sum \left| a_n \right|$$ is convergent.

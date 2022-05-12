@@ -71,6 +71,8 @@
   2. Each disbursement and receipt occurs at the end of a period. A payment at time 0 can be considered to occur at the end of period minus 1
   3. Annuities and gradients coincide with the ends of sequential periods
 - The math function or factor used to convert the mathematical equivalence between the present value and future value of cash flows are referred as the `Compound Interest Factors`
+  - Various types of cash flows have different factors, shown as below
+  - Since all factors depend on the interest rate for each period and the number of period only, the compound interest factors table can be used as a quick reference for getting the value of each type of factor
 
 #### Types of Cash Flow
 
