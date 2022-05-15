@@ -2,10 +2,19 @@
 
 ## Sets
 
+- A set is a collection of objects or elements
 - Relationships among sets can be pictured in Venn diagrams
-  - THe universal set is represented by a rectangular region
+  - The universal set is represented by a rectangular region
   - subsets of the universal set are usually represented by circular disks drawn within the rectangular region
   - Sets that are not known to be disjoint should be represented by overlapping circles
+- Common Universal Sets
+  - `C`, complex numbers
+  - `R`, real numbers
+  - `Q`, rational numbers
+  - `N`, natural numbers, `{0, 1, 2, 3, ...}`
+  - `$$N^*$$`, natural nubmers excluding zero, `{1, 2, 3, ...}`
+  - `Z`, all integers
+  - `Z+`, positive integers
 
 ### Definition
 
@@ -15,9 +24,13 @@
     - e.g. $$\{1,2,3\}=\{2,3,1\}$$
   - When order matters, use ordered pair. Its elements are grouped in round brackets
     - e.g. $$(1,2,3)\neq(2,3,1)$$
+- Two sets are equal if every element in the first is also in the second and every elemnt in the second is also in the first
+  - Thus, `A = B` if and only if $$A\subseteq B$$ and $$A\subseteq B$$
+  - If $$A\subseteq B$$, but $$A\neq B$$ then A is a proper subset of B, $$A\subset B$$
 - the `union` of sets `A` and `B` we mean the set consisting of all the elements that are in `A` or in `B`
   - It is denoted `A U B`
   - Thus, $$A\cup B=\{x:x\in A \ \text{or} \ x\in B\}$$
+    - Expression on the right is called predicates
 - the `intersection` of sets `A` and `B` is the set consisting of all the elements that are in both `A` and `B`
   - It is denoted `A ∩ B`
   - Thus, $$A\cap B=\{x:x\in A \ \text{and} \ x\in B\}$$
@@ -31,12 +44,14 @@
   - It is denoted `A x B`
   - Thus, $$A\times B=\{(a,b):a\in A \ \text{and} \ b\in B\}$$
 - If `R` is a subset of `A x B`, it can be called a relation from set `A` to set `B`, and if `(x, y)` is an element of `R`, we will say that `x` is related to `y` by `R`, written as `x R y`, instead of $$(x,y)\in R$$
-  - If `x R y` exists, it equals true and vice versa
+  - If `x R y` exists (which means `(x, y)` can be found in `R`), it equals true and vice versa
 - A relation from a set `S` to itself is called a relation on `S`
-- A relation R on a set S may have any of the following special properties:
+- A relation `R` on a set `S` may have any of the following special properties:
   1. If for each `x` in `S`, `x R x` is true, then `R` is called `reflexive`
   2. If `y R x` is true whenever `x R y` is true, then `R` is called `symmetric`
   3. If `x R z` is true whenever `x R y` and `y R z` are both true, then `R` is called `transitive`
+     - Sort the relation set and find if each pair of `x R y` and `y R z` has a related `x R z`
+     - `x R y` and `x R z` or `y R z` and `x R z` can refer to the same relation
 - A relation that is reflexive, symmetric, and transitive is called an equivalence relation
 - Equivalence class is a subset of some equivalence relation `R` which includes all elements that are equivalent to each other
   - Equivalence class of `x` is a subset of `R` which each elements `y` is equivalent to `x`, denoted as $$[x]=\{y|(x,y)\in R\}$$

@@ -1219,3 +1219,96 @@
   - When the forward rate is higher than the spot rate, there is a forward premium. When the forward rate is lower than the spot rate, there is a forward discount
     - `Forward Premium/Discount = Forward Rate/Spot Rate - 1`
     - The result can be annualised based on the length of the contract, `90 days formard premium * 4 = Annual Forward Premium`
+
+# Accounting
+
+- Accounting is called an information system since it measures business activities, processes data into reports, and communicates results to decision makers
+- Accural accounting is often used in the financial world
+  - When a purchase is made by cash the change take effect immediately
+  - When a purchase is made on account, an invoice is created and the amount will be paid on a later day.
+    - This amount is referred as account receivable. For the purchaser its the account payable
+    - Date is important and also associated with a receivable or payable
+    - Four different ways the term “on account” is used in transactions:
+      1. Performed services on account means Accounts Receivable increases
+      2. Collected on account means Accounts Receivable decreases
+      3. Purchased on account means Accounts Payable increases
+      4. Paid on account means Accounts Payable decreases
+- Business transactions that affect the accounting equation (`Assets` = `Liabilities` + `Equity`) are accounting transactions
+- Accounting is a double-entry system that reports the dual effects, giving and receiving, of all business transactions. Each transaction affects at least two (or more) accounts
+- Transaction Analysis is performed based on the above basic accounting equation
+  1. Determine affected accounts, and classify them (at least two accounts should be affected)
+     - Revenues and gains affect retained earnings positively
+       - Revenues increases net income, then it increases the ending retained earnings, then it increases the shareholder's equity on the balance sheet
+     - Expenses, losses, and dividends affect retained earnings negatively
+  2. Determine the amount of change on each affected account
+  3. Determine the direction of the change for each account
+     - The accounting equation must be balanced after analyzing each transaction
+
+## Debit and Credit
+
+- Expand the basic formula and get all the component that can be categorized as debit and credit:
+  - `Assets` = `Liabilities` + `Equity`
+  - `Assets` = `Liabilities` + (`Share Capital` + `Retained Earnings`)
+  - `Assets` = `Liabilities` + (`Share Capital` + (`Beginning Retained Earnings` + `Net Income` - `Dividends`))
+  - `Assets` = `Liabilities` + (`Share Capital` + (`Beginning Retained Earnings` + `Revenue/Gain` - `Expense/Loss` - `Dividends`))
+    - Dividends are not considered an expense, because they are a distribution of a firm’s accumulated earnings
+  - `Assets` + `Expense/Loss` + `Dividends` = `Liabilities` + `Share Capital` + `Beginning Retained Earnings` + `Revenue/Gain`
+  - By definition, any positive value on the left side of the above expanded equation is debit and any positive value on the right side is credit
+  - A positive debit can be called a normal debit balance, a positive credit is has a normal credit balance
+  - A negative debit is a credit and vice versa
+- Transactions are recorded first in the journal, a chronological listing of all the entity’s business transactions. When report journal enties for transactions
+  - A logical sequence of steps must be followed when recording transactions: analyze (determine the accounts affected and whether the accounts increase or decrease), apply rules of debit and credit, journalize the entry, and include an explanation
+  - For each line of record, transcation name is on the left and the amount is on the right
+  - Debit records start with `Dr.`
+  - Credit records are indented, and start with `Cr.`
+  - For transction includes a pair of debit and credit record, the debit line goes first
+  - In total, sum of all debit records alway equals the sum of credit records
+- T-accounts (an account) - a way to illustrate account's transaction
+  - It keeps track on a certain account with two lines in `T` shape
+  - The title is the account name, debit transaction on the left and credit transaction on the right
+- Ledger – a group of T accounts. All of the accounts of a business grouped together form a book called the ledger (or general ledger). The correct order of accounts is Current Assets, Long-term Assets, Current Liabilities, Long-term Liabilities, Shareholder's Equity, Revenue, Expenses
+  - Posting – the process of copying (transferring) data from the journal to accounts in the ledger
+  - Businesses need both a chronological record of transactions (the journal) and a record of each account’s activity and its balance (the ledger). Both are necessary to ensure that data are reported accurately
+- Trial balance is a list of all accounts and their balances at a given time (typically at the end of the accounting period)
+  - For trial balance, the total debit should equals the total credit
+  - Usually, the entries in the trial balance has the same order as the accounts in the ledger
+- The current ratio is a liquidity ratio that measures a company's ability to pay short-term obligations or those due within one year
+  - `Current Ratio` = `Current Assets` / `Current Liabilities`
+  - It measures the current liquidity of the firm
+- the quick ratio, also known as the acid-test ratio is a type of liquidity ratio, which measures the ability of a company to use its near cash or quick assets to extinguish or retire its current liabilities immediately
+  - `Current Ratio` = (`Current Assets` - `Inventory`) / `Current Liabilities`
+  - It measures the company's ability to liquidize immediately
+- Typical steps of an accounting cycle: Journal Entries, Posting to Ledger, Trial Balance, Adjusting Entries, Adjusted Trial Balance
+
+## Assumptions & Principles
+
+### Assumptions
+
+- Entity assumption - A business is a separate economic unit
+- Continuity (going-concern) assumption - Entity will continue to exist indefinitely
+- Time period (periodicity) - Reports are prepared for a certain period only
+- Historical cost principle - Assets recorded at purchase price, adjusted for any improvements or aging
+- Stable monetary unit assumption - Dollar’s purchasing power is stable over time, same currency without inflation
+
+### Principles
+
+- Revenues Recognition Principles - A revenue should be recognized when
+  - The service has been performed or the title of the goods have been transferred to the buyer
+  - Risk and reward has been transferred to the buyer
+  - The amount is known
+  - Collection is reasonably assured
+- The Matching Principle
+  - Resources consumed to earn revenues in an accounting period should be recorded in that period, regardless of when cash is paid
+  - Expenses are recognized when incurred, not when paid
+- Example scenarios
+  - When a service is provided and the cash transaction is completed:
+    - For the seller: cash asset increase, revenue, equity increase
+    - For the buyer: expenses equity, cash asset decrease
+  - When a service has not been provided and the cash transaction is completed: (installment sales)
+    - For the seller: Cash asset increases, Unearned Revenue (Liability) increases
+    - For the buyer: Expenses asset increases, cash asset decreases
+  - When a service is provided and the cash is not received or paid:
+    - For the seller: Accounts Receivable or asset increases, service revenue or shareholder's equity increase
+    - For teh buyer: Accounts payable or liability increases, expenses or shareholder's equity decreases
+  - When a service is provided and the cash transaction is completed:
+    - Not a transcation
