@@ -143,6 +143,7 @@ def about(request):
       # exists by default, primary_key is mandatory.
       id = models.AutoField(primary_key=True)
       # add nullable and allow it to be black options
+      # (blank option is reforced by Django, while null option is enforced by the database)
       title = models.CharField(max_length=100, blank=True, null=True)
       # add default value
       content = models.TextField(default="Yes")

@@ -129,8 +129,30 @@
 
 ### Functions
 
-- Quadratic: $$y=ax^2+bx+c$$, $$x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}$$ (no solution when $$b^2-4ac<0$$)
-- $$e^x$$ is the inverse of $$\ln x$$ (reflect by `y = x`)
+- Inverse function is when dependent variable and independent variable are exchanged
+  - The original and inversed function are reflected by `y = x`
+
+#### Polynomial
+
+- Quadratic Solution: $$y=ax^2+bx+c$$, $$x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}$$ (no solution when $$b^2-4ac<0$$)
+- $$(a+b)^3=a^3+3a^2b+3ab^2+b^3$$ and $$(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^kb^{n-k}$$
+- $$(a-b)^3=a^3-3a^2b+3ab^2-b^3$$ and $$(a+b)^n=\sum_{k=0}^{n}(-1)^k\binom{n}{k}a^kb^{n-k}$$
+- $$x^3-y^3=(x-y)(x^2-xy+y^2)$$
+- $$x^3+y^3=(x+y)(x^2-xy+y^2)$$
+
+#### Exponential
+
+- $$(x^m)^n=x^{m\cdot n}$$
+- $$\frac{x^m}{x^n}=x^{m-n}$$
+- $$x^{m+n}=x^m\cdot x^n$$
+
+#### Logrithmic
+
+- $$\log A + \log B = \log(A\cdot B)$$
+- $$\log A - \log B = \log(\frac{A}{B})$$
+- $$\log A^m=m\log A$$
+- $$\frac{\log A}{\log B}=\log_B A$$
+- $$e^x$$ is the inverse of $$\ln x$$
 
 ### Vector
 
@@ -175,3 +197,18 @@
     - $$\cos(2x)=1-2\sin^2x$$
     - $$\cos(2x)=2\cos^2x-1$$
   - Divide $$\sin(2x)$$ by $$\cos(2x)$$, gives $$\tan2x=\frac{2\tan x}{1-\tan^2x}$$
+
+## Mathematical Proof
+
+### Direct Proof
+
+- The conclusion is established by logically combining the axioms, definitions, and earlier theorems
+
+### Proof by Mathematical Induction
+
+- It can be used to proof $$\sum a_n=S(n)$$
+
+1. Proof the initial condition is true, $$a_1=S(1)$$
+2. Assume any condition is true, $$\sum a_k=S(k)$$ for any $$k\lt n$$
+3. Treat equation from step 2 as known, see if $$\sum a_{k+1}=S(k+1)$$
+4. If step 3 can be proven, any number after 1 and before n for the original equal can be true

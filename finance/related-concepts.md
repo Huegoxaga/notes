@@ -48,6 +48,7 @@
 - Straight-Line Depreciation (SLD)
   - Goods depreciate at a constant rate
   - Annual Depreciation Charge = $$d_t=\frac{(B-S)}{N}$$, where B = cost basis, S = salvage value, N = depreciable life
+    - Service charges like installation fee should be included in the cost basis
   - Salvage value is the value of a good when its service life is reached
 - Declining-Balance Depreciation (DBD)
   - The declining balance method (DBD) of depreciation models the loss in value of an asset in a period as a constant proportion of the asset’s current value
@@ -73,6 +74,9 @@
 - The math function or factor used to convert the mathematical equivalence between the present value and future value of cash flows are referred as the `Compound Interest Factors`
   - Various types of cash flows have different factors, shown as below
   - Since all factors depend on the interest rate for each period and the number of period only, the compound interest factors table can be used as a quick reference for getting the value of each type of factor
+  - The table is uesful when trying to find the interest rate given the factor and the number of period, since `i` can't be solved easily
+    - When the interest rate can't be find in the table, or for a more accurate estimation, linear interpolation is often used
+    - It makes the assumption that given the same number of periods, the factor and the interest rate has a linear relationship
 
 #### Types of Cash Flow
 
@@ -86,12 +90,17 @@
   - `Sinking Fund Factor`, denoted by `(A/F,i,N)`, gives the size, `A`, of a repeated small receipt or disbursement that is equivalent to a large future amount, `F`, if the interest rate is `i` and the number of periods is `N`
     - It equals $$\frac{i}{(1+i)^N-1}$$
     - A sinking fund is an interest-bearing account into which regular deposits are made in order to accumulate some amount
+    - To calculate the amount owe after repay the mortgage for a certain number of period, calculate the total amount own at the end of the period and minus the amount saved by repaying early using the sinking fund factor
   - `Uniform Series Compound Amount Factor`, denoted by `(F/A,i,N)`, gives the future value, `F`, that is equivalent to a series of equal-sized receipts or disbursements, `A`, when the interest rate is `i` and the number of periods is `N`
     - It is the reciprocal of the sinking fund factor
     - It equals $$\frac{(1+i)^N-1}{i}$$
+    - It can be used to calculate the present value of the coupon portion of a bond where `A` is the coupon value in each period. The total present value of a bond need to add the coupon portion with the present value of the face value of the bond
   - `Capital Recovery Factor`, denoted by `(A/P,i,N)`, gives the value, `A`, of the equal periodic payments or receipts that are equivalent to a present amount, `P`, when the interest rate is `i` and the number of periods is `N`
     - It can be easily derived from the sinking fund factor and the compound amount factor
     - It equals $$\frac{i(1+i)^N}{(1+i)^N-1}$$
+    - It is used to find the equivilent regular income required after investing in an asset when the asset loss ites value over time
+      - `A = (P-S)(A/p, i, N)+S*i`, when `P` is the cost of the equipment and `S` is its salvage value
+      - `i` in this scenario is called `cost of capital`
   - `Series Present Worth Factor`, denoted by `(P/A,i,N)`, gives the present amount, `P`, that is equivalent to an annuity with disbursements or receipts in the amount, `A`, where the interest rate is `i` and the number of periods is `N`
     - It is the reciprocal of the capital recovery factor
     - It equals $$\frac{(1+i)^N-1}{i(1+i)^N}$$
@@ -102,9 +111,16 @@
     - Begin mode will compound the interest one more time at the end
   - An annuity is a contract between you and an insurance company in which you make a lump-sum payment or series of payments and, in return, receive regular cashflows, beginning either immediately or at some point in the future. it can be further categorized as:
     - Annuity Due - regular cashflows, begin mode
+      - It can be treated as ordinary annuities which has one less period and count the first payment directly as a present worth. e.g. `P = P1 + A(P/A, i, N-1)`
+      - Optionally, Determine the present worth of a standard annuity at time −1 and then find its worth at time 0 (now).
     - Ordinary Annuities - regular cashflows, end mode
     - Perpetuities - regular cashflows, end mode, infinite number of time periods
       - The time value for perpetuities equals payment amount divided by the interest rate for the payment time period
+- For continuous compounding at nominal rate `r` per period
+  - Continuous Compounding Sinking Fund: $$[A/F,r,n]=\frac{e^r-1}{e^{rn}-1}$$
+  - Continuous Compounding Capital Recovery: $$[A/P,r,n]=\frac{e^{rn}(e^r-1)}{e^{rn}-1}$$
+  - Continuous Compounding Series Compound Amount: $$[F/A,r,n]=\frac{e^{rn}-1}{e^{r}-1}$$
+  - Continuous Compounding Series Present Worth: $$[P/A,r,n]=\frac{e^{rn}-1}{e^{rn}(e^r-1)}$$
 - `Arithmetic Gradient Series` - a series of receipts or disbursements that starts at zero at the end of the first period and then increases by a constant amount from period to period
   - `Arithmetic Gradient to Annuity Conversion Factor`, denoted by `(A/G,i,N)`, gives the value of an annuity, `A`, that is equivalent to an arithmetic gradient series where the constant increase in receipts or disbursements is `G` per period, the interest rate is `i`, and the number of periods is `N`
     - It equals $$\frac{1}{i}-\frac{N}{(1+i)^N-1}$$
@@ -1279,6 +1295,131 @@
   - `Current Ratio` = (`Current Assets` - `Inventory`) / `Current Liabilities`
   - It measures the company's ability to liquidize immediately
 - Typical steps of an accounting cycle: Journal Entries, Posting to Ledger, Trial Balance, Adjusting Entries, Adjusted Trial Balance
+
+## List of Common Accounts
+
+### Assets
+
+#### Current Assets (debit normal balances)
+
+- Cash
+- Accounts receivable or A/R
+- Inventory
+- Office Supplies or Supplies Inventory
+- Prepaid rent
+- Prepaid insurance
+
+#### Property, Plant, and Equipment (PPE) (debit normal balances)
+
+- Land
+- Building
+- Equipment
+- Machinery
+- Furniture
+- Laptops or computer
+- Car
+
+#### Long Term Investments (LTI) (debit normal balances)
+
+- Equity investments
+- Debt investments
+- Bonds receivable
+
+#### Intangibles (debit normal balances)
+
+- Trademark
+- Copyright
+- Goodwill
+- Patent
+
+### Liabilities
+
+#### Current Liabilities (credit normal balances)
+
+- Accounts payable
+- Unearned Revenues
+- Note payable
+- Dividend payable
+- Utilities payable
+- Rent payable
+- Insurance payable
+- Advertising payable
+- Salaries payable
+- Wages payable
+- Income tax payable
+
+#### Long Term Liabilities (credit normal balances)
+
+- Bonds payable
+- Note payable
+- Loan payable
+
+### Equity (credit normal balances)
+
+- Common shares
+- Retained earnings
+- Accumulated Other Comprehensive Income (AOCI)
+- Contributed Surplus
+
+#### Contra Asset (credit normal balances)
+
+- Accumulated Depreciation
+- Allowance for doubtful accounts
+
+#### Contra Liabilities (debit normal balances)
+
+- Discount on bonds payable
+
+#### Adjunct Liabilities (credit normal balances)
+
+- Premium on bonds payable
+
+#### Contra Revenue (debit normal balances)
+
+- Sales returns
+- Sales allowances
+- Sales discounts
+
+#### Contra Expense (credit normal balances)
+
+- Purchase returns
+- Purchase allowances
+- Purchase discounts
+
+#### Adjunct Revenues (credit normal balances)
+
+- Sales discounts forfeited
+
+#### Contra Equity (debit normal balances)
+
+- Dividends declared
+- Cash dividends
+
+### Income Related
+
+#### Revenues (credit normal balances)
+
+- Revenue
+- Sales
+- Service Revenue
+- Dividend Revenue
+- Rent Revenue
+
+#### Expenses (debit normal balances)
+
+- COGS (Cost of Goods Sold)
+- Rent expense
+- Insurance expense
+- Utilities expense
+- Advertising expense
+- Salaries expense
+- Wages expense
+- Income tax expense
+- Interest expense
+- Supplies expense
+- Depreciation expense
+- Amortization expense
+- Bad debt expense
 
 ## Assumptions & Principles
 

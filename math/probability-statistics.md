@@ -243,7 +243,7 @@
 - p is the probability of success
 - q is the probability of failure
 - p + q = 1
-- the possible outcomes of i success in n trials satisfy pasca triangle nth i column. the sum of nth column is 2^n(the all possible outcomes)
+- the possible outcomes of i success in n trials satisfy Pascal's triangle nth i column. the sum of nth column is 2^n(the all possible outcomes)
 - The probability of m successes in n trials.
 - In the Binomial Distribution, for each possible `m` it has a `Pm` value on y-axis as $$P_m = C^m_n p^m (1-p)^{n-m}$$ or $$P_m = \frac{n!}{m!(n-m)!} p^m q^{n-m}$$
 - expected value:

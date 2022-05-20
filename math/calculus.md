@@ -152,7 +152,7 @@
   - the nature of critical number includes three senarios
     - local maximum
     - local minimum
-    - niether
+    - neither
   - If _f_ has a local maximum or minimum at _c_, then _c_ is a critical number of _f_.
 - If the graph of _f_ lies above all of its tangents on an interval _I_, then it is called concave upward on _I_. If the graph of _f_ lies below all of its tangents on _I_, it is called concave downward on _I_.
 - A point _P_ on a curve _y = f(x)_ is called an inflection point if _f_ is continuous there and the curve changes from concave upward to concave downward or from concave downward to concave upward at _P_.
@@ -268,6 +268,7 @@
   1. Find the values of all critical numbers of _f_ in (_a, b_).
   2. Find the values of the endpoints of the interval.
   3. The largest of the values from Steps 1 and 2 is the absolute maximum value; the smallest of these values is the absolute minimum value.
+     - Vary by textbooks, edge points sometimes are not considered as critical points
 - Increasing/Decreasing Test
   - If _f'(x)>0_ on an interval, then _f_ is increasing on that interval.
   - If _f'(x)<0_ on an interval, then _f_ is decreasing on that interval.
