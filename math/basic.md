@@ -154,6 +154,24 @@
 - $$\frac{\log A}{\log B}=\log_B A$$
 - $$e^x$$ is the inverse of $$\ln x$$
 
+#### Trigonometric
+
+- Sine and cosine functions are periodic with period $$2\pi$$
+- Tangent function is periodic with period $$\pi$$
+- $$\tan x=\frac{\sin x}{\cos x}$$
+- $$\frac{1}{sin x}=\csc x$$
+- $$\frac{1}{cos x}=\sec x$$
+- $$\frac{1}{tan x}=\cot x$$
+- $$\sin^2x+\cos^2x=1$$
+  - Divide both side by $$\sin^2x$$, gives $$1+\cot^2x=\csc^2x$$
+  - Divide both side by $$\cos^2x$$, gives $$\tan^2x+1=\sec^2x$$
+- $$\sin(2x)=2\sin x\cos x$$
+- $$\cos(2x)=\cos^2x-\sin^2x$$
+  - Combine with $$\sin^2x+\cos^2x=1$$, gives
+    - $$\cos(2x)=1-2\sin^2x$$
+    - $$\cos(2x)=2\cos^2x-1$$
+  - Divide $$\sin(2x)$$ by $$\cos(2x)$$, gives $$\tan2x=\frac{2\tan x}{1-\tan^2x}$$
+
 ### Vector
 
 - Vectors has both magnitude and direction
@@ -181,22 +199,6 @@
   - Based on the above properties, the angle between two vectors can be found when the components of them and the magnitude of them are known, $$\cos{\theta}=\frac{A_x B_x + A_y B_y}{|\vec{A}||\vec{B}|}$$
 
 ## Geometry
-
-### Trigonometric Identities
-
-- $$\tan x=\frac{\sin x}{\cos x}$$
-- $$\frac{1}{sin x}=\csc x$$
-- $$\frac{1}{cos x}=\sec x$$
-- $$\frac{1}{tan x}=\cot x$$
-- $$\sin^2x+\cos^2x=1$$
-  - Divide both side by $$\sin^2x$$, gives $$1+\cot^2x=\csc^2x$$
-  - Divide both side by $$\cos^2x$$, gives $$\tan^2x+1=\sec^2x$$
-- $$\sin(2x)=2\sin x\cos x$$
-- $$\cos(2x)=\cos^2x-\sin^2x$$
-  - Combine with $$\sin^2x+\cos^2x=1$$, gives
-    - $$\cos(2x)=1-2\sin^2x$$
-    - $$\cos(2x)=2\cos^2x-1$$
-  - Divide $$\sin(2x)$$ by $$\cos(2x)$$, gives $$\tan2x=\frac{2\tan x}{1-\tan^2x}$$
 
 ## Mathematical Proof
 

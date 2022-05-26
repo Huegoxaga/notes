@@ -71,6 +71,10 @@ urlpatterns = [
 
 ## App Folder
 
+### \_\_init\_\_.py
+
+- Required in app folders, Django use this file to know which folders are apps
+
 ### apps.py
 
 ```py

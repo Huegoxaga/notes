@@ -211,7 +211,7 @@
 ### Derivatives of Common Functions
 
 - Derivatives of Exponential Functions
-  - $$a^x=a^x\ln a$$
+  - $$a^x=a^x\ln a$$ (`a` must be a constant)
 - Derivatives of Trigonometric Functions
   - $$\frac{d}{dx} (\sin x)=\cos x$$
   - $$\frac{d}{dx} (\cos x)=-\sin x$$
@@ -262,7 +262,7 @@
 - Implicit differentiation. This consists of differentiating both sides of the equation with respect to target variable and then solving the resulting equation for _y'_, where _y_ is the dependent variable.
   - When differentiating the dependent variable, chain rule is required
   - The result should be an expression which is consisted of _x_ and _y_.
-- Logarithmic differentiation - The calculation of derivatives of complicated functions involving products, quotients, or powers can often be simplified by taking logarithms. The method used in the following example is called logarithmic differentiation.
+- Logarithmic differentiation - The calculation of derivatives of complicated functions involving products, quotients, or powers can often be simplified by taking logarithms of both side. The method used in the following example is called logarithmic differentiation.
 - linear approximation - or tangent line approximation of _f_ at _a_ uses the tangent line of the function at _a_ to replace the original funtion, then make prediction about values that is close to _a_. As a result we have the linear approximation _L(x)_ equals to $$f(a)+f'(a)(x-a)$$.
 - The Closed interval Method - To find the absolute maximum and minimum values of a continuous function _f_ on a closed interval [_a, b_]:
   1. Find the values of all critical numbers of _f_ in (_a, b_).
@@ -281,10 +281,11 @@
 - Concavity Test
   - If _f''(x)>0_ for all _x_ in _I_, then the graph of _f_ is concave upward on _I_.
   - If _f''(x)<0_ for all _x_ in _I_, then the graph of _f_ is concave downward on _I_.
+  - The inflection point is where the concavity changes, when _f''(x)=0_
 - The Second Derivative Test - Suppose _f''_ is continuous near _c_.
   - If _f'(c)=0_ and _f''(c)>0_, then _f_ has a local minimum at _c_.
   - If _f'(c)=0_ and _f''(c)<0_, then _f_ has a local maximum at _c_.
-  - If _f'(c)=0_ and _f''(c)<0_, then no conclusions can be made and only first derivative test can be used
+  - If _f'(c)=0_ and _f''(c)=0_, then no conclusions can be made and only first derivative test can be used
 - The Newton's method can be used to find the root(solution) of a high order function.
   - Pick a random value $$x_1$$, then calculate `x - f(x)/f'(x)`, then treat the result $$x_2$$ as $$x_1$$ and repeat the calculation, repeat the process then the result value will be closer and closer to the root.
   - When the $$x_n$$ is the root value the new result will not change since $$f(x_n) = 0$$ in this case.

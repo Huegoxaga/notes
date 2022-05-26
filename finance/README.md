@@ -806,34 +806,6 @@
       - There's no such fixed value for common shareholders
 - Volume is the amount of an asset or security that changes hands over some period of time(often daily)
   - The average volume is the average of the (daily) volumes for a specified period. e.g. `Avg. Volumn(10)` is the 10 days average, `Average Volumn(3m)` is the 3 months average
-- Valuation Ratios
-  - Price to Earnings(P/E) is the ratio for valuing a company that measures its current share price relative to its per-share earnings (EPS)
-    - A lower `P/E` ratio means the stock price is undervalued
-  - The price/earnings to growth ratio (PEG ratio) is a stock's price-to-earnings (P/E) ratio divided by the annual EPS growth rate
-    - Any PEG ratio that is smaller than 1.0 is good
-  - The price-to-sales (P/S) ratio is a ratio that compares a company market cap to its revenue over the past 12 months
-  - The price-to-book ratio compares a company's market value to its book value, the book value is the total book value of all the shareholders determined when they buy the shares
-  - Dividend yield is a financial ratio that shows how much a company pays out in dividends each year relative to its stock price
-    - this ratio can go up when the stock price drops, since the the pay out amound keeps the same
-  - The dividend payout ratio is the ratio of the total amount of dividends paid out to shareholders relative to the net income of the company
-- Profitability Ratios
-  - Return on Assets(ROA) an indicator of how profitable a company is relative to its total assets
-    - The higher the better
-  - Return on equity (ROE) is a measure of financial performance calculated by dividing net income by shareholders' equity
-  - Profit margin is the percentage of sales has turned into profits
-- Efficiency Ratios
-  - Inventory turnover is a ratio showing how many times a company has sold and replaced inventory during a given period
-    - It shows how fast the company is selling, important ratio for retail companies
-  - Asset turnover ratio measures the value of a company's sales or revenues relative to the value of its assets
-- Liquidity Ratios
-  - The current ratio is the proportion of the amount of current assets which only can be sold in one year divided by the amount of current liabilities
-    - The higher the better, should be at least great than 1.0
-  - The quick ratio is the proportion of the amount of current assets which only can be sold quickly exclude all the inventory divided by the amount of current liabilities
-    - This calculation is more conservative than the current ratio
-- Debt Ratios
-  - The debt-to-equity (D/E) ratio is calculated by dividing a company’s total liabilities by its shareholder equity
-  - Interest coverage ratio can be calculated by dividing a company's earnings before interest and taxes (EBIT) by its interest expense
-    - Lower than 1.0 is not good
 
 #### Non-Domestic Equity
 
@@ -1371,9 +1343,6 @@
       - The material effects on the financial statements or state that they are still evaluating the effects of the new standards
     - Forward-looking expenditures and divestitures
   - In the United States, The FCC requires that the management discuss trends and identify significant events and uncertainties for publicly traded companies
-  - Financial Reports are prepared based on accural accounting, which recognizes the impact of revenue generating activities on financial statements in the time periods when revenues and expenses accrue
-    - Revenue accrues when service is provided and invoice is given regardless whether the payment has been received
-    - Different from cash accounting, that recognizes revenues and expenses when cash is either received or paid
 
 #### Standards Setting Bodies
 
@@ -1569,6 +1538,15 @@
   - e.g. Warranty
 - Similarily, liabilities have current liabilities and long-term liabilities (anything longer than one year)
 - The difference of cash portions between two periods of the balance sheet will be reported in details, in the statement of cash flows
+- Balance Sheet Formats
+  - Report format
+    - Assets listed at the top
+    - Start with current assets and within current assets list in order of liquidity
+    - Liabilities and equity beneath
+  - Account FOrmat
+    - Assets on the left
+    - Start with current assets and within current assets list in order of liquidity
+    - Liabilities and equity on the right
 
 #### Income Statement
 
@@ -1585,6 +1563,17 @@
 - The net income will be used to calculate changes in equity before it is deducted from the dividends
 - Net income is an estimate. True income can be measured only when business is liquidated
   - Investors cannot wait for business liquidation to learn about true income
+- Income Statement Formats
+  - Single-step
+    - All revenues grouped together
+    - All expenses grouped together
+  - Multi-step
+    - Shows subtotals to emphasize relationships
+    - Includes
+      - Gross profit
+      - Income from operations
+      - Income before taxes
+      - Net income
 
 #### Comprehensive Income Statement
 

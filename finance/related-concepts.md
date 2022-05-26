@@ -115,19 +115,27 @@
       - Optionally, Determine the present worth of a standard annuity at time −1 and then find its worth at time 0 (now).
     - Ordinary Annuities - regular cashflows, end mode
     - Perpetuities - regular cashflows, end mode, infinite number of time periods
-      - The time value for perpetuities equals payment amount divided by the interest rate for the payment time period
+      - `P = A/i` is known as the capitalized value formula
+      - The time value for perpetuities equals payment amount `A` divided by the interest rate `i` for the payment time period
+      - For infinite number of time periods the present worth can be: $$P=\lim_{N\to \infty}A(P/A,i,N)=\frac{A}{i}$$
+      - `P` in this case called the capitalized value
 - For continuous compounding at nominal rate `r` per period
   - Continuous Compounding Sinking Fund: $$[A/F,r,n]=\frac{e^r-1}{e^{rn}-1}$$
   - Continuous Compounding Capital Recovery: $$[A/P,r,n]=\frac{e^{rn}(e^r-1)}{e^{rn}-1}$$
   - Continuous Compounding Series Compound Amount: $$[F/A,r,n]=\frac{e^{rn}-1}{e^{r}-1}$$
   - Continuous Compounding Series Present Worth: $$[P/A,r,n]=\frac{e^{rn}-1}{e^{rn}(e^r-1)}$$
 - `Arithmetic Gradient Series` - a series of receipts or disbursements that starts at zero at the end of the first period and then increases by a constant amount from period to period
-  - `Arithmetic Gradient to Annuity Conversion Factor`, denoted by `(A/G,i,N)`, gives the value of an annuity, `A`, that is equivalent to an arithmetic gradient series where the constant increase in receipts or disbursements is `G` per period, the interest rate is `i`, and the number of periods is `N`
+  - `Arithmetic Gradient to Annuity Conversion Factor`, denoted by `(A/G,i,N)`, gives the average equivalent value of gradient component of each cash flow in terms of a equal amount `A`, where `G` is the constant increase in receipts or disbursements per period, the interest rate is `i`, and the number of periods is `N`
     - It equals $$\frac{1}{i}-\frac{N}{(1+i)^N-1}$$
     - There is often a base annuity `A'` associated with a gradient. Hence, the total cash flow equals `A'+G(A/G,i,N)`
+      - `A'` equals to the cash flow amount at the end of the first period since there is no G component at that time
+  - `Arithmetic Gradient to Present Worth Conversion Factor`, denoted by `(P/G,i,N)`
+    - It equals $$\left[\frac{(1+i)^n-in-1}{i^2(1+i)^n}\right]$$
+    - The total present value `P` = `Series Component (A)` + `Gradient Component (G)` = `A(P/A,i,N)` + `G(P/G,i,n)`
 - `Geometric Gradient Series` - a series of cash flows that increase or decrease by a constant percentage each period
   - `Geometric Gradient to Present Worth Conversion Factor`, denoted by `(P/A,g,i,N)`, gives the present worth, `P`, that is equivalent to a geometric gradient series where the base receipt or disbursement is `A`, and where the rate of growth is `g`, the interest rate is `i`, and the number of periods is `N`
     - It equals $$\frac{(P/A,i^{\circ},N)}{1+g}$$ or $$\left(\frac{(1+i^{\circ})^N-1}{i^{\circ}(1+i^{\circ})^N}\right)\frac{1}{1+g}$$ where $$i^{\circ}=\frac{1+i}{1+g}-1$$
+    - $$i^{\circ}$$ is known as the growth adjusted interest rate
 - Uneven Cash Flows (Non-Standard Annuities and Gradients) - continous contribution, uneven amount every time. There are three methods for dealing with this situation:
   1. Treat each cash flow in the annuity or gradient individually. This is most useful when the annuity or gradient series is not large.
   2. Convert the non-standard annuity or gradient to standard form by changing the compounding period
@@ -1239,7 +1247,10 @@
 # Accounting
 
 - Accounting is called an information system since it measures business activities, processes data into reports, and communicates results to decision makers
-- Accural accounting is often used in the financial world
+- Financial Reports are prepared based on accural accounting, which recognizes the impact of revenue generating activities on financial statements in the time periods when revenues and expenses accrue
+  - Revenue accrues when service is provided and invoice is given regardless whether the payment has been received
+  - Different from cash accounting, that recognizes revenues and expenses when cash is either received or paid
+  - Required by IFRS and ASPE
   - When a purchase is made by cash the change take effect immediately
   - When a purchase is made on account, an invoice is created and the amount will be paid on a later day.
     - This amount is referred as account receivable. For the purchaser its the account payable
@@ -1288,13 +1299,83 @@
 - Trial balance is a list of all accounts and their balances at a given time (typically at the end of the accounting period)
   - For trial balance, the total debit should equals the total credit
   - Usually, the entries in the trial balance has the same order as the accounts in the ledger
-- The current ratio is a liquidity ratio that measures a company's ability to pay short-term obligations or those due within one year
-  - `Current Ratio` = `Current Assets` / `Current Liabilities`
-  - It measures the current liquidity of the firm
-- the quick ratio, also known as the acid-test ratio is a type of liquidity ratio, which measures the ability of a company to use its near cash or quick assets to extinguish or retire its current liabilities immediately
-  - `Current Ratio` = (`Current Assets` - `Inventory`) / `Current Liabilities`
-  - It measures the company's ability to liquidize immediately
 - Typical steps of an accounting cycle: Journal Entries, Posting to Ledger, Trial Balance, Adjusting Entries, Adjusted Trial Balance
+
+### Adjusting Entries
+
+- It happens at the end of a certain accounting period, it adjusts:
+- Adjustments are end-of-year journal entries to update account balances
+  - Prepayments/Deferral
+    - `Prepaid Expense` - Recorded as an asset when purchased. Expensed when used or expired
+    - `Unearned Revenue` - Recorded as a liability when payment is received. Recorded as revenue when earned
+  - Depreciation - Allocates cost of plant assets to expense over useful lives. Represents wear-and-tear and obsolescence
+  - Accruals
+    - `Accrued Expenses` (unrecorded expenses) - Record expense before paying cash. e.g. Salaries, interest, and income taxes
+    - `Accrued Revenues` (unrecorded revenues) - Record revenue before collecting cash. Earned and will collect next period
+- It happens for accrual basis accounting, for cash basis there is no need
+- The next step after adjusting entries is closing the Books
+  - Prepares the accounts for next period
+  - Sets revenues, expenses, and dividends to zero
+- Two types of account are dealt differently during closing:
+  - `Temporary Accounts` - They should be closed (e.g. Revenues, expenses, and dividends)
+  - `Permanent Accounts` - They shouldn't be closed (e.g. Assets, liabilities, and equity)
+- Accounts for closing
+  - Close Revenues - Debit each revenue account and Credit retained earnings
+  - Close Expenses - Debit retained earnings and Credit each expense account
+  - Close Dividends - Debit retained earnings and Credit dividends
+
+## Ratios
+
+- Valuation Ratios
+  - Price to Earnings(P/E) is the ratio for valuing a company that measures its current share price relative to its per-share earnings (EPS)
+    - A lower `P/E` ratio means the stock price is undervalued
+  - The price/earnings to growth ratio (PEG ratio) is a stock's price-to-earnings (P/E) ratio divided by the annual EPS growth rate
+    - Any PEG ratio that is smaller than 1.0 is good
+  - The price-to-sales (P/S) ratio is a ratio that compares a company market cap to its revenue over the past 12 months
+  - The price-to-book ratio compares a company's market value to its book value, the book value is the total book value of all the shareholders determined when they buy the shares
+  - Dividend yield is a financial ratio that shows how much a company pays out in dividends each year relative to its stock price
+    - this ratio can go up when the stock price drops, since the the pay out amound keeps the same
+  - The dividend payout ratio is the ratio of the total amount of dividends paid out to shareholders relative to the net income of the company
+- Profitability Ratios
+  - Return on Assets (ROA) an indicator of how profitable a company is relative to its total assets
+    - `ROA` = `Net Income` / `Avg. Total Assets`
+    - The higher the better
+  - Return on equity (ROE) is a measure of financial performance calculated by dividing net income by shareholders' equity
+    - `ROA` = `Net Income` / `Avg. Total Equity`
+  - Profit margin is the percentage of sales has turned into profits
+  - Earnings per share (EPS)
+    - `EPS` = `Net Income Available to Common Shareholders` / `# of Outshanding Shares`
+  - Price to Earning (P/E)
+    - `P/E` = `Price of Shares` / `EPS`
+    - The lower the better
+- Efficiency Ratios
+  - Inventory turnover is a ratio showing how many times a company has sold and replaced inventory during a given period
+    - It shows how fast the company is selling, important ratio for retail companies
+  - Asset turnover ratio measures the value of a company's sales or revenues relative to the value of its assets
+- Liquidity Ratios
+  - The current ratio is a liquidity ratio that measures a company's ability to pay short-term obligations or those due within one year
+    - The current ratio is the proportion of the amount of current assets which only can be sold in one year divided by the amount of current liabilities
+    - The higher the better, should be at least great than 1.0
+    - `Current Ratio` = `Current Assets` / `Current Liabilities`
+    - It measures the current liquidity of the firm
+  - Working Capital - Similar to current ratio but calculate in dollar amount
+    - `Wokring Capital` = `Current Assets` - `Current Liabilities`
+  - the quick ratio, also known as the acid-test ratio is a type of liquidity ratio, which measures the ability of a company to use its near cash or quick assets to extinguish or retire its current liabilities immediately
+    - The quick ratio is the proportion of the amount of current assets which only can be sold quickly exclude all the inventory divided by the amount of current liabilities
+    - This calculation is more conservative than the current ratio
+    - `Quick Ratio` = (`Current Assets` - `Inventory`) / `Current Liabilities`
+    - `Quick Ratio` = (`Cash` + `Account Receivables` + `Marketable Securities`) / `Current Liabilities`
+    - It measures the company's ability to liquidize immediately
+- Debt Ratios
+  - The debt-to-equity (D/E) ratio is calculated by dividing a company’s total liabilities by its shareholder equity
+    - `D/E` = `Total Liabilities` / `Avg Total Equity`
+    - Better to be less than 1
+  - The debt-to-asset (D/A) ratio measures ability to pay all liabilities
+    - Better to be less than 1
+    - Low debt ratio is safer than high debt ratio
+    - `D/A` = `Total Liabilities` / `Total Assets`
+  - Interest coverage ratio can be calculated by dividing a company's earnings before interest and taxes (EBIT) by its interest expense
+    - Lower than 1.0 is not good
 
 ## List of Common Accounts
 
