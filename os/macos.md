@@ -425,6 +425,13 @@ comment. *)
   - Format target USB with GUID scheme and `FAT32`
 - A partition can be selected for install during Ubuntu installation
 
+## Security
+
+### Free GPGMail
+
+- `brew install --cask free-gpgmail`
+- Follow installation guide on its [repo page](https://github.com/Free-GPGMail/Free-GPGMail)
+
 ## Troubleshoot
 
 ### Check Apple Service Status

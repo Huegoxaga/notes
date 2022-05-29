@@ -944,3 +944,41 @@ It is used to allow devices to support Alexa.
 - `aws cognito-idp list-users --user-pool-id us-west-2_aaaaaaaaa --limit 20` list users in user pool
 - `aws cognito-idp admin-create-user --user-pool-id us-east-1_youruserpoolid --username <value> --message-action RESEND --temporary-password <value>` reset expired user with temp password
 - `aws cognito-idp admin-delete-user --user-pool-id us-west-2_aaaaaaaaa --username diego@example.com` delete user
+
+## Containers
+
+### ECR
+
+- The AWS version of a private Docker registry
+- It host docker images
+- Upload local built docker images to the target ECR registry url for use
+
+### ECS
+
+- It deploys a group of EC2 instace that runs an docker images
+
+## Development Tools
+
+- The following tools can be used together or seperately for CI/CD purpose
+
+### Cloud9
+
+- It is a cloud IDE on browser
+
+### CodeCommit
+
+- It is the AWS version of the GitHub
+
+### CodeBuild
+
+- It builds a project from a remote repository and stored the compiled code as artifacts in an S3 bucket for deployment
+- It can also run tests
+
+### CodePipeline
+
+- It defines the triggers which can perform auto depolyment once there is a new push in assigned remote repository
+- It works with existing depolyed projects
+
+### CodeStar
+
+- It uses cloudformation to create all above tools in one click

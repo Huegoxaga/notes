@@ -125,17 +125,19 @@
   - Continuous Compounding Series Compound Amount: $$[F/A,r,n]=\frac{e^{rn}-1}{e^{r}-1}$$
   - Continuous Compounding Series Present Worth: $$[P/A,r,n]=\frac{e^{rn}-1}{e^{rn}(e^r-1)}$$
 - `Arithmetic Gradient Series` - a series of receipts or disbursements that starts at zero at the end of the first period and then increases by a constant amount from period to period
-  - `Arithmetic Gradient to Annuity Conversion Factor`, denoted by `(A/G,i,N)`, gives the average equivalent value of gradient component of each cash flow in terms of a equal amount `A`, where `G` is the constant increase in receipts or disbursements per period, the interest rate is `i`, and the number of periods is `N`
+  - `Arithmetic Gradient to Annuity Conversion Factor`, denoted by `(A/G,i,N)`, gives the uniform annuity equivalent value of gradient component of each cash flow in terms of a equal amount `A`, where `G` is the constant increase in receipts or disbursements per period, the interest rate is `i`, and the number of periods is `N`
     - It equals $$\frac{1}{i}-\frac{N}{(1+i)^N-1}$$
     - There is often a base annuity `A'` associated with a gradient. Hence, the total cash flow equals `A'+G(A/G,i,N)`
       - `A'` equals to the cash flow amount at the end of the first period since there is no G component at that time
   - `Arithmetic Gradient to Present Worth Conversion Factor`, denoted by `(P/G,i,N)`
-    - It equals $$\left[\frac{(1+i)^n-in-1}{i^2(1+i)^n}\right]$$
+    - It equals $$\left[\frac{(1+i)^N-i\cdot N-1}{i^2(1+i)^N}\right]$$
     - The total present value `P` = `Series Component (A)` + `Gradient Component (G)` = `A(P/A,i,N)` + `G(P/G,i,n)`
 - `Geometric Gradient Series` - a series of cash flows that increase or decrease by a constant percentage each period
   - `Geometric Gradient to Present Worth Conversion Factor`, denoted by `(P/A,g,i,N)`, gives the present worth, `P`, that is equivalent to a geometric gradient series where the base receipt or disbursement is `A`, and where the rate of growth is `g`, the interest rate is `i`, and the number of periods is `N`
     - It equals $$\frac{(P/A,i^{\circ},N)}{1+g}$$ or $$\left(\frac{(1+i^{\circ})^N-1}{i^{\circ}(1+i^{\circ})^N}\right)\frac{1}{1+g}$$ where $$i^{\circ}=\frac{1+i}{1+g}-1$$
     - $$i^{\circ}$$ is known as the growth adjusted interest rate
+    - When $$i^{\circ}$$ is a negative value, the factor table can't be used
+    - When `i = g > 0` or $$i^{\circ}$$ is zero, the formula can be simplified as `P = N(A/(1+g))`
 - Uneven Cash Flows (Non-Standard Annuities and Gradients) - continous contribution, uneven amount every time. There are three methods for dealing with this situation:
   1. Treat each cash flow in the annuity or gradient individually. This is most useful when the annuity or gradient series is not large.
   2. Convert the non-standard annuity or gradient to standard form by changing the compounding period
@@ -1247,6 +1249,149 @@
 # Accounting
 
 - Accounting is called an information system since it measures business activities, processes data into reports, and communicates results to decision makers
+
+## Standards Setting Bodies
+
+- Standards setting bodies are professional not for profit organizations that establish financial reporting standards
+- Desirable attributes of standard setting bodies:
+  - all parties involved in the standard settings process should observe high professional standards
+    - including standards of ethics and confidentiality
+  - have adequate authority resources and competencies to fulfill its responsibilities
+  - Have clear and consistent standard-setting processes
+  - Guided by a well-articulated framework with a clearly stated objective
+  - operate independently seeking and considering input from stakeholders but making decisions that are consistent with the stated objective of the framework
+  - The decision setting process should not be compromised by pressure from external forces. It should also not be influenced self or special interests.
+  - Decisions and resulting standards should be made in the public interest.
+- the `International Accounting Standards Board (IASB)` sets Financial Reporting Standards that have been adopted in many countries
+  - A standards setting body
+  - Widely adopted outside the U.S.
+  - It it adopted in Canada by Chartered Professional Accountants of Canada (CPAC) (previously CICA)
+    - They publish the CPAC Handbook as Canada's official GAAP
+    - Publicly accountable enterprises (PAEs) must apply International Financial Reporting Standards (IFRS) which are standards set by the International Accounting Standards Board (IASB) to enhance the comparability of financial information reported by public enterprises around the world. IFRS was effective January 1, 2011 for Canadian public companies.
+    - Private enterprises apply the Accounting Standards for Private Enterprises (ASPE). However, private enterprises have the option of using IFRS or ASPE.
+    - Other sets of GAAP are applicable to not-for-profit organizations, pension plans and government entitie
+  - The `IASB` establishes the `International Financial Reporting Standards (IFRS)`
+  - `IASB` replaced `International Accounting Standards Committee (IASC)` in 2001
+    - `IASC` issued the `International Accounting Standard (IAS)`. While some rules from `IAS` is still in use, `IASB` replace some of `IAS` by `IFRS`
+- `Financial Accounting Standards Board (FASB)`
+  - A standards setting body
+  - Widely adopted in the U.S
+  - `FASB` establishes the generally accepted accounting principles, known as `US GAAP`
+
+## Financial Reporting Standards
+
+- Standard setters are working to achieve convergence of financial reporting standards
+- To keep up to date on the evolving standards an analyst can monitor professional journals and the `IASB` and `FASB` websites, or position papers on financial reporting issues through the CFA Institute Center for Financial marketing integrity
+- A financial reporting standard that a country follows is usually called a GAAP(generally accepted accounting principles), each country has its own GAAP or under different names
+
+### IFRS
+
+- Most countries are adopting or planning to adopt `IFRS`
+
+#### Conceptual Framework
+
+- `IASB` set its standards in the `Conceptual Framework (2010) for Financial Reporting`
+- The framework is designed to assist:
+  - standard setters in developing and reviewing standards
+  - preparers of financial statements in applying standards and in dealing with issues not specifically covered by standards
+  - auditors in forming an opinion on financial statements
+  - users in interpreting financial statement information
+- The core of the conceptual framework is the objective to provide financial information about the reporting entity that is useful to existing and potential investors, lenders and other creditors, in making decisions about providing resources to the entity includes:
+  - the entities financial position
+  - financial performance
+  - company's cash flow
+- States the overall objective of financial reporting is to provide useful information to users to make investing and lending decisions.
+- The framework defines usefulness, the information is useful if:
+  - it is Relevant - information should have timely, predictive, value confirmatory value or both
+    - Materiality is an aspect of relevance.
+    - Note: Consider the conflict between information that is timely (based on estimates) and reliable that may require additional time to ensure accuracy that may render the statements irrelevant.
+  - it has been faithfully represented. Such information is complete neutral and free from error.
+- There are four characteristics that enhance relevance and faithful representation
+  - compatibility - the financial statement presentation is consistent among firms and across time periods
+  - verifiability - independent observers will arrive at similar conclusions if they use the same methods
+  - timeliness - the information is available to decision makers before it becomes stale
+  - understandability - users should be able to readily understand the information the statements present
+- The framework defines the reporting elements that should be included
+  - financial position mearsuring elements
+    - assets
+      - resources controlled as a result of past transactions.
+      - expected to provide future economic benefits
+    - liabilities
+      - a result of past events
+      - expected to require an outflow of economic resources in the future
+    - owners equity
+      - Equity is the owner's residual interest in the assets After deducting the liabilities
+  - performance measuring elements
+    - income
+      - an increase in economic benefits, either increasing assets or decreasing liabilities in a way that increases owners equity, includes `comprehensive income`, `revenues`, and `gains`
+    - expenses
+      - decreasing assets or increasing liabilities in a way that decreases owners equity
+      - `losses` are to be included in expenses
+- the framework also states that an item should be recognized in the balance sheet or income statement if a future economic benefit from the item is probable and the items value or cost can be measured reliably
+  - the amounts at which such items are to be reported depend on the measurement base
+    - measurement bases include historical cost a motorized cost current cost realizable value present value and fair value
+- the framework states two important underlying assumptions in financial statements
+  - accrual accounting - financial statements should reflect transactions at the time they actually occur not necessarily when cash is paid
+  - growing concern - assumes the company will continue to exist for the forseeable future
+    - If this is not the case then presenting the company's financial position fairly requires a number of adjustments. For example it's inventory or other assets may only be worth their liquidation values
+- The framework defines constraint
+  - the cost of providing the information
+    - optimally benefits derived from the information should exceed the costs.
+    - The aim is to achieve a balance between costs and benefits
+  - non quantifiable information like reputation brand loyalty and innovation cannot be captured directly in financial statements
+- The framework does not address the contents of the financial statements, `IAS No.1` does
+
+#### IAS 1
+
+- The `IAS No.1` defines details like which financial statements are required, Their general features and their structure and content, as:
+- Required financial statements
+  - balance sheet
+  - statement of comprehensive income
+    - It can be presented as a single statements or separately as an income statement and a statement of comprehensive income
+  - statement of changes in owners equity
+  - statement of cash flows
+  - notes, summarising accounting policies and disclosing other items
+- General features
+  - fair presentation - faithfully representing the effects of the entity's transactions and events
+  - going concern basis - the financial statements are based on the assumption that the firm will continue to exist
+  - accrual basis - it is used to prepare the financial statements other than the statement of cash flows
+  - materiality - the financial statements should be free of misstatements or omissions like good influence the decisions of relevant parties, aggregation of similar items and separation of dissimilar items
+    - It refers to the relative size of an amount. Relatively large amounts are material, while relatively small amounts are not material
+    - When it is material it can depreciate over time. For non material matters, it can be treated as an one time expense
+  - No offsetting - No offsetting of assets against liabilities or income against expenses unless a specific standard permits or requires it.
+  - Frequency of Reporting - frequency must be at least annually
+  - comparative information for prior periods should be included unless a specified standard states otherwise
+  - consistency - between periods in how items are presented and classified with prior period amounts disclosed for comparison
+- Structure and Content
+  - classified balance sheet showing current and non-current assets and liabilities
+  - Minimum information is required on the face of each financial statement
+    - For example the face of the balance sheet must show specific items such as cash and cash equivalents, plant property and equipment and inventories
+  - Minimum specified no disclosures - The standard specifies disclosures about information to be presented in the footnotes
+  - This information must be provided in a systematic manner and cross referenced from the face of the financial statements
+  - Comparative information for prior period should be included unless a specified standard states otherwise
+
+### US GAAP
+
+- Many aspects of `IFRS` and `US GAAP` have converged over the past decade
+- Compare to `IFRS`, `US GAAP` has the following difference:
+  - only revenue and expenses are listed as elements related to performance
+  - `US GAAP` defines an asset as a resource for which a future economic benefit is expected to flow.
+    - The `FASB` defines it simply as a future economic benefit(probable)
+  - `US GAAP` allow the upward valuation of most assets, but `FASB` doesn't
+  - still disagree on the best treatment of certain items or issues
+    - certain business groups place pressures to block any changes in accounting practices that may not be in their best interest
+- In many cases however a company will present a reconciliation statement showing what its financial results would have been under an alternative reporting system
+
+## General Assumptions
+
+- Entity assumption - A business is a separate economic unit
+- Continuity (going-concern) assumption - Entity will continue to exist indefinitely
+- Time period (periodicity) - Reports are prepared for a certain period only
+- Historical cost principle - Assets recorded at purchase price, adjusted for any improvements or aging
+- Stable monetary unit assumption - Dollar’s purchasing power is stable over time, same currency without inflation
+
+## General Principles
+
 - Financial Reports are prepared based on accural accounting, which recognizes the impact of revenue generating activities on financial statements in the time periods when revenues and expenses accrue
   - Revenue accrues when service is provided and invoice is given regardless whether the payment has been received
   - Different from cash accounting, that recognizes revenues and expenses when cash is either received or paid
@@ -1270,6 +1415,27 @@
   2. Determine the amount of change on each affected account
   3. Determine the direction of the change for each account
      - The accounting equation must be balanced after analyzing each transaction
+- Revenues Recognition Principles - A revenue should be recognized when
+  - The service has been performed or the title of the goods have been transferred to the buyer
+  - Amount to record is the cash value of goods or services transferred to customer
+  - Risk and reward has been transferred to the buyer
+  - The amount is known
+  - Collection is reasonably assured
+- The Matching Principle
+  - Resources consumed to earn revenues in an accounting period should be recorded in that period, regardless of when cash is paid
+  - Expenses are recognized when incurred, not when paid
+  - Example scenarios for a transaction
+    - When a service is provided and the cash transaction is completed:
+      - For the seller: cash asset increase, revenue, equity increase
+      - For the buyer: expenses equity, cash asset decrease
+    - When a service has not been provided and the cash transaction is completed: (installment sales)
+      - For the seller: Cash asset increases, Unearned Revenue (Liability) increases
+      - For the buyer: Expenses asset increases, cash asset decreases
+    - When a service is provided and the cash is not received or paid:
+      - For the seller: Accounts Receivable or asset increases, service revenue or shareholder's equity increase
+      - For the buyer: Accounts payable or liability increases, expenses or shareholder's equity decreases
+    - When a service is provided and the cash transaction is completed:
+      - Not a transcation
 
 ## Debit and Credit
 
@@ -1303,7 +1469,6 @@
 
 ### Adjusting Entries
 
-- It happens at the end of a certain accounting period, it adjusts:
 - Adjustments are end-of-year journal entries to update account balances
   - Prepayments/Deferral
     - `Prepaid Expense` - Recorded as an asset when purchased. Expensed when used or expired
@@ -1326,56 +1491,63 @@
 
 ## Ratios
 
-- Valuation Ratios
-  - Price to Earnings(P/E) is the ratio for valuing a company that measures its current share price relative to its per-share earnings (EPS)
-    - A lower `P/E` ratio means the stock price is undervalued
-  - The price/earnings to growth ratio (PEG ratio) is a stock's price-to-earnings (P/E) ratio divided by the annual EPS growth rate
-    - Any PEG ratio that is smaller than 1.0 is good
-  - The price-to-sales (P/S) ratio is a ratio that compares a company market cap to its revenue over the past 12 months
-  - The price-to-book ratio compares a company's market value to its book value, the book value is the total book value of all the shareholders determined when they buy the shares
-  - Dividend yield is a financial ratio that shows how much a company pays out in dividends each year relative to its stock price
-    - this ratio can go up when the stock price drops, since the the pay out amound keeps the same
-  - The dividend payout ratio is the ratio of the total amount of dividends paid out to shareholders relative to the net income of the company
-- Profitability Ratios
-  - Return on Assets (ROA) an indicator of how profitable a company is relative to its total assets
-    - `ROA` = `Net Income` / `Avg. Total Assets`
-    - The higher the better
-  - Return on equity (ROE) is a measure of financial performance calculated by dividing net income by shareholders' equity
-    - `ROA` = `Net Income` / `Avg. Total Equity`
-  - Profit margin is the percentage of sales has turned into profits
-  - Earnings per share (EPS)
-    - `EPS` = `Net Income Available to Common Shareholders` / `# of Outshanding Shares`
-  - Price to Earning (P/E)
-    - `P/E` = `Price of Shares` / `EPS`
-    - The lower the better
-- Efficiency Ratios
-  - Inventory turnover is a ratio showing how many times a company has sold and replaced inventory during a given period
-    - It shows how fast the company is selling, important ratio for retail companies
-  - Asset turnover ratio measures the value of a company's sales or revenues relative to the value of its assets
-- Liquidity Ratios
-  - The current ratio is a liquidity ratio that measures a company's ability to pay short-term obligations or those due within one year
-    - The current ratio is the proportion of the amount of current assets which only can be sold in one year divided by the amount of current liabilities
-    - The higher the better, should be at least great than 1.0
-    - `Current Ratio` = `Current Assets` / `Current Liabilities`
-    - It measures the current liquidity of the firm
-  - Working Capital - Similar to current ratio but calculate in dollar amount
-    - `Wokring Capital` = `Current Assets` - `Current Liabilities`
-  - the quick ratio, also known as the acid-test ratio is a type of liquidity ratio, which measures the ability of a company to use its near cash or quick assets to extinguish or retire its current liabilities immediately
-    - The quick ratio is the proportion of the amount of current assets which only can be sold quickly exclude all the inventory divided by the amount of current liabilities
-    - This calculation is more conservative than the current ratio
-    - `Quick Ratio` = (`Current Assets` - `Inventory`) / `Current Liabilities`
-    - `Quick Ratio` = (`Cash` + `Account Receivables` + `Marketable Securities`) / `Current Liabilities`
-    - It measures the company's ability to liquidize immediately
-- Debt Ratios
-  - The debt-to-equity (D/E) ratio is calculated by dividing a company’s total liabilities by its shareholder equity
-    - `D/E` = `Total Liabilities` / `Avg Total Equity`
-    - Better to be less than 1
-  - The debt-to-asset (D/A) ratio measures ability to pay all liabilities
-    - Better to be less than 1
-    - Low debt ratio is safer than high debt ratio
-    - `D/A` = `Total Liabilities` / `Total Assets`
-  - Interest coverage ratio can be calculated by dividing a company's earnings before interest and taxes (EBIT) by its interest expense
-    - Lower than 1.0 is not good
+### Valuation Ratios
+
+- Price to Earnings(P/E) is the ratio for valuing a company that measures its current share price relative to its per-share earnings (EPS)
+  - A lower `P/E` ratio means the stock price is undervalued, which is good
+  - `P/E` = `Price of Shares` / `EPS`
+    - Earnings per share (EPS) = `Net Income Available to Common Shareholders` / `# of Outshanding Shares`
+- The price/earnings to growth ratio (PEG ratio) is a stock's price-to-earnings (P/E) ratio divided by the annual EPS growth rate
+  - Any PEG ratio that is smaller than 1.0 is good
+- The price-to-sales (P/S) ratio is a ratio that compares a company market cap to its revenue over the past 12 months
+- The price-to-book ratio compares a company's market value to its book value, the book value is the total book value of all the shareholders determined when they buy the shares
+- Dividend yield is a financial ratio that shows how much a company pays out in dividends each year relative to its stock price
+  - this ratio can go up when the stock price drops, since the the pay out amound keeps the same
+- The dividend payout ratio is the ratio of the total amount of dividends paid out to shareholders relative to the net income of the company
+
+### Profitability Ratios
+
+- Return on Assets (ROA) an indicator of how profitable a company is relative to its total assets
+  - `ROA` = `Net Income` / `Avg. Total Assets`
+  - The higher the better
+- Return on equity (ROE) is a measure of financial performance calculated by dividing net income by shareholders' equity
+  - `ROA` = `Net Income` / `Avg. Total Equity`
+- Profit margin is the percentage of sales has turned into profits
+
+### Efficiency Ratios
+
+- Inventory turnover is a ratio showing how many times a company has sold and replaced inventory during a given period
+  - It shows how fast the company is selling, important ratio for retail companies
+- Asset turnover ratio measures the value of a company's sales or revenues relative to the value of its assets
+
+### Liquidity Ratios
+
+- The current ratio is a liquidity ratio that measures a company's ability to pay short-term obligations or those due within one year
+  - The current ratio is the proportion of the amount of current assets which only can be sold in one year divided by the amount of current liabilities
+  - The higher the better, should be at least great than 1.0
+  - `Current Ratio` = `Current Assets` / `Current Liabilities`
+  - It measures the current liquidity of the firm
+  - It is greater than one most of the time, so when both `CA`, `CL` decrease for the same amount the ratio increase
+- Working Capital - Similar to current ratio but calculate in dollar amount
+  - `Wokring Capital` = `Current Assets` - `Current Liabilities`
+- the quick ratio, also known as the acid-test ratio is a type of liquidity ratio, which measures the ability of a company to use its near cash or quick assets to extinguish or retire its current liabilities immediately
+  - The quick ratio is the proportion of the amount of current assets which only can be sold quickly exclude all the inventory divided by the amount of current liabilities
+  - This calculation is more conservative than the current ratio
+  - `Quick Ratio` = (`Current Assets` - `Inventory`) / `Current Liabilities`
+  - `Quick Ratio` = (`Cash` + `Account Receivables` + `Marketable Securities`) / `Current Liabilities`
+  - It measures the company's ability to liquidize immediately
+
+### Solvency Ratios
+
+- The debt-to-equity (D/E) ratio is calculated by dividing a company’s total liabilities by its shareholder equity
+  - `D/E` = `Total Liabilities` / `Avg Total Equity`
+  - Better to be less than 1
+- The debt-to-asset (D/A) ratio measures ability to pay all liabilities
+  - Better to be less than 1
+  - Low debt ratio is safer than high debt ratio
+  - `D/A` = `Total Liabilities` / `Total Assets`
+- Interest coverage ratio can be calculated by dividing a company's earnings before interest and taxes (EBIT) by its interest expense
+  - Lower than 1.0 is not good
 
 ## List of Common Accounts
 
@@ -1502,35 +1674,227 @@
 - Amortization expense
 - Bad debt expense
 
-## Assumptions & Principles
+## Financial Reports
 
-### Assumptions
+- Financial reports are published at a regular intervals based on the applicable regulatory requirements
+  - financial report are generated by making the use of financial accounting for matters which external to business
+    - Managerial Accounting is different and it focuses on internal matters for management
+  - Parties like investors, creditors, government, customers, asuppliers, employee all can gain valuable info from financial reports
 
-- Entity assumption - A business is a separate economic unit
-- Continuity (going-concern) assumption - Entity will continue to exist indefinitely
-- Time period (periodicity) - Reports are prepared for a certain period only
-- Historical cost principle - Assets recorded at purchase price, adjusted for any improvements or aging
-- Stable monetary unit assumption - Dollar’s purchasing power is stable over time, same currency without inflation
+### Statement of Cashflows
 
-### Principles
+- It focuses on the cash
+- A disclosure of the use of cash including cash receipts, cash payments, and the net
+  change in cash resulting from the operating, investing, and financing
+  activities of a company during a specific period
+  - the net cashflow should matches the changes in balance cash between two balance sheets
+  - it evaluates company's liquidity
+- It reports the ending cash as shown on the balance sheet
+- The accrual concept is not used in the preparation of a cash flow statement
+- Net cashflows are consisted of three sections:
 
-- Revenues Recognition Principles - A revenue should be recognized when
-  - The service has been performed or the title of the goods have been transferred to the buyer
-  - Risk and reward has been transferred to the buyer
-  - The amount is known
-  - Collection is reasonably assured
-- The Matching Principle
-  - Resources consumed to earn revenues in an accounting period should be recorded in that period, regardless of when cash is paid
-  - Expenses are recognized when incurred, not when paid
-- Example scenarios
-  - When a service is provided and the cash transaction is completed:
-    - For the seller: cash asset increase, revenue, equity increase
-    - For the buyer: expenses equity, cash asset decrease
-  - When a service has not been provided and the cash transaction is completed: (installment sales)
-    - For the seller: Cash asset increases, Unearned Revenue (Liability) increases
-    - For the buyer: Expenses asset increases, cash asset decreases
-  - When a service is provided and the cash is not received or paid:
-    - For the seller: Accounts Receivable or asset increases, service revenue or shareholder's equity increase
-    - For teh buyer: Accounts payable or liability increases, expenses or shareholder's equity decreases
-  - When a service is provided and the cash transaction is completed:
-    - Not a transcation
+#### Operation Cashflows
+
+- Mainly related income statement items, current assets, and current liabilities
+- Cash from operating activities results from converting net income from the accrual basis to the cash basis
+- Cash from operating activities can be calculated using one of two methods and both methods give the same result
+  - The indirect method
+  - The direct method
+
+##### Direct Method
+
+- It records all records of cash transactions from operating activities
+- The following items are calculated
+  - Cash collections from customers
+    - `Ending A/R = Beg. A/R + Revenues - Collections`
+  - Cash payments to suppliers
+    - `Ending Inventory = Beg. Inventory + Purchases – COGS`
+    - `Ending A/P = Beg. A/P + Purchases – Payments`
+  - Cash payments for operating expenses, it equals
+    - add increases or substract decreases in prepaid expenses
+      - `Ending P/E = Beginning P/E + Payments for P/E – Operating Expenses`
+      - `Change in P/E = Payments for P/E – Operating Expenses`
+      - `Payments for Operating Expenses = Operating Expenses + Changes in P/E`
+    - substract increases or add decreases in accrued liabilities
+      - `Ending A/L = Beginning A/L + Operating Expenses – Payments for A/L`
+      - `Change in A/L = Operating Expenses – Payments for A/L`
+      - `Payments for A/L = Operating Expenses – Change in A/L`
+  - Cash payments for interest and income taxes
+    - For income taxes - `Ending IT Payable = Beg. IT Payable + IT Expense – Payments for IT`
+    - For interest - `Ending Interest Payable = Beg. Interest Payable + Interest Expense – Interest Payments`
+
+##### Indirect Method
+
+- The indirect method begins with net income, then adjusts that number to calculate operating cash flows
+  - Its all about remove non-cash elements or items not affecting cash from the net income amount
+- Most companies prefer this method because it:
+  - is easier to prepare
+  - focuses on the differences between net earnings and net cash flow from operating activities
+  - reveals less company information to competitors
+- Net cash provided by (used for) operating activities equals net income:
+  - add Depreciation/depletion/amortization expense (They are expenses not in cash, and they decreased the net income, should be added)
+  - substract Gain or add Loss on sale of long-term assets (This gain exists only when comparing with book value, gain increased net income, need to be removed)
+  - substract Increases or add Decreases in current assets other than cash (Account receivable does not affect cash, and it increased the net income, so its normal value needs to be substracted)
+  - add Increases or substract Decreases in current liabilities (Acount Payables does not affect cash, and it decreased the net income, so its normal value needs to be added)
+
+#### Investments Cashflows
+
+- mainly related to long-term assets and investments, it equals the sum of:
+  - `+` Sales of long-term assets
+  - `-` Purchases of long-term assets
+  - `+` Sale of investments
+  - `-` Purchase of investments
+  - `+` Collections of notes receivable
+  - `-` Loans to others
+
+#### Financing Cashflows
+
+- mainly related to long-term liabilities and owners’ equity
+  - Repurchase stock (cash outflow)
+  - Proceeds from long-term debt (cash inflow)
+  - Payments to long-term debt (cash outflow)
+  - Payments of dividends (cash outflow)
+  - Issuing equity or debt (cash inflow)
+- It equals the sum of:
+  - `+` Issuance of shares
+  - `-` Repurchase of shares
+  - `+` Borrowing
+  - `-` Payment of notes and bonds payable
+  - `-` Payment of dividends
+
+### Balance Sheet
+
+- a snapshot of the firm's financial position on a certain date
+  - Also called the `Statement of Financial Position`
+- It measures the financial health of a company
+- It has three components:
+  - Assets - resources owned by the company(e.g. Equipment, Cash)
+  - Liability - amount borrowed from others
+  - Owner's Equity - it equals `Assets - Liability`
+  - Or `Assets` on the left side, `Owner's Equity` and `Liabilities` on the right side
+    - The total of these portions must equal
+- The owners' equity portion represents the stockholders' ownership of the business assets and residual interest in assets after all liabilities are settled, it consists of:
+  - Common stock
+  - Contributed surplus
+  - Retained earnings
+  - Accumulated other comprehensive income (loss)
+- Shareholder's Equity is a form of `Net Assets` = `Assets` – `Liabilities`
+- Asset must have a certain future benefit, company must have rights to access the future benefits, and they should be quantifiable. Assets include
+  - Current assets - Cash and cash equivalents(Accounts receivable), Merchandise inventory, Prepaid expenses
+    - Generally, assets are divided into two categories: current and noncurrent assets
+  - Long-term assets - Net Property and Equipment (which equals Property and Equipment - Accumulated Depreciation) whose future benefits exceed one year or operating cycle whichever is longer
+  - Intangible assets - patent and trademarks
+  - Contract assets - negative assets
+- Liabilities include
+  - Current liabilities: Accounts payable, Taxes payable
+  - Long-term liabilities: Long-term debt
+- Balance Sheet record asset's book values and changes of value including depreciation
+- Current assets can be expected to be converted to cash, sold or consumed in the next year or within the business’s operating cycle (whichever is longer), anything that will be held longer than one year would be considered as long-term assets
+- A liability must meet the following four criteria:
+  - Past Transactions
+  - Promise of Payment
+  - Quantifiable
+  - Known Date
+- Liabilities can be non-monetary, they are the expected cost of goods and services for the money received
+  - e.g. Warranty
+- Similarily, liabilities have current liabilities and long-term liabilities (anything longer than one year)
+- The difference of cash portions between two periods of the balance sheet will be reported in details, in the statement of cash flows
+- Balance Sheet Formats
+  - Report format
+    - Assets listed at the top
+    - Start with current assets and within current assets list in order of liquidity
+    - Liabilities and equity beneath
+  - Account FOrmat
+    - Assets on the left
+    - Start with current assets and within current assets list in order of liquidity
+    - Liabilities and equity on the right
+
+### Income Statement
+
+- It accounts the net income of a company for a certain period
+  - It has net income or loss of the company at the bottom line of the statement
+- `Net Income = Revenue - Expenses + Other Income`
+  - `Revenue` - inflows from delivering or producing goods and services and other activities
+  - `Expenses` - outflows in the processes of running operations that generates revenue including depreciation of assets and concurrence of liabilities
+  - `Other Income` - inflows that is not from the ordinary course of the business
+- `Revenue/Expenses` are expected and related to the daily operation of a business
+- It shows records of gross profit, tax expenses, interest expenses, or income from operations (EBITDA, Earnings Before Interest, Taxes, Depreciation, and Amortization)
+- Income from operations is also called E.B.I.T. (earnings before interest and taxes) or Operating Income (OI)
+  - The next line is usually the income tax expense. It is the second last line, right before the bottom line (net income)
+- The net income will be used to calculate changes in equity before it is deducted from the dividends
+- Net income is an estimate. True income can be measured only when business is liquidated
+  - Investors cannot wait for business liquidation to learn about true income
+- Income Statement Formats
+  - Single-step
+    - All revenues grouped together
+    - All expenses grouped together
+  - Multi-step
+    - Shows subtotals to emphasize relationships
+    - Includes
+      - Gross profit
+      - Income from operations
+      - Income before taxes
+      - Net income
+
+#### Comprehensive Income Statement
+
+- It accounts the gains and losses that are excluded from the income statement, e.g.
+  - Unrealized gains on losses on investments that are classified as available for sale
+  - Foreign currency translation gains or losses
+  - Pension plan gains or losses
+- `Gain/Losses` are from peripheral activities, and they are unpredictable
+- Optionally, comprehensive income statement can combine with net income statement as a `Total Comprehensive Income Statement`
+
+### Changes in Equity
+
+- `Net Changes in Equity` is the amount of the changes in Owner's Equity between two balance sheet from one period to its next
+  - It uses an accumulated calculation
+- The `Statement of Changes in Equity` is also known as `Statement of Retained Earnings` in U.S. GAAP
+  - Retained earnings is portion of net income company has kept over a period of years
+- `Net Changes in Equity = Total Comprehensive Income - Changes in Equity(Compare to last period)`
+  - Net income flows from the income statment to the statement of changes in equity
+  - `Beginning Retained Earnings + Net Income - Dividends = Ending Retained Earnings`
+- It explains the changes in equity
+  - e.g. the shareholder transactions like dividend payout
+- The retained earnings will be used by the balance sheet as a part of the onwers' equity
+
+### Footnotes
+
+- Footnotes are required for any type of financial reports, it provides additional information about the items presented, for example:
+- Basis of preparation
+  - Clarification of the fiscal period covered
+  - The inclusion of consolidated entities
+  - The accounting methods
+  - The significant accounting standards and estimates
+  - Assumptions and estimates used
+- Additional material information
+  - Business acquisitions or disposals
+  - Legal actions
+  - Employee benefit plans
+  - Contingencies and commitments
+  - Significant customers
+  - Sales to related parties
+  - Segments of the firm
+
+### MD&A
+
+- Managements Discussion and Analysis(MD&A) can also be an addition section
+- It can includes discussion about
+  - The nature of the business
+  - Past performance
+  - Future outlook
+  - Effects of inflation and changing prices
+  - Off-balance sheet obligations and contractual obligations, such as purchase commitments
+  - Accounting policies that require significant management judgment
+  - the likely impact of implementing recently issued accounting standards that includes
+    - discussion about whether the new standards are applied
+    - The material effects on the financial statements or state that they are still evaluating the effects of the new standards
+  - Forward-looking expenditures and divestitures
+- In the United States, The FCC requires that the management discuss trends and identify significant events and uncertainties for publicly traded companies
+
+## Managerial Accounting
+
+- It is an internal process of collecting accounting data for business purposes
+- There is no necessity to follow any commonly defined accounting principles. The principles and systems used are entirely at the discretion of the organization
+  - The accounting principles from `IASB` and `FASB` only apply to financial accounting
+- The internal managerial accounting reports are useful to make the decisions that affect the organization’s daily operations

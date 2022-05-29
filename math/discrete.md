@@ -12,7 +12,7 @@
   - `R`, real numbers
   - `Q`, rational numbers
   - `N`, natural numbers, `{0, 1, 2, 3, ...}`
-  - `$$N^*$$`, natural nubmers excluding zero, `{1, 2, 3, ...}`
+  - $$N^*$$, natural nubmers excluding zero, `{1, 2, 3, ...}`
   - `Z`, all integers
   - `Z+`, positive integers
 
@@ -95,35 +95,43 @@
 
 ### Division Algorithm
 
-- When an integer*(a)* is divided by a positive integer*(b)* we get a quotient*(q)* and a remainder*(r)*.
-  - For example, `a = 365,840 and b = 125,460 a = bq + r`
+- When an integer _(a)_ is divided by a positive integer _(b)_ we get a quotient _(q)_ and a remainder*(r)*.
+  - For example, `a = 365840 and b = 125460 a = bq + r`
 
 ### Modular Systems
 
 - The integers (a) and (b) are **congruent modulo** `m` (where m is a natural number greater than 1) if and only if the difference `a – b`  is divisible by `m`. hence `a` and `b` both have the same remainder when divided by `m`.
-- $$a \equiv b$$ _(mod m)_, From where `a - b = k·m` (for some integer k)
-- It also means that there is calculation among the positional number in each mod n system.
-- It is like a is circling around a circle of 0 to m-1 and ends up at b.
-  so b is like the positional number for a which is counting around the circle.
+- $$a \equiv b$$ _(mod m)_, From where `a - b = k·m` (for some integer `k`)
+- It also means that there is calculation among the positional number in each mod `n` system.
+- It is like a is circling around a circle of `0` to `m-1` and ends up at `b`.
+- so `b` is like the positional number for a which is counting around the circle.
+- $$\equiv$$ symbol means the value on the left and right have the same positional number `b`
+- $$Z_m$$ is the set of all unique congruent classes set of `mod m`
+  - A congruent class $$[a]=\{a+mk\;|\;k\in\mathbb{Z}\}$$ in $$Z_m$$
+  - $$Z_m$$ contains all distinct congruent classes in a set as `{[0], [1], ..., [m-1]}`
+  - Arithmetic operation between congruent class can be performed between individual element from the two sets that have the same `k` value
 
-### Modular Arithmetic
+### Properties & Techniques
 
 - If $$a \equiv b$$ _(mod n)_ and $$c \equiv d$$ _(mod n)_ then:
   - $$a + c \equiv b + d$$ _(mod n)_
-  - $$a - c \equiv : b -  d$$ _(mod n)_
+  - $$a - c \equiv b - d$$ _(mod n)_
   - $$a \cdot c \equiv b \cdot d$$ _(mod n)_
   - $$a^k \equiv b^k$$ _(mod n)_
-- module equation holds by plus and multiply, power operations on both sides. (position number on both sides change together)
-  module equation holds by plus and multiply operations with unknowns on both sides.
+  - module equation holds by plus and multiply, power operations on both sides. (position number on both sides change together)
+- Module equation holds by plus and multiply operations with unknowns on both sides
+- $$ax\equiv b$$ _(mod m)_ is called a Congruence equation , unknown `x` is always an integer, `x` will be solved as follow.
+  - $$x\equiv b$$ _(mod m)_, where be is an positive integer that is smaller than `m`.
+  - The solution for all positive values can also be represented as $$x \in {b, b+m,b+2m, \dotsc }$$ or $$x \in \emptyset$$ if no solution is found.
 - As a result, if you want to evaluate `mod p` of an expression just do the arithmetic calculate of both side normally and then simplify by taking the remainder after dividing by p.
-- The remainder of a negative number is the negative remain add one full circle.
-- $$a x \equiv b (mod : m)$$ is called a Congruence equation , unknown `x` is always an integer, `x` will be solved as follow.
-  - $$x \equiv b (mod : m)$$, where be is an positive integer that is smaller than `m`.
-  - The solution for all positive values can also be represented as $$x \in {b, bm,b+2m, \dotsc }$$ or $$x \in \emptyset$$ if no solution is found.
-- In order to find the positional b of a large number with exponent.
+  - The remainder of a negative number is the negative remain add one full circle.
+- In order to find the positional `b` of a large number with exponent.
   - find position for the base and the raise the power of the base position number and then find the positional number for the newly generated number.
-  - Sometimes when base is not 1 and the exponent is still too big, see if it can be -1.
-  - Sometimes the base is divisible on the mod n.
+  - Sometimes when base is not `1` and the exponent is still too big, see if it can be `-1`.
+  - Sometimes the base is divisible on the mod `n`
+- Arithmetic operation between congruent classes can be treated as simple arithmetic operation between the value in `[]`. In the end, reduce the final result to smallest positive integer in `mod m`
+  - e.g. `[3]`+`[5]` in $$Z_6$$ is `[3 + 5]`=`[8]` $$[3+5]=[8]\equiv [2]$$ _(mod 6)_
+  - Modular properties still applies for simplification, e.g. for $$[8]^4$$ in $$Z_12$$, $$[8^4]=[64]^2\equiv [4]^2=[16]\equiv[4]$$ _mod 12_
 
 ### Application
 
