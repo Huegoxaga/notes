@@ -98,9 +98,10 @@
   - `Capital Recovery Factor`, denoted by `(A/P,i,N)`, gives the value, `A`, of the equal periodic payments or receipts that are equivalent to a present amount, `P`, when the interest rate is `i` and the number of periods is `N`
     - It can be easily derived from the sinking fund factor and the compound amount factor
     - It equals $$\frac{i(1+i)^N}{(1+i)^N-1}$$
-    - It is used to find the equivilent regular income required after investing in an asset when the asset loss ites value over time
-      - `A = (P-S)(A/p, i, N)+S*i`, when `P` is the cost of the equipment and `S` is its salvage value
+    - It is used to find the equivalent regular income required after investing in an asset when the asset loss its value over time
+      - `A = (P-S)(A/P, i, N)+S*i`, when `P` is the cost of the equipment and `S` is its salvage value
       - `i` in this scenario is called `cost of capital`
+      - Alternativly, Equivalent Uniform Annual Cost can be `EUAC = P(A/P, i, n) – S(A/F, i, n)` or `EUAC = (P – S)(A/F, i, n) + Pi`
   - `Series Present Worth Factor`, denoted by `(P/A,i,N)`, gives the present amount, `P`, that is equivalent to an annuity with disbursements or receipts in the amount, `A`, where the interest rate is `i` and the number of periods is `N`
     - It is the reciprocal of the capital recovery factor
     - It equals $$\frac{(1+i)^N-1}{i(1+i)^N}$$
@@ -145,17 +146,39 @@
 - When calculating cashflow it's critical to determine the entity(e.g. bank or investor) and the outflows and inflows of the cashflows for this entity, use negative sign for outflows and positive sign for inflows
 - Discounted Cashflow is a method to discount all cashflows from its future value to its present value by compounded the discounted rate(interest rate)
   - Net Present Value(NPV) is the sum of the discounted present value for all inflows and outflows
-  - The discounted rate used to make the NPV equals zero is called the Internal Rate of Return(IRR)
+  - The discounted rate used to make the NPV equals zero is called the Internal Rate of Return (IRR)
+    - Also known as the Minimum Acceptable Rate of Return (MARR)
+    - Interest rate required for any project to be accepted. Other wise, just save the cash in a bank and earn the interest
   - A investment will generates profit if the NPV is positive, the higher the NPV the more profit a investor can gain from it
-  - IRR is a reference for the rate of return, it can be used to see it the rate of return is desirable
+    - For an independent project, do it when NPV is greater than 0, it means one can make money from it
+    - For mutually exclusive projects, select one with the highest NPV
+    - For related but not mutually exclusive, combine them into an exhaustive list of `2^n` mutually exclusive sets, then pick one from the set
+  - Present worth analysis - Net Present Worth = Present worth benefits – Present worth of costs
+    - Present worth requires that the analysis is made between equal time periods
+    - When the project length is different
+      - Repeated Lives Approach - one can find the least common multiple (LCM) of the project length and repeat the projects until they have the same total length
+      - Study Period Approach - Adopt specified study period for comparison, realizing need of salvage value at end of period and repeat the project with shorter length once
+        - e.g. comparing a 7-year and 13-year project, repeat first project after 7 years and stop it in 3 years for a total of 10 years vs stopping the 13-year project at the end of 10th year
+      - For infinite analysis period use the perpetuities formula for the capitalized value or the present worth `P`, it equals `A/i` where `i` is the interest or `MARR` for each period
+      - Use annual worth analysis by converting present values and one-time values on the timeline to equivalent uniform values
+        - For projects with infinite length, use `A = Pi`
+        - For irregular cash disbursements over the analysis period it is convenient to convert them to a present worth cost, rather than using the annual worth cost approach
+  - IRR is a reference for the rate of return, it can be used to see if the rate of return is desirable
   - The Money Weighed Rate of Return(MWRR) of a investment portfolio is used to see the return rate of this investment, the calculation is the same as calculating `IRR`
-  - The Holding Period Return(HPR) is a way to evaluate the performance of a portfolio for each holding period(time period), `HPR = EndValue+Cashflows/BeginValue - 1`
+  - The Holding Period Return(HPR) is a way to evaluate the performance of a portfolio for each holding period(time period), `HPR = (EndValue+Cashflows)/BeginValue - 1`
     - Begin Values - The balance of the investment account at the beginning of a certain time period
     - End Values - The balance of the investment account at the end of a certain time period including any payouts
     - Cashflows - any payouts from the bank
   - Time Weighted Rate of Return(TWRR) is the preferred way to evaluate the investment performance, calculated by adding all HPR values by 1(change factor) and find `Nth` root of their product where `N` is the number of HPR values or time period, lastly substruct the final result by `1`
     - It is the geometric mean of the change factors of all HPR values
   - For all of the above calculation for return, a nagative HPR means losses, and a positive HPR means gains
+- Payback Period - number of years it takes for an investment to be recouped
+  - It equals `First cost / Annual savings`, and disregard all other factors including scrap value
+  - If annual savings not constant, payback period is computed by deducting each year of savings from the first cost until the first cost is recovered
+  - the project with the shorter payback period wins
+  - Payback period of two years is often acceptable
+  - More than four years is usually unacceptable
+  - The payback period should not be used as a the sole criterion for evaluating projects
 
 # Statistics Concepts
 
@@ -1478,6 +1501,7 @@
     - `Accrued Expenses` (unrecorded expenses) - Record expense before paying cash. e.g. Salaries, interest, and income taxes
     - `Accrued Revenues` (unrecorded revenues) - Record revenue before collecting cash. Earned and will collect next period
 - It happens for accrual basis accounting, for cash basis there is no need
+- The adjusting entry to record depreciation expense is: Debit Depreciation Expense and Credit Accumulated Depreciation
 - The next step after adjusting entries is closing the Books
   - Prepares the accounts for next period
   - Sets revenues, expenses, and dividends to zero
@@ -1546,6 +1570,7 @@
   - Better to be less than 1
   - Low debt ratio is safer than high debt ratio
   - `D/A` = `Total Liabilities` / `Total Assets`
+  - Since it normally less than one, when both terms increase for the same amount the ratio increase
 - Interest coverage ratio can be calculated by dividing a company's earnings before interest and taxes (EBIT) by its interest expense
   - Lower than 1.0 is not good
 
@@ -1678,89 +1703,59 @@
 
 - Financial reports are published at a regular intervals based on the applicable regulatory requirements
   - financial report are generated by making the use of financial accounting for matters which external to business
-    - Managerial Accounting is different and it focuses on internal matters for management
   - Parties like investors, creditors, government, customers, asuppliers, employee all can gain valuable info from financial reports
+- The reports should be prepared in the following order
+  - Income Statement, the net income is calculated first
+  - Changes in Equity, the net income from the income statement is required here
+  - Balance Sheet, The retained earnings from changes in equity will be used here as a part of the onwers' equity
+  - Statement of Cashflows, The changes in cash between two balance sheets can be elaborated here
+    - The indirect method also needs the net income
 
-### Statement of Cashflows
+### Income Statement
 
-- It focuses on the cash
-- A disclosure of the use of cash including cash receipts, cash payments, and the net
-  change in cash resulting from the operating, investing, and financing
-  activities of a company during a specific period
-  - the net cashflow should matches the changes in balance cash between two balance sheets
-  - it evaluates company's liquidity
-- It reports the ending cash as shown on the balance sheet
-- The accrual concept is not used in the preparation of a cash flow statement
-- Net cashflows are consisted of three sections:
+- It accounts the net income of a company for a certain period
+  - It has net income or loss of the company at the bottom line of the statement
+- `Net Income = Revenue - Expenses + Other Income`
+  - `Revenue` - inflows from delivering or producing goods and services and other activities
+  - `Expenses` - outflows in the processes of running operations that generates revenue including depreciation of assets and concurrence of liabilities
+  - `Other Income` - inflows that is not from the ordinary course of the business
+- `Revenue/Expenses` are expected and related to the daily operation of a business
+- It shows records of gross profit, tax expenses, interest expenses, or income from operations (EBITDA, Earnings Before Interest, Taxes, Depreciation, and Amortization)
+- Income from operations is also called E.B.I.T. (earnings before interest and taxes) or Operating Income (OI)
+  - The next line is usually the income tax expense. It is the second last line, right before the bottom line (net income)
+- Net income is an estimate. True income can be measured only when business is liquidated
+  - Investors cannot wait for business liquidation to learn about true income
+- Income Statement Formats
+  - Single-step
+    - All revenues grouped together
+    - All expenses grouped together
+  - Multi-step
+    - Shows subtotals to emphasize relationships
+    - Includes
+      - Gross profit
+      - Income from operations
+      - Income before taxes
+      - Net income
 
-#### Operation Cashflows
+#### Comprehensive Income Statement
 
-- Mainly related income statement items, current assets, and current liabilities
-- Cash from operating activities results from converting net income from the accrual basis to the cash basis
-- Cash from operating activities can be calculated using one of two methods and both methods give the same result
-  - The indirect method
-  - The direct method
+- It accounts the gains and losses that are excluded from the income statement, e.g.
+  - Unrealized gains on losses on investments that are classified as available for sale
+  - Foreign currency translation gains or losses
+  - Pension plan gains or losses
+- `Gain/Losses` are from peripheral activities, and they are unpredictable
+- Optionally, comprehensive income statement can combine with net income statement as a `Total Comprehensive Income Statement`
 
-##### Direct Method
+### Changes in Equity
 
-- It records all records of cash transactions from operating activities
-- The following items are calculated
-  - Cash collections from customers
-    - `Ending A/R = Beg. A/R + Revenues - Collections`
-  - Cash payments to suppliers
-    - `Ending Inventory = Beg. Inventory + Purchases – COGS`
-    - `Ending A/P = Beg. A/P + Purchases – Payments`
-  - Cash payments for operating expenses, it equals
-    - add increases or substract decreases in prepaid expenses
-      - `Ending P/E = Beginning P/E + Payments for P/E – Operating Expenses`
-      - `Change in P/E = Payments for P/E – Operating Expenses`
-      - `Payments for Operating Expenses = Operating Expenses + Changes in P/E`
-    - substract increases or add decreases in accrued liabilities
-      - `Ending A/L = Beginning A/L + Operating Expenses – Payments for A/L`
-      - `Change in A/L = Operating Expenses – Payments for A/L`
-      - `Payments for A/L = Operating Expenses – Change in A/L`
-  - Cash payments for interest and income taxes
-    - For income taxes - `Ending IT Payable = Beg. IT Payable + IT Expense – Payments for IT`
-    - For interest - `Ending Interest Payable = Beg. Interest Payable + Interest Expense – Interest Payments`
-
-##### Indirect Method
-
-- The indirect method begins with net income, then adjusts that number to calculate operating cash flows
-  - Its all about remove non-cash elements or items not affecting cash from the net income amount
-- Most companies prefer this method because it:
-  - is easier to prepare
-  - focuses on the differences between net earnings and net cash flow from operating activities
-  - reveals less company information to competitors
-- Net cash provided by (used for) operating activities equals net income:
-  - add Depreciation/depletion/amortization expense (They are expenses not in cash, and they decreased the net income, should be added)
-  - substract Gain or add Loss on sale of long-term assets (This gain exists only when comparing with book value, gain increased net income, need to be removed)
-  - substract Increases or add Decreases in current assets other than cash (Account receivable does not affect cash, and it increased the net income, so its normal value needs to be substracted)
-  - add Increases or substract Decreases in current liabilities (Acount Payables does not affect cash, and it decreased the net income, so its normal value needs to be added)
-
-#### Investments Cashflows
-
-- mainly related to long-term assets and investments, it equals the sum of:
-  - `+` Sales of long-term assets
-  - `-` Purchases of long-term assets
-  - `+` Sale of investments
-  - `-` Purchase of investments
-  - `+` Collections of notes receivable
-  - `-` Loans to others
-
-#### Financing Cashflows
-
-- mainly related to long-term liabilities and owners’ equity
-  - Repurchase stock (cash outflow)
-  - Proceeds from long-term debt (cash inflow)
-  - Payments to long-term debt (cash outflow)
-  - Payments of dividends (cash outflow)
-  - Issuing equity or debt (cash inflow)
-- It equals the sum of:
-  - `+` Issuance of shares
-  - `-` Repurchase of shares
-  - `+` Borrowing
-  - `-` Payment of notes and bonds payable
-  - `-` Payment of dividends
+- `Net Changes in Equity` is the amount of the changes in Owner's Equity between two balance sheet from one period to its next
+  - It uses an accumulated calculation
+- The `Statement of Changes in Equity` is also known as `Statement of Retained Earnings` in U.S. GAAP
+  - Retained earnings is portion of net income company has kept over a period of years
+- `Net Changes in Equity = Total Comprehensive Income - Changes in Equity(Compare to last period)`
+  - `Beginning Retained Earnings + Net Income - Dividends = Ending Retained Earnings`
+- It explains the changes in equity
+  - e.g. the shareholder transactions like dividend payout, and issurance of common shares
 
 ### Balance Sheet
 
@@ -1798,65 +1793,103 @@
 - Liabilities can be non-monetary, they are the expected cost of goods and services for the money received
   - e.g. Warranty
 - Similarily, liabilities have current liabilities and long-term liabilities (anything longer than one year)
-- The difference of cash portions between two periods of the balance sheet will be reported in details, in the statement of cash flows
 - Balance Sheet Formats
   - Report format
     - Assets listed at the top
     - Start with current assets and within current assets list in order of liquidity
     - Liabilities and equity beneath
-  - Account FOrmat
+  - Account Format
     - Assets on the left
     - Start with current assets and within current assets list in order of liquidity
     - Liabilities and equity on the right
 
-### Income Statement
+### Statement of Cashflows
 
-- It accounts the net income of a company for a certain period
-  - It has net income or loss of the company at the bottom line of the statement
-- `Net Income = Revenue - Expenses + Other Income`
-  - `Revenue` - inflows from delivering or producing goods and services and other activities
-  - `Expenses` - outflows in the processes of running operations that generates revenue including depreciation of assets and concurrence of liabilities
-  - `Other Income` - inflows that is not from the ordinary course of the business
-- `Revenue/Expenses` are expected and related to the daily operation of a business
-- It shows records of gross profit, tax expenses, interest expenses, or income from operations (EBITDA, Earnings Before Interest, Taxes, Depreciation, and Amortization)
-- Income from operations is also called E.B.I.T. (earnings before interest and taxes) or Operating Income (OI)
-  - The next line is usually the income tax expense. It is the second last line, right before the bottom line (net income)
-- The net income will be used to calculate changes in equity before it is deducted from the dividends
-- Net income is an estimate. True income can be measured only when business is liquidated
-  - Investors cannot wait for business liquidation to learn about true income
-- Income Statement Formats
-  - Single-step
-    - All revenues grouped together
-    - All expenses grouped together
-  - Multi-step
-    - Shows subtotals to emphasize relationships
-    - Includes
-      - Gross profit
-      - Income from operations
-      - Income before taxes
-      - Net income
+- It focuses on the cash
+- A disclosure of the use of cash including cash receipts, cash payments, and the net change in cash resulting from the operating, investing, and financing activities of a company during a specific period
+  - the net cashflow should matches the changes in balance cash between two balance sheets
+  - it evaluates company's liquidity
+- It has the purpose of:
+  - determines the ability of the company to pay dividends and interest
+  - provides information about the cash receipts and cash payments during a period
+  - predicts future cash flows
+- It reports the difference of liabilities, assets, equity in cash as shown between balance sheets
+- The accrual concept is not used in the preparation of a cash flow statement
+  - It is the only report that is calculated on a cash basis
+- Net cashflows are consisted of three sections: operating, investing, financing (in strict order)
+- Exchanges between asset and equity are not cashflows, they are `NIF` (Non-cash Investing and Financing Activities)
+  - e.g. borrow cash to purchase, exchange common shares to buildings
+  - This info can be included in the footnotes
 
-#### Comprehensive Income Statement
+#### Operation Cashflows
 
-- It accounts the gains and losses that are excluded from the income statement, e.g.
-  - Unrealized gains on losses on investments that are classified as available for sale
-  - Foreign currency translation gains or losses
-  - Pension plan gains or losses
-- `Gain/Losses` are from peripheral activities, and they are unpredictable
-- Optionally, comprehensive income statement can combine with net income statement as a `Total Comprehensive Income Statement`
+- Mainly related income statement items, depreciation, gain/loss, changes in current assets, and current liabilities
+- Cash from operating activities results from converting net income from the accrual basis to the cash basis
+- Cash from operating activities can be calculated using one of two methods and both methods give the same result
+  - The indirect method
+  - The direct method
 
-### Changes in Equity
+##### Direct Method
 
-- `Net Changes in Equity` is the amount of the changes in Owner's Equity between two balance sheet from one period to its next
-  - It uses an accumulated calculation
-- The `Statement of Changes in Equity` is also known as `Statement of Retained Earnings` in U.S. GAAP
-  - Retained earnings is portion of net income company has kept over a period of years
-- `Net Changes in Equity = Total Comprehensive Income - Changes in Equity(Compare to last period)`
-  - Net income flows from the income statment to the statement of changes in equity
-  - `Beginning Retained Earnings + Net Income - Dividends = Ending Retained Earnings`
-- It explains the changes in equity
-  - e.g. the shareholder transactions like dividend payout
-- The retained earnings will be used by the balance sheet as a part of the onwers' equity
+- It records all records of cash transactions from operating activities
+- The following items are calculated
+  - Cash collections from customers
+    - `Ending A/R = Beg. A/R + Revenues - Collections`
+  - Cash payments to suppliers
+    - `Ending Inventory = Beg. Inventory + Purchases – COGS`
+    - `Ending A/P = Beg. A/P + Purchases – Payments`
+  - Cash payments for operating expenses, it equals
+    - add increases or substract decreases in prepaid expenses
+      - `Ending P/E = Beginning P/E + Payments for P/E – Operating Expenses`
+      - `Change in P/E = Payments for P/E – Operating Expenses`
+      - `Payments for Operating Expenses = Operating Expenses + Changes in P/E`
+    - substract increases or add decreases in accrued liabilities
+      - `Ending A/L = Beginning A/L + Operating Expenses – Payments for A/L`
+      - `Change in A/L = Operating Expenses – Payments for A/L`
+      - `Payments for A/L = Operating Expenses – Change in A/L`
+  - Cash payments for interest and income taxes
+    - For income taxes - `Ending IT Payable = Beg. IT Payable + IT Expense – Payments for IT`
+    - For interest - `Ending Interest Payable = Beg. Interest Payable + Interest Expense – Interest Payments`
+
+##### Indirect Method
+
+- The indirect method begins with net income, then adjusts that number to calculate operating cash flows
+  - Its all about remove non-cash elements or items not affecting cash from the net income amount
+  - For records (on most revenue and expenses accounts) that are embedded in the calculation of net income, ignore all of them
+- Most companies prefer this method because it:
+  - is easier to prepare
+  - focuses on the differences between net earnings and net cash flow from operating activities
+  - reveals less company information to competitors
+- Net cash provided by (used for) operating activities equals net income:
+  - add Depreciation/depletion/amortization expense (They are expenses not in cash, and they decreased the net income, should be added)
+  - substract Gain or add Loss on sale of long-term assets (This gain exists only when comparing with book value, gain increased net income, need to be removed)
+  - substract Increases or add Decreases in current assets other than cash (Account receivable does not affect cash, and it increased the net income, so its normal value needs to be substracted)
+  - add Increases or substract Decreases in current liabilities (Acount Payables does not affect cash, and it decreased the net income, so its normal value needs to be added)
+
+#### Investments Cashflows
+
+- mainly related to cash transactions in long-term assets and investments, it equals the sum of:
+  - `+` Sales of long-term assets
+  - `-` Purchases of long-term assets
+  - `+` Sale of investments
+  - `-` Purchase of investments
+  - `+` Collections of notes receivable
+  - `-` Loans to others
+
+#### Financing Cashflows
+
+- mainly related to cash transactions in long-term liabilities and owners' equity
+  - Repurchase stock (cash outflow)
+  - Proceeds from long-term debt (cash inflow)
+  - Payments to long-term debt (cash outflow)
+  - Payments of dividends (cash outflow)
+  - Issuing equity or debt (cash inflow)
+- It equals the sum of:
+  - `+` Issuance of shares
+  - `-` Repurchase of shares
+  - `+` Borrowing
+  - `-` Payment of notes and bonds payable
+  - `-` Payment of dividends
 
 ### Footnotes
 
@@ -1894,6 +1927,7 @@
 
 ## Managerial Accounting
 
+- Managerial Accounting focuses on internal matters for management
 - It is an internal process of collecting accounting data for business purposes
 - There is no necessity to follow any commonly defined accounting principles. The principles and systems used are entirely at the discretion of the organization
   - The accounting principles from `IASB` and `FASB` only apply to financial accounting

@@ -979,6 +979,12 @@ It is used to allow devices to support Alexa.
 - It defines the triggers which can perform auto depolyment once there is a new push in assigned remote repository
 - It works with existing depolyed projects
 
+### CodeDeploy
+
+- It creates application and tag ECS, EC2, or Lambda for deployment
+- The deployment steps are defined in the `appspec.yml` file, [click here](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html) for details
+- CodePipeline can trigger the deployment action
+
 ### CodeStar
 
 - It uses cloudformation to create all above tools in one click

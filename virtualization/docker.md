@@ -36,6 +36,10 @@
 - Docker Desktop for Windows,
   - Docker Desktop for Windows needs Windows 10 Pro 64 bit and activates Hyper-V.
   - [Click](https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe) to download the latest stable version. Double click to install.
+- Docker on Linux
+  1. `sudo yum update && sudo yum install docker` or `sudo apt-get update && sudo apt-get install docker.io`
+  2. add current user to `docker` group which enable priviliege to run docker command without `sudo`
+  3. run docker at start `sudo systemctl enable docker.service` and `sudo systemctl start docker.service`
 
 ## Usage
 
@@ -61,7 +65,8 @@
 - run `docker ps` check the container status.
 - run `docker system df` check the docker file size on the Host OS.
 - run `docker container ls` check running container info.
-- run `docker container ls -a` check all container info including stopped container.
+  - `docker exec -it <container name> /bin/bash` go in a running container
+- run `docker container ls -a` check all container info including stopped container
 - run `docker volume ls` check all volumns.
 - run `docker volume inspect <VolumnName>` on host machine to check detailed info.
 - run `docker inspect <ContainerNameorID>` check container detailed info.

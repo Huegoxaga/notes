@@ -135,33 +135,95 @@
 
 ### Application
 
+#### Check Digit
+
 - The following application has the check digit located at the last digit.
-  - Airline Tickets - The check digit is the remainder of the main part divided by 7.
-  - Social Insurance Number
-    - Luhn algorithm
-      - Remove the check digit x
-      - Double the even position digits from left and add their digits: (only here: if 12, add 1 and 2. if 14 its 1+4)
-      - Add the rest of the digits:
-      - multiply by -1
-      - The check digit is mod 10
-  - UPC – Universal Product Code
-    - _check digit =_ $$-(3a_11+a_10+3a_9+a_8+3a_7+a_6+3a_5+a_4+3a_3+a_2+3a_1); (mod: 10)$$
-  - ISBN – International Standard Book Number
-    - $$a_0 = a_9+2a_8+3a_7+4a_6+5a_5+6a_4+7a_3+8a_2+9a_1 ; (mod : 11)$$>)
-- Round-Robin Tournament
-  - Each team must play against every team once.
-  - In even number of teams
-    - each team plays in every round
-    - the number of rounds is 1 less than the total number of teams.
-  - In odd number of teams
-    - one team stays with a `bye` (has no match to play)in every round
-    - the number of rounds is the same as the total number of teams.
-  - In a tournament with N teams
-    - Team X will be playing against X in round r, `Y = r-X (mod N or N-1)`
-    - When N is odd and Y = X(assumes there is a unknown team x that plays with itself), the team is assigned a bye.
-    - When N is even, the schedule is made as there are one less number of teams mod is (N-1) and in case Y = X, the team is assigned to play with Team N.
-      - round 0 is round N.
-      - careful about TeamN in even Team situation.
+- Airline Tickets - The check digit is the remainder of the main part divided by 7.
+- Social Insurance Number
+  - Luhn algorithm
+    - Remove the check digit x
+    - Double the even position digits from left and add their digits: (only here: if 12, add 1 and 2. if 14 its 1+4)
+    - Add the rest of the digits:
+    - multiply by -1
+    - The check digit is mod 10
+- UPC – Universal Product Code
+  - _check digit =_ $$-(3a_11+a_10+3a_9+a_8+3a_7+a_6+3a_5+a_4+3a_3+a_2+3a_1); (mod: 10)$$
+- ISBN – International Standard Book Number
+  - $$a_0 = a_9+2a_8+3a_7+4a_6+5a_5+6a_4+7a_3+8a_2+9a_1 ; (mod : 11)$$>)
+
+#### Round-Robin Tournament
+
+- Each team must play against every team once.
+- In even number of teams
+  - each team plays in every round
+  - the number of rounds is 1 less than the total number of teams.
+- In odd number of teams
+  - one team stays with a `bye` (has no match to play)in every round
+  - the number of rounds is the same as the total number of teams.
+- In a tournament with N teams
+  - Team X will be playing against X in round r, `Y = r-X (mod N or N-1)`
+  - When N is odd and Y = X(assumes there is a unknown team x that plays with itself), the team is assigned a bye.
+  - When N is even, the schedule is made as there are one less number of teams mod is (N-1) and in case Y = X, the team is assigned to play with Team N.
+    - round 0 is round N.
+    - careful about TeamN in even Team situation.
+
+#### Euclidian Algorithm
+
+- it can be intepreted as calculating the mod of the two precedent numbers
+  1. step `-1`, 365840
+  2. step `0`, 125460
+  3. step `1`, 114920 ($$365840 \equiv 125460$$)
+  4. step `2`, 10540 ($$125460 \equiv 114920$$)
+  5. step `3`, 9520 ($$114920 \equiv 10540$$)
+  6. step `4`, 1020 ($$10540 \equiv 9520$$)
+  7. step `5`, 340 ($$9520 \equiv 1020$$)
+  8. step `5`, 0 ($$1020 \equiv 340$$)
+  9. As a result, GCF(125460, 365840) = 340
+- The extended Euclidian algorithm can find `x` and `y` such that `mx + ny = GCD(m, n)`
+  - For `m = 539` and `n = 396`
+    | i | $$q_i$$ | $$r_i$$ | $$x_i$$ | $$y_i$$ |
+    |----|---------|---------|---------|---------|
+    | | | ｜$$x_{i-2}-x_{i-2}\cdot q_i$$|$$y_{i-2}-y_{i-2}\cdot q_i$$|
+    | -1 | | 539 | 1 | 0 |
+    | 0 | | 396 | 0 | 1 |
+    | 1 | 1 | 143 | 1 | -1 |
+    | 2 | 2 | 110 | -2 | 3 |
+    | 3 | 1 | 33 | 3 | -4 |
+    | 4 | 3 | 11 | -11 | 15 |
+    | 5 | 3 | 0 | 36 | -49 |
+  - `GCD(539, 396) = 11`
+  - `x = -11`, `y = 15` since `539(-11) + 396(15)=11`
+  - Adjust the `x`, `y` to a factor if the right side of the equation is a product of `GCD(m, n)` and an integer
+
+#### RSA System
+
+- Steps to create a RSA system
+  1. Pick two prime numbers `p` and `q`
+  2. Find `n` and `ϕ`, where `n = p·q` and `ϕ = (p-1)(q-1)`
+  3. Find randomly pick an encoding exponent `e` that `GCD(e, ϕ) = 1`
+  4. Find decoding exponent `d`, where `e·d + ϕ·y = 1`
+  5. `n` and `e` will be released for public, and `d` will be kept as a secret
+  6. If `m` is the a message represented as a numeric value and `s` is the secret message represented as another numeric value
+     - Use $$s=m^e$$ _mod n_ to encode
+     - Use $$m=s^d$$ _mod n_ to decode
+
+## Graphs
+
+- Vertices are points on the graph
+  - For a triangle, vertices can be written as `{A, B, C}`
+- Edges are lines on the graph connected by two vertices
+  - For a triangle, edges can be written as `{a, b, c}` or `{(A, B), (A, C), (A, C)}`
+  - It can be represented by lower case letters or a pair of vertices like AB or $$\overline{AB}$$
+  - When two vertics are connected by an edge, they are adjacent vertices
+- A complete graph is when every vertex is connected to every other vertex in that graph
+  - A triangle is a complete graph
+- The degree of a graph of a vertex equals the number of edges that vertex connected to, e.g. `deg(A) = 2` if edges `AB`, `AC` exists
+- Adjacency matrix has all vertices of a graph represent each row and column, then each element in the matrix is the number of edges between the column vertex and row vertex
+  - It will be a `n` by `n` matrix if it has `n` vertices
+  - The diagonal of such matrix is always zero since on edges between the vertex itself
+  - The matrix always equals to its transpose, it is symmetric and it will keep the same when reflected by the diagonal
+- Adjacency list uses a list form to represent the adjacency of a graph, it uses each vertex as the key and the value is a list a vertices it conncected to
+  - For a triangle, `A: B, C`, `B: A, C`, `C: A, B`
 
 ## Boolean Algebra
 
@@ -188,7 +250,7 @@
 - If every term of the sum form is a product of the variables, the expression is in Sum-of-Product (SOP) form. `A X B + B X C`
 - If every term of the product form is a sum of variables, the expression is in Product-of-Sum (POS) form. (`(A + B) X (B + C)`)
 
-#### Manipulate Boolean Expression
+### Manipulate Boolean Expression
 
 - Here are the laws related to boolean expressions. Each law has an `AND` form and an `OR` form
   - Identity law: `1A = A`, `0 + A = A`
@@ -202,7 +264,7 @@
   - De Morgan's law: $$\overline{AB} = \overline{A} + \overline{B} $$, $$\overline{A+B} = \overline{A} \overline{B} $$
   - $$A (\overline{A} + B) = AB$$, $$A + \overline{A}B = A+B$$
 
-#### Truth Tables
+### Truth Tables
 
 - It is used to list all the possible combination of the boolean variable in an expression.
 - ![Truth Tables](img/d-truth-table.png)
@@ -211,7 +273,7 @@
 - An unknown expression can be solved using truth table.
   - ![Solve Expression](img/d-solve-expression.png)
 
-#### Karnaugh Maps
+### Karnaugh Maps
 
 - It can be used to represent the result of a unknown expresssion according all the possible combination of its variables.
 - For two variables:
@@ -226,3 +288,17 @@
   - we make the biggest loops possible and
   - we make the smallest amount of loops.
 - For all previous Boolean expressions, each term contained all variables present. If an expression has terms that are missing a variable (or more variables) we can expand that term by adding all possible combinations of the missing variable (variables).
+
+### Application
+
+#### Parity Checking
+
+- For binary data, one extra bit is used in the end to make sure the total number of 1's is even for even parity checking or add for add parity checking
+- This method can only detect one bit error
+- Decoding is done by removing extra bit
+- Send message with the parity bit twice for error detection
+  - When there is a one bit difference in two messages the message that matches the parity bit will be the correct one
+  - It can't find the correct message when error happens in pairs
+- The efficiency of a code word can be calculated as the percentage of `# of bits of the actual message / # of bits transmitted`
+- The Hamming distance is the number of bits in which the 2 code words disaggree
+  - e.g the Hamming distance between messages `101011` and `010011` is `3` because they have 3 bits different
