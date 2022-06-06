@@ -1,14 +1,12 @@
 # Quantitative Analysis
 
-## Time Value of Money
-
 - The time value of money (TVM) is the concept that money you have now is worth more than the identical sum in the future due to its potential earning capacity, the time value can be:
   - `Present Value (PV)` is the current value before making the investment
   - `Future Value (FV)` is the future value after making the investment
 - `Interest` is the difference between the amount of money lent and the amount of money later repaid
 - The `Interest Rate` is the amount charged, expressed as a percentage of the principal, by a lender to a borrower for the use of assets
 
-### Components of Interest Rate
+## Components of Interest Rate
 
 - The interest rate is consisted of the following components:
   - Risk Premium Components - this part compensate the risk for lending, it includes:
@@ -23,7 +21,7 @@
   - The interest rate can be seen as a `Discounted Rate` by discounting the future value of the total return
   - It can be treated as the `Opportunity Cost` of the current consumption of the money if not lending it
 
-### Interest Calculation
+## Interest Calculation
 
 - This base unit of time over which an interest rate is calculated is called the interest period
   - If the time period of an interest rate is not spcified, it is an annual interest rate
@@ -42,7 +40,7 @@
   - Then, `FV = PV*e^(rN)` and `EAR=e^r-1` where `r` is the stated compound rate and `N` is the stated number of time period for the stated rate
   - Continuous compound yields the highest interest one can get from compounding, given the same interest rate
 
-### Depreciation Calculation
+## Depreciation Calculation
 
 - Book value = Cost basis – Depreciation charges made to date
 - Straight-Line Depreciation (SLD)
@@ -54,7 +52,7 @@
   - The declining balance method (DBD) of depreciation models the loss in value of an asset in a period as a constant proportion of the asset’s current value
   - Book Value at the end of period n using DBD equals $$P(1-d)^n$$, where `P` is the initial book value, `d` is the constant depreciation percentage, `n` is the number of periods
 
-### Cash Flow Analysis
+## Cash Flow
 
 - A `Cash Flow` means a certain amount of money disbursed or receipted, usually used when making investment
 - A `Cash Flow Diagram` is a graph that summarizes the timing and magnitude of cash flows as they occur over time
@@ -78,19 +76,22 @@
     - When the interest rate can't be find in the table, or for a more accurate estimation, linear interpolation is often used
     - It makes the assumption that given the same number of periods, the factor and the interest rate has a linear relationship
 
-#### Types of Cash Flow
+### Single Cash Flow
 
-- A single cashflow - a lump sum of money, a single disbursement or receipt, it can be measured by:
+- A single cash flow - a lump sum of money, a single disbursement or receipt, it can be measured by:
   - `Compound Amount Factor`, denoted by `(F/P,i,N)`, gives the future amount, `F`, that is equivalent to a present amount, `P`, when the interest rate is `i` and the number of periods is `N`
     - It equals $$(1+i)^N$$
   - `Present Worth Factor`, denoted by `(P/F,i,N)`, gives the present amount, `P`, that is equivalent to a future amount, `F`, when the interest rate is `i` and the number of periods is `N`
     - It is the reciprocal of the compound amount factor
     - It equals $$\frac{1}{(1+i)^N}$$
-- Regular cashflows, also known as annuity - continous contribution, same amount every time, it can be measured by:
+
+### Regular Cash Flows
+
+- Regular cash flows, also known as annuity - continous contribution, same amount every time, it can be measured by:
   - `Sinking Fund Factor`, denoted by `(A/F,i,N)`, gives the size, `A`, of a repeated small receipt or disbursement that is equivalent to a large future amount, `F`, if the interest rate is `i` and the number of periods is `N`
     - It equals $$\frac{i}{(1+i)^N-1}$$
     - A sinking fund is an interest-bearing account into which regular deposits are made in order to accumulate some amount
-    - To calculate the amount owe after repay the mortgage for a certain number of period, calculate the total amount own at the end of the period and minus the amount saved by repaying early using the sinking fund factor
+    - To calculate the amount owe after repay the mortgage after a certain period, calculate the future value of the total amount minus the future value of all the repayment at the end of that period
   - `Uniform Series Compound Amount Factor`, denoted by `(F/A,i,N)`, gives the future value, `F`, that is equivalent to a series of equal-sized receipts or disbursements, `A`, when the interest rate is `i` and the number of periods is `N`
     - It is the reciprocal of the sinking fund factor
     - It equals $$\frac{(1+i)^N-1}{i}$$
@@ -106,16 +107,16 @@
     - It is the reciprocal of the capital recovery factor
     - It equals $$\frac{(1+i)^N-1}{i(1+i)^N}$$
     - `Capitalized Value` of a series can be obtained by getting the limit of the number of periods `N` to infinity in the in the series present worth factor calculation
-  - Time values of regular cashflows can be calculatd by stacking each individual single cashflow with different number of time period together, the calculation can be simplified using the formula for the sum of a geometric series
-    - Regular cashflows calculation can have a end mode(default for most calculators) which means the cashflow is added at the end of each time period
-    - Regular cashflows calculation can have a begin mode which means the cashflow is added at the beginning of each time period
+  - Time values of regular cash flows can be calculatd by stacking each individual single cash flow with different number of time period together, the calculation can be simplified using the formula for the sum of a geometric series
+    - Regular cash flows calculation can have a end mode(default for most calculators) which means the cash flow is added at the end of each time period
+    - Regular cash flows calculation can have a begin mode which means the cash flow is added at the beginning of each time period
     - Begin mode will compound the interest one more time at the end
-  - An annuity is a contract between you and an insurance company in which you make a lump-sum payment or series of payments and, in return, receive regular cashflows, beginning either immediately or at some point in the future. it can be further categorized as:
-    - Annuity Due - regular cashflows, begin mode
+  - An annuity is a contract between you and an insurance company in which you make a lump-sum payment or series of payments and, in return, receive regular cash flows, beginning either immediately or at some point in the future. it can be further categorized as:
+    - Annuity Due - regular cash flows, begin mode
       - It can be treated as ordinary annuities which has one less period and count the first payment directly as a present worth. e.g. `P = P1 + A(P/A, i, N-1)`
       - Optionally, Determine the present worth of a standard annuity at time −1 and then find its worth at time 0 (now).
-    - Ordinary Annuities - regular cashflows, end mode
-    - Perpetuities - regular cashflows, end mode, infinite number of time periods
+    - Ordinary Annuities - regular cash flows, end mode
+    - Perpetuities - regular cash flows, end mode, infinite number of time periods
       - `P = A/i` is known as the capitalized value formula
       - The time value for perpetuities equals payment amount `A` divided by the interest rate `i` for the payment time period
       - For infinite number of time periods the present worth can be: $$P=\lim_{N\to \infty}A(P/A,i,N)=\frac{A}{i}$$
@@ -127,24 +128,34 @@
   - Continuous Compounding Series Present Worth: $$[P/A,r,n]=\frac{e^{rn}-1}{e^{rn}(e^r-1)}$$
 - `Arithmetic Gradient Series` - a series of receipts or disbursements that starts at zero at the end of the first period and then increases by a constant amount from period to period
   - `Arithmetic Gradient to Annuity Conversion Factor`, denoted by `(A/G,i,N)`, gives the uniform annuity equivalent value of gradient component of each cash flow in terms of a equal amount `A`, where `G` is the constant increase in receipts or disbursements per period, the interest rate is `i`, and the number of periods is `N`
+    - It has `A` at the end of first period, `A+G` at the end of the second period, `A+2G` at the end of the third period...
     - It equals $$\frac{1}{i}-\frac{N}{(1+i)^N-1}$$
     - There is often a base annuity `A'` associated with a gradient. Hence, the total cash flow equals `A'+G(A/G,i,N)`
       - `A'` equals to the cash flow amount at the end of the first period since there is no G component at that time
+      - `A'-G(A/G,i,N)` if `G` is a constant decrease
   - `Arithmetic Gradient to Present Worth Conversion Factor`, denoted by `(P/G,i,N)`
     - It equals $$\left[\frac{(1+i)^N-i\cdot N-1}{i^2(1+i)^N}\right]$$
     - The total present value `P` = `Series Component (A)` + `Gradient Component (G)` = `A(P/A,i,N)` + `G(P/G,i,n)`
 - `Geometric Gradient Series` - a series of cash flows that increase or decrease by a constant percentage each period
   - `Geometric Gradient to Present Worth Conversion Factor`, denoted by `(P/A,g,i,N)`, gives the present worth, `P`, that is equivalent to a geometric gradient series where the base receipt or disbursement is `A`, and where the rate of growth is `g`, the interest rate is `i`, and the number of periods is `N`
+    - It has cash flows A, A(1 + g), A(1 + g)^2,...A(1 + g)^(N–1) are at the end of periods 1, 2, 3, ..., N respectively
     - It equals $$\frac{(P/A,i^{\circ},N)}{1+g}$$ or $$\left(\frac{(1+i^{\circ})^N-1}{i^{\circ}(1+i^{\circ})^N}\right)\frac{1}{1+g}$$ where $$i^{\circ}=\frac{1+i}{1+g}-1$$
     - $$i^{\circ}$$ is known as the growth adjusted interest rate
     - When $$i^{\circ}$$ is a negative value, the factor table can't be used
     - When `i = g > 0` or $$i^{\circ}$$ is zero, the formula can be simplified as `P = N(A/(1+g))`
+    - The cash flow amount at period `i` is $$A_i=A_1(1+g)^{i-1}$$
+
+### Uneven Cash Flows
+
 - Uneven Cash Flows (Non-Standard Annuities and Gradients) - continous contribution, uneven amount every time. There are three methods for dealing with this situation:
   1. Treat each cash flow in the annuity or gradient individually. This is most useful when the annuity or gradient series is not large.
   2. Convert the non-standard annuity or gradient to standard form by changing the compounding period
   3. Convert the non-standard annuity to standard form by finding an equivalent standard annuity for the compounding period. This method cannot be used for gradients
-- When calculating cashflow it's critical to determine the entity(e.g. bank or investor) and the outflows and inflows of the cashflows for this entity, use negative sign for outflows and positive sign for inflows
-- Discounted Cashflow is a method to discount all cashflows from its future value to its present value by compounded the discounted rate(interest rate)
+- When calculating cash flow it's critical to determine the entity(e.g. bank or investor) and the outflows and inflows of the cash flows for this entity, use negative sign for outflows and positive sign for inflows
+
+### Cash Flow Analysis
+
+- Discounted Cash Flow is a method to discount all cash flows from its future value to its present value by compounded the discounted rate(interest rate)
   - Net Present Value(NPV) is the sum of the discounted present value for all inflows and outflows
   - The discounted rate used to make the NPV equals zero is called the Internal Rate of Return (IRR)
     - Also known as the Minimum Acceptable Rate of Return (MARR)
@@ -165,10 +176,10 @@
         - For irregular cash disbursements over the analysis period it is convenient to convert them to a present worth cost, rather than using the annual worth cost approach
   - IRR is a reference for the rate of return, it can be used to see if the rate of return is desirable
   - The Money Weighed Rate of Return(MWRR) of a investment portfolio is used to see the return rate of this investment, the calculation is the same as calculating `IRR`
-  - The Holding Period Return(HPR) is a way to evaluate the performance of a portfolio for each holding period(time period), `HPR = (EndValue+Cashflows)/BeginValue - 1`
+  - The Holding Period Return(HPR) is a way to evaluate the performance of a portfolio for each holding period(time period), `HPR = (EndValue+CashFlows)/BeginValue - 1`
     - Begin Values - The balance of the investment account at the beginning of a certain time period
     - End Values - The balance of the investment account at the end of a certain time period including any payouts
-    - Cashflows - any payouts from the bank
+    - cash flows - any payouts from the bank
   - Time Weighted Rate of Return(TWRR) is the preferred way to evaluate the investment performance, calculated by adding all HPR values by 1(change factor) and find `Nth` root of their product where `N` is the number of HPR values or time period, lastly substruct the final result by `1`
     - It is the geometric mean of the change factors of all HPR values
   - For all of the above calculation for return, a nagative HPR means losses, and a positive HPR means gains
@@ -1708,7 +1719,7 @@
   - Income Statement, the net income is calculated first
   - Changes in Equity, the net income from the income statement is required here
   - Balance Sheet, The retained earnings from changes in equity will be used here as a part of the onwers' equity
-  - Statement of Cashflows, The changes in cash between two balance sheets can be elaborated here
+  - Statement of cash flows, The changes in cash between two balance sheets can be elaborated here
     - The indirect method also needs the net income
 
 ### Income Statement
@@ -1803,11 +1814,11 @@
     - Start with current assets and within current assets list in order of liquidity
     - Liabilities and equity on the right
 
-### Statement of Cashflows
+### Statement of Cash Flows
 
 - It focuses on the cash
 - A disclosure of the use of cash including cash receipts, cash payments, and the net change in cash resulting from the operating, investing, and financing activities of a company during a specific period
-  - the net cashflow should matches the changes in balance cash between two balance sheets
+  - the net cash flow should matches the changes in balance cash between two balance sheets
   - it evaluates company's liquidity
 - It has the purpose of:
   - determines the ability of the company to pay dividends and interest
@@ -1816,12 +1827,12 @@
 - It reports the difference of liabilities, assets, equity in cash as shown between balance sheets
 - The accrual concept is not used in the preparation of a cash flow statement
   - It is the only report that is calculated on a cash basis
-- Net cashflows are consisted of three sections: operating, investing, financing (in strict order)
-- Exchanges between asset and equity are not cashflows, they are `NIF` (Non-cash Investing and Financing Activities)
+- Net cash flows are consisted of three sections: operating, investing, financing (in strict order)
+- Exchanges between asset and equity are not cash flows, they are `NIF` (Non-cash Investing and Financing Activities)
   - e.g. borrow cash to purchase, exchange common shares to buildings
   - This info can be included in the footnotes
 
-#### Operation Cashflows
+#### Operation Cash Flows
 
 - Mainly related income statement items, depreciation, gain/loss, changes in current assets, and current liabilities
 - Cash from operating activities results from converting net income from the accrual basis to the cash basis
@@ -1866,7 +1877,7 @@
   - substract Increases or add Decreases in current assets other than cash (Account receivable does not affect cash, and it increased the net income, so its normal value needs to be substracted)
   - add Increases or substract Decreases in current liabilities (Acount Payables does not affect cash, and it decreased the net income, so its normal value needs to be added)
 
-#### Investments Cashflows
+#### Investments Cash Flows
 
 - mainly related to cash transactions in long-term assets and investments, it equals the sum of:
   - `+` Sales of long-term assets
@@ -1876,7 +1887,7 @@
   - `+` Collections of notes receivable
   - `-` Loans to others
 
-#### Financing Cashflows
+#### Financing Cash Flows
 
 - mainly related to cash transactions in long-term liabilities and owners' equity
   - Repurchase stock (cash outflow)

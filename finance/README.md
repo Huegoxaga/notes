@@ -593,6 +593,7 @@
 ##### Coupon Rate
 
 - it is the annual percentage of its par value that will be paid to bond holders
+- also known as bond's yield
 
 ##### Frequency
 
@@ -625,6 +626,7 @@
 - yield to maturity - an estimate of the annual return when investors hold it until maturity
   - it is the internal rate of return on bonds expected cash flows
   - yield to maturity is inversely related to the purchasing bonds price the higher the bonds price the lower its yield to maturity and vice versa
+- Bonds are priced at present value of future cash flows at coupon rate plus the present value of the face value
 
 #### Coupon Structures
 
