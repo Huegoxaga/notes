@@ -29,8 +29,10 @@
   - first migration command will create default databases.
   - `python manage.py migrate --fake <appname> <migratationID>` make certain migration, assume the database is the same as this migration file is made, reset the migration record. Migration Files after this time can be deleted.
     - fake will not alter the database, new migrations are needed to rollback changes, then fake and delete the new and unused migration files.
+    - fake all history, run `python manage.py migrate --fake <appname> zero`
   - `python manage.py migrate --fake-initial` force making initial migrate with database is already exists.
 - `python manage.py showmigrations` Check migration history.
+  - It lists all migration files and if it's been migrated or faked there is a cross sign in front of it
 - `python manage.py createsuperuser` follow the promts and create admin account for the admin page.
 - `python manage.py shell` It starts an interactive shell to run django project code line by line.
 - `python manage.py collectstatic` it populates the static directory with static assets (JavaScript, CSS, and images).

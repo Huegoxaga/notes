@@ -593,6 +593,7 @@
 ##### Coupon Rate
 
 - it is the annual percentage of its par value that will be paid to bond holders
+- The total annual amount can be splitted and paid annually, semi-annually, quarterly or monthly
 - also known as bond's yield
 
 ##### Frequency

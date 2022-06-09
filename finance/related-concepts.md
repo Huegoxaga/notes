@@ -95,14 +95,13 @@
   - `Uniform Series Compound Amount Factor`, denoted by `(F/A,i,N)`, gives the future value, `F`, that is equivalent to a series of equal-sized receipts or disbursements, `A`, when the interest rate is `i` and the number of periods is `N`
     - It is the reciprocal of the sinking fund factor
     - It equals $$\frac{(1+i)^N-1}{i}$$
-    - It can be used to calculate the present value of the coupon portion of a bond where `A` is the coupon value in each period. The total present value of a bond need to add the coupon portion with the present value of the face value of the bond
   - `Capital Recovery Factor`, denoted by `(A/P,i,N)`, gives the value, `A`, of the equal periodic payments or receipts that are equivalent to a present amount, `P`, when the interest rate is `i` and the number of periods is `N`
     - It can be easily derived from the sinking fund factor and the compound amount factor
     - It equals $$\frac{i(1+i)^N}{(1+i)^N-1}$$
     - It is used to find the equivalent regular income required after investing in an asset when the asset loss its value over time
-      - `A = (P-S)(A/P, i, N)+S*i`, when `P` is the cost of the equipment and `S` is its salvage value
+      - `A = (P-S)(A/P,i,N)+S*i`, when `P` is the cost of the equipment and `S` is its salvage value
       - `i` in this scenario is called `cost of capital`
-      - Alternativly, Equivalent Uniform Annual Cost can be `EUAC = P(A/P, i, n) – S(A/F, i, n)` or `EUAC = (P – S)(A/F, i, n) + Pi`
+      - Alternativly, Equivalent Uniform Annual Cost can be `EUAC = P(A/P,i,n) – S(A/F,i,n)` or `EUAC = (P – S)(A/F,i,n) + Pi`
   - `Series Present Worth Factor`, denoted by `(P/A,i,N)`, gives the present amount, `P`, that is equivalent to an annuity with disbursements or receipts in the amount, `A`, where the interest rate is `i` and the number of periods is `N`
     - It is the reciprocal of the capital recovery factor
     - It equals $$\frac{(1+i)^N-1}{i(1+i)^N}$$
@@ -113,7 +112,7 @@
     - Begin mode will compound the interest one more time at the end
   - An annuity is a contract between you and an insurance company in which you make a lump-sum payment or series of payments and, in return, receive regular cash flows, beginning either immediately or at some point in the future. it can be further categorized as:
     - Annuity Due - regular cash flows, begin mode
-      - It can be treated as ordinary annuities which has one less period and count the first payment directly as a present worth. e.g. `P = P1 + A(P/A, i, N-1)`
+      - It can be treated as ordinary annuities which has one less period and count the first payment directly as a present worth. e.g. `P = P1 + A(P/A,i,N-1)`
       - Optionally, Determine the present worth of a standard annuity at time −1 and then find its worth at time 0 (now).
     - Ordinary Annuities - regular cash flows, end mode
     - Perpetuities - regular cash flows, end mode, infinite number of time periods
@@ -139,7 +138,8 @@
 - `Geometric Gradient Series` - a series of cash flows that increase or decrease by a constant percentage each period
   - `Geometric Gradient to Present Worth Conversion Factor`, denoted by `(P/A,g,i,N)`, gives the present worth, `P`, that is equivalent to a geometric gradient series where the base receipt or disbursement is `A`, and where the rate of growth is `g`, the interest rate is `i`, and the number of periods is `N`
     - It has cash flows A, A(1 + g), A(1 + g)^2,...A(1 + g)^(N–1) are at the end of periods 1, 2, 3, ..., N respectively
-    - It equals $$\frac{(P/A,i^{\circ},N)}{1+g}$$ or $$\left(\frac{(1+i^{\circ})^N-1}{i^{\circ}(1+i^{\circ})^N}\right)\frac{1}{1+g}$$ where $$i^{\circ}=\frac{1+i}{1+g}-1$$
+    - The factor equals $$\frac{(P/A,i^{\circ},N)}{1+g}$$ or $$\left(\frac{(1+i^{\circ})^N-1}{i^{\circ}(1+i^{\circ})^N}\right)\frac{1}{1+g}$$ where $$i^{\circ}=\frac{1+i}{1+g}-1$$
+      - Demoninator is the series present worth factor using $$i^{\circ}$$
     - $$i^{\circ}$$ is known as the growth adjusted interest rate
     - When $$i^{\circ}$$ is a negative value, the factor table can't be used
     - When `i = g > 0` or $$i^{\circ}$$ is zero, the formula can be simplified as `P = N(A/(1+g))`

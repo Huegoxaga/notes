@@ -65,8 +65,8 @@
   - The ralation `f` is a set map from set `X` to set `Y`, it consists of all possible `(x, y)` pairs as `x R y`
   - If `f` is a function, for every `x` in set `X` is related to one or more `y` in `Y`
 - Types of relations in functions:
-  - `one-to-one` - The image of every `x` is unique, not all output have a related input
-  - `onto` - Every image has a pre-image, mutltiple input can have the same output
+  - `one-to-one` - Every input has a unique output, not every image needs to have a pre-image
+  - `onto` - Every image has a pre-image, multiple input can have the same output
   - `one-to-one correspondance` - Every input has exactly one unique output and every output has exactly one unique input
     - When function is `one-to-one` and `onto`
 
