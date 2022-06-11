@@ -183,7 +183,7 @@
   - For `m = 539` and `n = 396`
     | i | $$q_i$$ | $$r_i$$ | $$x_i$$ | $$y_i$$ |
     |----|---------|---------|---------|---------|
-    | | | ｜$$x_{i-2}-x_{i-2}\cdot q_i$$|$$y_{i-2}-y_{i-2}\cdot q_i$$|
+    | | | $$x_{i-2}-x_{i-2}\cdot q_i$$ | $$y_{i-2}-y_{i-2}\cdot q_i$$ |
     | -1 | | 539 | 1 | 0 |
     | 0 | | 396 | 0 | 1 |
     | 1 | 1 | 143 | 1 | -1 |
@@ -293,7 +293,7 @@
 
 #### Parity Checking
 
-- For binary data, one extra bit is used in the end to make sure the total number of 1's is even for even parity checking or add for add parity checking
+- For binary data, one extra bit is used in the end to make sure the total number of 1's is even for even parity checking or odd for odd parity checking
 - This method can only detect one bit error
 - Decoding is done by removing extra bit
 - Send message with the parity bit twice for error detection

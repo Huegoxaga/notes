@@ -1297,7 +1297,6 @@
   - The decision setting process should not be compromised by pressure from external forces. It should also not be influenced self or special interests.
   - Decisions and resulting standards should be made in the public interest.
 - the `International Accounting Standards Board (IASB)` sets Financial Reporting Standards that have been adopted in many countries
-  - A standards setting body
   - Widely adopted outside the U.S.
   - It it adopted in Canada by Chartered Professional Accountants of Canada (CPAC) (previously CICA)
     - They publish the CPAC Handbook as Canada's official GAAP
@@ -1308,7 +1307,6 @@
   - `IASB` replaced `International Accounting Standards Committee (IASC)` in 2001
     - `IASC` issued the `International Accounting Standard (IAS)`. While some rules from `IAS` is still in use, `IASB` replace some of `IAS` by `IFRS`
 - `Financial Accounting Standards Board (FASB)`
-  - A standards setting body
   - Widely adopted in the U.S
   - `FASB` establishes the generally accepted accounting principles, known as `US GAAP`
 
@@ -1503,7 +1501,7 @@
 
 ### Adjusting Entries
 
-- Adjustments are end-of-year journal entries to update account balances
+- Adjustments are additional end-of-period journal entries to update account balances, it involves adding a new entry that reduce part of the normal balance of a previous transcation and add the normal balance of a third account. There are three types of adjustments
   - Prepayments/Deferral
     - `Prepaid Expense` - Recorded as an asset when purchased. Expensed when used or expired
     - `Unearned Revenue` - Recorded as a liability when payment is received. Recorded as revenue when earned
@@ -1593,6 +1591,8 @@
 
 - Cash
 - Accounts receivable or A/R
+- Notes receivable
+- Marketable securities
 - Inventory
 - Office Supplies or Supplies Inventory
 - Prepaid rent

@@ -982,6 +982,7 @@ It is used to allow devices to support Alexa.
 ### CodeDeploy
 
 - It creates application and tag ECS, EC2, or Lambda for deployment
+- A CodeDeploy agent is required to running on the remote machine, [click here](https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install.html) for details
 - The deployment steps are defined in the `appspec.yml` file, [click here](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html) for details
 - CodePipeline can trigger the deployment action
 
