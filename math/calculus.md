@@ -420,6 +420,7 @@
   - Choose the term that will not being intergrated during the process by the `LIATE` order
     - L = Log, I = Inverse Trig, A = Algebraic, T = Trigonometric, E = Exponential
     - Terms on the left is harder to integrate then terms on the right
+  - Integration By Parts sometimes is required for multiple times, substitue the intermediate results will cancel out common terms and yield the final answer
 - Integration By Substitution is the reversed way of doing differentiation using the chain rule
   - Chain rules can be used to solved an integral by substitute a subfunction in along with _du_ when and differential function of the sub function is found and the relationship between _du_ and _dx_ is found.
 - When integrate a fraction of two high order(greater than 1) polynomials, use partial fraction to split the fraction to two simpler one and then integrate, it can make:

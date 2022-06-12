@@ -1943,3 +1943,102 @@
 - There is no necessity to follow any commonly defined accounting principles. The principles and systems used are entirely at the discretion of the organization
   - The accounting principles from `IASB` and `FASB` only apply to financial accounting
 - The internal managerial accounting reports are useful to make the decisions that affect the organization’s daily operations
+- It focuses on the relevance while financial accounting focuses on reliance
+
+### Definition of Costs
+
+- Cost object - it is anything in which a cost can be captured
+  - Assignment - the act of applying the cost to the cost object
+    - Tracing - A way to assign cost directly
+    - Allocation - Any assignment that can't be done by tracing
+- Cost Driver - the conditions that will affect the cost
+  - The allocation requires a cost driver
+
+#### Common Types of Costs
+
+- Unit Variable Cost (`UVC`) - A fixed unit cost
+- Total Variable Cost (`TVC`) - The variable total cost calculated from the UVC
+- Total Fixed Cost (`TFC`) - A fixed total cost
+- Unit Fixed Cost (`UFC`) - A variable unit cost calculated from the TFC, the average unit cost
+- Direct materials (`DM`): These are materials that end up in the final product. E.g. wood, glass, iron, plastic.
+- Direct labour (`DL`) - also known as touch labour...the labour that produces the product.
+  Usually paid per hour or per unit produced. Usually, assembly line workers. Idle Time vs Overtime
+  Complication covered later.
+- Variable Manufacturing Overhead (`VMOH`) - these are indirect costs that are not part of the final product or
+  cannot be economically traced to it e.g. electricity, utilities, indirect labour (see overtime and idle time
+  discussion later), indirect material (e.g. glue, paint, nails, lubrication for machine, cleaning supplies)
+- Fixed Manufacturing Overhead (`FMOH`) - these are fixed and do not vary based on level of activity e.g. rent,
+  property taxes, insurance, manufacturing or production supervisor salaries; deprecation on production
+  equipment, etc.
+- Variable Selling and Admin costs (`VS&A`) - e.g. sales commissions, packaging, delivery
+- Fixed Selling and Admin costs (`FS&A`) - e.g. advertising, sales supervisor salaries, and rent insurance and
+  property taxes for the selling function or their portion
+- Average cost (or Unit Cost) = `Total Cost / Total Units = [TFC + TVC] / Total Units = UVC + UFC`
+- Manufacturing Overhead (`MOH`) - equals `VMOH + FMOH`
+- Prime Cost or Direct Manufacturing Cost - equals `DM used + DL`
+- Conversion Cost - equals `DL + MOH` or `DL + VMOH + FMOH`
+- Total Manufacturing Cost - equals `DM + DL + MOH` or `DM + DL + VMOH + FMOH`
+
+#### Categorization of Costs
+
+- Behaviour - Variable/Fixed
+  - Variable costs are `TVC`, `UFC`, `DM`, `DL`, `VMOH`, `VS&A`
+  - Fixed costs are `UVC`, `TFC`, `FS&A`, `FMOH`
+  - Sometimes a cost can be mixed, it has both variable and fixed components in the cost
+- Traceability - Direct/Indirect
+  - When a cost has a known unit cost and it is traceable is is a direct (prime) cost. Otherwise it is an indirect cost
+  - Direct costs are `DM`, `DL`
+  - Indirect costs are `VMOH`, `FMOH`, `VS&A`, `FS&A`
+  - Manufacturing overhead is an indirect cost and it can't be traced directly by the unit number produced, they include:
+    - Materials used to support the production process like lubricants
+    - Wages paid to employees who are not directly involved in production like maintenance workers or security guards
+  - For direct labour cost when there is:
+    - Idle time
+      - If it is the fault of the company, then it's a indirect labour cost
+      - If it's the fault of the client, then it's a direct labour cost
+    - Overtime
+      - Total overtime pay rate = Regular pay rate + Overtime pay rate
+      - If it is the fault of the company: Regular rate portion is direct Labour, overtime rate is indirect labour
+      - If it's the fault of the client, then it's a direct labour cost
+    - When both idle and overtime happens - Idle time is penalized first for the OT Rate becuase idle is usually the cause of overtime
+  - Traceability can be changed based on the cost object
+    - For the factory the janitor is direct
+    - For the prodect the janitor is indirect
+  - Traceability can be changed depends on materiality
+    - Some unit cost can be defined but it is just too small and the owner doesn't bother to trace it. Instead a total indirect cost is evaluated
+- Function - Product/Period
+  - Product cost - anythine related to make the product
+    - These costs go into the balance sheet as inventory, after shipment the cost of good sold is transferred into income statement as expenses
+    - They are `DM`, `DL`, `VMOH`, `FMOH`
+  - Period cost - the costs including all selling and administrative costs
+    - These costs go directly into income statement as expenses
+    - They are `VS&A`, `FS&A`
+
+### Costs in Reports
+
+- Cost vs Expense - Cost is an asset on balance sheet, expense reduces net income in income statements
+
+#### Costs in Balance Sheet
+
+- Costs consists of three accounts in the inventory section of the balance sheet
+- Raw Materials (`RM`) - Unprocessed goods, this account is managed by the purchase department
+  - `Beginning Balance + Purchase of RM – Ending Balance = RM Used`
+  - `RM` is blend of `DM` (Direct Material) + `IM` (Indirect Material)
+    - `IM` is not calculated here
+- Work in Progress (`WIP`) - Goods that is under processes, this account is managed by the factory
+  - `Beginning Balance + DM used + DL + MOH – Ending Balance = Cost of Goods Manufactured (COGM)`
+  - `Ending Balance - Beginning Balance = Change in WIP`, so `COGM = DM used + DL + MOH – Change in WIP`
+  - Keep in mind that `DM Used` comes from the `RM` account
+  - `IM used` from the `RM` account is part of the `MOH` in the `WIP` account.
+- Finished Goods (`FG`) - Goods that is ready to be shipped, this account is managed by the marketing department
+  - `Beginning Balance + COGM – Ending Balance = Cost of Goods Sold (COGS)`
+  - `Ending Balance - Beginning Balance = Change in Finished Goods Inventory`, so `COGS = COGM - Change in FG`
+  - `COGM` from `WIP` comes into `FG`
+  - `Cost of goods available for sale (COGAS) = Beginning Balance of Finished Goods + COGM`
+
+#### Expenses in Income Statement
+
+- When shipped the total costs will be shown as `COGS` in the income statement
+  - `Gross Profit` or `Gross Margin` (`GM`) equals `Sales Revenue - COGS`
+  - `Operating Income (OI) = GM – Period (or Selling & Advertisement) Expenses`
+    - Income Tax is calculated based on the `Operating Income`

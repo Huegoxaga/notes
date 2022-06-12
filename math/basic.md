@@ -209,9 +209,9 @@
 
 ### Proof by Mathematical Induction
 
-- It can be used to proof $$\sum a_n=S(n)$$
+- It can be used to proof $$\sum a_n=S(n)$$ is true for all integers `n ≥ a`
 
-1. Proof the initial condition is true, $$a_1=S(1)$$
-2. Assume any condition is true, $$\sum a_k=S(k)$$ for any $$k\lt n$$
+1. Proof the initial condition is true, $$a_a=S(a)$$
+2. Assume any condition is true, $$\sum a_k=S(k)$$ for any $$k\gt a$$
 3. Treat equation from step 2 as known, see if $$\sum a_{k+1}=S(k+1)$$
 4. If step 3 can be proven, any number after 1 and before n for the original equal can be true
