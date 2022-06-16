@@ -54,6 +54,14 @@
   - [Click here](https://github.com/github/gitignore) to check out `.gitignore` templates for different projects
   - use `!` before ignore rules to unignore, lines with `!` should be placed at the bottom of the file
   - Existing files are tracked even after it is excluded in the `.gitignore`, to reset the file records, commit all changes first, then, `git rm -rf --cached . && git add .`
+- To add an empty folder in git repo, add a `.gitignore` file with the following content inside the folder
+
+  ```gitignore
+  # Ignore everything in this directory
+  *
+  # Except this file
+  !.gitignore
+  ```
 
 #### Managing Staging Area
 

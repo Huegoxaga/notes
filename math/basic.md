@@ -140,6 +140,8 @@
 - $$(a-b)^3=a^3-3a^2b+3ab^2-b^3$$ and $$(a+b)^n=\sum_{k=0}^{n}(-1)^k\binom{n}{k}a^kb^{n-k}$$
 - $$x^3-y^3=(x-y)(x^2-xy+y^2)$$
 - $$x^3+y^3=(x+y)(x^2-xy+y^2)$$
+- Descartes' Rule - If a polynomial with real coefficients has `m` sign changes, then the possible number of positive roots will be `m–2k`, where `k` is all possible integers between `0` and `m/2`
+  - To find the number of negative roots, substitute `-x` into the function and repeat the above step
 
 #### Exponential
 

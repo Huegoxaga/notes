@@ -156,40 +156,72 @@
 ### Cash Flow Analysis
 
 - Discounted Cash Flow is a method to discount all cash flows from its future value to its present value by compounded the discounted rate(interest rate)
-  - Net Present Value(NPV) is the sum of the discounted present value for all inflows and outflows
-  - The discounted rate used to make the NPV equals zero is called the Internal Rate of Return (IRR)
-    - Also known as the Minimum Acceptable Rate of Return (MARR)
-    - Interest rate required for any project to be accepted. Other wise, just save the cash in a bank and earn the interest
-  - A investment will generates profit if the NPV is positive, the higher the NPV the more profit a investor can gain from it
-    - For an independent project, do it when NPV is greater than 0, it means one can make money from it
-    - For mutually exclusive projects, select one with the highest NPV
-    - For related but not mutually exclusive, combine them into an exhaustive list of `2^n` mutually exclusive sets, then pick one from the set
-  - Present worth analysis - Net Present Worth = Present worth benefits – Present worth of costs
-    - Present worth requires that the analysis is made between equal time periods
-    - When the project length is different
-      - Repeated Lives Approach - one can find the least common multiple (LCM) of the project length and repeat the projects until they have the same total length
-      - Study Period Approach - Adopt specified study period for comparison, realizing need of salvage value at end of period and repeat the project with shorter length once
-        - e.g. comparing a 7-year and 13-year project, repeat first project after 7 years and stop it in 3 years for a total of 10 years vs stopping the 13-year project at the end of 10th year
-      - For infinite analysis period use the perpetuities formula for the capitalized value or the present worth `P`, it equals `A/i` where `i` is the interest or `MARR` for each period
-      - Use annual worth analysis by converting present values and one-time values on the timeline to equivalent uniform values
-        - For projects with infinite length, use `A = Pi`
-        - For irregular cash disbursements over the analysis period it is convenient to convert them to a present worth cost, rather than using the annual worth cost approach
-  - IRR is a reference for the rate of return, it can be used to see if the rate of return is desirable
-  - The Money Weighed Rate of Return(MWRR) of a investment portfolio is used to see the return rate of this investment, the calculation is the same as calculating `IRR`
-  - The Holding Period Return(HPR) is a way to evaluate the performance of a portfolio for each holding period(time period), `HPR = (EndValue+CashFlows)/BeginValue - 1`
-    - Begin Values - The balance of the investment account at the beginning of a certain time period
-    - End Values - The balance of the investment account at the end of a certain time period including any payouts
-    - cash flows - any payouts from the bank
-  - Time Weighted Rate of Return(TWRR) is the preferred way to evaluate the investment performance, calculated by adding all HPR values by 1(change factor) and find `Nth` root of their product where `N` is the number of HPR values or time period, lastly substruct the final result by `1`
-    - It is the geometric mean of the change factors of all HPR values
-  - For all of the above calculation for return, a nagative HPR means losses, and a positive HPR means gains
-- Payback Period - number of years it takes for an investment to be recouped
-  - It equals `First cost / Annual savings`, and disregard all other factors including scrap value
-  - If annual savings not constant, payback period is computed by deducting each year of savings from the first cost until the first cost is recovered
-  - the project with the shorter payback period wins
-  - Payback period of two years is often acceptable
-  - More than four years is usually unacceptable
-  - The payback period should not be used as a the sole criterion for evaluating projects
+- Net Present Value(NPV) is the sum of the discounted present value for all inflows and outflows
+- A investment will generates profit if the NPV is positive, the higher the NPV the more profit a investor can gain from it
+  - For an independent project, do it when NPV is greater than 0, it means one can make money from it
+  - For mutually exclusive projects, select one with the highest NPV
+  - For related but not mutually exclusive, combine them into an exhaustive list of `2^n` mutually exclusive sets, then pick one from the set
+- Present worth analysis - Net Present Worth = Present worth benefits – Present worth of costs
+  - Present worth requires that the analysis is made between equal time periods
+  - When the project length is different
+    - Repeated Lives Approach - one can find the least common multiple (LCM) of the project length and repeat the projects until they have the same total length
+    - Study Period Approach - Adopt specified study period for comparison, realizing need of salvage value at end of period and repeat the project with shorter length once
+      - e.g. comparing a 7-year and 13-year project, repeat first project after 7 years and stop it in 3 years for a total of 10 years vs stopping the 13-year project at the end of 10th year
+    - For infinite analysis period use the perpetuities formula for the capitalized value or the present worth `P`, it equals `A/i` where `i` is the interest for each period
+    - Use annual worth analysis by converting present values and one-time values on the timeline to equivalent uniform values
+      - For projects with infinite length, use `A = Pi`
+      - For irregular cash disbursements over the analysis period it is convenient to convert them to a present worth cost, rather than using the annual worth cost approach
+
+#### Rate of Return
+
+- All below comparsions are refer to the investor model where a large initial cost and regular cash inflow, high interest rate will depreciate the PW of the cash inflow and cause the project to lose money
+  - For a borrower model, there is a large initial gain and regular cash outflow, high interest rate will depreciate the PW of the cash outflow and cause the borrower to save money
+  - For the borrower model every comparsion conclusion is opposite from the investor model
+- Minimum Acceptable Rate of Return (MARR) uses a interest rate to represent the actual equivalent opportunity cost of an investment
+  - It is the minimum rate of return required for any project to be accepted. Other wise, just save the cash in a bank and earn the interest
+  - MARR represent the basic rate of return from other invest opportunities
+- Internal Rate of Return (IRR) is the interest rate at which the present worth and equivalent uniform annual worth are equal to zero
+  - From an investor perspective, if the IRR exceeds the MARR, the investment is economic. If it is less than the MARR, the investment is uneconomic
+  - The IRR is the interest rate at which the benefits are equivalent to the costs
+  - `PW of benefits – PW of costs = 0` or `PW of benefits/PW of costs = 1` or finding the zero net cash flows by using the annual worth analysis, or compare the future worth at the end of the project
+  - $$PW=0=\sum_{t=0}^{T}\frac{R_t-D_t}{(1+i^*)^t}$$, It means the IRR rate $$i^*$$ is a rate that make the sum of the present worth of all net cash flow has a net value of zero
+  - `IRR` is usually positive. (otherwise project is losing money)
+  - The equation for the `IRR` is solved by trial and error along with linear interpolation or using built-in `IRR` function in Excel or other programs
+  - Comparing mutually exclusive alternatives with incremental analysis
+    1. Sort the projects from the lowest first cost to the highest. Call this lowest first cost the current best
+    2. Challenge the current best with the next most expensive project. During investment, if the incremental investment `IRR` (known as `ΔIRR`) is greater or equal than `MARR`, then make the challenger the current best. If not, calculate the `ΔIRR` with the next challenger
+       - `ΔIRR` is the rate of return that will make two project has the same net present worth
+    3. Repeat Step 2 until there are no further challengers
+  - For independent investment projects, all of them can be chosen if their `IRR`s are greater or equal than the `MARR`s
+  - The major advantage of the internal rate of return comparison method is that it facilitates the comparison of projects of different size. It is commonly used
+    - Disadvantage is it has multiple solutions sometimes and it is hard to calculate
+- The Money Weighed Rate of Return(MWRR) of a investment portfolio is used to see the return rate of this investment, the calculation is the same as calculating `IRR`
+- External rate of return (ERR), denoted by $$i^*_e$$ , is rate of return when "excess" cash earns interest at an explicit rate — usually the MARR
+  - "excess" cash is not used in the following investment
+  - It assumes all unused excess cash uses `MARR` and all investment related cash flow uses `ERR`
+    - From an investor perspective, outflow uses `ERR`, inflow uses `MARR`
+  - It simply the cash flows by picking out the "excess" cash flow and combine its future value with other cash flow
+  - To estimate `ERR`, take net receipts forward at the `MARR` and equating to net disbursements taken forward at the `ERR` rate
+  - When solving for `IRR`, multiple solutions might happen, then it's a good time to use `ERR`
+    - Simple investment often have one solution, it is characterized by one or more periods of cash outflows, followed by one or more periods of cash inflows, because based on the Descartes' rule, there is only one solution
+  - `IRR` doesn't differentiate cash flow types and all cash flow uses the same `IRR` for time value conversion
+- The Holding Period Return(HPR) is a way to evaluate the performance of a portfolio for each holding period(time period), `HPR = (EndValue+CashFlows)/BeginValue - 1`
+  - Begin Values - The balance of the investment account at the beginning of a certain time period
+  - End Values - The balance of the investment account at the end of a certain time period including any payouts
+  - cash flows - any payouts from the bank
+- Time Weighted Rate of Return(TWRR) is the preferred way to evaluate the investment performance, calculated by adding all HPR values by 1(change factor) and find `Nth` root of their product where `N` is the number of HPR values or time period, lastly substruct the final result by `1`
+  - It is the geometric mean of the change factors of all HPR values
+- For all of the above calculation for return, a nagative HPR means losses, and a positive HPR means gains
+
+#### Payback Period
+
+- It is the number of years it takes for an investment to be recouped
+- It equals `First cost / Annual savings`, and disregard all other factors including scrap value
+- If annual savings not constant, payback period is computed by deducting each year of savings from the first cost until the first cost is recovered
+- the project with the shorter payback period wins
+- Payback period of two years is often acceptable
+- More than four years is usually unacceptable
+- The payback period should not be used as a the sole criterion for evaluating projects
 
 # Statistics Concepts
 

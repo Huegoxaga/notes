@@ -136,6 +136,8 @@ It provide computing services.
     - It will ping a certain URL for health check, if it don't get 200 response, the loab balancer will be marked as unhealth.
   - Network Load Balancer
   - A target group will be associated with load balancer, health check is configured here.
+- Load Balacner uses EC2's internal IP for health check header
+  - EC2 can request its internal IP address by sending get request to `http://169.254.169.254/latest/meta-data/local-ipv4`
 - Load balancer can assign Security Policies to certain SSL Certificates
   - A security policy is a combination of protocols and ciphers, The `ELBSecurityPolicy-2016-08` security policy has the highest compatibility.
 - For some instance types AWS sets a limit of 0 which prevent the user from running, a limit increase request should be sent in these cases.
@@ -983,9 +985,22 @@ It is used to allow devices to support Alexa.
 
 - It creates application and tag ECS, EC2, or Lambda for deployment
 - A CodeDeploy agent is required to running on the remote machine, [click here](https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install.html) for details
+  - Optionally, install it via AWS System Manager by setting up maintenance schedule
 - The deployment steps are defined in the `appspec.yml` file, [click here](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html) for details
 - CodePipeline can trigger the deployment action
+- The Load Balancer in the setting is used to take over new traffic during deployment
+  - Both `BlockTraffic` and `AllowTraffic` wait for successful health checks from the defined to proceed, shortening the healthcheck threshold and interval can decrease update downtime
 
 ### CodeStar
 
 - It uses cloudformation to create all above tools in one click
+
+## System Manager
+
+- It runs a deamon on the remote machine that manage package install/updates and logging
+- The following Amazon EC2 AMIs come with the SSM agent pre-installed:
+  - Windows Server 2008-2012 R2 AMIs published in November 2016 or later
+  - Windows Server 2016 and 2019
+  - Amazon Linux and Amazon Linux 2
+  - Ubuntu Server 16.04 and 18.04
+  - Amazon ECS-Optimized
