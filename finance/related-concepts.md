@@ -1977,14 +1977,35 @@
 - The internal managerial accounting reports are useful to make the decisions that affect the organization’s daily operations
 - It focuses on the relevance while financial accounting focuses on reliance
 
-### Definition of Costs
+### Cost Function
 
 - Cost object - it is anything in which a cost can be captured
   - Assignment - the act of applying the cost to the cost object
     - Tracing - A way to assign cost directly
     - Allocation - Any assignment that can't be done by tracing
+- There are constant unit cost, true variable total cost, total fixed cost, fixed cost per unit, step-variable cost, and mixed cost
+- Cost Function - it reflects the relationship between production quantity (level of activity) and the cost, each type of cost can have a function to approximate the cost
+  - The total mixed cost line can be expressed as an equation: `Y = a + bX` where `a` is the total fixed cost portion and `bX` is the total variable cost portion
 - Cost Driver - the conditions that will affect the cost
   - The allocation requires a cost driver
+  - The X-axis of cost function
+- In most cases, economist's curvilinear cost function can be treated as a linear function within the relevant range by using the accountant's straight-line approximation (constant unit variable cost)
+- Linear methods of cost estimation has two assumptions:
+  - Changes in total costs can be explained by changes in the level of a single cost driver
+  - Cost behavior can adequately be approximated by a linear function of the activity level within the relevant range
+- High Low Method - Use the highest and lowest point on the X-axis to do a linear approximation
+  - The limitations are: The highest and lowest points could be outliers, only two data points are considered, only one cost driver, no statistical quality measures
+- Least-Squares Regression Method - fit a straight line to the data that minimizes the sum of the squared errors
+  - Least-squares regression also provides a statistic, called the `R^2`, which is a measure of the `goodness of fit` of the regression line to the data points
+    - `R^2` is the percentage of the variation in total cost explained by the activity
+    - `R^2` varies from `0%` to `100%`, and the higher the percentage the better
+    - assume an acceptable R-Square is greater than `0.60` or `60%`
+    - the selection of model is based on the `R^2` value
+  - T-value measures whether the cost and cost driver are related by coincidence
+    - A higher T-value means that the relationship is not a coincidence
+    - The T-value should be greater than 2
+    - There is T-value for coefficient if it's less than 2 the total variable cost portion (`bX`) should be ignored from the cost function. Same goes for T-value for constant, then the constant portion should be ignored
+    - Use standard error of coefficient or constant if T-value is not given, its the plus or minus range of the coefficient or constant
 
 #### Common Types of Costs
 
@@ -2065,7 +2086,7 @@
 - Finished Goods (`FG`) - Goods that is ready to be shipped, this account is managed by the marketing department
   - `Beginning Balance + COGM – Ending Balance = Cost of Goods Sold (COGS)`
   - `Ending Balance - Beginning Balance = Change in Finished Goods Inventory`, so `COGS = COGM - Change in FG`
-  - `COGM` from `WIP` comes into `FG`
+  - `COGM` from `WIP` comes into `FG` account
   - `Cost of goods available for sale (COGAS) = Beginning Balance of Finished Goods + COGM`
 
 #### Expenses in Income Statement

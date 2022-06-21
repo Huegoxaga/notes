@@ -224,6 +224,7 @@
   - The matrix always equals to its transpose, it is symmetric and it will keep the same when reflected by the diagonal
 - Adjacency list uses a list form to represent the adjacency of a graph, it uses each vertex as the key and the value is a list a vertices it conncected to
   - For a triangle, `A: B, C`, `B: A, C`, `C: A, B`
+- Chromatic number of a graph is the number of colors required for coloring a graph, so two adjacent vertices can't have the same color
 
 ## Boolean Algebra
 

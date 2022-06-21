@@ -232,9 +232,10 @@
     - It optimizes native recursive algorithm by saving the intermeditate result from recursive calls in a list in the memory, it reduces the complex of a recursive algorithm that would take exponential time further by pruning duplicated recursive calls when the result of a similar method call can be find in the result list
   - Backtracking
     - It is a technique that recursively build a solution incrementally and remove all the solutions that does not satisfy the constraints of the problem at any point of time
-    - The goal is to get all solutions to a problem using the brute force approach
+    - The goal is to explore all possible solutions to a problem using the brute force approach
     - A search tree named state-space tree is used. In a state-space tree, each branch is a variable, and each node represents a solution
-    - the depth-first search method is performed on the tree. When it starts exploring the solutions, a bounding function is applied so that the algorithm can check if the so-far built solution satisfies the constraints, when solution from one node failed to meet the constraints, the recursion stops. Since the next node from upper level will continue to execute, it looks like the path has been backtracked
+    - the depth-first search (DFS) method is performed on the tree. When it starts exploring the solutions, a bounding function is applied so that the algorithm can check if the so-far built solution satisfies the constraints, when solution from one node failed to meet the constraints, the recursion stops. Since the next node from upper level will continue to execute, it looks like the path has been backtracked
+    - Breadth-first search (BFS) is an algorithm for searching a tree data structure for a node that satisfies a given property. It starts at the tree root and explores all nodes at the present depth prior to moving on to the nodes at the next depth level. Extra memory, usually a queue, is needed to keep track of the child nodes that were encountered but not yet explored
 
 ### Parallel
 
@@ -559,6 +560,10 @@ int partition(int A[ ], int start, int end)
 ### Path Finding Algorithms
 
 - Algorithm that finds the shortest paths between nodes in a graph
+- Eulerian circuits and Eulerian path focus on edges, and aim for covering all the edges
+  - Eulerian circuits returns to the starting vertex and Eulerian path doesn't
+- Hamiltonian circuits and Hamiltonian path focus on vertices, and aim for covering all the vertices
+  - Hamiltonian circuits forms a circle and Hamiltonian path doesn't
 
 #### Königsberg Bridge Problem
 
@@ -572,6 +577,7 @@ int partition(int A[ ], int start, int end)
 #### Dijkstra's Algorithm
 
 - It finds the shortest time to get to all the next intermeditate nodes from the starting point to the destination, only the path that takes the shortest time to the next nodes will be adopted and will be used to reach further nodes
+- When the length of all edge in a graph is the same, it is an unweighted graph, then Breath-first search algorithm can be used
 
 #### `A*` Search Algorithm
 

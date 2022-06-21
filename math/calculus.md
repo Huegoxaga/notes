@@ -423,6 +423,8 @@
   - Integration By Parts sometimes is required for multiple times, substitue the intermediate results will cancel out common terms and yield the final answer
 - Integration By Substitution is the reversed way of doing differentiation using the chain rule
   - Chain rules can be used to solved an integral by substitute a subfunction in along with _du_ when and differential function of the sub function is found and the relationship between _du_ and _dx_ is found.
+  - When the denominator of a function has for `a+b`, try multiply it by `(a-b)/(a-b)` to simplify
+  - When working with trig function with high order, try to use the variation of $$\sin^2x+\cos^2x=1$$ to simplify first, then try the half angle formulas to reduce the order, then substitute
 - When integrate a fraction of two high order(greater than 1) polynomials, use partial fraction to split the fraction to two simpler one and then integrate, it can make:
   - $$\frac{a_3x+b_3}{(a_1x+b_1)(a_2x+b_2)}=\frac{A}{(a_1x+b_1)}+\frac{B}{(a_2x+b_2)}$$, where `A` and `B` are constant
   - $$\frac{a_3x+b_3}{(a_1x+b_1)(a_2x+b_2)^2}=\frac{A}{(a_1x+b_1)}+\frac{B}{(a_2x+b_2)}+\frac{C}{(a_2x+b_2)^2}$$, where `A`, `B`, `C` are constant
