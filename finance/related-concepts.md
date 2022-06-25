@@ -51,6 +51,14 @@
 - Declining-Balance Depreciation (DBD)
   - The declining balance method (DBD) of depreciation models the loss in value of an asset in a period as a constant proportion of the asset’s current value
   - Book Value at the end of period n using DBD equals $$P(1-d)^n$$, where `P` is the initial book value, `d` is the constant depreciation percentage, `n` is the number of periods
+- The depreciation expense for tax purpose can be referred as the Capital Cost Allowance (CCA)
+  - The maximum capital cost allowance a company can take in one year is what would be sufficient to reduce taxable income to zero
+  - Generally, only 50% of a given rate is allowed in the first year of depreciation
+  - Recaptured CCA occurs when an asset is sold for more than the book value, where the market value is higher than the book value estimated by using CCA
+    - The difference is taxable income
+    - When the market price is higher than original price, that portion is captial gain
+  - Loss on disposal occurs when the market value is less than the book value
+    - The loss can be a tax benifit
 
 ## Cash Flow
 
@@ -180,7 +188,7 @@
 - Minimum Acceptable Rate of Return (MARR) uses a interest rate to represent the actual equivalent opportunity cost of an investment
   - It is the minimum rate of return required for any project to be accepted. Other wise, just save the cash in a bank and earn the interest
   - MARR represent the basic rate of return from other invest opportunities
-- Internal Rate of Return (IRR) is the interest rate at which the present worth and equivalent uniform annual worth are equal to zero
+- Internal Rate of Return (`IRR`) is the interest rate at which the present worth and equivalent uniform annual worth are equal to zero
   - From an investor perspective, if the IRR exceeds the MARR, the investment is economic. If it is less than the MARR, the investment is uneconomic
   - The IRR is the interest rate at which the benefits are equivalent to the costs
   - `PW of benefits – PW of costs = 0` or `PW of benefits/PW of costs = 1` or finding the zero net cash flows by using the annual worth analysis, or compare the future worth at the end of the project
@@ -188,7 +196,8 @@
   - `IRR` is usually positive. (otherwise project is losing money)
   - The equation for the `IRR` is solved by trial and error along with linear interpolation or using built-in `IRR` function in Excel or other programs
   - Comparing mutually exclusive alternatives with incremental analysis
-    1. Sort the projects from the lowest first cost to the highest. Call this lowest first cost the current best
+    1. Remove all projects with overall IRR lower than the target, sort remaining the projects from the lowest first cost to the highest. Call this lowest first cost the current best
+       - Rank by highest first deposit for the borrower model
     2. Challenge the current best with the next most expensive project. During investment, if the incremental investment `IRR` (known as `ΔIRR`) is greater or equal than `MARR`, then make the challenger the current best. If not, calculate the `ΔIRR` with the next challenger
        - `ΔIRR` is the rate of return that will make two project has the same net present worth
     3. Repeat Step 2 until there are no further challengers
@@ -205,6 +214,7 @@
   - When solving for `IRR`, multiple solutions might happen, then it's a good time to use `ERR`
     - Simple investment often have one solution, it is characterized by one or more periods of cash outflows, followed by one or more periods of cash inflows, because based on the Descartes' rule, there is only one solution
   - `IRR` doesn't differentiate cash flow types and all cash flow uses the same `IRR` for time value conversion
+  - `ΔERR` can be used to compare mutually exclusive projects, when `IRR` has multiple solutions
 - The Holding Period Return(HPR) is a way to evaluate the performance of a portfolio for each holding period(time period), `HPR = (EndValue+CashFlows)/BeginValue - 1`
   - Begin Values - The balance of the investment account at the beginning of a certain time period
   - End Values - The balance of the investment account at the end of a certain time period including any payouts
@@ -1576,13 +1586,14 @@
   - `ROA` = `Net Income` / `Avg. Total Assets`
   - The higher the better
 - Return on equity (ROE) is a measure of financial performance calculated by dividing net income by shareholders' equity
-  - `ROA` = `Net Income` / `Avg. Total Equity`
+  - `ROE` = `Net Income` / `Avg. Total Equity`
 - Profit margin is the percentage of sales has turned into profits
 
 ### Efficiency Ratios
 
 - Inventory turnover is a ratio showing how many times a company has sold and replaced inventory during a given period
   - It shows how fast the company is selling, important ratio for retail companies
+  - `Inventory-turnover Ratio` = `Sales` / `Inventories`
 - Asset turnover ratio measures the value of a company's sales or revenues relative to the value of its assets
 
 ### Liquidity Ratios
@@ -1598,7 +1609,8 @@
 - the quick ratio, also known as the acid-test ratio is a type of liquidity ratio, which measures the ability of a company to use its near cash or quick assets to extinguish or retire its current liabilities immediately
   - The quick ratio is the proportion of the amount of current assets which only can be sold quickly exclude all the inventory divided by the amount of current liabilities
   - This calculation is more conservative than the current ratio
-  - `Quick Ratio` = (`Current Assets` - `Inventory`) / `Current Liabilities`
+  - `Quick Ratio` = `Quick Assets` / `Current Liabilities`
+    - `Quick Assets` = `Current Assets` - `Inventories` - `Prepaid Items`
   - `Quick Ratio` = (`Cash` + `Account Receivables` + `Marketable Securities`) / `Current Liabilities`
   - It measures the company's ability to liquidize immediately
 
@@ -1612,8 +1624,13 @@
   - Low debt ratio is safer than high debt ratio
   - `D/A` = `Total Liabilities` / `Total Assets`
   - Since it normally less than one, when both terms increase for the same amount the ratio increase
-- Interest coverage ratio can be calculated by dividing a company's earnings before interest and taxes (EBIT) by its interest expense
-  - Lower than 1.0 is not good
+- Interest coverage ratio can be calculated by dividing a company's earnings before interest and taxes (`EBIT`) by its interest expense
+  - Lower than `1.0` is not good
+- Equity Ratio - extent firm relies on debt
+  - smaller the ratio, the more dependent a firm is on debt and the higher the risk of not being able to manage debt
+  - `Equity Ratio` = `Total Equity` / `Total Assets`
+
+### Leverage Ratios
 
 ## List of Common Accounts
 
@@ -1982,7 +1999,7 @@
 - Cost object - it is anything in which a cost can be captured
   - Assignment - the act of applying the cost to the cost object
     - Tracing - A way to assign cost directly
-    - Allocation - Any assignment that can't be done by tracing
+    - Allocation - Any assignment that can't be done by tracing, then cost driver can be used to calculate the cost
 - There are constant unit cost, true variable total cost, total fixed cost, fixed cost per unit, step-variable cost, and mixed cost
 - Cost Function - it reflects the relationship between production quantity (level of activity) and the cost, each type of cost can have a function to approximate the cost
   - The total mixed cost line can be expressed as an equation: `Y = a + bX` where `a` is the total fixed cost portion and `bX` is the total variable cost portion
@@ -1990,6 +2007,7 @@
   - The allocation requires a cost driver
   - The X-axis of cost function
 - In most cases, economist's curvilinear cost function can be treated as a linear function within the relevant range by using the accountant's straight-line approximation (constant unit variable cost)
+  - Managers use cost estimation to measure a relationship based on data from past costs and the related level of an activity
 - Linear methods of cost estimation has two assumptions:
   - Changes in total costs can be explained by changes in the level of a single cost driver
   - Cost behavior can adequately be approximated by a linear function of the activity level within the relevant range
@@ -2035,11 +2053,11 @@
 #### Categorization of Costs
 
 - Behaviour - Variable/Fixed
-  - Variable costs are `TVC`, `UFC`, `DM`, `DL`, `VMOH`, `VS&A`
-  - Fixed costs are `UVC`, `TFC`, `FS&A`, `FMOH`
+  - Variable costs are `TVC`, `UFC`, `DM`, `DL`, `VMOH`, `VS&A`, it changes when the level of production changes
+  - Fixed costs are `UVC`, `TFC`, `FS&A`, `FMOH`, it won't change with the production activity
   - Sometimes a cost can be mixed, it has both variable and fixed components in the cost
 - Traceability - Direct/Indirect
-  - When a cost has a known unit cost and it is traceable is is a direct (prime) cost. Otherwise it is an indirect cost
+  - When a cost has a known unit cost and traceable, it is a direct (prime) cost. Otherwise it is an indirect cost
   - Direct costs are `DM`, `DL`
   - Indirect costs are `VMOH`, `FMOH`, `VS&A`, `FS&A`
   - Manufacturing overhead is an indirect cost and it can't be traced directly by the unit number produced, they include:

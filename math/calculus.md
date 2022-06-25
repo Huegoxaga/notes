@@ -425,11 +425,14 @@
   - Chain rules can be used to solved an integral by substitute a subfunction in along with _du_ when and differential function of the sub function is found and the relationship between _du_ and _dx_ is found.
   - When the denominator of a function has for `a+b`, try multiply it by `(a-b)/(a-b)` to simplify
   - When working with trig function with high order, try to use the variation of $$\sin^2x+\cos^2x=1$$ to simplify first, then try the half angle formulas to reduce the order, then substitute
-- When integrate a fraction of two high order(greater than 1) polynomials, use partial fraction to split the fraction to two simpler one and then integrate, it can make:
+- When integrate a fraction of two high order(greater than 1) polynomials, use partial fraction to split the fraction to two simpler one, solve for the constants in the nominator, then integrate, it can make:
   - $$\frac{a_3x+b_3}{(a_1x+b_1)(a_2x+b_2)}=\frac{A}{(a_1x+b_1)}+\frac{B}{(a_2x+b_2)}$$, where `A` and `B` are constant
+    - Shortcut method for solving `A`: $$A=\frac{a_3x+b_3}{a_2x+b_2}$$ (It is the original fraction when the denominator of A removed), where `x` is the value when the denominator of `A` equals zero, $$a_1x+b_1 = 0$$
+    - Shortcut method for solving `B`: $$B=\frac{a_3x+b_3}{a_1x+b_1}$$ (It is the original fraction when the denominator of B removed), where `x` is the value when the denominator of `B` equals zero, $$a_2x+b_2 = 0$$
+    - The above method works for the above fraction type only, then denominator is the product of linear equations and the nominator is also linear (`ax + b`)
   - $$\frac{a_3x+b_3}{(a_1x+b_1)(a_2x+b_2)^2}=\frac{A}{(a_1x+b_1)}+\frac{B}{(a_2x+b_2)}+\frac{C}{(a_2x+b_2)^2}$$, where `A`, `B`, `C` are constant
   - $$\frac{a_3x^2+b_3}{(a_1x+b_1)(a_2x^2+b_2)}=\frac{A}{(a_1x+b_1)}+\frac{Bx+C}{(a_2x^2+b_2)}$$, where `A`, `B`, `C` are constant
-- When the nominator has higher order than the denominator use long division
+- When the nominator has the same or higher order than the denominator, use long division
 - Trigonometric Integrals 7.2 7.3 7.4 7.5
 - The Arc Length Formula - If _f'_ is continuous on [_a, b_] then the length of the curve _y = f(x)_, $$a \leqslant x \leqslant b$$, is $$L=\int^b_a \sqrt{1+[f'(x)]^2} \; dx$$ or $$L=\int^b_a \sqrt{1+\left(\frac{dy}{dx}\right)^2} \; dx$$ using Leibniz notation.
   - the surface area of the surface obtained by rotating the curve _y = f(x)_, $$a \leqslant x \leqslant b$$, about the x-axis as $$S=\int^b_a 2 \pi y \sqrt{1+\left(\frac{dy}{dx}\right)^2} \; dx$$
