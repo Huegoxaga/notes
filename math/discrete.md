@@ -226,6 +226,25 @@
   - For a triangle, `A: B, C`, `B: A, C`, `C: A, B`
 - Chromatic number of a graph is the number of colors required for coloring a graph, so two adjacent vertices can't have the same color
 
+### Tree
+
+- A tree is a graph that is connected and has no cycles
+- It has exactly one simple path between any pair of vertices
+- A tree with `N` edges has `N+1` vertices
+- When an additional edge is added to any tree, a cycle will be formed
+- A tree with more than one vertex has at least two vertices of degree one
+- Spanning tree - a tree of a graph that has all the vertices
+  - When finding the spanning tree for a given graph, BFS or DFS algorithm can be used
+  - BFS finds the shortest spanning tree
+  - DFS finds the longest spanning tree
+  - During traversal, use alphabetical order within the same depth (or queue)
+- Weighted trees - the edges of the tree have weights
+  - The weight of a tree is the sum of weights of all the edges
+- Minimal Spanning Tree - It's a spanning tree with the least weight in a graph
+- Maximal Spanning tree - It's a spanning tree with the maximum weight in a graph
+  - PRIM's algorithm is used to find the min spanning tree, find and draw the shortest edge(s) from the root, then amount all edges connected to the chosen edge find and draw the shortest edge(s), then amongst all edge(s) connected to the chosen edge(s) find and draw the shortest edge(s) until all vertices are covered. As a result the sum of all the chosen edges should be the minimum
+    - Find the longest edges for the max spanning tree
+
 ## Boolean Algebra
 
 - A logical statement can have two values, True (1) and False (0)

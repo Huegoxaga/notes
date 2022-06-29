@@ -2113,3 +2113,22 @@
   - `Gross Profit` or `Gross Margin` (`GM`) equals `Sales Revenue - COGS`
   - `Operating Income (OI) = GM – Period (or Selling & Advertisement) Expenses`
     - Income Tax is calculated based on the `Operating Income`
+
+### Costing Systems
+
+#### Job Order
+
+- Also known as Normal, Traditional, Plant-Wide Rate, Single Rate
+- DM and DL Costs are traced actual
+- Applied on estimatie
+- Use a cost driver to aloocate overhead
+
+#### Activity Based Coasting (ABC)
+
+#### Process
+
+#### Departmental
+
+#### Joint Product
+
+#### Dual

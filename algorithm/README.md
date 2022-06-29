@@ -234,8 +234,9 @@
     - It is a technique that recursively build a solution incrementally and remove all the solutions that does not satisfy the constraints of the problem at any point of time
     - The goal is to explore all possible solutions to a problem using the brute force approach
     - A search tree named state-space tree is used. In a state-space tree, each branch is a variable, and each node represents a solution
-    - the depth-first search (DFS) method is performed on the tree. When it starts exploring the solutions, a bounding function is applied so that the algorithm can check if the so-far built solution satisfies the constraints, when solution from one node failed to meet the constraints, the recursion stops. Since the next node from upper level will continue to execute, it looks like the path has been backtracked
     - Breadth-first search (BFS) is an algorithm for searching a tree data structure for a node that satisfies a given property. It starts at the tree root and explores all nodes at the present depth prior to moving on to the nodes at the next depth level. Extra memory, usually a queue, is needed to keep track of the child nodes that were encountered but not yet explored
+    - the depth-first search (DFS) method is performed on the tree. It reaches the bottom of the tree first, since the next node from upper level will continue to execute, it looks like the path has been backtracked
+      - a bounding function is applied so that the algorithm can check if the so-far built solution satisfies the constraints, when solution from one node failed to meet the constraints, the recursion stops.
 
 ### Parallel
 
@@ -578,6 +579,7 @@ int partition(int A[ ], int start, int end)
 
 - It finds the shortest time to get to all the next intermeditate nodes from the starting point to the destination, only the path that takes the shortest time to the next nodes will be adopted and will be used to reach further nodes
 - When the length of all edge in a graph is the same, it is an unweighted graph, then Breath-first search algorithm can be used
+- Dijkstra's Algorithm is a BFS algorithm for weighted graph
 
 #### `A*` Search Algorithm
 

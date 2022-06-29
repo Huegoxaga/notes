@@ -417,14 +417,20 @@
 - the average value of _f_ on the interval [_a, b_] is $$f_{avg}=\frac{1}{b-a} \int^b_a f(x) \; dx$$
 - Integration By Parts is the reversed way of doing differentiation using the product rule
   - A problem can be solved by integral by parts if the function can be represented by one sub function times the differentiated function of another one.
-  - Choose the term that will not being intergrated during the process by the `LIATE` order
+  - Choose the term that will not be intergrated (will be differentiated) during the process by the `LIATE` order
     - L = Log, I = Inverse Trig, A = Algebraic, T = Trigonometric, E = Exponential
     - Terms on the left is harder to integrate then terms on the right
   - Integration By Parts sometimes is required for multiple times, substitue the intermediate results will cancel out common terms and yield the final answer
 - Integration By Substitution is the reversed way of doing differentiation using the chain rule
   - Chain rules can be used to solved an integral by substitute a subfunction in along with _du_ when and differential function of the sub function is found and the relationship between _du_ and _dx_ is found.
   - When the denominator of a function has for `a+b`, try multiply it by `(a-b)/(a-b)` to simplify
-  - When working with trig function with high order, try to use the variation of $$\sin^2x+\cos^2x=1$$ to simplify first, then try the half angle formulas to reduce the order, then substitute
+  - Sometimes, many terms in the same function can be substituted after some transformation, the goal is to eliminate the old variable
+- When working with trig function with high order
+  - try the half angle formulas $$\sin^2 x=\frac{1}{2}-\frac{1}{2}\cos 2x$$ to reduce the order if it has an even number of power
+  - try to use the variation of $$\sin^2x+\cos^2x=1$$ to simplify when the trig function has odd number of power. e.g. $$\sin^3x=\sin^2x\cdot\sin x=(1-\cos^2x)\sin x$$, when substitute `u = cosx` the `sinx` term will be canceled out
+- When solving $$\int \sin ax\cos bx dx$$, simply with $$\sin ax\cos bx=\frac{1}{2}[\sin(ax+bx)+\sin(ax-bx)]$$
+  - For $$\int \sin ax\sin bx dx$$, use $$\sin ax\sin bx=\frac{1}{2}[\cos(ax-bx)-\cos(ax+bx)]$$
+  - For $$\int \cos ax\cos bx dx$$, use $$\cos ax\cos bx=\frac{1}{2}[\cos(ax-bx)+\cos(ax+bx)]$$
 - When integrate a fraction of two high order(greater than 1) polynomials, use partial fraction to split the fraction to two simpler one, solve for the constants in the nominator, then integrate, it can make:
   - $$\frac{a_3x+b_3}{(a_1x+b_1)(a_2x+b_2)}=\frac{A}{(a_1x+b_1)}+\frac{B}{(a_2x+b_2)}$$, where `A` and `B` are constant
     - Shortcut method for solving `A`: $$A=\frac{a_3x+b_3}{a_2x+b_2}$$ (It is the original fraction when the denominator of A removed), where `x` is the value when the denominator of `A` equals zero, $$a_1x+b_1 = 0$$

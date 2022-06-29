@@ -160,11 +160,13 @@
 #### Trigonometric
 
 - Sine and cosine functions are periodic with period $$2\pi$$
+- Cosine is even function, `cos(-x)=cosx`
+- Sine is odd function, `sin(-x)=-sinx`
 - Tangent function is periodic with period $$\pi$$
 - $$\tan x=\frac{\sin x}{\cos x}$$
-- $$\frac{1}{sin x}=\csc x$$
-- $$\frac{1}{cos x}=\sec x$$
-- $$\frac{1}{tan x}=\cot x$$
+- $$\frac{1}{\sin x}=\csc x$$
+- $$\frac{1}{\cos x}=\sec x$$
+- $$\frac{1}{\tan x}=\cot x$$
 - $$\sin^2x+\cos^2x=1$$
   - Divide both side by $$\sin^2x$$, gives $$1+\cot^2x=\csc^2x$$
   - Divide both side by $$\cos^2x$$, gives $$\tan^2x+1=\sec^2x$$
@@ -174,6 +176,11 @@
     - $$\cos(2x)=1-2\sin^2x$$
     - $$\cos(2x)=2\cos^2x-1$$
   - Divide $$\sin(2x)$$ by $$\cos(2x)$$, gives $$\tan2x=\frac{2\tan x}{1-\tan^2x}$$
+- $$\sin(A+B)=\sin A\cos B+\cos A\sin B$$ and $$\sin(A-B)=\sin A\cos B-\cos A\sin B$$
+- $$\cos(A+B)=\cos A\cos B-\sin A\sin B$$ and $$\cos(A-B)=\cos A\cos B+\sin A\sin B$$
+  - $$\sin A\cos B=\frac{1}{2}[\sin(A+B)+\sin(A-B)]$$
+  - $$\sin A\sin B=\frac{1}{2}[\cos(A-B)-\cos(A+B)]$$
+  - $$\cos A\cos B=\frac{1}{2}[\cos(A-B)+\cos(A+B)]$$
 
 ### Vector
 
