@@ -233,6 +233,34 @@
 - More than four years is usually unacceptable
 - The payback period should not be used as a the sole criterion for evaluating projects
 
+### Asset Replacement Analysis
+
+- Reasons for Replacement
+  - Obsolescence - Technology of an asset is surpassed by newer and/or different technologies
+  - Depletion - Loss of market value due to consumption or exhaustion of resource
+  - Deterioration due to aging - Loss of functionality or efficiency due to the aging process
+- Purchasing asset is decision to acquire capacity
+- In asset replacement analysis
+  - The existing physical asset is called the defender
+  - The potential replacement is called the challenger
+- An asset should be replaced by a new one when it reaches its economic life
+- Economic life is the number of years that minimizes: EAC(total) = EAC(capital) + EAC(O&M)
+  - EAC(capital) is the equivilent annual cost (`EAC`) of depreciation of an asset, `A = (P+I–S)(A/P, i, N) + S*i`
+    - `I` is the installations costs
+    - `(P-S)` or `(P+I-S)` is known as the capital cost
+  - EAC(O&M) is the equivilent annual cost of operating and maintaining, it is usually an increasing arithmetic or gradient series
+- Economic life is considering replacing the existing asset with an identical one and this sequence continues indefinitely in the future (the same asset will be used forever), some useful assumptions:
+  - The defender /challenger are technologically identical
+  - Lives of these identical assets are assumed to be short
+  - Relative prices/interest rates are assumed constant
+- When challenger is different from defender, challenger repeats and will be continuously used indefinitely
+  1. Determine the Economic Life of the challenger and its associated EAC
+  2. Determine the remaining Economic Life of the defender and its associated EAC
+  3. If the EAC(defender) > EAC(challenger), replace now. Otherwise, do not replace now.
+  - For old asset only the EAC of the next year should be checked becuase it will also increase, and the economic life is always the next year
+    - This is known as the `One Year Principle`: when annual capital costs will be low in comparison to O&M costs and EAC(total) will be increasing each N, and the yearly operating costs are monotonically increasing, the economic life of the defender is one year and total EAC is the cost of using the defender for one more year
+- If the operating costs are not smoothly increasing, a detailed year-to-year comparison has to be conducted
+
 # Statistics Concepts
 
 - Types of scales for statistic meaturement
@@ -2048,7 +2076,7 @@
 - Manufacturing Overhead (`MOH`) - equals `VMOH + FMOH`
 - Prime Cost or Direct Manufacturing Cost - equals `DM used + DL`
 - Conversion Cost - equals `DL + MOH` or `DL + VMOH + FMOH`
-- Total Manufacturing Cost - equals `DM + DL + MOH` or `DM + DL + VMOH + FMOH`
+- Total (Manufacturing) Cost - equals `DM + DL + MOH` or `DM + DL + VMOH + FMOH`
 
 #### Categorization of Costs
 
@@ -2078,12 +2106,12 @@
   - Traceability can be changed depends on materiality
     - Some unit cost can be defined but it is just too small and the owner doesn't bother to trace it. Instead a total indirect cost is evaluated
 - Function - Product/Period
-  - Product cost - anythine related to make the product
+  - Product(Inventoriable) cost - anythine related to make the product
     - These costs go into the balance sheet as inventory, after shipment the cost of good sold is transferred into income statement as expenses
     - They are `DM`, `DL`, `VMOH`, `FMOH`
   - Period cost - the costs including all selling and administrative costs
     - These costs go directly into income statement as expenses
-    - They are `VS&A`, `FS&A`
+    - They are `VS&A`, `FS&A`, including any marketing expense and customer service expense
 
 ### Costs in Reports
 
@@ -2116,19 +2144,71 @@
 
 ### Costing Systems
 
-#### Job Order
+#### Job Order Costing
 
-- Also known as Normal, Traditional, Plant-Wide Rate, Single Rate
-- DM and DL Costs are traced actual
+- Also known as Normal Costing, Direct Costing, Traditional Costing, Absorption Costing, Plant-Wide Rate Costing, Single Rate Costing
+- It is required by `GAAP` for external reporting purpose
+- Different from average costing, job order costing trace the actual and direct material/labour cost
 - Applied on estimatie
-- Use a cost driver to aloocate overhead
+- For overhead cost (which is indirect), find a cost driver to allocate overhead
+  - e.g. hours in shop for auto repairs
+  - `Estimated Overhead Costs` / `Total Estimated Level of Activity (Size of the Cost Driver)` = `Cost Allocation Rate`
+  - `Cost Allocation Rate` is also known as `Predetermined Overhead Rate` (`POHR`) or `Overhead Application Rate`
+- The allocated cost for each task equals the actual size of the cost driver for each task multiply by `POHR`
+  - This allocated cost is known as the `Applied/Charged/Allocated/Assigned Overhead`
+  - The calculation of `POHR` is based on the estimation from previous data, the actual activity is based on the end of period data
+- By the end of the period, adjustment needs to be made when the actual level of activity and actual overhead cost is ready to use
+  - The adjustment happens after transaction is completed, that's why revenue is not certain before period ends
+  - When applied overhead is lower than actual overhead, it's called underapplied, adjust it by debiting (increasing) `COGS`
+  - When applied overhead is higher than actual overhead, it's called overapplied, adjust it by crediting (reducing) `COGS`
+  - Adjusting the `COGS` account is the direct method, the proration method split the different into `COGS`, `WIP`, `FG` accounts based on their ending balance of the three accounts
+    - Split by the percentage of the end balance of one account out of the sum of the end balance of all three accounts
+    - proration method increase all three accounts when underapplied and decrease all three accounts when overapplied
+- Job Order Costing is good for:
+  - High direct costs, low indirect costs (MOH)
+  - Small number of products consuming similar amounts of indirect costs
+  - Low non-manufacturing costs (not assigned to cost objects)
 
 #### Activity Based Coasting (ABC)
 
-#### Process
+- All indirect costs including period costs are allocated
+- It adpots multiple cost pools and drivers
+- ABC is good for:
+  - Capital intensive instead of labour intensive, higher indirect costs
+  - Increased S&A costs (sales commission, shipping, warranty, etc) that can be traced to individual product or service with better technology
+  - Product diversity and customization by customer, utilizing `MOH` at different degrees
+  - traditional costing relys heavily on the volumn of units produces, and for above cases it will make high volume over-costed, Low volume complex products under-costed
+- ABC is a good supplement to our traditional cost system
+- ABC is designed to provide managers with cost information for strategic and other decisions that potentially affect capacity, it is generally more accurate than job order costing
+- Firms prefers `ABC` for internal use as a decision making tool
+- ABC defines an activity which is an event that causes the consumption of overhead resources
+- One activity is related to a group of cost driver, a collection of the cost from the cost drivers forms an activity pool, the size or quantity of the activities in the activity pool is known
+- A certain cost driver for an activity cost pool is represented by a percentage
+- For each cost driver is shared by one or more activity pool and make up to a total of `100%`
+  - Usually the total cost of one cost driver is known, so cost of one activity pool is known, the total cost of all cost driver for a activity pool will be the total cost of that activity pool, then the unit cost of an activity pool (activity rate) equals the total cost for the activity pool divided by the size of the activity
+- If the activity rate for each pool is known the total cost for a given scenario is calculated by the sum of the product of the pool volumn involved and their rates
+- ABC defines four levels of activity that largely do not relate to the volume of units produced
+  - Unit-Level Activity - Activities that are performed each time a unit is produced
+    - Examples: DM, DL, sales commission, packaging, shipping
+  - Batch-Level Activity - Activities that are performed each time a batch of goods is processed
+    - Examples: Placing Purchase Orders, Production Setup Costs, Inspection
+  - Product-Level Activity - Activities that are related to a specific product regardless of how many units produced or batches run
+    - Examples: Designing & Developing a product, R&D, Licensing, Advertising for a product
+  - Facility-Level Activity - Activities that are carried out regardless of which products are produced, how many batches are run, or how many units are produced
+    - Examples: Janitorial, Rent, Insurance
 
-#### Departmental
+#### Process Costing
+
+- It is used for high volumn production for identical products
+
+#### Departmental Costing
+
+- It is used for different departments
 
 #### Joint Product
 
+- It is used for multiple products come out from a single input
+
 #### Dual
+
+- It breaks down the single rate from the job order costing into a fixed rate and a variable rate component

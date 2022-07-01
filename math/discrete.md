@@ -244,6 +244,11 @@
 - Maximal Spanning tree - It's a spanning tree with the maximum weight in a graph
   - PRIM's algorithm is used to find the min spanning tree, find and draw the shortest edge(s) from the root, then amount all edges connected to the chosen edge find and draw the shortest edge(s), then amongst all edge(s) connected to the chosen edge(s) find and draw the shortest edge(s) until all vertices are covered. As a result the sum of all the chosen edges should be the minimum
     - Find the longest edges for the max spanning tree
+- A binay tree is a rooted tree in which each vertex has a maximum of 2 children
+  - Rooted tree is a tree with a root node
+  - Root node is the start (top) of the tree without having any parents
+  - Parent node is any node with at least one child
+- When constructing a binary tree, assign the first weight to root, then put anything smaller to the left child, and anything larger to the right child, etc. Also make sure all weights from the left-subtree should be smaller than the parent of this subtree, and all weights from the right-subtree should be larger than parent node
 
 ## Boolean Algebra
 

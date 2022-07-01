@@ -420,11 +420,13 @@
   - Choose the term that will not be intergrated (will be differentiated) during the process by the `LIATE` order
     - L = Log, I = Inverse Trig, A = Algebraic, T = Trigonometric, E = Exponential
     - Terms on the left is harder to integrate then terms on the right
-  - Integration By Parts sometimes is required for multiple times, substitue the intermediate results will cancel out common terms and yield the final answer
+  - In some cases, Integration By Parts sometimes is required for multiple times, substitue the intermediate results will cancel out common terms and yield the final answer
 - Integration By Substitution is the reversed way of doing differentiation using the chain rule
   - Chain rules can be used to solved an integral by substitute a subfunction in along with _du_ when and differential function of the sub function is found and the relationship between _du_ and _dx_ is found.
   - When the denominator of a function has for `a+b`, try multiply it by `(a-b)/(a-b)` to simplify
-  - Sometimes, many terms in the same function can be substituted after some transformation, the goal is to eliminate the old variable
+  - the goal of substitution is to eliminate the old variables
+    - Sometimes, it cancelled out or it is transformed and represented by using the new variable
+  - Sometimes, many terms in the same function can be substituted after some transformation
 - When working with trig function with high order
   - try the half angle formulas $$\sin^2 x=\frac{1}{2}-\frac{1}{2}\cos 2x$$ to reduce the order if it has an even number of power
   - try to use the variation of $$\sin^2x+\cos^2x=1$$ to simplify when the trig function has odd number of power. e.g. $$\sin^3x=\sin^2x\cdot\sin x=(1-\cos^2x)\sin x$$, when substitute `u = cosx` the `sinx` term will be canceled out
