@@ -23,6 +23,7 @@ AWS CLI provides full controls of AWS using command lines.
   export AWS_DEFAULT_REGION=us-west-2
   ```
 - Environment variables can also be stored in the `.bash_profile`.
+- `aws-tookit` plugin in VSCode provides helpful tools for AWS user
 
 ### General Usage
 
@@ -975,6 +976,31 @@ It is used to allow devices to support Alexa.
 
 - It builds a project from a remote repository and stored the compiled code as artifacts in an S3 bucket for deployment
 - It can also run tests
+- For AWS Lambda CodeBuild get files from GitHub, build environment, zip and update lambda functions
+  - Sample Codebuild script to install environment and update lambda
+
+```yaml
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt -t lib
+  build:
+    commands:
+      - echo "Zipping deployment package..."
+      - cd lib
+      - zip -r9 ../deployment_package.zip .
+      - cd ..
+      - zip -g deployment_package.zip lambda_function.py
+  post_build:
+    commands:
+      - echo "Updating lambda Function..."
+      - aws lambda update-function-code --function-name github-to-lambda-demo --zip-file fileb://deployment_package.zip
+      - echo "DONE!!"
+```
 
 ### CodePipeline
 
@@ -984,6 +1010,7 @@ It is used to allow devices to support Alexa.
 ### CodeDeploy
 
 - It creates application and tag ECS, EC2, or Lambda for deployment
+- For Lambda, it loads Lambda deploy template file in `.yaml` and deploy the lambda pipeline
 - A CodeDeploy agent is required to running on the remote machine, [click here](https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install.html) for details
   - Optionally, install it via AWS System Manager by setting up maintenance schedule
 - The deployment steps are defined in the `appspec.yml` file, [click here](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html) for details
@@ -994,6 +1021,18 @@ It is used to allow devices to support Alexa.
 ### CodeStar
 
 - It uses cloudformation to create all above tools in one click
+
+### SAM
+
+- It manages a Lambda repo that includes all config files about it and use cloudformation to deploy and update it
+- Install sam cli: `brew tap aws/tap && brew install aws-sam-cli`
+  - build project `sam build`
+  - run sam in a public docker image in the background and stop, remove docker container after completion, then output the result, `sam local invoke`
+    - Pass specific event as an input, `sam local invoke -e event/event.json`
+  - first time deployment and generate sam config file `samconfig.toml`, `sam deploy`
+- SAM does group multiple lambda function into one application
+- SAM CLI combines the features from CodeBuild and CodeDeploy, builds and uploads lambda artifacts for deployment
+- For auto deployment after pushing updates on GitHub, CodePipelines and CodeBuild can be used intead of sam cli, [Click Here](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-serverlessrepo-auto-publish.html) for details
 
 ## System Manager
 

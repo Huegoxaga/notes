@@ -240,11 +240,13 @@
   - Depletion - Loss of market value due to consumption or exhaustion of resource
   - Deterioration due to aging - Loss of functionality or efficiency due to the aging process
 - Purchasing asset is decision to acquire capacity
+  - A capacity cost is incurred when a business or other organization spends money in order to expand operations or increase production capacity
 - In asset replacement analysis
   - The existing physical asset is called the defender
   - The potential replacement is called the challenger
 - An asset should be replaced by a new one when it reaches its economic life
 - Economic life is the number of years that minimizes: EAC(total) = EAC(capital) + EAC(O&M)
+  - Generally, the equivalent annual cost (EAC total) is the annual cost of owning, operating, and maintaining an asset over its entire life while the whole life cost is the total cost of the asset over its entire life
   - EAC(capital) is the equivilent annual cost (`EAC`) of depreciation of an asset, `A = (P+I–S)(A/P, i, N) + S*i`
     - `I` is the installations costs
     - `(P-S)` or `(P+I-S)` is known as the capital cost
@@ -2212,3 +2214,49 @@
 #### Dual
 
 - It breaks down the single rate from the job order costing into a fixed rate and a variable rate component
+
+### Cost-Volume-Profit Analysis
+
+- Cost-volume-profit (CVP) analysis is a powerful tool that managers use to help them understand the inter-relationship amongst cost, volume and profit in an organization by focusing on interactions among the following five elements:
+  - prices of products
+  - volume or level of activity
+  - per unit variable costs
+  - total fixed costs
+  - mix of products sold
+- The contribution income statement is helpful to managers in judging the impact on profits of changes in selling price, cost, or volume. The emphasis is on cost behaviour
+  - It lists total sales, total variable cost, contribution margin (`CM`), total fix total, and has net operating income as the bottom line
+  - Sales, variable expenses, and contribution margin can also be expressed on a per unit basis in the above statement
+- The relationship among revenue, cost, profit and volume can be expressed graphically by preparing a CVP graph
+  - Number of unit sold is on the x-axis, and dollors is on the y-axis. Lines are draw for total expenses and total sales
+- Cost structure refers to the relative proportion of fixed and variable costs in an organization
+- There are advantages and disadvantages to high fixed cost (or low variable cost) and low fixed cost (or high variable cost) structures
+  - An advantage of a high fixed cost structure is that income will be higher in good years compared to companies with lower proportion of fixed costs
+  - A disadvantage of a high fixed cost structure is that income will be lower in bad years compared to companies with lower proportion of fixed costs
+  - Companies with low fixed cost structures enjoy greater stability in income across good and bad years
+- The Basic Assumptions of CVP Model: The CVP model is simplified by the following assumptions:
+  1. Both the revenue function and the cost function are linear.
+  2. The selling prices, total fixed costs, and unit variable costs are known with certainty in advance and will remain unchanged during the period.
+  3. The number of units produced equals the number of units sold. This suggests that there no changes in the level of inventory during the period.
+  4. The productivity of workers is constant.
+  5. For multiple-product analysis, the sales mix is assumed to be known in advance and remains constant during the period
+
+#### Related Formulas
+
+- `CM` = `Total Sales` - `Variable Costs`
+  - This will be used to cover fixed expenses and profit, in the line followed in the contribution income statement
+  - Break even happens when CM equals the total fixed costs
+- `CM Ratio` = `CM per unit` / `SP per unit` or `Total CM` / `Total Sales`
+  - SP is selling price
+  - the unit variable cost ratio equals one minus `CM Ratio`
+  - `Increase in CM` = `Increase in SP` × `CM Ratio`
+- `# of unit sold` = (`Fixed Expenses` + `Target Profit`)/`CM per unit`
+  - Add tax into consideration, `# of unit sold` = (`Fixed Expenses` + `After Tax Profit`/(`1` - `Tax Rate`))/`CM per unit`
+- `Net Income` = `CM per unit` × `# of unit sold above break-even`
+- `Sales` = `Variable expenses` + `Fixed expenses` + `Profits`
+- `Margin of safety` = `Total sales` – `Break-even sales`
+  - The margin of safety is the excess of budgeted (or actual) sales over the break-even volume of sales
+  - It can be expressed as a ratio as (`Total sales` – `Break-even sales`) / `Total sales`
+  - It can be expressed as a number of unit sold (`Total sales` – `Break-even sales`) / `SP per unit`
+- `Degree of operating leverage` = `Contribution margin` / `Net operating income`
+  - `% change in Net Operating Income`= `% Changes in Sales` × `Degree of operating leverage`
+  - Only works when fixed expenses are unchanged
