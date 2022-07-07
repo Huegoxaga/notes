@@ -126,6 +126,12 @@
 - shortcut for binary subtraction.
   - convert the subtrahend to two’s complement and add with minuend, if the result has more digit than original register size trucate it and it is called overflow.
 
+### Complex Number
+
+- Imaginary number $$i=\sqrt{-1}$$
+- A complex number can be represented as $$\alpha+i\beta$$, where `α` and `β` are real numbers
+- Euler's Formula - $$e^{ix}=\cos x+i\sin x$$, $$e^{-ix}=\cos x-i\sin x$$
+
 ## Algebra
 
 ### Functions
@@ -135,7 +141,8 @@
 
 #### Polynomial
 
-- Quadratic Solution: $$y=ax^2+bx+c$$, $$x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}$$ (no solution when $$b^2-4ac<0$$)
+- Quadratic Solution: $$y=ax^2+bx+c$$, $$x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}$$
+  - complex solution when $$b^2-4ac<0$$, $$x=\frac{-b}{2a}\pm i\frac{\sqrt{4ac-b^2}}{2a}$$
 - $$(a+b)^3=a^3+3a^2b+3ab^2+b^3$$ and $$(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^kb^{n-k}$$
 - $$(a-b)^3=a^3-3a^2b+3ab^2-b^3$$ and $$(a+b)^n=\sum_{k=0}^{n}(-1)^k\binom{n}{k}a^kb^{n-k}$$
 - $$x^3-y^3=(x-y)(x^2-xy+y^2)$$

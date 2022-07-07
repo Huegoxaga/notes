@@ -1027,12 +1027,30 @@ phases:
 - It manages a Lambda repo that includes all config files about it and use cloudformation to deploy and update it
 - Install sam cli: `brew tap aws/tap && brew install aws-sam-cli`
   - build project `sam build`
+    - It also install packages in the function folders, listed in `requirements.txt` (Python) or `package.json` (Node.js)
   - run sam in a public docker image in the background and stop, remove docker container after completion, then output the result, `sam local invoke`
     - Pass specific event as an input, `sam local invoke -e event/event.json`
   - first time deployment and generate sam config file `samconfig.toml`, `sam deploy`
 - SAM does group multiple lambda function into one application
 - SAM CLI combines the features from CodeBuild and CodeDeploy, builds and uploads lambda artifacts for deployment
-- For auto deployment after pushing updates on GitHub, CodePipelines and CodeBuild can be used intead of sam cli, [Click Here](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-serverlessrepo-auto-publish.html) for details
+- For auto deployment after pushing updates on GitHub, create CodePipeline separetely with codebuild running `same deploy`
+- Once created, Lambda function name cannot be renamed in SAM
+- SAM template file format is based on Cloudformation template file with additional resources type, [click here](https://github.com/aws/serverless-application-model/blob/master/versions/2016-10-31.md#specification) for all available properties for each SAM resource
+
+## CloudFormation
+
+- CloudFormation can be used to manage existing resources. They need to be added to the stack first
+  - Add the complete description of the resource in the `template.yaml`, this resource must have `DeletionPolicy: Retain|Delete` specified
+    - `DeletionPolicy: Delete` is set for all resources by default
+- In the template file use `PropertyName: !Ref ReferencedResourceID` or the following format to refer another resource
+
+```yaml
+PropertyName:
+  Ref: ReferencedResourceID
+```
+
+- Same goes for `!GetAtt` or `Fn::GetAtt:`
+- Use `-` at the beginning of each intended lines if one propery has multiply values
 
 ## System Manager
 

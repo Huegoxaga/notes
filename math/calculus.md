@@ -461,12 +461,12 @@
   - Linear First Order - _y' + P(x)y = Q(x)_ where _P(x)_, _Q(x)_ can be either a constant or a function of `x`
     - Homogeneous when _Q(x)_ is zero
     - Non-homogeneous when _Q(x)_ is not zero, _Q(x)_ can be called the driven function
-  - Non-linear First Order - anything first order equation that is not linear like _y' = f(x, y)_ where _f(x, y)_ can be a mix of `x` and `y` like `(x+y+1)^2`
+  - Non-linear First Order - any first order equation that is not linear like _y' = f(x, y)_ where _f(x, y)_ can be a mix of `x` and `y` like `(x+y+1)^2`
 - Second Order Differential Equation - it is an equation that contains both the function itself and its first and second derivates. For example, $$\frac{d^2y}{dx^2}-2 \frac{dy}{dx}+8y=0$$ or it can be _y'-2y'+8y = 0_ where _y = f(x)_. Then, solve for the function _f(x)_
   - Linear Second Order has a form as _y'' + P(x)y' + Q(x)y = S(x)_ where _P(x)_, _Q(x)_, _S(x)_ can be either a constant or a function of x.
     - Homogeneous when _S(x)_ is zero
     - Non-homogeneous when _S(x)_ is not zero, _S(x)_ can be called the driven function.
-  - Linear Second Order - Any second order equation that is not linear
+  - Non-Linear Second Order - Any second order equation that is not linear
 - The solution will have a constant C that make differential equations have infinite solutions and this is called the general solution.
   - When a set of value called initial condition is given, the constant value can be solved. Then, a particular solution is found
 - A slope field can be drawn to represent the differential equation
@@ -486,9 +486,28 @@
   - For non-homogeneous linear first order differential equation _y' + f(x)y = r(x)_, multiply both sides of the equation by an integrating factor $$P(x)=e^{\int P(x) \; dx}$$
   - For Non-linear first order differential equations use substitution method.
   - The exact differential equations - _F(x, y(x))_ can be solved if _M(x, y)dx + N(x, y)dy = 0_ where _dF/dx = M_ and _dF/dy = N_.
-  - Solving Second Order Differential Equation
-    - For equations like has variables _F(x, y', y'')_ it can be reduced to first order by substituting _p = dy/dx_ and _y'' = dp/dx_.
-    - Linear non-homogeneous second order differential equation, get the homogeneous solution by solving the homogeneous version of the equation and get the paricular solution by solving the driven function. Then, get the final solution by adding the homogeneous solution to the paricular solution
+- Solving Second Order Differential Equation
+  - For second order differential equation with constant coefficients
+    - If it is homogeneous where $$ay''+by'+cy=0$$, solve for its characteristic equation $$am^2+bm+c=0$$
+      - When `m` has two solutions, $$y=c_1e^{m_1x}+c_2e^{m_2x}$$
+      - When `m` has one solution, $$y=c_1e^{mx}+c_2xe^{mx}$$
+      - When `m` has two complex solutions $$\alpha+i\beta$$ and $$\alpha-i\beta$$, $$y=e^{\alpha x}[c_1\cos\beta x+c_2\sin\beta x]$$ (simplied with Euler's Formula)
+    - If it is homogeneous where $$ay''+by'+cy=f(x)$$ and `f(x)` is not zero, the solution is consisted of the complimentary solution plus the particular solution, the complimentary solution is the same solution for the homogeneous form of the equation, the particular solution is specific to `f(x)`, it can be determined with the following method:
+      - Undetermined Coefficient Method - When `f(x)` is constant, quadratic function, exponential function with base `e`, trig function of cosine or sine, or some sum or product of the mentioned terms, compose guessed terms with coefficient, for examples:
+        - 3 -> A
+        - 4x -> Ax + B
+        - x + 8 -> Ax + B
+        - x^2 - 2 -> Ax^2 + Bx + C
+        - $$3e^{-3x}$$ -> $$Ae^{-3x}$$
+        - 3cos2x -> Acos2x + Bsin2x
+        - 6sin5x -> Acos5x + Bsin5x
+        - 4x + 3cos2x -> Ax + B + Ccos2x + Dsin2x (sum)
+        - $$3xe^{-3x}$$ -> $$(Ax+B)(Ce^{-3x})$$ -> $$ACxe^{-3x}+BCe^{-3x}$$ -> $$Axe^{-3x}+Be^{-3x}$$, (product, rewrite sum or product of multiple constants into a new one)
+        - When there are base terms (without constant) that repeats from terms in the complimentary solution, multiply all terms guessed from the same `f(x)` component by `x` one or more times until there is no repeating term, $$f(x)=3x+7xe^{-x}$$ -> $$(Ax+B)(Ce^{-x})$$ -> $$Ax+B+Cxe^{-x}+ De^{-x}$$ -> $$Ax+B+(Cxe^{-x}+ De^{-x})x$$, because $$Cxe^{-x}+ De^{-x}$$ are all related to $$7xe^{-x}$$
+      - Variation of Parameter
+      - Inverse Operator
+  - For equations like has variables _F(x, y', y'')_ it can be reduced to first order by substituting _p = dy/dx_ and _y'' = dp/dx_.
+  - Linear non-homogeneous second order differential equation, get the homogeneous solution by solving the homogeneous version of the equation and get the paricular solution by solving the driven function. Then, get the final solution by adding the homogeneous solution to the paricular solution
 - Laplace Transform - convert differential equation into an algebraic equation
 
 ## Infinite Sequences and Series
