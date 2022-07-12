@@ -2131,11 +2131,14 @@
   - `Ending Balance - Beginning Balance = Change in WIP`, so `COGM = DM used + DL + MOH – Change in WIP`
   - Keep in mind that `DM Used` comes from the `RM` account
   - `IM used` from the `RM` account is part of the `MOH` in the `WIP` account.
+  - `MOH` uses the applied `MOH` if normal costing is used
+  - Only accounts for orders that are still in production and has not been moved to the `FG` account
 - Finished Goods (`FG`) - Goods that is ready to be shipped, this account is managed by the marketing department
   - `Beginning Balance + COGM – Ending Balance = Cost of Goods Sold (COGS)`
   - `Ending Balance - Beginning Balance = Change in Finished Goods Inventory`, so `COGS = COGM - Change in FG`
   - `COGM` from `WIP` comes into `FG` account
   - `Cost of goods available for sale (COGAS) = Beginning Balance of Finished Goods + COGM`
+  - `COGS` is realized only after the goods is sold and shipped to the customers
 
 #### Expenses in Income Statement
 
@@ -2150,7 +2153,8 @@
 
 - Also known as Normal Costing, Direct Costing, Traditional Costing, Absorption Costing, Plant-Wide Rate Costing, Single Rate Costing
 - It is required by `GAAP` for external reporting purpose
-- Different from average costing, job order costing trace the actual and direct material/labour cost
+- Different from average costing, job order costing trace the actual and direct material/labour cost, while average costing evaluates the average cost of a unit using the sum of all direct and indirect costs
+- Different from actual costing, cctual costing is a calculation of all accurate costs associated with a project including materials, labor and overhead costs
 - Applied on estimatie
 - For overhead cost (which is indirect), find a cost driver to allocate overhead
   - e.g. hours in shop for auto repairs
@@ -2161,8 +2165,8 @@
   - The calculation of `POHR` is based on the estimation from previous data, the actual activity is based on the end of period data
 - By the end of the period, adjustment needs to be made when the actual level of activity and actual overhead cost is ready to use
   - The adjustment happens after transaction is completed, that's why revenue is not certain before period ends
-  - When applied overhead is lower than actual overhead, it's called underapplied, adjust it by debiting (increasing) `COGS`
-  - When applied overhead is higher than actual overhead, it's called overapplied, adjust it by crediting (reducing) `COGS`
+  - When applied overhead is lower than actual overhead, it's called underapplied, adjust it by debiting (increasing) `COGS`, then crediting the same amount on `Manufacturing Overhead`
+  - When applied overhead is higher than actual overhead, it's called overapplied, adjust it by crediting (reducing) `COGS`, then debiting the same amount on `Manufacturing Overhead`
   - Adjusting the `COGS` account is the direct method, the proration method split the different into `COGS`, `WIP`, `FG` accounts based on their ending balance of the three accounts
     - Split by the percentage of the end balance of one account out of the sum of the end balance of all three accounts
     - proration method increase all three accounts when underapplied and decrease all three accounts when overapplied
@@ -2226,6 +2230,7 @@
 - The contribution income statement is helpful to managers in judging the impact on profits of changes in selling price, cost, or volume. The emphasis is on cost behaviour
   - It lists total sales, total variable cost, contribution margin (`CM`), total fix total, and has net operating income as the bottom line
   - Sales, variable expenses, and contribution margin can also be expressed on a per unit basis in the above statement
+  - Contribution refers to the amount contributes toward covering the fixed costs
 - The relationship among revenue, cost, profit and volume can be expressed graphically by preparing a CVP graph
   - Number of unit sold is on the x-axis, and dollors is on the y-axis. Lines are draw for total expenses and total sales
 - Cost structure refers to the relative proportion of fixed and variable costs in an organization
@@ -2234,19 +2239,25 @@
   - A disadvantage of a high fixed cost structure is that income will be lower in bad years compared to companies with lower proportion of fixed costs
   - Companies with low fixed cost structures enjoy greater stability in income across good and bad years
 - The Basic Assumptions of CVP Model: The CVP model is simplified by the following assumptions:
-  1. Both the revenue function and the cost function are linear.
-  2. The selling prices, total fixed costs, and unit variable costs are known with certainty in advance and will remain unchanged during the period.
-  3. The number of units produced equals the number of units sold. This suggests that there no changes in the level of inventory during the period.
-  4. The productivity of workers is constant.
-  5. For multiple-product analysis, the sales mix is assumed to be known in advance and remains constant during the period
+  - All costs can be resolved into fixed and variable elments
+    - CVP analysis requires that all the company's costs, including manufacturing, selling, and administrative costs, be identified as variable or fixed
+  - Over the activity range being considered costs and revenues behave in linear fashion
+  - The selling prices, total fixed costs, and unit variable costs are known with certainty in advance and will remain unchanged during the period
+  - The technology, production methods and efficiency remain unchanged
+  - The number of units produced equals the number of units sold. This suggests that there no changes in the level of inventory during the period
+    - There are no stock level changes or that stocks are valued at marginal cost only
+  - The productivity of workers is constant.
+  - For multiple-product analysis, the sales mix is assumed to be known in advance and remains constant during the period
+  - The only factor affecting costs and revenues is volume
 
 #### Related Formulas
 
 - `CM` = `Total Sales` - `Variable Costs`
   - This will be used to cover fixed expenses and profit, in the line followed in the contribution income statement
   - Break even happens when CM equals the total fixed costs
+  - On a per unit basis, `CM per unit` = `SP per unit` - `Unit Variable Cost`
+    - `SP` is selling price
 - `CM Ratio` = `CM per unit` / `SP per unit` or `Total CM` / `Total Sales`
-  - SP is selling price
   - the unit variable cost ratio equals one minus `CM Ratio`
   - `Increase in CM` = `Increase in SP` × `CM Ratio`
 - `# of unit sold` = (`Fixed Expenses` + `Target Profit`)/`CM per unit`

@@ -52,6 +52,7 @@
 - `touch .gitignore` Add the filename or folder addresses in the `.gitignore` file line by line, those files will be ignored by git.
   - Rules are applied from top to bottom
   - [Click here](https://github.com/github/gitignore) to check out `.gitignore` templates for different projects
+    - Optionally, use [gitignore.io](https://www.toptal.com/developers/gitignore?templates=osx,linux,windows,visualstudiocode) to generate templates
   - use `!` before ignore rules to unignore, lines with `!` should be placed at the bottom of the file
   - Existing files are tracked even after it is excluded in the `.gitignore`, to reset the file records, commit all changes first, then, `git rm -rf --cached . && git add .`
 - To add an empty folder in git repo, add a `.gitignore` file with the following content inside the folder

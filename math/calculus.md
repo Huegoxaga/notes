@@ -504,6 +504,7 @@
         - 4x + 3cos2x -> Ax + B + Ccos2x + Dsin2x (sum)
         - $$3xe^{-3x}$$ -> $$(Ax+B)(Ce^{-3x})$$ -> $$ACxe^{-3x}+BCe^{-3x}$$ -> $$Axe^{-3x}+Be^{-3x}$$, (product, rewrite sum or product of multiple constants into a new one)
         - When there are base terms (without constant) that repeats from terms in the complimentary solution, multiply all terms guessed from the same `f(x)` component by `x` one or more times until there is no repeating term, $$f(x)=3x+7xe^{-x}$$ -> $$(Ax+B)(Ce^{-x})$$ -> $$Ax+B+Cxe^{-x}+ De^{-x}$$ -> $$Ax+B+(Cxe^{-x}+ De^{-x})x$$, because $$Cxe^{-x}+ De^{-x}$$ are all related to $$7xe^{-x}$$
+        - This method only works on the above cases, refer to the next method for a more general method
       - Variation of Parameter
       - Inverse Operator
   - For equations like has variables _F(x, y', y'')_ it can be reduced to first order by substituting _p = dy/dx_ and _y'' = dp/dx_.
