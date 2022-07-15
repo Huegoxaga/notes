@@ -493,7 +493,7 @@
       - When `m` has one solution, $$y=c_1e^{mx}+c_2xe^{mx}$$
       - When `m` has two complex solutions $$\alpha+i\beta$$ and $$\alpha-i\beta$$, $$y=e^{\alpha x}[c_1\cos\beta x+c_2\sin\beta x]$$ (simplied with Euler's Formula)
     - If it is homogeneous where $$ay''+by'+cy=f(x)$$ and `f(x)` is not zero, the solution is consisted of the complimentary solution plus the particular solution, the complimentary solution is the same solution for the homogeneous form of the equation, the particular solution is specific to `f(x)`, it can be determined with the following method:
-      - Undetermined Coefficient Method - When `f(x)` is constant, quadratic function, exponential function with base `e`, trig function of cosine or sine, or some sum or product of the mentioned terms, compose guessed terms with coefficient, for examples:
+      - Undetermined Coefficient Method - When `f(x)` is constant, quadratic function, exponential function with base `e`, trig function of cosine or sine, or some sum or product of the mentioned terms, compose guessed particular solution with coefficient, for examples:
         - 3 -> A
         - 4x -> Ax + B
         - x + 8 -> Ax + B
@@ -504,12 +504,33 @@
         - 4x + 3cos2x -> Ax + B + Ccos2x + Dsin2x (sum)
         - $$3xe^{-3x}$$ -> $$(Ax+B)(Ce^{-3x})$$ -> $$ACxe^{-3x}+BCe^{-3x}$$ -> $$Axe^{-3x}+Be^{-3x}$$, (product, rewrite sum or product of multiple constants into a new one)
         - When there are base terms (without constant) that repeats from terms in the complimentary solution, multiply all terms guessed from the same `f(x)` component by `x` one or more times until there is no repeating term, $$f(x)=3x+7xe^{-x}$$ -> $$(Ax+B)(Ce^{-x})$$ -> $$Ax+B+Cxe^{-x}+ De^{-x}$$ -> $$Ax+B+(Cxe^{-x}+ De^{-x})x$$, because $$Cxe^{-x}+ De^{-x}$$ are all related to $$7xe^{-x}$$
+        - For the undetermined particular solution $$y_p$$
+          - Find its first and second order direvatives with unknown coefficient, $$y_p'$$ and $$y_p''$$
+          - Substitute `y`, `y'`, `y''` in the original D.E with $$y_p$$, $$y_p'$$, and $$y_p''$$
+          - Solve the unknown coefficient and obtain the completed particular solution
+          - Add the complimentary solution with the particular solution to get the final solution
         - This method only works on the above cases, refer to the next method for a more general method
       - Variation of Parameter
       - Inverse Operator
   - For equations like has variables _F(x, y', y'')_ it can be reduced to first order by substituting _p = dy/dx_ and _y'' = dp/dx_.
   - Linear non-homogeneous second order differential equation, get the homogeneous solution by solving the homogeneous version of the equation and get the paricular solution by solving the driven function. Then, get the final solution by adding the homogeneous solution to the paricular solution
 - Laplace Transform - convert differential equation into an algebraic equation
+  - Unilateral Laplace Transform of a function `f(t)` is $$\mathscr{L}\{f(t)\}=\int_{0}^{\infty}f(t)e^{-st}dt$$
+  - It converts function from `f(t)` to `F(s)`, denoted as $$\mathscr{L}\{f(t)\}=F(s)$$, similarly for `y(t)` $$\mathscr{L}\{y(t)\}=Y(s)$$
+  - The Laplace Transform Table summarize formulas to transform some basic functions into the Laplace form or vice versa
+    - $$1\leftrightarrow \frac{1}{s}$$
+    - $$t^n\leftrightarrow \frac{n!}{s^{n+1}}$$, `n = 1,2,3,...`
+    - $$e^{at}\leftrightarrow \frac{1}{s-a}$$
+    - $$\sin(kt)\leftrightarrow \frac{k}{s^2+k^2}$$
+    - $$\cos(kt)\leftrightarrow \frac{s}{s^2+k^2}$$
+  - Laplace Transform function has the following properties
+    - $$\mathscr{L}\{cf(t)\}=c\mathscr{L}\{f(t)\}$$
+    - $$\mathscr{L}\{f(t)+g(t)\}=\mathscr{L}\{f(t)\}+\mathscr{L}\{g(t)\}=F(s)+G(s)$$
+    - beside using above properties, algebraic manipulation is required in order to use the Laplace transform table
+      - e.g. reduce the order of trig functions with the half angle formulas
+  - Given the Laplace form, finding the original function is called Inverse Laplace Transform
+    - It can be denoted as, $$\mathscr{L}^{-1}\{F(s)\}=f(t)$$
+    - To use the Laplace transform table, algebraic manipulation like partial fraction is usually used
 
 ## Infinite Sequences and Series
 

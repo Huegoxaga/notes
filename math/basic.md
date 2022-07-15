@@ -189,6 +189,15 @@
   - $$\sin A\sin B=\frac{1}{2}[\cos(A-B)-\cos(A+B)]$$
   - $$\cos A\cos B=\frac{1}{2}[\cos(A-B)+\cos(A+B)]$$
 
+#### Series
+
+- $$1+2+3+\dots+n=\frac{n(n+1)}{2}$$
+- $$1^2+2^2+3^2+\dots+n^2=\frac{n(n+1)(2n+1)}{6}$$
+- $$x^0+x^1+x^2+\dots+x^n=\frac{x^{n+1}-1}{x-1}$$
+- For first order linear difference equation with constant coefficients $$S_n=aS_{n-1}+b, n\ge 1, a\neq 0$$
+  - if $$a=1,\;\;S_n=S_0+nb$$
+  - if $$a\neq 1,\;\;S_n=a^n(S_0+c)-c,\;\;c=\frac{b}{a-1}$$
+
 ### Vector
 
 - Vectors has both magnitude and direction
