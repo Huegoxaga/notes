@@ -250,20 +250,72 @@
   - Parent node is any node with at least one child
 - When constructing a binary tree, assign the first weight to root, then put anything smaller to the left child, and anything larger to the right child, etc. Also make sure all weights from the left-subtree should be smaller than the parent of this subtree, and all weights from the right-subtree should be larger than parent node
 
+## Counting
+
+- Systematic listing - Methods used for count objects
+  - One-Part Tasks: use lists
+  - Two-Part Tasks: use tables
+  - Multiple-Part Tasks: use trees
+- Fundamental Counting Principle
+  - Under uniformity (independent and equally possibility) criterion: For one taks invloves multiple step, the way it can be done is equals to products of the ways in different steps.
+- Factorial
+  - $$n! = n\times(n-1)\times(n-2)\times\ldots\times2\times1$$
+  - By definition: $$0!=1$$
+- Arrangements(order matters) of `n` Distinct Objects
+  - It equals to $$n!$$
+  - if same objects are found in the group(Ex, same color same letter same age in an arrangement), its arrangement can be calculated by dividing $$n!$$ by the factorial of the size of special group.
+- Permutations(order matters) is the ways of making arrangements of small group r from a big group n
+  And order matters
+  - It equals to $$_nP_r=\frac{n!}{(n-r)!}$$
+  - Ex, pick three card from five card, $$5\times4\times3=\frac{5!}{2!}=\frac{5!}{(5-3)!}$$
+- Combination is like permutations but order doesn't matter
+  - It euqals to $$_nC_r=\frac{n!}{r!(n-r)!}$$
+  - Extra `r!` in the formula is used to make orders not matter.
+- Strategies
+  - Draw graph and make analogy to solve different senareio in questions.
+  - Methods using steps of Combination and Pemutation (e.g. $${_6}P_2 \cdot {_5}C_4$$) is more reliable.
+  - When finding all combination using steps like $${_5}C_2 \cdot {_3}C_2$$, be aware of duplicated cases, because steps itself have order which combination doesn't care about
+  - The idea of dividing into event and analysis the independence is crutial.
+- Critical Path Analysis
+  - It can be solved by drawing PERT (Program Evaluation and Review Technique) chart.
+    - PERT chart list the sequence of all task with time
+  - It finds the longest path
+- Counting with Generating Functions
+  - From a counting perspective, coeficient of an algebraic term is the number of ways to get the same term
+    - In $$(a+b)^n$$, the number of ways to get $$a^kb^{n-k}$$ is $$_nC_k$$
+  - The selection of term `x` can be expressed as $$x^n$$ and `n` means the number of time it is selected, then all possible number of ways to select `0` until `n` of `x` can be identified in polynomials as $$c_0x^0+c_1x^1+c_2x^2+/cdots +c_nx^n$$ where constant $$c_n$$ represents number of ways to select `n` of `x`
+  - Expression like $$(x^0+x^1+/cdots +x^n)$$ is used to represents the number of ways to choose `n` of `x` when `0` to `n` of `x` must be selected once
+  - plus sign means `or`
+  - the meaning of `x` changes based on the context, e.g. choose 2 fruits from 2 apples and 2 oranges, $$G(x)=(x^0+x^1+x^2)(x^0+x^1+x^2)=x^4+2x^3+3x^2+2x+1$$
+    - Since $$x^2$$ has coeficient `3`, there are `3` ways to get two fruits, becuase this example doesn't care which `x` is apple and which `x` is orange, `x` in the function means any fruits
+    - When the number of a second or more items neeed to be counted, use another variable in the generating functions
+  - When there are specific requirements in selecting an object like "must choose in pair", change the expression accordingly, $$(x^0+x^2+x^4+\cdots)$$
+
 ## Boolean Algebra
 
 - A logical statement can have two values, True (1) and False (0)
-- Boolean Constant is a value that does not change during an operation. It can have values of 1 or 0 only;
-- Boolean Variable is a value that can change during an operation (but only from 1 to 0 or from 0 to 1). They are represented by uppercase letters from `A` to `Z`;
+- Statement that is always true is called Tautology
+- Boolean Constant is a value that does not change during an operation. It can have values of 1 or 0 only
+- Boolean Variable is a value that can change during an operation (but only from 1 to 0 or from 0 to 1). They are represented by uppercase letters from `A` to `Z`
 - Logical statements can be assigned a value of a constant or a variable and can be combined with Boolean operations. The basic Boolean operations are:
-  - Negation (NOT) - `-A`
+  - Negation (NOT) - `-A`, `¬A`, `~A`
     - not `A`
-  - Conjunction (AND) - `A X B`
+  - Conjunction (AND) - `A X B`, `A ∧ B`
     - Both `A` and `B`
-  - Disjunction (OR) - `A + B`
-    - Either `A` or `B` or both.
+  - Disjunction (OR) - `A + B`, `A ∨ B`
+    - Either `A` or `B` or both
   - Exclusive Disjunction (XOR) - `A ⊕ B`
-    - Either `A` or `B` but not both.
+    - Either `A` or `B` but not both
+  - Conditional (If...then) - `A → B`
+    - `A` implies `B`
+    - `A → B = False` only when `A` is `True` but `B` is `False`
+    - If `A → B`:
+      - Converse - `B → A`
+      - Inverse - `~A → ~B`
+      - Contra positive - `~B → ~A`
+  - Biconditional - `A ↔ B`
+    - `A` if and only `B`
+    - `A ↔ B` is `True` when `A` and `B` are same
 - Using Block Diagram Symbol
   - NOT Gate ![NOT Gate](img/d-not-gate.png)
   - AND Gate ![AND Gate](img/d-and-gate.png)

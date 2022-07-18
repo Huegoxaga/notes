@@ -2149,6 +2149,7 @@
   - `IM used` from the `RM` account is part of the `MOH` in the `WIP` account.
   - `MOH` uses the applied `MOH` if normal costing is used
   - Only accounts for orders that are still in production and has not been moved to the `FG` account
+  - For each order in the `WIP` account the total cost is the order's `WIP` + `DM` + `DL`
 - Finished Goods (`FG`) - Goods that is ready to be shipped, this account is managed by the marketing department
   - `Beginning Balance + COGM – Ending Balance = Cost of Goods Sold (COGS)`
   - `Ending Balance - Beginning Balance = Change in Finished Goods Inventory`, so `COGS = COGM - Change in FG`
@@ -2276,6 +2277,7 @@
 - `CM Ratio` = `CM per unit` / `SP per unit` or `Total CM` / `Total Sales`
   - the unit variable cost ratio equals one minus `CM Ratio`
   - `Increase in CM` = `Increase in SP` × `CM Ratio`
+  - `Breakeven Point in sales dollar` = `Fixed Costs` / `CM Ratio`
 - `# of unit sold` = (`Fixed Expenses` + `Target Profit`)/`CM per unit`
   - Add tax into consideration, `# of unit sold` = (`Fixed Expenses` + `After Tax Profit`/(`1` - `Tax Rate`))/`CM per unit`
 - `Net Income` = `CM per unit` × `# of unit sold above break-even`

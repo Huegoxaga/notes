@@ -1,36 +1,5 @@
 # Probability & Statistics
 
-## Counting
-
-- Systematic listing - Methods used for count objects
-  - One-Part Tasks: use lists
-  - Two-Part Tasks: use tables
-  - Multiple-Part Tasks: use trees
-- Fundamental Counting Principle
-  - Under uniformity (independent and equally possibility) criterion: For one taks invloves multiple step, the way it can be done is equals to products of the ways in different steps.
-- Factorial
-  - $$n! = n\times(n-1)\times(n-2)\times\ldots\times2\times1$$
-  - By definition: $$0!=1$$
-- Arrangements(order matters) of `n` Distinct Objects
-  - It equals to $$n!$$
-  - if same objects are found in the group(Ex, same color same letter same age in an arrangement), its arrangement can be calculated by dividing $$n!$$ by the factorial of the size of special group.
-- Permutations(order matters) is the ways of making arrangements of small group r from a big group n
-  And order matters
-  - It equals to $$_nP_r=\frac{n!}{(n-r)!}$$
-  - Ex, pick three card from five card, $$5\times4\times3=\frac{5!}{2!}=\frac{5!}{(5-3)!}$$
-- Combination is like permutations but order doesn't matter
-  - It euqals to $$_nC_r=\frac{n!}{r!(n-r)!}$$
-  - Extra `r!` in the formula is used to make orders not matter.
-- Strategies
-  - Draw graph and make analogy to solve different senareio in questions.
-  - Methods using steps of Combination and Pemutation (e.g. $${_6}P_2 \cdot {_5}C_4$$) is more reliable.
-  - When finding all combination using steps like $${_5}C_2 \cdot {_3}C_2$$, be aware of duplicated cases, because steps itself have order which combination doesn't care about
-  - The idea of dividing into event and analysis the independence is crutial.
-- Critical Path Analysis
-  - It can be solved by drawing PERT (Program Evaluation and Review Technique) chart.
-    - PERT chart list the sequence of all task with time
-  - It finds the longest path
-
 ## Probability
 
 - Probability is the prediction of a certain outcome when something occurs

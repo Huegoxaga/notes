@@ -475,6 +475,38 @@
   - fill the graph with short lines that represent a slope at that point
 - Any lines that can follow the curves on the slope field can be a solution to the differential equation
   - Those lines are called the solution curves
+- Laplance Transform
+  - Unilateral Laplace Transform of a function `f(t)` is $$\mathscr{L}\{f(t)\}=\int_{0}^{\infty}f(t)e^{-st}dt$$
+    - It converts function from `f(t)` to `F(s)`, denoted as $$\mathscr{L}\{f(t)\}=F(s)$$, similarly for `y(t)` $$\mathscr{L}\{y(t)\}=Y(s)$$
+    - The Laplace Transform Table summarize formulas to transform some basic functions into the Laplace form or vice versa, $$f(t)\leftrightarrow F(s)$$
+      - $$1\leftrightarrow \frac{1}{s}$$
+      - $$t^n\leftrightarrow \frac{n!}{s^{n+1}}$$, `n = 1,2,3,...`
+      - $$e^{at}\leftrightarrow \frac{1}{s-a}$$
+      - $$\sin(kt)\leftrightarrow \frac{k}{s^2+k^2}$$
+      - $$\cos(kt)\leftrightarrow \frac{s}{s^2+k^2}$$
+    - Laplace Transform function has the following properties
+      - $$\mathscr{L}\{cf(t)\}=c\mathscr{L}\{f(t)\}$$
+      - $$\mathscr{L}\{f(t)+g(t)\}=\mathscr{L}\{f(t)\}+\mathscr{L}\{g(t)\}=F(s)+G(s)$$
+    - Related Theorems
+      - $$\mathfrak{L}\{e^{at}f(t)\}=F(s)|_{s \to s-a}=F(s-a)$$ First Translation Theorem
+      - $$\mathfrak{L^{-1}}\{F(s-a)\}=\mathfrak{L^{-1}}\{F(s)\}|_{x \to s-a}=e^{at}f(t)$$ Inverse form of First Translation Theorem
+        - It shifts `F(s)` on the x-axis
+      - $$\mathfrak{L}\{f(t-a)u(t-a)\}=\mathfrak{L}\{f(t)\}|_{t \to t-a}=e^{-as}F(s)$$, when `a > 0`
+        - It shifts `f(t)` on the t-axis
+        - When `f(t-a)=1`, $$\mathfrak{L}\{u(t-a)\}=e^{-as}(\frac{1}{s})$$
+        - When `a = 0`, $$\mathfrak{L}\{f(t)u(t)\}=F(s)$$
+      - $$\mathfrak{L}^{-1}\{e^{-as}F(s)\}=\mathfrak{L}^{-1}\{F(s)\}|_{t\rightarrow t-a}=f(t-a)u(t-a)$$ Inverse form of Second Translation Theorem
+  - Given the Laplace form, finding the original function is called Inverse Laplace Transform
+    - It can be denoted as, $$\mathscr{L}^{-1}\{F(s)\}=f(t)$$
+  - Lapalce Transform of `n`th derivative of function `f(t)` when $$f^{(n)}(t)$$ be piecewise continuous and $$f(t),f'(t),f''(t),...,f^{(n-1)}(t)$$ be continouse functions
+    - $$\mathfrak{L}\{f^{(n)}(t)\}=s^nF(s)-s^{n-1}f(0)-s^{n-2}f'(0)-...-sf^{(n-2)}(0)-f^{(n-1)}(0)$$
+    - e.g. for first-order derivatives `n = 1`, $$\mathfrak{L}\{f'(t)\}=sF(s)-f(0)$$
+    - e.g. for second-order derivatives `n = 2`, $$\mathfrak{L}\{f''(t)\}=s^2F(s)-sf(0)-f'(0)$$
+- Unit Step Function, `u(t-a)` when `a>0`, it represnt a function that is `1` when `0<t<a` and `1` when `a<t<1`
+  - When a function is turned on at `a` multiply it with `u(s-a)`
+    - When turning on at `0`, multiply it with `u(s)`
+  - When a function is turned off at `a` multiply it with `-u(s-a)`
+  - Turning on a function at `a` mean the function equals zero before `s=a` and starting have values discontinously after `a`, vice versa for turning off
 
 ### Techniques
 
@@ -515,22 +547,19 @@
   - For equations like has variables _F(x, y', y'')_ it can be reduced to first order by substituting _p = dy/dx_ and _y'' = dp/dx_.
   - Linear non-homogeneous second order differential equation, get the homogeneous solution by solving the homogeneous version of the equation and get the paricular solution by solving the driven function. Then, get the final solution by adding the homogeneous solution to the paricular solution
 - Laplace Transform - convert differential equation into an algebraic equation
-  - Unilateral Laplace Transform of a function `f(t)` is $$\mathscr{L}\{f(t)\}=\int_{0}^{\infty}f(t)e^{-st}dt$$
-  - It converts function from `f(t)` to `F(s)`, denoted as $$\mathscr{L}\{f(t)\}=F(s)$$, similarly for `y(t)` $$\mathscr{L}\{y(t)\}=Y(s)$$
-  - The Laplace Transform Table summarize formulas to transform some basic functions into the Laplace form or vice versa
-    - $$1\leftrightarrow \frac{1}{s}$$
-    - $$t^n\leftrightarrow \frac{n!}{s^{n+1}}$$, `n = 1,2,3,...`
-    - $$e^{at}\leftrightarrow \frac{1}{s-a}$$
-    - $$\sin(kt)\leftrightarrow \frac{k}{s^2+k^2}$$
-    - $$\cos(kt)\leftrightarrow \frac{s}{s^2+k^2}$$
-  - Laplace Transform function has the following properties
-    - $$\mathscr{L}\{cf(t)\}=c\mathscr{L}\{f(t)\}$$
-    - $$\mathscr{L}\{f(t)+g(t)\}=\mathscr{L}\{f(t)\}+\mathscr{L}\{g(t)\}=F(s)+G(s)$$
-    - beside using above properties, algebraic manipulation is required in order to use the Laplace transform table
-      - e.g. reduce the order of trig functions with the half angle formulas
-  - Given the Laplace form, finding the original function is called Inverse Laplace Transform
-    - It can be denoted as, $$\mathscr{L}^{-1}\{F(s)\}=f(t)$$
-    - To use the Laplace transform table, algebraic manipulation like partial fraction is usually used
+  - beside using its properties, algebraic manipulation is required in order to use the Laplace transform table, to perform transfrom in either direction
+    - e.g. reduce the order of trig functions with the half angle formulas
+    - algebraic manipulation like partial fraction is usually used for inverse transform
+  - Method of Lapalce Transform to solve an initial value problem
+    1. Take Laplabe Transform of both sides of the equation, use Lapalce Transform of `n`th derivative of function `y(t)` to presents $$\mathfrak{L}\{y'(t)\}$$ or higher derivates for `y(t)` with `Y(s)` and substitute `y(0)` with given values
+    2. Isolate `Y(s)`
+    3. Determine the Inverse Laplace Transform of `Y(s)`
+  - When partial fraction decomposition can't complete the inverse transform, use the inverse form of first translation theorem, usually the denominator is a irreducable quadratic equation
+    - When applying first translation theorem use the following notation, $$\mathfrak{L}\{e^{-t}\cos2t\}=\frac{s}{s^2+4}|_{s\rightarrow s+1}=\frac{s+1}{(s+1)^2+4}$$
+    - carry out completing square to convert the denominator to a perfect square plus a constant, $$(x-h)^2+a$$
+    - The goal is the change it to a form so the table can be used
+  - Use second translation theorem to get Lapance Transform of functions that are shifted with unit step function
+  - When solving the Inverse Laplace Transform with a function multiply $$e^{-at}$$, use the inverse of second translation theorem
 
 ## Infinite Sequences and Series
 

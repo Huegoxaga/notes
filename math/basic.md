@@ -144,7 +144,7 @@
 - Quadratic Solution: $$y=ax^2+bx+c$$, $$x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}$$
   - complex solution when $$b^2-4ac<0$$, $$x=\frac{-b}{2a}\pm i\frac{\sqrt{4ac-b^2}}{2a}$$
 - $$(a+b)^3=a^3+3a^2b+3ab^2+b^3$$ and $$(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^kb^{n-k}$$
-- $$(a-b)^3=a^3-3a^2b+3ab^2-b^3$$ and $$(a+b)^n=\sum_{k=0}^{n}(-1)^k\binom{n}{k}a^kb^{n-k}$$
+- $$(a-b)^3=a^3-3a^2b+3ab^2-b^3$$ and $$(a-b)^n=\sum_{k=0}^{n}(-1)^k\binom{n}{k}a^kb^{n-k}$$
 - $$x^3-y^3=(x-y)(x^2-xy+y^2)$$
 - $$x^3+y^3=(x+y)(x^2-xy+y^2)$$
 - Descartes' Rule - If a polynomial with real coefficients has `m` sign changes, then the possible number of positive roots will be `m–2k`, where `k` is all possible integers between `0` and `m/2`
@@ -197,6 +197,9 @@
 - For first order linear difference equation with constant coefficients $$S_n=aS_{n-1}+b, n\ge 1, a\neq 0$$
   - if $$a=1,\;\;S_n=S_0+nb$$
   - if $$a\neq 1,\;\;S_n=a^n(S_0+c)-c,\;\;c=\frac{b}{a-1}$$
+- For second order linear difference equation with constant coefficients $$S_n=aS_{n-1}+bS_{n-2}, n\ge 2$$ and two initial conditions of $$S_n$$ like $$S_0$$ and $$S_1$$
+  - Find the solution of equation $$x^2-ax-b=0$$, `p` and `q`
+  - Then $$S_n=c_1p^n+c_2q^n$$, solve constant $$c_1$$ and $$c_2$$ with initial conditions
 
 ### Vector
 
