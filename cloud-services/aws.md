@@ -1095,6 +1095,7 @@ image_repositories = []
   2. `sam local invoke -e events/test-1.json` run the function with spcified input in background with docker in a public docker image
      - It happens in the background and it stops, removes docker container after completion, then output the result
   3. `sam deploy` deploy the changes on AWS, and exam the changes
+  4. `sam delete` removes all related artifacts in the S3 bucket and delete the its cloudformation stack
 
 ## CloudFormation
 
@@ -1103,14 +1104,21 @@ image_repositories = []
 - CloudFormation can be used to manage existing resources. They need to be added to the stack first
   - Add the complete description of the resource in the `template.yaml`, this resource must have `DeletionPolicy: Retain|Delete` specified
     - `DeletionPolicy: Delete` is set for all resources by default
-- In the template file use `PropertyName: !Ref ReferencedResourceID` or the following format to refer another resource
+- Parameters in template file is defined in the following way and referenced by using `!Ref` function, e.g. `DomainName: !Ref customDomain`
 
-```yaml
-PropertyName:
-  Ref: ReferencedResourceID
+```yml
+Parameters:
+  customDomain:
+    Type: String
+    Default: www.example.com
 ```
 
-- Same goes for `!GetAtt` or `Fn::GetAtt:`
+### Intrinsic Functions
+
+- There are functions available in the template file, [click here](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html) for a complete summary
+- In the template file use `PropertyName: !Ref ReferencedResourceID` or the following format to refer another resource
+- `GetAtt` helps access an attribute of a resource by referencing `!GetAtt logicalNameOfResource.attributeName`
+  - For all the attributes available, refer to the [cheat sheet](https://theburningmonk.com/cloudformation-ref-and-getatt-cheatsheet/).
 - Use `-` at the beginning of each intended lines if one propery has multiply values
 
 ## System Manager

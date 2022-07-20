@@ -488,20 +488,20 @@
       - $$\mathscr{L}\{cf(t)\}=c\mathscr{L}\{f(t)\}$$
       - $$\mathscr{L}\{f(t)+g(t)\}=\mathscr{L}\{f(t)\}+\mathscr{L}\{g(t)\}=F(s)+G(s)$$
     - Related Theorems
-      - $$\mathfrak{L}\{e^{at}f(t)\}=F(s)|_{s \to s-a}=F(s-a)$$ First Translation Theorem
-      - $$\mathfrak{L^{-1}}\{F(s-a)\}=\mathfrak{L^{-1}}\{F(s)\}|_{x \to s-a}=e^{at}f(t)$$ Inverse form of First Translation Theorem
+      - $$\mathscr{L}\{e^{at}f(t)\}=F(s)|_{s \to s-a}=F(s-a)$$ First Translation Theorem
+      - $$\mathscr{L^{-1}}\{F(s-a)\}=\mathscr{L^{-1}}\{F(s)\}|_{x \to s-a}=e^{at}f(t)$$ Inverse form of First Translation Theorem
         - It shifts `F(s)` on the x-axis
-      - $$\mathfrak{L}\{f(t-a)u(t-a)\}=\mathfrak{L}\{f(t)\}|_{t \to t-a}=e^{-as}F(s)$$, when `a > 0`
+      - $$\mathscr{L}\{f(t-a)u(t-a)\}=\mathscr{L}\{f(t)\}|_{t \to t-a}=e^{-as}F(s)$$, when `a > 0`
         - It shifts `f(t)` on the t-axis
-        - When `f(t-a)=1`, $$\mathfrak{L}\{u(t-a)\}=e^{-as}(\frac{1}{s})$$
-        - When `a = 0`, $$\mathfrak{L}\{f(t)u(t)\}=F(s)$$
-      - $$\mathfrak{L}^{-1}\{e^{-as}F(s)\}=\mathfrak{L}^{-1}\{F(s)\}|_{t\rightarrow t-a}=f(t-a)u(t-a)$$ Inverse form of Second Translation Theorem
+        - When `f(t-a)=1`, $$\mathscr{L}\{u(t-a)\}=e^{-as}(\frac{1}{s})$$
+        - When `a = 0`, $$\mathscr{L}\{f(t)u(t)\}=F(s)$$
+      - $$\mathscr{L}^{-1}\{e^{-as}F(s)\}=\mathscr{L}^{-1}\{F(s)\}|_{t\rightarrow t-a}=f(t-a)u(t-a)$$ Inverse form of Second Translation Theorem
   - Given the Laplace form, finding the original function is called Inverse Laplace Transform
     - It can be denoted as, $$\mathscr{L}^{-1}\{F(s)\}=f(t)$$
   - Lapalce Transform of `n`th derivative of function `f(t)` when $$f^{(n)}(t)$$ be piecewise continuous and $$f(t),f'(t),f''(t),...,f^{(n-1)}(t)$$ be continouse functions
-    - $$\mathfrak{L}\{f^{(n)}(t)\}=s^nF(s)-s^{n-1}f(0)-s^{n-2}f'(0)-...-sf^{(n-2)}(0)-f^{(n-1)}(0)$$
-    - e.g. for first-order derivatives `n = 1`, $$\mathfrak{L}\{f'(t)\}=sF(s)-f(0)$$
-    - e.g. for second-order derivatives `n = 2`, $$\mathfrak{L}\{f''(t)\}=s^2F(s)-sf(0)-f'(0)$$
+    - $$\mathscr{L}\{f^{(n)}(t)\}=s^nF(s)-s^{n-1}f(0)-s^{n-2}f'(0)-...-sf^{(n-2)}(0)-f^{(n-1)}(0)$$
+    - e.g. for first-order derivatives `n = 1`, $$\mathscr{L}\{f'(t)\}=sF(s)-f(0)$$
+    - e.g. for second-order derivatives `n = 2`, $$\mathscr{L}\{f''(t)\}=s^2F(s)-sf(0)-f'(0)$$
 - Unit Step Function, `u(t-a)` when `a>0`, it represnt a function that is `1` when `0<t<a` and `1` when `a<t<1`
   - When a function is turned on at `a` multiply it with `u(s-a)`
     - When turning on at `0`, multiply it with `u(s)`
@@ -551,11 +551,11 @@
     - e.g. reduce the order of trig functions with the half angle formulas
     - algebraic manipulation like partial fraction is usually used for inverse transform
   - Method of Lapalce Transform to solve an initial value problem
-    1. Take Laplabe Transform of both sides of the equation, use Lapalce Transform of `n`th derivative of function `y(t)` to presents $$\mathfrak{L}\{y'(t)\}$$ or higher derivates for `y(t)` with `Y(s)` and substitute `y(0)` with given values
+    1. Take Laplabe Transform of both sides of the equation, use Lapalce Transform of `n`th derivative of function `y(t)` to presents $$\mathscr{L}\{y'(t)\}$$ or higher derivates for `y(t)` with `Y(s)` and substitute `y(0)` with given values
     2. Isolate `Y(s)`
     3. Determine the Inverse Laplace Transform of `Y(s)`
   - When partial fraction decomposition can't complete the inverse transform, use the inverse form of first translation theorem, usually the denominator is a irreducable quadratic equation
-    - When applying first translation theorem use the following notation, $$\mathfrak{L}\{e^{-t}\cos2t\}=\frac{s}{s^2+4}|_{s\rightarrow s+1}=\frac{s+1}{(s+1)^2+4}$$
+    - When applying first translation theorem use the following notation, $$\mathscr{L}\{e^{-t}\cos2t\}=\frac{s}{s^2+4}|_{s\rightarrow s+1}=\frac{s+1}{(s+1)^2+4}$$
     - carry out completing square to convert the denominator to a perfect square plus a constant, $$(x-h)^2+a$$
     - The goal is the change it to a form so the table can be used
   - Use second translation theorem to get Lapance Transform of functions that are shifted with unit step function
