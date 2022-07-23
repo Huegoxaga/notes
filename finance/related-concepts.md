@@ -2289,3 +2289,51 @@
 - `Degree of operating leverage` = `Contribution margin` / `Net operating income`
   - `% change in Net Operating Income`= `% Changes in Sales` × `Degree of operating leverage`
   - Only works when fixed expenses are unchanged
+
+### Decision Making
+
+#### Cost Terms
+
+- `Relevant Cost` - It is a cost that differs between alternatives, so it can be relevant in the decision making process, it can be one of the following cost:
+  - `Avoidable Cost` - a cost that can be eliminated, in whole or in part, by choosing one alternative over another
+  - `Idle Capacity: If Exceeding Capacity` - it is responsible for the increases in the total fixed cost
+  - `Opportunity Cost` is the benefit that is foregone as a result of pursuing some course of action
+- `Irrelevant Cost` - the opposite of relevant cost, it includes:
+  - `Unavoidable Cost` - a fixed cost portion that still incur no matter what decision is made
+  - `Sunk Cost or Historical` - Cost incurred in the past can cannot be recovered
+  - `Future Cost`- Cost occurs in the future which has no impact on decision making
+  - `Accounting or Booking-keeping` - allocated fixed costs including depreciation
+  - `Idle Capacity: If Not Exceeding Capacity` - the existing fixed cost already covered this cost
+- `Total Cost Analysis` compares the sum all related cost in the business
+- `Differential Cost Approaches` only considers the impact on the existing costs after a change is made
+
+#### Non-Routine Decision Making
+
+- Special Orders - A special order on top of existing business model, a decision is required on whether or not to accept it
+  - The special order should be accepted if the incremental revenue from the order exceeds its incremental costs
+  - `Incremental Revenue` = `Special Order units` x `Special Order price`
+  - `Incremental Costs` = `Variable Costs` + `Extra Fixed Overheads` + `Opportunity Cost`
+  - The extra fixed overheads refers to the `Idle Capacity: If Exceeding Capacity` case of the relevant cost
+  - Only consider the `opportunity cost` when max capacity is reached
+- Make or Buy (Outsourcing) - When a company is involved in more than one activity in the entire value chain, it is vertically integrated. A decision to carry out one of the activities in the value chain internally, rather than to buy externally from a supplier is called a "make or buy" decision.
+  - Only making the product instead of buying when the relevant cost of making is less than the relevant cost of buying
+  - RELEVANT COSTS OF MAKING = Variable Cost of Manufacturing (DM, DL and VFOH) + Any increase in specific fixed costs + Any Opportunity cost involved from utilizing the released facilities
+  - RELEVANT COSTS OF BUYING = Purchase price + Any direct costs relating to purchasing - Any avoidable Fixed Costs resulting from not making
+- Retain or Replace an old asset - Decide if it's time to sale the old asset and buy a better one for production
+  - Replace the asset if the total cost of replacing is negative
+  - The cost of replacing is calculated as:
+    - `+` Purchase cost of new equipment
+    - `-` Current Salvage Value of Old Equipment
+    - `+` Opportunity cost of lost Terminal Salvage Value of old equipment
+    - `-` Terminal Salvage value of New Machine
+    - `-` Savings in annual operating costs for remaining life of new machine
+    - `+/-` Any other differential costs or benefits
+- Keeping or Dropping a Product Line - It involves making changes on an underperformed product line
+  - Compare opportunity cost of closing and additional variable cost of the new production line with the savings from the variable costs and avoidable fixed costs during closing
+  - Make sure only relevant costs are considered, they usually includes variable costs, avoidable fixed costs, opportunity costs
+- Utilization of a Constrained Resource - Given a limited resource a decision need to be made to maximize the production of certain goods, so the profit can be maximized, steps for making such decision are as follows:
+  1. Calculate the contribution per unit of limiting factor for each product
+  2. Rank the products by contribution per unit of limiting factor
+     - For example, when time is the limiting factor, then calculate the unit CM per hour and maximize the production of the highest
+  3. Produce the maximum that can be sold of the product with the highest contribution per unit of limiting factor.
+  4. Repeat for the next best product and so on until the scarce resource is used up

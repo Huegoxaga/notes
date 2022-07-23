@@ -1120,6 +1120,9 @@ Parameters:
 - `GetAtt` helps access an attribute of a resource by referencing `!GetAtt logicalNameOfResource.attributeName`
   - For all the attributes available, refer to the [cheat sheet](https://theburningmonk.com/cloudformation-ref-and-getatt-cheatsheet/).
 - Use `-` at the beginning of each intended lines if one propery has multiply values
+- Use `!Sub` to replace a portion of a string
+  - `!Sub '${parameterName}-remaining-string-content'`
+  - `!Sub 'arn:aws:ec2:${AWS::Region}:${AWS::AccountId}:vpc/${vpc}'`
 
 ## System Manager
 

@@ -322,6 +322,7 @@
   - OR Gate ![OR Gate](img/d-or-gate.png)
   - XOR Gate ![XOR Gate](img/d-xor-gate.png)
   - To represent a expression ![Block Diagram Expression](img/d-block-expression.png)
+- Combinatorial circuits is a type of block diagram that always have inputs with both `x` and `~x` on the left, even when some of them are not used in the diagram ![Combo Circuit](img/d-combo-circuit.png)
 - If an expression is made up of several smaller expressions (terms) OR-ed together, the expression is in Sum Form. (`A + B + C`)
 - If an expression is made up of several smaller expressions AND-ed together, the expression is in product form. (`A X B X C`)
 - If every term of the sum form is a product of the variables, the expression is in Sum-of-Product (SOP) form. `A X B + B X C`
@@ -337,9 +338,11 @@
   - Commutative law: `AB = BA`, `A + B = B + A`
   - Associative law: `(AB)C = A(BC)`, `(A + B) + C = A + (B + C)`
   - Distributive law: `A + BC = (A + B)(A + C)`, `A(B + C) = AB + AC`
+    - Consensus Theorem: $$\overline{x}+xy=\overline{x}+y$$, $$x+\overline{x}y=x+y$$, $$x+\overline{x}\overline{y}=x+\overline{y}$$
   - Absorption law: `A(A + B) = A`, `A + AB = A`
   - De Morgan's law: $$\overline{AB} = \overline{A} + \overline{B} $$, $$\overline{A+B} = \overline{A} \overline{B} $$
   - $$A (\overline{A} + B) = AB$$, $$A + \overline{A}B = A+B$$
+- The simplification of boolean expression can be converted to algrbraic simplification by treading all `AND` as multiplication and `OR` as addition
 
 ### Truth Tables
 

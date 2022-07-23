@@ -435,9 +435,9 @@
   - For $$\int \cos ax\cos bx dx$$, use $$\cos ax\cos bx=\frac{1}{2}[\cos(ax-bx)+\cos(ax+bx)]$$
 - When integrate a fraction of two high order(greater than 1) polynomials, use partial fraction to split the fraction to two simpler one, solve for the constants in the nominator, then integrate, it can make:
   - $$\frac{a_3x+b_3}{(a_1x+b_1)(a_2x+b_2)}=\frac{A}{(a_1x+b_1)}+\frac{B}{(a_2x+b_2)}$$, where `A` and `B` are constant
-    - Shortcut method for solving `A`: $$A=\frac{a_3x+b_3}{a_2x+b_2}$$ (It is the original fraction when the denominator of A removed), where `x` is the value when the denominator of `A` equals zero, $$a_1x+b_1 = 0$$
-    - Shortcut method for solving `B`: $$B=\frac{a_3x+b_3}{a_1x+b_1}$$ (It is the original fraction when the denominator of B removed), where `x` is the value when the denominator of `B` equals zero, $$a_2x+b_2 = 0$$
-    - The above method works for the above fraction type only, then denominator is the product of linear equations and the nominator is also linear (`ax + b`)
+    - Shortcut method for solving `A`: $$A=\frac{a_3x+b_3}{a_2x+b_2}|_{x=-\frac{b_1}{a_1}}$$ (It is the original fraction when the denominator of A removed), where `x` is the value when the denominator of `A` equals zero, $$a_1x+b_1 = 0$$
+    - Shortcut method for solving `B`: $$B=\frac{a_3x+b_3}{a_1x+b_1}|_{x=-\frac{b_2}{a_2}}$$ (It is the original fraction when the denominator of B removed), where `x` is the value when the denominator of `B` equals zero, $$a_2x+b_2 = 0$$
+    - The above method works when the denominator is the product of linear equations without repeat terms
   - $$\frac{a_3x+b_3}{(a_1x+b_1)(a_2x+b_2)^2}=\frac{A}{(a_1x+b_1)}+\frac{B}{(a_2x+b_2)}+\frac{C}{(a_2x+b_2)^2}$$, where `A`, `B`, `C` are constant
   - $$\frac{a_3x^2+b_3}{(a_1x+b_1)(a_2x^2+b_2)}=\frac{A}{(a_1x+b_1)}+\frac{Bx+C}{(a_2x^2+b_2)}$$, where `A`, `B`, `C` are constant
 - When the nominator has the same or higher order than the denominator, use long division
@@ -450,7 +450,7 @@
 - Double integral is used to calculate the area of a graph by using `dx` times `dy`. It can be expressed as $$\int^{x_2}_{x_1} dx \int^{y_2}_{y_1} dy$$ or $$\int^{y_2}_{y_1} \int^{x_2}_{x_1} dx dy$$ or $$\int^{x_2}_{x_1} \int^{y_2}_{y_1} dy dx$$.
   - The first diffrential is associated with the last integral sign, The second diffrential is associated with the first integral sign,
   - `dy` can be evaluated first and the other variable `x` can be considered as constant, then the result for integral of `dy` can be subsituted by `x` then the integral of `dx` can then be evaluated.
-  - Optionally, `dx` can be evaluated first and considering `y` as constant. then subsitute `x` by expression of `y` then take the integral of `dy` and get the result.
+  - Optionally, `dx` can be evaluated first and considering `y` as constant. then subsitute `x` by expression of `y` then take the integral of `dy` and get the result
 
 ## Differential Equation
 
