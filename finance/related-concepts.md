@@ -2068,7 +2068,8 @@
   - T-value measures whether the cost and cost driver are related by coincidence
     - A higher T-value means that the relationship is not a coincidence
     - The T-value should be greater than 2
-    - There is T-value for coefficient if it's less than 2 the total variable cost portion (`bX`) should be ignored from the cost function. Same goes for T-value for constant, then the constant portion should be ignored
+    - There is T-value for the estimated coefficient (slope), and another T-value for the constant portion. If the associated T-value is less than 2 then the estimation for that portion should excluded in the formula
+      - e.g. when T-value for coefficient is `1`, the cost function only equals to a constant
     - Use standard error of coefficient or constant if T-value is not given, its the plus or minus range of the coefficient or constant
 
 #### Common Types of Costs
@@ -2294,7 +2295,7 @@
 
 #### Cost Terms
 
-- `Relevant Cost` - It is a cost that differs between alternatives, so it can be relevant in the decision making process, it can be one of the following cost:
+- `Relevant Cost` - also called differential cost. It is a cost that differs between alternatives, so it can be relevant in the decision making process, it can be one of the following cost:
   - `Avoidable Cost` - a cost that can be eliminated, in whole or in part, by choosing one alternative over another
   - `Idle Capacity: If Exceeding Capacity` - it is responsible for the increases in the total fixed cost
   - `Opportunity Cost` is the benefit that is foregone as a result of pursuing some course of action
@@ -2313,6 +2314,7 @@
   - The special order should be accepted if the incremental revenue from the order exceeds its incremental costs
   - `Incremental Revenue` = `Special Order units` x `Special Order price`
   - `Incremental Costs` = `Variable Costs` + `Extra Fixed Overheads` + `Opportunity Cost`
+    - `Opportunity Cost` = `# of units exceeding capacity` x `CM per Unit at Regular SP`
   - The extra fixed overheads refers to the `Idle Capacity: If Exceeding Capacity` case of the relevant cost
   - Only consider the `opportunity cost` when max capacity is reached
 - Make or Buy (Outsourcing) - When a company is involved in more than one activity in the entire value chain, it is vertically integrated. A decision to carry out one of the activities in the value chain internally, rather than to buy externally from a supplier is called a "make or buy" decision.
@@ -2321,7 +2323,7 @@
   - RELEVANT COSTS OF BUYING = Purchase price + Any direct costs relating to purchasing - Any avoidable Fixed Costs resulting from not making
 - Retain or Replace an old asset - Decide if it's time to sale the old asset and buy a better one for production
   - Replace the asset if the total cost of replacing is negative
-  - The cost of replacing is calculated as:
+  - The cost of replacing is calculated as (adding costs and substrcting savings):
     - `+` Purchase cost of new equipment
     - `-` Current Salvage Value of Old Equipment
     - `+` Opportunity cost of lost Terminal Salvage Value of old equipment
@@ -2329,7 +2331,9 @@
     - `-` Savings in annual operating costs for remaining life of new machine
     - `+/-` Any other differential costs or benefits
 - Keeping or Dropping a Product Line - It involves making changes on an underperformed product line
-  - Compare opportunity cost of closing and additional variable cost of the new production line with the savings from the variable costs and avoidable fixed costs during closing
+  - Use differential method to compare total oppertunity costs with the total savings from closing the old production line and then utilzing that line for other purpose
+    - Costs of closing includes loss of the revenue from old production lines and additional variable cost of the new production line
+    - Savings includes the variable cost of the old produnction line the avoidable fixed costs and the increased revenue of the new prodcution line
   - Make sure only relevant costs are considered, they usually includes variable costs, avoidable fixed costs, opportunity costs
 - Utilization of a Constrained Resource - Given a limited resource a decision need to be made to maximize the production of certain goods, so the profit can be maximized, steps for making such decision are as follows:
   1. Calculate the contribution per unit of limiting factor for each product
