@@ -1220,7 +1220,10 @@ env             = KEY2=value
 ### Usage
 
 - `image = Image.open('image.jpg')` load image
-- `exif = imWIthEXIF.info['exif']` get exif data in a dictionary
+- `exif = imgWithEXIF.info['exif']` get encoded exif data
+- `exif = { ExifTags.TAGS[k]: v for k, v in imgWithEXIF._getexif().items() if k in ExifTags.TAGS }` extract exif in a dictionary
+  - Requires `from PIL import ExifTags`
+  - Use `ExifTags.GPSTAGS` for GPS data, GPS info is stored under `GPSInfo` key in the exif data
 - `image = Image.fromarray(OpenCVImage)` Convert OpenCV image onto PIL Image
   - `OpenCvImage` is a opencv image object in a numpy array after `cvtColor()`
 - `image.save(path, format='JPEG', exif=imWIthEXIF.info['exif'])` save image with exif data as `jpeg`.

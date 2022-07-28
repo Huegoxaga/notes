@@ -398,6 +398,7 @@ mylist.insert(index, element) # It will insert an element at certain index locat
 mylist.count(object) # It returns how many times an item occurs in the list
 mylist.index(object) # It returns the first index of the item, ValueError if not find.
 mylist.pop(index) # It returns the element according the index and remove the element from the existing list.
+mylist.pop(index, default)
 mylist.pop() # It removes the last element
 mylist.copy() # It return a new copy of the list, instead of a reference
 mylist.extend(b) # Adds all elements from list b to the end of mylist, same as + join

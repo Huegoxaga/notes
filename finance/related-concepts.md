@@ -39,6 +39,10 @@
 - `Continuous Compound` has the compound frequency set to infinite
   - Then, `FV = PV*e^(rN)` and `EAR=e^r-1` where `r` is the stated compound rate and `N` is the stated number of time period for the stated rate
   - Continuous compound yields the highest interest one can get from compounding, given the same interest rate
+- When `i` is the market interest rate, i' refers to the real interest rate (inflation-free rate) excluding the effect of inflation rate
+  - Given the inflation rate `f` and the market interest rate `i`, `i' = (1+i)/(1+f) - 1`
+    - Optionally, `i = i' + f + i'f`
+  - the real dollars is the inflation-free dollars and the actual dollar is the cash flow amount used in daily calculation when inflation is not considered
 
 ## Depreciation Calculation
 
@@ -159,6 +163,7 @@
     - When $$i^{\circ}$$ is a negative value, the factor table can't be used
     - When `i = g > 0` or $$i^{\circ}$$ is zero, the formula can be simplified as `P = N(A/(1+g))`
     - The cash flow amount at period `i` is $$A_i=A_1(1+g)^{i-1}$$
+- When inflation is considered multiply all future cash flow amount by `(1+f)^N` where f is the inflation rate
 
 ### Uneven Cash Flows
 
@@ -186,24 +191,29 @@
   - Use annual worth analysis by converting present values and one-time values on the timeline to equivalent uniform values
     - For projects with infinite length, use `A = Pi`
     - For irregular cash disbursements over the analysis period it is convenient to convert them to a present worth cost, rather than using the annual worth cost approach
-    - When doing anuual worth analysis for infinite series invloving tax, before-tax cash flow can be converted to an after-tax cash flow using factors
-      - Multiply costs and revenues by (1 – tax rate)
-      - Multiply depreciable capital investments by Capital Tax Factor (`CTF`)
+    - The following factors are useful when calculating the the PW of assets involve infinite tax savings from depreciation, applied with half year rules
+      - For non-depreciable costs and revenues simply multiply (1 – tax rate) by itself
+      - The PW of capital investment add the tax savings from depreciation equals Capital Tax Factor (`CTF`) multiply by itself
         - `CTF` = `1 – [tax rate * CCA Rate(1 + Interest Rate/2)]/[(Interest Rate + CCA Rate)(1 + Interest Rate)]`
-      - Multiply proceeds from disposal by Capital Salvage Factor (`CSF`)
+      - The PW of salvaged aseet adding the loss of tax saving by multiply proceeds from disposal by Capital Salvage Factor (`CSF`)
         - `CSF` = `1 – Tax Rate * CCA Rate/(Interest Rate + CCA Rate)`
 
 #### Rate of Return
 
-- All below comparsions are refer to the investor model where a large initial cost and regular cash inflow, high interest rate will depreciate the PW of the cash inflow and cause the project to lose money
-  - For a borrower model, there is a large initial gain and regular cash outflow, high interest rate will depreciate the PW of the cash outflow and cause the borrower to save money
+- All below comparsions are refer to the investor model where a large initial cost and regular cash inflow (similar to deposit money into saving accounts)
+  - For a borrower model, there is a large initial gain and regular cash outflow
   - For the borrower model every comparsion conclusion is opposite from the investor model
 - Minimum Acceptable Rate of Return (MARR) uses a interest rate to represent the actual equivalent opportunity cost of an investment
   - It is the minimum rate of return required for any project to be accepted. Other wise, just save the cash in a bank and earn the interest
+  - When using `MARR` for present worth analysis, pick the project that yields highest PW value
   - MARR represent the basic rate of return from other invest opportunities
   - When tax is considered during calculation
     - the exact method use the after-tax amount for all cash flows in the `MARR` calculations
     - the approximated method multiply (1 - tax rate) by the `MARR` (before-tax `MARR`) result to get the after tax `MARR`
+  - When inflation is considered, `actual MARR = real MARR + f + real MARR * f` where `f` is the inflation rate
+    - `actual MARR` is the `MARR` before calculating inflation
+    - `read MARR` is the `MARR` after calculating inflation
+  - The logic for calculating before/after tax `IRR` and real/actual `IRR`
 - Internal Rate of Return (`IRR`) is the interest rate at which the present worth and equivalent uniform annual worth are equal to zero
   - From an investor perspective, if the IRR exceeds the MARR, the investment is economic. If it is less than the MARR, the investment is uneconomic
   - The IRR is the interest rate at which the benefits are equivalent to the costs
@@ -225,8 +235,10 @@
   - "excess" cash is not used in the following investment
   - It assumes all unused excess cash uses `MARR` and all investment related cash flow uses `ERR`
     - From an investor perspective, outflow uses `ERR`, inflow uses `MARR`
-  - It simply the cash flows by picking out the "excess" cash flow and combine its future value with other cash flow
+  - It simplify the cash flows by picking out the "excess" cash flow and combine its future value with other cash flow, so there will be only one sign change in cash flow diagram and it yields only one solution
   - To estimate `ERR`, take net receipts forward at the `MARR` and equating to net disbursements taken forward at the `ERR` rate
+    - calculate the interest rate when the future value of each inflows equals the future value of each outflows
+    - For investor model, all inflows uses `MARR`, all outflows use `approx ERR`
   - When solving for `IRR`, multiple solutions might happen, then it's a good time to use `ERR`
     - Simple investment often have one solution, it is characterized by one or more periods of cash outflows, followed by one or more periods of cash inflows, because based on the Descartes' rule, there is only one solution
   - `IRR` doesn't differentiate cash flow types and all cash flow uses the same `IRR` for time value conversion
@@ -278,6 +290,21 @@
   - For old asset only the EAC of the next year should be checked becuase it will also increase, and the economic life is always the next year
     - This is known as the `One Year Principle`: when annual capital costs will be low in comparison to O&M costs and EAC(total) will be increasing each N, and the yearly operating costs are monotonically increasing, the economic life of the defender is one year and total EAC is the cost of using the defender for one more year
 - If the operating costs are not smoothly increasing, a detailed year-to-year comparison has to be conducted
+
+### Benefit-cost Analysis (BCA)
+
+- Mostly used by public sectors
+- `Benefit-Cost Ratio` = `Equivalent Worth of Net Benefits` / `Equivalent Worth of Net Costs`
+  - `PW Benefits / PW Costs`, `FW Benefits/ FW Costs`, `AW Benefits / AW Costs` all work
+  - Only work on the project when the ratio is greater than one
+- `Conventional B/C Ratio` = `EW net benefits` / (`EW initial costs` + `EW O&M costs`)
+- `Modified B/C Ratio` = (`EW net benefits` - `EW O&M costs`) / `EW initial costs`
+- `Net Benefits` = `Expected Benefits` - `Disbenefits`
+  - Disbenefits are negatives effects on individuals or groups
+- For mutually exclusive project rank project by initial cost, from low to high and eliminate projects that has incremental Benefit-Cost Ratio being less than 1
+  - Incremental benefit-cost ratio calculates the ratio between benefit difference over cost difference of two projects
+  - Invremental benefit-cost ratio is undefined when the cost different ratio is zero, in those cases choose project with greatest benefits first
+  - When cost difference is zero, pick project with lowest costs
 
 # Statistics Concepts
 
@@ -1064,7 +1091,7 @@
   - High rates of capacity utilization suggest that the economy is producing above potential GDP and may experience inflationary pressure
 - The demand pull effect increases GDP above full employment GDP
 
-#### Inflaction Calculation
+#### Inflation Calculation
 
 - Various index can be calculated to determine the inflaction rate
 - `Consumer Price Index` (`CPI`) is to determine the change in the overall price of a basket of goods and services that reflect the cost of living of a typical consumer
@@ -2341,3 +2368,55 @@
      - For example, when time is the limiting factor, then calculate the unit CM per hour and maximize the production of the highest
   3. Produce the maximum that can be sold of the product with the highest contribution per unit of limiting factor.
   4. Repeat for the next best product and so on until the scarce resource is used up
+
+### Budgeting
+
+- A budget is a detailed quantitative plan for acquiring and using financial and other resources over a specified forthcoming time period
+- The act of preparing a budget is called budgeting
+- The use of budgets to control an organization's activity is known as budgetary control
+- An estimate is done by experts for an area, a forcast is based on certain estimates, and some forcast become the budget
+- Controllability - The degree of influence that a manager has over costs, revenues, or related items for which he is being held responsible
+- The budgeting process may be abused both by superiors and subordinates, leading to negative outcomes
+  - Superiors may dominate the budget process or hold subordinates accountable for events they have no control over
+  - Subordinates may build "budgetary slack" into their budgets - set budget on theirs flavor to maximize performance
+- Advantages of Budgets
+  - Promotes planning, including the implementation of plans
+    - Link the budget with strategic analysis for the organization including overall objectives, trends, risks, alternative strategies
+    - Promotes coordination and communication among subunits within the company
+  - Motivates managers and other employees
+  - Apply and influence control
+    - Assign responsibilities by allocating resources to managers
+    - Set targets and goals
+- Provide performance evaluation and feedback criteria
+  - Comparing actual performance against a budget is better than comparing this year’s achievements to last year’s results including corrective action
+- Short-Term Budgets (1 year or less) deals with Quantities to produce, Quantities to sell, Supplies acquisitions, Financial resources needed
+- Long-Term Budgets (more than one year) deals with Forecasts of large asset acquisitions, Financing plans, Research and development plans
+- Master Budget (Short-Term Budget Application)
+  - Coordinates and summarizes all the financial projections of all the organization’s individual budgets in a single document for a set period of time
+  - Includes operating estimates, a cash budget, and pro forma financial statements (balance sheet, income statement, and statement of cash flows)
+  - Embraces operating and financing activities and decisions
+- Operating Budget - The set of budgets leading to the pro-forma (budgeted) income statement, it involves the following steps:
+  1. Prepare the Revenues Budget
+  2. Prepare the Production Budget (in Units)
+  3. Prepare the Direct Materials Usage Budget and Direct Materials Purchases Budget
+  4. Prepare the Direct Manufacturing Labour Budget
+  5. Prepare the Manufacturing Overhead Costs Budget
+  6. Prepare the Ending Inventories Budget
+  7. Prepare the Cost of Goods Sold Budget
+  8. Prepare the Operating Expense (Period Cost) Budget
+  9. Prepare the Budgeted Income Statement
+- Financial Budget - The set of budgets that comprise and lead to the capital budget, cash budget, pro-forma balance sheet and the pro-forma statement of cash flows, it involves the following steps:
+  1. Prepare the capital expenditures budget
+  2. Prepare the cash budget
+  3. Prepare the budgeted balance sheet
+  4. Prepare the budgeted statement of cash flows
+- Production Budget = Sales budget + Ending Inventory - Beginning Inventory = Total Expected Asset - Total Existing Asset
+
+#### Responsibility Accounting
+
+- Responsibility Accounting - Focuses on information sharing, not in laying blame on a particular manager
+- Types of Responsibility Centers
+  - Cost - Accountable for costs only
+  - Revenue - Accountable for revenues only
+  - Profit - Accountable for revenues and costs
+  - Investment - Accountable for investments, revenues, and costs
