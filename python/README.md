@@ -448,6 +448,7 @@ sum(list)
   x[key1] = newValue
   ```
 - To add a new key/value pair to a dictionay, simply assign the value to a new key.
+- Empty dictionaries `{}` evaluate to False in Python
 
 ### Related Operations
 

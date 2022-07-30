@@ -454,6 +454,7 @@ It runs scripts and codes without the need to set up the server.
      - all the dependency directories are at the top level of the zip file
   3. Run `cd $OLDPWD && zip -g function.zip lambda_function.py` to add lambda function code to the archive.
   4. Run `aws lambda update-function-code --function-name <LambdaName> --zip-file fileb://function.zip` to update the function code from the project folder
+- The only writable file path for Lambda is under `/tmp/`
 
 ## SQS
 
