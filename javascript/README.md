@@ -201,6 +201,8 @@ if (condition1) {
 }
 ```
 
+- Inline if condition, `(condition) && (statment)`
+
 - switch
 
 ```js

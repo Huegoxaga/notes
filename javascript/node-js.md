@@ -21,6 +21,7 @@
 - `npm install -g npm` update npm.
   - `npm install -g npm@latest` update the npm to the last version.
 - `npm install -g <package-name>` -g means install globally.
+  - To enable a global module inside a local project, run `npm link <module>`
 - `npm install` install packages listed in `package.json` file.
   - `npm install <package>@<version>` install a specific version
 - `npm view <package>` view details about a package

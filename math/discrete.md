@@ -342,7 +342,7 @@
   - Absorption law: `A(A + B) = A`, `A + AB = A`
   - De Morgan's law: $$\overline{AB} = \overline{A} + \overline{B} $$, $$\overline{A+B} = \overline{A} \overline{B} $$
   - $$A (\overline{A} + B) = AB$$, $$A + \overline{A}B = A+B$$
-- The simplification of boolean expression can be converted to algrbraic simplification by treading all `AND` as multiplication and `OR` as addition
+- The simplification of boolean expression can be converted to algebraic simplification by treating all `AND` as multiplication and `OR` as addition
 
 ### Truth Tables
 

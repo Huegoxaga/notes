@@ -59,6 +59,7 @@
   - Depreciation charge referred to as capital allowance
   - The maximum capital cost allowance a company can take in one year is what would be sufficient to reduce taxable income to zero
   - the remaining value for all assets under the same CAA class after depreciation is called the Undepreciated Capital Cost (`UCC`)
+    - `Opening UCC + additions – disposals – CCA = Ending UCC`
   - Generally, only 50% of a given rate is allowed in the first year of aquiring asset additions
   - Recaptured CCA occurs when an asset is sold for more than the book value, where the market value is higher than the book value estimated by using CCA
     - The difference is taxable income
@@ -197,6 +198,7 @@
         - `CTF` = `1 – [tax rate * CCA Rate(1 + Interest Rate/2)]/[(Interest Rate + CCA Rate)(1 + Interest Rate)]`
       - The PW of salvaged aseet adding the loss of tax saving by multiply proceeds from disposal by Capital Salvage Factor (`CSF`)
         - `CSF` = `1 – Tax Rate * CCA Rate/(Interest Rate + CCA Rate)`
+      - Use after-tax interest rate for the above formulas
 
 #### Rate of Return
 
@@ -212,11 +214,13 @@
     - the approximated method multiply (1 - tax rate) by the `MARR` (before-tax `MARR`) result to get the after tax `MARR`
   - When inflation is considered, `actual MARR = real MARR + f + real MARR * f` where `f` is the inflation rate
     - `actual MARR` is the `MARR` before calculating inflation
-    - `read MARR` is the `MARR` after calculating inflation
+    - `real MARR` is the `MARR` after calculating inflation
+    - For real projects, perform sensitivity analysis on the profitability of each project with different inflation rates
   - The logic for calculating before/after tax `IRR` and real/actual `IRR`
-- Internal Rate of Return (`IRR`) is the interest rate at which the present worth and equivalent uniform annual worth are equal to zero
+- Internal Rate of Return (`IRR`) is the interest rate at which the benefits are equivalent to the costs
+  - Under present worth analysis, `IRR` makes the `PW` of all cash inflow/outflows equals to zero
+  - Under annual worth analysis, `IRR` makes equivalent annual worth of all cash flows equal to zero
   - From an investor perspective, if the IRR exceeds the MARR, the investment is economic. If it is less than the MARR, the investment is uneconomic
-  - The IRR is the interest rate at which the benefits are equivalent to the costs
   - `PW of benefits – PW of costs = 0` or `PW of benefits/PW of costs = 1` or finding the zero net cash flows by using the annual worth analysis, or compare the future worth at the end of the project
   - $$PW=0=\sum_{t=0}^{T}\frac{R_t-D_t}{(1+i^*)^t}$$, It means the IRR rate $$i^*$$ is a rate that make the sum of the present worth of all net cash flow has a net value of zero
   - `IRR` is usually positive. (otherwise project is losing money)
@@ -303,7 +307,7 @@
   - Disbenefits are negatives effects on individuals or groups
 - For mutually exclusive project rank project by initial cost, from low to high and eliminate projects that has incremental Benefit-Cost Ratio being less than 1
   - Incremental benefit-cost ratio calculates the ratio between benefit difference over cost difference of two projects
-  - Invremental benefit-cost ratio is undefined when the cost different ratio is zero, in those cases choose project with greatest benefits first
+  - Incremental benefit-cost ratio is undefined when the cost different ratio is zero, in those cases choose project with greatest benefits first
   - When cost difference is zero, pick project with lowest costs
 
 # Statistics Concepts

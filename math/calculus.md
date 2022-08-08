@@ -475,7 +475,7 @@
   - fill the graph with short lines that represent a slope at that point
 - Any lines that can follow the curves on the slope field can be a solution to the differential equation
   - Those lines are called the solution curves
-- Laplance Transform
+- Laplace Transform
   - Unilateral Laplace Transform of a function `f(t)` is $$\mathscr{L}\{f(t)\}=\int_{0}^{\infty}f(t)e^{-st}dt$$
     - It converts function from `f(t)` to `F(s)`, denoted as $$\mathscr{L}\{f(t)\}=F(s)$$, similarly for `y(t)` $$\mathscr{L}\{y(t)\}=Y(s)$$
     - The Laplace Transform Table summarize formulas to transform some basic functions into the Laplace form or vice versa, $$f(t)\leftrightarrow F(s)$$

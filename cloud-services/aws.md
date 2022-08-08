@@ -455,6 +455,13 @@ It runs scripts and codes without the need to set up the server.
   3. Run `cd $OLDPWD && zip -g function.zip lambda_function.py` to add lambda function code to the archive.
   4. Run `aws lambda update-function-code --function-name <LambdaName> --zip-file fileb://function.zip` to update the function code from the project folder
 - The only writable file path for Lambda is under `/tmp/`
+- When Lambda Proxy is used, API Gateway expects to see a JSON map with keys "body", "headers", and "statusCode"
+  - Content inside body must be a string, otherwise the API will return `"message": "Internal server error"` with status code `502`
+- When running on `Node`:
+  - stick with using `await` or `.then`, instead of trying to use both, to make sure any background processes or callbacks in your code are completed before the code exits
+  - When handler function is `async`, the returned value will be converted to a promise
+  - It can return an async function and add `await` to during that function call by default
+  - On AWS Lambdas async handlers, always await your async functions, to avoid cutoff
 
 ## SQS
 
