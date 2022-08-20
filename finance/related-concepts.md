@@ -2376,6 +2376,7 @@
 ### Budgeting
 
 - A budget is a detailed quantitative plan for acquiring and using financial and other resources over a specified forthcoming time period
+  - e.g. set rules to maintain inventory level at end of month based on a percentage of the estimated production amount of the next month
 - The act of preparing a budget is called budgeting
 - The use of budgets to control an organization's activity is known as budgetary control
 - An estimate is done by experts for an area, a forcast is based on certain estimates, and some forcast become the budget

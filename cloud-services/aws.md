@@ -528,13 +528,22 @@ It provides support for generating serverless APIs.
   - `CORS` header setting will be stored in the `OPTIONS` method of the same resource.
   - Can allow more headers in the `Access-Control-Allow-Headers` field when edit CORS setting
 - If integrated with Lambda, response header can be added in the return statement in the following format.
+
   ```py
-  'headers': {
-      'Access-Control-Allow-Headers': 'Content-Type, Cache-Control',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
-  },
+    return {
+        'statusCode': 200,
+        'headers': {
+          'Access-Control-Allow-Headers': 'Content-Type, Cache-Control',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+        },
+        'body': json.dumps('Hello from Lambda!')
+    }
   ```
+
+  - `statusCode` is required
+  - `body` must be stringified values
+
 - The execution log can be enalbed in the stage setting `Logs/Tracing` Tab.
   - The `ARN` of an `IAM` role with `AmazonAPIGatewayPushToCloudWatchLogs` Permission is required in the setting page, opened from the left pannel.
   - It can log full requests/responses data.
