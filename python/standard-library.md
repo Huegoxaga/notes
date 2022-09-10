@@ -224,6 +224,7 @@ list(accumulate(range(8)))
   multi_res =[pool.apply_async(job, (i,)) for i in range(10)]
   print([res.get() for res in multi_res])
   ```
+  - Exception will raise silently in the background, use `res.get()` to check the status
 - Multiprocessing methods need to instantiate special object type to access shared variables among cores.
   - `value1 = mp.Value('i', 0)` shared integer values.
   - use `value1.value` to access the the value of the `Value` object.

@@ -33,15 +33,17 @@
   - use only exponent that can be divided by 3. Ex. E+3 E+9
 - Number prefix
 
-| Prefix | Abrre | Value | Name     |
-| ------ | ----- | ----- | -------- |
-| tera   | T     | 10^12 | trillion |
-| giga   | G     | 10^9  | billion  |
-| mega   | M     | 10^6  | million  |
-| kilo   | k     | 10^3  | thousand |
-| hecto  | h     | 10^2  | hundred  |
-| deca   | da    | 10^1  | ten      |
-|        | 10^0  | one   |          |
+| Prefix | Abrre | Value     | Name        |
+| ------ | ----- | --------- | ----------- |
+| exa    | E     | $$10^18$$ | quintillion |
+| peta   | P     | $$10^15$$ | quadrillion |
+| tera   | T     | $$10^12$$ | trillion    |
+| giga   | G     | $$10^9$$  | billion     |
+| mega   | M     | $$10^6$$  | million     |
+| kilo   | k     | $$10^3$$  | thousand    |
+| hecto  | h     | $$10^2$$  | hundred     |
+| deca   | da    | $$10^1$$  | ten         |
+| mono   | -     | $$10^0$$  | one         |
 
 ### Number Theory
 

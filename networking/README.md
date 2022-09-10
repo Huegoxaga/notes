@@ -2,15 +2,34 @@
 
 ## Network
 
-- Α network is simply defined as something that connects things together for a specific purpose.
-- A computer network connects two or more devices together to share a nearly limitless range of information and services
+- Network is a group of two or more interconnected devices regardless of the distance of the devices
+- Purpose of a network
+  - To share information (e.g. documents, messaging)
+  - To share resources (e.g. applications, printers, access to other networks)
 - Network Types categorized by size:
   - `LAN` - Local Area Network
-    - `Ethernet` - Ethernet is the most common LAN technology.
-  - `WAN` - Wide Area Network
-    - `Internet` - a net of WANs.
+    - `Ethernet` - Ethernet is the most common LAN technology
+    - It is limited to a small area and does not extend beyond a building
+  - `CAN` - Campus Area Network
+    - adopted by universities or large corps in a limited geographic area or beyond
+    - A `CAN` is a form of a `MAN` that connects several `LAN`s together
   - `MAN` - Metropolitan Area Network
-    - It is defined as a network that connects LAN’s across a city-wide geographic area.
+    - It is defined as a network that connects `CAN`s or `LAN`s across a city-wide geographic area
+    - May use fibre optic or wireless
+    - Could have a primary site
+  - `WAN` - Wide Area Network
+    - `Internet` - a net of WANs
+    - Crosses metropolitan, regional, or national boundaries
+    - Tiered (hierarchical) architecture
+    - May use private or public network links
+  - Non-Classical Types
+    - Body Area Network (`BAN`)
+      - Wearable computing and/or sensor devices
+      - E.g. activity trackers, heart rate monitor, smart watches
+    - Personal Area Network (`PAN`)
+      - Devices such as PCs, tablets, smart phones, wearables, etc.
+    - Internet Area Network (`IAN`)
+      - Cloud network (virtualized), not associated with specific geographic locations such as a `WAN`
 - Network Types categorized by function:
   - `SAN`- Storage Area Network
     - It provides systems with high-speed, lossless access to high-capacity storage devices.
@@ -37,21 +56,59 @@
     - A host can provide data, often referred to as a server.
     - A host can both request and provide data, often referred to as a peer.
   - Types of Network Architectures
-    - Peer-to-Peer - all hosts on the network can both request and provide data and services.
-    - Client/Server - hosts are assigned specific roles. Clients request data and services stored on servers.
+    - Peer-to-Peer - all hosts on the network can both request and provide data and services
+      - Network has no central servers
+      - Each node can be both a client and a server
+      - Distributed, no single point of failure
+      - Hybrid P2P networks have servers for performing certain functions Examples: Blockchains
+    - Client/Server - hosts are assigned specific roles. Clients request data and services stored on servers
+      - Clients request data or resources
+      - Servers wait for and respond to the requests from clients
+      - Typically, software is specialized to the server role or the client role
+      - A server can be stateless or stateful in nature
+        - stateful track the status of a client
+        - stateless can be a web app without the use of cookies
+      - Generally, client/server networks are more secure and scalable
     - Mainframe/Terminal - a single device (the mainframe) stores all data and services for the network.
 - Topology:
   - It is the arrangement of the elements of a communication network.
   - Types:
-    - `Star` - share one core switch.
-    - `Ring` - connected one by one.
-    - `Bus` - share one cable.
+    - `Bus` - share one cable
+      - Nodes are connected to a shared communication line/medium (the "bus")
+      - Simple and inexpensive, typically uses less cable than other topologies (e.g. one coaxial cable is used)
+      - However, collisions can occur due to the shared communication medium (e.g. 10Base Ethernet)
+    - `Star` - share one core switch
+      - Nodes are connected to a central device
+      - Easy to implement and extend by adding more nodes
+      - More fault-tolerant than the bus topology
+      - However, the central device is a single point of failure
+    - `Ring` - connected one by one
+      - Each node is connected to two and only two other nodes
+      - Messages/data travel around the ring in one direction
+      - The transmission time can be deterministic in a ring topology
+      - However, adding or removing a node is difficult
+    - `Mesh` - devices connected to each other
+      - Each node is connected to all the other nodes
+      - Very fault-tolerant as a result
+      - For `N` number of nodes, the number of links required is `N(N-1)/2`
+      - The most expensive and complex topology
+    - `Wireless`
+      - Typically uses radio frequency (RF) transmissions
+      - An alternative is infrared (IR) transmissions
+      - Ad hoc (autonomous, no central device) and infrastructure (access point) topologies
+      - "Space" is considered the shared medium
+      - Allows mobility of nodes in the network
     - `Hybrid` - a combination of any of above
+      - Hybrid topologies blend two or more of the "classical" topologies
+      - Most networks are deployed as hybrids, realizing both the pros and cons of each type used
+      - Variations are also possible between physical and logical topologies, e.g. Token Ring, partial mesh, etc.
+        - IBM’s Token Ring operated as a logical ring topology, using a modified physical star topology
+        - Partial mesh networks provide significant redundancies, but also do not exhaustively connect all nodes
 
 ## Network Reference Models
 
-- It is used to divide and break down a complicated network system into layers.
-- It is used to standardize networks.
+- It is used to divide and break down a complicated network system into layers
+- It is used to standardize networks
 
 ### OSI model
 
@@ -60,27 +117,57 @@
 - Each layer work independently, they are:
   1. Physical - present data as bit, all hardwares likes cables and wires are in the physical layer.
      - This is where the actual data transmission happens
-  2. Data Link - present data as `Frame` with MAC address in the data link header. It will also handle error checking.
+     - Defines the physical and electrical specifications (as appropriate) for the transmission media
+       - Media type, connector type, signaling type
+       - Includes pin layouts, voltages, cable specifications, etc.
+     - Functions and services of the physical layer:
+       - Establishes/terminates a connection to the medium
+       - Participates in resolving contention/flow control
+       - Modulates the digital data (bits) into signals suitable for the transmission channe
+  2. Data Link - present data as `Frame` with MAC address in the data link header. It will also handle error checking
+     - Split into two sub-layers:
+       - Logical Link Control (LLC)
+         - Recognizes start/end of frames in the bitstream
+         - Delimits frames when transmitting
+         - Handles the Frame Check Sequence (FCS)
+         - Inserts the source/destination MAC addresses into frames
+       - Media Access Control (MAC)
+         - Manages control of access to the physical transmission medium
+         - E.g. CSMA/CD for IEEE 802.3 Ethernet
   3. Network — present data as `Packet` and add IP address in the packet header. It naviagtes and find the best path for data transmition if the destination address is not in the local subnet.
-     - Each packet in the conversation will have the same source and destination addresses, however they may not take the same path.
-  4. Transport - present data as encapsulated `Segement` with header. It decide which data transmition protocol to use and add a port number and a random source port number to the IP address.
-  5. Session - create and maintain session.
-  6. Presentation - the layer generify data, it is where files are generated from session data, it deals with data encryption and convserion.
+     - Each packet in the conversation will have the same source and destination addresses, however they may not take the same path
+     - Translates logical addresses into physical (MAC) addresses
+     - Provides Quality-of-Service (QoS) markers to indicate traffic priority
+  4. Transport - present data as encapsulated `Segement` with header. It is responsible for end-to-end data transfer and connection establishment. It decides which data transmition protocol to use and add a port number and a random source port number to the IP address.
+  5. Session - Controls the establishing, managing, and ending of a session between two hosts
+     - Provides full-duplex and half-duplex dialogue
+     - Enhances a reliable transfer service
+     - Provides checkpoints and synchronization for error recovery
+  6. Presentation - the layer generify data, it is where files are generated from session data. It formats and codes data to present a standard interface to the application layer
+     - Examples of Presentation Layer functions:
+       - MIME encoding/decoding of content (e.g. base64, 7bit)
+       - Data compression/decompression (e.g. gzip, deflate)
+       - Data encryption/decryption (e.g. RSA, AES)
+       - Character set conversion (e.g. ASCII, UTF-8, UTF-16, ISO 8859-1
   7. Application - the point of contact for network aware application
 - Mnemonic: `Please Do Not Throw Sausage Pizza Away`
 - 2, 3, 4 layers all have its own header
   - when data goes to lower layer one extra header will be added
   - when data goes to higher layer related header will be processed and removed
-  - as a result, a frame will have three headers. a segement will have one header
+  - a segement will have one transport layer header followed by the application layer data
+  - a packet will have a internet layer header followed by a transport layer header, then the application layer data
+  - a frame will have link layer header, internet layer header and transpoer layer header, the application data followed by link layer trailer
+  - The application layer data is the core
 
 ### TCP/IP model
 
+- Also known as IP stack
 - Developed by the Department of Defense.
 - A simplified version of OSI and now become the industry standart
-  1. Network Interface - equivelent to OSI model 1 and 2.
-  2. Internet - equivelent to OSI model 3.
-  3. Transport - equivelent to OSI model 4.
-  4. Application - equivelent to OSI model 5,6,7.
+  1. Network Interface or Link - equivelent to OSI model 1 and 2
+  2. Internet - equivelent to OSI model 3
+  3. Transport - equivelent to OSI model 4, 5
+  4. Application - equivelent to OSI model 6, 7
      - This layer is handled by the operating system and will not be discussed by network engineer.
 - Mnemonic: TCP/IP comes in `A TIN`.
 
@@ -433,15 +520,32 @@
     - CAT8 40Gps (under 30 meters)
     - Higher level has tigher twist, result in higher Max speed.
 
+### Network Interface Controller/Card/Chipset (NIC)
+
+- Also called a network chipset or network adapter
+- Allows a device (such as a computer, tablet, etc.) to connect to a network
+- Contains (or emulates) electronic circuitry needed to communicate on the network
+- A network chipset is designed for wired or wireless operation
+- May be physical (both discrete and embedded), or virtual
+- has a 48-bit MAC address
+
 ### Hub
 
 - it copy info from 1 port to all port.
 - 1 collision domain
 - 1 broadcast domain
+- A physical layer device
 
 ### Bridge
 
-- It has more function that hub and less function than switch.
+- It has more function that hub and less function than switch
+- A data link layer device
+- Connects (usually) two similar segments together
+- Separates data (Ethernet frames) and partitions the collision domain
+- Performs forwarding and filtering with a MAC table called bridging table
+  - Forwards the message if the destination is on the “other” side
+  - Filters the message if the destination is known to be on the “same” side
+  - Builds a table of MAC addresses to learn where hosts are located
 
 ### Switch
 
@@ -451,7 +555,12 @@
 - One or more broadcast domains - as many as the VLANs
 - Manegement IP is the switch IP used for telnet connection
 - It does not need power if it is not used as power source for devices(POE)
-- works at layer two.
+- A data link layer (Layer 2) device
+- Forwarding strategies used:
+  - Store and forward - most conservative, buffer the entire frame by receiving, verifying, and forwarding each frame
+  - Cut through - most aggresive with highest performance, forwarding frame once destination MAC address is received
+  - Fragment free - like cut through but only transmit frame larger than 64 bytes to prevent transmitting corrupted, runt frame
+  - Adaptive - switch between the above three depending on the network conditions
 - Each on of its port has access mode that is used to connected to end devices, and trunk(attack) mode that connects to other switches.
   - Two switches connected in trunk mode will act like one combined switch.
   - There are two encapuslation protocal for trunking:
@@ -479,9 +588,12 @@
 - Intelligent - only exchange info between different networks, it is the gateway in most cases
 - Many Collision Domains
 - Many broadcast Domains
-- It has the ability to assign source and destination mac address according to the source and destination ip addresses if the IP addresses are from different sub networks.
-- router is the only way for traffic goes in and out. it is the gateway and has a routing table.
-- It works at layer three.
+- Operates using IP addresses
+  - It has the ability to assign source and destination mac address according to the source and destination ip addresses if the IP addresses are from different sub networks.
+- router is the only way for traffic goes in and out. it is the gateway and has a routing table
+  - Routing table is a `Forwarding Information Base` (`FIB`)
+- It works at layer three (network layer)
+  - It forwards (routes) packets toward the destination
 - Cyclic Redundancy Check(CRC) is the hash value attached to the beginning of the frame for error checking process before data is out and in the LAN. It is the job for routers to apply the hash algorithm and check if the hash value matches.
 - Network Address Translation(NAT) is a router features that auto translate LAN IP and WAN IP address according to port number. In order to let private IPs share a common public IP because the number of public IPs are limited.
 - Port Forwarding is an application of NAT that redirects a communication request from one address and port number combination to another while the packets are traversing a network gateway, such as a router or firewall.

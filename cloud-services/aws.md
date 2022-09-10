@@ -565,6 +565,7 @@ It provides support for generating serverless APIs.
   - Add the model to request body and select request body validator to enable validation
 - Defines query string parameters and request header for a method and select validate query string parameters and headers to enable API gateway validation for requests
 - The resource's method name can be surrounded by like `{methodVar}` and the path mapping url can also contain variable name surrounded by `{pathVar}`, then a mapping between these two variables can be created in the method config
+- When use Cognito User Pool as Authorizer, add `Authorization` as the request header (`Token Source`) and use `idToken` to call the API
 
 ## AppSync
 
