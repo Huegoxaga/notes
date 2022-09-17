@@ -1,6 +1,7 @@
 # Cyber Security
 
 - Cyber security is the approach and actions associated with security risk management processes followed by organizations and states to protect confidentiality, integrity and availability of data and assets used in cyber space. The concept includes guidelines, policies and collections of safeguards, technologies, tools and training to provide the best protection for the state of the cyber environment and its users - D.Schatz, R. Bashroush, & J. Wall (2017)
+- The protection afforded to an automated information system in order to attain the applicable objectives of preserving the integrity, availability, and confidentiality of information system resources (includes hardware, software, firmware, information/data, and telecommunications). (NIST Computer Security Handbook)
 - Cyber Security is aim to protect confidentiality, integrity, and availability of data.
   - A model of three equal parts, all of which must be balanced while creating the policies and procedures that guide the organization’s cyber security plan
 - Confidentiality - Confidentiality means ensuring that only the right people can access your data. Factors of confidentiality includes:
@@ -132,6 +133,30 @@
   - "Day one" is the day when the vendor of the software becomes aware of the vulnerability, for which they will then typically create a security patch
   - These vulnerabilities are often shared (or sold) between black hat hackers
   - If they are discovered by a white hat hacker, they may by reported directly to the software vendor (sometimes for a reward), or posted publicly to draw attention and incite improvements
+- Attack Surfaces
+  - Represents all the points of exposure of a system or application to attackers
+  - Each of these points of potential attack are often referred to as attack vectors
+  - They are categorized in these ways:
+    - Network attack surface
+      - the profile exposed to network-based attacks, including protocol vulnerabilities, denial-of-service, and link disruption attacks
+    - Software attack surface
+      - refers to code vulnerabilities affecting the OS, applications, and server software such as Apache or IIS
+    - Human attack surface
+      - often neglected by those more focused on technological measures applying to the above two categories often the greatest weakness of any organization, susceptible to social engineering, human error, fatigue, and insider threats
+- Attack Trees
+  - Helps to illustrate possible techniques to breach security and achieve a particular objective
+  - Branching and hierarchical structure
+  - Objective is the root node
+  - Branches represent ways to achieve the objective
+  - Leaves represent ways to initiate an attack
+  - Non-leaf nodes are either AND or OR nodes
+    - AND: all sub-goals must be achieved
+    - OR: one or more sub-goals must be achieved
+  - Cost, difficulty, and other attributes can be designated for branches to compare alternatives
+- The CIA Triad - A model for information assurance (IA)
+  - Confidentiality - The protection of confidential data from being inappropriately disclosed to an unauthorized party
+  - Integrity - The assurance that information and programs are changed only in a specified and authorized manner
+  - Availability - The assurance of the continued operation of systems and services to authorized users
 
 ## Stages of a Cyber Attack
 
@@ -402,3 +427,41 @@
 - LDAP (Lightweight Directory Access Protocol) is an open and cross platform protocol used for directory services authentication
   - It manages the access of on-premise devices
 - It is an internet protocol in the application layer
+
+## Disaster Recovery
+
+- Disaster recovery is the process of regaining access to the data, software, and hardware needed to resume the operations of an organization after a disaster, whether natural or induced
+- Disaster Recovery Plan - Procedures to minimize losses caused by disasters (power failure, fire, flood, etc.
+- Recovery Point Objective (RPO) - Defines the point in time to which data must be restored to be acceptable to the owner or user of the data
+- Recovery Time Objective (RTO) - Defines the maximum duration of downtime that is acceptable before the Recovery Point Objective is achieved and business resumes
+
+### Backup Strategies
+
+- Methods to protect data
+  - Performing backups regularly
+  - Remote backups, using cloud storage and/or moving media off-site
+  - Storing media in vaults/safes that are fire- and flood-rated
+  - Storage Area Networks (SANs) with mirroring and replication
+  - Surge protectors, uninterruptible power supplies (UPSs), and emergency generators
+  - Fire prevention and suppression
+  - Anti-malware and other security measures
+- 3-2-1 Backup Rule
+  - Keep at least three independent copies of your data
+  - Use at least two different types of media
+  - Store at least one copy off-site
+  - There are variations of this, including 3-1-2, 3-2-2, 3-2-3, etc.
+- Full Backup
+  - Backs up all files
+  - Generally should be performed at least once per week
+- Incremental Backup
+  - Backs up only files that have been changed or added since the last backup was performed
+  - Restoring from an incremental backup requires the most recent full backup, and all subsequent incremental backups
+- Differential Backup
+  - Backs up files that have been changed or added since the last full backup was performed
+  - Restoring from a differential backup requires the most recent full backup and only the most recent differential backup
+- Continuous Data Protection (CDP)
+  - CDP systems save a copy of every change made to the data, permitting a restore to any point in time
+  - Differs from RAID, replication, or mirroring which only protect the current state of the data
+- GFS Rotation
+  - Grandfather/father/son cycles for daily/weekly/monthly backups
+  - Can add other intervals such as quarterly, annually, etc. and remove certain sets from rotation

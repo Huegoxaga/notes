@@ -114,42 +114,6 @@
 
 - The Open Systems Interconnection (OSI) model.
 - Developed by International Organization for Standardization(ISO), because devices from IBM is not compatible with Digital Equipment Corp.(DEC) products
-- Each layer work independently, they are:
-  1. Physical - present data as bit, all hardwares likes cables and wires are in the physical layer.
-     - This is where the actual data transmission happens
-     - Defines the physical and electrical specifications (as appropriate) for the transmission media
-       - Media type, connector type, signaling type
-       - Includes pin layouts, voltages, cable specifications, etc.
-     - Functions and services of the physical layer:
-       - Establishes/terminates a connection to the medium
-       - Participates in resolving contention/flow control
-       - Modulates the digital data (bits) into signals suitable for the transmission channe
-  2. Data Link - present data as `Frame` with MAC address in the data link header. It will also handle error checking
-     - Split into two sub-layers:
-       - Logical Link Control (LLC)
-         - Recognizes start/end of frames in the bitstream
-         - Delimits frames when transmitting
-         - Handles the Frame Check Sequence (FCS)
-         - Inserts the source/destination MAC addresses into frames
-       - Media Access Control (MAC)
-         - Manages control of access to the physical transmission medium
-         - E.g. CSMA/CD for IEEE 802.3 Ethernet
-  3. Network — present data as `Packet` and add IP address in the packet header. It naviagtes and find the best path for data transmition if the destination address is not in the local subnet.
-     - Each packet in the conversation will have the same source and destination addresses, however they may not take the same path
-     - Translates logical addresses into physical (MAC) addresses
-     - Provides Quality-of-Service (QoS) markers to indicate traffic priority
-  4. Transport - present data as encapsulated `Segement` with header. It is responsible for end-to-end data transfer and connection establishment. It decides which data transmition protocol to use and add a port number and a random source port number to the IP address.
-  5. Session - Controls the establishing, managing, and ending of a session between two hosts
-     - Provides full-duplex and half-duplex dialogue
-     - Enhances a reliable transfer service
-     - Provides checkpoints and synchronization for error recovery
-  6. Presentation - the layer generify data, it is where files are generated from session data. It formats and codes data to present a standard interface to the application layer
-     - Examples of Presentation Layer functions:
-       - MIME encoding/decoding of content (e.g. base64, 7bit)
-       - Data compression/decompression (e.g. gzip, deflate)
-       - Data encryption/decryption (e.g. RSA, AES)
-       - Character set conversion (e.g. ASCII, UTF-8, UTF-16, ISO 8859-1
-  7. Application - the point of contact for network aware application
 - Mnemonic: `Please Do Not Throw Sausage Pizza Away`
 - 2, 3, 4 layers all have its own header
   - when data goes to lower layer one extra header will be added
@@ -158,6 +122,90 @@
   - a packet will have a internet layer header followed by a transport layer header, then the application layer data
   - a frame will have link layer header, internet layer header and transpoer layer header, the application data followed by link layer trailer
   - The application layer data is the core
+- From layer one to layer seven, they are:
+
+#### Physical Layer
+
+- present data as bit, all hardwares likes cables and wires are in the physical layer.
+  - This is where the actual data transmission happens
+  - Defines the physical and electrical specifications (as appropriate) for the transmission media
+    - Media type, connector type, signaling type
+    - Includes pin layouts, voltages, cable specifications, etc.
+  - Functions and services of the physical layer:
+    - Establishes/terminates a connection to the medium
+    - Participates in resolving contention/flow control
+    - Modulates the digital data (bits) into signals suitable for the transmission channe
+
+#### Data Link Layer
+
+- a functional and procedural means to transfer data as `frames` with MAC address in the data link header. It will also handle error checking for physical layer
+- A frame is a Layer 2 Protocol Data Unit (PDU)
+- Can Split into two sub-layers:
+  - Logical Link Control (LLC)
+    - Recognizes start/end of frames in the bitstream
+    - Delimits frames when transmitting
+    - Handles the Frame Check Sequence (FCS)
+    - Inserts the source/destination MAC addresses into frames
+    - It specifies:
+      - Preamble: 7-byte value, e.g. 10101010...
+      - Start of Frame Delimiter (SFD): 1-byte value, e.g. 10101011
+        - Immediately follows the preamble
+        - Signals the start of a new frame
+        - Start of frame immediately follows the SFD
+      - Frame Check Sequence
+        - Cyclic Redundancy Check (CRC-32) value
+        - Checksum used to detect whether any data was lost or altered during transit
+      - Inter-Frame Gap (IFG): 12 bytes (idle channel)
+  - Media Access Control (MAC) - Lower sublayer
+    - Manages control of access to the physical transmission medium
+    - Media Access Control(MAC) address is a unique physical address for each devices, it is hard-coded.
+    - MAC is a 12 digit hexadecimal value, there are two digit in one pair, consisted of 6 pairs.
+    - MAC address is a 12 X (Hexdecimal) 4 bit = 48 bit Number divided by : into 3 parts.
+    - All device port(network interface) have its own unique MAC address.
+    - Considered "burned in" at the factory
+      - Can be, but is not typically changed
+    - For virtual machine vNICs, they are selected from a pool, from the vendor’s OUI
+    - first 3 bytes stores the organizationally unique identifier (OUI), last 3 bytes are NIC specific
+      - Wireshark OUI Lookup Tool: https://www.wireshark.org/tools/oui-lookup.html
+      - OUI are registered through IEEE Registration Authority: https://regauth.standards.ieee.org/standards-ra-web/pub/view.html
+    - Broadcast MAC address: FF-FF-FF-FF-FF-FF (all ones)
+    - CSMA/CD for IEEE 802.3 Ethernet, Carrier Sense, Multiple Access (CSMA)
+      - To ensure one singal is being transferred at a time, with Collision Detection (CD)
+      - 32-bit jam signal sent when a collision is detected (101010...)
+      - Stations use an exponential back-off algorithm to pause and resend until successful
+      - Stations require 2tprop to capture the channel and ensure exclusive access
+        - otherwise it will be to late for the devices to realize the collision, becuase they are too far away from each other
+
+#### Network Layer
+
+- present data as `Packet` and add IP address in the packet header. It naviagtes and find the best path for data transmition if the destination address is not in the local subnet
+- Each packet in the conversation will have the same source and destination addresses, however they may not take the same path
+- Translates logical addresses into physical (MAC) addresses
+- Provides Quality-of-Service (QoS) markers to indicate traffic priority
+
+#### Transport Layer
+
+- present data as encapsulated `Segement` with header. It is responsible for end-to-end data transfer and connection establishment. It decides which data transmition protocol to use and add a port number and a random source port number to the IP address.
+
+#### Session Layer
+
+- Controls the establishing, managing, and ending of a session between two hosts
+- Provides full-duplex and half-duplex dialogue
+- Enhances a reliable transfer service
+- Provides checkpoints and synchronization for error recovery
+
+#### Presentation Layer
+
+- the layer generify data, it is where files are generated from session data. It formats and codes data to present a standard interface to the application layer
+- Examples of Presentation Layer functions:
+  - MIME encoding/decoding of content (e.g. base64, 7bit)
+  - Data compression/decompression (e.g. gzip, deflate)
+  - Data encryption/decryption (e.g. RSA, AES)
+  - Character set conversion (e.g. ASCII, UTF-8, UTF-16, ISO 8859-1
+
+#### Application Layer
+
+- the point of contact for network aware application
 
 ### TCP/IP model
 
@@ -173,6 +221,48 @@
 
 ## Protocols
 
+### Physical Layer Protocols (Line Coding Schemes)
+
+- Line codes are used in digital transmission
+- The code is tuned to the properties of the channel
+- Digital signal is encoded into a pattern, e.g. NRZ, Bipolar, Manchester, etc.
+- Receiver can also use the line code to synchronize its clock signal
+- Line coding can also assist in error detection (e.g. receiving a "non-existent" code)
+- main line coding schemes used for Ethernet
+  - 4B5B, used by Fast Ethernet
+  - 4D-PAM5, used by Gigabit Ethernet over copper
+  - 8b/10b, used by Gigabit Ethernet (non-copper)
+
+#### 4B5B Line Code
+
+- Used in Fast Ethernet
+- Maps groups of 4 bits into 5-bit symbols
+- 4 bits: 16 data patterns
+- 5 bits: 32 symbols, extra symbols can be used for error detection or control characters
+- Transitions in the analog signal provide clocking information to the receiver
+- Requires 25% extra bandwidth due to the extra bit per symbol
+
+#### 4D-PAM5 Line Code
+
+- Used in Gigabit Ethernet over Copper
+- Recall that Gigabit Ethernet over Copper (1000BaseT) uses all 4 twisted-pairs
+- 4-Dimensional due to the use of all pairs
+- PAM5 from use of 5 symbol levels: -2, -1, 0, +1, +2
+  - Which map to -1V, -0.5V, 0, +0.5V, +1V
+- 5x5x5x5 = 54 = 625 possible symbols
+- 8-bit words require 28 = 256 symbols
+- Therefore, this allows full redundancy + 113 control symbols in the coding scheme
+
+#### 8b/10b Line Code
+
+- Used in Gigabit Ethernet, non-copper
+- Maps groups of 8 bits into 10-bit symbols
+- Low 5 bits are encoded into a 6-bit group
+- High 3 bits are encoded into a 4-bit group
+- Same properties from 4B5B apply
+- Synchronized clocking is vital for high data rates
+- Encoding is performed in hardware using a look-up table (LUT)
+
 ### DataLink Layer Protocols
 
 #### Address Resolution Protocol (ARP)
@@ -182,12 +272,63 @@
   - If destination IP is not local the ARP request will be sent to the gateway.
 - It is achieved by broading the destination IP address to all devices in the network.
 - only device with the request Mac address will reply
+- ARP Header Format
+  - Hardware Type: 1 for Ethernet
+  - Protocol Type: 0x0800 for IPv4
+  - Hardware and Protocol Address Length fields: specified in bytes
+  - Opcode: defines a request (1), a reply (2), and others
+  - Source/Destination Hardware/Protocol Address fields: variable lengths based on headers
+  - Data: further data (optional)
+  - ARP is not encapsulated by IP (it is directly encapsulated by L2 frames)
+
+#### Ethernet
+
+- An Ethernet frame is the one type of L2 PDU
+- Ethernet Frame Formats [Ethernet Frames](img/ether-frames.jpg)
+  - Ethernet II (DIX v2), i.e. “Ethernet Type II”
+  - IEEE 802.3 Ethernet (original – rarely used)
+  - IEEE 802.3 Ethernet with SNAP header
+- Minimum Ethernet frame size: 64 bytes
+- Maximum Transmission Unit: 1518 bytes (not including "jumbo frames")
+- Ethernet II is the most common type
+  - DIX: DEC, Intel, Xerox jointly developed this format
+  - Uses an EtherType field to define the upper-layer protocol
+- EtherType/Length Field
+  - Values from 0-1500 in this field indicate the length of the frame (IEEE 802.3 format)
+  - Values of 1536 (0x600) and higher in this field indicate the EtherType sub-protocol identifier (DIX v2)
+  - E.g. a value of 0x0800 indicates IPv4 is the Ethernet frame payload’s protocol
+  - The length of the frame could be calculated from using delimiter symbols or encapsulated payload headers, e.g. with IP header information
+- Today, networks support both DIX v2 and IEEE 802.3 frames simultaneously
+  - IEEE 802.2 LLC header fields: DSAP, SSAP, Control
+  - DSAP: Destination Service Access Point and SSAP: Source Service Access Point
+    - These fields identify the contents/protocol of the data
+    - E.g. DSAP=SSAP=0xAA means the 802.3 format with SNAP
+  - Control: always 0x3 for the 802.3 format with SNAP
+- SNAP: Sub-Network Access Protocol
+  - The 1-byte SAP fields do not accommodate all of the available protocols; hence, purpose of the SNAP
+  - SNAP is comprised of:
+    - A 3-byte OUI (mostly unused)
+    - A 2-byte protocol type field (essentially the same as EtherType, e.g. 0x0800 = IPv4)
+  - Current frame formats use the joint EtherType/Length definition to identify the type of frame received
 
 ### Network Layer Protocols
 
 #### ICMP protocol
 
 - Internet Control Message Protocol
+- ICMPv4 for IPv4 (similarly, ICMPv6 for IPv6)
+- Provides control and messaging capabilities
+- Sends error and control messages
+- Examples: Destination Unreachable, Time Exceeded, Echo Request/Reply, etc.
+- ICMP is encapsulated by IP, but is considered to be in the same layer (L3)
+- Depending on ICMP message type, extra fields may be included to carry more information
+- ICMP Header Format
+  - Type: specifies the format of the ICMP message
+  - Code: further information about the message
+  - Checksum: integrity check for the header
+  - Rest of Header: specific to the type of the messages
+  - E.g. “ping”: ICMP Echo Request (type 8)/Echo Reply (type 0), Data
+  - ICMP Echo also includes Identifier and Sequence Number fields following the Checksum
 
 #### Internet Protocol
 
@@ -226,6 +367,40 @@
 - Automatic Private IP Addressing (APIPA)
   - When there is no DHCP, APIPA is configured to assign random IP starts with `169.254` for local communication. `169.254.0.0 - 169.254.255.255`
 - `0.0.0.0 - 0.255.255.255` is Unused/Reserved IP
+- IPv4 Header Fields
+  - Version: IP version number (we consider version 4 only, “0100”)
+  - Internet Header Length: length in 32-bit words
+  - DSCP: Differentiated Services Code Point, indicates traffic class/priority
+  - ECN: Explicit Congestion Notification, RFC 3168
+  - Total Length: length of the IP header + the data (payload) in bytes
+  - Identification: unique to identify a group of IP packet fragments
+  - Flags: specifies IP fragmentation options
+  - Fragment Offset: indicates the position of a fragment, relative to the complete group of fragments
+  - Time-to-Live: maximum hop count
+  - Protocol: defines the protocol used in the data portion
+    - E.g. Protocol = 6 for TCP, 17 for UDP, 1 for ICMP
+  - Header Checksum: integrity check for the header only
+  - Source Address: 32-bit source IP address
+  - Destination Address: 32-bit destination IP address
+  - Options: optional field, size must be a multiple of 32-bit words (padding added if necessary)
+  - The data (payload) immediately follows the IP header
+- Fragmentation
+  - Maximum Transmission Unit (MTU) - Ethernet II MTU is 1518 bytes (maximum frame size), L3 packet payload maximum is 1500 bytes
+  - Larger packets must be fragmented
+  - Fragments are forwarded and routed independently
+  - Reassembly is performed at the destination
+  - Fragmentation information is carried in the IP header
+  - If any fragments are lost, all received fragments must be discarded
+  - Timer is set when the first fragment is received, If the timer expires before all fragments are received, the others will be discarded
+  - Flags: 1 bit: reserved (always 0); 1 bit: don’t fragment (DF); 1 bit: more fragments (MF)
+  - If the packet length > MTU and DF is set, the packet must be dropped
+  - First fragment: offset of 0 (byte position #0)
+  - Offset: indicates the number of 8-byte units for the current fragment
+  - Length of a fragment (except the final one): therefore must be a multiple of 8 bytes
+  - Example: 6500 bytes of data to transmit
+    - Ethernet Type II MTU is 1518 bytes (maximum Ethernet frame size), IP header is 20 bytes (without options)
+    - Maximum usable data per packet: 1518 – 18 (frame header) – 20 (IP header) = 1480 bytes
+    - We can use 185 x 8 = 1480-byte fragments; requires 5 packets in total (4 x 1480 bytes, 1 x 580 bytes)
 
 ##### IPv6
 
@@ -478,47 +653,110 @@
 
 ## Network Devices
 
-- Media Access Control(MAC) address is a unique physical address for each devices, it is hard-coded.
-- MAC is a 12 digit hexadecimal value, there are two digit in one pair, consisted of 6 pairs.
-- MAC address is a 12 X (Hexdecimal) 4 bit = 48 bit Number divided by : into 3 parts.
-- All device port(network interface) have its own unique MAC address.
 - All frame transmit data using above model to add headers for each one of them and strip the header according layer types.
 - Nodes are connected by switches, wireless access points, and routers.
 - collision domain - A collision domain is, as the name implies, the part of a network where packet collisions can occur.
   - A collision occurs when two devices send a packet at the same time on the shared network segment.
 - Broadcast domain - A broadcast domain is the domain in which a broadcast is forwarded. A broadcast domain contains all devices that can reach each other at the data link layer (OSI layer 2) by using broadcast.
 
-### Cable
+### Cables
 
-- Twisted pair cable
-  - Widely used for Enthenet in LAN.
-  - It has two types:
-    - Unshielded-Twisted-Pair (UTP) Cable - widely used everywhere.
-    - Shielded-Twisted-Pair (UTP) Cable - used for industrial purpose.
-  - RJ45 connector should be connected on each end of the cable.
-  - use cable striper to remove the shield or skin of the cable.
-  - use wire crimper to attach the RJ45 to the cable.
-  - There are two wiring standards
-    - T568A
-    - T568B
-      - more popular
-  - The order of the cables has two types.
-    - straight(patch) cable
-      - two end of the cable used the same wiring standards
-      - it is used to connect different types of devices.
-    - crossover cable
-      - two end of the cable used the opposite wiring standards.
-      - it is used to connect same types of devices.
-    - Auto MDIX is a technology that can auto convert between straight and crossover cable based on the current use cases.
-  - Twisted pair cables have the following categories. Each has different Max speed.
-    - CAT3 10Mbps
-    - CAT5 100Mbps
-    - CAT5e(enhanced) 100Mbps 125MHz
-    - CAT6 1Gbps 250MHz
-    - CAT6a 1Gbps 500MHz (10 Gbps under 100 meters)
-    - CAT7(shielded CAT6a) 10Gps
-    - CAT8 40Gps (under 30 meters)
-    - Higher level has tigher twist, result in higher Max speed.
+- All cables and its connectors are layer one devices
+
+#### Twisted Pair Cable
+
+- Widely used for Enthenet in LAN.
+- Consists of several individually-insulated wires twisted together in coloured pairs
+- Wire pairs are twisted together to reduce crosstalk and noise
+  - Interference will be picked up by both wires
+  - Difference between the pair will be minimal
+  - Twisting also reduces crosstalk
+  - Flat ribbon cables with parallel wires are limited to short distances for these reasons
+- May be shielded and/or screened, or unshielded
+- It has two types:
+  - Unshielded-Twisted-Pair (UTP) Cable - widely used everywhere
+  - Shielded-Twisted-Pair (STP) Cable - used for industrial purpose
+  - Screened UTP (ScTP) - surrounded by a shield of foil and includes a single drain wire used for grounding
+- RJ45, or 8P8C (8 Position, 8 Conductor) connector should be connected on each end of the cable.
+- use cable striper to remove the shield or skin of the cable.
+- use wire crimper to attach the RJ45 to the cable.
+- There are two wiring standards
+  - T568A
+  - T568B (more popular)
+- The order of the cables has two types
+  - straight(patch) cable
+    - two end of the cable used the same wiring standards
+    - it is used to connect different types of devices.
+  - crossover cable
+    - two end of the cable used the opposite wiring standards.
+    - it is used to connect same types of devices.
+  - Auto MDIX is a technology that can auto convert between straight and crossover cable based on the current use cases.
+- Twisted pair cables have the following categories. Each has different Max speed.
+  - CAT1 - 2 pairs of wires, used by PSTN, ISDN, doorbell wiring
+  - CAT2 - 4 pairs of wires, Uncommon, used by 4 Mbps Token Ring
+  - CAT3 - 4 pairs of wires, 16 MHz Bandwidth, used by 10Mbps Ethernet
+  - CAT4 - 4 pairs of wires, 20 MHz Bandwidth, Uncommon, used by 16 Mbps Token Ring
+  - CAT5 - 4 pairs of wires, 100 MHz Bandwidth, used by 100Mbps Ethernet
+  - CAT5e(enhanced) - 4 pairs of wires, 125 MHz Bandwidth, used by 100 Mbps Fast Ethernet, 1 Gbps Gigabit Ethernet
+  - CAT6 - 4 pairs of wires, 125 MHz Bandwidth, used by 1 Gbps (100 metres), 10 Gbps Ethernet (55 metres)
+  - CAT6a - 4 pairs of wires, 500 MHz Bandwidth, used by 10 Gbps Ethernet (100 metres)
+  - CAT7(shielded CAT6a) - 4 pairs of wires, 10Gps
+  - CAT8 - 4 pairs of wires, 40Gps (under 30 meters)
+  - Higher level has tigher twist, result in higher Max speed.
+- In general TPC hasL
+  - Limited bandwidth (typically 100-500 MHz)
+  - Maximum distance: typically 100 metres for Ethernet applications
+- In Fast Ethernet over Category 5/5e, only 2 pairs are used for transmit/receive
+- In Gigabit Ethernet, all 4 pairs are used
+
+#### Coaxial Cable
+
+- Consists of an outer jacket, outer conductor (copper braid), insulating spacer (plastic/Teflon), and a centre conductor (copper wire)
+- High frequency signal transmission line
+- Capable of carrying broadband services (e.g. analog/digital TV, Internet, phone)
+- Types of coaxial cables:
+  - `RG-6/U`, also known as `CATV`, uses Copper-coated steel (75 Ω)
+  - `RG-8` also known as `Thicknet`, adopted by `10Base5` Ethernet, uses Solid copper (50 Ω)
+  - `RG-58`, also known as `Thinnet`, adopted by `10Base2` Ethernet, uses Stranded copper (50 Ω)
+- It has minimal external interference effects
+- Provides a significant amount of bandwidth (1-3 GHz)
+- Capable of up to 10 Gbps downstream (DOCSIS 4.0)
+- Relatively expensive compared to UTP
+- Supports longer cable runs
+  - `10Base2` – up to 185 metres
+  - `10Base5` – up to 500 metres
+- HFC (hybrid fibre-coaxial) networks – typically >100 metres
+- Not often used for data networks today, except "last mile" in existing cable infrastructure
+- It uses connectors:
+  - F-connector
+  - BNC with terminators
+
+#### Fibre-Optic Cable
+
+- Consists of a glass core, cladding, protective buffer, and an outer sheath
+- The core is a waveguide that can transmit light of varying wavelengths through WDM
+- Total internal reflection keeps light in the waveguide
+- Immune to Electro-Magnetic Interference (EMI) and Radio frequency interference (RFI)
+- High bandwidth, high electrical resistance
+- Smaller cable size (diameter), lightweight but fragile
+- More difficult to install/splice
+- More expensive than coaxial cable/UTP
+- Single-mode (SM)
+  - Optical fibre with a small core diameter, e.g. 9 μm
+  - Greater distances possible, e.g. over 60 km
+  - Higher precision/stricter tolerances
+- Multi-mode (MM)
+  - Optical fibre with a larger core diameter, e.g. 50 or 62.5 μm
+  - Distances up to 550 metres for 1 Gbps Ethernet
+  - Best used within a building (shorter runs)
+- Fibre-Optic Connectors
+  - ST – Straight Tip, simplex
+    - For simplex cables, Rx/Tx cables are separable
+  - SC – Subscriber Connector (sometimes called Square Connector), simplex and duplex
+  - LC – Lucent Connector, typically duplex
+    - Common in data networking applications along with (but increasingly displacing) SC
+- Small Form-factor Pluggable (SFP/SFP+) Transceivers
+  - Often used in conjunction with fibre connectors
 
 ### Network Interface Controller/Card/Chipset (NIC)
 
@@ -528,6 +766,30 @@
 - A network chipset is designed for wired or wireless operation
 - May be physical (both discrete and embedded), or virtual
 - has a 48-bit MAC address
+
+### Space
+
+- Space is the "physical medium" for wireless signal transmission, examples:
+  - IEEE 802.11 Wi-Fi (Wireless LAN)
+  - IEEE 802.16 Wireless MAN (WiMAX)
+- Uses radio frequency (RF) signals (electromagnetic waves)
+  - Bluetooth and 802.11b/g/n/ax Wi-Fi: 2.4 GHz band
+  - 802.11a/n/ac/ax Wi-Fi: 5 GHz band
+- WiMAX: Worldwide Interoperability for Microwave Access
+  - 2 – 66 GHz range (physical layer specification)
+  - Spectrum profiles of 2.3, 2.5, and 3.5 GHz
+  - Meant to deliver "last mile" broadband services
+- Flexible, inexpensive to deploy, but subject to interference
+- Isotropic Antennas
+  - Omnidirectional: the most common type
+  - Transmits data (signal power) equally in all directions
+  - Suitable for multiple receivers
+  - E.g. radio, Wi-Fi, cellular, etc.
+- Directional Antennas
+  - Focus transmission power in one direction or a narrow arc/cone
+  - Usually must maintain "line of sight"
+  - Most suitable for a single receiver, provides superior noise rejection
+  - E.g. satellite
 
 ### Hub
 

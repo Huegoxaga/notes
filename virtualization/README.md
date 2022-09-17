@@ -10,6 +10,7 @@
 - It utilizes hypervisor to host multiple VMs runnung different operating systems.
   - Type 2 hypervisor - a software running on a host operationg system.
   - Type 1 hypervisor - a bare-metal installation.
+- Different from emulation, which can be used when source CPU type different from target type
 
 ### VMs Platforms
 

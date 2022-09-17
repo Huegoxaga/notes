@@ -300,7 +300,8 @@ It is used to tell if a data structure or Algorithm is good.
 - Generally larger input run slower.
 - This method focus on studying the growth rate of primitive operation count related to the growth of input size.
 - When convert operation count into running time. For inputs with the same sizes, running time may vary. However, the worst-case is usually taken as the running time for this input size. It is good for code improvement.
-- For logarithm function in computer science, the 2 in base 2 is often omitted. It looks similar to LOG with base 10.
+- The running time `T(n)` equals the sum of the product of the time cost of each statement (line of code) multiply by the number of times executed
+- For logarithm function in computer science, the 2 in base 2 is often omitted, written as `logx` or `lgx`. It looks similar to LOG with base 10.
 - The Big O math model is used to simplify operation count functions for comparison.
   - A function `f(x)` can be converted to the big-Oh of another function `g(x)`. if the y value of `f(x)` is always smaller or equal than `g(x)` times a constant for all x value greater than certain constant.
     - Then the generalized big-Oh function can be used to represent the complexity of the algorithm.
@@ -376,6 +377,8 @@ int binarySearch(int A[], int lower, int upper, int X){
 ### Sort
 
 An array is sorted in ascending order if the array entries increase as indices increase.
+
+- In-place means that the algorithm does not use extra space for manipulating the input but may require a small though non-constant extra space for its operation
 
 #### Bubble Sort
 
@@ -461,11 +464,9 @@ for (index = 1; index <= N-1; index ++)
 #### Merge Sort
 
 - Steps for merge sort:
-  1. treat the array as n arrays, each has a length of one.
-  2. create new n/2 arrays, the length of each array is doubled.
-  3. compare elements in each array, and place them in order.
-  4. create n/4 arrays, merge the n/2 arrays into n/4 array in order.
-  5. repeat the process until merging into n/n arrays which is one big sorted array.
+  1. cut the array with `n` elements in half recursively, until there are `n` array contains only one element
+  2. compare elements in each array with the lowest current index, and place them in order in a larger array with doubled size
+  3. repeat the process until merging into one big sorted array
 - The complexity of Merge Sort is `O(nlog(n))` (worst case).
 - Since each compared value is copied to the new array, the merge sort does require new temporary arrays.
 

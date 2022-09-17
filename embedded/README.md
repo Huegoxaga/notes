@@ -12,8 +12,10 @@
   - ALU (Arithmetic Logic Unit) – performs the basic operations
   - Input and Output (I/O) interface
 - Regardless the type of the system, a computer architecture can be categoried as either a Harvard or Von Neumann (a.k.a. Princeton) architecture, the major difference is related to the way the processing unit aceess the memory
+
   - Harvard Memory Architecture: The point when a processor unit has a separate memory address space for the program and data memory, the system has Harvard memory architecture
   - Von Neumann (a.k.a. Princeton) architecture: The point when a processor has a common memory address for the program memory and data memory, the processor has Princeton memory architecture
+
 - Flynn’s Taxonomy is a classification system for computer architectures
   - Single Instruction – Single Data (SISD)
     - Only executes one series of instructions on one set of data
@@ -57,6 +59,12 @@
     - Known as context switch which requires current thread to pause and save state in the form of call stack and new thread to load state and begin executing
   - Compare with multiprocessing, multithreading has lower memory consumption, communication between threads is easier, and faster to switch between shared memory, there is no need to change memory in cache
     - It is the preferred method if problem can be designed to use threads
+- CPU work flow:
+  1. CPU instructions come from memory (RAM) and get loaded into the instruction registers
+  2. Data gets moved from memory (RAM) to the registers based on what is in the instruction
+  3. The instructions perform their operations on the data in the registers
+  4. The changed data gets moved back from the registers to memory
+  5. The whole process is repeated
 - Memory Architecture
   - Accessing memory is one of the main bottlenecks a program can have
   - There is a shared memory architecture with global address space where all processors can see the same memory and affect each other’s execution
