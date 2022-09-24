@@ -300,20 +300,41 @@ It is used to tell if a data structure or Algorithm is good.
 - Generally larger input run slower.
 - This method focus on studying the growth rate of primitive operation count related to the growth of input size.
 - When convert operation count into running time. For inputs with the same sizes, running time may vary. However, the worst-case is usually taken as the running time for this input size. It is good for code improvement.
-- The running time `T(n)` equals the sum of the product of the time cost of each statement (line of code) multiply by the number of times executed
-- For logarithm function in computer science, the 2 in base 2 is often omitted, written as `logx` or `lgx`. It looks similar to LOG with base 10.
-- The Big O math model is used to simplify operation count functions for comparison.
-  - A function `f(x)` can be converted to the big-Oh of another function `g(x)`. if the y value of `f(x)` is always smaller or equal than `g(x)` times a constant for all x value greater than certain constant.
-    - Then the generalized big-Oh function can be used to represent the complexity of the algorithm.
-    - In terms of the complexity, `O(1)<O(log(n))<O(n)<O(nlog(n))<O(n^2)<O(2^n)<O(n!)`.
-    - `O(1)` Constant Time: means the number of operations has no thing to do with input size.
-    - `O(n)` Linear Time: means the number of operations is linear input size.
-    - `O(log n)` Logarithmic Time: means the input size is equals 2 to the power of the number of operations.
-    - `O(n log n)` usually means a `O(log n)` algorithm has an `O(n)` as its inner loop or outer loop.
-    - `O(n^2)` Quadratic Time: means the number of operations is equals the input size times itself.
-    - When finding Big O, `g(x)` should be in its simplest form.
-  - Big-Omega function is found if `f(x)` is greater or equal than `g(x)` time constant `c`.
-  - Big-Theta is found if `f(x)` can be in between a function `g(x)` times two different constant.
+- For logarithm function in computer science, the 2 in base 2 is often omitted, written as `logx` or `lgx`. It looks similar to LOG with base 10
+- The running time `T(n)` where `n` is the size of input, equals the sum of the product of the time cost of each statement (line of code) multiply by the number of times executed
+- `T(n)` can be generalized by the following generalized, where `c` is the average execution time of all operations
+  - the Big Oh by $$O(g(x))$$, if $$T(n)\leqslant c \cdot g(n)$$
+  - the Big Omega by $$\Omega(g(x))$$, if $$T(n)\geqslant c \cdot g(n)$$
+  - the Big Theta by $$\Theta(g(x))$$, if $$c_1\cdot g(n)\leqslant T(n)\leqslant c_2\cdot g(n)$$, which aim to provide an equivalent representation
+  - the Small oh by $$o(g(x))$$, if $$T(n)\lt c \cdot g(n)$$
+  - the Small Omega by $$\Omega(g(x))$$, if $$T(n)\gt c \cdot g(n)$$
+- Comparsion of the order of growth
+  - In terms of the complexity, `O(1)<O(log(n))<O(n)<O(nlog(n))<O(n^2)<O(2^n)<O(n!)`.
+  - `O(1)` Constant Time: means the number of operations has no thing to do with input size.
+  - `O(n)` Linear Time: means the number of operations is linear input size.
+  - `O(log n)` Logarithmic Time: means the input size is equals 2 to the power of the number of operations.
+  - `O(n log n)` usually means a `O(log n)` algorithm has an `O(n)` as its inner loop or outer loop.
+  - `O(n^2)` Quadratic Time: means the number of operations is equals the input size times itself.
+  - When finding Big O, `g(x)` should be in its simplest form.
+
+#### Recursive Analysis
+
+- Method of induction, e.g. find the big Oh of `T(n) = T(n - 1) + n`
+  1. if `k` if the depth of recursion, for any step the function is `T(n-k) + n - k + 1`
+  2. observe that there are `k` number of recursion, each execute `n` time
+  3. at some point `n - k = 1`, so `k = n - 1`, both `k` and `n` are very close indefinitely
+  4. for big O analysis `n = k`, so `T(n)` can be represented as `k` number of recursion multiply by `n` execution time, so $$c \cdot g(n) = c\cdot n^2$$
+  5. let $$T(n) = c \cdot g(n)$$, and subsitute `T(n)` into the original function, obtain that $$T(n)=c(n-1)^2+n=cn^2-2cn+c+n$$
+  6. since its big O $$T(n)\leqslant n^2$$, so `-2cn + c + n` must be equal or smaller than `0`, so $$c\leqslant \frac{1}{2-\frac{1}{n}}$$
+  7. when n is very large `c` must be equal or smaller than `1/2`
+  8. conclusion, the big O is `n` square where `c` must be equal or smaller than `1/2`
+- Master Method, for $$T(n)=aT\left(\frac{n}{b}\right)+f(n)$$ where `𝑎 ≥ 0`, `𝑏 > 1` are constants and `f(n)` is an asymptotically positive function
+  - An asymptotically positive function is one that is positive for all. sufficiently large n)
+  - To find its generalized time, find $$X=n^{\log_b^a}$$, and `Y = f(n)`, then
+    - If $$X\lt Y$$, $$f(n)=O(n^{\log_b^{a-\epsilon}})$$ for some constant `𝜖 > 0`, then $$T(n)=\Theta(n^{\log_b^{a}})$$
+    - If $$X\approx Y$$, $$f(n)=\Theta(n^{\log_b^a}(\lg n)^k)$$ for some constant `𝑘 ≥ 0`, then $$T(n)=\Theta(n^{\log_b^a}(\lg n)^{k+1})$$
+    - If $$X\gt Y$$, $$f(n)=\Omega(n^{\log_b^{a+\epsilon}})$$ for some constant `𝜖 > 0`, and `f(n)` satisfies the regularity condition, then $$T(n)=\Theta(f(n))$$
+      - Regularity condition is $$af\left(\frac{n}{b} \right)\leqslant cf(n)$$, for some constant `c < 1` (as long as such constant c value can exist) and for all sufficiently large `n`
 
 #### Parallel Computations
 

@@ -129,11 +129,9 @@
   - The `--no-ff` flag prevents git merge from executing a `fast-forward`
     - `fast-forward` will replace the header pointer without creating new commit if no changes are made
   - `--ff-only` means fast-forward only.
-- `git rebase` similar to merge but keep all the commit records of the merging branch into the master branch after it is merged, example usage:
-  1. `git checkout branch`
-  2. `git rebase master`
-  3. `git checkout master`
-  4. `git merge branch`
+- `git rebase <release>` when run on dev branch, it moves the baseline to the release head, to avoid conflict in next merge from dev to release
+  - `git rebase <HEAD-n>` combine the last n commits into one commit
+  - `git rebase <NewCommit> <OldCommit>` combine all commits from `<OldCommit>` to `<NewCommit>`
 
 #### Working with Remote Repository
 

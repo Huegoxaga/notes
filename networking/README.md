@@ -334,6 +334,7 @@
 
 - Internet Protocol (IP) is the logical address of devices.
 - Responsible for packet delivery and routing
+- Address allocation is managed by IANA and the RIRs
 
 ##### IPv4
 
@@ -367,6 +368,14 @@
 - Automatic Private IP Addressing (APIPA)
   - When there is no DHCP, APIPA is configured to assign random IP starts with `169.254` for local communication. `169.254.0.0 - 169.254.255.255`
 - `0.0.0.0 - 0.255.255.255` is Unused/Reserved IP
+- Broadcasts (three types)
+  - Flooded broadcast (255.255.255.255)
+    - Not propagated, considered a local broadcast
+  - Directed broadcast (e.g. 192.168.2.255 for subnet 192.168.2.0/24)
+    - All hosts on a specific subnet (host bits all 1)
+  - All subnets broadcast (e.g. 192.168.255.255 for network 192.168.0.0/16)
+    - All hosts on all subnets in a specific network
+    - Subnet and host bits all 1
 - IPv4 Header Fields
   - Version: IP version number (we consider version 4 only, “0100”)
   - Internet Header Length: length in 32-bit words
@@ -416,6 +425,7 @@
 - Responsible for establishing and maintaining network conversations
 - It breaks the session data into packets and passes packets the network layer.
 - It receives packets from the network layer, verifies and assembles them for delivery to the receiving application
+- Its data unit is called segment
 - It is more reliable than UDP
   - TCP uses a three-way handshake to establish a reliable connection.
     1. SYN package
@@ -426,6 +436,7 @@
 #### User Datagram Protocol(UDP)
 
 - It is a connectionless transmission.
+- Its data unit is called datagram
 - It is an alternative communications protocol to Transmission Control Protocol (TCP) used primarily for establishing low-latency and loss-tolerating connections between applications on the internet. It is faster than TCP.
 
 ### Presentation Layer Protocols

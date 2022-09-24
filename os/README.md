@@ -258,6 +258,287 @@
   - Run in user context not kernel context
   - Known as services, subsystems, daemons
 
+## Processes and Threads
+
+### Processes
+
+- A Process is a computer program that is in execution
+- Difference between progran and process
+  - Program is passive, it is the entity stored on disk, i.e. the executable file
+  - Process is active, it’s load into memory and the code is being gone through line by line
+- Multiprocess applies the concept of parallelism
+  - Data Parallelism - Distributes subsets of data across multiple cores and performing the same operation on each
+  - Task Parallelism - Distributes disparate tasks across several different cores or threads from different cores
+- Process consists of multiple parts
+  - STACK - this contains any temporary data (i.e. pointer addresses to objects, function parameters, primitive variables)
+  - HEAP - this contains data stored in memory which is dynamically allocated during run time (i.e. objects)
+  - BSS - this contains uninitialized global or static data (i.e static int I;)
+  - DATA - this contains initialized global or static data (i.e. int val = 3;)
+  - TEXT - This is the program code
+- To help manage a process it contain a Process Control Block, contained within is;
+  - Process ID - this is a unique ID for each process, these are contained within a Process Table
+  - Program Counter - contains the memory address of the instruction that is to be executed next. Gets incremented at successful completion of instruction
+  - Process State - current state of the process
+  - Priority - Gives a ranking of importance to the process
+  - General Purpose Registers - holds the data of the process that is generated during its execution
+  - List of Open Files - These are the names and locations of any files that are being used by the process
+  - List of Open Devices - These are the ID of any devices that are being used by the process (i.e. harddrives, printers, etc)
+  - Protection - items necessary to protect the PCB from inadvertent destruction
+- Process State
+  - New - a program has been loaded from secondary memory in primary memory and is awaiting to be scheduled
+  - Ready - a process that has been scheduled and is
+    waiting for its turn to execute
+  - Run - a process that is currently executing
+  - Terminate - a process that has finished executing and is going to be flushed out of primary memory
+  - Wait / Block - a process that has initiated some type of I/O request and is waiting for that I/O to be completed
+  - Suspend wait - a process that has initiated some type of I/O request but cannot perform that I/O since another process is currently monopolizing the I/O unit
+  - Suspend Ready - a process that has completed its I/O but cannot return to the Ready queue because it is full
+- Process Transitions
+  - New
+    - Entry → Program moves to Ready, becomes Process
+  - Ready
+    - Schedule/Dispatch → Scheduler loads Process to Run
+    - Suspend → Memory/Queue full move Process to Suspend Ready
+  - Run
+    - I/O Request → Process has requested some type of I/O
+    - Completion → Process has completed running
+    - Priority/Time quantum → Process finished its turn, moves back to Ready
+  - Terminate
+    - N/A
+  - Wait / Block
+    - Suspend → I/O busy with another Process, moves Process to Suspend Wait
+    - I/O Completion → Done with I/O, Process moves to Ready (resume running)
+  - Suspend wait
+    - Resume → I/O freed, Process moves back to Wait / Block
+    - I/O Completion but still in Suspend → Memory/Queue full move Process to Suspend Ready
+  - Suspend Ready
+    - Resume → Memory/Queue freed, move Process to Ready
+- Steps for a process to change from ready (P0) to run (P1)
+  - Currently we have P0 running when Priority/Time quantum (interrupt) occurs
+  - Save state into PCB0, this allows another process to now be loaded in the CPU registers
+  - We will take PCB1 which is held in the Process Control Block Table, this gets loaded in CPU registers, this pull P1 from the Ready Queue to the Run State (CPU)
+  - During this time P0 will have moved back to the Ready Queue
+  - Now we have P1 running when Priority/Time quantum (interrupt) occurs
+  - Save state into PCB1, this allows another process to now be loaded in the CPU registers
+  - We will take PCB0 which is held in the Process Control Block Table, this gets loaded in CPU registers, this pull P0 from the Ready Queue to the Run State (CPU)
+  - This time P1 will have moved back to the Ready Queue
+- When CPU switches to another process, the system must save the state of the old process and load the saved state for the new process via a context switch
+- Context of a process represented in the PCB
+- Context-switch time is overhead; the system does no useful work while switching
+  - The more complex the OS and the PCB, the longer the context switch
+- Time dependent on hardware support
+  - Some hardware provides multiple sets of registers per CPU, so multiple contexts can be loaded at once
+- Processes can be described as either:
+  - I/O-bound process – spends more time doing I/O than computations, many short CPU bursts
+  - CPU-bound process – spends more time doing computations; few very long CPU bursts
+- A Parent process create children processes, which, in turn can create other processes, forming a tree of processes
+  - Generally, process identified and managed via a process identifier (pid)
+  - Resource sharing options
+    - Parent and children share all resources
+    - Children share subset of parent’s resources
+    - Parent and child share no resources
+  - Address space
+    - Child duplicate of parent (same program and data as parent) (recursion)
+    - Child has a program loaded into it
+  - Execution options
+    - Parent and children execute concurrently
+    - Parent waits until children terminate
+- Example system call
+  - `fork()` system call creates new process (UNIX)
+  - `CreateProcess()` in (Windows)
+  - `exec()` system call used after a fork() to replace the process' memory space with a new program
+  - `wait()` parent process call `wait()` to wait for termination of a child process, the call returns status information and the process identifier (pid) of the running process upon its termination
+  - `exit()` process executes last statement and then asks the operating system to delete it
+    - Returns status data from child to parent (via `wait()`)
+    - Process' resources are deallocated by operating system
+  - `abort()` terminate execution of child/children processes, possible reasons for doing so:
+    - Child exceeded allocated resources
+    - Task assigned to child is no longer required
+    - Parent is exiting and the OS does not allow child to continue if parent terminates
+      - cascading termination. All children, grandchildren, etc. are terminated
+      - The termination is initiated by the OS
+- Zombie processes
+  - A child process has completed execution but has not yet terminated (i.e. it still has an entry in the process & resource table)
+  - Parent by issuing wait() will “reap” the child exit status
+  - Child (Zombie) can terminate and be removed from the process & resource table
+  - A Child will always become a Zombie before being removed from the process & resource table
+- Orphan Processes
+  - A child process that exists without a parent process
+    - Parent process terminated (either intentionally (normal exit()) or unintentionally (crashes)) and leaves a child process continuing to execute
+- Background Processes
+  - A Background process is a process that runs behind the scenes (i.e. logging, system monitors, various device drivers and managers)
+  - A Background process is typically a child process created by some control (parent) process to manage a specific task for the control (parent) process
+  - A special Background process called daemon exists, these are created by a parent process that immediately disassociates itself from the background process thus creating the daemon. A daemon basically is created to handle a specific event and will sits idle until that event occurs
+- Challenges with multiple processing
+  - Identifying tasks - examine application to determine how it can be broken apart to run tasks in parallel on different cores
+  - Balance - Need to ensure that work done between different task is balanced across different threads
+  - Data Splitting - Just as application are split to run on different cores, the same applies to data
+  - Data Dependency - There’s a need to examine the data to ensure that there is no dependency between two different tasks
+  - Testing and Debugging - When applications are run on multiple cores, may different execution paths are possible, thus making testing and debugging more difficult
+
+#### Inter-process Communication (IPC)
+
+- Processes within a system may be independent or cooperating
+  - Independent process cannot affect or be affected by the execution of another process
+  - Cooperating process can affect or be affected by the execution of another process, cooperating processes need interprocess communication (IPC)
+- IPC Models:
+  - Shared memory - An area of memory shared among the processes that wish to communicate
+    - The communication is under the control of the users processes not the operating system
+    - Major issues is to provide mechanism that will allow the user processes to synchronize their actions when they access shared memory
+  - Message passing - Mechanism for processes to communicate and to synchronize their actions
+    - Message system – processes communicate with each other without resorting to shared variables
+    - It has two operations, send and receive
+    - The message size is either fixed or variable
+    - Must establish a communication link between them
+    - Slower than shared memory
+    - Direct Communication
+      - Links established directly between processes
+    - Indirect Communication
+      - Message passes through a message queue
+      - Processes Push or Pull messages from the mailbox
+    - Message passing may be either blocking or non-blocking
+      - Blocking is considered synchronous
+        - If both send and receive are blocking, we have a rendezvous this means both sender and receiver blocked while a message is being passed
+      - Non-blocking is considered asynchronous
+    - Message Buffering - No matter if we use direct or indirect communication message reside in a temporary space. It can be implemented in one of three ways
+      - Zero capacity – no messages are queued on a link.
+        - Sender must wait for receiver (rendezvous)
+      - Bounded capacity – finite length of n messages
+        - Sender must wait if link full
+      - Unbounded capacity – infinite length
+        - Sender never waits
+  - Additional communication strategies in a client server application
+    - Sockets - structure within a network node of a computer network that serves as an endpoint for sending and receiving messages across the network
+    - Remote Procedure Calls - one process can use an RPC to request a service from a process located in another computer
+    - Pipes - Communication is achieved by one process writing into the pipe and other reading from the pipe. To achieve the pipe system call, create two files, one to write into the file (F1) and another to read from the file (F2)
+- Message Buffering
+
+### Threads
+
+- Multiple thread can exist for a single process
+- Multithreads applies the concept of concurrency
+- Fiber - a sub-thread
+- Thread Control Block has:
+  - Program counter (pc) - contains the memory address of the instruction that is to be executed next. Gets incremented at successful completion of instruction
+  - Scheduling Properties - this can be policy (i.e. FIFO, etc) or priority
+  - States
+    - Ready: ready to run
+    - Running: currently running
+    - Blocked: waiting for resources
+  - Registers → holds the data of the process that is generated during its execution
+- Using multithread applications will bring four benefits:
+  - Responsiveness
+    - Will allow interactive applications to continue to run even if some part is processing something else
+  - Resource Sharing
+    - Processes can only share resources via shared memory or message passing (discussed last lecture)
+    - As seen in previous slide share data and code and are used within the same address space therefore increasing efficiency
+  - Economy
+    - Allocating memory and resources for processes is costly
+    - Creating threads uses less resources (see resources sharing)
+  - Scalability
+    - Multiple threads in a multiprocessor environment means more activities can be occurring concurrently
+    - Single threaded processes can only run on one processor, regardless of how many are available
+- User threads - Supported by the application, work outside the kernel
+- Kernel threads - Managed directly by the operating system
+- For User Level Threads (ULTs)
+  - Kernel not aware of the existence of threads
+    - Thread management done by application
+    - Thread switching does not require kernel mode privileges (no mode switch)
+  - Kernel activity for ULTs:
+    - Kernel not aware of thread activity but it is still managing process activity
+    - When a thread makes a system call
+      - whole process will be blocked but;
+        - For the thread library that thread is still in the running state
+        - Therefore, thread states are independent of process states
+- For Kernel Level Threads (KLTs)
+  - All thread management is done by kernel
+  - No thread library but an API (system calls) to the kernel thread facility exists.
+  - The kernel maintains context information for the process and the threads, switching between threads requires the kernel
+  - Scheduling is performed on a thread basis
+- Models allowing a relationship between user and kernel threads, thus to work together
+  - Many-to-One - There are many User Level Threads (ULTs) vying to use a single Kernel Level Thread (KLT)
+    - Many user-level threads mapped to single kernel thread
+    - One thread blocking causes all to block
+    - Multiple threads may not run in parallel on muticore system because only one may be in kernel at a time
+    - Few systems currently use this model
+  - One-to-One - There is one User Level Thread (ULT) coupled to one Kernel Level Thread (KLT)
+    - Each user-level thread maps to kernel thread
+    - Creating a user-level thread creates a kernel thread
+    - More concurrency than many-to-one
+    - Number of threads per process sometimes restricted due to overhead
+    - Model used by Linux and Windows
+  - Many-to-Many - There are many User Level Threads (ULTs) capable of using many Kernel Level Threads (KLTs)
+    - Allows many user level threads to be mapped to many kernel threads
+    - Allows the operating system to create enough kernel threads
+    - Adopted by Windows with the Thread Fiber package
+- Thread Libraries - Threads can be implemented through the use of a library
+  - Provides an API for creating/managing threads
+  - Thread libraries are primarily responsible for
+    - creating and destroying threads
+    - passing messages and data between threads
+    - scheduling thread execution
+    - saving and restoring thread contexts
+  - Two primary ways of implementing thread libraries
+    - First approach is to provide a library entirely in the user space
+      - Code and data structures reside in user space, this means threads get created in user space
+    - Second approach is to provide a library at the kernel level
+      - Code and data structures reside in the kernel space, invoking a function in API will result in a system call
+- Currently there are a number of different implementations for threads including;
+  - Pthreads (Linux, Mac OS X, and Solarius)
+  - Windows
+  - Java
+- Several methods used for Implicit Threading
+  - Thread Pools
+  - OpenMP - an implementation of multithreading
+    - it will create a thread for each processing core. i.e. if a system has dual core it will create two threads, quad core then four
+    - a primary thread has a series of instructions executed consecutively. It forks a specified number of sub-threads and the system divides tasks among them
+  - Grand Central Dispatch
+    - Used in Apple systems
+    - Threads are abstracted away from the programmer
+    - GCD schedules blocks and places them in a FIFO queue
+    - GCD then takes these blocks and assigns them to a thread once they become available from the thread pool
+    - Each process has its own queue
+  - Microsoft Threading Building Blocks (TBB)
+  - java.util.concurrent package
+- Thread Pool can create several threads at process start up. This solves the following:
+  - Reduces time taken to create threads
+  - Also places a boundary on the number of threads created, this will then of course limit the number of concurrent threads that are processing
+  - Threads get used and then they return to the thread pool
+  - Therefore, when an application requests work to be done it can ask for a thread from the thread pool
+  - If none is available, it just waits until one does become available
+  - Sophisticated architectures can dynamically adjust the number of threads up and down depending on load
+
+## Scheduling
+
+### Process Scheduling
+
+- Process scheduler selects among available processes for next execution on CPU, dependent on scheduling algorithm
+  - It maintains scheduling queues of processes
+    - Job queue – set of all processes in the system
+    - Ready queue – set of all processes residing in main memory, ready and waiting to execute
+    - Device queues – set of processes waiting for an I/O device
+    - Processes migrate among the various queues
+- Scheduler Types
+  - Long-term scheduler (or job scheduler) determines the processes (jobs) that can be brought into the ready queue
+    - This scheduler is used in large batch systems, (mainframe)
+    - Determines priority of which jobs need to be run next
+      - Multiple factors used to determine this
+        - Resources required for job to execute (Time, # of files read/written, databases)
+        - Priority of Job (if manually set)
+        - Online Job or batch job
+    - Jobs usually on Disk until ready to be swapped into memory
+    - Long-term scheduler is invoked infrequently (seconds, minutes) or slower
+    - The long-term scheduler controls the degree of multiprogramming
+  - Short-term scheduler (or CPU scheduler) – selects which process should be executed next and allocates CPU
+    - Typically the only scheduler in a system (PC’s)
+    - Makes sure to keep the CPU(‘s) busy
+    - It selects which job is to next to be processed by the/a CPU when current process swaps out of CPU (time quantum expired or I/O request)
+    - Short-term scheduler is invoked frequently (milliseconds)
+    - Uses some type of algorithm to determine which process from Ready queue is next to be processed and pulls job accordingly
+  - Medium-term scheduler can be added if degree of multiple programming needs to decrease
+    - Remove process from memory, store on disk, bring back in from disk to continue execution: swapping
+    - Medium-term scheduler strives for good process mix
+
 ## Unix
 
 - UNIX is an operating system since the 1960’s
