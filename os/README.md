@@ -510,14 +510,6 @@
 
 ## Scheduling
 
-### Process Scheduling
-
-- Process scheduler selects among available processes for next execution on CPU, dependent on scheduling algorithm
-  - It maintains scheduling queues of processes
-    - Job queue – set of all processes in the system
-    - Ready queue – set of all processes residing in main memory, ready and waiting to execute
-    - Device queues – set of processes waiting for an I/O device
-    - Processes migrate among the various queues
 - Scheduler Types
   - Long-term scheduler (or job scheduler) determines the processes (jobs) that can be brought into the ready queue
     - This scheduler is used in large batch systems, (mainframe)
@@ -538,6 +530,134 @@
   - Medium-term scheduler can be added if degree of multiple programming needs to decrease
     - Remove process from memory, store on disk, bring back in from disk to continue execution: swapping
     - Medium-term scheduler strives for good process mix
+
+### Process Scheduling
+
+- Process scheduler (CPU scheduler) selects among available processes for next execution on CPU, dependent on scheduling algorithm
+- It maintains scheduling queues of processes
+  - Job queue – set of all processes in the system
+  - Ready queue – set of all processes residing in main memory, ready and waiting to execute
+  - Device queues – set of processes waiting for an I/O device
+  - Processes migrate among the various queues
+- CPU & I/O Burst Cycle is the concept that process execution is a series of steps of usage by the CPU and then use of I/O
+- dispatcher
+  - Handles switching context information upon entering and exiting the CPU
+  - Handles switching from user mode to kernel mode
+  - Going to the proper location within the user program to restart the program
+- Decisions for CPU scheduling will take place under the following conditions, when a process
+  - switches from the running state to the waiting state
+  - switches from the running state to the ready state
+  - switches from the waiting state to the ready state
+  - terminates
+- scheduling algorithm is aim to
+  - Maximize
+    - CPU utilization - a percentage of time may range from 0 to 100 percent
+    - Throughput - Number of process executed by the system in a specific period of time (e.g. 1 min)
+    - Balanced utilization - Percentage of time all the system resource are utilized
+    - Predictability - Consistency in the average response time in interactive system
+    - Fairness - The degree to which all processes are given equal opportunity of execution
+    - Priorities - Process with higher priorities must be given preference for execution
+  - Minimize
+    - Turnaround time - Average period of time taken by a process executes
+    - Waiting time - Average period of time, a process spends waiting in the ready queue to get a chance for execution
+    - Response time - Average time take by the system to start responding to user request
+- Scheduling algorithms vary in their adherence to processor affinity
+  - Soft affinity - OS attempts to keep process running on same CPU but not guaranteeing it
+    - May occur if Job A & B were using processor 1, processor 2 becomes available, Job B will be switched to processor 2
+  - Hard affinity
+- Load Balancing - Load balancing attempts to reconcile so that all CPU are kept busy
+  - Push migration - uses a specific task to check distribution, if imbalanced "pushes" processes from busy CPU to idle/less busy CPU’s
+  - Pull migration - an idle processor "pull's" waiting processes from busy CPU's
+- Process Scheduling Algorithm Types
+  - Preemptive Scheduling
+    - Tasks are assigned with priorities
+    - Higher priority before lower priority task
+    - May cause starvation
+  - Non-Preemptive Scheduling
+    - Does not interrupt process currently holding CPU
+    - Process holds CPU until it terminates or switches from running to waiting state
+- First come, first served (FCFS) scheduling - Non-preemptive algorithm using FIFO queue
+- Shortest-Job-First (SJF) scheduling
+  - Non-preemptive
+  - Allocates a CPU burst time to each process. In batch systems, uses time allocated by user as starting point (typically coming through long term scheduler). After that it calculates an exponential average of the processes previous CPU burst to determine next CPU burst (formula in book if interested)
+  - Using the allocated CPU burst time it will then choose the job with the shortest CPU burst time, if a tie it will then use FCFS
+- Shortest-remaining-time-first scheduler
+  - Preemptive
+  - When a process arrives in the ready that has a shorter CPU burst than the remaining CPU burst of the running process, the new process will be executed instead
+- Priority scheduling - Process with highest priority gets to run first
+- Round robin scheduling
+  - a preemptive scheduler uses the concept of a timeslice (time quantum)
+    - a set amount of time that is allocated for a process to be allowed to run
+  - Primarily used in time sharing systems
+  - It also employs a FCFS scheduling for a limited amount of time
+    - Each process is ran for one time quantum then the process is moved to the back of the queue
+    - When a new process come, it will be added to the first in the queue
+- Multilevel Queue scheduling
+  - Partitions ready queue into several separate queues
+  - Each queue would have its own scheduling algorithm
+  - Also can allocate a different amount of CPU time that gets allocated to each queue
+    - i.e. foreground process will get 80% of CPU time using a Round-Robin Scheduler
+    - i.e. background process will get 20% of CPU time using a First Come First Serve Scheduler
+- Multilevel Feedback Queue scheduling
+  - A process can move between the various queues; aging can be implemented this way
+  - defined by the following parameters:
+    - number of queues
+    - scheduling algorithms for each queue
+    - method used to determine when to upgrade a process
+    - method used to determine when to demote a process
+    - method used to determine which queue a process will enter when that process needs service
+- Multiple Processor Scheduling - load sharing is required across the CPU's
+  - Asymmetric Multiprocessing Scheduling - Consist of single processor acts as a manager processo that handles all scheduling and I/O processing
+  - Symmetric Multiprocessing Scheduling - Each processor is self scheduling
+    - May have a common ready queue or each processor having its own ready queue
+    - Multicore processors run faster with SMP than with multiprocessor systems
+    - Virtually all modern OS's use Symmetric multiprocessing
+  - Multicore processor specifically implies multiple cores are on the same processor, while Multiple Processor has two or more identical processors work together
+    - Multicore is faster
+
+### Thread Scheduling
+
+- Software threads are user/kernel threads
+- Hardware threads are multithreading on the same core in multicore processors
+
+#### Software Thread Scheduling
+
+- It schedules kernel threads
+  - User threads are managed by the user thread library, and are within the process
+- process-contention scope (PCS) - multiple user threads are mapped to kernel level threads in the many-to-many and many-to-one models
+- system-contention scope (SCS) - one-to-one user/kernel threads
+
+#### Hardware Thread Scheduling
+
+- it requires two schedulers
+  - One for each software thread to determine on which hardware thread to run
+  - One to manage all the hardware threads
+- Multithreading can be
+  - Coarse grained - uses long "pipeline" to hold instructions, must be flushed before other thread can start. (high cost)
+  - Fine grained - uses boundaries of instruction cycle to switch between threads. (low cost)
+
+### Real Time CPU Scheduling
+
+- Real Time Operating Systems (RTOS) - Serves "real-time" applications
+  - Manufacturing Machines (Robots doing repetitious tasks)
+  - Network Equipment (Routers, Load Balancers)
+  - Medical Equipment (i.e. Vital Signs Monitor)
+- Can be event driven (OS for a Load Balancer) or time driven (OS for a Vital Signs Monitor)
+- RTOS consists of three types
+  - Soft real-time systems - Provide no guarantee when critical real-time processes will be scheduled, only that critical real-time processes will be given priority over non-critical processes
+  - Firm real-time systems - Ensures that real-time processes are serviced by a deadline, will allow the missing of some deadlines
+  - Hard real-time systems - Ensures that real-time processes are serviced by a deadline, missed deadline would be considered a failure
+- RTOS Scheduling is aim to:
+  - Minimizing latency
+    - Interrupt Latency - Amount of time between when interrupt occur to being handled by the interrupt service routine
+    - Dispatch Latency - Amount of time between when dispatcher stops one process and starts another. Preemptive kernels is used to allow events to occur
+  - Priority based scheduling - If a higher priority process is ready it will preempt a lower priority process from the CPU
+    - This will only guarantee soft real-time functionality
+    - For firm and hard real-time system we need to consider deadlines of processes
+  - Rate-monotonic scheduling - Each periodic task gets assigned a priority that is inversely proportional to its period. That is the longer its period the lower the priority, the shorter it period the higher its priority
+  - Earliest-deadline-first scheduling - Dynamically assigns a priority based on the deadline. The earlier the deadline the higher the priority
+  - Proportional share scheduling - Allocates a set number (T) of shares for all processes. Process receive a portion (N) of the remaining shares available. Thus each process is guaranteed `N/T` shares
+    - Uses admission controller to deny entry of process when `N/T<1`
 
 ## Unix
 
