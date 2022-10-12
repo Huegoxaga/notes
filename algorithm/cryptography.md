@@ -3,6 +3,9 @@
 - Cryptography is about constructing and analyzing protocols that prevent third parties(called adversaries) or the public from reading private messages
 - Greek: kryptos (hidden) + grafo (write)
 - Cryptography is aim to hide the meaning of messages, while steganography is aim to hide the existence of messages
+- An encryption scheme is computationally secure if ciphertext meets one or both criteria:
+  - Cost of breaking the cipher exceeds the value of the encrypted information
+  - The time required to break the cipher exceeds the useful lifetime of the information
 
 ## Random Number
 
@@ -121,7 +124,7 @@
 - To brutal force symmetric encryption half of all possible keys must be attempted
   - One must know what result to expect, so it might not be feasiable for compressed, encoded data
 - Cryptanalysis Attack
-  - Study of circumventing encryption; codebreaking
+  - Study of circumventing encryption; codebreaking: ciphertext only, known plaintext, known chosen plaintext and its output or reverse or known chosen output in both way
   - Relies on the nature of the algorithm
   - Some knowledge of plaintext's characteristics
   - Some sample plaintext-ciphertext pairs
@@ -144,18 +147,39 @@
   - Uses less code than a block cipher
   - Commonly in use: ChaCha20, RC4 (deprecated)
 
-### DES
+### Feistel Cipher Structure
+
+- Many symmetric block algorithms (including DES, but not AES) have this structure
+- Inputs: plaintext block 2w bits in size (split in half into L0 and R0), and key K
+- Each "round" has the same structure: a substitution and a permutation
+  - Substitution: left half of block by applying round function F to right half, then XOR
+  - Permutation: swap the two halves of the block
+- Iterate through "n" rounds to obtain the ciphertext block
+- Each round "i" has inputs $$L_{i-1}$$ and $$R_{i-1}$$ from the previous round, and subkey $$K_i$$ derived from the key `K` using a sub-key generation algorithm
+- Resulting ciphertext is obtained by combining all the ciphertext blocks (each 2w bits long)
+- To decrypt, the same structure is used, but ciphertext is fed in with sub-keys in reverse order (from $$K_i$$ to $$K_0$$)
+
+### Common Symmetric Encryption Algorithms
+
+#### DES
 
 - 64 bits block size for plaintext/ciphertext
-- DES key size is 56 bits
-- DES has a 56-bit key plus an 8-bit parity
+- DES key size is 56 bits plus an 8-bit parity
 - NIST FIPS PUB 46, 1977
 - Data Encryption Algorithm, DEA
 - Public algorithm submitted by IBM Labs
 - 56-bit keys are too small for present-day use
   - It is now considered vulnerable
+- Uses Feistel network structure
+  - 16 rounds of processing
+  - 56-bit key is used to generate 16 sub-keys, K1 through K16
+  - Round function F has four stages
+    1. Block expansion permutation from 32 bits to 48 bits
+    2. Key mixing through an XOR operation with the round sub-key
+    3. Substitution via specially-designed S-boxes
+    4. Permutation by reorganizing the S-box output
 
-### Triple-DES (3DES)
+#### Triple-DES (3DES)
 
 - It is an enhanced version of `DES`
 - 64 bits block size for plaintext/ciphertext
@@ -166,33 +190,76 @@
 - Slow due to 3x DES operations
 - A meet-in-the-middle attack can cause 3DES to be brute-forced with fewer operations than expected
   - Effective key strength of 3DES is only 112 bits as a result
+- First used in financial applications
+  - Data has longer value
+- Typically uses 3 keys and 3 DES executions:
+  - Encrypt-Decrypt-Encrypt sequence
+  - `C = E(K3, D(K2, E(K1, P)))` where P is the plaintext message and C is the ciphertext
+  - Similarly, `P = D(K1, E(K2, D(K3, C)))` to reverse
+- Effectively only 112 bits of security due to meet-in-the-middle attack
+- When `K1 = K3`, it will be a two-key 3DES
+- When using one key where `K1 = K2 = K3` 3DES can be backward compatiable to regular DES
 
-### RC5
+#### RC5
 
 - Stream cipher
 - Plaintext/ciphertext block size can be either 32, 64, 128 bits
 - Key size is `0 - 2040` bits
 
-### Blowfish
+#### Blowfish
 
 - Plaintext/ciphertext block size can be either 64 bits
 - Key size is `32 - 448` bits
 
-### Advanced Encryption Standard(AES)
+#### Advanced Encryption Standard(AES)
 
 - Mostly used symmetric encryption
+- Does not use the Feistel network structure
 - A symmetric block cipher chosen by the U.S. government
 - NIST(The National Institute of Standards and Technology) set the standard and select algorithm for AES
 - There was an open competition for a new standard
   - Winner is Belgian algorithm named Rijndael
   - Published by NIST FIPS PUB 197, 2001
-- Plaintext/ciphertext block size is 128-bit
+- Plaintext/ciphertext block size is 128-bit, often expressed as a 4x4 square matrix of individual octets
 - The encryption process is based on rounds
   - one round includes procedures like subsititution, transposition, mixing of the input plain text, and transforming it into the final output of cipher text.
 - AES has three standards.
-  - `AES-128` - using 128 bits key size, has 10 rounds.
-  - `AES-192` - using 192 bits key size, has 12 rounds.
-  - `AES-256` - using 256 bits key size, has 14 rounds.
+  - `AES-128` - using 128 bits key size
+    - the key is expanded into a key schedule of 44 words
+    - Each word is 4 bytes in size; each round key is 4 words in size
+  - `AES-192` - using 192 bits key size
+  - `AES-256` - using 256 bits key size
+- AES rounds have 4 stages (1 permutation & 3 substitution); corresponding inverses
+  1. Substitute Bytes: uses an S-box to substitute one byte for another in the block
+  2. Shift Rows: a row-by-row simple permutation
+  3. Mix Columns: a substitution altering each byte in a column as a function of all the bytes in the column through a matrix multiplication
+  4. Add Round Key: a bit-wise XOR of the block with the round key (performed 11 times)
+- simplified AES structure:
+  - 128-bit AES uses 10 rounds
+    - Encryption and decryption both begin with Add Round Key and then 9 rounds with all 4 stages
+    - Then, a 10th round of 3 stages is performed
+  - 192-bit AES uses 12 rounds
+  - 256-bit AES uses 14 rounds
+  - Only the Add Round Key stage uses the encryption key (by way of the key schedule)
+  - Add Round Key by itself is not strong; nor are the other three stages by themselves
+  - The combination of Add Round Key (XOR) with scrambling of the block, and another XOR is what makes the scheme cryptographically secure
+  - Each stage is easily reversible; a corresponding inverse function exists for each of the 4 stages
+  - Decryption algorithm uses the expanded key schedule in reverse but structure is not identical
+- Substitute Bytes (SubBytes) Transformation
+  - Uses a 16 by 16 S-box lookup table
+  - Ina 4x4 matrix 128-bit block each element is consist of a two digit hex number
+  - left hex number represents the row number in the S-box; right hex number represents the column in the S-box
+  - Inverse Substitute Bytes (InvSubBytes) is the inverse and uses an Inverse S-Box
+- Forward Shift Rows (ShiftRows)
+  - 1st row of State is not altered
+  - 2nd row of State: 1-byte circular left
+  - 3rd row of State: 2-byte circular left
+  - 4th row of State: 3-byte circular left
+- Inverse Shift Rows (InvShiftRows)
+  - 1st row of State is not altered
+  - 2nd row of State: 1-byte circular right
+  - 3rd row of State: 2-byte circular right
+  - 4th row of State: 3-byte circular right
 
 ## Asymmetric Encryption
 

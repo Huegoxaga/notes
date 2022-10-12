@@ -184,6 +184,8 @@ It provide computing services.
       output = text
       region = aa-bbbb-n
       ```
+- When EC2 instance has IAM role attached with CloudWatchAgent Policy, it can push logs to CloudWatch
+  - When EC2 acts as docker hosts, run `docker run -d --log-driver=awslogs --log-opt awslogs-region=<region> --log-opt awslogs-group=<LogGroupName> --log-opt awslogs-create-group=true <DockerImageName>` to use `awslogs` driver direct `stdout` logs into CloudWatch
 
 ### Security Group
 
@@ -974,12 +976,24 @@ It is used to allow devices to support Alexa.
 ### ECR
 
 - The AWS version of a private Docker registry
-- It host docker images
-- Upload local built docker images to the target ECR registry url for use
+- It stores locally built docker images for deployment
+- A registry can be ethier private or public
+  - accessed by a ECR registry url
+- Building images ontp ECR can be automated and defined in CodeBuild in the AWS pipeline
 
 ### ECS
 
-- It deploys a group of EC2 instace that runs an docker images
+- It deploy images built on ECR as a `Task` or `Service` onto a `Cluster`
+- A cluster defines the hardware resources, it can be a
+  - EC2 Linux or Window
+  - Fargate - Serverless Option
+- A task runs one image in one container, all containers are located in a pre-defined EC2 instance or Fargate in a cluster
+  - Port mapping is required from the container to the cluster hardware
+  - Memory size and CPU also needs to be defined for the task
+  - one task can have multiple container, each container host one image
+  - once task is defined, it needs to be started in the cluster config
+- A service can have load balancers to manage multiple tasks
+- Deploying ECS be automated and defined by CodeDeploy in the AWS pipeline
 
 ## Development Tools
 

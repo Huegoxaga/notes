@@ -70,6 +70,7 @@
 - run `docker volume ls` check all volumns.
 - run `docker volume inspect <VolumnName>` on host machine to check detailed info.
 - run `docker inspect <ContainerNameorID>` check container detailed info.
+- run `docker logs --tail 50 --follow --timestamps <containerID>` get latest container docker logs
 
 ### Start a Container
 

@@ -156,6 +156,12 @@
   - In a max-heap, the child node key is always greater or equal to its parent node key.
   - In a min-heap, the child node key is always smaller or equal to its parent node key.
   - Except the nodes with the highest depth of the tree, all nodes have two children(full). This guarantee the tree has minimal height.
+- When represented by an array, the element is in order from top to bottom layer by layer, from left to right
+- For heap with n nodes, the height of a heap, height of the root equals `θ(lgn)`, or `floor(lgn)`
+- When the root is `A[1]`
+  - Parent of `A[i] = A[floor(i/2)]`
+  - Left child of `A[i] = A[2i]`
+  - Right child of `A[i] = A[2i+1]`
 
 ## Maps
 
