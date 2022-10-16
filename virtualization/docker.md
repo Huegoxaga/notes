@@ -244,6 +244,8 @@
 
 ### Docker Compose
 
+#### Overview
+
 - The official container orchestration tool supported by Docker.
 - Uses `YAML` format file(`docker-compose.yml`) to define multiple containers at once and let them work together.
 - A service is a container, or multiple container instances that running the same image.
@@ -251,3 +253,8 @@
 - It is written in `Python`, uses `Docker API`.
 - It supports `Linux`, `macOS`, `Windows 10`.
 - `Docker Desktop for Mac/Windows` includes `docker-compose`
+- Docker compose V2 rewrites the python code into Go Lang
+
+#### Docker Compose CLI
+
+- `docker compose -f docker-compose.yml up -d` build and run all containers in daemon mode
