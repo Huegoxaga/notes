@@ -345,7 +345,7 @@
   - It has network ID in the left portion and node ID in the right portion combined.
   - Subnet Mask is used to determine which part of the IP is network ID.
     - network ID is represented by subnet mask 1 value digit place. For an ip with a mask as `11111111.11111111.00000000.00000000` -> `255.255.0.0`, the first two groups of octets, represents networkID.
-  - For `192.168.0.1/24` The number followed means the first n number is the networkID. This type of notation is called classless IP address (CIDR) notation the number after `/` is called network prefix .
+  - For `192.168.0.1/24` The number followed means the first n number is the networkID. This type of notation is called classless IP address (CIDR) notation the number after `/` is called network prefix
 - Among all the hosts in a network, the first IP is the network ID. The last one is the boardcast ID.
 - Gateway IP is the IP address of a router
   - The network ID portion of the gateway IP and all other IP addresses in the same local network should be the same
