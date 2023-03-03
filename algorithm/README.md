@@ -138,9 +138,12 @@
     - To implement the binary search tree, adding and searching methods are recursive with base cases that check if the root is empty and non-base case that traverses the tree.
     - To remove a node in the binary search tree. There are three cases:
       - Removal of a Leaf Node
-      - Removal of a Node with a single Child
+      - Removal of a Node with a single child
       - Removal of a node with two child node
-        - For this case, the node will be replaced by the largest node from its left subtree. Then, reorganinze the rest.
+        - successor of a node is smallest node from its right subtree
+          - For leaf node successor, it is the highest parent node that is the right subnode of its parent
+        - predecessor of a node the largest node from its left subtree
+        - For this case, the node will be replaced by its successor or predecessor, then reorganinze the rest
   - `Binary Space Partition` - Used in almost every 3D video game to determine what objects need to be rendered.
   - `Binary Trees` - Used in almost every high-bandwidth router for storing router-tables.
   - `Hash Trees` - used in p2p programs and specialized image-signatures in which a hash needs to be verified, but the whole file is not available.

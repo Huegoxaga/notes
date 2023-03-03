@@ -119,7 +119,7 @@
   - or, `git push -d origin <branchName>`
 - `git checkout branchName` Switch branch.
 - `git checkout -b branchName` create a new branch and switch to that branch.
-- `git checkout --track origin/new_remote_branch` create a local branch that tracks an existing remote branch
+- `git checkout -t origin/new_remote_branch` create a local branch that tracks an existing remote branch
 - `git fetch origin && git checkout -b remoteBranchName origin/remoteBranchName` add a new remote branch to local
 - `git merge` Combines remote tracking branch into current local branch.
 - `git merge branchName` Merge certain branch to the current branch, when done input commit message.
