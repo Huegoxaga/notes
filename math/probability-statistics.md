@@ -170,6 +170,10 @@
 - A subset of the population is a sample
 - Univariate data consists of observations on a single variable
   - Multivariate – more than two variables
+- Sampling Error - The error, or difference between the population parameter and the corresponding sample statistic, that occurs because a sample has been taken instead of a census
+  - This is a non-directional, or random error
+  - This type of error is reduced by increasing the size of the probability sample
+- Non-sampling Error - The error, or difference between the population parameter and the corresponding sample statistic, that occurs because of directional tendency, or bias, in the measuring process
 
 ### Random Variable
 
@@ -198,9 +202,12 @@
     - Measures of dispersion characterize how concentrated or spread out items in a data set are with respect to a central point
 - Quartiles, if n is the number of value
   - Q1 (the First Quartile 25 percentile)
+    - The `1(n+1)/4`th position
     - it is the middle value of the first half of the data when sorted ascending order.
   - Q2 is the median
+    - The `2(n+1)/4`th position
   - Q3 (the Third Quartile, 75 percentile)
+    - The `3(n+1)/4`th position
     - It is the middle value of the second half of the data when sorted ascending order.
   - if Q position in the middle of two numbers calculate the average
 - Five number sumamry - Min, Q1, Q2, Q3, Max
@@ -274,7 +281,7 @@
     - use group size total minus 1 for sample data
   - Formula for the grouped median - Median = L + (j/f)C
     - L - lower boundary of the class containing the median
-    - j - frequency required to reach the median
+    - j - `(Population Size + 1) / 2` minus cumulative frequency required to reach the median
     - f - frequency of the class containing the median
     - C - Class width
 
@@ -375,14 +382,27 @@
   - sigama σ is the sd of the population
 - Sampling Distribution - It is the distribution of means for each sample.
 - For large n and x from any distribution of a population:
-- the sampling distribution is approximately Normal.
-- the mean sampling distribution is approaching the mean of the population.
-- 3z is used to estimated sd. in a normal curve.
-- The sd of the sampling distribution is equals sd(population)/sqrt(n)
+  - the sampling distribution is approximately Normal.
+  - the mean sampling distribution is approaching the mean of the population.
+  - z is used to estimated sd. in a normal curve for samples
+    - `z = (sample mean - estimated population mean) / estimated population standard error`
+  - The sd of the sampling distribution is equals sd(population)/sqrt(n)
+  - The popluation does not have to be normal if there are enough samples
 - Condition:
   - the samples are all independent and random.
   - when the sample content are all unique. n<10% of population(x>10)
-  - to be accurate considering n>25 or 30 or more.
+  - to be accurate considering n>25 or 30 or more
+- Sampling distribution of proportions
+  - In Bernoulli trials, sample proportion of successes in a sample of `n` trials is `p`, where `π` is the probability of success
+  - Whenever both `n*π` and `n*(1–π)` are greater than or equal to `5`, the distribution of sample proportions will be approximately normally distributed
+  - The mean of the distribution of sample proportions is the center of the population, `π`
+  - The standard deviation of the distribution of sample proportions, or the standard error, is $$\sigma _{p}=\sqrt{\frac{\pi (1- \pi)}{n}}$$
+  - `z = (sample proportion - π) / sd`, $$z=\frac{p- \pi}{\sqrt{\frac{\pi (1- \pi)}{n}}}$$
+- The Finite Population Correction Factor (FPC) is used when the sample without replacement from more than 5% of a finite population
+  - It's needed because under these circumstances, the Central Limit Theorem doesn't hold and the standard error of the estimate will be too big
+  - Use FPC when `n > 5%*N`
+  - FPC = $$\sqrt{\frac{N-n}{n-1}}$$
+  - Multiply it with the sd to adjust the result
 
 #### Confidence Intervals for Means
 
@@ -411,3 +431,122 @@
   - For sample sizes between 15 and 40 or​ so, the data must be unimodal and reasonably symmetric.
   - When the sample size is larger than 40 or​ 50, the t methods are safe to use unless the data are extremely skewed.
 - To find the sample size needed for certain margin of error, according to the ME formula we need s (sd of the sample) and t-value, in this case, t-value can be replaced by z-value(0.475 or 0.025 for 95%) and s can be any sample’s sd.
+
+### Hypothesis Testing
+
+- Null hypothesis, $$H_0$$, it is the hypothesis
+- Alternative hypothesis $$H_1$$, it is the chanllenger
+- There are three types of testing
+  - Nondirectional, two-tail test, 2 tails reject - $$H_0$$ equals to a value, then prove it is not equal
+  - Directional, right-tail test, right-tail reject - $$H_0$$ is smaller or equals than a value, then prove it is greater than that value
+  - Directional, left-tail test, left-tail reject - $$H_0$$ is greater or equals than a value, then prove it is smaller than that value
+- The value range that can prove $$H_0$$ is wrong, is the rejection region
+- Type I Error - Rejecting a true H0
+- Type II Error - Failing to reject a false H0
+- To test if null hypothesis is true for population mean, the sample mean must fall within 95% (2.5% on each side for two-tail test, or 5% on one side for one-tail test) range of its normal distribution
+  - Null hypothesis: $$H_0:\mu=\mu_{0}$$, Test statistic value: $$z=\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}$$. For two-tail test: z must $$z\ge z_{\sigma/2}$$ or $$z\le -z_{\sigma/2}$$, if sigma (the sd of the entire population) is known, and x bar is the sample mean
+  - For large sample tests (n > 40), sd of samples is close to sigma of the population distribution
+  - For a normal population distribution, use t-value instead of z-value and the degrees of freedom for t-value lookup is `n-1`, use sd of samples as sigma
+    - If the sample size is less than 15, the t-test can be used only when the population distribution is close to normal.
+    - If the sample size is between 15 and 30, the t-test can be used when the population distribution is reasonably symmetric and has no outliers
+    - If the sample size is greater than 30, the t-test procedure is permissible except when there is extreme outliers or strong skewness
+  - For population proportion, $$z=\frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)}/n}$$
+- P-value is the actual probability of the sample mean in the sample mean distribution, H0 holds if p-value is within the confidence interval
+  - The p-value is the probability, calculated assuming H0 is true
+- Criterion for rejection of H0 with p-value
+  1. If p-value > 0.10, fail to reject H0 and declare the results statistically insignificant
+  2. If 0.05 < p-value ≤ 0.10, you may reject H0, but the results are only mildly significant.
+  3. If 0.01 < p-value ≤ 0.05, reject H0 and declare the results significant.
+  4. If p-value ≤ 0.01, reject H0 and declare that the results are statistically highly significant
+- To test if two population have the same means
+  - Null hypothesis: $$H_0: \mu_1-\mu_2=0$$
+  - The denominator for z or t is the sd of X bar minus Y bar and it can be use to calculate confidence interval $$(\bar{x}_1-\bar{x}_2)\pm t_{\frac{\alpha}{2}}\cdot \sigma_{\bar{x}_1-\bar{x}_2}$$
+  - When population standard deviation equal
+    - Pooled estimated of the common variance: $$s^2_P=\frac{(n_1-1)s^2_1+(n_2-1)s^2_2}{n_1+n_2-2}$$, then $$t=\frac{(\bar{x}_1-\bar{x}_2)-(\mu_1-\mu_2)_0}{\sqrt{s^2_P(\frac{1}{n_1}+\frac{1}{n_2})}}$$, where `df = n1+n2-2`
+  - When population standard deviation not equal
+    - When n1 and n2 greater than 30, Test statistic value: $$z= \frac{\bar{x}-\bar{y}-H_0}{\sqrt{\frac{\sigma^2_1}{m}+\frac{\sigma^2_2}{n}}}$$
+    - For any sample sizes, use t instead and $$df=\frac{(\frac{s_1^2}{n_1}+\frac{s^2_2}{n_2})^2}{\frac{(s^2_1/n_1)^2}{n_1-1}+\frac{(s^2_2/n_2)^2}{n_2-1}}$$
+
+#### Basic Procedure
+
+1. Formulate HO & Ha
+2. Determine Decision Rule
+   - Select the significance level (α)
+     - Identify critical value(s) of the test statistic (z or t) for the desired significance level
+   - State the decision rule reject vs. accept boundaries or critical values
+3. Calculate the test statistic observed assuming Ho is true. Recall:
+   - For means , μ
+     - σ known use z statistic ; σ unknown use t statistic
+   - For proportions, π
+     - If nπ≥ 5 & n(1- π) ≥ 5, use z statistic
+4. Compare the calculated test statistic against the critical value(s) and reach a conclusion about HO
+5. Provide a Concluding Statement with the decision rule used
+
+### Analysis of Paired Data
+
+- Independent Samples: Samples taken from two different populations, where the selection process for one sample is independent of the selection process for the other sample.
+- Dependent Samples: Samples taken from two populations where either
+  - the element sampled is a member of both populations
+  - the element sampled in the second population is selected because it is similar on all other characteristics, or "matched" to the element selected from the first population
+- Paired t-Test for Two Dependent Sample Means
+  - $$t=\frac{\bar{d}}{\frac{s_d}{\sqrt{n}}}$$
+  - where, d = (x1 – x2), d-bar is the average difference, n = the number of pairs of observations, sd = the standard deviation of d, and `df = n – 1`
+- Test of `(π1-π2)`, where $$n_1p_1\ge 5, n_1(1-p_1)\ge 5,n_2p_2\ge 5, n_2(1-p_2)\ge 5$$
+  - $$z=\frac{p_1-p_2}{\bar{p}\cdot(1-\bar{p})\cdot[\frac{1}{n_1}+\frac{1}{n_2}]}$$
+  - $$\bar{p}=\frac{n_1p_1+n_2p_2}{n_1+n_2}$$
+  - p1 = observed proportion, sample 1
+  - p2 = observed proportion, sample 2
+  - n1 = sample size, sample 1
+  - n2 = sample size , sample 2
+  - The $$(1-\alpha)\%$$ confidence interval for the difference in two proportions: $$(p_1-p_2)\pm z_{\alpha/2}\cdot\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}$$, when sample sizes are sufficiently large
+- F-test can be used to test if two population variances are equal
+  - Null hypothesis: $$\sigma_1^2=\sigma_2^2$$
+  - Test Statistic: $$F=\frac{s_1^2}{s_2^2}\; or \;\frac{s_2^2}{s_1^2}$$ whichever is larger
+  - F = F(α, df1, df2):
+    - `α`, the specified level of significance
+    - `df1 = (n1 – 1)`, where `n1` is the size of the sample with the larger variance
+    - `df2 = (n2 – 1)`, where `n2` is the size of the sample with the smaller variance
+
+### The Analysis of Variance (ANOVA)
+
+- The analysis of variance (ANOVA), refers to a collection of experimental situations and statistical procedures for the analysis of quantitative responses from experimental units
+- The population or treatment distributions in single-factor ANOVA are all assumed to be normally distributed with the same variance
+- Single-factor ANOVA focuses on a comparison of more than two population
+  - H0: the means of all populations are equal, $$\mu_1=\mu_2=\mu_3=\dots=\mu_I$$
+  - Ha: at least two of the means are different
+- The test statistic for single-factor ANOVA is `F = MSTr/MSE`
+  - When H0 is true, `E(MSTr) = E(MSE)`
+  - When H0 is false, `E(MSTr) > E(MSE)`
+- Let `F = MSTr/MSE` be the statistic in a single-factor ANOVA problem involving I
+  populations or treatments with a random sample of J observations from each one.
+  - When H0 is true (basic assumptions true) , F has an F distribution with `v1= I – 1` and `v2= I(J – 1)`. test `f >= F(α, v1, v2)`
+
+### Simple Linear Regression
+
+#### Least Squares Regression Line
+
+- Model: $$\hat{y}=b_0+b_1x_1$$
+- Slope: $$b_1=\frac{(\sum{x_i\cdot y_i}^{})-n\cdot \bar{x}\cdot \bar{y}}{(\sum x_i^2)-n\cdot \bar{x}^2}$$
+- y-intercept: $$b_0=\bar{y}-b_1\cdot \bar{x}$$
+- For predicted values $$\hat{y}$$
+  - Error Sum of Squares (SSE) = $$\sum(y_i-\hat{y}_i)^2$$
+    - Computational formula for the SSE: $$SSE=\sum y_i^2-\hat{\beta_0}\sum y_i-\hat{\beta_1}\sum x_iy_i$$
+  - sd of predicted values, $$\hat{\sigma}^2=\frac{SSE}{n-2}$$
+  - Total sum of squares (SST) = $$S_{yy}=\sum (y_i-\bar{y})^2=\sum y_i^2-(\sum y_i)^2/n$$
+- Coefficient of Determination: $$r^2=1-\frac{SSE}{SST}$$
+  - It is interpreted as the proportion of observed y variation that can be explained by the simple linear regression model
+  - Or, $$r^2=\frac{SSR}{SST}$$
+  - The larger the value of `r^2`, the more the value of `y` depends in a linear way on the value of `x`
+  - Regression Sum of Squares `SSR = SST – SSE`
+    - It is interpreted as the amount of variation that is explained by the model
+- Coefficient of Correlation, `r`
+  - The range of r is `[-1, 1]`
+  - If `x` and `y` are directly related, `r > 0`
+  - If `x` and `y` are inversely related, `r < 0`
+  - The larger the absolute value of `r`, the more the value of `y` depends in a linear way on the value of `x`
+  - if `r = 1`, all (x, y) pairs lie on straight line with positive slope
+  - $$r=\frac{n(\sum xy)-(\sum x)(\sum y)}{\sqrt{n(\sum x^2)-(\sum x)^2}\cdot \sqrt{n(\sum y^2)-(\sum y)^2}}=\frac{S_{sy}}{\sqrt{\sum (x_i-\bar{x})^2}\cdot \sqrt{\sum (y_i-\bar{y})^2}}=\frac{S_{xy}}{\sqrt{S_{xx}}\sqrt{S_{yy}}}$$
+- Three Tests for Linearity
+  - Testing the Coefficient of Correlation, $$t=\frac{r}{\sqrt{\frac{1-r^2}{n-2}}}$$
+  - Testing the Slope of the Regression Line, $$t=\frac{b_1}{\frac{s_{y,x}}{\sqrt{\sum x^2-n\cdot(\bar{x})^2}}}$$
+  - The Global F-test, $$F=\frac{MSR}{MSE}$$
