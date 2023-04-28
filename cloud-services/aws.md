@@ -1145,6 +1145,10 @@ Parameters:
     Default: www.example.com
 ```
 
+- AWS CLI Command, `aws cloudformation create-stack --stack-name <STACK_NAME> --template-body file://template.yaml`
+  - Use flag `--capabilities CAPABILITY_IAM` when template updates IAM roles, groups, policies etc
+    - Use `CAPABILITY_NAMED_IAM` when the updated IAM resources have a custom name
+
 ### Intrinsic Functions
 
 - There are functions available in the template file, [click here](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html) for a complete summary

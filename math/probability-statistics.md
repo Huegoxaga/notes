@@ -546,6 +546,7 @@
   - The larger the absolute value of `r`, the more the value of `y` depends in a linear way on the value of `x`
   - if `r = 1`, all (x, y) pairs lie on straight line with positive slope
   - $$r=\frac{n(\sum xy)-(\sum x)(\sum y)}{\sqrt{n(\sum x^2)-(\sum x)^2}\cdot \sqrt{n(\sum y^2)-(\sum y)^2}}=\frac{S_{sy}}{\sqrt{\sum (x_i-\bar{x})^2}\cdot \sqrt{\sum (y_i-\bar{y})^2}}=\frac{S_{xy}}{\sqrt{S_{xx}}\sqrt{S_{yy}}}$$
+  - coefficient of correlation: `r^2 = SSR/SST`
 - Three Tests for Linearity
   - Testing the Coefficient of Correlation, $$t=\frac{r}{\sqrt{\frac{1-r^2}{n-2}}}$$
   - Testing the Slope of the Regression Line, $$t=\frac{b_1}{\frac{s_{y,x}}{\sqrt{\sum x^2-n\cdot(\bar{x})^2}}}$$
