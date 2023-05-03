@@ -159,6 +159,9 @@
   - Jetson TX2 Series
   - Jetson Xavier NX
   - Jetson AGX Xavier Series
+  - Jetson Orin Nano
+  - Jetson Orin NX
+  - Jetson AGX Orin
 - [Click here](https://developer.nvidia.com/embedded/downloads) to go the download center for Jetson Development
 
 ### Setup

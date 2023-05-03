@@ -154,12 +154,13 @@
 - Clean App Caches under `~/Library/Application Support/<App Name>`, e.g.
   - Remove Webex support folders `WebEx Meetings` and `WebEx Folder` at `~/Library/Application\ Support/`
   - For VS Code, delete `Cache` and `CacheData` folders at `~/Library/Application\ Support/Code`, then in app command input enter `Clear Editor History`
+  - For MS Teams, `rm -r ~/Library/Application\ Support/Microsoft/Teams`
 - Clear App logs in `~/Library/Logs` folder
 - Clean conda package caches, run `conda clean -f && conda clean -a`
 - Homebrew clean up all broken symlinks `brew doctor && brew cleanup`
 - Clean up npm cache `npm cache clean --force`
 - Clean up sandboxed apps in folders located under `~/Library/Containers/`, usually can be achived by using apps' own clearing cache feature
-- Clean up shared libraries for uninstalled apps under `/Library/Application\ Support`
+- Clean up shared libraries for uninstalled apps under `~/Library/Application\ Support`
 
 ## Editor
 
