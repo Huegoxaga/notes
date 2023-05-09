@@ -107,10 +107,14 @@
 - There are development boards that include a microcontroller. It removes the necessity of designing a PCB for the microcontroller.
   - A programeer with a debugger is an additional hardware lays in between the development boards's MCU and the USB input port.
   - Debugger also has a smaller MCU and an have its own clock. It need the installation of a firmware. USB connector should connect to it to debug. It has a jumpper and only works when jumpper are connected.
+- Processor for microcontroller is more compat and has lower power consumption compare to microprocessor chipset like `x64`
 - Types of Microcontroller
   - PIC Microcontroller - PIC Stands for Peripheral Interface Controller produced by Microchip technology
   - ARM Microcontroller - ARM stands for Advanced RISC Machine.
-    - It’s the most popular Microcontrollers Programming in the digital embedded system world
+    - It's the most popular Microcontrollers Programming in the digital embedded system world
+    - the `ARMv8-A` architecture released in 2011 added support for 64-bit spaces and 64-bit arithmetic operations, anything before `ARMv8` uses 32-bit
+    - The 64-bit processor architecture for microcontroller commonly refers as `ARM64` or `aarch64`
+      - Generally `ARM64` and `aarch64` refer to the same thing, different vendor uses different term
   - 8051 Microcontroller - an 8bit microcontroller created by Intel in 1981.
   - AVR Microcontroller - AVR stands for Alf and Vegard's RISC Processor. It was the modified Harvard architecture machine.
   - MSP Microcontroller - MSP stands for Mixed Signal Processor. It’s the family from Texas Instruments.
@@ -142,10 +146,7 @@
     - In the manual every consecutive four bit position represent a value from `0` to `F` for the register
     - Some register are used to read data at its address location in loop
   - Detailed boundaries are stated on the reference manual.
-  - The relationship between the range and the assigned peripheral is called a memory map.
-  - The 64-bit processor architecture for microcontroller commonly refers as `ARM64` or `aarch64`
-    - Generally `ARM64` and `aarch64` refer to the same thing, different vendor uses different term
-  - Processor for microcontroller is more compat and has lower power consumption compare to microprocessor chipset like `x64`
+  - The relationship between the range and the assigned peripheral is called a memory map
 - Types of memory
   - Non-volatile - persist after reboot
   - It is the program memory or code memory, stores the logic(instruction) of the program
@@ -313,7 +314,7 @@
 - It accepts binary data as input, processes it according to an instruction set stored in its memory, and provides output.
 - Different instrument sets determine the different architectures of microprocessors
   - common architectures today are generally 32-bit or 64-bit
-  - `x86` is the architectures for 64-bit microprocessor
+  - `x86` is the architectures for 32-bit microprocessor
     - It named after several successors to Intel's 8086 processor end in "86", including the 80186, 80286, 80386 and 80486 processors
       - The 8086 (also called iAPX 86) is a 16-bit microprocessor chip designed by Intel between early 1976 and June 8, 1978
     - a 32-bit system can address a maximum of 4GB of RAM

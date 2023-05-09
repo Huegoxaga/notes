@@ -29,8 +29,13 @@
 
 - The Scene window is where the objects and layouts are edited
   - Scene contains objects like camera and light
+  - Center mode - it focuses on the center when multiple objects are selected
+  - Pivot mode - each GameObject rotates around its own pivot point
+  - Global mode - Use goal axis for all objects
+  - Local mode - Use relative position from a selected object
 - The Game window is the final presentation
   - It shows the view of the camera
+  - It has an aspect ratio selector (e.g. 4:3, 16:9, 16:10 ...)
 - Hierarchy window helps create and show all GameObject in a scene
   - Everthing in unity is a game object
   - `GameObject` is a collection of a transform and components
@@ -42,14 +47,19 @@
     - `PhysMaterials` - it contains the physical properties of the game objects
     - `Prefabs` - it stores custom created parent game objects for future use
       - It's like create a custon class that can be inherited or overriden in future use
+      - To create a Prefab, drag a GameObject from the Hierarchy and into the Project window
     - `Scripts` - it contains code that processes user inputs
+    - `Textures` - image files to be applied as the skins of the objects
+    - All asset files comes with a coreesponding `.meta` file in the same real file folder (including each directory itself), it is hidden from the Unity interface and it should be moved or managed together with the actual asset files
 - Inspector window helps modify the object's attributes
 - Console window shows console output from the scripts
 - The play mode is the preview of the game
   - changes made in play mode won't be saved to the project
+  - Step - this lets you step through your game one frame at a time
 
 ### Shortkeys
 
+- Hold `ALT` and click the parent object in hierarchy window all child object will be expanded and displayed
 - Scolling or sweeping two fingers forward/backward on touchpad to zoom
   - Optionally, hold `ALT`, then click and drag
 - Hold scolling wheel or hold double clicking on touchpad to rotate view
@@ -72,9 +82,10 @@
   - Or select and press `CTRL`, then drag the selected object
 - Press `CTRL+P` to Enter / Exit Play mode
 
-### Inspector
+### Inspector Components
 
-- Each component in the Inspector window is a class
+- Inspector window contains a group of components for the selected game object
+  - Script is also a component of an object
 - Any configuration completed in the inspector window can be changed in the scripts as object properties
   - Utlizing the inspector panel instead of coding can speed up the workflow
 - `Rigidbody` - It adds physics to an object
@@ -86,8 +97,15 @@
   - After layer is defined, use layer mask instead of the individual objects in the script
   - Expose the `layerMask` from the script and attach one or more desired masks from Hierarchy window
   - In the scripts, layer is a number represented by its index in the layer section
-- `Sphere Collider`
+- `Collider`
+  - It can be a box, sphere, or mesh which depended on the object shape
   - `Is Trigger` - when checked, collision is registered but no physical interaction will be made
+- `Audio Source`
+  - It loads an audio clip file and make the object play sounds
+- `Camera`
+  - For camera object, it has a camera component that changes the game background
+- `Material`
+  - `Albedo` takes the textures
 
 ### Scripts
 
@@ -96,6 +114,7 @@
 - `UnityEngine` contains the following classes/sub-namespaces
 - Objects decleare as public or begin with `[SerializeField]` will be exposed in the inspector window
   - To establish a connection, drag object from Hierarchy window on to exposed component in the inspector window
+- Some scripts require components. If the components aren’t found on the GameObject, they’ll be added automatically
 
 #### [MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
 

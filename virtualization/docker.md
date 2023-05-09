@@ -39,6 +39,7 @@
 - Docker on Linux
   1. `sudo yum update && sudo yum install docker` or `sudo apt-get update && sudo apt-get install docker.io`
   2. add current user to `docker` group which enable priviliege to run docker command without `sudo`
+     - `sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker`
   3. run docker at start `sudo systemctl enable docker.service` and `sudo systemctl start docker.service`
 
 ## Usage
@@ -157,6 +158,7 @@
 ### Remove Containers
 
 - run `docker container rm <containerIDorNames>`, remove a stopped container.
+  - run `docker rm -f $(docker ps -a -q)`, remove all containers
 - run `docker container -f rm <containerIDorNames>`, send kill signal and remove a running container.
 - run `docker container prune` remove all stopped containers.
 - run `docker container -v rm <containerIDorNames>`, remove a stopped container along with its attached volumn.
@@ -228,6 +230,8 @@
   - Usually, use `CMD [ "bash", "docker/launch.sh" ]`
     - Because only one command will be executed during launch, use bash script to include all the necessary commands inside. For background processes, each line except the last should end with `&` in the bash script
     - When the last service has `&` the container will stop and exit immediately. [Click Here](https://docs.docker.com/config/containers/multi-service_container/) for alternative solutions
+- `COPY`
+  - It only copies the file that is within the docker directory
 
 ##### Build Image
 

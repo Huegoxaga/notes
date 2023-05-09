@@ -22,8 +22,12 @@
     - `chmod a+x filename.sh`
   - The file can then be executed by using `./filename`.
   - Add the directory path into the `$PATH` variable to make the script run without `./`.
+- `set` command can be followed after the Shebang, to change shell options and positional parameters
+  - `set -e` will make the script exit immediately if a command exits with a non-zero status
+  - `set -x` it turns on the debug mode and display the expanded values for the remaining commands
+  - plus sign will turn off the previous settings, e.g. `set +x` it turns off the debug mode
 - Each script will be run in a separate session.
-- It import and execute an external bash file for the current session, run `source <filepath>`.
+- It imports and execute an external bash file for the current session, run `source <filepath>`.
   - `source` is an alias and can be replaced by the built-in command `.`. Ex, One can run `. <filepath>` instead.
 - Run other script inside bash script
 
