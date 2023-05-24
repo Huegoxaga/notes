@@ -78,6 +78,7 @@
 - run `docker run <RepoName>:<TagName> <ContainerCommandPath> <ContainerCommand>`, Run from a new image, execute a command then stop the container.
   - if the image is not found locally, Docker will download one immediately.
   - It will assign a new IP address for the container instance.
+  - Flag `--privileged` will enable the access to `/dev` file system in the container
 - Run an interactive Linux OS
 
   ```s

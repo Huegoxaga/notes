@@ -283,6 +283,7 @@
   - `groupadd <groupname> --system` or `groupadd <groupname> -r` Create a system group with low range(defined by `SYS_GID_MIN-SYS_GID_MAX` in `login.defs`) of GID(Group ID)
 - `usermod -G <groupname> <username>` move user to another group.
   - `usermod -G -a <groupname> <username>` add user to an additional group
+  - restart is required for permanent changes
   - or `adduser <username> <groupname>` for Debian
   - Devices under `/dev/*` belongs to a certain group, use `ls -al` to find out
   - The user need to re-login to have the privilege from the new group

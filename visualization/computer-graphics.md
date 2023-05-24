@@ -73,37 +73,52 @@
 - It considers each pixel for displaying
 - It is slow and good for photorealism
 
-### Linear Transformation
+### Transformation
 
-- It is a type of sptial tranformation
+- It is a type of spatial tranformation
   - A function that assigns each point a new location
 - Linear transformation is applied by linear map(function)
 - A linear function maps lines to lines and preserves the origin
   - addition and scaling operation of a shape vector return the same results from the transformation when it is done together and separately
-- Linear transformation is simple and can be calculated by multipling the original matrix with the transformation matrix
+  - Otherwise its an affine transformation
+- Linear transformation is simple and can be calculated by multipling the transformation matrix with the original matrix
+
+#### Translation
+
+- 2D Translation - $$\begin{bmatrix} p'_x \\ p'_y \end{bmatrix}=\begin{bmatrix} p_x + t_x \\ p_y + t_y \end{bmatrix}$$
+  - Use Homogeneous Coordinates to represent the transformation with a matrix $$\begin{bmatrix} p'_x \\ p'_y \end{bmatrix}=\begin{bmatrix} 1&0&t_x \\ 0&1&t_y \end{bmatrix}\begin{bmatrix} p_x \\ p_y\\1 \end{bmatrix}=\begin{bmatrix} p_x + t_x \\ p_y + t_y \end{bmatrix}$$ or $$\begin{bmatrix} p'_x \\ p'_y\\1 \end{bmatrix}=\begin{bmatrix} 1&0&t_x \\ 0&1&t_y \\0&0&1\end{bmatrix}\begin{bmatrix} p_x \\ p_y\\1 \end{bmatrix}=\begin{bmatrix} p_x + t_x \\ p_y + t_y\\1 \end{bmatrix}$$ to make the transformation matrix `n+1` by `n+1`
+- 3D Translation, $$\begin{bmatrix} 1&0&0&t_x \\ 0&1&0&t_y \\0&0&1&t_z\\0&0&0&1\end{bmatrix}$$
 
 #### Rotation
 
 - It preserves the origin and distances between points, orientation
-- To rotate a 3D shape around x-axis multiple the vector representation of the shape by ![$\begin{bmatrix} 1 & 0 & 0 \ 0 & \cos{\theta} & -\sin{\theta} \ 0 & \sin{\theta} & \cos{\theta} \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D+1+%26+0+%26+0+%5C%5C+0+%26+%5Ccos%7B%5Ctheta%7D+%26+-%5Csin%7B%5Ctheta%7D+%5C%5C+0+%26+%5Csin%7B%5Ctheta%7D+%26+%5Ccos%7B%5Ctheta%7D+%5Cend%7Bbmatrix%7D%24), for y-axis multiply by ![$\begin{bmatrix} \cos{\theta} & 0 & \sin{\theta} \ 0 & 1 & 0 \ -\sin{\theta} & 0 & \cos{\theta} \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D+%5Ccos%7B%5Ctheta%7D+%26+0+%26+%5Csin%7B%5Ctheta%7D+%5C%5C+0+%26+1+%26+0+%5C%5C+-%5Csin%7B%5Ctheta%7D+%26+0+%26+%5Ccos%7B%5Ctheta%7D+%5Cend%7Bbmatrix%7D%24), for z-axis multiply by ![$\begin{bmatrix} \cos{\theta} & -\sin{\theta} & 0 \ \sin{\theta} & \cos{\theta} & 0 \ 0 & 0 & 1 \end{bmatrix}$](https://render.githubusercontent.com/render/math?math=%24%5Cbegin%7Bbmatrix%7D+%5Ccos%7B%5Ctheta%7D+%26+-%5Csin%7B%5Ctheta%7D+%26+0+%5C%5C+%5Csin%7B%5Ctheta%7D+%26+%5Ccos%7B%5Ctheta%7D+%26+0+%5C%5C+0+%26+0+%26+1+%5Cend%7Bbmatrix%7D%24)
-- The rotation transformation matrix `Q` that is used to multiple the origin shape vector has the propery that its transpose is its inverse, where ![$Q^TQ=I$](https://render.githubusercontent.com/render/math?math=%24Q%5ETQ%3DI%24)
+- Rotation Matrices are Orthogonal - It yields an identity matrix when it multiply by the transpose of it itself, its transpose is the same as its inverse
+- 2D Rotation
+  - Clockwise rotation: $$\begin{bmatrix} p'_x \\ p'_y \end{bmatrix}=\begin{bmatrix} \cos{\theta}& \sin{\theta} \\ -\sin{\theta}&\cos{\theta} \end{bmatrix}\begin{bmatrix} p_x \\ p_y \end{bmatrix}$$
+  - Counter-clockwise rotation: $$\begin{bmatrix} p'_x \\ p'_y \end{bmatrix}=\begin{bmatrix} \cos{\theta}& -\sin{\theta} \\ \sin{\theta}&\cos{\theta} \end{bmatrix}\begin{bmatrix} p_x \\ p_y \end{bmatrix}$$
+- To rotate a 3D shape around x-axis multiple the vector representation of the shape by $$\begin{bmatrix} 1 & 0 & 0 \\ 0 & \cos{\theta} & -\sin{\theta} \\ 0 & \sin{\theta}&\cos{\theta} \end{bmatrix}$$, for y-axis multiply by $$\begin{bmatrix} \cos{\theta} & 0 & \sin{\theta} \\ 0 & 1 & 0 \\ -\sin{\theta} & 0 & \cos{\theta} \end{bmatrix}$$, for z-axis multiply by $$\begin{bmatrix} \cos{\theta} & -\sin{\theta} & 0 \\ \sin{\theta} & \cos{\theta} & 0 \\ 0 & 0 & 1 \end{bmatrix}$$
+- The rotation transformation matrix `Q` that is used to multiple the origin shape vector has the propery that its transpose is its inverse, where $$Q^TQ=I$$
   - Any maitrx that satisfy this property describes a orthogonal transformation
   - When the determinant of `Q` is greater than `0`. it is a rotation
   - When the determinant of `Q` is smaller than `0`. it is a reflection(orientation not preserved)
-- Any matrix multiply by the rotation transformation matrix `Q` and then multiply by ![$Q^{-1}$](https://render.githubusercontent.com/render/math?math=%24Q%5E%7B-1%7D%24) or ![$Q^T$](https://render.githubusercontent.com/render/math?math=%24Q%5ET%24) will return the original matrix because of the above property
-  - ![$Q^T$](https://render.githubusercontent.com/render/math?math=%24Q%5ET%24) can be used to revert the rotation transformation
+- Any matrix multiply by the rotation transformation matrix `Q` and then multiply by $$Q^{-1}$$ or $$Q^T$$ will return the original matrix because of the above property
+  - $$Q^T$$ can be used to revert the rotation transformation
 
 #### Scaling
 
 - It preserves the lines through the origin and direction of vectors
+- 2D Scaling
+  - Uniform scale $$\begin{bmatrix} p'_x \\ p'_y \end{bmatrix}=\begin{bmatrix} sp'_x \\ sp'_y \end{bmatrix}=\begin{bmatrix} s&0 \\ 0&s \end{bmatrix}\begin{bmatrix} p_x \\ p_y \end{bmatrix}$$
+  - Non-uniform scale $$\begin{bmatrix} p'_x \\ p'_y \end{bmatrix}=\begin{bmatrix} s_xp'_x \\ s_yp'_y \end{bmatrix}=\begin{bmatrix} s_x&0 \\ 0&s_y \end{bmatrix}\begin{bmatrix} p_x \\ p_y \end{bmatrix}$$
+- 3D Scaling in homogeneous coordinates, $$\begin{bmatrix} s_x&0&0&0 \\ 0&s_y&0&0\\0&0&s_z&0\\0&0&0&1 \end{bmatrix}$$
 - Scaling a vector by `a` can be calculated as multiple the vector(a matrix with one column) by a diagonal matrix `D` of the same size with `a` along the diagonal
 - When `a` is negative, each negative sign in the diagonal will reflect the shape once
   - for 2D, reflecting twice results in a 180 degree rotation transformation
   - for 3D, reflecting three times results in a reversed orientation, so it will be a reflection transformation
-- Nonuniform scaling can happens along the axis(Axis-Aligned)
+- Non-uniform scaling can happens along the axis(Axis-Aligned)
   - for calculation, replace all the `a` in the diagonal to `a`, `b`, `c` where they are the different scaling factors along three axes, corresponding to the axes of the vector on each row
-- Nonuniform scaling along other axes can be calculated by rotate the object to the new axes, then apply the diagonal scaling, then rotate back to the original axes
-  - The overall transformation can written as ![$A=R^TDR$](https://render.githubusercontent.com/render/math?math=%24A%3DR%5ETDR%24) or ![$A=RDR^T$](https://render.githubusercontent.com/render/math?math=%24A%3DRDR%5ET%24)
+- Non-uniform scaling along other axes can be calculated by rotate the object to the new axes, then apply the diagonal scaling, then rotate back to the original axes
+  - The overall transformation can written as $$A=R^TDR$$ or $$A=RDR^T$$
   - the overall transformaiton is represented by a symmetric matrix
     - a symmetric matrix is a square matrix that is equal to its transpose
   - all symmetric matrics represent nonuniform scaling(Spectral Theorem)
@@ -112,12 +127,16 @@
 #### Shear
 
 - A shear displaces each point `x` in a direction `u` according to its distance along a fixed vector `v`
-- A shear transformation can be calculated by multiply the origin vector by matrix ![$A_{u,v} = I+uv^T$](https://render.githubusercontent.com/render/math?math=%24A_%7Bu%2Cv%7D+%3D+I%2Buv%5ET%24)
+- A shear transformation can be calculated by multiply the origin vector by matrix $$A_{u,v} = I+uv^T$$
 
 #### Composite Transformations
 
 - A combination transformation matrix of the above transformation can be achieved by multiply by related transformation matrix together
   - The transformation matrix on the right side is applied first
+- All of the transformation matrix M works by multiplying it with the original matrix, transformed matrix `p'=Mp`
+- Transformation matrix can be combined as `p' = RSTRSRST p = Mp`
+  - The order matters
+- In the combined the transformation matrix, the last row is for the homogeneous coordinates, the last column is for translation, the remaining submatrix on the top right is for the combined rotation and scale
 
 #### Decompose Transformations
 
@@ -127,8 +146,9 @@
   - Singular Value Decomposition - Polar Decomposition combines Spectral Decomposition
     - Every matrix has a Singular value decomposition
 
-### Affline Transformation
+#### Projection
 
-#### Translation
-
-- The origin of the shape is not preserved
+- Orthographic Projection - It doesn't have the sense of depth
+  - $$\begin{bmatrix} \frac{2}{r-l}&0&0&\frac{-2l}{r-l}-1 \\ 0&\frac{2}{t-b}&0&\frac{-2b}{t-b}-1\\0&0&\frac{2}{f-n}&\frac{-2n}{f-n}-1\\0&0&0&1 \end{bmatrix}$$
+- Perspective Projection - Objects that are further away will appear smaller
+  - $$\begin{bmatrix} n&0&0&0 \\ 0&n&0&0\\0&0&n+f&-fn\\0&0&1&0 \end{bmatrix}$$

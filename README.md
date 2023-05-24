@@ -1,5 +1,3 @@
-#
-
 **Links:**
 
 - View Online at [GitBook.io](https://huegoxaga.gitbook.io/notes/)
