@@ -32,7 +32,7 @@
 - All disk files and snapshot can be viewed in the `File/Virtual Media Manager`
   - A hard disk image can be set to immutable, then virtual machine gets reset after every shutdown
 - Each VM icon has a change view button on the right, click it to see snapshots or logs
-- Use Device/USB menu to mount USB device to the guest OS
+- Use Device/USB menu to mount USB device to the Guest OS
 
 ## Add-ons
 
@@ -129,3 +129,7 @@
 - Can communicate with other Guest OSes which also configure as Host-only
 - Use `Host Network Manager` to craete a host network, then use it in the network setting for the VM
   - For mac, run `sudo "/Library/Application Support/VirtualBox/LaunchDaemons/VirtualBoxStartup.sh" restart` and grant the permission needed in the system preference
+
+## Trouble Shooting
+
+- Run `VirtualBox` with `sudo virtualbox` to grant root access for `VirtualBox` if it can't mount device from the Host Machine

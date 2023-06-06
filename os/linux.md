@@ -188,7 +188,7 @@
 - `exit` exit the shell.
 - `sleep <numberOfSecond>` pause the shell for a certain number of seconds.
 - `mount <deviceTypeLocation> <folderPath>` mount a device to a folder.
-- `mount <deviceTypeLocation>`. unmount a device.
+- `umount <deviceTypeLocation>`. unmount a device.
   - `/etc/fstab` is a list of filesystems to be mounted at boot time
   - `/etc/mtab` is a list of currently mounted filesystems
 - `source <FileName>`, it can be used to load any functions file and environment variables into the current shell script or a command prompt. It read and executes commands from given FILENAME.
@@ -1496,6 +1496,7 @@ Host *
 ### awk
 
 - `ps | awk '{print $2}'` print the second column of the output os `ps` command
+  - `awk 'NR==3{print $1}'` return the first column of the third row
 - `awk -F "=" '/regex/ {print $2 $3}' <filepath>` print the second and third columns of the matching rows and specify `=` as the separator instead of using spaces as default separator
   - the print section can be formated as `{print $2-$3}`, or equivilantly use `BEGIN{FS=":"; OFS="-"} {print $2,$3}' <filepath>`
 

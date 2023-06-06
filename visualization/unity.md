@@ -104,6 +104,7 @@
   - It loads an audio clip file and make the object play sounds
 - `Camera`
   - For camera object, it has a camera component that changes the game background
+  - When the `Clear Flags` uses `skybox` for the camera, imported skybox asset can be loaded in `Windows` -> `Rendering` -> `Lighting` settings as a new skybox material in the `Environment` tab
 - `Material`
   - `Albedo` takes the textures
 
@@ -164,6 +165,49 @@
 
 - It describes collision
 - `collider.gameObject` the colliding object
+
+### Shaders
+
+1. Create `Shaders` folder in the asset window
+2. Create a new surface shader file
+3. Use the following structure
+
+   ```cpp
+   Shader "Custom/ShaderName"{
+       // Properties that are made available in the inspector with default value
+       Properties{
+           _Color ("Color Picker", Color) = (1,1,1,1)
+           _EmissionColor("Emission Color Picker", Color) = (1,1,1,1)
+           _MainTex("MainTexture" , 2D) = "white" {}
+           _RefTex("Reflection Texture" , Cube) = "white" {}
+       }
+
+       // Shader Definition
+       SubShader{
+           CGPROGRAM
+           #pragma surface surf Lambert
+           // Required input for the shader
+           struct Input {
+               float2 uv_MainTex; // When prepended with uv, variable is auto generated for uv coordinates mapping of MainTex
+               float3 worldRefl;
+           };
+           // Declare variables from shader properties
+           float4 _Color;
+           float4 _EmissionColor;
+           sampler2D _MainTex;
+           samplerCUBE _RefTex;
+           // Functions that defines how the shader works
+           void surf(Input IN, inout SurfaceOutput o) {
+               o.Albedo =  tex2D(_MainTex, IN.uv_MainTex).rgb * _Color.rgb;
+               o.Emission = texCUBE(_RefTex, IN.worldRefl).rgb;
+           }
+           ENDCG
+       }
+     FallBack "Diffuse"
+   }
+   ```
+
+4. Assign the shader for the material to be used by a model
 
 ### Basic Workflow
 

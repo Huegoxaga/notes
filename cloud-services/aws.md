@@ -1007,12 +1007,21 @@ It is used to allow devices to support Alexa.
 
 - It is the AWS version of the GitHub
 
+### CodePipeline
+
+- It connects to GitHub
+- It defines the triggers which can perform auto depolyment once there is a new push in assigned remote repository
+- It works with existing depolyed projects
+- It can has a summarized configuration for all the following services in the same pipeline
+  - e.g. the setting page can help edit the environment variables for CodeBuild, while Codebuild has a separate config page for the environment varialbes. Both will work in the build phase
+
 ### CodeBuild
 
 - It builds a project from a remote repository and stored the compiled code as artifacts in an S3 bucket for deployment
 - It can also run tests
 - For AWS Lambda CodeBuild get files from GitHub, build environment, zip and update lambda functions
   - Sample Codebuild script to install environment and update lambda
+- The build definition is specified in the `buildspec.yml` in project root folder
 
 ```yaml
 version: 0.2
@@ -1036,11 +1045,6 @@ phases:
       - aws lambda update-function-code --function-name github-to-lambda-demo --zip-file fileb://deployment_package.zip
       - echo "DONE!!"
 ```
-
-### CodePipeline
-
-- It defines the triggers which can perform auto depolyment once there is a new push in assigned remote repository
-- It works with existing depolyed projects
 
 ### CodeDeploy
 
