@@ -84,6 +84,8 @@
 
 ### Inspector Components
 
+#### Gameobject
+
 - Inspector window contains a group of components for the selected game object
   - Script is also a component of an object
 - Any configuration completed in the inspector window can be changed in the scripts as object properties
@@ -107,6 +109,17 @@
   - When the `Clear Flags` uses `skybox` for the camera, imported skybox asset can be loaded in `Windows` -> `Rendering` -> `Lighting` settings as a new skybox material in the `Environment` tab
 - `Material`
   - `Albedo` takes the textures
+  - Render Queue set the z-index for objects in a layer
+
+#### Texture
+
+- Texture type can specify the use of the texture, e.g. narmal map for bump texture
+
+#### 3DModels
+
+- Normal can be imported or calculated
+  - `INTERNAL_DATA` is used in the `Input` if it is calculated
+- Smoothing angle controls the smoothness of the rendering surface
 
 ### Scripts
 
@@ -185,7 +198,7 @@
        // Shader Definition
        SubShader{
            CGPROGRAM
-           #pragma surface surf Lambert
+           #pragma surface surf Lambert // Can be other illumination models， e.g. BinnPhong
            // Required input for the shader
            struct Input {
                float2 uv_MainTex; // When prepended with uv, variable is auto generated for uv coordinates mapping of MainTex

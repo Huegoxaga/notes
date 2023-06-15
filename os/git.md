@@ -20,14 +20,8 @@
 
 ### Installation
 
-- linux(Debian)
-  ```
-  sudo apt-get install git
-  ```
-- Linux(Fedora)
-  ```
-  sudo yum install git
-  ```
+- linux(Debian), run `sudo apt-get install git`
+- Linux(Fedora), run `sudo yum install git`
 - Mac, run `brew install git`.
 - Windows, [Click](http://git-scm.com/download/win) to download the installation package.
 
@@ -172,6 +166,7 @@
 - `git config --get remote.origin.url` check the current tracking remote URL
   - or `git remote -v`
 - `git remote update origin --prune` update remote branch info, remove records on deleted remote branch locally
+  - or `git remote prune origin`
 - `git push -u origin <remoteBranch>` push to certain remote branch and set the remote branch as the remote tracking branch.
   - create new remote branch if not exists
 - `git push` update the remote repo with its corresponding local branch.
