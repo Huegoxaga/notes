@@ -1527,6 +1527,12 @@ client.loop_stop()
   - reproduce the results
 - [Click Here](https://sacred.readthedocs.io/en/latest/index.html) to view its official docs
 
+## Redis
+
+- redis client in python
+- `r = redis.Redis(decode_responses=True)` init a redis client
+- `r. lpush("list_name", str)` save string data in a list with `LPUSH` operation
+
 ## Paramiko
 
 - Paramiko is a pure-Python implementation of the SSHv2 protocol, providing both client and server functionality

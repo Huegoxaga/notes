@@ -70,7 +70,6 @@
   - [Blockchain](algorithm/blockchain.md)
   - [Cryptography](algorithm/cryptography.md)
   - [Machine Learning](algorithm/ml.md)
-  - [Practice Questions](algorithm/practice.md)
 - [Testing](testing/README.md)
 - [Mathematics](math/README.md)
   - [Basic Math](math/basic.md)
