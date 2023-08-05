@@ -35,6 +35,7 @@
     - `in_h` and `in_w` are variables that are available as input, arithmetic symbols can be used with the variables
   - `ffmpeg -i input.mp4 -filter:v "scale=w=2/3*in_w:h=-1" output.mp4` use the filter on the video channel to scale the output width to two third of the original and auto adapt the height to keep the same ratio
   - `ffmpeg -i input.mp4 -filter:v "rotate=90*PI/180" output.mp4` rotate the video 90 degrees clockwise, angle is in radian
+  - `ffmpeg -i input.mp4  -filter:v fps=10 output.mp4` use the filter on the video channel to change the frame rate
   - `ffmpeg -i test.mkv -f ffmetadata metadata.txt` save metadata into a text file
 
 ## youtube-dl

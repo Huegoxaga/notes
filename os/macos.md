@@ -95,9 +95,9 @@
     - run `brew --prefix <package>` to get the path of a package
   - Installed Apps are located in the `/Applications/`folder, they will have alias in the `/usr/local/Caskroom` with additional metadata.
 - `brew search` list all packages available from homebrew.
-- `brew update` update all packages
+- `brew update` update Homebrew and its package listings
 - `brew outdated` list all outdated packages and apps
-- `brew upgrade` update all outdated unpinned packages and apps
+- `brew upgrade` update all outdated unpinned packages and apps installed via Homebrew
   - `brew pin <PackageName>` stop a package from being updated
   - `brew unpin <PackageName>` undo pinning
 - `brew cleanup` Remove stale lock files and outdated downloads for all formulae and casks, and remove old versions of installed formulae
