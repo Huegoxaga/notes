@@ -624,6 +624,7 @@ filter(function,iterables)
 - Modules can be the folder name in the working directory
 - It is recognized by the keyword `import`. For example, a module called `module` can imported in the following ways
   - Two modules cannot import each other, there will be a circular import, except will be raised
+- `__init__.py` is required in the module root folder in old versions
 
 ```py
 import module
@@ -663,7 +664,7 @@ from ..folder import file # .. represent the parent folder of the running python
 1. Some of them are preinstalled in the standard Library
 2. Third-party Python modules. Installed using libraries management tools like `pip` or `conda`
    - A collection of third-party modules can be pre-installed and managed by a certain Python distribution
-3. Your own module. Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file.
+3. Your own module. Most modules are available on all platforms, but some of them are Windows or Unix specific. Some are using exe file
 
 ## Distributions
 

@@ -381,6 +381,7 @@ list(accumulate(range(8)))
 - `os.path.basename('path')` return file name of the path.
 - `os.path.dirname('path')` return parent directory name of the path.
   - `dirname = os.path.dirname(__file__)` get the dirname of the current file
+- `os.path.realpath(__file__)` return a complete real path of the current file
 - `os.path.split('path')` return path name and file name separately.
 - `os.path.splitest('path')` return a tuple with file name and its extension with the dot
   - path string should contain at least the filename portion
@@ -424,6 +425,7 @@ list(accumulate(range(8)))
   - sometimes, `sys.exit(main(sys.argv))` is used under `if __name__ == '__main__':` block for a good modularized structure
 - `sys.stderr.write("Error!\n")` output error messages
 - `sys.path[0]` returns the directory path of the running python script
+- `sys.path.append(dir)` will make file inside the folder visible for import in the current python script
 
 ## getopt
 
