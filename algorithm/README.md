@@ -383,22 +383,26 @@ It is used to tell if a data structure or Algorithm is good.
 - It can only be used with sorted arrays, but is much faster than Sequential Search.
 - Steps for binary search:
   1. compare target value with the median values(round down if the mid position is not an integer). check equality first, if not determine the location the target in either upper or lower section
+     - Both round down or round up works
   2. compare the target with the median of the lower or upper section until it is found.
+     - Eliminate lower or upper section entirely, including the tested mid value by assigning the new range to `mid -1` if to large or `mid + 1` if too small
 - Example of Recursive Binary Search:
 
 ```java
 int binarySearch(int A[], int lower, int upper, int X){
-  // check base case for missing X
+  // Exit when all elements are checked
   if (lower > upper)
     return -1;
-  // check if X is at the middle
+  // Get mid point
   int middle = (lower + upper)/2;
   if (A[middle] == X)
     return middle;
   // determine which segment to continue search in
   if (A[middle] < X)
+  // All values to the left of middle including the middle value itself are eliminated
     return binSearch(A, middle+1, upper, X);
   else
+  // All values to the right of middle including the middle value itself are eliminated
     return binSearch(A, lower, middle-1, X);
 }
 ```

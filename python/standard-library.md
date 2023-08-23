@@ -205,6 +205,7 @@ list(accumulate(range(8)))
 - All methods of `mp` are identical with `threading`.
   - Also, use `Process()` class to init
 - Additionally, Multiprocessing can use `Pool()` and `map()` to auto processing multi-input and return a list of result.
+
   ```py
   # if processes parameter is omitted, it will use all cores available.
   pool = mp.Pool(processes=2)
@@ -212,25 +213,38 @@ list(accumulate(range(8)))
   res = pool.map(methodName, listX)
   print(res)
   ```
+
 - Use `apply_async()` to start one multiprocessing task.
+
   ```py
   # only one imput is allowed, the comma followed is required.
   res = pool.apply_async(job, (2,))
+  res.wait(timeout=10) # waits until result is ready or timeout is reached if it is specified
   # access result using res.get()
+  # it will block until the tasks are finished
   print(res.get())
   ```
+
 - Interate the `apply_async()` method for multiple tasks.
+
   ```py
   multi_res =[pool.apply_async(job, (i,)) for i in range(10)]
   print([res.get() for res in multi_res])
   ```
+
   - Exception will raise silently in the background, use `res.get()` to check the status
+
+- `pool.close()` can close finished process in the pool
+- `pool.terminate()` will forcefully terminate all processes in the pool
+- `pool.join()` waits until all processes in the pool are finished
+  - One must call `pool.close()` or `pool.terminate()` before calling `pool.join()`
 - Multiprocessing methods need to instantiate special object type to access shared variables among cores.
   - `value1 = mp.Value('i', 0)` shared integer values.
   - use `value1.value` to access the the value of the `Value` object.
   - `value2 = mp.Value('d', 3.14)` shared double values.
   - `array = mp.Array('i', [1, 2, 3, 4])` shared array, only 1-D array is supported.
   - `i` or `d` indicate the types for the value, [click to see](https://docs.python.org/3/library/array.html) a complete list of options.
+- `if __name__ == '__main__'` is required for the main function to avoid confusion when working with packages using multiprocessing
 
 ## tkinter
 

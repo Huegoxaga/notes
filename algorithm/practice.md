@@ -97,6 +97,103 @@ class Solution:
         return str(x) == str(x)[::-1]
 ```
 
+### 12. Integer to Roman
+
+- Input:
+  - The equivalent integer value of the input Roman number
+- Output:
+  - Roman numerals in a string
+- Assumption:
+  - Input number are in range `[1, 3999]`
+- Solution
+
+  - Divide from large char to small and replace `4`, `9` patterns
+
+  ```py
+  class Solution:
+      def intToRoman(self, num: int) -> str:
+          ROMAN_CHAR = {1: "I", 5: "V", 10: "X", 50: "L", 100: "C", 500: "D", 1000: "M"}
+          raw_str = ""
+          for base in list(ROMAN_CHAR.keys())[::-1]: # Use base number from 1000 to 1 for division
+              count = num // base # Use result from floor division to generate simple Roman string
+              raw_str += ROMAN_CHAR[base] * count
+              num -= count * base
+          return raw_str.replace('VIIII','IX').replace('LXXXX','XC').replace('DCCCC','CM').replace('IIII','IV').replace('XXXX','XL').replace('CCCC','CD') # Match 9, 90, 900 first as they are longer
+  ```
+
+- Use translate dictionary that includes `4`, `9` chars in Roman numerals
+
+  ```py
+  class Solution:
+      def intToRoman(self, num: int) -> str:
+          # Creating Dictionary for Lookup
+          ROMAN_CHAR = {1000: "M", 900: "CM", 500: "D", 400: "CD", 100: "C", 90: "XC", 50: "L", 40: "XL", 10: "X", 9: "IX", 5: "V", 4: "IV", 1: "I"}
+          raw_str = ''
+          for base, char in ROMAN_CHAR.keys(): # Use base number from 1000 to 1 for division
+              raw_str += char * (num // base) # Use result from floor division to generate Roman string from left to right
+              num %= base # Use the remainder to generate remaining string
+          return raw_str
+  ```
+
+  - [Reference Table Method](https://leetcode.com/problems/integer-to-roman/solutions/3421938/awesome-python-solution/)
+    - All combination of numbers within range `1-3999` can be predicted with a table, from right to left
+
+  ```py
+  class Solution:
+      def intToRoman(self, num: int) -> str:
+          M=["","M","MM","MMM"] # index represents the number of thousands from 0 to 3000
+          C=["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"] # index represents the number of hundreds from 0 to 900
+          X=["","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"] # index represents the number of tenth from 0 to 90
+          I=["","I","II","III","IV","V","VI","VII","VIII","IX"] # index represents the number of ones from 0 to 9
+          return M[num//1000]+C[num%1000//100]+X[num%1000%100//10]+I[num%1000%100%10] # Use remainders find the number of 1000, 100, 10, and 1
+  ```
+
+### 13. Roman to Integer
+
+- Input:
+  - Roman numerals in a string
+- Output:
+  - The equivalent integer value of the input Roman number
+- Assumption:
+  - Input Roman numerals are all valid
+  - Input Roman numerals are in range `[1, 3999]`
+- Solution:
+
+  - Logic translate from right to left - `O(n)`
+    - Since Roman numbers are written from large to small with exception for `4`, `9`, `40`, `90`, `400`, `900` etc. Translate the characters from right to left as long as the char value is growing. Otherviews, substract the values
+
+  ```py
+  class Solution:
+      def romanToInt(self, s: str) -> int:
+          ROMAN_CHAR = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+          value = 0
+          isSubstract = False
+          for i in range(len(s)-1,-1,-1): # Always add the last char
+              if i == len(s)-1: value += ROMAN_CHAR[s[i]]
+              else: # For all other chars
+                  if ROMAN_CHAR[s[i]] > ROMAN_CHAR[s[i+1]]: # If the char size is reducing
+                      value += ROMAN_CHAR[s[i]] # add the current char value
+                      isSubstract = False # Set the current operation type
+                  elif ROMAN_CHAR[s[i]] < ROMAN_CHAR[s[i+1]]: # If the char size is growing
+                      value -= ROMAN_CHAR[s[i]] # minus the current char value
+                      isSubstract = True # Set the current operation type
+                  else: # If the char is repeating, use the last operation type
+                      if isSubstract: # If last operation is substraction, minus its value
+                          value -= ROMAN_CHAR[s[i]]
+                      else: # If last operation is adding, plus its value
+                          value += ROMAN_CHAR[s[i]]
+          return value # Code can be optimized as there is actually no duplicated minus char
+  ```
+
+  - Replace all six `4`, `9` patterns to regular order from big to small, then translate and sum up the values - `O(n)`
+
+  ```py
+  class Solution:
+      def romanToInt(self, s: str) -> int:
+          ROMAN_CHAR = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+          return sum([ROMAN_CHAR[char] for char in s.replace("IV", "IIII").replace("IX", "VIIII").replace("XL", "XXXX").replace("XC", "LXXXX").replace("CD", "CCCC").replace("CM", "DCCCC")])
+  ```
+
 ### 22. Generate Parentheses
 
 - Input:
@@ -214,6 +311,70 @@ class Solution:
         dfs(0, [], 0)
         return res
 ```
+
+### 69. Sqrt(x)
+
+- Input:
+  - Given a non-negative integer
+- Output:
+  - return the square root of the given integer
+  - rounded the result down to the nearest integer
+  - answer must be `>=` zero
+- Assumption:
+  - Built-in function or operator is not available
+- Solution:
+
+  - Brutal - `O(n)`
+  - Iterative Binary Search - `O(logN)`
+
+  ```py
+  class Solution:
+      def mySqrt(self, x: int) -> int:
+          l, r = 0, x # set left and right range for the binary search
+          while l <= r: # Exit when l value reaches r value
+              mid = l + (r-l)//2 # return mid point of r and l
+              if mid * mid <= x < (mid+1)*(mid+1): return mid # check if mid is the answer
+              elif x < mid * mid: r = mid - 1 # reduce mid when it's too big
+              else:  l = mid + 1 # increase mid when it's too small
+
+  ```
+
+  - Recursive Binary Search - `O(logN)`
+
+  ```py
+  def binarySearch(l, r, x):
+      if l > r: return
+      mid = l + (r-l)//2
+      if mid * mid <= x < (mid+1)*(mid+1): return mid
+      elif x < mid * mid: return binarySearch(l, mid - 1, x)
+      else: return binarySearch(mid + 1, r, x)
+  class Solution:
+      def mySqrt(self, x: int) -> int:
+          return binarySearch(0, x, x)
+  ```
+
+  - [Newton's method I](https://leetcode.com/problems/sqrtx/solutions/2350089/very-easy-100-fully-explained-java-c-python-js-c-python3/) for solving `r^2-x=0`
+    - Newton's method $$x_{n+1}=x_n+(/frac{f(x)}{f'(x)})$$
+
+  ```py
+  class Solution:
+      def mySqrt(self, x: int) -> int:
+          r = x
+          while r*r > x: #continue to optimaize from a largest number until r square is less than x
+              r = (r + x//r) // 2 # use simplified formula
+          return r
+  ```
+
+  - [Newton's method II](https://leetcode.com/problems/sqrtx/solutions/2732386/o-1-solution-in-python-newton-raphson-method/)
+
+  ```py
+  class Solution:
+      def mySqrt(self, x: int) -> int:
+          res = x//2 + 1
+          for i in range(20): # The range is beased on the size of largest number and precision (integer)
+              res = res - (res*res - x)/(2 * res) # Use the original formula
+          return int(res)
+  ```
 
 ### 94. Binary Tree Inorder Traversal
 
@@ -340,13 +501,42 @@ class Solution:
   ```
 
 - Output:
-  - True if the binary tree is balanced
+  - `True` if the binary tree is balanced
+- Assumption:
+  - Return `True` when tree is empty
 - Solution:
-  - `O(n)`
 
-```py
+  - Check depth of nodes from from top to bottom - `O(n^2)`
+    - Parent node height equals the max height of right or left child trees plus one
+    - `O(n^2)` as each node will check all its child nodes for height difference
+    - From the example below, each `isBalance()` will trigger the `getDepth()`, `2n` times
 
-```
+  ```py
+  def getDepth(node): # Define a function to return the depth of any given node
+      if not node: return 0
+      return 1 + max(getDepth(node.left), getDepth(node.right)) # Current node depth uses the deepest child depth plus 1
+  class Solution:
+      def isBalanced(self, root: TreeNode) -> bool:
+          if not root: return True # Handle edge case
+          # From the root check the left and right nodes' depth, and recursively check the childern nodes of the left and right nodes with the isBalanced function
+          return abs(getDepth(root.left) - getDepth(root.right)) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)
+  ```
+
+  - Check depth of nodes from bottom up - `O(n)`
+    - Use DFS to track the nodes' height and mark the unbalanced node as -1 in one search
+
+  ```py
+  def dfs(root):
+      if not root: return 0 # Handle None nodes
+      leftHeight = dfs(root.left)
+      rightHeight = dfs(root.right)
+      if leftHeight == -1 or rightHeight == -1: return -1 # if child nodes is already unbalanced
+      if abs(leftHeight - rightHeight) > 1: return -1 # check if current node is balanced
+      return max(leftHeight, rightHeight) + 1 # if all check passed, return node height for further comparison
+  class Solution:
+      def isBalanced(self, root: TreeNode) -> bool:
+          return dfs(root) != -1 # Only one dfs is triggered here
+  ```
 
 ### 121. Best Time to Buy and Sell Stock
 
