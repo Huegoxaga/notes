@@ -805,3 +805,16 @@ if __name__ == '__main__':
 ### Usage
 
 - `string.punctuation` returns a string of ASCII punctuation characters
+
+## functools
+
+### cache
+
+- it uses a decorator to cache function return values for inputs
+
+```py
+from functools import cache
+@cache
+def factorial(n):
+    return n * factorial(n-1) if n else 1
+```

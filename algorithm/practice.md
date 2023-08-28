@@ -194,6 +194,54 @@ class Solution:
           return sum([ROMAN_CHAR[char] for char in s.replace("IV", "IIII").replace("IX", "VIIII").replace("XL", "XXXX").replace("XC", "LXXXX").replace("CD", "CCCC").replace("CM", "DCCCC")])
   ```
 
+### 20. Valid Parentheses
+
+- Input:
+  - Given a string s containing just the characters '(', ')', '{', '}', '[' and ']'
+- Output:
+  - A boolean value indicating if the input string contains valid pairs
+- Example:
+  - Input: `"([)]"`
+  - Output: `False`
+- Solution:
+
+  - Stack Method - `O(n)`
+    - Push opening brackets, and pop closing brackets in pairs
+    - Return true when stack is empty after all characters are processed
+    - Store pair records in a dictionary where open bracket is the key and its close bracket is the value
+
+  ```py
+  class Solution:
+      def isValid(self, s: str) -> bool:
+          pairs = {'(': ')', '{': '}', '[': ']'}
+          brackets = []
+          for c in s:
+              if c in pairs.keys(): # If character is an opening bracket
+                  brackets.append(c) # Push it directly
+              elif c in pairs.values(): # If character is an closing bracket
+                  if brackets: # If stack is not empty
+                      if pairs[brackets[-1]] == c:
+                          brackets.pop() # Pop when the top bracket is its paired opening bracket
+                      else: # If the current close bracket can't form a valid pair
+                          return False
+                  else: # If closing bracket are about to push to a empty list
+                      return False
+          if brackets: return False # if brackets list is not cleared, not all chars form valid pairs
+          else: return True # if all check are passed
+  ```
+
+  - [String Replacement Method](https://leetcode.com/problems/valid-parentheses/solutions/885074/python-solution-in-5-lines/) - `O(N^2)`
+    - Keep replacing pairs of brackets to empty string until nothing left to replace
+    - return `True` when the final string become empty
+
+  ```py
+  class Solution:
+      def isValid(self, s: str) -> bool:
+          while '()' in s or '[]'in s or '{}' in s:
+              s = s.replace('()','').replace('[]','').replace('{}','')
+          return False if len(s) !=0 else True
+  ```
+
 ### 22. Generate Parentheses
 
 - Input:
@@ -218,7 +266,7 @@ class Solution:
                 if status==0: res.append(bracket_strs)
                 return
             dfs(brackets+[1], depth+1, bracket_strs+'(')
-            if status > 0: dfs(brackets+[-1], depth+1, bracket_strs+')') #No new closing bracket when all brackets are paired
+            if status > 0: dfs(brackets+[-1], depth+1, bracket_strs+')') # No new closing bracket when all brackets are paired
         dfs([1], 1, '(')
         return res
 ```
@@ -312,6 +360,15 @@ class Solution:
         return res
 ```
 
+### 48. Rotate Image
+
+- Input:
+  - given an 2D square matrix representing an image
+- Output:
+  - Return rotated matrix by 90 degree clockwise
+- Assumption:
+  - Matrix can only be replaced in-place. The allocation of another empty matrix is not allowed
+
 ### 69. Sqrt(x)
 
 - Input:
@@ -374,6 +431,91 @@ class Solution:
           for i in range(20): # The range is beased on the size of largest number and precision (integer)
               res = res - (res*res - x)/(2 * res) # Use the original formula
           return int(res)
+  ```
+
+### 70. Climbing Stairs
+
+- Input:
+  - Number of stairs
+- Output:
+  - Number of possible ways of climbing if 1 or 2 steps is allowed to take each time
+- Solution
+
+  - Brutal force with dps - `O(2^n)`
+    - Not practical for large `n`
+
+  ```py
+  class Solution:
+      count = 0
+      def climb(self, height, n):
+          if height == n:
+              self.count += 1 # Add a possible way when height meet target
+              return
+          elif height > n:
+              return # Ignore when it goes beyond
+          self.climb(height + 1, n) # Try climb 1 step next
+          self.climb(height + 2, n) # Try climb 2 steps next
+      def climbStairs(self, n: int) -> int:
+          self.climb(1, n) # starts with 1 steps
+          self.climb(2, n) # starts with 2 steps
+          return self.count
+  class Solution: # Refactor and clean up
+      def climbStairs(self, n: int) -> int:
+          def climb(height, n):
+              if height == n:
+                  return 1
+              elif height > n:
+                  return 0
+              return climb(height + 1, n) + climb(height + 2, n)
+          return climb(1, n) + climb(2, n)
+  ```
+
+  - Fibonacci sequence with a forward for loop - `O(n)`
+    - The number of stairs and the result are the Fibonacci sequence position and its value
+
+  ```py
+  class Solution(object):
+      def climbStairs(self, n):
+          if n<=2: return n # handle base case
+          n1, n2 = 1, 2
+          for _ in range(2, n): # calculate third terms and above
+              current = n1 + n2 # get sum of previous two terms
+              n1, n2 = n2, current # update n1, n2
+          return current
+  ```
+
+  - [Fibonacci sequence with Top-Down DP](https://leetcode.com/problems/climbing-stairs/solutions/1792723/python-in-depth-walkthrough-explanation-dp-top-down-bottom-up/) - `O(n)`
+    - Store result in a dictionary backwards
+
+  ```py
+  class Solution:
+      def climbStairs(self, n: int) -> int:
+          memo = {1: 1, 2: 2} # Init base case
+          def climb(n):
+              if n in memo:
+                  return memo[n] # Return res if dict has n in keys
+              else: # If n is not found
+                  memo[n] = climb(n-1) + climb(n-2) # Get n from previous terms
+                  return memo[n] # Return res
+          return climb(n)
+    class Solution: # Optionally, use python cache decorator
+        @cache
+        def climbStairs(self, n: int) -> int:
+            if n <= 2: return n # base case
+            return self.climbStairs(n - 1) + self.climbStairs(n - 2)
+  ```
+
+  - [Fibonacci sequence with Bottom-Up DP](https://leetcode.com/problems/climbing-stairs/solutions/1792723/python-in-depth-walkthrough-explanation-dp-top-down-bottom-up/)
+
+  ```py
+  class Solution:
+      def climbStairs(self, n: int) -> int:
+          if n <= 2: return n # Return base case early or n = 1 is too small to save base case
+          dp = [0] * n # Generate list with n length
+          dp[0], dp[1] = 1, 2 # Save base case
+          for i in range(2, n): # Processing when n > 2
+              dp[i] = dp[i - 1] + dp[i - 2]
+          return dp[n-1] # find result for n with its index n - 1
   ```
 
 ### 94. Binary Tree Inorder Traversal
