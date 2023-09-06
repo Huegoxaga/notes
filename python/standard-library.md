@@ -606,6 +606,8 @@ list(accumulate(range(8)))
 
 - `json.loads(jsonObject.decode('utf-8'))` It converts a string into a python object. Typically, it decodes a json object from a string.
 - `json.dumps(x)` converts a python object like a list or a dictionary into a string.
+  - use parameter `indent=4` to increase readability
+  - `ensure_ascii`, if it is true (the default), all non-ASCII characters in the output are escaped with `\uXXXX` sequences
 - use `with open(FLAGS.json) as f:`, then `data = json.load(f)` to load `.json` file into a dictionary
 - use `with open('person.txt', 'w') as json_file:`, then `json.dump(person_dict, json_file)` to write the dictionary to a `.json` file
 

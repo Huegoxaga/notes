@@ -137,6 +137,7 @@ It is performed bit by bit.
 - and `&`
 - or `|`
 - not `~`
+  - For integers, `~x` is equivalent to `(-x) - 1`
 - XOR, it is an "or" operations that doesn’t include "and", `^`
 
 ```py
@@ -420,6 +421,7 @@ mylist.insert(i, e) # Inserts e into mylist at index i
   - If the starting index is missing, it is first one by default.
   - If the ending index is miss, it will take all elements to the end.
   - A negative index counts from the end of the list. Ex: `a[-5:]` it take the last 5 elements of list a.
+- `x[:] = [1, 2, 3]` it assigns the values to the existing list variable `x` without changing its memory address. Otherwise, `x` will be pointed to a new list object with a different memory address
 
 #### List Function
 
@@ -528,9 +530,9 @@ print(x[0])
 ```py
 a = ('1', '2', '3')
 b = ('a', 'b', 'c')
-x = zip(a, b)
-# return nested tuple that each element is a tuple with nth element of a and nth element of b
+x = zip(a, b) # return nested tuple that each element is a tuple with nth element of a and nth element of b
 # e.g. (('1', 'a'), ('2', 'b'), ('3', 'c'))
+a, b = zip(*x) # unzip
 ```
 
 ## Set
@@ -593,6 +595,7 @@ list(range(5))=[0,1,2,3,4]
 range(2,5) # It represents number from 2 to 4.
 range(5,20,x) # It creates a range from 5 to 19 with certain interval x.
 reversed(range(5)) # It represents number from 4 to 0.
+# xrange() is similar and it only works in Python 2.x. xrange returns a generator object
 ```
 
 ### None object
@@ -604,7 +607,8 @@ reversed(range(5)) # It represents number from 4 to 0.
 ### Map Object
 
 ```py
-map(function,oldlist)
+map(function, oldlist)
+x[:] = map(list, ((1, 2), (3, 4))) # change 2-D tuple to 2-D list
 ```
 
 - It returns a map object that manipulate the old list(or other iterables) according to the function.

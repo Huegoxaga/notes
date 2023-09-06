@@ -368,6 +368,27 @@ class Solution:
   - Return rotated matrix by 90 degree clockwise
 - Assumption:
   - Matrix can only be replaced in-place. The allocation of another empty matrix is not allowed
+- [Solution](https://leetcode.com/problems/rotate-image/solutions/18884/seven-short-solutions-1-to-7-lines/):
+
+  - Double Flip - 90 degree clockwise rotation is equivalent to flip the rows from top to bottom and take the transpose
+    - 90 degree counter-clockwise rotation is equivalent to flip the rows from left to right and take the transpose
+
+  ```py
+  class Solution:
+      def rotate(self, A):
+          A[:] = zip(*A[::-1]) # use [::-1] to flip, then use zip to transpose
+  ```
+
+  - Rotate the top-left quadrant - For every element in each quadrant, rotate it from `I` to `II`, `II` to `III`, `III` to `IV`, `IV` to `I`
+
+  ```py
+  class Solution:
+      def rotate(self, A):
+          n = len(A)
+          for i in range(n//2):
+              for j in range(n-n//2):
+                  A[i][j], A[~j][i], A[~i][~j], A[j][~i] = A[~j][i], A[~i][~j], A[j][~i], A[i][j]
+  ```
 
 ### 69. Sqrt(x)
 
