@@ -641,6 +641,7 @@
   - add `log=True` draw data in the logorithmic scale(y-axis will be 10^n).
 - `plt.axcline(y, label="text")` add a vertical line in the graph.
 - `plt.ylim(ymin=-2.5, ymax=2.5)` define the range of y axis
+  - `pyplot.ylim([-2.5, 2.5])`
 - `plt.xlim(xmin=-0, xmax=50)` define the range of x axis
 - `plt.xlabel('XAxisLabel')`
 - `plt.ylabel('YAxisLabel')`
@@ -665,6 +666,17 @@
   - Additionally, `c` argument can takes a list of index where same index corresponding to the same color for the data
   - Use method `cmap(i)` to access its value, where `i` in range `[0.0, 1.0]`
   - Color value is in RBG and has been divided by `255`
+
+## Scipy
+
+- SciPy provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics and many other classes of problems.
+
+### Optimization
+
+- `from scipy.optimize import *`
+- `curve_fit` takes target function and lists of `x` and `y` values as input and return the function parameters and covariance matrix of the result
+  - `function_values, cov_matrix = curve_fit(target_func, x, y)`
+    - e.g. `x, a, b = function_values` if target function is a linear equation where `y = ax + b`
 
 ## BeautifulSoup
 

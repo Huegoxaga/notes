@@ -123,7 +123,7 @@
   - The `--no-ff` flag prevents git merge from executing a `fast-forward`
     - `fast-forward` will replace the header pointer without creating new commit if no changes are made
   - `--ff-only` means fast-forward only.
-- `git rebase <release>` when run on dev branch, it moves the baseline to the release head, to avoid conflict in next merge from dev to release
+- `git rebase <release>` when run on dev branch, it connects its oldest commit to the main branch's head without creating a new commit, to avoid conflict in next merge from dev to release
   - `git rebase <HEAD-n>` combine the last n commits into one commit
   - `git rebase <NewCommit> <OldCommit>` combine all commits from `<OldCommit>` to `<NewCommit>`
 
@@ -245,7 +245,7 @@
     - A merge commit will be created with a record of two parents commits.
       - The parent commits are consisted of the original branch's latest commit before merge and the head of the branch to be merged
     - `--delete-branch=false'` or `-d=false` retain the remote and local head branch after merge
-    - `-m` or `--merge` Merge the commits with the base branch
-    - `-r` or `--rebase` Rebase the commits onto the base branch
-    - `-s` or `--squash` Squash the commits into one commit and merge it into the base branch
+    - `-m` or `--merge` Merge the commits with the base branch with a new commit
+    - `-r` or `--rebase` Add the new commits onto the base branch without a new commit
+    - `-s` or `--squash` Squash the commits into one commit and add it onto the base branch
   - `diff` View changes in a pull request

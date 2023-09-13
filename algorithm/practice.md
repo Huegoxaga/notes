@@ -539,6 +539,65 @@ class Solution:
           return dp[n-1] # find result for n with its index n - 1
   ```
 
+### 89. Gray Code
+
+- Input:
+  - Integer `n`
+- Output:
+  - An `n-bit gray code sequence` with `2^n` elements where:
+    - Every integer is in the inclusive range `[0, 2^n - 1]`,
+    - The first integer is `0`,
+    - An integer appears no more than once in the sequence,
+    - The binary representation of every pair of adjacent integers differs by exactly one bit, and
+    - The binary representation of the first and last integers differs by exactly one bit
+- Example:
+  - Input: `n = 3`
+  - Output: `[0,1,3,2]` where the binary representation is `[00,01,11,10]`
+    - There are other valid outputs for a given input
+- Solution
+
+  - [XOR](https://leetcode.com/problems/gray-code/solutions/245076/4-lines-elegant-fast-and-easy-understand-python-solution/) lowest one-bit of the integer counter `i` for `n` times
+    - Lowest one-bit of `i` equals `Y&(~Y+1)`, since `(~Y+1)=-Y` according 2's complement used in Python for signed integers, `Y&(~Y+1) = Y&-Y`
+    - | i   | bin(i) | i&-i | output[i] |
+      | --- | ------ | ---- | --------- |
+      | 0   | 000    | 000  | 000       |
+      | 1   | 001    | 001  | 001       |
+      | 2   | 010    | 010  | 011       |
+      | 3   | 011    | 001  | 010       |
+      | 4   | 100    | 100  | 110       |
+      | 5   | 101    | 001  | 111       |
+      | 6   | 110    | 010  | 101       |
+      | 7   | 111    | 001  | 100       |
+    - `output[i]=output[i-1]^(i&-i)` given `output[0]=000`
+
+  ```py
+  def grayCode(self, n: int) -> 'List[int]':
+    res = [0]
+    for i in range(1, 2**n):
+      res.append(res[-1] ^ (i & -i))
+    return res
+  ```
+
+  - [Mirror Pattern](https://leetcode.com/problems/gray-code/solutions/30007/python-easy-bit-manipulation-solution/)
+    - Procedure:
+      - For `n=1`: 0 1
+      - For `n=2`:
+        - First half is results from `n=1` with leading zeros (00 01)
+        - Second half the reversed result from `n=1` with leading ones (11 10)
+        - As a result the output is `00 01 11 10`
+      - For `n=3`:
+        - First half: `00 01 11 10` add zeros -> `000 001 011 010`
+        - Second half: `00 01 11 10` reverse -> `10 11 01 00` add leading ones -> `110 111 101 100`
+
+  ```py
+  def grayCode(self, n: int) -> List[int]:
+      res = [0,1]
+      for i in range(2,n+1): # iterate n-1 times starting from n=2 for n=3, n=4, n=5 ...
+          for j in range(len(res)-1,-1,-1): # reverse first half and add leading ones for each n length
+              res.append(res[j] | 1<<i-1) # Add element in second half to res one by one
+      return res
+  ```
+
 ### 94. Binary Tree Inorder Traversal
 
 - Input:
@@ -555,50 +614,51 @@ class TreeNode:
 - Output:
   - list of nodes' value after a inorder traversal
 - Solution
+
   - [Recursion](https://leetcode.com/problems/binary-tree-inorder-traversal/solutions/283746/all-dfs-traversals-preorder-inorder-postorder-in-python-in-1-line/) - `O(n)` - `T(n) = 2T(n/2)+1`
 
-```py
-class Solution:
-    def inorderTraversal(self, root: TreeNode):
-        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right) if root else []
-```
+  ```py
+  class Solution:
+      def inorderTraversal(self, root: TreeNode):
+          return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right) if root else []
+  ```
 
-- Iteration I - `O(n)`
-  - More efficient approach
+  - Iteration I - `O(n)`
+    - More efficient approach
 
-```py
-class Solution:
-    def inorderTraversal(self, root: TreeNode):
-        res, stack = [], []
-        while root or stack:
-            while root: # Put all left node in stack first
-                stack.append(root)
-                root = root.left
-            node = stack.pop() # Check Most left child
-            res.append(node.val) # Save value
-            root = node.right # Save left child's right node root, so all of its left nodes can be pushed to end of stack in next whild root
-            # Visit the parent of the left leave in next interation until stack is empty or no more right node
-        return res
-```
+  ```py
+  class Solution:
+      def inorderTraversal(self, root: TreeNode):
+          res, stack = [], []
+          while root or stack:
+              while root: # Put all left node in stack first
+                  stack.append(root)
+                  root = root.left
+              node = stack.pop() # Check Most left child
+              res.append(node.val) # Save value
+              root = node.right # Save left child's right node root, so all of its left nodes can be pushed to end of stack in next whild root
+              # Visit the parent of the left leave in next interation until stack is empty or no more right node
+          return res
+  ```
 
-- [Iteration II](https://leetcode.com/problems/binary-tree-inorder-traversal/solutions/713539/python-3-all-iterative-traversals-inorder-preorder-postorder-similar-solutions/) - `O(n)`
-  - More flexible for postorder and preorder tranversal
+  - [Iteration II](https://leetcode.com/problems/binary-tree-inorder-traversal/solutions/713539/python-3-all-iterative-traversals-inorder-preorder-postorder-similar-solutions/) - `O(n)`
+    - More flexible for postorder and preorder tranversal
 
-```py
-class Solution:
-    def inorderTraversal(self, root: TreeNode):
-        res, stack = [], [(root, False)] # Use flag to track visit
-        while stack: # Visit root node first
-            node, visited = stack.pop() # Pop the last node in list
-            if node: # Check if node has a value
-                if visited: # Only save value to list if the node is visited in the else block in the previous interation
-                    res.append(node.val)
-                else:  # Push right node first so it will be popped last
-                    stack.append((node.right, False)) # Save child node to be expanded further
-                    stack.append((node, True)) # Mark the current node visited to save its value when it get popped next time
-                    stack.append((node.left, False))
-        return res
-```
+  ```py
+  class Solution:
+      def inorderTraversal(self, root: TreeNode):
+          res, stack = [], [(root, False)] # Use flag to track visit
+          while stack: # Visit root node first
+              node, visited = stack.pop() # Pop the last node in list
+              if node: # Check if node has a value
+                  if visited: # Only save value to list if the node is visited in the else block in the previous interation
+                      res.append(node.val)
+                  else:  # Push right node first so it will be popped last
+                      stack.append((node.right, False)) # Save child node to be expanded further
+                      stack.append((node, True)) # Mark the current node visited to save its value when it get popped next time
+                      stack.append((node.left, False))
+          return res
+  ```
 
 ### 100. Same Tree
 

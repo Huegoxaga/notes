@@ -139,10 +139,16 @@ It is performed bit by bit.
 - not `~`
   - For integers, `~x` is equivalent to `(-x) - 1`
 - XOR, it is an "or" operations that doesn’t include "and", `^`
+- right shift `>>`
+  - `x>>1` shift `x` to right by 1 position
+  - e.g. `0b110` will become `0b11`
+- left shift `<<`
 
 ```py
-a=1101101
-~a=0010010
+a=1
+print(bin(a)) # 0b1
+print(~a) # -2, its the 2's complement value without adding 1
+print(bin(~a)) # -0b10, python use negative binary to presentation binary with leading 1's
 ```
 
 > ##### Hint:
@@ -162,6 +168,7 @@ a=1101101
 ### Integer
 
 - Whole number
+- It has a binary form that starts with `0b`
 
 ### Float
 
