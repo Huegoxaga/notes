@@ -88,12 +88,16 @@
     - When it is close to `0`, the predicted values has nothing to do with the real values
     - When it is close to `-1`, there is an inverse correlation between the predicted values and the real values
   - Residual Sum of Squares or RSS Error - It calculates the sum of the square of the difference of `y` and `y` hat for each data point
+  - Mean Squared Error (MSE) is the RSS divided by `N`, the number of $$y -\hat{y}$$ pairs
 - Simple linear regression - The model will be a linear function with one constant, one dependent variable and one independent variable `x` times a coefficient.
 - Multiple linear regression has one constant, one dependent variable and many combinations of independent variables times a coefficient.
+  - The coefficient and the constant together are called the regressor vector
   - Each independent variable represents a different feature in a single row of data.
+    - independent variables are called the feature vector
   - Dummy Variable - For a categorical featue each possible category will form a new field with value 0 or 1, when the current row of data is belonds this a certain category the value for this category will be 1 and others are 0.
     - Dummy Variable Trap - The number of this categorical independent variable will always be one less than the total number of the possible options since all others are 0 implys this record belong to the last category already.
-- Polynomial(linear) regression - It is like Multiple linear regression but the power of independent variable increases with the number of them.
+  - The closed-form equation (One line solution) for minimized parameter of the function have the regressor vector equals $$\hat{\theta}=(X^TX)^{-1}X^TY$$, where `X` is the data matrix, it is called the Normal Equation
+- Polynomial(nonlinear) regression - It is like Multiple linear regression but the power of independent variable increases with the number of them.
 - For linear regression models all of the following assumptions must be achieved.
   - Linearity
   - Homoscedasticity

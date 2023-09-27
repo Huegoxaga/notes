@@ -250,7 +250,9 @@
 
 ### Parallel
 
-- an algorithm which can do multiple operations in a given time
+- An algorithm which can do multiple operations in a given time
+- Concurrent is about multitasking and it does not necessarily run program in parallel
+  - Asynchronous refers to run a peice of the program separately, its a way to express concurrency
 - Foster’s Methodology - It states four stages of developing parallel programs
   - Partitioning - Decompose the large problem into many smaller problems
     - Domain (or Data) Decomposition
@@ -269,6 +271,21 @@
     - Doesn't apply if
       - It runs on a single core
       - It is controlled by a system with automated task scheduling
+- Speedup `S(n)` describes how many times the speed is improved after adopting parallel computation of the task when using `n` processors
+  - It equals time of sequential computation divided by time for parallel computation
+  - The optimal speedup happens when all of the code can be run in parallel, and it equals the number of processors
+- Amdahl's law
+  - When taken serial fraction of the program be `f` into consideration, thus, `(1 - f)` is the fraction that can be parallelized
+  - `S(n) = n/(1+(n-1)f)`
+- Efficiency equals the actual speedup divided by the optimal speedup
+- The cost of a computation is the sequential time divided by efficiency
+- Gustafson's Law
+  - It's another way of calculating speedup, it's more suitable for problem with larger size
+  - The percentage of time taken to perform serial operations decreases as problem size increases
+  - if `a(p)`, `b(p)` is the fraction of time taken for sequential and parallel processing in terms of problem size `p`
+    - On a PARALLEL computer, `a(p) + b(p) = 1`
+    - On a sequential computer, it would be `a(p) + n*b(p)` times slower, and this is also the speedup
+    - The speedup should increase with `n` greater compared to Amdahl's law
 
 ## Algorithm Analysis
 

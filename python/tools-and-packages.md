@@ -166,6 +166,11 @@
 - For GPU accelerated machines, install `cupy` package and use `import cupy as np`
   - CuPy is a library that implements Numpy arrays on Nvidia GPUs by leveraging the CUDA GPU library
 
+#### Load a File
+
+- `from numpy import loadtxt`
+  - Load csv after it is opened, `xdata = loadtxt(f, delimiter=",")`
+
 #### Create an array
 
 - Create a `numpy` array of rank 1
@@ -335,22 +340,48 @@
 ### Usage
 
 - `import pandas as pd`
+
+#### Series
+
+- Series is a one-dimensional array of data, where the rows are labeled
+- `myseries = pd.Series(npArray, index=rowNameList)` create a new series
+- `myseries[0]` access the element by index
+- `myseries[rowName]` access the element by row name
+- `len(myseries)` return the number of elements like a list
+- `myseries.value_counts()` return a Series containing counts of unique values
+
+#### Dataframe
+
+- A data frame is a multi-dimensional array where the rows and the columns can be labeled
 - `df = pd.read_csv('filePath.csv')` load a csv file.
-  - `df = pd.read_csv('filePath.csv', index_col='colName')` load a csv file, and using a column as its index.
+  - The parameter `index_col='colName')` set a column as its index
+  - The parameter `names` takes a list of column names
+- run `df` to print out data frame directly
 - `df.shape` return the `(row, column)` of the dataframe.
-- run `df` to print out data frame in Jupyter directly
+- `df.dtypes` returns the data types of the data in the df
 - `df.info()` returns shape column name and column data type about the dataframe.
 - `pd.set_option('display.max_columns', 10)` display a max of 10 columns when print.
 - `pd.set_option('display.max_rows', 10)` display a max of 10 rows when print.
+- `pd.set_option('display.width', 100)`
+- `pd.set_option('display.precision', 3)`
+- `df.describe()` lists 8 statistical properties of each attribute including: count, mean, standard deviation, minimum value, 25th percentile, 50th percentile (Median), 75th percentile, maximum value
+- `df.corr(method='pearson')` returns the Pairwise Pearson correlations
+  - A correlation of -1 or 1 shows a full negative or positive correlation respectively. Whereas a value of 0 shows no correlation at all
+- `df.hist()` generates univariate histograms, then use `plt.show()` to display the graph
 - `df.head(10)` show the first 10 rows of data.
   - If no parameter entered it will show the first 5 rows.
 - `df.tail(10)` show the last 10 rows of data
   - If no parameter entered it will show the last 5 rows.
-- `df = pd.DataFrame(data)` convert dictionary data into dataframe
+- `groups = df.groupby('class')` group data by values in one column
+  - `groups.size()` return group sizes as a Series
+  - `groups.get_group(0)` get data by group
+  - class group is iterable
+- `df = pd.DataFrame(myArray, index=rownames, columns=colnames)` convert 2d array data into dataframe
+- `df = pd.DataFrame(dict)` convert dictionary data into dataframe
 - `dataframe.values` Return a Numpy representation of the DataFrame, axes labels will be removed.
 - `df['columnName']` print all data under one column plus its data type(return a series).
   - `df.columnName` dot notation also works.
-  - `df[['columnNameA','columnNameB]]` returns al list of columns(a filtered dataframe)
+  - `df[['columnNameA','columnNameB]]` returns a list of columns(a filtered dataframe)
   - `df['columnName']= df['columnName'].str.lower()` change all data in one column in lowercase.
   - `df['columnA'] + '@' + df['columnB']` edit and combine data from two column and create a new series.
   - `df['NewCol'] = series` create a new column called `NewCol` with data from `series`
@@ -861,6 +892,7 @@ WantedBy=multi-user.target
 
 ### sklearn.preprocessing
 
+- When utlizing each preprocessing model, `model.fit_transform(X)` is the same as using `model = Model().fit(X)`, then `model.transform(X)`
 - OneHotEncoder
   - `from sklearn.preprocessing import OneHotEncoder`
   - `OneHotEncoder()` it is a type of encoder for multiple categorical values.
@@ -872,10 +904,19 @@ WantedBy=multi-user.target
   - `le.fit_transform(['A', 'A', 'B', 'C'])` load the labels and return the encoding result `[0, 0, 1, 2]`
   - `le.inverse_transform([2, 2, 1])` convert indices into list of categorical labels
 - StandardScaler
+  - To transform attributes with a Gaussian distribution and differing means and standard deviations to a standard Gaussian distribution with a mean of 0 and a standard deviation of 1
   - `from sklearn.preprocessing import StandardScaler`
   - `sc = StandardScaler()` apply Standardization for feature scaling
   - `X_train[:, 3:] = sc.fit_transform(X_train[:, 3:])` fit will get the mean and standard deviation, transform method will return the standardized value.
   - `X_test[:, 3:] = sc.transform(X_test[:, 3:])` only return the standardized value.
+- MinMaxScaler
+  - `from sklearn.preprocessing import MinMaxScaler`
+  - `sc = MinMaxScaler(feature_range=(0, 1))` Rescale data between 0 and 1
+  - `scaledX = scaler.fit_transform(X)` return the rescaled data
+- Normalizer
+  - Rescaling each observation (row) to have a second norm equal to 1
+  - `from sklearn.preprocessing import Normalizer`
+  - `sc = Normalizer().fit(X)`, then `normalizedX = sc.transform(X)`
 - Image Preprocessing
 
 ### sklearn.feature_extraction

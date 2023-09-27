@@ -197,7 +197,7 @@ unichr(number)   # transform UCS2 (a number from 0 to 65535) to character.
 ### String
 
 - String is like list type for character, but can not change(immutable).
-- \ is used to escape special characters, the characters are then called escape characters. E.g. `"abc\"def\\g"`, Output: `abc"def\g`
+- `\` is used to escape special characters, the characters are then called escape characters. E.g. `"abc\"def\\g"`, Output: `abc"def\g`
 - `\n` represents a newline.
 - `\t` represents a new tab.
 
@@ -226,6 +226,7 @@ It can be used on strings for lexicographical(alphabetical order) comparison.
 stringX[n]  #Get the character of stringX at nth index.
 
 stringX[m:n]  #Get the character of stringX at index from m to n-1, max or min if m or n is missing.
+# string is immutable, slicing creates a new substring from the source string and original string remains unchanged
 """
 There could be a third parameter that represents the step.
 -1 means backward from its left or right end.
@@ -419,7 +420,7 @@ mylist.insert(i, e) # Inserts e into mylist at index i
   - `x, y = [1, 2]` as a result `x = 1`, `y = 2`
   - `first, *rest = [1, 2, 3, 4]` as a result `first = 1, rest = [2, 3, 4]`
 - join `+`, `listC =listA + listB` append `listB` to `listA`.
-- repeat `*`
+- repeat `*`, if `list = [1, 2]`, `list * 3` will return `[1, 2, 1, 2, 1, 2]`
 - existence(return Boolean) `in`
 - slicing - It modifies the original list.
   - `a[n:m]`, slice list `a` from index `n` to `m-1`.
