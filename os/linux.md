@@ -182,6 +182,7 @@
   - `echo` can be followed by a single line of string. In this case quotation marks need to be escaped by the backward slash.
   - `echo` can be followed by strings surrounded by single or double quote marks, then backward slash for the other qoute is not required. `echo "'hello world'"`
   - `-e` will enable the backslash-escaped characters like `\n`, quotation marks are required.
+    - `sudo echo -e "AT\r\n" > /dev/ttyUSB2` echo command can send string to serial port
   - `-n` prevent adding a new line after the output is printed.
   - `echo` adds a space automatically between two adjacent arguments (in the output) by default. `echo fileA fileB fileC`.
 - `diff <file1> <file2>` The diff command can be used to compare the contents of two files.
@@ -1346,7 +1347,7 @@ Host *
     - `* * * * 1-5` - command runs every minutes on weekdays.
     - `0,30 * * * *` - command runs every whole hours and 30 minutes pass any hours.
   - Use [crontab guru](https://crontab.guru) - A crontab schedule translator to check the format.
-  - `@reboot <command> &` this will run command after reboot in the background.
+  - `@reboot <command/path> &` this will run command after reboot in the background.
 - Syntax:
   - The following line will be entered to the systmen using the `crontab -e` command.
   - `* * * * * <command>` The command will be run every minutes.
@@ -1354,12 +1355,14 @@ Host *
 - command:
   - `crontab -l` list all current cron tasks in the cron table for the current user.
     - `crontab -u <username> -l`list cron tasks for a certain user
-    - `sudo crontab -l` list cron tasks for root user
+    - `crontab -l` list cron tasks for root user
   - `crontab -e` edit cron tasks in the cron table for the current user.
     - `crontab -u <username> -e` edit cron tasks for a certain user
     - `sudo crontab -e` edit cron tasks for root user
   - `crontab -r` remove all crontab tasks
     - optionally, delete all lines in the `crontab -r`.
+- `sudo crontab` manages cron tasks for root while `crontab` manages cron tasks for the current user
+- `(crontab -l 2>/dev/null || true; echo "cronjob description") | crontab -` append new task in one line, and ignore error when there is no exising task for the current user
 
 ### systemd
 
@@ -1388,6 +1391,9 @@ Host *
   Type=simple
   EnvironmentFile=/path/to/env/key/value/file
   EnvironmentFile=/can/load/multiple/file
+  # Run before service start
+  ExecStartPre=/script.py parameters1
+  # Service start command
   ExecStart=/bin/bash /usr/bin/test_service.sh
   [Install]
   WantedBy=multi-user.target

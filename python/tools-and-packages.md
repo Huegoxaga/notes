@@ -192,6 +192,8 @@
 - Create an array with random values
   - `array = np.random.random(5)`, an array with 5 random double value in range `[0,1)`
   - `array = np.random.random((rows,cols))`, 2D array of random doubles
+  - `array = np.random.rand(rows,cols)`, 2D array of random values from a uniform distribution over `[0, 1)`
+  - `array = np.random.randn(rows,cols)`, 2D array of random values from the "standard normal" distribution of mean 0 and variance 1
   - `array = np.random.randint(min, max, size)` list of random ints
   - `array = np.random.randint(min, max, (rows,cols))` 2D array of random ints
 - Create an array with certain constant
@@ -216,6 +218,8 @@
   - when `step` is missing. It is 1.
 - Create an array that has elements evenly spaced in a certain range
   - `array = np.linspace(start, end, numofvalues)`
+- Concatenate two Numpy arrays
+  - `np.c_[np.array([1,3,5]), np.array([2,3,6])]` returns `array([[1, 4], [2, 5], [3, 6], [4, 5]])`
 
 #### Access the array
 
@@ -271,6 +275,8 @@
   - `array.resize(newRowNum,newColumnNum)` The shape of the original array is changed.
   - `array.reshape(newRowNum,newColumnNum)` Returns a new shape, but the shape of the original array is kept intact.
   - These methods can be used to increase the rank of the array.
+    - 1-D array can be converted to 2-D with specified column number
+  - `-1` in column number means `all`
 - Convert any array into a one-dimension array.
   - `array.ravel()` or `np.ravel(array)` returns a flattened array.
 - Transpose an array
@@ -305,6 +311,7 @@
     - If two arrays have different sizes, broadcasting will be performed to stretch the smaller array.
       - Broadcasting requires the arrays to have the same degree of dimension or the smaller one is a one-dimensional array.
   - It also has `subtract(x,y)`, `multiply(x,y)`, `divide(x,y)`, `remainder(x,y)` and `power(x,y)` functions.
+  - `np.matmul(x,y)` returns the matrix product of two arrays
   - Math operators `+`, `-`, `*`, `/` and `**` also works.
   - Logical comparisons are available by using `<`, `==`, and `>`. It turns an array of Booleans after comparsion each element of the same location from two arrays as result.
   - `np.dot(x,y)` returns the dot product of matrix x and y.
@@ -349,6 +356,7 @@
 - `myseries[rowName]` access the element by row name
 - `len(myseries)` return the number of elements like a list
 - `myseries.value_counts()` return a Series containing counts of unique values
+- `myseries.reset_index()` transform the Series object into a Dataframe object
 
 #### Dataframe
 
@@ -373,8 +381,11 @@
 - `df.tail(10)` show the last 10 rows of data
   - If no parameter entered it will show the last 5 rows.
 - `groups = df.groupby('class')` group data by values in one column
+  - The returned object has data grouped into a list of tuple, the first element stores the group name, the second value stores the dataframe for that group
   - `groups.size()` return group sizes as a Series
   - `groups.get_group(0)` get data by group
+  - `groups.columnName` only keep that column for each group
+  - `groups.columnName.mean()` return the mean value of the column for each group
   - class group is iterable
 - `df = pd.DataFrame(myArray, index=rownames, columns=colnames)` convert 2d array data into dataframe
 - `df = pd.DataFrame(dict)` convert dictionary data into dataframe
@@ -674,8 +685,9 @@
 - `plt.ylim(ymin=-2.5, ymax=2.5)` define the range of y axis
   - `pyplot.ylim([-2.5, 2.5])`
 - `plt.xlim(xmin=-0, xmax=50)` define the range of x axis
-- `plt.xlabel('XAxisLabel')`
-- `plt.ylabel('YAxisLabel')`
+- `plt.xlabel('XAxisLabel')`, specify label on x-axis
+- `plt.ylabel('YAxisLabel', rotation=0)`, specify label on y-axis and print it vertically
+  - Parameter `fontsize` set the font size
 - `plt.title('Graph Title')`
 - `plt.figure(1)` init a separate tab to draw the graph
   - After figure 1 is plotted, `plt.figure(2)` will create a second tab
@@ -918,6 +930,10 @@ WantedBy=multi-user.target
   - `from sklearn.preprocessing import Normalizer`
   - `sc = Normalizer().fit(X)`, then `normalizedX = sc.transform(X)`
 - Image Preprocessing
+- Polynomial Regression
+  - `from sklearn.preprocessing import PolynomialFeatures`
+  - `regr = PolynomialFeatures(degree=2, include_bias=False)`
+  - `X_poly = regr.fit_transform(X)`
 
 ### sklearn.feature_extraction
 
@@ -961,6 +977,7 @@ WantedBy=multi-user.target
 - Precision - `cm = metrics.precision_score(y_test, y_pred)` calculates precision
 - Recall - `cm = metrics.recall_score(y_test, y_pred)` calculates recall
   - For recall and precision, use `pos_label` to specify the class to report, For multiclass/multilabel prediction, `average` is required as its `binary` default is not longer suitable
+- MSE - `mse = metrics.mean_squared_error(Y, Y_hat)` calculates mean squared error
 
 ### SKLearn Models
 
