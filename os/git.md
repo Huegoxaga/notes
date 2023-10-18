@@ -107,6 +107,7 @@
   - To sync remote branch names, delete the remote `<oldbranch>`, and push the `<newbranch>`.
 - `git branch -M <newbranch>` create new branch then checkout to the new branch
 - `git branch -d branchName` Delete the branch locally.
+  - `` git branch -D `git branch --merged | grep -v \* | xargs` `` delete all other local branches except the current one
 - `git push -d origin <BranchName>` Delete remote branch
 - `git branch --set-upstream-to <remoteBranchName>` or `git branch -u <remoteBranchName>` set the remote tracking branch for the local branch.
 - `git push origin --delete <branchName>` Delete the branch in the remote repos.

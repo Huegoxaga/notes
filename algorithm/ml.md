@@ -74,8 +74,10 @@
 
 ### Linear Regression
 
-- Linear regression is used to find the best fitting line(not nesscessirily straight) of a set of data points
-- suitable for solving regression problems that find a predicted value.
+- Linear regression is used to find the best fitting line of a set of data points
+- Suitable for solving regression problems that find a predicted value
+- Independent variable(s) is also named as Feature, Explanatory, or Input variable(s)
+- Dependent variable is also named as Label, Response, or Output variable
 - It outputs a set of coefficients for each feature and an intercept (the constant term) for a linear equation, the dependent variable will be the output value
   - It is a linear equation in `Number of Features + 1` dimensional space
 - Ordinary least squares is used to calculate the best fit
@@ -97,13 +99,23 @@
   - Dummy Variable - For a categorical featue each possible category will form a new field with value 0 or 1, when the current row of data is belonds this a certain category the value for this category will be 1 and others are 0.
     - Dummy Variable Trap - The number of this categorical independent variable will always be one less than the total number of the possible options since all others are 0 implys this record belong to the last category already.
   - The closed-form equation (One line solution) for minimized parameter of the function have the regressor vector equals $$\hat{\theta}=(X^TX)^{-1}X^TY$$, where `X` is the data matrix, it is called the Normal Equation
-- Polynomial(nonlinear) regression - It is like Multiple linear regression but the power of independent variable increases with the number of them.
 - For linear regression models all of the following assumptions must be achieved.
   - Linearity
   - Homoscedasticity
   - Multivariate normality
   - Independence of errors
   - Lack of multicollinearity
+
+### Nonlinear Regression
+
+#### Polynomial Regression
+
+- When there is one independent variable, it becomes Polynomial Regression
+- It is like multiple linear regression but the power of independent variable increases with the number of them
+  - Second order polynomial forms a quadratic expression, it has 3 coefficients, it fits a parabolic curve
+  - Third order polynomial has 4 coefficients, it fits an `N` shape curve, with one local maxima and one local minima
+  - Fourth order polynomial has 5 coefficients, it fits an `M` shape curve, with two maxima/minima
+  - Fifth order polynomial has 6 coefficients, the curve will bend one more time compare to the fourth order polynomial
 
 ### Decision Trees
 
@@ -188,6 +200,17 @@
 - It can generate `P` hat as predicted probability of a given value.
 - It can return ethier 0 or 1 as `y` hat value if categorical results are preferred
   - return `y` hat as 1 if the probability is higher than a certain defined value and vise versa.
+- Log-odds or Decision Surface is the original function that sum up all the input with its weight
+  - $$z=g(x)=\theta_0+x_1\theta_1+\cdots+x_n\theta_n=x^T\theta=\theta^Tx$$
+- Sigmoid function can be used to narrow down the output of the Log-adds equation between 0 and 1
+  - When Log-odds equation is substituted into the Sigmoid function, it's called the hypothesis function
+  - It's expressed as $$\hat{p}=h(z)=\sigma(x^T\theta)=\frac{1}{1+e^{-x^T\theta}}$$
+  - Hypothesis function yields the probability of a input belongs to one class from 0 to 1
+- Loss function is used to evaluate error. it compares the actual label with the predicted value then return the cost of the predicted value
+  - If output is close to 1 when label is 1, the cost is low. If the the output is close to 0 when label is 1, the cost is high
+  - A log function fits the purpose
+  - Then substituting the hypothesis function into a log function, then take the average cost of all training data. The equation is known as the Categorical Cross-Entropy loss function or log-loss, $$-\frac{1}{N}\sum_{i=1}^{N}[y\ln(\hat{p})+(1-y)\ln(1-\hat{p})]$$ where `y` is the class of the `ith` instance. `y=1` for positive instance, and `y=0` for negative instance
+- Lastly, gradient descent algorithm can be used to find the parameters that minimize the output of the log-loss function
 
 ### Support Vector Regression(SVRs)
 
@@ -657,6 +680,34 @@
       - TensorFlow (Pascal VOC and TFRecords)
       - VoTT (generic JSON schema)
       - Comma Separated Values (CSV)
+- Image related task can be:
+  - Classification: what is contained in an image
+  - Localization: specify the location of a single object in an image
+  - Detection: Object Detection specifies the location of multiple objects in the image
+  - Segmentation: Identify the shapes of different objects
+- Use the following formula to convert color image to grey scale
+  - `gray_image = 0.2989 * red_channel + 0.5870 * green_channel + 0.1140 * blue_channel`
+- A histogram provides infomation on the distribution of intensity of an image
+  - The Histogram Equalization algorithm enhances the contrast of images by flattening the histogram chart
+- Point processing process image pixel by pixel
+  - Negative image uses the max intensity substract by the intesnsity of each pixel to replace the original pixel
+  - Thresholding sets a threshold to generate a binary image
+    - The gap on the histogram can be chosen as the threshold
+- Neighbourhood operations perform the calculation for each pixel with the information from its surrounding pixels
+  - A 3 by 3 or 5 by 5 square kernel `A` around the pixel is used in the calculation
+  - Some simple neighbourhood operations include:
+    - Min: Set the pixel value to the minimum in the neighbourhood
+    - Max: Set the pixel value to the maximum in the neighbourhood
+    - Average: Set the pixel value to the average value in the neighbourhood
+    - Median: The median value of a set of numbers is the midpoint value in that set (e.g. from the set [1, 7, 15, 18, 24] 15 is the median). Sometimes the median works better than the average
+  - Filtering operation
+    - the new pixel intensity is obtained by $$A\cdot B$$, where `B` is the filter matrix of the same size
+    - Low pass filter (Smoothing operation), it can reduce noise and highlight gross details
+      - Simple averaging filter performs a smoothing operation. e.g. it has `1/9` for all of the values in a `3 x 3` filtering matrix
+      - Weighted Smoothing Filters add a weight to the averaging. e.g. the filtering matrix can be $$\begin{bmatrix} \frac{1}{16}&\frac{2}{16}&\frac{1}{16} \\ \frac{2}{16}&\frac{4}{16}&\frac{2}{16}\\\frac{1}{16}&\frac{2}{16}&\frac{1}{16} \end{bmatrix}$$
+    - High pass filters (Edge Detection, Sharpening), it emphasizes fine details in the image
+      - Example filters: $$\begin{bmatrix}0&-\frac{1}{4}&0\\ -\frac{1}{4}&1&-\frac{1}{4}\\0&-\frac{1}{4}&0 \end{bmatrix}$$ or $$\begin{bmatrix}-\frac{1}{8}&-\frac{1}{8}&-\frac{1}{8}\\-\frac{1}{8}&1&-\frac{1}{8}\\-\frac{1}{8}&-\frac{1}{8}&-\frac{1}{8} \end{bmatrix}$$
+      - Note that all coefficients sum to `0`
 
 ### Timeseries Data Preprocessing
 

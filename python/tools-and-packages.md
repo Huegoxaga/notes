@@ -194,6 +194,7 @@
   - `array = np.random.random((rows,cols))`, 2D array of random doubles
   - `array = np.random.rand(rows,cols)`, 2D array of random values from a uniform distribution over `[0, 1)`
   - `array = np.random.randn(rows,cols)`, 2D array of random values from the "standard normal" distribution of mean 0 and variance 1
+  - `array = np.random.random_sample((rows,cols))`, returns a random array in the half-open interval `[0.0, 1.0)` with given shape
   - `array = np.random.randint(min, max, size)` list of random ints
   - `array = np.random.randint(min, max, (rows,cols))` 2D array of random ints
 - Create an array with certain constant
@@ -256,6 +257,7 @@
 - `np.where(arr >= 10)` return a filtered index array based on the conditional
   - `np.where(condition, x, arr)` replace match elements in `arr` with `x`
   - `np.where(condition, arr, x)` replace elements in `arr` with `x`, where condition is not true
+  - `np.where(arr >= threshold, 1, 0)` return `1` when element in `arr` is greater than `threshold`, otherwise return `0`
 - `np.unique(arr)` return an array that only contains unique elements
   - `uniques, counts = np.unique(arr, return_counts=True)` it also returns the occurrance count in a related array
 - `np.printoptions(precision=3, suppress=True)`, set print precision, and suppresses the use of scientific notation
@@ -357,6 +359,10 @@
 - `len(myseries)` return the number of elements like a list
 - `myseries.value_counts()` return a Series containing counts of unique values
 - `myseries.reset_index()` transform the Series object into a Dataframe object
+- `myseries.fillna(x, inplace=True)` replace none value with `x`
+  - `inplace` will replace the original series
+- `myseries==1` returns a boolean series
+- `myseries.ravel()` or `myseries.to_numpy()` returns the series as a numpy array
 
 #### Dataframe
 
@@ -397,6 +403,7 @@
   - `df['columnA'] + '@' + df['columnB']` edit and combine data from two column and create a new series.
   - `df['NewCol'] = series` create a new column called `NewCol` with data from `series`
   - `df[['ColA','ColB']]=df['Col'].str.split(' ', expand=True)` split one col into two new column.
+  - `df['gender'][df['Sex']=='male']=0` modify column value based on other column
 - `df.columns` show info about all columns.
   - `df.columns = ['ColName1', 'ColName2', 'ColName3']` rename all column field names.
   - `df.columns = [x.upper() for x in df.columns]` change all field name to uppercase.
@@ -404,6 +411,7 @@
 - `df.rename(columns={'ColNameA': 'ColNameB', 'NewColNameA': 'NewColNameB'}, inplace=True)` rename certain column field names.
 - `df.drop(columns=['ColA', 'ColB'], inplace=True)` delete certain columns.
 - `df.explode('ColName')` explode value lists into rows
+- `pd.get_dummies(df_200, columns = ['ColumnName1', 'ColumnName1'])` replace the categorical columns with one hot encoded columns
 - `df = pd.json_normalize(df)` pull dictionary values out into columns
 - `df.iloc[0]` `iloc` return data based on integer location. In the example returns the first row
   - `df.iloc[rowIndex, colIndex]` return data from certain row and column.
@@ -525,6 +533,8 @@
   - `FillMethod` can be any integer value as line width for bounding box.
   - `-1` will fill the image with bounding box, positive integer numbers indicates the width of the rectanglar bounding box
   - `FillMethod` can be `cv2.FILLED` for a filled rectangle
+- Thresholding
+  - `ret, out = cv.threshold(img,threshold,255,cv.THRESH_BINARY)` perform global thresholding with given threshold for an 8-bit grayscale image
 - `cv2.putText(img, 'Text Content', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 4, (255, 0, 0), 2)` add text on `img`, it uses the following arguments.
   - Image
   - Text to be displayed
@@ -649,7 +659,7 @@
 - It is used to plot graphs.
 - [Click](https://matplotlib.org/contents.html#) to see the completed documentation for more details.
 
-### pyplot
+### matplotlib.pyplot
 
 - `from matplotlib import pyplot as plt`
 - `plt.scatter(listofX, listofY, color = 'red')` plot points
@@ -709,6 +719,15 @@
   - Additionally, `c` argument can takes a list of index where same index corresponding to the same color for the data
   - Use method `cmap(i)` to access its value, where `i` in range `[0.0, 1.0]`
   - Color value is in RBG and has been divided by `255`
+
+### matplotlib.image
+
+- `from matplotlib import image as mpimg`
+- `img = mpimg.imread('/path/to/image.jpg')`
+  - use `plt.imshow(img)` and `plt.show()` to display the image
+    - parameter `cmap` can be set to `gray` to display greyscale images
+  - `np.shape(img)` returns the image shape
+- `mpimg.imsave(img_path, img)` or `plt.imsave(img_path, img)` saves the image locally
 
 ## Scipy
 
@@ -930,10 +949,12 @@ WantedBy=multi-user.target
   - `from sklearn.preprocessing import Normalizer`
   - `sc = Normalizer().fit(X)`, then `normalizedX = sc.transform(X)`
 - Image Preprocessing
-- Polynomial Regression
+- Polynomial Features
+  - It adds features of the independent variable by multipling itself, so the new features can be used in a linear model for polynomial regression tasks
   - `from sklearn.preprocessing import PolynomialFeatures`
-  - `regr = PolynomialFeatures(degree=2, include_bias=False)`
-  - `X_poly = regr.fit_transform(X)`
+  - `regr = PolynomialFeatures(degree=2, include_bias=True)`
+    - `include_bias` default is `True`, returns an extra `1` for each `x` as the intercept term in a linear model
+  - `X_poly = regr.fit_transform(X)`, it returns `[1, x, x**2]` for second degree polynomial
 
 ### sklearn.feature_extraction
 
@@ -994,6 +1015,12 @@ WantedBy=multi-user.target
   - `regressor.intercept_` the intercept
   - For correlation use, `np.corrcoef(prediction, targets)[0,1]`
   - For RSS use, `((pred-testtargets)**2).sum()`
+- Logistic Regression Model
+  - `from sklearn.linear_model import LogisticRegression`
+  - `regressor = LinearRegression()` initialize the logistic regression model
+    - input data need to be processed by standard scaler
+  - `regressor.coef_` list of coefficients found for each feature
+  - `regressor.intercept_` the intercept
 - Perceptron
   - `from sklearn.linear_model import Perceptron`
   - `clf = Perceptron(max_iter=1000)`
@@ -1035,6 +1062,13 @@ WantedBy=multi-user.target
     - `hidden_layer_sizes` defines hidden layers in between input/output layer as tuple like `(10, 5, 8)`, it means 3 hidden layers each with 10, 5, 8 perceptrons
       - `()` means no hidden layer, it is used when the data is linearlly separable already
     - `random_state` model init weight using random number by default, set it to zero to stop using random weights
+
+## Skimage
+
+### exposure
+
+- `from skimage import exposure`
+- `img_out = exposure.equalize_hist(img)` it flats its histogram to improve the contrast of the image
 
 ## Graphviz
 

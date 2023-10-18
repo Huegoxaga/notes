@@ -271,21 +271,6 @@
     - Doesn't apply if
       - It runs on a single core
       - It is controlled by a system with automated task scheduling
-- Speedup `S(n)` describes how many times the speed is improved after adopting parallel computation of the task when using `n` processors
-  - It equals time of sequential computation divided by time for parallel computation
-  - The optimal speedup happens when all of the code can be run in parallel, and it equals the number of processors
-- Amdahl's law
-  - When taken serial fraction of the program be `f` into consideration, thus, `(1 - f)` is the fraction that can be parallelized
-  - `S(n) = n/(1+(n-1)f)`
-- Efficiency equals the actual speedup divided by the optimal speedup
-- The cost of a computation is the sequential time divided by efficiency
-- Gustafson's Law
-  - It's another way of calculating speedup, it's more suitable for problem with larger size
-  - The percentage of time taken to perform serial operations decreases as problem size increases
-  - if `a(p)`, `b(p)` is the fraction of time taken for sequential and parallel processing in terms of problem size `p`
-    - On a PARALLEL computer, `a(p) + b(p) = 1`
-    - On a sequential computer, it would be `a(p) + n*b(p)` times slower, and this is also the speedup
-    - The speedup should increase with `n` greater compared to Amdahl's law
 
 ## Algorithm Analysis
 
@@ -365,18 +350,26 @@ It is used to tell if a data structure or Algorithm is good.
 
 #### Parallel Computations
 
-- Speedup is used to compare the increase in speed when program switched from sequential to parallel, it equals to `sequential execution time / parallel execution time with N workers`
+- Speedup is used to compare the increase in speed when program switched from sequential to parallel, it equals to $$\frac{t_s}{t_p}$$, `sequential execution time / parallel execution time with N workers`
   - When parallel shorten the execution time, the speedup is great than `1`
-  - Theoretically, if each core can reduce the time by half, the speedup for a four cores machine is `4`.
+  - The optimal speedup happens when all of the code can be run in parallel, and it equals the number of processors
   - For the actual speedup calculation uses the above formula, input the actual value from measurement
     - Measurement should be an average of a large number of execution time
 - Efficiency - `Actual Speedup / Number of Processors`
   - It shows how much advantage an additional core can bring to the program, in terms of percentage
 - Amdahl’s Law - it predicts how much speed up can be achieved through parallelization, because based on the logic and purpose of the program, only a part of it can adopts parallelization
-  - It states that the overall speedup equals $$\frac{1}{(1-P)+\frac{P}{S}}$$
-  - `P` means the percentage of the program that can be done in parallel
+  - It states that the overall speedup equals $$\frac{t_s}{t_p}=\frac{t_s}{ft_s+(1-f)t_s/S}=\frac{n}{1+(n-1)f}$$
+  - `f` means the percentage of the program that can be done in parallel
   - `S` is the corresponding speedup value for the parallel portion of the program
   - It proves that the larger the parallel portion is in the program the greater the program can benefit from using multi-cores
+- The Cost of a computation is the sequential time divided by efficiency
+- Gustafson's Law
+  - It's another way of calculating speedup, it's more suitable for problem with larger size
+  - The main idea is that the percentage of time taken to perform serial operations decreases as problem size increases
+  - if `a(p)`, `b(p)` is the fraction of time taken for sequential and parallel processing in terms of problem size `p`
+    - On a PARALLEL computer, `a(p) + b(p) = 1`
+    - On a sequential computer, it would be `a(p) + n*b(p)` times slower, thus the speedup is also `a(p) + n*b(p)`
+    - The speedup should increase with `n` greater compared to Amdahl's law
 
 ## Types of Algorithm
 
