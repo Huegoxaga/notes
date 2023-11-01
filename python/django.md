@@ -849,8 +849,18 @@ def about(request):
    # - namespace='CELERY' means all celery-related configuration keys
    #   should have a `CELERY_` prefix.
    app.config_from_object('django.conf:settings', namespace='CELERY')
+   # Define peridical tasks here
+   app.conf.beat_schedule = {
+        'add-every-30-seconds': {
+            'task': 'tasks.add',
+            'schedule': 30.0,
+            'args': (16, 16)
+        },
+    }
    # Load task modules from all registered Django app configs.
-   app.autodiscover_tasks()
+   # Add list of module folders or file paths into `packages` if tasks are not written in tasks.py inside the django app folders
+   # For crontab schedule type, refers to https://docs.celeryq.dev/en/stable/userguide/periodic-tasks.html#crontab-schedules
+   app.autodiscover_tasks(packages=[])
    @app.task(bind=True)
    def debug_task(self):
        print('Request: {0!r}'.format(self.request))

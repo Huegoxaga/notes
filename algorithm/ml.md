@@ -281,6 +281,7 @@
   - Going from output to input and finding the better weights for the model using stochastic gradient descent with the chain rule
 - In neural science, each neuron has dedrites(receiver) and axon(transmitter), millions of millions of neuron work together. sigals are passed through synapses.
 - In neural networks, the processing unit is called neuron or node. The connection between neuron is also called synapse.
+- In a fully connected NN, each neuron receives the output of all the neurons in its previous layer
 - Overfitting and Underfitting - Underfitting(High Bias) implys a model that is too simply to make prediction, Overfitting(High Variance) implys a model that is learning too hard from the train data and too complicated to effectively and correctly make prediction.
   - The goal is to aim to build a model that is a bit overfitting and slightly adjust it to prevent overfitting.
   - The most important indicator of overfitting is the train set accurancy is much better than the test set.
@@ -291,21 +292,28 @@
 - The initial input values for the artificial neural network would be multiple features about one sample.
 - The final output values for the artificial neural network could be either a predicted value(one output), a boolean value(one output) or categorical values(multiple output nodes)
 - Each input value is associated with a weight, the neural network learns by adjusting the weight of each input value.
-- Each neuron will have the sum of all input value times the weight
+- Each neuron will have the sum of all input value times the weight, plus a bias term which equals to a dummy input $$x_0$$ with a value of `1` multiply by a weight of $$w_0$$
   - Each neuron itself is a linear binary classifier called perceptron
     - linear classifier guarantees to converge on a solution as long as the data is linearly separable
   - Perceptron model can be trained using perceptron learning algorithm
     - During training, weight and threshold are adjusted - increase / decrease all weight by input value times learning rate and decrease / increase threshold at the learning rate, based on the output result
     - Works on normalized data
 - Activation function determine the output of each nerual based on the inputs' sum value
-  - Threshold function - either yes or no(0 or 1) or it uses a bias value and the threshold is always 0
-  - Sigmoid function - gradually increase(0 to 1) close to but never reaches 0 or 1
-  - Hyperbolic Tangent - gradually increase(-1 to 1) close to but never reaches -1 or 1
-  - Rectifier function - either 0 or linearlly grows from 0 to 1.
+  - Most of them are non-linear functions
+  - Activation functions used for the same layer of neurons are generally the same
+  - Some of them are:
+    - Threshold function - either yes or no(0 or 1) or it uses a bias value and the threshold is always 0
+    - Sigmoid function - gradually increase(0 to 1) close to but never reaches 0 or 1
+    - Hyperbolic Tangent - gradually increase(-1 to 1) close to but never reaches -1 or 1
+    - Rectifier function - either 0 or linearlly grows from 0 to 1.
 - Artificial Neurons are often referred to as units and named by their activation function: Threshold Units, Sigmoid Units, Tanh Units, and Rectified Linear Units(ReLU)
 - A single layer feed forward nerual network(perceptron) is the base machine learning unit in ANNs.
 - ANN or A multi-layer perceptron(a.k.a. MLP, or deep learning network) consists of a network of artificial neurons arranged into layers
+  - An MLP should have at least one hidden layer with nonlinear activation function
+  - The whole MLP represent a nonlinear function (𝐺(𝑋)). The goal is to design MLP to implement some desired nonlinear function
 - The input values are called the input layer the output values are called output layer.
+  - For regression task, it uses no activation function in the output layer. Instead, it just outputs the total activation level
+  - The number of the neurons in the output layer is equal to the number of the outputs of the function
 - Nodes in between are called hidden layers, each layers will process values and generate output for the next layer.
   - Each neuron in the same layer focuses on different aspects of the input info.
   - Hidden layers can have as many as possible, the neural network can be called deep learning if there are lots of layers of neurons in between.
@@ -321,6 +329,10 @@
   - Try all possible combination of weight values and calculate its cost function value, this is not practically since it takes billions of years.(curse of dimensionality)
   - Gradient Descent - adjust the combination of weights by calculating the slope, hence each trials will move closer to the minimum value. The sum of cost functions of all rows of data in the dataset are calculated in one guess.
     - It might find the local minimum if all the cost function values are not convex.
+    - Each weight value will be moved towards right on its axis if the derivative of weight to cost function is positive, and left if negative
+      - Old weight minus a positive learning rate times the derivateive is the new weight
+    - Each row of data will generate a new weight, the average of the new weights will then be used in the next step
+    - for a multilayer neural network,the error must be back-propagated to every individual weight through every possible path from the weights to the output
   - Stochastic Gradient Descent - Similar to gradient descent, but make adjustment based on cost function of every single row of data.
     - It will find the global minimum.
     - It is light weight and faster.
@@ -332,7 +344,6 @@
   - If a layer has more neurons than the one before, it can transform the input by adding new meta-features (e.g. a neuron could learn to output 1 if two of its inputs are large and 0 if they are small, ignoring the othersentirely). This can add information to be used by the next layer
   - If a layer has fewer neurons than the layer before, then it will send less information forward to the next layer. If features are redundant, or if it’s useful to combine features, this can be a good thing. Otherwise, it might hurt performance
   - As a general rule, the more layers the model have, the more epochs are needed to train the network
-- For regression task, it uses no activation function in the output layer. Instead, it just outputs the total activation level
 
 #### Convolutional Neural Networks(CNNs)
 
@@ -360,7 +371,7 @@
     - Back propagation in CNNs not only change weight, it also changes feature dectectors.
   - The last fully connected layer will vote for the result for image recognition.
   - The softmax function is used to calculation possibilities of each result for image recogition so possibilities of all possible answers add up to 1.
-  - The cost function in CNNs is called loss function, cross-entropy formula is frequenly used.
+  - The cross-entropy formula is frequently used as the cost function (loss function) in CNNs.
   - Famous CNNs Architectures
     - CNNs Architectures are models with predefined structures
     - [LeNet-5](https://homl.info/lenet5)

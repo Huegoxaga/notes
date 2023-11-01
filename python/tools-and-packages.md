@@ -703,7 +703,9 @@
   - After figure 1 is plotted, `plt.figure(2)` will create a second tab
   - Or, `plt.figure("Title Text", figsize=(width, height))`
 - `plt.subplot(xyz)` defines subplots within one figure, should be called before drawing each subplot
-  - It is the same as `plt.subplot(rows, cols, index)`, rows and cols defines the shape of the grid, index is the start location from top-left, starting from `1`
+  - `x` is the row number, `y` is the column number, `z` is the index starting from `1`
+  - Rows and cols defines the shape of the grid, index is the start location from top-left
+  - It is the same as `plt.subplot(rows, cols, index)`
 - `plt.legend()` add legend base on labels automatically
   - `plt.legend(['firstLineLegend','firstLineLegend'])` set legend text.
   - `plt.legend(loc='upper left')` or `plt.legend(loc=(percent_from_left, percent_from_bottom))` set the legend location.
@@ -1090,7 +1092,13 @@ WantedBy=multi-user.target
 
 ### Data Preprocessing
 
-##### Image Preprocessing
+#### Load Keras Datasets
+
+- [Click Here](https://keras.io/api/datasets/) for a complete list of built-in datasets
+- `from keras.datasets import dataset_name` import dataset as a module
+- `(X_train, y_train), (X_test, y_test) = dataset_name.load_data()` load dataset
+
+#### Image Preprocessing
 
 - ImageDataGenerator
   - Generate Images based on a certain settings.
@@ -1108,7 +1116,7 @@ WantedBy=multi-user.target
 
 ### Build Model
 
-##### ANN Model
+#### ANN Model
 
 - Define the ANN model as a sequence of layers.
   ```py
@@ -1125,7 +1133,7 @@ WantedBy=multi-user.target
   - `input_dim` represents the number of input nodes for the layer.
   - `init` represent the ways to initilize weight for the model.
 
-##### CNN Model
+#### CNN Model
 
 - Define the CNN model as a sequence of layers.
   ```py

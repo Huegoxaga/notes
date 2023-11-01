@@ -820,3 +820,36 @@ from functools import cache
 def factorial(n):
     return n * factorial(n-1) if n else 1
 ```
+
+## abc
+
+- It allows Python to have abstract classes
+
+```py
+from abc import ABC, abstractmethod
+
+class NetworkConnection(ABC):
+
+    @abstractmethod
+    def connect(self):
+        pass
+
+    @abstractmethod
+    def send(self):
+        pass
+
+    @abstractmethod
+    def disconnect(self):
+        pass
+
+class ConnectionA(NetworkConnection):
+
+    def connect(self):
+        print("Connection A established.")
+
+    def send(self):
+        print("Sending data over Connection A")
+
+    def disconnect(self):
+        print("Disconnecting from Connection A")
+```

@@ -1053,6 +1053,20 @@ print(pizza.pineapple_allowed)
 pizza.pineapple_allowed = True
 ```
 
+## Private Variables
+
+- In name mangling process any identifier with two leading underscore and at most one trailing underscore is textually replaced with `_classname__identifier` where classname is the name of the current class
+  - This closet way to implement a private variable in Python
+
+```py
+class Pizza:
+  def __init__(self):
+    self.__secret_sauce = "Spicy Tomato"
+
+pizza = Pizza()
+print(pizza._Pizza__secret_sauce) # Access private variable with name mangling
+```
+
 ## Setter or Getter
 
 - It set or get the property’s value.
