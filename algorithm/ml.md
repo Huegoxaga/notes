@@ -312,8 +312,10 @@
   - An MLP should have at least one hidden layer with nonlinear activation function
   - The whole MLP represent a nonlinear function (𝐺(𝑋)). The goal is to design MLP to implement some desired nonlinear function
 - The input values are called the input layer the output values are called output layer.
-  - For regression task, it uses no activation function in the output layer. Instead, it just outputs the total activation level
+  - For regression task, the activation function is simply linear
   - The number of the neurons in the output layer is equal to the number of the outputs of the function
+  - For binary classification, the activation function is a sigmoid function
+  - For multiclasses classification, the activation function is a softmax function so the sum of all possibilities can be `1`
 - Nodes in between are called hidden layers, each layers will process values and generate output for the next layer.
   - Each neuron in the same layer focuses on different aspects of the input info.
   - Hidden layers can have as many as possible, the neural network can be called deep learning if there are lots of layers of neurons in between.

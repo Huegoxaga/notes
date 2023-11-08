@@ -399,7 +399,7 @@ list(accumulate(range(8)))
 - `os.path.split('path')` return path name and file name separately.
 - `os.path.splitest('path')` return a tuple with file name and its extension with the dot
   - path string should contain at least the filename portion
-- `os.path.exist('path')` return true if file exists.
+- `os.path.exists('path')` return true if file or directory exists.
 - `os.path.isdir('path')` return true if it is a directory.
 - `os.path.isfile('path')` return true if it is a file.
 - `os.system('cd ..')` run the command and return the exit status code.

@@ -190,6 +190,7 @@
   - Optionally, `dtype` can be its second argument which defines the elements data type.
   - `array = np.zeros_like(img, np.uint8)` create an array of zeros with the same shape and type as `img`, with data type as `np.uint8`.(generate a black image)
 - Create an array with random values
+  - `array = np.random.seed(seed)` set an integer seed, so the random number generated later in the program will always be the same
   - `array = np.random.random(5)`, an array with 5 random double value in range `[0,1)`
   - `array = np.random.random((rows,cols))`, 2D array of random doubles
   - `array = np.random.rand(rows,cols)`, 2D array of random values from a uniform distribution over `[0, 1)`
@@ -386,6 +387,10 @@
   - If no parameter entered it will show the first 5 rows.
 - `df.tail(10)` show the last 10 rows of data
   - If no parameter entered it will show the last 5 rows.
+- `df.isnan()` return a boolean same-sized object indicating if the values are NA
+  - `dataset.isna().sum()` return the number of `NA` values for each column
+  - `NA` values can be `None` or `numpy.NaN`
+- `df.dropna()` remove rows contains `NA` value
 - `groups = df.groupby('class')` group data by values in one column
   - The returned object has data grouped into a list of tuple, the first element stores the group name, the second value stores the dataframe for that group
   - `groups.size()` return group sizes as a Series
@@ -1090,13 +1095,28 @@ WantedBy=multi-user.target
 - Import everything
   - `import tensorflow as tf`
 
-### Data Preprocessing
+### Load Data
 
 #### Load Keras Datasets
 
 - [Click Here](https://keras.io/api/datasets/) for a complete list of built-in datasets
 - `from keras.datasets import dataset_name` import dataset as a module
 - `(X_train, y_train), (X_test, y_test) = dataset_name.load_data()` load dataset
+
+### Data Preprocessing
+
+#### One Hot Encoding
+
+- `from keras.utils import to_categorical`
+- `y_train = to_categorical(y_train)` add a column contains a list of binary output for categorical integer data
+
+#### Normalization
+
+- `from keras.layers import Normalization`
+- `normalizer = Normalization(axis=-1)` create a Normalization layer that shift and scale inputs into a distribution centered around 0 with standard deviation 1
+  - For a table of dataset, use `axis=-1`
+  - For a list of 1-D data, use `axis=None`
+- `normalizer.adapt(X_train)` load the mean and variance for each colomn, so the layer can be ready to use in a sequence
 
 #### Image Preprocessing
 
@@ -1116,22 +1136,29 @@ WantedBy=multi-user.target
 
 ### Build Model
 
+- Model can be described as a sequence of layers
+- The shape of each layer can be defined as (output_dimensions, input_dimensions)
+  - A `(12, 4)` layer can be seen as layer with 12 units with 4 intput nodes
+  - A `(None, 5)` layer has 5-dimensional input vectors with output vector that can have any number of dimensions
+
 #### ANN Model
 
 - Define the ANN model as a sequence of layers.
   ```py
   # Initializing the ANN
   ann = tf.keras.models.Sequential()
+  # Adding the normalization layer
+  ann.add(normalizer)
   # Adding the input layer and the first hidden layer
-  ann.add(tf.keras.layers.Dense(output_dim = 6, init = 'uniform', activation='relu', input_dim = 10))
+  ann.add(tf.keras.layers.Dense(units = 6, kernel_initializer = 'uniform', activation='relu', input_dim = 10))
   # Adding the second hidden layer
-  ann.add(tf.keras.layers.Dense(output_dim = 6, init = 'uniform', activation='relu'))
+  ann.add(tf.keras.layers.Dense(units = 6, kernel_initializer = 'uniform', activation='relu'))
   # Adding the output layer using sigmoid for probability
-  ann.add(tf.keras.layers.Dense(output_dim = 1, init = 'uniform', activation='sigmoid'))
+  ann.add(tf.keras.layers.Dense(units = 1, kernel_initializer = 'uniform', activation='sigmoid'))
   ```
-  - `output_dim` represents the number of output nodes for the layer.
+  - `units` represents the number of output nodes for the layer.
   - `input_dim` represents the number of input nodes for the layer.
-  - `init` represent the ways to initilize weight for the model.
+  - `kernel_initializer` represent the ways to initilize weight for the model.
 
 #### CNN Model
 
@@ -1165,11 +1192,18 @@ WantedBy=multi-user.target
     - `categorical_crossentropy` loss function for more than two outcome.
   - `metrics` it takes a list of metrics to evaluate the model.
     - `accuracy` based on the accuracy of the model.
+  - `validation_data=(X_test, y_test)` Specify the data used to perform evaluation at the end of each epoch
 
 ### Train Model
 
 - Train ANN model, `ann.fit(X_train, y_train, batch_size = 32, epochs = 100)`
 - Train CNN model, `cnn.fit_generator(training_set, steps_per_epoch = 334, epochs = 25, validation_data = test_set, validation_steps = 334)`
+- `s = model.fit()` returns a Sequential object containing the training info
+  - To view training history for each epoch `print(s.history.history)`
+
+### Evaluate Model
+
+- `loss, metrics = model.evaluate(X_test, y_test)` return the loss value and list of metrics values, specified during model compiling
 
 ### Use Model
 

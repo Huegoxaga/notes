@@ -2652,3 +2652,10 @@ DROP PROCEDURE procedure_name;
   ROLLBACK TRANSACTION;
   ```
 - `SAVEPOINT` marks a place in a transaction to where a partial rollback may be made
+
+## Database Admin
+
+### Postgres
+
+- `SELECT * FROM pg_stat_activity;` return list of current activity and connections
+- `SELECT pg_cancel_backend(pid) FROM pg_stat_activity;` disconnect from client by `pid`
