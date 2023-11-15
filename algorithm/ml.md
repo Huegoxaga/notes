@@ -353,51 +353,83 @@
 - For a computer, a back and white image is an array of numbers from 0-255(8 bits data) where 0 represents black, 255 represents white and grey scale colors in between.
 - A colorful image is a 3-D array with 3 layers of 2-D values from 0-255. Each layer represents the intensity of red, green and blue. Each layer of data is called red, green and blue channel repectively.
 - CNNs will process an image in the following order:
-  - Convolution operation is to use a feature detector to generate a feature map.
-    - The feature detector is a small matrix(2-D array) that has a certain predefined value in it. Its has different sizes in various CNNs.
-    - The feature detector(filter) will be moving across the image(all pixel will only be processed once, line by line) and count the number of matches(non-zero) found when it overlapse with the image.
-      - A stride the step the feature detector moves across the image.
-    - Feature detector has negtive value to dim the image pixel and positive value to highlight.
-  - A feature map(convolved feature) will be generated according to hte stride and feature detector size, the feature map will summarize the feature of the image.
-  - Multiple feature detectors will be used on a single image and generate various feature maps that each emphasis on different features of the image.
-  - Feature maps will be processed by rectifier function to generate rectifier linear unit layer breakup the linearality of feature maps and amplify the features for further process.
-    - Dark part of the feature map is represented by negtive value, bright part of the feature map is represented by positive value. Rectifier function remove the dark part of the feature map.
-  - Pooling will be used on the feature map to preserve the feature and remove unnesscery info to prevent overfitting(overfitting means too much info on one feature). There are serveral types of pooling.
-    - Max pooling(most used) - Using a small matrix to scan the feature map with certain stride line by line(all pixel will only be processed once). Only the max value will be recorded.
-    - Average pooling - same process as max pooling, but record the average value.
-    - Sum pooling - record the sum of the value.
-    - Min pooling - record the minimum value only.
-  - Process from convolution to pooling can be repeat once again for some CNNs
-  - The 2-D array result will be flatten to a 1-D array then it will be fed into an artificial neural network.
-    - Hidden layer in the ANN used by CNNs are called fully connected layers.
-    - Back propagation in CNNs not only change weight, it also changes feature dectectors.
-  - The last fully connected layer will vote for the result for image recognition.
-  - The softmax function is used to calculation possibilities of each result for image recogition so possibilities of all possible answers add up to 1.
-  - The cross-entropy formula is frequently used as the cost function (loss function) in CNNs.
-  - Famous CNNs Architectures
-    - CNNs Architectures are models with predefined structures
-    - [LeNet-5](https://homl.info/lenet5)
-      - Created by Yann LeCun in 1998 for MNIST dataset.
-    - [AlexNet](https://homl.info/80)
-      - Won the 2012 ILSVRC challenge
-    - [GoogLeNet](https://homl.info/81)
-      - Won the 2014 ILSVRC challenge
-    - [VGGNet](https://homl.info/83)
-    - [ResNet](https://homl.info/82)
-      - Won the 2015 ILSVRC challenge
-      - The CNN is called Residual Network.
-    - [Xception](https://homl.info/xception)
-      - A variant of GoogLeNet
-    - [SENet](https://homl.info/senet)
-      - Squeeze-and-Excitation Network
-    - You Only Look Once(YOLO),
-      - [YOLO](https://homl.info/yolo)
-      - [YOLOv2](https://homl.info/yolo2)
-      - [YOLOv3](https://homl.info/yolo3)
-      - The model(weight) is trained using the `darknet` framework
-        - It is written in C and CUDA
-        - [Click](https://github.com/pjreddie/darknet) to view the repo from the original auther of the `darknet`
-        - [Click](https://github.com/AlexeyAB/darknet) to view the modified version that supports Window OS
+
+1. Convolution operation uses a feature detector to generate a feature map.
+   - The feature detector is essentially a filter
+   - The feature detector is a small matrix(2-D array) that has a certain predefined value in it. Its has different sizes in various CNNs.
+   - The feature detector will be moving across the image(all pixel will only be processed once, line by line) and count the number of matches(non-zero) found when it overlapse with the image.
+     - A stride defines the step the feature detector moves across the image.
+   - Feature detector has negtive value to dim the image pixel and positive value to highlight.
+   - A feature map(convolved feature) will be generated according to the stride and feature detector size, the feature map will summarize the feature of the image.
+     - This is the first layer after the input layer in a CNN model
+   - Each feature map can have `n^2*3+1` features where the extra one is the bias
+   - Zero padding adds one row and column of zeros around the image to extract more features from the boarder of the images, it often has a size of `P = (n - 1) / 2` where `n` is the sizes of the filter
+   - For colorful images with shape `(H, W, 3)`, a square feature map has shape `(n, n, 3)`, the output activation map will have shape of `((H - n + P) / stride + 1, (W - n + P) / stride + 1)`
+   - The number of filter usually equals a number that is a power of `2`
+   - Multiple feature detectors will be used on a single image and generate various feature maps that each emphasis on different features of the image.
+     - One feature map can target a specific color
+2. Feature maps will be processed by rectifier function (activation function) to generate rectifier linear unit layer breakup the linearality of feature maps and amplify the features for further process.
+   - It happens during the calculation of the filtered images on the value of the dot product of the filter matrix and image matrix, as a result an activation map is generated
+   - Dark part of the feature map is represented by negtive value, bright part of the feature map is represented by positive value. Rectifier function remove the dark part of the feature map.
+   - A activation function can "die" where the slope of it is close to zero, it makes the backpropagation harder to converge and it will be harder to find the right parameter to minimize the cost function
+     - It is also known as saturation
+   - Sigmoid function has saturation issue and it is zero centered (sum of y is not `0`), it is compute expensive
+   - `tanh()` is zero-centered but it saturates
+   - ReLU (Rectified Linear Unit) can die as well and it doesn't have zero-centered output
+     - a small incline for the ReLU unit in the negative (left) portion can fix this, this activation function is called the Leaky ReLU
+   - In practice:
+     - Use ReLU. Be careful with the learning rates
+     - Try out Leaky ReLU / Maxout / ELU.
+     - Try out tanh or sigmoid but don’t expect much
+3. Pooling will be used on the feature map to preserve the feature and remove unnesscery info to prevent overfitting(overfitting means too much info on one feature)
+   - Pooling layer goes after the Conv layer
+   - Pooling layers provide an approach to down sampling feature maps by summarizing the presence of features in patches of the feature map
+   - It operates over each activation map independently
+   - There are serveral types of pooling
+     - Max pooling(most used) - Using a small matrix to scan the feature map with certain stride line by line(all pixel will only be processed once). Only the max value will be recorded.
+     - Average pooling - same process as max pooling, but record the average value.
+     - Sum pooling - record the sum of the value.
+     - Min pooling - record the minimum value only.
+   - Pooling layers ususlly don't use zero-padding
+4. Process from convolution to pooling (step 1 to step 3) can be repeat once again for some CNNs
+5. Drop-out layer is used during training to prevent overfitting
+   - In each epoch it randomly select some nodes in the hidden layers and treat it as if the selected nodes does not exist
+6. The 2-D array result will be flatten to a 1-D array then it will be fed into an artificial neural network.
+   - Hidden layers in the ANN used by CNNs are called fully connected layers.
+   - Back propagation in CNNs not only change weight, it also changes feature dectectors.
+   - If Pooling layers have a size of (20, 20) and there are 10 of them. the final flatten layer will be an 1-D list with `20 x 20 x 10 = 4000` elements
+7. The last fully connected layer will vote for the result for image recognition.
+   - The fully connected layer itself is a complete MLP with the flatten layer as the input layer
+   - For multiclass classification we should use softmax in the last layer
+     - The softmax function is used to calculation possibilities of each result and the possibilities of all possible answers add up to 1.
+     - In the training data set, the ground truth of only one of the outputs is 1 and all others are zero. This is called one-hot
+     - The cost function can be the Categorical Cross Entropy loss function, where the output indicates the probabilities that the target belongs to each class
+   - The cross-entropy formula is frequently used as the cost function (loss function) in CNNs.
+
+- Famous CNNs Architectures
+  - CNNs Architectures are models with predefined structures
+  - [LeNet-5](https://homl.info/lenet5)
+    - Created by Yann LeCun in 1998 for MNIST dataset.
+  - [AlexNet](https://homl.info/80)
+    - Won the 2012 ILSVRC challenge
+  - [GoogLeNet](https://homl.info/81)
+    - Won the 2014 ILSVRC challenge
+  - [VGGNet](https://homl.info/83)
+  - [ResNet](https://homl.info/82)
+    - Won the 2015 ILSVRC challenge
+    - The CNN is called Residual Network.
+  - [Xception](https://homl.info/xception)
+    - A variant of GoogLeNet
+  - [SENet](https://homl.info/senet)
+    - Squeeze-and-Excitation Network
+  - You Only Look Once(YOLO),
+    - [YOLO](https://homl.info/yolo)
+    - [YOLOv2](https://homl.info/yolo2)
+    - [YOLOv3](https://homl.info/yolo3)
+    - The model(weight) is trained using the `darknet` framework
+      - It is written in C and CUDA
+      - [Click](https://github.com/pjreddie/darknet) to view the repo from the original auther of the `darknet`
+      - [Click](https://github.com/AlexeyAB/darknet) to view the modified version that supports Window OS
 
 #### Recurrent Neural Networks(RNNs)
 
@@ -718,6 +750,7 @@
     - Low pass filter (Smoothing operation), it can reduce noise and highlight gross details
       - Simple averaging filter performs a smoothing operation. e.g. it has `1/9` for all of the values in a `3 x 3` filtering matrix
       - Weighted Smoothing Filters add a weight to the averaging. e.g. the filtering matrix can be $$\begin{bmatrix} \frac{1}{16}&\frac{2}{16}&\frac{1}{16} \\ \frac{2}{16}&\frac{4}{16}&\frac{2}{16}\\\frac{1}{16}&\frac{2}{16}&\frac{1}{16} \end{bmatrix}$$
+      - Note that all coefficients sum to `1`
     - High pass filters (Edge Detection, Sharpening), it emphasizes fine details in the image
       - Example filters: $$\begin{bmatrix}0&-\frac{1}{4}&0\\ -\frac{1}{4}&1&-\frac{1}{4}\\0&-\frac{1}{4}&0 \end{bmatrix}$$ or $$\begin{bmatrix}-\frac{1}{8}&-\frac{1}{8}&-\frac{1}{8}\\-\frac{1}{8}&1&-\frac{1}{8}\\-\frac{1}{8}&-\frac{1}{8}&-\frac{1}{8} \end{bmatrix}$$
       - Note that all coefficients sum to `0`

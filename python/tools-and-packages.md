@@ -1164,18 +1164,22 @@ WantedBy=multi-user.target
 
 - Define the CNN model as a sequence of layers.
   ```py
+  import keras
   # Initializing the CNN
-  cnn = tf.keras.models.Sequential()
-  # Define the Convolution Layer
-  cnn.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, padding="same", activation="relu", input_shape=[64, 64, 3]))
-  # Define the Pooling Layer
-  cnn.add(tf.keras.layers.MaxPool2D(pool_size=2, strides=2, padding='valid'))
+  cnn = keras.models.Sequential()
+  # Define the Convolution Layer with 32 feature and 3 by 3 filter matrix size with padding
+  # The input images has 1 color channel and 28 by 28 pixels in size
+  cnn.add(keras.layers.convolutional.Conv2D(32, (3, 3), padding="same", activation="relu", input_shape=[1, 28, 28]))
+  # Define the Pooling Layer with 2 by 2 pool size and strides equal to 2 with no padding
+  cnn.add(keras.layers.convolutional.MaxPooling2D(pool_size=(2, 2), strides=2, padding='valid'))
+  # Dropout 20% of the nodes in each epoch
+  cnn.add(keras.layers.Dropout(0.2))
   # Flattening
-  cnn.add(tf.keras.layers.Flatten())
+  cnn.add(keras.layers.Flatten())
   # Full Connection
-  cnn.add(tf.keras.layers.Dense(units=128, activation='relu'))
+  cnn.add(keras.layers.Dense(units=128, activation='relu'))
   # Define the Output Layer
-  cnn.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
+  cnn.add(keras.layers.Dense(units=1, activation='sigmoid'))
   ```
   - `padding` for Layers
     - `same`
@@ -1198,6 +1202,8 @@ WantedBy=multi-user.target
 
 - Train ANN model, `ann.fit(X_train, y_train, batch_size = 32, epochs = 100)`
 - Train CNN model, `cnn.fit_generator(training_set, steps_per_epoch = 334, epochs = 25, validation_data = test_set, validation_steps = 334)`
+  - Training data should be reshaped in a 4-D array like `[samples][channels][width][height]`
+    - For greyscale images channels equal to `1`
 - `s = model.fit()` returns a Sequential object containing the training info
   - To view training history for each epoch `print(s.history.history)`
 

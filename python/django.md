@@ -154,7 +154,8 @@ def about(request):
       # add default value
       content = models.TextField(default="Yes")
       # add unique option
-      date_posted = models.DateTimeField(default=timezone.now, unique=True)
+      date_posted = models.DateTimeField(default=timezone.now, unique=True) # Same as auto_now_add=True
+      date_modified = models.DateTimeField(auto_now=True, unique=True) # Auto update current time on save
       # set foreign key in the user table, delete all associated posts when user object is deleted.
       author = models.ForeignKey(User, on_delete=models.CASCADE)
       # related_name field can be used to reverse lookup
