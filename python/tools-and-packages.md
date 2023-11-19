@@ -1103,6 +1103,13 @@ WantedBy=multi-user.target
 - `from keras.datasets import dataset_name` import dataset as a module
 - `(X_train, y_train), (X_test, y_test) = dataset_name.load_data()` load dataset
 
+#### Load Local Images
+
+- `from keras.utils import to_categorical`
+- `ds = image_dataset_from_directory(data_dir, validation_split=0.2, subset="both", seed=123, image_size=(250, 250), batch_size=32)`
+  - `seed` - Optional random seed for shuffling and transformations
+  - `subset` - when set to `both`, return the train and validation dataset in a tuple
+
 ### Data Preprocessing
 
 #### One Hot Encoding
@@ -1118,21 +1125,21 @@ WantedBy=multi-user.target
   - For a list of 1-D data, use `axis=None`
 - `normalizer.adapt(X_train)` load the mean and variance for each colomn, so the layer can be ready to use in a sequence
 
-#### Image Preprocessing
+#### Image Preprocessing Layers
 
-- ImageDataGenerator
-  - Generate Images based on a certain settings.
-    - `train_datagen = ImageDataGenerator(rescale = 1./255, shear_range = 0.2, zoom_range = 0.2, horizontal_flip = True)`
-      - `rescale`
-      - `shear_range`
-      - `zoom_range`
-      - `horizontal_flip`
-  - Load the images from files.
-    - `training_set = train_datagen.flow_from_directory('dataset/training_set', target_size = (64, 64), batch_size = 32, class_mode = 'binary')`
-      - First argument is the file path.
-      - `target_size`
-      - `batch_size`
-      - `class_mode`
+- Create a preprocessing or augmentation layer
+
+```py
+data_augmentation = Sequential([
+  RandomCrop(400, 400, seed=777),
+  RandomContrast(0.5, seed=777),
+  RandomFlip("horizontal_and_vertical"),
+  RandomRotation(0.2),
+  Resizing(227, 227)
+])
+```
+
+- Apply layers to the dataset first, `augmented_ds = train_ds.map(lambda x, y: (data_augmentation(x), y))`
 
 ### Build Model
 
@@ -1182,8 +1189,8 @@ WantedBy=multi-user.target
   cnn.add(keras.layers.Dense(units=1, activation='sigmoid'))
   ```
   - `padding` for Layers
-    - `same`
-    - `valid`
+    - `same` - padding zeros around the image boarders
+    - `valid` - no padding
 
 ### Compile Model
 
@@ -1193,7 +1200,8 @@ WantedBy=multi-user.target
     - `adam` is a type of stochastic gradient descent algorithm.
   - `loss` define the loss function.
     - `binary_crossentropy` loss function for two outcome.
-    - `categorical_crossentropy` loss function for more than two outcome.
+    - `categorical_crossentropy` loss function for more than two outcome when labels are provided in a one_hot representation
+    - `sparse_categorical_crossentropy` loss function for more than two outcome when labels are provided as integers.
   - `metrics` it takes a list of metrics to evaluate the model.
     - `accuracy` based on the accuracy of the model.
   - `validation_data=(X_test, y_test)` Specify the data used to perform evaluation at the end of each epoch

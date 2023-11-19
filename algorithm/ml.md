@@ -335,6 +335,7 @@
       - Old weight minus a positive learning rate times the derivateive is the new weight
     - Each row of data will generate a new weight, the average of the new weights will then be used in the next step
     - for a multilayer neural network,the error must be back-propagated to every individual weight through every possible path from the weights to the output
+    - Gradient descent with momentum is an optimization algorithm that helps accelerate the convergence of gradient descent by adding a momentum term to the weight update
   - Stochastic Gradient Descent - Similar to gradient descent, but make adjustment based on cost function of every single row of data.
     - It will find the global minimum.
     - It is light weight and faster.
