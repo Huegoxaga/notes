@@ -58,7 +58,7 @@
 
 ### GateKeeper
 
-- Disable GateKeeper, `sudo spctl --master-disable`
+- Disable GateKeeper, `sudo spctl --master-disable` to open applications from any sources without warnings
 - `sudo xattr -d com.apple.quarantine <PathToApp>` remove quarantine flag of the app when system failed to open it and suggest the app is damaged
 
 ## Xcode Command Line Tools

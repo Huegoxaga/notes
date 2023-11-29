@@ -347,6 +347,7 @@
   - If a layer has more neurons than the one before, it can transform the input by adding new meta-features (e.g. a neuron could learn to output 1 if two of its inputs are large and 0 if they are small, ignoring the othersentirely). This can add information to be used by the next layer
   - If a layer has fewer neurons than the layer before, then it will send less information forward to the next layer. If features are redundant, or if it’s useful to combine features, this can be a good thing. Otherwise, it might hurt performance
   - As a general rule, the more layers the model have, the more epochs are needed to train the network
+  - The more nodes and layers the model have, the larger the dataset is needed to train
 
 #### Convolutional Neural Networks(CNNs)
 
@@ -398,7 +399,7 @@
 6. The 2-D array result will be flatten to a 1-D array then it will be fed into an artificial neural network.
    - Hidden layers in the ANN used by CNNs are called fully connected layers.
    - Back propagation in CNNs not only change weight, it also changes feature dectectors.
-   - If Pooling layers have a size of (20, 20) and there are 10 of them. the final flatten layer will be an 1-D list with `20 x 20 x 10 = 4000` elements
+   - If Pooling layers have a size of (20, 20) and there are 10 of them. the final flattened layer will be an 1-D list with `20 x 20 x 10 = 4000` elements
 7. The last fully connected layer will vote for the result for image recognition.
    - The fully connected layer itself is a complete MLP with the flatten layer as the input layer
    - For multiclass classification we should use softmax in the last layer
@@ -764,11 +765,11 @@
 
 - Clean text
   - Removal of infrequent words - The number of unique words can be reduced greatly if many infrequent words are removed, this procedure can incresed the training speed, and might reduce the accuracy
-  - Removal of infrequent words - If a word appears too frequently, it might not prove to be very useful for classification. Removing frequent words might speed things up a little bit and also make the classification task easier
-- leave out all double qoutes
+  - Removal of frequent words - If a word appears too frequently, it might not prove to be very useful for classification. Removing frequent words might speed things up a little bit and also make the classification task easier
+- Leave out all double qoutes
 - Stop Words - are words that are not providing useful information and will be excluded from the text.
 - Stemmer - are used to transform various forms of a word to a common one. Ex, different tense of a verb to the present tense.
-- Replace all non alphapetic and numerial character to space.
+- Replace all non-alphabetic and numerical characters to space.
 - Use lower case for words
 - Example command for a quick cleanup, `cat <filemane>.txt | sed -e "s/\([.\!?,'/()]\)/ \1 /g" | tr "[:upper:]" "[:lower:]" > <filemane>.preprocessed.txt`
 
@@ -782,7 +783,7 @@
 
 #### Word Representations
 
-- one-hot vectors - a way to represent a word in a set vocabulary by an vector (array), each word in the vocabulary is associated with one index and the word is represented by an array that has `1` on the correponding index and everywhere else is `0`
+- One-hot vectors - a way to represent a word in a set vocabulary by an vector (array), each word in the vocabulary is associated with one index and the word is represented by an array that has `1` on the correponding index and everywhere else is `0`
   - The demesion of the vector equals the number words in the vocabulary
 - Bag of words - It is a way to preprocess text data by using an array of count for all unique words to record the occurrence of each word in the text data.
   - Each list of occurrence is a data record that has one label attached

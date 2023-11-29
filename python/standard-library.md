@@ -663,7 +663,8 @@ list(accumulate(range(8)))
 - It is used to do unit testing.
 - `import unittest`
 - All test method name should start with `test_`
-- The order of all test methods is random.
+- The order is determined by sorting the methods by name alphabetically
+- For unit testing, each test case should be able to run independently of other test cases
 
 ### Assertion Methods
 
@@ -679,6 +680,39 @@ list(accumulate(range(8)))
 - `assertNotIn(a, b)` checks if `a` not in `b`
 - `assertIsInstance(a, b)` checks if `isinstance(a, b)`
 - `assertNotIsInstance(a, b)` checks if not `isinstance(a, b)`
+- `assertRaises(a, b, c)` check if method `b` will raise an exception `a` when the input of the method is `c`
+
+### Example
+
+```py
+import unittest
+class TestStringMethods(unittest.TestCase):
+  @classmethod
+  def setUpClass(cls):
+    # Code in this method will be executed once before TestCase class starts
+    pass
+  @classmethod
+  def tearDownClass(cls):
+    # Code in this method will be executed once after TestCase class finshes all tests
+    pass
+  def setUp(self):
+    # Code in this method will be executed before each test method in a TestCase class
+    pass
+  def tearDown(self):
+    # Code in this method will be executed after each test method in a TestCase class
+    pass
+  def test_1_upper(self):
+    self.assertEqual('foo'.upper(), 'FOO')
+  def test_2_isupper(self):
+    self.assertTrue('FOO'.isupper())
+    self.assertFalse('Foo'.isupper())
+if __name__ == '__main__':
+  unittest.main()
+```
+
+- Run test cases by running the python script, `python test.py`
+  - Optionally, use `-v` to get more info, e.g. `python test.py -v`
+  - Run specific test by running command `python -m unittest test.TestStringMethods.test_isupper`
 
 ### Mock
 

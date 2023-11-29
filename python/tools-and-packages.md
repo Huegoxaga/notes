@@ -1217,6 +1217,7 @@ data_augmentation = Sequential([
 
 ### Evaluate Model
 
+- `model.summary()` print the structure of the model after it's been built
 - `loss, metrics = model.evaluate(X_test, y_test)` return the loss value and list of metrics values, specified during model compiling
 
 ### Use Model
@@ -1904,3 +1905,49 @@ if not srcpad:
 ```
 
 - It accesses meta data from `C` through `pyds` module, note that Python garabe collection will affect the workflow if declare those data in Python instead of obtaining data through `C` memory address
+
+## Selenium
+
+### Installation
+
+- `pip install selenium`
+- [Download](https://pypi.org/project/selenium/) executable binary driver `geckodriver` in the `Drivers` links table and place it in the PATH of the OS
+- Common imports:
+  - `from selenium import webdriver`
+  - `from selenium.webdriver.common.by import By`
+  - `from selenium.webdriver.common.keys import Keys`
+
+### Usage
+
+- `browser = webdriver.Firefox()` initialize a browser instance
+- `browser.get('http://www.yahoo.com')` open a webpage on the browser
+  - `browser.title` now exists from the webpage html's title tag
+- `browser.quit()` close the broswer
+- `element = browser.find_element(By.NAME, 'input_box')` return a single element by its name
+  - use `By.ID` to get by id
+  - `element.text` return the text of the element
+  - `element.click()` perform click action on the element
+  - `element.get_attribute("class")` get the element class name
+- `elements = browser.find_elements(By.CLASS_NAME, 'p')` return a list of elements from top to bottom in html by class name
+- `element.send_keys('hello' + Keys.RETURN)` input text and press enter key
+- Sameple unit test case
+
+```py
+import unittest
+from selenium import webdriver
+
+class GoogleTestCase(unittest.TestCase):
+
+    def setUp(self):
+        self.browser = webdriver.Firefox()
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_page_title(self):
+        self.browser.get('http://www.google.com')
+        self.assertEquals('Google', self.browser.title)
+
+if __name__ == '__main__':
+    unittest.main()
+```
