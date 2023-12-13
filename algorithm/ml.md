@@ -293,6 +293,7 @@
 - The final output values for the artificial neural network could be either a predicted value(one output), a boolean value(one output) or categorical values(multiple output nodes)
 - Each input value is associated with a weight, the neural network learns by adjusting the weight of each input value.
 - Each neuron will have the sum of all input value times the weight, plus a bias term which equals to a dummy input $$x_0$$ with a value of `1` multiply by a weight of $$w_0$$
+  - To calculate the total number of parameters in the network sum the number of arrows plus the number of node beside input nodes (all of those nodes have one bias weight)
   - Each neuron itself is a linear binary classifier called perceptron
     - linear classifier guarantees to converge on a solution as long as the data is linearly separable
   - Perceptron model can be trained using perceptron learning algorithm
@@ -358,7 +359,11 @@
 
 1. Convolution operation uses a feature detector to generate a feature map.
    - The feature detector is essentially a filter
-   - The feature detector is a small matrix(2-D array) that has a certain predefined value in it. Its has different sizes in various CNNs.
+   - The feature detector is a small matrix that has a certain predefined value in it. Its has different sizes in various CNNs.
+     - It's 2-D for grey scale images, and 3-D for images with color
+     - For example, for `300x300x3` images after a `5x5x3` filter the resulting activation layer will be `298x298x1` in size
+     - Number of parameter for each filter is `5x5x3+1` where `1` is the bias term
+     - One convolution has multiple filters
    - The feature detector will be moving across the image(all pixel will only be processed once, line by line) and count the number of matches(non-zero) found when it overlapse with the image.
      - A stride defines the step the feature detector moves across the image.
    - Feature detector has negtive value to dim the image pixel and positive value to highlight.
@@ -387,6 +392,8 @@
    - Pooling layer goes after the Conv layer
    - Pooling layers provide an approach to down sampling feature maps by summarizing the presence of features in patches of the feature map
    - It operates over each activation map independently
+   - It uses stride so it can summary elements in the activation layer more effectively
+     - The stride size is usually the same as the pool size
    - There are serveral types of pooling
      - Max pooling(most used) - Using a small matrix to scan the feature map with certain stride line by line(all pixel will only be processed once). Only the max value will be recorded.
      - Average pooling - same process as max pooling, but record the average value.
@@ -395,11 +402,11 @@
    - Pooling layers ususlly don't use zero-padding
 4. Process from convolution to pooling (step 1 to step 3) can be repeat once again for some CNNs
 5. Drop-out layer is used during training to prevent overfitting
-   - In each epoch it randomly select some nodes in the hidden layers and treat it as if the selected nodes does not exist
-6. The 2-D array result will be flatten to a 1-D array then it will be fed into an artificial neural network.
+   - In each epoch it randomly select some input and treat it as if it does not exist
+6. The multiple 2-D array results from the pooling layer will be flatten to a 1-D array before they are fed into an artificial neural network.
    - Hidden layers in the ANN used by CNNs are called fully connected layers.
    - Back propagation in CNNs not only change weight, it also changes feature dectectors.
-   - If Pooling layers have a size of (20, 20) and there are 10 of them. the final flattened layer will be an 1-D list with `20 x 20 x 10 = 4000` elements
+   - If pooling layers have a size of `(20, 20)` and there are 10 of them. the final flattened layer will be an 1-D list with `20 x 20 x 10 = 4000` elements
 7. The last fully connected layer will vote for the result for image recognition.
    - The fully connected layer itself is a complete MLP with the flatten layer as the input layer
    - For multiclass classification we should use softmax in the last layer

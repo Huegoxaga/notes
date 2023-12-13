@@ -190,6 +190,12 @@
 - `git submodule deinit <SubmoduleDir>` untrack the submodule
   - `git rm <SubmoduleDir>` delete all related files in the repo
 
+#### Automation
+
+- GitHooks
+  - `git config core.hooksPath <path>` update githook folder path
+  - Files in this folder will be triggered in the git workflow based on its name, [click here](https://githooks.com) for a list of file names
+
 ## Git Large File Storage(LFS)
 
 - Use Git LFS when a file has size larger than 100MB

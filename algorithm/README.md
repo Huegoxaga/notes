@@ -761,3 +761,38 @@ int partition(int A[ ], int start, int end)
       return result;
   }
   ```
+
+### Optimization
+
+- Optimization refers to finding the action that provides the "best" result
+- In mathematics, it means finding the independent value that minimize or maximize a function
+- In optimization, the function is called cost, performance or fitness function
+- Analytical Optimization and Gradian-based Optimization are some of the most popular ways to solve the optimization problems
+
+#### Heuristic Optimization
+
+- Heuristic Optimization is based on the Search Techniques
+- They are inspired by the natural optimization
+- Genetic Algorithm
+  - It is an optimization algorithm that was developed by John Holland and his students at the University of Michigan in the early 1970
+  - A function `f(x)` is created to solve a complex problem, it represents the adaptation of each individual value `x` to its environment
+    - f is called fitness function
+    - The goal is to max `f(x)`
+  - The function can have multiple variables as a vector called phenotype, $$x=(x_1,x_2)$$
+  - The binary representation of the phenotype is called the genotype and it works as chromosomes, $$C=\overline{c_1c_2}=\overline{BIN(x_1)BIN(x_2)}$$
+  - The length of the binary number should be selected as the minimum number of digit to represent all possible solutions with a given quantization error. The number of counts in space is $$\left\lceil \frac{x_{max}-x_{min}}{\delta} \right\rceil+1$$, where `𝛿` is the minimum precision and $$\left\lceil \right\rceil$$ means round up. The precision for each binary count is $$\frac{x_{max}-x_{min}}{2^m-1}$$
+    - When `x` is in range `[-5, 5]` if the solution needs to reach `0.1`, there will be $$\left\lceil \frac{5-(-5)}{0.1} \right\rceil +1=101$$ possible solutions. The binary number used to represent all solution needs to be 7 digits long. The gap between each binary representation is `(5-(-5))`
+    - For the above example, if genotype is `0010000`, the solution it represented is `DEC(0010000)*0.079+(-5)=16*0.063-5=-3.992`， where `0.079` is the precision for a 7-digit binary count in range `[-5, 5]`
+  - Every individual is called a Chromosome
+  - The set of individual points is called Population
+  - The GA runs as follow
+    - Given a constant number of population `k`, randomly generate `k` vectors as the potential solutions
+    - Calculate the fitness values of each vector and selection a pair by using the fitness value divide by total fitness value of the population as the probability distribution
+    - Convert the vector input as the chromosome form $$\overline{c_1c_2}$$, and selecting a cutting point randomly and switch the parts
+      - It is possible to cut the code from two or more points
+      - Cross rate is the defined probability that the crossover operation will be perform on a pair of chromosomes
+    - Use a small probability to and mutation to the two new chromosomes
+      - This reduces the probability it stuck in a local maximum
+    - Repeat the process to obtain other new pairs of chromosomes until the new population reaches `k`
+    - Repeat the entire process generation by generation
+      - It stops until it complete a set number of iterations or the fitness value reaches a predefine value

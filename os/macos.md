@@ -101,6 +101,7 @@
   - `brew pin <PackageName>` stop a package from being updated
   - `brew unpin <PackageName>` undo pinning
 - `brew cleanup` Remove stale lock files and outdated downloads for all formulae and casks, and remove old versions of installed formulae
+- `brew autoremove` Remove all unused dependencies
 - `brew list` list installed packages and apps
 - `brew install <PackageName>` install a package.
   - brew with distinguish some new package with pre-installed system package by prepending a `g` to its name. use `-with-default-names` will make them use their original names.
@@ -160,7 +161,7 @@
 - Homebrew clean up all broken symlinks `brew doctor && brew cleanup`
 - Clean up npm cache `npm cache clean --force`
 - Clean up sandboxed apps in folders located under `~/Library/Containers/`, usually can be achived by using apps' own clearing cache feature
-- Clean up shared libraries for uninstalled apps under `~/Library/Application\ Support`
+- Clean up shared libraries for uninstalled apps under `~/Library/Caches`, `~/Library/Preferences/`, `~/Library/PreferencePanes/`, `~/Library/Application Support/`, `~/Library LaunchAgents/`, `~/Library/LaunchDaemons/`, `~/Library/StartupItems/`
 
 ## Editor
 
