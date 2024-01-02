@@ -14,23 +14,37 @@
   - The number from the list can't add itself
   - The order of the solution list doesn't matter
 - Solution:
+
   - Brute force with two nested loop - `O(n^2)`
   - Hashmap with elements in list as keys and their indices as values - `O(n)`
-    - For each element in list, find its difference between itself and the target as complement. A solution is found when the complement exists in the keys and the complement is not the element itself
-    - Instead of creating a hashmap (dictionary) and finding the complement in two full loop as a two-pass, the two steps can be done in one iteration
+
+    - [Two-pass Hash Table](https://leetcode.com/problems/two-sum/editorial/) - For each element in list, find its difference between itself and the target as complement. A solution is found when the complement exists in the keys and the complement is not the element itself
+
+    ```py
+    class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = {}
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in hashmap:
+                return [i, hashmap[complement]]
+            hashmap[nums[i]] = i
+    ```
+
+    - [One-pass Hash Table](https://leetcode.com/problems/two-sum/editorial/) - Instead of creating a hashmap (dictionary) and finding the complement in two full loop as a two-pass, the two steps can be done in one iteration
       - the only difference is one-pass can only pairing the complement before it in the list, two-pass can find solution from both sides in list
       - When the input list has duplicated values, this method still works as the last index is always saved, when the algorithm is looking at the key that is not saved in the hashmap it can still be paired with the other one with a different index
 
-```py
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        hashmap = {}
-        for i in range(len(nums)): # iterate whole list
-            complement = target - nums[i]
-            if complement in hashmap: # look back for solution
-                return [i, hashmap[complement]]
-            hashmap[nums[i]] = i # otherwise, put current value to the dictionary
-```
+    ```py
+    class Solution:
+        def twoSum(self, nums: List[int], target: int) -> List[int]:
+            hashmap = {}
+            for i in range(len(nums)): # iterate whole list
+                complement = target - nums[i]
+                if complement in hashmap: # look back for solution
+                    return [i, hashmap[complement]]
+                hashmap[nums[i]] = i # otherwise, put current value to the dictionary
+    ```
 
 ### 7. Reverse Integer
 
@@ -63,7 +77,7 @@ class Solution:
     - Palindrome - An integer is a palindrome when it reads the same forward and backward
 - Solution:
 
-  - Construct a new reversed number and compare - `O(log_10(n))`
+  - Compare Splitted Digit in a List - Construct a new reversed number and compare - `O(log_10(n))`
     - Edge cases:
       - return false when the number is negative
       - return true when it equals zero
@@ -83,19 +97,19 @@ class Solution:
                   numList.append(x % 10)
                   x = x // 10
               # Test Palindrome
-              for i in range(len(numList)):
+              for i in range(int(len(numList)/2)):
                   if numList[i] != numList[(i+1)*(-1)]:
                       return False
           return True
   ```
 
-  - Consider the input integer as string, reverse and compare it - `O(log_10(n))` where `log_10(n)` is the length of the string
+  - String Solution - Consider the input integer as string, reverse and compare it - `O(log_10(n))` where `log_10(n)` is the length of the string
 
-```py
-class Solution:
-    def isPalindrome(self, x: int) -> bool:
-        return str(x) == str(x)[::-1]
-```
+  ```py
+  class Solution:
+      def isPalindrome(self, x: int) -> bool:
+          return str(x) == str(x)[::-1]
+  ```
 
 ### 12. Integer to Roman
 
@@ -252,24 +266,42 @@ class Solution:
   - Input: `n = 3`
   - Output: `["((()))","(()())","(())()","()(())","()()()"]`
 - Solution:
-  - If opening bracket is `1` and closing bracket is `-1`, the sum of valid parentheses is zero. Find all combinations of valid brackets in a binary tree
+
+  - DFS in Binary Tree - If opening bracket is `1` and closing bracket is `-1`, the sum of valid parentheses is zero. Find all combinations of valid brackets in a binary tree
     - Sum can't go below `-1` as no valid pair can start with closing bracket
     - Optionally, use two counters for opening and closing brackets
 
-```py
-class Solution:
-    def generateParenthesis(self, n: int) -> List[str]:
-        res = []
-        def dfs(brackets, depth, bracket_strs):
-            status = sum(brackets) # Get sum once at each node for speed
-            if depth == n * 2: # n pairs has n * 2 chars
-                if status==0: res.append(bracket_strs)
-                return
-            dfs(brackets+[1], depth+1, bracket_strs+'(')
-            if status > 0: dfs(brackets+[-1], depth+1, bracket_strs+')') # No new closing bracket when all brackets are paired
-        dfs([1], 1, '(')
-        return res
-```
+  ```py
+  class Solution:
+      def generateParenthesis(self, n: int) -> List[str]:
+          res = []
+          def dfs(brackets, bracket_strs): # brackets tracks the number representation, bracket_strs tracks the string representation
+              if len(brackets) == n * 2: # n pairs has n * 2 chars
+                  if sum(brackets)==0: res.append(bracket_strs)
+                  return
+              dfs(brackets+[1], bracket_strs+'(')
+              if sum(brackets) > 0: dfs(brackets+[-1], bracket_strs+')') # No new closing bracket when all brackets are paired
+          dfs([1], '(')
+          return res
+  ```
+
+  - [Pruned DFS Tree](https://leetcode.com/problems/generate-parentheses/solutions/2542620/python-java-w-explanation-faster-than-96-w-proof-easy-to-understand/) - To eliminate unnecesscery branch in the above tree when the number of left bracket is more than the number of pairs given, add a condition for the left branches
+
+  ```py
+  class Solution:
+      def generateParenthesis(self, n: int) -> List[str]:
+          def dfs(left, right, s):
+            if len(s) == n * 2:
+              res.append(s)
+              return
+            if left < n:
+              dfs(left + 1, right, s + '(')
+            if right < left:
+              dfs(left, right + 1, s + ')')
+          res = []
+          dfs(0, 0, '')
+          return res
+  ```
 
 ### 28. Find the Index of the First Occurrence in a String
 
@@ -280,15 +312,16 @@ class Solution:
 - Assumption:
   - haystack and needle consist of only lowercase English characters
 - Solution:
+
   - String Slicing - `Time: O(N*M)`, check string equality of `needle` with length `N` at nearly every possible indexs of string `haystack` with length `M`
 
-```py
-class Solution:
-    def strStr(self, haystack: str, needle: str) -> int:
-        for i in range(len(haystack)-len(needle)+1): # The last possible index plus one for end of range
-            if needle == haystack[i:i+len(needle)]: return i
-        return -1
-```
+  ```py
+  class Solution:
+      def strStr(self, haystack: str, needle: str) -> int:
+          for i in range(len(haystack)-len(needle)+1): # The last possible index plus one for end of range
+              if needle == haystack[i:i+len(needle)]: return i
+          return -1
+  ```
 
 ### 39. Combination Sum
 
@@ -302,10 +335,10 @@ class Solution:
   - The same number may be chosen from candidates for an unlimited number of times
 - Solution:
 
-  - DFS (Backtracking) - `Time: O(N^T/M)` : `N` is the length of the given list, `T` is the target value, and `M` is the smallest element in the given list
+  - DFS (Backtracking) - Time: $$N^{\frac{T}{M}}$$ : `N` is the length of the given list, `T` is the target value, and `M` is the smallest element in the given list
     - Recursively check the combinations of `N` numbers at `T/M` depth
     - The worst case will keep repeating the smallest number and check if their sum is a solution
-    - [Tree Diagram](media/39.png)
+    - ![Tree Diagram](img/39.png)
 
 ```py
 class Solution:
@@ -339,7 +372,7 @@ class Solution:
 - Solution:
 
   - DFS (Backtracking) - `Time: O(N^2)`, `N` branch times `N` depth
-    - [Tree Diagram](media/40.png)
+    - ![Tree Diagram](img/40.png)
 
 ```py
 class Solution:

@@ -430,6 +430,7 @@ mylist.insert(i, e) # Inserts e into mylist at index i
   - If the ending index is miss, it will take all elements to the end.
   - A negative index counts from the end of the list. Ex: `a[-5:]` it take the last 5 elements of list a.
 - `x[:] = [1, 2, 3]` it assigns the values to the existing list variable `x` without changing its memory address. Otherwise, `x` will be pointed to a new list object with a different memory address
+  - For objects that can be converted into list with `list()`, they can be assigned to `x[:]` directly
 
 #### List Function
 
