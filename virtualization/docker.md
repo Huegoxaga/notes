@@ -99,7 +99,7 @@
 - run `docker start <containerIDorNames>` start a stopped container.
 - run `$ docker run -d <RepoName>:<TagName> <ContainerCommandPath> -c "command enter here"`, run command in background and return the `containerID`. Stop container when done.
   - Ex: `$ docker run -d ubuntu:18.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"`.
-  - To get the output, run `docker container logs <containerIDorNames>`.
+  - To get the output, run `docker logs <containerIDorNames>`.
   - If the container is an interactive terminal `-it`, run `docker attach <containerIDorNames>` to access its terminal. The container will be stopped upon exiting the terminal.
   - If the container is an interactive terminal `-it`, run `$ docker exec -it <containerIDorNames> bash` to access its terminal using bash shell. The container will not be stopped upon exiting the terminal.
 - run `docker run -d --name sql_server_demo -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=reallyStrongPwd123' -p 1433:1433 microsoft/mssql-server-linux`

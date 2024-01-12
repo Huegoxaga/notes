@@ -135,8 +135,11 @@
   - One parent is the last commit of main branch before merge, one parent is the last commit of the incoming branch
     - For commits from incoming branches, the branch names are shown in brackets
 - `git revert <commitID>` revert back a certain commit and commit the changes.
+  - `git revert HEAD` revert to previous commit in a new commit
+  - `git revert HEAD~3...HEAD` revert the last three commits in one new commit
   - To revert a merge commit, use `-m 1` to revert to the left parent in merge history, use `-m 2` to revert to the right parent in merge history
 - `git reset <commitID>` reset the files to the state after a certain commit.
+  - `git reset --hard HEAD~` delete previous commit
   - use `git push --force` will delete all the newer commits in the remote repo.
 - `git remote` List all the current remote repos.
   - `git remote -v` to see details

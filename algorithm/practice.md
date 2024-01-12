@@ -552,11 +552,11 @@ class Solution:
                   memo[n] = climb(n-1) + climb(n-2) # Get n from previous terms
                   return memo[n] # Return res
           return climb(n)
-    class Solution: # Optionally, use python cache decorator
-        @cache
-        def climbStairs(self, n: int) -> int:
-            if n <= 2: return n # base case
-            return self.climbStairs(n - 1) + self.climbStairs(n - 2)
+  class Solution: # Optionally, use python cache decorator
+      @cache
+      def climbStairs(self, n: int) -> int:
+          if n <= 2: return n # base case
+          return self.climbStairs(n - 1) + self.climbStairs(n - 2)
   ```
 
   - [Fibonacci sequence with Bottom-Up DP](https://leetcode.com/problems/climbing-stairs/solutions/1792723/python-in-depth-walkthrough-explanation-dp-top-down-bottom-up/)
@@ -570,6 +570,17 @@ class Solution:
           for i in range(2, n): # Processing when n > 2
               dp[i] = dp[i - 1] + dp[i - 2]
           return dp[n-1] # find result for n with its index n - 1
+  ```
+
+  - Recursive solution - `O(2^n)`
+
+  ```py
+  class Solution:
+      def climbStairs(self, n: int) -> int:
+          if n <= 1:
+              return n
+          else:
+              return climbStairs(n-1) + climbStairs(n-2)
   ```
 
 ### 89. Gray Code
@@ -667,9 +678,10 @@ class TreeNode:
               while root: # Put all left node in stack first
                   stack.append(root)
                   root = root.left
-              node = stack.pop() # Check Most left child
+              node = stack.pop() # Check the last element in stack which is the left most child node in tree
               res.append(node.val) # Save value
-              root = node.right # Save left child's right node root, so all of its left nodes can be pushed to end of stack in next whild root
+              # Save left child's right node as root, so all of its left nodes can be pushed to end of stack in next while root loop
+              root = node.right
               # Visit the parent of the left leave in next interation until stack is empty or no more right node
           return res
   ```
@@ -875,3 +887,148 @@ class TreeNode:
     - Create two pointers where one points at the first index in the array and the other points at the second index
     - If the sum of the values at the pointers is less than the target, shift both pointers over one
     - If the values summed are greater, shift the first pointer left one
+
+### 1071. Greatest Common Divisor of Strings
+
+- Input:
+  - Two Strings
+- Output:
+  - The largest string that divides both given strings
+  - A string divides string `x` when it can be formed by `x` concatenated with itself one or more times
+- Solution:
+
+  - Brutal Force - `O(min(m,n)*(m+n))` where `m`, `n` are the length of the given strings
+    - Check if the shorter input string is divisible by both given strings
+    - Reduce the length of the shorter one letter at a time and check the divisibility in each iteration
+
+  ```py
+  class Solution:
+
+      def check_div(self, divisor, dividend):
+          if len(dividend)%len(divisor) == 0:
+              quotient = int(len(dividend)/len(divisor))
+              return quotient * divisor == dividend
+          else:
+              return False
+
+      def gcdOfStrings(self, str1: str, str2: str) -> str:
+          short_str = str1 if len(str1) < len(str2) else str2
+          for i in range(len(short_str)):
+              if i==0:
+                  check_str = short_str
+              else:
+                  check_str = short_str[:-i]
+              if self.check_div(check_str, str1) and self.check_div(check_str, str2):
+                  return check_str
+          return ''
+  ```
+
+  - GCD Function
+    - Check if GCF exists by interchange the string and check check for equality
+    - Use the `gcd()` method from math package to find the length of repeated gcd string
+
+  ```py
+  class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        return str1[:gcd(len(str1),len(str2))] if str1 + str2 == str2 + str1 else ''
+  ```
+
+### 1768. Merge Strings Alternately
+
+- Input:
+  - Two words
+- Output:
+  - Merged string letter by letter altervatively from both words, and append remaining letters from the longer word
+- Solution:
+
+  - One While loop for both strings
+
+  ```py
+  class Solution:
+      def mergeAlternately(self, word1: str, word2: str) -> str:
+          merged = ""
+          while word1 or word2:
+              if word1: merged += word1[0]
+              word1 = word1[1:]
+              if word2: merged += word2[0]
+              word2 = word2[1:]
+
+          return merged
+  ```
+
+## Code Snippets
+
+- Level Order Traversal
+
+  - Solution with `collections`
+
+  ```py
+  from collections import deque
+
+  class Node:
+      def __init__(self, value):
+          self.value = value
+          self.children = []
+
+  def level_order_traversal(root):
+      # Create a queue to hold the nodes to be visited
+      queue = deque([root])
+
+      while queue:
+          # Dequeue the next node
+          node = queue.popleft()
+
+          # Print the node's value
+          print(node.value)
+
+          # Add the node's children to the queue
+          for child in node.children:
+              queue.append(child)
+
+  # Create a sample binary tree
+  root = Node(1)
+  root.children = [Node(2), Node(3), Node(4)]
+  root.children[0].children = [Node(5), Node(6)]
+  root.children[1].children = [Node(7), Node(8)]
+
+  # Perform the Level Order traversal
+  level_order_traversal(root)
+  ```
+
+  - Solution without using `collections`
+
+  ```py
+  def level_order_traversal(root):
+    stack = [root]
+
+    while stack:
+        node = stack.pop(0)
+        print(node.value)
+
+        if node.children:
+            stack.extend(node.children)
+  ```
+
+- Invert binary tree
+
+```py
+'''
+         5                         5
+       /   \                     /   \
+      /     \                   /     \
+     3       7    =======>     7       3
+    / \     /                   \     / \
+   1   4   6                     6   4   1
+'''
+class Node:
+    def __init__(self, data):
+        self.left = self.right = None
+        self.data = data
+    def __repr__(self):
+        return repr(self.data)
+
+def invert(root):
+    root.left, root.right = root.right, root.left
+    if left: invert(left)
+    if right: invert(right)
+```

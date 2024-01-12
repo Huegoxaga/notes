@@ -110,6 +110,7 @@
 ### GUI
 
 - The structure of a test plan can be created on the left panel
+- One componenet will be effective on all other components on the same level in the hierarchy
 - One `Test Plan` can have many `Thread Group`s
   - `Thread Group` is a collection of threads, each thread represents one user
 - One `Thread Group` can have many `Sampler`s
@@ -128,9 +129,11 @@
 #### Thread Group
 
 - `Ramp-Up Period` - the time JMeter should take to start the total number of threads
+  - When there are 10 threads and the ramp-up period is 5 seconds, it will create 2 additional threads in every second
 
 #### Sampler
 
+- Samplers execute from top to bottom in a loop, the next starts after the previous one completes with a response
 - `HTTP Request`
   - Parameter can be either added to the path or added in the parameter table
 
@@ -140,6 +143,7 @@
 
 #### Timer
 
+- The timers add a delay before the start of the each sampler in sequence, after test starts or the previous sampler receives a response
 - `Constant Timer` delay one or more sampler for a specific amount of time
 - `Uniform Random Timer` generate a delay time from zero to the `Random Delay Max` time plus the `Constant Delay Offset`
 
@@ -151,3 +155,4 @@
 
 - `User Defined Variables`, once defined in the table, the variable can be accessed in the sampler setting using `${var_name}`
 - `CSV Data Set Config`, each iteration of the sampler will use one record of the variables in the CSV file, from top to bottom repeatly, the values can be accessed from the sampler cofig using `${header_name}`
+- `HTTP Authorization Manager` adds authorization headers to the HTTP requests
