@@ -1,5 +1,10 @@
 # Practice Questions
 
+## Hints
+
+- Use scratch paper
+- When feeling diffcult to get started, try brutal force first, then see if any improvement can be made
+
 ## LeetCode
 
 ### 1. Two Sum
@@ -860,6 +865,42 @@ class TreeNode:
           return profit
   ```
 
+### 151. Reverse Words in a String
+
+- Input:
+  - A string with words
+- Output:
+  - A string with words in reversed order separated by single spaces
+- Assumption:
+  - The original string may have multiple spaces between words or on both ends
+- Solution:
+
+  - Python string manipulation
+
+  ```py
+  class Solution:
+    def reverseWords(self, s: str) -> str:
+        return " ".join((s.split()[::-1]))
+  ```
+
+  - [One pass](https://leetcode.com/problems/reverse-words-in-a-string/solutions/2808468/python3-faster-than-97-without-using-split/?envType=study-plan-v2&envId=leetcode-75) solution without using the split method
+
+  ```py
+  class Solution:
+    def reverseWords(self, s: str) -> str:
+        res = []
+        temp = ""
+        for c in s:
+            if c != " ":
+                temp += c
+            elif temp != "":
+                res.append(temp)
+                temp = ""
+        if temp != "":
+            res.append(temp)
+        return " ".join(res[::-1])
+  ```
+
 ### 167. Two Sum II
 
 - Input:
@@ -887,6 +928,166 @@ class TreeNode:
     - Create two pointers where one points at the first index in the array and the other points at the second index
     - If the sum of the values at the pointers is less than the target, shift both pointers over one
     - If the values summed are greater, shift the first pointer left one
+
+### 238. Product of Array Except Self
+
+- Input:
+  - An array of integer `nums`
+- Output:
+  - An array of integer `answer` where `answer[i]` equals the product of all elements except `nums[i]`
+- Assumption:
+  - All integers can fit in a 32-bit integer
+  - Solution must be `O(n)` in time
+  - Division operation is not allowed in the solution
+- Solution:
+
+  - Using pre-calculated prefix/suffix product array
+
+    - Each product at `i` is essentially the product of all numbers the left of `i` times the product of all numbers the right of `i`
+    - The summary all prefix product and suffix product for each element at `i` can optimaize the solution to `O(n)`
+
+    ```py
+    class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        length = len(nums)
+        pre_array, suf_array = [1]*length, [1]*length
+        for i in range(1, length):
+            pre_array[i] = pre_array[i-1] * nums[i-1]
+            suf_array[length-i-1] = suf_array[length-i] * nums[length-i]
+        return [pre_array[i] * suf_array[i] for i in range(length)]
+    ```
+
+  - Getting output while calculating suffix array in [one pass](https://leetcode.com/problems/product-of-array-except-self/solutions/3938575/video-visualization-and-explanation-of-o-n-solution/?envType=study-plan-v2&envId=leetcode-75)
+
+  ```py
+  class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        length = len(nums)
+        products = [1] * length
+        for i in range(1, length):
+            products[i] = products[i-1] * nums[i-1]
+
+        right = nums[-1]
+        for i in range(length-2, -1, -1):
+            products[i] *= right
+            right *= nums[i]
+
+        return products
+  ```
+
+### 334. Increasing Triplet Subsequence
+
+- Input:
+  - an integer array `nums`
+- Output:
+  - True if `nums[i] < nums[j] < nums[k]`, where indices `i < j < k`
+- Solution:
+
+  - [If-else one pass](https://leetcode.com/problems/increasing-triplet-subsequence/solutions/3549612/python-easy-solution/?envType=study-plan-v2&envId=leetcode-75)
+
+  ```py
+  class Solution:
+    def increasingTriplet(self, nums: List[int]) -> bool:
+        first = second = float('inf')
+        for n in nums:
+            if n <= first: # find the smallest as first
+                first = n # update new first whenever n is smaller
+            elif n <= second: # find any value that is larger than first and lower than any historical second value
+                second = n # keep the lowest second value until third is found
+            else:
+                return True # return whenever a third value is bigger than second
+        return False
+  ```
+
+### 345. Reverse Vowels of a String
+
+- Input:
+  - A string
+- Output:
+  - A string with its vowels replaced in reversed order
+- Assumptions:
+  - Vowels can be in both lower/uppercases
+- Solution:
+
+  - One pass with two pointer
+
+  ```py
+  class Solution:
+      def reverseVowels(self, s: str) -> str:
+          vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+          s = list(s) # list performs faster
+          end = len(s) - 1 # Track the index of the second vowel from the back
+          for i in range(len(s)):
+              if i == end: break # return when first letter reaches the latest index of the second
+              if s[i] in vowels:
+                  for j in range(end, i, -1):
+                      end = j - 1
+                      if s[j] in vowels:
+                          s[i], s[j] = s[j], s[i]
+                          # s = s[:i] + s[j] + s[i+1:j] + s[i] + s[j+1:] # slower alternatives without list conversion
+                          break
+                  if end == i+1: return ''.join(s) # Return when the second vowel is not found after all remaining letter are checked from the back
+          return ''.join(s)
+  ```
+
+### 443. String Compression
+
+- Input:
+  - An array of characters
+- Output:
+- Solution:
+
+  ```py
+  class Solution:
+      def compress(self, chars: List[str]) -> int:
+          res = ""
+          if len(chars) == 1: return chars
+          counter = 1 # number of duplicated letter
+          for i in range(len(chars)-1):
+              if chars[i] == chars[i+1]: # next same
+                  counter += 1
+              elif counter == 1: # next different, single letter
+                  res += chars[i]
+              else: # next different, duplicated letter
+                  res += chars[i] + str(counter)
+                  counter = 1
+          if counter > 1: # For last char
+              res += chars[-1] + str(counter)
+          else:
+              res += chars[-1]
+          chars = res
+          return len(res)
+
+  ```
+
+### 605. Can Place Flowers
+
+- Input:
+  - An integer array `flowerbed` containing `1` or `0` - `1` means the plot is planted with flower, `0` means it's empty
+  - An integer - The number of new flowers to be planted in the flowerbed with empty adjacent plots
+- Output:
+  - A boolean - True if all new flowers can be planted and False otherwise
+- Solution:
+
+  - One pass
+    - Counting the number of consecutive empty plots of 3, 5, 7 etc...
+    - For edge cases add `[1, 0]` and `[0, 1]` on both side so the first and last empty plots in the `flowerbed` can be treated as potential plots correctly
+
+  ```py
+  class Solution:
+    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+        counter, plot = 0, 0
+        for i in [1,0] + flowerbed + [0,1]:
+            if i == 1:
+                plot += int((counter-1)/2)
+                counter = 0
+            else:
+                counter += 1
+            # Optimization: Early stopping when available plot count starts to surpass requested plot number
+            if plot == n: return True
+        return plot >= n
+
+  ```
 
 ### 1071. Greatest Common Divisor of Strings
 
@@ -931,6 +1132,25 @@ class TreeNode:
   class Solution:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
         return str1[:gcd(len(str1),len(str2))] if str1 + str2 == str2 + str1 else ''
+  ```
+
+### 1431. Kids With the Greatest Number of Candies
+
+- Input:
+  - List of integer `candies` - the number of candies each kid has
+  - Integer `extraCandies` - the number of candies that to be given for one of the kids
+- Output:
+  - List of boolean - true if the kid at each index will possess the most candies if extra candies are given to it
+- Assumption:
+  - Multiple kids can have the greatest number of candies
+- Solution
+
+  - One pass
+
+  ```py
+  class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        return [extraCandies + candy >= max(candies) for candy in candies]
   ```
 
 ### 1768. Merge Strings Alternately
@@ -1031,4 +1251,33 @@ def invert(root):
     root.left, root.right = root.right, root.left
     if left: invert(left)
     if right: invert(right)
+```
+
+- reverse double linked list
+
+```py
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+class Solution:
+    def reverseDLL(self, head):
+        #return head after reversing
+        if head is None:
+            return None
+
+        new_head = Node(head.data)
+        current = head.next
+
+        while current is not None:
+            next_node = current.next
+            current.next = new_head
+            current.prev = current.next.prev
+            new_head.prev = current
+            new_head = current
+            current = next_node
+
+        return new_head
 ```

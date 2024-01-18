@@ -430,6 +430,10 @@
   - `df.loc[2] = ['newdata1', 'newdata2', 'newdata3']` update the third row with new data.
   - `df.loc[2, ['Col2', 'Col3']] = ['newdata2', 'newdata3']` update the third row's data in column2 and column3.
   - `df.loc[2, 'Col2'] = 'newdata2'` or `df.at[2, 'Col2'] = 'newdata2'` update a single value.
+  - `df.loc[(df['Col1'] == 'Female') & (df['Col2'] == 'Student')]` filter row by columns
+    - Use bitwise operator `&` for and, `|` for or
+    - Use brackets since bitwise operators have higher precedence
+  - `df.loc[((df['age'] >= 19) & (df['age'] <= 30)),  'age_group'] = '19-30'` create new column and category based on filter criteria
 - `series.value_counts()` count unique values in the series.
 - `df.set_index('columnName')` set a column as the index, then and print
   - This method does not change the original dataframe. To replace the original dataframe use, `df.set_index('columnName' inplace=True)`.
