@@ -2657,5 +2657,11 @@ DROP PROCEDURE procedure_name;
 
 ### Postgres
 
+- `VACUUM FULL ANALYZE;`
+  - `ANALYZE;` collects statistics about the contents of tables in the database, and stores the results in the pg_statistic system catalog
+    - It helps the query planner uses updated statistics to determine the most efficient execution plans for queries
+  - `VACUUM FULL;` reclaim disk space occupied by deleted or obsolete data
 - `SELECT * FROM pg_stat_activity;` return list of current activity and connections
 - `SELECT pg_cancel_backend(pid) FROM pg_stat_activity;` disconnect from client by `pid`
+- `CREATE EXTENSION pg_stat_statements;` install `pg_stat_statements` extension
+- `SELECT query, total_exec_time, calls FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 10` view the top 10 most time consuming queries

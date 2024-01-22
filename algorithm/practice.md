@@ -1035,29 +1035,33 @@ class TreeNode:
 - Input:
   - An array of characters
 - Output:
+  - Compress the input array by letters and the number of duplicated letters it follows as single chars
+  - Return the length of the compressed array in integer
+- Assumption:
+  - Modify the input array in place
 - Solution:
+
+  - Two pointer - tracks the start location of each unique letter and number of deplicated letters
 
   ```py
   class Solution:
-      def compress(self, chars: List[str]) -> int:
-          res = ""
-          if len(chars) == 1: return chars
-          counter = 1 # number of duplicated letter
-          for i in range(len(chars)-1):
-              if chars[i] == chars[i+1]: # next same
-                  counter += 1
-              elif counter == 1: # next different, single letter
-                  res += chars[i]
-              else: # next different, duplicated letter
-                  res += chars[i] + str(counter)
-                  counter = 1
-          if counter > 1: # For last char
-              res += chars[-1] + str(counter)
-          else:
-              res += chars[-1]
-          chars = res
-          return len(res)
-
+    def compress(self, chars: List[str]) -> int:
+      ans = 0 # track compressing progress
+      i = 0 # tracks reading progress
+      while i < len(chars):
+          letter = chars[i] # for each letter in the loop
+          count = 0 # no duplicated letter is found yet
+          # For each remaining letters in current loop if duplicated letter is found
+          while i < len(chars) and chars[i] == letter:
+              count += 1
+              i += 1
+          chars[ans] = letter # output result
+          ans += 1
+          if count > 1: # Handling digit to chars in output
+              for c in str(count):
+                  chars[ans] = c
+                  ans += 1
+      return ans
   ```
 
 ### 605. Can Place Flowers
@@ -1087,6 +1091,68 @@ class TreeNode:
             if plot == n: return True
         return plot >= n
 
+  ```
+
+### 643. Maximum Average Subarray I
+
+- Input:
+  - an integer array `nums` with length `n`
+  - an integer `k`
+- Output:
+  - The max average value of a contiguous subarray of `nums` with length `k`
+- Assumption:
+  - Calculation error should be within `10^-5`
+- Solution:
+
+  - Brutal, compose subarray and each max in one pass `O(n*k)`
+
+  ```py
+  class Solution:
+      def findMaxAverage(self, nums: List[int], k: int) -> float:
+          max_sum = float('-inf')
+          for i in range(len(nums)-k+1):
+              cur_sum = sum(nums[i:k+i])
+              if max_sum < cur_sum: max_sum = cur_sum
+          return round(max_sum/k, 5) # return the average after dividing by k
+  ```
+
+  - Sliding Window - Use the previous sum to get the next sum by substracting leaving element on the left and adding incoming element on the right
+
+  ```py
+  class Solution:
+      def findMaxAverage(self, nums: List[int], k: int) -> float:
+          cur_sum = sum(nums[:k])
+          max_sum = cur_sum
+          for i in range(len(nums)-k):
+              next_sum = cur_sum - nums[i] + nums[i+k]
+              cur_sum = next_sum
+              if max_sum < cur_sum: max_sum = cur_sum
+          return round(max_sum/k, 5) # return the average after dividing by k
+  ```
+
+### 724. Find Pivot Index
+
+- Input:
+  - Integer array
+- Output:
+  - The pivot index where the sum of left subarray equals sum of right subarray
+- Assumption:
+  - The element on the pivot index is not included when calculating the sum
+  - Return the first index when equal
+  - left sum is `0` when index is at `0`
+- Solution:
+
+  - Update both sum in one pass from the left
+
+  ```py
+  class Solution:
+      def pivotIndex(self, nums: List[int]) -> int:
+          left, right, nums = 0, sum(nums), [0]+nums
+          for i in range(1, len(nums)):
+              left += nums[i-1]
+              right -= nums[i]
+              if left == right: return i-1
+          return -1
   ```
 
 ### 1071. Greatest Common Divisor of Strings
@@ -1152,6 +1218,41 @@ class TreeNode:
     def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
         return [extraCandies + candy >= max(candies) for candy in candies]
   ```
+
+### 1732. Find the Highest Altitude
+
+- Input:
+  - An integer array where each element indicates the altitude different between each road trip
+- Output:
+  - The highest altitude amongst the end of all trips
+- Altitude:
+  - The starting point has altitude `0`
+- Solution:
+
+  - Creating altitude array and get max
+
+  ```py
+  class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        alt = [0]
+        for diff in gain:
+            alt.append(alt[-1]+diff)
+        return max(alt)
+        # One Liner Equivalent
+        # return max([0]+accumulate(gain))
+  ```
+
+  - Track max in one pass
+
+```py
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        max_alt, last_alt = 0, 0
+        for diff in gain:
+            last_alt += diff
+            max_alt = max(max_alt, last_alt)
+        return max_alt
+```
 
 ### 1768. Merge Strings Alternately
 
@@ -1280,4 +1381,19 @@ class Solution:
             current = next_node
 
         return new_head
+```
+
+- quick sort
+
+```py
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr.pop()
+        # Optionally, use Median of three (first, last, middle) as pivot point to avoid ineffeciency when array is partially sorted
+        # pivot = sorted([arr[0], arr[len(arr) // 2], arr[-1]])[1]
+        greater = [x for x in arr if x >= pivot]
+        lesser = [x for x in arr if x < pivot]
+        return quicksort(lesser) + [pivot] + quicksort(greater)
 ```

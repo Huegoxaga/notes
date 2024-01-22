@@ -398,6 +398,8 @@
   - `groups.columnName` only keep that column for each group
   - `groups.columnName.mean()` return the mean value of the column for each group
   - class group is iterable
+  - `groups.aggregate({'value': ['sum', 'mean']})` return the result of each group for sum and mean
+  - `groups.columnName.transform('sum')` create a new column as Series to display sum of its category for each row of record
 - `df = pd.DataFrame(myArray, index=rownames, columns=colnames)` convert 2d array data into dataframe
 - `df = pd.DataFrame(dict)` convert dictionary data into dataframe
 - `dataframe.values` Return a Numpy representation of the DataFrame, axes labels will be removed.

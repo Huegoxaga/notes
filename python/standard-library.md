@@ -18,14 +18,14 @@
 from itertools import *
 count(x) #counts up from x
 for i in count(3):
-	print(i)
+  print(i)
 cycle(x) #infinitely iterates through an iterable (for instance a list or string).
 repeat(x) #repeats an object, either infinitely or a specific number of times(x).
 product(iterable1,iterable2) #return an object contains all possible combination product of these two iterables. (all possible iterable 1 , all possible iterable 2 )
 permutation(iterable)   #return an object contains all possible comb for the single iterable.
 takewhile(predicateFunc, iterables) # return object with items that only satisfy the predicate function.
 chain(x,y) #combine iterables
-accumulate(iterables)  #return a object contains a list of sum up to its position.
+accumulate(iterables)  #return a object contains a list of sum up to its position. Can add custom function as a second parameter for other operation other than sum
 list(accumulate(range(8)))
 ```
 
