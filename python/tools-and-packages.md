@@ -470,6 +470,7 @@
 - `df.sort_index()` sort by index.
 - `df['col'].nlargest(10)` show the 10 largest data of a column as series.
 - `df.nsmallest(10, 'col')` show the 10 smalleset data of a column as series.
+- `df.to_sql('test_table', engine, if_exists='append', index=False)` save df into database via sqlalchemy connection
 
 ## OpenCV
 

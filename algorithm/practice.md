@@ -929,6 +929,52 @@ class TreeNode:
     - If the sum of the values at the pointers is less than the target, shift both pointers over one
     - If the values summed are greater, shift the first pointer left one
 
+### 215. Kth Largest Element in an Array
+
+- Input:
+  - An integer array
+  - An integer `k`
+- Output:
+  - The kth largest integer in the given array
+- Assumtion:
+  - Sorting is not allowed
+- [Solution](https://leetcode.com/problems/kth-largest-element-in-an-array/solutions/3906260/100-3-approaches-video-heap-quickselect-sorting/?envType=study-plan-v2&envId=leetcode-75):
+
+  - Min-heap
+
+  ```py
+  class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        heap = nums[:k]
+        heapq.heapify(heap)
+        for num in nums[k:]:
+            if num > heap[0]:
+                heapq.heappop(heap)
+                heapq.heappush(heap, num)
+        return heap[0]
+  ```
+
+  - Quick selection - Find nth max/min in a list by returning the nth element when it is selected as the pivot point
+
+  ```py
+  class Solution:
+      def findKthLargest(self, nums: List[int], k: int) -> int:
+          res, greater, lesser = 0, [], []
+          pivot = nums.pop()
+          for x in nums:
+              if x >= pivot:
+                  greater += [x]
+              else:
+                  lesser += [x]
+          if len(greater) + 1 == k:
+              return pivot
+          elif len(greater) + 1 > k: # if pivot is too left
+              res = self.findKthLargest(greater, k)
+          else: # if pivot is too right
+              res = self.findKthLargest(lesser, k-len(greater)-1)
+          return res
+  ```
+
 ### 238. Product of Array Except Self
 
 - Input:
@@ -1130,6 +1176,36 @@ class TreeNode:
           return round(max_sum/k, 5) # return the average after dividing by k
   ```
 
+### 700. Search in a Binary Search Tree
+
+- Input:
+  - Root of a binary search tree
+  - an integer `val`
+- Output:
+  - The node with value `val`
+  - Return `None` if not found
+- Solution:
+
+  - Recursive search
+
+  ```py
+  # Definition for a binary tree node.
+  # class TreeNode:
+  #     def __init__(self, val=0, left=None, right=None):
+  #         self.val = val
+  #         self.left = left
+  #         self.right = right
+  class Solution:
+      def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+          if root is None or root.val == val:
+              return root
+          elif root.val < val:
+              return self.searchBST(root.right, val)
+          else:
+              return self.searchBST(root.left, val)
+
+  ```
+
 ### 724. Find Pivot Index
 
 - Input:
@@ -1198,6 +1274,26 @@ class TreeNode:
   class Solution:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
         return str1[:gcd(len(str1),len(str2))] if str1 + str2 == str2 + str1 else ''
+  ```
+
+### 1207. Unique Number of Occurrences
+
+- Input:
+  - an array of integers `arr`
+- Output:
+  - `true` if the number of occurrences of each value in the array is unique or `false` otherwise
+- Solution:
+
+  - Sort, count and save count in list, then check duplication
+  - Save values' frequency as key in dictionary and check duplicated counters by using set length
+
+  ```py
+  class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        arr_dict = {}
+        for n in arr: arr_dict[n] = arr_dict.get(n, 0) + 1 # get frequency map
+        return len(set(arr_dict.values()))  == len(arr_dict) # check number of unique counts
+
   ```
 
 ### 1431. Kids With the Greatest Number of Candies
@@ -1275,6 +1371,27 @@ class Solution:
               word2 = word2[1:]
 
           return merged
+  ```
+
+### 2215. Find the Difference of Two Arrays
+
+- Input:
+  - Two integer arrays
+- Output:
+  - A 2-D array with two elements where:
+    - First element contains a list unique elements in first array but not in second
+    - Second element contains a list unique elements in second array but not in first
+- Assumption:
+  - The order doesn't matter
+- Solution:
+
+  - HashSet operation
+
+  ```py
+  class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        set1, set2 = set(nums1), set(nums2)
+        return [list(set1-set2), list(set2-set1)]
   ```
 
 ## Code Snippets
@@ -1396,4 +1513,91 @@ def quicksort(arr):
         greater = [x for x in arr if x >= pivot]
         lesser = [x for x in arr if x < pivot]
         return quicksort(lesser) + [pivot] + quicksort(greater)
+```
+
+- get the depth of an binary tree
+
+```py
+class Node:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+def depth(node):
+    if node is None:
+        return 0
+    else:
+        left_depth = depth(node.left)
+        right_depth = depth(node.right)
+
+        if left_depth > right_depth:
+            return left_depth + 1
+        else:
+            return right_depth + 1
+
+node = Node(1)
+node.left = Node(2)
+node.right = Node(3)
+node.left.left = Node(4)
+node.left.right = Node(5)
+node.right.left = Node(6)
+node.right.right = Node(7)
+node.right.right.right = Node(7)
+print(depth(node))  # Output is 4
+```
+
+- Binary tree insertion
+
+```py
+class Node:
+    def __init__(self, key, left=None, right=None):
+        self.key = key
+        self.left = left
+        self.right = right
+
+def insert_node(root, key):
+    if root is None:
+        return Node(key)
+    elif key < root.key:
+        root.left = insert_node(root.left, key)
+    else:
+        root.right = insert_node(root.right, key)
+    return root
+
+root = Node(50)
+insert_node(root, 25)
+insert_node(root, 75)
+insert_node(root, 10)
+insert_node(root, 30)
+insert_node(root, 60)
+insert_node(root, 80)
+print(root)
+```
+
+- print all `n` bits binary numbers in order
+
+```py
+# Recursive method
+def print_n_bits(n):
+
+    def print_01_codes(current, num_digits):
+        if num_digits == 0:
+            print(current)
+            return
+
+        print_01_codes(current + '0', num_digits - 1)
+        print_01_codes(current + '1', num_digits - 1)
+    print_01_codes('', n)
+print_n_bits(2)
+
+# Binary conversion method
+def print_n_bits(n):
+    for i in range(2**n):
+        binary_str = bin(i)[2:] # from 0b0 to 0
+        binary_str = (n - len(binary_str)) * '0' + binary_str # add leading 0s
+        # Optionally use `binary_str.rjust(n,'0')` or `binary_str.zfill(n)`
+        print(binary_str)
+
+print_n_bits(3)
 ```

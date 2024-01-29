@@ -241,6 +241,7 @@ str.isspace()
 str.isupper()
 str.find(substring) # Find the lowest index of the substring.
 str.strip(string)   # Strip all the characters in the argument of the str from the beginning and the end. (if no argument, remove empty spaces by default)
+str.zfill(n) # add leading zeros until string length reaches `n`
 ",".join(["a","b","c"])
 #Output:’a,b,c’
 "Hello ME".replace("ME","world")

@@ -730,6 +730,51 @@
 - `CREATE EXTENSION extension_name;` enable extension to the database
 - `DROP EXTENSION extension_name;` disable extension from the database
 
+#### postgis
+
+- A Postgres extension for geo-database support
+- `CREATE EXTENSION postgis;` enable extension
+- `SELECT PostGIS_Full_Version();` get the extension version
+- `CREATE TABLE test (id serial NOT NULL, geom geometry(LineString,4326),` Create a table store geoinfo
+  - `LineString` is the geo data type that will be stored in the column `geom`
+- `INSERT INTO public.test (geom) VALUES (ST_GeomFromText('LINESTRING(0 0, 10 10, 20 20)', 4326));` Insert geometry
+  - `ST_GeomFromText(string, SRID_id)` function is used to create the geometry value from a WKT (Well-Known Text) string representation
+  - Geometry objects can be written as `'POINT(1 2)'::geometry`
+  - Optionally, use `NSERT INTO public.test (id, geom) VALUES (DEFAULT, 'SRID=4326;LINESTRING(0 0, 10 10)');` for pure string input
+- `SELECT * FROM test ORDER BY ST_Distance(ST_GeomFromText('POINT(0 0)', 4326), geometry) ASC LIMIT 1;` Get the linestring which has shortest distance to `POINT(0 0)`
+  - Optionally, `SELECT *, ST_Distance(geometry, ST_GeomFromText('POINT(0 0)', 4326)) AS distance FROM test ORDER BY distance LIMIT 1;`
+  - `ST_Distance(ST_GeomFromText(geometry_1, geometry_2)` it returns the distance betweeen to geometry objects
+    - For distance between coordinates, project them with different SRID, `SELECT ST_Distance(ST_Transform('SRID=4326;POINT(-72.1235 42.3521'::geometry, 26986), ST_Transform('SRID=4326;LINESTRING(-72.1260 42.45, -72.123 42.1546)'::geometry, 26986));`
+    - Alternatively, use `ST_DistanceSphere(geometry_1, geometry_2)`
+  - `ST_Equals(geometry_1, geometry_2)`: Returns true if the two geometries are equal.
+  - `ST_Intersects(geometry_1, geometry_2)`: Returns true if the two geometries intersect.
+  - `ST_Overlaps(geometry_1, geometry_2)`: Returns true if the two geometries overlap (i.e., share some but not all points).
+  - `ST_Touches(geometry_1, geometry_2)`: Returns true if the two geometries touch (i.e., share a common boundary).
+  - `ST_Within(geometry_1, geometry_2)`: Returns true if the first geometry is within the second geometry.
+  - `ST_Contains(geometry_1, geometry_2)`: Returns true if the first geometry contains the second geometry.
+  - `ST_Crosses(geometry_1, geometry_2)`: Returns true if the two geometries cross (i.e., share a common boundary).
+  - `ST_Disjoint(geometry_1, geometry_2)`: Returns true if the two geometries are disjoint (i.e., do not intersect).
+  - `ST_SymDifference(geometry_1, geometry_2)`: Returns a geometry representing the symmetric difference (i.e., the areas where the two geometries do not overlap).
+  - `ST_Union(geometry_1, geometry_2)`: Returns a geometry representing the union of the two geometries.
+  - `ST_Intersection(geometry_1, geometry_2)`: Returns a geometry representing the intersection of the two geometries.
+  - `ST_Within(geometry_1, geometry_2, radius)`: Returns true if the distance between two geometries are within the given radius.
+  - `ST_IsValid(geometry)`: Returns true if the geometry is valid.
+  - `ST_IsSimple(geometry)`: Returns true if the geometry is simple (i.e., has no self-intersections).
+  - `ST_IsRing(geometry)`: Returns true if the geometry is a ring (i.e., a closed linestring).
+  - `ST_IsClosed(geometry)`: Returns true if the geometry is closed (i.e., a polygon or a ring).
+  - `ST_Area(geometry)`: Returns the area of the geometry.
+  - `ST_Length(geometry)`: Returns the length of the geometry.
+  - `ST_Perimeter(geometry)`: Returns the perimeter of the geometry.
+  - `ST_Centroid(geometry)`: Returns the centroid of the geometry.
+  - `ST_PointOnSurface(geometry)`: Returns a point on the surface of the geometry.
+  - `ST_ConvexHull(geometry)`: Returns the convex hull of the geometry.
+    - `SELECT ST_AsText(ST_ConvexHull(ST_GeomFromText('MULTIPOLYGON(((0 0, 1 1, 1 0, 0 0)), ((2 2, 3 3, 3 2, 2 2)))'))) AS convex_hull;`
+- `Select ST_AsText(geometry) FROM test` the function `ST_AsText()` takes a geometry object and returns its WKT string representation
+- `ST_Dump(multi_geoms)` it separates multi geo objects into a set of geo objects
+- `ST_GeometryN(multi_geoms, n)` it returns the nth objects from multi geo objects
+
+#### postgis_topology
+
 ### Join
 
 - Table names can use nickname, set after `FROM` clause, e.g. `FROM tablename alias`
@@ -2665,3 +2710,8 @@ DROP PROCEDURE procedure_name;
 - `SELECT pg_cancel_backend(pid) FROM pg_stat_activity;` disconnect from client by `pid`
 - `CREATE EXTENSION pg_stat_statements;` install `pg_stat_statements` extension
 - `SELECT query, total_exec_time, calls FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 10` view the top 10 most time consuming queries
+
+#### Tablespace
+
+- A tablespace can be used to specify the disk location for storing database objects
+  - The default tablespace is `pg_default`

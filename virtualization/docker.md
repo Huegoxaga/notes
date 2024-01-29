@@ -184,8 +184,8 @@
 
 ### Manage Data
 
-- Move file
-  - run `docker cp <SourcefilePath> <ContainerName>:<DestinationPath>`
+- Move file `docker cp <SourcefilePath> <ContainerName>:<DestinationPath>`
+- Download file from docker container to host `docker cp <container_id>:<SourcefilePath> :<DestinationPath>`
 - A Volumn can store data independently, it can be shared or attached to any contianer and remains in the Host OS by default even the container is deleted. Any changes on the volumn will take effect immediately.
 - run `docker volume create <VolumnName>` to create a volumn.
 - add `--mount source=<VolumnName>,target=<FoldertoMount>` in the `docker run` command to mount one or more volumns on a container.
