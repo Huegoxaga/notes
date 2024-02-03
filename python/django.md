@@ -160,6 +160,7 @@ def about(request):
       author = models.ForeignKey(User, on_delete=models.CASCADE)
       # related_name field can be used to reverse lookup
       # Filter function has reversed fields available using the all lower-case model class name
+      # Optionally, use fieldname_set for reverse lookup
       related_posts = models.ManyToManyField(User,blank=True,null=True, related_name='other_posts')
       # use the string 'self' to indicate a self-reference
       parent = models.ForeignKey('self', null=True, blank=True)
@@ -216,6 +217,8 @@ def about(request):
   ModelClass.objects.get(propertyname='value') # get a single record
   ModelClass.objects.get(id=1) # return the object with id 1
   newobject = ModelClass.objects.create(property1='value1', property2 = 'value2') #create, save and return a new object
+  newobject, created = ModelClass.objects.get_or_create(property='value') #return an object, created it and return created = True if not exists
+  newobject, created = ModelClass.objects.update_or_create(property='value') #update an object, created it and return created = True if not exists
   newobject = ModelClass(property1='value1', property2 = 'value2') #init and return an object
   newobject.save() # save change to the object that is already in the database
   newobject.delete() # delete the object

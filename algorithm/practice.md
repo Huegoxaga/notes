@@ -3,7 +3,15 @@
 ## Hints
 
 - Use scratch paper
-- When feeling diffcult to get started, try brutal force first, then see if any improvement can be made
+- Try brutal force when optimal solution can't be find immediately
+- Read example cases carefully when you are under pressure
+- Practice questions with a timer
+- Try to debug by reading the code only
+- Track variable values with inline comments
+  - use notation like `n: 12` for constant
+  - use notation like `i: 3-5` for iterables
+- Maximize short term memory before coding by completing the following steps in order:
+  - cardio -> a balanced meal -> 8 hours of sleep -> relaxing -> meditation
 
 ## LeetCode
 
