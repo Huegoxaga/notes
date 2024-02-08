@@ -1,18 +1,5 @@
 # Practice Questions
 
-## Hints
-
-- Use scratch paper
-- Try brutal force when optimal solution can't be find immediately
-- Read example cases carefully when you are under pressure
-- Practice questions with a timer
-- Try to debug by reading the code only
-- Track variable values with inline comments
-  - use notation like `n: 12` for constant
-  - use notation like `i: 3-5` for iterables
-- Maximize short term memory before coding by completing the following steps in order:
-  - cardio -> a balanced meal -> 8 hours of sleep -> relaxing -> meditation
-
 ## LeetCode
 
 ### 1. Two Sum
@@ -1609,3 +1596,16 @@ def print_n_bits(n):
 
 print_n_bits(3)
 ```
+
+## Hints
+
+- Use scratch paper
+- Try brutal force when optimal solution can't be find immediately
+- Read example cases carefully when you are under pressure
+- Practice questions with a timer
+- Try to debug by reading the code only
+- Track variable values with inline comments
+  - use notation like `n: 12` for constant
+  - use notation like `i: 3-5` for iterables
+- Maximize short term memory before coding by completing the following steps in order:
+  - cardio -> a balanced meal with fruits -> 8 hours of sleep -> relaxing -> open the window-> meditation

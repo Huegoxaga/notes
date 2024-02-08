@@ -673,13 +673,43 @@ def about(request):
 
 ### Cache
 
+- Config cache backend in `settings.py`
+
+```py
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379",
+    }
+}
+```
+
+#### Page cache
+
 - import the following
-  ```py
-  from django.utils.decorators import method_decorator
-  from django.views.decorators.cache import cache_page
-  ```
+
+```py
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+```
+
 - Add decorator `@method_decorator(cache_page(time))` above each api method.
   - Cache TTL time is in seconds.
+
+#### Cache backend
+
+- `from django.core.cache import cache`
+- `cache.delete()` Removes a key from the cache.
+- `cache.add()` Sets a key in the cache only if it does not already exist.
+- `cache.touch()` Updates the expiration time of a key in the cache.
+- `cache.incr()` Increments a numeric value stored in the cache.
+- `cache.decr()` Decrements a numeric value stored in the cache.
+- `cache.get_or_set()` Gets a value from the cache, or sets a value if it does not exist.
+- `cache.has_key()` Checks whether a key exists in the cache.
+- `cache.make_key()` Generates a cache key from a set of arguments.
+- `cache.get_many()` Gets multiple values from the cache at once.
+- `cache.set_many()` Sets multiple values in the cache at once.
+- `cache.delete_many()` Deletes multiple keys from the cache at once
 
 ## GeoDjango
 
@@ -907,6 +937,8 @@ def about(request):
 ### Useful Commands
 
 - `celery -A <proj> purge` delete all pending tasks
+- `celery call <taskName>` trigger a celery task
+- `celery result <taskID>` check task result
 
 ### Celery Beat
 

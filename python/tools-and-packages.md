@@ -1698,8 +1698,32 @@ client.loop_stop()
 ## Redis
 
 - redis client in python
-- `r = redis.Redis(decode_responses=True)` init a redis client
-- `r. lpush("list_name", str)` save string data in a list with `LPUSH` operation
+- `r = redis.Redis(decode_responses=True, host='localhost', port=6379, db=0)` init a redis client
+  - `db` specify which database is used for backup
+- `r.set('my_key', 'my_value')` save data into a key as a string
+  - use `r.get("my_key")` to read data
+- `r. lpush("list_name", str)` save string data in a list with `LPUSH` operation which add values from the left
+  - use `r.lindex('list_name', index)` to get element by index
+  - use `r.lrange('list_name', starting_index , ending_index)` to get a sub-list based on input range (inclusive)
+    - `r.lrange('list_name', 0, -1)` return the entire list
+- `r.hset('my_nested_key', 'my_nested_field', 'my_nested_value')` save data using nested key
+  - use `r.hget('my_nested_key', 'my_nested_field')` to read data using nested key and field
+  - use `r.hgetall('my_nested_key')` to read data from all nested fields in a dictionary
+  - use `r.hkeys('my_nested_key')` to get all nested field names in a list
+  - use `r.hvals('my_nested_key')` to read all nested values in a list
+- `r.sadd('my_set', 'value1', 'value2')` save data as an unordered collection of unique values
+  - `r.smembers('my_set')` return the entire set
+- `r.zadd("my_sorted_set", {'value1': 1, 'value2': 2})` save data in sorted set with values
+  - `r.zrange('my_sorted_set', 0, -1, withscores=True)` return all data with scores
+- `r.xadd('my_stream', {'field1': 'value1'})` save data as a stream
+  - `r.xrange('my_stream', '0-0')` return all messages in the stream
+  - `r.xrange('my_stream', '1707238680000-0', '1707238685261-0')` return messages in the stream from `1707238680000-0` until `1707238685261-0`
+  - `r.xrevrange('my_stream', '1707238685261-0', '1707238680000-0')` return messages in reverse from `1707238685261-0` back to `1707238680000-0`
+  - `r.xrevrange('my_stream', '1707238685261-0')` return all messages in reverse that is ealier than message with ID `1707238685261-0`
+- `r.geoadd('my_geoindex', ('12.34', '56.78', 'location1'))` save data as a geo-location
+  - `r.georadius('my_geoindex', 12.34, 56.78, 100, unit='km')` return a list of geospatial index within 100 km radius
+- `r.keys()` list all keys
+  - `r.keys('prefix*')` it supports wildcard that only return keys with a certain prefix
 
 ## Paramiko
 
