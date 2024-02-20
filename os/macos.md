@@ -195,12 +195,6 @@
   - `code --add <dir>` Add folder(s) to the last active window for a multi-root workspace
 - `code --list-extensions` list installed extensions
 
-#### Shortkeys
-
-- `Shift + Command + P` open command pallet
-- `Command + J` toggle terminal
-- `Command + B` toggle sidebar
-
 #### Debug
 
 - VSCode will start a debug session by clicking the `Run and Debug` button in the debugger tab
@@ -510,3 +504,16 @@ comment. *)
   - admin password is required to continue
   - spinning globe appears only when Mac can't start up from its built-in macOS Recovery system
   - To enter Internet Recovery Mode manully, use Key combo `Option-Command-R` or `Shift-Option-Command-R`
+
+## Shortkeys
+
+### Safari
+
+- `Control + Command + 1` - toggle bookmarks
+- `Control + Command + 2` - toggle reading list
+
+### VS Code
+
+- `Shift + Command + P` open command pallet
+- `Command + J` toggle terminal
+- `Command + B` toggle sidebar

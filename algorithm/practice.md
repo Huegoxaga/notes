@@ -22,13 +22,14 @@
 
     ```py
     class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        hashmap = {}
-        for i in range(len(nums)):
-            complement = target - nums[i]
-            if complement in hashmap:
-                return [i, hashmap[complement]]
-            hashmap[nums[i]] = i
+        def twoSum(self, nums: List[int], target: int) -> List[int]:
+            hashmap = {}
+            for i in range(len(nums)):
+                hashmap[nums[i]] = i
+            for i in range(len(nums)):
+                complement = target - nums[i]
+                if complement in hashmap and hashmap[complement] != i:
+                    return [i, hashmap[complement]]
     ```
 
     - [One-pass Hash Table](https://leetcode.com/problems/two-sum/editorial/) - Instead of creating a hashmap (dictionary) and finding the complement in two full loop as a two-pass, the two steps can be done in one iteration
@@ -1595,6 +1596,24 @@ def print_n_bits(n):
         print(binary_str)
 
 print_n_bits(3)
+```
+
+- Check prime number
+
+```py
+def is_prime(n):
+    if n <= 1:
+        return False
+    elif n <= 3:
+        return True
+    elif n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while(i * i <= n):
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6 # prime number is usually a muliplier of 6 plus or minus 1
+    return True
 ```
 
 ## Hints

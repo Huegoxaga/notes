@@ -832,7 +832,8 @@ from django.views.decorators.cache import cache_page
 4. Call the task
    ```py
    from tasks import add
-   >>> add.delay(4, 4)
+   add.delay(4, 4) # simple call to run the task asynchronously.
+   add.apply_async((4,4), expires=120) # complete aysnc call, it accepts additional parameters, and returns an asyncResult object
    ```
 5. Setup and view the result
    1. add the `backend` argument to Celery, using a selected backend storage method from [here](http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html#keeping-results)
@@ -896,7 +897,7 @@ from django.views.decorators.cache import cache_page
    # Add list of module folders or file paths into `packages` if tasks are not written in tasks.py inside the django app folders
    # For crontab schedule type, refers to https://docs.celeryq.dev/en/stable/userguide/periodic-tasks.html#crontab-schedules
    app.autodiscover_tasks(packages=[])
-   @app.task(bind=True)
+   @app.task(bind=True) # bind task to one worker
    def debug_task(self):
        print('Request: {0!r}'.format(self.request))
    ```
@@ -1050,4 +1051,6 @@ WantedBy=multi-user.target
   ```
 - Or optionally, replace tests.py with a folder called tests, insert an empty file inside called `__init__.py`, and create the `test_*.py` files. Django will discover and execute these.
 - run `python manage.py test` to start all test method in the project or `python manage.py <appname>` to run test cases in a certain app folder.
+  - `python manage.py test -k TestClass` run a test class
+  - `python manage.py test -k TestClass.testMethod` run a test method
 - [Example Code](https://www.django-rest-framework.org/api-guide/testing/#api-test-cases) for Django backend
