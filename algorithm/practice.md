@@ -1616,6 +1616,35 @@ def is_prime(n):
     return True
 ```
 
+- Generate pascal triangle
+
+```py
+def generate_pascal(n):
+    triangle = [[1] * (i + 1) for i in range(n)] # generate triange with right shape and fill it with 1
+    for i in range(2, n):
+        for j in range(1, i):
+            triangle[i][j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
+    return triangle
+```
+
+- Remove duplicate numbers in a list in place
+
+```py
+def remove_duplicates(nums):
+    if not nums:
+        return 0
+
+    i = 0 # i: 0
+    for j in range(1, len(nums)): # j: 1->n
+        if nums[i] != nums[j]: # find next unique number
+            i += 1
+            nums[i] = nums[j] # update unique number to the front
+    return i + 1 # return index slicing value for the unique numbers moved to the begining
+
+nums = [1, 1, 1, 2, 2, 3, 4, 4, 5]
+print(nums[:remove_duplicates(nums)])
+```
+
 ## Hints
 
 - Use scratch paper

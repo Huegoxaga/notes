@@ -79,6 +79,13 @@ ReactDOM.render(
 
 - add a `proxy` value can enable proxy, this only has effect in development (with npm start)
 
+### `.env`
+
+- Optionally stores environment variables, for example `REACT_APP_VAR_NAME=value`
+- Variables must have prefix `REACT_APP`
+- Variables will be accessible under `process.env.REACT_APP_VAR_NAME`
+- `.env` file is usually added in `.gitignore`, so it can keep confidential keys locally
+
 ### Component Files
 
 - React app is made up by `components`.
@@ -430,6 +437,61 @@ return (
 ##### Declare a Non-react Variable
 
 - When the `.current` property of the `ref` object is assigned a value, it will not cause the component to re-render
+
+#### Reducer Hook
+
+- It changes variable values like `useState`
+- It is good at handling complex state interactions
+
+```js
+// Set strings names for each action type
+const ACTIONS = {
+  INCREMENT: "increment",
+  DECREMENT: "decrement",
+  RESET: "reset",
+  CHANGE_COUNT: "change-count",
+};
+
+// Modify value based on action type, action has properties type and payload
+function reducer(count, action) {
+  switch (action.type) {
+    case ACTIONS.INCREMENT:
+      return count + 1;
+    case ACTIONS.DECREMENT:
+      return count - 1;
+    case ACTIONS.RESET:
+      return 0;
+    case ACTIONS.CHANGE_COUNT:
+      return count + action.payload.amount;
+    default:
+      return count;
+  }
+}
+
+function Counter() {
+  // Declear reducer with default value and function contains action definition
+  const [count, dispatch] = useReducer(reducer, 0);
+
+  return (
+    <>
+      <span>{count}</span>
+      <button onClick={() => dispatch({ type: ACTIONS.INCREMENT })}>+</button>
+      <button onClick={() => dispatch({ type: ACTIONS.DECREMENT })}>-</button>
+      <button
+        onClick={() => {
+          dispatch({
+            type: ACTIONS.CHANGE_COUNT,
+            payload: { amount: 5 },
+          });
+        }}
+      >
+        Add 5
+      </button>
+      <button onClick={() => dispatch({ type: ACTIONS.RESET })}>Reset</button>
+    </>
+  );
+}
+```
 
 ## Higher-order Component(HOC)
 

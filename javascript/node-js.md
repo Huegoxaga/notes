@@ -14,6 +14,23 @@
 - Installer is available from [nodejs.org](nodejs.org).
   - run `sudo n stable` to update node to the latest stable version
   - run `sudo n latest` to update node to the latest version
+- Install with `nvm`
+
+  - install `nvm` on Mac
+
+    - `brew update && brew install nvm && mkdir ~/.nvm`
+    - add the following into shell profile e.g. `~/.profile` or `~/.zshrc`
+
+    ```bash
+    export NVM_DIR="$HOME/.nvm"
+    export HOMEBREW_PREFIX="/usr/local"
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+    ```
+
+  - Install specific version of node, `nvm install xx.xx.xx`
+    - Install the latest version, `nvm install --lts`
+  - Use a specific version of node, `nvm use xx.xx.xx`
 
 ### NPM
 

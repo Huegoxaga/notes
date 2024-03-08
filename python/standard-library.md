@@ -160,6 +160,12 @@ list(accumulate(range(8)))
   # output: Counter({'A': 1, 'B': 2, 'C': 1})
   ```
 - `c.most_common(10)` return the 10 most common items in the counter. in a list of tuples.
+- `c.total()` return total number of counts
+- `c.clear()` reset counter
+- `counter1 == counter2` check equality, it returns true when all counts for each key are identical
+- `counter1 <= counter2` check inclusion, it returns true when every count of `counter1` is less or equal than `counter2` for each key
+- `counter1 & counter 2` return the min count for each key
+- `counter1 | counter 2` return the max count for each key
 
 ## Queue
 

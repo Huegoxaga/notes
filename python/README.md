@@ -242,6 +242,7 @@ str.isupper()
 str.find(substring) # Find the lowest index of the substring.
 str.strip(string)   # Strip all the characters in the argument of the str from the beginning and the end. (if no argument, remove empty spaces by default)
 str.zfill(n) # add leading zeros until string length reaches `n`
+str.count(substr) # count the number of occurrence of substring or char
 ",".join(["a","b","c"])
 #Output:’a,b,c’
 "Hello ME".replace("ME","world")
@@ -454,13 +455,17 @@ sum(list)
 ## Dictionary
 
 - It is mutable.
+
   ```py
   x = {key1:value1, key2:value2, key3:value3, …}
   print(x[key1])
   x[key1] = newValue
   ```
+
 - To add a new key/value pair to a dictionay, simply assign the value to a new key.
 - Empty dictionaries `{}` evaluate to False in Python
+- `dict.fromkeys(['a', 'b'])` will compose a dictionary with keys from the given list as `{'a': None, 'b': None}`
+- `list({'a': None, 'b': None})` will convert a dictionary into a list with its keys as `['a', 'b']`
 
 ### Related Operations
 

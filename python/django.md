@@ -73,7 +73,7 @@ urlpatterns = [
 
 ## App Folder
 
-### \_\_init\_\_.py
+### `__init__.py`
 
 - Required in app folders, Django use this file to know which folders are apps
 
@@ -145,6 +145,7 @@ def about(request):
   from django.utils import timezone
   #import user from built-in auth models
   from django.contrib.auth.models import User
+  from django.contrib.postgres.fields import HStoreField
   class Post(models.Model):
       # exists by default, primary_key is mandatory.
       id = models.AutoField(primary_key=True)
@@ -165,6 +166,7 @@ def about(request):
       # use the string 'self' to indicate a self-reference
       parent = models.ForeignKey('self', null=True, blank=True)
       # Meta provides additional info for the Model
+      hstore_data = HStoreField() # implements built-in support for HStore field
       class Meta:
         # add check constrains
         constraints = [
@@ -260,6 +262,9 @@ def about(request):
   queryset.explain()
   # Subquery returns only one row
   Subquery(newest.values('email')[:1])
+  # Usage for hstore field
+  my_model = MyModel.objects.filter(data__has_key='key1') # query by key
+  value = my_model.data['key1'] # access key value
   ```
 
 ### admin.py
@@ -725,8 +730,8 @@ from django.views.decorators.cache import cache_page
   - `PostgreSQL` requires `GDAL`, `GEOS`, and `PROJ.4`.
     - For Mac:
       - run `brew install gdal`
-      - run `brew install geos`
-      - run `brew install proj`
+      - run `brew install postgis`
+      - run `brew install libgeoip`
     - Or, download and Install QGIS from its [official website](https://qgis.org/en/site/forusers/download.html)
 - Install PostGIS extension
   - If installing locally, click the PostGIS extension in the slack builder wizards.
@@ -735,7 +740,36 @@ from django.views.decorators.cache import cache_page
   - or run SQL `CREATE EXTENSION postgis`.
 - Set database engine in `setting.py`.
   - Use `django.contrib.gis.db.backends.postgis` for `PostgreSQL`.
-- Add `django.contrib.gis` to `INSTALLED_APPS` in `setting.py`
+
+#### Usage
+
+- Create Geo Model
+
+```py
+from django.db import models
+from django.contrib.gis.db import models as gis_models
+class MapLayer(models.Model):
+    map_id = models.SmallIntegerField(default=-1)
+    geo_info = gis_models.LineStringField(geography=True, spatial_index=True)
+    # use geography=True when store geometry data as coordinates
+    # create a dedicated database index for geometry fields
+```
+
+- Use Geo Data
+
+```py
+from django.contrib.gis.geos import LineString, Point
+from django.contrib.gis.db.models.functions import Distance
+m = MapLayer(map_id=1, geo_info=LineString(((0, 0), (0, 50), (50, 50), (50, 0), (0, 0))))
+line = m.geo_info
+print(line[0]) # return (0, 0)
+print(line.length) # LineString length
+print(line.wkt) # show linestring text representation
+coord = Point(-119.4079, 36.7218421) # save a coordinates
+distance = line.distance(coord) # return distance
+MapLayer.objects.filter(geo_info__distance_lte=(coord, 100)) # return lines within 100 meters of the coord
+MapLayer.objects.filter(geo_info__distance_lte=(coord, 100)).annotate(distance=Distance('geo_info', coord)).order_by('distance') # order res by distance
+```
 
 ## Django Crontab
 

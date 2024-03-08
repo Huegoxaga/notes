@@ -162,7 +162,17 @@
 
 - It is used for classification problems
 - similar to regression tree but each leaf represents one category
-- Doesn't have to go the terminal leaves for result, it can be stopped at any time and return the probobility for each classification result
+- Doesn't have to go the terminal leaves for result, it can be stopped at any time and return the probability for each classification result
+
+##### ID3 Algorithm
+
+- It selects attribute with lowest entropy for decision making starting from the root node of a tree
+- For each case of an attribute the entropy is the sum of $$-P(x)\log_2P(x)$$ for each possible outcome where `P(x)` is the probability of that outcome amongst all outcomes
+- The overall entropy of an attribute is the weighted average based on the number of data for each case
+- One attribute will be selected only once in the tree
+- Not all attributes will be selected for the tree
+- The order of the following paths of a node will result in different trees, but all results will be acceptable
+- The attributes for child nodes are selected using the same method used for root node, except that only the remaining attributes will be included in the calculation
 
 ### Random Forests
 

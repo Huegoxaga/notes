@@ -729,6 +729,8 @@
 - It provides additional functions to the database engine
 - `CREATE EXTENSION extension_name;` enable extension to the database
 - `DROP EXTENSION extension_name;` disable extension from the database
+- `SELECT * FROM pg_available_extensions` list all available extensions and check their current status
+- `SELECT * FROM pg_extension;` list all installed extensions
 
 #### postgis
 
@@ -773,7 +775,15 @@
 - `ST_Dump(multi_geoms)` it separates multi geo objects into a set of geo objects
 - `ST_GeometryN(multi_geoms, n)` it returns the nth objects from multi geo objects
 
-#### postgis_topology
+#### hstore
+
+- A Postgres extension for storing key-value pairs
+- `CREATE EXTENSION IF NOT EXISTS hstore;` enable extension
+- `INSERT INTO my_table (col_name) VALUES ('key => "value"');` store key value pairs into a column of type `hstore`
+- `SELECT hstore(col_name, 'key') FROM my_table;` retrieve value from a `hstore` column under a certain key
+- `UPDATE my_table SET data = hstore_set(data, 'key', 'new_value') WHERE id = 1;` update a `hstore` key value
+- `UPDATE my_table SET data = hstore_set(col_name, 'new_key', 'new_value') WHERE id = 1;` add a `hstore` value key value pair
+- `UPDATE my_table SET data = hstore_delete(data, 'key') WHERE id = 1;` delete a key value pair
 
 ### Join
 
