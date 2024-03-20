@@ -71,7 +71,7 @@
 - `git rm - -cached filename` Remove the file from the Index.
 - `git commit` Open and add commit message for the commit document, save the staging area to the local repos.
   - `git commit -m 'commit message'` Commit the files with commit message.
-  - `git commit --amend -m 'updated message'` alter latest local commit message, run `git push --force` to modify latest remote branch commit message
+  - `git commit --amend -m 'updated message'` alter latest local commit message, run `git push --force` or `git push origin +branch_name` to modify latest remote branch commit message
   - use `--auther "John Dow <name@email.com>"` to update author info
 - `git diff <branch1> <branch2>` View difference between branches.
 - Signing commit using GPG Keys - When a Git commit is signed, the committers can prove that the code is submitted by them and wasn't altered during transfer

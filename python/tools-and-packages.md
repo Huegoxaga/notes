@@ -31,6 +31,7 @@
 - It is a virtual environment tool that can replace `virtualenv`.
 - [Click here](https://docs.conda.io/projects/conda/en/latest/commands.html) for complete command reference.
 - By default anaconda is installed under a user's folder and it is only available for one user, [Click Here](https://docs.anaconda.com/anaconda/install/multi-user/) to see how to perform a multi-user installation
+- Anaconda is larger and comes with a vast array of pre-installed packages, while Miniconda is smaller and only includes Conda and Python
 - Environments separate projects to run with certain packages and python version installed in this environment.
   - The `base` environment is the default environment that has up-to-date python and all anaconda packages installed inside.
   - Packages installed in `base` will share with other environment as alias
@@ -52,6 +53,7 @@
 
 - `anaconda-navigator` start an instance of the Anaconda Navigator
 - `conda config --add channels conda-forge`, add `conda-forge` channel to make it resourceful.
+- `conda config --set auto_activate_base false` stopping auto activate base enviroment when shell starts
 - `conda list` list installed packages and versions installed in active environment
 - `conda list --revisions` List the history of each change to the current environment
 - `conda info` Verify `conda` is installed, check version number
@@ -75,6 +77,10 @@
   - `conda update --all` update everything
 - `conda create --name py35 python=3.5` Create a new environment named py35, install Python 3.5
   - `conda create --name bio-env <packagenametoinstall>` all in one command for creating env and instal packages.
+  - For example, `conda create -n my-env python=3.8 pytorch=1.12.1 -c pytorch -q -y`
+  - `-c` Specify additional channel to search for packages. These are URLs searched in the order they are given
+  - `-q` quietly mode
+  - `-y` yes when prompt
   - Versions can be specified as the following ways.
   - `numpy=1.11` all its subversion are included like `1.11.0` and `1.11.1`
   - `numpy==1.11` exact match `1.11.0`
