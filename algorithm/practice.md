@@ -1465,6 +1465,20 @@ def invert(root):
     root.left, root.right = root.right, root.left
     if left: invert(left)
     if right: invert(right)
+
+def iterative_invert(root):
+    if root is None:
+        return
+
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        node.left, node.right = node.right, node.left
+
+        if node.left:
+            stack.append(node.left)
+        if node.right:
+            stack.append(node.right)
 ```
 
 - reverse double linked list

@@ -844,6 +844,18 @@
   - GloVe creates a global co-occurrence matrix by estimating the probability a given word will co-occur with other words.
   - it proves to perform better than Word2vec in the word analogy tasks.
 
+## Model Tuning
+
+### Cross Validation
+
+- Cross validation is a method to pick the best parameter by using a portion of the training data to validate the perform of every possible parameter setting
+- N-fold means dividing training data into `N` groups
+- There are `N` runs for one parameter setting and each run pick one group of data as the validation data and the model are trained with the remaining training data
+- The average performance of one parameter setting in `N` runs are recorded
+- The parameter setting that yields the best average performance are selected
+- When `N` equals the number of data in the training set, it is called leave-one-out (LOO) validation
+- When there are 2 parameters and each with `n` and `m` possible input, the `N` runs will be executed `n*m` times
+
 ## Model Evaluation
 
 ### Evaluating Regression Models

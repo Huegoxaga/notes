@@ -482,7 +482,7 @@
       - 201 Created
       - 202 Accepted
       - 203 Non-authoritative Information
-      - 204 No Content
+      - 204 No Content (no message body)
       - 205 Reset Content
       - 206 Partial Content
       - 207 Multi-Status

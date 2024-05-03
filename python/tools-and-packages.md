@@ -362,6 +362,7 @@
 - Series is a one-dimensional array of data, where the rows are labeled
 - `myseries = pd.Series(npArray, index=rowNameList)` create a new series
 - `myseries[0]` access the element by index
+- `myseries[myseries > 2] = 10` update value by condition
 - `myseries[rowName]` access the element by row name
 - `len(myseries)` return the number of elements like a list
 - `myseries.value_counts()` return a Series containing counts of unique values
