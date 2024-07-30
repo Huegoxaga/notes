@@ -304,6 +304,80 @@ class Solution:
           return res
   ```
 
+### 26. Remove Duplicates from Sorted Array
+
+- Input: A sorted array `nums`
+- Output:
+  - Remove all duplcated element in `nums` in-place by keeping the result in the first part of the array
+  - Return number of unique elements that should be kept
+- Assumption:
+  - `nums` is sorted in non-decreasing order
+  - The remaining of the `nums` beyond the number of unique elements is not important
+  - The input array cannot be empty
+- Solution:
+  - One pass for loop from index 0:
+  ```py
+  class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        index = 0
+        for i in range(len(nums) - 1):
+            if nums[i] != nums[i+1]: # If the element is different from next
+                nums[index] = nums[i] # Add the element to its correct location
+                index += 1 # Move the index to search for next unique element
+        nums[index] = nums[len(nums) - 1] # Add the last element as unique element
+        return index + 1
+  ```
+  - [One pass for loop from index 1](https://leetcode.com/problems/remove-duplicates-from-sorted-array/solutions/3676877/best-method-100-c-java-python-beginner-friendly)
+  ```py
+  class Solution:
+      def removeDuplicates(self, nums: List[int]) -> int:
+          index = 1
+          for i in range(1, len(nums)):
+              if nums[i] != nums[i - 1]:
+                  nums[index] = nums[i]
+                  index += 1
+          # No need to handle last index as it starts from index 1 until the last
+          return index
+  ```
+
+### 27. Remove Element
+
+- Input: Given an array `nums` and a value `val`
+- Output:
+  - move all element that equals `val` to the end of the array in `nums` in-place
+  - return the number of element that is not equal to `val`
+- Assumption:
+  - The remaining elements of `nums` are not important
+  - The final order of `nums` is not important
+- Solution:
+  - [One Pointer Copier](https://leetcode.com/problems/remove-element/solutions/3670940/best-100-c-java-python-beginner-friendly)
+  ```py
+  class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        index = 0
+        for i in range(len(nums)): # Foe each element in nums from left to right
+            if nums[i] != val: # Copy element not equal to val to its correct index
+                nums[index] = nums[i]
+                index += 1 # Track the number of copied element by index
+        return index
+  ```
+  - Two Pointer While Loop
+  ```py
+  class Solution:
+      def removeElement(self, nums: List[int], val: int) -> int:
+          last = len(nums) - 1 # Track position of the last wanted element by `last`
+          first = 0 # Track number of wanted element by `first`
+          while last >= first and last >= 0: # when moving last/first is completed and there is any more wanted val tracked by `last`
+              if nums[last] == val: # Only move `last` to the front when it equals val
+                  last -= 1
+              elif nums[first] == val: # When `last` has wanted val and `first` is unwanted, swap them
+                  nums[first], nums[last] = nums[last], val
+                  first += 1 # track next wanted val
+              else: # condition equals first and last both not equal val
+                  first += 1 # track next wanted val
+          return first # loop breaks after `first` is added by 1, which is also the count for wanted elements
+  ```
+
 ### 28. Find the Index of the First Occurrence in a String
 
 - Input: Given two strings `needle` and `haystack`
@@ -422,6 +496,45 @@ class Solution:
           for i in range(n//2):
               for j in range(n-n//2):
                   A[i][j], A[~j][i], A[~i][~j], A[j][~i] = A[~j][i], A[~i][~j], A[j][~i], A[i][j]
+  ```
+
+### 55. Jump Game
+
+- Input:
+  - Given an integer array
+  - Each element in the array represents the max jump distance
+- Output:
+  - True if the end of the array can be reached, False if it can't
+- Solution:
+  - Selecting the longest jumps
+  ```py
+  class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        idx = 0 # track current index
+        while idx + nums[idx] < len(nums) - 1: # While maximum jump length falls within the array
+            next_jump = 0 # track the distance it can jump next
+            starting_diff = nums[idx] - 1 # tracking gap between next starting point to max_jump_idx
+            for i, v in enumerate(nums[idx + 1: idx + nums[idx] + 1]): # for all the possible location it can jump from
+                relative_jump = v - (starting_diff - i) # get the relative jump distance from current starting point to max_jump_idx
+                if next_jump < relative_jump: # find the max jump distance as next jump from last_idx
+                    next_jump = relative_jump
+                    next_idx = idx + i + 1 # update the starting point for next jump
+            if next_jump == 0: return False # return false when max next jump is zero
+            idx = next_idx
+        return True
+  ```
+  - [Traveling Car Analogy](https://leetcode.com/problems/jump-game/solutions/4534808/super-simple-intuitive-8-line-python-solution-beats-99-92-of-users)
+  ```py
+  class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        gas = 0
+        for n in nums:
+            if gas < 0:
+                return False
+            elif n > gas:
+                gas = n
+            gas -= 1
+        return True
   ```
 
 ### 69. Sqrt(x)
@@ -583,6 +696,118 @@ class Solution:
           else:
               return climbStairs(n-1) + climbStairs(n-2)
   ```
+
+### 80. Remove Duplicates from Sorted Array II
+
+- Input: A sorted array `nums`
+- Output:
+  - Remove all elements that appears more than twice in `nums` in-place by keeping the result in the first part of the array
+  - Return number of filtered elements that should be kept
+- Assumption:
+  - `nums` is sorted in non-decreasing order
+  - The remaining of the `nums` beyond filtered elements is not important
+  - The input array cannot be empty
+- Solution:
+  - Two pointer for loop
+  ```py
+  class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        index = 1 # Track last write location
+        count = 1 # Track number of duplicates
+        for i in range(1, len(nums)): # from index 1 to last
+            if nums[i] != nums[i-1]: # When current is unique
+                nums[index] = nums[i] # write to last edited location
+                index += 1 # update write pointer
+                count = 1 # reset duplicate count
+            else: # for duplicated elements
+                count += 1 # increase count
+                if count == 2: # write only when second duplicate is met
+                    nums[index] = nums[i]
+                    index += 1
+        return index
+  ```
+  - [Two pointer for loop II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/solutions/4511964/easy-o-n-python-java-go-c-beginner-friendly)
+  ```py
+  class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        index = 1
+        occurance = 1
+        for i in range(1, len(nums)):
+            if nums[i] == nums[i-1]: # track occurance separately
+                occurance += 1
+            else:
+                occurance = 1
+            if occurance <= 2: # write when count is less or equal than 2
+                nums[index] = nums[i]
+                index += 1
+        return index
+  ```
+
+### 88. Merge Sorted Array
+
+- Input:
+  - Two sorted arrays of integers, `nums1` and `nums2`
+  - The lengths of the arrays, `m` and `n`
+- Output:
+  - A merged sorted array, completed in-place on the first array `nums1`
+- Assumption:
+  - For `nums1`, there will be `n` zeros appended to the right of `nums1` as input
+- Solution:
+
+  - Use built-in sort method after replacing zeros in `nums1` with each element of `nums2`
+  - Assign large number amongst two arrays to `nums1` from right to left
+
+    - Original
+      ```py
+      class Solution:
+        def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+          i = m - 1  # Index of last non-zero element in nums1
+          j = n - 1  # Index of last element in nums2
+          for k in range(m + n - 1, -1, -1):
+            if j < 0: # All elements in nums2 have been processed
+                break # No more change is needed on nums1
+            elif i < 0: # All elements in nums1 have been processed
+                nums1[k] = nums2[j] # Copy remaining elements from nums2 to nums1
+                j -= 1
+            elif nums1[i] > nums2[j]: # current element in nums1 is larger
+                nums1[k] = nums1[i] # Copy the larger element in nums1 into the current last index
+                i -= 1 # track the next element in nums1 on the left
+            else: # current element in nums2 is larger
+                nums1[k] = nums2[j] # Copy the larger element in nums2 into the current last index
+                j -= 1 # track the next element in nums2 on the left
+      ```
+    - Simplied for-loop method
+      ```py
+      class Solution:
+        def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+          i = m - 1
+          j = n - 1
+          for k in range(m + n - 1, -1, -1):
+              # Summary edge cases in one condition
+              if j < 0 or (i >= 0 and nums1[i] > nums2[j]):
+                  nums1[k] = nums1[i]
+                  i -= 1
+              else:
+                  nums1[k] = nums2[j]
+                  j -= 1
+      ```
+    - While loop method
+      ```py
+      class Solution:
+        def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+          i = m - 1
+          j = n - 1
+          k = m + n - 1
+          while j >= 0: # Loop until nums2 is completely processed
+              # When j < 0, it will automatically break
+              if i >= 0 and nums1[i] > nums2[j]:
+                  nums1[k] = nums1[i]
+                  i -= 1
+              else:
+                  nums1[k] = nums2[j]
+                  j -= 1
+              k -= 1
+      ```
 
 ### 89. Gray Code
 
@@ -815,13 +1040,13 @@ class TreeNode:
   - The max profit one can made from one transaction
     - Profit is measured in one share
     - 0 if no profit can be made
+- Assumptions
+  - price is between `0` and `10000`
 - Solution:
-
   - Brutal - `O(n^2)`
   - One pass comparision - `O(n)`
     - Track the min value along the way from left to right in one pass
     - For bigger values track the difference as max profit
-
   ```py
   class Solution:
       def maxProfit(self, prices: List[int]) -> int:
@@ -834,6 +1059,17 @@ class TreeNode:
                   max_profit = prices[i] - min_price # Save max profit
           return max_profit
   ```
+  - Simplified one pass comparision
+  ```py
+  class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        low = 10000
+        profit = 0
+        for i in prices:
+            if i < low: low = i
+            profit = max(i - low, profit)
+        return profit
+  ```
 
 ### 122. Best Time to Buy and Sell Stock II
 
@@ -844,15 +1080,15 @@ class TreeNode:
     - One can buy and sell on the same day
     - 0 if no profit can be made
     - Only one share is available
+- Assumptions
+  - price is between `0` and `10000`
 - Solution:
-
   - One pass comparision - `O(n)`
     - Sum all the difference when price on next day is higher than the price on current day
-
   ```py
   class Solution:
       def maxProfit(self, prices: List[int]) -> int:
-          current = prices[0]
+          current = 10000
           profit = 0
           for p in prices: # For all daily prices
               if p > current: # when the daily price is higher
@@ -924,6 +1160,100 @@ class TreeNode:
     - Create two pointers where one points at the first index in the array and the other points at the second index
     - If the sum of the values at the pointers is less than the target, shift both pointers over one
     - If the values summed are greater, shift the first pointer left one
+
+### 169. Majority Element
+
+- Input:
+  - An array `nums`
+- Output:
+  - The majority element which occurs more than half of the size of the array
+- Solution:
+  - Sorting and check the two ends of the first half
+  ```py
+  class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+      n = len(nums)
+      nums.sort()
+      for i in range(n-n//2):
+        if nums[i] == nums[i+n//2]:
+        return nums[i]
+  ```
+  - [Sorting and check midpoint](https://leetcode.com/problems/majority-element/solutions/3676530/3-method-s-beats-100-c-java-python-beginner-friendly)
+  ```py
+  class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+      nums.sort()
+      n = len(nums)
+      return nums[n//2]
+  ```
+  - Hash Map
+  ```py
+  class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        counters = {}
+        for i in nums:
+          counters[i] = counters.setdefault(i, 0) + 1
+          if counters[i] > len(nums)//2: # Return once count is greater than half size
+            return i
+  ```
+  - [Moore Voting Algorithm](https://leetcode.com/problems/majority-element/solutions/3676530/3-method-s-beats-100-c-java-python-beginner-friendly)
+    - Use a candidate to vote against all other numbers from left to right, the last candidate will be the majority number
+    - The majority element will be selected as candiate eventually, no matter when it gets selected
+    - All other element will be "consumed" by the mojority element if it is not selected
+  ```py
+  class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        count = 0
+        candidate = 0
+        for i in nums: # In one pass
+            if count == 0: # Assign new candidate When count is zero
+                candidate = i
+                count = 1
+            elif i == candidate:
+                count += 1 # add count if current element is same as candidate
+            else:
+                count -= 1 # consume a vote if current element is different
+        return candidate # return the surviving candidate
+  ```
+
+### 189. Rotate Array
+
+- Input:
+  - An integer array `nums`
+  - An integer `k`
+- Output:
+  - An integer array which has all element in `nums` rotate to the right by `k` steps
+- Assumption:
+  - `k` is greater or equal than `0`
+- Solution
+  - Move element groups to the right by `k` steps with two `temp` variables
+    - The element group is consisted of all elements from one element at a starting point plus all others `k` steps after it, if the end of the array is reached the pointer can wrap around until it repeat itself
+    - There are a set number of element groups that can cover all elements in the array
+    - The number of group is defined as the GCD of the length of `nums` and `k`
+    - The starting point for each group starts at index `0` then increment by `1` for the next group if the GCD is greater than `1`
+  ```py
+  class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        groups = gcd(k, n)
+        for j in range(groups): # for each starting point at j
+            last_num = nums[j]
+            for i in range(1, n//groups + 1): # the number of each element group is n//groups
+                next_num = nums[(i*k+j)%n]
+                nums[(i*k+j)%n] = last_num
+                last_num = next_num
+  ```
+  - Swap element groups between the first and the next `k`'s elements
+  ```py
+  class Solution:
+  def rotate(self, nums: List[int], k: int) -> None:
+      n = len(nums)
+      groups = gcd(k, n)
+      for j in range(groups):
+          for i in range(1, n//groups + 1):
+              # Swap element between first element in each group and the next element in the group
+              nums[j], nums[(i*k+j)%n] = nums[(i*k+j)%n], nums[j]
+  ```
 
 ### 215. Kth Largest Element in an Array
 
