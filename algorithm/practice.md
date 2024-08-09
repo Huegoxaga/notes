@@ -47,6 +47,52 @@
                 hashmap[nums[i]] = i # otherwise, put current value to the dictionary
     ```
 
+### 3. Longest Substring Without Repeating Characters
+
+- Input:
+  - A string `s`
+- Output:
+  - The length of the longest substring without repeating characters
+- Solution:
+
+  - Sliding the window to the right while finding a larger window
+
+  ```py
+  class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        max_length = 1
+        n = len(s)
+        if not s: return 0
+        for start in range(n):
+            current = s[start:start+max_length] # update string with next starting point
+            while start + max_length < n and len(current)  == len(set(current)):
+                current += s[start+max_length] # update current substring
+                if len(current) != len(set(current)): # check if updated substring will exit
+                    break # no need to add length as the next one will fail
+                max_length += 1
+        return max_length
+  ```
+
+  - Track data in sliding window using a set
+
+  ```py
+  class Solution:
+      def lengthOfLongestSubstring(self, s: str) -> int:
+          n, maxLength, charSet, left = len(s), 0, set(), 0
+
+          for right in range(n):
+              if s[right] not in charSet:
+                  charSet.add(s[right]) # Add right pointer to set if its new
+                  maxLength = max(maxLength, right - left + 1) # save the largest window
+              else:
+                  while s[right] in charSet: # Keep removing left element until next right is not a duplicate
+                      charSet.remove(s[left])
+                      left += 1
+                  charSet.add(s[right])
+
+          return maxLength
+  ```
+
 ### 7. Reverse Integer
 
 - Input:
@@ -220,29 +266,48 @@ class Solution:
   - Output: `False`
 - Solution:
 
-  - Stack Method - `O(n)`
-    - Push opening brackets, and pop closing brackets in pairs
-    - Return true when stack is empty after all characters are processed
-    - Store pair records in a dictionary where open bracket is the key and its close bracket is the value
+  - Stack Method - Tracks opening brackets - `O(n)`
 
   ```py
   class Solution:
       def isValid(self, s: str) -> bool:
           pairs = {'(': ')', '{': '}', '[': ']'}
-          brackets = []
+          open_brackets = [] # Tracks opening bracket
           for c in s:
-              if c in pairs.keys(): # If character is an opening bracket
-                  brackets.append(c) # Push it directly
-              elif c in pairs.values(): # If character is an closing bracket
-                  if brackets: # If stack is not empty
-                      if pairs[brackets[-1]] == c:
-                          brackets.pop() # Pop when the top bracket is its paired opening bracket
+              if c in pairs.keys(): # Find opening brackets, add it to open_brackets list
+                  open_brackets.append(c)
+              else: # Process closing brackets
+                  if open_brackets: # Match closing bracket with it paired open bracket, added previously
+                      if pairs[open_brackets[-1]] == c:
+                          open_brackets.pop() # remove paired bracketed in open_brackets list
                       else: # If the current close bracket can't form a valid pair
                           return False
                   else: # If closing bracket are about to push to a empty list
                       return False
-          if brackets: return False # if brackets list is not cleared, not all chars form valid pairs
+          if open_brackets: return False # if brackets list is not cleared, not all chars form valid pairs
           else: return True # if all check are passed
+  ```
+
+  - Stack Method - Tracks expected closing brackets
+
+  ```py
+  class Solution:
+    def isValid(self, s: str) -> bool:
+        pairs = {'(': ')', '{': '}', '[': ']'}
+        closing_brackets = [] # Tracks expected closing bracket
+        for c in s:
+            if c in pairs.keys(): # Find opening brackets,
+                closing_brackets.append(pairs[c]) # add corresponding closing_brackets to the list
+            else: # Process closing brackets
+                if closing_brackets: # If at least one closing bracket is expected
+                    if closing_brackets[-1] == c: # If expected bracket matches current one
+                        closing_brackets.pop() # remove last expected closing bracket
+                    else:
+                        return False
+                else:
+                    return False
+        if closing_brackets: return False
+        else: return True
   ```
 
   - [String Replacement Method](https://leetcode.com/problems/valid-parentheses/solutions/885074/python-solution-in-5-lines/) - `O(N^2)`
@@ -398,6 +463,49 @@ class Solution:
           return -1
   ```
 
+### 36. Valid Sudoku
+
+- Input:
+  - A 2-D array representing sudoku game board
+    - Numbers are stored as string
+    - Empty space are represented by a period sign
+- Output:
+  - True if the board is valid
+    - valid means no duplicated numbers in each row, column, and block
+- Solution:
+  - Track existence in arrays
+  ```py
+  class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        check_row = [[False] * 9 for _ in range(9)] # Init array for tracking number existence by row
+        check_col = [[False] * 9 for _ in range(9)] # Init array for tracking number existence by column
+        check_block = [[False] * 9 for _ in range(9)] # Init array for tracking number existence by 3x3 blocks
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] != '.':
+                    check_idx = int(board[i][j]) - 1 # convert number to bool array index
+                    block_idx = i//3 * 3 + j//3 # convert 9x9 index to block number from top-left to bottm-right
+                    if check_row[i][check_idx] or check_col[j][check_idx] or check_block[block_idx][check_idx]:
+                        return False # return false when number already existing by row, col, blocks
+                    check_row[i][check_idx] = check_col[j][check_idx] = check_block[block_idx][check_idx] = True # update new numbers at its location
+        return True
+  ```
+  - [Use a set of tuple to find duplicates](https://leetcode.com/problems/valid-sudoku/solutions/3277043/beats-96-78-short-7-line-python-solution-with-detailed-explanation)
+    - Tuple `(int, str)` tracks repeated combanation of row numbers and placed number in that row
+    - Tuple `(str, int)` tracks repeated combanation of col numbers and placed number in that col
+    - Tuple `(int, int, str)` tracks repeated combanation of block location and placed number in that block
+  ```py
+  class Solution(object):
+    def isValidSudoku(self, board):
+        res = []
+        for i in range(9):
+            for j in range(9):
+                element = board[i][j]
+                if element != '.':
+                    res += [(i, element), (j, element), (i // 3, j // 3, element)]
+        return len(res) == len(set(res))
+  ```
+
 ### 39. Combination Sum
 
 - Input:
@@ -468,6 +576,33 @@ class Solution:
         return res
 ```
 
+### 55. Jump Game II
+
+- Input:
+  - Given an integer array
+  - Each element in the array represents the max jump distance
+- Output:
+  - The number of jump needed to reach the end
+- Solution:
+  - Selecting the longest jumps with a counter
+  ```py
+  class Solution:
+      def jump(self, nums: List[int]) -> int:
+          idx = 0
+          count = 1 # Add default jump, then handle the first jump in loop
+          if len(nums) == 1: return 0 # Handle edge case with zero jump
+          while idx + nums[idx] < len(nums) - 1:
+              next_jump = 0
+              for i, v in enumerate(nums[idx + 1: idx + nums[idx] + 1]):
+                  relative_jump = v - (nums[idx] - 1 - i)
+                  if next_jump < relative_jump:
+                      next_jump = relative_jump
+                      next_idx = idx + i + 1
+              idx = next_idx
+              count += 1 # Add count when last jump is completed
+          return count
+  ```
+
 ### 48. Rotate Image
 
 - Input:
@@ -477,18 +612,23 @@ class Solution:
 - Assumption:
   - Matrix can only be replaced in-place. The allocation of another empty matrix is not allowed
 - [Solution](https://leetcode.com/problems/rotate-image/solutions/18884/seven-short-solutions-1-to-7-lines/):
-
   - Double Flip - 90 degree clockwise rotation is equivalent to flip the rows from top to bottom and take the transpose
     - 90 degree counter-clockwise rotation is equivalent to flip the rows from left to right and take the transpose
-
+  ```py
+  class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        n = len(matrix)
+        matrix.reverse() # rotate top down
+        for i in range(n): # Transpose by swapping elements above the main diagonal
+            for j in range(i+1, n):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+  ```
   ```py
   class Solution:
       def rotate(self, A):
           A[:] = zip(*A[::-1]) # use [::-1] to flip, then use zip to transpose
   ```
-
   - Rotate the top-left quadrant - For every element in each quadrant, rotate it from `I` to `II`, `II` to `III`, `III` to `IV`, `IV` to `I`
-
   ```py
   class Solution:
       def rotate(self, A):
@@ -695,6 +835,49 @@ class Solution:
               return n
           else:
               return climbStairs(n-1) + climbStairs(n-2)
+  ```
+
+### 71. Simplify Path
+
+- Input:
+  - an absolute path for a Unix-style file system in a string
+- Output:
+  - A simplited path
+    - remove additional `/`
+    - ignore `.` if it's in the path
+    - remove `..` in the middle of the path
+    - treat any other dot patterns including `...` as dir names
+- Solutions:
+  - Reverse processing with conditional appending
+  ```py
+  class Solution:
+    def simplifyPath(self, path: str) -> str:
+        paths = path.split('/')[::-1]
+        filtered_paths = []
+        skip = 0
+        for p in paths:
+            if p == '..':
+                skip += 1
+            elif p and p != '.':
+                if skip > 0:
+                    skip -= 1
+                else:
+                    filtered_paths.append(p)
+        return '/' + '/'.join(filtered_paths[::-1])
+  ```
+  - Stack
+  ```py
+  class Solution:
+    def simplifyPath(self, path: str) -> str:
+        paths = path.split('/')
+        filtered_paths = []
+        for p in paths:
+            if p == '..':
+                if filtered_paths:
+                    filtered_paths.pop()
+            elif p and p != '.':
+                filtered_paths.append(p)
+        return '/' + '/'.join(filtered_paths)
   ```
 
 ### 80. Remove Duplicates from Sorted Array II
@@ -934,9 +1117,7 @@ class TreeNode:
 ### 100. Same Tree
 
 - Input:
-
   - Two trees with the following structure
-
   ```py
   class TreeNode:
       def __init__(self, val=0, left=None, right=None):
@@ -944,27 +1125,23 @@ class TreeNode:
           self.left = left
           self.right = right
   ```
-
 - Output:
   - True if two trees are identical
 - [Solution](https://leetcode.com/problems/same-tree/solutions/642761/easy-to-understand-faster-simple-recursive-iterative-dfs-python-solution/):
-
   - Recursion - `O(n)`
-
+    - Return true when leaf node is reached, and exit early when there is an unequal comparision
   ```py
   class Solution:
       def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
-          if not p and not q:
-              return True # Two none node is the same
-          if not q or not p:
-              return False # Only one none node is not the same
-          if p.val != q.val:
-              return False # Check if node value is equal
+          if not p and not q: # Two node are leaf nodes
+              return True # exit condition I
+          if not q or not p: # Only one node is leaf node other is not
+              return False # exit condition II
+          if p.val != q.val: # Exit until unequality is found
+              return False # exit condition III
           return self.isSameTree(p.right, q.right) and self.isSameTree(p.left, q.left) # Split comparision and use 'and' operator for all results
   ```
-
   - Iteration - `O(n)`
-
   ```py
   class Solution:
       def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
@@ -978,6 +1155,66 @@ class TreeNode:
                 stack.append((first.left, second.left)) # Save both tree's left nodes in stack for comparision in next iteration
                 stack.append((first.right, second.right)) # Save both tree's right nodes in stack
         return True # Only equal when all comparsion is passed
+  ```
+
+### 101. Symmetric Tree
+
+- Input:
+  - A binary tree
+- Output:
+  - True if the tree is symmetric
+- Solution:
+  - Divide tree into left and right subnotes, then compare their child notes
+  ```py
+  class Solution:
+      def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+          if not root: # Handle None at root
+              return True
+          return self.isSame(root.left, root.right)
+      def isSame(self, leftroot, rightroot): # This method define the equality of two nodes
+          if not leftroot and not rightroot:
+              return True
+          if not leftroot or not rightroot:
+              return False
+          if leftroot.val != rightroot.val:
+              return False
+          # For each pair of given nodes, compare the opposite sides of their child nodes, regardless of whether the child nodes can be None
+          return self.isSame(leftroot.left, rightroot.right) and self.isSame(leftroot.right, rightroot.left)
+  ```
+  - Compare root with itself
+  ```py
+  class Solution:
+      def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+          def isMirror(left, right):
+              if not left and not right:
+                  return True
+              if not left or not right:
+                  return False
+              return left.val == right.val and isMirror(left.left, right.right) and isMirror(left.right, right.left)
+          return isMirror(root, root)
+  ```
+
+### 104. Maximum Depth of Binary Tree
+
+- Input:
+  - A root node of a tree with the following structure
+  ```py
+  class TreeNode:
+      def __init__(self, val=0, left=None, right=None):
+          self.val = val
+          self.left = left
+          self.right = right
+  ```
+- Output:
+  - The max depth of the tree
+- Solution:
+  - Recursion
+  ```py
+  class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0 # Count from the lowest leaf node
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1 # each return from the lowest leaf node will increment the returned depth by one
   ```
 
 ### 110. Balanced Binary Tree
@@ -1097,6 +1334,83 @@ class TreeNode:
           return profit
   ```
 
+### 125. Valid Palindrome
+
+- Input:
+  - A String
+- Output:
+  - True if it is palindrome after remove all non-alphanumeric characters in lower case, or false otherwise
+- Solution
+  - Reverse string with slicing
+  ```py
+  class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = ''.join(c.lower() for c in s if c.isalnum())
+        return s == s[::-1]
+  ```
+  - Two Pointer
+  ```py
+  class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = ''.join(c.lower() for c in s if c.isalnum())
+        start = 0
+        end = len(s) - 1
+        while start < end:
+            if s[start] != s[end]: return False
+            start += 1
+            end -= 1
+        return True
+  ```
+
+### 141. Linked List Cycle
+
+- Input:
+  - The head of a singly linked list with the following structure
+  ```py
+  class ListNode:
+      def __init__(self, x):
+          self.val = x
+          self.next = None
+  ```
+- Output:
+  - True if the tailing node link back to any node before it, or false otherwise
+- Solution:
+  - Set node value to None in a single scan
+  ```py
+  class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        while head and head.next: # Check if list is empty and has next node
+            head.val, head = None, head.next # Remove the value of the node and move on to the next node
+            if head.val is None: return True # Return true if a node with its value removed is found
+        return False # Return False when the list is empty or has proper tailing node with next equal to None
+  ```
+  - [Two pointers](https://leetcode.com/problems/linked-list-cycle/solutions/5280767/video-using-two-pointers) - Floyd's Cycle-Finding Algorithm
+    - Two pointer move at two speed, if there is a circle they will eventually meet
+  ```py
+  class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        fast = head
+        slow = head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if fast == slow:
+                return True
+        return False
+  ```
+  - Hash Table - Store traveled node in a set
+  ```py
+  class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        traveled_list = set()
+        while head and head.next:
+            if head in traveled_list:
+                return True
+            traveled_list.add(head)
+            head = head.next
+        return False
+  ```
+
 ### 151. Reverse Words in a String
 
 - Input:
@@ -1131,6 +1445,39 @@ class TreeNode:
         if temp != "":
             res.append(temp)
         return " ".join(res[::-1])
+  ```
+
+### 155. Min Stack
+
+- Build a stack class that can push, pop, top, and retrieving the minimum element in constant time (`O(1)`)
+- Assumption:
+  - Methods `pop`, `top` and `getMin` operations will always be called on non-empty stacks
+- Solution:
+
+  - Use a another stack called `minStack` to track the min value after each operation
+
+  ```py
+  class MinStack:
+
+    def __init__(self):
+        self.data = []
+        self.minStack = []
+
+    def push(self, val: int) -> None:
+        self.data.append(val)
+        if not self.minStack or val <= self.minStack[-1]:
+            self.minStack.append(val) # push min value to stack when its empty or smaller than last min
+
+    def pop(self) -> None:
+        val = self.data.pop()
+        if self.minStack and val == self.minStack[-1]:
+            self.minStack.pop() # pop the last min if the data stack top is the min
+
+    def top(self) -> int:
+        return self.data[-1]
+
+    def getMin(self) -> int:
+        return self.minStack[-1]
   ```
 
 ### 167. Two Sum II
@@ -1255,6 +1602,34 @@ class TreeNode:
               nums[j], nums[(i*k+j)%n] = nums[(i*k+j)%n], nums[j]
   ```
 
+### 209. Minimum Size Subarray Sum
+
+- Input:
+  - An array of positive integers `nums`
+  - A target integer
+- Output:
+  - The small subarray that has sum greater or equal to the target
+- Assumption:
+  - max length is smaller than or equal to 100000
+- Solution:
+  - Sliding Window - Track the smallest subarray by adding element from the right until sum is greater than target, then remove the leftmost element and use the second as starting point, then repeat
+  ```py
+  class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        end, min_span, n, sub_sum = 1, 100001, len(nums), nums[0]
+        for start in range(n): # For each element
+            while end < n and sub_sum < target:
+                sub_sum += nums[end]
+                end += 1 # increase subarray size and update sum if small
+            if sub_sum >= target: # update smallest size if subarray is found
+                span = end - start
+                if min_span > span:
+                    min_span = span
+            sub_sum -= nums[start] # remove first element in subarray for next starting point
+        if min_span > 100000: return 0 # return 0 when no subarray is found
+        return min_span
+  ```
+
 ### 215. Kth Largest Element in an Array
 
 - Input:
@@ -1299,6 +1674,60 @@ class TreeNode:
           else: # if pivot is too right
               res = self.findKthLargest(lesser, k-len(greater)-1)
           return res
+  ```
+
+### 226. Invert Binary Tree
+
+- Input:
+  - A root of a binary tree with the following structure
+  ```py
+  class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+  ```
+- Output:
+  - A root with all the values from each nodes left/right node inverted
+- Solution:
+  ```py
+  class Solution:
+      def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+          if root: # Only process node that is not none, Exit on none nodes
+              root.left, root.right = root.right, root.left # Switch
+              self.invertTree(root.left) # Call switch recursively on left nodes
+              self.invertTree(root.right) # Call switch recursively on right nodes
+          return root # return root when reaching this line after all recursions are finished
+  ```
+
+### 228. Summary Ranges
+
+- Input:
+  - A sorted integer array in ascending order
+- Output:
+  - Summarize the consecutive number into intervals
+- Example:
+  - Input: `nums` = `[0,1,2,4,5,7]`
+  - Output: `["0->2","4->5","7"]`
+- Solution:
+  - Compare adjacent pairs
+  ```py
+  class Solution:
+      def summaryRanges(self, nums: List[int]) -> List[str]:
+          intervals = []
+          output = []
+          left = 0
+          for i in range(1, len(nums)): # for each pair of adjacent numbers starting from 0 and 1
+              if nums[i] != nums[i - 1] + 1: # if they are not incremented by 1
+                  intervals.append([nums[left], nums[i - 1]]) # record the intervals
+                  left = i # update left boundary
+          if nums: intervals.append([nums[left], nums[-1]]) # handle edge cases for empty list and record the last interval
+          for s in intervals: # Format the output from interval to string
+              if s[0] == s[1]:
+                  output.append(str(s[0]))
+              else:
+                  output.append(f"{s[0]}->{s[1]}")
+          return output
   ```
 
 ### 238. Product of Array Except Self
@@ -1400,6 +1829,64 @@ class TreeNode:
                           break
                   if end == i+1: return ''.join(s) # Return when the second vowel is not found after all remaining letter are checked from the back
           return ''.join(s)
+  ```
+
+### 383. Ransom Note
+
+- Input:
+  - A string `ransomNote`
+  - A string `magazine`
+- Output:
+  - True if `ransomNote` can be constructed by using the letters from the `magazine`, or false otherwise
+    - Each letter can be only used once
+- Assumption:
+  - Both strings contain only lowercase letters
+- Solution:
+  - Counter method
+  ```py
+  from collections import Counter
+  class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+      mag_count = Counter(magazine)
+      ran_count = Counter(ransomNote)
+      for k, v in ran_count.items():
+        if v > mag_count.get(k, 0): return False
+      return True
+  ```
+  - Simplified Counter
+  ```py
+  class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        return not (Counter(ransomNote) - Counter(magazine)) # return True if the substracted counter is empty
+  ```
+  - [Replace first occurrence](https://leetcode.com/problems/ransom-note/solutions/5442404/solution-by-dare2solve-detailed-explanation-clean-code)
+  ```py
+  class Solution:
+      def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+          for char in magazine: # for each char in magazine
+              ransomNote = ransomNote.replace(char, '', 1) # remove one letter from ransomNote
+          return ransomNote == '' # True if no letter from ransomNote is left
+  ```
+
+### 392. Is Subsequence
+
+- Input:
+  - A string `s`
+  - A string `t`
+- Output:
+  - True is `s` is a subsequence of `t`, or false otherwise
+    - A subsequence is obtain by removing some characters from the original string
+- Solutions:
+  - Two Pointer
+  ```py
+  class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        i, j = 0, 0 # i tracks t index, j tracks s index
+        while i < len(t) and j < len(s):
+            if t[i] == s[j]: # when match is found in order
+                j += 1 # move to next char of the subsequence
+            i += 1 # each iteration compare one char from the original string
+        return j == len(s) # check if all char in s has a match
   ```
 
 ### 443. String Compression
