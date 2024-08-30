@@ -135,6 +135,7 @@
 - Application of binary trees:
   - `Binary Search Tree` - Used in many search applications where data is constantly entering/leaving, such as the map and set objects in many languages' libraries.
     - Left child is always smaller than the root, Right child is always bigger than the root.
+    - In a binary search tree (BST), an in-order traversal is used to return a sorted (ordered) list of data
     - To implement the binary search tree, adding and searching methods are recursive with base cases that check if the root is empty and non-base case that traverses the tree.
     - To remove a node in the binary search tree. There are three cases:
       - Removal of a Leaf Node
@@ -224,6 +225,15 @@
 ### Iteration
 
 - A method that called repeatedly in a loop.
+- Breadth-first search (BFS) is an iterative algorithm for searching a tree data structure for a node that satisfies a given property. It starts at the tree root and explores all nodes at the present depth prior to moving on to the nodes at the next depth level. Extra memory, usually a queue, is needed to keep track of the child nodes that were encountered but not yet explored
+  - This approach ensures that nodes are processed level by level, which is the defining characteristic of BFS.
+  - Here's a brief overview of how BFS works:
+    1. Initialization: it starts by enqueuing the starting node into a queue and marking it as visited.
+    2. Processing: While the queue is not empty:
+       - Dequeue a node from the front of the queue.
+       - Process this node (e.g., examine it or record its value).
+       - Enqueue all of its unvisited neighbors, marking them as visited.
+    3. Repeat: Continue this process until the queue is empty.
 
 ### Recursion
 
@@ -234,19 +244,17 @@
   - Binary Recursion - Each recursive method call itself twice.
   - Multiple Recursion - Each recursive method call itself more than twice.
 - For binary and multiple recursion, the methods call itself as deep as possible than call the sibiling methods after all its recursive methods are called
-
-- Related Algorithmic Techniques
-  - Dynamic Programming
-    - Commonly referred to as DP
-    - It optimizes native recursive algorithm by saving the intermeditate result from recursive calls in a list in the memory, it reduces the complex of a recursive algorithm that would take exponential time further by pruning duplicated recursive calls when the result of a similar method call can be find in the result list
-  - Backtracking
-    - It is a technique that recursively build a solution incrementally and remove all the solutions that does not satisfy the constraints of the problem at any point of time
-    - The goal is to explore all possible solutions to a problem using the brute force approach
-    - A search tree named state-space tree is used. In a state-space tree, each branch is a variable, and each node represents a solution
-    - Breadth-first search (BFS) is an algorithm for searching a tree data structure for a node that satisfies a given property. It starts at the tree root and explores all nodes at the present depth prior to moving on to the nodes at the next depth level. Extra memory, usually a queue, is needed to keep track of the child nodes that were encountered but not yet explored
-    - the depth-first search (DFS) method is performed on the tree. It reaches the bottom of the tree first, since the next node from upper level will continue to execute, it looks like the path has been backtracked
-      - a stack can track the nodes that are visited by popping and to be visited by pushing
-      - a bounding function is applied so that the algorithm can check if the so-far built solution satisfies the constraints, when solution from one node failed to meet the constraints, the recursion stops.
+- Dynamic Programming
+  - Commonly referred to as DP
+  - It optimizes native recursive algorithm by saving the intermeditate result from recursive calls in a list in the memory, it reduces the complex of a recursive algorithm that would take exponential time further by pruning duplicated recursive calls when the result of a similar method call can be find in the result list
+- Backtracking
+  - It is a technique that build a solution incrementally and remove all the solutions that does not satisfy the constraints of the problem at any point of time
+  - The goal is to explore all possible solutions to a problem using the brute force approach
+  - A search tree named state-space tree is used. In a state-space tree, each branch is a variable, and each node represents a solution
+  - the depth-first search (DFS) method is performed on the tree. It reaches the bottom of the tree first, since the next node from upper level will continue to execute, it looks like the path has been backtracked
+  - The DFS implementataion is ususally recursive
+    - a bounding function is applied so that the algorithm can check if the so-far built solution satisfies the constraints, when solution from one node failed to meet the constraints, the recursion stops
+  - It can be an iterative algorithm by using a stack, the stack can track the nodes that are visited by popping and to be visited by pushing
 
 ### Parallel
 
@@ -419,6 +427,37 @@ int binarySearch(int A[], int lower, int upper, int X){
 
 - Worst case `O(logN)`.
 
+#### Quick Select
+
+- It is used to find the kth largest/smallest element
+- Steps for Quickselect algorithm:
+  - Choose a Pivot: Select a pivot element from the array
+  - Partition: Reorder the array so that elements less than the pivot come before it, and elements greater than the pivot come after it
+  - Recur: Depending on the position of the pivot, either the k-th smallest element is in the left partition, the right partition, or is the pivot itself
+- Time complexity
+  - `O(n)` Average case
+  - `O(n^2)` Worst case
+- Example:
+
+```py
+import random
+def quickselect(arr, k):
+    if len(arr) == 1:
+        return arr[0]
+
+    pivot = random.choice(arr)
+    low = [x for x in arr if x < pivot]
+    high = [x for x in arr if x > pivot]
+    mid = [x for x in arr if x == pivot]
+
+    if k < len(low):
+        return quickselect(low, k)
+    elif k < len(low) + len(mid):
+        return mid[0]
+    else:
+        return quickselect(high, k - len(low) - len(mid))
+```
+
 ### Sort
 
 An array is sorted in ascending order if the array entries increase as indices increase.
@@ -522,7 +561,9 @@ for (index = 1; index <= N-1; index ++)
   2. Compare pivot point with rest of the array, move all smaller value to the left and greater values or equal value to the right. Then the pivot point has the sorted index location.(This step is called Partition).
   3. Do the same procedure for the left and right sublists. Get two more sorted points.
   4. Repeat until all sublists has a length of 1 or 0.
-- The complexity of Quick Sort is `О(n^2)` (worst case).
+- The complexity of Quick Sort is:
+  - `O(nlogn)` (average case)
+  - `О(n^2)` (worst case)
 - Example:
 
 ```java

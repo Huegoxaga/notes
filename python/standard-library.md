@@ -27,6 +27,7 @@ takewhile(predicateFunc, iterables) # return object with items that only satisfy
 chain(x,y) #combine iterables
 accumulate(iterables)  #return a object contains a list of sum up to its position. Can add custom function as a second parameter for other operation other than sum
 list(accumulate(range(8)))
+zip_longest(iterable1,iterable2) #pair elements from iterable1 and iterable2 one by one from left to right
 ```
 
 ## re

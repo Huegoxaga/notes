@@ -47,6 +47,39 @@
                 hashmap[nums[i]] = i # otherwise, put current value to the dictionary
     ```
 
+### 2. Add Two Numbers
+
+- Input:
+  - Two linked list head node `l1` and `l2`
+- Output:
+  - The sum of the two linked list as if each of them represent a number where each digits of the number are stored in each node reversely
+- Assumption:
+  - There is no leading zeros of a number stored in either linked list
+- Solution:
+  - While Loop - Add sum in new list
+  ```py
+  class Solution:
+      def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+          tenth = 0 # track the carry over digit
+          head = ListNode() # use head node for returning the list
+          cur = head # use cur has reference for current tracking node
+          while l1 or l2 or tenth > 0: # create new node if l1/l2 has digit or has carry over digit
+              l = ListNode() # init new node
+              l.val += tenth # add carry over digit if there is any
+              tenth = 0 # reset
+              if l1: # add l1 digit if there is any
+                  l.val += l1.val
+                  l1 = l1.next # advance to next node
+              if l2: # add l2 digit if there is any
+                  l.val += l2.val
+                  l2 = l2.next # advance to next nodes
+              tenth = l.val // 10 # store carry over digit
+              l.val = l.val % 10 # keep single digit
+              cur.next = l # update current tracking node's next node
+              cur = cur.next # move pointer to next
+          return head.next # ignore first empty node
+  ```
+
 ### 3. Longest Substring Without Repeating Characters
 
 - Input:
@@ -91,6 +124,44 @@
                   charSet.add(s[right])
 
           return maxLength
+  ```
+
+### 6. Zigzag Conversion
+
+- Input:
+  - A string, `s`
+  - An integer value, `rowNums`
+- Output:
+  - The reordered letter read from left to right. row by row
+    - The letter will be ordered in a zig-zag order vertically from top to bottom where the row number equals to the input `rowNums`
+- Example:
+  - Input:
+    - `s = "ABCDEFGHIJKLM"`
+    - `rowNums = 4`
+  - Reordered string is:
+    ```
+    A     G   M
+    B   F H  L
+    C E   I K
+    D     J
+    ```
+  - Output:
+    - `"AGMBFHLCEIKDJ"`
+- Solution:
+  - Track row number and add the letter to its corresponding rows
+  ```py
+  class Solution:
+      def convert(self, s: str, numRows: int) -> str:
+          res, row = [''] * numRows, 0
+          if numRows == 1: return s # hande single row condition where row tracker never changes
+          for c in s:
+              res[row] += c # add char to corresponding row
+              if row == 0: # Reset change value when reaching boundary
+                  change = 1
+              elif row == numRows - 1:
+                  change = -1
+              row += change # move row in zig-zag manner
+          return ''.join(res)
   ```
 
 ### 7. Reverse Integer
@@ -175,9 +246,9 @@ class Solution:
       def intToRoman(self, num: int) -> str:
           ROMAN_CHAR = {1: "I", 5: "V", 10: "X", 50: "L", 100: "C", 500: "D", 1000: "M"}
           raw_str = ""
-          for base in list(ROMAN_CHAR.keys())[::-1]: # Use base number from 1000 to 1 for division
+          for base, value in list(ROMAN_CHAR.items())[::-1]: # Use base number from 1000 to 1 for division
               count = num // base # Use result from floor division to generate simple Roman string
-              raw_str += ROMAN_CHAR[base] * count
+              raw_str += value * count
               num -= count * base
           return raw_str.replace('VIIII','IX').replace('LXXXX','XC').replace('DCCCC','CM').replace('IIII','IV').replace('XXXX','XL').replace('CCCC','CD') # Match 9, 90, 900 first as they are longer
   ```
@@ -190,7 +261,7 @@ class Solution:
           # Creating Dictionary for Lookup
           ROMAN_CHAR = {1000: "M", 900: "CM", 500: "D", 400: "CD", 100: "C", 90: "XC", 50: "L", 40: "XL", 10: "X", 9: "IX", 5: "V", 4: "IV", 1: "I"}
           raw_str = ''
-          for base, char in ROMAN_CHAR.keys(): # Use base number from 1000 to 1 for division
+          for base, char in ROMAN_CHAR.items(): # Use base number from 1000 to 1 for division
               raw_str += char * (num // base) # Use result from floor division to generate Roman string from left to right
               num %= base # Use the remainder to generate remaining string
           return raw_str
@@ -253,6 +324,88 @@ class Solution:
       def romanToInt(self, s: str) -> int:
           ROMAN_CHAR = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
           return sum([ROMAN_CHAR[char] for char in s.replace("IV", "IIII").replace("IX", "VIIII").replace("XL", "XXXX").replace("XC", "LXXXX").replace("CD", "CCCC").replace("CM", "DCCCC")])
+  ```
+
+### 14. Longest Common Prefix
+
+- Input:
+  - An array of words
+- Output
+  - The longest common prefix amongst the list of words
+- Solution:
+  - Sort the array and compare the first and last
+  ```py
+  class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        strs.sort()
+        first, last = strs[0], strs[-1]
+        res = ""
+        for i in range(min(len(first), len(last))):
+            if first[i] == last[i]:
+                res += first[i]
+            else:
+                break
+        return res
+  ```
+
+### 15. 3Sum
+
+- Input:
+  - Given an array of integers
+- Output:
+  - Return all the triplets from element in the array which sum up to zero
+  - The triplets must be distinct
+- Assumption:
+  - the order of the output and the order of the triplets does not matter
+- Solution:
+  - Sort list then find if two sum equals target if target is any number from left to right in the list
+  ```py
+  class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort() # Sort then use smallest integer from left as target
+        res = set() # Use set to manage duplicated triples
+        while len(nums) >= 3: # break list into target and a list with two pointer
+            t = nums.pop(0)
+            l, r = 0, len(nums) - 1
+            while l < r:
+                s = nums[l] + nums[r] + t # Find if sum of two pointed element and target is zero
+                if s > 0:
+                    r -= 1
+                elif s < 0:
+                    l += 1
+                else:
+                    res.add((t, nums[l], nums[r]))
+                    r -= 1 # continue check pairs in between
+                    l += 1
+        return list(res)
+  ```
+  - Optimize previous solution by skipping duplicated target and left pointer after finding a triple
+  ```py
+  class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort() # Sort then use smallest integer from left as target
+        res = []
+        prev_t = None
+        while len(nums) >= 3: # break list into target and a list with two pointer
+            t = nums.pop(0)
+            if prev_t == t:
+                continue
+            prev_t = t # update new target
+            l, r = 0, len(nums) - 1
+            while l < r:
+                s = nums[l] + nums[r] + t # Find if sum of two pointed element and target is zero
+                if s > 0:
+                    r -= 1
+                elif s < 0:
+                    l += 1
+                else:
+                    res.append((t, nums[l], nums[r]))
+                    prev_l = nums[l]
+                    l += 1
+                    r -= 1
+                    while nums[l] == prev_l and l < r:
+                        l += 1
+        return res
   ```
 
 ### 20. Valid Parentheses
@@ -320,6 +473,58 @@ class Solution:
           while '()' in s or '[]'in s or '{}' in s:
               s = s.replace('()','').replace('[]','').replace('{}','')
           return False if len(s) !=0 else True
+  ```
+
+### 21. Merge Two Sorted List
+
+- Input:
+  - The head of two sorted (non-decreasing) linked list, with the following structure
+  ```py
+  class ListNode:
+      def __init__(self, x):
+          self.val = x
+          self.next = None
+  ```
+- Output:
+  - One merged sorted linked list
+- Solution:
+  - While loop iteration
+  ```py
+  class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        link = ListNode()
+        head = link
+        while list1 and list2:
+            if list1.val < list2.val:
+                link.next = ListNode(list1.val)
+                list1 = list1.next
+            else:
+                link.next = ListNode(list2.val)
+                list2 = list2.next
+            link = link.next
+        else: # Handle dangling list
+            if list1:
+                link.next = list1
+            elif list2:
+                link.next = list2
+        return head.next
+  ```
+  - Recursive merge - Reconstruct list from right to left
+  ```py
+  class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        if list1 is None and list2 is None:
+            return None # Base cases - stops when both list end
+        elif list1 is None: # Base cases - adds trailing nodes
+            return list2
+        elif list2 is None:
+            return list1
+        if list1.val <= list2.val:
+            list1.next = self.mergeTwoLists(list1.next, list2)
+            return list1
+        else:
+            list2.next = self.mergeTwoLists(list1, list2.next)
+            return list2
   ```
 
 ### 22. Generate Parentheses
@@ -463,6 +668,8 @@ class Solution:
           return -1
   ```
 
+  - Use `return haystack.find(needle)`
+
 ### 36. Valid Sudoku
 
 - Input:
@@ -576,7 +783,7 @@ class Solution:
         return res
 ```
 
-### 55. Jump Game II
+### 45. Jump Game II
 
 - Input:
   - Given an integer array
@@ -675,6 +882,28 @@ class Solution:
                 gas = n
             gas -= 1
         return True
+  ```
+
+### 56. Merge Intervals
+
+- Input:
+  - an array of intervals with `[start, end]` as its elements
+- Output:
+  - Merged array of intervals for overlapping intevals
+- Solution:
+  - Sort and compare start and end values
+  ```py
+  class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort(key=lambda x: x[0]) # sort by start value
+        merged = [intervals.pop(0)] # move first interval to merged interval list for comparison
+        for interval in intervals:
+            prev = merged.pop() # compare last interval from merged list with current
+            if interval[0] <= prev[1]: # merge when overlap
+                merged += [[prev[0], max(interval[1], prev[1])]] # pick larger end value between overlapping intervals
+            else: # add two lists when not overlap
+                merged += [[prev[0], prev[1]], [interval[0], interval[1]]]
+        return merged
   ```
 
 ### 69. Sqrt(x)
@@ -1128,7 +1357,7 @@ class TreeNode:
 - Output:
   - True if two trees are identical
 - [Solution](https://leetcode.com/problems/same-tree/solutions/642761/easy-to-understand-faster-simple-recursive-iterative-dfs-python-solution/):
-  - Recursion - `O(n)`
+  - DFS - Recursion - `O(n)`
     - Return true when leaf node is reached, and exit early when there is an unequal comparision
   ```py
   class Solution:
@@ -1141,7 +1370,7 @@ class TreeNode:
               return False # exit condition III
           return self.isSameTree(p.right, q.right) and self.isSameTree(p.left, q.left) # Split comparision and use 'and' operator for all results
   ```
-  - Iteration - `O(n)`
+  - DFS - Iteration - `O(n)`
   ```py
   class Solution:
       def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
@@ -1233,15 +1462,14 @@ class TreeNode:
 
 - Output:
   - `True` if the binary tree is balanced
+    - For a balanced tree, no 2 leaf nodes differ in distance from the root by more than 1
 - Assumption:
   - Return `True` when tree is empty
 - Solution:
-
-  - Check depth of nodes from from top to bottom - `O(n^2)`
-    - Parent node height equals the max height of right or left child trees plus one
+  - Check depth difference between left and right child for all nodes - `O(n^2)`
+    - Parent node height equals the max height between right and left child trees plus one
     - `O(n^2)` as each node will check all its child nodes for height difference
     - From the example below, each `isBalance()` will trigger the `getDepth()`, `2n` times
-
   ```py
   def getDepth(node): # Define a function to return the depth of any given node
       if not node: return 0
@@ -1252,21 +1480,38 @@ class TreeNode:
           # From the root check the left and right nodes' depth, and recursively check the childern nodes of the left and right nodes with the isBalanced function
           return abs(getDepth(root.left) - getDepth(root.right)) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)
   ```
-
   - Check depth of nodes from bottom up - `O(n)`
     - Use DFS to track the nodes' height and mark the unbalanced node as -1 in one search
-
   ```py
   def dfs(root):
-      if not root: return 0 # Handle None nodes
+      if not root: return 0
       leftHeight = dfs(root.left)
       rightHeight = dfs(root.right)
+      # Leaf node reached, backtracking starts from leftHeight/rightHeight equals to zero
       if leftHeight == -1 or rightHeight == -1: return -1 # if child nodes is already unbalanced
       if abs(leftHeight - rightHeight) > 1: return -1 # check if current node is balanced
       return max(leftHeight, rightHeight) + 1 # if all check passed, return node height for further comparison
   class Solution:
       def isBalanced(self, root: TreeNode) -> bool:
           return dfs(root) != -1 # Only one dfs is triggered here
+  ```
+
+### 111. Minimum Depth of Binary Tree
+
+- Input:
+  - A binary tree, `root`
+- Output:
+  - The min depth of the tree
+    - The min depth if the shortest depth between root and its leaf
+- Solution:
+  - DFS
+  ```py
+  class Solution:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root: return 0 # base case
+        elif not root.left: return self.minDepth(root.right) + 1 # ignore min height of nodes without left leaf
+        elif not root.right: return self.minDepth(root.left) + 1 # ignore min height of nodes without right leaf
+        else: return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
   ```
 
 ### 121. Best Time to Buy and Sell Stock
@@ -1362,6 +1607,18 @@ class TreeNode:
         return True
   ```
 
+### 135.Candy
+
+- Input:
+  - An integer array represents a list of ratings for `n` children in line
+    - The length of the array is `n`
+- Output:
+  - The minimum candies for all children if each child get at least one and kid with higher rating receive more candy than its neighbors
+    - When two adjcent kids have same ratings there is no restriction
+- Solution:
+  - Divide the line and adjust the min of each sub-array
+  - Use candies list to track distribution
+
 ### 141. Linked List Cycle
 
 - Input:
@@ -1409,6 +1666,59 @@ class TreeNode:
             traveled_list.add(head)
             head = head.next
         return False
+  ```
+
+### 146. LRU Cache
+
+- Implement the LRUCache class:
+  - LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+  - int get(int key) Return the value of the key if the key exists, otherwise return -1.
+  - void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+  - The functions get and put must each run in O(1) average time complexity.
+- Solution:
+  - Use dictionary stores data and list to track used order
+  ```py
+  class LRUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.order = []
+        self.data = {}
+    def get(self, key: int) -> int:
+        if key in self.data:
+            self.order.pop(self.order.index(key))
+            self.order.append(key)
+            return self.data[key]
+        else:
+            return -1
+    def put(self, key: int, value: int) -> None:
+        if key not in self.data:
+            if len(self.data) == self.capacity:
+                least_key = self.order.pop(0)
+                del self.data[least_key]
+        else:
+            self.order.pop(self.order.index(key))
+        self.order.append(key)
+        self.data[key] = value
+  ```
+  - Use ordered dictionary
+  ```py
+  class LRUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.data = OrderedDict()
+    def get(self, key: int) -> int:
+        if key in self.data:
+            self.data.move_to_end(key)
+            return self.data[key]
+        else:
+            return -1
+    def put(self, key: int, value: int) -> None:
+        if key not in self.data:
+            if len(self.data) == self.capacity:
+                self.data.popitem(last=False)
+        else:
+            self.data.move_to_end(key)
+        self.data[key] = value
   ```
 
 ### 151. Reverse Words in a String
@@ -1492,6 +1802,7 @@ class TreeNode:
   - Each set of input only has one solution
   - The number from the list can't add itself
   - The order of the solution list doesn't matter
+  - Solution must use only constant extra space
 - Solution:
   - Brute force with two nested loop - `O(n^2)`
   - One-pass and two-pass with hashmap - `O(n)`
@@ -1503,6 +1814,19 @@ class TreeNode:
     - if sum is greater than target, try the sum of the first and the second last element
     - if sum is smaller, try the sum of the second and the last element
     - repeat the pattern until the single solution is found
+  ```py
+  class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        l, r = 0, len(numbers) - 1
+        while l < r:
+            s = numbers[l] + numbers[r]
+            if s < target:
+                l += 1
+            elif s > target:
+                r -= 1
+            else:
+                return [l + 1, r + 1]
+  ```
   - Two-pointer 2 - `O(n)`
     - Create two pointers where one points at the first index in the array and the other points at the second index
     - If the sum of the values at the pointers is less than the target, shift both pointers over one
@@ -1602,6 +1926,67 @@ class TreeNode:
               nums[j], nums[(i*k+j)%n] = nums[(i*k+j)%n], nums[j]
   ```
 
+### 202. Happy Number
+
+- Input:
+  - An integer
+- Output:
+  - True if it is a happy number, or false otherwise
+    - Happy number will end up as 1 if keep calculating the square sum of its digits
+    - Unhappy number will stuck in a loop and never reach 1
+- Solution
+  - Loop detection with hashset
+    - store intermidiate result to hash set
+    - check duplicates before proceeding
+  ```py
+  class Solution:
+      def isHappy(self, n: int) -> bool:
+          hset = set()
+          while n != 1:
+              if n in hset: return False # Try to add input first
+              hset.add(n)
+              n = sum([int(i)**2 for i in str(n)])
+          return True
+  ```
+
+### 205. Isomorphic Strings
+
+- Input:
+  - Two strings `s` and `t`
+- Output:
+  - True if two strings are isomorphic
+    - Isomorphic means one string can become the other one by changing characters only
+    - `aa` can be changed to any other letters with the same form, like `bb` or `zz`
+    - Isomorphic must be true from `s` to `t` and from `t` to `s`
+- Assumption:
+  - two strings have the same length
+- Solution:
+  - Use dictionary to map letters and list of indices, then compare dict values
+  ```py
+  class Solution:
+      def isIsomorphic(self, s: str, t: str) -> bool:
+          s_map = {}
+          t_map = {}
+          for i in range(len(s)):
+              s_map[s[i]] = s_map.setdefault(s[i], []) + [i]
+              t_map[t[i]] = t_map.setdefault(t[i], []) + [i]
+          return list(s_map.values()) == list(t_map.values())
+  ```
+  - Use dictionary to map letters from `s` and letter from `t` at the same location
+  ```py
+  class Solution:
+      def isIsomorphic(self, s: str, t: str) -> bool:
+          if len(set(s)) != len(set(t)): # Check if s has more unique characters that can be added in the st_dict without returning false
+              return False
+          st_dict = {}
+          for i in range(len(s)):
+              if s[i] not in st_dict: # Add coresponding letter in `t` as the value of first seen letter in `s`
+                  st_dict[s[i]] = t[i]
+              elif st_dict[s[i]] != t[i]: # Check if repeated letter in `s` has same corresponding letter in `t`
+                  return False
+          return True
+  ```
+
 ### 209. Minimum Size Subarray Sum
 
 - Input:
@@ -1676,6 +2061,46 @@ class TreeNode:
           return res
   ```
 
+### 217. Contains Duplicate
+
+- Input:
+  - An array of integers
+- Output:
+  - true if any value appears at least twice, or false otherwise
+- Solutions:
+  - Hashmap with set
+  ```py
+  class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        bins = set()
+        for n in nums:
+            if n in bins:
+                return True
+            bins.add(n)
+        return False
+  ```
+
+### 219. Contains Duplicate II
+
+- Input:
+  - An array of integers
+  - An integer, `k`
+- Output:
+  - true if any value appears at least twice within nearest `k`, or false otherwise
+- Solution:
+  - Hashmap stores element as key and index as value
+  ```py
+  class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        map = {}
+        for i in range(len(nums)):
+            if nums[i] in map:  # Only need to check last saved as its closest
+                if i - map[nums[i]] <= k: # i is always greater than saved index
+                    return True
+            map[nums[i]] = i
+        return False
+  ```
+
 ### 226. Invert Binary Tree
 
 - Input:
@@ -1730,6 +2155,31 @@ class TreeNode:
           return output
   ```
 
+### 230. Kth Smallest Element in a BST
+
+- Input:
+  - A binary search tree `root`
+  - An integer `k`
+- Output:
+  - The kth smallest element
+- Solution:
+  - Inorder Traversal in binary search tree
+  ```py
+  class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        self.idx = 1 # Use conter to count sorted traversal result
+        self.res = 0 # Store the target element value
+        def inOrderTraversal(node):
+            if not node: return
+            inOrderTraversal(node.left)
+            if self.idx == k:
+                self.res = node.val
+            self.idx += 1
+            inOrderTraversal(node.right)
+        inOrderTraversal(root)
+        return self.res
+  ```
+
 ### 238. Product of Array Except Self
 
 - Input:
@@ -1758,23 +2208,102 @@ class TreeNode:
         return [pre_array[i] * suf_array[i] for i in range(length)]
     ```
 
-  - Getting output while calculating suffix array in [one pass](https://leetcode.com/problems/product-of-array-except-self/solutions/3938575/video-visualization-and-explanation-of-o-n-solution/?envType=study-plan-v2&envId=leetcode-75)
+  - O(1) Space complexity solution excluding space taken by solution array
 
   ```py
   class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        length = len(nums)
-        products = [1] * length
-        for i in range(1, length):
-            products[i] = products[i-1] * nums[i-1]
-
-        right = nums[-1]
-        for i in range(length-2, -1, -1):
-            products[i] *= right
-            right *= nums[i]
-
-        return products
+      def productExceptSelf(self, nums: List[int]) -> List[int]:
+          n = len(nums)
+          res = [1] * n # only one answer array is declared
+          suffix = 1
+          for i in range(1, n):
+              res[i] = res[i-1]*nums[i-1] # Get Prefix product array
+          for i in range(n-1, -1, -1):
+              res[i] *= suffix # Track suffix product with integer
+              suffix *= nums[i] # Update to answer array from right to left
+          return res
   ```
+
+### 242. Valid Anagram
+
+- Input:
+  - String, `s`
+  - String, `t`
+- Output:
+  - True if two strings can be equal by reordering the letters, or false otherwise
+- Solution:
+  - Counter
+  ```py
+  class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return Counter(s) == Counter(t)
+  ```
+
+### 274. H-Index
+
+- Input:
+  - An array list number of citations for each published papers of a researcher
+- Output:
+  - The H-Index of this researcher
+    - The H-Index is the highest number `h` such that a researcher has published `h` papers, each of which has been cited at least `h` times
+- Solution:
+  - Sorting and counting - After sorting citation in descending order the first `h` paper with more than `h` citation indicates the `h` index
+  ```py
+  class Solution:
+    def hIndex(self, citations: List[int]) -> int:
+        n = len(citations)
+        citations.sort(reverse=True)
+        for i in range(n):
+            if citations[i] < i + 1: # return when citation is less than paper number
+                return i
+        return n # if all citations are greater than paper count, return papaer number
+  ```
+
+### 290. Word Pattern
+
+- Input:
+  - A pattern string like `aaa` or `abc`, each pattern represent a word
+  - A string of words separated by empty spaces
+- Output:
+  - True if the string follows the pattern
+- Example:
+  - Input:
+    - pattern = "abba", s = "dog cat cat dog"
+  - Output:
+    - True
+- Solution:
+  - Use dictionary to store pattern letter as key and represented word as value
+  ```py
+  class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        pattern_map = {}
+        words = s.split()
+        if len(set(words)) != len(set(pattern)): # Check same words represented by different patterns
+            return False
+        if len(words) != len(pattern): # Check equal length
+            return False
+        for i in range(len(pattern)):
+            pattern_symbol = pattern[i]
+            if pattern_symbol not in pattern_map: # Save pattern as key and word as value
+                pattern_map[pattern_symbol] = words[i]
+            elif pattern_map[pattern_symbol] != words[i]: # Check same pattern with different value
+                return False
+        return True
+  ```
+  - [Use the conditions for bijectivity](https://leetcode.com/problems/word-pattern/solutions/2977027/python-3-2-lines-w-explanation-t-s-95-99)
+    - The counts of distinct elements in two groups and the count of distinct mappings are all equal
+    - `zip_longest` This method creates pairs of corresponding elements from `pattern` and `s`
+      - If one of the list is longer, the paired value from the shorter list will be filled with `None`
+  ```py
+  class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        s = s.split()
+        return (len(set(pattern)) ==
+                len(set(s)) ==
+                len(set(zip_longest(pattern,s))))
+  ```
+  - Use two sets to track new pattern and words, then use a dictionary to track new mapping
+  - Store mapping in a dictionary and use pattern to reconstruct `s` string then compare it with the original `s`
 
 ### 334. Increasing Triplet Subsequence
 
@@ -1829,6 +2358,48 @@ class TreeNode:
                           break
                   if end == i+1: return ''.join(s) # Return when the second vowel is not found after all remaining letter are checked from the back
           return ''.join(s)
+  ```
+
+### 380. Insert Delete GetRandom O(1)
+
+- Implement the RandomizedSet class with each function works in average `O(1)` time complexity
+  - `RandomizedSet()` - Initializes the RandomizedSet object.
+  - `bool insert(int val)` - Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
+  - `bool remove(int val)` - Removes an item val from the set if present. Returns true if the item was present, false otherwise.
+  - `int getRandom()` Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
+- Solution
+
+  - Data array plus value/index mapping
+    - Use an array to store the list data
+    - Use a dictionary tracks the mapping between value and location, the value is stored as key for existence check
+
+  ```py
+  class RandomizedSet:
+
+    def __init__(self):
+        self.map = {} # Use dict to track element and index
+        self.data = [] # Use list to store data
+
+    def insert(self, val: int) -> bool:
+        if val in self.map:
+            return False
+        else:
+            self.map[val] = len(self.data) # use previous len as new element idx
+            self.data.append(val) # add element to data list
+            return True
+
+    def remove(self, val: int) -> bool:
+        if val in self.map:
+            self.data[self.map[val]] = self.data[-1] # Assign last element to the removing location
+            self.map[self.data[-1]] = self.map[val] # update last element index in self.map
+            self.data.pop() # remove last element
+            del self.map[val] # delete the key for val
+            return True
+        else:
+            return False
+
+    def getRandom(self) -> int:
+        return random.choice(self.data)
   ```
 
 ### 383. Ransom Note
@@ -1923,6 +2494,33 @@ class TreeNode:
       return ans
   ```
 
+### 530. Minimum Absolute Difference in BST
+
+- Input:
+  - A binary search tree, `root`
+- Output:
+  - The smallest difference between each nodes
+- Assumption:
+  - Value of each node is between 0 and 100000
+- Solution:
+  - In Order Traversal
+    - It returns sorted values
+  ```py
+  class Solution:
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        self.prev = -100000 # Generate biggest diif for root node val
+        self.minDiff = 100000 # Assume it has largest diff
+        def inOrderTraversal(node):
+            if not node: return
+            inOrderTraversal(node.left)
+            # Check current node val with previous node val and take min diff
+            self.minDiff = min(node.val - self.prev, self.minDiff)
+            self.prev = node.val
+            inOrderTraversal(node.right)
+        inOrderTraversal(root)
+        return self.minDiff
+  ```
+
 ### 605. Can Place Flowers
 
 - Input:
@@ -1950,6 +2548,63 @@ class TreeNode:
             if plot == n: return True
         return plot >= n
 
+  ```
+
+### 637. Average of Levels in Binary Tree
+
+- Input:
+  - The `root` of a binary tree
+- Output:
+  - A list of average values amongst all elements in each level of the given tree
+- Assumption:
+  - The answer is accurate to the fifth decimal places
+- Solution:
+  - [BFS](https://leetcode.com/problems/average-of-levels-in-binary-tree/solutions/1874688/easy-bfs-recursion-solution-90-w-beginner-level-interview-notes)
+  ```py
+  class Solution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        q, ans = deque([root]), [] # Init a double-ended queue
+        while q:
+            qlen=len(q)
+            row = 0
+            for _ in range(qlen): # for each element in the current depth level
+                node = q.popleft() # get and remove the left most element
+                row += node.val # Incre the value
+                if node.left: q.append(node.left) # add child to queue if exists
+                if node.right: q.append(node.right)
+            ans.append(row/qlen) # Get the avg of the current level
+        return ans
+  ```
+  - DFS
+  ```py
+  class Solution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        tree_dict = {}
+        def dfs(node, level):
+            if not node: return
+            if level in tree_dict:
+                tree_dict[level] += [node.val]
+            else:
+                tree_dict[level] = [node.val]
+            dfs(node.left, level + 1)
+            dfs(node.right, level + 1)
+        dfs(root, 0)
+        # The order of keys start from top to bottom since data is added before recursive calls
+        # After python 3.7, the order of key are kept based on its creation order
+        return [mean(v) for v in tree_dict.values()]
+  ```
+  - DFS simplied with defaultdict data type
+  ```py
+  class Solution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        tree_dict = defaultdict(list)
+        def dfs(node, level):
+            if not node: return
+            tree_dict[level].append(node.val) # empty list will be assigned if key does not exist
+            dfs(node.left, level + 1)
+            dfs(node.right, level + 1)
+        dfs(root, 0)
+        return [mean(v) for v in tree_dict.values()]
   ```
 
 ### 643. Maximum Average Subarray I
@@ -2010,12 +2665,10 @@ class TreeNode:
   #         self.right = right
   class Solution:
       def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-          if root is None or root.val == val:
-              return root
-          elif root.val < val:
-              return self.searchBST(root.right, val)
-          else:
-              return self.searchBST(root.left, val)
+          if not root: return None
+          elif val == root.val: return root
+          elif val > root.val: return self.searchBST(root.right, val)
+          else: return self.searchBST(root.left, val)
 
   ```
 
@@ -2352,16 +3005,10 @@ class Node:
         self.right = right
 
 def depth(node):
-    if node is None:
-        return 0
-    else:
-        left_depth = depth(node.left)
-        right_depth = depth(node.right)
-
-        if left_depth > right_depth:
-            return left_depth + 1
-        else:
-            return right_depth + 1
+    if not node: return 0
+    left_depth = depth(node.left)
+    right_depth = depth(node.right)
+    return max(left_depth, right_depth) + 1
 
 node = Node(1)
 node.left = Node(2)

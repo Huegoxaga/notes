@@ -239,7 +239,7 @@ str.isnumeric() # check if contains only 0-9
 str.islower()
 str.isspace()
 str.isupper()
-str.find(substring) # Find the lowest index of the substring.
+str.find(substring) # Find the lowest index of the substring, return -1 if not found
 str.strip(string)   # Strip all the characters in the argument of the str from the beginning and the end. (if no argument, remove empty spaces by default)
 str.zfill(n) # add leading zeros until string length reaches `n`
 str.count(substr) # count the number of occurrence of substring or char
@@ -344,11 +344,22 @@ if any([i==5 for i in x]):
 
 ### While Condition
 
-This block of code is executed when the condition is true.
+- This block of code is executed when the condition is true.
 
 ```py
 while condition:
 	#….
+```
+
+- while...else structure
+  - Code in else block will be executed if while loop exits normally after its condition is evaluated as false
+  - If while loop is exited from the break statement, else block will be skipped
+
+```py
+while condition:
+  pass
+else:
+  pass
 ```
 
 ### For Loop
@@ -402,7 +413,7 @@ mylist.append(value) # This will append a value at its end. The method doesn't r
 mylist.sort() # Sorts the list ascending by default
 mylist.sort(reverse=True) # Sorts the list in desending order
 # When sort a list of tuples, sort by the first element of the tuples
-mylist.sort(key=lambda listItem: listItem.get('group_name')) #sort based on the key value of the element
+mylist.sort(key=lambda listItem: listItem.get('group_name')) # sort list of dict in-place, based on a certain key value
 mylist.remove(value) # It will remove certain value in the list regardless of its location (using ==).
 mylist.reverse() # It will reverse the order, print(list.sort()) will not work
 mylist.insert(index, element) # It will insert an element at certain index location. (raise ValueError exception if element is not found)
@@ -441,6 +452,8 @@ len(list)
 min(list)
 max(list)
 sum(list)
+sorted(list) # return a new sorted list
+sorted(list, key=lambda x: x['id'])
 ```
 
 #### List Comprehension
@@ -483,12 +496,13 @@ sum(list)
 ```py
 # The list functions len, sum, min, max, and sortedcan be passed dictarguments. They perform their operations on the keys, not the values.
 dictionary.get(key, default_value)  #It returns the key’s value and None if key is not found. or display specific default value. None type can have this method without error
-dictionay.pop(key,default)  # It returns and remove the value that match the key. Return the default value if not found.
-dictionay.values() # Return a list of values, it returns an object of type dict_values which can be cast into a list
-dictionay.keys() # Return a list of keys.
-dictionay.items() # Return a list of dictionay elements.
-dictionay.clear() # empties the dictionary
-dictionay.copy() # Return a copy of the dictionary instead of passing a reference
+dictionary.pop(key,default)  # It returns and remove the value that match the key. Return the default value if not found.
+dictionary.values() # Return a list of values, it returns an object of type dict_values which can be cast into a list
+dictionary.keys() # Return a list of keys.
+dictionary.items() # Return a list of dictionay elements.
+dictionary.clear() # empties the dictionary
+dictionary.copy() # Return a copy of the dictionary instead of passing a reference
+dictionary.setdefault('key', 'default') # Return default value if key does not exist
 ```
 
 ### Iteration
@@ -563,6 +577,7 @@ a, b = zip(*x) # unzip
 - intersection `&`
 - difference `-`
 - symmetric difference: items in either set, but not both. `^`
+- membership `in`
 
 ### Methods
 
