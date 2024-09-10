@@ -128,8 +128,9 @@
   - `Postorder traversal` - traverses the left and right subtrees, and then visits the root.(recursive methods for left and right subtree run first)
 - Types of binary trees:
   - `Full Binary Tree` is a Binary Tree in which every node has 0 or 2 children
-  - `Complete Binary Tree` has all levels completely filled with nodes except the last level and in the last level, all the nodes are as left side as possible
+  - `Complete Binary Tree` has all levels completely filled with nodes except the last level and in the last level, all the nodes are as left side as possible at the last level
   - `Perfect Binary Tree` is a Binary Tree in which all internal nodes have 2 children and all the leaf nodes are at the same depth or same level
+    - For a perfect binary tree with height `h`, it has `2^h-1` nodes
   - `Balanced Binary Tree` is a Binary tree in which height of the left and the right sub-trees of every node may differ by at most `1`
   - `Degenerate(or Pathological) Binary Tree` is a Binary Tree where every parent node has only one child node
 - Application of binary trees:
@@ -249,12 +250,15 @@
   - It optimizes native recursive algorithm by saving the intermeditate result from recursive calls in a list in the memory, it reduces the complex of a recursive algorithm that would take exponential time further by pruning duplicated recursive calls when the result of a similar method call can be find in the result list
 - Backtracking
   - It is a technique that build a solution incrementally and remove all the solutions that does not satisfy the constraints of the problem at any point of time
-  - The goal is to explore all possible solutions to a problem using the brute force approach
-  - A search tree named state-space tree is used. In a state-space tree, each branch is a variable, and each node represents a solution
-  - the depth-first search (DFS) method is performed on the tree. It reaches the bottom of the tree first, since the next node from upper level will continue to execute, it looks like the path has been backtracked
-  - The DFS implementataion is ususally recursive
-    - a bounding function is applied so that the algorithm can check if the so-far built solution satisfies the constraints, when solution from one node failed to meet the constraints, the recursion stops
-  - It can be an iterative algorithm by using a stack, the stack can track the nodes that are visited by popping and to be visited by pushing
+  - the depth-first search (DFS) method is an implementation of backtracking
+    - The goal is to explore all possible solutions to a problem
+    - The dfs function is implemented as follows:
+      1. The exit condition always goes first
+      2. The code before recursive calls are executed from top to bottom until the exit condition is met
+      3. Multiple recursive calls can be performed, they controls the traversal order of the data
+      4. The lines after the recursive calls are executed after all above recursive methods are returned when base condition is met. They are doing backtracking from bottom to top
+      5. The returned value pass data between the recursive method for decision making
+    - It can be an iterative algorithm by using a stack, the stack can track the nodes that are visited by popping and to be visited by pushing
 
 ### Parallel
 

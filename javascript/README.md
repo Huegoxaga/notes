@@ -733,7 +733,7 @@ array.includes("elementX"); //return true if array contains elementX, false if n
 array.some(person => person.name === "Peter") //return true if the array contains an object by comparing the property value
 array.forEach(function(i) {
   //forEach iterates each element of the array as an argument of the function.
-  //function code
+  //it returns no data
 });
 array = [...array] //clone an array(change its reference)
 array.filter(i => i.id === 1); //retern a filtered array that doesnot have items that has id equal to 1.

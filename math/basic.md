@@ -127,6 +127,9 @@
     - to expanding register size filling the left register positions with the original most left value.
 - shortcut for binary subtraction.
   - convert the subtrahend to two’s complement and add with minuend, if the result has more digit than original register size trucate it and it is called overflow.
+- Bitwise Operation:
+  - left shifting a number `x` by `n` positions: `x << n` is equivalent to `x * (2^n)`
+  - right shifting a number `x` by `n` positions: `x >> n` is equivalent to `x // (2^n)`
 
 ### Complex Number
 

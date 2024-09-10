@@ -1370,7 +1370,7 @@ class TreeNode:
               return False # exit condition III
           return self.isSameTree(p.right, q.right) and self.isSameTree(p.left, q.left) # Split comparision and use 'and' operator for all results
   ```
-  - DFS - Iteration - `O(n)`
+  - BFS - Iteration - `O(n)`
   ```py
   class Solution:
       def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
@@ -1392,35 +1392,21 @@ class TreeNode:
   - A binary tree
 - Output:
   - True if the tree is symmetric
+- Assumption:
+  - root node is always not empty
 - Solution:
-  - Divide tree into left and right subnotes, then compare their child notes
+  - Compare child nodes
   ```py
   class Solution:
       def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-          if not root: # Handle None at root
-              return True
-          return self.isSame(root.left, root.right)
-      def isSame(self, leftroot, rightroot): # This method define the equality of two nodes
-          if not leftroot and not rightroot:
-              return True
-          if not leftroot or not rightroot:
-              return False
-          if leftroot.val != rightroot.val:
-              return False
-          # For each pair of given nodes, compare the opposite sides of their child nodes, regardless of whether the child nodes can be None
-          return self.isSame(leftroot.left, rightroot.right) and self.isSame(leftroot.right, rightroot.left)
-  ```
-  - Compare root with itself
-  ```py
-  class Solution:
-      def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-          def isMirror(left, right):
+          def isMirror(left, right): # check if two inputs has value
               if not left and not right:
-                  return True
+                  return True # True if two are empty
               if not left or not right:
-                  return False
+                  return False # False if only one is empty
+              # If both input have value, check equality and pass the comparison to mirrored child nodes
               return left.val == right.val and isMirror(left.left, right.right) and isMirror(left.right, right.left)
-          return isMirror(root, root)
+          return isMirror(root.left, root.right)
   ```
 
 ### 104. Maximum Depth of Binary Tree
@@ -1446,12 +1432,13 @@ class TreeNode:
         return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1 # each return from the lowest leaf node will increment the returned depth by one
   ```
 
-### 110. Balanced Binary Tree
+### 105. Construct Binary Tree from Preorder and Inorder Traversal
 
 - Input:
-
-  - One binary tree with the following structure
-
+  - An array of integer generated from preorder traversal of a tree
+  - An array of integer generated from inorder traversal of a tree
+- Output:
+  - The original tree with the following structure
   ```py
   class TreeNode:
       def __init__(self, val=0, left=None, right=None):
@@ -1459,7 +1446,120 @@ class TreeNode:
           self.left = left
           self.right = right
   ```
+- Assumption:
+  - `inorder` and `postorder` array consist of unique values.
+- Solution:
+  - Recursive method to build subtrees - `O(n^2)`
+  ```py
+  class Solution:
+      def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+          # preorder list helps us find root nodes and root nodes of subtrees
+          # inorder list helps us find size of subtrees
+          root = TreeNode(preorder.pop(0))
+          self.buildSubTree(root, preorder, inorder)
+          return root
+      def buildSubTree(self, root, preorder, inorder):
+          rootIdx = inorder.index(root.val)
+          leftSize = rootIdx # the number of element on left of rootIdx
+          if leftSize > 0:
+              root.left = TreeNode(preorder.pop(0))
+              self.buildSubTree(root.left, preorder, inorder[:rootIdx])
+          rightSize = len(inorder) - 1 - rootIdx # the number of element on right of rootIdx
+          if rightSize > 0:
+              root.right = TreeNode(preorder.pop(0))
+              self.buildSubTree(root.right, preorder, inorder[rootIdx + 1:len(inorder)])
+  ```
+  - Simplify by using one method - `O(n^2)`
+  ```py
+  class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        if not inorder: # check if more subtree can be added
+            return None
+        root = TreeNode(preorder.pop(0))
+        index = inorder.index(root.val)
+        root.left = self.buildTree(preorder, inorder[:index])
+        root.right = self.buildTree(preorder, inorder[index + 1:])
+        return root
+  ```
+  - Optimize by eliminating list slicing and index search with hashmap within each recursive call - `O(n)`
+  ```py
+  class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        inorderMap = {val: idx for idx, val in enumerate(inorder)}
+        def buildSubTree(left: int, right: int) -> Optional[TreeNode]:
+            if left > right: # check if subtree size is empty
+                return None
+            root = TreeNode(preorder.pop(0))
+            index = inorderMap[root.val]
+            root.left = buildSubTree(left, index - 1)
+            root.right = buildSubTree(index + 1, right)
+            return root
+        return buildSubTree(0, len(inorder) - 1)
+  ```
 
+### 106. Construct Binary Tree from Inorder and Postorder Traversal
+
+- Input:
+  - An array of integer generated from inorder traversal of a tree
+  - An array of integer generated from postorder traversal of a tree
+- Output:
+  - The original tree with the following structure
+  ```py
+  class TreeNode:
+      def __init__(self, val=0, left=None, right=None):
+          self.val = val
+          self.left = left
+          self.right = right
+  ```
+- Assumption:
+  - `inorder` and `postorder` array consist of unique values.
+- Solution:
+  - Recursive method to build subtrees - `O(n^2)`
+  ```py
+  class Solution:
+      def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+          # postorder root node and root of subtrees are always at the end
+          # inorder list helps us find size of subtrees
+          if not inorder: return
+          root = TreeNode(postorder.pop())
+          rootIdx = inorder.index(root.val)
+          root.right = self.buildTree(inorder[rootIdx + 1:], postorder)
+          root.left = self.buildTree(inorder[:rootIdx], postorder)
+          return root
+  ```
+
+### 108. Convert Sorted Array to Binary Search Tree
+
+- Input:
+  - An sorted list in ascending order
+- Output:
+  - A balanced binary search tree
+- Solution
+  - Recursive method to build subtrees - `O(nlogn)`
+    - `n` array slicing for `logn` recursions where `logn` is the height of the balanced tree
+  ```py
+  class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        # pick mid value then use it to create root node for the tree and its subtrees
+        if not nums: return
+        midIdx = len(nums) // 2
+        node = TreeNode(nums[midIdx])
+        node.left = self.sortedArrayToBST(nums[:midIdx])
+        node.right = self.sortedArrayToBST(nums[midIdx+1:])
+        return node
+  ```
+
+### 110. Balanced Binary Tree
+
+- Input:
+  - One binary tree with the following structure
+  ```py
+  class TreeNode:
+      def __init__(self, val=0, left=None, right=None):
+          self.val = val
+          self.left = left
+          self.right = right
+  ```
 - Output:
   - `True` if the binary tree is balanced
     - For a balanced tree, no 2 leaf nodes differ in distance from the root by more than 1
@@ -1476,7 +1576,7 @@ class TreeNode:
       return 1 + max(getDepth(node.left), getDepth(node.right)) # Current node depth uses the deepest child depth plus 1
   class Solution:
       def isBalanced(self, root: TreeNode) -> bool:
-          if not root: return True # Handle edge case
+          if not root: return True
           # From the root check the left and right nodes' depth, and recursively check the childern nodes of the left and right nodes with the isBalanced function
           return abs(getDepth(root.left) - getDepth(root.right)) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)
   ```
@@ -1512,6 +1612,138 @@ class TreeNode:
         elif not root.left: return self.minDepth(root.right) + 1 # ignore min height of nodes without left leaf
         elif not root.right: return self.minDepth(root.left) + 1 # ignore min height of nodes without right leaf
         else: return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
+  ```
+
+### 112. Path Sum
+
+- Input:
+  - The root node of a tree with the following structure
+  - An integer, `targetSum`
+  ```py
+  class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+  ```
+- Output:
+  - True if the sum of a path of the tree from top to bottom equals `targetSum`
+- Solution:
+  - Find all sum in all paths and check membership using recursive dfs
+  ```py
+  class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        pathSum = set()
+        def dfs(node, sum):
+            if not node: return # base case
+            sum += node.val
+            if not node.left and not node.right: # check leaf node
+                pathSum.add(sum)
+            dfs(node.left, sum)
+            dfs(node.right, sum)
+            sum -= node.val
+        dfs(root, 0)
+        return targetSum in pathSum
+  ```
+  - Check sum at leaf node
+  ```py
+  class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        def dfs(node, sum):
+            if not node: return False
+            sum += node.val
+            if not node.left and not node.right:
+                return sum == targetSum
+            else:
+                return dfs(node.left, sum) or dfs(node.right, sum)
+            sum -= node.val
+        return dfs(root, 0)
+  ```
+  - Subtract `targetSum` from `hasPathSum`, so there is no need to create new inner method
+  ```py
+  class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        if not root: return False
+        targetSum -= root.val
+        if not root.left and not root.right:
+            return targetSum == 0
+        return self.hasPathSum(root.left, targetSum) or self.hasPathSum(root.right, targetSum)
+  ```
+  - Simplify by moving data processing to parameter passing
+  ```py
+  class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        if not root: return False
+        if not root.left and not root.right: return targetSum - root.val == 0
+        return self.hasPathSum(root.left, targetSum-root.val) or self.hasPathSum(root.right, targetSum-root.val)
+  ```
+
+### 116. Populating Next Right Pointers in Each Node
+
+- Input:
+  - A perfect binary tree with the following structure
+  ```py
+  class Node:
+    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+  ```
+- Output:
+  - Assign next to all node to the right at the same level
+- Assumption:
+  - next value of all nodes are initialized as `None`
+- Solution:
+  - Use queue to access tree level by level
+  ```py
+  class Solution:
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        if not root: return None
+        queue = deque([root])
+        last = None
+        while queue:
+            for _ in range(len(queue)): # Iterate nodes at the same level
+                current = queue.popleft()
+                if last:
+                    last.next = current # connect last node with current if exists
+                if current.left: # add child nodes if exists, check left only for perfect tree
+                    queue.append(current.left)
+                    queue.append(current.right)
+                last = current # update last node
+            last = None # reset last for new level
+        return root
+  ```
+  - Recursion - track node level by level with hashmap
+  ```py
+  class Solution:
+      def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+          connections = {}
+          def connect_level(node, depth=0):
+              if not node:
+                  return
+              # Code block before recursion call is executed from top to bottom
+              if depth in connections: # if this level has prev node
+                  connections[depth].next = node # assign the prev's next to current
+              connections[depth] = node # update current as prev node
+              connect_level(node.left, depth + 1)
+              connect_level(node.right, depth + 1)
+          connect_level(root)
+  ```
+  - Recursion - constant extra space
+  ```py
+  class Solution:
+    def connect(self, root: Optional[Node]) -> Optional[Node]:
+        def connect_nodes(node: Optional[Node]):
+            if not node or not node.left:
+                return
+            node.left.next = node.right # connect left right child for each node
+            if node.next: # connect right child to adjacent left child node from its next
+                node.right.next = node.next.left
+            connect_nodes(node.left)
+            connect_nodes(node.right)
+        connect_nodes(root)
+        return root
   ```
 
 ### 121. Best Time to Buy and Sell Stock
@@ -1605,6 +1837,45 @@ class TreeNode:
             start += 1
             end -= 1
         return True
+  ```
+
+### 129. Sum Root to Leaf Numbers
+
+- Input:
+  - root of a binary tree containing digit from 0 to 9
+- Output:
+  - The sum of number form along the path from root to leaf
+- Solution:
+  - Use dfs to track paths
+  ```py
+  class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        paths = []
+        def dfs(root, pathNum):
+            if not root:
+                return None
+            pathNum += str(root.val) # Modify paths from inner method via reference
+            # Hint if sum is stored as integer sum, it won't be editable from inner method, unless using nonlocal keyword
+            if not root.left and not root.right:
+                paths.append(int(pathNum))
+            dfs(root.left, pathNum)
+            dfs(root.right, pathNum)
+            pathNum = pathNum[:-1]
+        dfs(root, "")
+        return sum(paths)
+  ```
+  - Optimized version
+  ```py
+  class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        def dfs(node, current_sum):
+            if not node:
+                return 0
+            current_sum = current_sum * 10 + node.val
+            if not node.left and not node.right:
+                return current_sum
+            return dfs(node.left, current_sum) + dfs(node.right, current_sum)
+        return dfs(root, 0)
   ```
 
 ### 135.Candy
@@ -2099,6 +2370,87 @@ class TreeNode:
                     return True
             map[nums[i]] = i
         return False
+  ```
+
+### 222. Count Complete Tree Nodes
+
+- Input:
+  - A root of a complete binary tree with the following structure
+  ```py
+  class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+  ```
+- Output:
+  - The number of node in tree
+- Solution:
+  - Use class variable during tree traversal - `O(n)`
+  ```py
+  class Solution:
+    count = 0
+    def dfs(self, node):
+            if not node: return
+            self.count += 1
+            self.dfs(node.left)
+            self.dfs(node.right)
+    def countNodes(self, root: Optional[TreeNode]) -> int:
+        self.dfs(root)
+        return self.count
+  ```
+  - Return plue one during tree traversal - `O(n)`
+  ```py
+  class Solution:
+    def countNodes(self, root: Optional[TreeNode]) -> int:
+        if root is None: return 0
+        return 1 + self.countNodes(root.left) + self.countNodes(root.right)
+  ```
+  - Compare left boundary height and right boundary height to check perfect subtrees - `O(log^2N)`
+    - For a perfect tree with height `h`, it has `2^h-1` nodes
+  ```py
+  class Solution:
+    def countNodes(self, root: Optional[TreeNode]) -> int:
+        if not root: return 0
+        leftHeight = self.getLeftHeight(root)
+        rightHeight = self.getRightHeight(root)
+        if leftHeight == rightHeight: # If left and right boundary height is same, the tree is perfect
+            return 2 ** leftHeight - 1 # Add the nodes from a perfect tree using its height
+        else: # If subtree is not perfect add root node count and check its child nodes
+            return 1 + self.countNodes(root.left) + self.countNodes(root.right)
+    def getLeftHeight(self, node): # Get left boundary height
+        height = 0
+        while node:
+            height += 1
+            node = node.left
+        return height
+    def getRightHeight(self, node): # Get right boundary height
+        height = 0
+        while node:
+            height += 1
+            node = node.right
+        return height
+  ```
+  - Compare left boundary height of subnodes
+  ```py
+  class Solution:
+    def countNodes(self, root: Optional[TreeNode]) -> int:
+        def leftHeight(node):
+            height = 0
+            while node:
+                height += 1
+                node = node.left
+            return height
+        if not root:
+            return 0
+        leftNodeHeight = leftHeight(root.left)
+        rightNodeHeight = leftHeight(root.right)
+        if leftNodeHeight == rightNodeHeight:
+            # Left subtree is full, count its nodes plus the root and recurse on right subtree
+            return (1 << leftNodeHeight) + self.countNodes(root.right)
+        else:
+            # Right subtree is full (one less level), count its nodes plus the root and recurse on left subtree
+            return (1 << rightNodeHeight) + self.countNodes(root.left)
   ```
 
 ### 226. Invert Binary Tree
