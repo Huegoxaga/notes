@@ -670,6 +670,49 @@ class Solution:
 
   - Use `return haystack.find(needle)`
 
+### 35. Search Insert Position
+
+- Input:
+  - a sorted array of distinct integers (increasing order)
+  - a target value
+- Output:
+  - The index of the target value or the index it should be if not exist in list
+- Assumption:
+  - Solution must have `O(log n)` runtime complexity
+- Solution:
+  - Iterative binary search
+  ```py
+  class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            mid = left + (right - left) // 2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return left
+  ```
+  - Recursive binary search
+  ```py
+  class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        def binarySearch(nums, target, left, right):
+            if left > right:
+                return left
+            mid = left + (right - left) // 2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] < target:
+                return binarySearch(nums, target, mid + 1, right)
+            else:
+                return binarySearch(nums, target, left, mid - 1)
+        return binarySearch(nums, target, 0, len(nums) - 1)
+        # remove the param nums and target from binarySearch method will speed up the time
+  ```
+
 ### 36. Valid Sudoku
 
 - Input:
@@ -906,6 +949,44 @@ class Solution:
         return merged
   ```
 
+### 61. Rotate List
+
+- Input:
+  - A singly linked list with the following structure
+  ```py
+  class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+  ```
+- Output:
+  - A rotated linked list moved by `k`
+    - one rotation move the last node to the front
+- Solution:
+  - Make list a cycle and break
+  ```py
+  class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if not head: return None
+        node = head
+        # find list length and make it a cycle
+        n = 0 # count list from first node
+        while node:
+            if not node.next:
+                node.next = head
+                n += 1 # add one more at the edge
+                break
+            node = node.next
+            n += 1 # count number of assignment
+        # break the cycle at last node at n - k%n
+        for _ in range(n - k%n):
+            node = node.next # first run assign head to node
+        # now node is the last node
+        head = node.next # get new head
+        node.next = None # cut the cycle at last node
+        return head
+  ```
+
 ### 69. Sqrt(x)
 
 - Input:
@@ -1109,9 +1190,57 @@ class Solution:
         return '/' + '/'.join(filtered_paths)
   ```
 
+### 74. Search a 2D Matrix
+
+- Input:
+  - A `m` by `n` array with integer sorted in non-decreasing order row by row
+  - A target number
+- Output
+  - True if the target number exists, otherwise False
+- Assumption:
+  - Solution must use `O(log(m*n))` time complexity
+- Solution:
+  - Recursive binary search by column and then row
+  ```py
+  class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        # Define binary search method find the closest index
+        def binarySearch(input, target, left, right):
+            if left > right: return right # use smaller guess value to match row index
+            mid = left + (right - left) // 2
+            midValue = input[mid][0] if isinstance(input[mid], list) else input[mid] # get first row value if mid value is a list when guessing row idx
+            if midValue == target:
+                return mid
+            elif midValue < target:
+                return binarySearch(input, target, mid + 1, right)
+            else:
+                return binarySearch(input, target, left, right - 1)
+        rowIdx = binarySearch(matrix, target, 0, len(matrix)-1)
+        colIdx = binarySearch(matrix[rowIdx], target, 0, len(matrix[rowIdx])-1)
+        return matrix[rowIdx][colIdx] == target
+  ```
+  - Use `0 - n*m` based index with iterative binary search
+  ```py
+  class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        m, n = len(matrix), len(matrix[0])
+        left, right = 0, m * n - 1
+        while left <= right:
+            mid = left + (right - left) // 2
+            mid_row, mid_col = divmod(mid, n)
+            # divmod(mid, n) returns (mid//m, mid%m)
+            if matrix[mid_row][mid_col] == target: return True
+            elif matrix[mid_row][mid_col] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return False
+  ```
+
 ### 80. Remove Duplicates from Sorted Array II
 
-- Input: A sorted array `nums`
+- Input:
+  - A sorted array `nums`
 - Output:
   - Remove all elements that appears more than twice in `nums` in-place by keeping the result in the first part of the array
   - Return number of filtered elements that should be kept
@@ -1618,7 +1747,6 @@ class TreeNode:
 
 - Input:
   - The root node of a tree with the following structure
-  - An integer, `targetSum`
   ```py
   class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -1626,6 +1754,7 @@ class TreeNode:
         self.left = left
         self.right = right
   ```
+  - An integer, `targetSum`
 - Output:
   - True if the sum of a path of the tree from top to bottom equals `targetSum`
 - Solution:
@@ -1677,6 +1806,58 @@ class TreeNode:
         if not root.left and not root.right: return targetSum - root.val == 0
         return self.hasPathSum(root.left, targetSum-root.val) or self.hasPathSum(root.right, targetSum-root.val)
   ```
+
+### 113. Path Sum II
+
+- Input:
+  - The root node of a tree with the following structure
+  ```py
+  class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+  ```
+  - An integer, `targetSum`
+- Output:
+  - List of a list of path node value that has sum equals to the `targetSum`
+- Solution:
+  - Check Sum of all paths
+  ```py
+  class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+        paths = []
+        def dfs(node, path):
+            if not node: return
+            path.append(node.val)
+            if not node.left and not node.right:
+                if targetSum == sum(path):
+                    paths.append(path.copy()) # use a copy new list instead of the reference
+            dfs(node.left, path)
+            dfs(node.right, path)
+            path.pop()
+        dfs(root, [])
+        return paths
+  ```
+  - Make use of the return value
+  ```py
+  class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+        def dfs(node, path):
+            if not node: return []
+            path.append(node.val)
+            res = []
+            if not node.left and not node.right:
+                if targetSum == sum(path):
+                    res = [list(path)] # another way to create a copy
+            else:
+                res.extend(dfs(node.left, path)) # extend perform better than list concat as `+` create a new list, while extend only modify res in-place by adding elements from another iterable
+                res.extend(dfs(node.right, path))
+            path.pop()
+            return res
+        return dfs(root, [])
+  ```
+  - Use substrction to find if path sum equals target
 
 ### 116. Populating Next Right Pointers in Each Node
 
@@ -1860,7 +2041,6 @@ class TreeNode:
                 paths.append(int(pathNum))
             dfs(root.left, pathNum)
             dfs(root.right, pathNum)
-            pathNum = pathNum[:-1]
         dfs(root, "")
         return sum(paths)
   ```
@@ -1876,6 +2056,42 @@ class TreeNode:
                 return current_sum
             return dfs(node.left, current_sum) + dfs(node.right, current_sum)
         return dfs(root, 0)
+  ```
+
+### 130. Surrounded Regions
+
+- Input:
+  - A 2-D array with `"X"` and `"O"`
+- Output:
+  - Modify the board in-place, so captured regions of `"O"` are replaced by `"X"`
+  - A region can be captured when its surrounded by `"X"`from all horizontally and vertically adjcent cells
+- Assumption:
+  - regions with `"O"` that is on the boundary of the board can not be surrounded
+- Solution:
+  - Change regions on boundary to `"-"`, then capture all other inner `"O"` - `O(m×n)`
+  ```py
+  class Solution:
+    def solve(self, board: List[List[str]]) -> None:
+        m, n = len(board), len(board[0])
+        def dfs(i, j):
+            if i < 0 or j < 0 or i >= m or j >= n or board[i][j] != "O": return # exit when area is "X" or "-" or out of boundary
+            board[i][j] = "-"
+            dfs(i+1, j)
+            dfs(i, j+1)
+            dfs(i-1, j)
+            dfs(i, j-1)
+        for i in range(m):
+            for j in range(n):
+                if i == 0 or i == m - 1 or j == 0 or j == n - 1: # Check boarder
+                    dfs(i,j) # Change region on boundary to "-"
+        for i in range(m): # capture inner "O" with "X" as they dont connect to "O" regions on boundary
+            for j in range(n):
+                if board[i][j] == "O":
+                    board[i][j] = "X"
+        for i in range(m): # change "-" back to "O"
+            for j in range(n):
+                if board[i][j] == "-":
+                    board[i][j] = "O"
   ```
 
 ### 135.Candy
@@ -1941,13 +2157,13 @@ class TreeNode:
 
 ### 146. LRU Cache
 
-- Implement the LRUCache class:
-  - LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
-  - int get(int key) Return the value of the key if the key exists, otherwise return -1.
-  - void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+- Implement the `LRUCache` class:
+  - `LRUCache(int capacity)` Initialize the LRU cache with positive size capacity.
+  - `int get(int key)` Return the value of the key if the key exists, otherwise return -1.
+  - `void put(int key, int value)` Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
   - The functions get and put must each run in O(1) average time complexity.
 - Solution:
-  - Use dictionary stores data and list to track used order
+  - Use dictionary stores data and list to track used order - `O(n)` due to `list.remove(idx)`
   ```py
   class LRUCache:
     def __init__(self, capacity: int):
@@ -1956,7 +2172,7 @@ class TreeNode:
         self.data = {}
     def get(self, key: int) -> int:
         if key in self.data:
-            self.order.pop(self.order.index(key))
+            self.order.remove(key)
             self.order.append(key)
             return self.data[key]
         else:
@@ -1967,11 +2183,11 @@ class TreeNode:
                 least_key = self.order.pop(0)
                 del self.data[least_key]
         else:
-            self.order.pop(self.order.index(key))
+            self.order.remove(key)
         self.order.append(key)
         self.data[key] = value
   ```
-  - Use ordered dictionary
+  - Use ordered dictionary - internally implemented with doubly linked list
   ```py
   class LRUCache:
     def __init__(self, capacity: int):
@@ -1989,6 +2205,8 @@ class TreeNode:
                 self.data.popitem(last=False)
         else:
             self.data.move_to_end(key)
+        # updating an existing key will not change its order
+        # new key are always placed at the end
         self.data[key] = value
   ```
 
@@ -2197,6 +2415,38 @@ class TreeNode:
               nums[j], nums[(i*k+j)%n] = nums[(i*k+j)%n], nums[j]
   ```
 
+### 200. Number of Islands
+
+- Input:
+  - A 2-D array with `"1"`represents land and `"0"` represents water
+- Output:
+  - Number of island that are formed by consecutive lands
+- Assumption:
+  - land can only connects horizontally and vertically
+  - The size of grid is from `1x1` to `300x300`
+- Solution:
+  - Iterate through all cells, find land and its adjcent land using dfs, then change it to water and increment island count
+    - `O(m×n)` - The dfs function is called once for each cell that contains a `"1"`
+  ```py
+  class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        m, n = len(grid), len(grid[0]) # find grid size
+        def dfs(i,j): # check four direction, stop when index out of bound or reach water
+            if i < 0 or j < 0 or i == m or j == n or grid[i][j] == "0": return
+            grid[i][j] = "0" # Change tracked cell to water
+            dfs(i,j+1)
+            dfs(i+1,j)
+            dfs(i,j-1)
+            dfs(i-1,j)
+        count = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == "1": # get starting point from top-left
+                    count += 1 # count number of starting point
+                    dfs(i,j) # change all adjcent lands to the starting point to water
+        return count
+  ```
+
 ### 202. Happy Number
 
 - Input:
@@ -2258,6 +2508,39 @@ class TreeNode:
           return True
   ```
 
+### 207. Course Schedule
+
+- Input:
+  - An array of course id
+  - An array of prerequisite relations where an element `[a, b]` indicates `b` is a prerequisite of `a`
+- Output:
+  - `True` if all courses can be taken, otherwise return `False`
+- Solution:
+  - Build graph with course-pre map, then use dfs to find cycle
+  ```py
+  class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # Create Course-Prerequisites Map
+        courseMap = defaultdict(list)
+        for course, pre in prerequisites:
+            courseMap[course].append(pre)
+        # Define dfs to traverse through course graph
+        traveled = set()
+        def dfs(course):
+            if course in traveled: return False # cycle found if course already been added
+            if course not in courseMap: return True # can finish course when pre has no pre
+            traveled.add(course) # add newly traveled course
+            for pre in courseMap[course]: # travel the pre of current course
+                if not dfs(pre): return False # check loop
+            traveled.remove(course) # reset traveled set to parent node
+            del courseMap[course] # speed up process by removing pre of checked course
+            return True # return True when no return in last loop
+        # Find cycle for each course in courseMap's key
+        for course in list(courseMap.keys()):
+            if not dfs(course): return False # return false when at least one if false
+        return True
+  ```
+
 ### 209. Minimum Size Subarray Sum
 
 - Input:
@@ -2266,7 +2549,7 @@ class TreeNode:
 - Output:
   - The small subarray that has sum greater or equal to the target
 - Assumption:
-  - max length is smaller than or equal to 100000
+  - max length is smaller than or equal to `100000`
 - Solution:
   - Sliding Window - Track the smallest subarray by adding element from the right until sum is greater than target, then remove the leftmost element and use the second as starting point, then repeat
   ```py
@@ -2284,6 +2567,38 @@ class TreeNode:
             sub_sum -= nums[start] # remove first element in subarray for next starting point
         if min_span > 100000: return 0 # return 0 when no subarray is found
         return min_span
+  ```
+
+### 210. Course Schedule II
+
+- Input:
+  - An array of course id
+  - An array of prerequisite relations where an element `[a, b]` indicates `b` is a prerequisite of `a`
+- Output:
+  - A valid order of course to be taken, otherwise return `[]`
+- Solution:
+  - Topological Sort - `O(Edge+Node)`
+  ```py
+  class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        prereq = {c:[] for c in range(numCourses)}
+        for crs, pre in prerequisites:
+            prereq[crs].append(pre)
+        output = []
+        visit, cycle = set(), set()
+        def dfs(crs):
+            if crs in cycle: return False # if cycle is formed
+            if crs in visit: return True # if the course has been validated
+            cycle.add(crs) # record the courses in path
+            for pre in prereq[crs]: # for each prereq course of the course
+                if not dfs(pre): return False # check its prereq with dfs
+            cycle.remove(crs) # cleanup path
+            visit.add(crs) # track visited node
+            output.append(crs) # add the subnode as prereq in order
+            return True
+        for c in range(numCourses): # check each course in range
+            if not dfs(c): return []
+        return output # otherwise return result
   ```
 
 ### 215. Kth Largest Element in an Array

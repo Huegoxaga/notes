@@ -159,6 +159,11 @@ print(bin(~a)) # -0b10, python use negative binary to presentation binary with l
 
 ## Basic Data Types
 
+- In Python, data types are either mutable or immutable
+- Both mutable and immutable data are passed as reference
+- When updating an immutable data object. a new object will be created and assigned to the old reference, `x += 1`
+- These basic data types are immutable
+
 ### Boolean
 
 - A Boolean value is either `True` or `False`
@@ -734,6 +739,8 @@ functionName(variable)
 - arguments are specific values that are substituted into the parameters.
 - the scope of a variable is the sections of codes where the variable is accessible.
 - variables within a function, has an independent scope within the function.
+  - New references are created for immutable input variables inside the method and they are not exposed to the outter scope
+  - The same reference will be kept for mutable input variables and the original data will be modified even they are created outside of the method
 - functions can be assigned to a variable names.
 - The variable can be called.
 - function can be argument of other function.
