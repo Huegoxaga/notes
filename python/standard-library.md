@@ -22,9 +22,12 @@ for i in count(3):
 cycle(x) #infinitely iterates through an iterable (for instance a list or string).
 repeat(x) #repeats an object, either infinitely or a specific number of times(x).
 product(iterable1,iterable2) #return an object contains all possible combination product of these two iterables. (all possible iterable 1 , all possible iterable 2 )
+product(iterable, repeat=3) # its the same as product(iterable, iterable, iterable)
 permutation(iterable)   #return an object contains all possible comb for the single iterable.
 takewhile(predicateFunc, iterables) # return object with items that only satisfy the predicate function.
 chain(x,y) #combine iterables
+islice(iterable, startIdx, endIdx) # returns an iterator that produces the sliced elements one at a time as needed
+islice(iterable, n) # return first n elements
 accumulate(iterables)  #return a object contains a list of sum up to its position. Can add custom function as a second parameter for other operation other than sum
 list(accumulate(range(8)))
 zip_longest(iterable1,iterable2) #pair elements from iterable1 and iterable2 one by one from left to right
@@ -175,6 +178,20 @@ zip_longest(iterable1,iterable2) #pair elements from iterable1 and iterable2 one
 - `q = Queue()` declare a Queue object.
 - `q.put(x)` add element `x` to the queue.
 - `q.get()` get the from element from the queue.
+
+## heapq
+
+- The implementation of min-heap structure
+- All of its operaions will maintain the heap property
+- `import heapq`
+- `heapq.heapify(iterable)` converts an iterable into a valid `heapList` in-place
+  - the smallest element will be at `iterable[0]`
+- `heapq.heappop(heapList)` pops and returns the smallest element from the heap
+- `heapq.heappush(heapList, item)` pushes a new item onto the heap
+- `heapq.heapreplace(heapList, item)` pops and returns the smallest element, then pushes a new item onto the heap
+- `heapq.heappushpop(heapList, item)` pushes a new item onto the heap, then pops and returns the smallest element
+- `heapq.nlargest(n, iterable)` Returns the n largest elements from iterable from large to small
+- `heapq.nsmallest(n, iterable)` Returns the n smallest elements from iterable from small to large
 
 ## time
 

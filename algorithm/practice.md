@@ -670,6 +670,46 @@ class Solution:
 
   - Use `return haystack.find(needle)`
 
+### 33. Search in Rotated Sorted Array
+
+- Input:
+  - a sorted array of distinct integers (increasing order) that is possibly rotated by unknown steps
+  - a target number
+- Output:
+  - the index of the target of the input array, `-1` if not found
+- Assumption:
+  - Solution must take `O(logn)` time
+- Solution:
+  - Two binary search - search for pivot and then serach for target
+  - Modified binary search
+  ```py
+  class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums) - 1 # use first element to determine the rotation property
+        while l <= r:
+            m = l + (r - l) // 2
+            s, c = nums[l], nums[m] # get start value and mid value
+            if target > c: # if target value is greater than mid value
+                if s > c: # If tail is at the front
+                    if target >= s:
+                        r = m-1
+                    else:
+                        l = m+1
+                else: # If tail is at the end
+                    l = m+1
+            elif target < c: # if target value is smaller than mid value
+                if s > c: # If tail is at the front
+                    r = m-1
+                else: # If tail is at the end
+                    if target < s:
+                        l = m+1
+                    else:
+                        r = m-1
+            else:
+                return m
+        return -1
+  ```
+
 ### 35. Search Insert Position
 
 - Input:
@@ -2094,7 +2134,7 @@ class TreeNode:
                     board[i][j] = "O"
   ```
 
-### 135.Candy
+### 135. Candy
 
 - Input:
   - An integer array represents a list of ratings for `n` children in line
@@ -2277,6 +2317,32 @@ class TreeNode:
 
     def getMin(self) -> int:
         return self.minStack[-1]
+  ```
+
+### 162. Find Peak Element
+
+- Input:
+  - A list of integer
+- Output:
+  - The index of one of any local peak element
+- Assumption:
+  - First and last element only need to check if its greater than the inner elements
+  - No equal adjacent elements in the given list
+  - Solution must take `O(logn)` time
+- Solution:
+  - Modified binary search - A local peak must exist on the side with element greater than the mid
+  ```py
+  class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            m = l + (r-l) // 2
+            if m > 0 and nums[m] < nums[m-1]: # left element greater
+                r = m - 1
+            elif m < len(nums) - 1 and nums[m] < nums[m+1]: # right element greater
+                l = m + 1
+            else: # when peak is met or the edge of higher side is met
+                return m
   ```
 
 ### 167. Two Sum II
@@ -2611,23 +2677,20 @@ class TreeNode:
 - Assumtion:
   - Sorting is not allowed
 - [Solution](https://leetcode.com/problems/kth-largest-element-in-an-array/solutions/3906260/100-3-approaches-video-heap-quickselect-sorting/?envType=study-plan-v2&envId=leetcode-75):
-
   - Min-heap
-
   ```py
   class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        heap = nums[:k]
-        heapq.heapify(heap)
-        for num in nums[k:]:
-            if num > heap[0]:
-                heapq.heappop(heap)
-                heapq.heappush(heap, num)
-        return heap[0]
+        k_heap = [] # init new heap list
+        for num in nums:
+            if len(k_heap) < k: # add element until there are k of them
+                heapq.heappush(k_heap, num)
+            else: # add k+1th and remove extra
+                heapq.heappushpop(k_heap, num)
+        return k_heap[0] # return smallest of the k largest in heap
+        # one liner solution - return heapq.nlargest(k, nums)[-1]
   ```
-
   - Quick selection - Find nth max/min in a list by returning the nth element when it is selected as the pivot point
-
   ```py
   class Solution:
       def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -3025,6 +3088,61 @@ class TreeNode:
                           break
                   if end == i+1: return ''.join(s) # Return when the second vowel is not found after all remaining letter are checked from the back
           return ''.join(s)
+  ```
+
+### 373. Find K Pairs with Smallest Sums
+
+- Input:
+  - two integer arrays sorted in non-decreasing order
+  - an integer, `k`
+- Output:
+  - `k` pairs of elements from two array with the smallest sums
+- Assumption:
+  - A pair is valid as long as the combination of index from two arrays is unique
+  - There will be duplicated elements in an array
+- Solution:
+  - Brutal force `sorted(itertools.product(nums1, nums2), key=sum)[:k]`
+  - Brutal force on heap `heapq.nsmallest(k, itertools.product(nums1, nums2), key=sum)`
+  - Brutal force with itertools that computes result as needed - Takes `O(m + k*log(m))` time and `O(m)` extra space
+  ```py
+  class Solution:
+    def kSmallestPairs(self, nums1, nums2, k):
+        streams = map(lambda u: ([u+v, u, v] for v in nums2), nums1)
+        stream = heapq.merge(*streams)
+        return [suv[1:] for suv in itertools.islice(stream, k)]
+  ```
+  - Push and pop element pair `(0, 0)`, then `(0, 1)` and `(1, 0)` into heap, pop smallest and push `(i+1, j)` and `(i, j+1)` of the pop one
+  ```py
+  class Solution:
+    def kSmallestPairs(self, nums1, nums2, k):
+      queue = []
+      def push(i, j):
+        if i < len(nums1) and j < len(nums2):
+          heapq.heappush(queue, [nums1[i] + nums2[j], i, j])
+      push(0, 0)
+      result = []
+      while queue and len(result) < k:
+        _, i, j = heapq.heappop(queue)
+        result.append([nums1[i], nums2[j]])
+        push(i, j + 1)
+        if j == 0:
+          push(i + 1, 0)
+      return result
+  ```
+  - Push pair of first `k` of `nums1` and first of `nums2` into heap, pop smallest and push the next pair containing second element from `nums2` - `O(klogk)`
+  ```py
+  class Solution:
+    def kSmallestPairs(self, nums1, nums2, k):
+        result, queue, length2 = [], [], len(nums2)
+        for i in range(k): # for the first k element in nums1
+            if i < len(nums1): # in case k is over the length of nums1
+                heapq.heappush(queue, [nums1[i] + nums2[0], i, 0]) # push pair contains (sum, i, j=0)
+        while len(result) < k and queue:
+            total, idx1, idx2 = heapq.heappop(queue)
+            result.append([nums1[idx1], nums2[idx2]]) # push popped smallest result
+            if idx2 + 1 < length2: # push the next pair containing next element in nums2 into the priority queue if exists
+                heapq.heappush(queue, [nums1[idx1] + nums2[idx2 + 1], idx1, idx2+1])
+        return result  # Return the k smallest pairs
   ```
 
 ### 380. Insert Delete GetRandom O(1)

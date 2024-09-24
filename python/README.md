@@ -457,8 +457,11 @@ len(list)
 min(list)
 max(list)
 sum(list)
-sorted(list) # return a new sorted list
-sorted(list, key=lambda x: x['id'])
+sorted(list) # return a new sorted list, it works on nested array by comparing the first elements of the sub-array
+dictList = [{'id': 2, 'name': 'Bob'}, {'id': 3, 'name': 'Charlie'}, {'id': 1, 'name': 'Alice'}]
+sorted(dictList, key=lambda x: x['id']) # return list sorted by dictionary value under key 'id'
+nestedIntList = [[5, 2, 3], [6, 7, 2], [1, 8, 4]]
+sorted(nestedIntList, key=sum) # return list sorted by the sum of is sublist
 ```
 
 #### List Comprehension

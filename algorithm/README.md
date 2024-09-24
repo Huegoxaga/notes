@@ -155,18 +155,29 @@
 
 ### Heap
 
-- It can be used to improve the performance of a priority queue.
-- It is a binary tree that stores a key and a value in all of its nodes.
-- It also need to satisfy the following requirement.
+- It can be used to implement priority queue, perform sort with heap sort, and implement algorithms like Dijkstra’s shortest path and Prim’s minimum spanning tree
+- A heap is always a complete binary tree
+- There are two types of heap
   - In a max-heap, the child node key is always greater or equal to its parent node key.
   - In a min-heap, the child node key is always smaller or equal to its parent node key.
-  - Except the nodes with the highest depth of the tree, all nodes have two children(full). This guarantee the tree has minimal height.
 - When represented by an array, the element is in order from top to bottom layer by layer, from left to right
-- For heap with n nodes, the height of a heap, height of the root equals `θ(lgn)`, or `floor(lgn)`
+- For heap with `n` nodes, the height of a heap, height of the root equals `θ(lgn)`, or `floor(lgn)`
 - When the root is `A[1]`
   - Parent of `A[i] = A[floor(i/2)]`
   - Left child of `A[i] = A[2i]`
   - Right child of `A[i] = A[2i+1]`
+- Insert a node into a min-heap:
+  1. Insert the new node at the next available position (bottom-most, left-most spot)
+  2. Bubble up (heapify up): Compare the new node with its parent
+  3. If the new node is smaller (bigger for max-heap) than its parent, swap them
+  4. Repeat step 3 until the heap property is restored (or the node reaches the root)
+- Delete a node from a min-heap:
+  1. Replace the root with the last node (bottom-most, right-most node)
+  2. Remove the last node
+  3. Bubble down (heapify down): Compare the new root with its smallest child
+  4. If the new root is larger than its smallest child, swap them
+  5. Repeat step 3 until the heap property is restored (or the node becomes a leaf)
+- Insertion and deletion takes of heap tree with `n` nodes take `O(lgn)` time as those operations iterate along its height
 
 ## Maps
 
@@ -403,6 +414,8 @@ It is used to tell if a data structure or Algorithm is good.
 #### Binary Search
 
 - It can only be used with sorted arrays, but is much faster than Sequential Search.
+- The main idea is to eliminate half of the candidate in one iteration
+- Worst case `O(logN)`
 - Steps for binary search:
   1. compare target value with the median values(round down if the mid position is not an integer). check equality first, if not determine the location the target in either upper or lower section
      - Both round down or round up works
@@ -428,8 +441,6 @@ int binarySearch(int A[], int lower, int upper, int X){
     return binSearch(A, lower, middle-1, X);
 }
 ```
-
-- Worst case `O(logN)`.
 
 #### Quick Select
 
@@ -604,6 +615,17 @@ int partition(int A[ ], int start, int end)
   return endOfLeftList;
 }
 ```
+
+#### Heap Sort
+
+- The steps for Heap Sort:
+  1. Build a max-heap from the input array (convert the array into a valid max-heap).
+  2. Extract the maximum (root) element and move it to the end of the array.
+  3. Reduce the heap size and heapify the root (bubble down) to maintain the max-heap property.
+  4. Repeat step 2 and 3 until all elements are extracted
+- Heap sort is an in-place sorting algorithm, it takes `O(1)` space
+- The time complexity equals to the time for building the heap `O(n)` times the time for heapifying the tree `O(lgn)`
+  - Building a heap takes `O(n)` time as it gets easier to heapify at the bottom
 
 ### Distance and Similarity Calculation
 
