@@ -1098,10 +1098,8 @@ class Solution:
 - Output:
   - Number of possible ways of climbing if 1 or 2 steps is allowed to take each time
 - Solution
-
   - Brutal force with dps - `O(2^n)`
     - Not practical for large `n`
-
   ```py
   class Solution:
       count = 0
@@ -1127,24 +1125,20 @@ class Solution:
               return climb(height + 1, n) + climb(height + 2, n)
           return climb(1, n) + climb(2, n)
   ```
-
-  - Fibonacci sequence with a forward for loop - `O(n)`
-    - The number of stairs and the result are the Fibonacci sequence position and its value
-
+  - Brutal force with top-down DP - `O(2^n)`
+    - All current step is reachable from one or two steps below
+    - Starts from step `n`, get the number of ways until step `0` is reached
   ```py
-  class Solution(object):
-      def climbStairs(self, n):
-          if n<=2: return n # handle base case
-          n1, n2 = 1, 2
-          for _ in range(2, n): # calculate third terms and above
-              current = n1 + n2 # get sum of previous two terms
-              n1, n2 = n2, current # update n1, n2
-          return current
+  class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n == 0 or n == 1: # handle base case to avoid reaching negative step
+            return 1
+        return self.climbStairs(n-1) + self.climbStairs(n-2)
   ```
-
   - [Fibonacci sequence with Top-Down DP](https://leetcode.com/problems/climbing-stairs/solutions/1792723/python-in-depth-walkthrough-explanation-dp-top-down-bottom-up/) - `O(n)`
+    - The number of stairs and the result are the Fibonacci sequence position and its value
+    - It forms a Finonacci sequence because the number of ways to each step is always the sum of the ways to reach last step and the second last step
     - Store result in a dictionary backwards
-
   ```py
   class Solution:
       def climbStairs(self, n: int) -> int:
@@ -1162,9 +1156,7 @@ class Solution:
           if n <= 2: return n # base case
           return self.climbStairs(n - 1) + self.climbStairs(n - 2)
   ```
-
   - [Fibonacci sequence with Bottom-Up DP](https://leetcode.com/problems/climbing-stairs/solutions/1792723/python-in-depth-walkthrough-explanation-dp-top-down-bottom-up/)
-
   ```py
   class Solution:
       def climbStairs(self, n: int) -> int:
@@ -1175,17 +1167,17 @@ class Solution:
               dp[i] = dp[i - 1] + dp[i - 2]
           return dp[n-1] # find result for n with its index n - 1
   ```
-
-  - Recursive solution - `O(2^n)`
-
-  ```py
-  class Solution:
-      def climbStairs(self, n: int) -> int:
-          if n <= 1:
-              return n
-          else:
-              return climbStairs(n-1) + climbStairs(n-2)
-  ```
+  - Fibonacci sequence with Bottom-Up DP without using empty list for space optimization - `O(n)`
+    ```py
+    class Solution(object):
+        def climbStairs(self, n):
+            if n<=2: return n # handle base case
+            n1, n2 = 1, 2
+            for _ in range(2, n): # calculate third terms and above
+                current = n1 + n2 # get sum of previous two terms
+                n1, n2 = n2, current # update n1, n2
+            return current
+    ```
 
 ### 71. Simplify Path
 
@@ -2479,6 +2471,71 @@ class TreeNode:
           for i in range(1, n//groups + 1):
               # Swap element between first element in each group and the next element in the group
               nums[j], nums[(i*k+j)%n] = nums[(i*k+j)%n], nums[j]
+  ```
+
+### 198. House Robber
+
+- Input:
+  - An array of integer
+- Output:
+  - The max sum if the picked numbers cannot be adjacent with each other
+- Solution:
+  - Recursive Top-Down Brutal Force
+    - From the last number, there are two options at each number
+      - Take the current - Get the sum of the current plus the max sum until reaching second number before
+      - Skip the current - Get the max sum until one before the current
+  ```py
+  class Solution:
+      def rob(self, nums: List[int]) -> int:
+          def rob_helper(nums, i):
+              if i < 0: return 0 # anywhere before the first number doesn't contain a value
+              return max(rob_helper(nums, i - 2) + nums[i], rob_helper(nums, i - 1))
+          return rob_helper(nums, len(nums) - 1)
+  ```
+  - DP Top-Down using dictionary
+  ```py
+  class Solution:
+    def rob(self, nums: List[int]) -> int:
+        def rob_helper(nums, i, memo):
+            if i < 0: return 0
+            if i in memo: return memo[i] # if result exists, return immediately
+            memo[i] = max(rob_helper(nums, i - 2, memo) + nums[i], rob_helper(nums, i - 1, memo))
+            return memo[i]
+        memo = {}
+        return rob_helper(nums, len(nums) - 1, memo)
+  ```
+  - DP Top-Down using list
+  ```py
+  class Solution:
+    def rob(self, nums: List[int]) -> int:
+        def rob_helper(nums, i, memo):
+            if i < 0: return 0
+            if memo[i] >= 0: return memo[i] # if result exists, return immediately
+            memo[i] = max(rob_helper(nums, i - 2, memo) + nums[i], rob_helper(nums, i - 1, memo))
+            return memo[i]
+        memo = [-1] * len(nums) # init list with -1
+        return rob_helper(nums, len(nums) - 1, memo)
+  ```
+  - DP Bottom-Up - From the second number there are the same two options from the Top-Down approach
+  ```py
+  class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if len(nums) == 0: return 0
+        dp = [0] * (len(nums) + 1) # init result list with an extra position at beginning with value zero
+        dp[0], dp[1] = 0, nums[0] # for the first number, max sum is always itself
+        for i in range(1, len(nums)): # start looping from the second number
+            dp[i + 1] = max(dp[i], dp[i - 1] +  nums[i])
+        return dp[len(nums)]
+  ```
+  - DP Bottom-Up with space optimization
+  ```py
+  class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if len(nums) == 0: return 0
+        prev1 = prev2 = 0
+        for num in nums:
+            prev1, prev2 = max(prev2 + num, prev1), prev1
+        return prev1
   ```
 
 ### 200. Number of Islands

@@ -256,20 +256,31 @@
   - Binary Recursion - Each recursive method call itself twice.
   - Multiple Recursion - Each recursive method call itself more than twice.
 - For binary and multiple recursion, the methods call itself as deep as possible than call the sibiling methods after all its recursive methods are called
-- Dynamic Programming
-  - Commonly referred to as DP
-  - It optimizes native recursive algorithm by saving the intermeditate result from recursive calls in a list in the memory, it reduces the complex of a recursive algorithm that would take exponential time further by pruning duplicated recursive calls when the result of a similar method call can be find in the result list
-- Backtracking
-  - It is a technique that build a solution incrementally and remove all the solutions that does not satisfy the constraints of the problem at any point of time
-  - the depth-first search (DFS) method is an implementation of backtracking
-    - The goal is to explore all possible solutions to a problem
-    - The dfs function is implemented as follows:
-      1. The exit condition always goes first
-      2. The code before recursive calls are executed from top to bottom until the exit condition is met
-      3. Multiple recursive calls can be performed, they controls the traversal order of the data
-      4. The lines after the recursive calls are executed after all above recursive methods are returned when base condition is met. They are doing backtracking from bottom to top
-      5. The returned value pass data between the recursive method for decision making
-    - It can be an iterative algorithm by using a stack, the stack can track the nodes that are visited by popping and to be visited by pushing
+
+#### Dynamic Programming
+
+- Commonly referred to as DP
+- It optimizes native recursive algorithm by saving the intermeditate result from recursive calls in a list in the memory, it reduces the complex of a recursive algorithm that would take exponential time further by pruning duplicated recursive calls when the result of a similar method call can be find in the result list
+- DP techniques
+  - Top-Down (Memoization)
+    - Analyze from the end result, assume its known
+    - Tracks result in a dictionary and check if a result key exists with hash map
+  - Bottom-Up (Tabulation)
+    - Pre-allocate an empty list to store all result and add intermediate results along the way, until the final result is shown at the end of the list
+    - Analyze in timely order (from the base case up)
+
+#### Backtracking
+
+- It is a technique that build a solution incrementally and remove all the solutions that does not satisfy the constraints of the problem at any point of time
+- the depth-first search (DFS) method is an implementation of backtracking
+  - The goal is to explore all possible solutions to a problem
+  - The dfs function is implemented as follows:
+    1. The exit condition always goes first
+    2. The code before recursive calls are executed from top to bottom until the exit condition is met
+    3. Multiple recursive calls can be performed, they controls the traversal order of the data
+    4. The lines after the recursive calls are executed after all above recursive methods are returned when base condition is met. They are doing backtracking from bottom to top
+    5. The returned value pass data between the recursive method for decision making
+  - It can be an iterative algorithm by using a stack, the stack can track the nodes that are visited by popping and to be visited by pushing
 
 ### Parallel
 
