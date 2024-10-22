@@ -496,6 +496,16 @@ It is used to send notifications to user emails or other resources.
 - Selecting `Enable raw message delivery` for SQS subscription allow SNS topic to send a duplicated message body that can be used directly as an object
   - When disable raw message only one message is sent and the content inside the `body` field need to be loaded as object from string before accessing
 
+### ECS
+
+- All tasks and services run on a cluster
+- A cluster oversees a collection of hardware resources for its tasks (EC2 instances or Fargate resources)
+- A service can manage and keep multiple tasks running specified by a task definition
+- A task can be created and triggerred manually as a one time task
+- A task definition defines the hardware needed for running the task, there are two types
+  - EC2 - use existing EC2 instance
+  - Fargate - use hardware managed by ECS
+
 ## SES
 
 It can be used to send formatted emails from registered email addresses.
@@ -1155,6 +1165,7 @@ Parameters:
 - AWS CLI Command, `aws cloudformation create-stack --stack-name <STACK_NAME> --template-body file://template.yaml`
   - Use flag `--capabilities CAPABILITY_IAM` when template updates IAM roles, groups, policies etc
     - Use `CAPABILITY_NAMED_IAM` when the updated IAM resources have a custom name
+- Custom Function Resource need to use `cfnresponse` module to update its status for cloudformation deployment
 
 ### Intrinsic Functions
 

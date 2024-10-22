@@ -408,6 +408,63 @@ class Solution:
         return res
   ```
 
+### 17. Letter Combinations of a Phone Number
+
+- Input:
+  - A string containing digits from `[2, 9]`
+- Output:
+  - A list of letter combinations the digits can represent from the dialing pad
+- Solution:
+  - Use itertools method
+    - `O(n*k^n)`
+      - `n` is the length of the input string
+      - `k` is the average number of letters each digit can represent
+      - It takes `k^n` to find all combinations
+      - Times `n` for the join operation of `n` letters for each combination
+  ```py
+  class Solution:
+      def letterCombinations(self, digits: str) -> List[str]:
+          digit_to_letters = {
+              "2": "abc",
+              "3": "def",
+              "4": "ghi",
+              "5": "jkl",
+              "6": "mno",
+              "7": "pqrs",
+              "8": "tuv",
+              "9": "wxyz",
+          }
+          if not digits:
+              return []
+          letter_groups = [digit_to_letters[digit] for digit in digits]
+          return ["".join(combo) for combo in product(*letter_groups)]
+  ```
+  - Backtracking - `O(n*k^n)` and better space complexity
+  ```py
+  class Solution:
+      def letterCombinations(self, digits: str) -> List[str]:
+          number_to_chars = {
+              "2": "abc",
+              "3": "def",
+              "4": "ghi",
+              "5": "jkl",
+              "6": "mno",
+              "7": "pqrs",
+              "8": "tuv",
+              "9": "wxyz",
+          }
+          res = []
+          def backtrack(depth, path):
+              if depth == len(digits):
+                  res.append(path)
+                  return
+              for c in number_to_chars[digits[depth]]:
+                  backtrack(depth + 1, path + c)
+          if digits:
+              backtrack(0, "")
+          return res
+  ```
+
 ### 20. Valid Parentheses
 
 - Input:
@@ -893,6 +950,30 @@ class Solution:
           return count
   ```
 
+### 46. Permutations
+
+- Input:
+  - An array of distinct integers
+- Output:
+  - return all the possible permutations
+- Assumption:
+  - The order of the answer does not matter
+- Solution:
+  - Backtracking
+  ```py
+  class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        def backtracking(path, input):
+            if not input:
+                res.append(path)
+                return
+            for i in range(len(input)):
+                backtracking(path + [input[i]], input[:i] + input[i+1:])
+        backtracking([], nums)
+        return res
+  ```
+
 ### 48. Rotate Image
 
 - Input:
@@ -1269,6 +1350,32 @@ class Solution:
         return False
   ```
 
+### 77. Combinations
+
+- Input:
+  - Two integers `n` and `k`
+- Output:
+  - All possible combinations `k` numbers chosen from `[1, n]`
+- Assumptions:
+  - The order of the answer does not matter
+- Solution:
+  - Backtracking
+  ```py
+  class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        res = []
+        def backtracking(start, path):
+            if len(path) == k:
+                res.append(path[:])  # Append a copy of the current path
+                return
+            for i in range(start, n + 1):
+                path.append(i)
+                backtracking(i + 1, path)  # Move to the next number
+                path.pop()  # Backtrack
+        backtracking(1, [])
+        return res
+  ```
+
 ### 80. Remove Duplicates from Sorted Array II
 
 - Input:
@@ -1502,6 +1609,50 @@ class TreeNode:
                       stack.append((node, True)) # Mark the current node visited to save its value when it get popped next time
                       stack.append((node.left, False))
           return res
+  ```
+
+### 98. Validate Binary Search Tree
+
+- Input:
+  - The root node of a tree with the following structure
+  ```py
+  class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+  ```
+- Output:
+  - return true if its a binary search tree, or false otherwise
+    - The BST will always has nodes on left side strictly smaller than root node, and nodes on the right side greater than root node for any subtrees
+- Solution:
+  - Check BST property: the inorder traversal will gives a sorted list
+  ```py
+  class Solution:
+      def isValidBST(self, root: Optional[TreeNode]) -> bool:
+          def convertBST(node):
+              if not node: return []
+              return convertBST(node.left) + [node.val] + convertBST(node.right)
+          treeList = convertBST(root) # convert BST to list
+          # check if list is sorted without equal adjacent values,
+          for i in range(1, len(treeList)):
+              if treeList[i] <= treeList[i-1]:
+                  return False
+          return True
+          # the check can be replaced with `return sorted(treeList) == treeList and len(treeList) == len(set(treeList))`
+  ```
+  - Validating the BST properties during the traversal
+  ```py
+  class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        def validate(node, low=float('-inf'), high=float('inf')):
+            if not node:
+                return True
+            if not (low < node.val < high):
+                return False
+            return (validate(node.left, low, node.val) and
+                    validate(node.right, node.val, high))
+        return validate(root)
   ```
 
 ### 100. Same Tree
@@ -2664,6 +2815,42 @@ class TreeNode:
         return True
   ```
 
+### 208. Implement Trie (Prefix Tree)
+
+- Implement a trie/prefix tree structure:
+  - `Trie()` Initializes the trie object.
+  - `void insert(String word)` Inserts the string word into the trie.
+  - `boolean search(String word)` Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
+  - `boolean startsWith(String prefix)` Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
+- Solution
+  - Nested dictionary
+  ```py
+  class Trie:
+      def __init__(self):
+          self.root={}
+      def insert(self, word: str) -> None:
+          cur=self.root
+          for letter in word:
+              if letter not in cur:
+                  cur[letter]={}
+              cur=cur[letter]
+          cur['*']='' # insert "apple" will get {'a': {'p': {'p': {'l': {'e': {'*': ''}}}}}}
+      def search(self, word: str) -> bool:
+          cur=self.root
+          for letter in word:
+              if letter not in cur:
+                  return False
+              cur=cur[letter]
+          return '*' in cur
+      def startsWith(self, prefix: str) -> bool:
+          cur=self.root
+          for letter in prefix:
+              if letter not in cur:
+                  return False
+              cur=cur[letter]
+          return True
+  ```
+
 ### 209. Minimum Size Subarray Sum
 
 - Input:
@@ -2722,6 +2909,73 @@ class TreeNode:
         for c in range(numCourses): # check each course in range
             if not dfs(c): return []
         return output # otherwise return result
+  ```
+
+### 211. Design Add and Search Words Data Structure
+
+- Design a data class which has the following methods:
+  - `WordDictionary()` Initializes the object.
+  - `void addWord(word)` Adds word to the data structure, it can be matched later.
+  - `bool search(word)` Returns true if there is any string in the data structure that matches word or false otherwise. word may contain dots '.' where dots can be matched with any letter.
+- Solution:
+  - Trie stucture with modified search using BFS for wildcard `.`
+  ```py
+  class WordDictionary:
+      def __init__(self):
+          self.root = {}
+      def addWord(self, word: str) -> None:
+          cur = self.root
+          for letter in word:
+              if letter not in cur:
+                  cur[letter]={}
+              cur = cur[letter]
+          cur['*'] = None
+      def search(self, word: str) -> bool:
+          stack = [(self.root, word)]
+          while stack:
+              node, remaining_word = stack.pop()
+              if not remaining_word:
+                  if '*' in node:
+                      return True
+                  continue
+              first_char = remaining_word[0]
+              if first_char == '.':
+                  for child in node:
+                      if child != '*':
+                          stack.append((node[child], remaining_word[1:]))
+              else:
+                  if first_char in node:
+                      stack.append((node[first_char], remaining_word[1:]))
+          return False
+  ```
+  - Trie stucture with modified search using DFS for wildcard `.`
+  ```py
+  class WordDictionary:
+      def __init__(self):
+          self.root = {}
+      def addWord(self, word: str) -> None:
+          cur = self.root
+          for letter in word:
+              if letter not in cur:
+                    cur[letter]={}
+              cur = cur[letter]
+          cur['*'] = None
+      def search(self, word: str) -> bool:
+          return self.dfs(self.root, word)
+      def dfs(self, node, word: str) -> bool:
+          if not word:
+              return '*' in node
+          first_char = word[0]
+          if first_char == '.':
+              for child in node:
+                  if child != '*':
+                      if self.dfs(node[child], word[1:]):
+                          return True
+              return False
+          else:
+              if first_char in node:
+                  return self.dfs(node[first_char], word[1:])
+              return False
   ```
 
 ### 215. Kth Largest Element in an Array
