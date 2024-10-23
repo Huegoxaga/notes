@@ -1,5 +1,297 @@
 # Practice Questions
 
+## Code Template
+
+### Array / String
+
+- One pointer, One pass
+
+```py
+ptr = startingIdx # init pointer to a const value
+for i in range(n): # iterate the entire array in one pass
+# the for loop can be replaced with a while loop with condition for pointer
+  if condition:
+    # Modify array in-place
+    # Update pointer
+  return ptr # return the expected answer
+```
+
+- Two pointers, One pass
+
+```py
+ptr1 = startingIdx1 # init pointer 1 to a const value
+ptr2 = startingIdx2 # init pointer 2 to a const value
+for i in range(n): # iterate the entire array in one pass
+# the for loop can be replaced with a while loop with condition for pointers
+  if condition1:
+    # Modify array in-place
+    # Update pointer 1
+  else:
+    # Modify array in-place
+    # Update pointer 2
+  return ptr1 # return the expected answer
+```
+
+- Hashmap/Hashset, One pass
+
+```py
+hashmap = {} # or set()
+for i in range(n): # iterate the entire array
+  if target in hashmap: # check existing key
+    return result
+  hashmap[key] = value # add new key-value pair or key for set
+```
+
+- Sliding Window
+
+```py
+# init variables for window size
+for i in range(n): # iterate through the array
+  while condition:
+    if not condition:
+      break
+    # increase window size
+return result
+```
+
+#### Search
+
+- Binary Search - Use it for `O(logn)`
+
+```py
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1  # Initialize pointers
+    while left <= right:
+        mid = left + (right - left) // 2  # Calculate the middle index
+        if arr[mid] == target:
+            return mid  # Target found, return index
+        elif arr[mid] < target:
+            left = mid + 1  # Move the left pointer to mid + 1
+        else:
+            right = mid - 1  # Move the right pointer to mid - 1
+    return -1  # Target not found, return -1
+```
+
+#### Sort
+
+- Quick Sort
+
+```py
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr.pop()
+        # Optionally, use Median of three (first, last, middle) as pivot point to avoid ineffeciency when array is partially sorted
+        # pivot = sorted([arr[0], arr[len(arr) // 2], arr[-1]])[1]
+        greater = [x for x in arr if x >= pivot]
+        lesser = [x for x in arr if x < pivot]
+        return quicksort(lesser) + [pivot] + quicksort(greater)
+```
+
+### Tree / Graph
+
+- Binary tree dfs
+
+```py
+def dfs(node):
+    if node is None:
+        return baseResult  # Base case: return a predefined result for None nodes
+    # Access current node and add logic
+    # For example: process the current node value
+    # changes = <some operation with node.value>
+    leftResult = dfs(node.left)  # Recursive call on the left child
+    rightResult = dfs(node.right)  # Recursive call on the right child
+    # Backtracking goes here
+    return leftResult + rightResult + changes  # Combine results from left and right
+```
+
+- Binary tree bfs level by level
+
+```py
+def bfs(root):
+    if root is None:
+        return []  # Return an empty list if the tree is empty
+    queue = deque([root])  # Initialize the queue with the root node
+    result = []  # This will store the results of the BFS
+    while queue:
+        current = queue.popleft()  # Dequeue the front node
+        # Process the current node (e.g., add its value to the result)
+        result.append(current.value)  # Modify this based on your needs
+        # Enqueue left and right children if they exist
+        if current.left: queue.append(current.left)
+        if current.right: queue.append(current.right)
+    return result  # Return the final result list
+```
+
+- Binary search tree in-order/sorted order
+
+```py
+result = init # Init variables
+def inOrderTraversal(node):
+    if not node: return
+    inOrderTraversal(node.left)
+    # Add processing logic here
+    result += node.val
+    inOrderTraversal(node.right)
+inOrderTraversal(root)
+return result
+```
+
+- Binary search tree insertion
+
+```py
+def insert_node(root, key):
+    if root is None:
+        return Node(key)
+    elif key < root.key:
+        root.left = insert_node(root.left, key)
+    else:
+        root.right = insert_node(root.right, key)
+    return root
+```
+
+### Linked List
+
+- Iterate one singly linked list iteratively
+
+```py
+def iterate_linked_list(head):
+    current = head  # Start from the head of the list
+    while current:   # Continue until the end of the list
+        print(current.value)  # Process the current node (e.g., print its value)
+        current = current.next  # Move to the next node
+```
+
+- Iterate one singly linked list recursively
+
+```py
+def iterate_linked_list_recursive(node):
+    if node is None:  # Base case: if the node is None, return
+        return
+    print(node.value)  # Process the current node (e.g., print its value)
+    iterate_linked_list_recursive(node.next)  # Recursive call for the next node
+```
+
+- Iterate two singly linked list iteratively at the same time
+
+```py
+def iterate_two_linked_lists(head1, head2):
+    current1 = head1  # Start from the head of the first list
+    current2 = head2  # Start from the head of the second list
+    while current1 or current2:
+        if current1:
+            print(f"List 1: {current1.val}")  # Process the current node from list 1
+            current1 = current1.next  # Move to the next node in list 1
+        if current2:
+            print(f"List 2: {current2.val}")  # Process the current node from list 2
+            current2 = current2.next  # Move to the next node in list 2
+```
+
+- Reverse doubly linked list
+
+```py
+def reverse_doubly_linked_list(head):
+    current = head
+    new_head = None  # This will become the new head of the reversed list
+    while current:
+        new_head = current  # Update new_head to the current node
+        # Swap the next and prev pointers
+        current.prev, current.next = current.next, current.prev
+        current = current.prev  # Move to the next node (which is now previous)
+    return new_head  # Return the new head of the reversed list
+```
+
+### Bit Manipulation
+
+- print all `n` bits binary numbers in order
+
+```py
+# Recursive method
+def print_n_bits(n):
+    def print_01_codes(current, num_digits):
+        if num_digits == 0:
+            print(current)
+            return
+        print_01_codes(current + '0', num_digits - 1)
+        print_01_codes(current + '1', num_digits - 1)
+    print_01_codes('', n)
+print_n_bits(2)
+
+# Binary conversion method
+def print_n_bits(n):
+    for i in range(2**n):
+        binary_str = bin(i)[2:] # from 0b0 to 0
+        binary_str = (n - len(binary_str)) * '0' + binary_str # add leading 0s
+        # Optionally use `binary_str.rjust(n,'0')` or `binary_str.zfill(n)`
+        print(binary_str)
+
+print_n_bits(3)
+```
+
+### Math
+
+- Check prime number
+
+```py
+def is_prime(n):
+    if n <= 1:
+        return False
+    elif n <= 3:
+        return True
+    elif n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while(i * i <= n):
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6 # prime number is usually a muliplier of 6 plus or minus 1
+    return True
+```
+
+- Generate Pascal Triangle
+
+```py
+def generate_pascal(n):
+    triangle = [[1] * (i + 1) for i in range(n)] # generate triange with right shape and fill it with 1
+    for i in range(2, n):
+        for j in range(1, i):
+            triangle[i][j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
+    return triangle
+```
+
+### Dynamic Programming
+
+- Memoization (Top-Down Approach)
+
+```py
+memo = {}
+def dp_memoization(n):
+    # Base cases
+    if n <= 0:
+        return 0  # Example base case
+    if n in memo:
+        return memo[n]  # Return cached result
+    # Recursive case
+    result = dp_memoization(n - 1) + dp_memoization(n - 2)  # Example recurrence
+    memo[n] = result  # Cache the result
+    return result
+```
+
+- Tabulation (Bottom-Up Approach)
+
+```py
+def dp_tabulation(n):
+    # Create a table to store results
+    dp = [0] * n
+    # Base cases
+    dp[0], dp[1] = 0, 1  # Example base case
+    # Fill the table
+    for i in range(2, n):
+        dp[i] = dp[i - 1] + dp[i - 2]  # Example recurrence
+    return dp[n-1]  # Return the result for the input
+```
+
 ## LeetCode
 
 ### 1. Two Sum
@@ -87,9 +379,7 @@
 - Output:
   - The length of the longest substring without repeating characters
 - Solution:
-
   - Sliding the window to the right while finding a larger window
-
   ```py
   class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
@@ -105,14 +395,11 @@
                 max_length += 1
         return max_length
   ```
-
   - Track data in sliding window using a set
-
   ```py
   class Solution:
       def lengthOfLongestSubstring(self, s: str) -> int:
           n, maxLength, charSet, left = len(s), 0, set(), 0
-
           for right in range(n):
               if s[right] not in charSet:
                   charSet.add(s[right]) # Add right pointer to set if its new
@@ -122,7 +409,6 @@
                       charSet.remove(s[left])
                       left += 1
                   charSet.add(s[right])
-
           return maxLength
   ```
 
@@ -635,14 +921,14 @@ class Solution:
 
 - Input: A sorted array `nums`
 - Output:
-  - Remove all duplcated element in `nums` in-place by keeping the result in the first part of the array
+  - Remove all duplicated elements in `nums` in-place by keeping the result in the first part of the array
   - Return number of unique elements that should be kept
 - Assumption:
   - `nums` is sorted in non-decreasing order
   - The remaining of the `nums` beyond the number of unique elements is not important
   - The input array cannot be empty
 - Solution:
-  - One pass for loop from index 0:
+  - One pass for loop with one pointer from index 0:
   ```py
   class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
@@ -654,7 +940,7 @@ class Solution:
         nums[index] = nums[len(nums) - 1] # Add the last element as unique element
         return index + 1
   ```
-  - [One pass for loop from index 1](https://leetcode.com/problems/remove-duplicates-from-sorted-array/solutions/3676877/best-method-100-c-java-python-beginner-friendly)
+  - [One pass for loop with one pointer from index 1](https://leetcode.com/problems/remove-duplicates-from-sorted-array/solutions/3676877/best-method-100-c-java-python-beginner-friendly)
   ```py
   class Solution:
       def removeDuplicates(self, nums: List[int]) -> int:
@@ -688,7 +974,7 @@ class Solution:
                 index += 1 # Track the number of copied element by index
         return index
   ```
-  - Two Pointer While Loop
+  - Two Pointers While Loop
   ```py
   class Solution:
       def removeElement(self, nums: List[int], val: int) -> int:
@@ -1206,7 +1492,7 @@ class Solution:
               return climb(height + 1, n) + climb(height + 2, n)
           return climb(1, n) + climb(2, n)
   ```
-  - Brutal force with top-down DP - `O(2^n)`
+  - Brutal force from top down - `O(2^n)`
     - All current step is reachable from one or two steps below
     - Starts from step `n`, get the number of ways until step `0` is reached
   ```py
@@ -1433,30 +1719,28 @@ class Solution:
 - Assumption:
   - For `nums1`, there will be `n` zeros appended to the right of `nums1` as input
 - Solution:
-
   - Use built-in sort method after replacing zeros in `nums1` with each element of `nums2`
   - Assign large number amongst two arrays to `nums1` from right to left
-
-    - Original
+    - Two pointers method
       ```py
       class Solution:
         def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-          i = m - 1  # Index of last non-zero element in nums1
-          j = n - 1  # Index of last element in nums2
-          for k in range(m + n - 1, -1, -1):
+          i = m - 1  # Pointer for non-zero elements in nums1
+          j = n - 1  # Pointer for elements in nums2
+          for k in range(m + n - 1, -1, -1): # Iterate merged list backwards
             if j < 0: # All elements in nums2 have been processed
                 break # No more change is needed on nums1
             elif i < 0: # All elements in nums1 have been processed
                 nums1[k] = nums2[j] # Copy remaining elements from nums2 to nums1
                 j -= 1
-            elif nums1[i] > nums2[j]: # current element in nums1 is larger
+            elif nums1[i] > nums2[j]: # Current element in nums1 is larger
                 nums1[k] = nums1[i] # Copy the larger element in nums1 into the current last index
-                i -= 1 # track the next element in nums1 on the left
-            else: # current element in nums2 is larger
+                i -= 1 # Update pointer for nums1
+            else: # Current element in nums2 is larger
                 nums1[k] = nums2[j] # Copy the larger element in nums2 into the current last index
-                j -= 1 # track the next element in nums2 on the left
+                j -= 1 # Update pointer for nums2
       ```
-    - Simplied for-loop method
+    - Simplified two pointers method
       ```py
       class Solution:
         def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
@@ -1471,13 +1755,13 @@ class Solution:
                   nums1[k] = nums2[j]
                   j -= 1
       ```
-    - While loop method
+    - While loop with three pointers method
       ```py
       class Solution:
         def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-          i = m - 1
-          j = n - 1
-          k = m + n - 1
+          i = m - 1 # pointer for nums1 index
+          j = n - 1 # pointer for nums2 index
+          k = m + n - 1 # pointer for merged array index
           while j >= 0: # Loop until nums2 is completely processed
               # When j < 0, it will automatically break
               if i >= 0 and nums1[i] > nums2[j]:
@@ -3156,6 +3440,7 @@ class TreeNode:
 - Output:
   - A root with all the values from each nodes left/right node inverted
 - Solution:
+  - Pre-order traversal
   ```py
   class Solution:
       def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
@@ -3164,6 +3449,19 @@ class TreeNode:
               self.invertTree(root.left) # Call switch recursively on left nodes
               self.invertTree(root.right) # Call switch recursively on right nodes
           return root # return root when reaching this line after all recursions are finished
+  ```
+  - BFS
+  ```py
+  class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root: return
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            node.left, node.right = node.right, node.left
+            if node.left: stack.append(node.left)
+            if node.right: stack.append(node.right)
+        return root
   ```
 
 ### 228. Summary Ranges
@@ -3232,12 +3530,9 @@ class TreeNode:
   - Solution must be `O(n)` in time
   - Division operation is not allowed in the solution
 - Solution:
-
   - Using pre-calculated prefix/suffix product array
-
     - Each product at `i` is essentially the product of all numbers the left of `i` times the product of all numbers the right of `i`
     - The summary all prefix product and suffix product for each element at `i` can optimaize the solution to `O(n)`
-
     ```py
     class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
@@ -3248,9 +3543,7 @@ class TreeNode:
             suf_array[length-i-1] = suf_array[length-i] * nums[length-i]
         return [pre_array[i] * suf_array[i] for i in range(length)]
     ```
-
   - O(1) Space complexity solution excluding space taken by solution array
-
   ```py
   class Solution:
       def productExceptSelf(self, nums: List[int]) -> List[int]:
@@ -3955,279 +4248,3 @@ class Solution:
         set1, set2 = set(nums1), set(nums2)
         return [list(set1-set2), list(set2-set1)]
   ```
-
-## Code Snippets
-
-- Level Order Traversal
-
-  - Solution with `collections`
-
-  ```py
-  from collections import deque
-
-  class Node:
-      def __init__(self, value):
-          self.value = value
-          self.children = []
-
-  def level_order_traversal(root):
-      # Create a queue to hold the nodes to be visited
-      queue = deque([root])
-
-      while queue:
-          # Dequeue the next node
-          node = queue.popleft()
-
-          # Print the node's value
-          print(node.value)
-
-          # Add the node's children to the queue
-          for child in node.children:
-              queue.append(child)
-
-  # Create a sample binary tree
-  root = Node(1)
-  root.children = [Node(2), Node(3), Node(4)]
-  root.children[0].children = [Node(5), Node(6)]
-  root.children[1].children = [Node(7), Node(8)]
-
-  # Perform the Level Order traversal
-  level_order_traversal(root)
-  ```
-
-  - Solution without using `collections`
-
-  ```py
-  def level_order_traversal(root):
-    stack = [root]
-
-    while stack:
-        node = stack.pop(0)
-        print(node.value)
-
-        if node.children:
-            stack.extend(node.children)
-  ```
-
-- Invert binary tree
-
-```py
-'''
-         5                         5
-       /   \                     /   \
-      /     \                   /     \
-     3       7    =======>     7       3
-    / \     /                   \     / \
-   1   4   6                     6   4   1
-'''
-class Node:
-    def __init__(self, data):
-        self.left = self.right = None
-        self.data = data
-    def __repr__(self):
-        return repr(self.data)
-
-def invert(root):
-    root.left, root.right = root.right, root.left
-    if left: invert(left)
-    if right: invert(right)
-
-def iterative_invert(root):
-    if root is None:
-        return
-
-    stack = [root]
-    while stack:
-        node = stack.pop()
-        node.left, node.right = node.right, node.left
-
-        if node.left:
-            stack.append(node.left)
-        if node.right:
-            stack.append(node.right)
-```
-
-- reverse double linked list
-
-```py
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-        self.prev = None
-
-class Solution:
-    def reverseDLL(self, head):
-        #return head after reversing
-        if head is None:
-            return None
-
-        new_head = Node(head.data)
-        current = head.next
-
-        while current is not None:
-            next_node = current.next
-            current.next = new_head
-            current.prev = current.next.prev
-            new_head.prev = current
-            new_head = current
-            current = next_node
-
-        return new_head
-```
-
-- quick sort
-
-```py
-def quicksort(arr):
-    if len(arr) <= 1:
-        return arr
-    else:
-        pivot = arr.pop()
-        # Optionally, use Median of three (first, last, middle) as pivot point to avoid ineffeciency when array is partially sorted
-        # pivot = sorted([arr[0], arr[len(arr) // 2], arr[-1]])[1]
-        greater = [x for x in arr if x >= pivot]
-        lesser = [x for x in arr if x < pivot]
-        return quicksort(lesser) + [pivot] + quicksort(greater)
-```
-
-- get the depth of an binary tree
-
-```py
-class Node:
-    def __init__(self, value, left=None, right=None):
-        self.value = value
-        self.left = left
-        self.right = right
-
-def depth(node):
-    if not node: return 0
-    left_depth = depth(node.left)
-    right_depth = depth(node.right)
-    return max(left_depth, right_depth) + 1
-
-node = Node(1)
-node.left = Node(2)
-node.right = Node(3)
-node.left.left = Node(4)
-node.left.right = Node(5)
-node.right.left = Node(6)
-node.right.right = Node(7)
-node.right.right.right = Node(7)
-print(depth(node))  # Output is 4
-```
-
-- Binary tree insertion
-
-```py
-class Node:
-    def __init__(self, key, left=None, right=None):
-        self.key = key
-        self.left = left
-        self.right = right
-
-def insert_node(root, key):
-    if root is None:
-        return Node(key)
-    elif key < root.key:
-        root.left = insert_node(root.left, key)
-    else:
-        root.right = insert_node(root.right, key)
-    return root
-
-root = Node(50)
-insert_node(root, 25)
-insert_node(root, 75)
-insert_node(root, 10)
-insert_node(root, 30)
-insert_node(root, 60)
-insert_node(root, 80)
-print(root)
-```
-
-- print all `n` bits binary numbers in order
-
-```py
-# Recursive method
-def print_n_bits(n):
-
-    def print_01_codes(current, num_digits):
-        if num_digits == 0:
-            print(current)
-            return
-
-        print_01_codes(current + '0', num_digits - 1)
-        print_01_codes(current + '1', num_digits - 1)
-    print_01_codes('', n)
-print_n_bits(2)
-
-# Binary conversion method
-def print_n_bits(n):
-    for i in range(2**n):
-        binary_str = bin(i)[2:] # from 0b0 to 0
-        binary_str = (n - len(binary_str)) * '0' + binary_str # add leading 0s
-        # Optionally use `binary_str.rjust(n,'0')` or `binary_str.zfill(n)`
-        print(binary_str)
-
-print_n_bits(3)
-```
-
-- Check prime number
-
-```py
-def is_prime(n):
-    if n <= 1:
-        return False
-    elif n <= 3:
-        return True
-    elif n % 2 == 0 or n % 3 == 0:
-        return False
-    i = 5
-    while(i * i <= n):
-        if n % i == 0 or n % (i + 2) == 0:
-            return False
-        i += 6 # prime number is usually a muliplier of 6 plus or minus 1
-    return True
-```
-
-- Generate pascal triangle
-
-```py
-def generate_pascal(n):
-    triangle = [[1] * (i + 1) for i in range(n)] # generate triange with right shape and fill it with 1
-    for i in range(2, n):
-        for j in range(1, i):
-            triangle[i][j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
-    return triangle
-```
-
-- Remove duplicate numbers in a list in place
-
-```py
-def remove_duplicates(nums):
-    if not nums:
-        return 0
-
-    i = 0 # i: 0
-    for j in range(1, len(nums)): # j: 1->n
-        if nums[i] != nums[j]: # find next unique number
-            i += 1
-            nums[i] = nums[j] # update unique number to the front
-    return i + 1 # return index slicing value for the unique numbers moved to the begining
-
-nums = [1, 1, 1, 2, 2, 3, 4, 4, 5]
-print(nums[:remove_duplicates(nums)])
-```
-
-## Hints
-
-- Use scratch paper
-- Try brutal force when optimal solution can't be find immediately
-- Read example cases carefully when you are under pressure
-- Practice questions with a timer
-- Try to debug by reading the code only
-- Track variable values with inline comments
-  - use notation like `n: 12` for constant
-  - use notation like `i: 3-5` for iterables
-- Maximize short term memory before coding by completing the following steps in order:
-  - cardio -> a balanced meal with fruits -> 8 hours of sleep -> relaxing -> open the window-> meditation
