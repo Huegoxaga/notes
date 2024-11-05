@@ -57,7 +57,6 @@ return result
 #### Search
 
 - Binary Search - Use it for `O(logn)`
-
 ```py
 def binary_search(arr, target):
     left, right = 0, len(arr) - 1  # Initialize pointers
@@ -70,6 +69,25 @@ def binary_search(arr, target):
         else:
             right = mid - 1  # Move the right pointer to mid - 1
     return -1  # Target not found, return -1
+```
+
+- Quick selection - Find nth max/min in a list by returning the nth element when it is selected as the pivot point
+```py
+def findKthLargest(self, nums: List[int], k: int) -> int:
+    res, greater, lesser = 0, [], []
+    pivot = nums.pop()
+    for x in nums:
+        if x >= pivot:
+            greater += [x]
+        else:
+            lesser += [x]
+    if len(greater) + 1 == k:
+        return pivot
+    elif len(greater) + 1 > k: # if pivot is too left
+        res = self.findKthLargest(greater, k)
+    else: # if pivot is too right
+        res = self.findKthLargest(lesser, k-len(greater)-1)
+    return res
 ```
 
 #### Sort
@@ -89,7 +107,35 @@ def quicksort(arr):
         return quicksort(lesser) + [pivot] + quicksort(greater)
 ```
 
-### Tree / Graph
+#### Heap
+
+- find kth largest in a given list
+  - Heap also sorts a list of lists/tuples by its first element, second element, etc. in the sublists/tuples
+```py
+def findKthLargest(nums, k):
+    k_heap = [] # init new heap list
+    for num in nums:
+        if len(k_heap) < k: # add element until there are k of them
+            heapq.heappush(k_heap, num)
+        else: # add k+1th and remove extra
+            heapq.heappushpop(k_heap, num)
+    return k_heap[0] # return smallest of the k largest in heap
+    # one liner solution - return heapq.nlargest(k, nums)[-1]
+```
+
+- find kth smallest in a given list
+```py
+def findKthSmallest(nums, k):
+    k_heap = []  # Initialize a new heap list
+    for num in nums:
+        if len(k_heap) < k:  # Add elements until there are k of them
+            heapq.heappush(k_heap, -num)  # Push the negative value
+        else: # when size is k
+            heapq.heappushpop(k_heap, -num)  # Add k+1th and remove the largest (negated)
+    return -k_heap[0]  # Return the negated k largest, then negate it back for kth smallest
+    # one liner solution -  return heapq.nsmallest(k, nums)[-1]
+```
+### Tree
 
 - Binary tree dfs
 
@@ -151,6 +197,51 @@ def insert_node(root, key):
     return root
 ```
 
+### Graph
+
+- Use dfs to explore all paths
+
+```py
+graph = defaultdict(list)
+for start, end in edges: # build graph
+    graph[start].append(end) # graph is recorded as {node1: [node2, node3], node2: [node4]}
+visited, path, all_paths= set(), [], [] # init variables
+def dfs(node):
+        if node not in graph or not graph[node]: # Base case: leaf node reached
+            all_paths.append(list(path))  # Save the current path
+            return
+        visited.add(node) # track visited node to prevent cycling
+        path.append(node) # update current path
+        for neighbor in graph[node]: # Explore neighbors
+            if neighbor not in visited:
+                dfs(neighbor) # continue explore if its a new node
+        # backtrack after all neighbors are explored
+        path.pop() 
+        visited.remove(node)
+# Explore all paths starting from each node
+for start_node in graph:
+    dfs(start_node)
+```
+
+- Use bfs to explore all paths
+
+```py
+graph = defaultdict(list)
+for start, end in edges: # Build graph
+    graph[start].append(end) # Graph is recorded as {node1: [node2, node3], node2: [node4]}
+all_paths = []
+for start_node in graph: # Iterate all nodes in the graph
+    queue = deque([(start_node, [start_node])])  # Init queue as: [(current node, current path)]
+    while queue:
+        current_node, path = queue.popleft() # Explore leftmost node
+        if current_node not in graph or not graph[current_node]: # Save path if current node is a leaf node 
+            all_paths.append(path.copy()) # Optionally, use list(path) to copy
+        else: # In current node has child node
+            for neighbor in graph[current_node]: # Iterate all children
+                if neighbor not in path:  # Avoid cycles
+                    queue.append((neighbor, path + [neighbor])) # Explore neighbors and update path
+```
+
 ### Linked List
 
 - Iterate one singly linked list iteratively
@@ -204,30 +295,7 @@ def reverse_doubly_linked_list(head):
 
 ### Bit Manipulation
 
-- print all `n` bits binary numbers in order
 
-```py
-# Recursive method
-def print_n_bits(n):
-    def print_01_codes(current, num_digits):
-        if num_digits == 0:
-            print(current)
-            return
-        print_01_codes(current + '0', num_digits - 1)
-        print_01_codes(current + '1', num_digits - 1)
-    print_01_codes('', n)
-print_n_bits(2)
-
-# Binary conversion method
-def print_n_bits(n):
-    for i in range(2**n):
-        binary_str = bin(i)[2:] # from 0b0 to 0
-        binary_str = (n - len(binary_str)) * '0' + binary_str # add leading 0s
-        # Optionally use `binary_str.rjust(n,'0')` or `binary_str.zfill(n)`
-        print(binary_str)
-
-print_n_bits(3)
-```
 
 ### Math
 
@@ -263,6 +331,7 @@ def generate_pascal(n):
 ### Dynamic Programming
 
 - Memoization (Top-Down Approach)
+  - One can start with a brutal force recursion, then optimize it by adding the memo variable
 
 ```py
 memo = {}
@@ -290,6 +359,20 @@ def dp_tabulation(n):
     for i in range(2, n):
         dp[i] = dp[i - 1] + dp[i - 2]  # Example recurrence
     return dp[n-1]  # Return the result for the input
+```
+
+### Class Implementation
+
+```py
+class ClassName:
+
+    def __init__(self):
+        # select the related data structure to store all required info
+        pass
+        
+    def methodOne(self, input: int) -> None:
+        # try to implement the remaining methods with given data declared in __init__
+        pass
 ```
 
 ## LeetCode
@@ -1394,6 +1477,69 @@ class Solution:
         return head
   ```
 
+### 67. Add Binary
+
+- Input:
+  - a binary string `a`
+  - a binary string `b`
+- Output:
+  - a binary string which is the sum of the binary `a` and `b`
+- Solution:
+  - Use built-in function
+    - bin result in python starts with `0b` prefix
+  ```py
+  class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        return bin(int(a, 2) + int(b, 2))[2:]
+  ```
+  - Iterate bits from right to left
+  ```py
+  class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        extra = 0
+        res = ""
+        if len(a) < len(b):
+            a, b = b, a # make sure a is the longer string
+        j = len(b) - 1 # get last idx of b
+        for i in a[::-1]: # for each char of a from right to left
+            if j >= 0: # if b pointer is still valid
+                c = int(b[j]) + int(i) + extra # get sum
+            else: # if a still not finished
+                c = int(i) + extra
+            if c < 2: # prepend result
+                res = str(c) + res
+                extra = 0
+            else: # prepend result and handle extra bit
+                res = str(c%2) + res
+                extra = 1
+            j -= 1
+        else: # if there is extra bit when iteration of a and b are finished
+            if extra:
+                res = "1" + res
+        return res
+  ```
+  - Iteration method (Simplified version)
+  ```py
+  class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        if len(a) < len(b):
+            a, b = b, a # make sure a is the longer string
+        j = len(b) - 1 # get last idx of b
+        carry = 0
+        res = ""
+        for i in a[::-1]: # for each char of a from right to left
+            c = carry + int(i) # add carry and bit from a
+            if j >= 0: # if b pointer is still valid
+                c += int(b[j]) # add bit from b
+                j -= 1 # update pointer
+            res = str(c%2) + res # update result
+            carry = c//2 # update carry
+        else: # if there is extra bit when iteration of a and b are finished
+            if carry:
+                res = "1" + res
+        return res
+  ```
+
 ### 69. Sqrt(x)
 
 - Input:
@@ -1872,7 +2018,7 @@ class TreeNode:
               res.append(node.val) # Save value
               # Save left child's right node as root, so all of its left nodes can be pushed to end of stack in next while root loop
               root = node.right
-              # Visit the parent of the left leave in next interation until stack is empty or no more right node
+              # Visit the parent of the left leaf in next interation until stack is empty or no more right node
           return res
   ```
 
@@ -2908,6 +3054,41 @@ class TreeNode:
               nums[j], nums[(i*k+j)%n] = nums[(i*k+j)%n], nums[j]
   ```
 
+### 191. Number of 1 Bits
+
+- Input:
+  - a positive integer `n`
+- Output:
+  - The number of set bits (ones) in its binary form
+    - The hamming weight of `n`
+- Solution
+  - Built-in function
+  ```py
+  class Solution:
+    def hammingWeight(self, n: int) -> int:
+        return bin(n).count('1')
+  ```
+  - Bit Manipulation
+  ```py
+  class Solution:
+    def hammingWeight(self, n: int) -> int:
+      count = 0
+      while n:
+          count += n & 1  # Increment count if the last bit is 1
+          n >>= 1  # Right shift decimal number by 1 in its binary form to process the next bit
+      return count
+  ```
+  - Brian Kernighan's Algorithm
+  ```py
+  class Solution:
+    def hammingWeight(self, n: int) -> int:
+      count = 0
+      while n: # As long as there is a one in its binary representation
+          n &= (n - 1)  # Change the rightmost 1 bit to 0 bit of its binary representation
+          count += 1
+      return count
+  ```
+
 ### 198. House Robber
 
 - Input:
@@ -2922,9 +3103,9 @@ class TreeNode:
   ```py
   class Solution:
       def rob(self, nums: List[int]) -> int:
-          def rob_helper(nums, i):
-              if i < 0: return 0 # anywhere before the first number doesn't contain a value
-              return max(rob_helper(nums, i - 2) + nums[i], rob_helper(nums, i - 1))
+          def rob_helper(nums, i): # `i` tracks the location to be selected
+              if i < 0: return 0 # base case when it goes beyand top case
+              return max(rob_helper(nums, i - 2) + nums[i], rob_helper(nums, i - 1)) # choose the max between not skip or skip
           return rob_helper(nums, len(nums) - 1)
   ```
   - DP Top-Down using dictionary
@@ -3694,6 +3875,51 @@ class TreeNode:
           return ''.join(s)
   ```
 
+### 355. Design Twitter
+
+- Implement the Twitter class with the following methods:
+  - `Twitter()` Initializes your twitter object.
+  - `void postTweet(int userId, int tweetId)` Composes a new tweet with ID tweetId by the user userId. Each call to this function will be made with a unique tweetId.
+  - `List<Integer> getNewsFeed(int userId)` Retrieves the 10 most recent tweet IDs in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user themself. Tweets must be ordered from most recent to least recent.
+  - `void follow(int followerId, int followeeId)` The user with ID followerId started following the user with ID followeeId.
+  - `void unfollow(int followerId, int followeeId)` The user with ID followerId started unfollowing the user with ID followeeId.
+
+- Solution
+```py
+class Twitter:
+
+    def __init__(self):
+        self.tweetMap = defaultdict(list) # mapping from userID to list of tweetID
+        self.tweetTime = [] # a list of tweet id tracks posting order
+        self.followingMap = defaultdict(set) # mapping from follower to followee set
+        
+    def postTweet(self, userId: int, tweetId: int) -> None:
+        self.tweetMap[userId].append(tweetId)
+        self.tweetTime.append(tweetId)
+
+    def getNewsFeed(self, userId: int) -> List[int]:
+        relatedUsers = {userId} | self.followingMap.get(userId, set())
+        tweetQuery = []
+        for user in relatedUsers:
+            tweetQuery.extend(self.tweetMap.get(user, []))
+        feed = []
+        for tweet in self.tweetTime[::-1]: # iterate from most recent
+            if tweet in tweetQuery:
+                feed.append(tweet)
+                if len(feed) == 10:
+                    break
+        return feed
+
+    def follow(self, followerId: int, followeeId: int) -> None:
+        if followerId != followeeId:  # Prevent self-following
+            self.followingMap[followerId].add(followeeId)
+        
+    def unfollow(self, followerId: int, followeeId: int) -> None:
+        if followeeId in self.followingMap[followerId]:
+            self.followingMap[followerId].remove(followeeId)
+    # TODO - can use heap, can replace tweetTime list into a time counter integer
+```
+
 ### 373. Find K Pairs with Smallest Sums
 
 - Input:
@@ -3712,8 +3938,8 @@ class TreeNode:
   class Solution:
     def kSmallestPairs(self, nums1, nums2, k):
         streams = map(lambda u: ([u+v, u, v] for v in nums2), nums1)
-        stream = heapq.merge(*streams)
-        return [suv[1:] for suv in itertools.islice(stream, k)]
+        stream = heapq.merge(*streams) # merge lists of tuples from stream in to one sorted list of tuples
+        return [suv[1:] for suv in itertools.islice(stream, k)] # use islice instead of index slicing for better performance
   ```
   - Push and pop element pair `(0, 0)`, then `(0, 1)` and `(1, 0)` into heap, pop smallest and push `(i+1, j)` and `(i, j+1)` of the pop one
   ```py
@@ -3847,6 +4073,46 @@ class TreeNode:
                 j += 1 # move to next char of the subsequence
             i += 1 # each iteration compare one char from the original string
         return j == len(s) # check if all char in s has a match
+  ```
+
+### 399. Evaluate Division
+
+- Input:
+  - A list of string pairs
+    - each string represents a variable for a large number
+  - A list of number represents the result of division of the pairs from left to right
+  - A list of string pairs that to be queried
+- Output:
+  - A list of number represents the division result of the queries
+- Assumption:
+  - Indeterminate result is `-1`
+- Solution:
+  - graph method
+  ```py
+  class Solution:
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+        graph = defaultdict(dict)
+        # Build the graph
+        for (dividend, divisor), value in zip(equations, values):
+            graph[dividend][divisor] = value # add two way paths as keys and qoutient as value
+            graph[divisor][dividend] = 1 / value
+        def dfs(start, end, visited):
+            if start not in graph or end not in graph:
+                return -1.0 # return -1 if input from query doesn't exist in graph
+            if start == end:
+                return 1.0 # base case when end is reached
+            visited.add(start) # use visited set to prevent cycling
+            for neighbor, value in graph[start].items(): # from all possible paths from start
+                if neighbor not in visited:
+                    result = dfs(neighbor, end, visited) # continue explore connected paths until neighbor is the end
+                    if result != -1.0: # if result if valid
+                        return result * value # accumulate qoutient by multiplication
+            visited.remove(start) # backtracking remove visited node after all its paths are explored
+            return -1.0 # return -1 by default
+        results = []
+        for dividend, divisor in queries: # find answers for all queries
+            results.append(dfs(dividend, divisor, set()))
+        return results
   ```
 
 ### 443. String Compression
@@ -4086,6 +4352,39 @@ class TreeNode:
           return -1
   ```
 
+### 684. Redundant Connection
+
+- Input:
+  - A list of edges of a graph represented `[i, j]` where `i` and `j` are the node numbers
+- Output:
+  - The last edge in the list that can make the graph a tree if it is removed
+- Solution:
+  - Remove and check if it is tree
+  - Build graph
+
+
+### 973. K Closest Points to Origin
+
+- Input:
+  - An integer `k`
+  - A list of integer coordinates `(x, y)`
+- Output:
+  - the `k` coordinates closest to origin `(0, 0)`
+- Assumption:
+  - The order of the result doesn't matter
+- Solutions
+  - heap
+  ```py
+  class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        distanceHeap = []
+        for x, y in points:
+            heapq.heappush(distanceHeap, (-(x*x+y*y), x, y))
+            if len(distanceHeap) > k:
+                heapq.heappop(distanceHeap)
+        return [list(distance[1:]) for distance in distanceHeap]
+  ```
+
 ### 1071. Greatest Common Divisor of Strings
 
 - Input:
@@ -4170,6 +4469,53 @@ class TreeNode:
         return [extraCandies + candy >= max(candies) for candy in candies]
   ```
 
+### 1492. The kth Factor of n
+
+- Input:
+  - An integer `n`
+  - An integer `k`
+- Output:
+  - the `k`th factor of `n` if all its factors are order in ascending order
+- Solutions:
+  - Iteration from `1` to `n` - `O(n)`
+  ```py
+  class Solution:
+    def kthFactor(self, n: int, k: int) -> int:
+        factors = []
+        for i in range(1, n+1):
+            if n % i == 0:
+                factors.append(i) # add factor when found
+        res = -1 if len(factors) < k else factors[k-1] # return kth if exists
+        return res
+  ```
+  - Iteration from `1` to `n` with counter to save space - `O(n)`
+  ```py
+  class Solution:
+    def kthFactor(self, n: int, k: int) -> int:
+        count = 0
+        for i in range(1, n + 1):
+            if n % i == 0:
+                count += 1
+                if count == k:
+                    return i
+        return -1
+  ```
+  - Iteration from `1` to `sqrt(n)` - `O(sqrt(n))`
+  ```py
+  class Solution:
+    def kthFactor(self, n: int, k: int) -> int:
+        lowerFactors = [] # Store factors from 1 to sqrt(n)
+        upperFactors = [] # Store factors reversely for co-factors
+        for i in range(1, int(n**0.5) + 1):
+            if n % i == 0:
+                lowerFactors.append(i)
+                if i != n // i:  # Avoid adding the square root twice
+                    upperFactors.append(n // i) # use // to get integer, / returns a float
+        factors = lowerFactors + upperFactors[::-1]
+        return factors[k - 1] if k <= len(factors) else -1
+  ```
+
+
 ### 1732. Find the Highest Altitude
 
 - Input:
@@ -4248,3 +4594,29 @@ class Solution:
         set1, set2 = set(nums1), set(nums2)
         return [list(set1-set2), list(set2-set1)]
   ```
+## Other Questions
+
+- print all `n` bits binary numbers in order
+
+```py
+# Recursive method
+def print_n_bits(n):
+    def print_01_codes(current, num_digits):
+        if num_digits == 0:
+            print(current)
+            return
+        print_01_codes(current + '0', num_digits - 1)
+        print_01_codes(current + '1', num_digits - 1)
+    print_01_codes('', n)
+print_n_bits(2)
+
+# Binary conversion method
+def print_n_bits(n):
+    for i in range(2**n):
+        binary_str = bin(i)[2:] # from 0b0 to 0
+        binary_str = (n - len(binary_str)) * '0' + binary_str # add leading 0s
+        # Optionally use `binary_str.rjust(n,'0')` or `binary_str.zfill(n)`
+        print(binary_str)
+
+print_n_bits(3)
+```

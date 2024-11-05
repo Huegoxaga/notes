@@ -168,8 +168,8 @@ zip_longest(iterable1,iterable2) #pair elements from iterable1 and iterable2 one
 - `c.clear()` reset counter
 - `counter1 == counter2` check equality, it returns true when all counts for each key are identical
 - `counter1 <= counter2` check inclusion, it returns true when every count of `counter1` is less or equal than `counter2` for each key
-- `counter1 & counter 2` return the min count for each key
-- `counter1 | counter 2` return the max count for each key
+- `counter1 & counter 2` return the common count (intersection) between two counters
+- `counter1 | counter 2` return the total count (union) between two counters
 
 ## Queue
 

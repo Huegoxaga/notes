@@ -703,7 +703,7 @@ int partition(int A[ ], int start, int end)
 
 - It finds the shortest time to get to all the next intermeditate nodes from the starting point to the destination, only the path that takes the shortest time to the next nodes will be adopted and will be used to reach further nodes
 - When the length of all edge in a graph is the same, it is an unweighted graph, then Breath-first search algorithm can be used
-- Dijkstra's Algorithm is a BFS algorithm for weighted graph
+- Dijkstra's Algorithm is a greedy expansion algorithm for weighted graph
 
 #### `A*` Search Algorithm
 

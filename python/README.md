@@ -132,7 +132,7 @@ When operator are chained together, The operation order is determined from top t
 
 ### Bitwise Operators
 
-It is performed bit by bit.
+It is performed bit by bit. Python treats decimal numbers in their binary form when performing bitwise operations. It will return result in decimal numbers.
 
 - and `&`
 - or `|`
@@ -645,11 +645,12 @@ reversed(range(5)) # It represents number from 4 to 0.
 ### Map Object
 
 ```py
-map(function, oldlist)
-x[:] = map(list, ((1, 2), (3, 4))) # change 2-D tuple to 2-D list
+map(function, iterable)
+list(map(lambda x: x * x, numbers)) # return a list of square from the numbers list
+x[:] = map(list, ((1, 2), (3, 4))) # optionally assign map object to variable with [:] to convert it to a list
 ```
 
-- It returns a map object that manipulate the old list(or other iterables) according to the function.
+- It applies the input function to each element of the iterable and return a map object
 - The map object needs to be transferred into a list(or other iterables).
 
 ### Filter Object
