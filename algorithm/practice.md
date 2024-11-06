@@ -57,6 +57,7 @@ return result
 #### Search
 
 - Binary Search - Use it for `O(logn)`
+
 ```py
 def binary_search(arr, target):
     left, right = 0, len(arr) - 1  # Initialize pointers
@@ -72,6 +73,7 @@ def binary_search(arr, target):
 ```
 
 - Quick selection - Find nth max/min in a list by returning the nth element when it is selected as the pivot point
+
 ```py
 def findKthLargest(self, nums: List[int], k: int) -> int:
     res, greater, lesser = 0, [], []
@@ -111,6 +113,7 @@ def quicksort(arr):
 
 - find kth largest in a given list
   - Heap also sorts a list of lists/tuples by its first element, second element, etc. in the sublists/tuples
+
 ```py
 def findKthLargest(nums, k):
     k_heap = [] # init new heap list
@@ -124,6 +127,7 @@ def findKthLargest(nums, k):
 ```
 
 - find kth smallest in a given list
+
 ```py
 def findKthSmallest(nums, k):
     k_heap = []  # Initialize a new heap list
@@ -135,6 +139,7 @@ def findKthSmallest(nums, k):
     return -k_heap[0]  # Return the negated k largest, then negate it back for kth smallest
     # one liner solution -  return heapq.nsmallest(k, nums)[-1]
 ```
+
 ### Tree
 
 - Binary tree dfs
@@ -216,7 +221,7 @@ def dfs(node):
             if neighbor not in visited:
                 dfs(neighbor) # continue explore if its a new node
         # backtrack after all neighbors are explored
-        path.pop() 
+        path.pop()
         visited.remove(node)
 # Explore all paths starting from each node
 for start_node in graph:
@@ -234,12 +239,43 @@ for start_node in graph: # Iterate all nodes in the graph
     queue = deque([(start_node, [start_node])])  # Init queue as: [(current node, current path)]
     while queue:
         current_node, path = queue.popleft() # Explore leftmost node
-        if current_node not in graph or not graph[current_node]: # Save path if current node is a leaf node 
+        if current_node not in graph or not graph[current_node]: # Save path if current node is a leaf node
             all_paths.append(path.copy()) # Optionally, use list(path) to copy
         else: # In current node has child node
             for neighbor in graph[current_node]: # Iterate all children
                 if neighbor not in path:  # Avoid cycles
                     queue.append((neighbor, path + [neighbor])) # Explore neighbors and update path
+```
+
+- Dijkstra's Algorithm
+
+```py
+def dijkstra(graph, start):
+    # Distance dictionary to keep track of the shortest distance from start node to every other node
+    distances = {node: float('inf') for node in graph}
+    distances[start] = 0  # Distance to the start node is 0
+    # Priority queue to pick the node with the smallest distance
+    priority_queue = [(0, start)]  # (distance, node)
+    while priority_queue:
+        current_distance, current_node = heapq.heappop(priority_queue)
+        if current_distance > distances[current_node]:
+            continue # If this distance is already larger than the known shortest distance, skip it
+        for neighbor, weight in graph[current_node].items(): # Iterate over the neighbors of the current node
+            distance = current_distance + weight
+            # If a shorter path to the neighbor is found, update the distance and add it to the queue
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(priority_queue, (distance, neighbor))
+    return distances
+# Example graph represented as an adjacency list (node: {neighbor: weight})
+graph = {
+    'A': {'B': 1, 'C': 4},
+    'B': {'A': 1, 'C': 2, 'D': 5},
+    'C': {'A': 4, 'B': 2, 'D': 1},
+    'D': {'B': 5, 'C': 1}
+}
+start_node = 'A'
+shortest_paths = dijkstra(graph, start_node)
 ```
 
 ### Linked List
@@ -294,8 +330,6 @@ def reverse_doubly_linked_list(head):
 ```
 
 ### Bit Manipulation
-
-
 
 ### Math
 
@@ -369,7 +403,7 @@ class ClassName:
     def __init__(self):
         # select the related data structure to store all required info
         pass
-        
+
     def methodOne(self, input: int) -> None:
         # try to implement the remaining methods with given data declared in __init__
         pass
@@ -3878,6 +3912,7 @@ class TreeNode:
 ### 355. Design Twitter
 
 - Implement the Twitter class with the following methods:
+
   - `Twitter()` Initializes your twitter object.
   - `void postTweet(int userId, int tweetId)` Composes a new tweet with ID tweetId by the user userId. Each call to this function will be made with a unique tweetId.
   - `List<Integer> getNewsFeed(int userId)` Retrieves the 10 most recent tweet IDs in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user themself. Tweets must be ordered from most recent to least recent.
@@ -3885,6 +3920,7 @@ class TreeNode:
   - `void unfollow(int followerId, int followeeId)` The user with ID followerId started unfollowing the user with ID followeeId.
 
 - Solution
+
 ```py
 class Twitter:
 
@@ -3892,7 +3928,7 @@ class Twitter:
         self.tweetMap = defaultdict(list) # mapping from userID to list of tweetID
         self.tweetTime = [] # a list of tweet id tracks posting order
         self.followingMap = defaultdict(set) # mapping from follower to followee set
-        
+
     def postTweet(self, userId: int, tweetId: int) -> None:
         self.tweetMap[userId].append(tweetId)
         self.tweetTime.append(tweetId)
@@ -3913,7 +3949,7 @@ class Twitter:
     def follow(self, followerId: int, followeeId: int) -> None:
         if followerId != followeeId:  # Prevent self-following
             self.followingMap[followerId].add(followeeId)
-        
+
     def unfollow(self, followerId: int, followeeId: int) -> None:
         if followeeId in self.followingMap[followerId]:
             self.followingMap[followerId].remove(followeeId)
@@ -4362,7 +4398,6 @@ class Twitter:
   - Remove and check if it is tree
   - Build graph
 
-
 ### 973. K Closest Points to Origin
 
 - Input:
@@ -4515,7 +4550,6 @@ class Twitter:
         return factors[k - 1] if k <= len(factors) else -1
   ```
 
-
 ### 1732. Find the Highest Altitude
 
 - Input:
@@ -4594,6 +4628,7 @@ class Solution:
         set1, set2 = set(nums1), set(nums2)
         return [list(set1-set2), list(set2-set1)]
   ```
+
 ## Other Questions
 
 - print all `n` bits binary numbers in order
