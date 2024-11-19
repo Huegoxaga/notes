@@ -72,7 +72,9 @@ def binary_search(arr, target):
     return -1  # Target not found, return -1
 ```
 
-- Quick selection - Find nth max/min in a list by returning the nth element when it is selected as the pivot point
+- Quickselect - Find nth max/min in a list by returning the nth element when it is selected as the pivot point
+  - Average case: O(n)
+  - Worst case: O(n^2)
 
 ```py
 def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -95,6 +97,7 @@ def findKthLargest(self, nums: List[int], k: int) -> int:
 #### Sort
 
 - Quick Sort
+  - Average case: O(nlogn)
 
 ```py
 def quicksort(arr):
@@ -331,6 +334,50 @@ def reverse_doubly_linked_list(head):
 
 ### Bit Manipulation
 
+- Hamming weight
+  - Bit Manipulation
+  ```py
+  def hammingWeight(self, n: int) -> int:
+    count = 0
+    while n:
+        count += n & 1  # Increment count if the last bit is 1
+        n >>= 1  # Right shift decimal number by 1 in its binary form to process the next bit
+    return count
+  ```
+  - Brian Kernighan's Algorithm
+  ```py
+  def hammingWeight(self, n: int) -> int:
+    count = 0
+    while n: # As long as there is a one in its binary representation
+        n &= (n - 1)  # Change the rightmost 1 bit to 0 bit of its binary representation
+        count += 1
+    return count
+  ```
+- print all `n` bits binary numbers in order
+
+```py
+# Recursive method
+def print_n_bits(n):
+    def print_01_codes(current, num_digits):
+        if num_digits == 0:
+            print(current)
+            return
+        print_01_codes(current + '0', num_digits - 1)
+        print_01_codes(current + '1', num_digits - 1)
+    print_01_codes('', n)
+print_n_bits(2)
+
+# Binary conversion method
+def print_n_bits(n):
+    for i in range(2**n):
+        binary_str = bin(i)[2:] # from 0b0 to 0
+        binary_str = (n - len(binary_str)) * '0' + binary_str # add leading 0s
+        # Optionally use `binary_str.rjust(n,'0')` or `binary_str.zfill(n)`
+        print(binary_str)
+
+print_n_bits(3)
+```
+
 ### Math
 
 - Check prime number
@@ -407,6 +454,41 @@ class ClassName:
     def methodOne(self, input: int) -> None:
         # try to implement the remaining methods with given data declared in __init__
         pass
+```
+
+### Union Find
+
+```py
+class UnionFind:
+    def __init__(self, n):
+        # Initialize the parent and rank arrays
+        self.parent = list(range(n))
+        self.rank = [0] * n
+
+    def find(self, x):
+        # Find the root of x with path compression
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])  # Path compression
+        return self.parent[x]
+
+    def union(self, x, y):
+        # Union by rank
+        rootX = self.find(x)
+        rootY = self.find(y)
+
+        if rootX != rootY:
+            # Attach the smaller tree under the larger one
+            if self.rank[rootX] > self.rank[rootY]:
+                self.parent[rootY] = rootX
+            elif self.rank[rootX] < self.rank[rootY]:
+                self.parent[rootX] = rootY
+            else:
+                self.parent[rootY] = rootX
+                self.rank[rootX] += 1
+
+    def connected(self, x, y):
+        # Check if x and y are in the same set
+        return self.find(x) == self.find(y)
 ```
 
 ## LeetCode
@@ -3500,7 +3582,7 @@ class TreeNode:
         return k_heap[0] # return smallest of the k largest in heap
         # one liner solution - return heapq.nlargest(k, nums)[-1]
   ```
-  - Quick selection - Find nth max/min in a list by returning the nth element when it is selected as the pivot point
+  - Quickselect - Find nth max/min in a list by returning the nth element when it is selected as the pivot point
   ```py
   class Solution:
       def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -3876,6 +3958,24 @@ class TreeNode:
             else:
                 return True # return whenever a third value is bigger than second
         return False
+  ```
+
+### 338. Counting Bits
+
+- Input:
+  - a number `n`
+- Output:
+  - A list of hamming weight for numbers from `0` to `n`
+- Solution:
+  - DP (Bottom-up)
+  ```py
+  class Solution:
+    def countBits(self, n: int) -> List[int]:
+        ans = [0] * (n + 1)
+        for i in range(1, n + 1):
+            ans[i] = ans[i >> 1] + (i & 1)
+            # same as, ans[i] = ans[i // 2] + (i & 1)
+        return ans
   ```
 
 ### 345. Reverse Vowels of a String
@@ -4335,6 +4435,14 @@ class Twitter:
           return round(max_sum/k, 5) # return the average after dividing by k
   ```
 
+### 647. Palindromic Substrings
+
+- Input:
+  - A string
+- Output:
+  - The number of substring which is a palindrome
+- Solution:
+
 ### 700. Search in a Binary Search Tree
 
 - Input:
@@ -4391,12 +4499,50 @@ class Twitter:
 ### 684. Redundant Connection
 
 - Input:
-  - A list of edges of a graph represented `[i, j]` where `i` and `j` are the node numbers
+  - A list of `n` edges of a graph represented `[i, j]` where `i` and `j` are the node numbers
 - Output:
   - The last edge in the list that can make the graph a tree if it is removed
 - Solution:
-  - Remove and check if it is tree
-  - Build graph
+
+  - Union Find
+
+  ```py
+  class UnionFind:
+      def __init__(self, n):
+          # Initialize parent and rank arrays for 0-based indexing
+          self.parent = list(range(n))
+          self.rank = [1] * n
+
+      def find_parent(self, x):
+          # Find the root of x with path compression
+          if self.parent[x] != x:
+              self.parent[x] = self.find_parent(self.parent[x])
+          return self.parent[x]
+
+      def union(self, v1, v2):
+          # Find roots of v1 and v2
+          p1, p2 = self.find_parent(v1), self.find_parent(v2)
+          # If they are already in the same set, a cycle is detected
+          if p1 == p2:
+              return False
+          # Union by rank: attach the smaller tree under the larger one
+          if self.rank[p1] > self.rank[p2]:
+              self.parent[p2] = p1
+              self.rank[p1] += self.rank[p2]
+          else:
+              self.parent[p1] = p2
+              self.rank[p2] += self.rank[p1]
+          return True
+
+  class Solution:
+      def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+          graph = UnionFind(len(edges)+1) # input node starting from 1 to n
+          # Process each edge in the graph
+          for v1, v2 in edges:
+              # If union fails, the edge creates a cycle and is redundant
+              if not graph.union(v1, v2):
+                  return [v1, v2]
+  ```
 
 ### 973. K Closest Points to Origin
 
@@ -4628,30 +4774,3 @@ class Solution:
         set1, set2 = set(nums1), set(nums2)
         return [list(set1-set2), list(set2-set1)]
   ```
-
-## Other Questions
-
-- print all `n` bits binary numbers in order
-
-```py
-# Recursive method
-def print_n_bits(n):
-    def print_01_codes(current, num_digits):
-        if num_digits == 0:
-            print(current)
-            return
-        print_01_codes(current + '0', num_digits - 1)
-        print_01_codes(current + '1', num_digits - 1)
-    print_01_codes('', n)
-print_n_bits(2)
-
-# Binary conversion method
-def print_n_bits(n):
-    for i in range(2**n):
-        binary_str = bin(i)[2:] # from 0b0 to 0
-        binary_str = (n - len(binary_str)) * '0' + binary_str # add leading 0s
-        # Optionally use `binary_str.rjust(n,'0')` or `binary_str.zfill(n)`
-        print(binary_str)
-
-print_n_bits(3)
-```
