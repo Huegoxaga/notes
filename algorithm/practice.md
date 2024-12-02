@@ -429,6 +429,7 @@ def dp_memoization(n):
 ```
 
 - Tabulation (Bottom-Up Approach)
+  - Iterative solution with pre-defined list
 
 ```py
 def dp_tabulation(n):
@@ -3402,7 +3403,7 @@ class TreeNode:
   - `Trie()` Initializes the trie object.
   - `void insert(String word)` Inserts the string word into the trie.
   - `boolean search(String word)` Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
-  - `boolean startsWith(String prefix)` Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
+  - `boolean startsWith(String prefix)` Returns true if there is a previously inserted string word that has the prefix `prefix`, and false otherwise.
 - Solution
   - Nested dictionary
   ```py
@@ -3499,7 +3500,7 @@ class TreeNode:
   - `void addWord(word)` Adds word to the data structure, it can be matched later.
   - `bool search(word)` Returns true if there is any string in the data structure that matches word or false otherwise. word may contain dots '.' where dots can be matched with any letter.
 - Solution:
-  - Trie stucture with modified search using BFS for wildcard `.`
+  - Trie structure with modified search using BFS for wildcard `.`
   ```py
   class WordDictionary:
       def __init__(self):
@@ -3935,6 +3936,67 @@ class TreeNode:
   ```
   - Use two sets to track new pattern and words, then use a dictionary to track new mapping
   - Store mapping in a dictionary and use pattern to reconstruct `s` string then compare it with the original `s`
+
+### 300
+
+- Input:
+  - Given an integer array `nums`
+- Output:
+  - The length of the longest strictly increasing subsequence
+- Solution:
+  - Optimized DP - tracks the the smallest possible tail values from substring of size 1 in an array called `sub`
+  ```py
+  import bisect
+  def lengthOfLIS(nums):
+      sub = []
+      for num in nums:
+          # Find the index to replace using binary search
+          idx = bisect.bisect_left(sub, num)
+          if idx == len(sub):
+              sub.append(num)  # If num is larger than all elements in sub
+          else:
+              sub[idx] = num  # Replace existing value with a smaller one
+      return len(sub)
+  ```
+
+### 322. Coin Change
+
+- Input:
+  - A list of integer representing coin types
+  - A target number
+- Output:
+  - The min number of coins required to form the target number
+- Solutions:
+  - DP - decision-making process is to decide whether using or not using the each coin when forming the best result for target amount from 0 to the target number
+    - Bottom-Up Approach
+    ```py
+    def coinChange(coins, amount):
+        dp = [float('inf')] * (amount + 1)
+        dp[0] = 0
+        for coin in coins:
+            for i in range(coin, amount + 1):
+                dp[i] = min(dp[i], dp[i - coin] + 1)
+        return dp[amount] if dp[amount] != float('inf') else -1
+    ```
+    - Top-Down Approach
+    ```py
+    def coinChange(coins, amount):
+        memo = {}
+        def dfs(remaining):
+            if remaining == 0:
+                return 0
+            if remaining < 0:
+                return float('inf')
+            if remaining in memo:
+                return memo[remaining]
+            min_coins = float('inf')
+            for coin in coins:
+                min_coins = min(min_coins, dfs(remaining - coin) + 1)
+            memo[remaining] = min_coins
+            return min_coins
+        result = dfs(amount)
+        return result if result != float('inf') else -1
+    ```
 
 ### 334. Increasing Triplet Subsequence
 
