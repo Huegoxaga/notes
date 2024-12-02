@@ -13,7 +13,7 @@
 - [Scala](scala/README.md)
   - [Scala](scala/scala.md)
 - [JavaScript](javascript/README.md)
-  - [JavaScript](javascript/javascript.md)
+  - [JavaScript](javascript/js.md)
   - [jQuery](javascript/j-query.md)
   - [React](javascript/react.md)
   - [React Native](javascript/react-native.md)
@@ -32,7 +32,7 @@
   - [Swift](swift/swift.md)
   - [iOS Development](swift/xcode.md)
 - [Go Programming Language](go/README.md)
-  - [Go][go/go.md]
+  - [Go](go/go.md)
 - [Markup Language](markup/README.md)
   - [HTML](markup/html.md)
   - [XML](markup/xml.md)

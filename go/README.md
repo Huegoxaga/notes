@@ -1,3 +1,3 @@
 # Go Programming Language
 
-- [Go][go.md]
+- [Go](go.md)
