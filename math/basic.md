@@ -123,8 +123,10 @@
     - no change needed to convert positive number
   - TWO’s COMPLEMENT NUMBER SYSTEM
     - based on one’s complement add an `1` in the end.
-    - to convert it to decimal, add a minus sign on the left most digit and use the standard method to add rest of the digit into a decimal number.
-    - to expanding register size filling the left register positions with the original most left value.
+    - to convert it to decimal, invert all the bits, add 1, apply a negative sign
+      - or directly minus the binary representation from the next number of all 1's, by using this operation `(1 << bit_length) + num`
+      - or use the operation `~(num ^ MASK)` where `MASK` is filled with 1s
+    - to expanding register size filling the left register positions with the original most left value
 - shortcut for binary subtraction.
   - convert the subtrahend to two’s complement and add with minuend, if the result has more digit than original register size trucate it and it is called overflow.
 - Bitwise Operation:

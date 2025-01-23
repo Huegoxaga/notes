@@ -56,21 +56,38 @@ return result
 
 #### Search
 
-- Binary Search - Use it for `O(logn)`
+- Binary Search - Use it on sorted array to achieve `O(logn)`
 
-```py
-def binary_search(arr, target):
-    left, right = 0, len(arr) - 1  # Initialize pointers
-    while left <= right:
-        mid = left + (right - left) // 2  # Calculate the middle index
-        if arr[mid] == target:
-            return mid  # Target found, return index
-        elif arr[mid] < target:
-            left = mid + 1  # Move the left pointer to mid + 1
-        else:
-            right = mid - 1  # Move the right pointer to mid - 1
-    return -1  # Target not found, return -1
-```
+  - Iterative method
+
+  ```py
+  def binary_search(arr, target):
+      left, right = 0, len(arr) - 1  # Initialize pointers
+      while left <= right:
+          mid = left + (right - left) // 2  # Calculate the middle index, avoids the potential overflow
+          if arr[mid] == target:
+              return mid  # Target found, return index
+          elif arr[mid] < target:
+              left = mid + 1  # Move the left pointer to mid + 1
+          else:
+              right = mid - 1  # Move the right pointer to mid - 1
+      return -1  # Target not found, return -1
+  ```
+
+  - Recursive method
+
+  ```py
+  def binarySearch(nums, target, left, right):
+    if left > right:
+        return -1  # Target not found
+    mid = (left + right) // 2
+    if nums[mid] == target:
+        return mid
+    elif nums[mid] > target:
+        return binarySearch(nums, target, left, mid - 1)
+    else:
+        return binarySearch(nums, target, mid + 1, right)
+  ```
 
 - Quickselect - Find nth max/min in a list by returning the nth element when it is selected as the pivot point
   - Average case: O(n)
@@ -207,7 +224,9 @@ def insert_node(root, key):
 
 ### Graph
 
-- Use dfs to explore all paths
+#### Explore Paths
+
+- Use dfs in a directed unweighted graph
 
 ```py
 graph = defaultdict(list)
@@ -231,7 +250,7 @@ for start_node in graph:
     dfs(start_node)
 ```
 
-- Use bfs to explore all paths
+- Use bfs in a directed unweighted graph
 
 ```py
 graph = defaultdict(list)
@@ -244,13 +263,220 @@ for start_node in graph: # Iterate all nodes in the graph
         current_node, path = queue.popleft() # Explore leftmost node
         if current_node not in graph or not graph[current_node]: # Save path if current node is a leaf node
             all_paths.append(path.copy()) # Optionally, use list(path) to copy
-        else: # In current node has child node
+        else: # If current node has child node
             for neighbor in graph[current_node]: # Iterate all children
                 if neighbor not in path:  # Avoid cycles
                     queue.append((neighbor, path + [neighbor])) # Explore neighbors and update path
 ```
 
-- Dijkstra's Algorithm
+#### Cycle Detection
+
+- BFS in undirected graphs
+
+```py
+from collections import defaultdict, deque
+def is_cyclic_bfs(graph): # the given graph is represented as an adjacent list
+    visited = set()
+    for start_node in graph:
+        if start_node not in visited: # for a start node in an unvisited component in the graph
+            queue = deque([(start_node, -1)])  # (current_node, parent_node)
+            visited.add(start_node)
+            while queue:
+                current, parent = queue.popleft()
+                for neighbor in graph[current]:
+                    if neighbor not in visited:
+                        visited.add(neighbor)
+                        queue.append((neighbor, current))
+                    elif neighbor != parent:
+                        return True  # Cycle detected
+    return False
+```
+
+- DFS in undirected graphs
+
+```py
+def is_cyclic_dfs(graph):
+  visited = set()
+  def dfs(node, parent):
+      visited.add(node)
+      for neighbor in graph[node]:
+          if neighbor not in visited:
+              if dfs(neighbor, node):  # Recursive DFS call
+                  return True
+          elif neighbor != parent:
+              return True  # Cycle detected
+      return False
+  for start_node in graph:
+      if start_node not in visited:
+          if dfs(start_node, -1): # for a start node in an unvisited component in the graph
+              return True
+  return False
+```
+
+- BFS (Kahn’s Algorithm) in directed graphs
+
+```py
+from collections import defaultdict, deque
+def is_cyclic_directed_bfs(graph):
+    in_degree = {node: 0 for node in graph}
+    for node in graph:
+        for neighbor in graph[node]:
+            in_degree[neighbor] += 1
+    queue = deque([node for node in graph if in_degree[node] == 0])
+    count_visited = 0
+    while queue:
+        current = queue.popleft()
+        count_visited += 1
+        for neighbor in graph[current]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                queue.append(neighbor)
+    return count_visited != len(graph)
+```
+
+- DFS in directed graphs
+  - Use an additional set to track the current path
+
+```py
+def is_cyclic_directed_dfs(graph):
+visited = set()
+path = set()
+def dfs(node):
+    visited.add(node)
+    path.add(node)
+    for neighbor in graph[node]:
+        if neighbor not in visited:
+            if dfs(neighbor):  # Recursive DFS call
+                return True
+        elif neighbor in path:
+            return True  # Cycle detected
+    path.remove(node)  # Backtracking
+    return False
+for start_node in graph:
+    if start_node not in visited:
+        if dfs(start_node):
+            return True
+return False
+```
+
+#### Topological Sort
+
+- BFS (Kahn’s Algorithm) in directed acyclic graphs (DAGs)
+
+```py
+from collections import deque, defaultdict
+def topological_sort_bfs(vertices, edges):
+    # Initialize in-degree and adjacency list
+    in_degree = {i: 0 for i in range(vertices)}
+    adjacency_list = defaultdict(list)
+    # Build the graph
+    for u, v in edges:
+        adjacency_list[u].append(v)
+        in_degree[v] += 1
+    # Collect nodes with no incoming edges
+    zero_in_degree = deque([node for node in range(vertices) if in_degree[node] == 0])
+    topological_order = []
+    while zero_in_degree:
+        node = zero_in_degree.popleft()
+        topological_order.append(node)
+        # Reduce in-degree for neighbors
+        for neighbor in adjacency_list[node]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                zero_in_degree.append(neighbor)
+    # Check for a cycle
+    if len(topological_order) == vertices:
+        return topological_order
+    else:
+        raise ValueError("Graph contains a cycle and topological sort is not possible.")
+# Example usage:
+vertices = 6
+edges = [(5, 2), (5, 0), (4, 0), (4, 1), (2, 3), (3, 1)]
+print(topological_sort_bfs(vertices, edges))  # Output: [5, 4, 2, 3, 1, 0]
+```
+
+- DFS in directed acyclic graphs (DAGs)
+
+```py
+from collections import defaultdict
+def topological_sort_dfs(vertices, edges):
+    def dfs(node):
+        visited[node] = True
+        for neighbor in adjacency_list[node]:
+            if not visited[neighbor]:
+                dfs(neighbor)
+        stack.append(node)
+    adjacency_list = defaultdict(list)
+    for u, v in edges:
+        adjacency_list[u].append(v)
+    visited = [False] * vertices
+    stack = []
+    for node in range(vertices):
+        if not visited[node]:
+            dfs(node)
+    return stack[::-1]  # Reverse the stack for topological order
+# Example usage:
+vertices = 6
+edges = [(5, 2), (5, 0), (4, 0), (4, 1), (2, 3), (3, 1)]
+print(topological_sort_dfs(vertices, edges))  # Output: [5, 4, 2, 3, 1, 0]
+```
+
+#### Find Shortest Distance
+
+- In distance calculation, graphs with unit weight are considered as all adjacent distance between nodes are 1
+- Try to negate the weight for longest path calculation
+- Use a previous node dictionary to store the best path when a path to the shortest distance is needed
+- Topological Sort (DFS/BFS) and DP method in DAG
+  - Time Complexity: `O(V+E)`
+
+```py
+from collections import defaultdict
+def find_shortest_path_dag(num_nodes, edges, start):
+    graph = defaultdict(list)
+    for u, v, weight in edges:
+        graph[u].append((v, weight))
+    visited = [False] * num_nodes
+    topo_order = []
+    def dfs(node):
+        visited[node] = True
+        for neighbor, _ in graph[node]:
+            if not visited[neighbor]:
+                dfs(neighbor)
+        topo_order.append(node)
+    for node in range(num_nodes):
+        if not visited[node]:
+            dfs(node)
+    topo_order.reverse()
+    distances = [float('inf')] * num_nodes
+    distances[start] = 0
+    for node in topo_order:
+        if distances[node] != float('inf'):  # Only process reachable nodes
+            for neighbor, weight in graph[node]:
+                distances[neighbor] = min(distances[neighbor], distances[node] + weight)
+    return distances
+```
+
+- BFS in undirected graph with unit weight
+  - Time Complexity: `O(V+E)`
+  - BFS is not suitable for finding best path in weighted graphs
+
+```py
+from collections import deque
+def shortest_distances(graph, start):
+    distances = {node: float('inf') for node in graph}  # Initialize distances to infinity
+    distances[start] = 0  # Distance to the start node is 0
+    queue = deque([start])
+    while queue:
+        node = queue.popleft()
+        for neighbor in graph[node]:
+            if distances[neighbor] == float('inf'):  # If not visited
+                distances[neighbor] = distances[node] + 1
+                queue.append(neighbor)
+    return distances
+```
+
+- Dijkstra's Algorithm in directed/undirected cyclic graphs with edge weights do not contain both signs
+  - `O((V+E)logV)` where `logV` is the time to utilize the priority queue
 
 ```py
 def dijkstra(graph, start):
@@ -279,6 +505,26 @@ graph = {
 }
 start_node = 'A'
 shortest_paths = dijkstra(graph, start_node)
+```
+
+- Bellman Ford Calculation in a general graph
+  - Time Complexity: `O(V*E)`
+
+```py
+def bellman_ford(graph, V, start):
+    distances = {i: float('inf') for i in range(V)}
+    distances[start] = 0
+    # Relax all edges (V-1) times
+    for _ in range(V - 1):
+        for u, v, w in graph:
+            if distances[u] != float('inf') and distances[u] + w < distances[v]:
+                distances[v] = distances[u] + w
+    negative_cycle_detected = False
+    for u, v, w in graph:
+        if distances[u] != float('inf') and distances[u] + w < distances[v]:
+            negative_cycle_detected = True
+            break
+    return distances, negative_cycle_detected
 ```
 
 ### Linked List
@@ -376,6 +622,20 @@ def print_n_bits(n):
         print(binary_str)
 
 print_n_bits(3)
+```
+
+- add two number using signed 32-bits operations
+
+```py
+def getSum(self, a: int, b: int) -> int:
+    # use signed 32-bit integer for this calculation
+    MASK = 0xFFFFFFFF # the -1 of two's complement representation
+    INT_MAX = 0x7FFFFFFF # max positive integer
+    while b != 0:
+        temp = (a ^ b) & MASK # add a and b without carrying, convert to binary without minus sign
+        b = ((a & b) << 1) & MASK # save carrying for next loop, then convert to binary without minus sign with mask
+        a = temp
+    return a if a <= INT_MAX else ~(a ^ MASK) # convert back to binary with minus sign
 ```
 
 ### Math
